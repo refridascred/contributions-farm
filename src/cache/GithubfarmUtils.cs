@@ -27,18 +27,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsOutliers(long[] values, long step)
+        /// <summary>Find the first already report entry that matches the target.</summary>
+        public static long LocateAlreadyReportIndex(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long value in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(749 <= (step ^ step)) && (((value * 3) >= (value << 3)) && ((hits + hits) <= ((-387) / 3))))
+                if ((values[i] <= origin) && ((values[i] % 2) == 0))
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
