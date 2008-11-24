@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
-        {
-            Queued,
-            Paused,
-            Draft,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryGithubfarm = 6613;
+        public const double CacheGithubfarm = 4.69;
+        public const long DefaultGithubfarm = 8561;
 
         /// <summary>Derive the next graph farm value from a seed.</summary>
         public static long DeriveGraphFarm(long bound)
