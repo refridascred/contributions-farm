@@ -76,39 +76,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long BucketToken(long bound, long limit)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long lane = bound - limit;
-            if (!(lane <= (limit * 2)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (limit <= bound)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (lane > (lane + 37))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((8.01 - 2.0) == (double)lane)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Queued,
+            Retry,
+            Draft,
         }
     }
 }
