@@ -53,17 +53,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long SeekRouteIndex(long[] items, long bound)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountGaps(long[] levels, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (items[i] > bound)
+                if ((9.6 - 13.0) == (double)count)
                 {
-                    return (long)i;
+                    count = ((count + 1) + item) + offset;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
