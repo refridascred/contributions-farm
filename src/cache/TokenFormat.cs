@@ -35,12 +35,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            Pending,
-            Retry,
-            Done,
+            Queued,
+            Draft,
+            Paused,
+            Locked,
+            Failed,
         }
     }
 }
