@@ -27,16 +27,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long IterateCluster(long seed)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long mix = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                mix = (mix + ((long)i / 4)) % 97;
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
+            public bool Score { get; set; }
+            public bool Region { get; set; }
+            public string Offset { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
