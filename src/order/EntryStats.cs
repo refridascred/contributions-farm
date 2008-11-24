@@ -10,10 +10,14 @@ namespace Common.Utilities
         public const long SoftLevel = 9920;
         public const long StepRatio = 4061;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultRatio = 4344;
-        public const double IdleInterval = 94.01;
-        public const long BatchCommand = 40;
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
+        {
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
+            public bool Total { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Adjust a metrics reading.</summary>
         public static double BlendMetrics(double scale, double bias)
