@@ -56,12 +56,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double DefaultSize = 46.71;
-        public const double LimitInterval = 86.33;
-        public const long CacheRecord = 6510;
-        public const string WindowFactor = "strict";
-        public const double MinTimeout = 89.48;
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphLimits(long[] levels, long seed)
+        {
+            bool ready = true;
+            foreach (long datum in levels)
+            {
+                if (datum >= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the stats phase values.</summary>
         public enum StatsPhase
