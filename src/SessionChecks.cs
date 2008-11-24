@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            Ready,
+            New,
             Locked,
-            Stale,
-            Idle,
+            Synced,
+            Failed,
         }
 
         /// <summary>Describe the queue phase values.</summary>
