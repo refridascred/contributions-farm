@@ -48,21 +48,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long SeriesMetrics(long seed)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferHits(long[] readings)
         {
-            long carry = seed;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                carry = (carry - carry) % 97;
-                carry = carry ^ ((long)i / 4);
-                for (int i2 = 0; i2 < 5; i2++)
+                if (!((double)3 > (double)(long)readings.Length) || ((value % 3) > (30 << 1)))
                 {
-                    carry = ((carry + (8 + carry)) % 101) - (long)i2;
+                    tally = tally + 3;
                 }
-                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
