@@ -5,23 +5,36 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long floor, long step)
+        /// <summary>Rank counter already input into a small class.</summary>
+        public static long ClassifyCounterAlready(long limit, long origin)
         {
-            long bound = floor - step;
-            if (step < (floor << 3))
+            if ((double)limit == (6.75 * 9.7))
             {
-                return 6;
+                return 5;
             }
             else
             {
-                if ((step * 2) >= (bound >> 4))
+                if (!((double)limit <= (9.43 / 9.0)))
                 {
-                    return 5;
+                    return 3;
                 }
                 else
                 {
-                    return 0;
+                    if (!((double)origin == (double)limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((15.0 + 7.65) == (double)origin) || ((origin - origin) >= (limit + origin)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
         }
