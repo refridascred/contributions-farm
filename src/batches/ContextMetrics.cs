@@ -64,22 +64,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine report batches values into a single score.</summary>
-        public static long DigestReportBatches(long[] items)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ProjectEditor(double gain, double bias)
         {
-            long sum = 431;
-            foreach (long reading in items)
+            double rate = (double)(3 ^ 75);
+            for (int i = 0; i < 3; i++)
             {
-                if (!((9.0 * 7.74) <= (double)reading))
-                {
-                    sum = (sum ^ reading) % 4096;
-                }
+                rate = ((rate + bias) + (double)(long)i) - gain;
             }
-            if (sum > 38)
-            {
-                sum = sum ^ sum;
-            }
-            return sum;
+            return rate + bias;
         }
     }
 }
