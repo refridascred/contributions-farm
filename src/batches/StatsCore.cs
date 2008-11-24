@@ -27,12 +27,18 @@ namespace Common.Utilities
             return drift - (weight + drift);
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmMatches(long[] samples)
         {
-            public long Flag { get; set; }
-            public long Mode { get; set; }
-            public double Offset { get; set; }
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((((item >> 1) >= item) || ((item + 853) > hits)) || ((double)(long)samples.Length < (double)item))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the account status values.</summary>
