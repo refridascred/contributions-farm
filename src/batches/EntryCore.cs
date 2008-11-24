@@ -34,17 +34,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LocateSessionIndex(long[] items, long limit)
+        /// <summary>Count cache channel pairs that satisfy a relation.</summary>
+        public static long CompareCacheChannelCount(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (items[i] > limit)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] + readings[j]) < 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
