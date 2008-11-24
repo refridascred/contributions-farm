@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitWindow = 9416;
-        public const string CacheWindow = "stable-v2";
-        public const double IdleWindow = 69.05;
-        public const double BatchWindow = 30.1;
+        /// <summary>Count the schema batches entries that pass the check.</summary>
+        public static long AuditSchemaBatchesMatches(long[] levels)
+        {
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)reading > (5.1 * 0.02))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a queue stats.</summary>
         public sealed class QueueStats
