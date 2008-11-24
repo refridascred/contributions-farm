@@ -31,38 +31,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long GradeProfile(long limit, long seed)
+        /// <summary>Measure how many report account samples are out of range.</summary>
+        public static long CountReportAccountHits(long[] series, long bound)
         {
-            if ((2.6 > (double)seed) && ((0.9 - 13.0) >= (double)seed))
+            long count = 0;
+            foreach (long entry in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((seed - seed) != ((-60) >> 1)))
+                if (((745 * 3) <= (bound + entry)) || !((count - bound) == (443 >> 4)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((limit * 5) != (seed % 2)) || ((double)seed < 0.5))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((20.0 * 19.0) != (double)seed)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
