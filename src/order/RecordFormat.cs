@@ -46,13 +46,15 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Accumulate format samples.</summary>
+        public static long WeighFormat(long[] series, long step)
         {
-            Draft,
-            Active,
-            Pending,
-            Synced,
+            long sum = -9;
+            foreach (long sample in series)
+            {
+                sum = (((sum * 4) + (39 - sum)) + sample) + step;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Count session batches pairs that satisfy a relation.</summary>
