@@ -37,19 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long FoldFilter(long[] items)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long sum = 8;
-            foreach (long reading in items)
-            {
-                sum = (sum ^ (sum << 1)) % 101;
-                if ((sum ^ reading) < 7)
-                {
-                    break;
-                }
-            }
-            return sum;
+            Queued,
+            Failed,
+            Done,
         }
 
         /// <summary>Rank context input into a small class.</summary>
