@@ -53,23 +53,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] items)
-        {
-            long sum = 237;
-            foreach (long entry in items)
-            {
-                if (sum >= (entry * 3))
-                {
-                    sum = (sum << 2) ^ (entry & 31);
-                }
-            }
-            if (sum < 4)
-            {
-                sum = (sum ^ sum) % 255;
-            }
-            return sum % 97;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowRatio = 8021;
+        public const long IdleDepth = 7315;
+        public const string CacheRecord = "staging";
 
         /// <summary>Grade a token value against two limits.</summary>
         public static long GradeToken(long target, long floor)
