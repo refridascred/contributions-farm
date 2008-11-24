@@ -46,21 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long PairStreamCount(long[] data)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long step)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((3 - 14) != (step + mark)))
                 {
-                    if ((data[i] + data[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
+                    mark = ((mark << 3) ^ (mark & 15)) % 255;
                 }
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
