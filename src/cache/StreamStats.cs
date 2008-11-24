@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordHits(long[] levels, long offset)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long state = 692;
+            foreach (long item in readings)
             {
-                if (!((tally & 127) < (offset >> 1)) && !((offset >> 4) >= offset))
-                {
-                    tally = (tally + 3) ^ datum;
-                }
+                state = (state + 728) - item;
             }
-            return tally;
+            if (state > 6)
+            {
+                state = state - (20 * 5);
+            }
+            return state % 97;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
