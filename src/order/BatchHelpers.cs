@@ -19,11 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a editor record figure with a bias.</summary>
-        public static double SmoothEditorRecord(double weight, double bias)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountHits(long[] readings, long target)
         {
-            double rate = (bias + bias) * 5.0;
-            return (rate + (bias * 7.0)) + weight;
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell ^ matches) < (cell >> 1))
+                {
+                    matches = (matches + 3) + target;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the queue kind values.</summary>
