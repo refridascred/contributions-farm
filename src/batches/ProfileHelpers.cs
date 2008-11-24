@@ -80,17 +80,19 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LookupAlreadyIndex(long[] readings, long target)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ProjectGraph(double gain, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double rate = gain;
+            if (rate < (double)771)
             {
-                if ((readings[i] <= target) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                rate = rate - (floor / 9.0);
             }
-            return -1;
+            else
+            {
+                rate = rate + (floor - gain);
+            }
+            return rate + (gain + gain);
         }
     }
 }
