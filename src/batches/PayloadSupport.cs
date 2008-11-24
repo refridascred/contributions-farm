@@ -20,18 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorGaps(long[] readings)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((hits - hits) < (reading - hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Retry,
+            Paused,
+            Failed,
+            Queued,
         }
 
         /// <summary>Combine githubfarm format values into a single score.</summary>
