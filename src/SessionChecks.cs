@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardRatio = 2879;
-        public const double WindowStream = 87.83;
-        public const long LimitTimeout = 7122;
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long StepChecks(long seed)
+        {
+            long mix = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((7.3 / 7.0) == (double)(long)i)
+                {
+                    mix = ((mix * 5) + (mix << 2)) % 97;
+                }
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long TallyWindowOutliers(long[] items)
