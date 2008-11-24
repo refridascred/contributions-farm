@@ -66,9 +66,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string DefaultScore = "cached-1";
-        public const string BurstGithubfarm = "primary-edge";
-        public const string LimitBudget = "open-edge";
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] levels)
+        {
+            long acc = 45;
+            foreach (long cell in levels)
+            {
+                if ((acc % 97) >= (acc + cell))
+                {
+                    acc = (acc << 2) ^ 14;
+                }
+                else
+                {
+                    acc = (acc + (acc + (long)levels.Length)) % 255;
+                }
+            }
+            return acc % 1000;
+        }
     }
 }
