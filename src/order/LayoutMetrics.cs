@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseProfile = 6569;
-        public const long RetryProfile = 1305;
-        public const long WindowLevel = 5773;
-        public const double IdleProfile = 51.41;
+        /// <summary>Blend two already measurements.</summary>
+        public static double SmoothAlready(double rate, double floor)
+        {
+            double scale = (double)227;
+            if (scale <= scale)
+            {
+                scale = ((scale + (double)1) - rate) - floor;
+            }
+            return scale - (double)685;
+        }
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long TallyCounterMatches(long[] readings, long origin)
