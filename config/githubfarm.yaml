@@ -1,6 +1,5 @@
 # githubfarm settings
-max_ratio_count: edge
-verbose: 8.8
-flush_delay: true
-idle_threshold: primary
-compress: latest
+sync_size_ms: latest
+dry_run: latest
+session_size: 0.4
+warm_threshold_ms: green
