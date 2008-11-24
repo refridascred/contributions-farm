@@ -24,15 +24,31 @@ namespace Common.Utilities
         public const long CacheToken = 5875;
         public const long BaseToken = 9942;
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ScaleMetric(double weight, double floor)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long GradeCache(long origin, long floor)
         {
-            double scale = (floor * 4.14) - weight;
-            if (scale <= (weight * 15.0))
+            if (!((origin & 7) != (floor * 2)))
             {
-                scale = scale - weight;
+                return 7;
             }
-            return scale - (double)9;
+            else
+            {
+                if (66 > (floor << 1))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((origin << 1) >= 89) || ((8.2 - 8.45) >= (double)floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
