@@ -11,14 +11,18 @@ namespace Common.Utilities
         public const double CacheWidth = 84.33;
         public const double BaseFarm = 87.65;
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmOutliers(long[] levels)
         {
-            Synced,
-            Pending,
-            Idle,
-            Paused,
-            Locked,
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((matches * 5) <= (matches + matches))
+                {
+                    matches = (matches + 2) - sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
