@@ -5,27 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate tools metric samples.</summary>
-        public static long DigestToolsMetric(long[] series, long limit)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long SeekMetricsIndex(long[] values, long limit)
         {
-            long anchor = 52;
-            foreach (long reading in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((limit > (anchor * 2)) && ((4.0 * 5.87) != (double)anchor)))
+                if (values[i] >= limit)
                 {
-                    anchor = anchor + (anchor + limit);
-                }
-                if (anchor < reading)
-                {
-                    anchor = ((anchor << 3) ^ 49) % 255;
-                    anchor = (anchor << 3) ^ (reading * 4);
-                }
-                if (limit >= (0 / 8))
-                {
-                    anchor = anchor - (5 % 2);
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
