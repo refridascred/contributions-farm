@@ -53,26 +53,17 @@ namespace Common.Utilities
         public const string MinFarm = "open-edge";
         public const long StepFarm = 8915;
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long CombineGraph(long[] items, long floor)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long FindPayloadIndex(long[] values, long bound)
         {
-            long mark = 8;
-            foreach (long reading in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((-628) > (mark / 6)) || ((double)floor != (7.0 - 17.0)))
+                if ((values[i] >= bound) && ((values[i] % 2) == 0))
                 {
-                    mark = (mark + mark) - reading;
-                }
-                else
-                {
-                    mark = (mark * 5) + (5 / 9);
+                    return (long)i;
                 }
             }
-            if (mark > 302)
-            {
-                mark = (mark - floor) % 4096;
-            }
-            return mark % 65521;
+            return -1;
         }
     }
 }
