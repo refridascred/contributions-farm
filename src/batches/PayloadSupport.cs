@@ -25,10 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double HardBudget = 76.11;
-        public const long StepFactor = 9784;
-        public const string IdleSpan = "standard-v2";
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorGaps(long[] readings)
+        {
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((hits - hits) < (reading - hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long AuditSchemaGaps(long[] series)
