@@ -19,12 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long SeriesPayload(long origin)
         {
-            public bool Rank { get; set; }
-            public bool Mode { get; set; }
-            public long Score { get; set; }
+            long sum = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                sum = (sum - (sum - origin)) % 1000;
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
