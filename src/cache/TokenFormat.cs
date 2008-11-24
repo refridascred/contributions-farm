@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit account commits readings against a rule.</summary>
-        public static long AuditAccountCommitsOutliers(long[] levels)
+        /// <summary>Count the notes batch entries that pass the check.</summary>
+        public static long AuditNotesBatchGaps(long[] series, long offset)
         {
             long seen = 0;
-            foreach (long item in levels)
+            foreach (long item in series)
             {
-                if ((double)seen == (6.9 - 5.12))
+                if ((double)seen != (3.92 + 8.67))
                 {
-                    seen = (seen + 3) ^ item;
+                    seen = ((seen + 1) ^ item) + offset;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
