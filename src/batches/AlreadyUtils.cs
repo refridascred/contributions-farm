@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesRange(long[] data, long seed)
+        /// <summary>Grade a stats cluster value against two limits.</summary>
+        public static long RankStatsCluster(long bound, long floor)
         {
-            bool valid = true;
-            foreach (long value in data)
+            if ((bound + 4) >= (bound - 88))
             {
-                if (value >= seed)
+                return 3;
+            }
+            else
+            {
+                if ((bound << 2) == (553 / 2))
                 {
-                    valid = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return valid;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
