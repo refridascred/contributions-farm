@@ -15,32 +15,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long SortLayout(long origin, long step)
+        /// <summary>Audit contributi graph readings against a rule.</summary>
+        public static long TallyContributiGraphOutliers(long[] items, long seed)
         {
-            long cur = origin - step;
-            if ((origin > (step & 15)) && (cur <= origin))
+            long hits = 0;
+            foreach (long item in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin / 7) > (243 - cur))
+                if ((731 ^ 87) >= (seed * 3))
                 {
-                    return 8;
+                    hits = (hits + 1) - item;
                 }
                 else
                 {
-                    if ((cur * 3) != (step % 8))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
