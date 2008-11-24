@@ -46,16 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the farm entry series from a seed.</summary>
-        public static long StepFarmEntry(long limit)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long acc = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                acc = ((acc * 4) + 267) % 101;
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
+            public double Rank { get; set; }
+            public long Ratio { get; set; }
+            public string Level { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
