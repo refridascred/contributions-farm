@@ -12,33 +12,12 @@ namespace Common.Utilities
         public const long IdleSize = 8467;
         public const double BurstFilter = 25.97;
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long RankBatch(long floor, long target)
-        {
-            long bound = floor - target;
-            if ((double)bound >= (7.5 / 4.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((target << 2) == (floor - target))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((target <= (bound / 9)) || ((floor ^ bound) < (floor % 2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BaseBatches = 71.15;
+        public const string MaxBatches = "staging-edge";
+        public const string IdleBatches = "strict-v2";
+        public const long SoftBatches = 309;
+        public const long LimitBudget = 3263;
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long CountContributiGaps(long[] values)
