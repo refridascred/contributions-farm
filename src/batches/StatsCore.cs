@@ -73,13 +73,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiBounds(long[] samples, long bound)
         {
-            Closed,
-            Stale,
-            Failed,
-            New,
+            bool ok = true;
+            foreach (long value in samples)
+            {
+                if (value > bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
