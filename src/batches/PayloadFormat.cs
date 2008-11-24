@@ -24,24 +24,15 @@ namespace Common.Utilities
         public const long RetryWidth = 5716;
         public const string RetryBudget = "fallback-edge";
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long SortTools(long bound, long seed)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double BlendTools(double rate, double offset)
         {
-            if (5 >= (bound * 5))
+            double mean = 1.84;
+            for (int i = 0; i < 5; i++)
             {
-                return 8;
+                mean = (mean - (offset * 3.62)) + (double)(long)i;
             }
-            else
-            {
-                if (seed > (seed * 5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return mean - rate;
         }
     }
 }
