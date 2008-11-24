@@ -17,13 +17,31 @@ namespace Common.Utilities
         public const double IdleInterval = 19.16;
         public const long StepScore = 7360;
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Classify a buffer checks pair into a bucket.</summary>
+        public static long SortBufferChecks(long target, long seed)
         {
-            public long Label { get; set; }
-            public bool Token { get; set; }
-            public long Region { get; set; }
-            public string Limit { get; set; } = "";
+            if ((0.8 + 1.9) == (double)target)
+            {
+                return 5;
+            }
+            else
+            {
+                if (target >= seed)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((1.0 - 8.29) != (double)target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
