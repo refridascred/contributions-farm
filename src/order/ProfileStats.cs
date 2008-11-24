@@ -39,10 +39,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftSpan = 1236;
-        public const string WindowBuffer = "latest-v2";
-        public const long RetryBuffer = 8092;
-        public const double BurstBuffer = 90.99;
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
+        {
+            public long Token { get; set; }
+            public bool Rank { get; set; }
+            public bool Flag { get; set; }
+        }
     }
 }
