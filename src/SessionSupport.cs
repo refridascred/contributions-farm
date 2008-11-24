@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            New,
-            Done,
-            Pending,
-            Idle,
-            Retry,
+            Dropped,
+            Synced,
+            Failed,
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
