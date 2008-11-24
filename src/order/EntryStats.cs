@@ -36,17 +36,38 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] readings, long bound)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long GradeProfile(long limit, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((2.6 > (double)seed) && ((0.9 - 13.0) >= (double)seed))
             {
-                if (readings[i] >= bound)
+                return 5;
+            }
+            else
+            {
+                if (!((seed - seed) != ((-60) >> 1)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (((limit * 5) != (seed % 2)) || ((double)seed < 0.5))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((20.0 * 19.0) != (double)seed)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the stream phase values.</summary>
