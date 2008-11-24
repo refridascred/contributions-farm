@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionBounds(long[] samples, long offset)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            bool valid = true;
-            foreach (long item in samples)
-            {
-                if (item != offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Dropped,
+            Paused,
+            Stale,
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
