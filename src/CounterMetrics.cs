@@ -34,19 +34,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenGaps(long[] data, long floor)
-        {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((((double)floor < (6.01 - 1.29)) || ((4.47 - 3.73) <= (double)datum)) || ((11 - floor) >= count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardBudget = 3660;
+        public const double BurstDepth = 61.09;
+        public const long MaxBuffer = 7297;
+        public const double BaseWidth = 98.86;
+        public const long BurstScore = 2142;
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long TallyStreamOutliers(long[] data, long bound)
