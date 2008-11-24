@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaGaps(long[] values, long limit)
         {
-            public bool Mode { get; set; }
-            public string Weight { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((double)seen > 17.0)
+                {
+                    seen = ((seen + 3) ^ entry) - limit;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a checks record.</summary>
