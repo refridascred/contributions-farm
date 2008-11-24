@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two checks route measurements.</summary>
-        public static double AdjustChecksRoute(double bias, double span)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            double gain = (13.0 / 4.0) - (bias - span);
-            return gain + 5.0;
+            public double Score { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Weight { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
