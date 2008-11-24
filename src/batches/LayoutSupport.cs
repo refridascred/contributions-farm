@@ -32,14 +32,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
-        {
-            public string Ratio { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Label { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitStats = 8102;
+        public const long BurstStats = 3537;
+        public const long WindowStats = 5526;
+        public const string HardStats = "open-1";
 
         /// <summary>Fold a list of tools session readings.</summary>
         public static long WeighToolsSession(long[] items)
