@@ -12,22 +12,21 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] data)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long OverlapBatchCount(long[] items)
         {
-            long acc = 9;
-            foreach (long datum in data)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((acc * 5) > (acc - acc))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = ((acc << 2) ^ (datum + datum)) % 255;
-                }
-                else
-                {
-                    acc = (acc * 4) + (datum ^ datum);
+                    if ((items[i] + items[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
