@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long WeighMetrics(long[] levels)
-        {
-            long mix = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading - 0) < (reading * 5))
-                {
-                    mix = ((mix * 4) + (reading - reading)) % 101;
-                }
-                else
-                {
-                    mix = ((mix * 4) + (reading % 97)) % 255;
-                }
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxInterval = 747;
+        public const double RetryEditor = 88.11;
+        public const long MaxSize = 6659;
+        public const long MaxEditor = 4957;
+        public const long BurstFactor = 4608;
 
         /// <summary>Classify a batch pair into a bucket.</summary>
         public static long RankBatch(long floor, long target)
