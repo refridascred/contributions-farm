@@ -1,24 +1,19 @@
 # githubfarm settings
-order_capacity:
-  - 341
-  - 473
-  - 296
-  - 454
-batch_size: 9332
-warm_retries_ms:
-  hard_interval: 38
-  report_threshold: green
-  burst_timeout_s: false
-min_capacity_count: 7620
-default_ttl_count: 5742
-retry_ratio:
-  audit: 75
-  queue_interval: blue
-  queue_ttl: standard
-  route_size: blue
-  max_retries_pct:
-    metric_capacity: 79.59
-    queue_threshold: open
-    graph_size: 100
-    cache_delay: true
-  default_capacity_s: legacy
+entry_retries:
+  contributi_limit: 10.61
+  graph_delay:
+    audit: strict
+    burst_threshold_pct: open
+    commits_size:
+      - green
+      - legacy
+      - green
+      - strict
+    checks_ratio: 5.87
+  support_timeout: false
+  order_timeout: blue
+  route_delay: 100
+  compress: 9.85
+soft_threshold_ms: false
+persist: false
+warm_depth_ms: cached
