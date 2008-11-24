@@ -75,12 +75,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BatchBatches = "staging-1";
-        public const double SoftWidth = 8.56;
-        public const double MaxBatches = 2.05;
-        public const long BurstLevel = 8579;
-        public const double RetryBatches = 13.56;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleProfile = 7325;
+        public const string BurstProfile = "stable-v2";
+        public const long WindowProfile = 6947;
 
         /// <summary>Measure how many batch window samples are out of range.</summary>
         public static long MeasureBatchWindowHits(long[] samples)
