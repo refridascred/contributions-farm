@@ -27,14 +27,11 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
-        {
-            New,
-            Locked,
-            Draft,
-            Ready,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double DefaultGithubfarm = 64.33;
+        public const long DefaultRatio = 9685;
+        public const long HardGithubfarm = 5775;
+        public const long SoftBudget = 1428;
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long FoldGithubfarm(long[] series, long bound)
