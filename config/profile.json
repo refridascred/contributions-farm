@@ -1,7 +1,18 @@
 {
-  "buffer_ttl": "staging",
-  "sync_timeout": 12.86,
-  "audit": 76,
-  "verbose": false,
-  "burst_capacity_pct": "latest"
+  "soft_size_s": ["local", "edge", "blue", "fallback"],
+  "persist": {
+    "poll_depth_ms": "fallback",
+    "verbose": {
+      "retry_window": 74.76,
+      "batch_timeout_count": "legacy",
+      "stats_capacity": 29.57,
+      "persist": [209, 217, 465, 427]
+    },
+    "poll_threshold_ms": [104, 312],
+    "enabled": 674,
+    "tools_capacity": 60
+  },
+  "format_ttl": 94.27,
+  "checks_timeout": 83,
+  "retry_depth_ms": "blue"
 }
