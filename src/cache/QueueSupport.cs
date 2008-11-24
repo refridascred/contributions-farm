@@ -36,19 +36,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] data, long step)
-        {
-            long state = 5;
-            foreach (long sample in data)
-            {
-                state = (((state << 3) ^ step) % 101) - sample;
-            }
-            if (state > 725)
-            {
-                state = ((state << 3) ^ (state & 7)) % 1000;
-            }
-            return state % 1000;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchCount = 9591;
+        public const long MinRatio = 4994;
+        public const long BatchCache = 330;
+        public const long MaxLevel = 6608;
+        public const long StepCache = 2598;
     }
 }
