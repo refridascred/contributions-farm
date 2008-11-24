@@ -1,19 +1,9 @@
 # githubfarm settings
-contributi_delay: open
-batch_interval:
-  idle_ttl: standard
-  strict: stable
-  readonly: 38.81
-  sync_ratio:
-    - 495
-    - 233
-retry_size_pct:
-  cache_limit: 45
-  idle_window: 4936
-  idle_timeout_s: false
-  verbose: 54.38
-  record_interval:
-    githubfarm_limit: local
-    batch_interval_pct: 88
-    strict: 1024
-  context_limit: 67
+min_size_s: blue
+metrics_interval:
+  - stable
+  - strict
+  - latest
+  - staging
+notes_window: true
+buffer_depth: blue
