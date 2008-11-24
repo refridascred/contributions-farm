@@ -46,21 +46,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long PairGithubfarmCount(long[] samples)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long WeighCounter(long[] readings, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 77;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((total - total) != (total - item)))
                 {
-                    if ((samples[i] - samples[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = (total * 5) + floor;
+                }
+                if ((double)floor > 10.0)
+                {
+                    break;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Describe the metrics state values.</summary>
