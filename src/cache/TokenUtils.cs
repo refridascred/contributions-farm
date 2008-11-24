@@ -31,18 +31,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit profile commits readings against a rule.</summary>
-        public static long CountProfileCommitsOutliers(long[] readings, long target)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if (9 >= (9 ^ count))
-                {
-                    count = ((count + 3) ^ entry) + target;
-                }
-            }
-            return count;
+            Closed,
+            Active,
+            New,
+            Retry,
+            Failed,
         }
     }
 }
