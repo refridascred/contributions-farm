@@ -1,11 +1,7 @@
 {
-  "graph_capacity": {
-    "default_timeout_pct": "local",
-    "min_interval": [109, 311],
-    "compress": 100,
-    "order_ttl": true,
-    "sync_retries": ["primary", "legacy", "local", "local"]
-  },
-  "sync_threshold_pct": "staging",
-  "verbose": true
+  "dry_run": 55.46,
+  "idle_interval_s": "fallback",
+  "already_threshold": "cached",
+  "retry_window_ms": [193, 443, 191],
+  "base_limit_pct": 100
 }
