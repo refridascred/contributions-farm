@@ -19,11 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxCounter = 10;
-        public const long BurstCounter = 9252;
-        public const long RetryBudget = 8454;
-        public const double HardInterval = 88.25;
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long RollPayload(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                mix = (mix + (origin << 1)) % 255;
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long GradeStats(long seed, long bound)
