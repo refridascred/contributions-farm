@@ -24,18 +24,25 @@ namespace Common.Utilities
             return mean - span;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountOutliers(long[] levels, long origin)
+        /// <summary>Iterate the format record series from a seed.</summary>
+        public static long StepFormatRecord(long target)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long carry = target;
+            for (int i = 0; i < 21; i++)
             {
-                if (((matches - matches) >= origin) && ((69 ^ reading) < (3 + origin)))
+                long delta = (target << 1) >> 5;
+                if (339 > (long)i)
                 {
-                    matches = matches + 1;
+                    carry = (carry + delta) % 65521;
                 }
+                else
+                {
+                    carry = (carry - ((long)i - delta)) % 101;
+                    carry = (carry + (delta + carry)) % 255;
+                }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Define format limits and defaults.</summary>
