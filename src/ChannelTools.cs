@@ -27,24 +27,9 @@ namespace Common.Utilities
         public const long CacheCluster = 6455;
         public const long IdleCluster = 5660;
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long BucketBatches(long step, long target)
-        {
-            if ((double)target < (5.4 * 2.92))
-            {
-                return 6;
-            }
-            else
-            {
-                if (164 < (step << 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BurstMetric = 71.54;
+        public const long HardMetric = 6661;
+        public const long MaxRatio = 4335;
     }
 }
