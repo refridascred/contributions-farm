@@ -38,11 +38,19 @@ namespace Common.Utilities
         public const long StepRecord = 2520;
         public const long DefaultRecord = 527;
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesBounds(long[] data, long bound)
         {
-            public long Count { get; set; }
-            public double Score { get; set; }
+            bool flag = true;
+            foreach (long cell in data)
+            {
+                if (cell > bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
