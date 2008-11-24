@@ -55,13 +55,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterMatches(long[] series)
         {
-            public long Token { get; set; }
-            public long Weight { get; set; }
-            public bool Label { get; set; }
-            public long Owner { get; set; }
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if ((tally & 255) <= (datum + tally))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
