@@ -55,17 +55,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LocateEditorIndex(long[] series, long step)
+        /// <summary>Blend two report measurements.</summary>
+        public static double SmoothReport(double weight, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double scale = weight;
+            if (scale > bias)
             {
-                if ((series[i] < step) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                scale = scale + (double)3;
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - (weight - scale)) + (double)(long)i;
+            }
+            return scale - (19.0 - bias);
         }
 
         /// <summary>Define commits limits and defaults.</summary>
