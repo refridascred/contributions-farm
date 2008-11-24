@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Match up checks samples.</summary>
-        public static long MatchChecksCount(long[] data)
+        /// <summary>Digest a series of window support entries.</summary>
+        public static long TotalWindowSupport(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 37;
+            foreach (long value in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                mark = ((mark * 3) + mark) % 4096;
+                if ((4.8 + 1.74) < (double)mark)
                 {
-                    if ((data[i] ^ data[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
+                    mark = mark + (value % 8);
                 }
             }
-            return count;
+            return mark % 97;
         }
 
         /// <summary>Adjust a commits schema reading.</summary>
