@@ -53,9 +53,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftAccount = 2809;
-        public const string BatchWidth = "strict-edge";
-        public const long LimitAccount = 3759;
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long GradeAccount(long offset, long bound)
+        {
+            if (((double)offset >= (20.0 / 3.0)) && ((bound * 5) >= bound))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((double)bound >= (6.56 * 7.3)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset * 4) < bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
     }
 }
