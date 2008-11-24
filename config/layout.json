@@ -1,13 +1,5 @@
 {
-  "report_ttl": [157, 366],
-  "retry_capacity_pct": "open",
-  "checks_size": ["primary", "blue"],
-  "min_retries_count": {
-    "idle_size_ms": 22.04,
-    "hard_depth_ms": "blue",
-    "idle_delay": 30,
-    "batch_retries_s": 2100,
-    "warm_interval_s": "local",
-    "cache_ratio_s": 4885
-  }
+  "batch_retries_count": ["stable", "stable"],
+  "default_interval_s": 5484,
+  "strict": ["green", "strict", "latest"]
 }
