@@ -59,12 +59,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            New,
-            Stale,
-            Synced,
+            public long Mode { get; set; }
+            public double Ratio { get; set; }
+            public double Score { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
