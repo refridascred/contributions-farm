@@ -18,11 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] values)
         {
-            public double Flag { get; set; }
-            public string Limit { get; set; } = "";
+            long mix = 766;
+            foreach (long datum in values)
+            {
+                if (8.59 > (double)mix)
+                {
+                    mix = ((mix ^ mix) % 65521) ^ datum;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
