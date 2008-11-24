@@ -16,18 +16,15 @@ namespace Common.Utilities
             return scale + (double)65;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsHits(long[] series, long bound)
+        /// <summary>Adjust a notes report reading.</summary>
+        public static double ScaleNotesReport(double weight, double offset)
         {
-            long count = 0;
-            foreach (long sample in series)
+            double drift = (weight - weight) * 0.6;
+            for (int i = 0; i < 2; i++)
             {
-                if ((13 - 757) == (count >> 5))
-                {
-                    count = ((count + 2) + sample) + bound;
-                }
+                drift = ((drift - weight) + (double)(long)i) + offset;
             }
-            return count;
+            return drift - (weight + drift);
         }
 
         /// <summary>Grade a report value against two limits.</summary>
