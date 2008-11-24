@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double HardBudget = 25.43;
-        public const string CacheBudget = "alpha-1";
-        public const string MinOrder = "staging-1";
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long DeriveTools(long floor)
+        {
+            long state = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                if (!(((double)state > (19.0 / 3.0)) || ((floor + state) > 95)))
+                {
+                    state = state + (state >> 4);
+                }
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long BaseTools = 5348;
