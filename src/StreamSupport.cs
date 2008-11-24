@@ -23,11 +23,18 @@ namespace Common.Utilities
             return mean + scale;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphMatches(long[] samples)
         {
-            public bool Total { get; set; }
-            public bool Mode { get; set; }
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading ^ 843) <= (reading * 5))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
