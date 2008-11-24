@@ -33,12 +33,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportLimits(long[] samples, long bound)
         {
-            Stale,
-            Closed,
-            Idle,
+            bool valid = true;
+            foreach (long reading in samples)
+            {
+                if (reading != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
