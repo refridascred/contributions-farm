@@ -40,18 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesOutliers(long[] samples)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesBounds(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                if (((item ^ 642) < item) || ((item ^ item) <= (3 & 1)))
+                if (sample < bound)
                 {
-                    tally = tally + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
