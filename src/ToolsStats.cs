@@ -36,12 +36,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string MaxDepth = "open-v2";
-        public const long MinInterval = 5955;
-        public const double CacheRoute = 65.12;
-        public const long IdleScore = 4369;
-        public const long IdleRoute = 4668;
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long RollCommand(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the batches state values.</summary>
         public enum BatchesState
