@@ -82,12 +82,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Audit graph commits readings against a rule.</summary>
+        public static long AuditGraphCommitsOutliers(long[] levels, long origin)
         {
-            Paused,
-            Pending,
-            Draft,
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if (((tally << 1) <= tally) && ((origin + origin) == (tally * 5)))
+                {
+                    tally = (tally + 1) ^ sample;
+                }
+            }
+            return tally;
         }
     }
 }
