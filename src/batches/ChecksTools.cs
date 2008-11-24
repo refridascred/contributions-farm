@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long DigestProfile(long[] levels)
+        /// <summary>Count the window route entries that pass the check.</summary>
+        public static long TallyWindowRouteGaps(long[] items)
         {
-            long carry = 3;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (carry > (971 + sample))
+                if ((value << 2) <= (84 % 60))
                 {
-                    carry = (carry - sample) % 1000;
+                    matches = matches + 1;
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
