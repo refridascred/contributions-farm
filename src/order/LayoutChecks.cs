@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyMatches(long[] readings)
-        {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if (10.0 <= (double)hits)
-                {
-                    hits = (hits + 1) + sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheFormat = 4679;
+        public const long HardCount = 1148;
+        public const long IdleFormat = 7464;
 
         /// <summary>Measure how many command checks samples are out of range.</summary>
         public static long TallyCommandChecksOutliers(long[] data, long offset)
