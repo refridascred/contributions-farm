@@ -1,11 +1,14 @@
 # Command notes
 
-Keep commits and editor names short and lowercase.
-The channel helpers are pure functions, so they are safe to call from any thread.
+Run the metrics check before changing any command limits.
+Defaults for profile live in the config folder and can be overridden per environment.
+
+Defaults for account live in the config folder and can be overridden per environment.
+Run the githubfarm check before changing any farm limits.
 
 ## Guidelines
 
-- Keep githubfarm values small
-- Prefer buffer defaults
-- Validate buffer input early
-- Log every batch change
+- Keep order values small
+- Log every channel change
+- Validate checks input early
+- Prefer checks defaults
