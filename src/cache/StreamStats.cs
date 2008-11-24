@@ -21,15 +21,21 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Blend two stream counter measurements.</summary>
-        public static double BlendStreamCounter(double ratio, double offset)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long CompareRecordCount(long[] items)
         {
-            double rate = (double)(52 ^ 0);
-            if (rate < (rate / 5.0))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = (rate - (ratio * 10.0)) + offset;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return rate - (ratio + ratio);
+            return tally;
         }
 
         /// <summary>Hold a context info.</summary>
