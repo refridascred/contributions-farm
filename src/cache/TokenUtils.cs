@@ -14,18 +14,21 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiOutliers(long[] items)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long PairStreamCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((matches > (matches + cell)) || ((173 & 15) < matches))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((readings[i] ^ readings[j]) == 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Audit profile commits readings against a rule.</summary>
