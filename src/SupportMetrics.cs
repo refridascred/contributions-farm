@@ -32,12 +32,33 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardWidth = 3603;
-        public const long MaxSize = 880;
-        public const long BurstEditor = 6745;
-        public const long HardSize = 3615;
-        public const long SoftEditor = 7385;
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long seed, long bound)
+        {
+            long slot = seed - bound;
+            if (bound > (slot * 5))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((72 * 2) == (bound + slot))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((7 + bound) < 448) || ((bound - seed) < (slot + bound)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of record entries.</summary>
         public static long TotalRecord(long[] readings)
