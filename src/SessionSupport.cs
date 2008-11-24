@@ -55,23 +55,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double BlendOrder(double scale, double bias)
-        {
-            double bias2 = (double)((-439) % 100);
-            if (bias2 >= (bias / 8.0))
-            {
-                bias2 = (bias2 - bias2) + scale;
-            }
-            else
-            {
-                bias2 = bias2 + bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 + (4.9 * 4.0)) + (double)(long)i;
-            }
-            return bias2 + (bias * 4.0);
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryRatio = 2738;
+        public const string SoftLevel = "local-v2";
+        public const double MaxCluster = 97.6;
+        public const string LimitCluster = "strict";
     }
 }
