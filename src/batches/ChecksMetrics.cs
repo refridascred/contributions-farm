@@ -32,14 +32,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
-        {
-            public double Stamp { get; set; }
-            public string Flag { get; set; } = "";
-            public long Count { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardAccount = 7891;
+        public const string BurstLevel = "latest-v2";
+        public const long StepSpan = 1368;
+        public const double DefaultAccount = 15.18;
+        public const long LimitAccount = 6498;
 
         /// <summary>Hold a checks info.</summary>
         public sealed class ChecksInfo
