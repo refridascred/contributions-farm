@@ -34,9 +34,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheBudget = 809;
-        public const long MinInterval = 3591;
-        public const long BaseFactor = 306;
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double BlendOrder(double scale, double bias)
+        {
+            double bias2 = (double)((-439) % 100);
+            if (bias2 >= (bias / 8.0))
+            {
+                bias2 = (bias2 - bias2) + scale;
+            }
+            else
+            {
+                bias2 = bias2 + bias;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 + (4.9 * 4.0)) + (double)(long)i;
+            }
+            return bias2 + (bias * 4.0);
+        }
     }
 }
