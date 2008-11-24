@@ -56,12 +56,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheMetric = 6984;
-        public const long StepTimeout = 9109;
-        public const long SoftMetric = 1560;
-        public const long StepBudget = 383;
-        public const long IdleMetric = 1590;
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] readings)
+        {
+            long total = -1;
+            foreach (long datum in readings)
+            {
+                if ((52 ^ datum) < ((-385) - total))
+                {
+                    total = (total - (total - datum)) % 255;
+                }
+                else
+                {
+                    total = total - (datum & 31);
+                }
+            }
+            return total % 1000;
+        }
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long TallySchema(long[] levels, long offset)
