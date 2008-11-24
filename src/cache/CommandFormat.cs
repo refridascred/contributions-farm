@@ -36,10 +36,22 @@ namespace Common.Utilities
             return rate + (rate * 15.0);
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitStats = 7638;
-        public const double CacheScore = 22.61;
-        public const long SoftStats = 3286;
+        /// <summary>Match up context samples.</summary>
+        public static long MatchContextCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a batch stats.</summary>
         public sealed class BatchStats
