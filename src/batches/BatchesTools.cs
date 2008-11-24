@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long GradeToken(long seed, long limit)
         {
-            Done,
-            New,
-            Stale,
-            Failed,
-            Paused,
+            if (((limit + limit) < seed) || ((seed ^ seed) <= (limit % 100)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((470 & 127) > (seed ^ limit)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((28 & 255) <= (seed * 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a commits summary.</summary>
