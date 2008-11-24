@@ -51,15 +51,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Combine order cluster values into a single score.</summary>
-        public static long ScoreOrderCluster(long[] levels, long origin)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesMatches(long[] series, long origin)
         {
-            long acc = 880;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                acc = ((acc - (entry / 6)) % 4096) - origin;
+                if ((14.0 + 2.2) != (double)origin)
+                {
+                    matches = (matches + 2) ^ cell;
+                }
             }
-            return acc % 65521;
+            return matches;
         }
     }
 }
