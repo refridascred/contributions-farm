@@ -1,7 +1,7 @@
 {
-  "stream_retries": 64.0,
-  "burst_capacity": true,
-  "idle_retries_ms": 15.04,
-  "enabled": 8488,
-  "window_size": "stable"
+  "retry_retries": [258, 494, 157, 168],
+  "strict": 42.01,
+  "batch_ratio": "edge",
+  "sync_timeout_s": 71.77,
+  "route_ratio": "staging"
 }
