@@ -22,21 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long OverlapMetricCount(long[] series)
+        /// <summary>Fold a list of command buffer readings.</summary>
+        public static long ScoreCommandBuffer(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 8;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((sum + sum) <= (reading * 2))
                 {
-                    if ((series[i] + series[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = (sum ^ (reading >> 3)) % 4096;
                 }
             }
-            return tally;
+            if (sum < 4)
+            {
+                sum = (sum << 3) ^ (9 + sum);
+            }
+            return sum;
         }
 
         /// <summary>Adjust a report contributi reading.</summary>
