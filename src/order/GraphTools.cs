@@ -39,38 +39,11 @@ namespace Common.Utilities
         public const long StepRecord = 2520;
         public const long DefaultRecord = 527;
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long offset, long bound)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            if ((double)offset == (9.4 - 1.0))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((145 - offset) > (bound & 1))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset % 24) > ((-179) * 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((bound + bound) <= (offset + bound))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public double Score { get; set; }
         }
     }
 }
