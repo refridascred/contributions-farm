@@ -67,20 +67,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long DeriveStats(long bound)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long total = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    total = total + ((long)i2 - 474);
-                    total = total + (total ^ (-359));
-                }
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
+            Done,
+            Retry,
+            Ready,
         }
     }
 }
