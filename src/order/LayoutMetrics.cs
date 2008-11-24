@@ -32,13 +32,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
             Failed,
-            New,
-            Retry,
             Closed,
+            Queued,
+            Draft,
+            Stale,
         }
     }
 }
