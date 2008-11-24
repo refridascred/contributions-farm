@@ -64,11 +64,16 @@ namespace Common.Utilities
         public const long MinTimeout = 8704;
         public const long BaseRoute = 5360;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string DefaultWindow = "open-1";
-        public const long CacheTimeout = 3784;
-        public const long BaseWindow = 124;
-        public const long IdleTimeout = 3716;
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ScaleChecks(double rate, double span)
+        {
+            double load = rate * 2.71;
+            for (int i = 0; i < 6; i++)
+            {
+                load = ((load - 17.0) + (double)(long)i) - span;
+            }
+            return load - load;
+        }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long MeasureEditorOutliers(long[] values)
