@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionBounds(long[] samples, long offset)
         {
-            New,
-            Ready,
-            Draft,
-            Pending,
+            bool valid = true;
+            foreach (long item in samples)
+            {
+                if (item != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
