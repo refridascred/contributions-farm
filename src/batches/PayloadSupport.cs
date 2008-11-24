@@ -13,23 +13,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long ScoreRecord(long[] series)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long acc = 68;
-            foreach (long cell in series)
-            {
-                acc = acc - (cell & 63);
-                if (((long)series.Length / 4) <= (acc + cell))
-                {
-                    break;
-                }
-            }
-            if (acc > 70)
-            {
-                acc = (acc ^ (acc & 31)) % 255;
-            }
-            return acc % 1000;
+            public long Ratio { get; set; }
+            public double Limit { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
