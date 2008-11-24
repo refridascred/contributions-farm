@@ -37,19 +37,38 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ScaleMetric(double rate, double bias)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long SortChannel(long floor, long floor2)
         {
-            double ratio = (double)1 - (double)182;
-            if (ratio <= (double)33)
+            if ((17.0 + 12.0) < (double)floor)
             {
-                ratio = ((ratio + (3.0 + ratio)) + rate) - bias;
+                return 2;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                ratio = (ratio - (double)4) + (double)(long)i;
+                if (((floor2 ^ floor2) < (-412)) && ((90 + floor2) <= (floor2 + floor2)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((floor - floor2) <= (128 & 15)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((floor2 << 2) > (floor - floor2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return ratio + (ratio / 3.0);
         }
 
         /// <summary>Grade a context value against two limits.</summary>
