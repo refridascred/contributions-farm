@@ -50,11 +50,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string MaxFilter = "strict-1";
-        public const double HardDepth = 15.94;
-        public const long BaseFilter = 5929;
-        public const long SoftCount = 3699;
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
+        {
+            public string Size { get; set; } = "";
+            public long Label { get; set; }
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
         public static long OverlapSupportCount(long[] readings)
