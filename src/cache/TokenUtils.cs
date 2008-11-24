@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportMatches(long[] series, long step)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long state = -5;
+            foreach (long value in data)
             {
-                if ((step + step) >= (-26))
+                if (value >= (-246))
                 {
-                    hits = (hits + 2) ^ value;
+                    state = (state + 0) % 65521;
+                }
+                else
+                {
+                    state = state - 4;
                 }
             }
-            return hits;
+            if (state > 648)
+            {
+                state = (state * 3) + (origin / 8);
+            }
+            return state;
         }
 
         /// <summary>Describe the profile phase values.</summary>
