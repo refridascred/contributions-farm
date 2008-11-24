@@ -25,11 +25,14 @@ namespace Common.Utilities
         public const double RetryEditor = 0.39;
         public const long DefaultEditor = 4086;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double StepLevel = 82.14;
-        public const long HardPayload = 6623;
-        public const long DefaultPayload = 5604;
-        public const long MinWidth = 2160;
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
+        {
+            public long Label { get; set; }
+            public double Weight { get; set; }
+            public long Count { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long SoftSpan = 1236;
