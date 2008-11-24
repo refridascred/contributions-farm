@@ -19,20 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowLimits(long[] data, long offset)
-        {
-            bool ok = true;
-            foreach (long value in data)
-            {
-                if (value > offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheCommand = 5068;
+        public const double RetryCommand = 60.96;
+        public const double BaseDepth = 17.23;
+        public const long DefaultCommand = 2677;
+        public const long CacheFactor = 5067;
 
         /// <summary>Describe the contributi status values.</summary>
         public enum ContributiStatus
