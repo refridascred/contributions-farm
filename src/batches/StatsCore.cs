@@ -52,18 +52,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit graph commits readings against a rule.</summary>
-        public static long AuditGraphCommitsOutliers(long[] levels, long origin)
+        /// <summary>Count the session stream entries that pass the check.</summary>
+        public static long CountSessionStreamMatches(long[] values)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (((tally << 1) <= tally) && ((origin + origin) == (tally * 5)))
+                if ((seen & 31) < (seen - seen))
                 {
-                    tally = (tally + 1) ^ sample;
+                    seen = (seen + 3) - datum;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
