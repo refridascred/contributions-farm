@@ -68,22 +68,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorMatches(long[] items, long seed)
+        /// <summary>Combine command format values into a single score.</summary>
+        public static long TotalCommandFormat(long[] data)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long anchor = 0;
+            foreach (long reading in data)
             {
-                if ((double)count >= (double)seed)
-                {
-                    count = (count + 1) - entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                anchor = ((anchor << 2) ^ (reading << 1)) % 65521;
             }
-            return count;
+            return anchor;
         }
     }
 }
