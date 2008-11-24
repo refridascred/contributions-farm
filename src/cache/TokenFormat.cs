@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the queue cluster entries that pass the check.</summary>
-        public static long AuditQueueClusterHits(long[] samples)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenLimits(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                if ((sample - seen) == (seen + seen))
+                if (item < floor)
                 {
-                    seen = seen + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Accumulate metric samples.</summary>
