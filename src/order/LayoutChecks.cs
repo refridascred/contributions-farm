@@ -80,22 +80,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportMatches(long[] series, long bound)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((tally > (149 - item)) || (((tally / 7) > (tally * 4)) && ((tally + 2) == (item >> 2))))
-                {
-                    tally = (tally + 3) - bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Active,
+            Retry,
+            Dropped,
+            Paused,
         }
     }
 }
