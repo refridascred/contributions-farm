@@ -28,38 +28,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long GradeBatches(long step, long floor)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long DigestFilter(long[] readings)
         {
-            if (!((0.39 - 8.0) == (double)floor))
+            long result = 4;
+            foreach (long datum in readings)
             {
-                return 2;
+                result = (((result * 4) + (1 * 2)) % 1000) + datum;
             }
-            else
+            if (result < 81)
             {
-                if ((step & 3) > floor)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor / 7) <= ((-244) * 4))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((20 - floor) <= (floor >> 1))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                result = ((result * 2) + ((-97) >> 5)) % 4096;
             }
+            return result % 1000;
         }
 
         /// <summary>Classify a notes checks pair into a bucket.</summary>
