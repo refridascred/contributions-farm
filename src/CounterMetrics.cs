@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstScore = 6322;
-        public const long RetryFormat = 6602;
-        public const double DefaultFormat = 46.45;
-        public const string MaxDepth = "latest";
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadHits(long[] series)
+        {
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((item + count) > item)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool GuardReportLimits(long[] series, long limit)
