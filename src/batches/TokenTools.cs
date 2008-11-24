@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] readings, long target)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheMatches(long[] values)
         {
-            long mark = 421;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                mark = ((mark + (target - 488)) % 65521) ^ reading;
+                if ((cell & 127) < 31)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (mark < 300)
-            {
-                mark = mark + (target + mark);
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
