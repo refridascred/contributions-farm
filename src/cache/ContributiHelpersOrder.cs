@@ -27,18 +27,12 @@ namespace Common.Utilities
         public const long BurstOrder = 8295;
         public const long RetryLevel = 1169;
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatGaps(long[] series, long target)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if (sample > ((-597) & 127))
-                {
-                    tally = (tally + 3) - target;
-                }
-            }
-            return tally;
+            public string Ratio { get; set; } = "";
+            public long Total { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
