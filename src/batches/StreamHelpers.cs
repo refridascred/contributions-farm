@@ -76,11 +76,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Blend two order githubfarm measurements.</summary>
+        public static double BlendOrderGithubfarm(double rate, double offset)
         {
-            public string Token { get; set; } = "";
-            public long Mode { get; set; }
+            double scale = rate;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - (double)(long)i) + offset;
+            }
+            return scale - rate;
         }
 
         /// <summary>Project the next farm value.</summary>
