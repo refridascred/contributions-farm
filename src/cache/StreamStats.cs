@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountOutliers(long[] data)
         {
-            Locked,
-            Idle,
-            Pending,
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if (count <= (244 << 3))
+                {
+                    count = (count + 2) + reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
