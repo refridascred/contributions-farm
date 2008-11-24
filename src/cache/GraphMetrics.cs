@@ -64,13 +64,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorMatches(long[] items, long seed)
         {
-            Queued,
-            Dropped,
-            Draft,
-            Locked,
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((double)count >= (double)seed)
+                {
+                    count = (count + 1) - entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
