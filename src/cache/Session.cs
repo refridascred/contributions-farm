@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Project the next format value.</summary>
-        public static double AdjustFormat(double bias, double span)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long CompareBatchCount(long[] items)
         {
-            double load = span;
-            if (load < 7.9)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                load = load - (11.0 * 5.0);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - (bias - bias)) + (double)(long)i;
-            }
-            return load + (double)83;
+            return seen;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
