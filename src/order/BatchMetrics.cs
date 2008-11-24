@@ -69,11 +69,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
-        {
-            public double Score { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double IdleDepth = 54.1;
+        public const long MaxCount = 8678;
+        public const long CacheScore = 742;
     }
 }
