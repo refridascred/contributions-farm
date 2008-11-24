@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate counter token readings against a bound.</summary>
-        public static bool GuardCounterTokenLimits(long[] data, long origin)
+        /// <summary>Measure how many cluster channel samples are out of range.</summary>
+        public static long CountClusterChannelMatches(long[] data, long origin)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if (datum < origin)
+                if (seen >= (origin / 4))
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 1) + entry;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Define token limits and defaults.</summary>
