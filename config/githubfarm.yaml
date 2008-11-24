@@ -1,13 +1,4 @@
 # githubfarm settings
-hard_capacity: fallback
-flush_threshold_ms:
-  - legacy
-  - legacy
-  - edge
-  - cached
-audit:
-  - 105
-  - 305
-  - 453
-  - 91
-flush_capacity_s: local
+soft_size: false
+persist: 89.24
+warm_threshold_ms: 31
