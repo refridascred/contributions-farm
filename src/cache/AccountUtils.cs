@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] items)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheOutliers(long[] values)
         {
-            long result = 5;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long item in values)
             {
-                result = (result * 5) + (entry ^ result);
+                if ((1.74 + 9.1) <= (double)tally)
+                {
+                    tally = (tally + 3) ^ item;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Define record limits and defaults.</summary>
