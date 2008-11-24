@@ -12,12 +12,22 @@ namespace Common.Utilities
         public const long IdleSize = 8467;
         public const double BurstFilter = 25.97;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BaseBatches = 71.15;
-        public const string MaxBatches = "staging-edge";
-        public const string IdleBatches = "strict-v2";
-        public const long SoftBatches = 309;
-        public const long LimitBudget = 3263;
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long OverlapBatchesCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long CountContributiGaps(long[] values)
