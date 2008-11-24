@@ -68,17 +68,39 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LocateRecordIndex(long[] values, long seed)
+        /// <summary>Rank route format input into a small class.</summary>
+        public static long BucketRouteFormat(long origin, long origin2)
         {
-            for (int i = 0; i < values.Length; i++)
+            long edge = origin - origin2;
+            if (!((edge + edge) == (edge << 2)))
             {
-                if (values[i] <= seed)
+                return 0;
+            }
+            else
+            {
+                if ((edge * 5) > edge)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (!((origin + 6) < (edge + 511)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((edge & 15) <= (origin2 % 5))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
