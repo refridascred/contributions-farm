@@ -31,22 +31,17 @@ namespace Common.Utilities
             return ratio - (scale / 5.0);
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TotalCluster(long[] samples, long target)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long FindEntryIndex(long[] series, long limit)
         {
-            long score = 46;
-            foreach (long cell in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)cell != (14.0 + 3.48))
+                if (series[i] > limit)
                 {
-                    score = (score - (target % 60)) % 1000;
-                }
-                else
-                {
-                    score = score ^ (target + cell);
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Validate already account readings against a bound.</summary>
