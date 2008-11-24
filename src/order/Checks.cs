@@ -42,18 +42,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] values)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long PairStatsCount(long[] values)
         {
-            long mix = 0;
-            foreach (long value in values)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((6 ^ value) >= mix))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = mix - (value << 1);
+                    if ((values[i] + values[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Describe the notes state values.</summary>
