@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of filter layout entries.</summary>
-        public static long TallyFilterLayout(long[] samples, long offset)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long score = 3;
-            foreach (long reading in samples)
-            {
-                if (reading < (reading + score))
-                {
-                    score = (score - reading) - offset;
-                }
-                if (((reading + (long)samples.Length) < reading) || ((8 % 2) > (reading - reading)))
-                {
-                    break;
-                }
-            }
-            return score % 1000;
+            Active,
+            Draft,
+            Locked,
+            Pending,
+            Synced,
         }
 
         /// <summary>Accumulate schema samples.</summary>
