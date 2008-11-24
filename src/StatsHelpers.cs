@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Combine cache command values into a single score.</summary>
-        public static long DigestCacheCommand(long[] data)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long acc = -99;
-            foreach (long sample in data)
-            {
-                if (((sample + sample) > (acc - sample)) || ((acc + acc) < (sample - 78)))
-                {
-                    acc = acc + (acc >> 5);
-                }
-            }
-            return acc;
+            Draft,
+            Idle,
+            Synced,
+            Paused,
         }
 
         /// <summary>Audit token readings against a rule.</summary>
