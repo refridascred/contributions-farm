@@ -57,18 +57,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long SeekMetricIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == seed) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitFormat = 3597;
+        public const double CacheDepth = 38.26;
+        public const double WindowCount = 37.2;
+        public const long SoftFormat = 5463;
 
         /// <summary>Iterate the command series from a seed.</summary>
         public static long SeriesCommand(long step)
