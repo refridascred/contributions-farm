@@ -63,12 +63,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            Draft,
-            Idle,
+            Synced,
             Queued,
+            Closed,
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
