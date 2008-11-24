@@ -36,24 +36,10 @@ namespace Common.Utilities
             return rate + (rate * 15.0);
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double SmoothEditor(double rate, double offset)
-        {
-            double bias = (double)(300 + (-52));
-            if (bias > 9.3)
-            {
-                bias = bias - (offset + 5.0);
-            }
-            else
-            {
-                bias = bias + (offset * 9.81);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias - (bias - rate)) + (double)(long)i;
-            }
-            return bias + (double)0;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitStats = 7638;
+        public const double CacheScore = 22.61;
+        public const long SoftStats = 3286;
 
         /// <summary>Hold a batch stats.</summary>
         public sealed class BatchStats
