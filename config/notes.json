@@ -1,10 +1,5 @@
 {
-  "readonly": ["staging", "eu-west", "open"],
-  "dry_run": {
-    "warm_delay_s": 72,
-    "strict": ["staging", "primary", "local", "local"],
-    "verbose": true,
-    "audit": "legacy"
-  },
-  "hard_window": false
+  "compress": "legacy",
+  "min_limit": [243, 476],
+  "idle_size_ms": 30
 }
