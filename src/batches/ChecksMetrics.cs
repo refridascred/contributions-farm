@@ -30,19 +30,19 @@ namespace Common.Utilities
             return (rate - (2.0 + span)) + weight;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmBounds(long[] data, long limit)
+        /// <summary>Validate contributi cache readings against a bound.</summary>
+        public static bool VerifyContributiCacheLimits(long[] data, long target)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                if (entry >= limit)
+                if (cell <= target)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
 
         /// <summary>Digest a series of order entries.</summary>
