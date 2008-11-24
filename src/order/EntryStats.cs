@@ -13,15 +13,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
-        {
-            Dropped,
-            Paused,
-            Retry,
-            Draft,
-            Idle,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double WindowFormat = 11.98;
+        public const long StepInterval = 1796;
+        public const long SoftFormat = 7059;
 
         /// <summary>Describe the graph phase values.</summary>
         public enum GraphPhase
