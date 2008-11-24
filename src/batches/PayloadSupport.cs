@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate format farm samples.</summary>
-        public static long FoldFormatFarm(long[] data)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long total = 48;
-            foreach (long item in data)
-            {
-                if (((double)total > (6.4 - 2.81)) || ((double)total == (7.0 / 7.0)))
-                {
-                    total = ((total + (total >> 4)) % 101) - item;
-                }
-            }
-            return total;
+            public bool Limit { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a token stats.</summary>
