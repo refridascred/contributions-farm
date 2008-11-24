@@ -1,5 +1,6 @@
 # githubfarm settings
-sync_size_ms: latest
-dry_run: latest
-session_size: 0.4
-warm_threshold_ms: green
+token_capacity:
+  - 413
+  - 178
+audit: 500
+enabled: true
