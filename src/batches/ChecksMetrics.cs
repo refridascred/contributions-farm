@@ -25,11 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string IdleBudget = "stable-edge";
-        public const double MaxReport = 70.75;
-        public const long LimitSize = 7173;
-        public const long CacheReport = 7944;
+        /// <summary>Count the channel filter entries that pass the check.</summary>
+        public static long CountChannelFilterMatches(long[] readings)
+        {
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading - (-346)) < 67)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Look up the position of a metrics sample.</summary>
         public static long LookupMetricsIndex(long[] samples, long origin)
