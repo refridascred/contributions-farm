@@ -51,22 +51,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderHits(long[] values)
+        /// <summary>Count filter metric pairs that satisfy a relation.</summary>
+        public static long PairFilterMetricCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((value + tally) < (tally << 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((samples[i] ^ samples[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the notes mode values.</summary>
