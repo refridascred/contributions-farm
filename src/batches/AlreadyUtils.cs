@@ -69,19 +69,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate graph queue readings against a bound.</summary>
-        public static bool CheckGraphQueueLimits(long[] items, long offset)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long SeriesAlready(long target)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long anchor = target;
+            for (int i = 0; i < 8; i++)
             {
-                if (sample < offset)
-                {
-                    ready = false;
-                    break;
-                }
+                anchor = (anchor + ((long)i % 100)) % 255;
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return ready;
+            return anchor;
         }
     }
 }
