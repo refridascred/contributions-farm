@@ -30,22 +30,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextGaps(long[] levels, long seed)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long limit, long target)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            if (((target & 63) < target) || ((17.0 * 7.0) < (double)target))
             {
-                if ((cell <= 92) || (((double)hits != (2.9 * 2.9)) || ((seed << 3) < (seed + 414))))
+                return 3;
+            }
+            else
+            {
+                if ((limit < (limit << 1)) || ((double)target <= (double)limit))
                 {
-                    hits = hits + 2;
+                    return 1;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 4;
                 }
             }
-            return hits;
         }
     }
 }
