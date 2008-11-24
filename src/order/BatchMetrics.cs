@@ -45,22 +45,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheGaps(long[] series)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((cell << 1) >= (90 ^ matches))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Owner { get; set; }
+            public long Label { get; set; }
+            public string Mode { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a graph entry.</summary>
