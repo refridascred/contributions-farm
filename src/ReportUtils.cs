@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ScaleSchema(double bias, double offset)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesOutliers(long[] values)
         {
-            double gain = bias;
-            if (gain < (double)491)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                gain = gain + (double)2;
+                if (matches >= (matches & 31))
+                {
+                    matches = (matches + 2) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - offset) + (double)(long)i;
-            }
-            return gain + bias;
+            return matches;
         }
 
         /// <summary>Define context limits and defaults.</summary>
