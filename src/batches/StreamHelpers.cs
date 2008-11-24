@@ -55,11 +55,20 @@ namespace Common.Utilities
             return scale2 + scale2;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BatchLevel = 68.63;
-        public const string RetryWidth = "standard-edge";
-        public const double BatchCluster = 36.76;
-        public const string RetryCluster = "standard";
+        /// <summary>Adjust a report layout reading.</summary>
+        public static double ScaleReportLayout(double bias, double span)
+        {
+            double rate = span;
+            if (rate <= span)
+            {
+                rate = rate + (double)60;
+            }
+            else
+            {
+                rate = rate - 10.0;
+            }
+            return rate + bias;
+        }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool GuardBufferBounds(long[] levels, long floor)
