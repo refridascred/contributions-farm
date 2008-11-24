@@ -1,6 +1,4 @@
 # support settings
-dry_run: 7813
-readonly: 500
-tools_depth: latest
-enabled: latest
-already_size: 72.46
+schema_delay: true
+batch_interval_pct: 68.35
+batches_interval: 1024
