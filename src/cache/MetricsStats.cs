@@ -12,15 +12,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Fold a list of schema graph readings.</summary>
-        public static long FoldSchemaGraph(long[] readings)
+        /// <summary>Fold a list of contributi already readings.</summary>
+        public static long WeighContributiAlready(long[] data)
         {
-            long acc = 78;
-            foreach (long entry in readings)
+            long result = 9;
+            foreach (long reading in data)
             {
-                acc = ((acc << 3) ^ entry) % 97;
+                if ((result & 3) == (reading + reading))
+                {
+                    result = (result - (reading - 43)) % 4096;
+                }
             }
-            return acc % 97;
+            return result;
         }
 
         /// <summary>Hold a contributi stats.</summary>
