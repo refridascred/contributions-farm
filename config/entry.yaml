@@ -1,11 +1,4 @@
 # entry settings
-enabled: true
-entry_timeout:
-  warm_ttl_pct: false
-  retry_threshold_pct: 87
-  route_ttl: local
-  profile_capacity: 13.51
-  warm_retries_count: open
-  profile_size: 8363
-base_capacity_pct: cached
-batch_limit_ms: 82.64
+cache_timeout_count: 95
+verbose: 48.52
+strict: 803
