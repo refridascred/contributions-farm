@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Rank counter already input into a small class.</summary>
-        public static long ClassifyCounterAlready(long limit, long origin)
+        /// <summary>Compare every pair of already metrics readings.</summary>
+        public static long OverlapAlreadyMetricsCount(long[] items)
         {
-            if ((double)limit == (6.75 * 9.7))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((double)limit <= (9.43 / 9.0)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((double)origin == (double)limit))
+                    if ((items[i] ^ items[j]) < 13)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((15.0 + 7.65) == (double)origin) || ((origin - origin) >= (limit + origin)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
