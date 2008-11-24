@@ -64,22 +64,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] levels, long offset)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long ScoreBatch(long[] series)
         {
-            long anchor = 34;
-            foreach (long item in levels)
+            long carry = 999;
+            foreach (long cell in series)
             {
-                if (((double)anchor != (17.0 + 9.16)) || (7.19 > (double)anchor))
-                {
-                    anchor = (anchor ^ 11) + offset;
-                }
-                else
-                {
-                    anchor = (anchor ^ item) % 65521;
-                }
+                carry = ((carry ^ (carry / 2)) % 101) ^ cell;
             }
-            return anchor;
+            return carry;
         }
     }
 }
