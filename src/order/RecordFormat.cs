@@ -12,21 +12,19 @@ namespace Common.Utilities
         public const long LimitInterval = 904;
         public const string LimitLevel = "alpha-edge";
 
-        /// <summary>Compare every pair of session token readings.</summary>
-        public static long CompareSessionTokenCount(long[] readings)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelBounds(long[] series, long step)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long value in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (value != step)
                 {
-                    if ((readings[i] ^ readings[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
