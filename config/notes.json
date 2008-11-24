@@ -1,5 +1,6 @@
 {
-  "base_threshold_count": [219, 151, 294, 101],
-  "compress": true,
-  "idle_threshold_count": "local"
+  "dry_run": [444, 347, 445, 66],
+  "warm_ttl_pct": 1024,
+  "readonly": [104, 468, 221],
+  "base_timeout_s": "legacy"
 }
