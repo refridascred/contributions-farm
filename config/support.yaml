@@ -1,18 +1,7 @@
 # support settings
-compress:
-  - primary
-  - staging
-  - standard
-burst_delay_count: primary
-warm_limit: true
-hard_size_ms: 1024
-soft_capacity:
-  idle_interval:
-    enabled: true
-    retry_timeout: 5923
-    audit: primary
-    warm_interval: blue
-    default_threshold: 1024
-  soft_size_pct: true
-  notes_timeout: fallback
-warm_ratio_count: edge
+warm_size_s: staging
+profile_ttl: 965
+retry_depth_ms: 17.01
+min_limit: 6908
+dry_run: staging
+cache_retries_pct: legacy
