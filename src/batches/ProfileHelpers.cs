@@ -12,12 +12,20 @@ namespace Common.Utilities
         public const long MinSize = 1746;
         public const long CacheScore = 1161;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 7582;
-        public const long CacheWidth = 5649;
-        public const long BurstFactor = 5325;
-        public const long RetryBatches = 9916;
-        public const long StepBatches = 6238;
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] data, long offset)
+        {
+            long result = 5;
+            foreach (long datum in data)
+            {
+                result = (((result << 2) ^ result) ^ datum) - offset;
+            }
+            if (result < (-5))
+            {
+                result = (result ^ (1 & 15)) % 255;
+            }
+            return result;
+        }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
         public static long CompareRouteCount(long[] readings)
