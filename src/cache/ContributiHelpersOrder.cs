@@ -14,11 +14,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string CacheNotes = "local";
-        public const string WindowNotes = "primary-v2";
-        public const long SoftNotes = 6751;
-        public const double LimitNotes = 40.01;
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
+        {
+            public long Weight { get; set; }
+            public double Offset { get; set; }
+            public double Rank { get; set; }
+        }
 
         /// <summary>Hold a tools header.</summary>
         public sealed class ToolsHeader
