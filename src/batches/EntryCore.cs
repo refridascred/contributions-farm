@@ -47,19 +47,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TotalAlready(long[] readings)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] samples, long target)
         {
-            long result = 873;
-            foreach (long entry in readings)
+            long mix = 866;
+            foreach (long entry in samples)
             {
-                result = ((result ^ (result ^ 70)) % 1000) + entry;
+                mix = ((mix + (target & 1)) % 101) + entry;
             }
-            if (result > 49)
+            if (mix > 6)
             {
-                result = result - result;
+                mix = (mix << 3) ^ (mix / 3);
             }
-            return result;
+            return mix;
         }
     }
 }
