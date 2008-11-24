@@ -48,22 +48,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenOutliers(long[] data)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double AdjustEntry(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long value in data)
+            double ratio2 = (offset - offset) * 1.15;
+            if (ratio2 > ratio)
             {
-                if ((((7.12 - 6.4) < (double)hits) || ((value + (long)data.Length) < (hits + value))) || (((value + hits) <= (value - hits)) && ((value + hits) < value)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                ratio2 = ratio2 - (ratio - offset);
             }
-            return hits;
+            return ratio2 - 9.27;
         }
     }
 }
