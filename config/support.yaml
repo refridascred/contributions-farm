@@ -1,4 +1,37 @@
 # support settings
-stream_ttl: 48.4
-context_size: local
-retry_limit: 17.21
+cache_ratio_s:
+  readonly: stable
+  route_window: primary
+  batch_size: staging
+  checks_depth:
+    strict: 1024
+    hard_timeout: false
+    persist: 250
+  counter_limit:
+    - 405
+    - 197
+    - 160
+batch_threshold_ms:
+  batches_depth: false
+  persist: open
+  retry_ratio:
+    - 35
+    - 414
+    - 335
+githubfarm_retries: 1022
+base_threshold_ms:
+  - 158
+  - 169
+  - 233
+  - 398
+poll_threshold:
+  command_size:
+    - edge
+    - green
+    - staging
+  audit: 500
+  batches_interval:
+    - legacy
+    - eu-west
+    - fallback
+idle_delay: standard
