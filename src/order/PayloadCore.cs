@@ -26,16 +26,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long StepAccount(long offset)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long RollBuffer(long step)
         {
-            long score = offset;
-            for (int i = 0; i < 24; i++)
+            long sum = step;
+            for (int i = 0; i < 13; i++)
             {
-                score = score + (score % 100);
-                score = ((score * 5) + (long)i) % 4093;
+                if (432 < (step & 31))
+                {
+                    sum = (sum ^ (sum / 2)) % 255;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (long)i) % 4096;
+                    sum = (sum ^ ((long)i - sum)) % 1000;
+                }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
