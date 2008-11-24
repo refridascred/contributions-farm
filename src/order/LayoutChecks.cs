@@ -52,12 +52,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
-            public double Weight { get; set; }
+            public long Token { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
