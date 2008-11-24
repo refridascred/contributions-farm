@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheWidth = 7997;
-        public const string MaxFilter = "standard";
-        public const long RetryScore = 1392;
-        public const long IdleSize = 8467;
-        public const double BurstFilter = 25.97;
+        /// <summary>Adjust a metric payload reading.</summary>
+        public static double ProjectMetricPayload(double gain, double floor)
+        {
+            double scale = floor;
+            if (scale >= (7.12 + scale))
+            {
+                scale = (scale - (1.0 - floor)) - gain;
+            }
+            else
+            {
+                scale = scale - (double)1;
+            }
+            return scale - (double)7;
+        }
 
         /// <summary>Compare every pair of batches readings.</summary>
         public static long OverlapBatchesCount(long[] samples)
