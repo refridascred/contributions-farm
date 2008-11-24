@@ -27,15 +27,12 @@ namespace Common.Utilities
         public const long SoftWidth = 9532;
         public const long LimitFarm = 7437;
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
-        {
-            Stale,
-            Closed,
-            Pending,
-            Done,
-            Active,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepLevel = 2995;
+        public const long WindowContext = 3278;
+        public const double CacheRatio = 46.4;
+        public const string CacheLevel = "standard-1";
+        public const string RetryContext = "stable-1";
 
         /// <summary>Audit notes format readings against a rule.</summary>
         public static long CountNotesFormatOutliers(long[] samples, long origin)
