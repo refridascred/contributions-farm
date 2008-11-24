@@ -30,14 +30,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
-        {
-            Active,
-            Queued,
-            Paused,
-            Ready,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string MinBatches = "standard-edge";
+        public const long BaseBatches = 7614;
+        public const string StepBatches = "alpha-edge";
+        public const string HardBudget = "alpha-edge";
+        public const long BatchBatches = 5838;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long StepEntry = 9556;
