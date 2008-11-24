@@ -1,5 +1,7 @@
 {
-  "command_ratio": "latest",
-  "checks_retries": "primary",
-  "default_capacity_count": "blue"
+  "stream_retries": 64.0,
+  "burst_capacity": true,
+  "idle_retries_ms": 15.04,
+  "enabled": 8488,
+  "window_size": "stable"
 }
