@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LocateAccountIndex(long[] samples, long step)
+        /// <summary>Combine cache command values into a single score.</summary>
+        public static long DigestCacheCommand(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = -99;
+            foreach (long sample in data)
             {
-                if (samples[i] == step)
+                if (((sample + sample) > (acc - sample)) || ((acc + acc) < (sample - 78)))
                 {
-                    return (long)i;
+                    acc = acc + (acc >> 5);
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
