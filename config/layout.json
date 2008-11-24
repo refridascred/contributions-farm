@@ -1,5 +1,16 @@
 {
-  "poll_ratio": 45,
-  "hard_retries": true,
-  "burst_window_s": "blue"
+  "base_timeout_ms": 250,
+  "warm_depth_pct": 55.12,
+  "audit": {
+    "poll_limit": {
+      "soft_timeout_ms": 7394,
+      "flush_window_count": false,
+      "githubfarm_threshold": "latest"
+    },
+    "burst_capacity_count": 98,
+    "hard_interval_ms": false,
+    "enabled": "green"
+  },
+  "metrics_limit": false,
+  "min_window_ms": "legacy"
 }
