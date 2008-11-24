@@ -20,10 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BatchBudget = "primary-v2";
-        public const long CacheQueue = 709;
-        public const double BurstQueue = 66.06;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftSize = 5320;
+        public const double RetryEditor = 0.39;
+        public const long DefaultEditor = 4086;
 
         /// <summary>Iterate the payload series from a seed.</summary>
         public static long StepPayload(long bound)
