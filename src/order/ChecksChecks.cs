@@ -33,11 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitBatches = 395;
-        public const string DefaultFactor = "local-edge";
-        public const long BurstBatches = 9443;
-        public const long BatchBatches = 9232;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesOutliers(long[] data, long step)
+        {
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if (((2.9 > (double)hits) || ((value >> 2) < (step >> 2))) && (((value - value) == (hits + 0)) && (12.0 < (double)hits)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a channel info.</summary>
         public sealed class ChannelInfo
