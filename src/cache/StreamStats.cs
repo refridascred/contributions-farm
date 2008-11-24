@@ -30,18 +30,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatOutliers(long[] samples, long origin)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long FindGraphIndex(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)datum <= (18.0 - 20.0))
+                if ((readings[i] <= offset) && ((readings[i] % 2) != 0))
                 {
-                    seen = (seen + 1) - origin;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Project the next editor value.</summary>
