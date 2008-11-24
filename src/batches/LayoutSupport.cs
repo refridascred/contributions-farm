@@ -38,13 +38,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferMatches(long[] levels)
         {
-            public long Ratio { get; set; }
-            public bool Score { get; set; }
-            public string Region { get; set; } = "";
-            public long Mode { get; set; }
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell / 5) <= 7)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of tools session readings.</summary>
