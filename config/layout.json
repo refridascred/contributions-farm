@@ -1,14 +1,6 @@
 {
-  "persist": {
-    "soft_window_count": "cached",
-    "base_interval": "open",
-    "poll_delay": 73.76,
-    "layout_ttl": 24.49,
-    "cache_threshold_s": 78.41,
-    "burst_threshold": ["green", "primary"]
-  },
-  "default_depth": 24.34,
-  "sync_window_ms": 37,
-  "payload_delay": 7.66,
-  "sync_ttl": ["blue", "blue", "standard", "staging"]
+  "queue_ttl": 86,
+  "base_ratio_s": 90,
+  "compress": 1024,
+  "warm_capacity_ms": "local"
 }
