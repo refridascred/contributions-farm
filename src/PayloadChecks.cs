@@ -55,13 +55,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Roll a record graph counter forward.</summary>
+        public static long RollRecordGraph(long origin)
         {
-            Ready,
-            New,
-            Pending,
-            Paused,
+            long acc = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Define record limits and defaults.</summary>
