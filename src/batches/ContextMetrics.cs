@@ -52,9 +52,22 @@ namespace Common.Utilities
             return scale + 15.0;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstLevel = 4205;
-        public const long RetryFactor = 3082;
-        public const string StepLevel = "latest-1";
+        /// <summary>Combine report batches values into a single score.</summary>
+        public static long DigestReportBatches(long[] items)
+        {
+            long sum = 431;
+            foreach (long reading in items)
+            {
+                if (!((9.0 * 7.74) <= (double)reading))
+                {
+                    sum = (sum ^ reading) % 4096;
+                }
+            }
+            if (sum > 38)
+            {
+                sum = sum ^ sum;
+            }
+            return sum;
+        }
     }
 }
