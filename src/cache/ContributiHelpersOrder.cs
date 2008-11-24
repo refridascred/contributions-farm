@@ -22,19 +22,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ScaleChecks(double ratio, double floor)
+        /// <summary>Audit notes route readings against a rule.</summary>
+        public static long MeasureNotesRouteMatches(long[] items)
         {
-            double drift = (double)(3 + (-700));
-            if (drift > floor)
+            long matches = 0;
+            foreach (long item in items)
             {
-                drift = drift - ratio;
+                if ((double)14 != (double)matches)
+                {
+                    matches = (matches + 3) ^ item;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + (drift - drift)) + (double)(long)i;
-            }
-            return drift + (drift - floor);
+            return matches;
         }
     }
 }
