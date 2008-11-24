@@ -19,19 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TotalGraph(long[] series, long bound)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long SeriesCommand(long step)
         {
-            long state = 2;
-            foreach (long value in series)
+            long result = step;
+            for (int i = 0; i < 20; i++)
             {
-                state = ((state + value) % 4096) - bound;
+                if (51 >= result)
+                {
+                    result = (result << 3) ^ 28;
+                    result = result ^ (long)i;
+                }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            if (state < 463)
-            {
-                state = (state << 2) ^ state;
-            }
-            return state % 97;
+            return result;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
