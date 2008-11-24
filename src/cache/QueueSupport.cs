@@ -39,11 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountHits(long[] series)
         {
-            public long Token { get; set; }
-            public bool Owner { get; set; }
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if (!((matches & 63) < matches) || ((matches >= (matches & 3)) || ((entry + matches) >= matches)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
