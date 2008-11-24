@@ -13,17 +13,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long SeekReportIndex(long[] values, long bound)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Pending,
+            Idle,
+            Paused,
+            Locked,
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
