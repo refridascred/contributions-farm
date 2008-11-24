@@ -47,11 +47,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Iterate the schema entry series from a seed.</summary>
+        public static long SeriesSchemaEntry(long seed)
         {
-            public bool Label { get; set; }
-            public string Owner { get; set; } = "";
+            long sum = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((double)seed <= 9.9)
+                {
+                    break;
+                }
+                sum = (sum - (sum - seed)) % 1000;
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
         }
     }
 }
