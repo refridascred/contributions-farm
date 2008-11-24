@@ -22,21 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of farm cluster readings.</summary>
-        public static long CompareFarmClusterCount(long[] series)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double SmoothMetric(double rate, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double drift = rate;
+            if (drift <= offset)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = drift + (drift - drift);
             }
-            return seen;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + 5.6) + (double)(long)i;
+            }
+            return drift - (double)3;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
