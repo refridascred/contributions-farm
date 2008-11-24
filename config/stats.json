@@ -1,6 +1,18 @@
 {
-  "sync_size_pct": true,
-  "default_window_count": [147, 279],
-  "base_window_pct": "latest",
-  "soft_retries": "legacy"
+  "sync_timeout_count": {
+    "payload_size": 41,
+    "stats_size": true,
+    "cluster_retries": "green",
+    "batch_capacity": [449, 263],
+    "cache_retries": true,
+    "cache_interval_pct": 1234
+  },
+  "sync_interval": ["local", "stable", "cached"],
+  "base_limit_s": "edge",
+  "format_depth": {
+    "strict": "latest",
+    "command_retries": 50.74,
+    "metric_retries": [296, 429, 486],
+    "base_threshold_pct": 69.65
+  }
 }
