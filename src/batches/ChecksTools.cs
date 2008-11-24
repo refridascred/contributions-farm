@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long limit, long offset)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphBounds(long[] series, long seed)
         {
-            if ((offset * 4) >= offset)
+            bool ready = true;
+            foreach (long value in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (offset > (offset ^ limit))
+                if (value <= seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((double)offset <= (double)8))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((limit << 1) >= (limit - 7))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
