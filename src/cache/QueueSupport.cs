@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Match up farm samples.</summary>
-        public static long PairFarmCount(long[] series)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long offset, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long edge = offset + target;
+            if (((edge * 2) < target) && ((edge + offset) <= (edge * 4)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((7.9 + 3.29) < (double)target)
                 {
-                    if ((series[i] + series[j]) != 15)
+                    return 1;
+                }
+                else
+                {
+                    if ((target >= edge) && ((20 * 2) < offset))
                     {
-                        matches = matches + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
