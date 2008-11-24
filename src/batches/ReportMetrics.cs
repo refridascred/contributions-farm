@@ -30,24 +30,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long limit, long target)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double AdjustMetrics(double bias, double span)
         {
-            if (((target & 63) < target) || ((17.0 * 7.0) < (double)target))
+            double bias2 = 4.0 * 4.39;
+            if (bias2 <= span)
             {
-                return 3;
+                bias2 = (bias2 + (bias2 / 5.0)) - bias;
             }
             else
             {
-                if ((limit < (limit << 1)) || ((double)target <= (double)limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
+                bias2 = bias2 + (bias2 + bias2);
             }
+            return bias2 + 4.7;
         }
     }
 }
