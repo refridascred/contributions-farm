@@ -102,10 +102,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseWidth = 6452;
-        public const long MinRatio = 6703;
-        public const long MinChecks = 8175;
-        public const long HardChecks = 6765;
+        /// <summary>Rank context input into a small class.</summary>
+        public static long RankContext(long limit, long bound)
+        {
+            if (limit > (bound / 8))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)limit <= 3.8)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
     }
 }
