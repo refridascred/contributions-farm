@@ -67,11 +67,14 @@ namespace Common.Utilities
             return gain - (3.0 + floor);
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardCount = 9922;
-        public const string SoftFormat = "standard";
-        public const long StepSize = 6424;
-        public const long IdleFormat = 8467;
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
+        {
+            Ready,
+            New,
+            Pending,
+            Paused,
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const double IdleRecord = 47.66;
