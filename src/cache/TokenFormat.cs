@@ -20,19 +20,21 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyRange(long[] series, long step)
+        /// <summary>Match up channel samples.</summary>
+        public static long MatchChannelCount(long[] levels)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry != step)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((levels[i] - levels[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
