@@ -66,22 +66,12 @@ namespace Common.Utilities
             return scale + (9.6 * 4.54);
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long MatchWindowCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseContext = 5806;
+        public const double StepContext = 63.35;
+        public const long SoftContext = 3844;
+        public const long StepSize = 5302;
+        public const string RetryContext = "cached-edge";
 
         /// <summary>Hold a buffer info.</summary>
         public sealed class BufferInfo
