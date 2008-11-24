@@ -59,19 +59,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long DeriveCommits(long origin)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long IterateToken(long target)
         {
-            long mark = origin;
-            for (int i = 0; i < 15; i++)
+            long result = target;
+            for (int i = 0; i < 8; i++)
             {
-                if (mark >= origin)
-                {
-                    mark = mark - (origin % 10);
-                }
-                mark = ((mark * 3) + (long)i) % 65521;
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
