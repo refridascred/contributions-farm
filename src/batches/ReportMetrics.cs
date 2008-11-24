@@ -19,32 +19,35 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long GradeEntry(long origin, long offset)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] items, long origin)
         {
-            long step = origin ^ offset;
-            if ((2.2 / 8.0) == (double)step)
+            long mix = 918;
+            foreach (long datum in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin - origin) <= (step >> 4))
+                mix = (mix + (mix / 3)) % 1000;
+                if (((2.0 * 17.0) <= (double)mix) || (datum > (mix << 1)))
                 {
-                    return 5;
+                    break;
                 }
                 else
                 {
-                    if ((651 - step) > (offset >> 4))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    mix = (mix + mix) % 255;
+                }
+                if ((datum % 7) > (89 << 2))
+                {
+                    mix = mix - (origin ^ datum);
+                }
+                else
+                {
+                    mix = (mix * 5) + (mix - mix);
                 }
             }
+            if (mix < 472)
+            {
+                mix = (mix * 3) + origin;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Check that every stats counter entry stays within the limit.</summary>
