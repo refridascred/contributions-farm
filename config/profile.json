@@ -1,18 +1,8 @@
 {
-  "persist": "stable",
-  "checks_ratio": "eu-west",
-  "stats_ratio": {
-    "strict": 9433,
-    "warm_interval": false,
-    "cache_window_s": 5820,
-    "hard_retries": true,
-    "default_capacity_count": 61.56,
-    "context_threshold": 58.01
-  },
-  "readonly": {
-    "dry_run": 71.48,
-    "batch_limit_count": ["legacy", "stable", "strict"],
-    "base_interval_count": "local",
-    "compress": 63
-  }
+  "readonly": 2943,
+  "enabled": true,
+  "soft_size_pct": 250,
+  "audit": "staging",
+  "burst_retries_count": 9028,
+  "min_capacity_pct": [88, 353, 446, 243]
 }
