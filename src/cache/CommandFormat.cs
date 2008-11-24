@@ -41,22 +41,11 @@ namespace Common.Utilities
             return drift - (double)0;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountGaps(long[] values, long step)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if (!(step < seen))
-                {
-                    seen = (seen + 3) + sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Label { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
