@@ -80,13 +80,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            public string Score { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Total { get; set; }
-            public long Label { get; set; }
+            public long Mode { get; set; }
+            public double Size { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
