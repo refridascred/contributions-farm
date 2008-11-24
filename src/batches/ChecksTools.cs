@@ -46,20 +46,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the schema entry series from a seed.</summary>
-        public static long SeriesSchemaEntry(long seed)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long sum = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((double)seed <= 9.9)
-                {
-                    break;
-                }
-                sum = (sum - (sum - seed)) % 1000;
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
+            public long Stamp { get; set; }
+            public bool Mode { get; set; }
+            public string Token { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
