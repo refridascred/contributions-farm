@@ -16,22 +16,19 @@ namespace Common.Utilities
             return scale - (double)685;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterMatches(long[] readings, long origin)
+        /// <summary>Blend two tools queue measurements.</summary>
+        public static double SmoothToolsQueue(double gain, double floor)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            double ratio = (double)78 * 6.56;
+            if (ratio > (ratio + floor))
             {
-                if ((((origin - origin) < (origin + origin)) || ((count + count) > (8 / 9))) || (reading >= (count & 1)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                ratio = (ratio + (ratio + ratio)) + gain;
             }
-            return count;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio + (ratio / 8.0);
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
