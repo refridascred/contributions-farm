@@ -1,17 +1,11 @@
 {
-  "verbose": {
-    "sync_retries": {
-      "warm_delay_count": "standard",
-      "verbose": 27.66,
-      "enabled": 39.79
-    },
-    "route_threshold": "green",
-    "cache_capacity_pct": "staging",
-    "soft_limit": 5.93,
-    "retry_size": 30
+  "batch_capacity": {
+    "metrics_ttl": ["standard", "green"],
+    "retry_limit_ms": "stable",
+    "retry_window": 72.8,
+    "base_capacity_pct": 60
   },
-  "flush_threshold_ms": ["strict", "green"],
-  "poll_delay_ms": false,
-  "sync_depth": 2297,
-  "retry_retries": 82
+  "audit": 1024,
+  "batch_capacity_s": 30,
+  "route_timeout": 250
 }
