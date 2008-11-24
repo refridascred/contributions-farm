@@ -20,19 +20,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordRange(long[] items, long target)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            bool ok = true;
-            foreach (long item in items)
-            {
-                if (item <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Queued,
+            Dropped,
+            Synced,
+            Paused,
+            Locked,
         }
 
         /// <summary>Describe the metrics phase values.</summary>
