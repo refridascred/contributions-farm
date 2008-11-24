@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long SeekLayoutIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseBatches = 6969;
+        public const string StepRatio = "strict-edge";
+        public const long CacheBudget = 3646;
+        public const long WindowFactor = 4919;
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long CountMetricsHits(long[] series, long bound)
