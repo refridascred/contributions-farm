@@ -6,21 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-strict}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-COMMAND_LIMIT=34
+COMMAND_LIMIT=289
 log "limit is ${COMMAND_LIMIT}"
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 4))
+for item in local standard green cached; do
+    log "checking ${item}"
 done
-log "total ${total}"
