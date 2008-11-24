@@ -66,15 +66,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double SmoothStream(double rate, double bias)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterOutliers(long[] series, long limit)
         {
-            double scale = 20.0 - bias;
-            if (scale < bias)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                scale = scale - bias;
+                if (!((limit << 3) < (seen & 3)))
+                {
+                    seen = (seen + 1) + sample;
+                }
             }
-            return scale + (rate - scale);
+            return seen;
         }
 
         /// <summary>Describe the already status values.</summary>
