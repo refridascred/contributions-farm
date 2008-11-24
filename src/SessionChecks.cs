@@ -29,12 +29,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long SeekFilterIndex(long[] data, long step)
         {
-            Queued,
-            Failed,
-            Idle,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate commits payload samples.</summary>
