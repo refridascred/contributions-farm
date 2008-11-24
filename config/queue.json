@@ -1,14 +1,8 @@
 {
-  "base_threshold_count": 9694,
-  "persist": 14,
-  "idle_window_pct": {
-    "hard_delay_pct": ["open", "strict"],
-    "min_threshold_count": ["latest", "primary", "green", "staging"],
-    "contributi_delay": {
-      "counter_threshold": "blue",
-      "counter_ttl": "eu-west",
-      "idle_delay_pct": ["standard", "stable", "latest"]
-    },
-    "default_interval_ms": "blue"
-  }
+  "enabled": 30,
+  "poll_ttl": 80.32,
+  "min_timeout_ms": "local",
+  "compress": 67.76,
+  "readonly": "blue",
+  "strict": false
 }
