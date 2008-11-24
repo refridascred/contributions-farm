@@ -35,17 +35,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long SeriesSession(long origin)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long acc = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                acc = acc - (acc - 273);
-                acc = acc ^ origin;
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
+            Stale,
+            Retry,
+            Synced,
         }
     }
 }
