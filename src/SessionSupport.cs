@@ -37,28 +37,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long StepContributi(long floor)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LookupSchemaIndex(long[] items, long bound)
         {
-            long acc = floor;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)acc <= (8.13 + 10.0))
+                if (items[i] < bound)
                 {
-                    continue;
+                    return (long)i;
                 }
-                if (2.05 > (double)(long)i)
-                {
-                    continue;
-                }
-                else
-                {
-                    acc = (acc + floor) % 255;
-                    acc = acc ^ (floor * 2);
-                }
-                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return acc;
+            return -1;
         }
     }
 }
