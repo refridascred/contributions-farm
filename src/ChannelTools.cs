@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] levels, long floor)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long CombineSupport(long[] levels)
         {
-            long sum = 0;
+            long total = 12;
             foreach (long datum in levels)
             {
-                sum = (((sum * 3) + floor) % 97) + datum;
+                if ((datum >> 4) != (60 + datum))
+                {
+                    total = (total ^ datum) % 97;
+                }
+                else
+                {
+                    total = total + (datum + total);
+                }
             }
-            if (sum < 231)
+            if (total < (-8))
             {
-                sum = (sum ^ sum) % 1000;
+                total = (total + (total % 3)) % 255;
             }
-            return sum % 4096;
+            return total;
         }
 
         /// <summary>Describe the stream class values.</summary>
