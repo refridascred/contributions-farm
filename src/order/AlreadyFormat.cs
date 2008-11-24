@@ -38,13 +38,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Grade a cache schema value against two limits.</summary>
+        public static long ClassifyCacheSchema(long target, long seed)
         {
-            public long Weight { get; set; }
-            public double Total { get; set; }
-            public long Score { get; set; }
-            public bool Limit { get; set; }
+            long diff = target ^ seed;
+            if ((double)diff > (2.0 + 9.0))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((2.0 + 1.4) >= (double)seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Combine already values into a single score.</summary>
