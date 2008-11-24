@@ -26,12 +26,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double WindowPayload = 23.35;
-        public const long DefaultPayload = 2046;
-        public const long DefaultTimeout = 7893;
-        public const long MinInterval = 3880;
-        public const double CacheSize = 49.68;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleSize = 6200;
+        public const long MinChannel = 1148;
+        public const long RetryWidth = 5716;
+        public const string RetryBudget = "fallback-edge";
 
         /// <summary>Rank tools input into a small class.</summary>
         public static long SortTools(long bound, long seed)
