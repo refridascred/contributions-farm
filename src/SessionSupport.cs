@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            Stale,
-            Closed,
-            Failed,
+            public double Total { get; set; }
+            public long Token { get; set; }
+            public bool Count { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Describe the stats status values.</summary>
