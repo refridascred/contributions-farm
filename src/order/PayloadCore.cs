@@ -31,15 +31,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long floor)
+        /// <summary>Count token contributi pairs that satisfy a relation.</summary>
+        public static long OverlapTokenContributiCount(long[] samples)
         {
-            long carry = floor;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = ((carry * 3) + (long)i) % 4093;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Match up editor samples.</summary>
