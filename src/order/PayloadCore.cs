@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            Queued,
-            Draft,
-            New,
+            Synced,
+            Done,
+            Pending,
+            Locked,
         }
 
         /// <summary>Measure how many profile editor samples are out of range.</summary>
