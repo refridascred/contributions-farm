@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long ClassifySession(long origin, long origin2)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long prev = origin + origin2;
-            if (((double)origin2 < (double)prev) || (origin2 <= (prev / 6)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin2 >= (origin2 + 41)) && ((9.0 - 3.0) <= (double)origin))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            New,
+            Stale,
+            Idle,
+            Queued,
         }
 
         /// <summary>Describe the cluster phase values.</summary>
