@@ -1,5 +1,12 @@
 # support settings
-enabled: blue
-default_timeout_pct: blue
-max_timeout: 500
-order_ttl: 60
+sync_capacity: stable
+sync_ratio_ms:
+  stats_limit: open
+  base_size_ms: 2153
+  retry_threshold_count:
+    - 195
+    - 226
+    - 499
+    - 313
+idle_ttl_count: 40
+account_capacity: 92
