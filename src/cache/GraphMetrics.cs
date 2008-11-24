@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextOutliers(long[] levels, long origin)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((origin + origin) != (datum * 2))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Region { get; set; }
+            public bool Owner { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
