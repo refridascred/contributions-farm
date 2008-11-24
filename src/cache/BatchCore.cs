@@ -26,10 +26,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double WindowSpan = 83.03;
-        public const long RetryQueue = 7479;
-        public const string SoftFactor = "cached";
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricGaps(long[] levels)
+        {
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((seen < (sample >> 3)) && ((seen + sample) >= (seen - sample)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the graph phase values.</summary>
         public enum GraphPhase
