@@ -27,9 +27,24 @@ namespace Common.Utilities
         public const long CacheCluster = 6455;
         public const long IdleCluster = 5660;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BurstMetric = 71.54;
-        public const long HardMetric = 6661;
-        public const long MaxRatio = 4335;
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long SortContributi(long limit, long origin)
+        {
+            if (24 < (origin * 3))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((limit & 3) >= origin))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
     }
 }
