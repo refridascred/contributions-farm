@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long BucketRecord(long bound, long bound2)
         {
-            public string Region { get; set; } = "";
-            public double Flag { get; set; }
+            long step = bound - bound2;
+            if ((double)bound2 == (7.0 + 2.8))
+            {
+                return 5;
+            }
+            else
+            {
+                if (step > bound2)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)bound > (double)bound2)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)bound >= (6.0 / 6.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
