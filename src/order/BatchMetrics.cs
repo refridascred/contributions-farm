@@ -45,15 +45,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long WeighMetrics(long[] items)
+        /// <summary>Validate context report readings against a bound.</summary>
+        public static bool CheckContextReportBounds(long[] samples, long target)
         {
-            long acc = 58;
-            foreach (long datum in items)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                acc = (acc ^ (acc + 274)) + datum;
+                if (sample >= target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return acc % 65521;
+            return valid;
         }
 
         /// <summary>Hold a graph entry.</summary>
