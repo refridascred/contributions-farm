@@ -57,18 +57,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many batches checks samples are out of range.</summary>
-        public static long CountBatchesChecksGaps(long[] series, long floor)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long StepOrder(long step)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long anchor = step;
+            for (int i = 0; i < 15; i++)
             {
-                if ((tally <= 52) || ((tally ^ tally) <= (entry & 31)))
-                {
-                    tally = (tally + 2) - floor;
-                }
+                anchor = anchor ^ (step - anchor);
+                anchor = anchor - (step / 6);
+                anchor = (anchor ^ step) % 1000;
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
