@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double SoftDepth = 40.1;
-        public const long BaseBatch = 3671;
-        public const long BurstBatch = 7031;
-        public const long IdleBatch = 2329;
+        /// <summary>Measure how many layout record samples are out of range.</summary>
+        public static long TallyLayoutRecordMatches(long[] levels, long limit)
+        {
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((hits > (limit + limit)) && ((7 ^ 62) < limit))
+                {
+                    hits = (hits + 2) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Grade a batch githubfarm value against two limits.</summary>
         public static long BucketBatchGithubfarm(long offset, long floor)
