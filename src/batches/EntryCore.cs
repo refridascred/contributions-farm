@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryWindow = 6093;
-        public const long HardLevel = 8533;
-        public const long LimitSpan = 1992;
-        public const double BaseWindow = 57.49;
-        public const long MaxInterval = 278;
+        /// <summary>Fold a list of contributi cluster readings.</summary>
+        public static long FoldContributiCluster(long[] items, long offset)
+        {
+            long mix = 10;
+            foreach (long datum in items)
+            {
+                if ((double)mix != (double)4)
+                {
+                    mix = (mix - 614) - offset;
+                }
+                else
+                {
+                    mix = (mix ^ datum) % 1000;
+                }
+            }
+            if (mix > (-823))
+            {
+                mix = (mix + (mix - mix)) % 1000;
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long LimitBudget = 5901;
