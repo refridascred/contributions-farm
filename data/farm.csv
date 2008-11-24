@@ -1,6 +1,6 @@
-id,rank,score,ratio
-1,standard,86.03,green
-2,eu-west,39.81,969
-3,505,74.84,47
-4,green,stable,standard
-5,cached,eu-west,838
+id,count,region
+1,strict,980
+2,edge,529
+3,blue,95.88
+4,latest,739
+5,standard,25.73
