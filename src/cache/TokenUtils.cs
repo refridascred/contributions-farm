@@ -30,22 +30,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsOutliers(long[] data)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long DeriveStream(long origin)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long anchor = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if ((9.8 + 10.0) <= (double)reading)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                anchor = (anchor + anchor) % 97;
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return tally;
+            return anchor;
         }
     }
 }
