@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a already counter forward.</summary>
-        public static long StepAlready(long step)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportHits(long[] series, long floor)
         {
-            long carry = step;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                long tally = step;
-                if ((tally / 4) < (carry + (long)i))
+                if ((matches + cell) <= (matches / 9))
                 {
-                    tally = tally ^ (tally + step);
-                    tally = (tally - (step ^ tally)) % 255;
+                    matches = (matches + 3) - floor;
                 }
-                tally = (tally * 2) + carry;
-                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Accumulate layout samples.</summary>
