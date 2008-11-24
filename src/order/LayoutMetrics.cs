@@ -18,10 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double HardFormat = 73.79;
-        public const long DefaultFormat = 1297;
-        public const long BurstWidth = 1046;
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
+        {
+            public double Flag { get; set; }
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Look up the position of a buffer sample.</summary>
         public static long LocateBufferIndex(long[] items, long target)
