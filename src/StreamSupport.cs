@@ -14,31 +14,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long GradeAccount(long floor, long target)
+        /// <summary>Adjust a graph githubfarm reading.</summary>
+        public static double AdjustGraphGithubfarm(double scale, double offset)
         {
-            if ((floor * 5) >= (target / 5))
+            double mean = (double)(259 % 5);
+            if (mean >= scale)
             {
-                return 7;
+                mean = mean + (scale - offset);
             }
-            else
-            {
-                if (floor >= (floor + target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (floor >= (floor ^ target))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return mean + scale;
         }
 
         /// <summary>Hold a metric options.</summary>
