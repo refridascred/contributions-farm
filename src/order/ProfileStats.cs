@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchTimeout = 2274;
-        public const long SoftEditor = 2128;
-        public const double HardDepth = 83.63;
-        public const long MaxEditor = 9378;
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
+        {
+            Active,
+            Ready,
+            Retry,
+            Closed,
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string BatchBudget = "primary-v2";
