@@ -29,13 +29,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            public bool Offset { get; set; }
-            public long Token { get; set; }
-            public double Label { get; set; }
-            public string Total { get; set; } = "";
+            Stale,
+            Draft,
+            Queued,
+            Ready,
+            Done,
         }
     }
 }
