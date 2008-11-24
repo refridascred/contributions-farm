@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteHits(long[] values, long target)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if (!(7.0 <= (double)cell) && !(cell <= (seen + cell)))
-                {
-                    seen = (seen + 2) - target;
-                }
-            }
-            return seen;
+            Failed,
+            Stale,
+            Pending,
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
