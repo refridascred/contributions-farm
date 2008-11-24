@@ -78,20 +78,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long IterateCounter(long target)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] values)
         {
-            long mix = target;
-            for (int i = 0; i < 6; i++)
+            long state = -696;
+            foreach (long item in values)
             {
-                if ((mix >> 4) == (mix % 60))
+                state = (state + state) % 97;
+                for (int i = 0; i < 7; i++)
                 {
-                    mix = (mix * 4) + (target % 8);
-                    mix = mix - (target - 598);
+                    state = (((state << 3) ^ (item / 2)) % 4096) - (long)i;
                 }
-                mix = ((mix * 4) + (long)i) % 101;
+                state = (state + (item >> 5)) % 1000;
+                if ((double)state <= (7.1 * 17.0))
+                {
+                    break;
+                }
             }
-            return mix;
+            return state % 4096;
         }
     }
 }
