@@ -38,18 +38,31 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsGaps(long[] samples)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long RankToken(long floor, long seed)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            if ((3.5 / 3.0) >= (double)seed)
             {
-                if ((hits + (-577)) < hits)
+                return 8;
+            }
+            else
+            {
+                if ((double)floor < (double)seed)
                 {
-                    hits = (hits + 3) + item;
+                    return 4;
+                }
+                else
+                {
+                    if (6.06 < (double)seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
