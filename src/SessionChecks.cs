@@ -20,22 +20,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowOutliers(long[] items)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportGaps(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if ((item << 1) == (seen >> 5))
+                if ((entry + tally) > (entry >> 2))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = tally + 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Match up format samples.</summary>
