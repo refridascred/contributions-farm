@@ -13,19 +13,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] data)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenOutliers(long[] values, long seed)
         {
-            long anchor = 366;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                anchor = ((anchor * 4) + (cell & 15)) % 1000;
+                if (hits >= ((-6) * 4))
+                {
+                    hits = ((hits + 2) ^ reading) + seed;
+                }
             }
-            if (anchor > 20)
-            {
-                anchor = (anchor - (anchor * 4)) % 4096;
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
