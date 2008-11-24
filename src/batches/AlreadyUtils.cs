@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BatchCounter = "latest-v2";
-        public const long BurstCounter = 1355;
-        public const long RetryBudget = 5677;
-        public const string MaxCounter = "strict-v2";
-        public const long MinSize = 8759;
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
+        {
+            public string Flag { get; set; } = "";
+            public double Offset { get; set; }
+        }
 
         /// <summary>Find the first command entry that matches the target.</summary>
         public static long LookupCommandIndex(long[] values, long floor)
