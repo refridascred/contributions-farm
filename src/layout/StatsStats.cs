@@ -30,16 +30,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long SeriesRecord(long seed)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long anchor = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                anchor = anchor - anchor;
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
+            public bool Limit { get; set; }
+            public string Label { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
