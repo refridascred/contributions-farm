@@ -22,24 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long SortTools(long target, long floor)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            if (((double)target > (double)floor) && ((floor % 3) <= (target + floor)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (target >= floor)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Region { get; set; }
+            public double Size { get; set; }
+            public bool Flag { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Describe the entry status values.</summary>
