@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Locate a editor counter reading by value.</summary>
-        public static long LookupEditorCounterIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepCache = 6657;
+        public const long SoftSize = 9084;
+        public const string WindowLevel = "local-v2";
 
         /// <summary>Find the first stats entry that matches the target.</summary>
         public static long FindStatsIndex(long[] series, long step)
