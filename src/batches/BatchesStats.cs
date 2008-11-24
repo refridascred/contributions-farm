@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const long BatchQueue = 1091;
         public const long StepScore = 8241;
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Check that every support payload entry stays within the limit.</summary>
+        public static bool VerifySupportPayloadRange(long[] readings, long floor)
         {
-            public long Owner { get; set; }
-            public bool Flag { get; set; }
-            public double Score { get; set; }
-            public long Weight { get; set; }
+            bool found = true;
+            foreach (long entry in readings)
+            {
+                if (entry > floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Digest a series of checks metrics entries.</summary>
