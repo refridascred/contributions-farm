@@ -19,13 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Project the next editor value.</summary>
+        public static double AdjustEditor(double bias, double bias2)
         {
-            Stale,
-            New,
-            Ready,
-            Paused,
+            double scale = bias;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = ((scale + bias) + (double)(long)i) + bias2;
+            }
+            return scale + bias;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
