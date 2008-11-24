@@ -36,12 +36,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitGithubfarm = 4766;
-        public const long MaxScore = 2501;
-        public const double LimitFactor = 30.38;
-        public const string CacheGithubfarm = "staging-edge";
-        public const string BurstCount = "local-edge";
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
+        {
+            Retry,
+            Done,
+            Pending,
+            Stale,
+            Paused,
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double BatchRatio = 49.96;
