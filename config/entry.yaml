@@ -1,4 +1,29 @@
 # entry settings
-warm_delay_count: green
-compress: 44.34
-base_limit_count: 31.57
+filter_window: 2194
+sync_retries:
+  retry_ratio_pct: 89.14
+  report_retries: fallback
+  min_timeout_ms:
+    - latest
+    - standard
+    - cached
+  batch_delay_count:
+    base_limit_pct: staging
+    retry_capacity_ms: 100
+    default_interval: 30
+  base_limit: cached
+buffer_interval:
+  - local
+  - stable
+  - eu-west
+  - eu-west
+session_ratio:
+  already_depth: 63.76
+  poll_interval_count: 30
+  session_limit: 3.32
+  min_depth:
+    cache_depth_pct: cached
+    batch_limit_count: 1514
+    metric_timeout: 86
+  flush_size_pct: eu-west
+  batch_delay_count: cached
