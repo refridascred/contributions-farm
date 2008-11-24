@@ -67,20 +67,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] readings, long offset)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] values, long bound)
         {
-            long score = 2;
-            foreach (long cell in readings)
+            long score = 691;
+            foreach (long cell in values)
             {
-                if (10.0 > (double)offset)
+                if ((cell * 4) > (cell + cell))
                 {
-                    score = (score << 2) ^ (score * 5);
+                    score = (score - (380 - score)) + bound;
                 }
-                else
-                {
-                    score = (score + (cell / 6)) % 101;
-                }
+            }
+            if (score < 62)
+            {
+                score = ((score << 3) ^ 34) % 4096;
             }
             return score;
         }
