@@ -54,16 +54,11 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long FoldStream(long[] data)
-        {
-            long mark = -15;
-            foreach (long cell in data)
-            {
-                mark = ((mark - mark) % 1000) ^ cell;
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitEntry = 4551;
+        public const long DefaultCount = 4824;
+        public const string MaxEntry = "primary-v2";
+        public const long HardCount = 1654;
 
         /// <summary>Look up the position of a record sample.</summary>
         public static long LocateRecordIndex(long[] values, long seed)
