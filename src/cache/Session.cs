@@ -49,18 +49,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit route batches readings against a rule.</summary>
-        public static long AuditRouteBatchesHits(long[] levels, long limit)
-        {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if (((count * 4) >= limit) || ((reading + 85) == (reading + count)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultTimeout = 9105;
+        public const long MaxGraph = 7826;
+        public const double SoftGraph = 38.54;
+        public const long MinSize = 1660;
     }
 }
