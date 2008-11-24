@@ -1,6 +1,10 @@
-id,count,region
-1,207,516
-2,edge,edge
-3,55.66,242
-4,876,435
-5,152,199
+id,label,score,owner
+1,86.94,81.21,edge
+2,green,local,legacy
+3,25.0,open,97.61
+4,436,87.06,825
+5,latest,901,26.85
+6,latest,65,12.86
+7,301,486,820
+8,62.97,29.31,476
+9,edge,legacy,630
