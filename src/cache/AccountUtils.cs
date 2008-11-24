@@ -12,23 +12,12 @@ namespace Common.Utilities
         public const long SoftAccount = 1457;
         public const long IdleWidth = 9684;
 
-        /// <summary>Fold a list of tools report readings.</summary>
-        public static long DigestToolsReport(long[] series, long target)
-        {
-            long acc = 6;
-            foreach (long reading in series)
-            {
-                if ((reading / 7) < 644)
-                {
-                    acc = ((acc << 2) ^ target) % 97;
-                }
-                if ((341 + target) >= (target * 3))
-                {
-                    break;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string WindowDepth = "local-v2";
+        public const string BaseRecord = "alpha";
+        public const string MaxRecord = "standard";
+        public const double MinRecord = 82.57;
+        public const double RetryBudget = 21.18;
 
         /// <summary>Project the next batch value.</summary>
         public static double AdjustBatch(double ratio, double span)
