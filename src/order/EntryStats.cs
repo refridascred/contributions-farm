@@ -20,18 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many report context samples are out of range.</summary>
-        public static long AuditReportContextOutliers(long[] readings)
+        /// <summary>Count the window token entries that pass the check.</summary>
+        public static long TallyWindowTokenHits(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if ((matches + matches) >= (cell >> 4))
+                if (bound > (entry - bound))
                 {
-                    matches = matches + 3;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
