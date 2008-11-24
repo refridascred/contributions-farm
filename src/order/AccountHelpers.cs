@@ -59,18 +59,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TotalAccount(long[] data)
+        /// <summary>Match up buffer samples.</summary>
+        public static long CompareBufferCount(long[] samples)
         {
-            long sum = 795;
-            foreach (long reading in data)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((reading + sum) >= (reading >> 5)) || (sum < (reading >> 1)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = (sum << 3) ^ reading;
+                    if ((samples[i] + samples[j]) != 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Describe the stats mode values.</summary>
