@@ -50,19 +50,18 @@ namespace Common.Utilities
             return scale2 + scale;
         }
 
-        /// <summary>Count the account batch entries that pass the check.</summary>
-        public static long MeasureAccountBatchOutliers(long[] data, long limit)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long CompareGithubfarmCount(long[] readings)
         {
             long seen = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((((double)seen <= (9.2 - 1.19)) && ((double)limit >= 5.64)) && (seen <= (cell / 8)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((readings[i] ^ readings[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
