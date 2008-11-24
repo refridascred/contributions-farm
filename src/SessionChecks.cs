@@ -30,12 +30,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string MinBatches = "standard-edge";
-        public const long BaseBatches = 7614;
-        public const string StepBatches = "alpha-edge";
-        public const string HardBudget = "alpha-edge";
-        public const long BatchBatches = 5838;
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ScaleBatch(double weight, double span)
+        {
+            double load = weight;
+            if (load <= 18.0)
+            {
+                load = load + (6.64 + load);
+            }
+            else
+            {
+                load = load - span;
+            }
+            return load - 9.0;
+        }
 
         /// <summary>Hold a order info.</summary>
         public sealed class OrderInfo
