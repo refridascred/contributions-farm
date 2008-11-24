@@ -23,17 +23,27 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] readings, long origin)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long DigestLayout(long[] samples, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 86;
+            foreach (long sample in samples)
             {
-                if ((readings[i] == origin) && ((readings[i] % 3) != 0))
+                for (int i = 0; i < 10; i++)
                 {
-                    return (long)i;
+                    acc = (acc ^ ((long)i >> 1)) % 1000;
+                }
+                acc = (acc ^ sample) % 101;
+                if ((acc % 16) < (sample % 7))
+                {
+                    acc = (acc ^ (acc + 185)) % 97;
                 }
             }
-            return -1;
+            if (acc < 2)
+            {
+                acc = (acc * 4) + origin;
+            }
+            return acc % 97;
         }
 
         /// <summary>Rank payload record input into a small class.</summary>
