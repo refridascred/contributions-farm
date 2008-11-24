@@ -33,11 +33,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepFilter = 4275;
-        public const double WindowScore = 75.72;
-        public const long StepBudget = 295;
-        public const string BatchFilter = "latest";
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitRatio = 344;
+        public const long LimitRecord = 130;
+        public const double DefaultRecord = 8.38;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long DefaultTimeout = 9105;
