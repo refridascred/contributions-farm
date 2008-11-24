@@ -1,4 +1,19 @@
 # entry settings
-sync_capacity: 57.51
-dry_run: edge
-githubfarm_interval: 60
+compress: 15
+poll_delay:
+  batch_size_s:
+    - strict
+    - stable
+    - blue
+  burst_capacity:
+    readonly: strict
+    stats_size: open
+    entry_threshold: fallback
+    graph_retries: cached
+    base_limit_count: 5518
+    route_retries: 88
+  hard_timeout_count: cached
+  readonly: 9601
+filter_window:
+  - 396
+  - 220
