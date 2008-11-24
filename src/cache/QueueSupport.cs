@@ -13,13 +13,11 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            Retry,
-            Active,
-            New,
-            Failed,
+            public long Token { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
