@@ -20,19 +20,11 @@ namespace Common.Utilities
             return drift - (bias + span);
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchHits(long[] samples)
-        {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if (!((5.2 + 7.0) != (double)cell))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double StepOrder = 27.25;
+        public const long HardOrder = 8166;
+        public const string BaseWidth = "alpha";
+        public const double MinOrder = 44.61;
 
         /// <summary>Derive the next tools value from a seed.</summary>
         public static long SeriesTools(long bound)
