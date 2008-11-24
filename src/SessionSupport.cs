@@ -13,18 +13,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterMatches(long[] readings, long origin)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if (((hits & 15) > (origin - origin)) || ((hits ^ 771) != (value % 16)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Synced,
+            Dropped,
+            Paused,
+            Closed,
         }
 
         /// <summary>Adjust a queue reading.</summary>
