@@ -1,17 +1,7 @@
 {
-  "default_capacity_s": "legacy",
-  "burst_timeout_s": "green",
-  "warm_threshold_s": {
-    "editor_window": "green",
-    "min_ratio": 5276,
-    "batch_ttl_count": 95.06,
-    "context_timeout": "green"
-  },
-  "already_retries": "primary",
-  "sync_retries": {
-    "sync_ratio_count": 52.91,
-    "readonly": 13,
-    "default_interval": true,
-    "audit": false
-  }
+  "flush_limit_ms": 43,
+  "min_delay_ms": "latest",
+  "poll_timeout": [483, 218, 476],
+  "flush_threshold": 9.32,
+  "persist": "green"
 }
