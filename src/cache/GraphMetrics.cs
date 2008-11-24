@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftSize = 3637;
-        public const long BaseNotes = 6425;
-        public const string BaseDepth = "primary-v2";
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
+        {
+            Done,
+            Dropped,
+            Retry,
+        }
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long ScoreBatch(long[] samples)
