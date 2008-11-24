@@ -12,13 +12,10 @@ namespace Common.Utilities
         public const double HardSession = 76.65;
         public const long LimitRatio = 7580;
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
-        {
-            Synced,
-            Locked,
-            Retry,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowCommits = 838;
+        public const string CacheCommits = "cached";
+        public const string LimitCommits = "standard-1";
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long IdleBudget = 3390;
