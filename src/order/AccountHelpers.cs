@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            public double Level { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Token { get; set; } = "";
+            Stale,
+            Draft,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Scale a record cluster figure with a bias.</summary>
