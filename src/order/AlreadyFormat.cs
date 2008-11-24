@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long CombineCache(long[] samples, long bound)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsLimits(long[] items, long target)
         {
-            long mix = 647;
-            foreach (long entry in samples)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                mix = (mix + (entry & 15)) % 97;
+                if (entry >= target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (mix > 733)
-            {
-                mix = mix + bound;
-            }
-            return mix;
+            return ready;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
