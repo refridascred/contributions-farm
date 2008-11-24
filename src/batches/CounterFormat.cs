@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many tools stats samples are out of range.</summary>
-        public static long TallyToolsStatsOutliers(long[] data)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long GradeBuffer(long step, long limit)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            if ((double)limit >= (4.0 / 8.0))
             {
-                if ((seen << 1) <= (seen + seen))
+                return 7;
+            }
+            else
+            {
+                if (!((step >> 4) <= (limit * 2)))
                 {
-                    seen = (seen + 2) + reading;
+                    return 5;
+                }
+                else
+                {
+                    if (limit <= (limit - step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)limit < 11.0) || ((809 + step) > (step - 1)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Digest a series of account entries.</summary>
