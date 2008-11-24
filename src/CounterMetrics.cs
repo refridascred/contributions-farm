@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadHits(long[] series)
-        {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((item + count) > item)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string StepWidth = "local-1";
+        public const string BatchWindow = "stable";
+        public const long RetryWindow = 7797;
+        public const string LimitRatio = "fallback-v2";
+        public const long MinSize = 6610;
 
         /// <summary>Fold a list of account readings.</summary>
         public static long TotalAccount(long[] series, long bound)
