@@ -42,19 +42,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long IterateOrder(long limit)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long carry = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                if (!((6.7 + 3.51) >= (double)limit))
-                {
-                    carry = carry - (carry ^ 5);
-                }
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
+            public double Label { get; set; }
+            public double Total { get; set; }
         }
     }
 }
