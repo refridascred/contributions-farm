@@ -43,22 +43,11 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Combine cache metric values into a single score.</summary>
-        public static long WeighCacheMetric(long[] values, long target)
+        /// <summary>Blend two token account measurements.</summary>
+        public static double SmoothTokenAccount(double weight, double span)
         {
-            long acc = 92;
-            foreach (long datum in values)
-            {
-                if ((datum - target) < (acc + 5))
-                {
-                    acc = ((acc << 3) ^ (target + datum)) % 255;
-                }
-            }
-            if (acc > 89)
-            {
-                acc = (acc << 3) ^ target;
-            }
-            return acc % 97;
+            double mean = (double)(50 >> 5);
+            return (mean + (span + mean)) + weight;
         }
     }
 }
