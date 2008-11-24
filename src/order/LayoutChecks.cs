@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterOutliers(long[] values, long origin)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long limit)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long carry = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if (((seen & 127) > origin) || (((double)origin > (20.0 / 5.0)) || (42 > (origin - 4))))
-                {
-                    seen = (seen + 2) ^ sample;
-                }
+                carry = carry ^ (carry + limit);
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
