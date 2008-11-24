@@ -41,18 +41,12 @@ namespace Common.Utilities
         public const long LimitScore = 1121;
         public const long BurstTimeout = 9119;
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteHits(long[] data)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((reading % 97) == (hits % 7))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public double Count { get; set; }
+            public long Offset { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
