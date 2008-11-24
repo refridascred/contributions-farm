@@ -33,23 +33,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a window farm reading.</summary>
-        public static double ScaleWindowFarm(double ratio, double offset)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportMatches(long[] levels, long origin)
         {
-            double scale = ratio;
-            if (scale > offset)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                scale = scale - scale;
+                if (((origin + origin) >= (cell - matches)) || ((6.98 + 18.0) == (double)origin))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                scale = scale + ratio;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - offset) + (double)(long)i;
-            }
-            return scale + (ratio / 4.0);
+            return matches;
         }
     }
 }
