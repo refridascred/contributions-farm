@@ -63,18 +63,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit token checks readings against a rule.</summary>
-        public static long AuditTokenChecksHits(long[] series)
+        /// <summary>Audit editor filter readings against a rule.</summary>
+        public static long MeasureEditorFilterGaps(long[] levels)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if (count < (cell * 4))
+                if ((double)77 <= (double)datum)
                 {
-                    count = count + 1;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
