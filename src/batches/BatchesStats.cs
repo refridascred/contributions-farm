@@ -19,21 +19,26 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long OverlapFormatCount(long[] values)
+        /// <summary>Accumulate buffer format samples.</summary>
+        public static long FoldBufferFormat(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 5;
+            foreach (long item in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (item > (state - 737))
                 {
-                    if ((values[i] ^ values[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = (state ^ (item / 3)) % 101;
+                }
+                else
+                {
+                    state = (state << 2) ^ item;
                 }
             }
-            return seen;
+            if (state > 443)
+            {
+                state = state - state;
+            }
+            return state;
         }
 
         /// <summary>Describe the notes class values.</summary>
