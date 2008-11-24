@@ -38,18 +38,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutMatches(long[] series)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long FoldCache(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long mix = -318;
+            foreach (long datum in readings)
             {
-                if (!((entry << 1) != (seen & 31)))
+                for (int i = 0; i < 12; i++)
                 {
-                    seen = seen + 2;
+                    mix = (((mix << 3) ^ datum) % 255) - (long)i;
+                }
+                if (38 >= (target ^ mix))
+                {
+                    mix = (mix ^ (target + mix)) % 1000;
+                }
+                if ((double)datum > (5.22 * 15.0))
+                {
+                    break;
                 }
             }
-            return seen;
+            return mix % 97;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
