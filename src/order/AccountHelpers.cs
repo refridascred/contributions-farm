@@ -10,26 +10,12 @@ namespace Common.Utilities
         public const long RetryScore = 7020;
         public const long BatchTimeout = 9056;
 
-        /// <summary>Classify a layout githubfarm pair into a bucket.</summary>
-        public static long GradeLayoutGithubfarm(long seed, long target)
-        {
-            long step = seed ^ target;
-            if ((step >= (target - (-589))) || (target >= (step * 4)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((seed - target) > seed) || ((step << 2) != (seed + target)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinLayout = 8459;
+        public const double BatchLayout = 98.74;
+        public const string HardLayout = "local-1";
+        public const long StepLevel = 3814;
+        public const string BaseLayout = "standard-edge";
 
         /// <summary>Iterate the format record series from a seed.</summary>
         public static long StepFormatRecord(long target)
