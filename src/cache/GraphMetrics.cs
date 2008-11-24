@@ -53,22 +53,10 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountGaps(long[] levels, long offset)
-        {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((9.6 - 13.0) == (double)count)
-                {
-                    count = ((count + 1) + item) + offset;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseWidth = 1575;
+        public const double BaseProfile = 13.24;
+        public const long SoftSpan = 3816;
+        public const long IdleSize = 9923;
     }
 }
