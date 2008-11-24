@@ -41,38 +41,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long SortStream(long origin, long step)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long IterateOrder(long limit)
         {
-            if (!(origin > (step + origin)))
+            long carry = limit;
+            for (int i = 0; i < 4; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)step != (6.0 * 1.11))
+                if (!((6.7 + 3.51) >= (double)limit))
                 {
-                    return 7;
+                    carry = carry - (carry ^ 5);
                 }
-                else
-                {
-                    if (((double)origin < 15.0) || ((origin + origin) > (step + step)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((origin + origin) > (step - origin)) && ((origin & 3) < step))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                carry = ((carry * 3) + (long)i) % 101;
             }
+            return carry;
         }
     }
 }
