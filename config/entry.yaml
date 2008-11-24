@@ -1,10 +1,8 @@
 # entry settings
-audit:
-  dry_run: 29.4
-  metrics_interval: true
-  counter_retries: 7799
-stats_size: 63.66
-min_depth_count: 4438
-enabled: 25.82
-cache_depth: false
-commits_timeout: 7
+persist: 82
+stats_limit:
+  hard_capacity_s: green
+  entry_limit: 32.35
+  verbose: 1024
+report_retries: stable
+githubfarm_retries: 500
