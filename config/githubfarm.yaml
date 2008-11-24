@@ -1,6 +1,21 @@
 # githubfarm settings
-min_timeout_ms: 1024
-soft_window_s: true
-verbose: standard
-enabled: 30
-warm_capacity: 3.4
+layout_interval: false
+enabled: 1706
+burst_size_count:
+  strict:
+    min_timeout: 5273
+    idle_retries_s: 25.58
+    burst_delay: 74
+  cache_interval: strict
+  audit:
+    min_size_s:
+      - legacy
+      - local
+    min_timeout_s: 7710
+    base_depth: true
+  default_window:
+    - open
+    - eu-west
+    - blue
+  idle_delay_ms: 5171
+queue_window: open
