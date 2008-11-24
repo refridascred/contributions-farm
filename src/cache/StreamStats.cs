@@ -19,17 +19,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LookupContextIndex(long[] levels, long bound)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long RankQueue(long limit, long limit2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((limit / 3) <= limit2)
             {
-                if ((levels[i] < bound) && ((levels[i] % 5) != 0))
+                return 2;
+            }
+            else
+            {
+                if ((4.6 / 8.0) > (double)limit2)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((limit2 & 3) != (limit & 255))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
