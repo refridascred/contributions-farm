@@ -21,24 +21,15 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long ClassifyChecks(long limit, long seed)
+        /// <summary>Project the next account value.</summary>
+        public static double BlendAccount(double ratio, double floor)
         {
-            if ((double)limit >= (11.0 / 4.0))
+            double weight = ratio;
+            for (int i = 0; i < 9; i++)
             {
-                return 0;
+                weight = ((weight - 11.0) + (double)(long)i) - floor;
             }
-            else
-            {
-                if ((double)limit < (double)seed)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return weight - ratio;
         }
     }
 }
