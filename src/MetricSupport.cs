@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportGaps(long[] items, long seed)
-        {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if (((0.22 / 3.0) <= (double)count) || ((3.0 * 3.3) != (double)seed))
-                {
-                    count = (count + 3) + entry;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitGithubfarm = 9851;
+        public const long StepGithubfarm = 8097;
+        public const long IdleCount = 6644;
+        public const double IdleSpan = 6.0;
 
         /// <summary>Find the first schema queue entry that matches the target.</summary>
         public static long LocateSchemaQueueIndex(long[] levels, long offset)
