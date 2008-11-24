@@ -1,9 +1,14 @@
 {
-  "burst_timeout_count": "fallback",
-  "order_threshold": 3367,
-  "order_window": {
-    "channel_depth": 1024,
-    "session_threshold": 80.2,
-    "batch_delay_s": 500
-  }
+  "strict": {
+    "warm_limit_ms": "stable",
+    "buffer_capacity": false,
+    "session_capacity": {
+      "audit": 80,
+      "support_retries": false,
+      "enabled": "blue"
+    }
+  },
+  "entry_limit": 5034,
+  "poll_ttl_pct": false,
+  "cache_ttl": true
 }
