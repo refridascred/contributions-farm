@@ -1,6 +1,12 @@
 {
-  "retry_size_count": "green",
-  "max_size": "edge",
-  "readonly": [253, 92, 218],
-  "record_ratio": 65
+  "burst_retries_ms": [486, 144, 475, 76],
+  "batch_delay_pct": 98,
+  "cache_retries": {
+    "max_threshold_s": "primary",
+    "min_ratio_ms": 68.69,
+    "warm_interval": 500
+  },
+  "hard_ttl": [51, 43],
+  "token_delay": 523,
+  "flush_depth": 84
 }
