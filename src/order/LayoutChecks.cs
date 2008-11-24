@@ -89,18 +89,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderGaps(long[] values)
-        {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if (!((sample % 60) > (880 + matches)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BurstSpan = 37.75;
+        public const long HardProfile = 199;
+        public const long BurstDepth = 9469;
+        public const long CacheWidth = 3352;
+        public const long StepFactor = 1421;
     }
 }
