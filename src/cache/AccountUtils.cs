@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheWidth = 7481;
-        public const string StepRecord = "fallback-v2";
-        public const string StepScore = "fallback";
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxLevel = 3800;
+        public const long MaxInterval = 6939;
+        public const double BaseInterval = 21.15;
+        public const string WindowOrder = "standard-v2";
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long TallyEntryHits(long[] readings, long bound)
