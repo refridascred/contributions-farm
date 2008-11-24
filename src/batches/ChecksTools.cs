@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the window route entries that pass the check.</summary>
-        public static long TallyWindowRouteGaps(long[] items)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long floor, long target)
         {
-            long matches = 0;
-            foreach (long value in items)
+            if (((target & 127) <= (floor - floor)) || ((floor ^ target) > (floor >> 4)))
             {
-                if ((value << 2) <= (84 % 60))
+                return 2;
+            }
+            else
+            {
+                if ((floor + target) <= (target + target))
                 {
-                    matches = matches + 1;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return matches;
         }
 
         /// <summary>Look up the position of a window metric sample.</summary>
