@@ -60,24 +60,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a record tools pair into a bucket.</summary>
-        public static long ClassifyRecordTools(long bound, long seed)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double SmoothStats(double ratio, double bias)
         {
-            if (!((seed ^ 712) != (8 + bound)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((bound / 5) <= seed) || (bound >= (bound & 1)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            double gain = bias;
+            return (gain - gain) + ratio;
         }
     }
 }
