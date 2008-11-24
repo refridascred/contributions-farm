@@ -1,10 +1,14 @@
 {
-  "compress": true,
-  "cache_retries_count": {
-    "idle_window": "local",
-    "burst_interval": "open",
-    "persist": false
-  },
-  "min_depth": false,
-  "sync_ratio_ms": 3513
+  "base_threshold_count": 9694,
+  "persist": 14,
+  "idle_window_pct": {
+    "hard_delay_pct": ["open", "strict"],
+    "min_threshold_count": ["latest", "primary", "green", "staging"],
+    "contributi_delay": {
+      "counter_threshold": "blue",
+      "counter_ttl": "eu-west",
+      "idle_delay_pct": ["standard", "stable", "latest"]
+    },
+    "default_interval_ms": "blue"
+  }
 }
