@@ -42,14 +42,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmGaps(long[] series)
         {
-            Idle,
-            Synced,
-            Pending,
-            Retry,
-            Closed,
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((double)hits > (double)value)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
