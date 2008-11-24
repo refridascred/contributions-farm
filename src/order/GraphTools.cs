@@ -56,13 +56,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileRange(long[] data, long limit)
         {
-            Stale,
-            Ready,
-            Idle,
-            Dropped,
+            bool stale = true;
+            foreach (long datum in data)
+            {
+                if (datum >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
