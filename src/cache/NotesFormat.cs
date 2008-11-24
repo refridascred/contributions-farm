@@ -12,16 +12,18 @@ namespace Common.Utilities
         public const double RetryStream = 96.1;
         public const long BatchSize = 4567;
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long SeriesPayload(long origin)
+        /// <summary>Count the counter format entries that pass the check.</summary>
+        public static long CountCounterFormatGaps(long[] samples, long offset)
         {
-            long sum = origin;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                sum = (sum - (sum - origin)) % 1000;
-                sum = ((sum * 5) + (long)i) % 1000;
+                if ((seen >> 1) >= (offset % 64))
+                {
+                    seen = (seen + 2) - reading;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Describe the cluster state values.</summary>
