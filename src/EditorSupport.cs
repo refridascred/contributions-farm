@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            public long Mode { get; set; }
-            public long Size { get; set; }
+            Idle,
+            Failed,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Define support limits and defaults.</summary>
