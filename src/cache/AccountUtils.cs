@@ -37,11 +37,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Project the next filter value.</summary>
+        public static double BlendFilter(double scale, double offset)
         {
-            public double Token { get; set; }
-            public long Mode { get; set; }
+            double weight = 6.0 + (double)28;
+            if (weight > (6.0 * 20.0))
+            {
+                weight = (weight - (double)50) + offset;
+            }
+            else
+            {
+                weight = weight + scale;
+            }
+            return weight - (weight * 2.25);
         }
     }
 }
