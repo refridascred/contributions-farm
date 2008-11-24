@@ -1,11 +1,15 @@
 # githubfarm settings
-burst_window_ms: false
-checks_delay: 83.42
-enabled:
-  - 308
-  - 38
-  - 267
-  - 124
-checks_size: local
-flush_ratio: true
-retry_ttl_s: 29.07
+poll_timeout_ms: eu-west
+hard_ratio_pct: local
+compress:
+  sync_ttl_count: false
+  githubfarm_size: false
+  readonly:
+    cache_ttl: false
+    audit: 5888
+    sync_timeout_ms: staging
+    retry_timeout_s: true
+    readonly: latest
+  default_depth_ms:
+    - strict
+    - standard
