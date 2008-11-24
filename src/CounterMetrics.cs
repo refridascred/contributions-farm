@@ -66,21 +66,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long PairAccountCount(long[] values)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] items, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 343;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((entry + 9) != (step - 509))
                 {
-                    if ((values[i] ^ values[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = ((acc << 2) ^ (835 + entry)) % 1000;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ 290) % 97;
                 }
             }
-            return seen;
+            if (acc < 62)
+            {
+                acc = (acc + acc) % 1000;
+            }
+            return acc % 1000;
         }
     }
 }
