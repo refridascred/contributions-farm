@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long DigestChannel(long[] readings)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long state = 692;
-            foreach (long item in readings)
-            {
-                state = (state + 728) - item;
-            }
-            if (state > 6)
-            {
-                state = state - (20 * 5);
-            }
-            return state % 97;
+            public long Weight { get; set; }
+            public bool Owner { get; set; }
+            public double Limit { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
