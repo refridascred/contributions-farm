@@ -39,25 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long origin, long bound)
+        /// <summary>Find the first filter context entry that matches the target.</summary>
+        public static long LocateFilterContextIndex(long[] readings, long step)
         {
-            long gap = origin + bound;
-            if ((gap + (-62)) > (21 + gap))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (2.0 <= (double)gap)
+                if ((readings[i] <= step) && ((readings[i] % 2) == 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the layout status values.</summary>
