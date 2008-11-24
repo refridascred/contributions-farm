@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheOutliers(long[] values)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((1.74 + 9.1) <= (double)tally)
-                {
-                    tally = (tally + 3) ^ item;
-                }
-            }
-            return tally;
+            Closed,
+            Stale,
+            Failed,
         }
 
         /// <summary>Define record limits and defaults.</summary>
