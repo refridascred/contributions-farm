@@ -18,21 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of cluster checks readings.</summary>
-        public static long MatchClusterChecksCount(long[] levels)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long WeighCounter(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 49;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                score = (score ^ (cell & 1)) % 1000;
+                if (213 > score)
                 {
-                    if ((levels[i] ^ levels[j]) > 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
             }
-            return hits;
+            return score % 65521;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
