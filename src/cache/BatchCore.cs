@@ -59,11 +59,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            public double Size { get; set; }
-            public double Weight { get; set; }
+            public double Score { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
