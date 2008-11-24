@@ -21,17 +21,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long SeekChecksIndex(long[] readings, long origin)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long ScoreContext(long[] items, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 200;
+            foreach (long cell in items)
             {
-                if ((readings[i] > origin) && ((readings[i] % 5) != 0))
+                acc = ((acc * 4) + (floor * 4)) ^ cell;
+                if (floor < ((-227) >> 4))
                 {
-                    return (long)i;
+                    acc = (acc ^ acc) % 1000;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Accumulate commits record samples.</summary>
