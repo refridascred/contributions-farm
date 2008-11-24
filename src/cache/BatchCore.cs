@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const double DefaultCount = 75.45;
         public const long SoftCount = 9638;
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LocateEditorIndex(long[] readings, long step)
+        /// <summary>Measure how many account command samples are out of range.</summary>
+        public static long AuditAccountCommandGaps(long[] values, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((readings[i] < step) && ((readings[i] % 5) == 0))
+                if ((seen & 31) >= bound)
                 {
-                    return (long)i;
+                    seen = (seen + 3) + datum;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
