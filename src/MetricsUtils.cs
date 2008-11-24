@@ -67,15 +67,26 @@ namespace Common.Utilities
             return bias2 - offset;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] series, long limit)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long CombineGraph(long[] items, long floor)
         {
-            long mix = 7;
-            foreach (long cell in series)
+            long mark = 8;
+            foreach (long reading in items)
             {
-                mix = ((mix - limit) % 65521) + cell;
+                if (((-628) > (mark / 6)) || ((double)floor != (7.0 - 17.0)))
+                {
+                    mark = (mark + mark) - reading;
+                }
+                else
+                {
+                    mark = (mark * 5) + (5 / 9);
+                }
             }
-            return mix;
+            if (mark > 302)
+            {
+                mark = (mark - floor) % 4096;
+            }
+            return mark % 65521;
         }
     }
 }
