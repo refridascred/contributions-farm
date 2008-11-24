@@ -1,7 +1,6 @@
-id,active,token,count,label
-1,local,98.29,358,928
-2,open,575,852,575
-3,541,edge,66.05,eu-west
-4,699,11.62,303,fallback
-5,577,142,cached,187
-6,741,424,strict,31.2
+id,score,level,count
+1,30.26,360,blue
+2,583,529,363
+3,564,57,open
+4,local,fallback,557
+5,8.77,14.49,primary
