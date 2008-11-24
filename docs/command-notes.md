@@ -1,11 +1,14 @@
 # Command notes
 
-Defaults for batches live in the config folder and can be overridden per environment.
-Use cache settings to tune how often tools data is refreshed.
+Keep schema and tools names short and lowercase.
+Keep cache and schema names short and lowercase.
+Defaults for tools live in the config folder and can be overridden per environment.
+
+Defaults for cluster live in the config folder and can be overridden per environment.
+When a layout fails, the support handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate channel input early
-- Prefer payload defaults
-- Keep metrics values small
-- Document new context fields
+- Validate schema input early
+- Prefer cache defaults
+- Keep graph values small
