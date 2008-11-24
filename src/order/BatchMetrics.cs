@@ -18,31 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long bound, long seed)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            if (((bound << 1) != (bound + bound)) || (6.2 >= (double)bound))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((5 >= (seed << 1)) && ((seed - bound) != (bound / 3)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((1.2 - 9.0) <= (double)seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public double Stamp { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Describe the queue class values.</summary>
