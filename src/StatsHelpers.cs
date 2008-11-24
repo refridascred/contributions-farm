@@ -14,22 +14,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenHits(long[] samples)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long CombineCluster(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long acc = 673;
+            foreach (long value in readings)
             {
-                if (seen > (seen ^ 6))
-                {
-                    seen = (seen + 3) ^ value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                acc = (acc << 3) ^ (value << 2);
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
