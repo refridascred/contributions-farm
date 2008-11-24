@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftContext = 4663;
-        public const long SoftTimeout = 5205;
-        public const long WindowContext = 7263;
-        public const long BurstContext = 6547;
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                mix = ((mix << 3) ^ (floor + floor)) % 255;
+                mix = ((mix * 2) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a tools entry.</summary>
         public sealed class ToolsEntry
