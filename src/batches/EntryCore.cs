@@ -61,18 +61,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterHits(long[] readings)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if (datum <= ((long)readings.Length ^ matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Mode { get; set; }
+            public bool Score { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
