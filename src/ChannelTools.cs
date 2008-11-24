@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long CombineSupport(long[] levels)
-        {
-            long total = 12;
-            foreach (long datum in levels)
-            {
-                if ((datum >> 4) != (60 + datum))
-                {
-                    total = (total ^ datum) % 97;
-                }
-                else
-                {
-                    total = total + (datum + total);
-                }
-            }
-            if (total < (-8))
-            {
-                total = (total + (total % 3)) % 255;
-            }
-            return total;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleBudget = 596;
+        public const double BatchStream = 12.78;
+        public const string CacheStream = "standard-v2";
+        public const long IdleDepth = 5898;
 
         /// <summary>Find the first batch entry that matches the target.</summary>
         public static long LookupBatchIndex(long[] levels, long step)
