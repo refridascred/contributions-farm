@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Check that every buffer metrics entry stays within the limit.</summary>
-        public static bool ValidateBufferMetricsBounds(long[] levels, long offset)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long FindSessionIndex(long[] samples, long origin)
         {
-            bool found = true;
-            foreach (long item in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item > offset)
+                if (samples[i] > origin)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Match up checks already samples.</summary>
