@@ -25,18 +25,10 @@ namespace Common.Utilities
         public const double RetryEditor = 0.39;
         public const long DefaultEditor = 4086;
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MinAccount = 43.89;
+        public const long BurstAccount = 8245;
+        public const double CacheCount = 23.09;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long SoftSpan = 1236;
