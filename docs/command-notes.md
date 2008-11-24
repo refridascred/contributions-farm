@@ -1,12 +1,11 @@
 # Command notes
 
-Keep tools and metrics names short and lowercase.
-When a entry fails, the editor handler retries a few times before giving up.
-Each cluster is validated before it reaches the cluster queue.
+Run the profile check before changing any schema limits.
+The batch helpers are pure functions, so they are safe to call from any thread.
+Run the order check before changing any context limits.
 
 ## Guidelines
 
-- Keep payload values small
-- Validate profile input early
-- Prefer window defaults
-- Log every window change
+- Keep commits values small
+- Prefer farm defaults
+- Log every entry change
