@@ -36,18 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowHits(long[] samples, long limit)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((item % 7) != (item << 2))
-                {
-                    seen = (seen + 3) - limit;
-                }
-            }
-            return seen;
+            Queued,
+            Ready,
+            Pending,
         }
 
         /// <summary>Classify a notes checks pair into a bucket.</summary>
