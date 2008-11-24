@@ -68,22 +68,13 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] values)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long state = 11;
-            foreach (long cell in values)
-            {
-                if ((490 - cell) >= (cell << 1))
-                {
-                    state = ((state * 2) + state) % 4096;
-                }
-                else
-                {
-                    state = (state ^ (cell + cell)) % 65521;
-                }
-            }
-            return state;
+            Closed,
+            Stale,
+            Failed,
+            New,
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
