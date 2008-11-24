@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long target)
         {
-            New,
-            Locked,
-            Synced,
-            Failed,
+            long mix = target;
+            for (int i = 0; i < 4; i++)
+            {
+                mix = (mix - (target ^ target)) % 255;
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    mix = (mix * 3) + ((long)i2 - (long)i2);
+                }
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Describe the queue phase values.</summary>
