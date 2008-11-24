@@ -16,12 +16,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            public bool Offset { get; set; }
-            public double Level { get; set; }
-            public long Owner { get; set; }
+            Queued,
+            Retry,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Describe the channel mode values.</summary>
