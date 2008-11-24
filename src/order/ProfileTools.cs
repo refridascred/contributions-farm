@@ -13,22 +13,23 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Classify a counter record pair into a bucket.</summary>
-        public static long SortCounterRecord(long limit, long target)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long target, long floor)
         {
-            if (!((double)282 >= (double)target))
+            long bound = target - floor;
+            if ((bound >> 1) < (-5))
             {
-                return 2;
+                return 6;
             }
             else
             {
-                if ((99 < (target * 2)) && ((15.0 * 7.0) < (double)target))
+                if ((target + floor) != (floor % 97))
                 {
-                    return 3;
+                    return 5;
                 }
                 else
                 {
-                    return 0;
+                    return 7;
                 }
             }
         }
