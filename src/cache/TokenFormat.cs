@@ -19,12 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
+            Synced,
             Retry,
-            Done,
-            Paused,
+            Active,
+            Ready,
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
