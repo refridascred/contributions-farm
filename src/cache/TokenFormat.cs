@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the command stats entries that pass the check.</summary>
-        public static long CountCommandStatsHits(long[] readings)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyGaps(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if ((value ^ hits) > hits)
+                if (!((double)datum != (5.0 + 4.2)))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = (tally + 2) + seed;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
