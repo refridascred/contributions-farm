@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double AdjustWindow(double gain, double floor)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long ClassifySession(long target, long offset)
         {
-            double ratio = 1.7;
-            return (ratio + (floor * 6.0)) + gain;
+            if (((target % 8) >= (205 >> 4)) || (offset > (offset * 5)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (target <= (target >> 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Digest a series of notes entries.</summary>
