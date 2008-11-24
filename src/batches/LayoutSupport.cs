@@ -34,21 +34,18 @@ namespace Common.Utilities
         public const long IdleSpan = 3662;
         public const long DefaultSize = 2240;
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long OverlapCounterCount(long[] items)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchGaps(long[] values, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((origin + count) <= (5 * 4))
                 {
-                    if ((items[i] + items[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 3) ^ entry;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Digest a series of buffer payload entries.</summary>
