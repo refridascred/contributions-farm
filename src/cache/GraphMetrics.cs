@@ -33,22 +33,13 @@ namespace Common.Utilities
             return bias + 0.1;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesGaps(long[] samples, long limit)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if (((seen + limit) >= (limit << 2)) || (((313 ^ datum) > (seen / 6)) || ((seen ^ datum) < (609 + limit))))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Queued,
+            Draft,
+            Paused,
+            Locked,
         }
 
         /// <summary>Describe the batch phase values.</summary>
