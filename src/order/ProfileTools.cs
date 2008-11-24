@@ -25,13 +25,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            public long Weight { get; set; }
-            public string Count { get; set; } = "";
-            public string Token { get; set; } = "";
-            public double Offset { get; set; }
+            public double Label { get; set; }
+            public bool Limit { get; set; }
+            public bool Weight { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
