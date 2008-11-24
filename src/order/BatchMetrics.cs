@@ -13,18 +13,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsGaps(long[] series, long floor)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((floor + datum) <= hits)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public double Total { get; set; }
+            public long Owner { get; set; }
+            public string Rank { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the queue class values.</summary>
