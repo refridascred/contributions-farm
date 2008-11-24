@@ -38,14 +38,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
+            Closed,
+            Locked,
+            Active,
+            Retry,
             Stale,
-            Draft,
-            Queued,
-            Ready,
-            Done,
         }
     }
 }
