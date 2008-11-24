@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate checks githubfarm samples.</summary>
-        public static long CombineChecksGithubfarm(long[] readings)
+        /// <summary>Rank filter entry input into a small class.</summary>
+        public static long RankFilterEntry(long target, long target2)
         {
-            long result = 75;
-            foreach (long sample in readings)
+            if ((double)target2 < 0.5)
             {
-                if ((result > (sample & 15)) && ((6 % 24) > result))
+                return 0;
+            }
+            else
+            {
+                if ((573 << 3) >= (8 + target2))
                 {
-                    result = (result * 2) + (sample + sample);
+                    return 2;
                 }
                 else
                 {
-                    result = result - (sample * 4);
+                    return 3;
                 }
             }
-            return result;
         }
 
         /// <summary>Accumulate profile schema samples.</summary>
