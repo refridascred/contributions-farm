@@ -13,12 +13,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] data)
         {
-            public long Owner { get; set; }
-            public long Token { get; set; }
-            public double Flag { get; set; }
+            long anchor = 366;
+            foreach (long cell in data)
+            {
+                anchor = ((anchor * 4) + (cell & 15)) % 1000;
+            }
+            if (anchor > 20)
+            {
+                anchor = (anchor - (anchor * 4)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
