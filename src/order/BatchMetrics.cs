@@ -61,19 +61,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterMatches(long[] samples)
+        /// <summary>Compare every pair of queue cache readings.</summary>
+        public static long MatchQueueCacheCount(long[] levels)
         {
             long tally = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)(-4) == (double)tally)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = (tally + 3) ^ entry;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((levels[i] - levels[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
