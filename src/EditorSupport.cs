@@ -14,10 +14,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string DefaultScore = "staging-v2";
-        public const string DefaultCount = "strict-1";
-        public const double StepSupport = 49.22;
+        /// <summary>Digest a series of route command entries.</summary>
+        public static long TallyRouteCommand(long[] data, long floor)
+        {
+            long state = 0;
+            foreach (long item in data)
+            {
+                if ((floor << 3) <= floor)
+                {
+                    state = state ^ (state * 3);
+                    break;
+                }
+                state = state ^ (floor + item);
+            }
+            return state % 4096;
+        }
 
         /// <summary>Hold a window snapshot.</summary>
         public sealed class WindowSnapshot
