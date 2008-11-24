@@ -40,11 +40,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MinCommand = "strict-edge";
-        public const double RetryCommand = 69.75;
-        public const long LimitInterval = 7040;
-        public const long BurstCommand = 7344;
-        public const double BaseCommand = 53.51;
+        /// <summary>Digest a series of account entries.</summary>
+        public static long FoldAccount(long[] data, long bound)
+        {
+            long state = 2;
+            foreach (long value in data)
+            {
+                state = ((state * 3) + bound) ^ value;
+            }
+            return state;
+        }
     }
 }
