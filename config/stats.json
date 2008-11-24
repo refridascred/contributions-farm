@@ -1,7 +1,5 @@
 {
-  "persist": 51.68,
-  "commits_size": 96,
-  "compress": [21, 116, 88],
-  "window_retries": 78.84,
-  "counter_ratio": ["legacy", "blue", "primary", "stable"]
+  "editor_interval": "legacy",
+  "window_window": 2.35,
+  "dry_run": "cached"
 }
