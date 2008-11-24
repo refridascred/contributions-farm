@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricRange(long[] data, long floor)
-        {
-            bool ok = true;
-            foreach (long reading in data)
-            {
-                if (reading <= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BurstBuffer = 24.72;
+        public const long BurstBudget = 2508;
+        public const string HardBuffer = "staging-v2";
+        public const double BatchBuffer = 98.19;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long MaxProfile = 8223;
