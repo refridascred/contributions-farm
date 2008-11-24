@@ -38,14 +38,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long origin, long bound)
         {
-            Synced,
-            New,
-            Active,
-            Stale,
-            Draft,
+            if ((origin <= (origin & 3)) || ((bound % 24) != (origin - origin)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (44 < (bound % 64))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((origin & 31) <= origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((double)origin <= (2.3 - 14.0)) && ((origin / 4) < bound))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the payload level values.</summary>
