@@ -1,13 +1,8 @@
 {
-  "tools_capacity": {
-    "batch_timeout_count": "blue",
-    "cache_window_ms": "staging",
-    "tools_ttl": 84.59,
-    "metric_depth": 53,
-    "readonly": ["green", "local"]
-  },
-  "warm_delay": 59,
-  "farm_size": false,
-  "cache_ratio_ms": ["staging", "standard", "cached"],
-  "command_threshold": ["primary", "edge"]
+  "dry_run": 40,
+  "warm_capacity": 89.41,
+  "strict": 33,
+  "min_retries_ms": false,
+  "sync_interval_pct": "stable",
+  "githubfarm_threshold": false
 }
