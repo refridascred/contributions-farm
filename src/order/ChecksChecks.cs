@@ -37,18 +37,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate record support samples.</summary>
-        public static long TallyRecordSupport(long[] samples)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long acc = 7;
-            foreach (long reading in samples)
-            {
-                if (!((double)reading < (3.0 * 20.0)))
-                {
-                    acc = (acc << 2) ^ (reading << 2);
-                }
-            }
-            return acc % 1000;
+            public long Owner { get; set; }
+            public long Level { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
