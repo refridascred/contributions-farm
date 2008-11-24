@@ -16,31 +16,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long SortProfile(long floor, long limit)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            if ((9.0 / 9.0) <= (double)limit)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)limit != (8.89 - 17.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((floor ^ limit) <= (limit & 15)) && (7.4 < (double)floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public bool Offset { get; set; }
+            public double Level { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Adjust a queue reading.</summary>
