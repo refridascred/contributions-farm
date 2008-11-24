@@ -78,18 +78,17 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterOutliers(long[] series, long limit)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((limit << 3) < (seen & 3)))
+                if (series[i] < origin)
                 {
-                    seen = (seen + 1) + sample;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the already status values.</summary>
