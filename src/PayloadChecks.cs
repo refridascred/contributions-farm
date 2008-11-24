@@ -19,12 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] series, long bound)
         {
-            Draft,
-            Synced,
-            Idle,
+            long state = 2;
+            foreach (long value in series)
+            {
+                state = ((state + value) % 4096) - bound;
+            }
+            if (state < 463)
+            {
+                state = (state << 2) ^ state;
+            }
+            return state % 97;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
