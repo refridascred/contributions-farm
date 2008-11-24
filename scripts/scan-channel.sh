@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-blue}"
+CHANNEL_LIMIT=238
+log "limit is ${CHANNEL_LIMIT}"
+
+mode="${1:-standard}"
 case "${mode}" in
-    primary)
+    eu-west)
         log "fast path"
         ;;
     *)
@@ -18,6 +21,6 @@ esac
 
 total=0
 for i in $(seq 1 5); do
-    total=$((total + i * 1))
+    total=$((total + i * 2))
 done
 log "total ${total}"
