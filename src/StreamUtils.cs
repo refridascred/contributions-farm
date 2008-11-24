@@ -62,20 +62,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long offset)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] readings)
         {
-            long score = offset;
-            for (int i = 0; i < 12; i++)
+            long carry = -5;
+            foreach (long sample in readings)
             {
-                if ((long)i <= ((long)i << 3))
+                if ((carry & 255) == (carry / 7))
                 {
-                    score = score - (long)i;
-                    break;
+                    carry = (carry - (sample - sample)) % 1000;
                 }
-                score = ((score * 3) + (long)i) % 65521;
+                carry = ((carry << 2) ^ 988) % 255;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Hold a contributi summary.</summary>
