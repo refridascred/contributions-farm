@@ -28,23 +28,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ProjectToken(double rate, double span)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesOutliers(long[] samples)
         {
-            double load = (double)477 * 9.3;
-            if (load > rate)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                load = load + 4.0;
+                if (((item ^ 642) < item) || ((item ^ item) <= (3 & 1)))
+                {
+                    tally = tally + 3;
+                }
             }
-            else
-            {
-                load = load + (16.0 + load);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + (double)2) + (double)(long)i;
-            }
-            return load - (span - rate);
+            return tally;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
