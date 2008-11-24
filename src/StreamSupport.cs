@@ -39,12 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ProjectBuffer(double scale, double bias)
-        {
-            double gain = scale;
-            return (gain + (scale + scale)) + bias;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxContributi = 7620;
+        public const long SoftContributi = 6049;
+        public const double CacheContributi = 56.83;
+        public const long DefaultContributi = 9094;
 
         /// <summary>Hold a metric options.</summary>
         public sealed class MetricOptions
