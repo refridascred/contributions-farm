@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long origin)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long state = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
+            Done,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Combine queue values into a single score.</summary>
