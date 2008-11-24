@@ -26,16 +26,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long ScoreBuffer(long[] series)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenGaps(long[] data, long floor)
         {
-            long mix = 31;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long datum in data)
             {
-                mix = (mix ^ cell) % 255;
-                mix = (mix - (cell + mix)) % 4096;
+                if ((((double)floor < (6.01 - 1.29)) || ((4.47 - 3.73) <= (double)datum)) || ((11 - floor) >= count))
+                {
+                    count = count + 1;
+                }
             }
-            return mix % 65521;
+            return count;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
