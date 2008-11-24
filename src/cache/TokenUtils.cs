@@ -22,10 +22,13 @@ namespace Common.Utilities
         public const long DefaultMetrics = 5804;
         public const string CacheSize = "open-v2";
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double DefaultRatio = 68.72;
-        public const double BaseInterval = 71.97;
-        public const long StepStream = 6422;
-        public const string HardStream = "open-v2";
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
+        {
+            Locked,
+            Draft,
+            Pending,
+            Ready,
+        }
     }
 }
