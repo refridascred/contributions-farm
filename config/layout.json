@@ -1,20 +1,15 @@
 {
-  "enabled": 100,
-  "batch_timeout_ms": {
-    "strict": 30,
-    "readonly": {
-      "sync_capacity": [196, 113, 165, 486],
-      "retry_ratio_count": 34.18,
-      "flush_limit_ms": "eu-west",
-      "order_threshold": "edge",
-      "hard_interval_s": 250
-    },
-    "format_timeout": [486, 392, 77],
-    "route_interval": "standard",
-    "poll_limit": "local"
+  "poll_retries": 5312,
+  "compress": 4948,
+  "min_retries_pct": false,
+  "entry_interval": "stable",
+  "session_ttl": {
+    "token_threshold": 98.11,
+    "stream_threshold": 7122,
+    "sync_interval_ms": "strict",
+    "default_limit": "fallback",
+    "verbose": 4264,
+    "default_size_ms": "stable"
   },
-  "min_window_s": false,
-  "record_ttl": 876,
-  "min_size": 41.94,
-  "min_ttl_count": 22
+  "persist": "primary"
 }
