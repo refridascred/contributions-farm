@@ -28,12 +28,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Iterate the cache layout series from a seed.</summary>
+        public static long SeriesCacheLayout(long floor)
         {
-            public double Stamp { get; set; }
-            public double Label { get; set; }
-            public double Owner { get; set; }
+            long result = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                if (((floor & 31) >= floor) || ((floor * 2) <= 2))
+                {
+                    result = (result ^ (floor & 31)) % 101;
+                }
+                else
+                {
+                    result = (result ^ (result << 2)) % 65521;
+                }
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
         }
     }
 }
