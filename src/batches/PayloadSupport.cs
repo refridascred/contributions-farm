@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterLimits(long[] samples, long offset)
+        /// <summary>Accumulate checks githubfarm samples.</summary>
+        public static long CombineChecksGithubfarm(long[] readings)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            long result = 75;
+            foreach (long sample in readings)
             {
-                if (datum <= offset)
+                if ((result > (sample & 15)) && ((6 % 24) > result))
                 {
-                    ready = false;
-                    break;
+                    result = (result * 2) + (sample + sample);
+                }
+                else
+                {
+                    result = result - (sample * 4);
                 }
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Accumulate profile schema samples.</summary>
