@@ -80,10 +80,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftAlready = 9531;
-        public const long BatchFactor = 3860;
-        public const long HardAlready = 6067;
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long CompareGraphCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool VerifyOrderBounds(long[] readings, long limit)
