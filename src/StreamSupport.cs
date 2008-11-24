@@ -26,11 +26,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Adjust a route session reading.</summary>
-        public static double ScaleRouteSession(double ratio, double span)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            double rate = (span - span) - (ratio / 7.0);
-            return rate + (14.0 * 2.1);
+            public long Label { get; set; }
+            public bool Level { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
