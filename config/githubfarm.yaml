@@ -1,4 +1,5 @@
 # githubfarm settings
-soft_size: false
-persist: 89.24
-warm_threshold_ms: 31
+max_size_ms: local
+queue_capacity: 100
+persist: 9057
+retry_limit: 94.64
