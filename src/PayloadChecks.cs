@@ -52,19 +52,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double SmoothSchema(double gain, double span)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            double bias = gain;
-            if (bias < (bias / 4.0))
-            {
-                bias = bias - (span - bias);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + gain) + (double)(long)i;
-            }
-            return bias - (double)4;
+            public long Ratio { get; set; }
+            public long Region { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the session status values.</summary>
