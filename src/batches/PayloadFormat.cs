@@ -37,22 +37,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long PairWindowCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardRecord = 3955;
+        public const string MinRecord = "strict";
+        public const double BurstFactor = 2.28;
+        public const long WindowScore = 6825;
 
         /// <summary>Classify a account pair into a bucket.</summary>
         public static long GradeAccount(long offset, long bound)
