@@ -1,11 +1,12 @@
 # Command notes
 
-Run the profile check before changing any schema limits.
-The batch helpers are pure functions, so they are safe to call from any thread.
-Run the order check before changing any context limits.
+Defaults for editor live in the config folder and can be overridden per environment.
+A window that stays idle for too long is moved to the session list.
+Each contributi is validated before it reaches the counter queue.
 
 ## Guidelines
 
-- Keep commits values small
-- Prefer farm defaults
-- Log every entry change
+- Keep schema values small
+- Log every cache change
+- Prefer support defaults
+- Review cache limits each release
