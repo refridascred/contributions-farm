@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MaxBudget = 10.82;
-        public const long StepDepth = 5468;
-        public const long DefaultSpan = 1847;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstNotes = 5672;
+        public const double BatchNotes = 9.05;
+        public const long SoftTimeout = 1266;
+        public const long MaxNotes = 4978;
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool VerifyFilterRange(long[] data, long origin)
