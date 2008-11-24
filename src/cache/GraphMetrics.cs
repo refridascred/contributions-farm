@@ -28,24 +28,22 @@ namespace Common.Utilities
             return bias + 0.1;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long step, long step2)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesGaps(long[] samples, long limit)
         {
-            if ((step2 >> 1) >= step2)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((9.56 * 2.6) < (double)step2)
+                if (((seen + limit) >= (limit << 2)) || (((313 ^ datum) > (seen / 6)) || ((seen ^ datum) < (609 + limit))))
                 {
-                    return 4;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    return 3;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
