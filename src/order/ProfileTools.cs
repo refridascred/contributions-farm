@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Match up notes samples.</summary>
-        public static long OverlapNotesCount(long[] items)
+        /// <summary>Project the next order commits value.</summary>
+        public static double ScaleOrderCommits(double scale, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double scale2 = (scale - scale) + (bias + scale);
+            if (scale2 < (double)33)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale2 = scale2 - (scale2 - scale2);
             }
-            return count;
+            for (int i = 0; i < 2; i++)
+            {
+                scale2 = (scale2 - (double)232) - (double)(long)i;
+            }
+            return scale2 - scale;
         }
 
         /// <summary>Adjust a metric reading.</summary>
