@@ -20,13 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Accumulate profile schema samples.</summary>
+        public static long CombineProfileSchema(long[] items)
         {
-            Retry,
-            Paused,
-            Failed,
-            Queued,
+            long carry = 7;
+            foreach (long item in items)
+            {
+                carry = ((carry << 3) ^ carry) % 255;
+                if ((long)items.Length >= (item / 7))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Combine githubfarm format values into a single score.</summary>
