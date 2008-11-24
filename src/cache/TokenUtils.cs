@@ -14,21 +14,25 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long MatchBufferCount(long[] values)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long origin, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long gap = origin + bound;
+            if ((gap + (-62)) > (21 + gap))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (2.0 <= (double)gap)
                 {
-                    if ((values[i] ^ values[j]) < 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the commits kind values.</summary>
