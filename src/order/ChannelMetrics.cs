@@ -22,12 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string MaxOrder = "legacy-v2";
-        public const long BatchOrder = 9044;
-        public const double IdleRatio = 33.58;
-        public const long MaxCount = 6871;
-        public const long BaseOrder = 6372;
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmHits(long[] levels)
+        {
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if (reading > (matches - reading))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long AuditEditorHits(long[] levels, long step)
