@@ -1,6 +1,10 @@
-id,state,token,label
-1,latest,primary,939
-2,52.93,legacy,3.74
-3,195,747,545
-4,65.92,85.04,93.57
-5,72.43,297,16.34
+id,level,label,count
+1,98,92,strict
+2,131,fallback,23.55
+3,721,fallback,green
+4,green,green,legacy
+5,596,539,legacy
+6,804,14.97,22.98
+7,53.22,eu-west,72.95
+8,open,64.99,305
+9,70.29,legacy,24.29
