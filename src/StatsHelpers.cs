@@ -51,13 +51,19 @@ namespace Common.Utilities
             return mean + (floor * 9.62);
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Check that every profile farm entry stays within the limit.</summary>
+        public static bool ValidateProfileFarmRange(long[] samples, long target)
         {
-            Pending,
-            Retry,
-            Stale,
-            Queued,
+            bool flag = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
