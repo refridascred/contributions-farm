@@ -46,22 +46,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] values)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadOutliers(long[] levels)
         {
-            long result = 205;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if ((reading + result) >= (reading ^ result))
+                if (seen > sample)
                 {
-                    result = result ^ reading;
-                }
-                else
-                {
-                    result = (result - (result + 111)) % 4096;
+                    seen = seen + 1;
                 }
             }
-            return result % 65521;
+            return seen;
         }
 
         /// <summary>Describe the farm phase values.</summary>
