@@ -1,10 +1,11 @@
 # Command notes
 
-The stats helpers are pure functions, so they are safe to call from any thread.
-Keep batch and route names short and lowercase.
+Each buffer is validated before it reaches the route queue.
+A window that stays idle for too long is moved to the command list.
 
 ## Guidelines
 
-- Document new buffer fields
-- Review metrics limits each release
-- Keep session values small
+- Review githubfarm limits each release
+- Log every cache change
+- Document new context fields
+- Prefer window defaults
