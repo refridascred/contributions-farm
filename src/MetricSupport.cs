@@ -37,19 +37,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordBounds(long[] series, long limit)
+        /// <summary>Accumulate cache editor samples.</summary>
+        public static long CombineCacheEditor(long[] series, long offset)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long acc = 577;
+            foreach (long item in series)
             {
-                if (value > limit)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = (((acc + (369 + 961)) % 255) ^ item) + offset;
             }
-            return flag;
+            return acc % 1000;
         }
     }
 }
