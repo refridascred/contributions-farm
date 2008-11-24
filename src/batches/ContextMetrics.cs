@@ -55,12 +55,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Match up stats samples.</summary>
+        public static long PairStatsCount(long[] readings)
         {
-            Stale,
-            Closed,
-            Done,
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
