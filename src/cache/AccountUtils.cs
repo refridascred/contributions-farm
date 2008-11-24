@@ -22,17 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long SeekStreamIndex(long[] data, long step)
+        /// <summary>Validate account buffer readings against a bound.</summary>
+        public static bool CheckAccountBufferBounds(long[] items, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long datum in items)
             {
-                if ((data[i] == step) && ((data[i] % 3) == 0))
+                if (datum <= offset)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
