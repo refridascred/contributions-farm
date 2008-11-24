@@ -12,21 +12,31 @@ namespace Common.Utilities
             return (ratio + (floor * 6.0)) + gain;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long OverlapNotesCount(long[] values)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long bound, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((bound >= (bound - bound)) && (bound < target))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (((target - target) < bound) || (target > bound))
                 {
-                    if ((values[i] ^ values[j]) > 15)
+                    return 5;
+                }
+                else
+                {
+                    if ((target - target) == (21 % 12))
                     {
-                        matches = matches + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Digest a series of order entries.</summary>
