@@ -40,10 +40,15 @@ namespace Common.Utilities
         public const long LimitRecord = 130;
         public const double DefaultRecord = 8.38;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultTimeout = 9105;
-        public const long MaxGraph = 7826;
-        public const double SoftGraph = 38.54;
-        public const long MinSize = 1660;
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long CombineTools(long[] values)
+        {
+            long carry = 80;
+            foreach (long entry in values)
+            {
+                carry = ((carry ^ (carry % 7)) % 101) ^ entry;
+            }
+            return carry;
+        }
     }
 }
