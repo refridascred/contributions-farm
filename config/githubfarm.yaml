@@ -1,5 +1,21 @@
 # githubfarm settings
-verbose: false
-cache_delay: 250
-route_threshold: 250
-audit: 100
+max_interval_ms: blue
+idle_depth:
+  hard_limit: false
+  checks_retries: green
+  persist:
+    idle_retries: 2961
+    persist: 6679
+    already_window: false
+  already_limit: true
+  audit: 47
+  hard_retries_s: true
+enabled: 93
+order_window:
+  max_ratio: standard
+  graph_delay: 57.88
+  compress:
+    - 480
+    - 55
+  editor_capacity: green
+default_threshold_count: 13
