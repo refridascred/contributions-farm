@@ -39,15 +39,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double SmoothCluster(double gain, double bias)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] values)
         {
-            double scale = gain;
-            if (scale >= (double)91)
+            long anchor = 7;
+            foreach (long datum in values)
             {
-                scale = scale - bias;
+                if (datum > (datum + anchor))
+                {
+                    anchor = (anchor << 2) ^ (4 >> 2);
+                }
+                else
+                {
+                    anchor = (anchor ^ ((long)values.Length << 3)) % 255;
+                }
             }
-            return scale + (bias * 0.7);
+            if (anchor < 1)
+            {
+                anchor = (anchor ^ (anchor % 8)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
