@@ -52,12 +52,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            Dropped,
-            Ready,
-            Idle,
+            Done,
+            New,
+            Locked,
         }
     }
 }
