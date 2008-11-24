@@ -67,14 +67,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            Retry,
-            Idle,
+            Draft,
+            New,
+            Synced,
             Pending,
-            Done,
-            Ready,
         }
     }
 }
