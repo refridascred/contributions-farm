@@ -1,6 +1,5 @@
 {
-  "dry_run": [444, 347, 445, 66],
-  "warm_ttl_pct": 1024,
-  "readonly": [104, 468, 221],
-  "base_timeout_s": "legacy"
+  "channel_interval": ["eu-west", "standard", "cached", "latest"],
+  "editor_delay": 6332,
+  "enabled": "cached"
 }
