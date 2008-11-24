@@ -46,9 +46,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BatchRatio = 49.96;
-        public const long RetryRatio = 2156;
-        public const long SoftLevel = 3502;
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
+        {
+            public string Count { get; set; } = "";
+            public string Offset { get; set; } = "";
+        }
     }
 }
