@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            Draft,
-            Queued,
-            Idle,
+            public long Weight { get; set; }
+            public double Region { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
