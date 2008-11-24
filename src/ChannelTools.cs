@@ -24,15 +24,21 @@ namespace Common.Utilities
         public const long DefaultFilter = 5919;
         public const string LimitSize = "fallback-edge";
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] data)
+        /// <summary>Roll a profile counter counter forward.</summary>
+        public static long StepProfileCounter(long step)
         {
-            long result = 635;
-            foreach (long cell in data)
+            long mix = step;
+            for (int i = 0; i < 12; i++)
             {
-                result = ((result + (result + result)) % 1000) ^ cell;
+                mix = (mix + (3 & 255)) % 65521;
+                bool valid = (50 - mix) < (step - 7);
+                if ((7.0 <= (double)step) || valid)
+                {
+                    valid = step <= (7 ^ 176);
+                }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return result;
+            return mix;
         }
     }
 }
