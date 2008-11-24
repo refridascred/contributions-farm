@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long OverlapLayoutCount(long[] items)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long RollPayload(long step)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                mark = (mark - (4 + mark)) % 255;
+                if ((double)mark >= (3.0 * 19.0))
                 {
-                    if ((items[i] + items[j]) != 6)
-                    {
-                        count = count + 1;
-                    }
+                    mark = (mark ^ (-83)) % 1000;
+                    mark = ((mark * 5) + (-34)) % 97;
                 }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Define token limits and defaults.</summary>
