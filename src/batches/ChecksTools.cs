@@ -38,12 +38,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinCommits = 6566;
-        public const long BatchFactor = 5229;
-        public const long MaxCommits = 8193;
-        public const string BurstWidth = "primary";
-        public const double HardCommits = 48.12;
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiGaps(long[] values)
+        {
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((392 - reading) > matches)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string DefaultMetrics = "alpha-1";
