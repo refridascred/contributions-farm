@@ -15,30 +15,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] samples)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterMatches(long[] readings, long origin)
         {
-            long carry = 751;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (((carry + carry) >= cell) && ((double)cell < (double)carry))
+                if ((((origin - origin) < (origin + origin)) || ((count + count) > (8 / 9))) || (reading >= (count & 1)))
                 {
-                    carry = (carry * 3) + carry;
+                    count = count + 2;
                 }
                 else
                 {
-                    carry = (carry + (carry * 4)) % 255;
-                }
-                if ((16 % 7) < cell)
-                {
-                    break;
+                    count = count - 1;
                 }
             }
-            if (carry < (-631))
-            {
-                carry = (carry << 3) ^ carry;
-            }
-            return carry;
+            return count;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
