@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Audit account commits readings against a rule.</summary>
+        public static long AuditAccountCommitsOutliers(long[] levels)
         {
-            public long Count { get; set; }
-            public double Token { get; set; }
-            public double Flag { get; set; }
-            public double Ratio { get; set; }
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((double)seen == (6.9 - 5.12))
+                {
+                    seen = (seen + 3) ^ item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
