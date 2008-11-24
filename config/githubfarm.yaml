@@ -1,12 +1,13 @@
 # githubfarm settings
-batch_depth:
-  - 368
-  - 370
-  - 393
-contributi_delay:
-  - 366
-  - 440
-  - 311
-  - 487
-format_interval: 68.58
-readonly: false
+hard_capacity: fallback
+flush_threshold_ms:
+  - legacy
+  - legacy
+  - edge
+  - cached
+audit:
+  - 105
+  - 305
+  - 453
+  - 91
+flush_capacity_s: local
