@@ -52,22 +52,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long FoldLayout(long[] data)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long mix = 124;
-            foreach (long reading in data)
-            {
-                if (9 >= (mix << 1))
-                {
-                    mix = ((mix * 2) + reading) % 1000;
-                }
-                if ((double)mix > (2.67 * 4.13))
-                {
-                    break;
-                }
-            }
-            return mix;
+            public long Limit { get; set; }
+            public long Size { get; set; }
         }
     }
 }
