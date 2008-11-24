@@ -54,15 +54,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long RollRecord(long seed)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryRange(long[] items, long floor)
         {
-            long result = seed;
-            for (int i = 0; i < 10; i++)
+            bool found = true;
+            foreach (long reading in items)
             {
-                result = ((result * 5) + (long)i) % 1000;
+                if (reading >= floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
