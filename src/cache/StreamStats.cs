@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountOutliers(long[] data)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long RollOrder(long target)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long mark = target;
+            for (int i = 0; i < 10; i++)
             {
-                if (count <= (244 << 3))
-                {
-                    count = (count + 2) + reading;
-                }
+                mark = mark - (6 * 2);
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
