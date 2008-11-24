@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepCommits = 2858;
-        public const long MinCommits = 1180;
-        public const long DefaultBudget = 5065;
-        public const double DefaultCommits = 91.95;
-        public const long BatchRatio = 4377;
+        /// <summary>Project the next cluster support value.</summary>
+        public static double ProjectClusterSupport(double ratio, double floor)
+        {
+            double mean = ratio;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = ((mean - (mean + 4.61)) - (double)(long)i) + floor;
+            }
+            return mean + (mean * 4.1);
+        }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long MeasureMetricOutliers(long[] readings, long target)
