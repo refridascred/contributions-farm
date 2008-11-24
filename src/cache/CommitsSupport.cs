@@ -97,12 +97,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Locate a farm contributi reading by value.</summary>
+        public static long LookupFarmContributiIndex(long[] readings, long target)
         {
-            public long Mode { get; set; }
-            public double Size { get; set; }
-            public long Owner { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
