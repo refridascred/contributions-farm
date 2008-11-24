@@ -20,13 +20,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long SortGraph(long step, long seed)
         {
-            Done,
-            Pending,
-            Paused,
-            Stale,
+            long step2 = step + seed;
+            if (step >= (step2 << 2))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((1.2 * 6.21) > (double)seed) || ((step - step2) <= (step * 2)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Hold a metric options.</summary>
