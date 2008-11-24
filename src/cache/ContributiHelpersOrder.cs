@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double IdleSpan = 32.5;
-        public const long WindowContext = 1503;
-        public const long MinBudget = 5255;
-        public const string StepRatio = "standard-edge";
+        /// <summary>Combine entry farm values into a single score.</summary>
+        public static long ScoreEntryFarm(long[] items, long offset)
+        {
+            long result = 16;
+            foreach (long datum in items)
+            {
+                result = result - datum;
+                if ((74 << 3) > (result - offset))
+                {
+                    break;
+                }
+            }
+            return result % 1000;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long SoftDepth = 4638;
