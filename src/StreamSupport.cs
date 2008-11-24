@@ -12,15 +12,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Adjust a graph githubfarm reading.</summary>
-        public static double AdjustGraphGithubfarm(double scale, double offset)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            double mean = (double)(259 % 5);
-            if (mean >= scale)
-            {
-                mean = mean + (scale - offset);
-            }
-            return mean + scale;
+            Draft,
+            Pending,
+            Queued,
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
