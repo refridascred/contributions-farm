@@ -37,18 +37,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many contributi cache samples are out of range.</summary>
-        public static long CountContributiCacheOutliers(long[] data, long offset)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if (offset < (value - count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public bool Offset { get; set; }
+            public long Token { get; set; }
+            public double Label { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
