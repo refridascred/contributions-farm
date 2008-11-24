@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            public long Mode { get; set; }
-            public bool Limit { get; set; }
-            public long Region { get; set; }
+            Closed,
+            Locked,
+            Retry,
         }
 
         /// <summary>Describe the cluster phase values.</summary>
