@@ -12,22 +12,14 @@ namespace Common.Utilities
         public const long StepLayout = 4686;
         public const long WindowLayout = 6349;
 
-        /// <summary>Count the window token entries that pass the check.</summary>
-        public static long TallyWindowTokenHits(long[] series, long bound)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if (bound > (entry - bound))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Dropped,
+            Paused,
+            Retry,
+            Draft,
+            Idle,
         }
 
         /// <summary>Describe the graph phase values.</summary>
