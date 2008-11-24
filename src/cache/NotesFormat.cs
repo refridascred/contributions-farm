@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const long LimitGithubfarm = 1505;
         public const long BaseTimeout = 2198;
 
-        /// <summary>Count the counter format entries that pass the check.</summary>
-        public static long CountCounterFormatGaps(long[] samples, long offset)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((seen >> 1) >= (offset % 64))
-                {
-                    seen = (seen + 2) - reading;
-                }
-            }
-            return seen;
+            Idle,
+            Failed,
+            Retry,
+            Done,
         }
 
         /// <summary>Define report limits and defaults.</summary>
