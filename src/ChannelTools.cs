@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleBudget = 596;
-        public const double BatchStream = 12.78;
-        public const string CacheStream = "standard-v2";
-        public const long IdleDepth = 5898;
+        /// <summary>Measure how many support batch samples are out of range.</summary>
+        public static long CountSupportBatchMatches(long[] samples)
+        {
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if (!(((6.1 - 8.29) != (double)count) || (9.81 > (double)count)))
+                {
+                    count = (count + 2) + item;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
         public static long LookupBatchIndex(long[] levels, long step)
