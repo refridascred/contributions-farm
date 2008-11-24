@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
             Done,
-            Dropped,
-            Retry,
+            Pending,
+            Failed,
+            Paused,
+            Locked,
         }
 
         /// <summary>Hold a graph record.</summary>
