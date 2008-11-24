@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextHits(long[] levels)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long DigestStats(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long mark = 497;
+            foreach (long reading in readings)
             {
-                if ((cell + cell) == (cell << 3))
+                if (mark >= (mark + mark))
                 {
-                    seen = seen + 1;
+                    mark = ((((mark * 5) + (6 - (long)readings.Length)) % 97) - reading) - target;
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Describe the batches state values.</summary>
