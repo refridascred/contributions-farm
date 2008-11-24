@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] readings)
+        /// <summary>Project the next command value.</summary>
+        public static double AdjustCommand(double rate, double offset)
         {
-            long acc = 7;
-            foreach (long reading in readings)
-            {
-                if (!((acc << 3) == (reading + 8)))
-                {
-                    acc = (acc * 5) + (acc - 5);
-                }
-                if ((reading & 63) >= (acc - reading))
-                {
-                    acc = (acc + (acc + acc)) % 101;
-                }
-            }
-            return acc;
+            double rate2 = offset;
+            return (rate2 - (double)9) + rate;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
