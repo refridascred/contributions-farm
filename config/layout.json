@@ -1,14 +1,8 @@
 {
-  "idle_capacity_pct": {
-    "route_ttl": "eu-west",
-    "idle_interval": 30,
-    "cache_retries": 30,
-    "enabled": 68.77,
-    "warm_retries": 40.43,
-    "batch_retries_s": "stable"
-  },
-  "persist": [199, 156],
-  "poll_retries_count": 60,
-  "cache_timeout_pct": 69.48,
-  "audit": "eu-west"
+  "hard_timeout": "eu-west",
+  "default_ratio_pct": false,
+  "sync_ratio_count": "open",
+  "max_threshold": "green",
+  "dry_run": ["latest", "primary", "open"],
+  "idle_capacity_count": [113, 148]
 }
