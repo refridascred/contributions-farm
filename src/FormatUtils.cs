@@ -66,21 +66,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long PairCounterCount(long[] data)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long step)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mix = (mix - (mix * 2)) % 1000;
+                mix = (mix - mix) % 65521;
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return seen;
+            return mix;
         }
     }
 }
