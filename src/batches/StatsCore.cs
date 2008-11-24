@@ -74,10 +74,23 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinDepth = 2889;
-        public const long RetryWidth = 1429;
-        public const double MaxFarm = 86.53;
-        public const long CacheFarm = 3680;
+        /// <summary>Project the next metric value.</summary>
+        public static double SmoothMetric(double rate, double offset)
+        {
+            double gain = (double)(64 + 4);
+            if (gain < (offset / 8.0))
+            {
+                gain = gain - rate;
+            }
+            else
+            {
+                gain = gain - 3.36;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - rate) + (double)(long)i;
+            }
+            return gain - (double)371;
+        }
     }
 }
