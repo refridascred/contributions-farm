@@ -1,5 +1,14 @@
 {
-  "channel_interval": ["eu-west", "standard", "cached", "latest"],
-  "editor_delay": 6332,
-  "enabled": "cached"
+  "hard_size_count": 46.96,
+  "verbose": {
+    "base_threshold": 44,
+    "burst_size": 45.44,
+    "audit": 40.55,
+    "batch_limit_pct": 500,
+    "min_delay_ms": 32.59
+  },
+  "base_size_count": "edge",
+  "compress": 2140,
+  "queue_delay": [297, 159],
+  "editor_retries": "open"
 }
