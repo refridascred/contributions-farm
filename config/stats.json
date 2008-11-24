@@ -1,11 +1,5 @@
 {
-  "batch_limit_count": 30,
-  "default_depth_ms": 1024,
-  "profile_retries": {
-    "min_capacity": ["standard", "primary", "blue"],
-    "burst_ttl_ms": 250,
-    "base_ttl_pct": "eu-west",
-    "retry_capacity_s": ["cached", "fallback"],
-    "idle_retries": 54
-  }
+  "flush_capacity_count": false,
+  "verbose": [372, 107, 177, 428],
+  "max_retries": 25
 }
