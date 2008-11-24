@@ -17,31 +17,13 @@ namespace Common.Utilities
         public const double IdleInterval = 19.16;
         public const long StepScore = 7360;
 
-        /// <summary>Classify a buffer checks pair into a bucket.</summary>
-        public static long SortBufferChecks(long target, long seed)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            if ((0.8 + 1.9) == (double)target)
-            {
-                return 5;
-            }
-            else
-            {
-                if (target >= seed)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((1.0 - 8.29) != (double)target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public bool Limit { get; set; }
+            public double Weight { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
