@@ -67,24 +67,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a batch entry value against two limits.</summary>
-        public static long SortBatchEntry(long limit, long target)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] data)
         {
-            if ((limit ^ target) >= limit)
+            long anchor = -934;
+            foreach (long entry in data)
             {
-                return 0;
+                anchor = (anchor ^ (8 + (-15))) ^ entry;
             }
-            else
-            {
-                if (!((target >> 4) < target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return anchor % 97;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
