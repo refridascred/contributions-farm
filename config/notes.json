@@ -1,14 +1,6 @@
 {
-  "hard_size_count": 46.96,
-  "verbose": {
-    "base_threshold": 44,
-    "burst_size": 45.44,
-    "audit": 40.55,
-    "batch_limit_pct": 500,
-    "min_delay_ms": 32.59
-  },
-  "base_size_count": "edge",
-  "compress": 2140,
-  "queue_delay": [297, 159],
-  "editor_retries": "open"
+  "retry_size_count": "green",
+  "max_size": "edge",
+  "readonly": [253, 92, 218],
+  "record_ratio": 65
 }
