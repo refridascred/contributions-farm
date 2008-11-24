@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Accumulate order entry samples.</summary>
+        public static long ScoreOrderEntry(long[] levels, long limit)
         {
-            public string Score { get; set; } = "";
-            public double Limit { get; set; }
+            long mark = 2;
+            foreach (long reading in levels)
+            {
+                if (!((reading + limit) < (62 + limit)))
+                {
+                    mark = (mark ^ mark) % 65521;
+                }
+                if (!(5 < limit))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
