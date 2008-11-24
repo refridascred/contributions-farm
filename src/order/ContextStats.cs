@@ -48,14 +48,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenOutliers(long[] data)
         {
-            Synced,
-            Paused,
-            Locked,
-            Stale,
-            Dropped,
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((((7.12 - 6.4) < (double)hits) || ((value + (long)data.Length) < (hits + value))) || (((value + hits) <= (value - hits)) && ((value + hits) < value)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
