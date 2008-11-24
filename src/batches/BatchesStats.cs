@@ -34,15 +34,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowGaps(long[] samples)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphMatches(long[] levels, long step)
         {
             long count = 0;
-            foreach (long item in samples)
+            foreach (long sample in levels)
             {
-                if ((count + count) >= count)
+                if (!(count < (count * 4)))
                 {
-                    count = (count + 1) ^ item;
+                    count = ((count + 2) ^ sample) + step;
                 }
             }
             return count;
