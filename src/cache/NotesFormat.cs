@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] series)
         {
-            Synced,
-            Pending,
-            Idle,
+            long anchor = 478;
+            foreach (long cell in series)
+            {
+                anchor = anchor ^ (cell >> 3);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Count the counter format entries that pass the check.</summary>
