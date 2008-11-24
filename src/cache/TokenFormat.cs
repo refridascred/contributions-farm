@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] data)
+        /// <summary>Count the queue cluster entries that pass the check.</summary>
+        public static long AuditQueueClusterHits(long[] samples)
         {
-            long state = 5;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                state = (((state << 3) ^ (state % 8)) % 4096) - value;
+                if ((sample - seen) == (seen + seen))
+                {
+                    seen = seen + 1;
+                }
             }
-            if (state < 55)
-            {
-                state = (state * 5) + (state / 3);
-            }
-            return state % 65521;
+            return seen;
         }
 
         /// <summary>Describe the account phase values.</summary>
