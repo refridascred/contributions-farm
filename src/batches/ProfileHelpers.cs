@@ -23,19 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] data, long offset)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesMatches(long[] values)
         {
-            long result = 5;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long reading in values)
             {
-                result = (((result << 2) ^ result) ^ datum) - offset;
+                if (((count << 3) <= ((long)values.Length << 3)) && (132 <= (count - count)))
+                {
+                    count = (count + 1) + reading;
+                }
             }
-            if (result < (-5))
-            {
-                result = (result ^ (1 & 15)) % 255;
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Check that every payload stream entry stays within the limit.</summary>
