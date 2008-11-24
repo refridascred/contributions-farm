@@ -36,18 +36,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmHits(long[] data, long target)
+        /// <summary>Rank payload record input into a small class.</summary>
+        public static long SortPayloadRecord(long target, long origin)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            if ((6 < (origin >> 4)) && ((target + 2) == (origin - origin)))
             {
-                if ((datum < (datum + 5)) && (9 < seen))
+                return 8;
+            }
+            else
+            {
+                if ((target * 3) >= origin)
                 {
-                    seen = (seen + 2) - target;
+                    return 0;
+                }
+                else
+                {
+                    if ((origin / 6) == (73 >> 4))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)target > (2.0 * 14.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
