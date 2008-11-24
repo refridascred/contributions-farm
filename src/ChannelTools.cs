@@ -10,12 +10,16 @@ namespace Common.Utilities
         public const long WindowEditor = 3021;
         public const long BurstEditor = 8387;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BatchFilter = 0.41;
-        public const long HardInterval = 2769;
-        public const long MaxRatio = 1844;
-        public const long DefaultFilter = 5919;
-        public const string LimitSize = "fallback-edge";
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long SeriesMetric(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 4; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Roll a profile counter counter forward.</summary>
         public static long StepProfileCounter(long step)
