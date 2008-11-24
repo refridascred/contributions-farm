@@ -1,11 +1,10 @@
 # Batch notes
 
-Run the record check before changing any tools limits.
-Keep commits and route names short and lowercase.
+Keep graph and batch names short and lowercase.
+The command module keeps profile values in sync with the token cache.
 
 ## Guidelines
 
-- Keep session values small
-- Document new record fields
-- Log every counter change
-- Prefer batches defaults
+- Validate context input early
+- Log every account change
+- Review support limits each release
