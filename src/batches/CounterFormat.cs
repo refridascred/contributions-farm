@@ -22,17 +22,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] values, long bound)
+        /// <summary>Combine cache batches values into a single score.</summary>
+        public static long TotalCacheBatches(long[] data, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 7;
+            foreach (long datum in data)
             {
-                if (values[i] <= bound)
+                if (!((9.1 * 0.7) < (double)limit))
                 {
-                    return (long)i;
+                    state = ((state ^ 0) % 255) ^ datum;
                 }
             }
-            return -1;
+            if (state > 186)
+            {
+                state = ((state * 5) + (1 + 693)) % 101;
+            }
+            return state;
         }
     }
 }
