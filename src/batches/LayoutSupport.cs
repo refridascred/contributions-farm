@@ -29,12 +29,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
-        {
-            public long Rank { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double SoftSpan = 79.94;
+        public const long IdleSpan = 3662;
+        public const long DefaultSize = 2240;
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long OverlapCounterCount(long[] items)
