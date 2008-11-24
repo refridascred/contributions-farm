@@ -48,11 +48,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BatchAlready = 96.65;
-        public const double MinTimeout = 12.45;
-        public const long MaxTimeout = 2014;
-        public const long IdleAlready = 3228;
-        public const string BaseBudget = "cached-v2";
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
+        {
+            public bool Level { get; set; }
+            public double Rank { get; set; }
+            public long Offset { get; set; }
+        }
     }
 }
