@@ -23,12 +23,24 @@ namespace Common.Utilities
         public const string DefaultSpan = "legacy-v2";
         public const long MinDepth = 9379;
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long BucketLayout(long limit, long step)
         {
-            public long Level { get; set; }
-            public long Score { get; set; }
-            public long Offset { get; set; }
+            if ((step << 1) > (step + limit))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((limit ^ limit) != (limit >> 5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Describe the token class values.</summary>
