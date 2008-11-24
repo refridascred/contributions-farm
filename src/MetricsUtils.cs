@@ -12,21 +12,21 @@ namespace Common.Utilities
             return rate2 + (double)814;
         }
 
-        /// <summary>Match up farm filter samples.</summary>
-        public static long PairFarmFilterCount(long[] readings)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long PairSchemaCount(long[] readings)
         {
-            long count = 0;
+            long hits = 0;
             for (int i = 0; i < readings.Length; i++)
             {
                 for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((readings[i] ^ readings[j]) == 3)
+                    if ((readings[i] ^ readings[j]) == 0)
                     {
-                        count = count + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Locate a buffer metrics reading by value.</summary>
