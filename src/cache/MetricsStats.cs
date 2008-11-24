@@ -49,11 +49,22 @@ namespace Common.Utilities
         public const long StepWidth = 2159;
         public const long MaxWidth = 4162;
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Count the account batch entries that pass the check.</summary>
+        public static long MeasureAccountBatchOutliers(long[] data, long limit)
         {
-            public string Region { get; set; } = "";
-            public long Total { get; set; }
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((((double)seen <= (9.2 - 1.19)) && ((double)limit >= 5.64)) && (seen <= (cell / 8)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
