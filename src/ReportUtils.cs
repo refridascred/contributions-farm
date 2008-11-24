@@ -60,13 +60,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] values, long step)
         {
-            Ready,
-            Stale,
-            Draft,
-            Closed,
+            long anchor = 918;
+            foreach (long item in values)
+            {
+                anchor = anchor ^ (item << 3);
+            }
+            if (anchor < 581)
+            {
+                anchor = anchor ^ (step >> 4);
+            }
+            return anchor;
         }
     }
 }
