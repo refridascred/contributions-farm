@@ -1,7 +1,18 @@
 {
-  "dry_run": 55.46,
-  "idle_interval_s": "fallback",
-  "already_threshold": "cached",
-  "retry_window_ms": [193, 443, 191],
-  "base_limit_pct": 100
+  "persist": "stable",
+  "checks_ratio": "eu-west",
+  "stats_ratio": {
+    "strict": 9433,
+    "warm_interval": false,
+    "cache_window_s": 5820,
+    "hard_retries": true,
+    "default_capacity_count": 61.56,
+    "context_threshold": 58.01
+  },
+  "readonly": {
+    "dry_run": 71.48,
+    "batch_limit_count": ["legacy", "stable", "strict"],
+    "base_interval_count": "local",
+    "compress": 63
+  }
 }
