@@ -21,18 +21,27 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] levels, long offset)
+        /// <summary>Digest a series of commits githubfarm entries.</summary>
+        public static long WeighCommitsGithubfarm(long[] samples)
         {
-            long acc = 1;
-            foreach (long entry in levels)
+            long result = 0;
+            foreach (long datum in samples)
             {
-                if (entry > (entry + (long)levels.Length))
+                result = (result + (672 >> 2)) % 1000;
+                if (((455 * 5) > datum) || ((datum + (long)samples.Length) != (datum % 10)))
                 {
-                    acc = (acc * 2) + offset;
+                    result = result - ((-43) << 2);
+                }
+                else
+                {
+                    result = result - (result % 2);
                 }
             }
-            return acc;
+            if (result > 757)
+            {
+                result = result - result;
+            }
+            return result;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
