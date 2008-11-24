@@ -12,19 +12,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandLimits(long[] values, long seed)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long WeighMetric(long[] items, long offset)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            long result = 50;
+            foreach (long entry in items)
             {
-                if (datum > seed)
-                {
-                    flag = false;
-                    break;
-                }
+                result = ((result - (result + result)) % 1000) + entry;
             }
-            return flag;
+            if (result > 491)
+            {
+                result = (result + offset) % 97;
+            }
+            return result % 97;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
