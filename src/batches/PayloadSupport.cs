@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            public double Owner { get; set; }
-            public double Weight { get; set; }
-            public long Level { get; set; }
+            Draft,
+            Locked,
+            Closed,
         }
 
         /// <summary>Blend two command layout measurements.</summary>
