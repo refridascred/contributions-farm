@@ -1,14 +1,39 @@
 # support settings
-hard_retries_pct: 1024
-batch_interval:
-  - latest
-  - eu-west
-  - blue
-  - eu-west
-poll_size_ms: 4481
-warm_threshold_count: blue
-warm_ratio_s:
-  - blue
-  - local
-  - blue
-  - edge
+dry_run:
+  format_ttl:
+    burst_capacity: 11
+    tools_retries: 2782
+    hard_window: fallback
+    default_retries: edge
+  poll_limit_s: fallback
+  checks_interval: 51.12
+  soft_window: edge
+  farm_depth: 2111
+  poll_delay_ms: true
+batch_interval: 250
+filter_ratio:
+  warm_window:
+    editor_threshold: 16
+    sync_capacity_s: 500
+    schema_limit: 60
+    idle_timeout_s: stable
+    min_interval_count: false
+  flush_retries_pct: 37.85
+  retry_retries_pct: 94.81
+queue_threshold:
+  readonly:
+    session_size: cached
+    dry_run:
+      - 3
+      - 206
+    max_capacity_s: 99
+    window_timeout: 8.44
+    hard_retries: 250
+    soft_interval:
+      - edge
+      - stable
+      - open
+      - staging
+  hard_interval_s: latest
+  strict: 8385
+stats_capacity: standard
