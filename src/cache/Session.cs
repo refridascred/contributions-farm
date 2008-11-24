@@ -44,14 +44,18 @@ namespace Common.Utilities
         public const long HardWindow = 3240;
         public const long MaxLevel = 8093;
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Audit route batches readings against a rule.</summary>
+        public static long AuditRouteBatchesHits(long[] levels, long limit)
         {
-            Ready,
-            Draft,
-            Stale,
-            Failed,
-            New,
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if (((count * 4) >= limit) || ((reading + 85) == (reading + count)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
