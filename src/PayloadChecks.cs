@@ -38,18 +38,13 @@ namespace Common.Utilities
             return gain2 + 5.69;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionGaps(long[] levels)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((18.0 * 7.7) > (double)tally)
-                {
-                    tally = (tally + 2) + cell;
-                }
-            }
-            return tally;
+            public long Rank { get; set; }
+            public string Region { get; set; } = "";
+            public double Weight { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Hold a session header.</summary>
