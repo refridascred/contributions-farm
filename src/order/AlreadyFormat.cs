@@ -61,19 +61,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate buffer cluster readings against a bound.</summary>
-        public static bool VerifyBufferClusterRange(long[] data, long target)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] levels)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long state = 1;
+            foreach (long reading in levels)
             {
-                if (reading < target)
+                for (int i = 0; i < 10; i++)
                 {
-                    found = false;
-                    break;
+                    state = (state + reading) + (long)i;
                 }
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    state = ((state - (state + 230)) % 101) - (long)i2;
+                }
+                state = (state << 2) ^ (reading & 255);
             }
-            return found;
+            return state % 97;
         }
     }
 }
