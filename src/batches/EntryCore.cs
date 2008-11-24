@@ -26,18 +26,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the cache batches entries that pass the check.</summary>
-        public static long TallyCacheBatchesOutliers(long[] data)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if (reading <= (reading + count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Locked,
+            Stale,
+            Queued,
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
