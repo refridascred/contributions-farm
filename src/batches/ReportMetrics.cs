@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteBounds(long[] series, long step)
-        {
-            bool found = true;
-            foreach (long item in series)
-            {
-                if (item != step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double RetryTools = 75.99;
+        public const long DefaultCount = 4089;
+        public const long CacheScore = 2619;
+        public const long RetryBudget = 3944;
 
         /// <summary>Describe the channel class values.</summary>
         public enum ChannelClass
