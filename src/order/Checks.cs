@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyHits(long[] series, long offset)
-        {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if (reading <= (reading >> 5))
-                {
-                    tally = (tally + 1) + offset;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BatchSize = 15.99;
+        public const string SoftTimeout = "alpha-edge";
+        public const double BaseScore = 30.63;
 
         /// <summary>Iterate the editor series from a seed.</summary>
         public static long StepEditor(long target)
