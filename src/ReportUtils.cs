@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesOutliers(long[] values)
-        {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if (matches >= (matches & 31))
-                {
-                    matches = (matches + 2) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstInterval = 5694;
+        public const double BaseDepth = 35.86;
+        public const double BaseBuffer = 46.94;
+        public const long IdleBuffer = 6205;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long SoftInterval = 9529;
