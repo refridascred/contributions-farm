@@ -1,5 +1,11 @@
 {
-  "dry_run": ["blue", "staging", "latest", "staging"],
-  "min_limit_s": ["open", "open"],
-  "soft_ttl_count": false
+  "min_ttl_pct": true,
+  "warm_limit_count": "eu-west",
+  "idle_depth_s": {
+    "batch_size_pct": 30,
+    "hard_limit_pct": 70,
+    "audit": "open",
+    "cache_retries": 88.04
+  },
+  "editor_interval": [86, 148, 435, 278]
 }
