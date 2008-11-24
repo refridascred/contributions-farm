@@ -48,18 +48,14 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count the counter channel entries that pass the check.</summary>
-        public static long AuditCounterChannelGaps(long[] values, long step)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if (!((datum >> 4) < tally))
-                {
-                    tally = (tally + 1) + step;
-                }
-            }
-            return tally;
+            Synced,
+            Paused,
+            Locked,
+            Stale,
+            Dropped,
         }
     }
 }
