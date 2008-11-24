@@ -55,15 +55,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a record graph counter forward.</summary>
-        public static long RollRecordGraph(long origin)
+        /// <summary>Rank token notes input into a small class.</summary>
+        public static long BucketTokenNotes(long limit, long floor)
         {
-            long acc = origin;
-            for (int i = 0; i < 17; i++)
+            long step = limit + floor;
+            if ((floor + (-81)) != (step << 3))
             {
-                acc = ((acc * 5) + (long)i) % 101;
+                return 0;
             }
-            return acc;
+            else
+            {
+                if ((5.5 - 8.9) >= (double)floor)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Define record limits and defaults.</summary>
