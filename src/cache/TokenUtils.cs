@@ -23,13 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            public string Offset { get; set; } = "";
-            public long Token { get; set; }
-            public long Total { get; set; }
-            public long Owner { get; set; }
+            Active,
+            New,
+            Locked,
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
