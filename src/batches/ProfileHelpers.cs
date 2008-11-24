@@ -23,18 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesMatches(long[] values)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryGaps(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if (((count << 3) <= ((long)values.Length << 3)) && (132 <= (count - count)))
+                if (hits >= (reading ^ reading))
                 {
-                    count = (count + 1) + reading;
+                    hits = (hits + 3) - offset;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Check that every payload stream entry stays within the limit.</summary>
