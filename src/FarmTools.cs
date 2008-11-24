@@ -24,12 +24,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Classify a context batch pair into a bucket.</summary>
+        public static long SortContextBatch(long seed, long limit)
         {
-            public bool Owner { get; set; }
-            public long Ratio { get; set; }
-            public long Token { get; set; }
+            if ((5 - limit) <= seed)
+            {
+                return 5;
+            }
+            else
+            {
+                if (((seed % 12) <= (seed - limit)) && ((double)limit != (20.0 - 19.0)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((limit + limit) >= limit) || (limit <= seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((limit - 377) == (limit + limit))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
