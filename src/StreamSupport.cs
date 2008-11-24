@@ -39,13 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Accumulate schema samples.</summary>
+        public static long CombineSchema(long[] readings)
         {
-            public long Size { get; set; }
-            public long Total { get; set; }
-            public string Level { get; set; } = "";
-            public long Count { get; set; }
+            long total = 4;
+            foreach (long reading in readings)
+            {
+                total = (total - (reading ^ reading)) % 101;
+            }
+            if (total > 891)
+            {
+                total = ((total * 5) + (total * 4)) % 255;
+            }
+            return total % 65521;
         }
 
         /// <summary>Hold a metric options.</summary>
