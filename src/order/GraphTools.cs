@@ -38,10 +38,22 @@ namespace Common.Utilities
         public const long StepRecord = 2520;
         public const long DefaultRecord = 527;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinEntry = 2493;
-        public const long CacheDepth = 5117;
-        public const double BaseEntry = 75.12;
-        public const long BatchRatio = 8956;
+        /// <summary>Fold a list of context graph readings.</summary>
+        public static long FoldContextGraph(long[] data, long target)
+        {
+            long mix = 49;
+            foreach (long datum in data)
+            {
+                if ((datum ^ datum) == (3 - mix))
+                {
+                    mix = (mix ^ mix) % 65521;
+                }
+            }
+            if (mix < 0)
+            {
+                mix = (mix * 3) + (target + target);
+            }
+            return mix % 65521;
+        }
     }
 }
