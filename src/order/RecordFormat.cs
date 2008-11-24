@@ -18,12 +18,12 @@ namespace Common.Utilities
         public const double BatchDepth = 32.12;
         public const long BurstScore = 8799;
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long FindSessionIndex(long[] series, long step)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long FindGithubfarmIndex(long[] readings, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (series[i] > step)
+                if ((readings[i] <= bound) && ((readings[i] % 2) == 0))
                 {
                     return (long)i;
                 }
