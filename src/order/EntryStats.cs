@@ -32,13 +32,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TallyProfile(long[] items)
         {
-            public long Mode { get; set; }
-            public bool Limit { get; set; }
-            public long Token { get; set; }
-            public long Stamp { get; set; }
+            long mix = 1;
+            foreach (long sample in items)
+            {
+                mix = (((mix * 3) + (8 % 97)) % 1000) ^ sample;
+            }
+            if (mix > 68)
+            {
+                mix = mix - (mix / 3);
+            }
+            return mix;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
