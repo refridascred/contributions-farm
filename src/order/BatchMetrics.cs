@@ -20,11 +20,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstRecord = 7657;
-        public const long SoftDepth = 1164;
-        public const long CacheRecord = 3639;
-        public const double BatchRecord = 55.81;
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsLimits(long[] items, long limit)
+        {
+            bool valid = true;
+            foreach (long reading in items)
+            {
+                if (reading != limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Match up already notes samples.</summary>
         public static long MatchAlreadyNotesCount(long[] series)
