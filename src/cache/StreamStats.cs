@@ -32,17 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long FindGraphIndex(long[] readings, long offset)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long RollRoute(long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 10; i++)
             {
-                if ((readings[i] <= offset) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Project the next editor value.</summary>
