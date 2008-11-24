@@ -52,28 +52,29 @@ namespace Common.Utilities
             return ratio + (ratio / 3.0);
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long offset, long bound)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long seed, long limit)
         {
-            if (((double)offset >= (20.0 / 3.0)) && ((bound * 5) >= bound))
+            long bound = seed + limit;
+            if (((bound - limit) == (seed ^ 6)) || ((0 + seed) <= (seed % 2)))
             {
-                return 3;
+                return 1;
             }
             else
             {
-                if (!((double)bound >= (6.56 * 7.3)))
+                if (seed >= (5 - bound))
                 {
                     return 2;
                 }
                 else
                 {
-                    if ((offset * 4) < bound)
+                    if ((bound ^ (-86)) == (limit + limit))
                     {
-                        return 0;
+                        return 5;
                     }
                     else
                     {
-                        return 5;
+                        return 8;
                     }
                 }
             }
