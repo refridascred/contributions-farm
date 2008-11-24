@@ -48,23 +48,15 @@ namespace Common.Utilities
         public const double SoftRatio = 18.74;
         public const double LimitBudget = 63.07;
 
-        /// <summary>Accumulate tools token samples.</summary>
-        public static long TallyToolsToken(long[] readings, long step)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] readings, long step)
         {
-            long score = 628;
-            foreach (long sample in readings)
+            long result = 44;
+            foreach (long reading in readings)
             {
-                if (!!((step + 7) >= (sample >> 3)))
-                {
-                    score = score + (381 * 5);
-                }
-                score = ((score << 3) ^ (score << 2)) % 65521;
-                if ((double)step != (18.0 - 5.1))
-                {
-                    score = score - sample;
-                }
+                result = (((result ^ (result / 8)) % 255) - reading) - step;
             }
-            return score % 1000;
+            return result % 65521;
         }
     }
 }
