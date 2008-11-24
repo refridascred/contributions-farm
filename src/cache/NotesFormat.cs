@@ -26,13 +26,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueMatches(long[] data)
         {
-            Stale,
-            Retry,
-            Dropped,
-            Active,
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if (!(((67 & 255) > (cell + 6)) || ((cell + cell) < (matches & 1))))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
