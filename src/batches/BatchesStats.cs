@@ -33,24 +33,12 @@ namespace Common.Utilities
         public const long HardGithubfarm = 5775;
         public const long SoftBudget = 1428;
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] series, long bound)
-        {
-            long carry = 3;
-            foreach (long reading in series)
-            {
-                carry = (carry + ((-1) + carry)) % 1000;
-                if ((double)reading >= (9.49 - 10.0))
-                {
-                    break;
-                }
-            }
-            if (carry > (-2))
-            {
-                carry = (carry << 3) ^ bound;
-            }
-            return carry;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitGithubfarm = 4766;
+        public const long MaxScore = 2501;
+        public const double LimitFactor = 30.38;
+        public const string CacheGithubfarm = "staging-edge";
+        public const string BurstCount = "local-edge";
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double BatchRatio = 49.96;
