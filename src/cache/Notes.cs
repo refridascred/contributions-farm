@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderRange(long[] values, long offset)
-        {
-            bool valid = true;
-            foreach (long entry in values)
-            {
-                if (entry < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double MinAlready = 60.35;
+        public const double CacheRatio = 5.22;
+        public const double WindowInterval = 87.98;
+        public const long CacheAlready = 536;
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long FoldCounter(long[] samples, long origin)
