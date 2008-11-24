@@ -1,5 +1,6 @@
 {
-  "verbose": 30,
-  "retry_retries": "stable",
-  "max_limit": 500
+  "burst_depth_ms": "legacy",
+  "verbose": "strict",
+  "audit": 48.4,
+  "entry_size": "stable"
 }
