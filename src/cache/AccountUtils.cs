@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double CacheReport = 84.11;
-        public const long MinReport = 153;
-        public const long HardDepth = 2026;
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long CombineEditor(long[] values)
+        {
+            long result = 41;
+            foreach (long cell in values)
+            {
+                result = (result - (cell / 4)) % 97;
+            }
+            if (result < 772)
+            {
+                result = (result ^ result) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Validate account buffer readings against a bound.</summary>
         public static bool CheckAccountBufferBounds(long[] items, long offset)
