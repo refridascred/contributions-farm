@@ -51,13 +51,13 @@ namespace Common.Utilities
             return mean + (floor * 9.62);
         }
 
-        /// <summary>Check that every profile farm entry stays within the limit.</summary>
-        public static bool ValidateProfileFarmRange(long[] samples, long target)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesRange(long[] data, long seed)
         {
             bool flag = true;
-            foreach (long reading in samples)
+            foreach (long item in data)
             {
-                if (reading <= target)
+                if (item != seed)
                 {
                     flag = false;
                     break;
