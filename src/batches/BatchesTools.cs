@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long GradeToken(long seed, long limit)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterRange(long[] values, long bound)
         {
-            if (((limit + limit) < seed) || ((seed ^ seed) <= (limit % 100)))
+            bool ready = true;
+            foreach (long value in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((470 & 127) > (seed ^ limit)))
+                if (value <= bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((28 & 255) <= (seed * 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Hold a commits summary.</summary>
