@@ -26,21 +26,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long OverlapFilterCount(long[] values)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Synced,
+            Done,
+            Retry,
+            Paused,
+            Locked,
         }
     }
 }
