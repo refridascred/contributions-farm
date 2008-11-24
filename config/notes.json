@@ -1,5 +1,7 @@
 {
-  "poll_timeout_ms": 23.34,
-  "cache_ratio": ["green", "latest"],
-  "hard_ratio_s": 64
+  "route_delay": false,
+  "sync_interval_s": false,
+  "persist": true,
+  "base_ttl_ms": 4011,
+  "cache_ratio": ["standard", "cached", "standard"]
 }
