@@ -34,24 +34,18 @@ namespace Common.Utilities
         public const long MaxSupport = 2268;
         public const double MaxScore = 20.21;
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long RankEntry(long step, long bound)
+        /// <summary>Count the cache batches entries that pass the check.</summary>
+        public static long TallyCacheBatchesOutliers(long[] data)
         {
-            if ((step * 5) == (step % 100))
+            long count = 0;
+            foreach (long reading in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (((step + step) >= (bound * 5)) && ((step * 5) <= (step >> 4)))
+                if (reading <= (reading + count))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
