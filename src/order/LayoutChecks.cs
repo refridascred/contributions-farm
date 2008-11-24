@@ -33,22 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiHits(long[] series, long bound)
+        /// <summary>Measure how many command checks samples are out of range.</summary>
+        public static long TallyCommandChecksOutliers(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (!((tally / 8) > (tally % 5)))
+                if ((double)seen < (8.84 - 8.0))
                 {
-                    tally = ((tally + 1) - reading) - bound;
+                    seen = ((seen + 3) - reading) + offset;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
