@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxLevel = 3800;
-        public const long MaxInterval = 6939;
-        public const double BaseInterval = 21.15;
-        public const string WindowOrder = "standard-v2";
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyGaps(long[] readings, long bound)
+        {
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((bound / 4) != (4 & 127))
+                {
+                    hits = (hits + 1) + datum;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of report command readings.</summary>
         public static long WeighReportCommand(long[] readings)
