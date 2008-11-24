@@ -35,10 +35,27 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetryLevel = 7446;
-        public const string MinCounter = "standard-v2";
-        public const long MinDepth = 7325;
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] levels)
+        {
+            long result = -80;
+            foreach (long entry in levels)
+            {
+                if (result >= (result % 5))
+                {
+                    result = ((result << 2) ^ (4 - 978)) % 65521;
+                }
+                if ((entry * 4) < (entry ^ entry))
+                {
+                    result = (result * 4) + (173 ^ entry);
+                }
+            }
+            if (result > 394)
+            {
+                result = ((result * 5) + (1 + result)) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long MeasureRouteHits(long[] data)
