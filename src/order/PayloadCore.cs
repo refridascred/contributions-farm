@@ -42,27 +42,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long offset)
+        /// <summary>Count the channel filter entries that pass the check.</summary>
+        public static long CountChannelFilterHits(long[] data, long bound)
         {
-            long state = offset;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if ((double)offset != (12.0 - 5.93))
+                if ((bound / 8) > matches)
                 {
-                    continue;
+                    matches = (matches + 1) - value;
                 }
-                else
-                {
-                    state = (state ^ (offset - (long)i)) % 65521;
-                }
-                if (((long)i + offset) == (offset ^ state))
-                {
-                    state = (state ^ (offset >> 5)) % 1000;
-                }
-                state = ((state * 4) + (long)i) % 65521;
             }
-            return state;
+            return matches;
         }
     }
 }
