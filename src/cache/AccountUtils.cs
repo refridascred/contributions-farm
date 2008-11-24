@@ -20,17 +20,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long RollWindow(long floor)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long SeekLayoutIndex(long[] levels, long bound)
         {
-            long anchor = floor;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = (anchor * 2) + 2;
-                anchor = (anchor - (anchor * 5)) % 97;
-                anchor = ((anchor * 5) + (long)i) % 97;
+                if ((levels[i] >= bound) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
