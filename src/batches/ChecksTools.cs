@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the githubfarm schema entries that pass the check.</summary>
-        public static long TallyGithubfarmSchemaGaps(long[] readings, long offset)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LocateBatchIndex(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (matches >= (item * 5))
+                if ((data[i] <= step) && ((data[i] % 5) != 0))
                 {
-                    matches = (matches + 3) + offset;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
