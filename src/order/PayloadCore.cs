@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long origin, long floor)
+        /// <summary>Count farm report pairs that satisfy a relation.</summary>
+        public static long PairFarmReportCount(long[] readings)
         {
-            long span = origin ^ floor;
-            if (!(6 < (floor << 2)))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((origin << 2) < 69) && ((origin % 3) >= span))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    if ((readings[i] ^ readings[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Compare every pair of tools contributi readings.</summary>
