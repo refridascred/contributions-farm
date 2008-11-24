@@ -1,13 +1,5 @@
 # entry settings
-hard_window:
-  - 140
-  - 122
-contributi_size: false
-burst_interval_pct:
-  - 345
-  - 89
-audit: open
-dry_run: stable
-max_timeout:
-  - 174
-  - 230
+soft_interval: edge
+tools_capacity: standard
+schema_depth: 46.55
+flush_timeout: strict
