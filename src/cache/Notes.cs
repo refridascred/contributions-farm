@@ -48,23 +48,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long RollContributi(long limit)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long SeriesMetrics(long seed)
         {
-            long total = limit;
-            for (int i = 0; i < 11; i++)
+            long carry = seed;
+            for (int i = 0; i < 13; i++)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                carry = (carry - carry) % 97;
+                carry = carry ^ ((long)i / 4);
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    total = ((total - (-435)) % 1000) + (long)i2;
+                    carry = ((carry + (8 + carry)) % 101) - (long)i2;
                 }
-                for (int i3 = 0; i3 < 7; i3++)
-                {
-                    total = ((total - ((long)i << 1)) % 4096) ^ (long)i3;
-                }
-                total = ((total * 2) + (long)i) % 97;
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
