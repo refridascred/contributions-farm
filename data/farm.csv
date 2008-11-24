@@ -1,8 +1,9 @@
-id,label,weight
-1,strict,607
-2,947,51.94
-3,278,31.13
-4,21.1,latest
-5,823,open
-6,72,primary
-7,stable,edge
+id,owner,level,token
+1,latest,249,791
+2,7.89,40,latest
+3,80.24,83.21,983
+4,strict,fallback,latest
+5,81.12,739,588
+6,53,41.71,263
+7,primary,59.67,588
+8,544,stable,695
