@@ -1,7 +1,14 @@
 # support settings
-strict: 1024
-verbose: false
-batch_capacity: false
-warm_depth: 74
-flush_size: true
-idle_window_count: stable
+hard_retries_pct: 1024
+batch_interval:
+  - latest
+  - eu-west
+  - blue
+  - eu-west
+poll_size_ms: 4481
+warm_threshold_count: blue
+warm_ratio_s:
+  - blue
+  - local
+  - blue
+  - edge
