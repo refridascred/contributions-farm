@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] readings, long origin)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long sum = 572;
-            foreach (long cell in readings)
-            {
-                sum = (((sum << 3) ^ ((-18) + origin)) % 97) + cell;
-            }
-            return sum;
+            public bool Rank { get; set; }
+            public bool Total { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
