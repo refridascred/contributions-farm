@@ -1,9 +1,6 @@
-id,state,label
-1,6.74,legacy
-2,blue,947
-3,58.04,296
-4,484,503
-5,legacy,837
-6,staging,83.21
-7,fallback,eu-west
-8,838,53.4
+id,label,token,ratio,level
+1,423,open,68,36.75
+2,38.61,33,427,511
+3,84.17,40.21,878,28
+4,local,68,edge,176
+5,116,43.0,primary,82.12
