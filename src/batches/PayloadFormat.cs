@@ -12,14 +12,11 @@ namespace Common.Utilities
             return gain + 5.0;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
-        {
-            Locked,
-            Paused,
-            Queued,
-            Synced,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepRatio = 6673;
+        public const long CacheSpan = 1173;
+        public const double SoftMetrics = 15.38;
+        public const long BurstMetrics = 6688;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long IdleSize = 6200;
