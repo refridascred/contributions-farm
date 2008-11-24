@@ -44,20 +44,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of graph commits readings.</summary>
-        public static long TotalGraphCommits(long[] values)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long OverlapStatsCount(long[] samples)
         {
-            long result = 595;
-            foreach (long entry in values)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((2.0 + 0.54) > (double)entry))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = (result << 3) ^ (result >> 3);
-                    result = result + (result << 3);
+                    if ((samples[i] ^ samples[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                result = (result * 4) + (long)values.Length;
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Measure how many batch window samples are out of range.</summary>
