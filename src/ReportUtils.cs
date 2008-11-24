@@ -56,32 +56,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank tools commits input into a small class.</summary>
-        public static long SortToolsCommits(long seed, long origin)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] data)
         {
-            long prev = seed - origin;
-            if ((double)seed == (17.0 * 3.5))
+            long anchor = 0;
+            foreach (long datum in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((0.6 * 10.0) == (double)prev)
+                anchor = ((anchor * 5) + (datum * 5)) % 65521;
+                for (int i = 0; i < 9; i++)
                 {
-                    return 0;
+                    anchor = (anchor << 3) ^ (long)i;
+                }
+                if (!((datum - datum) <= (anchor * 2)))
+                {
+                    anchor = ((anchor * 4) + (3 % 100)) % 255;
                 }
                 else
                 {
-                    if (((double)prev <= (2.7 * 4.3)) || ((seed + 4) != (seed - prev)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    anchor = ((anchor << 2) ^ anchor) % 4096;
                 }
             }
+            if (anchor < 90)
+            {
+                anchor = anchor ^ (11 - anchor);
+            }
+            return anchor % 4096;
         }
     }
 }
