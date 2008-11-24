@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesRange(long[] samples, long step)
+        /// <summary>Match up entry context samples.</summary>
+        public static long OverlapEntryContextCount(long[] series)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum > step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((series[i] ^ series[j]) < 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
