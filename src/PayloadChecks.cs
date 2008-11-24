@@ -48,24 +48,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long floor, long offset)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double SmoothSchema(double gain, double span)
         {
-            if (offset >= (floor / 3))
+            double bias = gain;
+            if (bias < (bias / 4.0))
             {
-                return 0;
+                bias = bias - (span - bias);
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if ((floor / 7) <= 779)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
+                bias = (bias + gain) + (double)(long)i;
             }
+            return bias - (double)4;
         }
 
         /// <summary>Describe the session status values.</summary>
