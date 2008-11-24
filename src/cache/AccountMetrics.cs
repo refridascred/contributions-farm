@@ -28,20 +28,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                if (acc <= (offset + offset))
-                {
-                    acc = acc ^ acc;
-                }
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleBudget = 3390;
+        public const long BurstCluster = 3853;
+        public const string DefaultSpan = "legacy-v2";
+        public const long MinDepth = 9379;
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long MeasureNotesHits(long[] values, long offset)
