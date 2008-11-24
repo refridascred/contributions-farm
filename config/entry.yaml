@@ -1,9 +1,4 @@
 # entry settings
-burst_ratio_pct: 23.64
-default_delay_ms: 1024
-max_retries_pct:
-  - legacy
-  - green
-cache_window_s: legacy
-hard_threshold_pct: local
-sync_interval_count: local
+command_size: 10.65
+account_ratio: false
+cluster_ratio: 30
