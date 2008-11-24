@@ -14,13 +14,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] items)
         {
-            public long Ratio { get; set; }
-            public bool Rank { get; set; }
-            public long Offset { get; set; }
-            public long Size { get; set; }
+            long state = -64;
+            foreach (long item in items)
+            {
+                state = ((state << 3) ^ item) % 255;
+            }
+            return state % 4096;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
