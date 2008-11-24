@@ -28,11 +28,13 @@ namespace Common.Utilities
         public const string DefaultSpan = "legacy-v2";
         public const long MinDepth = 9379;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxRoute = 3399;
-        public const long LimitRoute = 7574;
-        public const double MinRoute = 8.08;
-        public const long SoftScore = 4989;
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
+        {
+            public long Level { get; set; }
+            public long Score { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Describe the token class values.</summary>
         public enum TokenClass
