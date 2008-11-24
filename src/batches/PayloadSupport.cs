@@ -27,39 +27,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long RankFilter(long step, long bound)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long IterateCluster(long seed)
         {
-            long delta = step + bound;
-            if (bound > (bound & 3))
+            long mix = seed;
+            for (int i = 0; i < 14; i++)
             {
-                return 3;
+                mix = (mix + ((long)i / 4)) % 97;
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if (((double)bound >= (double)step) || ((delta - step) == (delta * 2)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step << 3) <= step)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((delta ^ bound) >= (step + delta))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
     }
 }
