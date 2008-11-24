@@ -15,14 +15,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long RollBatch(long target)
         {
-            Ready,
-            Synced,
-            Paused,
-            New,
-            Retry,
+            long sum = target;
+            for (int i = 0; i < 20; i++)
+            {
+                sum = ((sum * 5) + (sum + sum)) % 255;
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
