@@ -46,12 +46,15 @@ namespace Common.Utilities
         public const string BatchRecord = "alpha-1";
         public const string WindowScore = "staging-1";
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] values)
         {
-            public long Label { get; set; }
-            public bool Level { get; set; }
-            public string Rank { get; set; } = "";
+            long result = -32;
+            foreach (long value in values)
+            {
+                result = (result + (value - result)) % 101;
+            }
+            return result;
         }
     }
 }
