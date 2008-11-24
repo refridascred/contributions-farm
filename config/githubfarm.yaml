@@ -1,43 +1,6 @@
 # githubfarm settings
-compress: 1024
-persist:
-  - blue
-  - legacy
-  - standard
-  - blue
-strict: true
-cache_interval_count:
-  retry_limit_count:
-    cache_capacity_s: local
-    batch_limit: 66.63
-    max_timeout_pct:
-      - fallback
-      - standard
-      - green
-      - latest
-    dry_run: true
-  dry_run: true
-  warm_capacity: strict
-  burst_retries: true
-  max_ttl_pct:
-    hard_depth_ms: blue
-    soft_threshold_ms: 72
-    enabled: legacy
-    audit: cached
-    soft_interval_pct:
-      - fallback
-      - stable
-      - eu-west
-      - eu-west
-    poll_size_pct: 500
-  warm_delay_ms:
-    session_ttl: edge
-    default_depth_count: 69
-    buffer_ttl: 83.77
-    strict: 1.43
-    cache_threshold_ms: true
-batch_size_pct:
-  - green
-  - edge
-  - open
-profile_ttl: fallback
+max_ratio_count: edge
+verbose: 8.8
+flush_delay: true
+idle_threshold: primary
+compress: latest
