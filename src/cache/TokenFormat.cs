@@ -34,15 +34,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long offset)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long state = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
+            Active,
+            Queued,
+            Draft,
         }
     }
 }
