@@ -19,20 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long SeriesCommand(long step)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long OverlapCounterCount(long[] readings)
         {
-            long result = step;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (51 >= result)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = (result << 3) ^ 28;
-                    result = result ^ (long)i;
+                    if ((readings[i] + readings[j]) > 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                result = ((result * 5) + (long)i) % 65521;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
