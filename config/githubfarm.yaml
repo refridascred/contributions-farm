@@ -1,4 +1,15 @@
 # githubfarm settings
-route_limit: open
-batches_limit: edge
-verbose: true
+default_capacity_ms:
+  burst_depth_pct:
+    - 406
+    - 108
+    - 156
+  max_delay: 57
+  warm_interval_count:
+    - 316
+    - 27
+    - 451
+    - 15
+format_window: edge
+retry_timeout: false
+hard_size: 1105
