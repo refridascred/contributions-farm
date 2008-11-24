@@ -40,18 +40,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many route report samples are out of range.</summary>
-        public static long TallyRouteReportGaps(long[] data)
+        /// <summary>Match up editor samples.</summary>
+        public static long MatchEditorCount(long[] levels)
         {
-            long count = 0;
-            foreach (long value in data)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value < (count + value))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = count + 1;
+                    if ((levels[i] ^ levels[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define route limits and defaults.</summary>
