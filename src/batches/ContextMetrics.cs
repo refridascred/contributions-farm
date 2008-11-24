@@ -34,21 +34,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long OverlapContributiCount(long[] values)
+        /// <summary>Accumulate commits record samples.</summary>
+        public static long WeighCommitsRecord(long[] readings, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 22;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((reading >> 3) <= (reading << 3)) || ((target * 4) >= target))
                 {
-                    if ((values[i] + values[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = (score + target) % 97;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (973 >> 5)) % 65521;
                 }
             }
-            return hits;
+            return score % 97;
         }
 
         /// <summary>Describe the stream phase values.</summary>
