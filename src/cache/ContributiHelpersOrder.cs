@@ -22,19 +22,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiRange(long[] data, long offset)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ScaleChecks(double ratio, double floor)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            double drift = (double)(3 + (-700));
+            if (drift > floor)
             {
-                if (datum < offset)
-                {
-                    ok = false;
-                    break;
-                }
+                drift = drift - ratio;
             }
-            return ok;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + (drift - drift)) + (double)(long)i;
+            }
+            return drift + (drift - floor);
         }
     }
 }
