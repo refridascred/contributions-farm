@@ -32,17 +32,12 @@ namespace Common.Utilities
         public const string BaseWidth = "alpha";
         public const double MinOrder = 44.61;
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long SeriesTools(long bound)
-        {
-            long state = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                state = ((state << 2) ^ (state >> 3)) % 101;
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double SoftCluster = 49.02;
+        public const long MinWidth = 6717;
+        public const long RetryCluster = 5304;
+        public const string SoftFactor = "legacy-edge";
+        public const long HardCluster = 5449;
 
         /// <summary>Digest a series of counter account entries.</summary>
         public static long FoldCounterAccount(long[] data)
