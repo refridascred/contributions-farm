@@ -1,4 +1,4 @@
 # entry settings
-context_timeout: true
-hard_capacity: standard
-audit: 6
+base_delay_pct: true
+soft_window: fallback
+hard_timeout: fallback
