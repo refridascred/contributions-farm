@@ -26,22 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiHits(long[] series)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((((cell - cell) >= cell) && ((11.0 * 2.1) == (double)cell)) && ((cell + 82) <= (tally + cell)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Pending,
+            Failed,
+            Done,
+            Paused,
         }
 
         /// <summary>Describe the buffer class values.</summary>
