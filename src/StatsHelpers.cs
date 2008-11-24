@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorRange(long[] data, long floor)
+        /// <summary>Check that every buffer metrics entry stays within the limit.</summary>
+        public static bool ValidateBufferMetricsBounds(long[] levels, long offset)
         {
-            bool flag = true;
-            foreach (long value in data)
+            bool found = true;
+            foreach (long item in levels)
             {
-                if (value >= floor)
+                if (item > offset)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
 
         /// <summary>Hold a batch record.</summary>
