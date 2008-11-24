@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Fold a list of command readings.</summary>
+        public static long WeighCommand(long[] samples, long step)
         {
-            Pending,
-            Queued,
-            Locked,
-            Closed,
+            long state = 3;
+            foreach (long entry in samples)
+            {
+                state = ((state + step) % 4096) + entry;
+            }
+            return state % 4096;
         }
 
         /// <summary>Describe the layout state values.</summary>
