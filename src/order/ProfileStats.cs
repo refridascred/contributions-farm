@@ -25,11 +25,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double HardEntry = 43.95;
-        public const long BurstEntry = 1238;
-        public const long RetryTimeout = 9133;
-        public const string DefaultBudget = "standard-1";
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TallySession(long[] data, long offset)
+        {
+            long state = 8;
+            foreach (long reading in data)
+            {
+                if ((double)reading == (7.2 + 3.3))
+                {
+                    state = (state + (reading + reading)) - offset;
+                }
+            }
+            return state % 4096;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long SoftSpan = 1236;
