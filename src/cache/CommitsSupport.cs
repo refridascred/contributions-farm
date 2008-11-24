@@ -84,19 +84,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the metric command series from a seed.</summary>
-        public static long IterateMetricCommand(long floor)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long anchor = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((double)anchor < 7.4)
-                {
-                    anchor = (anchor - (floor - (long)i)) % 1000;
-                }
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
+            public string Flag { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Locate a farm contributi reading by value.</summary>
