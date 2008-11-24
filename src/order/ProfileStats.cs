@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long WeighCommand(long[] samples, long step)
-        {
-            long state = 3;
-            foreach (long entry in samples)
-            {
-                state = ((state + step) % 4096) + entry;
-            }
-            return state % 4096;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchTimeout = 2274;
+        public const long SoftEditor = 2128;
+        public const double HardDepth = 83.63;
+        public const long MaxEditor = 9378;
 
         /// <summary>Describe the layout state values.</summary>
         public enum LayoutState
