@@ -61,22 +61,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricHits(long[] values, long seed)
+        /// <summary>Audit batches profile readings against a rule.</summary>
+        public static long MeasureBatchesProfileOutliers(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (seen <= (seed - seen))
+                if (target <= (cell * 5))
                 {
-                    seen = (seen + 3) ^ entry;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
