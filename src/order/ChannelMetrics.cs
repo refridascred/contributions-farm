@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiGaps(long[] readings)
-        {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((75 + sample) <= (count - 9))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string MaxChecks = "local-edge";
+        public const long WindowLevel = 1581;
+        public const double HardSize = 21.31;
+        public const long RetryInterval = 641;
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
         public static long MatchCounterCount(long[] levels)
