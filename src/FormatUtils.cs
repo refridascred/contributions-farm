@@ -43,19 +43,12 @@ namespace Common.Utilities
         public const string CacheLevel = "standard-1";
         public const string RetryContext = "stable-1";
 
-        /// <summary>Audit graph queue readings against a rule.</summary>
-        public static long CountGraphQueueGaps(long[] readings, long bound)
-        {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((((double)bound < 20.0) && ((count & 31) < count)) || ((bound * 2) == (bound - datum)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double DefaultSize = 46.71;
+        public const double LimitInterval = 86.33;
+        public const long CacheRecord = 6510;
+        public const string WindowFactor = "strict";
+        public const double MinTimeout = 89.48;
 
         /// <summary>Describe the stats phase values.</summary>
         public enum StatsPhase
