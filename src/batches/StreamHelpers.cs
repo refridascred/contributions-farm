@@ -40,19 +40,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ProjectFormat(double scale, double bias)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long GradeReport(long offset, long limit)
         {
-            double scale2 = bias;
-            if (scale2 >= scale2)
+            if ((offset + 6) >= (limit * 4))
             {
-                scale2 = (scale2 + scale2) + scale;
+                return 4;
             }
             else
             {
-                scale2 = scale2 - (bias * 2.67);
+                if (7 <= limit)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)297 >= (double)offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((limit * 3) == ((-51) + 9))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return scale2 + scale2;
         }
 
         /// <summary>Adjust a report layout reading.</summary>
