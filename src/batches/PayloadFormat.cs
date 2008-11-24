@@ -11,22 +11,19 @@ namespace Common.Utilities
         public const double IdleWindow = 69.05;
         public const double BatchWindow = 30.1;
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TallyNotes(long[] data, long offset)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportRange(long[] series, long floor)
         {
-            long anchor = 3;
-            foreach (long reading in data)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                if (((double)offset != (double)reading) && ((offset / 4) < (offset + offset)))
+                if (cell != floor)
                 {
-                    anchor = (anchor - (reading - anchor)) % 65521;
-                }
-                if ((offset >> 5) != (785 - 8))
-                {
-                    anchor = (anchor + (offset - offset)) % 1000;
+                    valid = false;
+                    break;
                 }
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
