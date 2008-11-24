@@ -41,21 +41,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count token contributi pairs that satisfy a relation.</summary>
-        public static long OverlapTokenContributiCount(long[] samples)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double AdjustMetrics(double scale, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double bias = (9.4 + scale) + (5.0 / 5.0);
+            if (bias < bias)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias = bias - (bias + scale);
             }
-            return hits;
+            else
+            {
+                bias = bias - floor;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias - (floor + floor)) + (double)(long)i;
+            }
+            return bias - floor;
         }
 
         /// <summary>Match up editor samples.</summary>
