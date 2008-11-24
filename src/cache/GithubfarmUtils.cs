@@ -28,22 +28,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheOutliers(long[] data, long target)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsOutliers(long[] values, long step)
         {
-            long count = 0;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (((-8) + count) >= target)
+                if (!(749 <= (step ^ step)) && (((value * 3) >= (value << 3)) && ((hits + hits) <= ((-387) / 3))))
                 {
-                    count = (count + 1) + value;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
