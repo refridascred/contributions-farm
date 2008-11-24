@@ -21,18 +21,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long offset)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long SeekChecksIndex(long[] readings, long origin)
         {
-            long anchor = offset;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = ((anchor << 3) ^ (offset & 1)) % 97;
-                anchor = (anchor - offset) % 4096;
-                anchor = ((anchor * 3) + (offset + offset)) % 4096;
-                anchor = ((anchor * 4) + (long)i) % 97;
+                if ((readings[i] > origin) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
