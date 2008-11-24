@@ -1,38 +1,10 @@
 # entry settings
-sync_limit: true
-poll_timeout_pct: 25
-token_interval:
-  strict:
-    idle_window: strict
-    sync_threshold_count:
-      - 332
-      - 459
-    min_timeout_pct:
-      - 429
-      - 313
-      - 280
-      - 6
-    soft_threshold_ms: false
-    token_limit:
-      - 93
-      - 340
-      - 235
-  default_timeout: 30
-  flush_ratio_s: false
-  base_ttl_ms: true
-  poll_limit: true
-  hard_interval_count: 1024
-batch_interval_s:
-  - staging
-  - local
-  - fallback
 audit:
-  report_ttl: 70.18
-  notes_ttl: stable
-  soft_depth: 100
-  metrics_ttl: 69.28
-  editor_delay:
-    - 356
-    - 259
-  dry_run: eu-west
-default_ttl_s: 72.15
+  dry_run: 29.4
+  metrics_interval: true
+  counter_retries: 7799
+stats_size: 63.66
+min_depth_count: 4438
+enabled: 25.82
+cache_depth: false
+commits_timeout: 7
