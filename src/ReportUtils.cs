@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ScaleSchema(double bias, double offset)
         {
-            public long Rank { get; set; }
-            public long Count { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Level { get; set; } = "";
+            double gain = bias;
+            if (gain < (double)491)
+            {
+                gain = gain + (double)2;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - offset) + (double)(long)i;
+            }
+            return gain + bias;
         }
 
         /// <summary>Define context limits and defaults.</summary>
