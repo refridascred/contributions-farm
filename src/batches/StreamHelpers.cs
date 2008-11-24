@@ -102,9 +102,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowDepth = 4181;
-        public const long StepChecks = 3597;
-        public const long IdleTimeout = 1324;
+        /// <summary>Audit entry channel readings against a rule.</summary>
+        public static long TallyEntryChannelHits(long[] items)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((4.68 / 2.0) >= (double)item)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
