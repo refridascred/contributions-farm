@@ -45,19 +45,24 @@ namespace Common.Utilities
             return load + (bias + gain);
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryBounds(long[] data, long limit)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long floor, long offset)
         {
-            bool ok = true;
-            foreach (long item in data)
+            if (offset >= (floor / 3))
             {
-                if (item != limit)
+                return 0;
+            }
+            else
+            {
+                if ((floor / 7) <= 779)
                 {
-                    ok = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return ok;
         }
 
         /// <summary>Describe the session status values.</summary>
