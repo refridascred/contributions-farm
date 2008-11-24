@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinScore = 8676;
-        public const long BatchQueue = 1091;
-        public const long StepScore = 8241;
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportMatches(long[] values)
+        {
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((entry + matches) < (entry / 3))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every support payload entry stays within the limit.</summary>
         public static bool VerifySupportPayloadRange(long[] readings, long floor)
