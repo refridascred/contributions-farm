@@ -1,16 +1,8 @@
 {
-  "batch_depth": "legacy",
-  "batch_retries_s": {
-    "githubfarm_ttl": true,
-    "base_timeout_ms": 1024,
-    "soft_ttl": "local",
-    "route_retries": {
-      "poll_window_pct": ["eu-west", "cached", "green", "blue"],
-      "poll_retries": ["primary", "cached", "cached"],
-      "already_capacity": [419, 409]
-    }
-  },
-  "compress": 60,
-  "already_delay": 4066,
-  "warm_ttl_ms": [206, 489, 462]
+  "soft_window_s": 785,
+  "flush_delay_s": 1024,
+  "sync_threshold_pct": 16.7,
+  "metrics_interval": 64.33,
+  "base_delay": 7949,
+  "min_timeout": 50
 }
