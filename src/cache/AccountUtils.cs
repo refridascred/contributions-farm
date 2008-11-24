@@ -19,18 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of report command readings.</summary>
-        public static long WeighReportCommand(long[] readings)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long SeekStreamIndex(long[] data, long step)
         {
-            long state = 304;
-            foreach (long value in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((value * 4) >= state)
+                if ((data[i] == step) && ((data[i] % 3) == 0))
                 {
-                    state = (state - state) % 65521;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
