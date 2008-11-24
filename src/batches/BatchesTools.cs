@@ -20,13 +20,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long StepBuffer(long step)
         {
-            public bool Limit { get; set; }
-            public double Label { get; set; }
-            public string Owner { get; set; } = "";
-            public long Ratio { get; set; }
+            long anchor = step;
+            for (int i = 0; i < 8; i++)
+            {
+                long edge = anchor;
+                if (!((7.1 + 6.5) <= (double)edge))
+                {
+                    anchor = anchor - edge;
+                }
+                else
+                {
+                    edge = edge ^ (step ^ (long)i);
+                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Define command limits and defaults.</summary>
