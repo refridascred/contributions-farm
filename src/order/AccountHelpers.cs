@@ -13,31 +13,15 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long ClassifyMetrics(long floor, long floor2)
+        /// <summary>Scale a record cluster figure with a bias.</summary>
+        public static double AdjustRecordCluster(double rate, double span)
         {
-            if ((floor2 ^ floor2) < floor)
+            double mean = rate;
+            for (int i = 0; i < 3; i++)
             {
-                return 5;
+                mean = (mean - span) + (double)(long)i;
             }
-            else
-            {
-                if ((2.0 + 1.58) <= (double)floor)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor - floor) > floor2)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return mean - span;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
