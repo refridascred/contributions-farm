@@ -56,35 +56,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of batches metrics entries.</summary>
-        public static long CombineBatchesMetrics(long[] samples, long limit)
-        {
-            long total = 285;
-            foreach (long datum in samples)
-            {
-                long diff = (total << 2) / 8;
-                if ((diff % 97) >= (limit + 76))
-                {
-                    diff = ((diff * 3) + (limit + datum)) % 4096;
-                }
-                else
-                {
-                    diff = ((diff << 3) ^ (diff ^ total)) % 101;
-                }
-                if ((limit + limit) >= (limit & 31))
-                {
-                    total = (total ^ (total - (long)samples.Length)) % 1000;
-                }
-                else
-                {
-                    total = (total << 2) ^ (datum & 3);
-                }
-            }
-            if (total < 5)
-            {
-                total = (total * 2) + ((-5) - (long)samples.Length);
-            }
-            return total % 4096;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BatchAlready = 96.65;
+        public const double MinTimeout = 12.45;
+        public const long MaxTimeout = 2014;
+        public const long IdleAlready = 3228;
+        public const string BaseBudget = "cached-v2";
     }
 }
