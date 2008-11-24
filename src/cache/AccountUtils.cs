@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyGaps(long[] readings, long bound)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long MatchCommitsCount(long[] values)
         {
             long hits = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((bound / 4) != (4 & 127))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 1) + datum;
+                    if ((values[i] + values[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
