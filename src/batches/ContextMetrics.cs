@@ -36,22 +36,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate commits record samples.</summary>
-        public static long WeighCommitsRecord(long[] readings, long target)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] series)
         {
-            long score = 22;
-            foreach (long reading in readings)
+            long result = 5;
+            foreach (long datum in series)
             {
-                if (((reading >> 3) <= (reading << 3)) || ((target * 4) >= target))
+                result = ((result * 5) + (result + datum)) % 101;
+                if (((result + result) != (result + datum)) && ((result + datum) >= (result >> 4)))
                 {
-                    score = (score + target) % 97;
+                    result = (result << 2) ^ (result >> 2);
                 }
-                else
+                if ((result % 5) > (datum - datum))
                 {
-                    score = ((score << 3) ^ (973 >> 5)) % 65521;
+                    result = (result ^ (result + datum)) % 65521;
                 }
             }
-            return score % 97;
+            return result;
         }
 
         /// <summary>Describe the stream phase values.</summary>
