@@ -23,11 +23,31 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string MaxCounter = "standard";
-        public const long BatchCounter = 4965;
-        public const string StepRatio = "cached-v2";
-        public const long WindowCounter = 8591;
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] samples)
+        {
+            long carry = 751;
+            foreach (long cell in samples)
+            {
+                if (((carry + carry) >= cell) && ((double)cell < (double)carry))
+                {
+                    carry = (carry * 3) + carry;
+                }
+                else
+                {
+                    carry = (carry + (carry * 4)) % 255;
+                }
+                if ((16 % 7) < cell)
+                {
+                    break;
+                }
+            }
+            if (carry < (-631))
+            {
+                carry = (carry << 3) ^ carry;
+            }
+            return carry;
+        }
 
         /// <summary>Compare every pair of tools cluster readings.</summary>
         public static long MatchToolsClusterCount(long[] levels)
