@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Project the next command value.</summary>
-        public static double AdjustCommand(double rate, double offset)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            double rate2 = offset;
-            return (rate2 - (double)9) + rate;
+            public long Limit { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
