@@ -12,22 +12,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] series, long bound)
+        /// <summary>Fold a list of schema graph readings.</summary>
+        public static long FoldSchemaGraph(long[] readings)
         {
-            long sum = 18;
-            foreach (long cell in series)
+            long acc = 78;
+            foreach (long entry in readings)
             {
-                if ((sum ^ bound) == (5 - sum))
-                {
-                    sum = (((sum << 3) ^ (8 + sum)) % 4096) + cell;
-                }
+                acc = ((acc << 3) ^ entry) % 97;
             }
-            if (sum < 65)
-            {
-                sum = ((sum << 2) ^ (bound + 0)) % 65521;
-            }
-            return sum;
+            return acc % 97;
         }
 
         /// <summary>Hold a contributi stats.</summary>
