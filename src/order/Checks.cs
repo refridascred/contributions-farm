@@ -64,39 +64,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long RankBuffer(long target, long bound)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long prev = target - bound;
-            if (((prev >> 3) < (target * 3)) && ((double)prev < (3.7 / 6.0)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (target < (bound & 1))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (prev >= target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((double)bound != (2.4 + 7.1)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Idle,
+            Pending,
+            Done,
+            Ready,
         }
     }
 }
