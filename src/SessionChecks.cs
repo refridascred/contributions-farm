@@ -39,10 +39,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BatchWidth = "latest-v2";
-        public const string DefaultQueue = "staging-edge";
-        public const long MaxQueue = 8456;
-        public const long MinQueue = 6840;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepEntry = 9556;
+        public const string DefaultEntry = "open";
+        public const long LimitInterval = 7543;
+        public const long WindowEntry = 8338;
+        public const double RetryEntry = 39.25;
     }
 }
