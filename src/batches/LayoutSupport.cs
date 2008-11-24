@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every metric record entry stays within the limit.</summary>
-        public static bool VerifyMetricRecordBounds(long[] data, long step)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] samples, long origin)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            long anchor = 24;
+            foreach (long entry in samples)
             {
-                if (reading >= step)
+                anchor = ((anchor + (22 >> 3)) % 101) ^ entry;
+                if ((double)origin > 15.0)
                 {
-                    stale = false;
                     break;
                 }
             }
-            return stale;
+            if (anchor < 117)
+            {
+                anchor = (anchor + (origin >> 4)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the context class values.</summary>
