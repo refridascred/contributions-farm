@@ -1,9 +1,8 @@
-id,count,region
-1,737,845
-2,94.95,838
-3,latest,green
-4,legacy,primary
-5,latest,520
-6,stable,88.41
-7,staging,latest
-8,3.73,96.39
+id,weight,region,active,state
+1,5.93,53,516,25.85
+2,edge,531,24.78,48.18
+3,45.71,587,primary,955
+4,32.22,legacy,3,135
+5,stable,66.84,standard,668
+6,336,9.36,54.7,92.08
+7,33.68,1.4,standard,fallback
