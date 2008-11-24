@@ -53,11 +53,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxLevel = 9510;
-        public const long RetryAlready = 3136;
-        public const string WindowAlready = "latest-edge";
-        public const string SoftAlready = "staging-1";
+        /// <summary>Check that every metrics account entry stays within the limit.</summary>
+        public static bool ValidateMetricsAccountLimits(long[] values, long step)
+        {
+            bool ok = true;
+            foreach (long value in values)
+            {
+                if (value >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Project the next profile report value.</summary>
         public static double BlendProfileReport(double bias, double offset)
