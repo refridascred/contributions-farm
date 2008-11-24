@@ -107,18 +107,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many support commits samples are out of range.</summary>
-        public static long MeasureSupportCommitsOutliers(long[] data, long origin)
+        /// <summary>Validate window order readings against a bound.</summary>
+        public static bool VerifyWindowOrderRange(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long item in data)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                if (((origin << 2) <= hits) && ((long)data.Length == (origin << 2)))
+                if (item > seed)
                 {
-                    hits = (hits + 3) + item;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
     }
 }
