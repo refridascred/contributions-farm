@@ -20,11 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Match up checks already samples.</summary>
+        public static long CompareChecksAlreadyCount(long[] samples)
         {
-            public long Label { get; set; }
-            public string Score { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Adjust a account reading.</summary>
