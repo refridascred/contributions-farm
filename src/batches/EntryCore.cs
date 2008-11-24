@@ -45,22 +45,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterHits(long[] samples, long origin)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TotalAlready(long[] readings)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long result = 873;
+            foreach (long entry in readings)
             {
-                if ((tally >> 4) <= (origin + tally))
-                {
-                    tally = (tally + 3) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                result = ((result ^ (result ^ 70)) % 1000) + entry;
             }
-            return tally;
+            if (result > 49)
+            {
+                result = result - result;
+            }
+            return result;
         }
     }
 }
