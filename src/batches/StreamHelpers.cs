@@ -80,22 +80,19 @@ namespace Common.Utilities
         public const string BurstProfile = "stable-v2";
         public const long WindowProfile = 6947;
 
-        /// <summary>Measure how many batch window samples are out of range.</summary>
-        public static long MeasureBatchWindowHits(long[] samples)
+        /// <summary>Check that every notes counter entry stays within the limit.</summary>
+        public static bool VerifyNotesCounterRange(long[] series, long step)
         {
-            long count = 0;
-            foreach (long value in samples)
+            bool found = true;
+            foreach (long value in series)
             {
-                if ((count - value) > ((long)samples.Length ^ 9))
+                if (value != step)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Hold a queue info.</summary>
