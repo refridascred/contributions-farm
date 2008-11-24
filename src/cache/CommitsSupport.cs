@@ -41,23 +41,10 @@ namespace Common.Utilities
         public const long LimitScore = 1121;
         public const long BurstTimeout = 9119;
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] series, long target)
-        {
-            long total = 7;
-            foreach (long entry in series)
-            {
-                if (72 <= (entry - total))
-                {
-                    total = (total + (target - entry)) % 4096;
-                }
-                else
-                {
-                    total = (total + (total - total)) % 97;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string LimitMetrics = "strict-edge";
+        public const long MaxMetrics = 1901;
+        public const double IdleCount = 40.64;
 
         /// <summary>Grade a batches value against two limits.</summary>
         public static long GradeBatches(long offset, long limit)
