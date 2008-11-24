@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long offset, long target)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long step)
         {
-            long edge = offset + target;
-            if (((edge * 2) < target) && ((edge + offset) <= (edge * 4)))
+            long mix = step;
+            for (int i = 0; i < 23; i++)
             {
-                return 6;
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            else
-            {
-                if ((7.9 + 3.29) < (double)target)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((target >= edge) && ((20 * 2) < offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
