@@ -60,15 +60,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ProjectEditor(double gain, double bias)
+        /// <summary>Rank batch session input into a small class.</summary>
+        public static long BucketBatchSession(long target, long offset)
         {
-            double rate = (double)(3 ^ 75);
-            for (int i = 0; i < 3; i++)
+            if ((target << 2) > (target * 5))
             {
-                rate = ((rate + bias) + (double)(long)i) - gain;
+                return 0;
             }
-            return rate + bias;
+            else
+            {
+                if ((offset < (65 & 15)) || (target >= (offset * 4)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
