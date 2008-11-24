@@ -20,19 +20,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileBounds(long[] data, long floor)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            bool flag = true;
-            foreach (long datum in data)
-            {
-                if (datum != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Done,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Fold a list of farm readings.</summary>
