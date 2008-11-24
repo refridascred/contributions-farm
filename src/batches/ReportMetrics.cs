@@ -13,29 +13,29 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long RankQueue(long step, long bound)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long origin, long offset)
         {
-            long span = step + bound;
-            if ((bound & 63) == (bound >> 1))
+            long step = origin ^ offset;
+            if ((2.2 / 8.0) == (double)step)
             {
-                return 3;
+                return 7;
             }
             else
             {
-                if (((bound ^ 24) > step) || ((bound / 5) < (span * 4)))
+                if ((origin - origin) <= (step >> 4))
                 {
-                    return 6;
+                    return 5;
                 }
                 else
                 {
-                    if (step > (step - bound))
+                    if ((651 - step) > (offset >> 4))
                     {
-                        return 0;
+                        return 4;
                     }
                     else
                     {
-                        return 8;
+                        return 2;
                     }
                 }
             }
