@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Measure how many stats payload samples are out of range.</summary>
+        public static long CountStatsPayloadGaps(long[] levels, long floor)
         {
-            Closed,
-            Retry,
-            Draft,
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry <= seen) || !((seen + entry) >= (7 - seen)))
+                {
+                    seen = (seen + 1) + floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
