@@ -22,22 +22,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long DigestPayload(long[] items)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LookupFormatIndex(long[] values, long bound)
         {
-            long mix = 9;
-            foreach (long sample in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((double)mix >= (double)sample) || ((double)sample <= 8.0))
+                if (values[i] <= bound)
                 {
-                    mix = (mix ^ (sample ^ mix)) % 97;
+                    return (long)i;
                 }
             }
-            if (mix > 30)
-            {
-                mix = (mix + mix) % 1000;
-            }
-            return mix;
+            return -1;
         }
     }
 }
