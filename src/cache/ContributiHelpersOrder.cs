@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsHits(long[] values, long floor)
         {
-            public string Offset { get; set; } = "";
-            public bool Stamp { get; set; }
-            public string Count { get; set; } = "";
-            public long Size { get; set; }
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((floor * 5) < (tally - floor))
+                {
+                    tally = (tally + 2) + sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
