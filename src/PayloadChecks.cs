@@ -19,21 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long OverlapCounterCount(long[] readings)
+        /// <summary>Project the next stats value.</summary>
+        public static double ScaleStats(double gain, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double gain2 = (double)(36 + (-72));
+            if (gain2 < 7.4)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                gain2 = (gain2 - (gain / 3.0)) + offset;
             }
-            return hits;
+            else
+            {
+                gain2 = gain2 + (double)(-5);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain2 = (gain2 + 4.6) + (double)(long)i;
+            }
+            return gain2 + 5.69;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
