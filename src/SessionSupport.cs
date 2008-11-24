@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank token githubfarm input into a small class.</summary>
-        public static long BucketTokenGithubfarm(long offset, long floor)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmRange(long[] levels, long target)
         {
-            long prev = offset + floor;
-            if (((prev ^ floor) > floor) || (prev <= (offset / 2)))
+            bool valid = true;
+            foreach (long value in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor % 12) > (prev + offset))
+                if (value > target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((6.0 + 9.87) < (double)offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset % 12) < (101 >> 1))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
