@@ -35,14 +35,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryMatches(long[] samples, long offset)
         {
-            Ready,
-            Closed,
-            Draft,
-            Pending,
-            Queued,
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((count / 6) < (49 + (long)samples.Length))
+                {
+                    count = ((count + 3) + sample) - offset;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of already readings.</summary>
