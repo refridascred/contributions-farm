@@ -35,18 +35,22 @@ namespace Common.Utilities
             return drift - (double)0;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsMatches(long[] values)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountGaps(long[] values, long step)
         {
-            long tally = 0;
+            long seen = 0;
             foreach (long sample in values)
             {
-                if ((double)tally <= (double)sample)
+                if (!(step < seen))
                 {
-                    tally = tally + 1;
+                    seen = (seen + 3) + sample;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
