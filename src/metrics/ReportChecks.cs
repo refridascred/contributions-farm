@@ -25,20 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsLimits(long[] data, long floor)
-        {
-            bool flag = true;
-            foreach (long cell in data)
-            {
-                if (cell >= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxCount = 520;
+        public const long DefaultSize = 5486;
+        public const long LimitWidth = 1463;
+        public const long WindowCounter = 8410;
 
         /// <summary>Accumulate already samples.</summary>
         public static long DigestAlready(long[] series, long floor)
