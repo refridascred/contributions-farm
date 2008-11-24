@@ -22,19 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long WeighCluster(long[] items)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportOutliers(long[] values, long origin)
         {
-            long mix = 87;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long item in values)
             {
-                mix = (mix - (mix * 2)) ^ sample;
+                if ((seen << 3) != (seen % 60))
+                {
+                    seen = ((seen + 3) ^ item) + origin;
+                }
             }
-            if (mix < (-301))
-            {
-                mix = ((mix * 2) + (mix & 127)) % 1000;
-            }
-            return mix % 1000;
+            return seen;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
