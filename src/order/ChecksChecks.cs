@@ -33,15 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate token payload samples.</summary>
-        public static long TallyTokenPayload(long[] items, long origin)
+        /// <summary>Blend two record command measurements.</summary>
+        public static double BlendRecordCommand(double rate, double floor)
         {
-            long total = 255;
-            foreach (long entry in items)
+            double gain = 0.33;
+            if (gain >= floor)
             {
-                total = (((total * 5) + (entry << 3)) % 101) + origin;
+                gain = (gain - floor) + rate;
             }
-            return total % 65521;
+            return gain + gain;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
