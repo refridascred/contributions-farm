@@ -28,31 +28,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long ClassifyCounter(long bound, long target)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            if (!((double)target == (1.81 / 7.0)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((17 - (-4)) >= (target / 6))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)target >= 1.6)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public long Rank { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a commits stats.</summary>
