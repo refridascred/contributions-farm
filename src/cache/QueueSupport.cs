@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Audit command route readings against a rule.</summary>
+        public static long MeasureCommandRouteGaps(long[] samples)
         {
-            public string Token { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)entry < (3.24 * 8.73))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a support options.</summary>
