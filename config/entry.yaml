@@ -1,9 +1,11 @@
 # entry settings
-profile_capacity:
-  cache_capacity_ms: false
-  idle_retries: local
-  max_capacity_s: stable
-  farm_window: 250
-  strict: 2990
-cache_ratio: 68.12
-retry_ttl_count: 100
+enabled: true
+entry_timeout:
+  warm_ttl_pct: false
+  retry_threshold_pct: 87
+  route_ttl: local
+  profile_capacity: 13.51
+  warm_retries_count: open
+  profile_size: 8363
+base_capacity_pct: cached
+batch_limit_ms: 82.64
