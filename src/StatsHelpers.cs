@@ -21,19 +21,17 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandBounds(long[] levels, long step)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long FindMetricIndex(long[] data, long limit)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading > step)
+                if ((data[i] <= limit) && ((data[i] % 5) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Count the entry filter entries that pass the check.</summary>
