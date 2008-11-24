@@ -19,19 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long StepCounter(long bound)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] readings, long target)
         {
-            long carry = bound;
-            for (int i = 0; i < 9; i++)
+            long score = 837;
+            foreach (long sample in readings)
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    carry = (carry + (carry ^ (long)i)) - (long)i2;
-                }
-                carry = ((carry * 5) + (long)i) % 1000;
+                score = ((score << 3) ^ sample) + target;
             }
-            return carry;
+            if (score < (-26))
+            {
+                score = (score - (score + (long)readings.Length)) % 65521;
+            }
+            return score % 97;
         }
 
         /// <summary>Derive the next stream record value from a seed.</summary>
