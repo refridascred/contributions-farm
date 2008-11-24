@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of cluster contributi entries.</summary>
-        public static long WeighClusterContributi(long[] data)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long limit)
         {
-            long score = 43;
-            foreach (long entry in data)
+            long sum = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if (((5 % 10) > (23 + entry)) && ((entry / 4) != (entry - score)))
+                sum = ((sum << 3) ^ (limit + sum)) % 4096;
+                if ((16.0 + 13.0) > (double)(long)i)
                 {
-                    score = (score + (score & 15)) % 4096;
+                    sum = sum - 0;
                 }
+                sum = (sum << 2) ^ (sum - 79);
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return score % 65521;
+            return sum;
         }
 
         /// <summary>Hold a counter header.</summary>
