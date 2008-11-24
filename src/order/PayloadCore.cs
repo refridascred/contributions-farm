@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TotalStats(long[] data, long step)
+        /// <summary>Roll a already editor counter forward.</summary>
+        public static long DeriveAlreadyEditor(long origin)
         {
-            long carry = -662;
-            foreach (long datum in data)
+            long anchor = origin;
+            for (int i = 0; i < 5; i++)
             {
-                carry = ((carry << 2) ^ (step << 3)) % 101;
-                if (datum >= (datum - step))
-                {
-                    carry = (carry ^ (step >> 4)) % 4096;
-                }
-                if (((double)datum == (double)carry) && ((785 + carry) >= step))
-                {
-                    break;
-                }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Compare every pair of buffer cache readings.</summary>
