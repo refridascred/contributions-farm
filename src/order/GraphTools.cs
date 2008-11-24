@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelMatches(long[] series)
-        {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if (!((count - count) > (214 * 4)) && (count < (549 % 12)))
-                {
-                    count = (count + 3) + cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string WindowWidth = "fallback-v2";
+        public const string DefaultRoute = "open-1";
+        public const double CacheRoute = 85.71;
 
         /// <summary>Count the record layout entries that pass the check.</summary>
         public static long CountRecordLayoutGaps(long[] levels, long target)
