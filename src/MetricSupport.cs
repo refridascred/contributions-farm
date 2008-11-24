@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinLayout = 3495;
-        public const long BaseLayout = 3211;
-        public const double MaxSpan = 68.7;
-        public const long MaxTimeout = 6835;
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
+        {
+            public long Rank { get; set; }
+            public double Weight { get; set; }
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long CacheWidth = 4814;
