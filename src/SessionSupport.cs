@@ -28,10 +28,14 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultMetric = 4630;
-        public const long BatchScore = 3881;
-        public const long IdleRatio = 3727;
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
+        {
+            Stale,
+            Idle,
+            Failed,
+            Retry,
+        }
 
         /// <summary>Roll a contributi counter forward.</summary>
         public static long StepContributi(long floor)
