@@ -27,17 +27,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] data, long limit)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ScaleAccount(double gain, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double gain2 = (double)224 / 7.0;
+            if (gain2 > (double)(-74))
             {
-                if ((data[i] <= limit) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                gain2 = (gain2 + (gain / 5.0)) - span;
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                gain2 = (gain2 + (gain2 + 8.6)) - (double)(long)i;
+            }
+            return gain2 - (gain2 * 2.43);
         }
 
         /// <summary>Count the entry filter entries that pass the check.</summary>
