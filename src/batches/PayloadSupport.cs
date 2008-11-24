@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank tools queue input into a small class.</summary>
-        public static long GradeToolsQueue(long offset, long target)
-        {
-            if (!((target & 1) < (offset & 1)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((target < (target ^ offset)) && ((target << 1) > (offset / 5)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseCommand = 5691;
+        public const string RetryDepth = "alpha-edge";
+        public const long WindowCommand = 1746;
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long MeasureEditorGaps(long[] readings)
