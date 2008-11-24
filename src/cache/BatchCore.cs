@@ -41,12 +41,11 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstBatch = 6078;
-        public const double BaseFactor = 35.19;
-        public const long BatchCount = 2118;
-        public const double SoftRatio = 18.74;
-        public const double LimitBudget = 63.07;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultGithubfarm = 3978;
+        public const double BaseGithubfarm = 69.05;
+        public const long SoftGithubfarm = 5373;
+        public const long LimitGithubfarm = 5174;
 
         /// <summary>Hold a commits info.</summary>
         public sealed class CommitsInfo
