@@ -17,17 +17,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LocateBatchIndex(long[] readings, long seed)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 948;
+            foreach (long entry in items)
             {
-                if ((readings[i] > seed) && ((readings[i] % 5) == 0))
+                if (3.2 > (double)entry)
                 {
-                    return (long)i;
+                    carry = ((carry * 5) + 8) % 255;
+                }
+                else
+                {
+                    carry = carry - ((long)items.Length << 1);
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
