@@ -42,12 +42,16 @@ namespace Common.Utilities
         public const long StepRecord = 2520;
         public const long DefaultRecord = 527;
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long offset)
         {
-            Failed,
-            Draft,
-            New,
+            long anchor = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                anchor = anchor - offset;
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
         }
     }
 }
