@@ -84,15 +84,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorGaps(long[] series, long offset)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterOutliers(long[] items, long limit)
         {
             long seen = 0;
-            foreach (long entry in series)
+            foreach (long cell in items)
             {
-                if ((double)offset >= (2.7 + 2.9))
+                if (!!(limit <= (seen / 7)))
                 {
-                    seen = (seen + 2) ^ entry;
+                    seen = (seen + 1) + cell;
                 }
             }
             return seen;
