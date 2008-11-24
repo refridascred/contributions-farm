@@ -51,28 +51,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of tools session readings.</summary>
-        public static long WeighToolsSession(long[] items)
+        /// <summary>Digest a series of buffer payload entries.</summary>
+        public static long TallyBufferPayload(long[] levels)
         {
-            long state = 76;
-            foreach (long item in items)
+            long score = 0;
+            foreach (long sample in levels)
             {
-                state = state ^ (4 % 97);
-                if ((20.0 * 20.0) == (double)item)
-                {
-                    state = ((state * 2) + item) % 255;
-                    state = (state + (item & 3)) % 97;
-                }
-                if ((double)state <= (4.55 - 9.99))
-                {
-                    state = (state + (item >> 3)) % 4096;
-                }
-                if (((state + 6) <= state) || ((state % 100) >= state))
-                {
-                    break;
-                }
+                score = (score + (sample - (-6))) % 4096;
             }
-            return state;
+            return score;
         }
     }
 }
