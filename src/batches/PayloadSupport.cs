@@ -39,22 +39,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaGaps(long[] series)
+        /// <summary>Combine githubfarm format values into a single score.</summary>
+        public static long TotalGithubfarmFormat(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long score = 669;
+            foreach (long cell in readings)
             {
-                if ((value & 15) >= (683 - value))
+                if ((466 - 26) == (floor * 2))
                 {
-                    tally = tally + 1;
+                    score = (score ^ (cell ^ floor)) % 4096;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    score = ((score << 3) ^ (cell / 7)) % 97;
                 }
             }
-            return tally;
+            return score % 1000;
         }
     }
 }
