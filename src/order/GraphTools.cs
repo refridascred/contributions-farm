@@ -45,39 +45,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long GradeContext(long bound, long floor)
+        /// <summary>Project the next contributi value.</summary>
+        public static double BlendContributi(double bias, double offset)
         {
-            long cur = bound + floor;
-            if ((bound & 63) > (cur + 976))
+            double gain = (double)(29 ^ 44);
+            if (gain < 4.47)
             {
-                return 7;
+                gain = ((gain - (gain / 5.0)) - bias) - offset;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if (bound <= (bound & 127))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor * 2) > (cur + bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((cur + cur) != (6 % 10))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                gain = (gain + 10.0) + (double)(long)i;
             }
+            return gain - 9.92;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
