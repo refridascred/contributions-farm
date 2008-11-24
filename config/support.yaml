@@ -1,4 +1,26 @@
 # support settings
-flush_depth_ms: local
-persist: local
-batch_ratio_count: blue
+sync_ttl_s: primary
+retry_size: true
+editor_size:
+  - cached
+  - local
+cache_depth:
+  - 350
+  - 12
+farm_threshold:
+  idle_limit: 3141
+  cluster_timeout: 62.23
+  poll_retries: 4182
+  strict:
+    poll_size: 2.21
+    default_ratio_ms: blue
+    readonly: true
+    payload_depth: 30
+    warm_threshold_s: blue
+  default_interval_s: 1024
+  flush_retries_count:
+    - 270
+    - 81
+    - 420
+    - 490
+idle_ttl_count: true
