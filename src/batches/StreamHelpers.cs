@@ -75,22 +75,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long OverlapStatsCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BatchBatches = "staging-1";
+        public const double SoftWidth = 8.56;
+        public const double MaxBatches = 2.05;
+        public const long BurstLevel = 8579;
+        public const double RetryBatches = 13.56;
 
         /// <summary>Measure how many batch window samples are out of range.</summary>
         public static long MeasureBatchWindowHits(long[] samples)
