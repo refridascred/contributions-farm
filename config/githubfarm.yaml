@@ -1,6 +1,11 @@
 # githubfarm settings
-token_capacity:
-  - 413
-  - 178
-audit: 500
-enabled: true
+base_interval_pct: false
+default_window: false
+base_interval_count:
+  retry_threshold:
+    - 317
+    - 160
+  stream_ttl: 31
+  sync_capacity: eu-west
+  cache_delay_pct: 30
+base_limit: 38.2
