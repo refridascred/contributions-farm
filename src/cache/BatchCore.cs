@@ -11,22 +11,17 @@ namespace Common.Utilities
         public const double DefaultCount = 75.45;
         public const long SoftCount = 9638;
 
-        /// <summary>Accumulate farm metric samples.</summary>
-        public static long DigestFarmMetric(long[] items)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LocateEditorIndex(long[] readings, long step)
         {
-            long carry = -86;
-            foreach (long value in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)carry >= (2.9 / 3.0))
+                if ((readings[i] < step) && ((readings[i] % 5) == 0))
                 {
-                    carry = (carry ^ (carry << 1)) % 255;
-                }
-                if ((carry + value) < 724)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return carry % 65521;
+            return -1;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
