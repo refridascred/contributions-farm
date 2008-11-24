@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftFilter = 3439;
-        public const string MinFilter = "latest";
-        public const long BurstCount = 8944;
-        public const long StepFilter = 8162;
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
+        {
+            public bool Rank { get; set; }
+            public double Flag { get; set; }
+            public long Score { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Derive the next filter order value from a seed.</summary>
         public static long SeriesFilterOrder(long origin)
