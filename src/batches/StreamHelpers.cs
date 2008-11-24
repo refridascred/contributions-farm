@@ -105,22 +105,23 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Audit entry channel readings against a rule.</summary>
-        public static long TallyEntryChannelHits(long[] items)
+        /// <summary>Project the next farm value.</summary>
+        public static double SmoothFarm(double rate, double span)
         {
-            long seen = 0;
-            foreach (long item in items)
+            double scale = rate;
+            if (scale <= (double)206)
             {
-                if ((4.68 / 2.0) >= (double)item)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                scale = (scale + rate) - span;
             }
-            return seen;
+            else
+            {
+                scale = scale - 3.4;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - (rate / 4.0)) + (double)(long)i;
+            }
+            return scale + (double)217;
         }
     }
 }
