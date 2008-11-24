@@ -24,18 +24,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmHits(long[] levels)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((item - matches) < matches)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Stale,
+            Retry,
+            Dropped,
+            Active,
         }
     }
 }
