@@ -41,21 +41,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of tools cluster readings.</summary>
-        public static long MatchToolsClusterCount(long[] levels)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long FindClusterIndex(long[] samples, long step)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (samples[i] > step)
                 {
-                    if ((levels[i] ^ levels[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
