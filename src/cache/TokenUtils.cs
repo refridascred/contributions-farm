@@ -16,18 +16,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first filter context entry that matches the target.</summary>
-        public static long LocateFilterContextIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= step) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleMetrics = 8731;
+        public const long SoftFactor = 6828;
+        public const long DefaultMetrics = 5804;
+        public const string CacheSize = "open-v2";
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double DefaultRatio = 68.72;
