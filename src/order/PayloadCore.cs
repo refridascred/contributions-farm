@@ -22,21 +22,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of tools contributi readings.</summary>
-        public static long PairToolsContributiCount(long[] data)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long SortLayout(long origin, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long cur = origin - step;
+            if ((origin > (step & 15)) && (cur <= origin))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((origin / 7) > (243 - cur))
                 {
-                    if ((data[i] - data[j]) == 0)
+                    return 8;
+                }
+                else
+                {
+                    if ((cur * 3) != (step % 8))
                     {
-                        hits = hits + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
