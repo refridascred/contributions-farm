@@ -1,8 +1,6 @@
 {
-  "batch_depth_count": 79.01,
-  "flush_ratio": 86.99,
-  "min_threshold": "green",
-  "poll_window_ms": "legacy",
-  "soft_size_ms": "edge",
-  "soft_interval": ["local", "eu-west", "cached"]
+  "flush_limit_ms": 500,
+  "strict": 100,
+  "cluster_window": 19.31,
+  "default_window_s": 31
 }
