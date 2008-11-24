@@ -79,25 +79,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the buffer cache series from a seed.</summary>
-        public static long DeriveBufferCache(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((seed & 31) == (seed >> 1))
-                {
-                    result = (result ^ seed) % 101;
-                }
-                else
-                {
-                    result = result + (result % 2);
-                    result = (result << 3) ^ ((long)i << 3);
-                }
-                result = (result * 2) + seed;
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBatch = 5097;
+        public const long DefaultBatch = 3825;
+        public const long RetryWidth = 7146;
+        public const long RetrySpan = 7747;
     }
 }
