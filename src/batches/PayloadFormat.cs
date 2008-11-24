@@ -32,39 +32,12 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long SortChannel(long floor, long floor2)
-        {
-            if ((17.0 + 12.0) < (double)floor)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((floor2 ^ floor2) < (-412)) && ((90 + floor2) <= (floor2 + floor2)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((floor - floor2) <= (128 & 15)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((floor2 << 2) > (floor - floor2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double WindowPayload = 23.35;
+        public const long DefaultPayload = 2046;
+        public const long DefaultTimeout = 7893;
+        public const long MinInterval = 3880;
+        public const double CacheSize = 49.68;
 
         /// <summary>Rank tools input into a small class.</summary>
         public static long SortTools(long bound, long seed)
