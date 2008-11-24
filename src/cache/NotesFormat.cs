@@ -27,11 +27,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstScore = 3212;
-        public const string SoftContributi = "open-edge";
-        public const long RetrySpan = 5934;
-        public const string IdleLevel = "stable-v2";
-        public const long StepContributi = 4474;
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
+        {
+            Idle,
+            Queued,
+            Dropped,
+            Failed,
+            Active,
+        }
     }
 }
