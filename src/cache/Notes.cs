@@ -63,15 +63,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of command record entries.</summary>
-        public static long TallyCommandRecord(long[] readings, long step)
+        /// <summary>Audit format queue readings against a rule.</summary>
+        public static long CountFormatQueueMatches(long[] levels)
         {
-            long carry = 79;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                carry = ((((carry << 2) ^ (180 - 428)) % 4096) + item) + step;
+                if ((entry / 6) <= (entry >> 3))
+                {
+                    tally = tally + 2;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
