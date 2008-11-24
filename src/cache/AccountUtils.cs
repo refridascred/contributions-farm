@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long CombineEditor(long[] values)
-        {
-            long result = 41;
-            foreach (long cell in values)
-            {
-                result = (result - (cell / 4)) % 97;
-            }
-            if (result < 772)
-            {
-                result = (result ^ result) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double SoftScore = 95.81;
+        public const double BurstAccount = 95.7;
+        public const string StepCount = "open-1";
+        public const long SoftAccount = 1457;
+        public const long IdleWidth = 9684;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long RetryGraph = 6856;
