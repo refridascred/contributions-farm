@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenLimits(long[] samples, long floor)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteHits(long[] values, long target)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if (item < floor)
+                if (!(7.0 <= (double)cell) && !(cell <= (seen + cell)))
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 2) - target;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Accumulate metric samples.</summary>
