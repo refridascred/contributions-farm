@@ -52,19 +52,18 @@ namespace Common.Utilities
             return bias - (ratio + 4.9);
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double AdjustGithubfarm(double rate, double floor)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] samples, long limit)
         {
-            double gain = (double)39 - 6.0;
-            if (gain < (double)986)
+            long anchor = 67;
+            foreach (long datum in samples)
             {
-                gain = (gain + (gain - 4.8)) - rate;
+                if ((double)(long)samples.Length != (double)1)
+                {
+                    anchor = ((anchor << 3) ^ (limit >> 1)) + datum;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + (9.8 * 3.5)) + (double)(long)i;
-            }
-            return gain - (3.0 + floor);
+            return anchor;
         }
 
         /// <summary>Describe the stats level values.</summary>
