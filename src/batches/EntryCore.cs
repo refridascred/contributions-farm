@@ -27,24 +27,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long IterateGithubfarm(long floor)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LocateSessionIndex(long[] items, long limit)
         {
-            long carry = floor;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)floor == (2.14 / 9.0)) && ((carry + (long)i) >= ((long)i + carry)))
+                if (items[i] > limit)
                 {
-                    carry = (carry - (364 >> 1)) % 65521;
-                    carry = carry ^ carry;
+                    return (long)i;
                 }
-                if (carry <= 9)
-                {
-                    carry = (carry + carry) % 101;
-                }
-                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
