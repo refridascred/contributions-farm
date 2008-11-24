@@ -15,22 +15,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] readings)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long GradeSchema(long origin, long offset)
         {
-            long state = 74;
-            foreach (long datum in readings)
+            if ((origin + offset) < (offset << 1))
             {
-                if ((state / 4) > (datum + datum))
+                return 7;
+            }
+            else
+            {
+                if (!((offset << 3) < (origin + origin)))
                 {
-                    continue;
+                    return 5;
                 }
-                if (!((double)state >= (4.09 * 2.12)))
+                else
                 {
-                    state = ((state * 5) + (long)readings.Length) % 4096;
+                    return 8;
                 }
             }
-            return state % 1000;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
