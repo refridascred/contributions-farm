@@ -37,19 +37,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaRange(long[] levels, long origin)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long offset, long limit)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            if ((double)offset != (4.7 / 5.0))
             {
-                if (value <= origin)
+                return 1;
+            }
+            else
+            {
+                if (((-49) + limit) == (limit + limit))
                 {
-                    stale = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return stale;
         }
 
         /// <summary>Hold a window summary.</summary>
