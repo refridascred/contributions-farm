@@ -31,19 +31,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long CombineBatch(long[] readings, long origin)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LookupStreamIndex(long[] data, long target)
         {
-            long result = -375;
-            foreach (long item in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = (result - origin) - item;
+                if (data[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            if (result > (-86))
-            {
-                result = ((result * 2) + result) % 97;
-            }
-            return result % 4096;
+            return -1;
         }
 
         /// <summary>Describe the entry status values.</summary>
