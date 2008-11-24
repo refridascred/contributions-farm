@@ -45,22 +45,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the entry filter entries that pass the check.</summary>
-        public static long MeasureEntryFilterHits(long[] data, long floor)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long score = -568;
+            foreach (long cell in items)
             {
-                if (datum <= (seen % 16))
-                {
-                    seen = (seen + 3) + floor;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                score = (((score * 3) + (score / 2)) % 255) ^ cell;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
