@@ -29,12 +29,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxScore = 4417;
-        public const long IdleBudget = 267;
-        public const long WindowSpan = 5173;
-        public const long DefaultCount = 313;
-        public const long CachePayload = 6536;
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheHits(long[] data, long seed)
+        {
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((double)tally > (double)7)
+                {
+                    tally = ((tally + 3) ^ datum) + seed;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate batch samples.</summary>
         public static long CombineBatch(long[] readings, long origin)
