@@ -12,11 +12,25 @@ namespace Common.Utilities
         public const long LimitInterval = 904;
         public const string LimitLevel = "alpha-edge";
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultSize = 1850;
-        public const long WindowRatio = 6802;
-        public const double BatchDepth = 32.12;
-        public const long BurstScore = 8799;
+        /// <summary>Grade a editor tools value against two limits.</summary>
+        public static long BucketEditorTools(long seed, long floor)
+        {
+            if (((double)seed != (double)floor) || ((floor + seed) > (70 - 27)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((floor * 5) > floor)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long TallyMetricOutliers(long[] readings, long bound)
