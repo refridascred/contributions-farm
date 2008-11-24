@@ -13,10 +13,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheContext = 5083;
-        public const double MinContext = 4.94;
-        public const double HardBudget = 91.45;
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long SeriesChannel(long seed)
+        {
+            long anchor = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                anchor = (anchor ^ (anchor & 255)) % 65521;
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Adjust a report contributi reading.</summary>
         public static double AdjustReportContributi(double ratio, double offset)
