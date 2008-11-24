@@ -1,8 +1,9 @@
-id,token,score
-1,177,42
-2,stable,372
-3,18.74,870
-4,313,29.45
-5,575,latest
-6,primary,12.41
-7,open,125
+id,label,state
+1,38.85,standard
+2,206,60.2
+3,fallback,182
+4,75.89,11
+5,759,28.96
+6,fallback,80.82
+7,861,green
+8,225,319
