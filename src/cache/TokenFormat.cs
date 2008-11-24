@@ -20,15 +20,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Accumulate window cache samples.</summary>
-        public static long WeighWindowCache(long[] values)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long CombineOrder(long[] data, long target)
         {
-            long mark = 80;
-            foreach (long datum in values)
+            long state = 7;
+            foreach (long datum in data)
             {
-                mark = ((mark * 5) + datum) % 101;
+                if ((target > (long)data.Length) || ((datum / 3) >= (target + target)))
+                {
+                    state = ((state << 3) ^ (target + (long)data.Length)) % 4096;
+                }
             }
-            return mark % 97;
+            return state % 65521;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
