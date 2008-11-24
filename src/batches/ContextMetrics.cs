@@ -16,25 +16,12 @@ namespace Common.Utilities
             return drift + (double)3;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long step, long offset)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long cur = step - offset;
-            if (((offset & 63) > (offset - step)) && ((39 >> 4) < (offset ^ offset)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((cur + cur) >= 5)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public double Rank { get; set; }
+            public long Mode { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
