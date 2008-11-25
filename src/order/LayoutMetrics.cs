@@ -19,19 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryBounds(long[] items, long bound)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            bool flag = true;
-            foreach (long entry in items)
-            {
-                if (entry < bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Score { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Fold a list of editor report readings.</summary>
