@@ -24,18 +24,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaOutliers(long[] samples)
+        /// <summary>Find the first report cache entry that matches the target.</summary>
+        public static long FindReportCacheIndex(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((cell << 3) <= (-5))
+                if (levels[i] >= bound)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
