@@ -57,13 +57,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            public bool Limit { get; set; }
-            public long Rank { get; set; }
-            public long Offset { get; set; }
-            public string Token { get; set; } = "";
+            Ready,
+            Dropped,
+            Stale,
+            New,
+            Pending,
         }
     }
 }
