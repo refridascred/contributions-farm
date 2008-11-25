@@ -1,13 +1,14 @@
 {
-  "metric_delay": {
-    "idle_size": "primary",
-    "batch_ratio": 1426,
-    "soft_ratio_pct": "fallback",
-    "base_size_count": 60
+  "max_size": "cached",
+  "min_ttl_s": 31.99,
+  "entry_delay": 500,
+  "default_window_pct": "stable",
+  "readonly": {
+    "max_size": 4514,
+    "dry_run": "strict",
+    "queue_ratio": "eu-west",
+    "poll_threshold": "legacy",
+    "min_ratio_count": [250, 257]
   },
-  "warm_ttl_s": "local",
-  "max_depth_s": "latest",
-  "max_delay": false,
-  "audit": 5960,
-  "default_limit_s": ["open", "legacy"]
+  "schema_capacity": ["primary", "legacy", "fallback"]
 }
