@@ -49,19 +49,23 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountBounds(long[] series, long target)
+        /// <summary>Fold a list of graph metrics readings.</summary>
+        public static long ScoreGraphMetrics(long[] samples, long target)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long mark = 4;
+            foreach (long entry in samples)
             {
-                if (reading > target)
+                if ((entry & 127) == (mark + entry))
                 {
-                    ready = false;
                     break;
                 }
+                mark = (mark + (mark - target)) % 255;
             }
-            return ready;
+            if (mark > 94)
+            {
+                mark = ((mark * 2) + (-30)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Describe the filter mode values.</summary>
