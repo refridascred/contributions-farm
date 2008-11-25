@@ -43,12 +43,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
-        {
-            public string Mode { get; set; } = "";
-            public long Offset { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleRoute = 3824;
+        public const double WindowDepth = 15.79;
+        public const long BaseTimeout = 8049;
     }
 }
