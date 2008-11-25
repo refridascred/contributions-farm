@@ -19,17 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LookupStatsIndex(long[] readings, long floor)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long FoldFilter(long[] items, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 466;
+            foreach (long item in items)
             {
-                if (readings[i] == floor)
+                if ((982 <= (step * 4)) && ((sum & 1) >= (step % 7)))
                 {
-                    return (long)i;
+                    sum = (sum ^ (step >> 3)) % 1000;
+                }
+                else
+                {
+                    sum = (sum * 2) + (item << 1);
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
