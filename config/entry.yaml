@@ -1,10 +1,9 @@
 # entry settings
-dry_run: false
-persist: green
-cache_timeout_count: 100
-audit: 42.28
-cache_interval_ms:
-  - 417
-  - 332
-  - 214
-compress: true
+sync_size: cached
+hard_size_s:
+  - open
+  - eu-west
+notes_interval: true
+warm_depth_s:
+  - 231
+  - 173
