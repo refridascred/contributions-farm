@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ProjectFormat(double scale, double floor)
+        /// <summary>Compare every pair of githubfarm stats readings.</summary>
+        public static long PairGithubfarmStatsCount(long[] levels)
         {
-            double load = scale;
-            if (load < (3.39 - scale))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = (load - (9.0 * 0.3)) - floor;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - (5.62 - load)) + (double)(long)i;
-            }
-            return load + 6.6;
+            return tally;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
