@@ -61,22 +61,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] samples)
-        {
-            long acc = 491;
-            foreach (long value in samples)
-            {
-                if ((value / 3) < (value ^ 234))
-                {
-                    acc = (acc << 2) ^ ((long)samples.Length + acc);
-                }
-            }
-            if (acc > 7)
-            {
-                acc = (acc * 5) + (865 + acc);
-            }
-            return acc;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string StepChannel = "standard";
+        public const double BurstSpan = 89.6;
+        public const double CacheChannel = 41.88;
+        public const long SoftDepth = 4281;
     }
 }
