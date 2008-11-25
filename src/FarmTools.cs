@@ -22,18 +22,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate record githubfarm samples.</summary>
-        public static long TotalRecordGithubfarm(long[] series)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long SortProfile(long seed, long target)
         {
-            long carry = 722;
-            foreach (long datum in series)
+            long span = seed - target;
+            if (!((seed / 4) != (target + span)))
             {
-                if (((datum / 9) < (carry / 9)) || ((carry + 8) <= (9 + datum)))
+                return 8;
+            }
+            else
+            {
+                if ((double)span != (8.3 / 3.0))
                 {
-                    carry = (carry ^ (carry % 5)) % 97;
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return carry;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
