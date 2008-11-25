@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Audit buffer metric readings against a rule.</summary>
+        public static long AuditBufferMetricMatches(long[] series, long floor)
         {
-            public long Ratio { get; set; }
-            public bool Mode { get; set; }
-            public string Weight { get; set; } = "";
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if (value < (floor + tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every batch order entry stays within the limit.</summary>
