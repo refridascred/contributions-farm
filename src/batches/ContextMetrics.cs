@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long IterateMetric(long seed)
+        /// <summary>Derive the next stats order value from a seed.</summary>
+        public static long DeriveStatsOrder(long bound)
         {
-            long anchor = seed;
-            for (int i = 0; i < 19; i++)
+            long state = bound;
+            for (int i = 0; i < 8; i++)
             {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    anchor = (anchor - (anchor + 15)) - (long)i2;
-                }
-                anchor = (anchor ^ (0 << 2)) % 255;
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                state = ((state * 4) + (long)i) % 101;
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Combine context values into a single score.</summary>
