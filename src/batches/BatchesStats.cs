@@ -36,19 +36,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksRange(long[] samples, long offset)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Queued,
+            Done,
+            Pending,
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
