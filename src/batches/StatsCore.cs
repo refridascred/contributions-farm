@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesGaps(long[] series, long origin)
+        /// <summary>Accumulate tools cluster samples.</summary>
+        public static long ScoreToolsCluster(long[] series)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long result = 857;
+            foreach (long value in series)
             {
-                if ((entry + tally) != (tally + tally))
-                {
-                    tally = (tally + 3) + origin;
-                }
+                result = ((result << 2) ^ (value << 1)) % 101;
             }
-            return tally;
+            if (result > 16)
+            {
+                result = (result ^ (result / 5)) % 97;
+            }
+            return result % 97;
         }
 
         /// <summary>Count the window token entries that pass the check.</summary>
