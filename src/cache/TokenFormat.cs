@@ -25,24 +25,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long offset, long step)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            if ((offset << 1) >= (step - step))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)step <= (double)offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Paused,
+            Closed,
+            Pending,
+            Retry,
+            Dropped,
         }
     }
 }
