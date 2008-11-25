@@ -57,14 +57,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Check that every already route entry stays within the limit.</summary>
+        public static bool GuardAlreadyRouteRange(long[] samples, long floor)
         {
-            Idle,
-            Failed,
-            Stale,
-            Retry,
-            Active,
+            bool flag = true;
+            foreach (long item in samples)
+            {
+                if (item != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
