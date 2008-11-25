@@ -18,23 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportGaps(long[] samples, long bound)
-        {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if (!((sample - bound) >= (bound >> 2)) && ((bound + 510) < (tally & 63)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardScore = 6261;
+        public const double LimitCluster = 65.7;
+        public const long HardInterval = 7145;
 
         /// <summary>Describe the queue kind values.</summary>
         public enum QueueKind
