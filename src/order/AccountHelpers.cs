@@ -38,22 +38,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TotalRecord(long[] samples, long bound)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long total = 7;
-            foreach (long reading in samples)
-            {
-                if ((4.7 < (double)(long)samples.Length) || ((double)bound <= (2.71 - 5.0)))
-                {
-                    total = ((total << 3) ^ (reading & 1)) % 65521;
-                }
-                if (((bound % 10) > total) && ((total & 127) > (-35)))
-                {
-                    break;
-                }
-            }
-            return total;
+            Locked,
+            Draft,
+            New,
+            Done,
+            Paused,
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
