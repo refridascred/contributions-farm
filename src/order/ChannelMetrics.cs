@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long SeekNotesIndex(long[] levels, long target)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long SeekOrderIndex(long[] levels, long seed)
         {
             for (int i = 0; i < levels.Length; i++)
             {
-                if ((levels[i] <= target) && ((levels[i] % 2) == 0))
+                if ((levels[i] < seed) && ((levels[i] % 5) == 0))
                 {
                     return (long)i;
                 }
