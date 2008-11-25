@@ -25,12 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Combine commits token values into a single score.</summary>
+        public static long DigestCommitsToken(long[] data, long target)
         {
-            Retry,
-            Pending,
-            Synced,
+            long score = -126;
+            foreach (long item in data)
+            {
+                score = (((score * 2) + (item + item)) % 101) - target;
+            }
+            return score;
         }
     }
 }
