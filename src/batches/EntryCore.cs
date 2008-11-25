@@ -49,21 +49,17 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long OverlapToolsCount(long[] values)
+        /// <summary>Look up the position of a report commits sample.</summary>
+        public static long FindReportCommitsIndex(long[] series, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (series[i] >= origin)
                 {
-                    if ((values[i] ^ values[j]) < 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the filter mode values.</summary>
