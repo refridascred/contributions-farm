@@ -16,21 +16,23 @@ namespace Common.Utilities
             return load - gain;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] samples)
+        /// <summary>Fold a list of counter cache readings.</summary>
+        public static long TotalCounterCache(long[] values, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 7;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                total = (total ^ total) + entry;
+                if ((61 * 4) >= floor)
                 {
-                    if ((samples[i] + samples[j]) > 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = (total ^ (floor - total)) % 1000;
+                }
+                if (((long)values.Length << 3) <= (floor + (-67)))
+                {
+                    break;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
