@@ -1,11 +1,8 @@
 # githubfarm settings
-batch_size_s: standard
-hard_interval: cached
-poll_interval_s:
-  - 270
-  - 131
-  - 91
-cache_ratio:
-  - 193
-  - 13
-  - 480
+min_ratio:
+  burst_delay_ms: blue
+  strict: false
+  sync_size: 5117
+cache_depth: latest
+enabled: true
+flush_depth_s: 8714
