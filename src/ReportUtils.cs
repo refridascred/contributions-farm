@@ -20,19 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutLimits(long[] series, long origin)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileMatches(long[] levels, long step)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if (reading != origin)
+                if (entry > (count / 4))
                 {
-                    found = false;
-                    break;
+                    count = (count + 2) + step;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
