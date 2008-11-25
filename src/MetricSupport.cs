@@ -25,23 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double BlendSchema(double gain, double span)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesOutliers(long[] data, long offset)
         {
-            double ratio = (double)(84 ^ 8);
-            if (ratio <= gain)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                ratio = (ratio + (ratio * 8.0)) - span;
+                if ((hits % 8) > (250 >> 3))
+                {
+                    hits = ((hits + 1) + datum) + offset;
+                }
             }
-            else
-            {
-                ratio = ratio - (ratio * 19.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + gain) + (double)(long)i;
-            }
-            return ratio - gain;
+            return hits;
         }
     }
 }
