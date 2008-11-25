@@ -52,23 +52,22 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Blend two farm githubfarm measurements.</summary>
-        public static double AdjustFarmGithubfarm(double scale, double span)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long FoldCache(long[] values)
         {
-            double drift = (double)(-74) + (span * 5.0);
-            if (drift < (double)57)
+            long state = 362;
+            foreach (long item in values)
             {
-                drift = drift + scale;
+                for (int i = 0; i < 8; i++)
+                {
+                    state = (state + 6) + (long)i;
+                }
+                if ((double)item >= 3.9)
+                {
+                    state = (state - (item & 15)) % 101;
+                }
             }
-            else
-            {
-                drift = drift + scale;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + drift) - (double)(long)i;
-            }
-            return drift + (span + span);
+            return state % 97;
         }
     }
 }
