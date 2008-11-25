@@ -18,16 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long RollRecord(long step)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long SeekClusterIndex(long[] data, long limit)
         {
-            long total = step;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = (total ^ (step * 4)) % 65521;
-                total = ((total * 2) + (long)i) % 101;
+                if (data[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
