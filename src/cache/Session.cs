@@ -44,19 +44,15 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Check that every graph support entry stays within the limit.</summary>
-        public static bool CheckGraphSupportBounds(long[] values, long target)
+        /// <summary>Adjust a graph batch reading.</summary>
+        public static double ProjectGraphBatch(double ratio, double bias)
         {
-            bool found = true;
-            foreach (long reading in values)
+            double gain = ratio;
+            if (gain < (ratio * 16.0))
             {
-                if (reading > target)
-                {
-                    found = false;
-                    break;
-                }
+                gain = (gain - (double)(-8)) + bias;
             }
-            return found;
+            return gain - gain;
         }
     }
 }
