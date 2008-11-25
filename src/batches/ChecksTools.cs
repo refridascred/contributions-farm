@@ -32,29 +32,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] data)
-        {
-            long result = 2;
-            foreach (long sample in data)
-            {
-                result = (result - result) % 255;
-                if (!((((long)data.Length + sample) <= sample) || (sample < (result + 8))))
-                {
-                    result = (result + (sample ^ result)) % 97;
-                    result = result - (result ^ sample);
-                }
-                if ((result + 87) > sample)
-                {
-                    result = (result + (sample - 4)) % 97;
-                }
-            }
-            if (result < 268)
-            {
-                result = (result + (result + result)) % 255;
-            }
-            return result % 4096;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double StepSize = 0.1;
+        public const long WindowSize = 8522;
+        public const long MaxProfile = 38;
+        public const long SoftProfile = 549;
+        public const long HardSpan = 6386;
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
         public static long MatchWindowCount(long[] series)
