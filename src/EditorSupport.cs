@@ -27,19 +27,31 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double AdjustContributi(double ratio, double span)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long GradeEntry(long floor, long bound)
         {
-            double drift = span;
-            if (drift <= (7.0 + drift))
+            if (floor < (floor << 1))
             {
-                drift = drift + (span - ratio);
+                return 2;
             }
             else
             {
-                drift = drift + span;
+                if ((bound + bound) <= bound)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((double)floor <= (0.6 / 6.0)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return drift + (span + ratio);
         }
 
         /// <summary>Accumulate window batches samples.</summary>
