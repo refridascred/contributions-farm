@@ -1,5 +1,19 @@
 {
-  "schema_threshold": true,
-  "burst_ratio_count": 8999,
-  "idle_size_s": 9375
+  "sync_ttl_s": 1489,
+  "min_window": 6.51,
+  "cache_ttl": {
+    "batch_ratio": 817,
+    "command_interval": [82, 38],
+    "enabled": [321, 475],
+    "idle_interval": {
+      "dry_run": [445, 271, 164],
+      "sync_delay": true,
+      "enabled": 19.61,
+      "profile_timeout": "edge"
+    },
+    "flush_limit_ms": [218, 15],
+    "compress": 34
+  },
+  "compress": true,
+  "strict": 69
 }
