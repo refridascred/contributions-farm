@@ -28,22 +28,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of buffer queue entries.</summary>
-        public static long DigestBufferQueue(long[] readings)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsOutliers(long[] readings, long offset)
         {
-            long carry = 57;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if ((item * 4) > carry)
+                if (((offset * 3) <= (reading / 8)) && (((offset % 97) <= offset) && ((offset - offset) < (624 % 24))))
                 {
-                    carry = ((carry * 5) + carry) % 97;
-                }
-                else
-                {
-                    carry = carry ^ item;
+                    tally = tally + 2;
                 }
             }
-            return carry % 65521;
+            return tally;
         }
 
         /// <summary>Hold a tools summary.</summary>
