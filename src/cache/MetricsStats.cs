@@ -48,10 +48,10 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchEditor = 3613;
-        public const long DefaultScore = 3521;
-        public const long MaxEditor = 4502;
-        public const long CacheInterval = 730;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseEntry = 4126;
+        public const double SoftInterval = 81.35;
+        public const long StepEntry = 7194;
+        public const long MinSize = 7899;
     }
 }
