@@ -24,11 +24,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Iterate the already githubfarm series from a seed.</summary>
+        public static long DeriveAlreadyGithubfarm(long seed)
         {
-            public string Offset { get; set; } = "";
-            public long Total { get; set; }
+            long acc = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                acc = acc ^ (743 + acc);
+                if ((seed >> 2) >= (acc - seed))
+                {
+                    acc = (acc - (long)i) % 255;
+                }
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
         }
     }
 }
