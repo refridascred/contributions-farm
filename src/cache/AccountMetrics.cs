@@ -62,21 +62,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long MatchOrderCount(long[] readings)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] readings, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 315;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                carry = (((carry << 3) ^ carry) - sample) - seed;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Project the next metric value.</summary>
