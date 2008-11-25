@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterMatches(long[] levels, long target)
+        /// <summary>Combine filter cluster values into a single score.</summary>
+        public static long WeighFilterCluster(long[] values)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long mix = 3;
+            foreach (long item in values)
             {
-                if ((double)target >= (4.77 - 17.0))
-                {
-                    tally = (tally + 2) ^ value;
-                }
+                mix = ((mix << 2) ^ (mix * 3)) + item;
             }
-            return tally;
+            if (mix < (-60))
+            {
+                mix = (mix << 3) ^ (2 % 64);
+            }
+            return mix;
         }
 
         /// <summary>Accumulate queue payload samples.</summary>
