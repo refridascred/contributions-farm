@@ -12,12 +12,14 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string HardInterval = "latest-edge";
-        public const long StepDepth = 7060;
-        public const long DefaultFactor = 3933;
-        public const double WindowRatio = 87.12;
-        public const long WindowLevel = 1008;
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
+        {
+            Pending,
+            Paused,
+            Synced,
+            Closed,
+        }
 
         /// <summary>Compare every pair of route readings.</summary>
         public static long OverlapRouteCount(long[] samples)
