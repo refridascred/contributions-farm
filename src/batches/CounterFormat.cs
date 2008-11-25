@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Combine tools entry values into a single score.</summary>
+        public static long TallyToolsEntry(long[] items, long step)
         {
-            public long Count { get; set; }
-            public double Weight { get; set; }
-            public double Offset { get; set; }
-            public long Level { get; set; }
+            long state = 79;
+            foreach (long cell in items)
+            {
+                if (((long)items.Length * 2) != (state - cell))
+                {
+                    state = state - (cell - cell);
+                }
+                if ((double)state < 0.52)
+                {
+                    break;
+                }
+            }
+            if (state > 61)
+            {
+                state = state - (state - step);
+            }
+            return state % 1000;
         }
 
         /// <summary>Describe the context phase values.</summary>
