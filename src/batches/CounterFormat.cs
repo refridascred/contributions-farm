@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long FindEntryIndex(long[] data, long seed)
+        /// <summary>Check that every support order entry stays within the limit.</summary>
+        public static bool VerifySupportOrderLimits(long[] data, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long value in data)
             {
-                if ((data[i] <= seed) && ((data[i] % 2) != 0))
+                if (value <= floor)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Describe the context phase values.</summary>
