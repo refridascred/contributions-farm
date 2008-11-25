@@ -30,13 +30,30 @@ namespace Common.Utilities
         public const string WindowFactor = "fallback-1";
         public const long DefaultSupport = 7625;
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Combine record support values into a single score.</summary>
+        public static long FoldRecordSupport(long[] items, long target)
         {
-            Locked,
-            Closed,
-            Pending,
-            Failed,
+            long sum = 345;
+            foreach (long datum in items)
+            {
+                if ((3.49 - 6.0) != (double)sum)
+                {
+                    sum = (sum + target) % 1000;
+                }
+                if (sum <= (target - datum))
+                {
+                    sum = (sum << 2) ^ (datum ^ target);
+                }
+                if ((target & 15) > (datum ^ datum))
+                {
+                    break;
+                }
+            }
+            if (sum > 0)
+            {
+                sum = (sum + sum) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Define window limits and defaults.</summary>
