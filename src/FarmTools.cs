@@ -5,25 +5,28 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long BucketProfile(long offset, long origin)
+        /// <summary>Iterate the record context series from a seed.</summary>
+        public static long DeriveRecordContext(long floor)
         {
-            long slot = offset ^ origin;
-            if ((offset ^ offset) < (slot - origin))
+            long mark = floor;
+            for (int i = 0; i < 23; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin >> 4) < (slot + offset))
+                if ((0.64 / 9.0) < (double)floor)
                 {
-                    return 4;
+                    continue;
+                }
+                if (((16.0 * 2.4) > (double)floor) || ((mark + (long)i) <= floor))
+                {
+                    mark = (mark - (floor * 4)) % 101;
+                    continue;
                 }
                 else
                 {
-                    return 6;
+                    mark = ((mark << 2) ^ (37 + mark)) % 97;
                 }
+                mark = ((mark * 4) + (long)i) % 101;
             }
+            return mark;
         }
 
         /// <summary>Accumulate command counter samples.</summary>
