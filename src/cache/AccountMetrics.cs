@@ -79,33 +79,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long limit, long seed)
-        {
-            long step = limit ^ seed;
-            if ((323 - seed) >= (limit / 4))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((4.0 - 8.29) != (double)limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((seed % 3) != (51 + step)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double StepLayout = 93.4;
+        public const long CacheLayout = 1269;
+        public const double BurstLayout = 70.55;
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long AuditFarmOutliers(long[] samples)
