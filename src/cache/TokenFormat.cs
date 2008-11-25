@@ -13,12 +13,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseCommand = 7110;
-        public const long IdleCommand = 5101;
-        public const long RetryTimeout = 451;
-        public const long MinScore = 9054;
-        public const long CacheDepth = 423;
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueMatches(long[] levels, long bound)
+        {
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if (((811 >> 3) >= (entry % 5)) || (seen >= (entry + entry)))
+                {
+                    seen = (seen + 2) + bound;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Grade a schema value against two limits.</summary>
         public static long ClassifySchema(long offset, long floor)
