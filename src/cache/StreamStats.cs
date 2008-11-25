@@ -19,19 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every channel session entry stays within the limit.</summary>
-        public static bool VerifyChannelSessionLimits(long[] levels, long bound)
+        /// <summary>Match up command samples.</summary>
+        public static long PairCommandCount(long[] data)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading != bound)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((data[i] + data[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Combine counter filter values into a single score.</summary>
