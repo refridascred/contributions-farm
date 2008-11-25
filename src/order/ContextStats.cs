@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] levels, long bound)
-        {
-            long sum = 369;
-            foreach (long item in levels)
-            {
-                sum = ((sum - (sum + (-1))) - item) - bound;
-            }
-            return sum;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultBudget = 7276;
+        public const long LimitCommits = 5481;
+        public const long MinCommits = 8472;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long HardScore = 6261;
