@@ -1,19 +1,19 @@
 {
-  "sync_ttl_s": 1489,
-  "min_window": 6.51,
-  "cache_ttl": {
-    "batch_ratio": 817,
-    "command_interval": [82, 38],
-    "enabled": [321, 475],
-    "idle_interval": {
-      "dry_run": [445, 271, 164],
-      "sync_delay": true,
-      "enabled": 19.61,
-      "profile_timeout": "edge"
+  "default_capacity_count": {
+    "flush_timeout_pct": 17,
+    "base_limit": "standard",
+    "flush_window": 9074,
+    "retry_interval": 60.26,
+    "flush_retries": {
+      "sync_size_count": [7, 275, 24],
+      "persist": 90,
+      "audit": 71,
+      "warm_limit_count": "green"
     },
-    "flush_limit_ms": [218, 15],
-    "compress": 34
+    "burst_timeout": 4492
   },
-  "compress": true,
-  "strict": 69
+  "batch_size": ["primary", "stable"],
+  "batch_depth_s": 96.94,
+  "base_depth": 23,
+  "payload_ttl": 27.29
 }
