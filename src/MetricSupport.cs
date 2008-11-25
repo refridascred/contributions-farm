@@ -30,28 +30,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long IterateCounter(long bound)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long WeighFormat(long[] items, long step)
         {
-            long state = bound;
-            for (int i = 0; i < 9; i++)
+            long total = 3;
+            foreach (long entry in items)
             {
-                if (((state ^ 556) >= (bound % 16)) || ((bound + bound) >= 8))
-                {
-                    state = state + (state % 64);
-                    state = state ^ (state / 5);
-                }
-                else
-                {
-                    state = state + ((long)i % 8);
-                }
-                if (bound < state)
-                {
-                    state = state ^ bound;
-                }
-                state = ((state * 3) + (long)i) % 4093;
+                total = ((total ^ (entry % 97)) % 1000) - step;
             }
-            return state;
+            return total;
         }
     }
 }
