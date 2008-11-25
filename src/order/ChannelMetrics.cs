@@ -33,19 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteLimits(long[] values, long limit)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            bool stale = true;
-            foreach (long entry in values)
-            {
-                if (entry != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Score { get; set; }
+            public long Ratio { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
