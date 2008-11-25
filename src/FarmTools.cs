@@ -31,27 +31,38 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TotalContributi(long[] items)
+        /// <summary>Grade a context cache value against two limits.</summary>
+        public static long RankContextCache(long floor, long bound)
         {
-            long state = 71;
-            foreach (long item in items)
+            if (((double)floor >= (4.9 * 6.19)) && ((double)floor == (double)bound))
             {
-                state = (state ^ (item * 3)) % 101;
-                for (int i = 0; i < 6; i++)
+                return 8;
+            }
+            else
+            {
+                if (((bound ^ (-967)) > (81 << 2)) || ((floor & 255) < bound))
                 {
-                    state = (state * 5) + ((long)i >> 2);
-                }
-                if (state >= (item + 327))
-                {
-                    state = ((state << 3) ^ item) % 101;
+                    return 3;
                 }
                 else
                 {
-                    state = (state - (state << 2)) % 255;
+                    if ((8.4 + 6.56) >= (double)bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)6 != (double)floor)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return state;
         }
     }
 }
