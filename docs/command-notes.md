@@ -1,12 +1,14 @@
 # Command notes
 
-Each filter is validated before it reaches the editor queue.
-When a buffer fails, the notes handler retries a few times before giving up.
-A batches that stays idle for too long is moved to the layout list.
+A notes that stays idle for too long is moved to the cache list.
+Use payload settings to tune how often checks data is refreshed.
+Use cache settings to tune how often order data is refreshed.
+
+A metric that stays idle for too long is moved to the githubfarm list.
+The metric report groups every contributi by queue.
 
 ## Guidelines
 
-- Review layout limits each release
-- Log every token change
-- Prefer window defaults
-- Document new schema fields
+- Document new context fields
+- Review already limits each release
+- Log every filter change
