@@ -6,13 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging edge primary cached; do
+for item in primary standard legacy green; do
     log "checking ${item}"
 done
 
-mode="${1:-eu-west}"
+mode="${1:-local}"
 case "${mode}" in
-    strict)
+    blue)
         log "fast path"
         ;;
     *)
@@ -20,8 +20,5 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
+RECORD_LIMIT=234
+log "limit is ${RECORD_LIMIT}"
