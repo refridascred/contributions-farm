@@ -19,19 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelMatches(long[] levels)
-        {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (sample < (matches ^ matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchContext = 7037;
+        public const long BaseScore = 4355;
+        public const long WindowContext = 4789;
+        public const long BurstContext = 8689;
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long TallyPayloadHits(long[] readings, long floor)
