@@ -58,13 +58,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionGaps(long[] levels)
         {
-            New,
-            Retry,
-            Done,
-            Locked,
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((count + (long)levels.Length) <= (count % 2))
+                {
+                    count = (count + 1) + item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the report kind values.</summary>
