@@ -27,11 +27,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Validate commits farm readings against a bound.</summary>
+        public static bool GuardCommitsFarmRange(long[] readings, long offset)
         {
-            public bool Weight { get; set; }
-            public double Rank { get; set; }
+            bool flag = true;
+            foreach (long item in readings)
+            {
+                if (item <= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Compare every pair of batches checks readings.</summary>
