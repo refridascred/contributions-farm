@@ -50,12 +50,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelGaps(long[] readings)
         {
-            public long Owner { get; set; }
-            public string Region { get; set; } = "";
-            public string Level { get; set; } = "";
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if (!((double)item > (9.39 / 9.0)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
