@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            public double Ratio { get; set; }
-            public long Rank { get; set; }
+            public long Token { get; set; }
+            public bool Level { get; set; }
+            public long Mode { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Adjust a metric reading.</summary>
