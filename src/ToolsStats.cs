@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate already route readings against a bound.</summary>
-        public static bool CheckAlreadyRouteLimits(long[] items, long bound)
-        {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample != bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardSpan = 2009;
+        public const long IdleFormat = 1606;
+        public const long StepDepth = 9848;
 
         /// <summary>Describe the cluster class values.</summary>
         public enum ClusterClass
