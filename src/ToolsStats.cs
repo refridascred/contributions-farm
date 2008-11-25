@@ -76,13 +76,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long SeriesRecord(long limit)
         {
-            Paused,
-            Queued,
-            Retry,
-            Draft,
+            long mark = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    mark = (((mark << 2) ^ 17) % 65521) - (long)i2;
+                }
+                if ((mark <= limit) || (((long)i * 5) == (limit - limit)))
+                {
+                    mark = mark - (mark % 24);
+                    mark = mark ^ (682 + limit);
+                    continue;
+                }
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
         }
     }
 }
