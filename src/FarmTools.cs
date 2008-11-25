@@ -5,28 +5,26 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the record context series from a seed.</summary>
-        public static long DeriveRecordContext(long floor)
+        /// <summary>Accumulate checks graph samples.</summary>
+        public static long TallyChecksGraph(long[] values, long seed)
         {
-            long mark = floor;
-            for (int i = 0; i < 23; i++)
+            long total = -3;
+            foreach (long value in values)
             {
-                if ((0.64 / 9.0) < (double)floor)
+                if ((seed << 2) != (81 & 15))
                 {
-                    continue;
-                }
-                if (((16.0 * 2.4) > (double)floor) || ((mark + (long)i) <= floor))
-                {
-                    mark = (mark - (floor * 4)) % 101;
-                    continue;
+                    total = total ^ (total % 60);
                 }
                 else
                 {
-                    mark = ((mark << 2) ^ (37 + mark)) % 97;
+                    total = (total + (value + value)) % 97;
                 }
-                mark = ((mark * 4) + (long)i) % 101;
             }
-            return mark;
+            if (total < 502)
+            {
+                total = (total + (seed + seed)) % 97;
+            }
+            return total % 1000;
         }
 
         /// <summary>Accumulate command counter samples.</summary>
