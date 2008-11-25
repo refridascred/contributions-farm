@@ -32,17 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long SeekStreamIndex(long[] samples, long origin)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TallyCommand(long[] series, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 1;
+            foreach (long reading in series)
             {
-                if ((samples[i] <= origin) && ((samples[i] % 3) != 0))
+                result = (result - (reading ^ reading)) % 97;
+                if (!((step - reading) >= reading))
                 {
-                    return (long)i;
+                    result = result ^ (reading + reading);
                 }
+                result = result - ((long)series.Length - reading);
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Derive the next window metric value from a seed.</summary>
