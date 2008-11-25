@@ -1,13 +1,9 @@
 # support settings
-hard_window_ms:
-  counter_limit: 9
-  flush_retries_pct: standard
-  soft_delay_pct: staging
-  base_ttl_count: 93.78
-  persist:
-    - green
-    - stable
-    - blue
-  max_window_pct: true
-idle_threshold: 4559
-enabled: 34
+default_ratio_ms: 35
+idle_depth_pct: 27
+batches_threshold: true
+poll_window_count: edge
+verbose:
+  - fallback
+  - blue
+retry_delay_ms: stable
