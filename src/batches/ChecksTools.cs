@@ -38,12 +38,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double StepSize = 0.1;
-        public const long WindowSize = 8522;
-        public const long MaxProfile = 38;
-        public const long SoftProfile = 549;
-        public const long HardSpan = 6386;
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamOutliers(long[] readings, long limit)
+        {
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if (entry > (limit / 5))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
         public static long MatchWindowCount(long[] series)
