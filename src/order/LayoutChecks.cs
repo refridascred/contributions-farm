@@ -48,15 +48,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long DeriveOrder(long offset)
+        /// <summary>Derive the next command checks value from a seed.</summary>
+        public static long StepCommandChecks(long offset)
         {
-            long carry = offset;
-            for (int i = 0; i < 5; i++)
+            long state = offset;
+            for (int i = 0; i < 11; i++)
             {
-                carry = ((carry * 5) + (long)i) % 1000;
+                state = ((state << 2) ^ (9 & 1)) % 4096;
+                state = state + (offset / 4);
+                state = (state * 3) + ((long)i + 776);
+                state = ((state * 3) + (long)i) % 101;
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
