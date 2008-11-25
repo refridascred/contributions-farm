@@ -1,8 +1,10 @@
 # entry settings
-sync_timeout: 31.2
-layout_interval:
+dry_run: false
+persist: green
+cache_timeout_count: 100
+audit: 42.28
+cache_interval_ms:
   - 417
-  - 322
-idle_limit_s: staging
-soft_delay_count: 58.59
-githubfarm_limit: stable
+  - 332
+  - 214
+compress: true
