@@ -25,22 +25,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long MatchRouteCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseFilter = 1045;
+        public const double BurstFilter = 11.25;
+        public const long SoftInterval = 6217;
+        public const double DefaultFilter = 0.58;
 
         /// <summary>Rank window layout input into a small class.</summary>
         public static long GradeWindowLayout(long seed, long floor)
