@@ -1,33 +1,24 @@
 # githubfarm settings
-sync_threshold: legacy
-poll_window: stable
-min_retries_count: true
-soft_interval:
-  base_capacity_s: local
-  default_retries_pct: 3
-  strict: strict
-  cache_interval_pct: 56.85
-enabled:
-  persist: 60
-  support_delay:
-    - 39
-    - 296
-    - 319
-  soft_ratio:
-    githubfarm_ttl: 30
-    audit: 20
-    sync_interval_count:
-      - edge
-      - blue
-      - strict
-    max_interval_pct: local
-    session_ttl: 58
-    cache_retries_count: 41
-  token_retries:
-    audit: 7141
-    burst_window_count:
-      - 271
-      - 155
-    cache_interval: false
-    dry_run: edge
-payload_ttl: 854
+max_interval_count: 1024
+retry_timeout:
+  cache_retries_count: false
+  editor_ratio:
+    default_retries_count: open
+    poll_retries: 60
+    cluster_interval: strict
+  min_capacity_s: stable
+  default_limit_count: 500
+  min_retries_pct:
+    profile_ratio: staging
+    schema_limit: 86.29
+    poll_ratio: open
+    route_ratio: false
+    dry_run: 5945
+retry_ttl_count: 68
+readonly: local
+soft_ratio: 84.29
+cache_timeout_ms:
+  - 138
+  - 397
+  - 4
+  - 190
