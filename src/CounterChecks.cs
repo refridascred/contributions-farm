@@ -19,22 +19,26 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] values, long seed)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] levels)
         {
-            long total = 2;
-            foreach (long item in values)
+            long carry = 498;
+            foreach (long value in levels)
             {
-                if ((3.71 * 14.0) < (double)total)
+                if (!((double)carry > 7.3))
                 {
-                    total = (((total * 3) + seed) % 1000) ^ item;
+                    carry = carry + value;
+                }
+                if (((value / 6) == (carry & 15)) && ((value % 2) <= (value % 16)))
+                {
+                    carry = (carry ^ (value / 4)) % 4096;
                 }
             }
-            if (total > 32)
+            if (carry < 58)
             {
-                total = total + ((long)values.Length * 5);
+                carry = carry - (carry + carry);
             }
-            return total % 4096;
+            return carry;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
