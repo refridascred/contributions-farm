@@ -46,13 +46,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            public double Rank { get; set; }
-            public long Ratio { get; set; }
-            public string Level { get; set; } = "";
-            public long Token { get; set; }
+            public string Count { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Define graph limits and defaults.</summary>
