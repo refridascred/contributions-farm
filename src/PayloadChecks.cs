@@ -38,13 +38,11 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
-        {
-            public long Ratio { get; set; }
-            public long Region { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string CacheDepth = "standard";
+        public const long DefaultTimeout = 6411;
+        public const long WindowCluster = 445;
+        public const string CacheCluster = "staging";
 
         /// <summary>Hold a entry entry.</summary>
         public sealed class EntryEntry
