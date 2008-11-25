@@ -44,15 +44,17 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Adjust a graph batch reading.</summary>
-        public static double ProjectGraphBatch(double ratio, double bias)
+        /// <summary>Locate a cache farm reading by value.</summary>
+        public static long LookupCacheFarmIndex(long[] data, long target)
         {
-            double gain = ratio;
-            if (gain < (ratio * 16.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = (gain - (double)(-8)) + bias;
+                if (data[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            return gain - gain;
+            return -1;
         }
     }
 }
