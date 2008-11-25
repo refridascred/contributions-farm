@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine githubfarm counter values into a single score.</summary>
-        public static long WeighGithubfarmCounter(long[] samples)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadBounds(long[] values, long floor)
         {
-            long carry = 84;
-            foreach (long value in samples)
+            bool valid = true;
+            foreach (long value in values)
             {
-                carry = ((carry * 4) + (carry - carry)) % 65521;
-                if ((value + (-880)) <= (value + value))
+                if (value != floor)
                 {
-                    carry = (carry - (carry + 92)) % 65521;
+                    valid = false;
+                    break;
                 }
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Accumulate queue payload samples.</summary>
