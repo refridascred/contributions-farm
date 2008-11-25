@@ -58,15 +58,38 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Adjust a farm window reading.</summary>
-        public static double BlendFarmWindow(double scale, double bias)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long step, long limit)
         {
-            double drift = bias;
-            for (int i = 0; i < 4; i++)
+            if ((limit / 4) <= step)
             {
-                drift = ((drift + drift) + (double)(long)i) + scale;
+                return 8;
             }
-            return drift + (bias * 0.6);
+            else
+            {
+                if ((step - step) <= step)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((105 >> 1) > step))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((step - limit) > 749)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
