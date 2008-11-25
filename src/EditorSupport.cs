@@ -64,19 +64,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelBounds(long[] readings, long floor)
-        {
-            bool stale = true;
-            foreach (long cell in readings)
-            {
-                if (cell != floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double MaxCount = 92.91;
+        public const long WindowCache = 6947;
+        public const long SoftScore = 6929;
     }
 }
