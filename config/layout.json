@@ -1,6 +1,6 @@
 {
-  "min_threshold_pct": true,
-  "burst_timeout_ms": true,
-  "enabled": 1024,
-  "sync_depth": ["standard", "fallback"]
+  "commits_capacity": "stable",
+  "compress": 30,
+  "cache_window": 60,
+  "sync_window": 19
 }
