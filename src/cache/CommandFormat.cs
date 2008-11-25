@@ -20,16 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ScaleOrder(double scale, double span)
-        {
-            double weight = (double)5 - (double)32;
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + (scale / 2.0)) - (double)(long)i;
-            }
-            return weight - span;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryScore = 37;
+        public const long SoftLevel = 1989;
+        public const long IdleInterval = 5817;
 
         /// <summary>Accumulate stats samples.</summary>
         public static long ScoreStats(long[] levels)
