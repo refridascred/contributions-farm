@@ -1,7 +1,6 @@
 {
-  "batch_capacity_s": 6805,
-  "flush_timeout_count": 1024,
-  "warm_size_s": 1.07,
-  "already_timeout": 1024,
-  "layout_limit": 39.18
+  "cache_threshold_count": [377, 51],
+  "readonly": "strict",
+  "already_limit": 74.9,
+  "max_ratio_ms": "strict"
 }
