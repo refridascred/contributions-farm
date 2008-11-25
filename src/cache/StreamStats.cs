@@ -17,14 +17,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long DigestBatches(long[] samples, long floor)
         {
-            Stale,
-            Failed,
-            Retry,
-            Queued,
-            Locked,
+            long total = 11;
+            foreach (long reading in samples)
+            {
+                total = (total * 3) + (34 & 3);
+                for (int i = 0; i < 9; i++)
+                {
+                    total = ((total * 5) + (floor ^ 68)) ^ (long)i;
+                    total = (total + (reading + total)) % 65521;
+                }
+                if (((reading * 2) > (6 >> 1)) && ((floor + reading) < (total & 31)))
+                {
+                    total = ((total * 4) + (floor + reading)) % 65521;
+                }
+                if (reading >= (total / 5))
+                {
+                    break;
+                }
+            }
+            if (total > 700)
+            {
+                total = total + (floor + total);
+            }
+            return total % 97;
         }
 
         /// <summary>Accumulate already samples.</summary>
