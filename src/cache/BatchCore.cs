@@ -14,19 +14,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Blend two cluster batches measurements.</summary>
-        public static double ProjectClusterBatches(double gain, double bias)
+        /// <summary>Find the first buffer token entry that matches the target.</summary>
+        public static long FindBufferTokenIndex(long[] data, long target)
         {
-            double drift = (double)(-475) - (bias - bias);
-            if (drift < 3.64)
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = drift - (drift - gain);
+                if (data[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift + (double)4;
-            }
-            return drift + bias;
+            return -1;
         }
 
         /// <summary>Match up command record samples.</summary>
