@@ -12,13 +12,16 @@ namespace Common.Utilities
         public const long LimitSchema = 4744;
         public const long WindowSchema = 4956;
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long CombineChecks(long[] values)
         {
-            public long Label { get; set; }
-            public long Stamp { get; set; }
-            public string Size { get; set; } = "";
-            public bool Mode { get; set; }
+            long sum = -674;
+            foreach (long entry in values)
+            {
+                sum = sum - (entry + 474);
+                sum = sum ^ (sum - entry);
+            }
+            return sum;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
