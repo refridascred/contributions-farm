@@ -37,23 +37,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ProjectMetric(double bias, double offset)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TotalQueue(long[] items)
         {
-            double rate = offset + (double)244;
-            if (rate >= (double)8)
+            long score = 6;
+            foreach (long value in items)
             {
-                rate = (rate - (offset - offset)) + bias;
+                score = ((score << 2) ^ (-3)) % 97;
+                for (int i = 0; i < 6; i++)
+                {
+                    score = ((score ^ value) % 255) ^ (long)i;
+                }
+                score = (score ^ (value & 7)) % 65521;
             }
-            else
-            {
-                rate = rate - (rate * 2.6);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - offset) + (double)(long)i;
-            }
-            return rate - rate;
+            return score;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
