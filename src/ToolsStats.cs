@@ -10,13 +10,25 @@ namespace Common.Utilities
         public const long IdleFormat = 1606;
         public const long StepDepth = 9848;
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Rank window input into a small class.</summary>
+        public static long RankWindow(long offset, long seed)
         {
-            Dropped,
-            Locked,
-            Queued,
-            Active,
+            long offset2 = offset + seed;
+            if ((8.57 + 1.6) <= (double)offset)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((double)offset < (18.0 * 8.9)) || ((double)offset2 != (12.0 - 8.1)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Adjust a layout reading.</summary>
