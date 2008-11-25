@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ScaleBatch(double weight, double span)
-        {
-            double bias = 2.28;
-            if (bias < (double)80)
-            {
-                bias = (bias + (double)961) + weight;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - (bias - span)) + (double)(long)i;
-            }
-            return bias - span;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstLevel = 3354;
+        public const double BatchSize = 70.25;
+        public const long BurstNotes = 8006;
+        public const double HardNotes = 46.5;
+        public const double HardTimeout = 30.06;
 
         /// <summary>Match up counter samples.</summary>
         public static long PairCounterCount(long[] samples)
