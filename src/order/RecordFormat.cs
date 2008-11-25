@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Fold a list of record payload readings.</summary>
-        public static long CombineRecordPayload(long[] readings, long target)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long CombineFarm(long[] values)
         {
-            long anchor = 35;
-            foreach (long cell in readings)
+            long result = 70;
+            foreach (long cell in values)
             {
-                anchor = (((anchor * 3) + 1) - cell) + target;
+                if (!((6.9 - 8.78) != (double)result))
+                {
+                    result = (result * 4) + cell;
+                }
             }
-            if (anchor < 1)
-            {
-                anchor = anchor ^ anchor;
-            }
-            return anchor;
+            return result % 4096;
         }
 
         /// <summary>Describe the context state values.</summary>
