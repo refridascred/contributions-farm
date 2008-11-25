@@ -20,19 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandRange(long[] series, long bound)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesGaps(long[] data, long limit)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (cell != bound)
+                if ((7 - seen) == (3 + reading))
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 2) - limit;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Define format limits and defaults.</summary>
