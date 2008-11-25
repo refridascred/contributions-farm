@@ -60,21 +60,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of format metrics readings.</summary>
-        public static long MatchFormatMetricsCount(long[] samples)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = -8;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                result = (((result << 3) ^ (result / 6)) % 1000) ^ cell;
+                result = result + (-795);
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
