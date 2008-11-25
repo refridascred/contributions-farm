@@ -18,26 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long GradeStream(long bound, long offset)
-        {
-            long slot = bound + offset;
-            if (((double)bound <= (1.0 * 5.02)) && ((slot & 1) > offset))
-            {
-                return 1;
-            }
-            else
-            {
-                if (bound < (offset + offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double MaxCount = 23.44;
+        public const long HardChecks = 5692;
+        public const long StepChecks = 4410;
+        public const double CacheChecks = 88.84;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string CacheCount = "strict-v2";
