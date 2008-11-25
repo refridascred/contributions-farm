@@ -29,23 +29,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long DigestSchema(long[] values, long offset)
-        {
-            long carry = 732;
-            foreach (long entry in values)
-            {
-                if ((offset + carry) < 70)
-                {
-                    carry = ((carry - carry) % 97) + entry;
-                }
-                else
-                {
-                    carry = (carry ^ (offset / 2)) % 4096;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double DefaultDepth = 22.17;
+        public const long BaseBatches = 1550;
+        public const long RetryBatches = 5504;
+        public const long LimitBatches = 3246;
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long CountLayoutOutliers(long[] data, long limit)
