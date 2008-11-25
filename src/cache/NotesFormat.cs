@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const string SoftProfile = "latest-edge";
         public const double DefaultTimeout = 9.38;
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LookupCommandIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == limit) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowScore = 9672;
+        public const long StepLayout = 8751;
+        public const long IdleBudget = 4087;
+        public const long RetryLayout = 2076;
+        public const double IdleSize = 27.04;
 
         /// <summary>Roll a metric counter forward.</summary>
         public static long SeriesMetric(long seed)
