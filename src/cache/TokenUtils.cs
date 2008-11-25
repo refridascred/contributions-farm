@@ -35,16 +35,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long RollToken(long seed)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long SeriesCounter(long floor)
         {
-            long carry = seed;
-            for (int i = 0; i < 24; i++)
+            long mix = floor;
+            for (int i = 0; i < 13; i++)
             {
-                carry = carry ^ ((long)i + carry);
-                carry = ((carry * 3) + (long)i) % 101;
+                mix = ((mix * 3) + (floor ^ floor)) % 97;
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return carry;
+            return mix;
         }
     }
 }
