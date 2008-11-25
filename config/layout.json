@@ -1,6 +1,12 @@
 {
-  "flush_threshold_s": "standard",
-  "min_ratio_ms": "staging",
-  "dry_run": 96.27,
-  "compress": "eu-west"
+  "stats_ttl": 0.98,
+  "cache_ttl": "open",
+  "min_retries_ms": 8262,
+  "base_ttl": {
+    "flush_delay_count": "green",
+    "soft_window_pct": "blue",
+    "stream_threshold": 3014
+  },
+  "min_size_pct": true,
+  "retry_limit": 8184
 }
