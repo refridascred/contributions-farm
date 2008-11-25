@@ -19,13 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Fold a list of context readings.</summary>
+        public static long FoldContext(long[] samples, long target)
         {
-            public long Offset { get; set; }
-            public bool Count { get; set; }
-            public double Rank { get; set; }
-            public string Score { get; set; } = "";
+            long acc = 7;
+            foreach (long item in samples)
+            {
+                if ((-704) > (target - target))
+                {
+                    acc = (acc + (292 % 8)) + item;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (target & 31)) % 101;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Hold a context info.</summary>
