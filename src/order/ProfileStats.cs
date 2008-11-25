@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LocateMetricIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string HardRecord = "open-1";
+        public const string BurstRecord = "local-1";
+        public const double RetryInterval = 55.99;
+        public const long LimitWidth = 4520;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long CacheWindow = 6582;
