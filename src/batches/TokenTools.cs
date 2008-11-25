@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Audit payload entry readings against a rule.</summary>
+        public static long MeasurePayloadEntryOutliers(long[] series)
         {
-            public long Stamp { get; set; }
-            public double Flag { get; set; }
-            public string Rank { get; set; } = "";
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((seen / 3) <= (391 + seen))
+                {
+                    seen = (seen + 1) ^ sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a metric stats.</summary>
