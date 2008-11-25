@@ -63,33 +63,24 @@ namespace Common.Utilities
             return load - (scale - load);
         }
 
-        /// <summary>Digest a series of report stream entries.</summary>
-        public static long WeighReportStream(long[] readings, long bound)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long offset, long bound)
         {
-            long sum = 452;
-            foreach (long entry in readings)
+            if ((9.0 / 9.0) == (double)offset)
             {
-                if (((double)sum >= (double)bound) && (bound < (bound % 100)))
+                return 8;
+            }
+            else
+            {
+                if ((25 ^ 3) > (offset * 3))
                 {
-                    sum = (((sum * 2) + (bound + bound)) % 97) - entry;
-                    sum = ((sum << 2) ^ (bound << 1)) % 255;
-                    break;
+                    return 3;
                 }
                 else
                 {
-                    sum = ((sum * 5) + (sum - bound)) % 65521;
-                    sum = sum + (sum ^ 758);
-                }
-                if ((double)bound <= (7.0 + 11.0))
-                {
-                    sum = sum ^ (sum & 15);
-                }
-                if ((double)sum > (double)bound)
-                {
-                    break;
+                    return 4;
                 }
             }
-            return sum;
         }
     }
 }
