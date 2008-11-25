@@ -39,21 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long OverlapCommitsCount(long[] readings)
+        /// <summary>Accumulate route samples.</summary>
+        public static long WeighRoute(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 7;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)4 == (double)reading)
                 {
-                    if ((readings[i] - readings[j]) != 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = (mark ^ reading) % 4096;
                 }
             }
-            return seen;
+            if (mark > 31)
+            {
+                mark = (mark << 3) ^ (mark % 97);
+            }
+            return mark;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
