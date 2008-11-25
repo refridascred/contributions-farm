@@ -27,12 +27,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowScore = 9672;
-        public const long StepLayout = 8751;
-        public const long IdleBudget = 4087;
-        public const long RetryLayout = 2076;
-        public const double IdleSize = 27.04;
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsRange(long[] series, long bound)
+        {
+            bool stale = true;
+            foreach (long value in series)
+            {
+                if (value >= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Count the profile contributi entries that pass the check.</summary>
         public static long CountProfileContributiGaps(long[] data, long limit)
