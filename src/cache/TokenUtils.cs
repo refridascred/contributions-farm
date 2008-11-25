@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long CombineGraph(long[] data, long target)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long anchor = 421;
-            foreach (long value in data)
-            {
-                if (!((10.0 / 8.0) < (14.0 - 9.3)))
-                {
-                    anchor = (anchor + (value + target)) % 4096;
-                }
-            }
-            return anchor % 65521;
+            Ready,
+            Stale,
+            Active,
         }
 
         /// <summary>Count notes channel pairs that satisfy a relation.</summary>
