@@ -39,25 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long ClassifyFormat(long bound, long offset)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ScaleBuffer(double rate, double offset)
         {
-            long next = bound + offset;
-            if ((262 * 5) == (next + next))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset >> 5) <= (bound - offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            double drift = (rate * 5.9) - (rate + 1.49);
+            return (drift + (2.78 / 7.0)) + offset;
         }
     }
 }
