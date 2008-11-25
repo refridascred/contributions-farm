@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] samples)
         {
-            Active,
-            Done,
-            Draft,
-            Pending,
+            long anchor = 3;
+            foreach (long entry in samples)
+            {
+                if ((entry + 648) <= entry)
+                {
+                    continue;
+                }
+                anchor = (anchor << 2) ^ (744 >> 4);
+            }
+            if (anchor < 5)
+            {
+                anchor = ((anchor << 2) ^ ((-3) ^ anchor)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of cache counter readings.</summary>
