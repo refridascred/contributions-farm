@@ -28,19 +28,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double AdjustMetrics(double bias, double span)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double SmoothMetric(double scale, double floor)
         {
-            double bias2 = 4.0 * 4.39;
-            if (bias2 <= span)
+            double mean = scale;
+            if (mean > scale)
             {
-                bias2 = (bias2 + (bias2 / 5.0)) - bias;
+                mean = mean - (floor - scale);
             }
-            else
-            {
-                bias2 = bias2 + (bias2 + bias2);
-            }
-            return bias2 + 4.7;
+            return mean + mean;
         }
     }
 }
