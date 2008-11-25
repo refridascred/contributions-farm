@@ -59,19 +59,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferLimits(long[] levels, long limit)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            bool stale = true;
-            foreach (long item in levels)
-            {
-                if (item > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Weight { get; set; }
+            public double Rank { get; set; }
+            public long Total { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
