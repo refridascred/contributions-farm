@@ -34,20 +34,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a already editor figure with a bias.</summary>
-        public static double ProjectAlreadyEditor(double bias, double bias2)
-        {
-            double load = bias;
-            if (load >= (double)848)
-            {
-                load = load + bias2;
-            }
-            else
-            {
-                load = load - (bias * 8.6);
-            }
-            return load - load;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleStats = 9425;
+        public const double WindowStats = 14.2;
+        public const string BurstStats = "local-v2";
+        public const double MaxRatio = 83.83;
 
         /// <summary>Audit cache stream readings against a rule.</summary>
         public static long AuditCacheStreamGaps(long[] items)
