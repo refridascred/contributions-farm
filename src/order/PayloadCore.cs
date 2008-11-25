@@ -5,30 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] readings)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LookupMetricIndex(long[] readings, long bound)
         {
-            long total = -420;
-            foreach (long sample in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)608 >= (double)sample)
+                if (readings[i] <= bound)
                 {
-                    total = ((total << 3) ^ total) % 4096;
-                }
-                if ((total / 9) < sample)
-                {
-                    total = (total + total) % 255;
-                }
-                else
-                {
-                    total = ((total << 2) ^ (sample - 2)) % 255;
+                    return (long)i;
                 }
             }
-            if (total > 865)
-            {
-                total = (total ^ total) % 1000;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
