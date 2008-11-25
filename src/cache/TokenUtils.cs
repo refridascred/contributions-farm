@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleSize = 1319;
-        public const long LimitRoute = 2612;
-        public const long BurstRoute = 9065;
-        public const long SoftRoute = 8451;
-        public const double BaseDepth = 69.19;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowToken = 8129;
+        public const long MaxToken = 4003;
+        public const string BatchToken = "staging-edge";
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool GuardContributiLimits(long[] samples, long bound)
