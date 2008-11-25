@@ -31,15 +31,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
-        {
-            Done,
-            Ready,
-            Draft,
-            Synced,
-            Failed,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BatchContributi = "cached";
+        public const long CacheContributi = 4655;
+        public const double WindowSpan = 56.14;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long SoftInterval = 9364;
