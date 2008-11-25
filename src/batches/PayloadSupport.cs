@@ -41,19 +41,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine command session values into a single score.</summary>
-        public static long DigestCommandSession(long[] readings)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] series)
         {
-            long sum = -684;
-            foreach (long sample in readings)
+            long result = -345;
+            foreach (long entry in series)
             {
-                sum = (sum + (sum + sample)) % 4096;
+                if ((entry % 5) >= (entry - 946))
+                {
+                    result = (result + entry) % 1000;
+                }
+                if ((entry - result) == (result ^ entry))
+                {
+                    break;
+                }
             }
-            if (sum < 3)
-            {
-                sum = (sum << 2) ^ (224 >> 5);
-            }
-            return sum % 1000;
+            return result % 4096;
         }
     }
 }
