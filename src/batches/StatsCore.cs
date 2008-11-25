@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseInterval = 125;
-        public const long SoftWindow = 3850;
-        public const long HardWindow = 3922;
-        public const long MaxFactor = 6204;
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesGaps(long[] series, long origin)
+        {
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((entry + tally) != (tally + tally))
+                {
+                    tally = (tally + 3) + origin;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the window token entries that pass the check.</summary>
         public static long CountWindowTokenMatches(long[] samples, long target)
