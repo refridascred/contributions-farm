@@ -56,17 +56,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long FindChecksIndex(long[] readings, long offset)
+        /// <summary>Validate queue account readings against a bound.</summary>
+        public static bool GuardQueueAccountLimits(long[] readings, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                if (readings[i] < offset)
+                if (reading > target)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
