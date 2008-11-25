@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long RankWindow(long bound, long limit)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            if (!(812 <= (51 + limit)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((38 + 2) == (limit + limit))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound * 4) <= bound)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public bool Stamp { get; set; }
+            public bool Total { get; set; }
+            public bool Region { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Blend two cluster record measurements.</summary>
