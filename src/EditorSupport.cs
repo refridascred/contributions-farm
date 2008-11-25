@@ -60,18 +60,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] values)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadGaps(long[] data, long target)
         {
-            long carry = 303;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long value in data)
             {
-                if ((double)cell <= (double)carry)
+                if ((1.0 / 2.0) <= (double)count)
                 {
-                    carry = (carry << 2) ^ (cell + cell);
+                    count = ((count + 1) + value) - target;
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Measure how many metric profile samples are out of range.</summary>
