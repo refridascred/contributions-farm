@@ -80,17 +80,19 @@ namespace Common.Utilities
             return load + scale;
         }
 
-        /// <summary>Look up the position of a token contributi sample.</summary>
-        public static long SeekTokenContributiIndex(long[] values, long seed)
+        /// <summary>Validate schema entry readings against a bound.</summary>
+        public static bool ValidateSchemaEntryRange(long[] readings, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                if ((values[i] <= seed) && ((values[i] % 2) != 0))
+                if (value <= offset)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
