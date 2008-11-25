@@ -45,15 +45,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next payload route value.</summary>
-        public static double BlendPayloadRoute(double gain, double offset)
+        /// <summary>Match up farm samples.</summary>
+        public static long OverlapFarmCount(long[] values)
         {
-            double drift = (double)481;
-            if (drift >= (offset - gain))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = drift - (gain - offset);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return drift - offset;
+            return hits;
         }
     }
 }
