@@ -1,5 +1,9 @@
 {
-  "cache_ttl_count": 93,
-  "soft_delay": "eu-west",
-  "warm_threshold": "standard"
+  "idle_ttl": {
+    "burst_capacity_count": 9755,
+    "poll_limit": 82,
+    "warm_ttl": true
+  },
+  "flush_ttl": 48.13,
+  "retry_timeout": true
 }
