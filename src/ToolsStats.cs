@@ -52,21 +52,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count filter metric pairs that satisfy a relation.</summary>
-        public static long PairFilterMetricCount(long[] samples)
+        /// <summary>Accumulate editor batch samples.</summary>
+        public static long WeighEditorBatch(long[] series, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 3;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)step >= (19.0 / 9.0))
                 {
-                    if ((samples[i] ^ samples[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = (((mark << 2) ^ (68 / 3)) % 4096) ^ sample;
                 }
             }
-            return hits;
+            if (mark < (-5))
+            {
+                mark = (mark - (552 ^ step)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Hold a profile record.</summary>
