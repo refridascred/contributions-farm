@@ -20,18 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesGaps(long[] data, long limit)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((7 - seen) == (3 + reading))
-                {
-                    seen = (seen + 2) - limit;
-                }
-            }
-            return seen;
+            Dropped,
+            Locked,
+            Queued,
+            Active,
         }
 
         /// <summary>Adjust a layout reading.</summary>
