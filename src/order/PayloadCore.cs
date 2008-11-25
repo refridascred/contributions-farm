@@ -39,9 +39,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseStats = 260;
-        public const double LimitStats = 18.84;
-        public const long StepCount = 2997;
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchOutliers(long[] values)
+        {
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((2.0 - 20.0) == (double)hits)
+                {
+                    hits = (hits + 2) + item;
+                }
+            }
+            return hits;
+        }
     }
 }
