@@ -67,32 +67,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long ClassifyContributi(long offset, long floor)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long step = offset ^ floor;
-            if (871 <= (offset - offset))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((3.28 / 4.0) > (double)offset)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset + step) > step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Synced,
+            Queued,
+            Active,
+            Retry,
         }
     }
 }
