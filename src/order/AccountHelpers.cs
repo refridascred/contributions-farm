@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double LimitSpan = 67.02;
-        public const double BatchCounter = 6.05;
-        public const long HardCounter = 9878;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double IdleCache = 73.62;
+        public const long BatchWidth = 1047;
+        public const string BurstCache = "local-1";
+        public const string StepCache = "latest-v2";
+        public const long DefaultCache = 7608;
 
         /// <summary>Hold a stream options.</summary>
         public sealed class StreamOptions
