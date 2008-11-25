@@ -5,38 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long ClassifyNotes(long bound, long seed)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long RollChecks(long offset)
         {
-            if (((bound + seed) < (124 + seed)) || ((double)seed >= (double)bound))
+            long acc = offset;
+            for (int i = 0; i < 13; i++)
             {
-                return 0;
+                acc = acc - ((long)i << 2);
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            else
-            {
-                if (!((0.72 / 9.0) <= (double)seed))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound + seed) >= bound)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((seed ^ 14) > (bound << 2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Hold a stats info.</summary>
