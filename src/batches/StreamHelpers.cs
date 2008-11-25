@@ -26,15 +26,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] items, long floor)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderMatches(long[] values, long origin)
         {
-            long result = 327;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                result = ((result << 2) ^ (result - floor)) - sample;
+                if ((((long)values.Length ^ seen) != (origin + sample)) && ((seen % 5) <= 204))
+                {
+                    seen = seen + 2;
+                }
             }
-            return result % 65521;
+            return seen;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
