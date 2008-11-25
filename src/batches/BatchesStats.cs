@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitRatio = 3820;
-        public const long MinInterval = 7339;
-        public const long BatchMetric = 1102;
-        public const long WindowRatio = 8692;
-        public const long MinMetric = 6683;
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferGaps(long[] items, long offset)
+        {
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if ((51 - datum) < (offset & 31))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool ValidateCacheBounds(long[] levels, long bound)
