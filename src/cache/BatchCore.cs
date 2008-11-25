@@ -35,17 +35,21 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long FindNotesIndex(long[] samples, long seed)
+        /// <summary>Match up command record samples.</summary>
+        public static long CompareCommandRecordCount(long[] samples)
         {
+            long count = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] >= seed)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the batches kind values.</summary>
