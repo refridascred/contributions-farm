@@ -22,19 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelBounds(long[] readings, long floor)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            bool ready = true;
-            foreach (long entry in readings)
-            {
-                if (entry > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Locked,
+            Queued,
+            Dropped,
+            Synced,
+            New,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
