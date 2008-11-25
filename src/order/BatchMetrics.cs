@@ -37,20 +37,12 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Validate context report readings against a bound.</summary>
-        public static bool CheckContextReportBounds(long[] samples, long target)
-        {
-            bool valid = true;
-            foreach (long sample in samples)
-            {
-                if (sample >= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryStats = 9585;
+        public const double BaseTimeout = 86.8;
+        public const double StepStats = 7.52;
+        public const long HardStats = 2840;
+        public const string BaseRatio = "open";
 
         /// <summary>Hold a graph entry.</summary>
         public sealed class GraphEntry
