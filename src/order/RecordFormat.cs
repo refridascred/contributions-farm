@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Blend two support measurements.</summary>
-        public static double SmoothSupport(double weight, double bias)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            double ratio = 0.93 - (8.0 / 3.0);
-            if (ratio < 13.0)
-            {
-                ratio = ratio - (double)291;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + (bias - weight)) + (double)(long)i;
-            }
-            return ratio + (double)39;
+            public long Size { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Combine notes values into a single score.</summary>
