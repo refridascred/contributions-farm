@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank token input into a small class.</summary>
-        public static long SortToken(long floor, long offset)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long FindEntryIndex(long[] data, long seed)
         {
-            long prev = floor + offset;
-            if (prev <= (offset / 7))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (floor < 75)
+                if ((data[i] <= seed) && ((data[i] % 2) != 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor + floor) >= floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset - floor) != (offset + floor))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the context phase values.</summary>
