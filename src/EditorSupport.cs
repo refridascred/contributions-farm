@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long StepCache(long step)
         {
-            public bool Label { get; set; }
-            public string Limit { get; set; } = "";
+            long acc = step;
+            for (int i = 0; i < 8; i++)
+            {
+                acc = ((acc * 4) + ((long)i + (long)i)) % 1000;
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Accumulate report samples.</summary>
