@@ -15,25 +15,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long StepEditor(long target)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long carry = target;
-            for (int i = 0; i < 15; i++)
-            {
-                if (((7.0 - 5.3) >= (double)target) || ((double)(long)i >= 6.0))
-                {
-                    carry = (carry + (target + target)) % 97;
-                    carry = (carry - (carry >> 4)) % 65521;
-                    break;
-                }
-                if (((long)i % 10) == (long)i)
-                {
-                    carry = (carry << 3) ^ ((long)i - carry);
-                }
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
+            public long Region { get; set; }
+            public bool Offset { get; set; }
+            public long Mode { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the command mode values.</summary>
