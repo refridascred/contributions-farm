@@ -19,11 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesMatches(long[] series, long origin)
         {
-            public bool Token { get; set; }
-            public bool Flag { get; set; }
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if (644 >= (tally + origin))
+                {
+                    tally = (tally + 3) + datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
