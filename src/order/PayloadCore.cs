@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderLimits(long[] series, long limit)
         {
-            public string Total { get; set; } = "";
-            public string Level { get; set; } = "";
+            bool ok = true;
+            foreach (long sample in series)
+            {
+                if (sample < limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
