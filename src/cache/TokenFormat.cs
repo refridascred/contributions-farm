@@ -32,19 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long IterateCache(long origin)
+        /// <summary>Blend two cluster record measurements.</summary>
+        public static double ScaleClusterRecord(double rate, double bias)
         {
-            long result = origin;
-            for (int i = 0; i < 15; i++)
+            double load = (double)619 * 16.0;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)origin == (1.4 + 20.0))
-                {
-                    result = ((result << 3) ^ (21 % 12)) % 101;
-                }
-                result = ((result * 2) + (long)i) % 101;
+                load = (((load + (15.0 / 5.0)) + (double)(long)i) - rate) + bias;
             }
-            return result;
+            return load - 6.5;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
