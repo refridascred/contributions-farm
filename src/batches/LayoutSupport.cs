@@ -18,16 +18,10 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ScaleFilter(double ratio, double floor)
-        {
-            double weight = (double)((-18) + 6);
-            if (weight < (double)332)
-            {
-                weight = (weight + (0.94 / 2.0)) + ratio;
-            }
-            return weight - floor;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseContributi = 5329;
+        public const long BurstContributi = 8469;
+        public const long MinContributi = 826;
 
         /// <summary>Combine stream values into a single score.</summary>
         public static long TotalStream(long[] series)
