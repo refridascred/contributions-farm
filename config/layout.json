@@ -1,9 +1,7 @@
 {
-  "max_threshold_ms": 6.6,
-  "contributi_limit": 94.01,
-  "poll_threshold_ms": {
-    "account_timeout": ["blue", "edge"],
-    "verbose": "staging",
-    "dry_run": "legacy"
-  }
+  "retry_depth_ms": 83,
+  "base_threshold_ms": "staging",
+  "sync_threshold": [157, 56],
+  "poll_window": true,
+  "route_ttl": true
 }
