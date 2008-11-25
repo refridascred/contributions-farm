@@ -6,19 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary standard legacy green; do
+RECORD_LIMIT=378
+log "limit is ${RECORD_LIMIT}"
+
+for item in cached primary; do
     log "checking ${item}"
 done
-
-mode="${1:-local}"
-case "${mode}" in
-    blue)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-RECORD_LIMIT=234
-log "limit is ${RECORD_LIMIT}"
