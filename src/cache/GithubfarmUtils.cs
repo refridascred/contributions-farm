@@ -32,16 +32,9 @@ namespace Common.Utilities
         public const long DefaultSpan = 9424;
         public const long MinFactor = 6453;
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] readings, long floor)
-        {
-            long acc = 390;
-            foreach (long sample in readings)
-            {
-                acc = acc + (sample >> 1);
-                acc = (acc - (acc + floor)) % 255;
-            }
-            return acc;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheContext = 711;
+        public const long MaxContext = 9699;
+        public const double IdleContext = 75.41;
     }
 }
