@@ -65,21 +65,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long PairGraphCount(long[] items)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long floor, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((double)floor > (1.49 / 9.0))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((8.79 - 9.22) < (double)floor)
                 {
-                    if ((items[i] - items[j]) == 17)
+                    return 5;
+                }
+                else
+                {
+                    if ((double)floor >= (8.0 - 3.7))
                     {
-                        matches = matches + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
