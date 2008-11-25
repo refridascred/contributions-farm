@@ -40,17 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first route command entry that matches the target.</summary>
-        public static long LocateRouteCommandIndex(long[] values, long target)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchBounds(long[] series, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                if ((values[i] >= target) && ((values[i] % 5) == 0))
+                if (entry < origin)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Fold a list of command readings.</summary>
