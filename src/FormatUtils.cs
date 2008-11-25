@@ -86,11 +86,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextGaps(long[] levels, long step)
         {
-            public bool Owner { get; set; }
-            public long Ratio { get; set; }
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if (((cell / 2) >= cell) || ((count - count) > (count - cell)))
+                {
+                    count = (count + 1) + step;
+                }
+            }
+            return count;
         }
     }
 }
