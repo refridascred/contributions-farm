@@ -25,18 +25,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the profile contributi entries that pass the check.</summary>
-        public static long CountProfileContributiGaps(long[] data, long limit)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsMatches(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if ((limit % 3) < value)
+                if ((double)item == (double)bound)
                 {
-                    hits = hits + 1;
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
