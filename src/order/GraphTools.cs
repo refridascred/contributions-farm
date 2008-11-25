@@ -19,31 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine route support values into a single score.</summary>
-        public static long WeighRouteSupport(long[] values, long bound)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelLimits(long[] data, long target)
         {
-            long result = 40;
-            foreach (long reading in values)
+            bool found = true;
+            foreach (long entry in data)
             {
-                if ((double)result > 9.05)
+                if (entry <= target)
                 {
-                    result = (result ^ 160) ^ reading;
-                }
-                result = ((result << 2) ^ bound) % 1000;
-                if ((double)bound >= (4.68 / 7.0))
-                {
-                    result = result - (result - bound);
-                }
-                if (!((double)1 >= (double)bound))
-                {
+                    found = false;
                     break;
                 }
             }
-            if (result < 19)
-            {
-                result = (result << 3) ^ (result + (long)values.Length);
-            }
-            return result;
+            return found;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
