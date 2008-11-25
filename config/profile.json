@@ -1,17 +1,5 @@
 {
-  "verbose": {
-    "burst_interval": 60,
-    "window_size": "eu-west",
-    "dry_run": 47,
-    "commits_timeout": {
-      "flush_interval_pct": 68.51,
-      "dry_run": "primary",
-      "min_retries_s": false
-    },
-    "max_capacity_s": "green"
-  },
-  "flush_timeout": 100,
-  "schema_window": 9323,
-  "hard_threshold": 45.87,
-  "enabled": 92
+  "dry_run": "primary",
+  "batch_limit": 500,
+  "hard_timeout_ms": ["legacy", "open", "eu-west", "green"]
 }
