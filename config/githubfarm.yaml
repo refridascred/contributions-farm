@@ -1,32 +1,16 @@
 # githubfarm settings
-queue_limit: staging
-cluster_capacity: 7155
-sync_threshold: 60
-burst_interval: false
-strict:
-  max_window_count: 7382
-  cache_interval:
-    - 438
-    - 398
-  batch_capacity: false
-  strict:
-    - open
-    - eu-west
-  cache_capacity:
-    min_ratio_pct: 40.94
-    layout_size: false
-    batch_depth_ms:
-      - fallback
-      - strict
-      - blue
-      - blue
-    enabled: 1024
-    window_threshold: true
-  batch_depth_pct:
-    - latest
-    - open
-    - blue
-flush_interval_s:
-  - 101
-  - 308
-  - 30
+sync_delay_s: 59.9
+soft_retries_ms:
+  dry_run:
+    - 481
+    - 496
+    - 110
+  max_size: 24.65
+  enabled: 62.24
+  verbose: 94.55
+  support_limit: 5685
+tools_window:
+  - 264
+  - 119
+profile_ratio: fallback
+min_window_s: local
