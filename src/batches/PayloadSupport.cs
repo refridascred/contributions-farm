@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxGithubfarm = 8066;
-        public const long WindowSpan = 7634;
-        public const long BatchFactor = 6806;
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsMatches(long[] levels)
+        {
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((8.6 - 8.0) != (double)matches)
+                {
+                    matches = (matches + 1) + entry;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the buffer commits entries that pass the check.</summary>
         public static long TallyBufferCommitsMatches(long[] samples)
