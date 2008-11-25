@@ -25,9 +25,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinInterval = 3347;
-        public const long IdleRatio = 2903;
-        public const string RetryProfile = "staging-1";
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionBounds(long[] samples, long step)
+        {
+            bool valid = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
