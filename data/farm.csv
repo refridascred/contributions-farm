@@ -1,6 +1,7 @@
-id,label,score
-1,17.19,latest
-2,65.65,51.12
-3,158,staging
-4,cached,edge
-5,90,21.39
+id,ratio,active,token
+1,850,strict,standard
+2,48.1,60,240
+3,518,stable,green
+4,fallback,82.35,753
+5,783,latest,23
+6,89,latest,546
