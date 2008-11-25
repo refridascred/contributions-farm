@@ -1,7 +1,7 @@
 {
-  "default_retries_ms": 28.89,
-  "editor_threshold": 73.52,
-  "batch_threshold": true,
-  "max_timeout_ms": 30,
-  "report_size": 5673
+  "hard_threshold_pct": ["eu-west", "cached", "primary", "cached"],
+  "strict": 94.16,
+  "sync_timeout_pct": [137, 346, 151],
+  "report_ttl": "standard",
+  "profile_retries": true
 }
