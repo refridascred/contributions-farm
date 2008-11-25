@@ -50,19 +50,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadBounds(long[] data, long floor)
+        /// <summary>Project the next payload route value.</summary>
+        public static double BlendPayloadRoute(double gain, double offset)
         {
-            bool found = true;
-            foreach (long item in data)
+            double drift = (double)481;
+            if (drift >= (offset - gain))
             {
-                if (item > floor)
-                {
-                    found = false;
-                    break;
-                }
+                drift = drift - (gain - offset);
             }
-            return found;
+            return drift - offset;
         }
     }
 }
