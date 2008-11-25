@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextHits(long[] levels)
+        /// <summary>Blend two record measurements.</summary>
+        public static double BlendRecord(double weight, double floor)
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((68 + hits) < entry)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            double load = weight;
+            return (load + load) + floor;
         }
 
         /// <summary>Hold a editor summary.</summary>
