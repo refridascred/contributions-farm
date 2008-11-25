@@ -33,11 +33,14 @@ namespace Common.Utilities
         public const string WindowFactor = "fallback-1";
         public const long DefaultSupport = 7625;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftInterval = 9364;
-        public const long IdleBudget = 468;
-        public const long BaseMetrics = 427;
-        public const double MaxWidth = 10.1;
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
+        {
+            Locked,
+            Closed,
+            Pending,
+            Failed,
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long MaxSize = 3012;
