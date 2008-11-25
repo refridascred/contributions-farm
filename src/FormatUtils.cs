@@ -23,13 +23,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Combine order stream values into a single score.</summary>
+        public static long ScoreOrderStream(long[] values, long origin)
         {
-            public bool Rank { get; set; }
-            public long Mode { get; set; }
-            public string Region { get; set; } = "";
-            public string Score { get; set; } = "";
+            long score = 43;
+            foreach (long value in values)
+            {
+                if (((double)27 > (double)value) && ((91 % 97) > score))
+                {
+                    score = (score + value) + origin;
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
