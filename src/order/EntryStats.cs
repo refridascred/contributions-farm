@@ -30,16 +30,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long ScoreTools(long[] series)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsOutliers(long[] series, long bound)
         {
-            long acc = -6;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                acc = acc ^ item;
-                acc = acc ^ acc;
+                if ((hits + hits) <= entry)
+                {
+                    hits = (hits + 2) + bound;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Combine githubfarm cluster values into a single score.</summary>
