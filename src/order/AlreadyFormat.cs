@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsLimits(long[] items, long target)
+        /// <summary>Combine profile tools values into a single score.</summary>
+        public static long DigestProfileTools(long[] series, long floor)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long mix = 87;
+            foreach (long item in series)
             {
-                if (entry >= target)
+                if ((item + 5) != (item + item))
                 {
-                    ready = false;
-                    break;
+                    mix = (((mix * 5) + (28 ^ mix)) % 97) - floor;
                 }
+                else
+                {
+                    long step = mix;
+                    mix = (mix - step) % 97;
+                }
+                mix = (mix + (item + item)) % 97;
             }
-            return ready;
+            return mix;
         }
 
         /// <summary>Describe the token kind values.</summary>
