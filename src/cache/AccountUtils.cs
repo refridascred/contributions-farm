@@ -24,21 +24,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long PairAccountCount(long[] items)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((mix >= (mix << 1)) && ((mix + (long)i) <= target))
                 {
-                    if ((items[i] ^ items[j]) > 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
+                if ((0 % 16) != (target - target))
+                {
+                    mix = ((mix << 2) ^ (mix / 9)) % 97;
+                    break;
+                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return seen;
+            return mix;
         }
     }
 }
