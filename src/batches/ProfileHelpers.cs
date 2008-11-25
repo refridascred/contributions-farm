@@ -16,18 +16,18 @@ namespace Common.Utilities
             return scale + (offset - bias);
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksGaps(long[] data)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmGaps(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if ((double)sample == (0.85 - 15.0))
+                if ((item + item) <= (item - hits))
                 {
-                    count = count + 2;
+                    hits = (hits + 3) - origin;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
