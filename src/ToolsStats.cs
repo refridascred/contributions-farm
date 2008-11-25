@@ -30,16 +30,17 @@ namespace Common.Utilities
             return drift + (bias * 1.94);
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long SeriesMetric(long limit)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long SeekFarmIndex(long[] levels, long bound)
         {
-            long mix = limit;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = mix + (mix << 3);
-                mix = ((mix * 4) + (long)i) % 1000;
+                if (levels[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
