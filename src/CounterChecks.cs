@@ -73,38 +73,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long SortChecks(long limit, long bound)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteRange(long[] readings, long offset)
         {
-            if ((bound + 819) > 7)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((1.2 / 6.0) > (double)limit)
+                if (cell < offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((bound + 4) <= (limit - limit)) || ((18.0 / 6.0) < (double)bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (bound < (limit - bound))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
