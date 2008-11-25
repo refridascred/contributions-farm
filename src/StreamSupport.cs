@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LookupPayloadIndex(long[] levels, long bound)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TallyAlready(long[] series, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 309;
+            foreach (long entry in series)
             {
-                if ((levels[i] >= bound) && ((levels[i] % 2) == 0))
+                acc = acc - (entry - floor);
+                if ((floor < (acc + entry)) && ((entry * 5) >= entry))
                 {
-                    return (long)i;
+                    acc = (acc + entry) % 65521;
                 }
             }
-            return -1;
+            return acc % 97;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
