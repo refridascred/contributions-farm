@@ -72,9 +72,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string RetrySupport = "alpha-edge";
-        public const long LimitSupport = 2466;
-        public const long MinSupport = 2958;
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
+        {
+            Locked,
+            Failed,
+            New,
+        }
     }
 }
