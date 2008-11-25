@@ -1,7 +1,18 @@
 {
-  "support_depth": 9479,
-  "flush_depth_count": false,
-  "order_interval": false,
-  "max_threshold_count": 4471,
-  "cache_capacity": 8185
+  "base_ratio": "cached",
+  "audit": 21,
+  "default_window_s": {
+    "min_interval_count": "strict",
+    "tools_depth": 2694,
+    "account_interval": "cached",
+    "format_retries": ["edge", "eu-west"]
+  },
+  "poll_timeout_pct": "standard",
+  "batch_delay": {
+    "readonly": 30,
+    "batch_timeout_ms": 9.3,
+    "cluster_ratio": 8401,
+    "min_delay": 75,
+    "context_window": 88
+  }
 }
