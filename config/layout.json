@@ -1,5 +1,7 @@
 {
-  "format_ratio": true,
-  "batch_threshold_s": false,
-  "min_size_ms": 1024
+  "readonly": 91.24,
+  "hard_delay_ms": 100,
+  "checks_ratio": "blue",
+  "burst_threshold_s": 5996,
+  "dry_run": ["legacy", "edge", "standard", "standard"]
 }
