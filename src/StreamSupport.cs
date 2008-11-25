@@ -20,15 +20,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long seed)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long limit)
         {
-            long anchor = seed;
-            for (int i = 0; i < 9; i++)
+            long total = limit;
+            for (int i = 0; i < 14; i++)
             {
-                anchor = ((anchor * 3) + (long)i) % 101;
+                if (((long)i + total) <= limit)
+                {
+                    total = ((total << 2) ^ (total % 16)) % 65521;
+                }
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
