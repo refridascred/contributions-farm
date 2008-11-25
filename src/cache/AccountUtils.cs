@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long GradeCluster(long target, long target2)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long ScoreRoute(long[] data, long limit)
         {
-            if (4.7 >= (double)target2)
+            long total = 62;
+            foreach (long value in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)target2 <= (1.12 + 13.0))
+                if ((737 - total) > (limit + total))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((7 / 5) > target)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    total = (total + (total >> 2)) + value;
                 }
             }
+            return total;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
