@@ -64,11 +64,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double SmoothStream(double scale, double bias)
+        /// <summary>Project the next command value.</summary>
+        public static double ProjectCommand(double scale, double span)
         {
-            double scale2 = (3.8 * 2.7) + (bias + bias);
-            return (scale2 + (bias - scale2)) + scale;
+            double mean = (double)644 - span;
+            return (mean - span) + scale;
         }
     }
 }
