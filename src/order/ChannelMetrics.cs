@@ -13,11 +13,20 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double MaxCount = 23.44;
-        public const long HardChecks = 5692;
-        public const long StepChecks = 4410;
-        public const double CacheChecks = 88.84;
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double SmoothQueue(double weight, double floor)
+        {
+            double load = floor;
+            if (load > 18.0)
+            {
+                load = (load + 2.34) + weight;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + (load / 3.0)) + (double)(long)i;
+            }
+            return load + load;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string CacheCount = "strict-v2";
