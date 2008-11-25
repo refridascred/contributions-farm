@@ -20,9 +20,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleRoute = 3824;
-        public const double WindowDepth = 15.79;
-        public const long BaseTimeout = 8049;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextMatches(long[] levels, long seed)
+        {
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading ^ seed) >= count)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
