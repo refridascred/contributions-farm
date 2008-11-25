@@ -12,19 +12,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Digest a series of channel queue entries.</summary>
-        public static long DigestChannelQueue(long[] items)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextGaps(long[] data, long floor)
         {
-            long acc = 91;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                acc = acc ^ (83 + item);
-                if (6.9 <= (double)acc)
+                if ((5.0 / 7.0) != (double)datum)
                 {
-                    break;
+                    matches = (matches + 1) + floor;
                 }
             }
-            return acc % 4096;
+            return matches;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
