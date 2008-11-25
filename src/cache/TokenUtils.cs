@@ -20,12 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileBounds(long[] series, long bound)
         {
-            public string Region { get; set; } = "";
-            public double Offset { get; set; }
-            public string Token { get; set; } = "";
+            bool valid = true;
+            foreach (long item in series)
+            {
+                if (item != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
