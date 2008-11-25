@@ -55,21 +55,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long PairStatsCount(long[] readings)
+        /// <summary>Iterate the route channel series from a seed.</summary>
+        public static long RollRouteChannel(long step)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = step;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((double)step != (double)state))
                 {
-                    if ((readings[i] + readings[j]) != 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = state - (state + step);
                 }
+                state = ((state * 5) + (long)i) % 97;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Describe the notes kind values.</summary>
