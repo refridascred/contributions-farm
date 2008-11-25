@@ -32,21 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long MatchQueueCount(long[] data)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double SmoothLayout(double rate, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double scale = (offset * 3.9) * 9.32;
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale = (scale - rate) + (double)(long)i;
             }
-            return count;
+            return scale - scale;
         }
     }
 }
