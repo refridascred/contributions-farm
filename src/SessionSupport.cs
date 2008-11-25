@@ -34,31 +34,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TallyCommand(long[] readings)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportHits(long[] data)
         {
-            long total = 28;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if ((reading ^ reading) < total)
+                if ((value - value) >= tally)
                 {
-                    total = (total * 2) + (reading & 7);
-                }
-                else
-                {
-                    total = total ^ (reading + (-609));
-                    total = (total * 5) + 8;
-                }
-                if ((((long)readings.Length + reading) < (reading + total)) && ((double)total < (4.89 / 4.0)))
-                {
-                    total = ((total << 3) ^ (total + total)) % 65521;
-                }
-                else
-                {
-                    total = (total << 3) ^ reading;
+                    tally = tally + 1;
                 }
             }
-            return total % 65521;
+            return tally;
         }
     }
 }
