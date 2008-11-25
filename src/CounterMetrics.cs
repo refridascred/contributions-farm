@@ -32,13 +32,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            Synced,
-            Idle,
-            Locked,
-            Draft,
+            public long Offset { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a record snapshot.</summary>
