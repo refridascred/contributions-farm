@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many window farm samples are out of range.</summary>
-        public static long AuditWindowFarmMatches(long[] readings, long origin)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long WeighGraph(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long result = -395;
+            foreach (long sample in data)
             {
-                if ((double)5 >= (double)entry)
+                if ((result * 4) <= (limit ^ limit))
                 {
-                    count = (count + 1) + origin;
+                    result = (((result << 3) ^ (limit - result)) % 1000) - sample;
                 }
             }
-            return count;
+            if (result < 7)
+            {
+                result = (result * 4) + (result * 2);
+            }
+            return result;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
