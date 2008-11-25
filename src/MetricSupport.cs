@@ -14,10 +14,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double CacheRoute = 62.86;
-        public const long BatchRoute = 6748;
-        public const string LimitRoute = "legacy-v2";
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] readings)
+        {
+            long total = 30;
+            foreach (long datum in readings)
+            {
+                total = ((total * 2) + datum) % 4096;
+                total = total - (total ^ total);
+            }
+            if (total < 324)
+            {
+                total = (total + (total + total)) % 4096;
+            }
+            return total;
+        }
 
         /// <summary>Roll a counter counter forward.</summary>
         public static long IterateCounter(long bound)
