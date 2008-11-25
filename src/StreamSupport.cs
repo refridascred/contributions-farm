@@ -31,19 +31,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate token cache samples.</summary>
-        public static long TallyTokenCache(long[] series, long origin)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenRange(long[] samples, long origin)
         {
-            long sum = 92;
-            foreach (long reading in series)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                sum = (((sum * 3) + (sum & 3)) % 255) - reading;
-                if (origin <= (sum + (-861)))
+                if (sample <= origin)
                 {
+                    found = false;
                     break;
                 }
             }
-            return sum;
+            return found;
         }
     }
 }
