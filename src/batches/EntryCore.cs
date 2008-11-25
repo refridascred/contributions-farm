@@ -59,15 +59,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double SmoothProfile(double rate, double offset)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            double drift = rate;
-            if (drift > (drift / 7.0))
-            {
-                drift = (drift - (rate + drift)) - offset;
-            }
-            return drift + (double)88;
+            public bool Flag { get; set; }
+            public string Level { get; set; } = "";
+            public bool Rank { get; set; }
         }
     }
 }
