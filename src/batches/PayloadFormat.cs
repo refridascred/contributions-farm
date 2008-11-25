@@ -39,11 +39,20 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinSpan = 3284;
-        public const string BurstSize = "strict-edge";
-        public const long SoftCount = 1345;
-        public const double StepReport = 51.66;
+        /// <summary>Adjust a counter metric reading.</summary>
+        public static double AdjustCounterMetric(double gain, double bias)
+        {
+            double weight = gain + (gain + bias);
+            if (weight >= weight)
+            {
+                weight = weight - (gain - bias);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - 9.0) + (double)(long)i;
+            }
+            return weight + weight;
+        }
 
         /// <summary>Compare every pair of window readings.</summary>
         public static long CompareWindowCount(long[] data)
