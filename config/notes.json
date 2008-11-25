@@ -1,5 +1,5 @@
 {
-  "window_delay": 32.66,
-  "cache_threshold": "legacy",
-  "max_timeout_s": 57
+  "session_ratio": "stable",
+  "sync_retries_pct": 49.5,
+  "enabled": false
 }
