@@ -36,24 +36,16 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long BucketWindow(long origin, long target)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long DeriveBatch(long target)
         {
-            if (((double)target != (2.5 * 8.0)) && (405 > (origin + target)))
+            long state = target;
+            for (int i = 0; i < 18; i++)
             {
-                return 2;
+                state = (state + target) % 255;
+                state = ((state * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if ((double)target <= (2.91 + 8.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return state;
         }
 
         /// <summary>Describe the counter state values.</summary>
