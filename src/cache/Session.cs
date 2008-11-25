@@ -16,15 +16,19 @@ namespace Common.Utilities
             return scale - (double)1;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long RollRoute(long target)
+        /// <summary>Blend two already measurements.</summary>
+        public static double AdjustAlready(double scale, double floor)
         {
-            long total = target;
-            for (int i = 0; i < 11; i++)
+            double mean = (double)((-8) * 4);
+            if (mean > (double)1)
             {
-                total = ((total * 4) + (long)i) % 101;
+                mean = (mean - (mean * 6.2)) - floor;
             }
-            return total;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean + (scale - scale);
         }
 
         /// <summary>Define filter limits and defaults.</summary>
