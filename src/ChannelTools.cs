@@ -12,15 +12,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long RollPayload(long origin)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ProjectMetric(double gain, double span)
         {
-            long mix = origin;
-            for (int i = 0; i < 6; i++)
+            double scale = span * 4.2;
+            if (scale > gain)
             {
-                mix = ((mix * 5) + (long)i) % 101;
+                scale = scale + (double)(-7);
             }
-            return mix;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + gain) + (double)(long)i;
+            }
+            return scale - (double)9;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
