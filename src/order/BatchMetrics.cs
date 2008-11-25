@@ -25,21 +25,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up filter account samples.</summary>
-        public static long OverlapFilterAccountCount(long[] samples)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long offset, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long cur = offset ^ bound;
+            if ((cur - cur) >= (bound + 3))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((offset * 3) <= bound)
                 {
-                    if ((samples[i] ^ samples[j]) < 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
