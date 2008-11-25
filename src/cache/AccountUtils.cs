@@ -26,13 +26,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long FindCommandIndex(long[] values, long offset)
         {
-            public long Token { get; set; }
-            public long Total { get; set; }
-            public double Label { get; set; }
-            public bool Owner { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
