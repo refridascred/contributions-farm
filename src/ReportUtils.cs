@@ -35,19 +35,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesBounds(long[] readings, long floor)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyRange(long[] series, long step)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            bool found = true;
+            foreach (long value in series)
             {
-                if (datum > floor)
+                if (value < step)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
 
         /// <summary>Match up route token samples.</summary>
