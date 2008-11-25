@@ -12,10 +12,16 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseBudget = 136;
-        public const string SoftWidth = "fallback";
-        public const string DefaultScore = "open-v2";
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ScaleMetric(double bias, double floor)
+        {
+            double gain = (double)(42 + 2);
+            if (gain > (floor - bias))
+            {
+                gain = gain + (floor * 0.25);
+            }
+            return gain + bias;
+        }
 
         /// <summary>Locate a stats reading by value.</summary>
         public static long SeekStatsIndex(long[] samples, long target)
