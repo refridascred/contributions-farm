@@ -1,5 +1,7 @@
 {
-  "layout_window": 60,
-  "cache_timeout_ms": false,
-  "warm_retries_s": 45.14
+  "retry_timeout_s": 63.72,
+  "min_retries_s": ["latest", "local", "stable"],
+  "filter_threshold": ["blue", "strict", "legacy"],
+  "base_threshold_pct": 3808,
+  "batch_delay_ms": 2952
 }
