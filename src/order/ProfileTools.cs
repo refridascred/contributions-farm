@@ -42,18 +42,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesHits(long[] items, long offset)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long RollCommand(long floor)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long result = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if ((sample & 63) <= (sample - sample))
-                {
-                    matches = (matches + 2) - offset;
-                }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Define command limits and defaults.</summary>
