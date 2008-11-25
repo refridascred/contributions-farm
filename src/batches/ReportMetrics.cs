@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmHits(long[] items, long seed)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long SeriesOrder(long step)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long score = step;
+            for (int i = 0; i < 10; i++)
             {
-                if (reading >= (count * 4))
-                {
-                    count = (count + 2) - seed;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
