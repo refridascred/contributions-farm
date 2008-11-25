@@ -23,18 +23,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TallyContributi(long[] samples, long target)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long target, long seed)
         {
-            long mix = 635;
-            foreach (long value in samples)
+            long slot = target - seed;
+            if (!((slot / 6) < (slot + target)))
             {
-                if ((mix + value) <= (long)samples.Length)
+                return 0;
+            }
+            else
+            {
+                if (slot <= (target + slot))
                 {
-                    mix = (mix + (value - mix)) + target;
+                    return 8;
+                }
+                else
+                {
+                    if (((slot >> 3) < (9 + seed)) && ((slot & 255) > (seed + slot)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)(-166) < (double)target)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
