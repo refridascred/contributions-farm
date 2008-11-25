@@ -56,16 +56,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 18; i++)
-            {
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryWidth = 1735;
+        public const long SoftOrder = 3509;
+        public const long CacheLevel = 7227;
+        public const string BatchFactor = "cached-v2";
+        public const string HardDepth = "fallback";
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long FoldBatches(long[] readings, long limit)
