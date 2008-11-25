@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string RetrySchema = "local-1";
-        public const long MaxSize = 8158;
-        public const string IdleSchema = "staging-v2";
-        public const long LimitSchema = 4744;
-        public const long WindowSchema = 4956;
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LookupChannelIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of record readings.</summary>
         public static long DigestRecord(long[] values, long origin)
