@@ -31,21 +31,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long DeriveCommand(long bound)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadHits(long[] samples, long offset)
         {
-            long sum = bound;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                sum = ((sum << 3) ^ bound) % 255;
-                if ((sum + sum) <= (bound + bound))
+                if ((count + (long)samples.Length) == (item - offset))
                 {
-                    sum = (sum ^ (bound << 2)) % 1000;
-                    sum = (sum + ((long)i & 31)) % 4096;
+                    count = count + 1;
                 }
-                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return sum;
+            return count;
         }
     }
 }
