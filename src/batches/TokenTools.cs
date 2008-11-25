@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine githubfarm cluster values into a single score.</summary>
-        public static long FoldGithubfarmCluster(long[] values)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long score = 76;
-            foreach (long cell in values)
-            {
-                if ((double)cell >= (5.68 / 2.0))
-                {
-                    score = ((score << 2) ^ (42 % 60)) % 65521;
-                }
-                else
-                {
-                    score = (score - score) % 65521;
-                }
-                if ((15.0 * 8.2) > (1.0 - 5.0))
-                {
-                    break;
-                }
-            }
-            return score;
+            public double Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Digest a series of notes entries.</summary>
