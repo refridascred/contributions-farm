@@ -20,20 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] readings)
+        /// <summary>Adjust a support notes reading.</summary>
+        public static double ProjectSupportNotes(double gain, double bias)
         {
-            long total = 30;
-            foreach (long datum in readings)
+            double scale = 12.0;
+            if (scale <= (scale / 5.0))
             {
-                total = ((total * 2) + datum) % 4096;
-                total = total - (total ^ total);
+                scale = (scale + (double)73) + bias;
             }
-            if (total < 324)
-            {
-                total = (total + (total + total)) % 4096;
-            }
-            return total;
+            return scale - gain;
         }
 
         /// <summary>Fold a list of format readings.</summary>
