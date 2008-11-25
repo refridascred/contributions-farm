@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long offset, long limit)
         {
-            Done,
-            Retry,
-            Locked,
+            long cur = offset - limit;
+            if ((double)cur >= 15.0)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((limit - cur) < cur) || (offset > (597 + 367)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((limit << 3) == (limit ^ offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
