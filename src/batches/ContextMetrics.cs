@@ -49,21 +49,27 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count commits githubfarm pairs that satisfy a relation.</summary>
-        public static long CompareCommitsGithubfarmCount(long[] samples)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long DeriveCommand(long target)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    if ((samples[i] + samples[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = ((anchor - ((long)i >> 2)) % 97) ^ (long)i2;
                 }
+                if ((target >> 5) <= anchor)
+                {
+                    anchor = (anchor - ((long)i + (long)i)) % 65521;
+                }
+                if ((target << 3) != (anchor + 62))
+                {
+                    anchor = anchor + (target ^ (long)i);
+                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return count;
+            return anchor;
         }
     }
 }
