@@ -34,15 +34,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double ProjectRoute(double gain, double offset)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadLimits(long[] data, long step)
         {
-            double scale = offset;
-            if (scale < (offset / 6.0))
+            bool found = true;
+            foreach (long datum in data)
             {
-                scale = scale - (gain / 7.0);
+                if (datum > step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return scale + (offset / 6.0);
+            return found;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
