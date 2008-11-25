@@ -30,12 +30,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            Closed,
-            Pending,
-            Draft,
+            public double Flag { get; set; }
+            public long Count { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
