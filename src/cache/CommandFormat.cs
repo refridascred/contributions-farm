@@ -32,15 +32,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long DeriveRoute(long bound)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaMatches(long[] items, long offset)
         {
-            long acc = bound;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                acc = ((acc * 4) + (long)i) % 97;
+                if (((double)sample == (1.17 + 5.5)) || !((sample + sample) <= (offset % 7)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return acc;
+            return tally;
         }
     }
 }
