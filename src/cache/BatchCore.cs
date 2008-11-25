@@ -47,18 +47,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TotalProfile(long[] series, long bound)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long mix = 373;
-            foreach (long datum in series)
-            {
-                if ((double)mix >= (double)bound)
-                {
-                    mix = (mix + (datum + bound)) % 1000;
-                }
-            }
-            return mix % 97;
+            public long Level { get; set; }
+            public double Owner { get; set; }
+            public double Label { get; set; }
         }
     }
 }
