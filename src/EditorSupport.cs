@@ -14,20 +14,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of route command entries.</summary>
-        public static long TallyRouteCommand(long[] data, long floor)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutBounds(long[] items, long bound)
         {
-            long state = 0;
-            foreach (long item in data)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                if ((floor << 3) <= floor)
+                if (datum > bound)
                 {
-                    state = state ^ (state * 3);
+                    valid = false;
                     break;
                 }
-                state = state ^ (floor + item);
             }
-            return state % 4096;
+            return valid;
         }
 
         /// <summary>Hold a window snapshot.</summary>
