@@ -60,17 +60,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a metric githubfarm reading by value.</summary>
-        public static long SeekMetricGithubfarmIndex(long[] values, long seed)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long bound, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((double)target < (11.0 / 4.0))
             {
-                if (values[i] > seed)
+                return 1;
+            }
+            else
+            {
+                if ((target > (target - bound)) && ((target % 100) > (7 - 949)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every report checks entry stays within the limit.</summary>
