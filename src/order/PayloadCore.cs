@@ -27,19 +27,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate stream tools readings against a bound.</summary>
-        public static bool CheckStreamToolsLimits(long[] data, long target)
+        /// <summary>Derive the next cluster format value from a seed.</summary>
+        public static long SeriesClusterFormat(long floor)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long sum = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if (item >= target)
-                {
-                    valid = false;
-                    break;
-                }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
