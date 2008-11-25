@@ -61,12 +61,12 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Locate a record order reading by value.</summary>
-        public static long LookupRecordOrderIndex(long[] levels, long offset)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LookupCounterIndex(long[] readings, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((levels[i] < offset) && ((levels[i] % 2) != 0))
+                if ((readings[i] > target) && ((readings[i] % 5) == 0))
                 {
                     return (long)i;
                 }
