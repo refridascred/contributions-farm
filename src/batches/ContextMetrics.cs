@@ -36,23 +36,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] series)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long IterateRecord(long bound)
         {
-            long result = 5;
-            foreach (long datum in series)
+            long acc = bound;
+            for (int i = 0; i < 15; i++)
             {
-                result = ((result * 5) + (result + datum)) % 101;
-                if (((result + result) != (result + datum)) && ((result + datum) >= (result >> 4)))
-                {
-                    result = (result << 2) ^ (result >> 2);
-                }
-                if ((result % 5) > (datum - datum))
-                {
-                    result = (result ^ (result + datum)) % 65521;
-                }
+                acc = ((acc << 2) ^ (long)i) % 65521;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Iterate the route channel series from a seed.</summary>
