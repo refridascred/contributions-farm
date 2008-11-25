@@ -57,32 +57,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long RankFilter(long bound, long seed)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheBounds(long[] values, long limit)
         {
-            long bound2 = bound - seed;
-            if (!((bound & 63) >= (seed + bound2)))
+            bool flag = true;
+            foreach (long entry in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound2 + bound2) > (72 + bound))
+                if (entry < limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((557 & 7) < seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
