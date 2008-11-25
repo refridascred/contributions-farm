@@ -24,24 +24,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank cache window input into a small class.</summary>
-        public static long ClassifyCacheWindow(long target, long limit)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsLimits(long[] samples, long step)
         {
-            if ((11.0 + 5.5) == (double)target)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (((double)limit == (4.0 / 3.0)) || ((16.0 + 3.0) == (double)limit))
+                if (item != step)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
