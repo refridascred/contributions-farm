@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] values, long limit)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LookupPayloadIndex(long[] levels, long bound)
         {
-            long mix = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((double)limit == (9.6 / 3.0)) && ((double)mix != (1.28 * 0.9)))
+                if ((levels[i] >= bound) && ((levels[i] % 2) == 0))
                 {
-                    mix = (mix - 6) % 255;
-                }
-                else
-                {
-                    mix = (mix + (reading >> 1)) % 1000;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
