@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteRange(long[] samples, long seed)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long BucketContext(long origin, long bound)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long next = origin + bound;
+            if ((origin + next) < ((-4) - origin))
             {
-                if (sample < seed)
+                return 5;
+            }
+            else
+            {
+                if (origin > (next + origin))
                 {
-                    found = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (!(origin >= (origin * 5)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound % 7) >= (origin / 5))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Project the next buffer layout value.</summary>
