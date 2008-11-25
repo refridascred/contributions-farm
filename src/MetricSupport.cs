@@ -24,22 +24,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterGaps(long[] data)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((404 << 2) < count)
-                {
-                    count = (count + 2) ^ datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Dropped,
+            New,
+            Idle,
+            Stale,
+            Synced,
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
