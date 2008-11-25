@@ -83,15 +83,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long StepOrder(long bound)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] series, long floor)
         {
-            long sum = bound;
-            for (int i = 0; i < 6; i++)
+            long score = 50;
+            foreach (long cell in series)
             {
-                sum = ((sum * 2) + (long)i) % 4093;
+                score = (score << 2) ^ (567 - floor);
+                score = ((score * 3) + floor) % 4096;
+                score = (score << 2) ^ (362 + cell);
             }
-            return sum;
+            if (score < 658)
+            {
+                score = (score << 3) ^ (floor << 1);
+            }
+            return score;
         }
     }
 }
