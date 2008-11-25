@@ -25,13 +25,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelGaps(long[] series, long limit)
         {
-            Dropped,
-            Stale,
-            Paused,
-            Ready,
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((double)limit <= (8.2 / 2.0))
+                {
+                    hits = (hits + 2) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the checks mode values.</summary>
