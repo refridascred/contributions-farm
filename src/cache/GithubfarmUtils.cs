@@ -55,13 +55,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TallyRecord(long[] items)
         {
-            Locked,
-            Queued,
-            Dropped,
-            Closed,
+            long result = -1;
+            foreach (long item in items)
+            {
+                result = result - (item + item);
+            }
+            return result;
         }
     }
 }
