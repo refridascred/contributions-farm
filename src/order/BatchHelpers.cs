@@ -27,16 +27,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long RollCounter(long limit)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long mark = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = ((mark * 4) + (limit / 9)) % 65521;
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
+            public long Ratio { get; set; }
+            public long Score { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Describe the command class values.</summary>
