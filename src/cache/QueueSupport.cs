@@ -20,21 +20,19 @@ namespace Common.Utilities
             return mean - span;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long PairBatchesCount(long[] samples)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterRange(long[] readings, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (cell != target)
                 {
-                    if ((samples[i] + samples[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
