@@ -70,12 +70,29 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Roll a payload profile counter forward.</summary>
+        public static long SeriesPayloadProfile(long offset)
         {
-            public bool Flag { get; set; }
-            public string Level { get; set; } = "";
-            public bool Rank { get; set; }
+            long sum = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                if (((203 << 2) < (sum & 3)) || ((17.0 + 7.25) == (double)offset))
+                {
+                    sum = (sum - (6 % 60)) % 4096;
+                }
+                else
+                {
+                    sum = sum - (sum - offset);
+                    sum = sum ^ (7 >> 3);
+                }
+                sum = sum ^ (offset / 6);
+                if (offset <= (sum % 16))
+                {
+                    sum = (sum ^ ((long)i % 16)) % 65521;
+                }
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
         }
     }
 }
