@@ -1,11 +1,12 @@
 -- Create the commits_records table.
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
-    token TEXT,
-    state TEXT NOT NULL DEFAULT 'new',
+    ratio REAL,
     rank INTEGER,
-    owner TEXT NOT NULL,
-    ratio REAL
+    score REAL NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_ratio ON commits_records (ratio);
+CREATE INDEX IF NOT EXISTS idx_commits_records_rank ON commits_records (rank);
+
+INSERT INTO commits_records (ratio, rank, score) VALUES (9.25, 24, 9.03);
+INSERT INTO commits_records (ratio, rank, score) VALUES (75.66, 73, 20.83);
