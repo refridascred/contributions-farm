@@ -33,31 +33,12 @@ namespace Common.Utilities
         public const long SoftCount = 1345;
         public const double StepReport = 51.66;
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long GradeBuffer(long floor, long step)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            if ((step - step) != (floor + floor))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((floor % 97) <= floor) && ((step ^ step) <= (step & 15)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step + floor) <= (step * 5))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public bool Label { get; set; }
+            public long Offset { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
