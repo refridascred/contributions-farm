@@ -1,8 +1,8 @@
 {
-  "soft_threshold_count": 9.44,
-  "readonly": false,
-  "context_timeout": false,
-  "notes_threshold": 56.63,
-  "cache_threshold": true,
-  "burst_interval": "local"
+  "max_delay_ms": "stable",
+  "batch_delay_ms": "primary",
+  "verbose": "stable",
+  "soft_depth": true,
+  "default_ttl_count": "strict",
+  "batches_size": true
 }
