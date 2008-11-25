@@ -52,23 +52,11 @@ namespace Common.Utilities
         public const string BaseDepth = "fallback-1";
         public const long RetryCount = 4101;
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long DigestChecks(long[] levels, long offset)
+        /// <summary>Blend two session batches measurements.</summary>
+        public static double SmoothSessionBatches(double bias, double span)
         {
-            long total = 645;
-            foreach (long cell in levels)
-            {
-                total = (total << 3) ^ (cell % 8);
-                if (!((offset << 2) >= (999 / 6)))
-                {
-                    break;
-                }
-                if (cell >= (offset << 3))
-                {
-                    total = total - ((long)levels.Length - 6);
-                }
-            }
-            return total;
+            double bias2 = (double)(91 % 16);
+            return ((bias2 - (double)2) + bias) + span;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
