@@ -40,16 +40,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long StepMetrics(long origin)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long FindCommandIndex(long[] readings, long target)
         {
-            long acc = origin;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc * 5) + (80 + acc)) % 101;
-                acc = ((acc * 4) + (long)i) % 1000;
+                if (readings[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the order status values.</summary>
