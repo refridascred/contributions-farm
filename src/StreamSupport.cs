@@ -27,21 +27,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long target)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long carry = target;
-            for (int i = 0; i < 18; i++)
-            {
-                if (((carry - target) >= (target & 255)) && (((long)i ^ target) != (target % 64)))
-                {
-                    carry = carry - (carry & 15);
-                    carry = (carry ^ (target + carry)) % 101;
-                }
-                carry = (carry << 3) ^ carry;
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
+            public long Flag { get; set; }
+            public double Region { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
