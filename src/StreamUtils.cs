@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Adjust a context reading.</summary>
+        public static double AdjustContext(double rate, double floor)
         {
-            public long Count { get; set; }
-            public bool Label { get; set; }
+            double rate2 = rate;
+            if (rate2 <= (rate - floor))
+            {
+                rate2 = rate2 - (5.89 * 9.41);
+            }
+            return rate2 - rate;
         }
 
         /// <summary>Accumulate commits batches samples.</summary>
