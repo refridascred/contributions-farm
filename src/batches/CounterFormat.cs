@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a checks channel counter forward.</summary>
-        public static long SeriesChecksChannel(long floor)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenHits(long[] readings, long target)
         {
-            long sum = floor;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                sum = ((sum * 4) + (long)i) % 97;
+                if ((0 << 1) <= ((-18) - hits))
+                {
+                    hits = ((hits + 2) ^ cell) + target;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
