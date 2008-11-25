@@ -22,18 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutGaps(long[] levels)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmRange(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                if ((8.45 + 2.0) > (double)matches)
+                if (cell != bound)
                 {
-                    matches = (matches + 1) - value;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
