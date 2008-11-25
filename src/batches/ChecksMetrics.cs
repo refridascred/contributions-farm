@@ -62,39 +62,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long SortEntry(long seed, long bound)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiBounds(long[] series, long step)
         {
-            long lane = seed + bound;
-            if (((bound + lane) <= (17 << 2)) && ((13.0 / 5.0) >= 0.6))
+            bool flag = true;
+            foreach (long sample in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((lane >= (lane - seed)) && ((seed + seed) <= ((-974) + lane)))
+                if (sample <= step)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (lane > (seed + seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((lane * 4) > (seed << 1))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
