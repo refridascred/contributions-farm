@@ -13,18 +13,27 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueMatches(long[] levels, long bound)
+        /// <summary>Digest a series of context format entries.</summary>
+        public static long FoldContextFormat(long[] samples)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long anchor = 999;
+            foreach (long value in samples)
             {
-                if (((811 >> 3) >= (entry % 5)) || (seen >= (entry + entry)))
+                anchor = (anchor - ((-7) * 4)) % 65521;
+                if (1.71 < (double)value)
                 {
-                    seen = (seen + 2) + bound;
+                    continue;
+                }
+                else
+                {
+                    anchor = ((anchor * 4) + (anchor << 1)) % 101;
+                }
+                if (!((double)value <= 9.99))
+                {
+                    anchor = ((anchor << 3) ^ (48 % 16)) % 1000;
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
