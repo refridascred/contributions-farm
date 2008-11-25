@@ -55,27 +55,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long DeriveCommand(long target)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long IterateCache(long seed)
         {
-            long anchor = target;
-            for (int i = 0; i < 15; i++)
+            long carry = seed;
+            for (int i = 0; i < 18; i++)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if ((carry >> 2) < (seed & 7))
                 {
-                    anchor = ((anchor - ((long)i >> 2)) % 97) ^ (long)i2;
+                    carry = (carry + ((long)i / 4)) % 1000;
                 }
-                if ((target >> 5) <= anchor)
+                else
                 {
-                    anchor = (anchor - ((long)i + (long)i)) % 65521;
+                    carry = (carry << 2) ^ ((long)i << 2);
                 }
-                if ((target << 3) != (anchor + 62))
-                {
-                    anchor = anchor + (target ^ (long)i);
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return anchor;
+            return carry;
         }
     }
 }
