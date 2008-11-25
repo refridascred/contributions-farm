@@ -1,12 +1,6 @@
 {
-  "githubfarm_capacity": {
-    "checks_interval": false,
-    "poll_ratio": 43,
-    "retry_capacity_s": ["green", "primary", "latest"],
-    "burst_interval_pct": false,
-    "cache_capacity_pct": [257, 96]
-  },
-  "hard_timeout_count": [322, 156, 19, 491],
-  "session_size": [351, 100],
-  "poll_size_ms": "open"
+  "soft_window": false,
+  "sync_limit_count": ["fallback", "eu-west"],
+  "audit": "legacy",
+  "burst_ratio_pct": "green"
 }
