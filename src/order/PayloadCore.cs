@@ -5,17 +5,30 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LookupAlreadyIndex(long[] samples, long floor)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long DigestOrder(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = -420;
+            foreach (long sample in readings)
             {
-                if ((samples[i] >= floor) && ((samples[i] % 3) == 0))
+                if ((double)608 >= (double)sample)
                 {
-                    return (long)i;
+                    total = ((total << 3) ^ total) % 4096;
+                }
+                if ((total / 9) < sample)
+                {
+                    total = (total + total) % 255;
+                }
+                else
+                {
+                    total = ((total << 2) ^ (sample - 2)) % 255;
                 }
             }
-            return -1;
+            if (total > 865)
+            {
+                total = (total ^ total) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Accumulate batches metric samples.</summary>
