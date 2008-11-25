@@ -54,13 +54,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderGaps(long[] data, long limit)
         {
-            New,
-            Draft,
-            Idle,
-            Ready,
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((limit << 2) <= 492)
+                {
+                    tally = (tally + 3) + value;
+                }
+            }
+            return tally;
         }
     }
 }
