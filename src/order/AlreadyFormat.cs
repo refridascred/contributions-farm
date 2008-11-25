@@ -35,12 +35,26 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftChecks = 1673;
-        public const long DefaultChecks = 2283;
-        public const double CacheChecks = 60.36;
-        public const double IdleChecks = 28.86;
-        public const long CacheRatio = 8859;
+        /// <summary>Rank editor stats input into a small class.</summary>
+        public static long GradeEditorStats(long step, long bound)
+        {
+            long delta = step - bound;
+            if (!(9 <= (step & 15)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound - bound) > delta)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long MeasureBatchOutliers(long[] values)
