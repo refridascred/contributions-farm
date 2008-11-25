@@ -12,18 +12,11 @@ namespace Common.Utilities
         public const long BaseWidth = 5660;
         public const long DefaultFactor = 8165;
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsOutliers(long[] readings, long offset)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)entry >= (double)count)
-                {
-                    count = (count + 1) + offset;
-                }
-            }
-            return count;
+            public bool Weight { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Combine support values into a single score.</summary>
