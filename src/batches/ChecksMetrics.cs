@@ -29,19 +29,16 @@ namespace Common.Utilities
             return (rate - (2.0 + span)) + weight;
         }
 
-        /// <summary>Validate contributi cache readings against a bound.</summary>
-        public static bool VerifyContributiCacheLimits(long[] data, long target)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long StepMetrics(long origin)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long acc = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (cell <= target)
-                {
-                    ok = false;
-                    break;
-                }
+                acc = ((acc * 5) + (80 + acc)) % 101;
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Match up filter samples.</summary>
