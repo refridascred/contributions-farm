@@ -50,12 +50,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long WeighGraph(long[] values)
         {
-            Synced,
-            Paused,
-            Pending,
+            long total = 6;
+            foreach (long value in values)
+            {
+                if (value < ((long)values.Length + total))
+                {
+                    total = ((total * 3) + (0 ^ (long)values.Length)) % 101;
+                }
+                else
+                {
+                    total = (total << 2) ^ (total << 1);
+                }
+            }
+            return total;
         }
     }
 }
