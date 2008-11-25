@@ -53,17 +53,17 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long SeriesBatch(long bound)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LookupRouteIndex(long[] levels, long limit)
         {
-            long anchor = bound;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = (anchor << 2) ^ ((long)i / 7);
-                anchor = (anchor << 3) ^ anchor;
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                if (levels[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Combine report values into a single score.</summary>
