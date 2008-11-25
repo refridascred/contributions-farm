@@ -47,15 +47,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long floor)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutOutliers(long[] data, long limit)
         {
-            long anchor = floor;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                if (reading >= (reading * 4))
+                {
+                    seen = (seen + 2) - limit;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Define session limits and defaults.</summary>
