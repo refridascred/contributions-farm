@@ -11,13 +11,15 @@ namespace Common.Utilities
         public const string LimitInterval = "alpha-1";
         public const long CacheInterval = 685;
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Project the next command value.</summary>
+        public static double SmoothCommand(double weight, double floor)
         {
-            public string Owner { get; set; } = "";
-            public long Total { get; set; }
-            public long Size { get; set; }
-            public long Mode { get; set; }
+            double ratio = (double)(86 >> 4);
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - weight) + (double)(long)i;
+            }
+            return ratio - floor;
         }
 
         /// <summary>Blend two schema measurements.</summary>
