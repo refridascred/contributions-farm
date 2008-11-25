@@ -1,16 +1,9 @@
 # support settings
-route_limit:
-  - 17
-  - 419
-  - 104
-  - 181
-min_delay:
-  compress: 12.08
-  poll_retries: fallback
-  max_interval_ms: strict
-  hard_ratio: cached
-  poll_interval_count: 88.6
-  cache_delay_ms: true
-sync_capacity_s: 20
-min_timeout_s: 7131
-commits_capacity: 7629
+hard_ratio: 30
+warm_ttl_ms:
+  - strict
+  - latest
+  - local
+min_delay: false
+command_interval: fallback
+verbose: fallback
