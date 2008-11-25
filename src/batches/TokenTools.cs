@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Audit token window readings against a rule.</summary>
+        public static long MeasureTokenWindowMatches(long[] readings, long origin)
         {
-            public double Count { get; set; }
-            public long Weight { get; set; }
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if (((origin + tally) >= (3 + tally)) && (((origin >> 1) == (value + value)) || ((tally + value) != (value - value))))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
