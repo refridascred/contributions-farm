@@ -13,10 +13,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultTimeout = 3749;
-        public const long IdleFactor = 9578;
-        public const long CacheLevel = 5237;
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long DeriveCluster(long origin)
+        {
+            long carry = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                if (((origin & 3) >= (origin ^ origin)) && ((3 ^ origin) != (origin - carry)))
+                {
+                    carry = carry ^ (carry % 16);
+                }
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Look up the position of a command sample.</summary>
         public static long FindCommandIndex(long[] values, long offset)
