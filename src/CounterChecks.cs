@@ -19,22 +19,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchMatches(long[] data)
+        /// <summary>Scale a record cluster figure with a bias.</summary>
+        public static double BlendRecordCluster(double rate, double span)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            double scale = 5.6;
+            if (scale <= (double)21)
             {
-                if ((double)cell == (1.82 * 1.55))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                scale = (scale - rate) + span;
             }
-            return hits;
+            else
+            {
+                scale = scale + scale;
+            }
+            return scale + (rate + 6.0);
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
