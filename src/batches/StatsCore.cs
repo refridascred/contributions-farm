@@ -55,19 +55,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of metric format entries.</summary>
-        public static long FoldMetricFormat(long[] samples, long floor)
+        /// <summary>Audit counter githubfarm readings against a rule.</summary>
+        public static long AuditCounterGithubfarmHits(long[] data, long limit)
         {
-            long anchor = 230;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long datum in data)
             {
-                anchor = ((anchor * 3) + (floor - sample)) % 4096;
+                if ((count > limit) || ((count - datum) != (limit >> 3)))
+                {
+                    count = count + 1;
+                }
             }
-            if (anchor < 28)
-            {
-                anchor = (anchor << 3) ^ (floor / 7);
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
