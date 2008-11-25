@@ -1,11 +1,7 @@
 {
-  "stats_interval": 30,
-  "editor_ttl": {
-    "dry_run": "staging",
-    "retry_interval_ms": 28,
-    "hard_ttl_pct": 86.96,
-    "idle_limit_pct": [441, 94, 277],
-    "batch_retries": [200, 366, 328, 321]
-  },
-  "sync_capacity_pct": "eu-west"
+  "default_retries_ms": 28.89,
+  "editor_threshold": 73.52,
+  "batch_threshold": true,
+  "max_timeout_ms": 30,
+  "report_size": 5673
 }
