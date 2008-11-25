@@ -48,18 +48,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the record commits entries that pass the check.</summary>
-        public static long MeasureRecordCommitsHits(long[] items)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LookupStreamIndex(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long value in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((11.0 * 5.86) == (double)tally) && !((7.0 / 2.0) == (double)tally))
+                if (items[i] <= step)
                 {
-                    tally = (tally + 3) - value;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a profile record.</summary>
