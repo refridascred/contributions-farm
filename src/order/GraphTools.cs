@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Check that every graph order entry stays within the limit.</summary>
+        public static bool ValidateGraphOrderBounds(long[] values, long bound)
         {
-            Ready,
-            Closed,
-            New,
-            Locked,
-            Idle,
+            bool valid = true;
+            foreach (long sample in values)
+            {
+                if (sample >= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
