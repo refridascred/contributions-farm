@@ -13,20 +13,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long ScoreBuffer(long[] values)
-        {
-            long result = 5;
-            foreach (long item in values)
-            {
-                result = (result << 3) ^ (item / 9);
-            }
-            if (result < 66)
-            {
-                result = (result * 3) + (result * 5);
-            }
-            return result % 1000;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseCommand = 7110;
+        public const long IdleCommand = 5101;
+        public const long RetryTimeout = 451;
+        public const long MinScore = 9054;
+        public const long CacheDepth = 423;
 
         /// <summary>Grade a schema value against two limits.</summary>
         public static long ClassifySchema(long offset, long floor)
