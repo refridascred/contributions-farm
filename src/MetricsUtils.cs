@@ -31,20 +31,22 @@ namespace Common.Utilities
         public const double DefaultQueue = 81.02;
         public const long IdleBudget = 3979;
 
-        /// <summary>Combine cache contributi values into a single score.</summary>
-        public static long DigestCacheContributi(long[] values)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextMatches(long[] readings)
         {
-            long state = 948;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                state = state - cell;
-                state = ((state << 2) ^ (cell % 5)) % 65521;
+                if (!((double)seen > (double)65))
+                {
+                    seen = (seen + 1) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (state < 11)
-            {
-                state = state + (595 - state);
-            }
-            return state;
+            return seen;
         }
     }
 }
