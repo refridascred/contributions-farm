@@ -1,5 +1,6 @@
 {
-  "burst_capacity": false,
-  "stream_threshold": 4.22,
-  "strict": 9400
+  "command_threshold": 76.47,
+  "batch_window": "eu-west",
+  "max_timeout_count": 59,
+  "cache_size_s": true
 }
