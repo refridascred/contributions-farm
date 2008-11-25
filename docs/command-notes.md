@@ -1,13 +1,15 @@
 # Command notes
 
-When a queue fails, the schema handler retries a few times before giving up.
-The buffer report groups every commits by command.
+The layout report groups every token by buffer.
+Defaults for support live in the config folder and can be overridden per environment.
+A profile that stays idle for too long is moved to the cluster list.
 
-Keep layout and batch names short and lowercase.
-When a profile fails, the queue handler retries a few times before giving up.
+Defaults for batch live in the config folder and can be overridden per environment.
+Run the format check before changing any batch limits.
 
 ## Guidelines
 
-- Validate stream input early
-- Keep channel values small
-- Review metric limits each release
+- Document new tools fields
+- Validate context input early
+- Prefer counter defaults
+- Review order limits each release
