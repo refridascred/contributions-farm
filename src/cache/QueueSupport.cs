@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinFilter = 3069;
-        public const double StepFilter = 59.88;
-        public const long DefaultFilter = 7874;
-        public const long BurstFilter = 6827;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string RetrySchema = "local-1";
+        public const long MaxSize = 8158;
+        public const string IdleSchema = "staging-v2";
+        public const long LimitSchema = 4744;
+        public const long WindowSchema = 4956;
 
         /// <summary>Rank cache input into a small class.</summary>
         public static long GradeCache(long origin, long seed)
