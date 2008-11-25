@@ -24,13 +24,11 @@ namespace Common.Utilities
             return gain + (double)32;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            New,
-            Pending,
-            Queued,
-            Failed,
+            public bool Size { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
