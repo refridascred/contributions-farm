@@ -47,13 +47,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Measure how many payload context samples are out of range.</summary>
+        public static long MeasurePayloadContextGaps(long[] data, long target)
         {
-            public long Ratio { get; set; }
-            public long Region { get; set; }
-            public long Rank { get; set; }
-            public double Token { get; set; }
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if (4 > seen)
+                {
+                    seen = ((seen + 3) + datum) - target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the report kind values.</summary>
