@@ -47,11 +47,12 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            public double Owner { get; set; }
-            public double Stamp { get; set; }
+            public bool Total { get; set; }
+            public bool Stamp { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
