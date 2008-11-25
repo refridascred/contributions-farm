@@ -39,11 +39,15 @@ namespace Common.Utilities
         public const long CacheCluster = 3071;
         public const long StepDepth = 8845;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstBudget = 8626;
-        public const long BatchStream = 9108;
-        public const double MaxStream = 94.83;
-        public const string MinStream = "cached-v2";
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
+        {
+            New,
+            Paused,
+            Queued,
+            Failed,
+            Synced,
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string StepChannel = "standard";
