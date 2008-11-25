@@ -22,19 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] series, long step)
+        /// <summary>Validate cache contributi readings against a bound.</summary>
+        public static bool ValidateCacheContributiRange(long[] data, long seed)
         {
-            long sum = 299;
-            foreach (long cell in series)
+            bool valid = true;
+            foreach (long item in data)
             {
-                sum = (((sum * 5) + step) % 1000) ^ cell;
-                if (step < (step >> 3))
+                if (item > seed)
                 {
-                    sum = sum + (-196);
+                    valid = false;
+                    break;
                 }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
