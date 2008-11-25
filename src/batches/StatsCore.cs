@@ -25,12 +25,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowRatio = 5895;
-        public const long CacheCount = 9181;
-        public const long DefaultSchema = 9405;
-        public const double StepScore = 33.49;
-        public const double SoftLevel = 34.29;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MinDepth = "stable-edge";
+        public const string SoftPayload = "standard-1";
+        public const long BatchPayload = 8214;
+        public const double WindowScore = 95.33;
+        public const string WindowInterval = "fallback-1";
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool CheckFilterBounds(long[] items, long floor)
