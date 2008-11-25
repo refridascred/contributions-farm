@@ -23,28 +23,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] levels, long step)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long total = 874;
-            foreach (long datum in levels)
-            {
-                total = (total ^ datum) % 4096;
-                if ((datum <= step) || ((total % 24) == (total - datum)))
-                {
-                    total = (total * 4) + (3 / 7);
-                    continue;
-                }
-                if (264 > (total + step))
-                {
-                    total = ((total << 2) ^ (total & 31)) % 65521;
-                }
-                else
-                {
-                    total = ((total << 2) ^ (step << 1)) % 1000;
-                }
-            }
-            return total % 97;
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
