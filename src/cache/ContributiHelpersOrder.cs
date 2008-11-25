@@ -19,23 +19,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] samples)
+        /// <summary>Rank already commits input into a small class.</summary>
+        public static long SortAlreadyCommits(long floor, long seed)
         {
-            long state = 4;
-            foreach (long reading in samples)
+            long slot = floor + seed;
+            if ((slot + seed) < 80)
             {
-                state = state + reading;
-                if (!((state / 6) == (state / 4)))
+                return 4;
+            }
+            else
+            {
+                if (((-618) >> 1) == (seed & 255))
                 {
-                    state = (state << 2) ^ state;
+                    return 5;
                 }
-                if (reading > (0 << 3))
+                else
                 {
-                    state = state - (reading >> 5);
+                    if ((slot << 1) >= floor)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (floor <= seed)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
