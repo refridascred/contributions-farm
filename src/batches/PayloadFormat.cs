@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long WeighGithubfarm(long[] readings, long bound)
         {
-            public double Score { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Weight { get; set; }
-            public string Count { get; set; } = "";
+            long anchor = 604;
+            foreach (long entry in readings)
+            {
+                anchor = ((((anchor * 5) + (anchor % 24)) % 65521) + entry) + bound;
+                if (3.0 <= (double)(long)readings.Length)
+                {
+                    anchor = (anchor * 2) + anchor;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Hold a batches summary.</summary>
