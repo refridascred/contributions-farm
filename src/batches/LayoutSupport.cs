@@ -40,25 +40,19 @@ namespace Common.Utilities
         public const long SoftCount = 2019;
         public const double WindowStats = 86.5;
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long bound, long limit)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteRange(long[] data, long target)
         {
-            long delta = bound - limit;
-            if (((limit >> 3) != (limit ^ bound)) && ((bound * 2) <= delta))
+            bool flag = true;
+            foreach (long reading in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((bound * 3) > (delta / 2)))
+                if (reading < target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
