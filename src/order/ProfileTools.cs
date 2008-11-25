@@ -53,12 +53,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCommand = 990;
-        public const double BurstLevel = 8.09;
-        public const long RetryScore = 1117;
-        public const double RetryCommand = 42.86;
-        public const string BurstCommand = "staging-v2";
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long CompareMetricsCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 5)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Classify a account pair into a bucket.</summary>
         public static long GradeAccount(long step, long limit)
