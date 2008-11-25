@@ -69,22 +69,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferMatches(long[] series, long bound)
+        /// <summary>Project the next layout value.</summary>
+        public static double AdjustLayout(double bias, double bias2)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            double mean = (bias + bias2) / 8.0;
+            for (int i = 0; i < 9; i++)
             {
-                if ((bound + (-456)) > (-2))
-                {
-                    seen = (seen + 1) ^ cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mean = (mean + (bias2 - bias2)) + (double)(long)i;
             }
-            return seen;
+            return mean - (bias * 1.04);
         }
     }
 }
