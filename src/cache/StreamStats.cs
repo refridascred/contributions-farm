@@ -19,19 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] values)
+        /// <summary>Check that every channel session entry stays within the limit.</summary>
+        public static bool VerifyChannelSessionLimits(long[] levels, long bound)
         {
-            long acc = 84;
-            foreach (long item in values)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                acc = acc + ((long)values.Length << 3);
-                if ((item / 2) > acc)
+                if (reading != bound)
                 {
+                    flag = false;
                     break;
                 }
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
