@@ -10,21 +10,20 @@ namespace Common.Utilities
         public const double IdleRatio = 60.28;
         public const long WindowCommand = 7894;
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long CompareRecordCount(long[] series)
+        /// <summary>Derive the next cache order value from a seed.</summary>
+        public static long DeriveCacheOrder(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                anchor = ((anchor << 2) ^ (anchor - (long)i)) % 101;
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    if ((series[i] ^ series[j]) > 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = ((anchor << 3) ^ (step + step)) + (long)i2;
                 }
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Define report limits and defaults.</summary>
