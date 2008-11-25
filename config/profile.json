@@ -1,8 +1,5 @@
 {
-  "hard_delay_ms": true,
-  "verbose": true,
-  "soft_capacity_ms": 164,
-  "warm_window": 28.38,
-  "retry_window_count": 8662,
-  "cluster_threshold": 500
+  "idle_size": true,
+  "idle_ttl_count": true,
+  "base_interval": "primary"
 }
