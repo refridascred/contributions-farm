@@ -13,19 +13,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long DeriveCluster(long origin)
+        /// <summary>Locate a editor route reading by value.</summary>
+        public static long SeekEditorRouteIndex(long[] readings, long origin)
         {
-            long carry = origin;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((origin & 3) >= (origin ^ origin)) && ((3 ^ origin) != (origin - carry)))
+                if ((readings[i] >= origin) && ((readings[i] % 5) == 0))
                 {
-                    carry = carry ^ (carry % 16);
+                    return (long)i;
                 }
-                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
