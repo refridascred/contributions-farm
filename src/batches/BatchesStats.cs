@@ -39,24 +39,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long BucketStats(long origin, long floor)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryOutliers(long[] data)
         {
-            if ((33 % 97) == (origin + origin))
+            long seen = 0;
+            foreach (long datum in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (((origin << 3) >= (floor % 12)) || ((double)floor < (9.42 * 0.6)))
+                if ((16.0 - 0.29) >= (double)datum)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
     }
 }
