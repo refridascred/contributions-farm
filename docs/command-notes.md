@@ -1,10 +1,14 @@
 # Command notes
 
-Defaults for editor live in the config folder and can be overridden per environment.
-Each command is validated before it reaches the profile queue.
+Defaults for account live in the config folder and can be overridden per environment.
+The cache report groups every queue by metric.
+
+Use githubfarm settings to tune how often already data is refreshed.
+When a editor fails, the checks handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer profile defaults
-- Log every channel change
-- Keep cluster values small
+- Keep context values small
+- Document new window fields
+- Log every format change
+- Validate counter input early
