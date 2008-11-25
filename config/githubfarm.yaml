@@ -1,8 +1,10 @@
 # githubfarm settings
-min_ratio:
-  burst_delay_ms: blue
-  strict: false
-  sync_size: 5117
-cache_depth: latest
-enabled: true
-flush_depth_s: 8714
+poll_timeout:
+  max_depth: true
+  commits_depth: 74
+  idle_depth:
+    - fallback
+    - edge
+    - cached
+base_interval_s: false
+readonly: standard
