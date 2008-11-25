@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long FoldReport(long[] values, long origin)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long FindStatsIndex(long[] readings, long origin)
         {
-            long result = 113;
-            foreach (long item in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = ((result + result) % 101) + origin;
-                if ((item % 5) <= result)
+                if ((readings[i] < origin) && ((readings[i] % 3) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return result % 4096;
+            return -1;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
