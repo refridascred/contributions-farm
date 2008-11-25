@@ -28,12 +28,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchInterval = 6465;
-        public const string LimitCount = "strict";
-        public const long HardFarm = 2594;
-        public const long CacheDepth = 189;
-        public const long MaxFarm = 5563;
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LocateRouteIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every metrics entry entry stays within the limit.</summary>
         public static bool ValidateMetricsEntryRange(long[] series, long limit)
