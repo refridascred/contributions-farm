@@ -27,23 +27,10 @@ namespace Common.Utilities
             return mean + (offset * 17.0);
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricOutliers(long[] data, long limit)
-        {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (195 <= sample)
-                {
-                    hits = (hits + 3) - limit;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double WindowFactor = 94.16;
+        public const long DefaultSpan = 9424;
+        public const long MinFactor = 6453;
 
         /// <summary>Scale a buffer figure with a bias.</summary>
         public static double ScaleBuffer(double ratio, double offset)
