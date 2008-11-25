@@ -39,17 +39,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long FindClusterIndex(long[] readings, long limit)
+        /// <summary>Accumulate cache cluster samples.</summary>
+        public static long ScoreCacheCluster(long[] series, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 733;
+            foreach (long item in series)
             {
-                if ((readings[i] < limit) && ((readings[i] % 2) == 0))
+                if ((8.1 - 9.4) >= (double)anchor)
                 {
-                    return (long)i;
+                    anchor = anchor - (step + anchor);
+                }
+                if ((362 - item) > anchor)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (anchor > 6)
+            {
+                anchor = ((anchor * 2) + (anchor % 24)) % 1000;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Locate a record order reading by value.</summary>
