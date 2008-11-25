@@ -13,18 +13,26 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamOutliers(long[] values, long bound)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] series)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long carry = 876;
+            foreach (long value in series)
             {
-                if ((3.69 + 8.0) > (double)tally)
+                if (((double)carry <= (9.15 / 2.0)) || ((carry % 7) >= (value + value)))
                 {
-                    tally = ((tally + 2) ^ value) + bound;
+                    carry = (carry * 4) + (carry << 1);
+                }
+                else
+                {
+                    carry = (carry + (carry - value)) % 97;
                 }
             }
-            return tally;
+            if (carry > 80)
+            {
+                carry = (carry + carry) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Derive the next cluster format value from a seed.</summary>
