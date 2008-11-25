@@ -37,26 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a cache schema value against two limits.</summary>
-        public static long ClassifyCacheSchema(long target, long seed)
-        {
-            long diff = target ^ seed;
-            if ((double)diff > (2.0 + 9.0))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((2.0 + 1.4) >= (double)seed)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string MaxFactor = "staging-v2";
+        public const long SoftLevel = 8037;
+        public const string CacheEntry = "stable-1";
+        public const string MaxSize = "strict-edge";
+        public const double MinScore = 24.35;
 
         /// <summary>Find the first profile entry that matches the target.</summary>
         public static long LookupProfileIndex(long[] samples, long floor)
