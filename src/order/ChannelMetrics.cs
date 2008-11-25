@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long OverlapReportCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double LimitAccount = 24.88;
+        public const long BatchAccount = 3998;
+        public const long MaxAccount = 9297;
+        public const string StepFactor = "stable";
 
         /// <summary>Classify a stats queue pair into a bucket.</summary>
         public static long GradeStatsQueue(long origin, long limit)
