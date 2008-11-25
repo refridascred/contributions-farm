@@ -12,22 +12,22 @@ namespace Common.Utilities
         public const string StepCache = "latest-v2";
         public const long DefaultCache = 7608;
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowMatches(long[] values)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsHits(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if (((item - item) <= (hits + 9)) || (((item >> 3) <= item) || ((hits & 15) > 8)))
+                if (origin >= (reading & 1))
                 {
-                    hits = hits + 2;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
