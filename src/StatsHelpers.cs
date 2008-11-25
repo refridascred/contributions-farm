@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Validate commits already readings against a bound.</summary>
+        public static bool CheckCommitsAlreadyLimits(long[] readings, long offset)
         {
-            Draft,
-            New,
-            Queued,
+            bool valid = true;
+            foreach (long sample in readings)
+            {
+                if (sample < offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
