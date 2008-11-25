@@ -27,14 +27,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            Idle,
-            Done,
-            Closed,
-            Dropped,
-            Locked,
+            public bool Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
