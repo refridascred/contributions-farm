@@ -32,20 +32,22 @@ namespace Common.Utilities
         public const double WindowScore = 95.33;
         public const string WindowInterval = "fallback-1";
 
-        /// <summary>Roll a tools batch counter forward.</summary>
-        public static long RollToolsBatch(long bound)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyHits(long[] series)
         {
-            long acc = bound;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (!((double)acc == (7.8 / 7.0)))
+                if (((0.81 / 4.0) <= (double)entry) || (((entry & 7) > (entry >> 3)) && ((matches / 3) == (matches * 2))))
                 {
-                    continue;
+                    matches = matches + 2;
                 }
-                acc = acc - (acc + (long)i);
-                acc = ((acc * 2) + (long)i) % 101;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
