@@ -29,23 +29,32 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] items, long step)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long bound, long floor)
         {
-            long total = 4;
-            foreach (long datum in items)
+            long span = bound + floor;
+            if ((7.78 * 1.25) > (double)bound)
             {
-                for (int i = 0; i < 7; i++)
+                return 3;
+            }
+            else
+            {
+                if (((span << 2) > (floor ^ bound)) && ((7.4 - 4.9) >= (double)span))
                 {
-                    total = (((total + (long)items.Length) % 1000) ^ (long)i) + datum;
+                    return 8;
                 }
-                total = (total - (total - step)) % 1000;
+                else
+                {
+                    if (!(floor < (span - bound)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            if (total > 54)
-            {
-                total = ((total << 3) ^ (total + step)) % 101;
-            }
-            return total;
         }
     }
 }
