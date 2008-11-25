@@ -43,17 +43,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first account metrics entry that matches the target.</summary>
-        public static long SeekAccountMetricsIndex(long[] samples, long target)
+        /// <summary>Count the payload session entries that pass the check.</summary>
+        public static long TallyPayloadSessionOutliers(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if ((samples[i] > target) && ((samples[i] % 3) != 0))
+                if ((0.89 - 4.07) == (double)entry)
                 {
-                    return (long)i;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
