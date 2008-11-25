@@ -34,21 +34,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count cache channel pairs that satisfy a relation.</summary>
-        public static long CompareCacheChannelCount(long[] readings)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long SortAccount(long origin, long origin2)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((origin - origin2) >= (origin * 2))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (origin2 <= (origin2 ^ origin2))
                 {
-                    if ((readings[i] + readings[j]) < 6)
+                    return 4;
+                }
+                else
+                {
+                    if (!((double)origin2 != (double)38))
                     {
-                        matches = matches + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((63 << 3) == (origin2 + origin2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the cluster state values.</summary>
