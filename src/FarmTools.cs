@@ -43,38 +43,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long GradeFilter(long origin, long target)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            if ((target * 3) > target)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)origin == (double)78)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((target + 0) < (82 * 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((15.0 * 3.5) < (double)origin)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public string Mode { get; set; } = "";
+            public long Offset { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
