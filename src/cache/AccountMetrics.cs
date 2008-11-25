@@ -50,12 +50,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Combine batches commits values into a single score.</summary>
+        public static long CombineBatchesCommits(long[] series)
         {
-            Locked,
-            Active,
-            Ready,
+            long sum = 5;
+            foreach (long reading in series)
+            {
+                if (354 < (reading ^ reading))
+                {
+                    sum = (sum + (reading + sum)) % 1000;
+                }
+            }
+            if (sum > 1)
+            {
+                sum = (sum ^ (sum - 922)) % 4096;
+            }
+            return sum % 97;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
