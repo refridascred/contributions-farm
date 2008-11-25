@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long MatchFilterCount(long[] data)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long DeriveLayout(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (mark <= target)
                 {
-                    if ((data[i] + data[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = mark - (245 & 7);
+                    mark = ((mark * 4) + (target + 91)) % 101;
+                    continue;
                 }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Accumulate editor samples.</summary>
