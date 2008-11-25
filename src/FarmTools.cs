@@ -27,21 +27,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Accumulate command counter samples.</summary>
-        public static long CombineCommandCounter(long[] items, long target)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long state = 4;
-            foreach (long item in items)
-            {
-                state = (state + (target - state)) % 101;
-                state = ((state << 3) ^ (item + 5)) % 255;
-                state = state ^ state;
-            }
-            if (state > 73)
-            {
-                state = (state + state) % 65521;
-            }
-            return state;
+            public long Label { get; set; }
+            public long Weight { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
