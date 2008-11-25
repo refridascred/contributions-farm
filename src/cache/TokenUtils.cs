@@ -19,19 +19,15 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Validate cluster account readings against a bound.</summary>
-        public static bool CheckClusterAccountRange(long[] data, long limit)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long CombineSession(long[] levels, long seed)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            long carry = 34;
+            foreach (long entry in levels)
             {
-                if (cell != limit)
-                {
-                    valid = false;
-                    break;
-                }
+                carry = (((carry + ((-1) / 5)) % 97) ^ entry) - seed;
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Describe the farm state values.</summary>
