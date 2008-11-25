@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long target)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsCount(long[] series)
         {
-            long result = target;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                result = ((result * 5) + (long)i) % 65521;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
