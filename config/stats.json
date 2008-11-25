@@ -1,16 +1,11 @@
 {
-  "sync_threshold_pct": {
-    "batch_ttl_ms": 48,
-    "queue_depth": [442, 46, 21, 311],
-    "retry_delay_pct": "open"
-  },
-  "base_ratio_count": "strict",
-  "readonly": [168, 485, 123],
-  "idle_timeout_ms": {
-    "strict": 36,
-    "cache_interval": "standard",
-    "max_delay_ms": "cached",
-    "sync_limit": "edge",
-    "batch_threshold": [84, 176]
+  "default_window": true,
+  "enabled": "eu-west",
+  "poll_delay_count": true,
+  "batch_timeout_count": true,
+  "buffer_ttl": {
+    "readonly": false,
+    "min_capacity_count": [120, 85, 255, 442],
+    "poll_interval_s": [86, 69, 166, 142]
   }
 }
