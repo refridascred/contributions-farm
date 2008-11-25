@@ -19,19 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionLimits(long[] data, long floor)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesHits(long[] items, long origin)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (reading < floor)
+                if (origin > (61 - value))
                 {
-                    flag = false;
-                    break;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Adjust a schema reading.</summary>
