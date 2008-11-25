@@ -34,26 +34,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TallyCommits(long[] values, long bound)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportMatches(long[] readings)
         {
-            long carry = -7;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (17 <= (value / 8))
+                if (7.1 > (double)hits)
                 {
-                    carry = ((carry << 2) ^ (value << 1)) % 255;
-                }
-                else
-                {
-                    carry = (carry ^ 6) % 4096;
+                    hits = (hits + 1) ^ reading;
                 }
             }
-            if (carry > 844)
-            {
-                carry = ((carry << 2) ^ (carry + bound)) % 4096;
-            }
-            return carry;
+            return hits;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
