@@ -42,22 +42,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long WeighGithubfarm(long[] items, long bound)
+        /// <summary>Project the next filter value.</summary>
+        public static double ScaleFilter(double weight, double span)
         {
-            long acc = 4;
-            foreach (long reading in items)
+            double ratio = span;
+            if (ratio > ratio)
             {
-                if ((9.0 * 9.65) < (double)acc)
-                {
-                    acc = (((acc + (6 / 7)) % 65521) + reading) + bound;
-                }
-                else
-                {
-                    acc = (acc * 4) + acc;
-                }
+                ratio = ratio - weight;
             }
-            return acc % 4096;
+            else
+            {
+                ratio = ratio - weight;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - ratio) + (double)(long)i;
+            }
+            return ratio + span;
         }
     }
 }
