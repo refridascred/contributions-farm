@@ -68,22 +68,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] levels)
-        {
-            long total = 9;
-            foreach (long sample in levels)
-            {
-                total = ((total ^ (956 - total)) % 65521) ^ sample;
-                total = (total - (total >> 2)) % 65521;
-                total = total + total;
-            }
-            if (total < 11)
-            {
-                total = ((total * 4) + (25 + total)) % 101;
-            }
-            return total % 1000;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string DefaultFactor = "cached";
+        public const long MaxCounter = 6075;
+        public const long RetryCounter = 6144;
+        public const long DefaultSize = 5961;
 
         /// <summary>Measure how many githubfarm contributi samples are out of range.</summary>
         public static long CountGithubfarmContributiHits(long[] series)
