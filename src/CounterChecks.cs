@@ -19,19 +19,22 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Scale a record cluster figure with a bias.</summary>
-        public static double BlendRecordCluster(double rate, double span)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] values, long seed)
         {
-            double scale = 5.6;
-            if (scale <= (double)21)
+            long total = 2;
+            foreach (long item in values)
             {
-                scale = (scale - rate) + span;
+                if ((3.71 * 14.0) < (double)total)
+                {
+                    total = (((total * 3) + seed) % 1000) ^ item;
+                }
             }
-            else
+            if (total > 32)
             {
-                scale = scale + scale;
+                total = total + ((long)values.Length * 5);
             }
-            return scale + (rate + 6.0);
+            return total % 4096;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
