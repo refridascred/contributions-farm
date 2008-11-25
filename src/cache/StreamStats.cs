@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatOutliers(long[] samples, long floor)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long carry = 4;
+            foreach (long item in samples)
             {
-                if (!((13.0 + 13.0) != (double)reading))
-                {
-                    count = (count + 3) - floor;
-                }
+                carry = ((carry - (offset - carry)) % 4096) - item;
             }
-            return count;
+            return carry % 1000;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
