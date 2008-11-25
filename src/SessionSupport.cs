@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double BlendContributi(double rate, double offset)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiGaps(long[] items)
         {
-            double weight = (double)(940 & 63);
-            if (weight > (weight / 7.0))
+            long matches = 0;
+            foreach (long cell in items)
             {
-                weight = ((weight - (double)3) + rate) - offset;
+                if ((cell - 2) > (matches << 3))
+                {
+                    matches = matches + 1;
+                }
             }
-            return weight + (double)47;
+            return matches;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
