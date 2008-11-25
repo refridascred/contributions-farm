@@ -43,19 +43,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double BlendContext(double weight, double bias)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenRange(long[] levels, long offset)
         {
-            double ratio = (double)(209 % 24);
-            if (ratio > (bias / 7.0))
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                ratio = ratio + weight;
+                if (entry <= offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + (1.0 - 8.1)) - (double)(long)i;
-            }
-            return ratio + (double)63;
+            return stale;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
