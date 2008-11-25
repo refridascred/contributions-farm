@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutMatches(long[] data)
+        /// <summary>Blend two account measurements.</summary>
+        public static double ScaleAccount(double weight, double span)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            double bias = span / 3.0;
+            if (bias <= (weight - bias))
             {
-                if ((tally <= (tally << 1)) || (((1.2 - 8.23) <= (double)tally) || ((5.96 * 8.98) != (double)tally)))
-                {
-                    tally = (tally + 3) - sample;
-                }
+                bias = bias + (bias / 7.0);
             }
-            return tally;
+            return bias - (weight * 20.0);
         }
 
         /// <summary>Adjust a cluster reading.</summary>
