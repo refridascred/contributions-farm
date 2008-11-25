@@ -1,8 +1,7 @@
-id,label,weight
-1,primary,37.76
-2,80.48,latest
-3,1,108
-4,807,cached
-5,907,14.02
-6,edge,1
-7,64.46,green
+id,score,rank
+1,green,586
+2,54.92,40.13
+3,strict,69.8
+4,88.96,strict
+5,360,26.62
+6,806,31.37
