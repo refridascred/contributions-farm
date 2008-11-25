@@ -25,19 +25,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] series)
-        {
-            long state = 878;
-            foreach (long entry in series)
-            {
-                state = ((state << 3) ^ (entry - 8)) % 4096;
-            }
-            if (state > 7)
-            {
-                state = (state ^ (state & 255)) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string DefaultDepth = "primary-1";
+        public const double DefaultWidth = 91.29;
+        public const long SoftBudget = 827;
+        public const double MinCount = 20.35;
     }
 }
