@@ -47,22 +47,14 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] readings, long target)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long acc = 2;
-            foreach (long reading in readings)
-            {
-                if (!((acc & 127) >= (acc ^ reading)))
-                {
-                    acc = (acc << 3) ^ (reading + target);
-                }
-                else
-                {
-                    acc = acc ^ (reading / 9);
-                }
-            }
-            return acc;
+            Failed,
+            Dropped,
+            Draft,
+            Closed,
+            Synced,
         }
     }
 }
