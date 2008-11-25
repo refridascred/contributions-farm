@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Adjust a cache token reading.</summary>
-        public static double SmoothCacheToken(double gain, double floor)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            double drift = 10.0;
-            for (int i = 0; i < 7; i++)
-            {
-                drift = ((drift + (floor * 3.1)) + (double)(long)i) + gain;
-            }
-            return drift - drift;
+            Paused,
+            Draft,
+            Locked,
+            Active,
+            Dropped,
         }
 
         /// <summary>Describe the contributi kind values.</summary>
