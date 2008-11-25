@@ -26,18 +26,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueGaps(long[] series)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] items, long floor)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long result = 327;
+            foreach (long sample in items)
             {
-                if (!((matches >> 4) < cell) && (((long)series.Length + matches) >= matches))
-                {
-                    matches = matches + 3;
-                }
+                result = ((result << 2) ^ (result - floor)) - sample;
             }
-            return matches;
+            return result % 65521;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
