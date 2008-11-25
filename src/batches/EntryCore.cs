@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Adjust a farm reading.</summary>
-        public static double SmoothFarm(double weight, double offset)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteRange(long[] samples, long seed)
         {
-            double ratio = 9.84 * 7.9;
-            if (ratio <= offset)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                ratio = ratio - 1.0;
+                if (sample < seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio - (double)40;
-            }
-            return ratio + (weight + offset);
+            return found;
         }
 
         /// <summary>Project the next buffer layout value.</summary>
