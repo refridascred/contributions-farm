@@ -19,19 +19,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowLimits(long[] data, long seed)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            bool found = true;
-            foreach (long entry in data)
-            {
-                if (entry <= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Owner { get; set; }
+            public double Region { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
