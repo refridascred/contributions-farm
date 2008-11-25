@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
-        {
-            Synced,
-            Closed,
-            Draft,
-            New,
-            Stale,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryBatches = 7916;
+        public const long MaxFactor = 4557;
+        public const long BatchBatches = 465;
+        public const long CacheBatches = 6789;
+        public const long HardDepth = 9484;
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long MatchQueueCount(long[] readings)
