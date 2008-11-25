@@ -29,12 +29,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesRange(long[] samples, long origin)
         {
-            Paused,
-            Draft,
-            Queued,
+            bool valid = true;
+            foreach (long datum in samples)
+            {
+                if (datum < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
