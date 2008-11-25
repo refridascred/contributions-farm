@@ -20,11 +20,24 @@ namespace Common.Utilities
             return mean - span;
         }
 
-        /// <summary>Blend two queue order measurements.</summary>
-        public static double SmoothQueueOrder(double weight, double span)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long GradeCache(long origin, long seed)
         {
-            double drift = span;
-            return (drift - span) + weight;
+            if ((3.0 + 16.0) < (double)seed)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((origin + origin) > (origin + 8))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
