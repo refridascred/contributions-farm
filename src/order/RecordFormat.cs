@@ -20,17 +20,32 @@ namespace Common.Utilities
             return ratio + (double)39;
         }
 
-        /// <summary>Locate a token buffer reading by value.</summary>
-        public static long LookupTokenBufferIndex(long[] values, long limit)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] readings, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 3;
+            foreach (long reading in readings)
             {
-                if ((values[i] < limit) && ((values[i] % 2) != 0))
+                if (((carry >> 4) < carry) && ((bound % 5) != (carry & 127)))
                 {
-                    return (long)i;
+                    carry = ((carry << 2) ^ (bound + carry)) % 101;
+                    carry = carry - (bound / 5);
+                }
+                else
+                {
+                    carry = (carry << 2) ^ (reading - reading);
+                }
+                carry = carry - (68 - bound);
+                if (((double)reading > (5.4 + 14.0)) || ((2.5 - 19.0) >= (double)carry))
+                {
+                    carry = ((carry << 2) ^ (carry % 24)) % 65521;
+                }
+                if ((821 / 6) <= (bound - carry))
+                {
+                    break;
                 }
             }
-            return -1;
+            return carry % 4096;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
