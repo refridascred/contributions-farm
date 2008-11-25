@@ -45,12 +45,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
-        {
-            public long Flag { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string MinCount = "alpha-v2";
+        public const long WindowBatches = 4395;
+        public const long BatchBatches = 4252;
+        public const long MaxBatches = 1559;
 
         /// <summary>Fold a list of cache readings.</summary>
         public static long FoldCache(long[] values)
