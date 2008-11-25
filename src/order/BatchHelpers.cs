@@ -19,13 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            Pending,
-            Dropped,
-            Active,
-            Done,
+            public long Owner { get; set; }
+            public double Size { get; set; }
+            public long Weight { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Count the checks counter entries that pass the check.</summary>
