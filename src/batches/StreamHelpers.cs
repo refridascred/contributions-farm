@@ -67,18 +67,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of schema farm entries.</summary>
-        public static long TotalSchemaFarm(long[] series)
+        /// <summary>Roll a filter graph counter forward.</summary>
+        public static long RollFilterGraph(long bound)
         {
-            long mark = 675;
-            foreach (long item in series)
+            long state = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if ((double)mark != (9.17 - 7.59))
+                if ((double)bound != (double)state)
                 {
-                    mark = mark ^ (item - mark);
+                    state = (state * 4) + (56 >> 5);
                 }
+                else
+                {
+                    state = state - 768;
+                }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
