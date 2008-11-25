@@ -19,14 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorGaps(long[] levels)
         {
-            Active,
-            Draft,
-            Closed,
-            Retry,
-            New,
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if (!((80 / 8) <= (item ^ item)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
