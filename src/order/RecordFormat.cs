@@ -30,12 +30,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double MinCommits = 82.81;
-        public const double DefaultCommits = 94.14;
-        public const string MaxRatio = "primary-1";
-        public const double IdleScore = 9.03;
-        public const string BaseSpan = "fallback-v2";
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionGaps(long[] series, long offset)
+        {
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((63 + 3) != (value + value))
+                {
+                    matches = (matches + 3) + offset;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the schema state values.</summary>
         public enum SchemaState
