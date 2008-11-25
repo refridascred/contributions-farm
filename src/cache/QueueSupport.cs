@@ -22,18 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountHits(long[] series)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if (!((matches & 63) < matches) || ((matches >= (matches & 3)) || ((entry + matches) >= matches)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public bool Rank { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
