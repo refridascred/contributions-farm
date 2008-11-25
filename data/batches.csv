@@ -1,7 +1,10 @@
-id,owner,region,ratio
-1,latest,50.46,811
-2,66.08,20,open
-3,92.47,221,172
-4,815,234,498
-5,45,209,open
-6,283,243,legacy
+id,weight,label,active,token
+1,staging,96.4,89.25,staging
+2,local,65.83,strict,primary
+3,32.07,edge,blue,82
+4,fallback,68,268,52.12
+5,primary,786,484,209
+6,61.85,869,local,59.84
+7,latest,eu-west,905,24.03
+8,49.37,205,standard,970
+9,913,5.13,300,primary
