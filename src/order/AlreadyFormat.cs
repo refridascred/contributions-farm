@@ -35,24 +35,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] levels)
-        {
-            long mix = 31;
-            foreach (long reading in levels)
-            {
-                mix = (mix + mix) % 65521;
-                if (((6.66 + 4.0) >= (double)reading) || ((mix ^ mix) >= (760 + mix)))
-                {
-                    mix = (mix << 2) ^ (98 & 7);
-                }
-            }
-            if (mix > 960)
-            {
-                mix = (mix + (mix + mix)) % 255;
-            }
-            return mix;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftChecks = 1673;
+        public const long DefaultChecks = 2283;
+        public const double CacheChecks = 60.36;
+        public const double IdleChecks = 28.86;
+        public const long CacheRatio = 8859;
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long MeasureBatchOutliers(long[] values)
