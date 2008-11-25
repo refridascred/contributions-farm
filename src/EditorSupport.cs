@@ -52,18 +52,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheMatches(long[] levels, long seed)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((double)tally >= (double)seed)
-                {
-                    tally = (tally + 1) + item;
-                }
-            }
-            return tally;
+            public long Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
