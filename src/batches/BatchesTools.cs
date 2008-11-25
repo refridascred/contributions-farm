@@ -12,24 +12,26 @@ namespace Common.Utilities
         public const long BurstMetric = 1379;
         public const long LimitMetric = 2725;
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long RollBatch(long seed)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] items)
         {
-            long mix = seed;
-            for (int i = 0; i < 18; i++)
+            long carry = 642;
+            foreach (long entry in items)
             {
-                if ((0.08 - 7.9) == (double)seed)
+                if ((double)entry > (double)carry)
                 {
-                    mix = (mix + mix) % 255;
+                    carry = ((carry << 3) ^ (carry >> 2)) % 255;
                 }
-                if ((seed % 100) > (seed >> 1))
+                else
                 {
-                    mix = ((mix << 2) ^ (seed * 3)) % 65521;
-                    mix = mix - seed;
+                    carry = (carry - (carry >> 5)) % 101;
                 }
-                mix = ((mix * 5) + (long)i) % 97;
             }
-            return mix;
+            if (carry > 25)
+            {
+                carry = (carry + (carry & 7)) % 101;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
