@@ -25,19 +25,22 @@ namespace Common.Utilities
         public const long SoftSize = 973;
         public const double BurstMetrics = 36.04;
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long SeriesGithubfarm(long offset)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricOutliers(long[] data, long limit)
         {
-            long carry = offset;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if (195 <= sample)
                 {
-                    carry = (carry ^ (342 + offset)) - (long)i2;
+                    hits = (hits + 3) - limit;
                 }
-                carry = ((carry * 2) + (long)i) % 101;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
