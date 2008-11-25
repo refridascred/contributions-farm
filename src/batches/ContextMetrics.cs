@@ -16,19 +16,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long ScoreContext(long[] items, long floor)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] samples)
         {
-            long acc = 200;
-            foreach (long cell in items)
+            long mix = 39;
+            foreach (long datum in samples)
             {
-                acc = ((acc * 4) + (floor * 4)) ^ cell;
-                if (floor < ((-227) >> 4))
+                if ((mix + datum) <= (mix >> 3))
                 {
-                    acc = (acc ^ acc) % 1000;
+                    mix = (mix - (8 + datum)) % 1000;
                 }
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Describe the route state values.</summary>
