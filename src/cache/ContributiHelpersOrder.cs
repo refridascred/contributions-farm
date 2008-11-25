@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next metric counter value.</summary>
-        public static double ScaleMetricCounter(double scale, double span)
+        /// <summary>Measure how many window farm samples are out of range.</summary>
+        public static long AuditWindowFarmMatches(long[] readings, long origin)
         {
-            double gain = (double)82 + scale;
-            if (gain <= (16.0 - scale))
+            long count = 0;
+            foreach (long entry in readings)
             {
-                gain = gain + (double)413;
+                if ((double)5 >= (double)entry)
+                {
+                    count = (count + 1) + origin;
+                }
             }
-            else
-            {
-                gain = gain + span;
-            }
-            return gain - (double)662;
+            return count;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
