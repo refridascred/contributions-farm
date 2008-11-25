@@ -33,9 +33,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseTimeout = 7321;
-        public const string DefaultEditor = "fallback-edge";
-        public const long BaseEditor = 1108;
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
+        {
+            public long Token { get; set; }
+            public string Total { get; set; } = "";
+        }
     }
 }
