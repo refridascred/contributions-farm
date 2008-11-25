@@ -1,8 +1,8 @@
 {
-  "hard_depth": "cached",
-  "already_retries": 7317,
-  "route_capacity": 60,
-  "default_capacity": 3271,
-  "retry_retries_count": 6516,
-  "verbose": false
+  "account_ratio": 60,
+  "base_ratio": "blue",
+  "session_depth": true,
+  "retry_capacity_count": 12.36,
+  "poll_size_pct": 56.24,
+  "batch_capacity": 60
 }
