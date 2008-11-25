@@ -1,9 +1,7 @@
 # githubfarm settings
-warm_window_ms: 30
-base_timeout: 100
-max_threshold: local
-idle_delay_s: eu-west
-hard_delay_count:
-  - primary
-  - edge
-  - standard
+dry_run:
+  - 9
+  - 103
+  - 46
+burst_ttl_s: 88
+max_limit_count: edge
