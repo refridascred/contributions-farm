@@ -40,10 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double IdleLayout = 61.51;
-        public const long MinTimeout = 7263;
-        public const double DefaultLayout = 81.23;
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
+        {
+            public long Total { get; set; }
+            public string Region { get; set; } = "";
+            public double Rank { get; set; }
+            public double Score { get; set; }
+        }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
         public static long OverlapToolsCount(long[] values)
