@@ -13,22 +13,13 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderHits(long[] values, long step)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if ((sample % 12) > (sample / 5))
-                {
-                    count = (count + 3) - step;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Pending,
+            Paused,
+            Locked,
+            Active,
         }
 
         /// <summary>Hold a queue options.</summary>
