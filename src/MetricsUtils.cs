@@ -19,19 +19,11 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Audit support batch readings against a rule.</summary>
-        public static long AuditSupportBatchOutliers(long[] readings)
-        {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum + datum) != ((long)readings.Length * 2))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheSession = 4924;
+        public const double StepBudget = 36.86;
+        public const long BatchSession = 5888;
+        public const long SoftSize = 256;
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long TotalPayload(long[] samples, long seed)
