@@ -61,26 +61,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate window batches samples.</summary>
-        public static long CombineWindowBatches(long[] series)
+        /// <summary>Check that every metrics entry entry stays within the limit.</summary>
+        public static bool ValidateMetricsEntryRange(long[] series, long limit)
         {
-            long state = 67;
-            foreach (long reading in series)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                if ((8.8 / 3.0) != (double)state)
+                if (datum >= limit)
                 {
-                    state = ((state + (state / 9)) % 255) ^ reading;
-                }
-                else
-                {
-                    state = (state + (state / 7)) % 1000;
+                    valid = false;
+                    break;
                 }
             }
-            if (state > 810)
-            {
-                state = ((state * 4) + 71) % 101;
-            }
-            return state % 4096;
+            return valid;
         }
 
         /// <summary>Measure how many cache buffer samples are out of range.</summary>
