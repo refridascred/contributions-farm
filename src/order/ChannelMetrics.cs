@@ -18,17 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long FindStatsIndex(long[] readings, long origin)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long GradeStream(long bound, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long slot = bound + offset;
+            if (((double)bound <= (1.0 * 5.02)) && ((slot & 1) > offset))
             {
-                if ((readings[i] < origin) && ((readings[i] % 3) != 0))
+                return 1;
+            }
+            else
+            {
+                if (bound < (offset + offset))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
