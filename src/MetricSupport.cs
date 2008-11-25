@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Roll a token commits counter forward.</summary>
-        public static long RollTokenCommits(long seed)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long SeekFarmIndex(long[] values, long origin)
         {
-            long carry = seed;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry * 4) + (long)i) % 97;
+                if ((values[i] < origin) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
