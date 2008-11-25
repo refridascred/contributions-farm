@@ -38,20 +38,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next window metric value from a seed.</summary>
-        public static long SeriesWindowMetric(long floor)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] readings)
         {
-            long anchor = floor;
-            for (int i = 0; i < 23; i++)
+            long sum = 4;
+            foreach (long sample in readings)
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    anchor = ((anchor - (floor + (long)i)) % 1000) + (long)i2;
-                }
-                anchor = (anchor + (floor & 7)) % 1000;
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                sum = (sum + sample) % 255;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
