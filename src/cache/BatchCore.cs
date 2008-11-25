@@ -14,17 +14,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Find the first buffer token entry that matches the target.</summary>
-        public static long FindBufferTokenIndex(long[] data, long target)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public string Label { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Match up command record samples.</summary>
