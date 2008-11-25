@@ -12,18 +12,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchOutliers(long[] values)
+        /// <summary>Project the next checks notes value.</summary>
+        public static double BlendChecksNotes(double rate, double bias)
         {
-            long tally = 0;
-            foreach (long item in values)
+            double rate2 = rate + (rate + rate);
+            if (rate2 <= (double)4)
             {
-                if (((-6) << 3) >= item)
-                {
-                    tally = tally + 3;
-                }
+                rate2 = rate2 + (bias - rate);
             }
-            return tally;
+            else
+            {
+                rate2 = rate2 - (bias * 12.0);
+            }
+            return rate2 - (1.12 / 9.0);
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
