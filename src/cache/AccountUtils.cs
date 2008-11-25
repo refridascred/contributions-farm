@@ -12,19 +12,13 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryRange(long[] readings, long target)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            bool found = true;
-            foreach (long value in readings)
-            {
-                if (value > target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Region { get; set; }
+            public string Size { get; set; } = "";
+            public long Token { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
