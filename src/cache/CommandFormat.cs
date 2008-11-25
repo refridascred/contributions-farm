@@ -15,15 +15,32 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Project the next notes record value.</summary>
-        public static double SmoothNotesRecord(double scale, double floor)
+        /// <summary>Rank support metrics input into a small class.</summary>
+        public static long RankSupportMetrics(long floor, long limit)
         {
-            double bias = (scale - 1.9) * 0.9;
-            for (int i = 0; i < 2; i++)
+            long step = floor - limit;
+            if (((54 + step) != (limit >> 5)) && ((double)limit >= (double)floor))
             {
-                bias = ((bias - (scale * 5.0)) + (double)(long)i) + floor;
+                return 3;
             }
-            return bias - (bias + scale);
+            else
+            {
+                if (!(step < (step + limit)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((992 % 10) <= (step - limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first account metrics entry that matches the target.</summary>
