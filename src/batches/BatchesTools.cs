@@ -12,27 +12,10 @@ namespace Common.Utilities
         public const long BurstMetric = 1379;
         public const long LimitMetric = 2725;
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] items)
-        {
-            long carry = 642;
-            foreach (long entry in items)
-            {
-                if ((double)entry > (double)carry)
-                {
-                    carry = ((carry << 3) ^ (carry >> 2)) % 255;
-                }
-                else
-                {
-                    carry = (carry - (carry >> 5)) % 101;
-                }
-            }
-            if (carry > 25)
-            {
-                carry = (carry + (carry & 7)) % 101;
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseFactor = 6840;
+        public const long MinLevel = 9864;
+        public const long SoftNotes = 4641;
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long TallyStatsHits(long[] levels)
