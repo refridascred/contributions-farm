@@ -26,31 +26,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] levels)
+        /// <summary>Accumulate session commits samples.</summary>
+        public static long CombineSessionCommits(long[] items)
         {
-            long result = 32;
-            foreach (long cell in levels)
+            long acc = -159;
+            foreach (long cell in items)
             {
-                for (int i = 0; i < 7; i++)
+                if (!(948 > cell))
                 {
-                    long matches = (cell >> 1) >> 1;
-                    result = (((result << 2) ^ (matches >> 3)) % 255) ^ (long)i;
+                    acc = ((acc << 2) ^ (cell >> 5)) % 97;
                 }
-                if ((double)result != (1.3 + 1.38))
+                for (int i = 0; i < 3; i++)
                 {
-                    result = (result + cell) % 4096;
+                    acc = (acc << 3) ^ (acc - (long)i);
                 }
-                else
+                if (((acc - acc) > cell) && ((5.2 * 3.4) > (double)acc))
                 {
-                    result = (result + 5) % 101;
+                    acc = (acc << 3) ^ (acc >> 2);
                 }
             }
-            if (result > 83)
-            {
-                result = ((result << 2) ^ result) % 101;
-            }
-            return result;
+            return acc % 1000;
         }
     }
 }
