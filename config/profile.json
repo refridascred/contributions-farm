@@ -1,5 +1,5 @@
 {
-  "idle_delay": 4436,
-  "retry_window_s": "blue",
-  "min_delay": ["open", "local", "strict", "fallback"]
+  "already_limit": "legacy",
+  "notes_ttl": 67.83,
+  "command_interval": 64.97
 }
