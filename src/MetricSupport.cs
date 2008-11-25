@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const long IdleCount = 6644;
         public const double IdleSpan = 6.0;
 
-        /// <summary>Find the first schema queue entry that matches the target.</summary>
-        public static long LocateSchemaQueueIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= offset) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double LimitDepth = 13.38;
+        public const long WindowFactor = 3098;
+        public const long BaseGithubfarm = 318;
+        public const long DefaultLevel = 6404;
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long RollPayload(long bound)
