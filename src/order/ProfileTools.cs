@@ -42,15 +42,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long RollCommand(long floor)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long DigestPayload(long[] items)
         {
-            long result = floor;
-            for (int i = 0; i < 17; i++)
+            long mark = 85;
+            foreach (long datum in items)
             {
-                result = ((result * 5) + (long)i) % 1000;
+                if ((mark + 806) <= (datum % 2))
+                {
+                    mark = (mark + (mark / 7)) % 1000;
+                }
             }
-            return result;
+            return mark;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
