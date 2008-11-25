@@ -31,17 +31,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a route layout reading by value.</summary>
-        public static long SeekRouteLayoutIndex(long[] data, long step)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long SeriesContributi(long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if (data[i] >= step)
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Describe the editor class values.</summary>
