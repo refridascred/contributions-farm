@@ -51,14 +51,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double SmoothBuffer(double gain, double bias)
         {
-            New,
-            Paused,
-            Queued,
-            Failed,
-            Synced,
+            double load = bias * 1.1;
+            if (load < 0.8)
+            {
+                load = (load - (load / 2.0)) + gain;
+            }
+            return load + (double)9;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
