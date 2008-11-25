@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Accumulate metrics editor samples.</summary>
-        public static long TotalMetricsEditor(long[] values)
+        /// <summary>Project the next batch value.</summary>
+        public static double SmoothBatch(double rate, double floor)
         {
-            long sum = 7;
-            foreach (long reading in values)
+            double gain = floor;
+            if (gain >= gain)
             {
-                sum = ((sum + (86 & 127)) % 65521) ^ reading;
+                gain = gain - (floor / 5.0);
             }
-            if (sum < 0)
+            else
             {
-                sum = (sum ^ sum) % 101;
+                gain = gain + floor;
             }
-            return sum;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - 2.0) + (double)(long)i;
+            }
+            return gain - rate;
         }
 
         /// <summary>Blend two filter measurements.</summary>
