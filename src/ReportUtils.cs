@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenBounds(long[] series, long seed)
-        {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item != seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinQueue = 6777;
+        public const double CacheTimeout = 19.12;
+        public const long HardScore = 8366;
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long MeasureProfileMatches(long[] levels, long step)
