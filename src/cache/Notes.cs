@@ -39,12 +39,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepSize = 5051;
-        public const long CacheAlready = 8390;
-        public const long BatchBudget = 7018;
-        public const long HardInterval = 2706;
-        public const long MinAlready = 8701;
+        /// <summary>Check that every order account entry stays within the limit.</summary>
+        public static bool GuardOrderAccountRange(long[] samples, long seed)
+        {
+            bool flag = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Iterate the filter series from a seed.</summary>
         public static long SeriesFilter(long origin)
