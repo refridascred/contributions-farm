@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MinStream = 7612;
-        public const long CacheLevel = 3707;
-        public const double BatchStream = 83.29;
-        public const string StepDepth = "alpha-v2";
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
+        {
+            public long Label { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long AuditAlreadyGaps(long[] levels)
