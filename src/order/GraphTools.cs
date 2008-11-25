@@ -72,19 +72,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long target)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long acc = target;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((double)target >= (double)acc)
-                {
-                    continue;
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
+            Synced,
+            Dropped,
+            Failed,
+            Idle,
         }
     }
 }
