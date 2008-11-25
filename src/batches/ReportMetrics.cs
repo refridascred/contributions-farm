@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Match up cache samples.</summary>
-        public static long MatchCacheCount(long[] samples)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Level { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Count { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Digest a series of batch entries.</summary>
