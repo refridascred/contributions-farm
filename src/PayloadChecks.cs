@@ -39,12 +39,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long FindBatchesIndex(long[] series, long offset)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long SeekAlreadyIndex(long[] items, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((series[i] < offset) && ((series[i] % 5) != 0))
+                if ((items[i] == seed) && ((items[i] % 5) != 0))
                 {
                     return (long)i;
                 }
