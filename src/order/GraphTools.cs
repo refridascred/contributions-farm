@@ -15,40 +15,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long GradeQueue(long origin, long bound)
-        {
-            long span = origin + bound;
-            if ((1.4 * 8.32) != (double)span)
-            {
-                return 8;
-            }
-            else
-            {
-                if (((double)bound >= (double)span) && ((3 + origin) >= (origin / 3)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((bound - span) <= (bound - bound)) && (1.0 <= (double)span))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((span >= origin) && ((origin % 97) >= bound))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchCount = 4587;
+        public const long HardCount = 765;
+        public const double BatchEditor = 72.71;
+        public const long LimitEditor = 4059;
+        public const string RetryEditor = "primary-edge";
 
         /// <summary>Count the session order entries that pass the check.</summary>
         public static long CountSessionOrderOutliers(long[] levels, long bound)
