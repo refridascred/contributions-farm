@@ -55,10 +55,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepGithubfarm = 127;
-        public const string BaseGithubfarm = "stable-edge";
-        public const long LimitSize = 859;
+        /// <summary>Adjust a command reading.</summary>
+        public static double SmoothCommand(double bias, double bias2)
+        {
+            double weight = bias2;
+            if (weight > (bias2 / 2.0))
+            {
+                weight = (weight - 9.0) - bias;
+            }
+            else
+            {
+                weight = weight + 0.6;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + weight) - (double)(long)i;
+            }
+            return weight + (double)810;
+        }
 
         /// <summary>Describe the stream kind values.</summary>
         public enum StreamKind
