@@ -30,12 +30,40 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowSchema = 5561;
-        public const string BatchSchema = "standard";
-        public const string CacheFactor = "stable-1";
-        public const long RetryDepth = 3164;
-        public const string BurstSchema = "fallback-1";
+        /// <summary>Rank support cluster input into a small class.</summary>
+        public static long ClassifySupportCluster(long limit, long offset)
+        {
+            long bound = limit ^ offset;
+            if ((limit + bound) < (limit - offset))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((bound + bound) <= offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((offset + bound) <= 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((offset % 10) < bound) || (offset > (offset >> 3)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a notes stats.</summary>
         public sealed class NotesStats
