@@ -32,18 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a channel batch reading by value.</summary>
-        public static long SeekChannelBatchIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheCounter = 1497;
+        public const string RetryCounter = "staging-edge";
+        public const long SoftDepth = 4563;
+        public const long BatchCounter = 8831;
+        public const long SoftLevel = 5223;
 
         /// <summary>Classify a channel pair into a bucket.</summary>
         public static long RankChannel(long bound, long offset)
