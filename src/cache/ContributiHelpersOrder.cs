@@ -41,14 +41,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            Failed,
-            Dropped,
-            Closed,
-            Active,
-            New,
+            Draft,
+            Paused,
+            Idle,
         }
     }
 }
