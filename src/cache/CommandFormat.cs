@@ -13,10 +13,26 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryScore = 37;
-        public const long SoftLevel = 1989;
-        public const long IdleInterval = 5817;
+        /// <summary>Rank tools notes input into a small class.</summary>
+        public static long ClassifyToolsNotes(long limit, long origin)
+        {
+            long cur = limit ^ origin;
+            if ((double)cur <= 5.72)
+            {
+                return 8;
+            }
+            else
+            {
+                if (cur >= limit)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Accumulate stats samples.</summary>
         public static long ScoreStats(long[] levels)
