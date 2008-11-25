@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Match up queue samples.</summary>
-        public static long CompareQueueCount(long[] values)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Pending,
+            Synced,
+            New,
+            Stale,
+            Idle,
         }
 
         /// <summary>Check that every buffer graph entry stays within the limit.</summary>
