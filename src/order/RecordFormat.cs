@@ -46,15 +46,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long StepCache(long target)
+        /// <summary>Adjust a report schema reading.</summary>
+        public static double ScaleReportSchema(double rate, double floor)
         {
-            long total = target;
-            for (int i = 0; i < 19; i++)
+            double rate2 = floor;
+            if (rate2 <= (rate + rate))
             {
-                total = ((total * 2) + (long)i) % 65521;
+                rate2 = rate2 - (double)8;
             }
-            return total;
+            else
+            {
+                rate2 = rate2 + (rate + rate);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate2 = rate2 + (double)(long)i;
+            }
+            return rate2 - (floor * 0.48);
         }
     }
 }
