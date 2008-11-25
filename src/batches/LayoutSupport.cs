@@ -20,29 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank stream payload input into a small class.</summary>
-        public static long RankStreamPayload(long offset, long floor)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long origin, long floor)
         {
-            if ((12.0 * 8.0) < (double)offset)
+            if ((floor / 3) > origin)
             {
-                return 5;
+                return 1;
             }
             else
             {
-                if ((double)floor == (0.9 + 2.0))
+                if ((204 << 2) <= (origin % 2))
                 {
-                    return 2;
+                    return 3;
                 }
                 else
                 {
-                    if ((207 >> 3) >= offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return 7;
                 }
             }
         }
