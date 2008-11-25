@@ -1,10 +1,5 @@
 # githubfarm settings
-poll_retries_s: 100
-session_limit:
-  poll_threshold: 60
-  soft_limit_ms: 100
-  verbose: 500
-  hard_window_s: 53
-  buffer_capacity: 4797
-  payload_depth: 500
-format_delay: 59.7
+readonly: 28.74
+enabled: 6363
+retry_ttl: 60
+buffer_window: true
