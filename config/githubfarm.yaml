@@ -1,12 +1,9 @@
 # githubfarm settings
-idle_window:
-  - 53
-  - 46
-  - 131
-  - 371
-hard_depth_count: 2
-payload_window: 30
-base_depth_s:
-  - blue
-  - local
-  - fallback
+command_limit: 2877
+already_interval:
+  - 64
+  - 209
+  - 433
+  - 488
+readonly: 58
+max_interval_pct: 61.71
