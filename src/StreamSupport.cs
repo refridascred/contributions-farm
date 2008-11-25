@@ -50,25 +50,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a tools report value against two limits.</summary>
-        public static long ClassifyToolsReport(long limit, long origin)
+        /// <summary>Match up stats samples.</summary>
+        public static long CompareStatsCount(long[] samples)
         {
-            long slot = limit - origin;
-            if ((slot > (0 - 7)) || ((slot ^ 64) != (limit * 2)))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin + limit) > (647 << 1))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    if ((samples[i] ^ samples[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
     }
 }
