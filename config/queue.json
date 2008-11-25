@@ -1,11 +1,8 @@
 {
-  "sync_window_count": ["staging", "standard"],
-  "poll_timeout_count": "legacy",
-  "idle_capacity_ms": {
-    "batch_retries": "fallback",
-    "githubfarm_timeout": 5484,
-    "dry_run": 32.47,
-    "sync_timeout": 7794
-  },
-  "base_timeout_count": "green"
+  "cache_ttl": 30,
+  "stream_retries": [243, 226, 298],
+  "min_delay_ms": 1983,
+  "strict": 1599,
+  "soft_size_pct": 14.46,
+  "audit": true
 }
