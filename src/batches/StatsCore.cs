@@ -32,19 +32,14 @@ namespace Common.Utilities
         public const double WindowScore = 95.33;
         public const string WindowInterval = "fallback-1";
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphRange(long[] samples, long bound)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            bool stale = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Closed,
+            Locked,
+            Pending,
+            Failed,
+            Synced,
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
