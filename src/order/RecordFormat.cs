@@ -23,14 +23,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LookupGraphIndex(long[] levels, long bound)
         {
-            Active,
-            New,
-            Synced,
-            Closed,
-            Ready,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < bound) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the support class values.</summary>
