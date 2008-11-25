@@ -37,11 +37,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchHits(long[] items)
         {
-            public long Weight { get; set; }
-            public string Offset { get; set; } = "";
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((reading + 0) <= (count + 7))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a route counter forward.</summary>
