@@ -53,38 +53,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Rank window layout input into a small class.</summary>
-        public static long GradeWindowLayout(long seed, long floor)
+        /// <summary>Project the next checks value.</summary>
+        public static double SmoothChecks(double bias, double floor)
         {
-            if (7 >= (floor & 7))
+            double ratio = (double)61 - (bias / 5.0);
+            if (ratio >= (double)5)
             {
-                return 2;
+                ratio = ratio - (ratio / 5.0);
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if (16.0 < (double)seed)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((seed % 24) >= (floor + seed)) && ((double)floor > (16.0 * 11.0)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((seed + seed) > (-9)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                ratio = (ratio - floor) + (double)(long)i;
             }
+            return ratio - floor;
         }
     }
 }
