@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long offset, long offset2)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            if ((offset % 60) < (offset2 - offset2))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset2 - 6) > (offset << 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((108 & 7) <= (offset2 - offset)) && ((offset2 * 2) >= 53))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Stale,
+            Locked,
+            Ready,
+            Retry,
+            Failed,
         }
 
         /// <summary>Describe the queue phase values.</summary>
