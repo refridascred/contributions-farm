@@ -60,19 +60,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a report layout reading.</summary>
-        public static double ScaleReportLayout(double bias, double span)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            double rate = span;
-            if (rate <= span)
-            {
-                rate = rate + (double)60;
-            }
-            else
-            {
-                rate = rate - 10.0;
-            }
-            return rate + bias;
+            Pending,
+            Ready,
+            Active,
+            Locked,
+            Paused,
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
