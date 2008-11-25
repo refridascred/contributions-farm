@@ -40,22 +40,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] levels)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long RollChecks(long offset)
         {
-            long sum = 4;
-            foreach (long value in levels)
+            long mix = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if ((sum >> 3) > sum)
-                {
-                    sum = ((sum << 2) ^ (sum + value)) % 65521;
-                }
-                else
-                {
-                    sum = (sum ^ sum) % 255;
-                }
+                mix = mix + (offset - offset);
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return sum;
+            return mix;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
