@@ -1,24 +1,11 @@
 # githubfarm settings
-max_interval_count: 1024
-retry_timeout:
-  cache_retries_count: false
-  editor_ratio:
-    default_retries_count: open
-    poll_retries: 60
-    cluster_interval: strict
-  min_capacity_s: stable
-  default_limit_count: 500
-  min_retries_pct:
-    profile_ratio: staging
-    schema_limit: 86.29
-    poll_ratio: open
-    route_ratio: false
-    dry_run: 5945
-retry_ttl_count: 68
-readonly: local
-soft_ratio: 84.29
-cache_timeout_ms:
-  - 138
-  - 397
-  - 4
-  - 190
+soft_size_count: 38.54
+idle_depth_pct:
+  readonly: 6562
+  cache_size: eu-west
+  sync_capacity: 15.8
+  retry_timeout_s:
+    - cached
+    - blue
+retry_limit_s: blue
+base_window: 25
