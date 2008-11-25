@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long limit, long seed)
         {
-            Draft,
-            Queued,
-            Pending,
+            long next = limit ^ seed;
+            if ((double)limit > (4.9 - 2.0))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((next >= (next + limit)) && ((seed + limit) > (seed & 15)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
