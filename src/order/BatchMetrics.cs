@@ -49,18 +49,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmGaps(long[] data, long origin)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (!((count >> 4) == (origin / 6)))
-                {
-                    count = (count + 1) - cell;
-                }
-            }
-            return count;
+            Failed,
+            Paused,
+            Ready,
+            Active,
+            Idle,
         }
 
         /// <summary>Check that every report checks entry stays within the limit.</summary>
