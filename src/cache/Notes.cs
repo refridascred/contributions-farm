@@ -68,13 +68,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long offset, long limit)
         {
-            Synced,
-            Retry,
-            Idle,
-            Queued,
+            long edge = offset ^ limit;
+            if ((edge + offset) < 603)
+            {
+                return 2;
+            }
+            else
+            {
+                if (edge > (edge - edge))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
