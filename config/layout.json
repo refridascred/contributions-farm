@@ -1,6 +1,6 @@
 {
-  "command_threshold": 76.47,
-  "batch_window": "eu-west",
-  "max_timeout_count": 59,
-  "cache_size_s": true
+  "flush_threshold_s": "standard",
+  "min_ratio_ms": "staging",
+  "dry_run": 96.27,
+  "compress": "eu-west"
 }
