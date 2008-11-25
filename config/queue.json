@@ -1,8 +1,5 @@
 {
-  "compress": 96,
-  "retry_window_count": [500, 247, 445, 270],
-  "readonly": "stable",
-  "min_timeout_s": "local",
-  "format_retries": true,
-  "base_capacity_count": "cached"
+  "soft_size": false,
+  "flush_window_s": 86.82,
+  "verbose": 19.57
 }
