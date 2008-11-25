@@ -24,24 +24,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long target)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyMatches(long[] items)
         {
-            long mix = target;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if ((mix >= (mix << 1)) && ((mix + (long)i) <= target))
+                if (((5.98 * 7.82) < (double)datum) && (datum <= (tally << 2)))
                 {
-                    break;
+                    tally = tally + 1;
                 }
-                if ((0 % 16) != (target - target))
-                {
-                    mix = ((mix << 2) ^ (mix / 9)) % 97;
-                    break;
-                }
-                mix = ((mix * 3) + (long)i) % 97;
             }
-            return mix;
+            return tally;
         }
     }
 }
