@@ -22,25 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long SortProfile(long seed, long target)
+        /// <summary>Accumulate command counter samples.</summary>
+        public static long CombineCommandCounter(long[] items, long target)
         {
-            long span = seed - target;
-            if (!((seed / 4) != (target + span)))
+            long state = 4;
+            foreach (long item in items)
             {
-                return 8;
+                state = (state + (target - state)) % 101;
+                state = ((state << 3) ^ (item + 5)) % 255;
+                state = state ^ state;
             }
-            else
+            if (state > 73)
             {
-                if ((double)span != (8.3 / 3.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
+                state = (state + state) % 65521;
             }
+            return state;
         }
 
         /// <summary>Hold a tools stats.</summary>
