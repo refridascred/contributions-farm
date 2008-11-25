@@ -70,19 +70,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every stats already entry stays within the limit.</summary>
-        public static bool ValidateStatsAlreadyRange(long[] series, long floor)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            bool stale = true;
-            foreach (long entry in series)
-            {
-                if (entry > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Token { get; set; } = "";
+            public long Weight { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
