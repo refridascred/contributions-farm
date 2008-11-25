@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Format helpers.</summary>
     public static class Format
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string WindowWidth = "alpha";
-        public const string BatchMetric = "open";
-        public const long BatchSize = 9321;
-        public const double LimitDepth = 25.81;
-        public const long StepMetric = 4377;
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ProjectContext(double scale, double span)
+        {
+            double gain = span * 0.67;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - (double)(long)i) - scale;
+            }
+            return gain - gain;
+        }
 
         /// <summary>Describe the report phase values.</summary>
         public enum ReportPhase
