@@ -19,15 +19,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long StepQueue(long seed)
+        /// <summary>Validate cluster account readings against a bound.</summary>
+        public static bool CheckClusterAccountRange(long[] data, long limit)
         {
-            long state = seed;
-            for (int i = 0; i < 16; i++)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                state = ((state * 5) + (long)i) % 97;
+                if (cell != limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return state;
+            return valid;
         }
 
         /// <summary>Digest a series of buffer record entries.</summary>
