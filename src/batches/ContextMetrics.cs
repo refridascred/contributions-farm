@@ -36,13 +36,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Match up token samples.</summary>
+        public static long PairTokenCount(long[] levels)
         {
-            public bool Owner { get; set; }
-            public long Flag { get; set; }
-            public double Stamp { get; set; }
-            public string Limit { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the command status values.</summary>
