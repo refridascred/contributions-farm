@@ -33,13 +33,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ProjectSchema(double ratio, double span)
         {
-            public double Mode { get; set; }
-            public long Token { get; set; }
-            public long Count { get; set; }
-            public long Total { get; set; }
+            double drift = span - span;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + ratio) + (double)(long)i;
+            }
+            return drift - ratio;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
