@@ -1,6 +1,6 @@
 {
-  "strict": false,
-  "batch_window_s": 33,
-  "max_capacity_ms": "standard",
-  "idle_delay": "latest"
+  "compress": 8,
+  "editor_depth": false,
+  "retry_ttl": 60,
+  "stream_threshold": "cached"
 }
