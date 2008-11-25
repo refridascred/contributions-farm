@@ -46,13 +46,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long StepCache(long target)
         {
-            Synced,
-            Queued,
-            Active,
-            Retry,
+            long total = target;
+            for (int i = 0; i < 19; i++)
+            {
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
         }
     }
 }
