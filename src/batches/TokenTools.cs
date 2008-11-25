@@ -19,9 +19,18 @@ namespace Common.Utilities
         public const string SoftWindow = "fallback-v2";
         public const string DefaultRatio = "primary-edge";
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MinCluster = 27.57;
-        public const long WindowCluster = 1083;
-        public const long BatchCluster = 7043;
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderGaps(long[] items, long step)
+        {
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((step & 31) == (sample * 3))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
