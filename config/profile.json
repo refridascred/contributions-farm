@@ -1,18 +1,5 @@
 {
-  "verbose": {
-    "cache_size": 12,
-    "enabled": 24.93,
-    "dry_run": 69,
-    "idle_ratio_s": {
-      "idle_ttl_count": "latest",
-      "hard_depth_count": 942,
-      "batch_capacity_s": "latest",
-      "base_interval_count": 84.59,
-      "max_depth_pct": 3955,
-      "compress": ["staging", "local", "strict"]
-    },
-    "idle_capacity": "standard"
-  },
-  "buffer_interval": "blue",
-  "counter_capacity": 52
+  "burst_ratio_s": 13.28,
+  "flush_size_count": "fallback",
+  "max_capacity_s": "edge"
 }
