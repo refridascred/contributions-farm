@@ -20,13 +20,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Blend two filter measurements.</summary>
+        public static double BlendFilter(double weight, double span)
         {
-            Pending,
-            Paused,
-            Locked,
-            Active,
+            double scale = (double)(74 - 59);
+            if (scale > (double)730)
+            {
+                scale = (scale - (weight + weight)) + span;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + (double)276) + (double)(long)i;
+            }
+            return scale - (double)18;
         }
 
         /// <summary>Audit metric report readings against a rule.</summary>
