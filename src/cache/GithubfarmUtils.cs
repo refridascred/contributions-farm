@@ -27,10 +27,14 @@ namespace Common.Utilities
             return mean + (offset * 17.0);
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double WindowFactor = 94.16;
-        public const long DefaultSpan = 9424;
-        public const long MinFactor = 6453;
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
+        {
+            Closed,
+            Queued,
+            Idle,
+            Retry,
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long CacheContext = 711;
