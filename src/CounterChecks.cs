@@ -60,17 +60,13 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long FindOrderIndex(long[] series, long origin)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Idle,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Measure how many context window samples are out of range.</summary>
