@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
+            Stale,
             Synced,
-            New,
-            Paused,
+            Retry,
+            Queued,
+            Draft,
         }
 
         /// <summary>Hold a batches stats.</summary>
