@@ -18,12 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long StepBatch(long origin)
         {
-            Failed,
-            Paused,
-            Retry,
+            long state = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                state = (state - (origin - (long)i)) % 101;
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Digest a series of command entries.</summary>
