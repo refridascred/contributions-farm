@@ -32,13 +32,13 @@ namespace Common.Utilities
         public const long BaseWindow = 6887;
         public const long IdleWindow = 6662;
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            Locked,
-            Queued,
-            Failed,
+            New,
+            Draft,
             Idle,
+            Ready,
         }
     }
 }
