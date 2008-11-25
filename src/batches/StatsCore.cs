@@ -75,22 +75,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] series)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextOutliers(long[] values)
         {
-            long carry = 8;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (((double)carry >= (double)reading) || ((reading - 61) <= (97 + carry)))
+                if ((hits + hits) <= (reading % 60))
                 {
-                    carry = (carry + (carry - reading)) % 65521;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ (reading - reading);
+                    hits = hits + 2;
                 }
             }
-            return carry % 4096;
+            return hits;
         }
     }
 }
