@@ -20,10 +20,11 @@ namespace Common.Utilities
         public const long BaseStream = 5028;
         public const long RetryDepth = 5873;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BatchContributi = "cached";
-        public const long CacheContributi = 4655;
-        public const double WindowSpan = 56.14;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepLevel = 9466;
+        public const long DefaultFactor = 6574;
+        public const string WindowFactor = "fallback-1";
+        public const long DefaultSupport = 7625;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long SoftInterval = 9364;
