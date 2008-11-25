@@ -24,13 +24,11 @@ namespace Common.Utilities
         public const double IdleInterval = 19.16;
         public const long StepScore = 7360;
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            public long Score { get; set; }
-            public bool Limit { get; set; }
-            public double Weight { get; set; }
-            public long Level { get; set; }
+            public bool Mode { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Compare every pair of route payload readings.</summary>
