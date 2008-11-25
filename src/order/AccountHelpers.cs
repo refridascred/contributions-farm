@@ -38,18 +38,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many buffer commits samples are out of range.</summary>
-        public static long CountBufferCommitsMatches(long[] series)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TotalRecord(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long total = 7;
+            foreach (long reading in samples)
             {
-                if ((matches * 3) > (574 - reading))
+                if ((4.7 < (double)(long)samples.Length) || ((double)bound <= (2.71 - 5.0)))
                 {
-                    matches = matches + 3;
+                    total = ((total << 3) ^ (reading & 1)) % 65521;
+                }
+                if (((bound % 10) > total) && ((total & 127) > (-35)))
+                {
+                    break;
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
