@@ -37,21 +37,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine token order values into a single score.</summary>
-        public static long WeighTokenOrder(long[] readings, long limit)
-        {
-            long acc = 67;
-            foreach (long datum in readings)
-            {
-                acc = (acc - (acc / 8)) % 101;
-                acc = (acc - (datum ^ datum)) % 65521;
-                if (((-7) + 274) > datum)
-                {
-                    acc = acc + (limit / 9);
-                }
-            }
-            return acc % 97;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepFactor = 2669;
+        public const long IdleRoute = 3451;
+        public const long MinRoute = 2576;
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long CountLayoutHits(long[] readings, long bound)
