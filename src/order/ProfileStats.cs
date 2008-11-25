@@ -42,19 +42,11 @@ namespace Common.Utilities
             return drift + (double)2;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double AdjustReport(double ratio, double bias)
-        {
-            double rate = (double)(2 * 5);
-            if (rate > (bias + ratio))
-            {
-                rate = rate + rate;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + bias) + (double)(long)i;
-            }
-            return rate + 2.72;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxContext = 8874;
+        public const long CacheContext = 6423;
+        public const long BaseDepth = 2005;
+        public const long RetrySpan = 8488;
+        public const long HardSize = 3053;
     }
 }
