@@ -48,11 +48,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string HardBuffer = "alpha";
-        public const double BurstBuffer = 58.69;
-        public const long IdleBuffer = 1212;
-        public const long CacheBuffer = 4653;
-        public const long DefaultBuffer = 5174;
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenHits(long[] readings, long target)
+        {
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if (((sample - matches) > (target + matches)) || ((matches + matches) != (sample & 15)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
