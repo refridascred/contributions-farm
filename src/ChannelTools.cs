@@ -23,14 +23,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            Pending,
-            Synced,
             Queued,
-            Failed,
-            Draft,
+            Paused,
+            New,
+            Closed,
+            Ready,
         }
     }
 }
