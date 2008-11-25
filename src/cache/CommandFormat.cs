@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Classify a route support pair into a bucket.</summary>
-        public static long SortRouteSupport(long limit, long origin)
-        {
-            if ((double)limit > (6.7 - 3.8))
-            {
-                return 8;
-            }
-            else
-            {
-                if (3.48 < (double)limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheTimeout = 2522;
+        public const long IdleCommits = 2488;
+        public const long BatchBudget = 9651;
 
         /// <summary>Hold a support header.</summary>
         public sealed class SupportHeader
