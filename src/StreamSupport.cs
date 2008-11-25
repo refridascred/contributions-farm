@@ -27,9 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleFactor = 4272;
-        public const long BatchCount = 1667;
-        public const long DefaultSupport = 7970;
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsRange(long[] readings, long limit)
+        {
+            bool flag = true;
+            foreach (long value in readings)
+            {
+                if (value >= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
