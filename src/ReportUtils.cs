@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long PairContextCount(long[] items)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenBounds(long[] series, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long item in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (item != seed)
                 {
-                    if ((items[i] - items[j]) != 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
