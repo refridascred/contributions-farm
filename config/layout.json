@@ -1,6 +1,5 @@
 {
-  "compress": 8,
-  "editor_depth": false,
-  "retry_ttl": 60,
-  "stream_threshold": "cached"
+  "cache_depth": 60,
+  "buffer_interval": 10.62,
+  "dry_run": "strict"
 }
