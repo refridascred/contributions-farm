@@ -80,9 +80,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BurstDepth = 46.52;
-        public const long BaseMetric = 8118;
-        public const long DefaultMetric = 3217;
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long SeriesFarm(long target)
+        {
+            long acc = target;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((double)target >= (double)acc)
+                {
+                    continue;
+                }
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
+        }
     }
 }
