@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LocateMetricsIndex(long[] values, long target)
+        /// <summary>Validate format stream readings against a bound.</summary>
+        public static bool VerifyFormatStreamBounds(long[] values, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long value in values)
             {
-                if ((values[i] <= target) && ((values[i] % 2) == 0))
+                if (value != seed)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
