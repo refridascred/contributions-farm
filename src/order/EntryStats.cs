@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamHits(long[] items)
-        {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((seen + item) == (223 & 15))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRoute = 4833;
+        public const long IdleRoute = 4296;
+        public const long RetryRoute = 3088;
+        public const long MinRoute = 4844;
+        public const double WindowRoute = 1.4;
 
         /// <summary>Hold a report stats.</summary>
         public sealed class ReportStats
