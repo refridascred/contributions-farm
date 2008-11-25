@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit buffer metric readings against a rule.</summary>
-        public static long AuditBufferMetricMatches(long[] series, long floor)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long PairTokenCount(long[] series)
         {
             long tally = 0;
-            foreach (long value in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value < (floor + tally))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((series[i] ^ series[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
