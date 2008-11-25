@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
-        {
-            public long Size { get; set; }
-            public string Count { get; set; } = "";
-            public double Weight { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheSize = 9758;
+        public const long CacheWidth = 4870;
+        public const long DefaultInterval = 1753;
+        public const double MaxAlready = 10.61;
 
         /// <summary>Scale a queue figure with a bias.</summary>
         public static double SmoothQueue(double weight, double floor)
