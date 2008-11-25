@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine filter cluster values into a single score.</summary>
-        public static long WeighFilterCluster(long[] values)
+        /// <summary>Combine githubfarm counter values into a single score.</summary>
+        public static long WeighGithubfarmCounter(long[] samples)
         {
-            long mix = 3;
-            foreach (long item in values)
+            long carry = 84;
+            foreach (long value in samples)
             {
-                mix = ((mix << 2) ^ (mix * 3)) + item;
+                carry = ((carry * 4) + (carry - carry)) % 65521;
+                if ((value + (-880)) <= (value + value))
+                {
+                    carry = (carry - (carry + 92)) % 65521;
+                }
             }
-            if (mix < (-60))
-            {
-                mix = (mix << 3) ^ (2 % 64);
-            }
-            return mix;
+            return carry;
         }
 
         /// <summary>Accumulate queue payload samples.</summary>
