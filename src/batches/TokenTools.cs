@@ -26,18 +26,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the commits entry entries that pass the check.</summary>
-        public static long TallyCommitsEntryGaps(long[] items)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((0.5 + 10.0) <= (double)sample)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Done,
+            Failed,
+            Draft,
+            Paused,
+            Dropped,
         }
     }
 }
