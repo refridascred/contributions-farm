@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            public double Limit { get; set; }
-            public long Label { get; set; }
-            public long Weight { get; set; }
+            public long Limit { get; set; }
+            public string Level { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
