@@ -43,22 +43,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the payload session entries that pass the check.</summary>
-        public static long TallyPayloadSessionOutliers(long[] samples)
+        /// <summary>Adjust a context reading.</summary>
+        public static double BlendContext(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            double ratio = (double)(209 % 24);
+            if (ratio > (bias / 7.0))
             {
-                if ((0.89 - 4.07) == (double)entry)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                ratio = ratio + weight;
             }
-            return hits;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + (1.0 - 8.1)) - (double)(long)i;
+            }
+            return ratio + (double)63;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
