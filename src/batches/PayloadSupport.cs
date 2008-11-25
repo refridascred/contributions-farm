@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsHits(long[] data)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long WeighFarm(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long sum = 497;
+            foreach (long reading in values)
             {
-                if (((((long)data.Length + 0) <= 6) && (seen > (seen << 3))) && ((reading >> 4) > (reading + reading)))
+                if (!((double)809 == (double)reading))
                 {
-                    seen = seen + 2;
+                    sum = (((sum * 4) + sum) % 4096) + offset;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    sum = ((sum << 3) ^ (sum << 2)) % 97;
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Count the buffer commits entries that pass the check.</summary>
