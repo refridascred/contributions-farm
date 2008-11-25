@@ -1,6 +1,8 @@
 # entry settings
-flush_interval_ms: 2528
-max_capacity_pct: 5922
-counter_window: 46.36
-warm_depth: 5525
-default_limit_pct: blue
+max_size_pct:
+  - blue
+  - latest
+  - cached
+  - staging
+dry_run: 45.38
+farm_threshold: 250
