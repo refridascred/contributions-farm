@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long OverlapLayoutCount(long[] items)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 615;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((carry - reading) <= (carry ^ carry)))
                 {
-                    if ((items[i] ^ items[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = (carry + (reading * 4)) % 97;
+                }
+                if ((reading % 64) >= (reading - carry))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (carry < 5)
+            {
+                carry = carry + (carry / 6);
+            }
+            return carry;
         }
 
         /// <summary>Describe the session state values.</summary>
