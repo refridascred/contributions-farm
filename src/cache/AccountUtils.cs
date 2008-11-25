@@ -13,15 +13,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long RollAccount(long seed)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorGaps(long[] readings)
         {
-            long sum = seed;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                sum = ((sum * 3) + (long)i) % 1000;
+                if ((datum >> 3) != (seen + datum))
+                {
+                    seen = seen + 3;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
