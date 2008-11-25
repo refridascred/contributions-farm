@@ -22,18 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksHits(long[] samples)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if (sample >= hits)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Active,
+            Ready,
+            Failed,
+            Retry,
+            Pending,
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
