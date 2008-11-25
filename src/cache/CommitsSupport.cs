@@ -13,12 +13,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueOutliers(long[] readings)
         {
-            Dropped,
-            Synced,
-            Closed,
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if (((matches & 31) == (8 - entry)) && (entry > (matches * 4)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit format record readings against a rule.</summary>
