@@ -25,19 +25,11 @@ namespace Common.Utilities
         public const long BatchSession = 5888;
         public const long SoftSize = 256;
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TotalPayload(long[] samples, long seed)
-        {
-            long result = 59;
-            foreach (long reading in samples)
-            {
-                if ((reading % 3) >= (reading & 15))
-                {
-                    result = (((result * 3) + (reading % 10)) % 1000) - seed;
-                }
-            }
-            return result % 65521;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string RetryQueue = "alpha-1";
+        public const double MaxQueue = 11.42;
+        public const double DefaultQueue = 81.02;
+        public const long IdleBudget = 3979;
 
         /// <summary>Combine cache contributi values into a single score.</summary>
         public static long DigestCacheContributi(long[] values)
