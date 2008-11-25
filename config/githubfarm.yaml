@@ -1,15 +1,41 @@
 # githubfarm settings
-poll_interval_ms: false
-compress: 8662
-min_threshold:
-  - 385
-  - 65
-  - 195
-  - 340
-farm_ratio: 30
-cache_threshold:
-  - 378
-  - 152
-  - 149
-  - 17
-sync_retries_s: 57
+warm_retries_pct: strict
+base_threshold:
+  persist: 30
+  cache_timeout_ms: true
+  max_window_count: 12
+  soft_retries_count: 5888
+  soft_interval_count:
+    - 203
+    - 37
+    - 96
+    - 5
+  min_interval_count:
+    - green
+    - fallback
+token_delay: legacy
+dry_run: 7817
+audit: fallback
+persist:
+  verbose:
+    commits_window: edge
+    tools_delay: true
+    cache_ratio_pct: eu-west
+    format_delay: primary
+    soft_interval_pct:
+      - blue
+      - open
+      - latest
+      - latest
+    min_ratio: false
+  compress:
+    sync_interval: true
+    default_interval_s: 17.95
+    queue_retries: primary
+    default_interval_count:
+      - 456
+      - 315
+      - 28
+      - 381
+    idle_depth: cached
+  queue_window: local
