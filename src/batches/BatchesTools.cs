@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryLevel = 9303;
-        public const long BatchScore = 3691;
-        public const long MinContributi = 5496;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleTimeout = 8105;
+        public const long BatchMetric = 5894;
+        public const long CacheMetric = 5845;
+        public const long BurstMetric = 1379;
+        public const long LimitMetric = 2725;
 
         /// <summary>Describe the format mode values.</summary>
         public enum FormatMode
