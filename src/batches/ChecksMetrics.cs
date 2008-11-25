@@ -44,22 +44,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] samples, long origin)
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] readings)
         {
-            long total = 1;
-            foreach (long datum in samples)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((datum > origin) || (total > (total >> 1)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = (total * 2) + 8;
-                }
-                if ((origin & 3) == (datum + (long)samples.Length))
-                {
-                    break;
+                    if ((readings[i] - readings[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return total % 65521;
+            return matches;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
