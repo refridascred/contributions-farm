@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountLimits(long[] series, long target)
         {
-            Pending,
-            Draft,
-            Ready,
-            Stale,
+            bool ok = true;
+            foreach (long reading in series)
+            {
+                if (reading < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Accumulate batches samples.</summary>
