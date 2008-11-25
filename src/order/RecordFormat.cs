@@ -33,13 +33,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long DigestFarm(long[] series)
         {
-            public string Limit { get; set; } = "";
-            public long Score { get; set; }
-            public long Level { get; set; }
-            public long Stamp { get; set; }
+            long result = 139;
+            foreach (long item in series)
+            {
+                if ((item < 23) && ((double)item < (2.21 * 2.24)))
+                {
+                    result = ((result << 2) ^ (item % 10)) % 101;
+                }
+                if ((result << 2) > result)
+                {
+                    break;
+                }
+            }
+            if (result > 1)
+            {
+                result = result + (result - result);
+            }
+            return result % 4096;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
