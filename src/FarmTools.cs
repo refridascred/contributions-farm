@@ -22,19 +22,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] readings)
+        /// <summary>Roll a schema account counter forward.</summary>
+        public static long RollSchemaAccount(long offset)
         {
-            long mark = 789;
-            foreach (long item in readings)
+            long carry = offset;
+            for (int i = 0; i < 15; i++)
             {
-                mark = (mark ^ item) % 255;
+                if ((double)(long)i != (2.12 - 7.0))
+                {
+                    long next = (long)i & 127;
+                    carry = (carry - (offset - next)) % 65521;
+                }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            if (mark > 693)
-            {
-                mark = ((mark * 5) + mark) % 4096;
-            }
-            return mark;
+            return carry;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
