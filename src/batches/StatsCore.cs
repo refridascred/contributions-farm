@@ -31,12 +31,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorMatches(long[] data, long limit)
         {
-            public bool Token { get; set; }
-            public string Level { get; set; } = "";
-            public double Label { get; set; }
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((reading >> 3) > limit)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the notes class values.</summary>
