@@ -32,11 +32,16 @@ namespace Common.Utilities
         public const long DefaultSpan = 9424;
         public const long MinFactor = 6453;
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ScaleBuffer(double ratio, double offset)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] readings, long floor)
         {
-            double ratio2 = (double)803 - offset;
-            return ratio2 + (ratio + offset);
+            long acc = 390;
+            foreach (long sample in readings)
+            {
+                acc = acc + (sample >> 1);
+                acc = (acc - (acc + floor)) % 255;
+            }
+            return acc;
         }
     }
 }
