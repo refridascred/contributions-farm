@@ -55,11 +55,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Count the record commits entries that pass the check.</summary>
+        public static long MeasureRecordCommitsHits(long[] items)
         {
-            public string Label { get; set; } = "";
-            public long Score { get; set; }
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if (((11.0 * 5.86) == (double)tally) && !((7.0 / 2.0) == (double)tally))
+                {
+                    tally = (tally + 3) - value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a profile record.</summary>
