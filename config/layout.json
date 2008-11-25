@@ -1,8 +1,6 @@
 {
-  "account_ratio": 60,
-  "base_ratio": "blue",
-  "session_depth": true,
-  "retry_capacity_count": 12.36,
-  "poll_size_pct": 56.24,
-  "batch_capacity": 60
+  "min_threshold_pct": true,
+  "burst_timeout_ms": true,
+  "enabled": 1024,
+  "sync_depth": ["standard", "fallback"]
 }
