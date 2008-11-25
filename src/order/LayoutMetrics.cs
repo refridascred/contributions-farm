@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionMatches(long[] values)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamLimits(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                if (matches <= 3)
+                if (reading > target)
                 {
-                    matches = (matches + 3) + sample;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
