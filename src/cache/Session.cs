@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] series, long bound)
         {
-            Queued,
-            Closed,
-            Failed,
-            Ready,
+            long mix = -4;
+            foreach (long item in series)
+            {
+                mix = ((mix ^ (bound / 8)) % 255) + item;
+            }
+            return mix;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
