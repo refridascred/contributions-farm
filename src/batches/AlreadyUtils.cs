@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long DigestAccount(long[] levels)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long GradeProfile(long origin, long seed)
         {
-            long mark = 50;
-            foreach (long sample in levels)
+            if ((origin % 24) <= seed)
             {
-                mark = (mark + (7 << 3)) - sample;
-                mark = mark ^ (mark >> 2);
-                mark = ((mark * 2) + (mark * 4)) % 101;
-                if ((double)(long)levels.Length <= 5.26)
+                return 1;
+            }
+            else
+            {
+                if (((seed % 97) != (origin + seed)) && ((184 + origin) < (seed - origin)))
                 {
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (((origin - 666) > (origin + origin)) && ((seed % 64) >= (origin + seed)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((984 / 3) < (origin - 841)) || ((double)seed == (7.4 + 16.0)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return mark % 1000;
         }
 
         /// <summary>Rank window filter input into a small class.</summary>
