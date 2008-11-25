@@ -1,6 +1,8 @@
 {
-  "cluster_retries": "legacy",
-  "base_threshold_s": 68,
-  "readonly": 250,
-  "metrics_ratio": "blue"
+  "hard_depth": "cached",
+  "already_retries": 7317,
+  "route_capacity": 60,
+  "default_capacity": 3271,
+  "retry_retries_count": 6516,
+  "verbose": false
 }
