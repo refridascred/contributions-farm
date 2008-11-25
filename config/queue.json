@@ -1,7 +1,9 @@
 {
-  "batch_timeout": "green",
-  "persist": false,
-  "route_limit": true,
-  "min_window_ms": ["open", "primary", "stable", "standard"],
-  "buffer_interval": "open"
+  "max_ratio_s": true,
+  "token_interval": 9751,
+  "readonly": {
+    "enabled": 37,
+    "poll_delay": 30,
+    "batch_capacity": [40, 396]
+  }
 }
