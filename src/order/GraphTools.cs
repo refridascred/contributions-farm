@@ -63,18 +63,18 @@ namespace Common.Utilities
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileRange(long[] data, long limit)
+        public static bool VerifyProfileBounds(long[] samples, long step)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                if (datum >= limit)
+                if (cell < step)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
     }
 }
