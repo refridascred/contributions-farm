@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            public string Stamp { get; set; } = "";
-            public long Level { get; set; }
-            public long Ratio { get; set; }
+            Done,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Rank stats input into a small class.</summary>
