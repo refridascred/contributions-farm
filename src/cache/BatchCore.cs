@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every channel editor entry stays within the limit.</summary>
-        public static bool GuardChannelEditorRange(long[] data, long offset)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            bool ready = true;
-            foreach (long sample in data)
-            {
-                if (sample < offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Active,
+            Locked,
+            Closed,
         }
 
         /// <summary>Roll a session githubfarm counter forward.</summary>
