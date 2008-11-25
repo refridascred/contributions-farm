@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Adjust a token githubfarm reading.</summary>
-        public static double AdjustTokenGithubfarm(double rate, double floor)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            double drift = floor;
-            return drift + rate;
+            public long Ratio { get; set; }
+            public bool Mode { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
