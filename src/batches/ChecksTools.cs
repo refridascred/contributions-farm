@@ -14,22 +14,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate batch context samples.</summary>
-        public static long TallyBatchContext(long[] data, long seed)
+        /// <summary>Audit commits token readings against a rule.</summary>
+        public static long CountCommitsTokenHits(long[] items)
         {
-            long acc = 9;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (((datum + acc) <= acc) || ((acc ^ datum) > (seed * 4)))
+                if ((double)hits > (1.67 - 12.0))
                 {
-                    acc = ((acc * 4) + (datum + seed)) % 4096;
+                    hits = (hits + 2) ^ sample;
                 }
             }
-            if (acc > 49)
-            {
-                acc = ((acc << 3) ^ (seed >> 4)) % 97;
-            }
-            return acc % 1000;
+            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
