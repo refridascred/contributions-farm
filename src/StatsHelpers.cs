@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsMatches(long[] series, long bound)
-        {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if (((double)tally >= (0.9 / 4.0)) && ((double)bound == (3.0 / 6.0)))
-                {
-                    tally = (tally + 3) + sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double LimitSpan = 79.81;
+        public const long DefaultAlready = 1402;
+        public const long BaseScore = 1675;
+        public const long RetrySpan = 7432;
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
         public static long LocateContributiIndex(long[] items, long step)
