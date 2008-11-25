@@ -31,15 +31,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long SeriesContributi(long floor)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long mark = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
+            Ready,
+            Failed,
+            New,
+            Locked,
+            Paused,
         }
 
         /// <summary>Describe the editor class values.</summary>
