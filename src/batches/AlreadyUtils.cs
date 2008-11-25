@@ -52,39 +52,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long ClassifyNotes(long bound, long origin)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long prev = bound ^ origin;
-            if (bound >= (1 - bound))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((origin << 1) > bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((origin + 398) != (prev / 2)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((417 * 3) == (origin & 255))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public double Size { get; set; }
+            public long Flag { get; set; }
+            public double Offset { get; set; }
+            public double Level { get; set; }
         }
     }
 }
