@@ -33,13 +33,11 @@ namespace Common.Utilities
         public const double MinRatio = 32.04;
         public const string MaxFactor = "alpha-edge";
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            public long Label { get; set; }
-            public long Token { get; set; }
-            public long Mode { get; set; }
-            public bool Count { get; set; }
+            public string Region { get; set; } = "";
+            public bool Offset { get; set; }
         }
     }
 }
