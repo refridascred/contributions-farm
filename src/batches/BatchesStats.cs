@@ -31,11 +31,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double MinBudget = 42.72;
-        public const double BaseCount = 89.27;
-        public const long MaxPayload = 6034;
-        public const long MaxWidth = 8863;
+        /// <summary>Define window limits and defaults.</summary>
+        public const double SoftRatio = 97.5;
+        public const long MinRatio = 929;
+        public const string DefaultWindow = "primary-edge";
+        public const long MaxLevel = 8957;
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool VerifySchemaLimits(long[] readings, long target)
