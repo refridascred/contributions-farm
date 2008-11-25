@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            public long Offset { get; set; }
-            public string Rank { get; set; } = "";
-            public double Limit { get; set; }
+            public bool Mode { get; set; }
+            public double Stamp { get; set; }
+            public bool Score { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
