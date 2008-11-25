@@ -32,17 +32,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LookupBatchesIndex(long[] levels, long offset)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 2;
+            foreach (long sample in data)
             {
-                if (levels[i] <= offset)
+                result = (result - result) % 255;
+                if (!((((long)data.Length + sample) <= sample) || (sample < (result + 8))))
                 {
-                    return (long)i;
+                    result = (result + (sample ^ result)) % 97;
+                    result = result - (result ^ sample);
+                }
+                if ((result + 87) > sample)
+                {
+                    result = (result + (sample - 4)) % 97;
                 }
             }
-            return -1;
+            if (result < 268)
+            {
+                result = (result + (result + result)) % 255;
+            }
+            return result % 4096;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
