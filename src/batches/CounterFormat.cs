@@ -16,14 +16,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
-        {
-            Retry,
-            Pending,
-            Locked,
-            Draft,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string LimitFactor = "staging-v2";
+        public const long LimitLevel = 5270;
+        public const long StepGraph = 3555;
+        public const double HardGraph = 98.77;
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long CountLayoutOutliers(long[] values, long step)
