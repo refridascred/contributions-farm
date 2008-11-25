@@ -5,23 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Roll a schema layout counter forward.</summary>
-        public static long SeriesSchemaLayout(long seed)
+        /// <summary>Classify a counter layout pair into a bucket.</summary>
+        public static long RankCounterLayout(long bound, long limit)
         {
-            long sum = seed;
-            for (int i = 0; i < 19; i++)
+            long offset = bound - limit;
+            if ((2 & 7) != (bound << 3))
             {
-                if (((1.46 + 1.89) < (double)seed) || ((sum * 3) >= (seed << 1)))
-                {
-                    break;
-                }
-                if (748 <= (sum + sum))
-                {
-                    sum = ((sum * 2) + seed) % 65521;
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
+                return 7;
             }
-            return sum;
+            else
+            {
+                if ((bound << 3) == (limit >> 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((offset * 4) <= ((-379) & 31))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((double)limit != (double)bound))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
