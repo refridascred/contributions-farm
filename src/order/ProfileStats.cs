@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string HardRecord = "open-1";
-        public const string BurstRecord = "local-1";
-        public const double RetryInterval = 55.99;
-        public const long LimitWidth = 4520;
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] series)
+        {
+            long acc = 479;
+            foreach (long item in series)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    acc = ((acc + item) % 65521) ^ (long)i;
+                }
+                acc = (acc + (acc >> 3)) % 4096;
+            }
+            return acc;
+        }
 
         /// <summary>Iterate the tools series from a seed.</summary>
         public static long RollTools(long target)
