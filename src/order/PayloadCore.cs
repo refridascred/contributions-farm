@@ -5,28 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TotalPayload(long[] levels)
+        /// <summary>Combine record schema values into a single score.</summary>
+        public static long CombineRecordSchema(long[] items, long bound)
         {
-            long score = -766;
-            foreach (long item in levels)
+            long result = 919;
+            foreach (long value in items)
             {
-                if ((score >> 3) != (score + item))
+                if (!((bound * 3) < bound))
                 {
-                    score = score ^ (item << 2);
-                    score = (score - (item - score)) % 1000;
-                }
-                score = ((score << 3) ^ item) % 101;
-                if ((93 * 5) >= item)
-                {
-                    score = score ^ item;
-                }
-                else
-                {
-                    score = (score * 4) + (item + score);
+                    result = (((result << 3) ^ bound) % 65521) ^ value;
                 }
             }
-            return score % 65521;
+            if (result > 7)
+            {
+                result = result + (22 >> 3);
+            }
+            return result % 65521;
         }
 
         /// <summary>Hold a contributi info.</summary>
