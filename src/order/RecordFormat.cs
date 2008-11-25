@@ -23,17 +23,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] levels, long bound)
+        /// <summary>Count the cluster channel entries that pass the check.</summary>
+        public static long CountClusterChannelMatches(long[] data, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if ((levels[i] < bound) && ((levels[i] % 2) != 0))
+                if ((89 - hits) <= 90)
                 {
-                    return (long)i;
+                    hits = ((hits + 2) + reading) - offset;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the support class values.</summary>
