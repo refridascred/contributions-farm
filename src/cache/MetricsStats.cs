@@ -19,19 +19,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of contributi already readings.</summary>
-        public static long WeighContributiAlready(long[] data)
-        {
-            long result = 9;
-            foreach (long reading in data)
-            {
-                if ((result & 3) == (reading + reading))
-                {
-                    result = (result - (reading - 43)) % 4096;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftDepth = 7282;
+        public const long MinToken = 608;
+        public const string RetryFactor = "alpha-1";
 
         /// <summary>Hold a contributi stats.</summary>
         public sealed class ContributiStats
