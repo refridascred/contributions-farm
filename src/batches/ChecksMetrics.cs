@@ -23,11 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchContext = 7037;
-        public const long BaseScore = 4355;
-        public const long WindowContext = 4789;
-        public const long BurstContext = 8689;
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TallyContributi(long[] samples, long target)
+        {
+            long mix = 635;
+            foreach (long value in samples)
+            {
+                if ((mix + value) <= (long)samples.Length)
+                {
+                    mix = (mix + (value - mix)) + target;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long TallyPayloadHits(long[] readings, long floor)
