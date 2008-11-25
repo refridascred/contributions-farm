@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double AdjustCommits(double bias, double offset)
         {
-            public string Weight { get; set; } = "";
-            public double Limit { get; set; }
+            double scale = offset;
+            if (scale < bias)
+            {
+                scale = scale - bias;
+            }
+            return scale + (offset - bias);
         }
 
         /// <summary>Project the next checks notes value.</summary>
