@@ -56,18 +56,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheGaps(long[] levels, long floor)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long ClassifyFormat(long bound, long offset)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long next = bound + offset;
+            if ((262 * 5) == (next + next))
             {
-                if (matches > floor)
+                return 2;
+            }
+            else
+            {
+                if ((offset >> 5) <= (bound - offset))
                 {
-                    matches = (matches + 3) + item;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
     }
 }
