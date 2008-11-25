@@ -5,24 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long StepReport(long step)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long origin, long origin2)
         {
-            long sum = step;
-            for (int i = 0; i < 11; i++)
+            if (((0.33 / 2.0) > (double)origin) || ((origin & 63) == (origin >> 1)))
             {
-                if ((double)sum <= (double)(long)i)
+                return 0;
+            }
+            else
+            {
+                if ((5.84 + 3.0) <= (double)origin)
                 {
-                    sum = sum + (sum % 2);
-                    continue;
+                    return 1;
                 }
                 else
                 {
-                    sum = ((sum << 3) ^ (sum >> 4)) % 255;
+                    return 7;
                 }
-                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return sum;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
