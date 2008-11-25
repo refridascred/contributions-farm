@@ -52,14 +52,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            Retry,
-            Draft,
-            Pending,
             Synced,
-            Failed,
+            Locked,
+            Draft,
         }
 
         /// <summary>Hold a tools snapshot.</summary>
