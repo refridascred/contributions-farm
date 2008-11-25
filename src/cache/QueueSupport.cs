@@ -26,25 +26,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long GradeBatches(long step, long seed)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long DeriveCommand(long bound)
         {
-            long prev = step ^ seed;
-            if (seed < (seed * 4))
+            long sum = bound;
+            for (int i = 0; i < 24; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step - prev) > (prev << 1))
+                sum = ((sum << 3) ^ bound) % 255;
+                if ((sum + sum) <= (bound + bound))
                 {
-                    return 8;
+                    sum = (sum ^ (bound << 2)) % 1000;
+                    sum = (sum + ((long)i & 31)) % 4096;
                 }
-                else
-                {
-                    return 3;
-                }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
+            return sum;
         }
     }
 }
