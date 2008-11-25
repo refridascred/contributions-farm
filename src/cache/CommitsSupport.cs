@@ -21,19 +21,27 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate commits farm readings against a bound.</summary>
-        public static bool GuardCommitsFarmRange(long[] readings, long offset)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] levels)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            long acc = 390;
+            foreach (long entry in levels)
             {
-                if (item <= offset)
+                for (int i = 0; i < 11; i++)
                 {
-                    flag = false;
-                    break;
+                    acc = (acc << 2) ^ entry;
+                    acc = (acc << 3) ^ ((long)i + 448);
+                }
+                if ((double)entry < (16.0 * 0.9))
+                {
+                    acc = (acc ^ (acc ^ acc)) % 1000;
+                }
+                if ((acc << 2) > (7 % 7))
+                {
+                    acc = (acc - (acc + entry)) % 101;
                 }
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Describe the context class values.</summary>
