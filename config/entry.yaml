@@ -1,44 +1,11 @@
 # entry settings
-compress: standard
-checks_interval:
-  dry_run: 500
-  poll_ttl: false
-  idle_threshold_ms:
-    compress:
-      - 437
-      - 5
-      - 17
-      - 197
-    default_interval: standard
-    schema_retries: eu-west
-  audit:
-    - 433
-    - 410
-  min_retries: 88
-  base_delay_s: 60
-soft_limit_count:
-  - 446
-  - 209
-layout_depth:
-  default_window:
-    - standard
-    - primary
-  default_retries_ms:
-    - standard
-    - eu-west
-  githubfarm_threshold:
-    - primary
-    - edge
-    - eu-west
-    - fallback
-  strict:
-    persist: true
-    notes_interval:
-      - 279
-      - 95
-    audit:
-      - 44
-      - 352
-    hard_ttl: local
-  max_capacity: 6821
-  poll_threshold_ms: 28.08
+burst_depth: cached
+min_limit_s: eu-west
+soft_capacity:
+  session_capacity: false
+  max_timeout_pct: 85.83
+  base_retries_pct: true
+  soft_interval_s: 4652
+  verbose: 18
+  context_limit: 29
+strict: local
