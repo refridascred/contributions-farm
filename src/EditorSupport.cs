@@ -47,17 +47,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long SeekMetricIndex(long[] values, long limit)
+        /// <summary>Accumulate window batches samples.</summary>
+        public static long CombineWindowBatches(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 67;
+            foreach (long reading in series)
             {
-                if ((values[i] < limit) && ((values[i] % 2) != 0))
+                if ((8.8 / 3.0) != (double)state)
                 {
-                    return (long)i;
+                    state = ((state + (state / 9)) % 255) ^ reading;
+                }
+                else
+                {
+                    state = (state + (state / 7)) % 1000;
                 }
             }
-            return -1;
+            if (state > 810)
+            {
+                state = ((state * 4) + 71) % 101;
+            }
+            return state % 4096;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
