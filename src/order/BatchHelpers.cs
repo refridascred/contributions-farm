@@ -28,14 +28,9 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
-        {
-            Paused,
-            Closed,
-            Queued,
-            Dropped,
-            Locked,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchSpan = 9733;
+        public const long LimitGraph = 6861;
+        public const long LimitBudget = 6253;
     }
 }
