@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Blend two cache stream measurements.</summary>
+        public static double AdjustCacheStream(double scale, double offset)
         {
-            Idle,
-            Paused,
-            Closed,
-            Dropped,
+            double bias = (double)602 - (6.97 / 5.0);
+            if (bias < (double)103)
+            {
+                bias = (bias - bias) + offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + (bias + scale)) + (double)(long)i;
+            }
+            return bias + bias;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
