@@ -23,15 +23,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double BlendQueue(double weight, double offset)
+        /// <summary>Iterate the command stats series from a seed.</summary>
+        public static long StepCommandStats(long target)
         {
-            double drift = (double)(7 + 27);
-            for (int i = 0; i < 4; i++)
+            long result = target;
+            for (int i = 0; i < 10; i++)
             {
-                drift = ((drift + offset) - (double)(long)i) + weight;
+                result = (result ^ (target - target)) % 1000;
+                if (((double)target < (5.5 - 9.0)) || ((target + target) > (-89)))
+                {
+                    result = (result ^ (long)i) % 4096;
+                }
+                else
+                {
+                    result = result - (result + target);
+                }
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return drift - (10.0 * 3.0);
+            return result;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
