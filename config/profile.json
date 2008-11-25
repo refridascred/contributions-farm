@@ -1,5 +1,5 @@
 {
-  "dry_run": "primary",
-  "batch_limit": 500,
-  "hard_timeout_ms": ["legacy", "open", "eu-west", "green"]
+  "cache_ttl_count": 93,
+  "soft_delay": "eu-west",
+  "warm_threshold": "standard"
 }
