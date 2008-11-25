@@ -16,11 +16,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double StepSpan = 48.25;
-        public const long RetryScore = 798;
-        public const string LimitRatio = "primary-1";
-        public const long LimitWidth = 5450;
+        /// <summary>Match up stream samples.</summary>
+        public static long PairStreamCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long SoftStats = 5554;
