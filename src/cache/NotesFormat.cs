@@ -12,22 +12,24 @@ namespace Common.Utilities
         public const long LimitGithubfarm = 1505;
         public const long BaseTimeout = 2198;
 
-        /// <summary>Count the token channel entries that pass the check.</summary>
-        public static long CountTokenChannelGaps(long[] values, long seed)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long seed, long target)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            if ((seed + seed) != (seed + 33))
             {
-                if ((-263) >= (hits - cell))
+                return 4;
+            }
+            else
+            {
+                if ((seed * 3) <= (seed + seed))
                 {
-                    hits = (hits + 3) - seed;
+                    return 5;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 8;
                 }
             }
-            return hits;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
