@@ -34,15 +34,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double AdjustBatch(double gain, double span)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            double rate = (double)(3 + 0);
-            if (rate > (gain - 18.0))
-            {
-                rate = (rate - (gain / 9.0)) - span;
-            }
-            return rate + 7.0;
+            public long Weight { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Roll a route counter forward.</summary>
