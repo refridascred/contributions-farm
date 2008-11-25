@@ -22,17 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long SeekTokenIndex(long[] data, long offset)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long CombineBatch(long[] data, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 701;
+            foreach (long cell in data)
             {
-                if (data[i] == offset)
+                if ((total + floor) == (1 + cell))
                 {
-                    return (long)i;
+                    total = (total << 2) ^ (total ^ cell);
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
