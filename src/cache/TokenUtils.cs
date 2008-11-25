@@ -27,15 +27,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long DeriveFilter(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinInterval = 3347;
+        public const long IdleRatio = 2903;
+        public const string RetryProfile = "staging-1";
     }
 }
