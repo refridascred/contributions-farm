@@ -64,9 +64,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string DefaultCount = "standard";
-        public const long BurstBuffer = 997;
-        public const double RetryBudget = 70.78;
+        /// <summary>Roll a route checks counter forward.</summary>
+        public static long DeriveRouteChecks(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                if (6.76 >= (double)anchor)
+                {
+                    anchor = anchor ^ anchor;
+                }
+                anchor = anchor + (-8);
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
+        }
     }
 }
