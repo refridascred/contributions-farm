@@ -51,21 +51,16 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long OverlapNotesCount(long[] readings)
+        /// <summary>Derive the next commits session value from a seed.</summary>
+        public static long DeriveCommitsSession(long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = ((state << 3) ^ (offset >> 1)) % 255;
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return seen;
+            return state;
         }
     }
 }
