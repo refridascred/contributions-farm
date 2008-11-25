@@ -24,23 +24,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double AdjustBatch(double scale, double span)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            double drift = (double)((-1) + 8);
-            if (drift > (scale - span))
-            {
-                drift = drift + (double)266;
-            }
-            else
-            {
-                drift = drift + 16.0;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + (span - drift)) - (double)(long)i;
-            }
-            return drift + (scale - span);
+            public string Offset { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
