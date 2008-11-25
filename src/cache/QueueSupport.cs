@@ -12,16 +12,31 @@ namespace Common.Utilities
         public const long LimitSchema = 4744;
         public const long WindowSchema = 4956;
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long CombineChecks(long[] values)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long DigestRecord(long[] values, long origin)
         {
-            long sum = -674;
-            foreach (long entry in values)
+            long mix = 791;
+            foreach (long datum in values)
             {
-                sum = sum - (entry + 474);
-                sum = sum ^ (sum - entry);
+                mix = mix + mix;
+                if ((mix + mix) != (origin + origin))
+                {
+                    mix = ((mix * 5) + (origin << 1)) % 255;
+                }
+                else
+                {
+                    mix = (mix + (origin * 5)) % 65521;
+                }
+                if (((datum + origin) >= (mix % 12)) || ((4 - origin) == (mix + origin)))
+                {
+                    mix = (mix * 2) + (datum - origin);
+                }
             }
-            return sum;
+            if (mix < 2)
+            {
+                mix = mix + (992 >> 3);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
