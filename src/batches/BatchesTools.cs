@@ -46,32 +46,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long ClassifyProfile(long bound, long offset)
+        /// <summary>Combine cache cluster values into a single score.</summary>
+        public static long TallyCacheCluster(long[] series, long origin)
         {
-            long edge = bound + offset;
-            if ((19.0 + 9.22) < (double)offset)
+            long anchor = 601;
+            foreach (long item in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((3 + edge) <= (8 - 5))
+                if ((double)anchor <= (double)origin)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((718 / 4) > (bound + edge))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    anchor = ((anchor << 2) ^ (item + item)) % 255;
                 }
             }
+            return anchor;
         }
     }
 }
