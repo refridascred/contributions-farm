@@ -40,22 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long CompareQueueCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchFactor = 7545;
+        public const string CacheSpan = "strict-1";
+        public const double BurstChannel = 20.03;
+        public const long DefaultCount = 6474;
+        public const double MaxFactor = 33.17;
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool ValidateRouteLimits(long[] readings, long floor)
