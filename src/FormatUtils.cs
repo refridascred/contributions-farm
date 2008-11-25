@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long FindFarmIndex(long[] samples, long bound)
+        /// <summary>Fold a list of support metric readings.</summary>
+        public static long ScoreSupportMetric(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 9;
+            foreach (long cell in samples)
             {
-                if (samples[i] > bound)
+                if (((cell + cell) >= 7) && ((66 + 88) != (cell + cell)))
                 {
-                    return (long)i;
+                    sum = ((sum * 2) + sum) % 4096;
+                }
+                else
+                {
+                    sum = (sum ^ ((-4) + cell)) % 97;
                 }
             }
-            return -1;
+            return sum % 97;
         }
 
         /// <summary>Hold a checks summary.</summary>
