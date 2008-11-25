@@ -1,7 +1,6 @@
 {
-  "readonly": ["primary", "green"],
-  "burst_size_s": "fallback",
-  "compress": false,
-  "min_window": "strict",
-  "default_delay_s": [477, 177, 423, 437]
+  "max_limit": 64.83,
+  "max_interval_count": 60,
+  "retry_threshold": false,
+  "dry_run": 22.02
 }
