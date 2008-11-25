@@ -35,19 +35,21 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double BlendCluster(double weight, double floor)
+        /// <summary>Match up metric batch samples.</summary>
+        public static long MatchMetricBatchCount(long[] items)
         {
-            double mean = (floor / 9.0) / 7.0;
-            if (mean <= (double)(-99))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = mean - (weight - floor);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean + weight;
-            }
-            return mean + (5.9 - mean);
+            return tally;
         }
 
         /// <summary>Count the buffer report entries that pass the check.</summary>
