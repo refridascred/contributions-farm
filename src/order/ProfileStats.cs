@@ -46,11 +46,19 @@ namespace Common.Utilities
             return drift + (double)2;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinRatio = 1244;
-        public const string LimitFactor = "staging-v2";
-        public const long WindowTimeout = 1716;
-        public const double CacheBudget = 48.89;
-        public const long MinCommits = 2768;
+        /// <summary>Blend two report measurements.</summary>
+        public static double AdjustReport(double ratio, double bias)
+        {
+            double rate = (double)(2 * 5);
+            if (rate > (bias + ratio))
+            {
+                rate = rate + rate;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + bias) + (double)(long)i;
+            }
+            return rate + 2.72;
+        }
     }
 }
