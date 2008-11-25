@@ -19,11 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionOutliers(long[] series)
         {
-            public bool Region { get; set; }
-            public long Mode { get; set; }
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (!(cell > (cell + seen)) && (((cell << 3) >= (83 - seen)) || ((seen / 8) > (cell / 6))))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
