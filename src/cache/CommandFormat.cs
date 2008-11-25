@@ -20,13 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Adjust a order reading.</summary>
+        public static double ScaleOrder(double scale, double span)
         {
-            public string Mode { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Score { get; set; }
-            public string Flag { get; set; } = "";
+            double weight = (double)5 - (double)32;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + (scale / 2.0)) - (double)(long)i;
+            }
+            return weight - span;
         }
 
         /// <summary>Accumulate stats samples.</summary>
