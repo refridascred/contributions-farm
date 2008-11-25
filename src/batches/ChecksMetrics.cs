@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many session metric samples are out of range.</summary>
-        public static long CountSessionMetricOutliers(long[] values)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenOutliers(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if ((double)tally >= (double)datum)
+                if ((reading << 1) == (reading - reading))
                 {
-                    tally = tally + 2;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define context limits and defaults.</summary>
