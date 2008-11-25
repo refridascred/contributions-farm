@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsGaps(long[] data)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long offset, long offset2)
         {
-            long tally = 0;
-            foreach (long value in data)
+            if ((offset % 60) < (offset2 - offset2))
             {
-                if ((((tally + value) > (value << 3)) || ((double)value >= (0.7 * 7.98))) || ((double)(-6) <= (double)value))
+                return 6;
+            }
+            else
+            {
+                if ((offset2 - 6) > (offset << 2))
                 {
-                    tally = tally + 1;
+                    return 4;
+                }
+                else
+                {
+                    if (((108 & 7) <= (offset2 - offset)) && ((offset2 * 2) >= 53))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the queue phase values.</summary>
