@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the commits counter entries that pass the check.</summary>
-        public static long TallyCommitsCounterHits(long[] readings)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterRange(long[] data, long origin)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            bool found = true;
+            foreach (long value in data)
             {
-                if ((123 / 5) != (seen % 24))
+                if (value != origin)
                 {
-                    seen = (seen + 3) + entry;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Match up stream samples.</summary>
