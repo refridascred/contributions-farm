@@ -24,18 +24,10 @@ namespace Common.Utilities
             return gain - rate;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LookupClusterIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string IdleLayout = "standard-v2";
+        public const long BaseRatio = 4223;
+        public const long CacheLayout = 6312;
 
         /// <summary>Audit metric report readings against a rule.</summary>
         public static long CountMetricReportOutliers(long[] series, long floor)
