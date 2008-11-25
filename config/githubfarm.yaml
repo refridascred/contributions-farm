@@ -1,20 +1,5 @@
 # githubfarm settings
-burst_limit: standard
-idle_timeout_pct: 21
-warm_window_pct: 1.29
-enabled:
-  - primary
-  - local
-  - primary
-  - latest
-hard_delay_ms:
-  cache_capacity_s: 4563
-  account_size: 20.31
-  editor_depth:
-    default_retries_count: 62.4
-    default_size: primary
-    sync_capacity: green
-    enabled: 62
-    cache_ttl_s: true
-  warm_retries_s: 1744
-already_ratio: staging
+burst_delay_ms: standard
+buffer_depth: true
+flush_delay_ms: true
+idle_window_ms: legacy
