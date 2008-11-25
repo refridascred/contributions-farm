@@ -12,13 +12,11 @@ namespace Common.Utilities
         public const long IdleCommand = 4834;
         public const long DefaultCommand = 6678;
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
-        {
-            Failed,
-            Idle,
-            Stale,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string SoftChecks = "open";
+        public const long DefaultChecks = 9379;
+        public const long RetrySpan = 6520;
+        public const long WindowScore = 1913;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long CacheChecks = 7873;
