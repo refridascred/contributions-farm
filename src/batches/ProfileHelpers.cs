@@ -58,21 +58,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] series, long floor)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TotalSchema(long[] series, long step)
         {
-            long score = 50;
-            foreach (long cell in series)
+            long mix = 413;
+            foreach (long reading in series)
             {
-                score = (score << 2) ^ (567 - floor);
-                score = ((score * 3) + floor) % 4096;
-                score = (score << 2) ^ (362 + cell);
+                if (((2.32 * 2.0) <= (double)reading) && ((step * 2) == (reading - reading)))
+                {
+                    mix = (mix + (step / 2)) % 65521;
+                }
             }
-            if (score < 658)
-            {
-                score = (score << 3) ^ (floor << 1);
-            }
-            return score;
+            return mix % 97;
         }
     }
 }
