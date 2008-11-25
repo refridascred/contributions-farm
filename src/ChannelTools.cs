@@ -35,11 +35,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Accumulate already account samples.</summary>
+        public static long CombineAlreadyAccount(long[] levels)
         {
-            public double Label { get; set; }
-            public long Owner { get; set; }
+            long result = -83;
+            foreach (long entry in levels)
+            {
+                result = result - (long)levels.Length;
+                for (int i = 0; i < 6; i++)
+                {
+                    result = ((result + 8) % 4096) - (long)i;
+                }
+                if ((double)entry < (5.54 - 1.6))
+                {
+                    result = (result * 4) + (entry >> 1);
+                }
+            }
+            return result;
         }
     }
 }
