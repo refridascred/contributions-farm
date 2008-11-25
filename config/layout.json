@@ -1,13 +1,14 @@
 {
-  "batch_timeout_count": "staging",
-  "enabled": {
-    "burst_threshold_pct": 6999,
-    "warm_window_pct": false,
-    "compress": 85.52,
-    "dry_run": [458, 284, 401, 247],
-    "metric_depth": [351, 127]
+  "flush_threshold_s": 1024,
+  "compress": {
+    "audit": 98.23,
+    "batch_window": 60,
+    "idle_retries_s": 70
   },
-  "context_limit": "staging",
-  "base_capacity": "green",
-  "max_interval_ms": false
+  "retry_interval": {
+    "idle_delay_pct": 9718,
+    "default_ttl": 75,
+    "compress": true,
+    "batch_delay_s": 3731
+  }
 }
