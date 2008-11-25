@@ -49,18 +49,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit session support readings against a rule.</summary>
-        public static long AuditSessionSupportHits(long[] series)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long value in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((51 - count) == ((-89) - count))
+                if ((readings[i] >= floor) && ((readings[i] % 2) != 0))
                 {
-                    count = (count + 1) ^ value;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a layout summary.</summary>
