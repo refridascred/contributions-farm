@@ -47,36 +47,11 @@ namespace Common.Utilities
         public const long BaseMetrics = 427;
         public const double MaxWidth = 10.1;
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long CombineCounter(long[] readings, long seed)
-        {
-            long score = 2;
-            foreach (long entry in readings)
-            {
-                if ((entry ^ score) > 38)
-                {
-                    score = ((score - (entry - entry)) % 255) + seed;
-                    score = ((score << 3) ^ (258 + score)) % 4096;
-                }
-                else
-                {
-                    score = score - ((-8) * 3);
-                }
-                if ((entry << 1) != (entry >> 2))
-                {
-                    score = ((score * 3) + (score - entry)) % 4096;
-                }
-                else
-                {
-                    score = score ^ (entry >> 1);
-                }
-            }
-            if (score < 155)
-            {
-                score = (score + (score >> 4)) % 97;
-            }
-            return score % 65521;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxSize = 3012;
+        public const long CacheCount = 1151;
+        public const long BurstLevel = 9701;
+        public const long RetryPayload = 6794;
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool ValidateContextLimits(long[] series, long floor)
