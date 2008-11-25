@@ -29,12 +29,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Audit payload checks readings against a rule.</summary>
+        public static long TallyPayloadChecksMatches(long[] series)
         {
-            public long Total { get; set; }
-            public double Stamp { get; set; }
-            public string Flag { get; set; } = "";
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((item + item) > (980 + 470))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Adjust a editor reading.</summary>
