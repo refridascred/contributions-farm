@@ -1,7 +1,7 @@
 {
-  "sync_threshold_s": 35.01,
-  "stats_interval": [459, 99],
-  "min_interval": 1024,
-  "retry_limit_s": "legacy",
-  "audit": 55.31
+  "compress": "blue",
+  "verbose": 29,
+  "burst_size": 70.96,
+  "hard_depth_pct": "blue",
+  "githubfarm_interval": 10
 }
