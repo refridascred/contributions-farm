@@ -19,22 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long FoldFilter(long[] items, long step)
+        /// <summary>Match up notes samples.</summary>
+        public static long MatchNotesCount(long[] levels)
         {
-            long sum = 466;
-            foreach (long item in items)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((982 <= (step * 4)) && ((sum & 1) >= (step % 7)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = (sum ^ (step >> 3)) % 1000;
-                }
-                else
-                {
-                    sum = (sum * 2) + (item << 1);
+                    if ((levels[i] - levels[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
