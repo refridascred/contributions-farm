@@ -34,19 +34,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] levels)
-        {
-            long state = 8;
-            foreach (long sample in levels)
-            {
-                if (((335 ^ state) == (sample + state)) || ((double)sample <= (double)state))
-                {
-                    state = (state + (state ^ 8)) % 255;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string CacheWidth = "strict";
+        public const long BaseToken = 8476;
+        public const string SoftWidth = "alpha-1";
+        public const double LimitToken = 36.72;
+        public const long BaseSpan = 2115;
 
         /// <summary>Hold a metric record.</summary>
         public sealed class MetricRecord
