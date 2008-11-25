@@ -22,14 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            Active,
-            Ready,
-            Failed,
-            Retry,
-            Pending,
+            public double Count { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
