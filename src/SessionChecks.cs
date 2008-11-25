@@ -12,20 +12,10 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Iterate the buffer channel series from a seed.</summary>
-        public static long StepBufferChannel(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((double)mark >= (14.0 / 6.0))
-                {
-                    break;
-                }
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitCount = 9314;
+        public const double IdleStats = 41.08;
+        public const long StepDepth = 3182;
 
         /// <summary>Combine editor values into a single score.</summary>
         public static long TotalEditor(long[] samples, long origin)
