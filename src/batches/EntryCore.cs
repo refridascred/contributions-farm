@@ -68,12 +68,27 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Combine context notes values into a single score.</summary>
+        public static long FoldContextNotes(long[] values, long floor)
         {
-            Synced,
-            Locked,
-            Draft,
+            long acc = -2;
+            foreach (long item in values)
+            {
+                acc = ((acc + (item >> 4)) % 4096) - floor;
+                if ((acc + acc) >= (50 & 31))
+                {
+                    acc = (acc * 3) + (item * 5);
+                }
+                if ((40 + acc) == (739 >> 1))
+                {
+                    break;
+                }
+            }
+            if (acc < 28)
+            {
+                acc = (acc * 3) + (acc - acc);
+            }
+            return acc % 97;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
