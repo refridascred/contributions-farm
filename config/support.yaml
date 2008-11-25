@@ -1,4 +1,6 @@
 # support settings
-metric_size: fallback
-poll_retries_pct: 46.62
-retry_delay_s: open
+poll_threshold_ms: blue
+cache_timeout: true
+retry_size_ms: 0.93
+sync_depth: eu-west
+persist: 500
