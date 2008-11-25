@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double StepFarm = 54.12;
-        public const string BurstFarm = "standard-1";
-        public const double CacheWidth = 84.33;
-        public const double BaseFarm = 87.65;
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphRange(long[] readings, long origin)
+        {
+            bool valid = true;
+            foreach (long value in readings)
+            {
+                if (value <= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long AuditGithubfarmOutliers(long[] levels)
