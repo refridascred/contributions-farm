@@ -40,14 +40,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Combine command session values into a single score.</summary>
+        public static long DigestCommandSession(long[] readings)
         {
-            Closed,
-            Done,
-            Queued,
-            New,
-            Retry,
+            long sum = -684;
+            foreach (long sample in readings)
+            {
+                sum = (sum + (sum + sample)) % 4096;
+            }
+            if (sum < 3)
+            {
+                sum = (sum << 2) ^ (224 >> 5);
+            }
+            return sum % 1000;
         }
     }
 }
