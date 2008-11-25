@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string HardWidth = "cached-v2";
-        public const long BatchWidth = 4054;
-        public const string LimitInterval = "alpha-1";
-        public const long CacheInterval = 685;
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
+        {
+            public bool Level { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Project the next command value.</summary>
         public static double SmoothCommand(double weight, double floor)
