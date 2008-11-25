@@ -23,18 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryGaps(long[] samples, long offset)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (hits >= (reading ^ reading))
-                {
-                    hits = (hits + 3) - offset;
-                }
-            }
-            return hits;
+            public long Total { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Check that every payload stream entry stays within the limit.</summary>
