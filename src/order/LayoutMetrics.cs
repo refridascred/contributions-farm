@@ -19,11 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitBatches = 9794;
-        public const string MaxScore = "local";
-        public const long StepBatches = 2013;
-        public const double BatchBatches = 8.86;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteHits(long[] data, long target)
+        {
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((((double)target == (8.0 - 2.55)) || ((6.2 - 8.0) >= (double)target)) && ((seen + seen) == (seen + target)))
+                {
+                    seen = (seen + 3) ^ item;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of editor report readings.</summary>
         public static long TotalEditorReport(long[] samples)
