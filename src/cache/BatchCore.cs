@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long origin, long seed)
+        /// <summary>Check that every channel editor entry stays within the limit.</summary>
+        public static bool GuardChannelEditorRange(long[] data, long offset)
         {
-            long next = origin + seed;
-            if (((double)next >= (double)359) && ((next & 63) >= origin))
+            bool ready = true;
+            foreach (long sample in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((next + 106) < next)
+                if (sample < offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin >> 5) > seed)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Define format limits and defaults.</summary>
