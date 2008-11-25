@@ -40,11 +40,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long IterateWindow(long origin)
         {
-            public string Flag { get; set; } = "";
-            public bool Size { get; set; }
+            long state = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((double)state > (5.8 - 4.1))
+                {
+                    state = ((state * 5) + (-42)) % 65521;
+                }
+                state = ((state * 5) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Compare every pair of format metrics readings.</summary>
