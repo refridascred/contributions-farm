@@ -1,16 +1,33 @@
 # support settings
-batch_capacity: eu-west
-warm_threshold:
-  - strict
-  - strict
-  - green
-  - blue
-enabled:
-  cache_threshold: fallback
-  flush_retries_ms:
-    cluster_limit: true
-    sync_delay_pct: true
-    support_timeout: staging
-    soft_size_count: green
-    max_limit: 4164
-  idle_capacity_pct: 1024
+farm_depth:
+  - 240
+  - 3
+  - 467
+token_window: latest
+tools_capacity: true
+flush_ttl_count: false
+default_interval_s:
+  min_size:
+    command_ratio: eu-west
+    checks_capacity: standard
+    buffer_ratio: 1482
+  min_interval:
+    stats_size: true
+    cache_capacity_ms: true
+    max_window: false
+    token_ttl: 29.92
+    default_delay_pct:
+      - 63
+      - 402
+      - 441
+  retry_ratio_ms: staging
+  farm_ttl:
+    default_threshold: green
+    min_depth_ms: 26.0
+    min_timeout_pct: 8
+    batch_ratio: 60
+    session_delay:
+      - cached
+      - stable
+  persist: 2878
+soft_timeout_ms: true
