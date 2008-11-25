@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardSpan = 2009;
-        public const long IdleFormat = 1606;
-        public const long StepDepth = 9848;
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                result = result - ((long)i - origin);
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Fold a list of checks readings.</summary>
         public static long ScoreChecks(long[] series)
