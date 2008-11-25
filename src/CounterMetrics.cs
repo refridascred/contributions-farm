@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            public double Count { get; set; }
-            public long Rank { get; set; }
-            public double Total { get; set; }
+            New,
+            Failed,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Adjust a metrics reading.</summary>
