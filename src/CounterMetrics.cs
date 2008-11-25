@@ -32,12 +32,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
-        {
-            public long Offset { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitFilter = 1286;
+        public const double IdleFilter = 61.18;
+        public const double DefaultFilter = 43.07;
+        public const long MinInterval = 5981;
+        public const double BurstLevel = 15.05;
 
         /// <summary>Hold a record snapshot.</summary>
         public sealed class RecordSnapshot
