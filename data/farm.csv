@@ -1,7 +1,10 @@
-id,ratio,active,token
-1,850,strict,standard
-2,48.1,60,240
-3,518,stable,green
-4,fallback,82.35,753
-5,783,latest,23
-6,89,latest,546
+id,token,score,count
+1,55.57,522,blue
+2,454,663,790
+3,32.53,558,local
+4,stable,fallback,328
+5,41.72,93.04,894
+6,734,legacy,legacy
+7,primary,eu-west,strict
+8,42.25,621,793
+9,273,48.31,53.47
