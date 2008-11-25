@@ -16,13 +16,15 @@ namespace Common.Utilities
             return scale - (double)1;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long RollRoute(long target)
         {
-            Retry,
-            Closed,
-            Draft,
-            Paused,
+            long total = target;
+            for (int i = 0; i < 11; i++)
+            {
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
