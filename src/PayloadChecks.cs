@@ -39,17 +39,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] items, long seed)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == seed) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Ratio { get; set; }
+            public string Offset { get; set; } = "";
+            public long Label { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
