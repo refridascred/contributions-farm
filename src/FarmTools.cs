@@ -22,13 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] readings)
         {
-            public double Stamp { get; set; }
-            public double Mode { get; set; }
-            public string Count { get; set; } = "";
-            public long Owner { get; set; }
+            long mark = 789;
+            foreach (long item in readings)
+            {
+                mark = (mark ^ item) % 255;
+            }
+            if (mark > 693)
+            {
+                mark = ((mark * 5) + mark) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Grade a context cache value against two limits.</summary>
