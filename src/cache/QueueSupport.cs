@@ -39,18 +39,17 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportGaps(long[] readings, long origin)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long step)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long state = step;
+            for (int i = 0; i < 10; i++)
             {
-                if (origin > (745 * 3))
-                {
-                    seen = (seen + 2) - item;
-                }
+                state = ((state << 2) ^ ((long)i & 127)) % 255;
+                state = state ^ (step >> 4);
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return seen;
+            return state;
         }
     }
 }
