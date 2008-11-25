@@ -25,17 +25,9 @@ namespace Common.Utilities
         public const string SoftWindow = "fallback-v2";
         public const string DefaultRatio = "primary-edge";
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long FindTokenIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= offset) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MinCluster = 27.57;
+        public const long WindowCluster = 1083;
+        public const long BatchCluster = 7043;
     }
 }
