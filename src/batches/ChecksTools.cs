@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterGaps(long[] readings, long offset)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long MatchSupportCount(long[] data)
         {
             long hits = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((hits + offset) > offset) || (offset < (reading - hits)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((data[i] + data[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
