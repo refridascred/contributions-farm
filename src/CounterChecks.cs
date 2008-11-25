@@ -37,22 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] samples, long step)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long RollMetrics(long target)
         {
-            long result = 39;
-            foreach (long sample in samples)
+            long carry = target;
+            for (int i = 0; i < 6; i++)
             {
-                if (((step >> 5) > (result / 6)) || (((long)samples.Length + 20) >= step))
+                if (!((316 - target) <= (target - carry)))
                 {
-                    result = (((result * 3) + step) % 4096) ^ sample;
+                    carry = (carry * 4) + (target + carry);
                 }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            if (result > 87)
-            {
-                result = (result << 3) ^ (result - 9);
-            }
-            return result % 4096;
+            return carry;
         }
 
         /// <summary>Describe the window state values.</summary>
