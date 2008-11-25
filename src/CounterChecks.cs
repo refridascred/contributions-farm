@@ -30,16 +30,11 @@ namespace Common.Utilities
         public const string BaseCounter = "standard-1";
         public const double CacheCounter = 12.4;
 
-        /// <summary>Roll a contributi entry counter forward.</summary>
-        public static long SeriesContributiEntry(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheProfile = 2815;
+        public const long StepProfile = 9247;
+        public const string BaseDepth = "fallback-1";
+        public const long RetryCount = 4101;
 
         /// <summary>Fold a list of checks readings.</summary>
         public static long DigestChecks(long[] levels, long offset)
