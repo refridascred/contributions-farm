@@ -40,12 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchFactor = 7545;
-        public const string CacheSpan = "strict-1";
-        public const double BurstChannel = 20.03;
-        public const long DefaultCount = 6474;
-        public const double MaxFactor = 33.17;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BaseSpan = 71.77;
+        public const double LimitInterval = 89.48;
+        public const long BurstWidth = 2033;
+        public const string MaxStream = "staging-v2";
+        public const long StepStream = 4927;
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool ValidateRouteLimits(long[] readings, long floor)
