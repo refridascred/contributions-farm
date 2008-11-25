@@ -20,24 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long SortBatches(long origin, long floor)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            if ((floor / 3) > origin)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((204 << 2) <= (origin % 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Count { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Hold a route stats.</summary>
