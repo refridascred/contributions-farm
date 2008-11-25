@@ -1,20 +1,6 @@
 {
-  "soft_ttl_s": true,
-  "batch_timeout": true,
-  "readonly": "open",
-  "persist": 85.87,
-  "sync_threshold_ms": 56.71,
-  "poll_ratio_s": {
-    "buffer_capacity": {
-      "base_depth": 1024,
-      "commits_depth": true,
-      "githubfarm_retries": ["latest", "primary", "fallback"],
-      "flush_delay": "cached",
-      "base_window_s": ["open", "legacy", "green", "stable"]
-    },
-    "warm_ratio_s": "legacy",
-    "persist": [390, 11, 342, 110],
-    "route_capacity": ["latest", "open", "stable", "legacy"],
-    "counter_threshold": 500
-  }
+  "burst_ratio_pct": "latest",
+  "dry_run": 36.22,
+  "default_size": [248, 346, 494],
+  "editor_timeout": [79, 106, 120, 328]
 }
