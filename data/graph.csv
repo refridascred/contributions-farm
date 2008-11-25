@@ -1,7 +1,8 @@
-id,owner,label
-1,190,308
-2,legacy,59.74
-3,49.66,fallback
-4,727,39.26
-5,61.11,142
-6,local,96
+id,owner,count,state,region
+1,786,51.6,45.92,strict
+2,fallback,legacy,749,735
+3,46.24,744,eu-west,72.16
+4,90.2,fallback,36,177
+5,eu-west,821,2.18,285
+6,blue,staging,latest,48.1
+7,standard,65.65,57.85,fallback
