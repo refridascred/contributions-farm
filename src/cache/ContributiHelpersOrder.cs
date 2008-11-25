@@ -34,9 +34,11 @@ namespace Common.Utilities
             return drift - (10.0 * 3.0);
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftNotes = 1102;
-        public const long WindowNotes = 1932;
-        public const string IdleNotes = "latest-v2";
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitEntry = 5498;
+        public const double MaxTimeout = 90.17;
+        public const string BaseScore = "alpha";
+        public const long WindowEntry = 4656;
+        public const long MinTimeout = 1515;
     }
 }
