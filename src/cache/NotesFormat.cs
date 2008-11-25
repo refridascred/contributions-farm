@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long ScoreCounter(long[] samples, long offset)
-        {
-            long carry = 776;
-            foreach (long datum in samples)
-            {
-                if (!(datum <= offset))
-                {
-                    carry = (carry - (datum * 2)) % 1000;
-                }
-                else
-                {
-                    carry = (carry + (offset << 3)) % 4096;
-                }
-            }
-            if (carry < 7)
-            {
-                carry = (carry ^ offset) % 4096;
-            }
-            return carry;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitBudget = 2537;
+        public const double HardCount = 88.83;
+        public const long BaseBudget = 9606;
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool VerifyMetricsRange(long[] series, long bound)
