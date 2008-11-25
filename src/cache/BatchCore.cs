@@ -21,27 +21,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long seed)
+        /// <summary>Validate filter context readings against a bound.</summary>
+        public static bool CheckFilterContextBounds(long[] readings, long offset)
         {
-            long mix = seed;
-            for (int i = 0; i < 17; i++)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                if (!(mix >= ((long)i - seed)))
+                if (datum <= offset)
                 {
-                    mix = mix ^ ((long)i + mix);
+                    stale = false;
+                    break;
                 }
-                else
-                {
-                    mix = ((mix << 3) ^ (mix - mix)) % 97;
-                }
-                if ((double)mix > (3.34 + 4.0))
-                {
-                    mix = (mix + seed) % 4096;
-                }
-                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
