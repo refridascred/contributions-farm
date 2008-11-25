@@ -30,11 +30,15 @@ namespace Common.Utilities
         public const string BaseCounter = "standard-1";
         public const double CacheCounter = 12.4;
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Roll a contributi entry counter forward.</summary>
+        public static long SeriesContributiEntry(long origin)
         {
-            public string Stamp { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long carry = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
