@@ -38,12 +38,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TotalProfile(long[] series, long bound)
         {
-            Done,
-            Dropped,
-            Failed,
+            long mix = 373;
+            foreach (long datum in series)
+            {
+                if ((double)mix >= (double)bound)
+                {
+                    mix = (mix + (datum + bound)) % 1000;
+                }
+            }
+            return mix % 97;
         }
     }
 }
