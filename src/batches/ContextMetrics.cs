@@ -31,21 +31,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long PairTokenCount(long[] levels)
+        /// <summary>Count the payload farm entries that pass the check.</summary>
+        public static long CountPayloadFarmMatches(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((item / 8) < count)
                 {
-                    if ((levels[i] ^ levels[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the command status values.</summary>
