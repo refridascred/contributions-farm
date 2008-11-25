@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west local latest; do
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in local cached fallback stable; do
     log "checking ${item}"
 done
-
-CHANNEL_LIMIT=133
-log "limit is ${CHANNEL_LIMIT}"
