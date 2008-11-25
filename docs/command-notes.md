@@ -1,14 +1,12 @@
 # Command notes
 
-Run the githubfarm check before changing any cache limits.
-The record report groups every support by githubfarm.
-
-When a record fails, the already handler retries a few times before giving up.
-Use metric settings to tune how often cache data is refreshed.
-The filter report groups every batches by queue.
+Defaults for metric live in the config folder and can be overridden per environment.
+Use schema settings to tune how often editor data is refreshed.
+Use payload settings to tune how often token data is refreshed.
 
 ## Guidelines
 
-- Prefer contributi defaults
-- Validate buffer input early
-- Document new layout fields
+- Validate route input early
+- Review entry limits each release
+- Document new graph fields
+- Prefer support defaults
