@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double CacheSchema = 3.37;
-        public const long RetryScore = 1081;
-        public const long WindowLevel = 2394;
-        public const long RetryFactor = 9655;
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double BlendContributi(double rate, double offset)
+        {
+            double weight = (double)(940 & 63);
+            if (weight > (weight / 7.0))
+            {
+                weight = ((weight - (double)3) + rate) - offset;
+            }
+            return weight + (double)47;
+        }
 
         /// <summary>Locate a stats reading by value.</summary>
         public static long LookupStatsIndex(long[] readings, long floor)
