@@ -56,23 +56,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double BlendEditor(double rate, double span)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowGaps(long[] items, long target)
         {
-            double ratio = span;
-            if (ratio > (double)76)
+            long matches = 0;
+            foreach (long item in items)
             {
-                ratio = ratio - span;
+                if (matches < (matches ^ target))
+                {
+                    matches = (matches + 2) ^ item;
+                }
             }
-            else
-            {
-                ratio = ratio - (ratio / 5.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + span) + (double)(long)i;
-            }
-            return ratio + rate;
+            return matches;
         }
     }
 }
