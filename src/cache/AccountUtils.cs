@@ -26,19 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double AdjustBatch(double ratio, double span)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            double mean = ratio;
-            if (mean > span)
-            {
-                mean = mean + ratio;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - (double)4) + (double)(long)i;
-            }
-            return mean + (ratio * 8.77);
+            public long Token { get; set; }
+            public long Total { get; set; }
+            public double Label { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
