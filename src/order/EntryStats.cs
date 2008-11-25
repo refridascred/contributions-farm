@@ -65,17 +65,9 @@ namespace Common.Utilities
             return ratio - (floor - 4.0);
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long SeekBatchesIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultAccount = 6606;
+        public const long BaseAccount = 9858;
+        public const string MinSpan = "open-edge";
     }
 }
