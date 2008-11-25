@@ -22,22 +22,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesHits(long[] items, long origin)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if (origin > (61 - value))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Token { get; set; }
+            public long Offset { get; set; }
+            public long Size { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Adjust a schema reading.</summary>
