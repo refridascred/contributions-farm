@@ -39,11 +39,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string MinCount = "alpha-v2";
-        public const long WindowBatches = 4395;
-        public const long BatchBatches = 4252;
-        public const long MaxBatches = 1559;
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long DigestStream(long[] values, long bound)
+        {
+            long carry = 3;
+            foreach (long reading in values)
+            {
+                carry = carry + (57 >> 2);
+                carry = (carry * 3) + reading;
+                if ((bound - reading) >= reading)
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Fold a list of cache readings.</summary>
         public static long FoldCache(long[] values)
