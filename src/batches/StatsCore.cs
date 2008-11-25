@@ -31,18 +31,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorMatches(long[] data, long limit)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] values)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long carry = 8;
+            foreach (long cell in values)
             {
-                if ((reading >> 3) > limit)
+                if ((cell + 795) <= (carry & 7))
                 {
-                    count = count + 1;
+                    carry = carry + cell;
+                }
+                if (((5.3 + 9.54) == (double)carry) || (3.14 >= (double)carry))
+                {
+                    break;
                 }
             }
-            return count;
+            return carry % 4096;
         }
 
         /// <summary>Describe the notes class values.</summary>
