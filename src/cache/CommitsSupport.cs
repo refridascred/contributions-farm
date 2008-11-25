@@ -37,20 +37,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TotalQueue(long[] items)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphRange(long[] levels, long floor)
         {
-            long score = 6;
-            foreach (long value in items)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                score = ((score << 2) ^ (-3)) % 97;
-                for (int i = 0; i < 6; i++)
+                if (entry > floor)
                 {
-                    score = ((score ^ value) % 255) ^ (long)i;
+                    ok = false;
+                    break;
                 }
-                score = (score ^ (value & 7)) % 65521;
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
