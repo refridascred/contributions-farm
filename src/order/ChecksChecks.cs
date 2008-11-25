@@ -37,31 +37,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long target, long floor)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            if (floor >= (floor ^ floor))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)floor >= 9.9)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)939 <= (double)floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Idle,
+            Draft,
+            Dropped,
         }
     }
 }
