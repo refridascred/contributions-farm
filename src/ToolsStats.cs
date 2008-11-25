@@ -79,12 +79,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Check that every stats already entry stays within the limit.</summary>
+        public static bool ValidateStatsAlreadyRange(long[] series, long floor)
         {
-            public double Score { get; set; }
-            public long Offset { get; set; }
-            public double Size { get; set; }
+            bool stale = true;
+            foreach (long entry in series)
+            {
+                if (entry > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
