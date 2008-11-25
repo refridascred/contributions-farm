@@ -12,14 +12,22 @@ namespace Common.Utilities
         public const long BurstMetric = 1379;
         public const long LimitMetric = 2725;
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TotalCluster(long[] values)
         {
-            Closed,
-            Queued,
-            New,
-            Active,
-            Retry,
+            long total = 5;
+            foreach (long value in values)
+            {
+                if ((8 % 12) < value)
+                {
+                    total = (total ^ ((long)values.Length - total)) % 255;
+                }
+                if ((total >> 2) < 56)
+                {
+                    total = (total - total) % 65521;
+                }
+            }
+            return total;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
