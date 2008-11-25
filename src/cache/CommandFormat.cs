@@ -45,13 +45,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long DeriveRoute(long bound)
         {
-            public double Weight { get; set; }
-            public long Label { get; set; }
-            public long Limit { get; set; }
-            public long Total { get; set; }
+            long acc = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
         }
     }
 }
