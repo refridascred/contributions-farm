@@ -78,19 +78,22 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterRange(long[] values, long offset)
+        /// <summary>Count the graph order entries that pass the check.</summary>
+        public static long MeasureGraphOrderMatches(long[] items, long step)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if (entry <= offset)
+                if ((step + tally) > (tally + step))
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 1) ^ cell;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ready;
+            return tally;
         }
     }
 }
