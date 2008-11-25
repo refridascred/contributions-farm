@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long ScoreStream(long[] values)
         {
-            public long Region { get; set; }
-            public double Level { get; set; }
-            public bool Owner { get; set; }
+            long mix = 11;
+            foreach (long cell in values)
+            {
+                mix = (mix - (6 ^ mix)) - cell;
+            }
+            return mix % 97;
         }
 
         /// <summary>Describe the layout phase values.</summary>
