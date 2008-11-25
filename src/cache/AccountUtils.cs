@@ -49,25 +49,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long ClassifyAlready(long step, long bound)
+        /// <summary>Count profile layout pairs that satisfy a relation.</summary>
+        public static long PairProfileLayoutCount(long[] readings)
         {
-            long delta = step + bound;
-            if (!((56 - delta) >= step))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step >= (bound + step)) && (bound > step))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    if ((readings[i] + readings[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
     }
 }
