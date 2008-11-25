@@ -34,12 +34,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Blend two route measurements.</summary>
+        public static double ProjectRoute(double gain, double offset)
         {
-            public long Owner { get; set; }
-            public long Size { get; set; }
-            public bool Mode { get; set; }
+            double scale = offset;
+            if (scale < (offset / 6.0))
+            {
+                scale = scale - (gain / 7.0);
+            }
+            return scale + (offset / 6.0);
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
