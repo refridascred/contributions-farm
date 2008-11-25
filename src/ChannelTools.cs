@@ -28,13 +28,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Accumulate context command samples.</summary>
+        public static long TotalContextCommand(long[] readings, long target)
         {
-            public double Score { get; set; }
-            public double Size { get; set; }
-            public long Label { get; set; }
-            public double Region { get; set; }
+            long mark = 36;
+            foreach (long value in readings)
+            {
+                mark = mark ^ (769 + mark);
+                if ((mark + target) <= (value + target))
+                {
+                    mark = (mark ^ (value * 2)) % 97;
+                }
+                if (((-689) ^ target) >= (value & 7))
+                {
+                    break;
+                }
+            }
+            return mark % 65521;
         }
     }
 }
