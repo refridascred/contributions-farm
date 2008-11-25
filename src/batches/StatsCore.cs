@@ -48,11 +48,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseAlready = 5396;
-        public const string WindowCount = "alpha";
-        public const string IdleAlready = "strict-v2";
-        public const string RetryLevel = "standard";
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MinChannel = "open-1";
+        public const string IdleFactor = "cached-v2";
+        public const long BaseChannel = 4591;
+        public const long WindowTimeout = 9145;
 
         /// <summary>Digest a series of record entries.</summary>
         public static long CombineRecord(long[] series)
