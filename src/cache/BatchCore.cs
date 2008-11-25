@@ -35,21 +35,17 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long CompareRecordCount(long[] levels)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long FindNotesIndex(long[] samples, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (samples[i] >= seed)
                 {
-                    if ((levels[i] - levels[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
