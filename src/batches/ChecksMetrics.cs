@@ -62,35 +62,35 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Rank route format input into a small class.</summary>
-        public static long BucketRouteFormat(long origin, long origin2)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long SortEntry(long seed, long bound)
         {
-            long edge = origin - origin2;
-            if (!((edge + edge) == (edge << 2)))
+            long lane = seed + bound;
+            if (((bound + lane) <= (17 << 2)) && ((13.0 / 5.0) >= 0.6))
             {
-                return 0;
+                return 1;
             }
             else
             {
-                if ((edge * 5) > edge)
+                if ((lane >= (lane - seed)) && ((seed + seed) <= ((-974) + lane)))
                 {
-                    return 3;
+                    return 4;
                 }
                 else
                 {
-                    if (!((origin + 6) < (edge + 511)))
+                    if (lane > (seed + seed))
                     {
-                        return 1;
+                        return 2;
                     }
                     else
                     {
-                        if ((edge & 15) <= (origin2 % 5))
+                        if ((lane * 4) > (seed << 1))
                         {
-                            return 8;
+                            return 5;
                         }
                         else
                         {
-                            return 4;
+                            return 6;
                         }
                     }
                 }
