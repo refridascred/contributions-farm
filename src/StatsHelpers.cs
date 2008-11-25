@@ -56,19 +56,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] items, long origin)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchOutliers(long[] levels)
         {
-            long mix = 38;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                mix = ((mix << 2) ^ (entry + entry)) % 1000;
+                if ((double)entry >= 7.5)
+                {
+                    seen = seen + 3;
+                }
             }
-            if (mix < 48)
-            {
-                mix = mix - origin;
-            }
-            return mix % 97;
+            return seen;
         }
     }
 }
