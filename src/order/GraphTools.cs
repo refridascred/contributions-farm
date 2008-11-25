@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every graph order entry stays within the limit.</summary>
-        public static bool ValidateGraphOrderBounds(long[] values, long bound)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            bool valid = true;
-            foreach (long sample in values)
-            {
-                if (sample >= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Pending,
+            Synced,
+            Queued,
+            Retry,
+            Paused,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
