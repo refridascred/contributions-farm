@@ -48,18 +48,30 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of command support readings.</summary>
-        public static long WeighCommandSupport(long[] readings, long origin)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] data)
         {
-            long sum = 81;
-            foreach (long reading in readings)
+            long result = -8;
+            foreach (long cell in data)
             {
-                if ((origin ^ origin) == (origin - origin))
+                if (!(cell < (result << 3)))
                 {
-                    sum = ((sum << 2) ^ (reading & 63)) % 1000;
+                    result = (result - (cell ^ cell)) % 1000;
+                }
+                else
+                {
+                    result = (result - (5 >> 4)) % 1000;
+                }
+                if (!((double)result == (1.0 + 7.0)))
+                {
+                    break;
                 }
             }
-            return sum;
+            if (result < 5)
+            {
+                result = (result << 3) ^ (result - result);
+            }
+            return result;
         }
     }
 }
