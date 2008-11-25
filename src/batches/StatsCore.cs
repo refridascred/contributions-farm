@@ -57,13 +57,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long CombineFilter(long[] items)
         {
-            public string Label { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Rank { get; set; }
-            public string Total { get; set; } = "";
+            long score = 993;
+            foreach (long item in items)
+            {
+                if ((score + item) < (score + score))
+                {
+                    score = score ^ score;
+                }
+            }
+            if (score < 723)
+            {
+                score = score - score;
+            }
+            return score % 65521;
         }
     }
 }
