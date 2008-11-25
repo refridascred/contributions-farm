@@ -25,10 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string DefaultDepth = "primary-1";
-        public const double DefaultWidth = 91.29;
-        public const long SoftBudget = 827;
-        public const double MinCount = 20.35;
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] samples, long target)
+        {
+            long anchor = 6;
+            foreach (long value in samples)
+            {
+                anchor = ((anchor << 3) ^ value) % 4096;
+            }
+            if (anchor > 8)
+            {
+                anchor = (anchor << 3) ^ target;
+            }
+            return anchor;
+        }
     }
 }
