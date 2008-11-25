@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiBounds(long[] levels, long seed)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            bool stale = true;
-            foreach (long item in levels)
-            {
-                if (item <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Size { get; set; } = "";
+            public long Limit { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Audit session order readings against a rule.</summary>
