@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Adjust a command editor reading.</summary>
+        public static double BlendCommandEditor(double gain, double floor)
         {
-            public long Label { get; set; }
-            public bool Count { get; set; }
-            public bool Size { get; set; }
-            public long Weight { get; set; }
+            double rate = floor;
+            if (rate <= (gain * 9.73))
+            {
+                rate = rate + (double)16;
+            }
+            else
+            {
+                rate = rate - (1.7 * 4.0);
+            }
+            return rate + (gain - floor);
         }
 
         /// <summary>Hold a payload summary.</summary>
