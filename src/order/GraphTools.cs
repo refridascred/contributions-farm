@@ -67,28 +67,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate filter session samples.</summary>
-        public static long FoldFilterSession(long[] readings)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long score = 108;
-            foreach (long cell in readings)
-            {
-                score = ((score * 3) + (cell + score)) % 255;
-                score = score - cell;
-                if (((score & 15) > 76) && ((score - score) != (score & 3)))
-                {
-                    score = (score - (score + score)) % 1000;
-                }
-                else
-                {
-                    score = (score << 3) ^ (1 * 5);
-                }
-            }
-            if (score < 138)
-            {
-                score = ((score * 5) + (score % 64)) % 4096;
-            }
-            return score;
+            Draft,
+            Queued,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Describe the format phase values.</summary>
