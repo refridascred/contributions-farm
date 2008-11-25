@@ -52,19 +52,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the buffer report entries that pass the check.</summary>
-        public static long TallyBufferReportHits(long[] items)
-        {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if (((reading >> 2) != (989 * 3)) && ((9.0 - 4.19) >= (double)hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double LimitSpan = 91.65;
+        public const long HardDepth = 1033;
+        public const long CacheSchema = 8305;
 
         /// <summary>Locate a stream reading by value.</summary>
         public static long LookupStreamIndex(long[] items, long step)
