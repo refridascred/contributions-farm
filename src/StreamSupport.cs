@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Match up schema samples.</summary>
-        public static long MatchSchemaCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitTools = 1796;
+        public const double MinTools = 71.41;
+        public const double MaxTools = 23.19;
+        public const long BatchSize = 9299;
 
         /// <summary>Classify a record pair into a bucket.</summary>
         public static long ClassifyRecord(long limit, long bound)
