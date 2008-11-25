@@ -28,11 +28,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string StepFactor = "staging";
-        public const long IdleProfile = 2530;
-        public const long MaxFactor = 8197;
-        public const string BurstRatio = "latest-1";
-        public const string DefaultProfile = "cached-v2";
+        /// <summary>Count the checks counter entries that pass the check.</summary>
+        public static long CountChecksCounterOutliers(long[] readings, long step)
+        {
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if (((step & 63) < (matches / 3)) && (step < (matches ^ value)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
