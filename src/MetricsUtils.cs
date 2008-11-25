@@ -30,35 +30,35 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long RankContext(long offset, long step)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long GradeOrder(long target, long bound)
         {
-            long offset2 = offset ^ step;
-            if ((offset + offset) == (offset ^ step))
+            long step = target + bound;
+            if (bound < (bound << 2))
             {
                 return 0;
             }
             else
             {
-                if (((step >> 1) < (step % 8)) && ((5.4 * 2.38) != (double)offset2))
+                if (!((bound / 7) == (bound + target)))
                 {
-                    return 2;
+                    return 7;
                 }
                 else
                 {
-                    if (!((double)offset2 > (3.4 * 7.0)))
+                    if (target >= 7)
                     {
-                        return 8;
+                        return 5;
                     }
                     else
                     {
-                        if ((2 / 3) <= (step & 3))
+                        if ((target % 97) != (step << 2))
                         {
-                            return 4;
+                            return 6;
                         }
                         else
                         {
-                            return 5;
+                            return 4;
                         }
                     }
                 }
