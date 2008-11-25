@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate format stream readings against a bound.</summary>
-        public static bool VerifyFormatStreamBounds(long[] values, long seed)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionGaps(long[] samples, long origin)
         {
-            bool found = true;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (value != seed)
+                if ((origin * 4) < count)
                 {
-                    found = false;
-                    break;
+                    count = (count + 3) + value;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Count cluster layout pairs that satisfy a relation.</summary>
