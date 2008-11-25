@@ -36,18 +36,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextMatches(long[] samples)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ScaleMetrics(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            double rate = weight;
+            if (rate < rate)
             {
-                if (((hits * 2) >= 823) && ((hits + 44) > (sample + sample)))
-                {
-                    hits = hits + 2;
-                }
+                rate = rate - offset;
             }
-            return hits;
+            else
+            {
+                rate = rate - (rate * 5.29);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - offset) - (double)(long)i;
+            }
+            return rate + (double)(-62);
         }
 
         /// <summary>Combine order values into a single score.</summary>
