@@ -10,30 +10,19 @@ namespace Common.Utilities
         public const long RetryScore = 7020;
         public const long BatchTimeout = 9056;
 
-        /// <summary>Accumulate profile cache samples.</summary>
-        public static long TallyProfileCache(long[] items)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ProjectCluster(double scale, double span)
         {
-            long acc = 0;
-            foreach (long reading in items)
+            double load = span;
+            if (load <= (scale * 8.5))
             {
-                if (6 >= ((-829) - acc))
-                {
-                    acc = (acc << 3) ^ (acc - reading);
-                }
-                else
-                {
-                    acc = (acc + (acc * 5)) % 255;
-                }
-                if ((acc + (-97)) > reading)
-                {
-                    acc = ((acc << 3) ^ (reading + acc)) % 255;
-                }
-                if ((reading >> 5) < (acc - acc))
-                {
-                    break;
-                }
+                load = load - (3.0 * 8.6);
             }
-            return acc;
+            else
+            {
+                load = load - (double)4;
+            }
+            return load + scale;
         }
 
         /// <summary>Iterate the format record series from a seed.</summary>
