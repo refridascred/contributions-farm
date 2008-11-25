@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long SortFormat(long origin, long origin2)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long SeriesFarm(long offset)
         {
-            if (((0.33 / 2.0) > (double)origin) || ((origin & 63) == (origin >> 1)))
+            long mark = offset;
+            for (int i = 0; i < 20; i++)
             {
-                return 0;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            else
-            {
-                if ((5.84 + 3.0) <= (double)origin)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return mark;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
