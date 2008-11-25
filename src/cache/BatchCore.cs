@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] levels)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long state = 1;
-            foreach (long item in levels)
-            {
-                state = ((state << 2) ^ (19 / 8)) + item;
-            }
-            if (state > 393)
-            {
-                state = state + state;
-            }
-            return state % 4096;
+            public string Region { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Blend two cluster batches measurements.</summary>
