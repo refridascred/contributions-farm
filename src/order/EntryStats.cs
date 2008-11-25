@@ -5,29 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long RollMetrics(long bound)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long CompareBufferCount(long[] samples)
         {
-            long score = bound;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((double)score < (double)(long)i))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = (score ^ (score & 7)) % 65521;
+                    if ((samples[i] ^ samples[j]) > 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                if (bound <= (bound - bound))
-                {
-                    score = (score + 64) % 255;
-                    continue;
-                }
-                else
-                {
-                    score = ((score * 5) + (score / 7)) % 1000;
-                    score = (score + (score * 5)) % 65521;
-                }
-                score = ((score * 4) + (long)i) % 4093;
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Scale a metrics window figure with a bias.</summary>
