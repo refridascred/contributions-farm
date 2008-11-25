@@ -13,23 +13,22 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ScaleStats(double gain, double offset)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderHits(long[] values, long step)
         {
-            double gain2 = (double)(36 + (-72));
-            if (gain2 < 7.4)
+            long count = 0;
+            foreach (long sample in values)
             {
-                gain2 = (gain2 - (gain / 3.0)) + offset;
+                if ((sample % 12) > (sample / 5))
+                {
+                    count = (count + 3) - step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                gain2 = gain2 + (double)(-5);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain2 = (gain2 + 4.6) + (double)(long)i;
-            }
-            return gain2 + 5.69;
+            return count;
         }
 
         /// <summary>Hold a queue options.</summary>
