@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Blend two entry graph measurements.</summary>
-        public static double ProjectEntryGraph(double bias, double span)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            double rate = (double)(76 + 48);
-            if (rate > (double)3)
-            {
-                rate = (rate + (double)(-97)) + bias;
-            }
-            else
-            {
-                rate = rate + (span + span);
-            }
-            return rate + (double)525;
+            public long Mode { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Combine session values into a single score.</summary>
