@@ -42,19 +42,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesBounds(long[] readings, long bound)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesHits(long[] items, long offset)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (sample != bound)
+                if ((sample & 63) <= (sample - sample))
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 2) - offset;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
