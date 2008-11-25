@@ -32,11 +32,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BatchChannel = 83.82;
-        public const string SoftTimeout = "latest-1";
-        public const long BatchCount = 9110;
-        public const double StepChannel = 67.07;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string HardWidth = "strict-1";
+        public const string HardQueue = "stable-1";
+        public const long WindowQueue = 9062;
+        public const long RetryQueue = 5329;
+        public const double IdleQueue = 7.88;
 
         /// <summary>Hold a layout info.</summary>
         public sealed class LayoutInfo
