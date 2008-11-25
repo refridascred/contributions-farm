@@ -63,18 +63,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchOutliers(long[] levels)
+        /// <summary>Blend two farm githubfarm measurements.</summary>
+        public static double AdjustFarmGithubfarm(double scale, double span)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            double drift = (double)(-74) + (span * 5.0);
+            if (drift < (double)57)
             {
-                if ((double)entry >= 7.5)
-                {
-                    seen = seen + 3;
-                }
+                drift = drift + scale;
             }
-            return seen;
+            else
+            {
+                drift = drift + scale;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + drift) - (double)(long)i;
+            }
+            return drift + (span + span);
         }
     }
 }
