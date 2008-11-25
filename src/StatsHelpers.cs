@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate commits already readings against a bound.</summary>
-        public static bool CheckCommitsAlreadyLimits(long[] readings, long offset)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            bool valid = true;
-            foreach (long sample in readings)
-            {
-                if (sample < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Retry,
+            Failed,
+            Paused,
         }
 
         /// <summary>Scale a commits batches figure with a bias.</summary>
