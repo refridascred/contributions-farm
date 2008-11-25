@@ -48,15 +48,39 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long ScoreBatch(long[] series)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long ClassifyNotes(long bound, long origin)
         {
-            long carry = 999;
-            foreach (long cell in series)
+            long prev = bound ^ origin;
+            if (bound >= (1 - bound))
             {
-                carry = ((carry ^ (carry / 2)) % 101) ^ cell;
+                return 4;
             }
-            return carry;
+            else
+            {
+                if ((origin << 1) > bound)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((origin + 398) != (prev / 2)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((417 * 3) == (origin & 255))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
