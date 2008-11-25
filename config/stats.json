@@ -1,5 +1,7 @@
 {
-  "graph_ratio": 91,
-  "compress": 73,
-  "cache_delay": "edge"
+  "strict": true,
+  "flush_window": 32,
+  "idle_delay": false,
+  "base_depth": 60,
+  "order_retries": 47.15
 }
