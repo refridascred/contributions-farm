@@ -1,7 +1,7 @@
 {
-  "filter_threshold": true,
-  "max_capacity_s": 49,
-  "cache_retries_ms": "eu-west",
-  "hard_interval": 50,
-  "sync_ttl": 28.9
+  "buffer_ratio": 69,
+  "default_timeout_pct": 3896,
+  "support_interval": 83.41,
+  "base_timeout_ms": 61.01,
+  "sync_threshold_s": false
 }
