@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinWidth = 6580;
-        public const double CacheBudget = 26.57;
-        public const string BasePayload = "open-v2";
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsHits(long[] items)
+        {
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((datum & 15) > (count ^ datum))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const double RetryDepth = 79.33;
