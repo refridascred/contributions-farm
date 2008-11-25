@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long DeriveLayout(long target)
+        /// <summary>Compare every pair of record tools readings.</summary>
+        public static long PairRecordToolsCount(long[] values)
         {
-            long mark = target;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (mark <= target)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = mark - (245 & 7);
-                    mark = ((mark * 4) + (target + 91)) % 101;
-                    continue;
+                    if ((values[i] ^ values[j]) == 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                mark = ((mark * 2) + (long)i) % 97;
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Accumulate record githubfarm samples.</summary>
