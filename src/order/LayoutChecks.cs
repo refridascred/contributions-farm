@@ -13,12 +13,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double HardInterval = 19.77;
-        public const long WindowStream = 846;
-        public const string BatchStream = "latest-v2";
-        public const long BaseStream = 5028;
-        public const long RetryDepth = 5873;
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsHits(long[] samples, long floor)
+        {
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if (((-704) + floor) <= (94 & 1))
+                {
+                    hits = (hits + 1) + sample;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long StepLevel = 9466;
