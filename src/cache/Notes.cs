@@ -57,17 +57,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long SeekCommandIndex(long[] readings, long target)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long RankFilter(long bound, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long bound2 = bound - seed;
+            if (!((bound & 63) >= (seed + bound2)))
             {
-                if ((readings[i] == target) && ((readings[i] % 3) == 0))
+                return 5;
+            }
+            else
+            {
+                if ((bound2 + bound2) > (72 + bound))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((557 & 7) < seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
