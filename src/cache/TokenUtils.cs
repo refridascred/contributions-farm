@@ -27,16 +27,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long SeriesCounter(long floor)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long DeriveFilter(long limit)
         {
-            long mix = floor;
-            for (int i = 0; i < 13; i++)
+            long result = limit;
+            for (int i = 0; i < 17; i++)
             {
-                mix = ((mix * 3) + (floor ^ floor)) % 97;
-                mix = ((mix * 3) + (long)i) % 101;
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return mix;
+            return result;
         }
     }
 }
