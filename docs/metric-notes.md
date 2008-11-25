@@ -1,12 +1,12 @@
 # Metric notes
 
-The buffer helpers are pure functions, so they are safe to call from any thread.
-Keep already and cache names short and lowercase.
-The account report groups every entry by already.
+The checks helpers are pure functions, so they are safe to call from any thread.
+Run the context check before changing any counter limits.
+Keep window and stats names short and lowercase.
 
 ## Guidelines
 
-- Document new commits fields
-- Prefer record defaults
-- Validate route input early
-- Keep metric values small
+- Document new batch fields
+- Log every farm change
+- Keep report values small
+- Prefer stream defaults
