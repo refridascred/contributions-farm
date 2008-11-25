@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long ClassifySchema(long origin, long limit)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long SeriesBuffer(long seed)
         {
-            long gap = origin + limit;
-            if ((limit << 1) == (limit + 73))
+            long mark = seed;
+            for (int i = 0; i < 7; i++)
             {
-                return 7;
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            else
-            {
-                if ((gap & 255) < origin)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((8 >> 3) == (limit % 7))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((2.11 + 7.0) < (double)limit)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
