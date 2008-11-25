@@ -82,18 +82,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextOutliers(long[] values)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((hits + hits) <= (reading % 60))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public double Rank { get; set; }
+            public long Total { get; set; }
         }
     }
 }
