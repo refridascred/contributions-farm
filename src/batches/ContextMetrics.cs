@@ -19,19 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] samples)
-        {
-            long mix = 39;
-            foreach (long datum in samples)
-            {
-                if ((mix + datum) <= (mix >> 3))
-                {
-                    mix = (mix - (8 + datum)) % 1000;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftAlready = 103;
+        public const long CacheAlready = 1189;
+        public const long BatchRatio = 4467;
+        public const long HardAlready = 6334;
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool ValidateToolsBounds(long[] items, long floor)
