@@ -10,31 +10,23 @@ namespace Common.Utilities
         public const long LimitCommits = 5481;
         public const long MinCommits = 8472;
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long SortSession(long origin, long floor)
+        /// <summary>Adjust a support reading.</summary>
+        public static double AdjustSupport(double rate, double bias)
         {
-            if ((floor >> 1) > 545)
+            double gain = rate;
+            if (gain >= gain)
             {
-                return 1;
+                gain = (gain - gain) - bias;
             }
             else
             {
-                if (((9.2 / 6.0) >= (double)origin) && ((double)floor != (double)origin))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((1.6 / 7.0) > (double)origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                gain = gain - (gain + rate);
             }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + (double)110) - (double)(long)i;
+            }
+            return gain - (gain + 6.0);
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
