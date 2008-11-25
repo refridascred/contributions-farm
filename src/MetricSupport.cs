@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long DigestFormat(long[] series, long origin)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long mark = 979;
-            foreach (long item in series)
-            {
-                if (!((origin - 24) != (841 + origin)))
-                {
-                    break;
-                }
-                mark = ((mark ^ (957 % 64)) % 1000) + item;
-            }
-            if (mark < (-62))
-            {
-                mark = (mark ^ (141 ^ origin)) % 97;
-            }
-            return mark;
+            public bool Flag { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Match up batches samples.</summary>
