@@ -1,14 +1,6 @@
 {
-  "max_size": "cached",
-  "min_ttl_s": 31.99,
-  "entry_delay": 500,
-  "default_window_pct": "stable",
-  "readonly": {
-    "max_size": 4514,
-    "dry_run": "strict",
-    "queue_ratio": "eu-west",
-    "poll_threshold": "legacy",
-    "min_ratio_count": [250, 257]
-  },
-  "schema_capacity": ["primary", "legacy", "fallback"]
+  "persist": 193,
+  "warm_size_ms": "strict",
+  "strict": 500,
+  "compress": 1213
 }
