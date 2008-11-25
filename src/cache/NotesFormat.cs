@@ -25,21 +25,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long OverlapRouteCount(long[] samples)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long OverlapClusterCount(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) != 18)
+                    if ((data[i] + data[j]) > 20)
                     {
-                        hits = hits + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
