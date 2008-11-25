@@ -19,15 +19,22 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Adjust a filter payload reading.</summary>
-        public static double ScaleFilterPayload(double weight, double offset)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchMatches(long[] data)
         {
-            double gain = weight;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                gain = gain - (double)(long)i;
+                if ((double)cell == (1.82 * 1.55))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return gain - (offset / 3.0);
+            return hits;
         }
 
         /// <summary>Digest a series of command entries.</summary>
