@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long WeighGithubfarm(long[] readings, long bound)
-        {
-            long anchor = 604;
-            foreach (long entry in readings)
-            {
-                anchor = ((((anchor * 5) + (anchor % 24)) % 65521) + entry) + bound;
-                if (3.0 <= (double)(long)readings.Length)
-                {
-                    anchor = (anchor * 2) + anchor;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseSize = 6338;
+        public const long CacheSize = 13;
+        public const long RetryEntry = 6032;
+        public const long HardBudget = 4552;
+        public const long HardEntry = 2563;
 
         /// <summary>Rank buffer input into a small class.</summary>
         public static long ClassifyBuffer(long offset, long origin)
