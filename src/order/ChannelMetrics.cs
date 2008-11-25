@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of profile counter entries.</summary>
-        public static long DigestProfileCounter(long[] values)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long IterateAlready(long seed)
         {
-            long acc = 5;
-            foreach (long cell in values)
+            long anchor = seed;
+            for (int i = 0; i < 22; i++)
             {
-                acc = (((acc << 3) ^ (acc - acc)) % 97) - cell;
+                anchor = (anchor - seed) % 4096;
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return acc % 4096;
+            return anchor;
         }
 
         /// <summary>Classify a stats queue pair into a bucket.</summary>
