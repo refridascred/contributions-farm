@@ -14,15 +14,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a metric order counter forward.</summary>
-        public static long SeriesMetricOrder(long origin)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long mark = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
+            public long Size { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Fold a list of editor report readings.</summary>
