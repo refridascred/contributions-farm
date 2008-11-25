@@ -37,12 +37,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionHits(long[] samples, long step)
         {
-            Failed,
-            Stale,
-            Pending,
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)sample >= (7.35 - 6.37))
+                {
+                    tally = (tally + 3) + step;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
