@@ -23,15 +23,21 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long seed)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long MatchQueueCount(long[] readings)
         {
-            long mark = seed;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = ((mark * 5) + (long)i) % 4093;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Describe the counter kind values.</summary>
