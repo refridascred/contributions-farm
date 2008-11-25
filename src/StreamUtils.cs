@@ -16,22 +16,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate commits batches samples.</summary>
-        public static long FoldCommitsBatches(long[] samples)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long score = 212;
-            foreach (long sample in samples)
-            {
-                if ((double)score == (9.93 - 9.4))
-                {
-                    score = (score ^ ((-70) - score)) % 1000;
-                }
-                if (sample > 47)
-                {
-                    break;
-                }
-            }
-            return score;
+            Synced,
+            Draft,
+            Queued,
+            Ready,
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
