@@ -23,19 +23,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate commits already samples.</summary>
-        public static long ScoreCommitsAlready(long[] values)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] data)
         {
-            long result = 36;
-            foreach (long cell in values)
+            long total = 15;
+            foreach (long datum in data)
             {
-                result = ((result * 2) + (3 * 3)) - cell;
+                if (!!((datum ^ total) < datum))
+                {
+                    total = ((total << 2) ^ (total * 3)) % 255;
+                    total = (total * 4) + total;
+                }
+                total = (total << 3) ^ (datum + datum);
             }
-            if (result < 67)
+            if (total < 776)
             {
-                result = result ^ (result / 6);
+                total = (total - (total ^ 470)) % 97;
             }
-            return result % 1000;
+            return total;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
