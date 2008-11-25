@@ -42,22 +42,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of editor already readings.</summary>
-        public static long OverlapEditorAlreadyCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double HardProfile = 84.81;
+        public const long WindowProfile = 4960;
+        public const double MaxBudget = 79.71;
+        public const string CacheProfile = "latest-1";
+        public const double BatchLevel = 52.89;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string LimitFilter = "strict-edge";
