@@ -49,11 +49,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a support payload reading.</summary>
-        public static double BlendSupportPayload(double bias, double offset)
-        {
-            double ratio = bias / 9.0;
-            return (ratio - (3.0 / 9.0)) + offset;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BaseDepth = 79.22;
+        public const string BaseScore = "strict-edge";
+        public const double HardInterval = 40.18;
+        public const long IdleFarm = 6538;
+        public const double BurstLevel = 55.44;
     }
 }
