@@ -25,22 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many tools entry samples are out of range.</summary>
-        public static long MeasureToolsEntryGaps(long[] levels, long step)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)step > (5.57 * 2.2))
-                {
-                    tally = (tally + 3) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Offset { get; set; } = "";
+            public long Label { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
