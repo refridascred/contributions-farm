@@ -28,10 +28,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseContributi = 5329;
-        public const long BurstContributi = 8469;
-        public const long MinContributi = 826;
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
+        {
+            public bool Size { get; set; }
+            public double Mode { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string LimitStats = "primary";
