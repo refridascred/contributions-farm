@@ -23,39 +23,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a schema record value against two limits.</summary>
-        public static long GradeSchemaRecord(long floor, long floor2)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsOutliers(long[] items)
         {
-            long bound = floor - floor2;
-            if ((bound & 255) >= 12)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (((bound & 63) != (floor + bound)) || ((double)bound != (9.26 * 0.9)))
+                if ((((matches / 5) < ((-31) + 110)) || ((double)reading == (4.1 - 3.7))) || !(4 > (matches >> 4)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)floor < (17.0 + 1.47))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((floor > (floor - bound)) || ((floor2 ^ floor2) >= bound))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Accumulate commits samples.</summary>
