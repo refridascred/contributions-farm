@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Roll a order counter forward.</summary>
-        public static long SeriesOrder(long step)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long GradeGithubfarm(long step, long floor)
         {
-            long score = step;
-            for (int i = 0; i < 10; i++)
+            long step2 = step ^ floor;
+            if ((5 ^ step) > (174 << 1))
             {
-                score = ((score * 2) + (long)i) % 1000;
+                return 8;
             }
-            return score;
+            else
+            {
+                if (step2 < (step * 5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Match up stream samples.</summary>
