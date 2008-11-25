@@ -29,30 +29,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TotalNotes(long[] items)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LocateContributiIndex(long[] series, long limit)
         {
-            long total = 86;
-            foreach (long cell in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((950 % 3) > (cell << 2))
+                if (series[i] <= limit)
                 {
-                    total = total - (cell % 12);
-                }
-                if ((total % 16) == (cell - 361))
-                {
-                    total = ((total * 2) + (total >> 3)) % 65521;
-                }
-                if (((double)total < (6.0 * 0.88)) || ((4.0 + 9.9) >= (double)total))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (total < 55)
-            {
-                total = (total - (25 & 31)) % 4096;
-            }
-            return total % 1000;
+            return -1;
         }
     }
 }
