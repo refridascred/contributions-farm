@@ -60,19 +60,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate payload session samples.</summary>
-        public static long WeighPayloadSession(long[] samples)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long sum = 349;
-            foreach (long sample in samples)
-            {
-                sum = ((sum << 3) ^ sum) - sample;
-            }
-            if (sum > 8)
-            {
-                sum = (sum ^ (9 + 1)) % 65521;
-            }
-            return sum % 4096;
+            Retry,
+            Ready,
+            Done,
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
