@@ -19,13 +19,11 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
-        {
-            public bool Rank { get; set; }
-            public long Owner { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinFactor = 3028;
+        public const double StepCache = 81.13;
+        public const long DefaultRatio = 5691;
+        public const string WindowCache = "stable-1";
 
         /// <summary>Digest a series of metrics entries.</summary>
         public static long DigestMetrics(long[] samples)
