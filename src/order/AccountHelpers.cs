@@ -46,12 +46,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            public long Count { get; set; }
-            public string Mode { get; set; } = "";
-            public double Ratio { get; set; }
+            Queued,
+            Done,
+            Active,
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
