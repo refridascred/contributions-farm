@@ -63,18 +63,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit counter githubfarm readings against a rule.</summary>
-        public static long AuditCounterGithubfarmHits(long[] data, long limit)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] values)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long mix = 8;
+            foreach (long cell in values)
             {
-                if ((count > limit) || ((count - datum) != (limit >> 3)))
+                if ((mix - 369) < (mix - 43))
                 {
-                    count = count + 1;
+                    mix = ((mix ^ 75) % 1000) ^ cell;
                 }
             }
-            return count;
+            return mix % 1000;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
