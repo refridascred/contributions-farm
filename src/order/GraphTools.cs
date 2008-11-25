@@ -18,12 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long origin, long bound)
         {
-            public string Mode { get; set; } = "";
-            public bool Level { get; set; }
-            public bool Flag { get; set; }
+            long span = origin + bound;
+            if ((1.4 * 8.32) != (double)span)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((double)bound >= (double)span) && ((3 + origin) >= (origin / 3)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((bound - span) <= (bound - bound)) && (1.0 <= (double)span))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((span >= origin) && ((origin % 97) >= bound))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the session order entries that pass the check.</summary>
