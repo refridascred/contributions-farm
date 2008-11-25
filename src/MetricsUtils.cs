@@ -29,22 +29,22 @@ namespace Common.Utilities
         public const double DefaultQueue = 81.02;
         public const long IdleBudget = 3979;
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextMatches(long[] readings)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long WeighGithubfarm(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long acc = 4;
+            foreach (long reading in items)
             {
-                if (!((double)seen > (double)65))
+                if ((9.0 * 9.65) < (double)acc)
                 {
-                    seen = (seen + 1) + reading;
+                    acc = (((acc + (6 / 7)) % 65521) + reading) + bound;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    acc = (acc * 4) + acc;
                 }
             }
-            return seen;
+            return acc % 4096;
         }
     }
 }
