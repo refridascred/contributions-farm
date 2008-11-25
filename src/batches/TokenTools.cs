@@ -34,15 +34,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long DigestTools(long[] levels, long limit)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricOutliers(long[] levels)
         {
-            long result = 68;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                result = ((result ^ (537 + limit)) % 4096) ^ item;
+                if ((reading >= (tally - 43)) || (tally > (reading << 1)))
+                {
+                    tally = tally + 1;
+                }
             }
-            return result;
+            return tally;
         }
     }
 }
