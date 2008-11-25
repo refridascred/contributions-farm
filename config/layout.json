@@ -1,22 +1,7 @@
 {
-  "hard_interval": ["standard", "fallback"],
-  "batch_limit": {
-    "default_capacity_count": 98.73,
-    "base_size": {
-      "burst_limit_count": "stable",
-      "flush_interval": "local",
-      "route_capacity": 19.16
-    },
-    "farm_interval": 14,
-    "dry_run": {
-      "warm_threshold_ms": 68,
-      "base_ratio_ms": 30,
-      "default_interval_ms": true,
-      "min_size_s": 61,
-      "entry_limit": "cached",
-      "session_ratio": ["open", "standard", "staging", "standard"]
-    }
-  },
-  "hard_delay_count": 16.62,
-  "warm_capacity": [197, 403, 15, 123]
+  "soft_threshold_s": 68.4,
+  "entry_capacity": 10,
+  "payload_window": 8,
+  "strict": 2911,
+  "audit": 69
 }
