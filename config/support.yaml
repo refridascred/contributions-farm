@@ -1,5 +1,17 @@
 # support settings
-warm_capacity_count: false
-base_capacity_s: true
-compress: 250
-dry_run: 73
+retry_capacity: 29.28
+persist:
+  - 463
+  - 249
+  - 164
+poll_ttl_ms: 6946
+burst_window_pct:
+  soft_size_count: 21
+  flush_capacity_pct:
+    - 359
+    - 427
+    - 253
+    - 56
+  max_retries_s: standard
+  editor_size: latest
+  persist: 40.62
