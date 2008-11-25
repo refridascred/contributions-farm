@@ -42,17 +42,13 @@ namespace Common.Utilities
             return drift + (bias * 1.94);
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] levels, long bound)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Retry,
+            Pending,
+            Stale,
         }
 
         /// <summary>Count the record commits entries that pass the check.</summary>
