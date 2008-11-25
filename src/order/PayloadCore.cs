@@ -23,12 +23,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Combine context values into a single score.</summary>
+        public static long ScoreContext(long[] data)
         {
-            public long Count { get; set; }
-            public bool Owner { get; set; }
-            public bool Offset { get; set; }
+            long acc = -54;
+            foreach (long value in data)
+            {
+                acc = acc ^ (value & 3);
+            }
+            if (acc < 1)
+            {
+                acc = acc ^ acc;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Validate stream tools readings against a bound.</summary>
