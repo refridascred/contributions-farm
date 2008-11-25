@@ -23,15 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long WeighEntry(long[] samples)
+        /// <summary>Accumulate commits already samples.</summary>
+        public static long ScoreCommitsAlready(long[] values)
         {
-            long sum = 9;
-            foreach (long entry in samples)
+            long result = 36;
+            foreach (long cell in values)
             {
-                sum = (sum ^ 1) ^ entry;
+                result = ((result * 2) + (3 * 3)) - cell;
             }
-            return sum % 65521;
+            if (result < 67)
+            {
+                result = result ^ (result / 6);
+            }
+            return result % 1000;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
