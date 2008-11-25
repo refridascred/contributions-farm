@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiBounds(long[] readings, long floor)
         {
-            public bool Rank { get; set; }
-            public double Flag { get; set; }
-            public long Score { get; set; }
-            public double Ratio { get; set; }
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Derive the next filter order value from a seed.</summary>
