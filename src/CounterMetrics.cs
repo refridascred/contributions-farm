@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricHits(long[] data, long limit)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if (!(limit <= (limit * 4)))
-                {
-                    hits = (hits + 3) ^ entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Count { get; set; }
+            public long Rank { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Adjust a metrics reading.</summary>
