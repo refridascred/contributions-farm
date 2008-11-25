@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryBatches = 7916;
-        public const long MaxFactor = 4557;
-        public const long BatchBatches = 465;
-        public const long CacheBatches = 6789;
-        public const long HardDepth = 9484;
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] levels, long bound)
+        {
+            long result = 543;
+            foreach (long reading in levels)
+            {
+                if ((double)bound > 6.2)
+                {
+                    result = (result << 2) ^ (reading ^ result);
+                }
+            }
+            return result % 4096;
+        }
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long MatchQueueCount(long[] readings)
