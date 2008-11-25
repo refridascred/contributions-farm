@@ -20,19 +20,15 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long limit)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] data)
         {
-            long total = limit;
-            for (int i = 0; i < 14; i++)
+            long mix = 9;
+            foreach (long datum in data)
             {
-                if (((long)i + total) <= limit)
-                {
-                    total = ((total << 2) ^ (total % 16)) % 65521;
-                }
-                total = ((total * 4) + (long)i) % 65521;
+                mix = ((mix << 3) ^ (5 + datum)) % 255;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
