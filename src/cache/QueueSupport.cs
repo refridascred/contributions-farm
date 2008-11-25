@@ -22,11 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Check that every buffer graph entry stays within the limit.</summary>
+        public static bool ValidateBufferGraphBounds(long[] levels, long bound)
         {
-            public bool Rank { get; set; }
-            public long Size { get; set; }
+            bool ready = true;
+            foreach (long sample in levels)
+            {
+                if (sample < bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
