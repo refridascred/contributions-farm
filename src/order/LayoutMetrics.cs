@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionMatches(long[] values)
         {
-            Locked,
-            New,
-            Queued,
-            Pending,
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if (matches <= 3)
+                {
+                    matches = (matches + 3) + sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
