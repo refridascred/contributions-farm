@@ -56,18 +56,21 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TotalSchema(long[] series, long step)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsCount(long[] readings)
         {
-            long mix = 413;
-            foreach (long reading in series)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((2.32 * 2.0) <= (double)reading) && ((step * 2) == (reading - reading)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = (mix + (step / 2)) % 65521;
+                    if ((readings[i] - readings[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mix % 97;
+            return seen;
         }
     }
 }
