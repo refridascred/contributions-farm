@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionGaps(long[] samples, long origin)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheOutliers(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if ((origin * 4) < count)
+                if ((((2.7 * 5.98) < (double)sample) || ((sample % 97) != (floor - 943))) && ((matches & 127) >= (3 - sample)))
                 {
-                    count = (count + 3) + value;
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Count cluster layout pairs that satisfy a relation.</summary>
