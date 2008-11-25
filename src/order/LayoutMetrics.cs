@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank profile stats input into a small class.</summary>
-        public static long RankProfileStats(long origin, long target)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long ScoreGithubfarm(long[] series)
         {
-            if (((target & 127) == (target + target)) && ((double)origin == (double)target))
+            long carry = 46;
+            foreach (long sample in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)target < (3.43 + 5.92))
+                if ((sample % 60) == (sample % 3))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((target * 3) >= origin) && ((target - origin) != (origin * 5)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)target > 1.8)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    carry = ((carry * 2) + sample) % 1000;
                 }
             }
+            return carry;
         }
 
         /// <summary>Accumulate route samples.</summary>
