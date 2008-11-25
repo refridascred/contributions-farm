@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Adjust a stats reading.</summary>
-        public static double BlendStats(double weight, double floor)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            double gain = floor + floor;
-            for (int i = 0; i < 5; i++)
-            {
-                gain = ((gain - (18.0 / 7.0)) - (double)(long)i) + weight;
-            }
-            return gain + 18.0;
+            Queued,
+            Closed,
+            Failed,
+            Ready,
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
