@@ -1,6 +1,5 @@
 {
-  "commits_capacity": "stable",
-  "compress": 30,
-  "cache_window": 60,
-  "sync_window": 19
+  "soft_retries": ["blue", "fallback", "edge", "local"],
+  "default_retries": "strict",
+  "base_interval_count": 100
 }
