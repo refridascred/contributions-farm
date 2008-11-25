@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamLimits(long[] series, long target)
+        /// <summary>Match up entry samples.</summary>
+        public static long PairEntryCount(long[] levels)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading > target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Look up the position of a token account sample.</summary>
