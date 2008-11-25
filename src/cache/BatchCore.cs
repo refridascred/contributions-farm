@@ -25,18 +25,18 @@ namespace Common.Utilities
         public const long IdleFormat = 5022;
         public const long LimitFormat = 381;
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] values, long bound)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsMatches(long[] samples, long seed)
         {
-            long result = 645;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if ((cell <= (result * 2)) && ((-9) >= ((long)values.Length << 2)))
+                if ((cell < 91) || !((double)cell == (5.9 / 3.0)))
                 {
-                    result = ((result + (cell - cell)) % 4096) - bound;
+                    hits = (hits + 2) + seed;
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Describe the window phase values.</summary>
