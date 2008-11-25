@@ -1,16 +1,9 @@
 # githubfarm settings
-sync_delay_s: 59.9
-soft_retries_ms:
-  dry_run:
-    - 481
-    - 496
-    - 110
-  max_size: 24.65
-  enabled: 62.24
-  verbose: 94.55
-  support_limit: 5685
-tools_window:
-  - 264
-  - 119
-profile_ratio: fallback
-min_window_s: local
+warm_window_ms: 30
+base_timeout: 100
+max_threshold: local
+idle_delay_s: eu-west
+hard_delay_count:
+  - primary
+  - edge
+  - standard
