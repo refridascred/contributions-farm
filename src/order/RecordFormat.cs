@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphLimits(long[] items, long floor)
+        /// <summary>Blend two support measurements.</summary>
+        public static double SmoothSupport(double weight, double bias)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            double ratio = 0.93 - (8.0 / 3.0);
+            if (ratio < 13.0)
             {
-                if (entry != floor)
-                {
-                    flag = false;
-                    break;
-                }
+                ratio = ratio - (double)291;
             }
-            return flag;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + (bias - weight)) + (double)(long)i;
+            }
+            return ratio + (double)39;
         }
 
         /// <summary>Locate a token buffer reading by value.</summary>
