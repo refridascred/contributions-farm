@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many support batch samples are out of range.</summary>
-        public static long CountSupportBatchMatches(long[] samples)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if (!(((6.1 - 8.29) != (double)count) || (9.81 > (double)count)))
-                {
-                    count = (count + 2) + item;
-                }
-            }
-            return count;
+            New,
+            Ready,
+            Draft,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
