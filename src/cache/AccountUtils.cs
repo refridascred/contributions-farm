@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheMatches(long[] samples, long bound)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheHits(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (bound < (seen - (long)samples.Length))
+                if ((double)sample > (8.6 - 7.6))
                 {
-                    seen = (seen + 2) + cell;
+                    matches = (matches + 1) - offset;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Define record limits and defaults.</summary>
