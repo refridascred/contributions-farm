@@ -79,18 +79,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsHits(long[] samples, long step)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long limit, long seed)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long step = limit ^ seed;
+            if ((323 - seed) >= (limit / 4))
             {
-                if ((long)samples.Length < (count % 16))
+                return 7;
+            }
+            else
+            {
+                if (!((4.0 - 8.29) != (double)limit))
                 {
-                    count = ((count + 2) + sample) - step;
+                    return 1;
+                }
+                else
+                {
+                    if (!((seed % 3) != (51 + step)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
