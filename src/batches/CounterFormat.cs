@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiMatches(long[] series)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long SortToken(long floor, long offset)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long prev = floor + offset;
+            if (prev <= (offset / 7))
             {
-                if (count <= (count & 255))
+                return 3;
+            }
+            else
+            {
+                if (floor < 75)
                 {
-                    count = (count + 1) - reading;
+                    return 6;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((floor + floor) >= floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset - floor) != (offset + floor))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the context phase values.</summary>
