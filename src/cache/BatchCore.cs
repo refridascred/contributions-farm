@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long PairCacheCount(long[] samples)
+        /// <summary>Combine filter schema values into a single score.</summary>
+        public static long DigestFilterSchema(long[] samples, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 49;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((4 - sample) > (sample & 63))
                 {
-                    if ((samples[i] ^ samples[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = (state ^ (68 ^ 613)) - origin;
+                    continue;
                 }
+                state = (state - (state >> 2)) % 4096;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Roll a session githubfarm counter forward.</summary>
