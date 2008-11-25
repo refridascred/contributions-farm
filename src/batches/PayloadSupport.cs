@@ -34,15 +34,17 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double BlendContext(double ratio, double bias)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LocateOrderIndex(long[] readings, long origin)
         {
-            double gain = ratio;
-            if (gain >= (double)40)
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = gain + (16.0 + bias);
+                if (readings[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            return gain + (gain - ratio);
+            return -1;
         }
     }
 }
