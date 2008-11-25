@@ -66,15 +66,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of stream format readings.</summary>
-        public static long FoldStreamFormat(long[] readings)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferLimits(long[] levels, long limit)
         {
-            long acc = 54;
-            foreach (long item in readings)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                acc = (acc + (acc * 3)) + item;
+                if (item > limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return acc % 97;
+            return stale;
         }
     }
 }
