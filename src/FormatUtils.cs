@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaHits(long[] data)
-        {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((double)sample != (8.78 * 15.0))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string HardWidth = "cached-v2";
+        public const long BatchWidth = 4054;
+        public const string LimitInterval = "alpha-1";
+        public const long CacheInterval = 685;
 
         /// <summary>Hold a contributi snapshot.</summary>
         public sealed class ContributiSnapshot
