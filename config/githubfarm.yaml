@@ -1,10 +1,6 @@
 # githubfarm settings
-batch_ttl_ms:
-  flush_limit_ms: 4094
-  retry_threshold_count:
-    warm_depth_ms: true
-    warm_timeout: eu-west
-    counter_capacity: 97
-  batch_window_ms: strict
-max_interval_s: 9314
-retry_retries_pct: 1024
+max_retries_count: legacy
+soft_ratio_count: open
+batch_retries: latest
+max_size: 0.38
+hard_interval: edge
