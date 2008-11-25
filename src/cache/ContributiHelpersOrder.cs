@@ -37,16 +37,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                state = (state << 2) ^ offset;
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleOrder = 3578;
+        public const long HardOrder = 8938;
+        public const double BaseOrder = 79.2;
     }
 }
