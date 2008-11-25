@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportOutliers(long[] samples)
         {
-            Closed,
-            New,
-            Draft,
-            Retry,
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if (((matches + 99) < reading) && ((reading + matches) <= (reading - matches)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a context info.</summary>
