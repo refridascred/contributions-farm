@@ -35,15 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine commits token values into a single score.</summary>
-        public static long DigestCommitsToken(long[] data, long target)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long score = -126;
-            foreach (long item in data)
-            {
-                score = (((score * 2) + (item + item)) % 101) - target;
-            }
-            return score;
+            public double Label { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
