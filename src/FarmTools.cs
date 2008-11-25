@@ -37,38 +37,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a context cache value against two limits.</summary>
-        public static long RankContextCache(long floor, long bound)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordHits(long[] values, long floor)
         {
-            if (((double)floor >= (4.9 * 6.19)) && ((double)floor == (double)bound))
+            long tally = 0;
+            foreach (long sample in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (((bound ^ (-967)) > (81 << 2)) || ((floor & 255) < bound))
+                if ((double)floor == (1.45 + 8.0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((8.4 + 6.56) >= (double)bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)6 != (double)floor)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = (tally + 1) ^ sample;
                 }
             }
+            return tally;
         }
     }
 }
