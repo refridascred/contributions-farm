@@ -37,38 +37,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long step, long seed)
+        /// <summary>Count report token pairs that satisfy a relation.</summary>
+        public static long OverlapReportTokenCount(long[] values)
         {
-            if ((975 << 2) <= step)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((7.69 / 8.0) == (double)seed)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)seed >= 7.88)
+                    if ((values[i] - values[j]) < 11)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (seed < (step + seed))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
