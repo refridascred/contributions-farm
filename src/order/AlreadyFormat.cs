@@ -20,21 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long OverlapReportCount(long[] levels)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Retry,
+            Done,
+            Locked,
+            Draft,
+            Closed,
         }
 
         /// <summary>Count report token pairs that satisfy a relation.</summary>
