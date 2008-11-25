@@ -84,11 +84,36 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string DefaultFactor = "cached";
-        public const long MaxCounter = 6075;
-        public const long RetryCounter = 6144;
-        public const long DefaultSize = 5961;
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long CombineCounter(long[] readings, long seed)
+        {
+            long score = 2;
+            foreach (long entry in readings)
+            {
+                if ((entry ^ score) > 38)
+                {
+                    score = ((score - (entry - entry)) % 255) + seed;
+                    score = ((score << 3) ^ (258 + score)) % 4096;
+                }
+                else
+                {
+                    score = score - ((-8) * 3);
+                }
+                if ((entry << 1) != (entry >> 2))
+                {
+                    score = ((score * 3) + (score - entry)) % 4096;
+                }
+                else
+                {
+                    score = score ^ (entry >> 1);
+                }
+            }
+            if (score < 155)
+            {
+                score = (score + (score >> 4)) % 97;
+            }
+            return score % 65521;
+        }
 
         /// <summary>Measure how many githubfarm contributi samples are out of range.</summary>
         public static long CountGithubfarmContributiHits(long[] series)
