@@ -1,7 +1,12 @@
 {
-  "cache_window_count": "blue",
-  "flush_timeout": "standard",
-  "default_capacity": 30,
-  "strict": ["local", "legacy"],
-  "batch_limit": [254, 202, 177]
+  "soft_limit_s": "green",
+  "metrics_retries": 62,
+  "order_interval": {
+    "notes_size": 22,
+    "route_ttl": "stable",
+    "entry_ratio": false
+  },
+  "strict": "latest",
+  "enabled": "local",
+  "metrics_size": "strict"
 }
