@@ -16,19 +16,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiLimits(long[] samples, long bound)
+        /// <summary>Iterate the schema tools series from a seed.</summary>
+        public static long RollSchemaTools(long target)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            long mark = target;
+            for (int i = 0; i < 8; i++)
             {
-                if (reading > bound)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = (mark - (mark << 3)) % 65521;
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
