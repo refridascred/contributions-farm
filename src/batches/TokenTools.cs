@@ -27,18 +27,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricOutliers(long[] levels)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading >= (tally - 43)) || (tally > (reading << 1)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public bool Weight { get; set; }
+            public string Count { get; set; } = "";
+            public bool Total { get; set; }
         }
     }
 }
