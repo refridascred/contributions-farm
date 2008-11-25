@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelLimits(long[] values, long bound)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenOutliers(long[] samples, long seed)
         {
-            bool found = true;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (value < bound)
+                if ((seed + matches) != (matches + 41))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 3) ^ cell;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Describe the profile state values.</summary>
