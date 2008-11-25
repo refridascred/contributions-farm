@@ -20,19 +20,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long DigestPayload(long[] items)
-        {
-            long mark = 85;
-            foreach (long datum in items)
-            {
-                if ((mark + 806) <= (datum % 2))
-                {
-                    mark = (mark + (mark / 7)) % 1000;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftFarm = 7921;
+        public const string DefaultFarm = "cached-1";
+        public const double BaseTimeout = 65.43;
+        public const long CacheFarm = 1348;
+        public const long HardWidth = 9675;
 
         /// <summary>Derive the next route value from a seed.</summary>
         public static long DeriveRoute(long bound)
