@@ -28,18 +28,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many report account samples are out of range.</summary>
-        public static long CountReportAccountHits(long[] series, long bound)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long MatchGithubfarmCount(long[] items)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((745 * 3) <= (bound + entry)) || !((count - bound) == (443 >> 4)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 1;
+                    if ((items[i] + items[j]) == 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
