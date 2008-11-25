@@ -39,24 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long GradeToken(long seed, long bound)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long SeekStreamIndex(long[] samples, long origin)
         {
-            if ((seed % 24) != (66 % 97))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (seed <= (bound << 2))
+                if ((samples[i] <= origin) && ((samples[i] % 3) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
