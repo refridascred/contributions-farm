@@ -81,12 +81,13 @@ namespace Common.Utilities
         public const long WindowAlready = 5914;
         public const long MinAlready = 1109;
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            Draft,
-            Queued,
-            Done,
+            Dropped,
+            Synced,
+            Idle,
+            Locked,
         }
     }
 }
