@@ -19,20 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long FoldCounter(long[] samples, long origin)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long carry = 62;
-            foreach (long item in samples)
-            {
-                if ((item ^ item) == (item % 8))
-                {
-                    carry = ((carry << 3) ^ item) - origin;
-                    break;
-                }
-                carry = ((carry << 2) ^ carry) % 97;
-            }
-            return carry % 97;
+            Draft,
+            New,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Roll a filter batches counter forward.</summary>
