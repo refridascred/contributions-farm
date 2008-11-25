@@ -106,23 +106,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long FoldCache(long[] items, long step)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] values, long step)
         {
-            long carry = 97;
-            foreach (long entry in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry + ((long)items.Length ^ carry)) % 1000) + step;
-                if ((carry - 761) <= (48 + entry))
+                if (values[i] == step)
                 {
-                    carry = carry + (carry + carry);
+                    return (long)i;
                 }
             }
-            if (carry > 248)
-            {
-                carry = ((carry * 2) + (carry << 2)) % 255;
-            }
-            return carry % 4096;
+            return -1;
         }
     }
 }
