@@ -36,13 +36,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
-        {
-            Queued,
-            Done,
-            Pending,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double MinBudget = 42.72;
+        public const double BaseCount = 89.27;
+        public const long MaxPayload = 6034;
+        public const long MaxWidth = 8863;
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool VerifySchemaLimits(long[] readings, long target)
