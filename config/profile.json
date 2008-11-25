@@ -1,8 +1,20 @@
 {
-  "burst_depth_pct": ["stable", "latest"],
-  "persist": 7839,
-  "batch_capacity": false,
-  "compress": ["cached", "latest", "staging", "stable"],
-  "sync_retries_ms": "stable",
-  "burst_ratio_s": "open"
+  "warm_interval": "blue",
+  "route_depth": {
+    "window_capacity": 60,
+    "account_delay": {
+      "metric_limit": [187, 214],
+      "soft_limit_ms": 36.54,
+      "dry_run": 33.55,
+      "batch_depth_pct": 7296,
+      "max_ttl_ms": 31
+    },
+    "schema_window": 95.7,
+    "strict": "edge",
+    "burst_window_s": 8507
+  },
+  "poll_threshold_count": true,
+  "cache_capacity_count": 41.97,
+  "base_timeout": "primary",
+  "readonly": false
 }
