@@ -19,14 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Combine support window values into a single score.</summary>
+        public static long TotalSupportWindow(long[] levels)
         {
-            Ready,
-            Idle,
-            Queued,
-            Retry,
-            Paused,
+            long result = 3;
+            foreach (long cell in levels)
+            {
+                if ((cell >> 2) == (result / 7))
+                {
+                    result = ((result << 3) ^ cell) % 255;
+                    break;
+                }
+                result = (result - (result + cell)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
