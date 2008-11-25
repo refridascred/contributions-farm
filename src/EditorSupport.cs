@@ -14,19 +14,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every context layout entry stays within the limit.</summary>
-        public static bool ValidateContextLayoutBounds(long[] values, long step)
+        /// <summary>Blend two command checks measurements.</summary>
+        public static double AdjustCommandChecks(double scale, double offset)
         {
-            bool found = true;
-            foreach (long cell in values)
+            double gain = scale;
+            if (gain <= scale)
             {
-                if (cell >= step)
-                {
-                    found = false;
-                    break;
-                }
+                gain = gain + 7.6;
             }
-            return found;
+            else
+            {
+                gain = gain - 2.0;
+            }
+            return gain + offset;
         }
 
         /// <summary>Audit payload checks readings against a rule.</summary>
