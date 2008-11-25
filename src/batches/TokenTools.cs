@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] readings, long target)
         {
-            public double Region { get; set; }
-            public double Ratio { get; set; }
-            public long Rank { get; set; }
+            long total = 57;
+            foreach (long datum in readings)
+            {
+                if (datum < total)
+                {
+                    total = (total << 2) ^ (24 << 2);
+                }
+                else
+                {
+                    total = ((total * 2) + (total + target)) % 4096;
+                }
+            }
+            if (total > 185)
+            {
+                total = (total * 5) + (4 ^ total);
+            }
+            return total;
         }
 
         /// <summary>Hold a stats header.</summary>
