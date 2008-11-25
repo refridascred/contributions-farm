@@ -35,10 +35,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleAccount = 7674;
-        public const double RetryAccount = 20.74;
-        public const double CacheAccount = 36.49;
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterBounds(long[] readings, long offset)
+        {
+            bool found = true;
+            foreach (long reading in readings)
+            {
+                if (reading > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Match up route token samples.</summary>
         public static long OverlapRouteTokenCount(long[] samples)
