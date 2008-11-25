@@ -23,11 +23,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleSize = 6200;
-        public const long MinChannel = 1148;
-        public const long RetryWidth = 5716;
-        public const string RetryBudget = "fallback-edge";
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferGaps(long[] levels)
+        {
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell / 5) <= (cell & 15))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of context stream readings.</summary>
         public static long TotalContextStream(long[] samples, long step)
