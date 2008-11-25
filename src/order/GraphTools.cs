@@ -80,13 +80,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
-        {
-            public bool Flag { get; set; }
-            public long Stamp { get; set; }
-            public double Size { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BurstDepth = 46.52;
+        public const long BaseMetric = 8118;
+        public const long DefaultMetric = 3217;
     }
 }
