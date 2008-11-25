@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long SeekContextIndex(long[] data, long step)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long StepReport(long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (data[i] == step)
+                if ((double)sum <= (double)(long)i)
                 {
-                    return (long)i;
+                    sum = sum + (sum % 2);
+                    continue;
                 }
+                else
+                {
+                    sum = ((sum << 3) ^ (sum >> 4)) % 255;
+                }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Match up filter account samples.</summary>
