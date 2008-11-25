@@ -49,11 +49,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double CacheSession = 29.09;
-        public const long WindowWidth = 7364;
-        public const double IdleSession = 33.15;
-        public const long DefaultSession = 8331;
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long BucketRecord(long origin, long seed)
+        {
+            if (!((4.0 / 3.0) != (double)origin))
+            {
+                return 3;
+            }
+            else
+            {
+                if (origin <= (seed * 4))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((origin <= (seed >> 3)) || ((seed - seed) <= (557 & 15)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin - seed) > (seed + origin))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long HardRecord = 2988;
