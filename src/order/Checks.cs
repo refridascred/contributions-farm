@@ -58,21 +58,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long OverlapContextCount(long[] values)
+        /// <summary>Combine commits payload values into a single score.</summary>
+        public static long WeighCommitsPayload(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = -7;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 8)
-                    {
-                        count = count + 1;
-                    }
-                }
+                anchor = ((anchor ^ (24 >> 5)) % 65521) ^ cell;
             }
-            return count;
+            return anchor % 4096;
         }
 
         /// <summary>Describe the format kind values.</summary>
