@@ -44,11 +44,19 @@ namespace Common.Utilities
         public const string DefaultLayout = "open-1";
         public const long BatchLayout = 2680;
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ScaleReport(double gain, double bias)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsBounds(long[] values, long seed)
         {
-            double load = gain;
-            return (load - (load / 7.0)) + bias;
+            bool flag = true;
+            foreach (long reading in values)
+            {
+                if (reading < seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
