@@ -58,26 +58,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] data)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] samples, long floor)
         {
-            long state = 85;
-            foreach (long sample in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!!((state / 7) < state))
+                if (samples[i] < floor)
                 {
-                    state = state ^ (sample & 1);
-                }
-                if (state < (state >> 2))
-                {
-                    state = (state + sample) % 97;
-                }
-                if (!((double)state > (17.0 / 4.0)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return state % 97;
+            return -1;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
