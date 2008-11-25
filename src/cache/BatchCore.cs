@@ -16,21 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up batch order samples.</summary>
-        public static long CompareBatchOrderCount(long[] data)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorMatches(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((matches & 3) > (long)samples.Length)
                 {
-                    if ((data[i] + data[j]) > 14)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 3) ^ datum;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
