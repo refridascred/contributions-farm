@@ -34,39 +34,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank support cluster input into a small class.</summary>
-        public static long ClassifySupportCluster(long limit, long offset)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long SeriesGithubfarm(long offset)
         {
-            long bound = limit ^ offset;
-            if ((limit + bound) < (limit - offset))
+            long carry = offset;
+            for (int i = 0; i < 20; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((bound + bound) <= offset))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    return 7;
+                    carry = (carry ^ (342 + offset)) - (long)i2;
                 }
-                else
-                {
-                    if (!((offset + bound) <= 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((offset % 10) < bound) || (offset > (offset >> 3)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                carry = ((carry * 2) + (long)i) % 101;
             }
+            return carry;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
