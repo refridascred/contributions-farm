@@ -60,19 +60,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next metrics layout value.</summary>
-        public static double BlendMetricsLayout(double ratio, double span)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] values)
         {
-            double rate = (double)(262 + 8);
-            if (rate >= (rate / 7.0))
+            long total = 662;
+            foreach (long value in values)
             {
-                rate = (rate + ratio) + span;
+                if (((value + value) >= (total + total)) && (total <= (total * 2)))
+                {
+                    total = ((total * 5) + 5) % 97;
+                }
+                else
+                {
+                    total = (total + (value - total)) % 4096;
+                }
+                if (((301 ^ (-1)) <= (value + value)) || ((long)values.Length == (total ^ value)))
+                {
+                    break;
+                }
             }
-            else
-            {
-                rate = rate - (double)0;
-            }
-            return rate - ratio;
+            return total % 65521;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
