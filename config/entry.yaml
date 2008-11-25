@@ -1,14 +1,33 @@
 # entry settings
-githubfarm_window:
-  retry_retries_s: 8.14
-  burst_retries_ms: 8229
-  warm_capacity_ms: cached
-  batch_capacity: 5979
-  metrics_size: 99
-contributi_ratio:
-  - 397
-  - 450
-  - 330
-  - 280
-batches_timeout: edge
-hard_ttl: open
+retry_retries_count:
+  poll_size:
+    - green
+    - open
+    - open
+  warm_delay:
+    - latest
+    - stable
+  layout_threshold:
+    sync_threshold_ms: 4402
+    retry_window_pct: false
+    account_capacity: 7611
+retry_delay: true
+warm_depth: 250
+metric_ratio:
+  flush_size:
+    report_limit: true
+    flush_delay_s: eu-west
+    burst_ratio: true
+    warm_limit: 70
+    max_interval_ms:
+      - primary
+      - staging
+      - standard
+  max_ttl_count: false
+  default_limit_count: 60
+  cache_ratio:
+    - 249
+    - 415
+    - 182
+dry_run: false
+flush_window: stable
