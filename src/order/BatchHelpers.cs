@@ -28,14 +28,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
+            Paused,
             Closed,
+            Queued,
+            Dropped,
             Locked,
-            Active,
-            Retry,
-            Stale,
         }
     }
 }
