@@ -28,9 +28,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchSpan = 9733;
-        public const long LimitGraph = 6861;
-        public const long LimitBudget = 6253;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string StepFactor = "staging";
+        public const long IdleProfile = 2530;
+        public const long MaxFactor = 8197;
+        public const string BurstRatio = "latest-1";
+        public const string DefaultProfile = "cached-v2";
     }
 }
