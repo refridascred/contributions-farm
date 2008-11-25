@@ -34,19 +34,28 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long RollPayload(long bound)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] levels, long step)
         {
-            long anchor = bound;
-            for (int i = 0; i < 14; i++)
+            long total = 874;
+            foreach (long datum in levels)
             {
-                if ((bound - 9) < bound)
+                total = (total ^ datum) % 4096;
+                if ((datum <= step) || ((total % 24) == (total - datum)))
                 {
-                    anchor = ((anchor << 2) ^ (bound << 3)) % 101;
+                    total = (total * 4) + (3 / 7);
+                    continue;
                 }
-                anchor = ((anchor * 5) + (long)i) % 97;
+                if (264 > (total + step))
+                {
+                    total = ((total << 2) ^ (total & 31)) % 65521;
+                }
+                else
+                {
+                    total = ((total << 2) ^ (step << 1)) % 1000;
+                }
             }
-            return anchor;
+            return total % 97;
         }
     }
 }
