@@ -27,39 +27,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank graph schema input into a small class.</summary>
-        public static long ClassifyGraphSchema(long step, long target)
+        /// <summary>Roll a profile already counter forward.</summary>
+        public static long DeriveProfileAlready(long seed)
         {
-            long gap = step - target;
-            if ((5.79 + 14.0) <= (9.6 + 2.57))
+            long anchor = seed;
+            for (int i = 0; i < 22; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)step >= 1.4) && ((double)gap < (5.0 - 1.83)))
+                anchor = (anchor * 4) + anchor;
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    return 6;
+                    anchor = ((anchor * 4) + 105) - (long)i2;
                 }
-                else
-                {
-                    if (!((gap + gap) < (target & 7)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((gap + step) >= 3)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                anchor = anchor + ((long)i + anchor);
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
+            return anchor;
         }
     }
 }
