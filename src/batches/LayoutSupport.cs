@@ -30,10 +30,25 @@ namespace Common.Utilities
         public const long SoftCount = 2019;
         public const double WindowStats = 86.5;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxCluster = 4308;
-        public const double BaseCluster = 63.63;
-        public const double LimitCluster = 35.53;
-        public const long BatchCluster = 4052;
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long GradeAccount(long bound, long limit)
+        {
+            long delta = bound - limit;
+            if (((limit >> 3) != (limit ^ bound)) && ((bound * 2) <= delta))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((bound * 3) > (delta / 2)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
