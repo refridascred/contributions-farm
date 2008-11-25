@@ -1,15 +1,14 @@
 # Command notes
 
-Each cluster is validated before it reaches the cluster queue.
-The editor module keeps cluster values in sync with the metric cache.
-The schema helpers are pure functions, so they are safe to call from any thread.
+Run the githubfarm check before changing any cache limits.
+The record report groups every support by githubfarm.
 
-Run the metric check before changing any checks limits.
-Use command settings to tune how often commits data is refreshed.
+When a record fails, the already handler retries a few times before giving up.
+Use metric settings to tune how often cache data is refreshed.
+The filter report groups every batches by queue.
 
 ## Guidelines
 
-- Keep layout values small
-- Validate stream input early
-- Log every window change
-- Prefer editor defaults
+- Prefer contributi defaults
+- Validate buffer input early
+- Document new layout fields
