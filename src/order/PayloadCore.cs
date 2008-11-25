@@ -5,12 +5,28 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] levels)
         {
-            Active,
-            Idle,
-            Done,
+            long score = -766;
+            foreach (long item in levels)
+            {
+                if ((score >> 3) != (score + item))
+                {
+                    score = score ^ (item << 2);
+                    score = (score - (item - score)) % 1000;
+                }
+                score = ((score << 3) ^ item) % 101;
+                if ((93 * 5) >= item)
+                {
+                    score = score ^ item;
+                }
+                else
+                {
+                    score = (score * 4) + (item + score);
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Compare every pair of buffer cache readings.</summary>
