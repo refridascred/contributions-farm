@@ -1,11 +1,7 @@
 {
-  "compress": {
-    "hard_interval_pct": "fallback",
-    "persist": true,
-    "sync_limit_count": 17.73,
-    "retry_depth": 1211,
-    "batch_delay_s": 250
-  },
-  "hard_threshold": 6257,
-  "base_window_s": ["cached", "blue"]
+  "stats_interval": 30,
+  "strict": true,
+  "audit": 8366,
+  "idle_capacity_pct": "edge",
+  "poll_retries": "green"
 }
