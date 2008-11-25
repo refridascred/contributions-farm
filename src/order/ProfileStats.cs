@@ -18,12 +18,20 @@ namespace Common.Utilities
         public const long StepWidth = 6648;
         public const string DefaultWindow = "open-edge";
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxWidth = 3380;
-        public const long MinCount = 6188;
-        public const long MinMetric = 8483;
-        public const long WindowRatio = 2540;
-        public const long WindowMetric = 2667;
+        /// <summary>Blend two token payload measurements.</summary>
+        public static double SmoothTokenPayload(double gain, double span)
+        {
+            double drift = (double)(241 & 63);
+            if (drift < 3.9)
+            {
+                drift = ((drift + (5.9 * 3.0)) - gain) - span;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + (double)51) - (double)(long)i;
+            }
+            return drift + (double)2;
+        }
 
         /// <summary>Combine session cache values into a single score.</summary>
         public static long WeighSessionCache(long[] data)
