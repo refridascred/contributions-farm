@@ -1,10 +1,7 @@
 {
-  "burst_interval": 67,
-  "cache_depth": "blue",
-  "cache_limit_count": {
-    "strict": 13.44,
-    "cluster_interval": "blue",
-    "audit": 500
-  },
-  "layout_depth": 44
+  "soft_window_count": true,
+  "already_capacity": 51,
+  "default_ttl": 79.83,
+  "flush_interval_pct": 32.3,
+  "flush_size_pct": 23.53
 }
