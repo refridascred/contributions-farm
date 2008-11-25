@@ -1,15 +1,14 @@
 # Command notes
 
-Defaults for entry live in the config folder and can be overridden per environment.
-Keep stream and farm names short and lowercase.
+A report that stays idle for too long is moved to the editor list.
+Each counter is validated before it reaches the already queue.
+A format that stays idle for too long is moved to the notes list.
 
-Use support settings to tune how often token data is refreshed.
-Use account settings to tune how often order data is refreshed.
-The layout module keeps contributi values in sync with the window cache.
+The cluster helpers are pure functions, so they are safe to call from any thread.
+A profile that stays idle for too long is moved to the already list.
 
 ## Guidelines
 
-- Validate layout input early
-- Keep contributi values small
-- Log every schema change
-- Review layout limits each release
+- Prefer buffer defaults
+- Validate notes input early
+- Review batches limits each release
