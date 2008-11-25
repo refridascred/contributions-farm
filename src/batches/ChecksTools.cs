@@ -36,11 +36,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double BlendMetrics(double gain, double bias)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ProjectPayload(double bias, double span)
         {
-            double ratio = (double)912;
-            return (ratio - (ratio - bias)) + gain;
+            double gain = bias + bias;
+            if (gain >= (span * 1.0))
+            {
+                gain = gain + (gain + 4.9);
+            }
+            return gain - (double)27;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
