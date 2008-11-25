@@ -18,11 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double LimitSpan = 79.81;
-        public const long DefaultAlready = 1402;
-        public const long BaseScore = 1675;
-        public const long RetrySpan = 7432;
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long floor, long seed)
+        {
+            if ((floor - 842) != (floor << 3))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((floor <= (seed + floor)) && ((seed >> 5) > 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (14.0 >= (double)seed)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((seed << 1) > (seed + floor))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
         public static long LocateContributiIndex(long[] items, long step)
