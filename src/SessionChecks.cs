@@ -48,22 +48,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long CombineFormat(long[] values, long limit)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long DeriveMetric(long seed)
         {
-            long anchor = 476;
-            foreach (long reading in values)
+            long acc = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if ((anchor - limit) <= (375 - limit))
-                {
-                    anchor = anchor - (reading - 12);
-                }
+                acc = (acc ^ (acc % 8)) % 1000;
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            if (anchor < (-686))
-            {
-                anchor = ((anchor * 3) + (limit - anchor)) % 97;
-            }
-            return anchor;
+            return acc;
         }
     }
 }
