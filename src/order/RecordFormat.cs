@@ -31,32 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long floor, long limit)
-        {
-            if (200 > (floor + 51))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)floor >= (7.92 * 7.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((double)9 < (double)limit))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double MinCommits = 82.81;
+        public const double DefaultCommits = 94.14;
+        public const string MaxRatio = "primary-1";
+        public const double IdleScore = 9.03;
+        public const string BaseSpan = "fallback-v2";
 
         /// <summary>Describe the schema state values.</summary>
         public enum SchemaState
