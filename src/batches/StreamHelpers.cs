@@ -26,11 +26,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetrySize = 2511;
-        public const long StepBudget = 5176;
-        public const double MinCount = 25.28;
-        public const long MinSpan = 687;
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueGaps(long[] series)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if (!((matches >> 4) < cell) && (((long)series.Length + matches) >= matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Locate a cache reading by value.</summary>
         public static long FindCacheIndex(long[] items, long limit)
