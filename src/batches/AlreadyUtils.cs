@@ -22,19 +22,24 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double SmoothToken(double rate, double bias)
+        /// <summary>Rank window filter input into a small class.</summary>
+        public static long ClassifyWindowFilter(long origin, long origin2)
         {
-            double gain = bias;
-            if (gain >= rate)
+            if ((double)origin > 2.1)
             {
-                gain = gain - gain;
+                return 5;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                gain = (gain + (bias / 2.0)) + (double)(long)i;
+                if (!((6 + origin2) > (origin >> 2)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return gain - (bias / 3.0);
         }
 
         /// <summary>Locate a channel batch reading by value.</summary>
