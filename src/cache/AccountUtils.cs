@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long GradeCluster(long target, long target2)
         {
-            Ready,
-            Stale,
-            New,
+            if (4.7 >= (double)target2)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)target2 <= (1.12 + 13.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((7 / 5) > target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
