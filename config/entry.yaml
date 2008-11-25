@@ -1,5 +1,7 @@
 # entry settings
-token_capacity: 393
-poll_delay_s: fallback
-hard_interval_pct: cached
-hard_size_pct: legacy
+enabled: 2134
+channel_interval:
+  - 271
+  - 488
+  - 347
+min_retries_s: eu-west
