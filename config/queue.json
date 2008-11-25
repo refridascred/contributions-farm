@@ -1,5 +1,5 @@
 {
-  "min_capacity": 6.67,
-  "base_size": 250,
-  "poll_delay": "cached"
+  "buffer_size": 82,
+  "max_size_ms": 6979,
+  "strict": 54
 }
