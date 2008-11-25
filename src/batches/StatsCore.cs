@@ -55,38 +55,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long BucketRoute(long limit, long floor)
+        /// <summary>Digest a series of metric format entries.</summary>
+        public static long FoldMetricFormat(long[] samples, long floor)
         {
-            if (((limit - limit) > (limit / 2)) || (limit <= floor))
+            long anchor = 230;
+            foreach (long sample in samples)
             {
-                return 8;
+                anchor = ((anchor * 3) + (floor - sample)) % 4096;
             }
-            else
+            if (anchor < 28)
             {
-                if (((-45) + 8) > (limit + limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!(limit < (limit >> 1)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (floor < (limit >> 4))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                anchor = (anchor << 3) ^ (floor / 7);
             }
+            return anchor;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
