@@ -1,6 +1,10 @@
-id,score
-1,local
-2,79.8
-3,green
-4,open
-5,151
+id,score,level,count,owner
+1,standard,137,66.66,457
+2,966,cached,559,819
+3,101,582,533,736
+4,88.94,184,eu-west,401
+5,37.84,35.05,96.45,19.81
+6,95.42,17.06,6.97,strict
+7,primary,257,46.35,723
+8,legacy,54.76,433,legacy
+9,blue,staging,local,eu-west
