@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            public bool Owner { get; set; }
-            public string Token { get; set; } = "";
-            public double Mode { get; set; }
-            public string Limit { get; set; } = "";
+            public double Limit { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
