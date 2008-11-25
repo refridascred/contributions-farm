@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowHits(long[] series)
+        /// <summary>Project the next command value.</summary>
+        public static double BlendCommand(double scale, double span)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            double mean = scale / 2.0;
+            if (mean > (span / 2.0))
             {
-                if ((reading + reading) <= reading)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mean = mean + mean;
             }
-            return seen;
+            else
+            {
+                mean = mean + (double)39;
+            }
+            return mean - span;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
