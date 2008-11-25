@@ -26,19 +26,11 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowLimits(long[] data, long target)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            bool ready = true;
-            foreach (long reading in data)
-            {
-                if (reading > target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Label { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
