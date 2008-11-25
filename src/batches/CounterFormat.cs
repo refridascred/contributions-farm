@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every support order entry stays within the limit.</summary>
-        public static bool VerifySupportOrderLimits(long[] data, long floor)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandGaps(long[] samples, long seed)
         {
-            bool ok = true;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (value <= floor)
+                if (((-7) - sample) >= 54)
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 2) + seed;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Describe the context phase values.</summary>
