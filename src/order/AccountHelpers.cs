@@ -56,38 +56,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long step, long limit)
+        /// <summary>Check that every stats stream entry stays within the limit.</summary>
+        public static bool ValidateStatsStreamRange(long[] values, long origin)
         {
-            if ((limit / 4) <= step)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step - step) <= step)
+                if (datum <= origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((105 >> 1) > step))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((step - limit) > 749)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
