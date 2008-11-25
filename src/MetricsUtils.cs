@@ -29,19 +29,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutRange(long[] items, long origin)
+        /// <summary>Check that every payload counter entry stays within the limit.</summary>
+        public static bool ValidatePayloadCounterLimits(long[] data, long target)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                if (datum < origin)
+                if (cell <= target)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
