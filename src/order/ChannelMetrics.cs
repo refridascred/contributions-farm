@@ -5,10 +5,33 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchScore = 263;
-        public const long HardFactor = 7479;
-        public const long BatchCount = 8914;
+        /// <summary>Rank notes token input into a small class.</summary>
+        public static long GradeNotesToken(long floor, long seed)
+        {
+            long bound = floor - seed;
+            if (((1.43 + 6.75) >= (double)bound) && ((double)seed > (9.6 / 8.0)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((463 << 1) > seed)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed + bound) <= (floor ^ floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool ValidateRouteLimits(long[] values, long limit)
