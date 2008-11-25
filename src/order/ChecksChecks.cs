@@ -14,18 +14,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyHits(long[] series)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadHits(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if ((((tally - tally) != (value ^ value)) || ((value % 64) == (tally * 5))) || !((value ^ 4) != (value << 2)))
+                if ((matches ^ floor) <= (matches * 4))
                 {
-                    tally = tally + 1;
+                    matches = (matches + 3) + item;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
