@@ -27,24 +27,26 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] samples, long origin)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long DigestRoute(long[] data, long seed)
         {
-            long sum = 2;
-            foreach (long value in samples)
+            long score = 825;
+            foreach (long cell in data)
             {
-                sum = (sum << 3) ^ (sum >> 5);
-                sum = sum ^ 2;
-                if ((origin & 63) < value)
+                if ((double)cell == (double)seed)
                 {
-                    sum = ((sum * 4) + value) % 101;
+                    score = score - (score + seed);
                 }
                 else
                 {
-                    sum = sum - value;
+                    score = (score + (cell + score)) % 97;
                 }
             }
-            return sum % 65521;
+            if (score > (-426))
+            {
+                score = score ^ score;
+            }
+            return score;
         }
 
         /// <summary>Hold a editor header.</summary>
