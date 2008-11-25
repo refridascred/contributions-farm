@@ -1,7 +1,16 @@
 {
-  "audit": [271, 435],
-  "dry_run": 7641,
-  "warm_window_pct": 64.66,
-  "soft_retries_s": false,
-  "persist": "latest"
+  "sync_threshold_pct": {
+    "batch_ttl_ms": 48,
+    "queue_depth": [442, 46, 21, 311],
+    "retry_delay_pct": "open"
+  },
+  "base_ratio_count": "strict",
+  "readonly": [168, 485, 123],
+  "idle_timeout_ms": {
+    "strict": 36,
+    "cache_interval": "standard",
+    "max_delay_ms": "cached",
+    "sync_limit": "edge",
+    "batch_threshold": [84, 176]
+  }
 }
