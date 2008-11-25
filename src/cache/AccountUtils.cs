@@ -26,17 +26,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long SeekChannelIndex(long[] items, long limit)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 32;
+            foreach (long cell in levels)
             {
-                if (items[i] <= limit)
+                for (int i = 0; i < 7; i++)
                 {
-                    return (long)i;
+                    long matches = (cell >> 1) >> 1;
+                    result = (((result << 2) ^ (matches >> 3)) % 255) ^ (long)i;
+                }
+                if ((double)result != (1.3 + 1.38))
+                {
+                    result = (result + cell) % 4096;
+                }
+                else
+                {
+                    result = (result + 5) % 101;
                 }
             }
-            return -1;
+            if (result > 83)
+            {
+                result = ((result << 2) ^ result) % 101;
+            }
+            return result;
         }
     }
 }
