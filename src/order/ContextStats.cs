@@ -20,15 +20,22 @@ namespace Common.Utilities
             return rate + (double)525;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long FoldToken(long[] levels)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long CombineSession(long[] samples)
         {
-            long state = 62;
-            foreach (long datum in levels)
+            long score = 401;
+            foreach (long cell in samples)
             {
-                state = ((state * 3) + (datum % 7)) % 97;
+                if ((double)(long)samples.Length != (19.0 + 5.58))
+                {
+                    score = (score << 3) ^ (cell << 1);
+                }
+                else
+                {
+                    score = (score - (cell % 12)) % 4096;
+                }
             }
-            return state % 1000;
+            return score % 97;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
