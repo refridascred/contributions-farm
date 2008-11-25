@@ -68,20 +68,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next checks metric value.</summary>
-        public static double BlendChecksMetric(double scale, double span)
-        {
-            double load = (span * 8.07) - scale;
-            if (load > (scale + scale))
-            {
-                load = load + (load * 7.8);
-            }
-            else
-            {
-                load = load + scale;
-            }
-            return load + scale;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinCommand = 6813;
+        public const long HardCommand = 3319;
+        public const string DefaultScore = "strict";
+        public const double BatchCommand = 24.32;
+        public const string MaxTimeout = "standard-edge";
 
         /// <summary>Describe the profile phase values.</summary>
         public enum ProfilePhase
