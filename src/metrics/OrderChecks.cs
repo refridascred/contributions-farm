@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit entry cache readings against a rule.</summary>
-        public static long MeasureEntryCacheHits(long[] levels)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if (((tally % 2) < (reading - reading)) && ((12.0 - 7.7) >= (12.0 + 1.0)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Ratio { get; set; }
+            public bool Owner { get; set; }
+            public bool Label { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
