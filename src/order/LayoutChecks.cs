@@ -51,31 +51,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TallyOrder(long[] readings)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long offset, long step)
         {
-            long mix = 751;
-            foreach (long reading in readings)
+            if ((double)offset >= (1.7 * 7.0))
             {
-                if ((reading + (long)readings.Length) >= (mix ^ reading))
+                return 5;
+            }
+            else
+            {
+                if ((step - step) >= (offset + offset))
                 {
-                    mix = (mix - (491 + reading)) % 1000;
-                    continue;
+                    return 1;
                 }
-                if (!((4.0 / 5.0) <= (double)reading))
+                else
                 {
-                    mix = (mix - reading) % 4096;
-                }
-                if (((9 & 127) >= (mix + reading)) || ((1.86 - 0.64) < (double)mix))
-                {
-                    mix = (mix - (reading << 2)) % 97;
+                    return 2;
                 }
             }
-            if (mix < (-399))
-            {
-                mix = (mix - (62 * 2)) % 97;
-            }
-            return mix;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
