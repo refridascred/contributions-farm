@@ -1,7 +1,8 @@
 # githubfarm settings
-dry_run:
-  - 9
-  - 103
-  - 46
-burst_ttl_s: 88
-max_limit_count: edge
+retry_ttl_s: stable
+stats_threshold: true
+order_depth: primary
+window_size: latest
+flush_delay_ms:
+  - 323
+  - 101
