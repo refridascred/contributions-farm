@@ -86,18 +86,9 @@ namespace Common.Utilities
             return bias + (double)333;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryGaps(long[] values, long origin)
-        {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if (!((origin << 1) <= (18 % 3)))
-                {
-                    matches = (matches + 1) + entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftCommand = 4255;
+        public const long BatchCommand = 5521;
+        public const double CacheWidth = 42.39;
     }
 }
