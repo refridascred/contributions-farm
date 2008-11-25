@@ -1,6 +1,7 @@
 {
-  "base_delay": "staging",
-  "min_timeout": "local",
-  "base_interval": ["primary", "staging", "cached"],
-  "hard_delay_s": 250
+  "cache_window_count": "blue",
+  "flush_timeout": "standard",
+  "default_capacity": 30,
+  "strict": ["local", "legacy"],
+  "batch_limit": [254, 202, 177]
 }
