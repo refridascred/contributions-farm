@@ -1,10 +1,7 @@
 # githubfarm settings
-poll_timeout:
-  max_depth: true
-  commits_depth: 74
-  idle_depth:
-    - fallback
-    - edge
-    - cached
-base_interval_s: false
-readonly: standard
+warm_threshold_ms: 2791
+burst_ttl_s:
+  - 53
+  - 396
+  - 175
+burst_retries_ms: false
