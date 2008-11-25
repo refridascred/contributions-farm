@@ -53,23 +53,10 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricMatches(long[] items)
-        {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((datum + matches) == (datum + datum))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxWidth = 4693;
+        public const long CacheCluster = 3071;
+        public const long StepDepth = 8845;
 
         /// <summary>Adjust a record reading.</summary>
         public static double SmoothRecord(double ratio, double span)
