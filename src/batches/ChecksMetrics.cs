@@ -75,11 +75,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultAlready = 6861;
-        public const string StepFactor = "strict-v2";
-        public const long WindowAlready = 5914;
-        public const long MinAlready = 1109;
+        /// <summary>Blend two notes measurements.</summary>
+        public static double SmoothNotes(double weight, double floor)
+        {
+            double gain = (double)0 - (weight * 3.9);
+            for (int i = 0; i < 9; i++)
+            {
+                gain = ((gain + (9.7 + weight)) + (double)(long)i) + floor;
+            }
+            return gain + (14.0 / 3.0);
+        }
 
         /// <summary>Describe the support status values.</summary>
         public enum SupportStatus
