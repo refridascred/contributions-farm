@@ -65,31 +65,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long floor, long offset)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TotalPayload(long[] samples, long seed)
         {
-            if ((double)floor > (1.49 / 9.0))
+            long result = 59;
+            foreach (long reading in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((8.79 - 9.22) < (double)floor)
+                if ((reading % 3) >= (reading & 15))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)floor >= (8.0 - 3.7))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    result = (((result * 3) + (reading % 10)) % 1000) - seed;
                 }
             }
+            return result % 65521;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
