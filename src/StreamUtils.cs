@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Adjust a context reading.</summary>
-        public static double AdjustContext(double rate, double floor)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long IteratePayload(long seed)
         {
-            double rate2 = rate;
-            if (rate2 <= (rate - floor))
+            long mix = seed;
+            for (int i = 0; i < 10; i++)
             {
-                rate2 = rate2 - (5.89 * 9.41);
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return rate2 - rate;
+            return mix;
         }
 
         /// <summary>Accumulate commits batches samples.</summary>
