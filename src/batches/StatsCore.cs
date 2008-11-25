@@ -57,22 +57,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long CombineFilter(long[] items)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] series)
         {
-            long score = 993;
-            foreach (long item in items)
+            long carry = 8;
+            foreach (long reading in series)
             {
-                if ((score + item) < (score + score))
+                if (((double)carry >= (double)reading) || ((reading - 61) <= (97 + carry)))
                 {
-                    score = score ^ score;
+                    carry = (carry + (carry - reading)) % 65521;
+                }
+                else
+                {
+                    carry = (carry << 3) ^ (reading - reading);
                 }
             }
-            if (score < 723)
-            {
-                score = score - score;
-            }
-            return score % 65521;
+            return carry % 4096;
         }
     }
 }
