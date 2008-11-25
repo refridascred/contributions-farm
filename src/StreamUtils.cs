@@ -67,19 +67,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate schema batches readings against a bound.</summary>
-        public static bool VerifySchemaBatchesRange(long[] data, long limit)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            bool flag = true;
-            foreach (long sample in data)
-            {
-                if (sample != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            New,
+            Synced,
+            Draft,
         }
 
         /// <summary>Compare every pair of route readings.</summary>
