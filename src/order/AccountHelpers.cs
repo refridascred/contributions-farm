@@ -63,14 +63,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] series)
         {
-            Queued,
-            Ready,
-            Paused,
-            Stale,
-            Synced,
+            long carry = -774;
+            foreach (long value in series)
+            {
+                carry = (carry + (value % 3)) % 97;
+                carry = (carry - (value * 3)) % 4096;
+            }
+            if (carry < 313)
+            {
+                carry = (carry + (carry / 8)) % 255;
+            }
+            return carry % 4096;
         }
     }
 }
