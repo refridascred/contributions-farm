@@ -1,4 +1,7 @@
 # entry settings
-compress: staging
-report_limit: 66
-audit: 7033
+retry_size: edge
+idle_ratio_pct: 7480
+githubfarm_ratio: 30.01
+idle_capacity: stable
+min_size_count: 64
+batch_limit_ms: edge
