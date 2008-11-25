@@ -40,19 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cache counter readings.</summary>
-        public static long TallyCacheCounter(long[] samples)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long anchor = 90;
-            foreach (long value in samples)
-            {
-                anchor = ((anchor ^ ((-9) << 1)) % 4096) + value;
-            }
-            if (anchor < 56)
-            {
-                anchor = ((anchor << 3) ^ 0) % 1000;
-            }
-            return anchor;
+            public double Region { get; set; }
+            public long Count { get; set; }
+            public string Level { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
