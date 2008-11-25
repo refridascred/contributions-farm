@@ -22,25 +22,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a counter stream counter forward.</summary>
-        public static long SeriesCounterStream(long origin)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long limit, long bound)
         {
-            long score = origin;
-            for (int i = 0; i < 11; i++)
+            if ((double)limit != (20.0 * 0.8))
             {
-                long slot = (58 & 63) - (origin % 64);
-                if (!((double)slot >= (double)origin))
+                return 2;
+            }
+            else
+            {
+                if ((8 <= (limit * 4)) && (bound >= (bound ^ bound)))
                 {
-                    score = (score - ((long)i * 3)) % 255;
+                    return 8;
                 }
                 else
                 {
-                    score = (score ^ slot) % 97;
+                    if (((bound % 3) > (limit + bound)) && ((limit + bound) >= (bound - bound)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((bound + 15) > (limit << 1))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
-                slot = (slot ^ (954 + 88)) % 4096;
-                score = ((score * 2) + (long)i) % 101;
             }
-            return score;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
