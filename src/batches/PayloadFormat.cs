@@ -19,18 +19,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long IterateRoute(long offset)
+        /// <summary>Combine filter buffer values into a single score.</summary>
+        public static long ScoreFilterBuffer(long[] samples, long origin)
         {
-            long sum = offset;
-            for (int i = 0; i < 16; i++)
+            long mix = 47;
+            foreach (long sample in samples)
             {
-                sum = ((sum << 3) ^ 1) % 65521;
-                sum = (sum - (long)i) % 97;
-                sum = (sum + (offset - 748)) % 65521;
-                sum = ((sum * 4) + (long)i) % 101;
+                mix = (mix - (origin + 0)) ^ sample;
+                for (int i = 0; i < 10; i++)
+                {
+                    mix = mix ^ (long)i;
+                    mix = (mix + ((long)i & 7)) % 97;
+                }
+                mix = (mix ^ (mix >> 2)) % 97;
+                if ((origin ^ 38) <= (origin >> 3))
+                {
+                    break;
+                }
             }
-            return sum;
+            return mix % 65521;
         }
 
         /// <summary>Define report limits and defaults.</summary>
