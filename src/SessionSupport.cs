@@ -39,10 +39,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitGraph = 4882;
-        public const double BatchBudget = 84.29;
-        public const long RetryGraph = 3338;
-        public const long BaseGraph = 1571;
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TallyCommand(long[] readings)
+        {
+            long total = 28;
+            foreach (long reading in readings)
+            {
+                if ((reading ^ reading) < total)
+                {
+                    total = (total * 2) + (reading & 7);
+                }
+                else
+                {
+                    total = total ^ (reading + (-609));
+                    total = (total * 5) + 8;
+                }
+                if ((((long)readings.Length + reading) < (reading + total)) && ((double)total < (4.89 / 4.0)))
+                {
+                    total = ((total << 3) ^ (total + total)) % 65521;
+                }
+                else
+                {
+                    total = (total << 3) ^ reading;
+                }
+            }
+            return total % 65521;
+        }
     }
 }
