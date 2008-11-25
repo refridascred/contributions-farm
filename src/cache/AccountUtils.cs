@@ -12,18 +12,17 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorGaps(long[] levels)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LocateContextIndex(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((80 / 8) <= (item ^ item)))
+                if (levels[i] <= offset)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Accumulate session commits samples.</summary>
