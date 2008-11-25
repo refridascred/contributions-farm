@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LookupChannelIndex(long[] items, long step)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LocateGraphIndex(long[] levels, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (items[i] >= step)
+                if (levels[i] < seed)
                 {
                     return (long)i;
                 }
