@@ -73,13 +73,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            Synced,
-            Dropped,
-            Failed,
-            Idle,
+            public long Owner { get; set; }
+            public string Region { get; set; } = "";
+            public string Level { get; set; } = "";
         }
     }
 }
