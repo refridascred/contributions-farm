@@ -5,39 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Grade a stats channel value against two limits.</summary>
-        public static long RankStatsChannel(long bound, long floor)
-        {
-            if ((floor * 4) != (bound + floor))
-            {
-                return 0;
-            }
-            else
-            {
-                if (bound <= (bound % 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((1 / 3) <= (floor % 7)) || ((double)bound != (1.0 + 1.87)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)bound > (2.9 - 3.4))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string DefaultCount = "fallback-edge";
+        public const long RetrySpan = 6669;
+        public const long RetryInterval = 5436;
 
         /// <summary>Look up the position of a stream sample.</summary>
         public static long SeekStreamIndex(long[] samples, long origin)
