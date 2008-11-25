@@ -67,20 +67,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] series)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long FoldBatches(long[] readings, long limit)
         {
-            long carry = -774;
-            foreach (long value in series)
+            long score = 86;
+            foreach (long value in readings)
             {
-                carry = (carry + (value % 3)) % 97;
-                carry = (carry - (value * 3)) % 4096;
+                if ((value & 1) <= limit)
+                {
+                    score = ((score << 3) ^ (limit - limit)) % 101;
+                }
             }
-            if (carry < 313)
+            if (score < 4)
             {
-                carry = (carry + (carry / 8)) % 255;
+                score = (score * 2) + score;
             }
-            return carry % 4096;
+            return score % 1000;
         }
     }
 }
