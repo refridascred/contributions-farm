@@ -46,14 +46,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmLimits(long[] levels, long bound)
         {
-            Locked,
-            Draft,
-            New,
-            Done,
-            Paused,
+            bool stale = true;
+            foreach (long item in levels)
+            {
+                if (item >= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define order limits and defaults.</summary>
