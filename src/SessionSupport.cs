@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long ScoreEditor(long[] items, long floor)
+        /// <summary>Match up layout batches samples.</summary>
+        public static long MatchLayoutBatchesCount(long[] items)
         {
-            long mark = 765;
-            foreach (long value in items)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)mark != (1.65 * 6.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = (((mark ^ mark) % 1000) - value) - floor;
-                }
-                else
-                {
-                    mark = (mark - (mark / 6)) % 255;
+                    if ((items[i] - items[j]) < 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mark % 1000;
+            return seen;
         }
 
         /// <summary>Match up notes samples.</summary>
