@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of buffer format readings.</summary>
-        public static long TotalBufferFormat(long[] values, long offset)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long sum = 2;
-            foreach (long entry in values)
-            {
-                if (entry < (sum + sum))
-                {
-                    sum = ((sum * 5) + (4 + entry)) + offset;
-                }
-            }
-            return sum;
+            public double Label { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
