@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const long SoftRoute = 8451;
         public const double BaseDepth = 69.19;
 
-        /// <summary>Check that every order stats entry stays within the limit.</summary>
-        public static bool ValidateOrderStatsRange(long[] items, long bound)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiLimits(long[] samples, long bound)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                if (entry < bound)
+                if (reading > bound)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
