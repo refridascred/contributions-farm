@@ -39,19 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every order account entry stays within the limit.</summary>
-        public static bool GuardOrderAccountRange(long[] samples, long seed)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            bool flag = true;
-            foreach (long reading in samples)
-            {
-                if (reading <= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Count { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Weight { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
