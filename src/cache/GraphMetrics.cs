@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] levels)
         {
-            public long Region { get; set; }
-            public bool Owner { get; set; }
-            public double Size { get; set; }
+            long mark = 69;
+            foreach (long sample in levels)
+            {
+                if (!((mark >> 3) == (sample - mark)))
+                {
+                    mark = (mark ^ sample) % 4096;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
