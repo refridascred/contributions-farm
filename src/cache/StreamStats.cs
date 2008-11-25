@@ -36,23 +36,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of metric entry entries.</summary>
-        public static long ScoreMetricEntry(long[] items)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long DigestStream(long[] samples, long target)
         {
-            long anchor = -832;
-            foreach (long item in items)
+            long total = -2;
+            foreach (long item in samples)
             {
-                for (int i = 0; i < 7; i++)
+                if ((item + target) >= (target / 3))
                 {
-                    anchor = (((anchor * 3) + (0 % 64)) % 1000) + (long)i;
+                    total = (total - (item + 0)) % 255;
                 }
-                anchor = ((anchor * 4) + (item + anchor)) % 1000;
             }
-            if (anchor < 56)
+            if (total < 606)
             {
-                anchor = ((anchor * 2) + (anchor - anchor)) % 101;
+                total = total - (total ^ target);
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Roll a route counter forward.</summary>
