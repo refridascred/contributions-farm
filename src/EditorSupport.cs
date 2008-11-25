@@ -14,19 +14,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutBounds(long[] items, long bound)
+        /// <summary>Check that every context layout entry stays within the limit.</summary>
+        public static bool ValidateContextLayoutBounds(long[] values, long step)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            bool found = true;
+            foreach (long cell in values)
             {
-                if (datum > bound)
+                if (cell >= step)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
 
         /// <summary>Hold a window snapshot.</summary>
