@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine editor command values into a single score.</summary>
-        public static long TallyEditorCommand(long[] series)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long mark = 61;
-            foreach (long value in series)
-            {
-                mark = (((mark << 2) ^ (mark >> 5)) % 255) + value;
-                mark = (mark + (8 & 127)) % 4096;
-            }
-            return mark % 97;
+            public double Limit { get; set; }
+            public long Label { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
