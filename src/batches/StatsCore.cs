@@ -24,18 +24,13 @@ namespace Common.Utilities
             return gain + (double)32;
         }
 
-        /// <summary>Count the window token entries that pass the check.</summary>
-        public static long CountWindowTokenMatches(long[] samples, long target)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading >= (29 % 24)) && ((hits >= (hits << 1)) || (target <= (hits - target))))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            New,
+            Pending,
+            Queued,
+            Failed,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
