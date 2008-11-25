@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up layout batches samples.</summary>
-        public static long MatchLayoutBatchesCount(long[] items)
+        /// <summary>Grade a context payload value against two limits.</summary>
+        public static long RankContextPayload(long target, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long lane = target ^ step;
+            if ((double)lane < (18.0 / 9.0))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (((6.8 / 5.0) > (double)lane) && ((step << 2) <= (step + lane)))
                 {
-                    if ((items[i] - items[j]) < 12)
+                    return 5;
+                }
+                else
+                {
+                    if (3.0 <= (double)lane)
                     {
-                        seen = seen + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if (step < (step + step))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Find the first route command entry that matches the target.</summary>
