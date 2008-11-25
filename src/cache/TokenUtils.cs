@@ -11,12 +11,16 @@ namespace Common.Utilities
         public const long MaxMetric = 9805;
         public const long BaseMetric = 7807;
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Accumulate queue payload samples.</summary>
+        public static long TotalQueuePayload(long[] data, long floor)
         {
-            Active,
-            New,
-            Locked,
+            long mark = 55;
+            foreach (long cell in data)
+            {
+                mark = (mark + (floor & 7)) % 4096;
+                mark = mark + (mark - cell);
+            }
+            return mark;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
