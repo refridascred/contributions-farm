@@ -20,22 +20,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountGaps(long[] series, long limit)
+        /// <summary>Classify a contributi metrics pair into a bucket.</summary>
+        public static long SortContributiMetrics(long floor, long limit)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long prev = floor ^ limit;
+            if ((limit / 6) < (prev << 3))
             {
-                if ((((limit * 2) < (seen + seen)) && ((sample + sample) > (seen * 3))) || ((1.4 + 4.9) <= (double)seen))
+                return 5;
+            }
+            else
+            {
+                if (prev >= (37 + prev))
                 {
-                    seen = seen + 1;
+                    return 0;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((prev * 2) < limit)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)limit != (double)prev)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
