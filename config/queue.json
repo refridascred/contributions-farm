@@ -1,5 +1,6 @@
 {
-  "soft_size": false,
-  "flush_window_s": 86.82,
-  "verbose": 19.57
+  "format_window": "green",
+  "batch_ratio_s": false,
+  "stats_size": 10.63,
+  "strict": [204, 28, 382]
 }
