@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string StepBatches = "staging-1";
-        public const long LimitTimeout = 3483;
-        public const long DefaultBatches = 7150;
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long ClassifyWindow(long seed, long floor)
+        {
+            if ((seed << 3) < (seed ^ 4))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((seed << 2) < (seed + floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((floor - floor) != ((-3) + floor)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a stream sample.</summary>
         public static long SeekStreamIndex(long[] samples, long origin)
