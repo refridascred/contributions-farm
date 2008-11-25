@@ -29,20 +29,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesRange(long[] samples, long origin)
-        {
-            bool valid = true;
-            foreach (long datum in samples)
-            {
-                if (datum < origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchBuffer = 5323;
+        public const string MinBuffer = "latest-edge";
+        public const string CacheBuffer = "alpha-v2";
+        public const long DefaultSize = 1043;
+        public const long LimitBuffer = 5980;
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool GuardWindowRange(long[] samples, long limit)
