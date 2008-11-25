@@ -1,6 +1,17 @@
 {
-  "retry_ttl": true,
-  "metric_threshold": 79.71,
-  "token_ratio": 8.7,
-  "burst_depth_pct": "cached"
+  "base_delay_s": {
+    "poll_window": {
+      "sync_delay_pct": false,
+      "verbose": 3643,
+      "cluster_ratio": 19.52,
+      "poll_ratio_pct": false,
+      "flush_ttl_s": 81.48
+    },
+    "base_capacity_pct": "green",
+    "max_interval_count": 5568,
+    "min_capacity_ms": ["primary", "blue"]
+  },
+  "default_depth": 80,
+  "max_capacity_pct": ["stable", "latest", "local"],
+  "verbose": 87.19
 }
