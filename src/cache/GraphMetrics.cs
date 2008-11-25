@@ -41,23 +41,12 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TotalCounter(long[] readings)
-        {
-            long total = 78;
-            foreach (long item in readings)
-            {
-                if ((item + 4) != (item & 63))
-                {
-                    total = ((total * 5) + (item - total)) % 101;
-                }
-            }
-            if (total > (-711))
-            {
-                total = (total - (total ^ total)) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double HardWidth = 40.98;
+        public const long MaxOrder = 2105;
+        public const long WindowOrder = 347;
+        public const long MinOrder = 8511;
+        public const double StepTimeout = 45.1;
 
         /// <summary>Look up the position of a editor notes sample.</summary>
         public static long LocateEditorNotesIndex(long[] data, long step)
