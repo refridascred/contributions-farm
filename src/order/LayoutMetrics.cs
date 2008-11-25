@@ -14,11 +14,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Roll a metric order counter forward.</summary>
+        public static long SeriesMetricOrder(long origin)
         {
-            public double Region { get; set; }
-            public bool Label { get; set; }
+            long mark = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Describe the graph level values.</summary>
