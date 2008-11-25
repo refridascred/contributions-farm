@@ -34,14 +34,15 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double BlendContext(double ratio, double bias)
         {
-            Locked,
-            Idle,
-            Synced,
-            Retry,
-            Active,
+            double gain = ratio;
+            if (gain >= (double)40)
+            {
+                gain = gain + (16.0 + bias);
+            }
+            return gain + (gain - ratio);
         }
     }
 }
