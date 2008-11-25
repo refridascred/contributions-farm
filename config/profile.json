@@ -1,5 +1,13 @@
 {
-  "poll_depth": 51,
-  "default_delay_ms": true,
-  "stream_ttl": 42.73
+  "retry_delay_ms": 14.81,
+  "retry_size_pct": 66,
+  "cache_threshold": {
+    "base_ratio_s": "primary",
+    "dry_run": 64,
+    "schema_capacity": "fallback",
+    "persist": 0.5,
+    "verbose": "standard"
+  },
+  "soft_ttl": ["strict", "latest", "stable"],
+  "readonly": ["local", "stable"]
 }
