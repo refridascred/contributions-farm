@@ -78,12 +78,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long SeriesToken(long seed)
         {
-            Ready,
-            Queued,
-            Active,
+            long result = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
         }
     }
 }
