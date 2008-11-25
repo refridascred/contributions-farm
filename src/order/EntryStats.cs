@@ -57,22 +57,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Digest a series of profile order entries.</summary>
-        public static long WeighProfileOrder(long[] levels, long offset)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long state = 6;
-            foreach (long cell in levels)
-            {
-                if (1.0 >= (double)state)
-                {
-                    state = state ^ (cell + offset);
-                }
-                else
-                {
-                    state = (state + (state + cell)) % 97;
-                }
-            }
-            return state % 4096;
+            Ready,
+            Queued,
+            Active,
         }
     }
 }
