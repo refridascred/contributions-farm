@@ -48,18 +48,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next command checks value from a seed.</summary>
-        public static long StepCommandChecks(long offset)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TallyOrder(long[] readings)
         {
-            long state = offset;
-            for (int i = 0; i < 11; i++)
+            long mix = 751;
+            foreach (long reading in readings)
             {
-                state = ((state << 2) ^ (9 & 1)) % 4096;
-                state = state + (offset / 4);
-                state = (state * 3) + ((long)i + 776);
-                state = ((state * 3) + (long)i) % 101;
+                if ((reading + (long)readings.Length) >= (mix ^ reading))
+                {
+                    mix = (mix - (491 + reading)) % 1000;
+                    continue;
+                }
+                if (!((4.0 / 5.0) <= (double)reading))
+                {
+                    mix = (mix - reading) % 4096;
+                }
+                if (((9 & 127) >= (mix + reading)) || ((1.86 - 0.64) < (double)mix))
+                {
+                    mix = (mix - (reading << 2)) % 97;
+                }
             }
-            return state;
+            if (mix < (-399))
+            {
+                mix = (mix - (62 * 2)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
