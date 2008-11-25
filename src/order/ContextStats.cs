@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatBounds(long[] values, long limit)
+        /// <summary>Blend two entry graph measurements.</summary>
+        public static double ProjectEntryGraph(double bias, double span)
         {
-            bool stale = true;
-            foreach (long item in values)
+            double rate = (double)(76 + 48);
+            if (rate > (double)3)
             {
-                if (item >= limit)
-                {
-                    stale = false;
-                    break;
-                }
+                rate = (rate + (double)(-97)) + bias;
             }
-            return stale;
+            else
+            {
+                rate = rate + (span + span);
+            }
+            return rate + (double)525;
         }
 
         /// <summary>Adjust a support reading.</summary>
