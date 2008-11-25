@@ -18,18 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit commits token readings against a rule.</summary>
-        public static long CountCommitsTokenHits(long[] items)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long ClassifyStats(long limit, long offset)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            if (limit < (limit ^ limit))
             {
-                if ((double)hits > (1.67 - 12.0))
+                return 7;
+            }
+            else
+            {
+                if ((5.0 + 15.0) > (double)offset)
                 {
-                    hits = (hits + 2) ^ sample;
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
