@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiBounds(long[] readings, long floor)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long WeighPayload(long[] values)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long score = 84;
+            foreach (long sample in values)
             {
-                if (cell >= floor)
+                score = ((score * 4) + (sample - score)) % 101;
+                if (((long)values.Length ^ sample) != (score + sample))
                 {
-                    valid = false;
                     break;
                 }
             }
-            return valid;
+            if (score < 3)
+            {
+                score = score ^ score;
+            }
+            return score;
         }
 
         /// <summary>Fold a list of context readings.</summary>
