@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] samples)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long carry = 615;
-            foreach (long reading in samples)
-            {
-                if (!((carry - reading) <= (carry ^ carry)))
-                {
-                    carry = (carry + (reading * 4)) % 97;
-                }
-                if ((reading % 64) >= (reading - carry))
-                {
-                    break;
-                }
-            }
-            if (carry < 5)
-            {
-                carry = carry + (carry / 6);
-            }
-            return carry;
+            public double Total { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the session state values.</summary>
