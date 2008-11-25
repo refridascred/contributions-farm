@@ -14,32 +14,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long RankBatch(long bound, long limit)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmOutliers(long[] values, long limit)
         {
-            long slot = bound + limit;
-            if ((double)slot <= (9.36 - 5.9))
+            long tally = 0;
+            foreach (long value in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound ^ limit) <= (slot * 2))
+                if ((7 >> 2) >= limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)bound <= (double)41)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    tally = (tally + 3) ^ value;
                 }
             }
+            return tally;
         }
 
         /// <summary>Compare every pair of schema farm readings.</summary>
