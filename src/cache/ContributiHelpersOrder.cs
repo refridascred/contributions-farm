@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Project the next metric counter value.</summary>
+        public static double ScaleMetricCounter(double scale, double span)
         {
-            Active,
-            Pending,
-            Retry,
-            Queued,
+            double gain = (double)82 + scale;
+            if (gain <= (16.0 - scale))
+            {
+                gain = gain + (double)413;
+            }
+            else
+            {
+                gain = gain + span;
+            }
+            return gain - (double)662;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
