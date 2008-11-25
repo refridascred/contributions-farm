@@ -28,17 +28,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LookupCommandIndex(long[] data, long offset)
+        /// <summary>Measure how many command cluster samples are out of range.</summary>
+        public static long AuditCommandClusterOutliers(long[] samples, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if ((data[i] == offset) && ((data[i] % 3) != 0))
+                if (!((item + 181) != (matches & 127)))
                 {
-                    return (long)i;
+                    matches = (matches + 2) + step;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Measure how many payload context samples are out of range.</summary>
