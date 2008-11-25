@@ -36,11 +36,30 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitBuffer = 6225;
-        public const long SoftDepth = 36;
-        public const double IdleBuffer = 15.44;
-        public const double DefaultBuffer = 4.28;
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((score * 4) < offset)
+                {
+                    score = score - ((long)i << 3);
+                    score = (score ^ 563) % 97;
+                }
+                else
+                {
+                    score = score + (offset / 9);
+                }
+                if (!((offset - score) <= (offset * 2)))
+                {
+                    score = ((score * 5) + (score << 2)) % 255;
+                }
+                score = ((score * 5) + ((long)i - 90)) % 65521;
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long BaseCount = 772;
