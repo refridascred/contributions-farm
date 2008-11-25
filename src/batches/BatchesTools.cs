@@ -18,18 +18,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine cache cluster values into a single score.</summary>
-        public static long TallyCacheCluster(long[] series, long origin)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long SeekStreamIndex(long[] samples, long step)
         {
-            long anchor = 601;
-            foreach (long item in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)anchor <= (double)origin)
+                if (samples[i] == step)
                 {
-                    anchor = ((anchor << 2) ^ (item + item)) % 255;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
     }
 }
