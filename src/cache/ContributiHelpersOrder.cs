@@ -19,18 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit order stream readings against a rule.</summary>
-        public static long TallyOrderStreamMatches(long[] readings, long step)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] samples)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long state = 4;
+            foreach (long reading in samples)
             {
-                if (step >= (count / 3))
+                state = state + reading;
+                if (!((state / 6) == (state / 4)))
                 {
-                    count = (count + 3) + sample;
+                    state = (state << 2) ^ state;
+                }
+                if (reading > (0 << 3))
+                {
+                    state = state - (reading >> 5);
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
