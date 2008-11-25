@@ -14,12 +14,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultWindow = 1451;
-        public const long BaseWindow = 2624;
-        public const long DefaultScore = 1651;
-        public const long MaxWindow = 3382;
-        public const long StepInterval = 2300;
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
+        {
+            Stale,
+            Failed,
+            Locked,
+        }
 
         /// <summary>Combine support values into a single score.</summary>
         public static long CombineSupport(long[] samples, long step)
