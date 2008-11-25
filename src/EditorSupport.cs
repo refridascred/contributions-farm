@@ -95,18 +95,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many metric profile samples are out of range.</summary>
-        public static long AuditMetricProfileGaps(long[] series)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if (((1.5 / 5.0) >= (double)hits) || ((item * 2) != ((long)series.Length - 8)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public bool Size { get; set; }
+            public double Total { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
     }
 }
