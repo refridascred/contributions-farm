@@ -27,13 +27,11 @@ namespace Common.Utilities
         public const long BaseSpan = 4319;
         public const long HardFactor = 5016;
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
-        {
-            public long Token { get; set; }
-            public double Ratio { get; set; }
-            public string Size { get; set; } = "";
-            public long Score { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double CacheSchema = 34.36;
+        public const long DefaultSchema = 757;
+        public const long RetryInterval = 9101;
+        public const long StepRatio = 6575;
+        public const string MaxSchema = "legacy";
     }
 }
