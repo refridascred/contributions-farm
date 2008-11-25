@@ -52,17 +52,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Derive the next stats counter value from a seed.</summary>
-        public static long IterateStatsCounter(long floor)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterHits(long[] samples)
         {
-            long carry = floor;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                carry = (carry << 3) ^ 34;
-                carry = carry ^ (5 + carry);
-                carry = ((carry * 5) + (long)i) % 4093;
+                if ((7.78 / 3.0) != (double)reading)
+                {
+                    count = count + 2;
+                }
             }
-            return carry;
+            return count;
         }
     }
 }
