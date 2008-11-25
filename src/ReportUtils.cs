@@ -35,11 +35,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LookupCommandIndex(long[] series, long origin)
         {
-            public bool Mode { get; set; }
-            public long Rank { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < origin) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up route token samples.</summary>
