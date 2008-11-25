@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphRange(long[] readings, long origin)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            bool valid = true;
-            foreach (long value in readings)
-            {
-                if (value <= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Active,
+            Done,
+            Queued,
         }
 
         /// <summary>Hold a stream snapshot.</summary>
