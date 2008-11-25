@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutHits(long[] samples)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((((3.1 - 0.1) > (double)reading) && ((double)(long)samples.Length < (20.0 - 2.6))) && ((reading * 5) <= 3))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public string Limit { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Flag { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
