@@ -53,12 +53,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] readings, long offset)
         {
-            Retry,
-            New,
-            Dropped,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
