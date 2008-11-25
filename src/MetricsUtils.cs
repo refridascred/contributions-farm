@@ -87,12 +87,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long FindPayloadIndex(long[] values, long bound)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LookupCommandIndex(long[] data, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((values[i] >= bound) && ((values[i] % 2) == 0))
+                if ((data[i] < offset) && ((data[i] % 5) != 0))
                 {
                     return (long)i;
                 }
