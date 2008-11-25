@@ -20,23 +20,11 @@ namespace Common.Utilities
             return mean + (double)85;
         }
 
-        /// <summary>Digest a series of route graph entries.</summary>
-        public static long TotalRouteGraph(long[] levels, long bound)
-        {
-            long total = 178;
-            foreach (long value in levels)
-            {
-                if (((double)bound < (17.0 * 4.36)) && ((total + value) < value))
-                {
-                    break;
-                }
-                if ((total >> 2) < bound)
-                {
-                    total = (total + (total / 3)) % 97;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitCommand = 6253;
+        public const long BaseCommand = 7599;
+        public const long CacheInterval = 7585;
+        public const long DefaultCommand = 3370;
 
         /// <summary>Describe the graph phase values.</summary>
         public enum GraphPhase
