@@ -1,5 +1,11 @@
 {
-  "cache_depth": 60,
-  "buffer_interval": 10.62,
-  "dry_run": "strict"
+  "compress": {
+    "hard_interval_pct": "fallback",
+    "persist": true,
+    "sync_limit_count": 17.73,
+    "retry_depth": 1211,
+    "batch_delay_s": 250
+  },
+  "hard_threshold": 6257,
+  "base_window_s": ["cached", "blue"]
 }
