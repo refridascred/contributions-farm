@@ -57,11 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Check that every checks route entry stays within the limit.</summary>
+        public static bool GuardChecksRouteLimits(long[] data, long offset)
         {
-            public double Stamp { get; set; }
-            public string Label { get; set; } = "";
+            bool ready = true;
+            foreach (long entry in data)
+            {
+                if (entry != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
