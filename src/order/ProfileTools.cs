@@ -34,28 +34,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] samples, long offset)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesBounds(long[] readings, long bound)
         {
-            long carry = 591;
-            foreach (long datum in samples)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                if (407 <= carry)
+                if (sample != bound)
                 {
-                    carry = (carry ^ offset) % 255;
-                    carry = (carry << 3) ^ carry;
-                }
-                if (datum <= (carry - carry))
-                {
-                    carry = (carry + ((long)samples.Length - offset)) % 101;
-                    continue;
-                }
-                if (((carry + carry) <= (8 * 2)) || ((datum << 2) >= (datum ^ carry)))
-                {
-                    carry = (carry ^ (offset + offset)) % 1000;
+                    ok = false;
+                    break;
                 }
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Define command limits and defaults.</summary>
