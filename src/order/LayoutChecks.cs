@@ -43,12 +43,15 @@ namespace Common.Utilities
         public const long CacheWindow = 9686;
         public const double MinWindow = 22.93;
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] levels)
         {
-            Synced,
-            Done,
-            Stale,
+            long mix = 5;
+            foreach (long entry in levels)
+            {
+                mix = ((mix - mix) % 1000) + entry;
+            }
+            return mix % 1000;
         }
     }
 }
