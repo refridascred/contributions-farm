@@ -1,23 +1,5 @@
 {
-  "default_threshold": 22,
-  "min_ratio_count": 63.06,
-  "compress": {
-    "retry_window": [60, 58, 44, 103],
-    "hard_ttl_pct": "cached",
-    "default_size_s": {
-      "format_ratio": 14,
-      "farm_depth": 25,
-      "context_depth": true,
-      "enabled": [477, 225]
-    },
-    "retry_ratio": false,
-    "checks_size": {
-      "max_size_pct": [362, 137],
-      "batch_ratio": ["strict", "open"],
-      "default_window": 3.72
-    },
-    "batch_ratio": "standard"
-  },
-  "flush_timeout": false,
-  "soft_timeout": "standard"
+  "batch_retries": false,
+  "strict": 2294,
+  "checks_threshold": 100
 }
