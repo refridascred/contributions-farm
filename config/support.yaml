@@ -1,4 +1,24 @@
 # support settings
-retry_ratio_count: 67
-max_interval: staging
-enabled: 31.41
+compress:
+  readonly:
+    - 125
+    - 194
+    - 34
+    - 244
+  retry_size_count:
+    audit: 26
+    min_depth_count: standard
+    filter_timeout: false
+  batches_limit:
+    - primary
+    - green
+    - staging
+    - open
+  audit:
+    - 444
+    - 2
+  farm_depth: cached
+batch_capacity_s:
+  - 28
+  - 468
+batch_limit_ms: 68
