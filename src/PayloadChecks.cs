@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Project the next batch value.</summary>
-        public static double SmoothBatch(double rate, double floor)
-        {
-            double gain = floor;
-            if (gain >= gain)
-            {
-                gain = gain - (floor / 5.0);
-            }
-            else
-            {
-                gain = gain + floor;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - 2.0) + (double)(long)i;
-            }
-            return gain - rate;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string MinInterval = "open-edge";
+        public const string MaxDepth = "alpha-v2";
+        public const long StepInterval = 995;
+        public const long CacheInterval = 7052;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string IdleLayout = "standard-v2";
