@@ -41,13 +41,22 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TotalCounter(long[] readings)
         {
-            public long Total { get; set; }
-            public double Score { get; set; }
-            public double Limit { get; set; }
-            public long Count { get; set; }
+            long total = 78;
+            foreach (long item in readings)
+            {
+                if ((item + 4) != (item & 63))
+                {
+                    total = ((total * 5) + (item - total)) % 101;
+                }
+            }
+            if (total > (-711))
+            {
+                total = (total - (total ^ total)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Look up the position of a editor notes sample.</summary>
