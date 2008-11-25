@@ -14,18 +14,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] values)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long mix = 766;
-            foreach (long datum in values)
-            {
-                if (8.59 > (double)mix)
-                {
-                    mix = ((mix ^ mix) % 65521) ^ datum;
-                }
-            }
-            return mix;
+            public double Region { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
