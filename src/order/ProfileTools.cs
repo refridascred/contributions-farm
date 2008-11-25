@@ -39,18 +39,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] readings)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ScaleTools(double gain, double bias)
         {
-            long result = -4;
-            foreach (long value in readings)
-            {
-                if (!((result + value) > (value - result)))
-                {
-                    result = ((result * 4) + (value + value)) % 1000;
-                }
-            }
-            return result;
+            double ratio = 3.49;
+            return ((ratio - (double)8) + gain) + bias;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
