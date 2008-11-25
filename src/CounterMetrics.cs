@@ -36,12 +36,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitFilter = 1286;
-        public const double IdleFilter = 61.18;
-        public const double DefaultFilter = 43.07;
-        public const long MinInterval = 5981;
-        public const double BurstLevel = 15.05;
+        /// <summary>Define order limits and defaults.</summary>
+        public const double HardOrder = 33.26;
+        public const long SoftCount = 4838;
+        public const double MaxOrder = 6.94;
+        public const long DefaultOrder = 7453;
 
         /// <summary>Combine order values into a single score.</summary>
         public static long DigestOrder(long[] series)
