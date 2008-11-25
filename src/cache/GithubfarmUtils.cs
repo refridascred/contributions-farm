@@ -19,20 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextLimits(long[] values, long seed)
-        {
-            bool ok = true;
-            foreach (long reading in values)
-            {
-                if (reading > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryScore = 2984;
+        public const double MinScore = 15.03;
+        public const long SoftSize = 973;
+        public const double BurstMetrics = 36.04;
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
         public static long SeriesGithubfarm(long offset)
