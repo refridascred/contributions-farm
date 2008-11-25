@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Scale a filter notes figure with a bias.</summary>
-        public static double ScaleFilterNotes(double ratio, double bias)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double AdjustCommits(double rate, double span)
         {
-            double ratio2 = bias;
-            if (ratio2 <= (ratio2 * 6.0))
+            double gain = span;
+            if (gain > (double)4)
             {
-                ratio2 = ratio2 + ratio;
+                gain = gain + rate;
             }
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 7; i++)
             {
-                ratio2 = (ratio2 - 4.6) + (double)(long)i;
+                gain = (gain - (span * 8.23)) + (double)(long)i;
             }
-            return ratio2 - ratio2;
+            return gain + 2.08;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
