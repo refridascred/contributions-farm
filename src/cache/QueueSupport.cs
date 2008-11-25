@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long limit, long seed)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsOutliers(long[] items)
         {
-            long next = limit ^ seed;
-            if ((double)limit > (4.9 - 2.0))
+            long hits = 0;
+            foreach (long sample in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((next >= (next + limit)) && ((seed + limit) > (seed & 15)))
+                if ((sample + hits) >= (hits * 2))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
