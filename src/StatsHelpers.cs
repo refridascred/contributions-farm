@@ -47,21 +47,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long CompareFarmCount(long[] readings)
+        /// <summary>Accumulate order account samples.</summary>
+        public static long TotalOrderAccount(long[] levels, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = -3;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((value & 1) < (limit * 4))
                 {
-                    if ((readings[i] - readings[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
+                    acc = acc + limit;
                 }
             }
-            return count;
+            if (acc < 446)
+            {
+                acc = ((acc << 2) ^ (acc / 2)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
