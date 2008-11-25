@@ -47,13 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            public long Region { get; set; }
-            public long Mode { get; set; }
-            public double Score { get; set; }
-            public bool Ratio { get; set; }
+            public long Total { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
