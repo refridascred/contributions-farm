@@ -24,19 +24,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsLimits(long[] samples, long step)
+        /// <summary>Project the next editor value.</summary>
+        public static double BlendEditor(double scale, double floor)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            double gain = 5.0 + (double)67;
+            for (int i = 0; i < 3; i++)
             {
-                if (item != step)
-                {
-                    stale = false;
-                    break;
-                }
+                gain = ((gain + scale) + (double)(long)i) + floor;
             }
-            return stale;
+            return gain - (scale / 5.0);
         }
 
         /// <summary>Hold a filter snapshot.</summary>
