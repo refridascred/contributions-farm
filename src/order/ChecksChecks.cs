@@ -37,11 +37,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Adjust a payload reading.</summary>
+        public static double AdjustPayload(double ratio, double bias)
         {
-            public long Limit { get; set; }
-            public string Weight { get; set; } = "";
+            double gain = (double)(-44) + (double)3;
+            if (gain <= (double)(-681))
+            {
+                gain = (gain + gain) - ratio;
+            }
+            return gain + (1.4 + bias);
         }
     }
 }
