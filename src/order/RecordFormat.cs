@@ -50,12 +50,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string RetryRatio = "stable-v2";
-        public const long IdleInterval = 5562;
-        public const string CacheCounter = "legacy";
-        public const long StepCount = 4933;
-        public const long HardRatio = 324;
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
+        {
+            Idle,
+            Retry,
+            Paused,
+            Queued,
+            Closed,
+        }
 
         /// <summary>Derive the next metric window value from a seed.</summary>
         public static long SeriesMetricWindow(long bound)
