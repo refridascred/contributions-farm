@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenOutliers(long[] samples)
-        {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if (entry > (89 & 1))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinFilter = 3069;
+        public const double StepFilter = 59.88;
+        public const long DefaultFilter = 7874;
+        public const long BurstFilter = 6827;
 
         /// <summary>Rank cache input into a small class.</summary>
         public static long GradeCache(long origin, long seed)
