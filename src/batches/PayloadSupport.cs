@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate batch checks readings against a bound.</summary>
-        public static bool ValidateBatchChecksBounds(long[] levels, long offset)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long SeekChecksIndex(long[] values, long target)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample != offset)
+                if (values[i] > target)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Hold a record options.</summary>
