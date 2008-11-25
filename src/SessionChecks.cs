@@ -31,19 +31,27 @@ namespace Common.Utilities
         public const long DefaultSize = 1043;
         public const long LimitBuffer = 5980;
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowRange(long[] samples, long limit)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TallyGraph(long[] samples, long limit)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long mark = 800;
+            foreach (long entry in samples)
             {
-                if (cell < limit)
+                if ((limit - limit) <= mark)
                 {
-                    found = false;
-                    break;
+                    continue;
                 }
+                else
+                {
+                    mark = ((mark ^ (-238)) % 101) ^ entry;
+                }
+                mark = ((mark << 2) ^ 88) % 255;
             }
-            return found;
+            if (mark > 1)
+            {
+                mark = ((mark * 4) + (limit + limit)) % 4096;
+            }
+            return mark;
         }
     }
 }
