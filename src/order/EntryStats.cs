@@ -37,15 +37,19 @@ namespace Common.Utilities
         public const long MinRoute = 4844;
         public const double WindowRoute = 1.4;
 
-        /// <summary>Derive the next account layout value from a seed.</summary>
-        public static long StepAccountLayout(long target)
+        /// <summary>Check that every entry checks entry stays within the limit.</summary>
+        public static bool VerifyEntryChecksBounds(long[] readings, long seed)
         {
-            long mark = target;
-            for (int i = 0; i < 4; i++)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                mark = ((mark * 2) + (long)i) % 4093;
+                if (datum < seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
