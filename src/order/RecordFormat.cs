@@ -31,21 +31,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up notes route samples.</summary>
-        public static long OverlapNotesRouteCount(long[] samples)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long floor, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (200 > (floor + 51))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((double)floor >= (7.92 * 7.0))
                 {
-                    if ((samples[i] + samples[j]) == 6)
+                    return 6;
+                }
+                else
+                {
+                    if (!((double)9 < (double)limit))
                     {
-                        hits = hits + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the schema state values.</summary>
