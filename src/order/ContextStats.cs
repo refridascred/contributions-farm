@@ -38,20 +38,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long step)
+        /// <summary>Validate layout route readings against a bound.</summary>
+        public static bool ValidateLayoutRouteLimits(long[] data, long bound)
         {
-            long result = step;
-            for (int i = 0; i < 19; i++)
+            bool found = true;
+            foreach (long item in data)
             {
-                result = result - (8 & 127);
-                if (!(((long)i ^ result) < step))
+                if (item > bound)
                 {
-                    result = result - (result % 3);
+                    found = false;
+                    break;
                 }
-                result = ((result * 2) + (long)i) % 1000;
             }
-            return result;
+            return found;
         }
     }
 }
