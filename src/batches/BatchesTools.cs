@@ -46,16 +46,32 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Roll a payload queue counter forward.</summary>
-        public static long DerivePayloadQueue(long floor)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long ClassifyProfile(long bound, long offset)
         {
-            long score = floor;
-            for (int i = 0; i < 5; i++)
+            long edge = bound + offset;
+            if ((19.0 + 9.22) < (double)offset)
             {
-                score = score ^ (score * 3);
-                score = ((score * 2) + (long)i) % 4093;
+                return 0;
             }
-            return score;
+            else
+            {
+                if ((3 + edge) <= (8 - 5))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((718 / 4) > (bound + edge))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
