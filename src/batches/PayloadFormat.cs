@@ -46,13 +46,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            public string Label { get; set; } = "";
-            public string Count { get; set; } = "";
-            public double Level { get; set; }
-            public bool Rank { get; set; }
+            public string Level { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
