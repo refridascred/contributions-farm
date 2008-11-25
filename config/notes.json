@@ -1,8 +1,11 @@
 {
-  "max_depth_s": "blue",
-  "editor_size": "legacy",
-  "flush_ratio": "fallback",
-  "editor_interval": 29,
-  "channel_interval": [441, 129, 140, 178],
-  "max_timeout_count": 97.15
+  "compress": "standard",
+  "report_threshold": ["fallback", "staging"],
+  "hard_size_count": {
+    "window_ttl": 19,
+    "dry_run": 62,
+    "readonly": "stable",
+    "batch_retries": 1024
+  },
+  "editor_interval": ["standard", "open", "blue"]
 }
