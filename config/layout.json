@@ -1,14 +1,16 @@
 {
-  "window_ratio": "edge",
-  "strict": 66.25,
-  "base_interval_ms": {
-    "enabled": [73, 273, 405, 199],
-    "graph_window": "blue",
-    "farm_retries": {
-      "channel_interval": "edge",
-      "burst_interval_s": false,
-      "token_ttl": 500
+  "min_limit_pct": {
+    "strict": 18.26,
+    "audit": 11,
+    "checks_delay": {
+      "githubfarm_threshold": "latest",
+      "record_capacity": 62.33,
+      "burst_retries_pct": [404, 385],
+      "batch_depth_count": "stable",
+      "account_limit": 90
     },
-    "audit": "edge"
-  }
+    "idle_capacity": 4991
+  },
+  "window_timeout": 4932,
+  "poll_ratio_ms": 60
 }
