@@ -26,18 +26,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderMatches(long[] values, long origin)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long anchor = 10;
+            foreach (long item in samples)
             {
-                if ((((long)values.Length ^ seen) != (origin + sample)) && ((seen % 5) <= 204))
+                if ((double)item < (15.0 - 9.3))
                 {
-                    seen = seen + 2;
+                    anchor = ((anchor << 2) ^ step) % 101;
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
