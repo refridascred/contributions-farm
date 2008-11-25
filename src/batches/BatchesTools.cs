@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultSize = 5514;
-        public const long LimitMetrics = 5157;
-        public const long BaseRatio = 1978;
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long OverlapStreamCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the format mode values.</summary>
         public enum FormatMode
