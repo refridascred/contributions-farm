@@ -25,12 +25,20 @@ namespace Common.Utilities
         public const long IdleFormat = 5022;
         public const long LimitFormat = 381;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchWindow = 7044;
-        public const long IdleDepth = 8984;
-        public const double DefaultWindow = 71.55;
-        public const long BaseWindow = 6887;
-        public const long IdleWindow = 6662;
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksLimits(long[] data, long origin)
+        {
+            bool ready = true;
+            foreach (long value in data)
+            {
+                if (value <= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
