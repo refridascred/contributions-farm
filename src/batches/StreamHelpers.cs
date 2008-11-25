@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BaseTools = 67.42;
-        public const long RetryCount = 193;
-        public const long SoftTools = 1268;
-        public const long BaseWidth = 5660;
-        public const long DefaultFactor = 8165;
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TallyFormat(long[] levels, long floor)
+        {
+            long total = -6;
+            foreach (long datum in levels)
+            {
+                if (9.0 < (double)(long)levels.Length)
+                {
+                    total = (total - (datum >> 5)) % 97;
+                }
+                if (((1.3 / 4.0) <= (double)floor) && ((2.4 + 5.0) < (double)datum))
+                {
+                    break;
+                }
+            }
+            if (total > (-6))
+            {
+                total = (total - floor) % 4096;
+            }
+            return total;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long DefaultWindow = 1451;
