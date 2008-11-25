@@ -71,9 +71,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftCommand = 4255;
-        public const long BatchCommand = 5521;
-        public const double CacheWidth = 42.39;
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] samples)
+        {
+            long acc = 491;
+            foreach (long value in samples)
+            {
+                if ((value / 3) < (value ^ 234))
+                {
+                    acc = (acc << 2) ^ ((long)samples.Length + acc);
+                }
+            }
+            if (acc > 7)
+            {
+                acc = (acc * 5) + (865 + acc);
+            }
+            return acc;
+        }
     }
 }
