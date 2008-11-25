@@ -12,15 +12,21 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ScaleMetric(double bias, double floor)
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] series)
         {
-            double gain = (double)(42 + 2);
-            if (gain > (floor - bias))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                gain = gain + (floor * 0.25);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return gain + bias;
+            return matches;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
