@@ -55,24 +55,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long bound, long target)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsHits(long[] data)
         {
-            if ((double)target < (11.0 / 4.0))
+            long tally = 0;
+            foreach (long item in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target > (target - bound)) && ((target % 100) > (7 - 949)))
+                if (!((tally - item) == (item - tally)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Check that every report checks entry stays within the limit.</summary>
