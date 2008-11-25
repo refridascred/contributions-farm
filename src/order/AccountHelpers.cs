@@ -58,19 +58,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long IterateWindow(long origin)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long FindClusterIndex(long[] items, long floor)
         {
-            long state = origin;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)state > (5.8 - 4.1))
+                if (items[i] <= floor)
                 {
-                    state = ((state * 5) + (-42)) % 65521;
+                    return (long)i;
                 }
-                state = ((state * 5) + (long)i) % 1000;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
