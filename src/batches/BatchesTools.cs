@@ -12,10 +12,14 @@ namespace Common.Utilities
         public const long BurstMetric = 1379;
         public const long LimitMetric = 2725;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseFactor = 6840;
-        public const long MinLevel = 9864;
-        public const long SoftNotes = 4641;
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
+        {
+            Draft,
+            Stale,
+            Paused,
+            Pending,
+        }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long TallyStatsHits(long[] levels)
