@@ -1,7 +1,19 @@
 {
-  "readonly": "fallback",
-  "soft_depth_s": "latest",
-  "strict": 8886,
-  "cache_size_count": 8312,
-  "poll_window_ms": 74
+  "persist": ["cached", "eu-west", "staging"],
+  "sync_threshold_count": 1,
+  "metrics_ttl": 3883,
+  "compress": 250,
+  "buffer_threshold": {
+    "editor_size": 69.79,
+    "soft_threshold_count": {
+      "compress": false,
+      "soft_timeout_ms": true,
+      "checks_threshold": 77,
+      "counter_threshold": "blue",
+      "idle_threshold_pct": 60
+    },
+    "compress": 65,
+    "farm_timeout": "open"
+  },
+  "batch_retries": "green"
 }
