@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Rank tools layout input into a small class.</summary>
+        public static long SortToolsLayout(long origin, long target)
         {
-            Dropped,
-            Draft,
-            Stale,
+            if (((target << 2) <= origin) && ((target + target) == (target * 5)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin >> 4) < (-983))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Audit graph batches readings against a rule.</summary>
