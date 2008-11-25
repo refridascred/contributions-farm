@@ -57,18 +57,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowGaps(long[] items, long target)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if (matches < (matches ^ target))
-                {
-                    matches = (matches + 2) ^ item;
-                }
-            }
-            return matches;
+            public string Label { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Rank { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
