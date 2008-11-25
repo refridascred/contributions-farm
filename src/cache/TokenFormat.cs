@@ -19,39 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long SortBatches(long target, long step)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long StepPayload(long offset)
         {
-            long edge = target ^ step;
-            if ((target / 8) >= (step + edge))
+            long score = offset;
+            for (int i = 0; i < 24; i++)
             {
-                return 1;
+                score = ((score * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if (!(((-2) ^ edge) > 6))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)584 > (double)step)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((6.61 + 11.0) != (double)step)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Describe the stream mode values.</summary>
