@@ -42,21 +42,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long OverlapFarmCount(long[] data)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueGaps(long[] series, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (cell < (cell + cell))
                 {
-                    if ((data[i] - data[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 2) + offset;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Locate a payload already reading by value.</summary>
