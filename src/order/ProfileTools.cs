@@ -18,15 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
-        {
-            Done,
-            Synced,
-            Retry,
-            Queued,
-            Stale,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double SoftFormat = 23.03;
+        public const long DefaultFormat = 7374;
+        public const long HardInterval = 1661;
+        public const string MaxFormat = "latest-1";
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long SoftFarm = 7921;
