@@ -28,17 +28,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] series, long seed)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Region { get; set; }
+            public long Mode { get; set; }
+            public double Score { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
