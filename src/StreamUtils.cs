@@ -56,12 +56,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long RankMetric(long bound, long offset)
         {
-            New,
-            Synced,
-            Draft,
+            if ((offset * 5) <= offset)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound <= (87 + bound)) || ((bound % 100) != ((-9) - bound)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((5.4 / 3.0) < (9.2 / 8.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (8.41 > (double)offset)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
