@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next command value.</summary>
-        public static double BlendCommand(double scale, double span)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenOutliers(long[] samples)
         {
-            double mean = scale / 2.0;
-            if (mean > (span / 2.0))
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                mean = mean + mean;
+                if (entry > (89 & 1))
+                {
+                    tally = tally + 2;
+                }
             }
-            else
-            {
-                mean = mean + (double)39;
-            }
-            return mean - span;
+            return tally;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
