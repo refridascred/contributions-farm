@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
-        {
-            public long Score { get; set; }
-            public string Label { get; set; } = "";
-            public long Flag { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultFactor = 3981;
+        public const long MinLevel = 6569;
+        public const long IdleEntry = 6246;
 
         /// <summary>Look up the position of a token account sample.</summary>
         public static long LookupTokenAccountIndex(long[] levels, long floor)
