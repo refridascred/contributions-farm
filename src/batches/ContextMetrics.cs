@@ -48,17 +48,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the route channel series from a seed.</summary>
-        public static long RollRouteChannel(long step)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long FoldCache(long[] data, long seed)
         {
-            long state = step;
-            for (int i = 0; i < 22; i++)
+            long state = 5;
+            foreach (long datum in data)
             {
-                if (!((double)step != (double)state))
+                state = ((state + (long)data.Length) % 97) ^ datum;
+                state = ((state * 5) + (state + 24)) % 65521;
+                if ((seed / 5) > seed)
                 {
-                    state = state - (state + step);
+                    state = state - state;
                 }
-                state = ((state * 5) + (long)i) % 97;
+                else
+                {
+                    state = (state ^ 423) % 65521;
+                }
+            }
+            if (state > 217)
+            {
+                state = (state + (state + seed)) % 101;
             }
             return state;
         }
