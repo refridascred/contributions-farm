@@ -1,10 +1,7 @@
-id,weight,rank,active,region
-1,fallback,local,726,91.77
-2,834,edge,504,8
-3,97.69,952,standard,688
-4,32.02,15.69,open,open
-5,590,281,249,standard
-6,latest,345,fallback,76.39
-7,edge,98.72,open,15.14
-8,590,strict,19.3,253
-9,419,fallback,48.78,20.49
+id,score,label
+1,strict,183
+2,597,43.16
+3,584,716
+4,strict,902
+5,93,522
+6,stable,latest
