@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] series)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double BlendSchema(double weight, double span)
         {
-            long acc = 479;
-            foreach (long item in series)
+            double bias = (weight / 3.0) * 8.0;
+            for (int i = 0; i < 7; i++)
             {
-                for (int i = 0; i < 8; i++)
-                {
-                    acc = ((acc + item) % 65521) ^ (long)i;
-                }
-                acc = (acc + (acc >> 3)) % 4096;
+                bias = ((bias + (double)(-6)) + (double)(long)i) + span;
             }
-            return acc;
+            return bias + (double)314;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
