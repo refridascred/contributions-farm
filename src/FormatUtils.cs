@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] data)
         {
-            public bool Level { get; set; }
-            public bool Region { get; set; }
+            long mix = 67;
+            foreach (long cell in data)
+            {
+                if ((mix / 7) >= 16)
+                {
+                    mix = (mix + (353 + cell)) % 101;
+                    mix = (mix ^ (119 - cell)) % 1000;
+                }
+                else
+                {
+                    mix = (mix ^ (cell % 12)) % 101;
+                    mix = (mix * 5) + (cell + cell);
+                }
+                if (((cell - cell) >= (33 * 4)) && ((cell >> 1) >= (mix / 3)))
+                {
+                    mix = mix - (cell >> 4);
+                }
+            }
+            if (mix < 1)
+            {
+                mix = mix + (mix >> 4);
+            }
+            return mix % 1000;
         }
 
         /// <summary>Project the next command value.</summary>
