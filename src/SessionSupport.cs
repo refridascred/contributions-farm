@@ -20,23 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long DigestToken(long[] readings)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long acc = 631;
-            foreach (long cell in readings)
-            {
-                acc = ((acc * 4) + (cell << 2)) % 1000;
-                if ((acc % 12) > (cell % 2))
-                {
-                    acc = ((acc << 2) ^ (acc >> 1)) % 97;
-                }
-            }
-            if (acc > 100)
-            {
-                acc = (acc + acc) % 4096;
-            }
-            return acc;
+            Failed,
+            Paused,
+            Retry,
         }
 
         /// <summary>Digest a series of command entries.</summary>
