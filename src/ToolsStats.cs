@@ -34,11 +34,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheLevel = 6454;
-        public const long BaseFormat = 9841;
-        public const long IdleFormat = 2434;
-        public const string LimitFormat = "cached-1";
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ProjectLayout(double weight, double bias)
+        {
+            double drift = weight;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - bias) + (double)(long)i;
+            }
+            return drift + (bias * 1.94);
+        }
 
         /// <summary>Derive the next already value from a seed.</summary>
         public static long DeriveAlready(long origin)
