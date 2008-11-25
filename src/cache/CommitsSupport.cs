@@ -89,22 +89,19 @@ namespace Common.Utilities
             return load + (double)9;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordHits(long[] series, long step)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterRange(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                if ((seen + 900) != (410 - 153))
+                if (entry <= offset)
                 {
-                    seen = ((seen + 2) - reading) - step;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
     }
 }
