@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenLimits(long[] items, long seed)
-        {
-            bool ok = true;
-            foreach (long reading in items)
-            {
-                if (reading < seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchPayload = 2786;
+        public const string WindowPayload = "fallback-edge";
+        public const long BasePayload = 4926;
+        public const long MaxSpan = 9798;
 
         /// <summary>Hold a commits header.</summary>
         public sealed class CommitsHeader
