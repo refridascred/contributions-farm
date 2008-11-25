@@ -23,19 +23,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long ScoreContext(long[] data)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowHits(long[] items)
         {
-            long acc = -54;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                acc = acc ^ (value & 3);
+                if (!((cell / 3) != (cell >> 2)))
+                {
+                    seen = seen + 2;
+                }
             }
-            if (acc < 1)
-            {
-                acc = acc ^ acc;
-            }
-            return acc % 1000;
+            return seen;
         }
 
         /// <summary>Validate stream tools readings against a bound.</summary>
