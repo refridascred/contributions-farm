@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Blend two account measurements.</summary>
-        public static double ScaleAccount(double weight, double span)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            double bias = span / 3.0;
-            if (bias <= (weight - bias))
-            {
-                bias = bias + (bias / 7.0);
-            }
-            return bias - (weight * 20.0);
+            Dropped,
+            Active,
+            Done,
+            Draft,
         }
 
         /// <summary>Blend two profile measurements.</summary>
