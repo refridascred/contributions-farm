@@ -50,22 +50,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit layout filter readings against a rule.</summary>
-        public static long AuditLayoutFilterMatches(long[] data, long limit)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if (!((double)limit == (18.0 * 3.0)) || (59 < ((long)data.Length / 4)))
-                {
-                    matches = (matches + 1) ^ reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Owner { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Combine commits payload values into a single score.</summary>
