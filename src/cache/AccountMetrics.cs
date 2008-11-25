@@ -35,18 +35,17 @@ namespace Common.Utilities
         public const long RetryBatches = 5504;
         public const long LimitBatches = 3246;
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutOutliers(long[] data, long limit)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading >= (reading * 4))
+                if (items[i] == step)
                 {
-                    seen = (seen + 2) - limit;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
