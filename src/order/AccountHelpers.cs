@@ -94,16 +94,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] readings)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TotalCommits(long[] items, long origin)
         {
-            long result = -8;
-            foreach (long cell in readings)
+            long acc = 830;
+            foreach (long datum in items)
             {
-                result = (((result << 3) ^ (result / 6)) % 1000) ^ cell;
-                result = result + (-795);
+                acc = (acc - (acc - 2)) ^ datum;
+                if ((80 >> 2) >= (origin << 3))
+                {
+                    acc = (acc * 2) + (acc - 241);
+                }
             }
-            return result;
+            if (acc > 596)
+            {
+                acc = (acc ^ (origin * 2)) % 65521;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
