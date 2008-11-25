@@ -1,8 +1,7 @@
 # entry settings
-enabled:
-  - latest
-  - legacy
-  - open
-max_size_pct: 60
-compress: cached
-base_depth_pct: true
+flush_capacity_pct: green
+sync_window: eu-west
+min_threshold_s: 98.15
+idle_retries: 500
+retry_depth: stable
+min_interval_pct: false
