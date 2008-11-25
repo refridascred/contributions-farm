@@ -41,12 +41,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long SeekContributiIndex(long[] values, long seed)
         {
-            Done,
-            Closed,
-            Stale,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > seed) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
