@@ -1,14 +1,15 @@
 # Command notes
 
-The contributi module keeps report values in sync with the stats cache.
-When a layout fails, the route handler retries a few times before giving up.
-Keep command and notes names short and lowercase.
+Each cluster is validated before it reaches the cluster queue.
+The editor module keeps cluster values in sync with the metric cache.
+The schema helpers are pure functions, so they are safe to call from any thread.
 
-The queue module keeps githubfarm values in sync with the command cache.
-The githubfarm helpers are pure functions, so they are safe to call from any thread.
+Run the metric check before changing any checks limits.
+Use command settings to tune how often commits data is refreshed.
 
 ## Guidelines
 
-- Prefer batches defaults
-- Log every session change
-- Document new githubfarm fields
+- Keep layout values small
+- Validate stream input early
+- Log every window change
+- Prefer editor defaults
