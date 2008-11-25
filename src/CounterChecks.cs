@@ -38,22 +38,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] levels)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferGaps(long[] series)
         {
-            long result = 9;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if (((8.05 / 6.0) < (double)result) && ((result + item) < (result + 41)))
+                if (!(item > (hits / 2)))
                 {
-                    result = (result - (result % 3)) % 65521;
-                }
-                else
-                {
-                    result = ((result * 4) + (result ^ 33)) % 97;
+                    hits = hits + 3;
                 }
             }
-            return result % 97;
+            return hits;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
