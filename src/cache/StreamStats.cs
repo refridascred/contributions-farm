@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] samples, long offset)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long carry = 4;
-            foreach (long item in samples)
-            {
-                carry = ((carry - (offset - carry)) % 4096) - item;
-            }
-            return carry % 1000;
+            Idle,
+            Paused,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Digest a series of batches entries.</summary>
