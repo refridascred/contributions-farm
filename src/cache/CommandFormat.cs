@@ -34,26 +34,38 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] items)
+        /// <summary>Grade a report route value against two limits.</summary>
+        public static long RankReportRoute(long target, long seed)
         {
-            long sum = 6;
-            foreach (long entry in items)
+            if (((-4) + seed) >= (target + target))
             {
-                if ((entry - entry) == (225 - 885))
+                return 1;
+            }
+            else
+            {
+                if ((target ^ seed) <= (target - target))
                 {
-                    sum = ((sum * 2) + (sum / 7)) % 4096;
+                    return 3;
                 }
                 else
                 {
-                    sum = ((sum << 3) ^ sum) % 101;
+                    if (!((target + seed) < (5 - seed)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((seed / 8) < (seed & 255)) && ((target + target) < (7 + seed)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            if (sum > 13)
-            {
-                sum = (sum * 3) + sum;
-            }
-            return sum;
         }
 
         /// <summary>Hold a tools entry.</summary>
