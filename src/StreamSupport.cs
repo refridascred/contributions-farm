@@ -22,21 +22,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long PairAlreadyCount(long[] values)
+        /// <summary>Roll a counter stream counter forward.</summary>
+        public static long SeriesCounterStream(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                long slot = (58 & 63) - (origin % 64);
+                if (!((double)slot >= (double)origin))
                 {
-                    if ((values[i] - values[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = (score - ((long)i * 3)) % 255;
                 }
+                else
+                {
+                    score = (score ^ slot) % 97;
+                }
+                slot = (slot ^ (954 + 88)) % 4096;
+                score = ((score * 2) + (long)i) % 101;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
