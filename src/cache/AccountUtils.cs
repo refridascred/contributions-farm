@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long MatchBatchCount(long[] series)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long DeriveBatch(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
