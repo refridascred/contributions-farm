@@ -26,21 +26,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long OverlapCommandCount(long[] values)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            New,
+            Closed,
+            Locked,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
