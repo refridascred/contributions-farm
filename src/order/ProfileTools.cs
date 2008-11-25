@@ -53,21 +53,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long CompareMetricsCount(long[] readings)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long DeriveRoute(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 5)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = ((mix << 2) ^ (bound & 3)) % 1000;
+                mix = (mix + (mix >> 3)) % 255;
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
