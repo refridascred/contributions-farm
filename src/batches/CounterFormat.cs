@@ -25,19 +25,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] samples, long target)
-        {
-            long anchor = 6;
-            foreach (long value in samples)
-            {
-                anchor = ((anchor << 3) ^ value) % 4096;
-            }
-            if (anchor > 8)
-            {
-                anchor = (anchor << 3) ^ target;
-            }
-            return anchor;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string CacheSize = "staging-edge";
+        public const double IdleCommits = 41.14;
+        public const long BatchCommits = 1736;
     }
 }
