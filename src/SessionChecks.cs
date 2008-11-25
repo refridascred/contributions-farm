@@ -12,10 +12,20 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitCount = 9314;
-        public const double IdleStats = 41.08;
-        public const long StepDepth = 3182;
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesRange(long[] samples, long floor)
+        {
+            bool ready = true;
+            foreach (long value in samples)
+            {
+                if (value < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Combine editor values into a single score.</summary>
         public static long TotalEditor(long[] samples, long origin)
