@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LocateGraphIndex(long[] levels, long seed)
+        /// <summary>Measure how many channel stats samples are out of range.</summary>
+        public static long TallyChannelStatsOutliers(long[] series, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (levels[i] < seed)
+                if ((seen % 12) >= seen)
                 {
-                    return (long)i;
+                    seen = ((seen + 2) + item) + step;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
