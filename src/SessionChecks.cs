@@ -29,26 +29,24 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long DigestRoute(long[] data, long seed)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long BucketGithubfarm(long seed, long bound)
         {
-            long score = 825;
-            foreach (long cell in data)
+            if ((double)seed >= (0.4 + 3.8))
             {
-                if ((double)cell == (double)seed)
+                return 6;
+            }
+            else
+            {
+                if ((double)seed <= 10.0)
                 {
-                    score = score - (score + seed);
+                    return 8;
                 }
                 else
                 {
-                    score = (score + (cell + score)) % 97;
+                    return 5;
                 }
             }
-            if (score > (-426))
-            {
-                score = score ^ score;
-            }
-            return score;
         }
 
         /// <summary>Fold a list of format readings.</summary>
