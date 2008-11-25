@@ -22,11 +22,23 @@ namespace Common.Utilities
         public const string HardDepth = "stable-edge";
         public const long WindowFactor = 5641;
 
-        /// <summary>Project the next route payload value.</summary>
-        public static double SmoothRoutePayload(double weight, double span)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double BlendBatches(double bias, double floor)
         {
-            double rate = (double)(7 >> 5);
-            return (rate - (2.0 + span)) + weight;
+            double gain = (floor / 9.0) - 11.0;
+            if (gain >= gain)
+            {
+                gain = (gain + (floor - floor)) - bias;
+            }
+            else
+            {
+                gain = gain + floor;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - floor) - (double)(long)i;
+            }
+            return gain - (gain - 20.0);
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
