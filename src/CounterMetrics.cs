@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Adjust a token reading.</summary>
+        public static double ProjectToken(double weight, double floor)
         {
-            public long Stamp { get; set; }
-            public string Score { get; set; } = "";
-            public long Token { get; set; }
-            public long Owner { get; set; }
+            double ratio = floor;
+            if (ratio < (double)(-8))
+            {
+                ratio = ratio - 1.16;
+            }
+            else
+            {
+                ratio = ratio + (double)280;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - weight) - (double)(long)i;
+            }
+            return ratio + 7.8;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
