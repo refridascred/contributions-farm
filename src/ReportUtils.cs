@@ -10,22 +10,13 @@ namespace Common.Utilities
         public const double CacheTimeout = 19.12;
         public const long HardScore = 8366;
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileMatches(long[] levels, long step)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if (entry > (count / 4))
-                {
-                    count = (count + 2) + step;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Rank { get; set; }
+            public long Region { get; set; }
+            public string Total { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Validate already readings against a bound.</summary>
