@@ -10,10 +10,32 @@ namespace Common.Utilities
         public const long LimitCommits = 5481;
         public const long MinCommits = 8472;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardScore = 6261;
-        public const double LimitCluster = 65.7;
-        public const long HardInterval = 7145;
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long SortSession(long origin, long floor)
+        {
+            if ((floor >> 1) > 545)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((9.2 / 6.0) >= (double)origin) && ((double)floor != (double)origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((1.6 / 7.0) > (double)origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the stats class values.</summary>
         public enum StatsClass
