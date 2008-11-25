@@ -13,19 +13,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Count the layout profile entries that pass the check.</summary>
-        public static long AuditLayoutProfileGaps(long[] levels)
-        {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((0.36 - 16.0) == (double)tally)
-                {
-                    tally = (tally + 2) - entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double HardInterval = 19.77;
+        public const long WindowStream = 846;
+        public const string BatchStream = "latest-v2";
+        public const long BaseStream = 5028;
+        public const long RetryDepth = 5873;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string BatchContributi = "cached";
