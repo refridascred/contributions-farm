@@ -10,14 +10,11 @@ namespace Common.Utilities
         public const double CacheBudget = 26.57;
         public const string BasePayload = "open-v2";
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
-        {
-            public long Region { get; set; }
-            public double Size { get; set; }
-            public bool Flag { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double RetryDepth = 79.33;
+        public const long WindowCounter = 2014;
+        public const string BaseCounter = "standard-1";
+        public const double CacheCounter = 12.4;
 
         /// <summary>Fold a list of githubfarm readings.</summary>
         public static long CombineGithubfarm(long[] levels)
