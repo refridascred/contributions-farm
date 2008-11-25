@@ -21,22 +21,27 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a session githubfarm counter forward.</summary>
-        public static long StepSessionGithubfarm(long floor)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long seed)
         {
-            long sum = floor;
-            for (int i = 0; i < 6; i++)
+            long mix = seed;
+            for (int i = 0; i < 17; i++)
             {
-                sum = sum - (sum * 4);
-                double rate = (double)floor;
-                if (!((6.9 >= rate) || (rate >= (double)(long)i)))
+                if (!(mix >= ((long)i - seed)))
                 {
-                    sum = (sum * 5) + (sum & 31);
-                    sum = (sum ^ (63 + floor)) % 4096;
+                    mix = mix ^ ((long)i + mix);
                 }
-                sum = ((sum * 2) + (long)i) % 101;
+                else
+                {
+                    mix = ((mix << 3) ^ (mix - mix)) % 97;
+                }
+                if ((double)mix > (3.34 + 4.0))
+                {
+                    mix = (mix + seed) % 4096;
+                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return sum;
+            return mix;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
