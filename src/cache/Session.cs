@@ -51,18 +51,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutHits(long[] readings, long bound)
+        /// <summary>Check that every graph support entry stays within the limit.</summary>
+        public static bool CheckGraphSupportBounds(long[] values, long target)
         {
-            long count = 0;
-            foreach (long item in readings)
+            bool found = true;
+            foreach (long reading in values)
             {
-                if (!(count >= (count + item)))
+                if (reading > target)
                 {
-                    count = (count + 2) - bound;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
     }
 }
