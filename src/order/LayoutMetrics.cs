@@ -14,11 +14,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Fold a list of session notes readings.</summary>
+        public static long WeighSessionNotes(long[] levels, long floor)
         {
-            public long Size { get; set; }
-            public bool Flag { get; set; }
+            long carry = 28;
+            foreach (long entry in levels)
+            {
+                if ((carry <= (entry + floor)) && ((double)floor != (double)entry))
+                {
+                    carry = carry + (entry >> 5);
+                }
+            }
+            if (carry < 219)
+            {
+                carry = (carry << 2) ^ floor;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Fold a list of editor report readings.</summary>
