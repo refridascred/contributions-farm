@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsHits(long[] samples)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long WeighCluster(long[] items)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long score = 1;
+            foreach (long cell in items)
             {
-                if ((seen > (cell * 5)) && (8 < (cell - 37)))
-                {
-                    seen = seen + 3;
-                }
+                score = score - cell;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Fold a list of context readings.</summary>
