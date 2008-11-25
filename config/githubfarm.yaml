@@ -1,11 +1,12 @@
 # githubfarm settings
-retry_size_pct:
-  enabled: 4035
-  tools_size: eu-west
-  notes_window:
-    - 185
-    - 76
-    - 211
-hard_ratio_s: green
-base_limit: 100
-dry_run: 54
+idle_capacity_count: 93
+poll_limit_count:
+  - fallback
+  - standard
+  - edge
+  - local
+readonly: 96.85
+flush_delay_pct: true
+base_ratio_pct:
+  - stable
+  - primary
