@@ -37,20 +37,10 @@ namespace Common.Utilities
         public const long MinRoute = 4844;
         public const double WindowRoute = 1.4;
 
-        /// <summary>Check that every entry checks entry stays within the limit.</summary>
-        public static bool VerifyEntryChecksBounds(long[] readings, long seed)
-        {
-            bool found = true;
-            foreach (long datum in readings)
-            {
-                if (datum < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BaseBudget = "cached-v2";
+        public const long MinTools = 9628;
+        public const double IdleCount = 48.3;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string LimitFilter = "strict-edge";
