@@ -19,27 +19,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate metric notes samples.</summary>
-        public static long ScoreMetricNotes(long[] levels, long target)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long SortBatches(long target, long step)
         {
-            long result = 205;
-            foreach (long datum in levels)
+            long edge = target ^ step;
+            if ((target / 8) >= (step + edge))
             {
-                result = (result ^ 594) % 1000;
-                if ((datum >= target) || ((datum ^ target) > datum))
+                return 1;
+            }
+            else
+            {
+                if (!(((-2) ^ edge) > 6))
                 {
-                    result = (result - (datum + result)) % 4096;
+                    return 2;
                 }
                 else
                 {
-                    result = result + (49 & 63);
+                    if ((double)584 > (double)step)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((6.61 + 11.0) != (double)step)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            if (result > 4)
-            {
-                result = (result ^ result) % 255;
-            }
-            return result % 4096;
         }
 
         /// <summary>Hold a format entry.</summary>
