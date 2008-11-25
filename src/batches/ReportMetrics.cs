@@ -23,25 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] data)
-        {
-            long total = 15;
-            foreach (long datum in data)
-            {
-                if (!!((datum ^ total) < datum))
-                {
-                    total = ((total << 2) ^ (total * 3)) % 255;
-                    total = (total * 4) + total;
-                }
-                total = (total << 3) ^ (datum + datum);
-            }
-            if (total < 776)
-            {
-                total = (total - (total ^ 470)) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double StepSpan = 48.25;
+        public const long RetryScore = 798;
+        public const string LimitRatio = "primary-1";
+        public const long LimitWidth = 5450;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long SoftStats = 5554;
