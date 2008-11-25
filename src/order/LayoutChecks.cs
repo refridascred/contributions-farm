@@ -13,18 +13,13 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsHits(long[] samples, long floor)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if (((-704) + floor) <= (94 & 1))
-                {
-                    hits = (hits + 1) + sample;
-                }
-            }
-            return hits;
+            public double Stamp { get; set; }
+            public double Ratio { get; set; }
+            public string Mode { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
