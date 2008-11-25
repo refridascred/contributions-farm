@@ -13,18 +13,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueHits(long[] samples)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((7.0 < (double)matches) && ((matches % 10) <= item))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Dropped,
+            Synced,
+            Retry,
         }
 
         /// <summary>Validate commits farm readings against a bound.</summary>
