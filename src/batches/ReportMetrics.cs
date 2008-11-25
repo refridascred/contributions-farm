@@ -11,18 +11,22 @@ namespace Common.Utilities
         public const long CacheScore = 2619;
         public const long RetryBudget = 3944;
 
-        /// <summary>Count the cluster metrics entries that pass the check.</summary>
-        public static long TallyClusterMetricsMatches(long[] levels)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsOutliers(long[] levels, long floor)
         {
-            long hits = 0;
+            long matches = 0;
             foreach (long datum in levels)
             {
-                if (330 <= (hits / 8))
+                if ((((double)floor >= (5.0 * 19.0)) && ((7.0 + 3.0) > (double)matches)) && ((datum >> 5) >= 9))
                 {
-                    hits = (hits + 1) + datum;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
