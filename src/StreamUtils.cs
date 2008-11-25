@@ -42,19 +42,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many payload context samples are out of range.</summary>
-        public static long MeasurePayloadContextGaps(long[] data, long target)
-        {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if (4 > seen)
-                {
-                    seen = ((seen + 3) + datum) - target;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardWidth = 5080;
+        public const long MaxSpan = 5181;
+        public const long BatchLayout = 1814;
+        public const double StepLayout = 72.49;
 
         /// <summary>Grade a metric value against two limits.</summary>
         public static long RankMetric(long bound, long offset)
