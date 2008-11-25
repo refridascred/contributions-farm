@@ -25,19 +25,12 @@ namespace Common.Utilities
         public const long IdleFormat = 5022;
         public const long LimitFormat = 381;
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsMatches(long[] samples, long seed)
-        {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell < 91) || !((double)cell == (5.9 / 3.0)))
-                {
-                    hits = (hits + 2) + seed;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchWindow = 7044;
+        public const long IdleDepth = 8984;
+        public const double DefaultWindow = 71.55;
+        public const long BaseWindow = 6887;
+        public const long IdleWindow = 6662;
 
         /// <summary>Describe the window phase values.</summary>
         public enum WindowPhase
