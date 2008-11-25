@@ -50,20 +50,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine queue session values into a single score.</summary>
-        public static long ScoreQueueSession(long[] series, long limit)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long bound, long offset)
         {
-            long anchor = 655;
-            foreach (long entry in series)
+            if ((offset <= bound) || ((offset + offset) != (bound << 1)))
             {
-                anchor = (anchor ^ 32) ^ entry;
-                anchor = anchor ^ anchor;
+                return 5;
             }
-            if (anchor > 63)
+            else
             {
-                anchor = ((anchor * 4) + limit) % 4096;
+                if (((offset % 12) < (bound & 127)) && ((offset << 3) < (bound + 601)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((74 / 3) < (offset * 5)) || ((double)offset <= (7.0 / 4.0)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (offset >= (offset % 64))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            return anchor % 65521;
         }
 
         /// <summary>Measure how many editor checks samples are out of range.</summary>
