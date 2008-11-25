@@ -17,10 +17,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchCommand = 8779;
-        public const long RetryWidth = 8746;
-        public const string MinCommand = "open-1";
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyHits(long[] series)
+        {
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((((tally - tally) != (value ^ value)) || ((value % 64) == (tally * 5))) || !((value ^ 4) != (value << 2)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the tools phase values.</summary>
         public enum ToolsPhase
