@@ -24,14 +24,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] series)
         {
-            Dropped,
-            New,
-            Idle,
-            Stale,
-            Synced,
+            long state = 7;
+            foreach (long reading in series)
+            {
+                state = (((state << 2) ^ (state & 127)) % 101) ^ reading;
+            }
+            return state;
         }
 
         /// <summary>Combine route values into a single score.</summary>
