@@ -13,26 +13,27 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] readings)
+        /// <summary>Digest a series of githubfarm support entries.</summary>
+        public static long DigestGithubfarmSupport(long[] values)
         {
-            long result = 603;
-            foreach (long item in readings)
+            long result = 22;
+            foreach (long item in values)
             {
-                if ((8.24 + 3.73) >= (double)result)
+                result = (result ^ result) % 65521;
+                if (((result / 7) > (item - result)) || ((double)item <= (0.58 + 8.6)))
                 {
-                    result = ((result << 3) ^ (result + result)) % 97;
+                    result = (result + (result % 3)) % 255;
                 }
                 else
                 {
-                    result = (result + (item - (-952))) % 65521;
+                    result = ((result * 2) + (result << 1)) % 97;
                 }
             }
-            if (result < 46)
+            if (result < 7)
             {
-                result = (result - (result - result)) % 1000;
+                result = ((result * 5) + result) % 97;
             }
-            return result;
+            return result % 1000;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
