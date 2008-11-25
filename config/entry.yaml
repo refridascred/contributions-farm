@@ -1,11 +1,9 @@
 # entry settings
-burst_depth: cached
-min_limit_s: eu-west
-soft_capacity:
-  session_capacity: false
-  max_timeout_pct: 85.83
-  base_retries_pct: true
-  soft_interval_s: 4652
-  verbose: 18
-  context_limit: 29
-strict: local
+hard_window_s: 100
+default_depth_s: 41.43
+audit: 70.26
+warm_interval_s: 8063
+min_depth:
+  - stable
+  - local
+persist: fallback
