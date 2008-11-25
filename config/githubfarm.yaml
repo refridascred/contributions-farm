@@ -1,11 +1,12 @@
 # githubfarm settings
-soft_size_count: 38.54
-idle_depth_pct:
-  readonly: 6562
-  cache_size: eu-west
-  sync_capacity: 15.8
-  retry_timeout_s:
-    - cached
-    - blue
-retry_limit_s: blue
-base_window: 25
+idle_window:
+  - 53
+  - 46
+  - 131
+  - 371
+hard_depth_count: 2
+payload_window: 30
+base_depth_s:
+  - blue
+  - local
+  - fallback
