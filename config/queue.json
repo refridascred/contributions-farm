@@ -1,5 +1,11 @@
 {
-  "report_threshold": [132, 475, 345, 477],
-  "cluster_ratio": 4247,
-  "report_capacity": [252, 12]
+  "sync_window_count": ["staging", "standard"],
+  "poll_timeout_count": "legacy",
+  "idle_capacity_ms": {
+    "batch_retries": "fallback",
+    "githubfarm_timeout": 5484,
+    "dry_run": 32.47,
+    "sync_timeout": 7794
+  },
+  "base_timeout_count": "green"
 }
