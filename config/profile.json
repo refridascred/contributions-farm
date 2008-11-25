@@ -1,12 +1,5 @@
 {
-  "route_capacity": "fallback",
-  "poll_threshold_ms": [7, 258, 253],
-  "farm_threshold": 7624,
-  "dry_run": {
-    "verbose": ["staging", "local", "stable", "open"],
-    "compress": 34,
-    "farm_threshold": true,
-    "strict": ["open", "legacy", "edge", "primary"],
-    "audit": 85.67
-  }
+  "default_size_ms": 8919,
+  "warm_size_ms": false,
+  "batch_retries_pct": "primary"
 }
