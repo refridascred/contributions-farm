@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long DigestGraph(long[] series, long floor)
+        /// <summary>Count the commits counter entries that pass the check.</summary>
+        public static long TallyCommitsCounterHits(long[] readings)
         {
-            long sum = -308;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (((sum & 31) < (entry ^ sum)) || (sum < (floor % 3)))
+                if ((123 / 5) != (seen % 24))
                 {
-                    sum = ((sum * 2) + sum) % 1000;
+                    seen = (seen + 3) + entry;
                 }
-                sum = (sum - (sum + sum)) % 4096;
             }
-            return sum % 97;
+            return seen;
         }
 
         /// <summary>Match up stream samples.</summary>
