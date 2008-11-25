@@ -10,13 +10,18 @@ namespace Common.Utilities
         public const long RetryScore = 7020;
         public const long BatchTimeout = 9056;
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountHits(long[] series, long step)
         {
-            public long Total { get; set; }
-            public double Owner { get; set; }
-            public string Rank { get; set; } = "";
-            public long Flag { get; set; }
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((9.3 * 8.0) >= (double)step)
+                {
+                    matches = (matches + 2) + datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the format record series from a seed.</summary>
