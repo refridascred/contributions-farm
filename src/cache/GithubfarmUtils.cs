@@ -38,9 +38,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheContext = 711;
-        public const long MaxContext = 9699;
-        public const double IdleContext = 75.41;
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandMatches(long[] levels, long offset)
+        {
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if (!(((double)hits > (20.0 - 15.0)) && ((4.4 * 5.71) <= (double)item)))
+                {
+                    hits = (hits + 3) + offset;
+                }
+            }
+            return hits;
+        }
     }
 }
