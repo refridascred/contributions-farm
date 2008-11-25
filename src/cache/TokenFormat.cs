@@ -19,12 +19,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long floor, long step)
         {
-            Pending,
-            Failed,
-            Active,
+            long span = floor + step;
+            if ((span + step) <= (step + floor))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((floor - 915) <= (floor + 9))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((floor ^ span) >= 8)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a buffer record.</summary>
