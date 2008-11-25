@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Find the first report command entry that matches the target.</summary>
-        public static long LookupReportCommandIndex(long[] data, long target)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Validate command readings against a bound.</summary>
