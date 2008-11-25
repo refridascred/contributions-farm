@@ -31,11 +31,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BaseCount = "alpha-edge";
-        public const long IdleSpan = 4708;
-        public const long RetryRatio = 1764;
-        public const string SoftFactor = "stable-1";
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
+        {
+            public bool Token { get; set; }
+            public string Level { get; set; } = "";
+            public double Label { get; set; }
+        }
 
         /// <summary>Describe the notes class values.</summary>
         public enum NotesClass
