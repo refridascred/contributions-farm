@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a command editor reading.</summary>
-        public static double BlendCommandEditor(double gain, double floor)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            double rate = floor;
-            if (rate <= (gain * 9.73))
-            {
-                rate = rate + (double)16;
-            }
-            else
-            {
-                rate = rate - (1.7 * 4.0);
-            }
-            return rate + (gain - floor);
+            Locked,
+            New,
+            Queued,
+            Pending,
         }
 
         /// <summary>Hold a payload summary.</summary>
