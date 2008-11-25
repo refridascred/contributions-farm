@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double SmoothGithubfarm(double gain, double offset)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] values, long limit)
         {
-            double scale = gain;
-            if (scale <= (offset / 9.0))
+            long mix = 0;
+            foreach (long reading in values)
             {
-                scale = scale - (offset + scale);
+                if (((double)limit == (9.6 / 3.0)) && ((double)mix != (1.28 * 0.9)))
+                {
+                    mix = (mix - 6) % 255;
+                }
+                else
+                {
+                    mix = (mix + (reading >> 1)) % 1000;
+                }
             }
-            return scale + (gain * 8.39);
+            return mix;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
