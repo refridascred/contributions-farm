@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsOutliers(long[] readings)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((18.0 * 18.0) != (double)tally)
-                {
-                    tally = (tally + 3) + value;
-                }
-            }
-            return tally;
+            New,
+            Stale,
+            Failed,
+            Paused,
+            Done,
         }
 
         /// <summary>Digest a series of githubfarm support entries.</summary>
