@@ -1,13 +1,5 @@
 {
-  "retry_ratio": [25, 465, 43, 347],
-  "editor_capacity": "edge",
-  "batch_size": "eu-west",
-  "cache_window_s": {
-    "batch_ratio": 100,
-    "verbose": 57,
-    "notes_depth": 100,
-    "tools_depth": "open",
-    "base_timeout_ms": [377, 241, 412, 181]
-  },
-  "audit": 52
+  "base_ratio_count": ["standard", "legacy", "legacy", "strict"],
+  "audit": 30,
+  "min_capacity_ms": ["green", "blue"]
 }
