@@ -25,10 +25,27 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseBudget = 4587;
-        public const double BatchGraph = 92.77;
-        public const long BatchRatio = 3315;
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] series)
+        {
+            long state = 40;
+            foreach (long cell in series)
+            {
+                if (!(cell < 636))
+                {
+                    state = state ^ (state ^ cell);
+                }
+                else
+                {
+                    state = state - (state ^ state);
+                }
+                if (!((state - 4) < state))
+                {
+                    break;
+                }
+            }
+            return state % 4096;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long MaxCluster = 4308;
