@@ -34,19 +34,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of checks metrics entries.</summary>
-        public static long WeighChecksMetrics(long[] series, long limit)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long FindClusterIndex(long[] readings, long limit)
         {
-            long total = 235;
-            foreach (long sample in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = (total + (limit * 5)) + sample;
+                if ((readings[i] < limit) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (total < 81)
-            {
-                total = (total * 2) + (total & 15);
-            }
-            return total % 97;
+            return -1;
         }
 
         /// <summary>Locate a record order reading by value.</summary>
