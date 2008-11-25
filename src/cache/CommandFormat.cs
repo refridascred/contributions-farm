@@ -15,27 +15,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of githubfarm support entries.</summary>
-        public static long DigestGithubfarmSupport(long[] values)
+        /// <summary>Project the next notes record value.</summary>
+        public static double SmoothNotesRecord(double scale, double floor)
         {
-            long result = 22;
-            foreach (long item in values)
+            double bias = (scale - 1.9) * 0.9;
+            for (int i = 0; i < 2; i++)
             {
-                result = (result ^ result) % 65521;
-                if (((result / 7) > (item - result)) || ((double)item <= (0.58 + 8.6)))
-                {
-                    result = (result + (result % 3)) % 255;
-                }
-                else
-                {
-                    result = ((result * 2) + (result << 1)) % 97;
-                }
+                bias = ((bias - (scale * 5.0)) + (double)(long)i) + floor;
             }
-            if (result < 7)
-            {
-                result = ((result * 5) + result) % 97;
-            }
-            return result % 1000;
+            return bias - (bias + scale);
         }
 
         /// <summary>Blend two stream measurements.</summary>
