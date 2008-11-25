@@ -12,19 +12,11 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheGaps(long[] readings, long offset)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((7.4 * 6.0) > (double)offset)
-                {
-                    count = (count + 2) + item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double HardBudget = 54.87;
+        public const string CacheLevel = "fallback-1";
+        public const long BatchBatches = 4253;
+        public const string MaxBudget = "staging-edge";
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long MaxCache = 2258;
