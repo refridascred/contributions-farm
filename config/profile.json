@@ -1,8 +1,5 @@
 {
-  "session_threshold": 68,
-  "filter_window": ["cached", "strict", "edge", "stable"],
-  "notes_limit": 7198,
-  "compress": 2,
-  "batch_ttl_s": true,
-  "flush_ttl_pct": "edge"
+  "default_ratio_count": "standard",
+  "idle_ratio": 27.87,
+  "hard_limit_ms": "open"
 }
