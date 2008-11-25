@@ -1,7 +1,5 @@
 {
-  "queue_limit": "primary",
-  "cache_size_ms": true,
-  "cache_interval_count": [262, 443],
-  "cache_limit_pct": 75,
-  "min_window": [392, 332, 304, 357]
+  "min_capacity": 6.67,
+  "base_size": 250,
+  "poll_delay": "cached"
 }
