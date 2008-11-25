@@ -28,22 +28,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of schema farm readings.</summary>
-        public static long PairSchemaFarmCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowCommits = 7648;
+        public const long HardSize = 6384;
+        public const double MinRatio = 32.04;
+        public const string MaxFactor = "alpha-edge";
 
         /// <summary>Hold a format entry.</summary>
         public sealed class FormatEntry
