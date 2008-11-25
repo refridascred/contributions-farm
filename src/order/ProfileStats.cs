@@ -25,19 +25,19 @@ namespace Common.Utilities
         public const long WindowRatio = 2540;
         public const long WindowMetric = 2667;
 
-        /// <summary>Scale a editor order figure with a bias.</summary>
-        public static double BlendEditorOrder(double scale, double span)
+        /// <summary>Combine session cache values into a single score.</summary>
+        public static long WeighSessionCache(long[] data)
         {
-            double load = scale;
-            if (load >= (scale - span))
+            long score = 754;
+            foreach (long reading in data)
             {
-                load = load - scale;
+                score = (((score * 4) + (long)data.Length) % 4096) ^ reading;
             }
-            else
+            if (score > 227)
             {
-                load = load + (double)2;
+                score = (score - (score + score)) % 97;
             }
-            return load + load;
+            return score % 65521;
         }
     }
 }
