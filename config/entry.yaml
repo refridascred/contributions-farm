@@ -1,9 +1,20 @@
 # entry settings
-sync_size: cached
-hard_size_s:
-  - open
-  - eu-west
-notes_interval: true
-warm_depth_s:
-  - 231
-  - 173
+soft_retries: stable
+farm_delay:
+  - cached
+  - blue
+  - staging
+stream_threshold:
+  dry_run:
+    - 166
+    - 213
+  min_window:
+    warm_ratio_count:
+      - 411
+      - 335
+    default_delay: fallback
+    max_retries_s: 84
+    flush_limit: 7956
+  persist: 4732
+sync_size_s: 250
+enabled: primary
