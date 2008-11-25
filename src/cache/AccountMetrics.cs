@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountLimits(long[] readings, long floor)
+        /// <summary>Grade a record channel value against two limits.</summary>
+        public static long ClassifyRecordChannel(long bound, long origin)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            long gap = bound + origin;
+            if (origin <= gap)
             {
-                if (value >= floor)
+                return 2;
+            }
+            else
+            {
+                if ((origin >> 5) >= (origin / 5))
                 {
-                    ok = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)gap <= (1.0 - 5.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((gap % 16) <= (-5)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Fold a list of cache counter readings.</summary>
