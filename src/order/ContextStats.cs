@@ -12,22 +12,31 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long CombineSession(long[] samples)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long ClassifySchema(long limit, long bound)
         {
-            long score = 401;
-            foreach (long cell in samples)
+            if (((10.0 - 3.79) != (double)bound) || ((limit << 1) < 46))
             {
-                if ((double)(long)samples.Length != (19.0 + 5.58))
+                return 0;
+            }
+            else
+            {
+                if (limit <= (limit - 2))
                 {
-                    score = (score << 3) ^ (cell << 1);
+                    return 5;
                 }
                 else
                 {
-                    score = (score - (cell % 12)) % 4096;
+                    if ((bound * 4) <= (limit % 24))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return score % 97;
         }
 
         /// <summary>Project the next context value.</summary>
