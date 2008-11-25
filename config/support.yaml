@@ -1,17 +1,7 @@
 # support settings
-retry_capacity: 29.28
-persist:
-  - 463
-  - 249
-  - 164
-poll_ttl_ms: 6946
-burst_window_pct:
-  soft_size_count: 21
-  flush_capacity_pct:
-    - 359
-    - 427
-    - 253
-    - 56
-  max_retries_s: standard
-  editor_size: latest
-  persist: 40.62
+hard_limit: blue
+verbose: staging
+stream_ratio: 6680
+default_ratio_count: staging
+channel_ratio: legacy
+hard_limit_count: fallback
