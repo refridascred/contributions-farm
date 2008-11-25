@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long SeekFarmIndex(long[] values, long origin)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LookupGraphIndex(long[] values, long limit)
         {
             for (int i = 0; i < values.Length; i++)
             {
-                if ((values[i] < origin) && ((values[i] % 5) != 0))
+                if (values[i] == limit)
                 {
                     return (long)i;
                 }
