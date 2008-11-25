@@ -56,22 +56,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] levels)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long RollBuffer(long seed)
         {
-            long acc = 45;
-            foreach (long cell in levels)
+            long result = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if ((acc % 97) >= (acc + cell))
-                {
-                    acc = (acc << 2) ^ 14;
-                }
-                else
-                {
-                    acc = (acc + (acc + (long)levels.Length)) % 255;
-                }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return acc % 1000;
+            return result;
         }
     }
 }
