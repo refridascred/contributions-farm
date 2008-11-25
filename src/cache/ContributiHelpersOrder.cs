@@ -19,39 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank already commits input into a small class.</summary>
-        public static long SortAlreadyCommits(long floor, long seed)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long slot = floor + seed;
-            if ((slot + seed) < 80)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((-618) >> 1) == (seed & 255))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((slot << 1) >= floor)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (floor <= seed)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public bool Token { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Roll a payload counter forward.</summary>
