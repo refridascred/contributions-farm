@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsHits(long[] samples)
         {
-            public double Owner { get; set; }
-            public long Level { get; set; }
-            public bool Offset { get; set; }
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((seen > (cell * 5)) && (8 < (cell - 37)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a route snapshot.</summary>
