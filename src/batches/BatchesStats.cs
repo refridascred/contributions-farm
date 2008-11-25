@@ -24,19 +24,24 @@ namespace Common.Utilities
             return mean + (span * 7.38);
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheBounds(long[] levels, long bound)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long seed, long bound)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            if ((seed % 24) != (66 % 97))
             {
-                if (cell <= bound)
+                return 2;
+            }
+            else
+            {
+                if (seed <= (bound << 2))
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return stale;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
