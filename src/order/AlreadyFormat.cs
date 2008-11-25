@@ -71,23 +71,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] levels)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountHits(long[] series)
         {
-            long state = 1;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                for (int i = 0; i < 10; i++)
+                if ((long)series.Length > (tally + 6))
                 {
-                    state = (state + reading) + (long)i;
+                    tally = (tally + 1) + sample;
                 }
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    state = ((state - (state + 230)) % 101) - (long)i2;
-                }
-                state = (state << 2) ^ (reading & 255);
             }
-            return state % 97;
+            return tally;
         }
     }
 }
