@@ -26,11 +26,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double SoftFormat = 23.03;
-        public const long DefaultFormat = 7374;
-        public const long HardInterval = 1661;
-        public const string MaxFormat = "latest-1";
+        /// <summary>Accumulate profile samples.</summary>
+        public static long ScoreProfile(long[] values, long target)
+        {
+            long total = 6;
+            foreach (long cell in values)
+            {
+                total = total - (target ^ (long)values.Length);
+                total = (total + (cell ^ cell)) % 4096;
+                total = (total + target) % 255;
+            }
+            return total;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long SoftFarm = 7921;
