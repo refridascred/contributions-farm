@@ -1,11 +1,6 @@
 {
-  "default_window": true,
-  "enabled": "eu-west",
-  "poll_delay_count": true,
-  "batch_timeout_count": true,
-  "buffer_ttl": {
-    "readonly": false,
-    "min_capacity_count": [120, 85, 255, 442],
-    "poll_interval_s": [86, 69, 166, 142]
-  }
+  "cache_threshold": 8529,
+  "compress": 250,
+  "verbose": [114, 422, 314, 439],
+  "readonly": 22.77
 }
