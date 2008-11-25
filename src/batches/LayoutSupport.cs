@@ -23,26 +23,19 @@ namespace Common.Utilities
         public const long BurstContributi = 8469;
         public const long MinContributi = 826;
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] series)
+        /// <summary>Check that every entry profile entry stays within the limit.</summary>
+        public static bool CheckEntryProfileBounds(long[] items, long offset)
         {
-            long state = 40;
-            foreach (long cell in series)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                if (!(cell < 636))
+                if (entry >= offset)
                 {
-                    state = state ^ (state ^ cell);
-                }
-                else
-                {
-                    state = state - (state ^ state);
-                }
-                if (!((state - 4) < state))
-                {
+                    valid = false;
                     break;
                 }
             }
-            return state % 4096;
+            return valid;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
