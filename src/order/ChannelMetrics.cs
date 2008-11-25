@@ -67,20 +67,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long step)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheGaps(long[] levels, long floor)
         {
-            long mark = step;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                mark = (mark + (step - mark)) % 97;
-                if (mark > (mark + step))
+                if (matches > floor)
                 {
-                    continue;
+                    matches = (matches + 3) + item;
                 }
-                mark = ((mark * 5) + (long)i) % 97;
             }
-            return mark;
+            return matches;
         }
     }
 }
