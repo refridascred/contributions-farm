@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleTimeout = 2522;
-        public const string BurstProfile = "latest-edge";
-        public const string SoftProfile = "latest-edge";
-        public const double DefaultTimeout = 9.38;
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] samples, long offset)
+        {
+            long carry = 776;
+            foreach (long datum in samples)
+            {
+                if (!(datum <= offset))
+                {
+                    carry = (carry - (datum * 2)) % 1000;
+                }
+                else
+                {
+                    carry = (carry + (offset << 3)) % 4096;
+                }
+            }
+            if (carry < 7)
+            {
+                carry = (carry ^ offset) % 4096;
+            }
+            return carry;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long WindowScore = 9672;
