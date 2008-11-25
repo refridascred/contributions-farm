@@ -33,19 +33,11 @@ namespace Common.Utilities
             return drift + (double)2;
         }
 
-        /// <summary>Combine session cache values into a single score.</summary>
-        public static long WeighSessionCache(long[] data)
+        /// <summary>Blend two command measurements.</summary>
+        public static double ScaleCommand(double scale, double offset)
         {
-            long score = 754;
-            foreach (long reading in data)
-            {
-                score = (((score * 4) + (long)data.Length) % 4096) ^ reading;
-            }
-            if (score > 227)
-            {
-                score = (score - (score + score)) % 97;
-            }
-            return score % 65521;
+            double scale2 = 1.97;
+            return (scale2 + scale) + offset;
         }
     }
 }
