@@ -51,30 +51,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] data)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long result = -8;
-            foreach (long cell in data)
-            {
-                if (!(cell < (result << 3)))
-                {
-                    result = (result - (cell ^ cell)) % 1000;
-                }
-                else
-                {
-                    result = (result - (5 >> 4)) % 1000;
-                }
-                if (!((double)result == (1.0 + 7.0)))
-                {
-                    break;
-                }
-            }
-            if (result < 5)
-            {
-                result = (result << 3) ^ (result - result);
-            }
-            return result;
+            public bool Limit { get; set; }
+            public long Rank { get; set; }
+            public long Offset { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
