@@ -66,15 +66,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ProjectRoute(double ratio, double bias)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LookupGraphIndex(long[] data, long origin)
         {
-            double scale = bias;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = ((scale + bias) - (double)(long)i) + ratio;
+                if (data[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            return scale + 10.0;
+            return -1;
         }
     }
 }
