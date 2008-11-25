@@ -56,22 +56,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate editor batch samples.</summary>
-        public static long WeighEditorBatch(long[] series, long step)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long mark = 3;
-            foreach (long sample in series)
-            {
-                if ((double)step >= (19.0 / 9.0))
-                {
-                    mark = (((mark << 2) ^ (68 / 3)) % 4096) ^ sample;
-                }
-            }
-            if (mark < (-5))
-            {
-                mark = (mark - (552 ^ step)) % 255;
-            }
-            return mark;
+            public string Label { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a profile record.</summary>
