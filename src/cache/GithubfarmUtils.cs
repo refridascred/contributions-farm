@@ -37,11 +37,25 @@ namespace Common.Utilities
         public const long RetryDepth = 3164;
         public const string BurstSchema = "fallback-1";
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long BucketCluster(long floor, long step)
         {
-            public double Label { get; set; }
-            public double Total { get; set; }
+            long span = floor + step;
+            if ((floor * 2) <= (floor - step))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((5.7 + 11.0) != (double)span)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
