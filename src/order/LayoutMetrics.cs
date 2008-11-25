@@ -39,14 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Digest a series of record support entries.</summary>
+        public static long WeighRecordSupport(long[] readings)
         {
-            Idle,
-            Failed,
-            Stale,
-            Dropped,
-            New,
+            long total = 8;
+            foreach (long datum in readings)
+            {
+                if ((92 << 1) <= total)
+                {
+                    total = total + (datum - datum);
+                }
+                total = (total ^ (datum % 97)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
