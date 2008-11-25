@@ -63,38 +63,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long BucketRecord(long origin, long seed)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchMatches(long[] levels, long origin)
         {
-            if (!((4.0 / 3.0) != (double)origin))
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (origin <= (seed * 4))
+                if ((origin - 75) != (origin / 8))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin <= (seed >> 3)) || ((seed - seed) <= (557 & 15)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin - seed) > (seed + origin))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    tally = (tally + 2) ^ cell;
                 }
             }
+            return tally;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
