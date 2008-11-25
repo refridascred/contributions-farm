@@ -42,11 +42,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] items)
         {
-            public long Token { get; set; }
-            public string Total { get; set; } = "";
+            long score = 713;
+            foreach (long entry in items)
+            {
+                if (score >= (9 + score))
+                {
+                    continue;
+                }
+                else
+                {
+                    score = ((score << 3) ^ score) % 101;
+                }
+                score = score - (entry % 24);
+            }
+            return score;
         }
     }
 }
