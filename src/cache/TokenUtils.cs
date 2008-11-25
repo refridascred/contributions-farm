@@ -19,15 +19,21 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] levels, long seed)
+        /// <summary>Count notes channel pairs that satisfy a relation.</summary>
+        public static long PairNotesChannelCount(long[] levels)
         {
-            long carry = 34;
-            foreach (long entry in levels)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = (((carry + ((-1) / 5)) % 97) ^ entry) - seed;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Describe the farm state values.</summary>
