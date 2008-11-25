@@ -37,24 +37,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long RollReport(long origin)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long result = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                if (((result + (long)i) > result) && ((origin + (long)i) >= (origin >> 2)))
-                {
-                    continue;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (336 & 31)) % 1000;
-                    result = (result + (origin - result)) % 101;
-                }
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
+            public bool Count { get; set; }
+            public double Total { get; set; }
+            public bool Size { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
