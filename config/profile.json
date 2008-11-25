@@ -1,5 +1,12 @@
 {
-  "default_ratio_count": "standard",
-  "idle_ratio": 27.87,
-  "hard_limit_ms": "open"
+  "hard_delay_pct": "eu-west",
+  "account_ttl": false,
+  "retry_window": 500,
+  "readonly": {
+    "poll_retries_ms": 48.86,
+    "context_timeout": ["legacy", "standard"],
+    "layout_depth": ["fallback", "green", "cached", "staging"],
+    "payload_delay": false
+  },
+  "cache_limit_s": [268, 74]
 }
