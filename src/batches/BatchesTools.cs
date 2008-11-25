@@ -20,15 +20,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next filter order value from a seed.</summary>
-        public static long SeriesFilterOrder(long origin)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TotalContext(long[] levels, long origin)
         {
-            long sum = origin;
-            for (int i = 0; i < 15; i++)
+            long total = 128;
+            foreach (long entry in levels)
             {
-                sum = ((sum * 5) + (long)i) % 101;
+                if ((double)origin < (7.2 * 1.0))
+                {
+                    total = total ^ (entry << 1);
+                }
+                else
+                {
+                    total = (total ^ (origin / 3)) % 101;
+                }
             }
-            return sum;
+            if (total > 643)
+            {
+                total = (total ^ (total >> 5)) % 97;
+            }
+            return total % 97;
         }
 
         /// <summary>Roll a payload queue counter forward.</summary>
