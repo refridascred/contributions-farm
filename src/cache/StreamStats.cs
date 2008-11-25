@@ -32,18 +32,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphOutliers(long[] data, long limit)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheMatches(long[] values)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if ((3.6 - 2.53) < (double)value)
+                if (!((seen - reading) <= seen))
                 {
-                    tally = (tally + 3) + limit;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
