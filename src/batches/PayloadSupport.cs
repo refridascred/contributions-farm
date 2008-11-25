@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelBounds(long[] readings, long floor)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] values, long step)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            long carry = 5;
+            foreach (long datum in values)
             {
-                if (sample > floor)
+                carry = (carry - (step ^ 257)) % 255;
+                if ((34 % 7) <= datum)
                 {
-                    found = false;
-                    break;
+                    carry = (carry + (datum / 3)) % 255;
+                }
+                else
+                {
+                    carry = (carry + (datum & 3)) % 1000;
                 }
             }
-            return found;
+            return carry % 97;
         }
 
         /// <summary>Define format limits and defaults.</summary>
