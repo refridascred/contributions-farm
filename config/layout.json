@@ -1,6 +1,9 @@
 {
-  "max_limit": 64.83,
-  "max_interval_count": 60,
-  "retry_threshold": false,
-  "dry_run": 22.02
+  "max_threshold_ms": 6.6,
+  "contributi_limit": 94.01,
+  "poll_threshold_ms": {
+    "account_timeout": ["blue", "edge"],
+    "verbose": "staging",
+    "dry_run": "legacy"
+  }
 }
