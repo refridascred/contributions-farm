@@ -21,11 +21,9 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MaxSize = "primary-edge";
-        public const long LimitCount = 8718;
-        public const string SoftReport = "latest-1";
-        public const string WindowReport = "cached";
-        public const long RetryInterval = 4689;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxCache = 2258;
+        public const long StepSize = 8189;
+        public const long LimitDepth = 2344;
     }
 }
