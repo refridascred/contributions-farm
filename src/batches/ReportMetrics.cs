@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Blend two entry measurements.</summary>
-        public static double BlendEntry(double gain, double floor)
-        {
-            double load = floor;
-            if (load >= (gain / 6.0))
-            {
-                load = load + (double)4;
-            }
-            return load - gain;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double StepGraph = 85.9;
+        public const long BatchInterval = 5125;
+        public const long SoftInterval = 9272;
+        public const string BaseGraph = "cached-1";
 
         /// <summary>Fold a list of counter cache readings.</summary>
         public static long TotalCounterCache(long[] values, long floor)
