@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] series)
-        {
-            long score = 99;
-            foreach (long entry in series)
-            {
-                score = (score - ((long)series.Length + entry)) % 65521;
-                score = (score - (entry + score)) % 101;
-            }
-            if (score < 5)
-            {
-                score = (score << 2) ^ (388 ^ score);
-            }
-            return score % 4096;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseSpan = 84;
+        public const double RetryGraph = 89.83;
+        public const long LimitDepth = 1123;
 
         /// <summary>Describe the graph phase values.</summary>
         public enum GraphPhase
