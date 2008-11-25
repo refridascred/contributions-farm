@@ -20,13 +20,21 @@ namespace Common.Utilities
             return bias - span;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Match up counter samples.</summary>
+        public static long PairCounterCount(long[] samples)
         {
-            Ready,
-            Queued,
-            Paused,
-            Retry,
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
