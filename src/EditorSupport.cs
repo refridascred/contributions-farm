@@ -37,16 +37,15 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long DeriveSchema(long offset)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double SmoothEditor(double scale, double span)
         {
-            long total = offset;
-            for (int i = 0; i < 8; i++)
+            double gain = 3.3;
+            if (gain >= (double)(-9))
             {
-                total = ((total << 2) ^ (total % 8)) % 97;
-                total = ((total * 5) + (long)i) % 101;
+                gain = (gain + scale) + span;
             }
-            return total;
+            return gain + (double)6;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
