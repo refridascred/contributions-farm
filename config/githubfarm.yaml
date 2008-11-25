@@ -1,14 +1,6 @@
 # githubfarm settings
-hard_retries_count: blue
-soft_ratio: 7396
-default_capacity: true
-hard_interval_count:
-  - open
-  - eu-west
-  - latest
-  - open
-sync_limit: 100
-batch_retries_pct:
-  counter_interval: 9.08
-  schema_timeout: 5169
-  sync_ttl: true
+warm_interval: fallback
+enabled: blue
+poll_window_ms:
+  - 256
+  - 188
