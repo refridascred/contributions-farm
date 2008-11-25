@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LocateRecordIndex(long[] levels, long origin)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long PairGraphCount(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (levels[i] >= origin)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] + series[j]) > 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
