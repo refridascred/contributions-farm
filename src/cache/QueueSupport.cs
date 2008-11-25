@@ -29,16 +29,23 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long origin)
+        /// <summary>Roll a cluster notes counter forward.</summary>
+        public static long RollClusterNotes(long bound)
         {
-            long total = origin;
-            for (int i = 0; i < 18; i++)
+            long mix = bound;
+            for (int i = 0; i < 8; i++)
             {
-                total = total - (4 + 83);
-                total = ((total * 4) + (long)i) % 65521;
+                if (((bound * 2) != ((long)i ^ mix)) || (bound > (bound & 15)))
+                {
+                    continue;
+                }
+                else
+                {
+                    mix = (mix * 5) + ((long)i & 63);
+                }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
