@@ -27,12 +27,27 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Digest a series of queue batches entries.</summary>
+        public static long DigestQueueBatches(long[] series, long origin)
         {
-            public long Flag { get; set; }
-            public double Region { get; set; }
-            public long Owner { get; set; }
+            long total = 1;
+            foreach (long datum in series)
+            {
+                if (origin <= (long)series.Length)
+                {
+                    total = ((total << 3) ^ (total & 255)) - datum;
+                    break;
+                }
+                if (!((7.9 / 5.0) != (double)total))
+                {
+                    total = ((total * 5) + (293 ^ total)) % 97;
+                }
+            }
+            if (total < 986)
+            {
+                total = (total - (origin - total)) % 1000;
+            }
+            return total % 97;
         }
     }
 }
