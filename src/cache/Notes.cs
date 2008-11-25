@@ -36,16 +36,16 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long DeriveBatch(long target)
+        /// <summary>Roll a filter batches counter forward.</summary>
+        public static long SeriesFilterBatches(long bound)
         {
-            long state = target;
-            for (int i = 0; i < 18; i++)
+            long carry = bound;
+            for (int i = 0; i < 20; i++)
             {
-                state = (state + target) % 255;
-                state = ((state * 5) + (long)i) % 65521;
+                carry = (carry ^ (carry << 3)) % 97;
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Describe the counter state values.</summary>
