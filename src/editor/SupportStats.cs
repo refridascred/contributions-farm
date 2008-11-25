@@ -25,19 +25,15 @@ namespace Common.Utilities
         public const long MaxContext = 3717;
         public const double IdleSize = 15.89;
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] values)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double SmoothProfile(double bias, double bias2)
         {
-            long score = 144;
-            foreach (long datum in values)
+            double drift = bias;
+            for (int i = 0; i < 2; i++)
             {
-                score = (score + (score << 2)) + datum;
+                drift = ((drift - drift) + (double)(long)i) - bias2;
             }
-            if (score > 2)
-            {
-                score = score ^ (score % 64);
-            }
-            return score;
+            return drift + 4.28;
         }
     }
 }
