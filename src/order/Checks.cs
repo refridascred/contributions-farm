@@ -33,11 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Adjust a checks reading.</summary>
+        public static double SmoothChecks(double bias, double bias2)
         {
-            public long Limit { get; set; }
-            public long Label { get; set; }
+            double load = (bias * 9.0) - bias2;
+            return load + (bias - bias2);
         }
 
         /// <summary>Audit layout filter readings against a rule.</summary>
