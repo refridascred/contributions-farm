@@ -49,10 +49,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BatchCount = 77.37;
-        public const string MaxDepth = "stable";
-        public const double IdleCommits = 79.36;
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextMatches(long[] values, long limit)
+        {
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((9 + limit) >= (matches % 7))
+                {
+                    matches = (matches + 1) + datum;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit counter githubfarm readings against a rule.</summary>
         public static long AuditCounterGithubfarmHits(long[] data, long limit)
