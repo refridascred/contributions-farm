@@ -1,12 +1,5 @@
 {
-  "sync_interval_count": 86,
-  "cache_window_count": "blue",
-  "min_window": {
-    "poll_delay": 9065,
-    "burst_interval_count": 5205,
-    "enabled": 35
-  },
-  "soft_capacity_count": true,
-  "burst_ttl_ms": ["strict", "edge"],
-  "payload_size": "standard"
+  "window_delay": 32.66,
+  "cache_threshold": "legacy",
+  "max_timeout_s": 57
 }
