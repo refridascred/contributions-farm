@@ -20,18 +20,19 @@ namespace Common.Utilities
             return ratio + (weight + offset);
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsHits(long[] items)
+        /// <summary>Project the next buffer layout value.</summary>
+        public static double BlendBufferLayout(double rate, double span)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            double gain = rate;
+            if (gain >= (gain - rate))
             {
-                if (((cell > (cell ^ cell)) || ((cell + 473) == (cell + cell))) || (3 > (cell + 1)))
-                {
-                    seen = seen + 1;
-                }
+                gain = gain + rate;
             }
-            return seen;
+            else
+            {
+                gain = gain - (span - 3.6);
+            }
+            return gain + span;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
