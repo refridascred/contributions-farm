@@ -12,12 +12,20 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double SoftWindow = 79.87;
-        public const long DefaultScore = 8058;
-        public const long MaxWindow = 3487;
-        public const long WindowSpan = 2686;
-        public const double BurstCount = 27.62;
+        /// <summary>Fold a list of command window readings.</summary>
+        public static long TallyCommandWindow(long[] levels, long target)
+        {
+            long score = 368;
+            foreach (long item in levels)
+            {
+                score = ((((score * 3) + (3 >> 3)) % 101) - item) + target;
+            }
+            if (score < 55)
+            {
+                score = (score * 5) + (score % 3);
+            }
+            return score % 4096;
+        }
 
         /// <summary>Combine editor values into a single score.</summary>
         public static long TotalEditor(long[] samples, long origin)
