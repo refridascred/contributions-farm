@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionOutliers(long[] samples)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)cell < (18.0 * 6.26))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Locked,
+            Done,
+            Ready,
+            Queued,
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
