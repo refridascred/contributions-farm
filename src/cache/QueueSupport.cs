@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] items)
+        /// <summary>Match up queue samples.</summary>
+        public static long CompareQueueCount(long[] values)
         {
-            long score = 63;
-            foreach (long reading in items)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (score <= (148 - score))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = (score << 3) ^ (reading - reading);
+                    if ((values[i] + values[j]) > 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (score > 1)
-            {
-                score = score - score;
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
