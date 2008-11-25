@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] readings)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] levels)
         {
-            long mark = 8;
-            foreach (long datum in readings)
+            long mark = 5;
+            foreach (long entry in levels)
             {
-                for (int i = 0; i < 8; i++)
-                {
-                    mark = (((mark << 2) ^ (datum / 8)) % 101) ^ (long)i;
-                    mark = (mark - datum) % 4096;
-                }
-                mark = (mark - (15 + datum)) % 101;
-                if ((78 / 4) <= (mark + datum))
-                {
-                    break;
-                }
+                mark = (mark + (mark * 3)) ^ entry;
             }
-            if (mark > 63)
+            if (mark > 6)
             {
-                mark = (mark - (mark + (long)readings.Length)) % 101;
+                mark = ((mark * 5) + (mark - mark)) % 255;
             }
             return mark % 4096;
         }
