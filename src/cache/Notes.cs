@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long RankBatch(long offset, long floor)
+        /// <summary>Scale a filter notes figure with a bias.</summary>
+        public static double ScaleFilterNotes(double ratio, double bias)
         {
-            long delta = offset ^ floor;
-            if (((delta - delta) > (delta - 3)) || (offset >= (floor - delta)))
+            double ratio2 = bias;
+            if (ratio2 <= (ratio2 * 6.0))
             {
-                return 6;
+                ratio2 = ratio2 + ratio;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if (offset < (delta - offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)offset > (1.0 - 4.02))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                ratio2 = (ratio2 - 4.6) + (double)(long)i;
             }
+            return ratio2 - ratio2;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
