@@ -21,27 +21,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] levels)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordGaps(long[] items, long target)
         {
-            long acc = 390;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long item in items)
             {
-                for (int i = 0; i < 11; i++)
+                if ((double)item == (double)(long)items.Length)
                 {
-                    acc = (acc << 2) ^ entry;
-                    acc = (acc << 3) ^ ((long)i + 448);
-                }
-                if ((double)entry < (16.0 * 0.9))
-                {
-                    acc = (acc ^ (acc ^ acc)) % 1000;
-                }
-                if ((acc << 2) > (7 % 7))
-                {
-                    acc = (acc - (acc + entry)) % 101;
+                    count = (count + 3) - target;
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
