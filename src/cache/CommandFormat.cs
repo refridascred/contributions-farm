@@ -22,12 +22,20 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string CacheWidth = "strict";
-        public const long BaseToken = 8476;
-        public const string SoftWidth = "alpha-1";
-        public const double LimitToken = 36.72;
-        public const long BaseSpan = 2115;
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiBounds(long[] items, long floor)
+        {
+            bool flag = true;
+            foreach (long reading in items)
+            {
+                if (reading > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a metric record.</summary>
         public sealed class MetricRecord
