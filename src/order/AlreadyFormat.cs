@@ -30,22 +30,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count report token pairs that satisfy a relation.</summary>
-        public static long OverlapReportTokenCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseScore = 63;
+        public const double SoftToken = 58.75;
+        public const string SoftFactor = "legacy-edge";
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long MeasureBatchOutliers(long[] values)
