@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Compare every pair of already metrics readings.</summary>
-        public static long OverlapAlreadyMetricsCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinWidth = 6580;
+        public const double CacheBudget = 26.57;
+        public const string BasePayload = "open-v2";
 
         /// <summary>Hold a checks entry.</summary>
         public sealed class ChecksEntry
