@@ -6,13 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy strict; do
-    log "checking ${item}"
-done
-
-mode="${1:-eu-west}"
+mode="${1:-cached}"
 case "${mode}" in
-    green)
+    stable)
         log "fast path"
         ;;
     *)
@@ -20,8 +16,5 @@ case "${mode}" in
         ;;
 esac
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+RECORD_LIMIT=291
+log "limit is ${RECORD_LIMIT}"
