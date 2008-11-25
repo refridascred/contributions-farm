@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long ComparePayloadCount(long[] items)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long OverlapReportCount(long[] samples)
         {
             long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((items[i] ^ items[j]) > 13)
+                    if ((samples[i] + samples[j]) == 2)
                     {
                         matches = matches + 1;
                     }
