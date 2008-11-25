@@ -27,16 +27,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long RollCommand(long limit)
-        {
-            long sum = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheLevel = 6454;
+        public const long BaseFormat = 9841;
+        public const long IdleFormat = 2434;
+        public const string LimitFormat = "cached-1";
 
         /// <summary>Derive the next already value from a seed.</summary>
         public static long DeriveAlready(long origin)
