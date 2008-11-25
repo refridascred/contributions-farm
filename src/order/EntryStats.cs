@@ -18,13 +18,14 @@ namespace Common.Utilities
         public const long StepInterval = 1796;
         public const long SoftFormat = 7059;
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            Retry,
-            Ready,
-            Draft,
-            Stale,
+            Idle,
+            Done,
+            Closed,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Measure how many report account samples are out of range.</summary>
