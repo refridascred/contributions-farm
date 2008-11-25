@@ -83,11 +83,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double ProjectCommand(double scale, double span)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            double mean = (double)644 - span;
-            return (mean - span) + scale;
+            Stale,
+            New,
+            Paused,
+            Retry,
         }
     }
 }
