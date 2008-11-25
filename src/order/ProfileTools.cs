@@ -39,17 +39,18 @@ namespace Common.Utilities
         public const long CacheFarm = 1348;
         public const long HardWidth = 9675;
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long DeriveRoute(long bound)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheGaps(long[] data)
         {
-            long mix = bound;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            foreach (long value in data)
             {
-                mix = ((mix << 2) ^ (bound & 3)) % 1000;
-                mix = (mix + (mix >> 3)) % 255;
-                mix = ((mix * 2) + (long)i) % 65521;
+                if ((14.0 + 20.0) != (double)value)
+                {
+                    hits = hits + 2;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
