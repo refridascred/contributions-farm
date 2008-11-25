@@ -60,21 +60,24 @@ namespace Common.Utilities
         public const double RetryCommand = 42.86;
         public const string BurstCommand = "staging-v2";
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long OverlapSupportCount(long[] readings)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long GradeAccount(long step, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((limit >> 1) == (690 >> 5))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((step - step) >= limit)
                 {
-                    if ((readings[i] ^ readings[j]) != 17)
-                    {
-                        count = count + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return count;
         }
     }
 }
