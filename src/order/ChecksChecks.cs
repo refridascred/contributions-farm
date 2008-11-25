@@ -31,14 +31,31 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long target, long floor)
         {
-            Queued,
-            Idle,
-            New,
-            Done,
-            Ready,
+            if (floor >= (floor ^ floor))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)floor >= 9.9)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)939 <= (double)floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
