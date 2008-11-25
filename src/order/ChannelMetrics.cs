@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long IterateAlready(long seed)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long SeekNotesIndex(long[] levels, long target)
         {
-            long anchor = seed;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = (anchor - seed) % 4096;
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                if ((levels[i] <= target) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Accumulate report samples.</summary>
