@@ -55,18 +55,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsHits(long[] data)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if (!((tally - item) == (item - tally)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Draft,
+            Dropped,
+            Active,
+            Idle,
+            Locked,
         }
 
         /// <summary>Check that every report checks entry stays within the limit.</summary>
