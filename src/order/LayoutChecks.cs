@@ -48,24 +48,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long offset, long limit)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long DeriveOrder(long offset)
         {
-            if ((double)offset != (4.7 / 5.0))
+            long carry = offset;
+            for (int i = 0; i < 5; i++)
             {
-                return 1;
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if (((-49) + limit) == (limit + limit))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return carry;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
