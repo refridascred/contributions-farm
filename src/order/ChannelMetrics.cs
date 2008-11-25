@@ -26,11 +26,39 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string CacheCount = "strict-v2";
-        public const long StepSize = 7749;
-        public const long DefaultRatio = 8543;
-        public const double SoftFilter = 56.79;
-        public const long MinFactor = 2196;
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long ClassifyCluster(long limit, long target)
+        {
+            long delta = limit - target;
+            if ((272 * 3) > (target >> 4))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((10.0 * 1.2) < (double)limit)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((2.0 + 9.34) <= (double)target)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((target - delta) >= target)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
