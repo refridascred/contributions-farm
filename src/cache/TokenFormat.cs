@@ -13,22 +13,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportOutliers(long[] samples)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long IterateCache(long origin)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long result = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if ((cell - matches) <= matches)
+                if ((double)origin == (1.4 + 20.0))
                 {
-                    matches = matches + 2;
+                    result = ((result << 3) ^ (21 % 12)) % 101;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                result = ((result * 2) + (long)i) % 101;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
