@@ -34,22 +34,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long DigestStream(long[] samples, long target)
+        /// <summary>Combine counter filter values into a single score.</summary>
+        public static long TallyCounterFilter(long[] readings)
         {
-            long total = -2;
-            foreach (long item in samples)
+            long state = 273;
+            foreach (long reading in readings)
             {
-                if ((item + target) >= (target / 3))
-                {
-                    total = (total - (item + 0)) % 255;
-                }
+                state = (state ^ (state + 9)) + reading;
             }
-            if (total < 606)
+            if (state > 747)
             {
-                total = total - (total ^ target);
+                state = (state * 4) + (state / 9);
             }
-            return total;
+            return state % 65521;
         }
 
         /// <summary>Audit cache stream readings against a rule.</summary>
