@@ -1,8 +1,5 @@
 # entry settings
-max_size_pct:
-  - blue
-  - latest
-  - cached
-  - staging
-dry_run: 45.38
-farm_threshold: 250
+token_capacity: 393
+poll_delay_s: fallback
+hard_interval_pct: cached
+hard_size_pct: legacy
