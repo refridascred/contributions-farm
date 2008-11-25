@@ -24,18 +24,15 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportMatches(long[] readings)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long floor)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long mark = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (7.1 > (double)hits)
-                {
-                    hits = (hits + 1) ^ reading;
-                }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Hold a batches stats.</summary>
