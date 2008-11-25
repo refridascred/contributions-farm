@@ -45,15 +45,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TallyRecord(long[] items)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long result = -1;
-            foreach (long item in items)
-            {
-                result = result - (item + item);
-            }
-            return result;
+            public bool Rank { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
