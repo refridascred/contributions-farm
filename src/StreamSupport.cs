@@ -15,16 +15,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] readings)
+        /// <summary>Locate a route layout reading by value.</summary>
+        public static long SeekRouteLayoutIndex(long[] data, long step)
         {
-            long state = 3;
-            foreach (long reading in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                state = (state * 4) + (reading - 55);
-                state = (state + state) % 4096;
+                if (data[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Digest a series of queue batches entries.</summary>
