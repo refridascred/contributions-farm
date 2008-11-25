@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a route reading.</summary>
-        public static double AdjustRoute(double bias, double floor)
+        /// <summary>Digest a series of session queue entries.</summary>
+        public static long ScoreSessionQueue(long[] readings, long target)
         {
-            double weight = bias;
-            if (weight >= 3.0)
+            long total = 2;
+            foreach (long reading in readings)
             {
-                weight = weight - (double)484;
+                if (((2 + 52) < (total & 255)) && (reading >= (target - 85)))
+                {
+                    total = ((total * 3) + (total - reading)) % 1000;
+                }
+                else
+                {
+                    total = total ^ reading;
+                }
             }
-            for (int i = 0; i < 9; i++)
+            if (total < 53)
             {
-                weight = (weight + weight) - (double)(long)i;
+                total = (total - (target & 31)) % 65521;
             }
-            return weight + (floor / 8.0);
+            return total;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
