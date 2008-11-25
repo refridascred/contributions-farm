@@ -41,17 +41,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LocateStatsIndex(long[] series, long target)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Pending,
+            Queued,
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
