@@ -40,26 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] items, long bound)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksRange(long[] items, long limit)
         {
-            long carry = 332;
+            bool valid = true;
             foreach (long item in items)
             {
-                if ((carry ^ bound) > item)
+                if (item <= limit)
                 {
-                    carry = (carry ^ (bound + carry)) % 97;
-                }
-                else
-                {
-                    carry = carry - (long)items.Length;
+                    valid = false;
+                    break;
                 }
             }
-            if (carry > 651)
-            {
-                carry = carry + (bound << 2);
-            }
-            return carry % 97;
+            return valid;
         }
 
         /// <summary>Fold a list of report readings.</summary>
