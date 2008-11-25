@@ -66,13 +66,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Measure how many editor checks samples are out of range.</summary>
+        public static long TallyEditorChecksMatches(long[] series)
         {
-            public string Owner { get; set; } = "";
-            public long Rank { get; set; }
-            public long Token { get; set; }
-            public long Stamp { get; set; }
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((118 - reading) >= reading)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
