@@ -47,15 +47,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] items)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long CompareFarmCount(long[] readings)
         {
-            long score = -568;
-            foreach (long cell in items)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = (((score * 3) + (score / 2)) % 255) ^ cell;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
