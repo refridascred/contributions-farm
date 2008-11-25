@@ -1,12 +1,5 @@
 {
-  "stats_ttl": 0.98,
-  "cache_ttl": "open",
-  "min_retries_ms": 8262,
-  "base_ttl": {
-    "flush_delay_count": "green",
-    "soft_window_pct": "blue",
-    "stream_threshold": 3014
-  },
-  "min_size_pct": true,
-  "retry_limit": 8184
+  "format_ratio": true,
+  "batch_threshold_s": false,
+  "min_size_ms": 1024
 }
