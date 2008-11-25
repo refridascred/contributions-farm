@@ -57,25 +57,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long GradeGithubfarm(long offset, long limit)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long SeekCommandIndex(long[] readings, long target)
         {
-            long edge = offset ^ limit;
-            if ((edge + offset) < 603)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (edge > (edge - edge))
+                if ((readings[i] == target) && ((readings[i] % 3) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
