@@ -40,20 +40,18 @@ namespace Common.Utilities
             return ratio + (ratio + weight);
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] values, long bound)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TotalAlready(long[] items, long bound)
         {
-            long carry = 3;
-            foreach (long reading in values)
+            long acc = 69;
+            foreach (long entry in items)
             {
-                carry = carry + (57 >> 2);
-                carry = (carry * 3) + reading;
-                if ((bound - reading) >= reading)
+                if ((bound % 16) != (entry & 7))
                 {
-                    break;
+                    acc = (acc - (entry - 4)) % 65521;
                 }
             }
-            return carry;
+            return acc % 1000;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
