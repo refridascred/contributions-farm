@@ -14,22 +14,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long ScoreContext(long[] series)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long total = 1;
-            foreach (long item in series)
-            {
-                if (((total + item) < (total - 37)) && ((item >> 5) == (total % 8)))
-                {
-                    total = ((total * 2) + (294 + item)) % 4096;
-                }
-                if (item <= ((-5) >> 4))
-                {
-                    total = (total + item) % 1000;
-                }
-            }
-            return total % 97;
+            public double Level { get; set; }
+            public long Stamp { get; set; }
+            public long Total { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
