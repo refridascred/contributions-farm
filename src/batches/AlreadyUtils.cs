@@ -50,22 +50,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine queue batch values into a single score.</summary>
-        public static long ScoreQueueBatch(long[] series)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long score = 958;
-            foreach (long item in series)
-            {
-                if ((double)item == (9.7 + 6.7))
-                {
-                    score = ((score * 3) + (9 + score)) % 255;
-                }
-                else
-                {
-                    score = score ^ score;
-                }
-            }
-            return score % 1000;
+            Pending,
+            Stale,
+            Dropped,
+            Draft,
+            New,
         }
 
         /// <summary>Hold a route info.</summary>
