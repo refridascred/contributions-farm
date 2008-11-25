@@ -1,7 +1,8 @@
 {
-  "soft_window_count": true,
-  "already_capacity": 51,
-  "default_ttl": 79.83,
-  "flush_interval_pct": 32.3,
-  "flush_size_pct": 23.53
+  "audit": "blue",
+  "sync_timeout": false,
+  "verbose": false,
+  "retry_ttl": 53.34,
+  "editor_threshold": 30,
+  "batch_window_pct": 30
 }
