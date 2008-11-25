@@ -38,19 +38,25 @@ namespace Common.Utilities
         public const long BurstLevel = 9701;
         public const long RetryPayload = 6794;
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextLimits(long[] series, long floor)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long limit)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long state = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (datum >= floor)
+                state = (state ^ state) % 4096;
+                if (!((double)limit == (4.9 - 9.0)))
                 {
-                    found = false;
-                    break;
+                    state = ((state * 5) + (0 % 2)) % 65521;
                 }
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    state = ((state * 5) + limit) ^ (long)i2;
+                    state = state + state;
+                }
+                state = ((state * 3) + (long)i) % 101;
             }
-            return found;
+            return state;
         }
     }
 }
