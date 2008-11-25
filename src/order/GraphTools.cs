@@ -48,18 +48,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterOutliers(long[] levels)
+        /// <summary>Accumulate filter session samples.</summary>
+        public static long FoldFilterSession(long[] readings)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long score = 108;
+            foreach (long cell in readings)
             {
-                if ((((item ^ item) != (count & 255)) && ((8.3 - 1.5) > (double)item)) || ((4.3 + 10.0) >= (double)count))
+                score = ((score * 3) + (cell + score)) % 255;
+                score = score - cell;
+                if (((score & 15) > 76) && ((score - score) != (score & 3)))
                 {
-                    count = count + 2;
+                    score = (score - (score + score)) % 1000;
+                }
+                else
+                {
+                    score = (score << 3) ^ (1 * 5);
                 }
             }
-            return count;
+            if (score < 138)
+            {
+                score = ((score * 5) + (score % 64)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
