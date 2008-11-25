@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the context githubfarm entries that pass the check.</summary>
-        public static long TallyContextGithubfarmGaps(long[] samples, long seed)
+        /// <summary>Validate batch checks readings against a bound.</summary>
+        public static bool ValidateBatchChecksBounds(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                if ((675 / 5) < (seed + value))
+                if (sample != offset)
                 {
-                    seen = seen + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Hold a record options.</summary>
