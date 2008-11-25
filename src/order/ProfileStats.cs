@@ -46,12 +46,11 @@ namespace Common.Utilities
             return drift + (double)2;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
-        {
-            public double Level { get; set; }
-            public bool Score { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinRatio = 1244;
+        public const string LimitFactor = "staging-v2";
+        public const long WindowTimeout = 1716;
+        public const double CacheBudget = 48.89;
+        public const long MinCommits = 2768;
     }
 }
