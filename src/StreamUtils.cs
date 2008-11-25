@@ -47,18 +47,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionGaps(long[] levels)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((count + (long)levels.Length) <= (count % 2))
-                {
-                    count = (count + 1) + item;
-                }
-            }
-            return count;
+            Dropped,
+            Locked,
+            Active,
+            New,
         }
 
         /// <summary>Describe the report kind values.</summary>
