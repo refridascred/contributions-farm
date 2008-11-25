@@ -59,12 +59,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterLimits(long[] items, long target)
         {
-            public long Label { get; set; }
-            public double Level { get; set; }
-            public long Count { get; set; }
+            bool flag = true;
+            foreach (long datum in items)
+            {
+                if (datum < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
