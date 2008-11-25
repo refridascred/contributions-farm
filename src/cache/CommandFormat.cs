@@ -58,22 +58,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long WeighSchema(long[] readings)
+        /// <summary>Iterate the graph cache series from a seed.</summary>
+        public static long SeriesGraphCache(long floor)
         {
-            long state = 967;
-            foreach (long value in readings)
+            long mark = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if ((state + state) == (long)readings.Length)
-                {
-                    state = (state ^ state) % 101;
-                }
-                if ((value % 97) > (value * 3))
-                {
-                    state = ((state * 4) + value) % 4096;
-                }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return state % 65521;
+            return mark;
         }
     }
 }
