@@ -37,18 +37,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesGaps(long[] series)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if ((0 + matches) <= reading)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Limit { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
