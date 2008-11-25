@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const long BasePayload = 4926;
         public const long MaxSpan = 9798;
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportGaps(long[] series)
         {
-            public long Total { get; set; }
-            public long Label { get; set; }
-            public double Rank { get; set; }
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((double)seen == (double)sample)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
