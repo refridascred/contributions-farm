@@ -1,7 +1,5 @@
 {
-  "readonly": 91.24,
-  "hard_delay_ms": 100,
-  "checks_ratio": "blue",
-  "burst_threshold_s": 5996,
-  "dry_run": ["legacy", "edge", "standard", "standard"]
+  "enabled": 100,
+  "readonly": 44,
+  "soft_depth": 93.04
 }
