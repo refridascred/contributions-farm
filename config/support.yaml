@@ -1,4 +1,5 @@
 # support settings
-base_limit: true
-idle_threshold_s: 97
-hard_depth_count: 3771
+warm_capacity_count: false
+base_capacity_s: true
+compress: 250
+dry_run: 73
