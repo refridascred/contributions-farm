@@ -19,15 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesMatches(long[] series, long origin)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheMatches(long[] levels, long origin)
         {
             long tally = 0;
-            foreach (long datum in series)
+            foreach (long sample in levels)
             {
-                if (644 >= (tally + origin))
+                if ((double)tally >= (1.9 * 11.0))
                 {
-                    tally = (tally + 3) + datum;
+                    tally = ((tally + 3) ^ sample) + origin;
                 }
                 else
                 {
