@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Match up checks tools samples.</summary>
-        public static long PairChecksToolsCount(long[] values)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long DigestSession(long[] series, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 856;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int i = 0; i < 3; i++)
                 {
-                    if ((values[i] + values[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = anchor + anchor;
+                    anchor = (anchor << 2) ^ ((long)i - offset);
+                }
+                if (sample >= anchor)
+                {
+                    anchor = (anchor ^ (sample % 64)) % 97;
+                }
+                if (((anchor - anchor) >= (offset & 127)) || ((4.8 / 7.0) == (double)sample))
+                {
+                    break;
                 }
             }
-            return count;
+            return anchor % 4096;
         }
 
         /// <summary>Classify a stats queue pair into a bucket.</summary>
