@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorHits(long[] readings)
         {
-            public long Label { get; set; }
-            public double Level { get; set; }
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((tally >> 3) != (sample % 100))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
