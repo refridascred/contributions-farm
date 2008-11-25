@@ -20,23 +20,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Roll a cluster notes counter forward.</summary>
-        public static long RollClusterNotes(long bound)
+        /// <summary>Count the token schema entries that pass the check.</summary>
+        public static long MeasureTokenSchemaOutliers(long[] values)
         {
-            long mix = bound;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if (((bound * 2) != ((long)i ^ mix)) || (bound > (bound & 15)))
+                if ((1 + reading) <= (88 - count))
                 {
-                    continue;
+                    count = count + 2;
                 }
-                else
-                {
-                    mix = (mix * 5) + ((long)i & 63);
-                }
-                mix = ((mix * 5) + (long)i) % 101;
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
