@@ -1,9 +1,14 @@
 # entry settings
-hard_window_s: 100
-default_depth_s: 41.43
-audit: 70.26
-warm_interval_s: 8063
-min_depth:
-  - stable
-  - local
-persist: fallback
+githubfarm_window:
+  retry_retries_s: 8.14
+  burst_retries_ms: 8229
+  warm_capacity_ms: cached
+  batch_capacity: 5979
+  metrics_size: 99
+contributi_ratio:
+  - 397
+  - 450
+  - 330
+  - 280
+batches_timeout: edge
+hard_ttl: open
