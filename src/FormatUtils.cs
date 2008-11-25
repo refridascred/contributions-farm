@@ -28,12 +28,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstLevel = 9035;
-        public const long BaseInterval = 1133;
-        public const long HardInterval = 1266;
-        public const long StepBudget = 5584;
-        public const long HardEditor = 1717;
+        /// <summary>Locate a route account reading by value.</summary>
+        public static long LocateRouteAccountIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > offset) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a graph info.</summary>
         public sealed class GraphInfo
