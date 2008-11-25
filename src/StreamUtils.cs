@@ -47,13 +47,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Grade a checks stats value against two limits.</summary>
+        public static long RankChecksStats(long step, long limit)
         {
-            Dropped,
-            Locked,
-            Active,
-            New,
+            if (((9.0 / 3.0) < (double)limit) || (limit > (835 - step)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((step << 1) < (step * 4))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step - step) > (limit - limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((step + limit) < 279) && ((limit ^ limit) < limit))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the report kind values.</summary>
