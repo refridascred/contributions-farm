@@ -24,17 +24,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first report cache entry that matches the target.</summary>
-        public static long FindReportCacheIndex(long[] levels, long bound)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long SeriesMetric(long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if (levels[i] >= bound)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    return (long)i;
+                    acc = ((acc - (seed / 6)) % 1000) + (long)i2;
                 }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
     }
 }
