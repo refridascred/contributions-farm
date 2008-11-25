@@ -49,22 +49,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionHits(long[] samples, long step)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long total = 4;
+            foreach (long datum in items)
             {
-                if ((double)sample >= (7.35 - 6.37))
+                for (int i = 0; i < 7; i++)
                 {
-                    tally = (tally + 3) + step;
+                    total = (((total + (long)items.Length) % 1000) ^ (long)i) + datum;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                total = (total - (total - step)) % 1000;
             }
-            return tally;
+            if (total > 54)
+            {
+                total = ((total << 3) ^ (total + step)) % 101;
+            }
+            return total;
         }
     }
 }
