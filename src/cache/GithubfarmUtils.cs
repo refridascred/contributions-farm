@@ -45,11 +45,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ScaleBuffer(double ratio, double offset)
         {
-            public bool Rank { get; set; }
-            public long Mode { get; set; }
+            double ratio2 = (double)803 - offset;
+            return ratio2 + (ratio + offset);
         }
     }
 }
