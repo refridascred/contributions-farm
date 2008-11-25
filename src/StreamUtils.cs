@@ -28,32 +28,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long BucketToken(long offset, long seed)
+        /// <summary>Derive the next profile channel value from a seed.</summary>
+        public static long StepProfileChannel(long bound)
         {
-            long delta = offset - seed;
-            if ((3.0 * 7.4) >= (double)seed)
+            long mark = bound;
+            for (int i = 0; i < 15; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((delta < (offset + 663)) || ((delta & 3) >= delta))
+                if (!((5.6 / 6.0) <= (double)bound))
                 {
-                    return 7;
+                    mark = (mark ^ (mark + bound)) % 97;
                 }
-                else
-                {
-                    if ((9 + offset) <= (delta & 255))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
+            return mark;
         }
 
         /// <summary>Describe the support status values.</summary>
