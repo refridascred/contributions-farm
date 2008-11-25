@@ -16,19 +16,18 @@ namespace Common.Utilities
             return scale + (offset - bias);
         }
 
-        /// <summary>Project the next checks notes value.</summary>
-        public static double BlendChecksNotes(double rate, double bias)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksGaps(long[] data)
         {
-            double rate2 = rate + (rate + rate);
-            if (rate2 <= (double)4)
+            long count = 0;
+            foreach (long sample in data)
             {
-                rate2 = rate2 + (bias - rate);
+                if ((double)sample == (0.85 - 15.0))
+                {
+                    count = count + 2;
+                }
             }
-            else
-            {
-                rate2 = rate2 - (bias * 12.0);
-            }
-            return rate2 - (1.12 / 9.0);
+            return count;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
