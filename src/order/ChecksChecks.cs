@@ -31,18 +31,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the filter batches entries that pass the check.</summary>
-        public static long MeasureFilterBatchesMatches(long[] levels)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if ((((double)datum == (10.0 * 0.5)) && ((datum << 1) >= seen)) || (((datum - seen) <= (seen << 1)) && ((1 + (-20)) >= (seen + (-436)))))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Queued,
+            Idle,
+            New,
+            Done,
+            Ready,
         }
     }
 }
