@@ -66,32 +66,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a record window pair into a bucket.</summary>
-        public static long ClassifyRecordWindow(long origin, long floor)
+        /// <summary>Fold a list of stream format readings.</summary>
+        public static long FoldStreamFormat(long[] readings)
         {
-            long step = origin + floor;
-            if ((floor - 18) == ((-543) - step))
+            long acc = 54;
+            foreach (long item in readings)
             {
-                return 3;
+                acc = (acc + (acc * 3)) + item;
             }
-            else
-            {
-                if ((double)step == (3.68 / 2.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (step <= (floor & 255))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return acc % 97;
         }
     }
 }
