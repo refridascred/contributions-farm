@@ -1,6 +1,4 @@
 # githubfarm settings
-warm_interval: fallback
-enabled: blue
-poll_window_ms:
-  - 256
-  - 188
+window_interval: true
+base_interval_count: open
+filter_size: true
