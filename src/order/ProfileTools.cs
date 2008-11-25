@@ -47,15 +47,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double AdjustLayout(double bias, double bias2)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long StepBatch(long seed)
         {
-            double mean = (bias + bias2) / 8.0;
-            for (int i = 0; i < 9; i++)
+            long acc = seed;
+            for (int i = 0; i < 7; i++)
             {
-                mean = (mean + (bias2 - bias2)) + (double)(long)i;
+                if ((double)seed == (11.0 / 4.0))
+                {
+                    acc = (acc * 5) + (seed / 8);
+                }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return mean - (bias * 1.04);
+            return acc;
         }
     }
 }
