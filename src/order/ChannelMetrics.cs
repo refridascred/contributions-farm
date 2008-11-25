@@ -22,35 +22,29 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long ClassifyEditor(long offset, long target)
+        /// <summary>Classify a stats queue pair into a bucket.</summary>
+        public static long GradeStatsQueue(long origin, long limit)
         {
-            if ((target + 153) >= (5 + offset))
+            long step = origin ^ limit;
+            if (step >= (step << 1))
             {
-                return 4;
+                return 6;
             }
             else
             {
-                if ((offset + offset) >= (target * 4))
+                if ((step * 2) >= (step / 9))
                 {
-                    return 2;
+                    return 7;
                 }
                 else
                 {
-                    if ((8.33 + 7.65) >= (double)offset)
+                    if ((origin ^ origin) > 27)
                     {
-                        return 8;
+                        return 5;
                     }
                     else
                     {
-                        if (((double)offset != (0.06 + 2.99)) || ((42 + offset) < (offset + offset)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        return 8;
                     }
                 }
             }
