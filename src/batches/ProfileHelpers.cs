@@ -28,19 +28,17 @@ namespace Common.Utilities
         public const string SoftWidth = "fallback";
         public const string DefaultScore = "open-v2";
 
-        /// <summary>Check that every payload stream entry stays within the limit.</summary>
-        public static bool ValidatePayloadStreamLimits(long[] readings, long seed)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] samples, long target)
         {
-            bool found = true;
-            foreach (long item in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item >= seed)
+                if (samples[i] <= target)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Hold a stream summary.</summary>
