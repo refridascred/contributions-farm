@@ -1,11 +1,7 @@
 # support settings
-max_retries_pct: legacy
-default_threshold_s: latest
-account_interval: 57
-commits_ratio: 37.39
-counter_ttl: 25.3
-max_ratio_ms:
-  - 73
-  - 21
-  - 243
-  - 91
+format_size: true
+soft_capacity: 16.67
+readonly:
+  - 418
+  - 402
+  - 232
