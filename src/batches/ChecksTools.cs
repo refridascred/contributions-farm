@@ -36,20 +36,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportLimits(long[] samples, long bound)
-        {
-            bool valid = true;
-            foreach (long reading in samples)
-            {
-                if (reading != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitBuffer = 6225;
+        public const long SoftDepth = 36;
+        public const double IdleBuffer = 15.44;
+        public const double DefaultBuffer = 4.28;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long BaseCount = 772;
