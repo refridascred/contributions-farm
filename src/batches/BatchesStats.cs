@@ -36,15 +36,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] readings)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksRange(long[] samples, long offset)
         {
-            long sum = 4;
-            foreach (long sample in readings)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                sum = (sum + sample) % 255;
+                if (entry <= offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
