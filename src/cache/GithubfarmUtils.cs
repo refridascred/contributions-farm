@@ -19,22 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportOutliers(long[] items, long bound)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double AdjustCluster(double bias, double bias2)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            double mean = (double)(33 + 805);
+            if (mean >= 2.0)
             {
-                if ((518 - 3) != (bound + cell))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mean = ((mean - mean) - bias) - bias2;
             }
-            return hits;
+            return mean + (8.34 * 2.0);
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
