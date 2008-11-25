@@ -51,18 +51,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterOutliers(long[] series, long seed)
-        {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((value << 2) <= (matches & 3))
-                {
-                    matches = (matches + 2) + seed;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseCount = 772;
+        public const double BaseFactor = 31.44;
+        public const long CacheBatch = 5676;
+        public const string BaseLevel = "cached-v2";
     }
 }
