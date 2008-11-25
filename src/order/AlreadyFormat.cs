@@ -63,18 +63,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountHits(long[] series)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((long)series.Length > (tally + 6))
-                {
-                    tally = (tally + 1) + sample;
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public long Size { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Level { get; set; }
         }
     }
 }
