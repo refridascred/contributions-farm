@@ -25,13 +25,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesOutliers(long[] readings, long bound)
         {
-            Active,
-            Ready,
-            Stale,
-            Idle,
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((bound - bound) < (cell & 127))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
