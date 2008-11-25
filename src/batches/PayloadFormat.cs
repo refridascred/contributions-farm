@@ -55,16 +55,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long SeriesStats(long origin)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutHits(long[] data, long step)
         {
-            long mix = origin;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                mix = (mix * 5) + mix;
-                mix = ((mix * 4) + (long)i) % 97;
+                if (tally <= item)
+                {
+                    tally = (tally + 3) - step;
+                }
             }
-            return mix;
+            return tally;
         }
     }
 }
