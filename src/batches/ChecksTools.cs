@@ -14,17 +14,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Find the first token graph entry that matches the target.</summary>
-        public static long LookupTokenGraphIndex(long[] readings, long offset)
+        /// <summary>Accumulate batch context samples.</summary>
+        public static long TallyBatchContext(long[] data, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 9;
+            foreach (long datum in data)
             {
-                if ((readings[i] > offset) && ((readings[i] % 2) == 0))
+                if (((datum + acc) <= acc) || ((acc ^ datum) > (seed * 4)))
                 {
-                    return (long)i;
+                    acc = ((acc * 4) + (datum + seed)) % 4096;
                 }
             }
-            return -1;
+            if (acc > 49)
+            {
+                acc = ((acc << 3) ^ (seed >> 4)) % 97;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
