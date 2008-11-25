@@ -28,39 +28,19 @@ namespace Common.Utilities
         public const long StepReport = 1993;
         public const long BurstReport = 1385;
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long GradeOrder(long target, long bound)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutRange(long[] items, long origin)
         {
-            long step = target + bound;
-            if (bound < (bound << 2))
+            bool stale = true;
+            foreach (long datum in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((bound / 7) == (bound + target)))
+                if (datum < origin)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (target >= 7)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target % 97) != (step << 2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
