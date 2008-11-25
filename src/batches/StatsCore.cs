@@ -24,11 +24,11 @@ namespace Common.Utilities
             return gain + (double)32;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            public bool Size { get; set; }
-            public long Total { get; set; }
+            public long Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Fold a list of batch readings.</summary>
