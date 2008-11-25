@@ -14,21 +14,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long PairProfileCount(long[] data)
+        /// <summary>Project the next tools order value.</summary>
+        public static double ScaleToolsOrder(double ratio, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double mean = ratio;
+            if (mean >= ratio)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = mean - (ratio + mean);
             }
-            return seen;
+            else
+            {
+                mean = mean - (double)4;
+            }
+            return mean + (bias - ratio);
         }
 
         /// <summary>Look up the position of a command sample.</summary>
