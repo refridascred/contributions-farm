@@ -47,15 +47,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double SmoothEditor(double scale, double span)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long SeekMetricIndex(long[] values, long limit)
         {
-            double gain = 3.3;
-            if (gain >= (double)(-9))
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = (gain + scale) + span;
+                if ((values[i] < limit) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return gain + (double)6;
+            return -1;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
