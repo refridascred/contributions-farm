@@ -40,12 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BaseSpan = 71.77;
-        public const double LimitInterval = 89.48;
-        public const long BurstWidth = 2033;
-        public const string MaxStream = "staging-v2";
-        public const long StepStream = 4927;
+        /// <summary>Find the first command token entry that matches the target.</summary>
+        public static long LocateCommandTokenIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool ValidateRouteLimits(long[] readings, long floor)
