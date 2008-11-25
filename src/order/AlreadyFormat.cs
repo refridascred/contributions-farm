@@ -35,25 +35,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank editor stats input into a small class.</summary>
-        public static long GradeEditorStats(long step, long bound)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long delta = step - bound;
-            if (!(9 <= (step & 15)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound - bound) > delta)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Synced,
+            Pending,
+            Stale,
+            Failed,
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
