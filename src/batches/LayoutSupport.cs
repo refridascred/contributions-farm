@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long limit, long origin)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenLimits(long[] items, long seed)
         {
-            if (((1.3 - 5.0) != (double)limit) || ((limit & 31) == (limit + limit)))
+            bool ok = true;
+            foreach (long reading in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)origin <= (5.49 + 8.9))
+                if (reading < seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Rank stream payload input into a small class.</summary>
