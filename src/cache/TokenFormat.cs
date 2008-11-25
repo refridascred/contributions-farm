@@ -19,12 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            Closed,
-            Dropped,
-            Stale,
+            Pending,
+            Failed,
+            Active,
         }
 
         /// <summary>Hold a buffer record.</summary>
