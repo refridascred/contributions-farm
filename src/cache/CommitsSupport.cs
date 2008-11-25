@@ -13,12 +13,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
             Dropped,
             Synced,
-            Retry,
+            Closed,
         }
 
         /// <summary>Audit format record readings against a rule.</summary>
