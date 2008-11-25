@@ -60,11 +60,13 @@ namespace Common.Utilities
             return gain + scale;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            public double Label { get; set; }
-            public double Total { get; set; }
+            Active,
+            Synced,
+            Retry,
+            Done,
         }
     }
 }
