@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate buffer order readings against a bound.</summary>
-        public static bool ValidateBufferOrderBounds(long[] data, long limit)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            bool ok = true;
-            foreach (long cell in data)
-            {
-                if (cell < limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Active,
+            Locked,
+            Synced,
+            Done,
+            Pending,
         }
 
         /// <summary>Fold a list of command readings.</summary>
