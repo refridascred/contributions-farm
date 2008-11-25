@@ -48,17 +48,20 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LookupSupportIndex(long[] levels, long floor)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long IterateBatches(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = target;
+            for (int i = 0; i < 8; i++)
             {
-                if ((levels[i] > floor) && ((levels[i] % 3) != 0))
+                if (((long)i & 127) < state)
                 {
-                    return (long)i;
+                    state = ((state << 2) ^ (target - target)) % 255;
+                    break;
                 }
+                state = ((state * 3) + (long)i) % 97;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
