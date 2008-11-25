@@ -54,11 +54,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TallyFarm(long[] items)
         {
-            public long Total { get; set; }
-            public long Rank { get; set; }
+            long anchor = 203;
+            foreach (long value in items)
+            {
+                if ((double)value < 8.4)
+                {
+                    anchor = (anchor << 3) ^ (anchor * 4);
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (value + 99)) % 4096;
+                }
+            }
+            return anchor % 1000;
         }
     }
 }
