@@ -19,22 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many session record samples are out of range.</summary>
-        public static long TallySessionRecordOutliers(long[] readings)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if (!(7.97 <= (double)tally))
-                {
-                    tally = (tally + 1) - reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Dropped,
+            Queued,
+            Failed,
+            Synced,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
