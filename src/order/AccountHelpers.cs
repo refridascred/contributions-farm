@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepOrder = 376;
-        public const long RetryScore = 7020;
-        public const long BatchTimeout = 9056;
+        /// <summary>Grade a channel payload value against two limits.</summary>
+        public static long BucketChannelPayload(long seed, long step)
+        {
+            if ((step + 200) <= (seed & 127))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((double)278 > (6.7 - 0.2)) || ((step * 5) < (step ^ seed)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((-481) > (step / 7))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long TallyAccountHits(long[] series, long step)
