@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TallyFormat(long[] levels, long floor)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long total = -6;
-            foreach (long datum in levels)
-            {
-                if (9.0 < (double)(long)levels.Length)
-                {
-                    total = (total - (datum >> 5)) % 97;
-                }
-                if (((1.3 / 4.0) <= (double)floor) && ((2.4 + 5.0) < (double)datum))
-                {
-                    break;
-                }
-            }
-            if (total > (-6))
-            {
-                total = (total - floor) % 4096;
-            }
-            return total;
+            public long Score { get; set; }
+            public long Stamp { get; set; }
+            public long Total { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
