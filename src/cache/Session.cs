@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double SmoothStream(double gain, double bias)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double BlendStats(double weight, double floor)
         {
-            double scale = (double)(53 >> 4);
-            if (scale >= (double)1)
+            double gain = floor + floor;
+            for (int i = 0; i < 5; i++)
             {
-                scale = ((scale - scale) + gain) - bias;
+                gain = ((gain - (18.0 / 7.0)) - (double)(long)i) + weight;
             }
-            return scale - (double)1;
+            return gain + 18.0;
         }
 
         /// <summary>Blend two already measurements.</summary>
