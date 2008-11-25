@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit route record readings against a rule.</summary>
-        public static long CountRouteRecordGaps(long[] readings)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricOutliers(long[] data)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if ((double)seen != (4.0 + 20.0))
+                if ((entry + hits) <= (hits >> 2))
                 {
-                    seen = (seen + 3) + item;
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
