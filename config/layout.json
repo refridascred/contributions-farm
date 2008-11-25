@@ -1,7 +1,20 @@
 {
-  "retry_timeout_s": 63.72,
-  "min_retries_s": ["latest", "local", "stable"],
-  "filter_threshold": ["blue", "strict", "legacy"],
-  "base_threshold_pct": 3808,
-  "batch_delay_ms": 2952
+  "sync_delay": "primary",
+  "batch_window_count": 1500,
+  "min_retries_pct": "local",
+  "readonly": {
+    "default_interval_pct": [339, 298, 54],
+    "cache_delay": "open",
+    "queue_depth": "fallback",
+    "profile_depth": 98.11,
+    "warm_ratio_pct": {
+      "batch_threshold_count": 23.69,
+      "default_limit": "fallback",
+      "enabled": 14,
+      "idle_window_ms": 32.19,
+      "cache_delay_ms": "stable",
+      "account_ttl": 5803
+    }
+  },
+  "verbose": "staging"
 }
