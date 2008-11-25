@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const long RetryScore = 7020;
         public const long BatchTimeout = 9056;
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ProjectCluster(double scale, double span)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            double load = span;
-            if (load <= (scale * 8.5))
-            {
-                load = load - (3.0 * 8.6);
-            }
-            else
-            {
-                load = load - (double)4;
-            }
-            return load + scale;
+            public long Total { get; set; }
+            public double Owner { get; set; }
+            public string Rank { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Iterate the format record series from a seed.</summary>
