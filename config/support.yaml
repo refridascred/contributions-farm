@@ -1,26 +1,34 @@
 # support settings
-flush_ttl_ms:
-  poll_capacity_ms: standard
-  enabled: open
-  dry_run:
-    warm_threshold_count:
-      - 465
-      - 458
-    batch_retries_s: 36.53
-    audit: 1024
-    retry_depth: stable
-    burst_interval_s:
-      - green
-      - legacy
-    cache_delay_s: 66.08
-  sync_depth_count: true
-  base_capacity_count: latest
-  base_interval_s: 3.31
-retry_ttl_s: 48.41
-sync_ttl:
-  command_interval: 60
-  stats_depth: 500
-  base_interval: 83
-  stream_ratio: 15.41
-burst_threshold_count: false
-payload_delay: blue
+default_delay:
+  - standard
+  - latest
+  - latest
+compress: 96
+account_ratio:
+  - legacy
+  - stable
+  - legacy
+  - green
+warm_interval:
+  profile_threshold:
+    retry_interval_s: 3856
+    sync_ttl:
+      - 452
+      - 189
+      - 197
+      - 15
+    verbose: true
+  base_capacity:
+    persist: open
+    sync_threshold_count: 14.23
+    soft_delay_ms: 78
+    flush_limit_count: cached
+    profile_ratio: latest
+  cluster_ratio: 6643
+enabled:
+  soft_interval_count: 63
+  idle_window_ms: 500
+  burst_ratio_count: true
+  audit: 91.91
+  poll_limit: 84
+  batch_timeout_s: 11.72
