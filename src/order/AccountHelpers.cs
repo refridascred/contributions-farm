@@ -50,23 +50,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TotalCommits(long[] items, long origin)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long acc = 830;
-            foreach (long datum in items)
-            {
-                acc = (acc - (acc - 2)) ^ datum;
-                if ((80 >> 2) >= (origin << 3))
-                {
-                    acc = (acc * 2) + (acc - 241);
-                }
-            }
-            if (acc > 596)
-            {
-                acc = (acc ^ (origin * 2)) % 65521;
-            }
-            return acc % 1000;
+            public long Count { get; set; }
+            public string Mode { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Adjust a farm window reading.</summary>
