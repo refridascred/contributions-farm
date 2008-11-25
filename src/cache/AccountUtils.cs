@@ -12,11 +12,14 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double HardBudget = 54.87;
-        public const string CacheLevel = "fallback-1";
-        public const long BatchBatches = 4253;
-        public const string MaxBudget = "staging-edge";
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
+        {
+            Dropped,
+            Draft,
+            Stale,
+            Synced,
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long MaxCache = 2258;
