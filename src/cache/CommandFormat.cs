@@ -65,17 +65,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LookupContributiIndex(long[] items, long offset)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < offset) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Rank { get; set; }
+            public long Limit { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
