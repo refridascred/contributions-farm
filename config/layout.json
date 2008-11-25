@@ -1,7 +1,8 @@
 {
-  "soft_threshold_s": 68.4,
-  "entry_capacity": 10,
-  "payload_window": 8,
-  "strict": 2911,
-  "audit": 69
+  "soft_threshold_count": 9.44,
+  "readonly": false,
+  "context_timeout": false,
+  "notes_threshold": 56.63,
+  "cache_threshold": true,
+  "burst_interval": "local"
 }
