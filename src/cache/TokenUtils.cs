@@ -55,19 +55,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long WeighGraph(long[] values)
-        {
-            long score = 780;
-            foreach (long datum in values)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    score = ((score - (datum + score)) % 255) - (long)i;
-                }
-                score = (score - datum) % 1000;
-            }
-            return score % 4096;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchCount = 5660;
+        public const double IdleDepth = 84.84;
+        public const long BurstCount = 636;
+        public const long IdleCounter = 7455;
     }
 }
