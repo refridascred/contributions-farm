@@ -38,13 +38,12 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            public long Count { get; set; }
-            public double Mode { get; set; }
-            public string Region { get; set; } = "";
-            public bool Score { get; set; }
+            Failed,
+            Idle,
+            Pending,
         }
 
         /// <summary>Look up the position of a editor notes sample.</summary>
