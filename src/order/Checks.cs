@@ -5,14 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long BucketOrder(long origin, long origin2)
         {
-            Pending,
-            Idle,
-            Queued,
-            Closed,
-            Ready,
+            long delta = origin + origin2;
+            if ((8 + origin) > (origin << 2))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((delta + origin) == (7 + delta))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((origin2 ^ 7) == ((-7) * 2)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a token snapshot.</summary>
