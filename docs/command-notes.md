@@ -1,11 +1,11 @@
 # Command notes
 
-The metrics report groups every queue by batch.
-The route module keeps profile values in sync with the contributi cache.
-Keep stats and queue names short and lowercase.
+The report helpers are pure functions, so they are safe to call from any thread.
+The context report groups every githubfarm by format.
 
 ## Guidelines
 
-- Prefer profile defaults
-- Review record limits each release
-- Keep editor values small
+- Prefer farm defaults
+- Log every format change
+- Document new context fields
+- Validate batch input early
