@@ -79,18 +79,13 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadGaps(long[] data, long target)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((1.0 / 2.0) <= (double)count)
-                {
-                    count = ((count + 1) + value) - target;
-                }
-            }
-            return count;
+            public long Limit { get; set; }
+            public double Score { get; set; }
+            public bool Flag { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Measure how many metric profile samples are out of range.</summary>
