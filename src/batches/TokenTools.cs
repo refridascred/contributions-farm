@@ -19,12 +19,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] values, long offset)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long FindNotesIndex(long[] readings, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (values[i] < offset)
+                if (readings[i] <= offset)
                 {
                     return (long)i;
                 }
