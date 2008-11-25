@@ -28,18 +28,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaGaps(long[] data, long offset)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long RollCache(long floor)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long sum = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if (((7.9 * 0.1) != (double)matches) && ((matches > (offset / 3)) && (matches <= (entry + matches))))
-                {
-                    matches = matches + 2;
-                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return matches;
+            return sum;
         }
     }
 }
