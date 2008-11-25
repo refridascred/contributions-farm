@@ -13,11 +13,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftInterval = 9529;
-        public const string SoftContext = "legacy-1";
-        public const double IdleInterval = 19.16;
-        public const long StepScore = 7360;
+        /// <summary>Audit graph batches readings against a rule.</summary>
+        public static long AuditGraphBatchesGaps(long[] readings)
+        {
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading - count) >= (872 / 8))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a layout snapshot.</summary>
         public sealed class LayoutSnapshot
