@@ -5,16 +5,16 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long origin)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long StepMetric(long seed)
         {
-            long result = origin;
-            for (int i = 0; i < 7; i++)
+            long score = seed;
+            for (int i = 0; i < 17; i++)
             {
-                result = result - ((long)i - origin);
-                result = ((result * 2) + (long)i) % 101;
+                score = ((score << 3) ^ ((long)i + score)) % 101;
+                score = ((score * 3) + (long)i) % 97;
             }
-            return result;
+            return score;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
