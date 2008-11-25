@@ -41,21 +41,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long OverlapFilterCount(long[] readings)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LocateStatsIndex(long[] series, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (series[i] < target)
                 {
-                    if ((readings[i] - readings[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
