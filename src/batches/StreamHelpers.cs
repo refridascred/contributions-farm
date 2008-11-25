@@ -101,23 +101,9 @@ namespace Common.Utilities
             return scale - rate;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double SmoothFarm(double rate, double span)
-        {
-            double scale = rate;
-            if (scale <= (double)206)
-            {
-                scale = (scale + rate) - span;
-            }
-            else
-            {
-                scale = scale - 3.4;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - (rate / 4.0)) + (double)(long)i;
-            }
-            return scale + (double)217;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string RetryContributi = "alpha-1";
+        public const string MinFactor = "strict-1";
+        public const long CacheSize = 8451;
     }
 }
