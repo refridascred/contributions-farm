@@ -5,30 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] levels)
+        /// <summary>Match up entry samples.</summary>
+        public static long PairEntryCount(long[] items)
         {
-            long sum = 5;
-            foreach (long reading in levels)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((8.2 - 20.0) >= (double)sum)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = (sum ^ (sum * 3)) % 4096;
-                }
-                else
-                {
-                    sum = (sum * 4) + (reading / 5);
-                }
-                if (!((sum - sum) > 728))
-                {
-                    sum = ((sum << 2) ^ (sum - reading)) % 1000;
+                    if ((items[i] - items[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (sum > 4)
-            {
-                sum = (sum ^ (sum % 16)) % 65521;
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Describe the schema level values.</summary>
