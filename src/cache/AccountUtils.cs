@@ -25,26 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate session commits samples.</summary>
-        public static long CombineSessionCommits(long[] items)
-        {
-            long acc = -159;
-            foreach (long cell in items)
-            {
-                if (!(948 > cell))
-                {
-                    acc = ((acc << 2) ^ (cell >> 5)) % 97;
-                }
-                for (int i = 0; i < 3; i++)
-                {
-                    acc = (acc << 3) ^ (acc - (long)i);
-                }
-                if (((acc - acc) > cell) && ((5.2 * 3.4) > (double)acc))
-                {
-                    acc = (acc << 3) ^ (acc >> 2);
-                }
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string MaxSize = "primary-edge";
+        public const long LimitCount = 8718;
+        public const string SoftReport = "latest-1";
+        public const string WindowReport = "cached";
+        public const long RetryInterval = 4689;
     }
 }
