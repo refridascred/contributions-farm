@@ -24,25 +24,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the format record series from a seed.</summary>
-        public static long StepFormatRecord(long target)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long carry = target;
-            for (int i = 0; i < 21; i++)
-            {
-                long delta = (target << 1) >> 5;
-                if (339 > (long)i)
-                {
-                    carry = (carry + delta) % 65521;
-                }
-                else
-                {
-                    carry = (carry - ((long)i - delta)) % 101;
-                    carry = (carry + (delta + carry)) % 255;
-                }
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
+            public string Offset { get; set; } = "";
+            public bool Size { get; set; }
+            public double Flag { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
