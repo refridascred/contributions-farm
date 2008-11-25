@@ -1,4 +1,7 @@
 # githubfarm settings
-verbose: 7578
-buffer_size: 96.44
-cache_threshold_s: true
+payload_delay: 8.73
+account_retries:
+  - 270
+  - 28
+  - 262
+readonly: 4215
