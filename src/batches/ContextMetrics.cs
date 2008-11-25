@@ -56,19 +56,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate queue account readings against a bound.</summary>
-        public static bool GuardQueueAccountLimits(long[] readings, long target)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            bool flag = true;
-            foreach (long reading in readings)
-            {
-                if (reading > target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            New,
+            Synced,
+            Queued,
+            Stale,
         }
     }
 }
