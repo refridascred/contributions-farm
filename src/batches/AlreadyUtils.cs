@@ -55,22 +55,29 @@ namespace Common.Utilities
             return load - (scale - load);
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long offset, long bound)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long RankCache(long limit, long origin)
         {
-            if ((9.0 / 9.0) == (double)offset)
+            if (limit < (limit * 2))
             {
-                return 8;
+                return 1;
             }
             else
             {
-                if ((25 ^ 3) > (offset * 3))
+                if ((limit % 24) == (origin + origin))
                 {
-                    return 3;
+                    return 8;
                 }
                 else
                 {
-                    return 4;
+                    if (2 < (origin + origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
         }
