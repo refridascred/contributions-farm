@@ -28,23 +28,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double AdjustContext(double scale, double bias)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterLimits(long[] items, long limit)
         {
-            double gain = bias - scale;
-            if (gain < 20.0)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                gain = gain + 3.26;
+                if (entry > limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain + (double)76;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + 2.37) + (double)(long)i;
-            }
-            return gain + scale;
+            return ready;
         }
 
         /// <summary>Describe the stream phase values.</summary>
