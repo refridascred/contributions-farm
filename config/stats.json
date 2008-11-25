@@ -1,7 +1,5 @@
 {
-  "strict": true,
-  "flush_window": 32,
-  "idle_delay": false,
-  "base_depth": 60,
-  "order_retries": 47.15
+  "hard_capacity": 60,
+  "verbose": "eu-west",
+  "max_window_count": true
 }
