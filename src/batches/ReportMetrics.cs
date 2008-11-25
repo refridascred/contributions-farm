@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterRange(long[] data, long origin)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double BlendEntry(double gain, double floor)
         {
-            bool found = true;
-            foreach (long value in data)
+            double load = floor;
+            if (load >= (gain / 6.0))
             {
-                if (value != origin)
-                {
-                    found = false;
-                    break;
-                }
+                load = load + (double)4;
             }
-            return found;
+            return load - gain;
         }
 
         /// <summary>Match up stream samples.</summary>
