@@ -19,21 +19,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long OverlapClusterCount(long[] levels)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long RankBatch(long bound, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long slot = bound + limit;
+            if ((double)slot <= (9.36 - 5.9))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((bound ^ limit) <= (slot * 2))
                 {
-                    if ((levels[i] - levels[j]) != 14)
+                    return 4;
+                }
+                else
+                {
+                    if ((double)bound <= (double)41)
                     {
-                        hits = hits + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Blend two payload measurements.</summary>
