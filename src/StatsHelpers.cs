@@ -18,16 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long IterateSupport(long origin)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsMatches(long[] series, long bound)
         {
-            long result = origin;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                result = result - result;
-                result = ((result * 4) + (long)i) % 1000;
+                if (((double)tally >= (0.9 / 4.0)) && ((double)bound == (3.0 / 6.0)))
+                {
+                    tally = (tally + 3) + sample;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Validate channel metric readings against a bound.</summary>
