@@ -26,15 +26,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphHits(long[] values, long seed)
+        /// <summary>Count the commits entry entries that pass the check.</summary>
+        public static long TallyCommitsEntryGaps(long[] items)
         {
             long hits = 0;
-            foreach (long reading in values)
+            foreach (long sample in items)
             {
-                if ((reading - reading) <= seed)
+                if ((0.5 + 10.0) <= (double)sample)
                 {
-                    hits = hits + 1;
+                    hits = hits + 3;
                 }
             }
             return hits;
