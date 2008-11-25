@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next channel support value from a seed.</summary>
-        public static long SeriesChannelSupport(long seed)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long total = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    long hits = 436;
-                    total = (total - (hits << 2)) + (long)i2;
-                }
-                total = total - (long)i;
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
+            public double Region { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
