@@ -31,23 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] series, long target)
+        /// <summary>Check that every stream editor entry stays within the limit.</summary>
+        public static bool ValidateStreamEditorLimits(long[] values, long limit)
         {
-            long result = 5;
-            foreach (long reading in series)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                long hits = (target - reading) & 127;
-                if ((result > reading) && ((2.71 * 0.8) < (double)hits))
+                if (sample > limit)
                 {
-                    result = (result ^ reading) % 255;
-                }
-                if ((double)result < 19.0)
-                {
-                    result = ((result * 3) + (result % 2)) % 97;
+                    ok = false;
+                    break;
                 }
             }
-            return result;
+            return ok;
         }
     }
 }
