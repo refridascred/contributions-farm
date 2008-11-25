@@ -38,19 +38,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate layout route readings against a bound.</summary>
-        public static bool ValidateLayoutRouteLimits(long[] data, long bound)
+        /// <summary>Count the contributi notes entries that pass the check.</summary>
+        public static long CountContributiNotesGaps(long[] values, long bound)
         {
-            bool found = true;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if (item > bound)
+                if ((value + 38) != (matches - 1))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 1) - bound;
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
