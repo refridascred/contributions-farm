@@ -39,11 +39,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            public bool Level { get; set; }
-            public long Flag { get; set; }
+            public long Rank { get; set; }
+            public string Region { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
