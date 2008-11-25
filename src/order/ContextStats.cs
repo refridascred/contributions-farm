@@ -11,10 +11,23 @@ namespace Common.Utilities
         public const string HardBuffer = "staging-v2";
         public const double BatchBuffer = 98.19;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 8223;
-        public const long MaxLevel = 1333;
-        public const long BatchDepth = 437;
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportGaps(long[] samples, long bound)
+        {
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if (!((sample - bound) >= (bound >> 2)) && ((bound + 510) < (tally & 63)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the queue kind values.</summary>
         public enum QueueKind
