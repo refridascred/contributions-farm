@@ -65,15 +65,17 @@ namespace Common.Utilities
             return ratio - (floor - 4.0);
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long SeriesToken(long seed)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long SeekBatchesIndex(long[] series, long limit)
         {
-            long result = seed;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                result = ((result * 5) + (long)i) % 1000;
+                if (series[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
     }
 }
