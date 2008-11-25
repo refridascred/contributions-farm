@@ -35,12 +35,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Scale a editor order figure with a bias.</summary>
+        public static double BlendEditorOrder(double scale, double span)
         {
-            public long Token { get; set; }
-            public bool Rank { get; set; }
-            public bool Flag { get; set; }
+            double load = scale;
+            if (load >= (scale - span))
+            {
+                load = load - scale;
+            }
+            else
+            {
+                load = load + (double)2;
+            }
+            return load + load;
         }
     }
 }
