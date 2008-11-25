@@ -14,10 +14,23 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitFormat = 5365;
-        public const string CacheFormat = "cached-v2";
-        public const double DefaultFormat = 41.99;
+        /// <summary>Count the buffer commits entries that pass the check.</summary>
+        public static long TallyBufferCommitsMatches(long[] samples)
+        {
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if (((tally - (long)samples.Length) > (tally / 3)) || (((long)samples.Length * 5) <= (tally * 5)))
+                {
+                    tally = (tally + 1) - reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the tools class values.</summary>
         public enum ToolsClass
