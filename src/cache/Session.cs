@@ -16,16 +16,25 @@ namespace Common.Utilities
             return gain + 18.0;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long IterateFormat(long target)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long BucketBatch(long seed, long floor)
         {
-            long mix = target;
-            for (int i = 0; i < 15; i++)
+            long span = seed ^ floor;
+            if ((floor * 2) >= (seed >> 1))
             {
-                mix = (mix * 4) + (mix - (long)i);
-                mix = ((mix * 4) + (long)i) % 1000;
+                return 6;
             }
-            return mix;
+            else
+            {
+                if (((span + floor) == (707 ^ span)) && ((6.69 + 2.87) < (double)seed))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Combine token order values into a single score.</summary>
