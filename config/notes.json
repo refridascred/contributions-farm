@@ -1,6 +1,13 @@
 {
-  "compress": "eu-west",
-  "notes_size": 1.19,
-  "base_depth_pct": "cached",
-  "burst_timeout_ms": true
+  "verbose": ["stable", "fallback", "fallback"],
+  "record_ttl": 8158,
+  "retry_capacity_ms": 49.03,
+  "strict": ["eu-west", "standard", "local"],
+  "soft_timeout_count": {
+    "stats_delay": true,
+    "verbose": "local",
+    "record_window": 1024,
+    "poll_depth": true
+  },
+  "sync_delay": false
 }
