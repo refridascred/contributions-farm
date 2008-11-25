@@ -62,19 +62,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileBounds(long[] samples, long step)
-        {
-            bool valid = true;
-            foreach (long cell in samples)
-            {
-                if (cell < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstScore = 285;
+        public const long DefaultGraph = 5635;
+        public const double SoftBudget = 27.09;
     }
 }
