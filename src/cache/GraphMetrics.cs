@@ -41,21 +41,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long MatchRecordCount(long[] series)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long IterateRoute(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((sum - sum) < (sum - seed)))
                 {
-                    if ((series[i] ^ series[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
+                    sum = (sum * 2) + (81 >> 3);
                 }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Look up the position of a editor notes sample.</summary>
