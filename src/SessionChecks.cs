@@ -47,19 +47,11 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Validate token queue readings against a bound.</summary>
-        public static bool CheckTokenQueueLimits(long[] series, long step)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            bool valid = true;
-            foreach (long sample in series)
-            {
-                if (sample < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Owner { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
