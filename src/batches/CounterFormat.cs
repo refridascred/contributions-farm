@@ -5,34 +5,34 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long GradeBuffer(long step, long limit)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long BucketBuffer(long step, long origin)
         {
-            if ((double)limit >= (4.0 / 8.0))
+            if (!((step * 2) > (origin * 5)))
             {
-                return 7;
+                return 4;
             }
             else
             {
-                if (!((step >> 4) <= (limit * 2)))
+                if ((step ^ origin) <= step)
                 {
-                    return 5;
+                    return 0;
                 }
                 else
                 {
-                    if (limit <= (limit - step))
+                    if (origin > (origin >> 1))
                     {
-                        return 1;
+                        return 7;
                     }
                     else
                     {
-                        if (((double)limit < 11.0) || ((809 + step) > (step - 1)))
+                        if ((-62) > (origin * 4))
                         {
-                            return 2;
+                            return 3;
                         }
                         else
                         {
-                            return 6;
+                            return 8;
                         }
                     }
                 }
