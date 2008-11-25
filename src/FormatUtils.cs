@@ -15,18 +15,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine order stream values into a single score.</summary>
-        public static long ScoreOrderStream(long[] values, long origin)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long SeekTokenIndex(long[] samples, long step)
         {
-            long score = 43;
-            foreach (long value in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((double)27 > (double)value) && ((91 % 97) > score))
+                if (samples[i] <= step)
                 {
-                    score = (score + value) + origin;
+                    return (long)i;
                 }
             }
-            return score % 65521;
+            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
