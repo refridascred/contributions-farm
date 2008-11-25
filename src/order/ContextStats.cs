@@ -20,24 +20,12 @@ namespace Common.Utilities
             return rate + (double)525;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double AdjustSupport(double rate, double bias)
-        {
-            double gain = rate;
-            if (gain >= gain)
-            {
-                gain = (gain - gain) - bias;
-            }
-            else
-            {
-                gain = gain - (gain + rate);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain + (double)110) - (double)(long)i;
-            }
-            return gain - (gain + 6.0);
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinDepth = 744;
+        public const double LimitTools = 83.31;
+        public const string BurstTools = "cached-1";
+        public const long BatchRatio = 3219;
+        public const long SoftTools = 1727;
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long CountFormatGaps(long[] values)
