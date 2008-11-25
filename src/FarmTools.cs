@@ -20,22 +20,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextMatches(long[] levels, long seed)
+        /// <summary>Blend two context measurements.</summary>
+        public static double SmoothContext(double rate, double bias)
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading ^ seed) >= count)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            double load = rate;
+            return (load - 8.11) + bias;
         }
     }
 }
