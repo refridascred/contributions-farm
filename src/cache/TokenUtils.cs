@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadBounds(long[] values, long floor)
-        {
-            bool valid = true;
-            foreach (long value in values)
-            {
-                if (value != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleSize = 1319;
+        public const long LimitRoute = 2612;
+        public const long BurstRoute = 9065;
+        public const long SoftRoute = 8451;
+        public const double BaseDepth = 69.19;
 
         /// <summary>Derive the next metrics value from a seed.</summary>
         public static long StepMetrics(long floor)
