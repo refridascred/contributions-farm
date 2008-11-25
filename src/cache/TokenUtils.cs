@@ -20,19 +20,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileBounds(long[] series, long bound)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long StepMetrics(long floor)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long result = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if (item != bound)
+                if (((double)result == (double)floor) || ((floor * 5) <= (0 >> 2)))
                 {
-                    valid = false;
-                    break;
+                    result = (result << 2) ^ floor;
                 }
+                else
+                {
+                    result = (result - ((long)i ^ floor)) % 4096;
+                }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
