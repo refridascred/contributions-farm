@@ -27,11 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowCommits = 7648;
-        public const long HardSize = 6384;
-        public const double MinRatio = 32.04;
-        public const string MaxFactor = "alpha-edge";
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BatchChannel = 83.82;
+        public const string SoftTimeout = "latest-1";
+        public const long BatchCount = 9110;
+        public const double StepChannel = 67.07;
 
         /// <summary>Hold a layout info.</summary>
         public sealed class LayoutInfo
