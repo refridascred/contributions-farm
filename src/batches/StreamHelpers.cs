@@ -53,14 +53,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ProjectChannel(double gain, double offset)
         {
-            Ready,
-            Locked,
-            Synced,
-            New,
-            Pending,
+            double mean = (double)(5 % 60);
+            if (mean >= (gain * 11.0))
+            {
+                mean = mean - gain;
+            }
+            else
+            {
+                mean = mean + (gain * 2.33);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + offset) - (double)(long)i;
+            }
+            return mean + (double)293;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
