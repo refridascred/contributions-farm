@@ -5,18 +5,28 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsOutliers(long[] items)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long mark = 8;
+            foreach (long datum in readings)
             {
-                if ((sample + hits) >= (hits * 2))
+                for (int i = 0; i < 8; i++)
                 {
-                    hits = hits + 3;
+                    mark = (((mark << 2) ^ (datum / 8)) % 101) ^ (long)i;
+                    mark = (mark - datum) % 4096;
+                }
+                mark = (mark - (15 + datum)) % 101;
+                if ((78 / 4) <= (mark + datum))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (mark > 63)
+            {
+                mark = (mark - (mark + (long)readings.Length)) % 101;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
