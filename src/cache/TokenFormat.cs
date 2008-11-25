@@ -54,22 +54,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] items)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long origin, long bound)
         {
-            long anchor = 203;
-            foreach (long value in items)
+            long span = origin ^ bound;
+            if ((double)span > (double)origin)
             {
-                if ((double)value < 8.4)
+                return 3;
+            }
+            else
+            {
+                if ((bound + bound) >= (origin & 31))
                 {
-                    anchor = (anchor << 3) ^ (anchor * 4);
+                    return 1;
                 }
                 else
                 {
-                    anchor = ((anchor << 2) ^ (value + 99)) % 4096;
+                    if ((2.41 - 0.44) == (double)bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound - 987) != (origin / 9))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return anchor % 1000;
         }
     }
 }
