@@ -1,15 +1,6 @@
 {
-  "default_size_pct": "green",
-  "hard_interval": "edge",
-  "hard_interval_s": 50.2,
-  "min_interval": 3.33,
-  "sync_ratio_pct": 57,
-  "batch_depth": {
-    "idle_limit_pct": 24.69,
-    "window_depth": "strict",
-    "hard_window_ms": 5266,
-    "flush_size_ms": [242, 500, 291],
-    "hard_ratio_ms": 71.13,
-    "min_ttl_ms": 100
-  }
+  "cluster_retries": "legacy",
+  "base_threshold_s": 68,
+  "readonly": 250,
+  "metrics_ratio": "blue"
 }
