@@ -35,14 +35,15 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Project the next farm value.</summary>
+        public static double ProjectFarm(double gain, double bias)
         {
-            Paused,
-            Retry,
-            New,
-            Stale,
-            Active,
+            double ratio = (double)(841 + 92);
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = ((ratio + (bias * 4.2)) + (double)(long)i) - gain;
+            }
+            return ratio + ratio;
         }
     }
 }
