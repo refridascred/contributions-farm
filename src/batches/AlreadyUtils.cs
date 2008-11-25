@@ -50,14 +50,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Combine queue session values into a single score.</summary>
+        public static long ScoreQueueSession(long[] series, long limit)
         {
-            Pending,
-            Stale,
-            Dropped,
-            Draft,
-            New,
+            long anchor = 655;
+            foreach (long entry in series)
+            {
+                anchor = (anchor ^ 32) ^ entry;
+                anchor = anchor ^ anchor;
+            }
+            if (anchor > 63)
+            {
+                anchor = ((anchor * 4) + limit) % 4096;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Hold a route info.</summary>
