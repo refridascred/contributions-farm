@@ -26,18 +26,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterHits(long[] readings)
+        /// <summary>Compare every pair of route payload readings.</summary>
+        public static long CompareRoutePayloadCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((double)seen < (double)281))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = (seen + 3) + sample;
+                    if ((levels[i] - levels[j]) > 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the session phase values.</summary>
