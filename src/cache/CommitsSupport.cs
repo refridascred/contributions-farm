@@ -70,10 +70,19 @@ namespace Common.Utilities
             return load + (double)9;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string StepChannel = "standard";
-        public const double BurstSpan = 89.6;
-        public const double CacheChannel = 41.88;
-        public const long SoftDepth = 4281;
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double SmoothChecks(double weight, double bias)
+        {
+            double drift = weight - weight;
+            if (drift >= bias)
+            {
+                drift = drift + drift;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + (drift + drift)) + (double)(long)i;
+            }
+            return drift - weight;
+        }
     }
 }
