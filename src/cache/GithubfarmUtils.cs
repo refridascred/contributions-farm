@@ -46,25 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long offset)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamRange(long[] samples, long target)
         {
-            long carry = offset;
-            for (int i = 0; i < 22; i++)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                if ((3.7 + 6.0) != (double)(long)i)
+                if (entry <= target)
                 {
-                    carry = carry - 122;
-                    carry = ((carry << 3) ^ 809) % 255;
+                    found = false;
+                    break;
                 }
-                else
-                {
-                    carry = ((carry << 2) ^ ((long)i << 2)) % 4096;
-                }
-                carry = ((carry << 3) ^ carry) % 1000;
-                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return carry;
+            return found;
         }
     }
 }
