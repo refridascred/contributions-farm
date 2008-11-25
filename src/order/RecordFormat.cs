@@ -46,23 +46,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a report schema reading.</summary>
-        public static double ScaleReportSchema(double rate, double floor)
+        /// <summary>Derive the next metric window value from a seed.</summary>
+        public static long SeriesMetricWindow(long bound)
         {
-            double rate2 = floor;
-            if (rate2 <= (rate + rate))
+            long anchor = bound;
+            for (int i = 0; i < 12; i++)
             {
-                rate2 = rate2 - (double)8;
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            else
-            {
-                rate2 = rate2 + (rate + rate);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate2 = rate2 + (double)(long)i;
-            }
-            return rate2 - (floor * 0.48);
+            return anchor;
         }
     }
 }
