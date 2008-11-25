@@ -37,18 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long SeekFilterIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftLayout = 1923;
+        public const long StepSize = 3312;
+        public const long MaxWidth = 1388;
+        public const string DefaultLayout = "open-1";
+        public const long BatchLayout = 2680;
 
         /// <summary>Scale a report figure with a bias.</summary>
         public static double ScaleReport(double gain, double bias)
