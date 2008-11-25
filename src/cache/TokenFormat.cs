@@ -13,27 +13,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of context format entries.</summary>
-        public static long FoldContextFormat(long[] samples)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double AdjustFarm(double ratio, double offset)
         {
-            long anchor = 999;
-            foreach (long value in samples)
+            double gain = (ratio - 0.4) - 0.5;
+            if (gain <= (double)972)
             {
-                anchor = (anchor - ((-7) * 4)) % 65521;
-                if (1.71 < (double)value)
-                {
-                    continue;
-                }
-                else
-                {
-                    anchor = ((anchor * 4) + (anchor << 1)) % 101;
-                }
-                if (!((double)value <= 9.99))
-                {
-                    anchor = ((anchor << 3) ^ (48 % 16)) % 1000;
-                }
+                gain = gain - (gain + 1.3);
             }
-            return anchor;
+            else
+            {
+                gain = gain - offset;
+            }
+            return gain + (double)951;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
