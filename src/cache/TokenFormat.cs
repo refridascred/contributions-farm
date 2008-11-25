@@ -13,15 +13,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Blend two cluster record measurements.</summary>
-        public static double ScaleClusterRecord(double rate, double bias)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            double load = (double)619 * 16.0;
-            for (int i = 0; i < 6; i++)
-            {
-                load = (((load + (15.0 / 5.0)) + (double)(long)i) - rate) + bias;
-            }
-            return load - 6.5;
+            Pending,
+            Queued,
+            Paused,
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
