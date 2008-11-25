@@ -1,10 +1,13 @@
 # entry settings
-strict:
-  soft_depth: blue
-  order_timeout: 9973
-  cache_interval_pct: 90.69
-  readonly: 9477
-  enabled: true
-readonly: staging
-dry_run: true
-default_threshold: 7.7
+githubfarm_retries: 39.92
+schema_depth:
+  poll_retries_s: 8900
+  commits_timeout: true
+  warm_threshold_count: open
+  poll_delay_ms: 250
+audit: 5
+verbose:
+  - 385
+  - 85
+  - 244
+  - 22
