@@ -13,11 +13,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchSize = 5082;
-        public const string BaseWindow = "staging";
-        public const string SoftWindow = "fallback-v2";
-        public const string DefaultRatio = "primary-edge";
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
+        {
+            public long Rank { get; set; }
+            public bool Total { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long CountOrderGaps(long[] items, long step)
