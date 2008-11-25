@@ -50,18 +50,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many cache buffer samples are out of range.</summary>
-        public static long TallyCacheBufferOutliers(long[] series, long seed)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheMatches(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (seed <= (value - seed))
+                if ((double)tally >= (double)seed)
                 {
-                    hits = hits + 2;
+                    tally = (tally + 1) + item;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
