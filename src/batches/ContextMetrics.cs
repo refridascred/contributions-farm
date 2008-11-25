@@ -72,9 +72,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxOrder = 8738;
-        public const long LimitBudget = 2504;
-        public const long BurstOrder = 2728;
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
+        {
+            Retry,
+            New,
+            Dropped,
+        }
     }
 }
