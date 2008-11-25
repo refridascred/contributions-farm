@@ -64,19 +64,9 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterLimits(long[] samples, long floor)
-        {
-            bool flag = true;
-            foreach (long value in samples)
-            {
-                if (value <= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string DefaultCount = "standard";
+        public const long BurstBuffer = 997;
+        public const double RetryBudget = 70.78;
     }
 }
