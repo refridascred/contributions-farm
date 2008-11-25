@@ -13,17 +13,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a contributi batch sample.</summary>
-        public static long FindContributiBatchIndex(long[] items, long limit)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandBounds(long[] levels, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                if ((items[i] <= limit) && ((items[i] % 5) == 0))
+                if (reading < offset)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
