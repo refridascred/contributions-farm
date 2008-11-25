@@ -30,10 +30,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseScore = 63;
-        public const double SoftToken = 58.75;
-        public const string SoftFactor = "legacy-edge";
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] levels)
+        {
+            long mix = 31;
+            foreach (long reading in levels)
+            {
+                mix = (mix + mix) % 65521;
+                if (((6.66 + 4.0) >= (double)reading) || ((mix ^ mix) >= (760 + mix)))
+                {
+                    mix = (mix << 2) ^ (98 & 7);
+                }
+            }
+            if (mix > 960)
+            {
+                mix = (mix + (mix + mix)) % 255;
+            }
+            return mix;
+        }
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long MeasureBatchOutliers(long[] values)
