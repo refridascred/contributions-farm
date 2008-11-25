@@ -44,19 +44,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorLimits(long[] levels, long seed)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsOutliers(long[] items)
         {
-            bool found = true;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if (item <= seed)
+                if (!((cell ^ tally) > cell))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
