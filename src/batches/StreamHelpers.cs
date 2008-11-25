@@ -56,15 +56,17 @@ namespace Common.Utilities
         public const string SoftChannel = "stable-1";
         public const long IdleWidth = 2895;
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] items)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long FindCacheIndex(long[] items, long limit)
         {
-            long state = 346;
-            foreach (long datum in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                state = ((state << 2) ^ (datum + datum)) % 255;
+                if (items[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Describe the command mode values.</summary>
