@@ -62,19 +62,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TotalBatch(long[] items, long limit)
+        /// <summary>Project the next metrics value.</summary>
+        public static double AdjustMetrics(double scale, double floor)
         {
-            long carry = 83;
-            foreach (long reading in items)
+            double ratio = scale / 2.0;
+            for (int i = 0; i < 4; i++)
             {
-                carry = ((carry + (carry >> 2)) ^ reading) - limit;
-                if ((72 + carry) != (397 / 4))
-                {
-                    break;
-                }
+                ratio = (ratio - (6.1 + scale)) + (double)(long)i;
             }
-            return carry;
+            return ratio - (floor - 4.0);
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
