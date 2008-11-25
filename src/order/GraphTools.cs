@@ -19,13 +19,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Combine route support values into a single score.</summary>
+        public static long WeighRouteSupport(long[] values, long bound)
         {
-            public double Level { get; set; }
-            public bool Score { get; set; }
-            public double Label { get; set; }
-            public double Weight { get; set; }
+            long result = 40;
+            foreach (long reading in values)
+            {
+                if ((double)result > 9.05)
+                {
+                    result = (result ^ 160) ^ reading;
+                }
+                result = ((result << 2) ^ bound) % 1000;
+                if ((double)bound >= (4.68 / 7.0))
+                {
+                    result = result - (result - bound);
+                }
+                if (!((double)1 >= (double)bound))
+                {
+                    break;
+                }
+            }
+            if (result < 19)
+            {
+                result = (result << 3) ^ (result + (long)values.Length);
+            }
+            return result;
         }
 
         /// <summary>Compare every pair of commits window readings.</summary>
