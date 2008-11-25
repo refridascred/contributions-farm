@@ -56,18 +56,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the session stream entries that pass the check.</summary>
-        public static long CountSessionStreamMatches(long[] values)
+        /// <summary>Project the next editor value.</summary>
+        public static double BlendEditor(double rate, double span)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            double ratio = span;
+            if (ratio > (double)76)
             {
-                if ((seen & 31) < (seen - seen))
-                {
-                    seen = (seen + 3) - datum;
-                }
+                ratio = ratio - span;
             }
-            return seen;
+            else
+            {
+                ratio = ratio - (ratio / 5.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + span) + (double)(long)i;
+            }
+            return ratio + rate;
         }
     }
 }
