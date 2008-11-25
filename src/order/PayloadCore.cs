@@ -18,15 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a profile cache counter forward.</summary>
-        public static long StepProfileCache(long seed)
+        /// <summary>Accumulate batches metric samples.</summary>
+        public static long ScoreBatchesMetric(long[] data)
         {
-            long state = seed;
-            for (int i = 0; i < 18; i++)
+            long carry = 977;
+            foreach (long item in data)
             {
-                state = ((state * 5) + (long)i) % 65521;
+                if (carry >= (item + carry))
+                {
+                    carry = ((carry * 5) + carry) % 101;
+                }
+                else
+                {
+                    carry = (carry * 4) + carry;
+                }
             }
-            return state;
+            if (carry < 9)
+            {
+                carry = (carry * 3) + (carry >> 3);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Project the next editor value.</summary>
