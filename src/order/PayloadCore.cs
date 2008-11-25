@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine record schema values into a single score.</summary>
-        public static long CombineRecordSchema(long[] items, long bound)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long result = 919;
-            foreach (long value in items)
-            {
-                if (!((bound * 3) < bound))
-                {
-                    result = (((result << 3) ^ bound) % 65521) ^ value;
-                }
-            }
-            if (result > 7)
-            {
-                result = result + (22 >> 3);
-            }
-            return result % 65521;
+            Retry,
+            Closed,
+            Draft,
         }
 
         /// <summary>Audit window readings against a rule.</summary>
