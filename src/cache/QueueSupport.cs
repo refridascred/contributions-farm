@@ -5,14 +5,25 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long bound, long seed)
         {
-            Pending,
-            Synced,
-            New,
-            Stale,
-            Idle,
+            long slot = bound - seed;
+            if ((8.21 * 6.0) <= (double)bound)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((slot / 5) > (bound % 64))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Check that every buffer graph entry stays within the limit.</summary>
