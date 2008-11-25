@@ -46,18 +46,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit cache stream readings against a rule.</summary>
-        public static long AuditCacheStreamGaps(long[] items)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadBounds(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long item in data)
             {
-                if ((14.0 * 1.3) != (double)sample)
+                if (item > floor)
                 {
-                    tally = tally + 3;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
