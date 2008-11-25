@@ -16,11 +16,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchInterval = 9578;
-        public const string RetrySupport = "open-1";
-        public const long WindowSupport = 7137;
-        public const long LimitSupport = 2244;
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
+        {
+            public long Flag { get; set; }
+            public long Rank { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long AuditReportMatches(long[] readings)
