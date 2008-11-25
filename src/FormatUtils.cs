@@ -45,17 +45,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a payload already reading by value.</summary>
-        public static long LookupPayloadAlreadyIndex(long[] values, long offset)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long CompareCounterCount(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((values[i] == offset) && ((values[i] % 3) != 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] ^ samples[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
