@@ -29,11 +29,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string MaxWidth = "cached-1";
-        public const string SoftCount = "open-edge";
-        public const long HardLayout = 2269;
-        public const string BaseRatio = "standard-1";
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long DigestSchema(long[] values, long offset)
+        {
+            long carry = 732;
+            foreach (long entry in values)
+            {
+                if ((offset + carry) < 70)
+                {
+                    carry = ((carry - carry) % 97) + entry;
+                }
+                else
+                {
+                    carry = (carry ^ (offset / 2)) % 4096;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Rank layout input into a small class.</summary>
         public static long BucketLayout(long limit, long step)
