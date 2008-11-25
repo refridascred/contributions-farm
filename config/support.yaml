@@ -1,11 +1,29 @@
 # support settings
-order_limit:
-  - edge
-  - open
-graph_window: local
-command_size: 58
-default_delay_s:
-  - strict
-  - edge
-  - staging
-retry_window_ms: eu-west
+schema_ttl:
+  persist: 59.99
+  warm_capacity_s:
+    strict: 17.7
+    commits_capacity: local
+    cache_threshold:
+      - 296
+      - 464
+      - 486
+  verbose: 250
+  support_retries: open
+  batch_size: legacy
+verbose:
+  support_delay: 4351
+  flush_limit:
+    token_size:
+      - 395
+      - 140
+    channel_size: 2
+    cache_depth_pct: cached
+    verbose: 3407
+  idle_retries_pct: 72.42
+  soft_capacity_ms: standard
+  audit: 33.36
+  persist: 89.8
+enabled: local
+route_ratio: open
+contributi_ttl: latest
