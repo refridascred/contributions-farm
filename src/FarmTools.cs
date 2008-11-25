@@ -37,13 +37,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long ScoreCluster(long[] data)
         {
-            public bool Count { get; set; }
-            public double Total { get; set; }
-            public bool Size { get; set; }
-            public bool Region { get; set; }
+            long total = -970;
+            foreach (long reading in data)
+            {
+                if ((reading * 5) > 840)
+                {
+                    total = ((total * 3) + total) % 65521;
+                }
+            }
+            return total;
         }
     }
 }
