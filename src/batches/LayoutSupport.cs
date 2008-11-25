@@ -23,27 +23,12 @@ namespace Common.Utilities
         public const long BurstContributi = 8469;
         public const long MinContributi = 826;
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] values)
-        {
-            long acc = 9;
-            foreach (long item in values)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    acc = ((((acc * 3) + (40 & 31)) % 1000) ^ (long)i) + item;
-                }
-                if (!((double)acc > (8.88 * 6.0)))
-                {
-                    acc = ((acc * 2) + (acc & 7)) % 4096;
-                }
-                if ((double)acc < 9.3)
-                {
-                    break;
-                }
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string LimitStats = "primary";
+        public const string BatchLevel = "primary-v2";
+        public const long SoftStats = 2810;
+        public const long SoftCount = 2019;
+        public const double WindowStats = 86.5;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long MaxCluster = 4308;
