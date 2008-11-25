@@ -1,8 +1,24 @@
 # githubfarm settings
-githubfarm_capacity: open
-base_ratio_count: 50
-base_depth_ms: cached
-cache_ratio: 78.5
-strict:
-  - 316
-  - 276
+verbose: stable
+contributi_window:
+  persist: 60
+  base_interval_count: 98.03
+  min_size_count:
+    batch_ttl: 84.16
+    batch_ttl_pct: false
+    burst_size: 4711
+  window_window:
+    - 161
+    - 413
+    - 360
+  notes_window:
+    - eu-west
+    - open
+    - staging
+    - local
+max_window_ms: latest
+retry_limit_pct:
+  - 290
+  - 187
+  - 459
+  - 249
