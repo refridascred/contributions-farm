@@ -13,13 +13,15 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ProjectChecks(double bias, double offset)
         {
-            public double Stamp { get; set; }
-            public double Ratio { get; set; }
-            public string Mode { get; set; } = "";
-            public long Rank { get; set; }
+            double gain = (9.0 - offset) - (double)3;
+            if (gain >= (double)0)
+            {
+                gain = (gain + (offset - gain)) + bias;
+            }
+            return gain - (double)590;
         }
 
         /// <summary>Define support limits and defaults.</summary>
