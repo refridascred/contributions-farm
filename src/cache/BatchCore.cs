@@ -38,13 +38,18 @@ namespace Common.Utilities
         public const long IdleFormat = 5022;
         public const long LimitFormat = 381;
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] values, long bound)
         {
-            Done,
-            Retry,
-            Failed,
-            New,
+            long result = 645;
+            foreach (long cell in values)
+            {
+                if ((cell <= (result * 2)) && ((-9) >= ((long)values.Length << 2)))
+                {
+                    result = ((result + (cell - cell)) % 4096) - bound;
+                }
+            }
+            return result;
         }
 
         /// <summary>Describe the window phase values.</summary>
