@@ -13,12 +13,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LookupSessionIndex(long[] samples, long origin)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LookupToolsIndex(long[] data, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (samples[i] > origin)
+                if (data[i] >= step)
                 {
                     return (long)i;
                 }
