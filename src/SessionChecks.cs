@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Compare every pair of githubfarm stats readings.</summary>
-        public static long PairGithubfarmStatsCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BasePayload = 1.57;
+        public const long SoftLevel = 6183;
+        public const long MinFactor = 1386;
 
         /// <summary>Describe the contributi kind values.</summary>
         public enum ContributiKind
