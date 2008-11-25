@@ -13,26 +13,15 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] series)
+        /// <summary>Roll a profile cache counter forward.</summary>
+        public static long StepProfileCache(long seed)
         {
-            long carry = 876;
-            foreach (long value in series)
+            long state = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if (((double)carry <= (9.15 / 2.0)) || ((carry % 7) >= (value + value)))
-                {
-                    carry = (carry * 4) + (carry << 1);
-                }
-                else
-                {
-                    carry = (carry + (carry - value)) % 97;
-                }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            if (carry > 80)
-            {
-                carry = (carry + carry) % 1000;
-            }
-            return carry;
+            return state;
         }
 
         /// <summary>Rank cache window input into a small class.</summary>
