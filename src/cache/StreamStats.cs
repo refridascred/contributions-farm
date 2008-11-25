@@ -35,17 +35,15 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long SeekChecksIndex(long[] data, long origin)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double AdjustBatch(double gain, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double rate = (double)(3 + 0);
+            if (rate > (gain - 18.0))
             {
-                if (data[i] >= origin)
-                {
-                    return (long)i;
-                }
+                rate = (rate - (gain / 9.0)) - span;
             }
-            return -1;
+            return rate + 7.0;
         }
 
         /// <summary>Roll a route counter forward.</summary>
