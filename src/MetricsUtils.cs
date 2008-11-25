@@ -44,23 +44,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double ScaleFilter(double weight, double span)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long ClassifyEntry(long target, long offset)
         {
-            double ratio = span;
-            if (ratio > ratio)
+            if ((offset + offset) != (3 - target))
             {
-                ratio = ratio - weight;
+                return 4;
             }
             else
             {
-                ratio = ratio - weight;
+                if (((double)target != (2.01 + 3.0)) || (offset > target))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (target < (offset % 60))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((target < (offset >> 4)) && ((target - (-7)) < (3 / 6)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - ratio) + (double)(long)i;
-            }
-            return ratio + span;
         }
     }
 }
