@@ -69,15 +69,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double SmoothBuffer(double gain, double bias)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            double load = bias * 1.1;
-            if (load < 0.8)
-            {
-                load = (load - (load / 2.0)) + gain;
-            }
-            return load + (double)9;
+            public long Score { get; set; }
+            public double Stamp { get; set; }
+            public long Size { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
