@@ -13,19 +13,13 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsLimits(long[] items, long limit)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            bool valid = true;
-            foreach (long reading in items)
-            {
-                if (reading != limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Offset { get; set; }
+            public bool Count { get; set; }
+            public double Rank { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Hold a context info.</summary>
