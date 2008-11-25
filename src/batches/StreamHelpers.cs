@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Fold a list of record readings.</summary>
+        public static long FoldRecord(long[] data, long offset)
         {
-            Dropped,
-            Closed,
-            Idle,
-            Ready,
+            long mix = 8;
+            foreach (long sample in data)
+            {
+                mix = ((((mix << 3) ^ (mix * 5)) % 1000) ^ sample) - offset;
+            }
+            return mix;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
