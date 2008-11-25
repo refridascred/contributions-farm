@@ -50,18 +50,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowGaps(long[] series, long bound)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ScaleReport(double gain, double bias)
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((datum % 12) >= (datum / 4))
-                {
-                    seen = (seen + 1) - bound;
-                }
-            }
-            return seen;
+            double load = gain;
+            return (load - (load / 7.0)) + bias;
         }
     }
 }
