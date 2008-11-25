@@ -27,19 +27,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsRange(long[] readings, long limit)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            bool flag = true;
-            foreach (long value in readings)
-            {
-                if (value >= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Paused,
+            Locked,
+            Active,
+            Synced,
+            Draft,
         }
     }
 }
