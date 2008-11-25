@@ -16,25 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long BucketBatch(long seed, long floor)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutGaps(long[] levels)
         {
-            long span = seed ^ floor;
-            if ((floor * 2) >= (seed >> 1))
+            long matches = 0;
+            foreach (long value in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (((span + floor) == (707 ^ span)) && ((6.69 + 2.87) < (double)seed))
+                if ((8.45 + 2.0) > (double)matches)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
+                    matches = (matches + 1) - value;
                 }
             }
+            return matches;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
