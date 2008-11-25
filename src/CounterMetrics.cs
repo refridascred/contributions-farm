@@ -32,11 +32,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double HardOrder = 33.26;
-        public const long SoftCount = 4838;
-        public const double MaxOrder = 6.94;
-        public const long DefaultOrder = 7453;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextMatches(long[] samples)
+        {
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if (((hits * 2) >= 823) && ((hits + 44) > (sample + sample)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine order values into a single score.</summary>
         public static long DigestOrder(long[] series)
