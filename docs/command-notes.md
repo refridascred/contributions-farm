@@ -1,11 +1,13 @@
 # Command notes
 
-The session helpers are pure functions, so they are safe to call from any thread.
-Run the cluster check before changing any buffer limits.
-Keep payload and channel names short and lowercase.
+When a queue fails, the schema handler retries a few times before giving up.
+The buffer report groups every commits by command.
+
+Keep layout and batch names short and lowercase.
+When a profile fails, the queue handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep filter values small
-- Prefer command defaults
-- Review counter limits each release
+- Validate stream input early
+- Keep channel values small
+- Review metric limits each release
