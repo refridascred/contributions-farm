@@ -30,18 +30,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsHits(long[] levels)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long DeriveBatches(long floor)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long state = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if (((count <= (561 - 39)) && (count < (count % 5))) && ((double)count > (1.0 - 4.05)))
-                {
-                    count = (count + 1) + item;
-                }
+                state = state - (floor + floor);
+                state = ((state << 3) ^ ((long)i - floor)) % 1000;
+                state = (state ^ (state & 1)) % 255;
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return count;
+            return state;
         }
     }
 }
