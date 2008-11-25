@@ -37,11 +37,12 @@ namespace Common.Utilities
             return drift + (double)2;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double ScaleCommand(double scale, double offset)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            double scale2 = 1.97;
-            return (scale2 + scale) + offset;
+            public double Level { get; set; }
+            public bool Score { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
