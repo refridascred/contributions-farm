@@ -24,19 +24,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every stream editor entry stays within the limit.</summary>
-        public static bool ValidateStreamEditorLimits(long[] values, long limit)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long BucketCounter(long origin, long step)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            if ((8 % 16) != (origin - origin))
             {
-                if (sample > limit)
+                return 5;
+            }
+            else
+            {
+                if (((step + step) <= step) && ((step * 5) > (origin >> 4)))
                 {
-                    ok = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((step % 12) >= (step >> 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((step * 3) < 30) && ((double)origin < 1.4))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return ok;
         }
     }
 }
