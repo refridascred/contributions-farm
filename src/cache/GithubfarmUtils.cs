@@ -30,20 +30,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesLimits(long[] readings, long seed)
-        {
-            bool found = true;
-            foreach (long sample in readings)
-            {
-                if (sample > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowSchema = 5561;
+        public const string BatchSchema = "standard";
+        public const string CacheFactor = "stable-1";
+        public const long RetryDepth = 3164;
+        public const string BurstSchema = "fallback-1";
 
         /// <summary>Hold a support stats.</summary>
         public sealed class SupportStats
