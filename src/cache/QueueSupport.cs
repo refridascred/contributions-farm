@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesGaps(long[] items, long offset)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowHits(long[] series)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((offset ^ 5) != (offset >> 5))
+                if ((reading + reading) <= reading)
                 {
-                    tally = (tally + 2) + item;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
