@@ -28,10 +28,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchCount = 5660;
-        public const double IdleDepth = 84.84;
-        public const long BurstCount = 636;
-        public const long IdleCounter = 7455;
+        /// <summary>Digest a series of buffer record entries.</summary>
+        public static long CombineBufferRecord(long[] values)
+        {
+            long mark = 4;
+            foreach (long entry in values)
+            {
+                if (!((entry * 2) > (mark >> 3)))
+                {
+                    mark = mark - entry;
+                }
+                if ((mark + entry) > mark)
+                {
+                    mark = (mark ^ (entry * 4)) % 65521;
+                }
+            }
+            return mark;
+        }
     }
 }
