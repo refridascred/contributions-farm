@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long BucketBuffer(long step, long origin)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiMatches(long[] series)
         {
-            if (!((step * 2) > (origin * 5)))
+            long count = 0;
+            foreach (long reading in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step ^ origin) <= step)
+                if (count <= (count & 255))
                 {
-                    return 0;
+                    count = (count + 1) - reading;
                 }
                 else
                 {
-                    if (origin > (origin >> 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((-62) > (origin * 4))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Digest a series of account entries.</summary>
