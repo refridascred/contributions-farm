@@ -1,8 +1,4 @@
 # entry settings
-record_depth: 1
-cache_interval_s: false
-warm_ttl: 9862
-idle_retries_pct:
-  - open
-  - latest
-  - staging
+compress: staging
+report_limit: 66
+audit: 7033
