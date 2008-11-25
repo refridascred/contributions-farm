@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long GradeGithubfarm(long step, long floor)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long DigestGraph(long[] series, long floor)
         {
-            long step2 = step ^ floor;
-            if ((5 ^ step) > (174 << 1))
+            long sum = -308;
+            foreach (long entry in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (step2 < (step * 5))
+                if (((sum & 31) < (entry ^ sum)) || (sum < (floor % 3)))
                 {
-                    return 3;
+                    sum = ((sum * 2) + sum) % 1000;
                 }
-                else
-                {
-                    return 5;
-                }
+                sum = (sum - (sum + sum)) % 4096;
             }
+            return sum % 97;
         }
 
         /// <summary>Match up stream samples.</summary>
