@@ -32,25 +32,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long ClassifySchema(long limit, long seed)
-        {
-            if ((seed & 127) < (seed - limit))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((limit << 1) <= (341 % 24)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepNotes = 5365;
+        public const string DefaultNotes = "stable";
+        public const long StepCount = 2736;
+        public const long BaseScore = 2341;
 
         /// <summary>Hold a tools summary.</summary>
         public sealed class ToolsSummary
