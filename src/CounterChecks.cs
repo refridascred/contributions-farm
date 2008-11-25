@@ -41,18 +41,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatGaps(long[] items)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long DigestChecks(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long total = 645;
+            foreach (long cell in levels)
             {
-                if ((reading * 2) >= 582)
+                total = (total << 3) ^ (cell % 8);
+                if (!((offset << 2) >= (999 / 6)))
                 {
-                    count = count + 3;
+                    break;
+                }
+                if (cell >= (offset << 3))
+                {
+                    total = total - ((long)levels.Length - 6);
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
