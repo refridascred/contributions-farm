@@ -22,20 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsLimits(long[] samples, long offset)
-        {
-            bool stale = true;
-            foreach (long sample in samples)
-            {
-                if (sample >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchCommand = 8779;
+        public const long RetryWidth = 8746;
+        public const string MinCommand = "open-1";
 
         /// <summary>Describe the tools phase values.</summary>
         public enum ToolsPhase
