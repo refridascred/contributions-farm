@@ -19,19 +19,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksBounds(long[] readings, long offset)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long target)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long state = target;
+            for (int i = 0; i < 7; i++)
             {
-                if (datum > offset)
+                if ((state - state) >= (target % 60))
                 {
-                    valid = false;
-                    break;
+                    state = (state + target) % 97;
                 }
+                state = (state - (target * 2)) % 65521;
+                if (((long)i + state) > (target * 2))
+                {
+                    continue;
+                }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
