@@ -46,15 +46,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double ProjectEditor(double gain, double offset)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long StepRoute(long bound)
         {
-            double mean = (8.0 * 9.0) / 9.0;
-            if (mean <= (7.4 - mean))
+            long score = bound;
+            for (int i = 0; i < 5; i++)
             {
-                mean = (mean - 8.9) + gain;
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return mean + offset;
+            return score;
         }
     }
 }
