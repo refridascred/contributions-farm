@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long ScoreLayout(long[] levels, long target)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long acc = 3;
-            foreach (long entry in levels)
-            {
-                if ((entry > (90 + (-5))) && ((9.25 / 4.0) == (double)acc))
-                {
-                    acc = ((acc + (acc + 11)) % 65521) - target;
-                }
-                else
-                {
-                    acc = acc - (3 + acc);
-                }
-            }
-            return acc % 97;
+            Synced,
+            Closed,
+            Draft,
+            New,
+            Stale,
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
