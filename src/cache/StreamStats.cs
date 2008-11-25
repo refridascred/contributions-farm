@@ -17,19 +17,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenBounds(long[] items, long origin)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            bool ready = true;
-            foreach (long datum in items)
-            {
-                if (datum <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Stale,
+            Failed,
+            Retry,
+            Queued,
+            Locked,
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
