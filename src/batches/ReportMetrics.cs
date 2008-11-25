@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double StepGraph = 85.9;
-        public const long BatchInterval = 5125;
-        public const long SoftInterval = 9272;
-        public const string BaseGraph = "cached-1";
+        /// <summary>Audit contributi filter readings against a rule.</summary>
+        public static long AuditContributiFilterOutliers(long[] samples, long limit)
+        {
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((count - limit) >= (limit ^ limit))
+                {
+                    count = (count + 2) ^ datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of counter cache readings.</summary>
         public static long TotalCounterCache(long[] values, long floor)
