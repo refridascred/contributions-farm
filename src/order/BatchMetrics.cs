@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long SeriesFarm(long offset)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ProjectStream(double rate, double span)
         {
-            long mark = offset;
-            for (int i = 0; i < 20; i++)
+            double rate2 = rate;
+            if (rate2 < rate2)
             {
-                mark = ((mark * 3) + (long)i) % 101;
+                rate2 = rate2 - rate;
             }
-            return mark;
+            else
+            {
+                rate2 = rate2 + (rate2 - 5.21);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate2 = rate2 - (double)(long)i;
+            }
+            return rate2 - (rate - span);
         }
 
         /// <summary>Rank graph input into a small class.</summary>
