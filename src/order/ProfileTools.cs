@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LocateFormatIndex(long[] values, long seed)
+        /// <summary>Accumulate farm cluster samples.</summary>
+        public static long WeighFarmCluster(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 3;
+            foreach (long datum in samples)
             {
-                if ((values[i] == seed) && ((values[i] % 5) == 0))
+                if ((9.7 / 4.0) == (double)datum)
                 {
-                    return (long)i;
+                    result = result - (result << 1);
                 }
+                else
+                {
+                    result = (result - (result - datum)) % 1000;
+                    result = (result * 4) + (datum >> 4);
+                }
+                result = ((result * 2) + (result + datum)) % 1000;
+                result = ((result * 4) + (result * 3)) % 65521;
             }
-            return -1;
+            return result % 65521;
         }
 
         /// <summary>Define format limits and defaults.</summary>
