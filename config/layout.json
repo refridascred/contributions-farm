@@ -1,5 +1,14 @@
 {
-  "enabled": 100,
-  "readonly": 44,
-  "soft_depth": 93.04
+  "window_ratio": "edge",
+  "strict": 66.25,
+  "base_interval_ms": {
+    "enabled": [73, 273, 405, 199],
+    "graph_window": "blue",
+    "farm_retries": {
+      "channel_interval": "edge",
+      "burst_interval_s": false,
+      "token_ttl": 500
+    },
+    "audit": "edge"
+  }
 }
