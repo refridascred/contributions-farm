@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long CombineFarm(long[] values)
-        {
-            long result = 70;
-            foreach (long cell in values)
-            {
-                if (!((6.9 - 8.78) != (double)result))
-                {
-                    result = (result * 4) + cell;
-                }
-            }
-            return result % 4096;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitTimeout = 8810;
+        public const long DefaultChannel = 5249;
+        public const long MinFactor = 1521;
 
         /// <summary>Derive the next record value from a seed.</summary>
         public static long DeriveRecord(long step)
