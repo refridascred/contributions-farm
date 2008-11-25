@@ -20,10 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BurstFormat = 16.16;
-        public const long IdleFormat = 5022;
-        public const long LimitFormat = 381;
+        /// <summary>Roll a session githubfarm counter forward.</summary>
+        public static long StepSessionGithubfarm(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                sum = sum - (sum * 4);
+                double rate = (double)floor;
+                if (!((6.9 >= rate) || (rate >= (double)(long)i)))
+                {
+                    sum = (sum * 5) + (sum & 31);
+                    sum = (sum ^ (63 + floor)) % 4096;
+                }
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Validate checks readings against a bound.</summary>
         public static bool GuardChecksLimits(long[] data, long origin)
