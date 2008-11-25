@@ -10,38 +10,21 @@ namespace Common.Utilities
         public const double IdleRatio = 60.28;
         public const long WindowCommand = 7894;
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long ClassifyBuffer(long offset, long origin)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long CompareRecordCount(long[] series)
         {
-            if (origin > (offset - offset))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)origin != (double)8) || ((origin - offset) > offset))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset / 9) > (58 << 3))
+                    if ((series[i] ^ series[j]) > 1)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (offset >= origin)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
