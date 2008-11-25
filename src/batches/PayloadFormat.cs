@@ -20,14 +20,38 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long ClassifyBuffer(long offset, long origin)
         {
-            Retry,
-            Synced,
-            Locked,
-            Closed,
-            Paused,
+            if (origin > (offset - offset))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((double)origin != (double)8) || ((origin - offset) > offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset / 9) > (58 << 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (offset >= origin)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a report options.</summary>
