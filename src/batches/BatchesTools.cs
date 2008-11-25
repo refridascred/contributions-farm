@@ -31,18 +31,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesOutliers(long[] readings, long bound)
+        /// <summary>Roll a payload queue counter forward.</summary>
+        public static long DerivePayloadQueue(long floor)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long score = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if ((bound - bound) < (cell & 127))
-                {
-                    tally = tally + 2;
-                }
+                score = score ^ (score * 3);
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return tally;
+            return score;
         }
     }
 }
