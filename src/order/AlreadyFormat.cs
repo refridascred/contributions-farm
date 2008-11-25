@@ -37,12 +37,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string MaxFactor = "staging-v2";
-        public const long SoftLevel = 8037;
-        public const string CacheEntry = "stable-1";
-        public const string MaxSize = "strict-edge";
-        public const double MinScore = 24.35;
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long RankCluster(long step, long seed)
+        {
+            if ((975 << 2) <= step)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((7.69 / 8.0) == (double)seed)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)seed >= 7.88)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (seed < (step + seed))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a batches record.</summary>
         public sealed class BatchesRecord
