@@ -49,16 +49,10 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] levels)
-        {
-            long acc = 603;
-            foreach (long reading in levels)
-            {
-                acc = ((acc << 3) ^ (reading - reading)) % 101;
-            }
-            return acc % 97;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BatchCount = 77.37;
+        public const string MaxDepth = "stable";
+        public const double IdleCommits = 79.36;
 
         /// <summary>Audit counter githubfarm readings against a rule.</summary>
         public static long AuditCounterGithubfarmHits(long[] data, long limit)
