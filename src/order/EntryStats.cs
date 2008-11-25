@@ -44,23 +44,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine githubfarm cluster values into a single score.</summary>
-        public static long FoldGithubfarmCluster(long[] series)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LookupQueueIndex(long[] readings, long limit)
         {
-            long anchor = 6;
-            foreach (long datum in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = anchor + (datum & 15);
-                if (((anchor & 255) <= anchor) || ((datum & 31) == (anchor + datum)))
+                if ((readings[i] < limit) && ((readings[i] % 3) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (anchor > 1)
-            {
-                anchor = anchor - 581;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
