@@ -34,13 +34,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            public long Label { get; set; }
-            public double Weight { get; set; }
             public long Count { get; set; }
-            public long Size { get; set; }
+            public long Mode { get; set; }
+            public string Owner { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Hold a batches entry.</summary>
