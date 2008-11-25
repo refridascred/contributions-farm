@@ -1,14 +1,12 @@
 {
-  "audit": 20.1,
-  "flush_limit_count": [409, 474],
-  "min_retries_pct": "blue",
-  "batch_retries_ms": {
-    "default_timeout": "green",
-    "batches_ratio": false,
-    "cluster_ratio": 8239,
-    "buffer_depth": 71.11,
-    "warm_size_count": [307, 249, 79, 184]
-  },
-  "readonly": "local",
-  "verbose": 5.02
+  "route_capacity": "fallback",
+  "poll_threshold_ms": [7, 258, 253],
+  "farm_threshold": 7624,
+  "dry_run": {
+    "verbose": ["staging", "local", "stable", "open"],
+    "compress": 34,
+    "farm_threshold": true,
+    "strict": ["open", "legacy", "edge", "primary"],
+    "audit": 85.67
+  }
 }
