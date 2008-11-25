@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] levels, long offset)
         {
-            public double Limit { get; set; }
-            public bool Rank { get; set; }
+            long carry = 5;
+            foreach (long datum in levels)
+            {
+                if ((offset < datum) && ((carry >> 2) < (carry >> 3)))
+                {
+                    carry = ((carry * 4) + (821 + offset)) % 101;
+                }
+                else
+                {
+                    carry = (carry << 3) ^ carry;
+                }
+            }
+            if (carry > 797)
+            {
+                carry = (carry - (carry + offset)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
