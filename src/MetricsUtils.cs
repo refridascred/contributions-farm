@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Adjust a graph reading.</summary>
-        public static double BlendGraph(double ratio, double floor)
-        {
-            double drift = ratio;
-            return drift + (drift - floor);
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowGraph = 8925;
+        public const string CacheCount = "legacy-v2";
+        public const long MinSize = 7045;
 
         /// <summary>Hold a batches stats.</summary>
         public sealed class BatchesStats
