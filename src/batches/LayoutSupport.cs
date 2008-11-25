@@ -34,12 +34,16 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string LimitStats = "primary";
-        public const string BatchLevel = "primary-v2";
-        public const long SoftStats = 2810;
-        public const long SoftCount = 2019;
-        public const double WindowStats = 86.5;
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long SeriesRecord(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool ValidateRouteRange(long[] data, long target)
