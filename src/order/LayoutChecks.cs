@@ -42,11 +42,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxSize = 3012;
-        public const long CacheCount = 1151;
-        public const long BurstLevel = 9701;
-        public const long RetryPayload = 6794;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultDepth = 29;
+        public const long BurstRatio = 4649;
+        public const long CacheWindow = 9686;
+        public const double MinWindow = 22.93;
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long DeriveNotes(long limit)
