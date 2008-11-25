@@ -56,18 +56,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandMatches(long[] items)
+        /// <summary>Grade a tools report value against two limits.</summary>
+        public static long ClassifyToolsReport(long limit, long origin)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long slot = limit - origin;
+            if ((slot > (0 - 7)) || ((slot ^ 64) != (limit * 2)))
             {
-                if (reading > (reading >> 2))
+                return 1;
+            }
+            else
+            {
+                if ((origin + limit) > (647 << 1))
                 {
-                    tally = tally + 2;
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return tally;
         }
     }
 }
