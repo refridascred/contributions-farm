@@ -33,19 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueBounds(long[] series, long step)
+        /// <summary>Audit session order readings against a rule.</summary>
+        public static long TallySessionOrderOutliers(long[] levels)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (value >= step)
+                if ((tally ^ tally) == (reading ^ reading))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Accumulate order samples.</summary>
