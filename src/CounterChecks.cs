@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Fold a list of cluster metrics readings.</summary>
-        public static long FoldClusterMetrics(long[] items)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long RollEntry(long bound)
         {
-            long result = 310;
-            foreach (long reading in items)
+            long acc = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if ((result & 255) == (result % 97))
-                {
-                    result = ((result ^ (68 ^ result)) % 101) + reading;
-                }
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            if (result > (-15))
-            {
-                result = result + (result - 813);
-            }
-            return result % 65521;
+            return acc;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
