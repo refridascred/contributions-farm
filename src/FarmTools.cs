@@ -37,18 +37,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordHits(long[] values, long floor)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long RollReport(long origin)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long result = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)floor == (1.45 + 8.0))
+                if (((result + (long)i) > result) && ((origin + (long)i) >= (origin >> 2)))
                 {
-                    tally = (tally + 1) ^ sample;
+                    continue;
                 }
+                else
+                {
+                    result = ((result << 2) ^ (336 & 31)) % 1000;
+                    result = (result + (origin - result)) % 101;
+                }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return tally;
+            return result;
         }
     }
 }
