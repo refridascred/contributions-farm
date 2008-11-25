@@ -1,6 +1,8 @@
 {
-  "cache_threshold_count": [377, 51],
-  "readonly": "strict",
-  "already_limit": 74.9,
-  "max_ratio_ms": "strict"
+  "compress": 96,
+  "retry_window_count": [500, 247, 445, 270],
+  "readonly": "stable",
+  "min_timeout_s": "local",
+  "format_retries": true,
+  "base_capacity_count": "cached"
 }
