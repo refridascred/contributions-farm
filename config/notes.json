@@ -1,7 +1,12 @@
 {
-  "compress": "primary",
-  "sync_ttl_count": false,
-  "hard_limit": "cached",
-  "soft_retries_count": [275, 277],
-  "burst_retries": ["fallback", "latest", "green"]
+  "commits_delay": 4,
+  "format_timeout": 6924,
+  "verbose": {
+    "verbose": 1762,
+    "sync_interval": "strict",
+    "warm_timeout_ms": 250,
+    "base_timeout": false
+  },
+  "soft_depth": false,
+  "max_threshold": ["cached", "strict"]
 }
