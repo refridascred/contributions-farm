@@ -40,17 +40,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long FindCommandIndex(long[] readings, long target)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 4;
+            foreach (long value in levels)
             {
-                if (readings[i] > target)
+                if ((sum >> 3) > sum)
                 {
-                    return (long)i;
+                    sum = ((sum << 2) ^ (sum + value)) % 65521;
+                }
+                else
+                {
+                    sum = (sum ^ sum) % 255;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
