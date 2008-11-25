@@ -19,15 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the report cluster series from a seed.</summary>
-        public static long RollReportCluster(long seed)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long mark = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
+            Dropped,
+            Paused,
+            New,
         }
 
         /// <summary>Count the cluster channel entries that pass the check.</summary>
