@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorHits(long[] readings)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long step, long step2)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long cur = step + step2;
+            if ((double)cur >= (7.29 * 2.99))
             {
-                if ((tally >> 3) != (sample % 100))
+                return 4;
+            }
+            else
+            {
+                if (!((step2 + step2) != (47 + step2)))
                 {
-                    tally = tally + 1;
+                    return 3;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 2;
                 }
             }
-            return tally;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
