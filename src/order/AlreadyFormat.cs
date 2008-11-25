@@ -58,24 +58,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long BucketProfile(long offset, long offset2)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] data)
         {
-            if ((9.0 < (double)offset2) && ((6.0 / 5.0) == (double)offset))
+            long state = 85;
+            foreach (long sample in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset >> 3) <= 6)
+                if (!!((state / 7) < state))
                 {
-                    return 0;
+                    state = state ^ (sample & 1);
                 }
-                else
+                if (state < (state >> 2))
                 {
-                    return 1;
+                    state = (state + sample) % 97;
+                }
+                if (!((double)state > (17.0 / 4.0)))
+                {
+                    break;
                 }
             }
+            return state % 97;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
