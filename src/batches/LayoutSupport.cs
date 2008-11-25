@@ -23,19 +23,26 @@ namespace Common.Utilities
         public const long BurstContributi = 8469;
         public const long MinContributi = 826;
 
-        /// <summary>Check that every entry profile entry stays within the limit.</summary>
-        public static bool CheckEntryProfileBounds(long[] items, long offset)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] values)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            long acc = 9;
+            foreach (long item in values)
             {
-                if (entry >= offset)
+                for (int i = 0; i < 2; i++)
                 {
-                    valid = false;
+                    acc = ((((acc * 3) + (40 & 31)) % 1000) ^ (long)i) + item;
+                }
+                if (!((double)acc > (8.88 * 6.0)))
+                {
+                    acc = ((acc * 2) + (acc & 7)) % 4096;
+                }
+                if ((double)acc < 9.3)
+                {
                     break;
                 }
             }
-            return valid;
+            return acc % 4096;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
