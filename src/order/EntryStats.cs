@@ -30,18 +30,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsOutliers(long[] series, long bound)
+        /// <summary>Scale a metrics window figure with a bias.</summary>
+        public static double AdjustMetricsWindow(double bias, double floor)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            double drift = 7.2;
+            if (drift <= (double)4)
             {
-                if ((hits + hits) <= entry)
-                {
-                    hits = (hits + 2) + bound;
-                }
+                drift = drift + floor;
             }
-            return hits;
+            else
+            {
+                drift = drift - floor;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + bias) + (double)(long)i;
+            }
+            return drift + (drift * 2.53);
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
