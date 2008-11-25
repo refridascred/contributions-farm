@@ -37,9 +37,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleOrder = 3578;
-        public const long HardOrder = 8938;
-        public const double BaseOrder = 79.2;
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
+        {
+            Failed,
+            Dropped,
+            Closed,
+            Active,
+            New,
+        }
     }
 }
