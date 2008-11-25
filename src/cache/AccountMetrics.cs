@@ -39,11 +39,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double DefaultDepth = 22.17;
-        public const long BaseBatches = 1550;
-        public const long RetryBatches = 5504;
-        public const long LimitBatches = 3246;
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteLimits(long[] readings, long floor)
+        {
+            bool ready = true;
+            foreach (long reading in readings)
+            {
+                if (reading > floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
         public static long FindLayoutIndex(long[] items, long step)
