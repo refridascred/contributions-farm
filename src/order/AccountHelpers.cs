@@ -32,34 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stream order entries.</summary>
-        public static long TotalStreamOrder(long[] items, long seed)
+        /// <summary>Match up report samples.</summary>
+        public static long MatchReportCount(long[] values)
         {
-            long mark = 403;
-            foreach (long value in items)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((long)items.Length / 9) > (mark - seed))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    break;
-                }
-                if (((value + seed) > mark) || ((double)mark <= (20.0 - 7.3)))
-                {
-                    break;
-                }
-                if ((value & 7) != (28 & 3))
-                {
-                    mark = (mark ^ (value - mark)) % 255;
-                }
-                else
-                {
-                    mark = (mark + (value << 3)) % 101;
+                    if ((values[i] ^ values[j]) != 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (mark > 985)
-            {
-                mark = ((mark << 3) ^ (mark % 5)) % 4096;
-            }
-            return mark % 1000;
+            return matches;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
