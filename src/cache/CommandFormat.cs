@@ -50,12 +50,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Combine farm buffer values into a single score.</summary>
+        public static long DigestFarmBuffer(long[] data, long offset)
         {
-            public double Limit { get; set; }
-            public string Label { get; set; } = "";
-            public long Count { get; set; }
+            long acc = 71;
+            foreach (long value in data)
+            {
+                acc = (acc - 48) - offset;
+                if (!((double)value <= (8.85 + 3.8)))
+                {
+                    acc = (acc * 5) + (value + (-8));
+                }
+            }
+            return acc;
         }
     }
 }
