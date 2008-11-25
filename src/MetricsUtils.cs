@@ -47,34 +47,35 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long ClassifyEntry(long target, long offset)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long BucketBuffer(long step, long floor)
         {
-            if ((offset + offset) != (3 - target))
+            long step2 = step - floor;
+            if ((step <= ((-1) & 1)) && ((step - step) < (step2 >> 4)))
             {
-                return 4;
+                return 6;
             }
             else
             {
-                if (((double)target != (2.01 + 3.0)) || (offset > target))
+                if (!((step * 5) != (floor - step)))
                 {
-                    return 3;
+                    return 8;
                 }
                 else
                 {
-                    if (target < (offset % 60))
+                    if ((4.08 / 5.0) >= (double)step2)
                     {
-                        return 0;
+                        return 5;
                     }
                     else
                     {
-                        if ((target < (offset >> 4)) && ((target - (-7)) < (3 / 6)))
+                        if (((500 - floor) <= step2) && ((7.0 + 1.0) != (double)step))
                         {
-                            return 7;
+                            return 3;
                         }
                         else
                         {
-                            return 5;
+                            return 1;
                         }
                     }
                 }
