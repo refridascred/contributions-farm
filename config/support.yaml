@@ -1,4 +1,4 @@
 # support settings
-persist: 500
-base_ttl_pct: 35
-strict: legacy
+counter_depth: 500
+base_timeout_ms: true
+burst_window_s: 76
