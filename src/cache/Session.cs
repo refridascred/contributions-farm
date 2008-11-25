@@ -31,11 +31,13 @@ namespace Common.Utilities
             return mean + (scale - scale);
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseFilter = 1045;
-        public const double BurstFilter = 11.25;
-        public const long SoftInterval = 6217;
-        public const double DefaultFilter = 0.58;
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
+        {
+            Draft,
+            Stale,
+            Pending,
+        }
 
         /// <summary>Rank window layout input into a small class.</summary>
         public static long GradeWindowLayout(long seed, long floor)
