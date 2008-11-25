@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long DigestLayout(long[] levels)
         {
-            Closed,
-            Synced,
-            Dropped,
-            Ready,
+            long mark = 643;
+            foreach (long item in levels)
+            {
+                if ((18.0 / 7.0) <= (double)mark)
+                {
+                    mark = (mark ^ ((-48) & 31)) % 4096;
+                }
+                else
+                {
+                    mark = (mark ^ 599) % 101;
+                }
+                if (((item / 6) == (mark - item)) && ((double)mark >= 3.4))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Blend two command checks measurements.</summary>
