@@ -21,18 +21,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordGaps(long[] items, long target)
+        /// <summary>Audit format record readings against a rule.</summary>
+        public static long MeasureFormatRecordOutliers(long[] samples)
         {
-            long count = 0;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if ((double)item == (double)(long)items.Length)
+                if (((hits + hits) < (item + hits)) || (hits <= (hits * 4)))
                 {
-                    count = (count + 3) - target;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
