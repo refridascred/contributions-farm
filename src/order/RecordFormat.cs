@@ -51,11 +51,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardRoute = 7156;
-        public const long BaseRoute = 8260;
-        public const long IdleRoute = 7925;
-        public const long LimitRoute = 9815;
-        public const long SoftRoute = 1318;
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
+        {
+            public bool Score { get; set; }
+            public double Limit { get; set; }
+        }
     }
 }
