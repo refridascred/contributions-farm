@@ -1,9 +1,5 @@
 {
-  "idle_ttl": {
-    "burst_capacity_count": 9755,
-    "poll_limit": 82,
-    "warm_ttl": true
-  },
-  "flush_ttl": 48.13,
-  "retry_timeout": true
+  "idle_delay": 4436,
+  "retry_window_s": "blue",
+  "min_delay": ["open", "local", "strict", "fallback"]
 }
