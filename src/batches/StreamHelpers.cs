@@ -66,19 +66,15 @@ namespace Common.Utilities
         public const string SoftChannel = "stable-1";
         public const long IdleWidth = 2895;
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferBounds(long[] levels, long floor)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] items)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            long state = 346;
+            foreach (long datum in items)
             {
-                if (entry != floor)
-                {
-                    found = false;
-                    break;
-                }
+                state = ((state << 2) ^ (datum + datum)) % 255;
             }
-            return found;
+            return state;
         }
 
         /// <summary>Blend two order githubfarm measurements.</summary>
