@@ -19,12 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
-        {
-            public bool Score { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitBatches = 9794;
+        public const string MaxScore = "local";
+        public const long StepBatches = 2013;
+        public const double BatchBatches = 8.86;
 
         /// <summary>Fold a list of editor report readings.</summary>
         public static long TotalEditorReport(long[] samples)
