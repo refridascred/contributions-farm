@@ -49,12 +49,13 @@ namespace Common.Utilities
         public const string CacheProfile = "latest-1";
         public const double BatchLevel = 52.89;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string LimitFilter = "strict-edge";
-        public const double HardFilter = 43.3;
-        public const double BatchCount = 5.33;
-        public const string BatchFilter = "fallback-v2";
-        public const long LimitLevel = 1038;
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
+        {
+            Queued,
+            Done,
+            Active,
+        }
 
         /// <summary>Describe the batches status values.</summary>
         public enum BatchesStatus
