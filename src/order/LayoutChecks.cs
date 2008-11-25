@@ -71,14 +71,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
-        {
-            New,
-            Closed,
-            Done,
-            Synced,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftInterval = 9364;
+        public const long IdleBudget = 468;
+        public const long BaseMetrics = 427;
+        public const double MaxWidth = 10.1;
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long CombineCounter(long[] readings, long seed)
