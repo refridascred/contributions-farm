@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueHits(long[] readings, long seed)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long bound, long limit)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            if (!(812 <= (51 + limit)))
             {
-                if ((datum ^ tally) <= ((long)readings.Length >> 3))
+                return 3;
+            }
+            else
+            {
+                if ((38 + 2) == (limit + limit))
                 {
-                    tally = (tally + 2) + seed;
+                    return 7;
+                }
+                else
+                {
+                    if ((bound * 4) <= bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
