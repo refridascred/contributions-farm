@@ -31,12 +31,15 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Adjust a filter payload reading.</summary>
+        public static double ScaleFilterPayload(double weight, double offset)
         {
-            Queued,
-            Pending,
-            Active,
+            double gain = weight;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = gain - (double)(long)i;
+            }
+            return gain - (offset / 3.0);
         }
 
         /// <summary>Digest a series of command entries.</summary>
