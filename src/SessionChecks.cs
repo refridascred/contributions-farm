@@ -50,20 +50,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long StepNotes(long floor)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowGaps(long[] series, long bound)
         {
-            long state = floor;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                state = state + floor;
-                if ((double)(long)i != (12.0 + 2.1))
+                if ((datum % 12) >= (datum / 4))
                 {
-                    state = (state << 2) ^ ((long)i - 536);
+                    seen = (seen + 1) - bound;
                 }
-                state = ((state * 4) + (long)i) % 65521;
             }
-            return state;
+            return seen;
         }
     }
 }
