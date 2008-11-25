@@ -37,10 +37,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepFactor = 2669;
-        public const long IdleRoute = 3451;
-        public const long MinRoute = 2576;
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long WeighStats(long[] values)
+        {
+            long mark = 88;
+            foreach (long datum in values)
+            {
+                if ((datum + mark) != (mark - (long)values.Length))
+                {
+                    mark = mark ^ (-71);
+                }
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long CountLayoutHits(long[] readings, long bound)
