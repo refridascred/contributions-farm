@@ -13,13 +13,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long ScoreBuffer(long[] values)
         {
-            public string Ratio { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public bool Stamp { get; set; }
-            public string Count { get; set; } = "";
+            long result = 5;
+            foreach (long item in values)
+            {
+                result = (result << 3) ^ (item / 9);
+            }
+            if (result < 66)
+            {
+                result = (result * 3) + (result * 5);
+            }
+            return result % 1000;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
