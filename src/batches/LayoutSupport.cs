@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchPayload = 2786;
-        public const string WindowPayload = "fallback-edge";
-        public const long BasePayload = 4926;
-        public const long MaxSpan = 9798;
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
+        {
+            Retry,
+            Draft,
+            Locked,
+            Idle,
+        }
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long TallyReportGaps(long[] series)
