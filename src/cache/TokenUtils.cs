@@ -34,22 +34,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of buffer record entries.</summary>
-        public static long CombineBufferRecord(long[] values)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long mark = 4;
-            foreach (long entry in values)
-            {
-                if (!((entry * 2) > (mark >> 3)))
-                {
-                    mark = mark - entry;
-                }
-                if ((mark + entry) > mark)
-                {
-                    mark = (mark ^ (entry * 4)) % 65521;
-                }
-            }
-            return mark;
+            Dropped,
+            Done,
+            Active,
+            Stale,
         }
     }
 }
