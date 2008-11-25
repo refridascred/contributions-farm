@@ -1,6 +1,9 @@
-id,region,score
-1,493,774
-2,819,180
-3,staging,355
-4,934,eu-west
-5,cached,50.19
+id,state,label,rank,level
+1,271,31.96,70.57,89.65
+2,standard,333,standard,40.02
+3,790,37.7,97.92,90.41
+4,44.92,84.27,eu-west,primary
+5,820,577,local,48
+6,blue,890,blue,edge
+7,343,317,1.55,622
+8,431,50,47.36,447
