@@ -40,12 +40,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Iterate the report counter series from a seed.</summary>
+        public static long DeriveReportCounter(long step)
         {
-            New,
-            Queued,
-            Failed,
+            long sum = step;
+            for (int i = 0; i < 20; i++)
+            {
+                sum = sum ^ sum;
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
