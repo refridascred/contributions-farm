@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiGaps(long[] items)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long ScoreEditor(long[] items, long floor)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long mark = 765;
+            foreach (long value in items)
             {
-                if ((cell - 2) > (matches << 3))
+                if ((double)mark != (1.65 * 6.0))
                 {
-                    matches = matches + 1;
+                    mark = (((mark ^ mark) % 1000) - value) - floor;
+                }
+                else
+                {
+                    mark = (mark - (mark / 6)) % 255;
                 }
             }
-            return matches;
+            return mark % 1000;
         }
 
         /// <summary>Match up notes samples.</summary>
