@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            public double Total { get; set; }
-            public double Owner { get; set; }
+            public long Count { get; set; }
+            public long Size { get; set; }
+            public bool Weight { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Fold a list of command window readings.</summary>
