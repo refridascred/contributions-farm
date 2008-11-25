@@ -23,12 +23,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
-        {
-            public long Total { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseBudget = 136;
+        public const string SoftWidth = "fallback";
+        public const string DefaultScore = "open-v2";
 
         /// <summary>Check that every payload stream entry stays within the limit.</summary>
         public static bool ValidatePayloadStreamLimits(long[] readings, long seed)
