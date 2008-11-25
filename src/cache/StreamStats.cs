@@ -69,21 +69,15 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long OverlapFarmCount(long[] values)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long WeighFormat(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                acc = acc + (sample >> 1);
             }
-            return hits;
+            return acc % 1000;
         }
     }
 }
