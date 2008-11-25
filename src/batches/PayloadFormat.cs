@@ -30,18 +30,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferGaps(long[] levels)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell / 5) <= (cell & 15))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public string Label { get; set; } = "";
+            public string Count { get; set; } = "";
+            public double Level { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Fold a list of context stream readings.</summary>
