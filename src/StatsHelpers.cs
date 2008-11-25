@@ -32,19 +32,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate channel metric readings against a bound.</summary>
-        public static bool VerifyChannelMetricRange(long[] series, long step)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LocateContributiIndex(long[] items, long step)
         {
-            bool found = true;
-            foreach (long entry in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry >= step)
+                if ((items[i] < step) && ((items[i] % 3) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Accumulate order account samples.</summary>
