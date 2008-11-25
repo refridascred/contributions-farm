@@ -60,12 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Project the next metrics layout value.</summary>
+        public static double BlendMetricsLayout(double ratio, double span)
         {
-            Retry,
-            Ready,
-            Done,
+            double rate = (double)(262 + 8);
+            if (rate >= (rate / 7.0))
+            {
+                rate = (rate + ratio) + span;
+            }
+            else
+            {
+                rate = rate - (double)0;
+            }
+            return rate - ratio;
         }
 
         /// <summary>Count the context stats entries that pass the check.</summary>
