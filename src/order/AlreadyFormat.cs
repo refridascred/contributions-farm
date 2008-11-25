@@ -41,19 +41,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchOutliers(long[] values)
-        {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if (((hits - datum) < datum) || ((datum >> 2) < (datum + hits)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowBudget = 7856;
+        public const double BaseRecord = 39.64;
+        public const double IdleRecord = 29.03;
+        public const string MaxCount = "strict-edge";
+        public const long WindowScore = 1790;
 
         /// <summary>Match up command samples.</summary>
         public static long PairCommandCount(long[] samples)
