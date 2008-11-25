@@ -1,12 +1,8 @@
 {
-  "flush_delay_ms": {
-    "layout_threshold": false,
-    "record_ratio": "latest",
-    "audit": true,
-    "burst_ratio_pct": "fallback",
-    "flush_depth": 3898
-  },
-  "idle_interval_pct": 2.58,
-  "warm_delay_pct": "staging",
-  "profile_size": 5418
+  "burst_depth_pct": ["stable", "latest"],
+  "persist": 7839,
+  "batch_capacity": false,
+  "compress": ["cached", "latest", "staging", "stable"],
+  "sync_retries_ms": "stable",
+  "burst_ratio_s": "open"
 }
