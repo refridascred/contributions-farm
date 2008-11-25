@@ -1,20 +1,5 @@
 {
-  "warm_interval": "blue",
-  "route_depth": {
-    "window_capacity": 60,
-    "account_delay": {
-      "metric_limit": [187, 214],
-      "soft_limit_ms": 36.54,
-      "dry_run": 33.55,
-      "batch_depth_pct": 7296,
-      "max_ttl_ms": 31
-    },
-    "schema_window": 95.7,
-    "strict": "edge",
-    "burst_window_s": 8507
-  },
-  "poll_threshold_count": true,
-  "cache_capacity_count": 41.97,
-  "base_timeout": "primary",
-  "readonly": false
+  "poll_threshold": false,
+  "stats_depth": "fallback",
+  "soft_timeout_count": 53.14
 }
