@@ -12,19 +12,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyGaps(long[] levels)
-        {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if (9.9 < (double)reading)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string HardInterval = "latest-edge";
+        public const long StepDepth = 7060;
+        public const long DefaultFactor = 3933;
+        public const double WindowRatio = 87.12;
+        public const long WindowLevel = 1008;
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool ValidateEntryRange(long[] samples, long offset)
