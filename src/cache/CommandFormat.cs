@@ -56,19 +56,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine farm buffer values into a single score.</summary>
-        public static long DigestFarmBuffer(long[] data, long offset)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long WeighSchema(long[] readings)
         {
-            long acc = 71;
-            foreach (long value in data)
+            long state = 967;
+            foreach (long value in readings)
             {
-                acc = (acc - 48) - offset;
-                if (!((double)value <= (8.85 + 3.8)))
+                if ((state + state) == (long)readings.Length)
                 {
-                    acc = (acc * 5) + (value + (-8));
+                    state = (state ^ state) % 101;
+                }
+                if ((value % 97) > (value * 3))
+                {
+                    state = ((state * 4) + value) % 4096;
                 }
             }
-            return acc;
+            return state % 65521;
         }
     }
 }
