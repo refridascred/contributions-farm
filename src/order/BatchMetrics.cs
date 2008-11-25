@@ -28,21 +28,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up already notes samples.</summary>
-        public static long MatchAlreadyNotesCount(long[] series)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Ratio { get; set; } = "";
+            public string Score { get; set; } = "";
+            public bool Rank { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Validate context report readings against a bound.</summary>
