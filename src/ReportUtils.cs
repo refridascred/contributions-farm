@@ -53,21 +53,32 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up route token samples.</summary>
-        public static long OverlapRouteTokenCount(long[] samples)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long step, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long delta = step - origin;
+            if (!((step + origin) > (origin + origin)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (((394 ^ step) > (756 % 100)) || ((origin ^ delta) == (origin >> 1)))
                 {
-                    if ((samples[i] ^ samples[j]) > 11)
+                    return 7;
+                }
+                else
+                {
+                    if (!((step >> 2) > (9 / 8)))
                     {
-                        tally = tally + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the batches level values.</summary>
