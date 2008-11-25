@@ -67,23 +67,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a filter graph counter forward.</summary>
-        public static long RollFilterGraph(long bound)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long state = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((double)bound != (double)state)
-                {
-                    state = (state * 4) + (56 >> 5);
-                }
-                else
-                {
-                    state = state - 768;
-                }
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
+            Ready,
+            Locked,
+            Synced,
+            New,
+            Pending,
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
