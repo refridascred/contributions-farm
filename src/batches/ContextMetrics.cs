@@ -31,22 +31,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the payload farm entries that pass the check.</summary>
-        public static long CountPayloadFarmMatches(long[] readings)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((item / 8) < count)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Failed,
+            Paused,
+            Done,
         }
 
         /// <summary>Describe the command status values.</summary>
