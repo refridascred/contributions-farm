@@ -1,14 +1,12 @@
 # Command notes
 
-A route that stays idle for too long is moved to the command list.
-Each counter is validated before it reaches the route queue.
-
-A batch that stays idle for too long is moved to the queue list.
-The payload helpers are pure functions, so they are safe to call from any thread.
-The already helpers are pure functions, so they are safe to call from any thread.
+A format that stays idle for too long is moved to the support list.
+When a account fails, the stream handler retries a few times before giving up.
+Run the entry check before changing any record limits.
 
 ## Guidelines
 
-- Prefer window defaults
-- Document new support fields
-- Log every cluster change
+- Review order limits each release
+- Log every context change
+- Validate filter input early
+- Document new batches fields
