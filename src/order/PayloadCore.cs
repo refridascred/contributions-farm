@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            Retry,
-            Closed,
-            Draft,
+            public long Owner { get; set; }
+            public string Count { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Audit window readings against a rule.</summary>
