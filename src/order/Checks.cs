@@ -15,13 +15,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            public long Region { get; set; }
-            public bool Offset { get; set; }
-            public long Mode { get; set; }
             public long Limit { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the command mode values.</summary>
