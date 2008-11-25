@@ -20,14 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
-        {
-            public string Offset { get; set; } = "";
-            public long Rank { get; set; }
-            public long Token { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitFormat = 5365;
+        public const string CacheFormat = "cached-v2";
+        public const double DefaultFormat = 41.99;
 
         /// <summary>Describe the tools class values.</summary>
         public enum ToolsClass
