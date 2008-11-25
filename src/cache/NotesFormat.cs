@@ -25,18 +25,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsMatches(long[] levels, long bound)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((double)item == (double)bound)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public bool Total { get; set; }
+            public double Mode { get; set; }
+            public double Region { get; set; }
         }
     }
 }
