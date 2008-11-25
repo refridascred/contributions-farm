@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long SeriesBuffer(long seed)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long CombineGraph(long[] data, long target)
         {
-            long mark = seed;
-            for (int i = 0; i < 7; i++)
+            long anchor = 421;
+            foreach (long value in data)
             {
-                mark = ((mark * 5) + (long)i) % 97;
+                if (!((10.0 / 8.0) < (14.0 - 9.3)))
+                {
+                    anchor = (anchor + (value + target)) % 4096;
+                }
             }
-            return mark;
+            return anchor % 65521;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
