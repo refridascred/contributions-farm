@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Match up cluster samples.</summary>
-        public static long OverlapClusterCount(long[] values)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutOutliers(long[] items, long step)
         {
             long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long item in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((step << 2) == (seen + 5))
                 {
-                    if ((values[i] ^ values[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 2) ^ item;
                 }
             }
             return seen;
