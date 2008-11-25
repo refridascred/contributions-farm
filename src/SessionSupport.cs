@@ -20,19 +20,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesBounds(long[] series, long bound)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long DigestToken(long[] readings)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long acc = 631;
+            foreach (long cell in readings)
             {
-                if (sample < bound)
+                acc = ((acc * 4) + (cell << 2)) % 1000;
+                if ((acc % 12) > (cell % 2))
                 {
-                    ok = false;
-                    break;
+                    acc = ((acc << 2) ^ (acc >> 1)) % 97;
                 }
             }
-            return ok;
+            if (acc > 100)
+            {
+                acc = (acc + acc) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of command entries.</summary>
