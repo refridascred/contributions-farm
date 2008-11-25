@@ -52,12 +52,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
-        {
-            public long Level { get; set; }
-            public double Owner { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string HardBuffer = "alpha";
+        public const double BurstBuffer = 58.69;
+        public const long IdleBuffer = 1212;
+        public const long CacheBuffer = 4653;
+        public const long DefaultBuffer = 5174;
     }
 }
