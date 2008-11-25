@@ -36,19 +36,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphRange(long[] levels, long floor)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            bool ok = true;
-            foreach (long entry in levels)
-            {
-                if (entry > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Weight { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
