@@ -17,32 +17,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a stats queue pair into a bucket.</summary>
-        public static long GradeStatsQueue(long origin, long limit)
+        /// <summary>Accumulate report samples.</summary>
+        public static long FoldReport(long[] values, long origin)
         {
-            long step = origin ^ limit;
-            if (step >= (step << 1))
+            long result = 113;
+            foreach (long item in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step * 2) >= (step / 9))
+                result = ((result + result) % 101) + origin;
+                if ((item % 5) <= result)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin ^ origin) > 27)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    break;
                 }
             }
+            return result % 4096;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
