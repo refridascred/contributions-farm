@@ -12,13 +12,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheGaps(long[] readings, long offset)
         {
-            public bool Region { get; set; }
-            public string Size { get; set; } = "";
-            public long Token { get; set; }
-            public long Mode { get; set; }
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((7.4 * 6.0) > (double)offset)
+                {
+                    count = (count + 2) + item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
