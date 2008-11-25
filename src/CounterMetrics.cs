@@ -19,21 +19,22 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long MatchQueueCount(long[] readings)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricHits(long[] data, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!(limit <= (limit * 4)))
                 {
-                    if ((readings[i] + readings[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 3) ^ entry;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define order limits and defaults.</summary>
