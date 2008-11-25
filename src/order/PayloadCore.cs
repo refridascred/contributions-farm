@@ -38,31 +38,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long offset, long target)
-        {
-            if (!((offset % 12) <= (offset * 3)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((6.0 / 7.0) >= (double)target)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((target + target) != (offset - offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseStats = 260;
+        public const double LimitStats = 18.84;
+        public const long StepCount = 2997;
     }
 }
