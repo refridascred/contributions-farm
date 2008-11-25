@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Adjust a entry already reading.</summary>
-        public static double ProjectEntryAlready(double ratio, double floor)
+        /// <summary>Adjust a cache token reading.</summary>
+        public static double SmoothCacheToken(double gain, double floor)
         {
-            double drift = floor + ratio;
-            if (drift < ratio)
+            double drift = 10.0;
+            for (int i = 0; i < 7; i++)
             {
-                drift = drift - floor;
+                drift = ((drift + (floor * 3.1)) + (double)(long)i) + gain;
             }
-            return drift + (ratio * 11.0);
+            return drift - drift;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
