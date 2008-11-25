@@ -1,6 +1,10 @@
 # entry settings
-readonly: blue
-sync_capacity_count: 16.97
-session_delay: 4395
-verbose: strict
-hard_timeout_count: 89
+strict:
+  soft_depth: blue
+  order_timeout: 9973
+  cache_interval_pct: 90.69
+  readonly: 9477
+  enabled: true
+readonly: staging
+dry_run: true
+default_threshold: 7.7
