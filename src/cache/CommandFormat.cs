@@ -36,11 +36,20 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepNotes = 3168;
-        public const double DefaultCount = 18.65;
-        public const double DefaultNotes = 40.79;
-        public const long RetryNotes = 4202;
+        /// <summary>Blend two stream measurements.</summary>
+        public static double BlendStream(double weight, double floor)
+        {
+            double rate = (double)1 / 4.0;
+            if (rate < weight)
+            {
+                rate = (rate - 10.0) + floor;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - (8.8 + weight)) + (double)(long)i;
+            }
+            return rate + weight;
+        }
 
         /// <summary>Combine farm buffer values into a single score.</summary>
         public static long DigestFarmBuffer(long[] data, long offset)
