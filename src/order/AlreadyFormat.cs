@@ -55,13 +55,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Match up command samples.</summary>
+        public static long PairCommandCount(long[] samples)
         {
-            public long Total { get; set; }
-            public long Size { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Level { get; set; }
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
