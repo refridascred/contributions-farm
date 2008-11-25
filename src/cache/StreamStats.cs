@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheOutliers(long[] values, long floor)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long RollBatch(long limit)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long mark = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if ((((2.7 * 5.98) < (double)sample) || ((sample % 97) != (floor - 943))) && ((matches & 127) >= (3 - sample)))
-                {
-                    matches = matches + 2;
-                }
+                mark = ((mark << 3) ^ ((long)i % 16)) % 255;
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
