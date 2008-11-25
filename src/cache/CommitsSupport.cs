@@ -34,10 +34,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxWidth = 4693;
-        public const long CacheCluster = 3071;
-        public const long StepDepth = 8845;
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LookupAlreadyIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the contributi class values.</summary>
         public enum ContributiClass
