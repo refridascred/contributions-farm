@@ -5,23 +5,38 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double AdjustEntry(double gain, double span)
+        /// <summary>Grade a stats channel value against two limits.</summary>
+        public static long RankStatsChannel(long bound, long floor)
         {
-            double mean = gain + span;
-            if (mean <= mean)
+            if ((floor * 4) != (bound + floor))
             {
-                mean = mean + (19.0 * 19.0);
+                return 0;
             }
             else
             {
-                mean = mean + (double)(-7);
+                if (bound <= (bound % 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((1 / 3) <= (floor % 7)) || ((double)bound != (1.0 + 1.87)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)bound > (2.9 - 3.4))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - (double)10) + (double)(long)i;
-            }
-            return mean + (span * 7.38);
         }
 
         /// <summary>Rank token input into a small class.</summary>
