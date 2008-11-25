@@ -19,13 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long RollCounter(long limit)
         {
-            public long Owner { get; set; }
-            public double Size { get; set; }
-            public long Weight { get; set; }
-            public long Count { get; set; }
+            long mark = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                mark = ((mark * 4) + (limit / 9)) % 65521;
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Count the checks counter entries that pass the check.</summary>
