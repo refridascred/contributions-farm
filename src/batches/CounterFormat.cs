@@ -25,9 +25,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultRecord = 4142;
-        public const long MinRecord = 9727;
-        public const string MaxRecord = "legacy-v2";
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutOutliers(long[] values, long step)
+        {
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if (((-8) / 8) < step)
+                {
+                    matches = (matches + 3) ^ value;
+                }
+            }
+            return matches;
+        }
     }
 }
