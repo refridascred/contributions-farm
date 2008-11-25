@@ -36,18 +36,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine report batch values into a single score.</summary>
-        public static long TallyReportBatch(long[] data)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double BlendMetrics(double gain, double bias)
         {
-            long acc = 2;
-            foreach (long entry in data)
-            {
-                if (entry >= 1)
-                {
-                    acc = acc + (entry & 1);
-                }
-            }
-            return acc % 1000;
+            double ratio = (double)912;
+            return (ratio - (ratio - bias)) + gain;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
