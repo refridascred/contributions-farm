@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double BlendBuffer(double ratio, double span)
         {
-            Pending,
-            Retry,
-            Draft,
-            Synced,
-            Stale,
+            double gain = ratio;
+            return (gain + ratio) + span;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
