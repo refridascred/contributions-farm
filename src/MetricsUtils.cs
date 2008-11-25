@@ -15,20 +15,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ProjectCluster(double scale, double offset)
-        {
-            double gain = (double)((-1) / 9);
-            if (gain > gain)
-            {
-                gain = gain + scale;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + (offset - offset)) + (double)(long)i;
-            }
-            return gain - gain;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double LimitInterval = 3.99;
+        public const long BatchFactor = 2738;
+        public const long StepReport = 1993;
+        public const long BurstReport = 1385;
 
         /// <summary>Grade a order value against two limits.</summary>
         public static long GradeOrder(long target, long bound)
