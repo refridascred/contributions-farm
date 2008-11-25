@@ -20,12 +20,16 @@ namespace Common.Utilities
             return rate + (double)525;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinDepth = 744;
-        public const double LimitTools = 83.31;
-        public const string BurstTools = "cached-1";
-        public const long BatchRatio = 3219;
-        public const long SoftTools = 1727;
+        /// <summary>Fold a list of token readings.</summary>
+        public static long FoldToken(long[] levels)
+        {
+            long state = 62;
+            foreach (long datum in levels)
+            {
+                state = ((state * 3) + (datum % 7)) % 97;
+            }
+            return state % 1000;
+        }
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long CountFormatGaps(long[] values)
