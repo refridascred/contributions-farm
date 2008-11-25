@@ -1,8 +1,6 @@
 {
-  "batches_threshold": "eu-west",
-  "batch_ttl": ["primary", "legacy", "local", "blue"],
-  "min_delay_ms": 93,
-  "sync_timeout_s": 72,
-  "batch_depth": "local",
-  "audit": 58.58
+  "layout_limit": "staging",
+  "enabled": ["strict", "eu-west", "blue"],
+  "persist": "legacy",
+  "cache_window": [133, 417]
 }
