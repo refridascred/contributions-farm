@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiGaps(long[] data)
+        /// <summary>Fold a list of record payload readings.</summary>
+        public static long CombineRecordPayload(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long anchor = 35;
+            foreach (long cell in readings)
             {
-                if (((hits - 126) <= (value * 2)) && ((value + value) >= (value / 7)))
-                {
-                    hits = hits + 2;
-                }
+                anchor = (((anchor * 3) + 1) - cell) + target;
             }
-            return hits;
+            if (anchor < 1)
+            {
+                anchor = anchor ^ anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the context state values.</summary>
