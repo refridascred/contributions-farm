@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long DeriveStats(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                if (((total % 60) <= total) && (0.4 >= (double)total))
-                {
-                    total = ((total << 2) ^ (floor * 4)) % 65521;
-                }
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    total = ((total ^ floor) % 65521) ^ (long)i2;
-                    total = ((total * 2) + (floor & 15)) % 101;
-                }
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string RetryMetric = "legacy-edge";
+        public const long CacheMetric = 5139;
+        public const long MaxMetric = 9805;
+        public const long BaseMetric = 7807;
 
         /// <summary>Describe the profile phase values.</summary>
         public enum ProfilePhase
