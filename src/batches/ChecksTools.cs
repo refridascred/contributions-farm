@@ -47,15 +47,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ProjectPayload(double bias, double span)
+        /// <summary>Compare every pair of schema farm readings.</summary>
+        public static long PairSchemaFarmCount(long[] levels)
         {
-            double gain = bias + bias;
-            if (gain >= (span * 1.0))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain = gain + (gain + 4.9);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return gain - (double)27;
+            return tally;
         }
 
         /// <summary>Hold a format entry.</summary>
