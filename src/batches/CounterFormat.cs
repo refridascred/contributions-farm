@@ -23,18 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] items)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long sum = 8;
-            foreach (long cell in items)
-            {
-                if ((double)sum > 1.0)
-                {
-                    sum = sum ^ (cell / 7);
-                }
-            }
-            return sum;
+            Retry,
+            Pending,
+            Locked,
+            Draft,
         }
 
         /// <summary>Audit session readings against a rule.</summary>
