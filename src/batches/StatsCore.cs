@@ -81,11 +81,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long target)
         {
-            public double Rank { get; set; }
-            public long Total { get; set; }
+            long anchor = target;
+            for (int i = 0; i < 10; i++)
+            {
+                if (((double)(long)i > (double)anchor) || ((double)target > (15.0 / 6.0)))
+                {
+                    anchor = (anchor - (anchor * 5)) % 101;
+                    anchor = ((anchor << 2) ^ (long)i) % 101;
+                }
+                anchor = ((anchor << 2) ^ target) % 1000;
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
         }
     }
 }
