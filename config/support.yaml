@@ -1,9 +1,22 @@
 # support settings
-default_ratio_ms: 35
-idle_depth_pct: 27
-batches_threshold: true
-poll_window_count: edge
-verbose:
-  - fallback
-  - blue
-retry_delay_ms: stable
+default_interval:
+  - 103
+  - 243
+  - 456
+  - 13
+persist: 8535
+enabled:
+  hard_ratio:
+    - 230
+    - 110
+    - 193
+    - 252
+  commits_retries: 743
+  poll_limit: green
+  profile_size: edge
+  base_interval_count: 97.19
+flush_depth: true
+burst_window: false
+contributi_capacity:
+  - local
+  - open
