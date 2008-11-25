@@ -66,24 +66,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long step, long limit)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferMatches(long[] series, long bound)
         {
-            if ((limit >> 1) == (690 >> 5))
+            long seen = 0;
+            foreach (long cell in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step - step) >= limit)
+                if ((bound + (-456)) > (-2))
                 {
-                    return 4;
+                    seen = (seen + 1) ^ cell;
                 }
                 else
                 {
-                    return 2;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
