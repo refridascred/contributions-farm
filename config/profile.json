@@ -1,7 +1,8 @@
 {
-  "base_limit_ms": "open",
-  "editor_timeout": "strict",
-  "dry_run": "local",
-  "cache_limit_pct": "open",
-  "compress": 81
+  "session_threshold": 68,
+  "filter_window": ["cached", "strict", "edge", "stable"],
+  "notes_limit": 7198,
+  "compress": 2,
+  "batch_ttl_s": true,
+  "flush_ttl_pct": "edge"
 }
