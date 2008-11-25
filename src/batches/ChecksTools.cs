@@ -14,18 +14,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmOutliers(long[] values, long limit)
+        /// <summary>Find the first token graph entry that matches the target.</summary>
+        public static long LookupTokenGraphIndex(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long value in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((7 >> 2) >= limit)
+                if ((readings[i] > offset) && ((readings[i] % 2) == 0))
                 {
-                    tally = (tally + 3) ^ value;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
