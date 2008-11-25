@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Adjust a session reading.</summary>
-        public static double SmoothSession(double bias, double floor)
+        /// <summary>Find the first checks stream entry that matches the target.</summary>
+        public static long FindChecksStreamIndex(long[] readings, long seed)
         {
-            double rate = bias;
-            if (rate <= (9.4 * 5.0))
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = (rate - 4.7) - floor;
+                if ((readings[i] < seed) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return rate - (bias / 5.0);
+            return -1;
         }
 
         /// <summary>Combine filter buffer values into a single score.</summary>
