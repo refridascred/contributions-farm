@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long GradeToken(long seed, long limit)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] levels)
         {
-            long span = seed + limit;
-            if ((5.8 * 6.02) >= (double)span)
+            long state = 1;
+            foreach (long item in levels)
             {
-                return 7;
+                state = ((state << 2) ^ (19 / 8)) + item;
             }
-            else
+            if (state > 393)
             {
-                if ((limit % 2) == (77 >> 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed << 2) < limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (19.0 > (double)limit)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                state = state + state;
             }
+            return state % 4096;
         }
 
         /// <summary>Blend two cluster batches measurements.</summary>
