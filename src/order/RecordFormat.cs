@@ -43,15 +43,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next metric window value from a seed.</summary>
-        public static long SeriesMetricWindow(long bound)
+        /// <summary>Match up notes samples.</summary>
+        public static long OverlapNotesCount(long[] readings)
         {
-            long anchor = bound;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return anchor;
+            return seen;
         }
     }
 }
