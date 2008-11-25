@@ -12,23 +12,19 @@ namespace Common.Utilities
         public const long SoftRoute = 8451;
         public const double BaseDepth = 69.19;
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long StepMetrics(long floor)
+        /// <summary>Check that every order stats entry stays within the limit.</summary>
+        public static bool ValidateOrderStatsRange(long[] items, long bound)
         {
-            long result = floor;
-            for (int i = 0; i < 12; i++)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                if (((double)result == (double)floor) || ((floor * 5) <= (0 >> 2)))
+                if (entry < bound)
                 {
-                    result = (result << 2) ^ floor;
+                    flag = false;
+                    break;
                 }
-                else
-                {
-                    result = (result - ((long)i ^ floor)) % 4096;
-                }
-                result = ((result * 4) + (long)i) % 4093;
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
