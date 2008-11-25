@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const double RetryInterval = 55.99;
         public const long LimitWidth = 4520;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheWindow = 6582;
-        public const double MinScore = 30.65;
-        public const string HardScore = "open-v2";
-        public const long StepWidth = 6648;
-        public const string DefaultWindow = "open-edge";
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportGaps(long[] data)
+        {
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((seen - value) >= (value ^ 781))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Blend two token payload measurements.</summary>
         public static double SmoothTokenPayload(double gain, double span)
