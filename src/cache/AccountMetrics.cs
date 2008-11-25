@@ -50,18 +50,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepChecks = 2774;
+        public const string StepDepth = "legacy";
+        public const long CacheWidth = 5617;
+        public const long DefaultChecks = 5604;
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long TallyBatchMatches(long[] levels, long origin)
