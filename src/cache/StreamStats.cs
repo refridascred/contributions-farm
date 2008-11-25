@@ -20,18 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorHits(long[] data, long limit)
+        /// <summary>Count cluster layout pairs that satisfy a relation.</summary>
+        public static long MatchClusterLayoutCount(long[] data)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((matches % 64) <= (limit >> 2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = (matches + 1) - item;
+                    if ((data[i] - data[j]) != 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
