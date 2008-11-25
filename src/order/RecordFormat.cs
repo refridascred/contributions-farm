@@ -51,16 +51,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next commits session value from a seed.</summary>
-        public static long DeriveCommitsSession(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                state = ((state << 3) ^ (offset >> 1)) % 255;
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardRoute = 7156;
+        public const long BaseRoute = 8260;
+        public const long IdleRoute = 7925;
+        public const long LimitRoute = 9815;
+        public const long SoftRoute = 1318;
     }
 }
