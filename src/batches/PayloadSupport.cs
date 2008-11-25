@@ -25,19 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate profile schema samples.</summary>
-        public static long CombineProfileSchema(long[] items)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long carry = 7;
-            foreach (long item in items)
-            {
-                carry = ((carry << 3) ^ carry) % 255;
-                if ((long)items.Length >= (item / 7))
-                {
-                    break;
-                }
-            }
-            return carry;
+            public string Offset { get; set; } = "";
+            public long Rank { get; set; }
+            public long Token { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Describe the batch mode values.</summary>
