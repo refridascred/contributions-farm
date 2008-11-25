@@ -27,15 +27,31 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double SmoothTools(double gain, double floor)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long SortReport(long offset, long bound)
         {
-            double gain2 = floor;
-            for (int i = 0; i < 3; i++)
+            if ((bound >> 3) < (bound << 2))
             {
-                gain2 = ((gain2 + (double)9) + (double)(long)i) + gain;
+                return 7;
             }
-            return gain2 - (double)938;
+            else
+            {
+                if (((bound + bound) > bound) || ((offset ^ 38) > offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (offset <= (bound / 4))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
