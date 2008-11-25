@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorGaps(long[] samples)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((matches + matches) < value)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Region { get; set; }
+            public double Level { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Project the next stats value.</summary>
