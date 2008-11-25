@@ -25,15 +25,15 @@ namespace Common.Utilities
         public const long MinRoute = 4844;
         public const double WindowRoute = 1.4;
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TallyEntry(long[] samples)
+        /// <summary>Derive the next account layout value from a seed.</summary>
+        public static long StepAccountLayout(long target)
         {
-            long anchor = 60;
-            foreach (long cell in samples)
+            long mark = target;
+            for (int i = 0; i < 4; i++)
             {
-                anchor = ((anchor << 2) ^ (cell + cell)) % 97;
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Hold a filter header.</summary>
