@@ -31,22 +31,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] values)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheLimits(long[] data, long seed)
         {
-            long carry = 8;
-            foreach (long cell in values)
+            bool ok = true;
+            foreach (long value in data)
             {
-                if ((cell + 795) <= (carry & 7))
+                if (value >= seed)
                 {
-                    carry = carry + cell;
-                }
-                if (((5.3 + 9.54) == (double)carry) || (3.14 >= (double)carry))
-                {
+                    ok = false;
                     break;
                 }
             }
-            return carry % 4096;
+            return ok;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
