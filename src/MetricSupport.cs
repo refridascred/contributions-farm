@@ -33,12 +33,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Adjust a schema reading.</summary>
+        public static double BlendSchema(double gain, double span)
         {
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
-            public double Limit { get; set; }
+            double ratio = (double)(84 ^ 8);
+            if (ratio <= gain)
+            {
+                ratio = (ratio + (ratio * 8.0)) - span;
+            }
+            else
+            {
+                ratio = ratio - (ratio * 19.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + gain) + (double)(long)i;
+            }
+            return ratio - gain;
         }
     }
 }
