@@ -13,19 +13,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double AdjustFarm(double ratio, double offset)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportOutliers(long[] samples)
         {
-            double gain = (ratio - 0.4) - 0.5;
-            if (gain <= (double)972)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                gain = gain - (gain + 1.3);
+                if ((cell - matches) <= matches)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                gain = gain - offset;
-            }
-            return gain + (double)951;
+            return matches;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
