@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a stats cluster value against two limits.</summary>
-        public static long RankStatsCluster(long bound, long floor)
-        {
-            if ((bound + 4) >= (bound - 88))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((bound << 2) == (553 / 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BaseCount = "staging-1";
+        public const double CacheSession = 53.03;
+        public const double HardSession = 79.17;
+        public const long MaxSession = 6373;
+        public const long HardBudget = 4965;
 
         /// <summary>Blend two token measurements.</summary>
         public static double SmoothToken(double rate, double bias)
