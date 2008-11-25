@@ -29,21 +29,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Compare every pair of buffer cache readings.</summary>
-        public static long PairBufferCacheCount(long[] readings)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public bool Owner { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Validate stream tools readings against a bound.</summary>
