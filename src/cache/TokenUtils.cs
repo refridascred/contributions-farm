@@ -55,17 +55,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long FindOrderIndex(long[] items, long target)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long WeighGraph(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 780;
+            foreach (long datum in values)
             {
-                if (items[i] <= target)
+                for (int i = 0; i < 4; i++)
                 {
-                    return (long)i;
+                    score = ((score - (datum + score)) % 255) - (long)i;
                 }
+                score = (score - datum) % 1000;
             }
-            return -1;
+            return score % 4096;
         }
     }
 }
