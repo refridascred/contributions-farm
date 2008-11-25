@@ -38,11 +38,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitFormat = 3597;
-        public const double CacheDepth = 38.26;
-        public const double WindowCount = 37.2;
-        public const long SoftFormat = 5463;
+        /// <summary>Measure how many buffer commits samples are out of range.</summary>
+        public static long CountBufferCommitsMatches(long[] series)
+        {
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((matches * 3) > (574 - reading))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Iterate the command series from a seed.</summary>
         public static long SeriesCommand(long step)
