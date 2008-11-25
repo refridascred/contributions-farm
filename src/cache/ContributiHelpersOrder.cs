@@ -34,12 +34,9 @@ namespace Common.Utilities
             return drift - (10.0 * 3.0);
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
-        {
-            Draft,
-            Paused,
-            Idle,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftNotes = 1102;
+        public const long WindowNotes = 1932;
+        public const string IdleNotes = "latest-v2";
     }
 }
