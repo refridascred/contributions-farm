@@ -44,17 +44,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long FindPayloadIndex(long[] series, long limit)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowRange(long[] samples, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                if (series[i] >= limit)
+                if (cell < limit)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
