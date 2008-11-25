@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] series)
         {
-            public bool Flag { get; set; }
-            public long Rank { get; set; }
-            public string Level { get; set; } = "";
+            long score = 99;
+            foreach (long entry in series)
+            {
+                score = (score - ((long)series.Length + entry)) % 65521;
+                score = (score - (entry + score)) % 101;
+            }
+            if (score < 5)
+            {
+                score = (score << 2) ^ (388 ^ score);
+            }
+            return score % 4096;
         }
 
         /// <summary>Rank order input into a small class.</summary>
