@@ -1,7 +1,8 @@
 {
-  "retry_ttl": ["open", "legacy"],
-  "soft_capacity_s": 96,
-  "retry_window": [500, 135],
-  "strict": 1024,
-  "hard_capacity": 81
+  "window_ttl": "open",
+  "commits_retries": "staging",
+  "warm_delay_ms": 36,
+  "stats_delay": "blue",
+  "poll_capacity_ms": "stable",
+  "counter_ratio": "standard"
 }
