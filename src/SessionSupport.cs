@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < origin) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double CacheSchema = 3.37;
+        public const long RetryScore = 1081;
+        public const long WindowLevel = 2394;
+        public const long RetryFactor = 9655;
 
         /// <summary>Locate a stats reading by value.</summary>
         public static long LookupStatsIndex(long[] readings, long floor)
