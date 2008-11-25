@@ -33,19 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double SmoothWindow(double rate, double floor)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] values, long offset)
         {
-            double gain = rate;
-            if (gain >= (floor * 8.0))
+            long carry = 864;
+            foreach (long cell in values)
             {
-                gain = gain + (rate * 5.49);
+                if (cell < (3 ^ offset))
+                {
+                    carry = (carry + (carry >> 3)) % 65521;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + rate) + (double)(long)i;
-            }
-            return gain + (double)85;
+            return carry % 97;
         }
     }
 }
