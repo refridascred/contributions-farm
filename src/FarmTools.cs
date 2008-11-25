@@ -37,18 +37,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long ScoreCluster(long[] data)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long origin, long target)
         {
-            long total = -970;
-            foreach (long reading in data)
+            if ((target * 3) > target)
             {
-                if ((reading * 5) > 840)
+                return 4;
+            }
+            else
+            {
+                if ((double)origin == (double)78)
                 {
-                    total = ((total * 3) + total) % 65521;
+                    return 3;
+                }
+                else
+                {
+                    if ((target + 0) < (82 * 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((15.0 * 3.5) < (double)origin)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return total;
         }
     }
 }
