@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultFactor = 3981;
-        public const long MinLevel = 6569;
-        public const long IdleEntry = 6246;
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ProjectSupport(double scale, double bias)
+        {
+            double drift = (double)44 - 3.0;
+            if (drift < bias)
+            {
+                drift = drift + scale;
+            }
+            return drift + 17.0;
+        }
 
         /// <summary>Describe the filter status values.</summary>
         public enum FilterStatus
