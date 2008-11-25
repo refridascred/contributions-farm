@@ -29,14 +29,16 @@ namespace Common.Utilities
             return scale - (double)9;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long bound)
         {
-            Queued,
-            Paused,
-            New,
-            Closed,
-            Ready,
+            long mix = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                mix = ((mix << 2) ^ mix) % 1000;
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
         }
     }
 }
