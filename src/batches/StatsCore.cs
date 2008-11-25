@@ -48,14 +48,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
-        {
-            Idle,
-            Dropped,
-            Done,
-            New,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseAlready = 5396;
+        public const string WindowCount = "alpha";
+        public const string IdleAlready = "strict-v2";
+        public const string RetryLevel = "standard";
 
         /// <summary>Digest a series of record entries.</summary>
         public static long CombineRecord(long[] series)
