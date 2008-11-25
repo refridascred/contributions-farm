@@ -18,31 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long DigestRecord(long[] values, long origin)
+        /// <summary>Audit route record readings against a rule.</summary>
+        public static long CountRouteRecordGaps(long[] readings)
         {
-            long mix = 791;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                mix = mix + mix;
-                if ((mix + mix) != (origin + origin))
+                if ((double)seen != (4.0 + 20.0))
                 {
-                    mix = ((mix * 5) + (origin << 1)) % 255;
-                }
-                else
-                {
-                    mix = (mix + (origin * 5)) % 65521;
-                }
-                if (((datum + origin) >= (mix % 12)) || ((4 - origin) == (mix + origin)))
-                {
-                    mix = (mix * 2) + (datum - origin);
+                    seen = (seen + 3) + item;
                 }
             }
-            if (mix < 2)
-            {
-                mix = mix + (992 >> 3);
-            }
-            return mix % 4096;
+            return seen;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
