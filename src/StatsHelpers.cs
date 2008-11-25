@@ -27,14 +27,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Validate channel metric readings against a bound.</summary>
+        public static bool VerifyChannelMetricRange(long[] series, long step)
         {
-            Pending,
-            New,
-            Queued,
-            Idle,
-            Locked,
+            bool found = true;
+            foreach (long entry in series)
+            {
+                if (entry >= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Digest a series of session entries.</summary>
