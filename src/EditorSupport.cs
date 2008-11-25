@@ -34,32 +34,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long GradeEntry(long floor, long bound)
-        {
-            if (floor < (floor << 1))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((bound + bound) <= bound)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((double)floor <= (0.6 / 6.0)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchInterval = 6465;
+        public const string LimitCount = "strict";
+        public const long HardFarm = 2594;
+        public const long CacheDepth = 189;
+        public const long MaxFarm = 5563;
 
         /// <summary>Check that every metrics entry entry stays within the limit.</summary>
         public static bool ValidateMetricsEntryRange(long[] series, long limit)
