@@ -42,12 +42,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double HardProfile = 84.81;
-        public const long WindowProfile = 4960;
-        public const double MaxBudget = 79.71;
-        public const string CacheProfile = "latest-1";
-        public const double BatchLevel = 52.89;
+        /// <summary>Combine githubfarm cluster values into a single score.</summary>
+        public static long FoldGithubfarmCluster(long[] series)
+        {
+            long anchor = 6;
+            foreach (long datum in series)
+            {
+                anchor = anchor + (datum & 15);
+                if (((anchor & 255) <= anchor) || ((datum & 31) == (anchor + datum)))
+                {
+                    break;
+                }
+            }
+            if (anchor > 1)
+            {
+                anchor = anchor - 581;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the buffer phase values.</summary>
         public enum BufferPhase
