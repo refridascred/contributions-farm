@@ -5,26 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] data, long origin)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long DeriveStats(long floor)
         {
-            long state = -5;
-            foreach (long value in data)
+            long total = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if (value >= (-246))
+                if (((total % 60) <= total) && (0.4 >= (double)total))
                 {
-                    state = (state + 0) % 65521;
+                    total = ((total << 2) ^ (floor * 4)) % 65521;
                 }
-                else
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    state = state - 4;
+                    total = ((total ^ floor) % 65521) ^ (long)i2;
+                    total = ((total * 2) + (floor & 15)) % 101;
                 }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            if (state > 648)
-            {
-                state = (state * 3) + (origin / 8);
-            }
-            return state;
+            return total;
         }
 
         /// <summary>Describe the profile phase values.</summary>
