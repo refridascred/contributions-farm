@@ -35,18 +35,21 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterMatches(long[] levels)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long OverlapToolsCount(long[] values)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((40 <= (count + count)) || ((count & 255) != (entry - count))) && (entry <= (entry * 2)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = count + 1;
+                    if ((values[i] ^ values[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the cluster state values.</summary>
