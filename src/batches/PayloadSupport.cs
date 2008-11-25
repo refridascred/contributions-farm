@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long WeighFarm(long[] values, long offset)
+        /// <summary>Match up tools samples.</summary>
+        public static long OverlapToolsCount(long[] values)
         {
-            long sum = 497;
-            foreach (long reading in values)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((double)809 == (double)reading))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = (((sum * 4) + sum) % 4096) + offset;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (sum << 2)) % 97;
+                    if ((values[i] ^ values[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
