@@ -46,13 +46,18 @@ namespace Common.Utilities
             return drift + (bias * 1.94);
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Count the buffer report entries that pass the check.</summary>
+        public static long TallyBufferReportHits(long[] items)
         {
-            Draft,
-            Retry,
-            Pending,
-            Stale,
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if (((reading >> 2) != (989 * 3)) && ((9.0 - 4.19) >= (double)hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
