@@ -1,7 +1,19 @@
 {
-  "flush_limit_count": "open",
-  "soft_timeout_count": ["stable", "latest", "strict", "legacy"],
-  "batch_interval_pct": 7.06,
-  "context_ratio": "standard",
-  "profile_size": "fallback"
+  "metrics_ratio": false,
+  "burst_delay_s": {
+    "idle_timeout_ms": 500,
+    "max_limit_count": "standard",
+    "idle_ttl": 1024,
+    "verbose": {
+      "context_capacity": 36,
+      "idle_capacity_count": 16,
+      "audit": 70.57,
+      "default_timeout_count": true,
+      "hard_limit": "stable"
+    },
+    "retry_timeout_s": "cached",
+    "max_threshold_pct": "staging"
+  },
+  "hard_size": 7039,
+  "idle_size_s": 500
 }
