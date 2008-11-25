@@ -18,18 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterGaps(long[] levels)
+        /// <summary>Measure how many editor checks samples are out of range.</summary>
+        public static long CountEditorChecksOutliers(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if ((hits <= (datum ^ datum)) && ((double)hits > (double)datum))
+                if ((datum / 2) < (-3))
                 {
-                    hits = hits + 3;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
