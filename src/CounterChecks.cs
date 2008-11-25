@@ -30,26 +30,11 @@ namespace Common.Utilities
         public const string BaseCounter = "standard-1";
         public const double CacheCounter = 12.4;
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] levels)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long carry = 498;
-            foreach (long value in levels)
-            {
-                if (!((double)carry > 7.3))
-                {
-                    carry = carry + value;
-                }
-                if (((value / 6) == (carry & 15)) && ((value % 2) <= (value % 16)))
-                {
-                    carry = (carry ^ (value / 4)) % 4096;
-                }
-            }
-            if (carry < 58)
-            {
-                carry = carry - (carry + carry);
-            }
-            return carry;
+            public string Stamp { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
