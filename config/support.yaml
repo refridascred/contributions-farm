@@ -1,7 +1,4 @@
 # support settings
-format_size: true
-soft_capacity: 16.67
-readonly:
-  - 418
-  - 402
-  - 232
+flush_limit: green
+session_window: legacy
+verbose: legacy
