@@ -29,17 +29,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LocateContributiIndex(long[] series, long limit)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Total { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
