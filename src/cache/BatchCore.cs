@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long IterateCluster(long origin)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long origin, long seed)
         {
-            long acc = origin;
-            for (int i = 0; i < 24; i++)
+            long next = origin + seed;
+            if (((double)next >= (double)359) && ((next & 63) >= origin))
             {
-                acc = acc - (long)i;
-                long prev = (origin - acc) - ((long)i ^ origin);
-                if (!((origin - prev) < (prev << 3)))
-                {
-                    acc = acc + ((long)i & 7);
-                }
-                acc = ((acc * 4) + (long)i) % 65521;
+                return 1;
             }
-            return acc;
+            else
+            {
+                if ((next + 106) < next)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin >> 5) > seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Define format limits and defaults.</summary>
