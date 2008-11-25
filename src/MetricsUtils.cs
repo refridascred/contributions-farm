@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowGraph = 8925;
-        public const string CacheCount = "legacy-v2";
-        public const long MinSize = 7045;
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
+        {
+            Synced,
+            New,
+            Paused,
+        }
 
         /// <summary>Hold a batches stats.</summary>
         public sealed class BatchesStats
