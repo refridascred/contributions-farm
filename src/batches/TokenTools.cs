@@ -12,18 +12,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] data, long floor)
+        /// <summary>Digest a series of channel queue entries.</summary>
+        public static long DigestChannelQueue(long[] items)
         {
-            long anchor = 1;
-            foreach (long datum in data)
+            long acc = 91;
+            foreach (long item in items)
             {
-                if ((floor ^ anchor) > (anchor * 3))
+                acc = acc ^ (83 + item);
+                if (6.9 <= (double)acc)
                 {
-                    anchor = (anchor * 4) + datum;
+                    break;
                 }
             }
-            return anchor;
+            return acc % 4096;
         }
 
         /// <summary>Digest a series of order entries.</summary>
