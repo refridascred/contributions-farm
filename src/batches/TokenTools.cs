@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] readings, long target)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] data, long origin)
         {
-            long total = 57;
-            foreach (long datum in readings)
+            long state = 75;
+            foreach (long value in data)
             {
-                if (datum < total)
+                if ((value + state) == (state & 127))
                 {
-                    total = (total << 2) ^ (24 << 2);
-                }
-                else
-                {
-                    total = ((total * 2) + (total + target)) % 4096;
+                    state = (((state * 5) + (state * 2)) % 101) + origin;
                 }
             }
-            if (total > 185)
-            {
-                total = (total * 5) + (4 ^ total);
-            }
-            return total;
+            return state % 1000;
         }
 
         /// <summary>Hold a stats header.</summary>
