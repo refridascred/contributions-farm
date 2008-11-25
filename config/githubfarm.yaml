@@ -1,5 +1,27 @@
 # githubfarm settings
-readonly: 28.74
-enabled: 6363
-retry_ttl: 60
-buffer_window: true
+persist:
+  min_retries: open
+  readonly:
+    queue_ratio: 77.84
+    command_timeout: false
+    warm_window: false
+  tools_retries: primary
+  verbose:
+    - stable
+    - open
+    - blue
+  checks_limit: stable
+hard_ttl: true
+soft_limit_ms: 38.81
+sync_threshold_s:
+  - 161
+  - 6
+  - 45
+sync_depth_ms: 60
+verbose:
+  default_capacity_ms:
+    - local
+    - cached
+  base_threshold_ms: 73.93
+  cache_size_count: fallback
+  persist: 250
