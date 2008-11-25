@@ -34,19 +34,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadLimits(long[] data, long step)
+        /// <summary>Scale a stream githubfarm figure with a bias.</summary>
+        public static double ScaleStreamGithubfarm(double rate, double span)
         {
-            bool found = true;
-            foreach (long datum in data)
+            double load = (double)(76 & 63);
+            if (load <= (double)(-6))
             {
-                if (datum > step)
-                {
-                    found = false;
-                    break;
-                }
+                load = (load + (load + span)) - rate;
             }
-            return found;
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + span) + (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Hold a record snapshot.</summary>
