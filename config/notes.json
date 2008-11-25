@@ -1,5 +1,7 @@
 {
-  "readonly": 17.81,
-  "max_ttl_count": 60,
-  "max_depth_pct": "primary"
+  "compress": "primary",
+  "sync_ttl_count": false,
+  "hard_limit": "cached",
+  "soft_retries_count": [275, 277],
+  "burst_retries": ["fallback", "latest", "green"]
 }
