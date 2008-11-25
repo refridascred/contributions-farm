@@ -1,9 +1,6 @@
-id,token,score,state,rank
-1,10.88,12.25,legacy,15.97
-2,769,standard,729,113
-3,782,strict,328,995
-4,57.97,standard,legacy,140
-5,strict,315,600,641
-6,184,latest,green,430
-7,62.58,eu-west,43.25,7.58
-8,56.75,695,390,latest
+id,label,score
+1,17.19,latest
+2,65.65,51.12
+3,158,staging
+4,cached,edge
+5,90,21.39
