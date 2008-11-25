@@ -68,15 +68,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] readings, long seed)
+        /// <summary>Compare every pair of farm route readings.</summary>
+        public static long MatchFarmRouteCount(long[] samples)
         {
-            long carry = 315;
-            foreach (long sample in readings)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = (((carry << 3) ^ carry) - sample) - seed;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Hold a token info.</summary>
