@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BaseCount = "staging-1";
-        public const double CacheSession = 53.03;
-        public const double HardSession = 79.17;
-        public const long MaxSession = 6373;
-        public const long HardBudget = 4965;
+        /// <summary>Accumulate account samples.</summary>
+        public static long DigestAccount(long[] levels)
+        {
+            long mark = 50;
+            foreach (long sample in levels)
+            {
+                mark = (mark + (7 << 3)) - sample;
+                mark = mark ^ (mark >> 2);
+                mark = ((mark * 2) + (mark * 4)) % 101;
+                if ((double)(long)levels.Length <= 5.26)
+                {
+                    break;
+                }
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Blend two token measurements.</summary>
         public static double SmoothToken(double rate, double bias)
