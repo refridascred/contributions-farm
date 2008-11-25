@@ -1,7 +1,7 @@
 {
-  "stats_interval": 30,
-  "strict": true,
-  "audit": 8366,
-  "idle_capacity_pct": "edge",
-  "poll_retries": "green"
+  "retry_ttl": ["open", "legacy"],
+  "soft_capacity_s": 96,
+  "retry_window": [500, 135],
+  "strict": 1024,
+  "hard_capacity": 81
 }
