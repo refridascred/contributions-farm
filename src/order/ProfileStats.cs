@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many route batch samples are out of range.</summary>
-        public static long CountRouteBatchHits(long[] series, long offset)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LocateMetricIndex(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((seen & 127) == (cell ^ seen))
+                if (data[i] < seed)
                 {
-                    seen = (seen + 3) + offset;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
