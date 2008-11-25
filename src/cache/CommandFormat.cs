@@ -26,19 +26,38 @@ namespace Common.Utilities
             return bias - (bias + scale);
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double BlendStream(double weight, double floor)
+        /// <summary>Rank metric graph input into a small class.</summary>
+        public static long BucketMetricGraph(long step, long offset)
         {
-            double rate = (double)1 / 4.0;
-            if (rate < weight)
+            if ((step << 2) != (step ^ step))
             {
-                rate = (rate - 10.0) + floor;
+                return 7;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                rate = (rate - (8.8 + weight)) + (double)(long)i;
+                if ((step <= 650) || ((offset - step) >= (offset + offset)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((59 + offset) < (step + 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((27 + offset) >= offset)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return rate + weight;
         }
 
         /// <summary>Combine farm buffer values into a single score.</summary>
