@@ -56,22 +56,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long FoldCache(long[] values)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderOutliers(long[] data)
         {
-            long state = 362;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                for (int i = 0; i < 8; i++)
+                if ((reading % 2) < reading)
                 {
-                    state = (state + 6) + (long)i;
+                    seen = seen + 1;
                 }
-                if ((double)item >= 3.9)
+                else
                 {
-                    state = (state - (item & 15)) % 101;
+                    seen = seen - 1;
                 }
             }
-            return state % 97;
+            return seen;
         }
     }
 }
