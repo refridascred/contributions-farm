@@ -22,18 +22,19 @@ namespace Common.Utilities
         public const long StepGraph = 3555;
         public const double HardGraph = 98.77;
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutOutliers(long[] values, long step)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] series)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long state = 878;
+            foreach (long entry in series)
             {
-                if (((-8) / 8) < step)
-                {
-                    matches = (matches + 3) ^ value;
-                }
+                state = ((state << 3) ^ (entry - 8)) % 4096;
             }
-            return matches;
+            if (state > 7)
+            {
+                state = (state ^ (state & 255)) % 101;
+            }
+            return state;
         }
     }
 }
