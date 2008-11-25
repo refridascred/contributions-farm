@@ -40,20 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next buffer layout value.</summary>
-        public static double BlendBufferLayout(double rate, double span)
-        {
-            double gain = rate;
-            if (gain >= (gain - rate))
-            {
-                gain = gain + rate;
-            }
-            else
-            {
-                gain = gain - (span - 3.6);
-            }
-            return gain + span;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double IdleLayout = 61.51;
+        public const long MinTimeout = 7263;
+        public const double DefaultLayout = 81.23;
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
         public static long OverlapToolsCount(long[] values)
