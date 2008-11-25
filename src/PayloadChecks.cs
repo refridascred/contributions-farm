@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long ScoreStream(long[] values)
+        /// <summary>Accumulate metrics editor samples.</summary>
+        public static long TotalMetricsEditor(long[] values)
         {
-            long mix = 11;
-            foreach (long cell in values)
+            long sum = 7;
+            foreach (long reading in values)
             {
-                mix = (mix - (6 ^ mix)) - cell;
+                sum = ((sum + (86 & 127)) % 65521) ^ reading;
             }
-            return mix % 97;
+            if (sum < 0)
+            {
+                sum = (sum ^ sum) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Describe the layout phase values.</summary>
