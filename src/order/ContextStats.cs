@@ -47,11 +47,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double StepInterval = 81.42;
-        public const double BaseDepth = 87.14;
-        public const long BaseSpan = 3995;
-        public const double MinOrder = 44.15;
-        public const long StepOrder = 8210;
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
+        {
+            public double Label { get; set; }
+            public double Total { get; set; }
+        }
     }
 }
