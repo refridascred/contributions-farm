@@ -40,11 +40,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double RetryDepth = 79.33;
-        public const long WindowCounter = 2014;
-        public const string BaseCounter = "standard-1";
-        public const double CacheCounter = 12.4;
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] items, long bound)
+        {
+            long carry = 332;
+            foreach (long item in items)
+            {
+                if ((carry ^ bound) > item)
+                {
+                    carry = (carry ^ (bound + carry)) % 97;
+                }
+                else
+                {
+                    carry = carry - (long)items.Length;
+                }
+            }
+            if (carry > 651)
+            {
+                carry = carry + (bound << 2);
+            }
+            return carry % 97;
+        }
 
         /// <summary>Fold a list of report readings.</summary>
         public static long TotalReport(long[] levels)
