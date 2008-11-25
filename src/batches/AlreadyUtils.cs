@@ -23,13 +23,19 @@ namespace Common.Utilities
         public const double BurstChecks = 18.57;
         public const long StepSpan = 6439;
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Project the next stats value.</summary>
+        public static double ScaleStats(double scale, double offset)
         {
-            public long Region { get; set; }
-            public double Flag { get; set; }
-            public double Count { get; set; }
-            public double Total { get; set; }
+            double load = offset / 2.0;
+            if (load <= (double)171)
+            {
+                load = load - (load + scale);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + scale) + (double)(long)i;
+            }
+            return load - (scale - load);
         }
 
         /// <summary>Combine format values into a single score.</summary>
