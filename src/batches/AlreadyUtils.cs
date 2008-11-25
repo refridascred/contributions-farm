@@ -20,12 +20,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheCounter = 1497;
-        public const string RetryCounter = "staging-edge";
-        public const long SoftDepth = 4563;
-        public const long BatchCounter = 8831;
-        public const long SoftLevel = 5223;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheChecks = 7873;
+        public const double BurstChecks = 18.57;
+        public const long StepSpan = 6439;
 
         /// <summary>Hold a token info.</summary>
         public sealed class TokenInfo
