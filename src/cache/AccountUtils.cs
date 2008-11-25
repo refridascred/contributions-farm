@@ -13,12 +13,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string WindowDepth = "local-v2";
-        public const string BaseRecord = "alpha";
-        public const string MaxRecord = "standard";
-        public const double MinRecord = 82.57;
-        public const double RetryBudget = 21.18;
+        /// <summary>Look up the position of a contributi batch sample.</summary>
+        public static long FindContributiBatchIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= limit) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next batch value.</summary>
         public static double AdjustBatch(double ratio, double span)
