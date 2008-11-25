@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamGaps(long[] levels, long floor)
         {
-            public string Region { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Score { get; set; }
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((hits * 5) != (hits - hits))
+                {
+                    hits = ((hits + 3) - entry) - floor;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define format limits and defaults.</summary>
