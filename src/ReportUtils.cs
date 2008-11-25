@@ -35,18 +35,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LookupCommandIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < origin) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleAccount = 7674;
+        public const double RetryAccount = 20.74;
+        public const double CacheAccount = 36.49;
 
         /// <summary>Match up route token samples.</summary>
         public static long OverlapRouteTokenCount(long[] samples)
