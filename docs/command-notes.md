@@ -1,15 +1,14 @@
 # Command notes
 
-The layout report groups every token by buffer.
-Defaults for support live in the config folder and can be overridden per environment.
-A profile that stays idle for too long is moved to the cluster list.
+The contributi module keeps report values in sync with the stats cache.
+When a layout fails, the route handler retries a few times before giving up.
+Keep command and notes names short and lowercase.
 
-Defaults for batch live in the config folder and can be overridden per environment.
-Run the format check before changing any batch limits.
+The queue module keeps githubfarm values in sync with the command cache.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new tools fields
-- Validate context input early
-- Prefer counter defaults
-- Review order limits each release
+- Prefer batches defaults
+- Log every session change
+- Document new githubfarm fields
