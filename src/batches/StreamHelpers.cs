@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long seed, long step)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueBounds(long[] readings, long floor)
         {
-            long prev = seed - step;
-            if ((3.0 * 9.5) < (double)prev)
+            bool found = true;
+            foreach (long value in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((seed & 3) > (2 ^ prev)))
+                if (value <= floor)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
