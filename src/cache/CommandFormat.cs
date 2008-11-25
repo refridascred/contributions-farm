@@ -26,38 +26,17 @@ namespace Common.Utilities
             return bias - (bias + scale);
         }
 
-        /// <summary>Rank metric graph input into a small class.</summary>
-        public static long BucketMetricGraph(long step, long offset)
+        /// <summary>Find the first account metrics entry that matches the target.</summary>
+        public static long SeekAccountMetricsIndex(long[] samples, long target)
         {
-            if ((step << 2) != (step ^ step))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step <= 650) || ((offset - step) >= (offset + offset)))
+                if ((samples[i] > target) && ((samples[i] % 3) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((59 + offset) < (step + 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((27 + offset) >= offset)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine farm buffer values into a single score.</summary>
