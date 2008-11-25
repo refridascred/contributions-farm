@@ -37,10 +37,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheChecks = 7873;
-        public const double BurstChecks = 18.57;
-        public const long StepSpan = 6439;
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long SeriesBatch(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Project the next stats value.</summary>
         public static double ScaleStats(double scale, double offset)
