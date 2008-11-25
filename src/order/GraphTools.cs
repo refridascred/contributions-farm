@@ -62,9 +62,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstScore = 285;
-        public const long DefaultGraph = 5635;
-        public const double SoftBudget = 27.09;
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
+        {
+            public bool Flag { get; set; }
+            public long Stamp { get; set; }
+            public double Size { get; set; }
+            public long Total { get; set; }
+        }
     }
 }
