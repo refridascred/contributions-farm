@@ -51,21 +51,12 @@ namespace Common.Utilities
             return gain - (scale / 5.0);
         }
 
-        /// <summary>Count stream tools pairs that satisfy a relation.</summary>
-        public static long CompareStreamToolsCount(long[] levels)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Count { get; set; }
+            public long Limit { get; set; }
+            public long Total { get; set; }
         }
     }
 }
