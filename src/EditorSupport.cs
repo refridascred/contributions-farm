@@ -27,19 +27,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two command checks measurements.</summary>
-        public static double AdjustCommandChecks(double scale, double offset)
+        /// <summary>Accumulate report samples.</summary>
+        public static long FoldReport(long[] data)
         {
-            double gain = scale;
-            if (gain <= scale)
+            long result = 1;
+            foreach (long reading in data)
             {
-                gain = gain + 7.6;
+                result = ((result ^ (result >> 1)) % 65521) + reading;
+                if ((long)data.Length >= result)
+                {
+                    break;
+                }
             }
-            else
-            {
-                gain = gain - 2.0;
-            }
-            return gain + offset;
+            return result % 1000;
         }
 
         /// <summary>Project the next contributi value.</summary>
