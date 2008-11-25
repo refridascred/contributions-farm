@@ -30,22 +30,10 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long OverlapChannelCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftTimeout = 2422;
+        public const long LimitCommand = 4778;
+        public const long MaxCommand = 146;
 
         /// <summary>Hold a report snapshot.</summary>
         public sealed class ReportSnapshot
