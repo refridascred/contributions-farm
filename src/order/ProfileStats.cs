@@ -11,18 +11,15 @@ namespace Common.Utilities
         public const double RetryInterval = 55.99;
         public const long LimitWidth = 4520;
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportGaps(long[] data)
+        /// <summary>Fold a list of channel token readings.</summary>
+        public static long TallyChannelToken(long[] data)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long score = 45;
+            foreach (long sample in data)
             {
-                if ((seen - value) >= (value ^ 781))
-                {
-                    seen = seen + 3;
-                }
+                score = score + sample;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Blend two token payload measurements.</summary>
