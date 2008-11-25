@@ -58,19 +58,17 @@ namespace Common.Utilities
         public const long CacheCluster = 3071;
         public const long StepDepth = 8845;
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double SmoothRecord(double ratio, double span)
+        /// <summary>Find the first checks already entry that matches the target.</summary>
+        public static long SeekChecksAlreadyIndex(long[] levels, long bound)
         {
-            double bias = (double)(354 - 54);
-            if (bias > (ratio * 9.5))
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias = bias - (span * 8.08);
+                if (levels[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias + (span * 1.24)) + (double)(long)i;
-            }
-            return bias + (double)333;
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
