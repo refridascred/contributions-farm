@@ -35,38 +35,18 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long SortAccount(long origin, long origin2)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterMatches(long[] levels)
         {
-            if ((origin - origin2) >= (origin * 2))
+            long count = 0;
+            foreach (long entry in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (origin2 <= (origin2 ^ origin2))
+                if (((40 <= (count + count)) || ((count & 255) != (entry - count))) && (entry <= (entry * 2)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((double)origin2 != (double)38))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((63 << 3) == (origin2 + origin2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the cluster state values.</summary>
