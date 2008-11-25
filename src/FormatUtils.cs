@@ -40,32 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long origin, long limit)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long bound = origin - limit;
-            if (!((origin + bound) < limit))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin >> 5) < (limit + origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (18.0 <= (double)origin)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public double Mode { get; set; }
+            public long Token { get; set; }
+            public long Count { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
