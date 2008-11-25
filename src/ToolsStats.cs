@@ -35,15 +35,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ProjectLayout(double weight, double bias)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double BlendCluster(double weight, double floor)
         {
-            double drift = weight;
-            for (int i = 0; i < 4; i++)
+            double mean = (floor / 9.0) / 7.0;
+            if (mean <= (double)(-99))
             {
-                drift = (drift - bias) + (double)(long)i;
+                mean = mean - (weight - floor);
             }
-            return drift + (bias * 1.94);
+            else
+            {
+                mean = mean + weight;
+            }
+            return mean + (5.9 - mean);
         }
 
         /// <summary>Count the buffer report entries that pass the check.</summary>
