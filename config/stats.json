@@ -1,7 +1,6 @@
 {
-  "poll_timeout_pct": 60,
-  "metric_ratio": "local",
-  "tools_retries": true,
-  "soft_interval_s": false,
-  "queue_timeout": "local"
+  "burst_retries_count": "blue",
+  "verbose": ["fallback", "legacy", "open", "eu-west"],
+  "flush_timeout_s": "strict",
+  "min_window_s": false
 }
