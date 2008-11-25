@@ -25,11 +25,15 @@ namespace Common.Utilities
         public const long MinRoute = 4844;
         public const double WindowRoute = 1.4;
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TallyEntry(long[] samples)
         {
-            public bool Size { get; set; }
-            public long Label { get; set; }
+            long anchor = 60;
+            foreach (long cell in samples)
+            {
+                anchor = ((anchor << 2) ^ (cell + cell)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a filter header.</summary>
