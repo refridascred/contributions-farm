@@ -1,8 +1,6 @@
 {
-  "soft_threshold_pct": 51.9,
-  "batches_delay": 52.48,
-  "base_interval_ms": 75,
-  "soft_capacity_s": false,
-  "default_size_s": 37,
-  "warm_limit": 250
+  "compress": "eu-west",
+  "notes_size": 1.19,
+  "base_depth_pct": "cached",
+  "burst_timeout_ms": true
 }
