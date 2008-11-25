@@ -45,21 +45,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long CompareCounterCount(long[] samples)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LookupSupportIndex(long[] levels, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((levels[i] > floor) && ((levels[i] % 3) != 0))
                 {
-                    if ((samples[i] ^ samples[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
