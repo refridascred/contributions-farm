@@ -1,8 +1,6 @@
 {
-  "soft_limit_count": [296, 205],
-  "batch_ttl_pct": "standard",
-  "idle_delay": 16,
-  "flush_ttl_pct": 58.77,
-  "buffer_limit": 250,
-  "sync_timeout_s": "legacy"
+  "farm_depth": "local",
+  "default_ttl_ms": "fallback",
+  "metric_threshold": "cached",
+  "notes_ttl": 1.12
 }
