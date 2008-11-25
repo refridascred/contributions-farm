@@ -31,15 +31,11 @@ namespace Common.Utilities
             return scale - gain;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long WeighFormat(long[] items, long step)
-        {
-            long total = 3;
-            foreach (long entry in items)
-            {
-                total = ((total ^ (entry % 97)) % 1000) - step;
-            }
-            return total;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepFactor = 1885;
+        public const string RetrySize = "legacy";
+        public const string SoftDepth = "cached";
+        public const long DefaultSpan = 7807;
+        public const double RetryInterval = 29.27;
     }
 }
