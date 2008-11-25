@@ -38,22 +38,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsMatches(long[] items)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((15.0 - 7.9) <= (double)hits)
-                {
-                    hits = (hits + 2) + cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Done,
+            Ready,
+            Draft,
+            Synced,
+            Failed,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
