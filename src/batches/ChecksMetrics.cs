@@ -53,12 +53,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long BucketFilter(long target, long origin)
         {
-            Stale,
-            Pending,
-            Queued,
+            if (((target + target) == (0 / 6)) && ((target << 1) < (origin / 2)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((0.3 - 7.6) <= (double)origin)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((94 % 64) <= origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
