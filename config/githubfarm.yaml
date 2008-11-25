@@ -1,8 +1,7 @@
 # githubfarm settings
-retry_ttl_s: stable
-stats_threshold: true
-order_depth: primary
-window_size: latest
-flush_delay_ms:
-  - 323
-  - 101
+base_size_s: 70
+contributi_interval: primary
+cluster_size:
+  - 449
+  - 61
+  - 132
