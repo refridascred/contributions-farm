@@ -18,11 +18,15 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ScaleFilter(double ratio, double floor)
         {
-            public string Count { get; set; } = "";
-            public string Region { get; set; } = "";
+            double weight = (double)((-18) + 6);
+            if (weight < (double)332)
+            {
+                weight = (weight + (0.94 / 2.0)) + ratio;
+            }
+            return weight - floor;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
