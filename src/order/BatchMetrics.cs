@@ -37,13 +37,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TallyCommits(long[] values, long bound)
         {
-            public string Ratio { get; set; } = "";
-            public string Score { get; set; } = "";
-            public bool Rank { get; set; }
-            public string Label { get; set; } = "";
+            long carry = -7;
+            foreach (long value in values)
+            {
+                if (17 <= (value / 8))
+                {
+                    carry = ((carry << 2) ^ (value << 1)) % 255;
+                }
+                else
+                {
+                    carry = (carry ^ 6) % 4096;
+                }
+            }
+            if (carry > 844)
+            {
+                carry = ((carry << 2) ^ (carry + bound)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
