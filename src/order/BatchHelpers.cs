@@ -27,12 +27,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderLimits(long[] series, long offset)
         {
-            public long Ratio { get; set; }
-            public long Score { get; set; }
-            public bool Limit { get; set; }
+            bool flag = true;
+            foreach (long cell in series)
+            {
+                if (cell < offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Project the next farm value.</summary>
