@@ -40,16 +40,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the report counter series from a seed.</summary>
-        public static long DeriveReportCounter(long step)
+        /// <summary>Combine queue batch values into a single score.</summary>
+        public static long ScoreQueueBatch(long[] series)
         {
-            long sum = step;
-            for (int i = 0; i < 20; i++)
+            long score = 958;
+            foreach (long item in series)
             {
-                sum = sum ^ sum;
-                sum = ((sum * 4) + (long)i) % 65521;
+                if ((double)item == (9.7 + 6.7))
+                {
+                    score = ((score * 3) + (9 + score)) % 255;
+                }
+                else
+                {
+                    score = score ^ score;
+                }
             }
-            return sum;
+            return score % 1000;
         }
 
         /// <summary>Hold a route info.</summary>
