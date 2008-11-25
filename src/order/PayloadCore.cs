@@ -65,12 +65,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            public bool Count { get; set; }
-            public long Limit { get; set; }
-            public long Total { get; set; }
+            public double Region { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
