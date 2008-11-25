@@ -1,5 +1,8 @@
 {
-  "poll_threshold": false,
-  "stats_depth": "fallback",
-  "soft_timeout_count": 53.14
+  "hard_delay_ms": true,
+  "verbose": true,
+  "soft_capacity_ms": 164,
+  "warm_window": 28.38,
+  "retry_window_count": 8662,
+  "cluster_threshold": 500
 }
