@@ -55,19 +55,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionBounds(long[] samples, long step)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] items, long target)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry >= step)
+                if (items[i] <= target)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
