@@ -45,18 +45,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the contributi notes entries that pass the check.</summary>
-        public static long CountContributiNotesGaps(long[] values, long bound)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double AdjustBatch(double scale, double span)
         {
-            long matches = 0;
-            foreach (long value in values)
+            double drift = (double)((-1) + 8);
+            if (drift > (scale - span))
             {
-                if ((value + 38) != (matches - 1))
-                {
-                    matches = (matches + 1) - bound;
-                }
+                drift = drift + (double)266;
             }
-            return matches;
+            else
+            {
+                drift = drift + 16.0;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + (span - drift)) - (double)(long)i;
+            }
+            return drift + (scale - span);
         }
     }
 }
