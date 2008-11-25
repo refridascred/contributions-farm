@@ -1,5 +1,5 @@
 {
-  "max_timeout_pct": 59,
-  "batch_retries": "local",
-  "report_depth": 9979
+  "poll_depth": 51,
+  "default_delay_ms": true,
+  "stream_ttl": 42.73
 }
