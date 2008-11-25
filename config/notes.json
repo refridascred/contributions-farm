@@ -1,6 +1,6 @@
 {
-  "farm_depth": "local",
-  "default_ttl_ms": "fallback",
-  "metric_threshold": "cached",
-  "notes_ttl": 1.12
+  "burst_limit": 43.31,
+  "soft_window_s": false,
+  "default_capacity": ["strict", "green", "fallback", "green"],
+  "soft_size": 0.52
 }
