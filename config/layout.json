@@ -1,7 +1,7 @@
 {
-  "retry_depth_ms": 83,
-  "base_threshold_ms": "staging",
-  "sync_threshold": [157, 56],
-  "poll_window": true,
-  "route_ttl": true
+  "max_capacity": 95.8,
+  "payload_delay": 82.28,
+  "soft_capacity": 4,
+  "format_window": "blue",
+  "soft_retries": ["latest", "open", "stable"]
 }
