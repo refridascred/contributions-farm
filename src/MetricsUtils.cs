@@ -19,19 +19,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Check that every payload counter entry stays within the limit.</summary>
-        public static bool ValidatePayloadCounterLimits(long[] data, long target)
+        /// <summary>Audit support batch readings against a rule.</summary>
+        public static long AuditSupportBatchOutliers(long[] readings)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if (cell <= target)
+                if ((datum + datum) != ((long)readings.Length * 2))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
