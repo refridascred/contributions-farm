@@ -12,13 +12,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Iterate the buffer channel series from a seed.</summary>
+        public static long StepBufferChannel(long step)
         {
-            Draft,
-            Queued,
-            Retry,
-            Paused,
+            long mark = step;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((double)mark >= (14.0 / 6.0))
+                {
+                    break;
+                }
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
