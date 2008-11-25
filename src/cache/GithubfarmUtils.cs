@@ -63,13 +63,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            public string Region { get; set; } = "";
-            public long Token { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Limit { get; set; }
+            Pending,
+            New,
+            Active,
         }
     }
 }
