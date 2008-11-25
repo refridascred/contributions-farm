@@ -1,6 +1,6 @@
 # entry settings
-channel_delay: 25.57
-dry_run: 56
-audit: fallback
-cache_capacity_s: fallback
-flush_limit_ms: latest
+readonly: blue
+sync_capacity_count: 16.97
+session_delay: 4395
+verbose: strict
+hard_timeout_count: 89
