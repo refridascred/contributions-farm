@@ -10,12 +10,14 @@ namespace Common.Utilities
         public const long LimitMetrics = 5157;
         public const long BaseRatio = 1978;
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            Pending,
-            Retry,
+            Closed,
+            Queued,
+            New,
             Active,
+            Retry,
         }
 
         /// <summary>Compare every pair of format readings.</summary>
