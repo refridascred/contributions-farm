@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseContext = 2520;
-        public const string DefaultFactor = "latest";
-        public const long MaxContext = 1991;
-        public const string RetryContext = "stable-v2";
-        public const string CacheContext = "open";
+        /// <summary>Derive the next token cluster value from a seed.</summary>
+        public static long RollTokenCluster(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Match up batch order samples.</summary>
         public static long CompareBatchOrderCount(long[] data)
