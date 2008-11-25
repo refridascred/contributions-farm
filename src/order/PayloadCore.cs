@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Roll a already editor counter forward.</summary>
-        public static long DeriveAlreadyEditor(long origin)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long anchor = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
+            Active,
+            Idle,
+            Done,
         }
 
         /// <summary>Compare every pair of buffer cache readings.</summary>
