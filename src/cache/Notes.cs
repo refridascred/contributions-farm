@@ -54,15 +54,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long SeriesFilter(long origin)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowLimits(long[] data, long target)
         {
-            long state = origin;
-            for (int i = 0; i < 23; i++)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                state = ((state * 3) + (long)i) % 1000;
+                if (reading > target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
