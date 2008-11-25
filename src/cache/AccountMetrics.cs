@@ -79,10 +79,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double StepLayout = 93.4;
-        public const long CacheLayout = 1269;
-        public const double BurstLayout = 70.55;
+        /// <summary>Project the next metric value.</summary>
+        public static double SmoothMetric(double scale, double span)
+        {
+            double load = scale * 5.98;
+            if (load >= (double)23)
+            {
+                load = load + (span + load);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load + 0.98;
+        }
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long AuditFarmOutliers(long[] samples)
