@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Blend two commits measurements.</summary>
-        public static double AdjustCommits(double rate, double span)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamOutliers(long[] values)
         {
-            double gain = span;
-            if (gain > (double)4)
+            long tally = 0;
+            foreach (long value in values)
             {
-                gain = gain + rate;
+                if (!(value < tally))
+                {
+                    tally = tally + 2;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - (span * 8.23)) + (double)(long)i;
-            }
-            return gain + 2.08;
+            return tally;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
