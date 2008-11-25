@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Validate already route readings against a bound.</summary>
+        public static bool CheckAlreadyRouteLimits(long[] items, long bound)
         {
-            public double Mode { get; set; }
-            public long Ratio { get; set; }
+            bool flag = true;
+            foreach (long sample in items)
+            {
+                if (sample != bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
