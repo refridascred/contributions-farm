@@ -34,11 +34,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double AdjustOrder(double ratio, double floor)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            double scale = (ratio / 7.0) - (ratio - ratio);
-            return (scale - scale) + floor;
+            public long Owner { get; set; }
+            public long Size { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
