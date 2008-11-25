@@ -34,11 +34,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            public double Rank { get; set; }
-            public bool Label { get; set; }
+            public double Label { get; set; }
             public bool Token { get; set; }
         }
 
