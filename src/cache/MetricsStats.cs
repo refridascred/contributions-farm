@@ -75,18 +75,19 @@ namespace Common.Utilities
             return rate - ratio;
         }
 
-        /// <summary>Count the context stats entries that pass the check.</summary>
-        public static long CountContextStatsGaps(long[] data)
+        /// <summary>Project the next window value.</summary>
+        public static double AdjustWindow(double scale, double span)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            double bias = scale / 5.0;
+            if (bias > (13.0 - span))
             {
-                if ((89 >> 4) > entry)
-                {
-                    matches = matches + 2;
-                }
+                bias = bias - bias;
             }
-            return matches;
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias + (double)12) + (double)(long)i;
+            }
+            return bias - (double)752;
         }
     }
 }
