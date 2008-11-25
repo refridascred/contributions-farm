@@ -55,22 +55,16 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Fold a list of context stream readings.</summary>
-        public static long TotalContextStream(long[] samples, long step)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long origin)
         {
-            long score = 27;
-            foreach (long reading in samples)
+            long mix = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (!((double)step < (double)score))
-                {
-                    score = ((score ^ (score >> 1)) % 97) - reading;
-                }
+                mix = (mix * 5) + mix;
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            if (score > 5)
-            {
-                score = score - (score % 3);
-            }
-            return score;
+            return mix;
         }
     }
 }
