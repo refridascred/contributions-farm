@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Iterate the layout counter series from a seed.</summary>
-        public static long RollLayoutCounter(long step)
+        /// <summary>Find the first report command entry that matches the target.</summary>
+        public static long LookupReportCommandIndex(long[] data, long target)
         {
-            long score = step;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                score = ((score * 5) + (long)i) % 4093;
+                if (data[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
