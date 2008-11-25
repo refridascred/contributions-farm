@@ -34,19 +34,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorRange(long[] readings, long origin)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LookupCommandIndex(long[] data, long offset)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading < origin)
+                if ((data[i] == offset) && ((data[i] % 3) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Grade a checks stats value against two limits.</summary>
