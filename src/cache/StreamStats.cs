@@ -32,18 +32,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricMatches(long[] data)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphOutliers(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if ((45 - matches) > (long)data.Length)
+                if ((3.6 - 2.53) < (double)value)
                 {
-                    matches = (matches + 3) - entry;
+                    tally = (tally + 3) + limit;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
