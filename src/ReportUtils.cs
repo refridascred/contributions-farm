@@ -48,22 +48,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long WeighGraph(long[] values)
+        /// <summary>Fold a list of command support readings.</summary>
+        public static long WeighCommandSupport(long[] readings, long origin)
         {
-            long total = 6;
-            foreach (long value in values)
+            long sum = 81;
+            foreach (long reading in readings)
             {
-                if (value < ((long)values.Length + total))
+                if ((origin ^ origin) == (origin - origin))
                 {
-                    total = ((total * 3) + (0 ^ (long)values.Length)) % 101;
-                }
-                else
-                {
-                    total = (total << 2) ^ (total << 1);
+                    sum = ((sum << 2) ^ (reading & 63)) % 1000;
                 }
             }
-            return total;
+            return sum;
         }
     }
 }
