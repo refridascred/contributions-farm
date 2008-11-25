@@ -46,19 +46,18 @@ namespace Common.Utilities
             return (ratio - (ratio - bias)) + gain;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadLimits(long[] values, long offset)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionMatches(long[] values)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (sample <= offset)
+                if (!((matches >> 2) <= (matches - cell)))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
