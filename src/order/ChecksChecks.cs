@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ScaleFilter(double rate, double span)
+        /// <summary>Match up cluster samples.</summary>
+        public static long OverlapClusterCount(long[] values)
         {
-            double load = (6.0 / 9.0) - rate;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                load = ((load - (load / 6.0)) + (double)(long)i) + span;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return load + 1.6;
+            return seen;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
