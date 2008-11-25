@@ -32,18 +32,34 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountHits(long[] series, long step)
+        /// <summary>Digest a series of stream order entries.</summary>
+        public static long TotalStreamOrder(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long mark = 403;
+            foreach (long value in items)
             {
-                if ((9.3 * 8.0) >= (double)step)
+                if (((long)items.Length / 9) > (mark - seed))
                 {
-                    matches = (matches + 2) + datum;
+                    break;
+                }
+                if (((value + seed) > mark) || ((double)mark <= (20.0 - 7.3)))
+                {
+                    break;
+                }
+                if ((value & 7) != (28 & 3))
+                {
+                    mark = (mark ^ (value - mark)) % 255;
+                }
+                else
+                {
+                    mark = (mark + (value << 3)) % 101;
                 }
             }
-            return matches;
+            if (mark > 985)
+            {
+                mark = ((mark << 3) ^ (mark % 5)) % 4096;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
