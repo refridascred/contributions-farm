@@ -27,21 +27,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up support editor samples.</summary>
-        public static long OverlapSupportEditorCount(long[] values)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Rank { get; set; }
+            public bool Label { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Hold a stream summary.</summary>
