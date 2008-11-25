@@ -55,14 +55,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
-        {
-            Synced,
-            Pending,
-            Dropped,
-            Failed,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string RetryRatio = "stable-v2";
+        public const long IdleInterval = 5562;
+        public const string CacheCounter = "legacy";
+        public const long StepCount = 4933;
+        public const long HardRatio = 324;
 
         /// <summary>Derive the next metric window value from a seed.</summary>
         public static long SeriesMetricWindow(long bound)
