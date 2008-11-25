@@ -12,21 +12,22 @@ namespace Common.Utilities
         public const long LimitGithubfarm = 1505;
         public const long BaseTimeout = 2198;
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long OverlapRouteCount(long[] samples)
+        /// <summary>Count the token channel entries that pass the check.</summary>
+        public static long CountTokenChannelGaps(long[] values, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((-263) >= (hits - cell))
                 {
-                    if ((samples[i] ^ samples[j]) > 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 3) - seed;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
