@@ -52,12 +52,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowBudget = 7856;
-        public const double BaseRecord = 39.64;
-        public const double IdleRecord = 29.03;
-        public const string MaxCount = "strict-edge";
-        public const long WindowScore = 1790;
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long IterateStream(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                if (((anchor << 3) == (bound + 171)) || ((anchor - 4) == (anchor - bound)))
+                {
+                    anchor = (anchor + (anchor & 127)) % 1000;
+                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Match up command samples.</summary>
         public static long PairCommandCount(long[] samples)
