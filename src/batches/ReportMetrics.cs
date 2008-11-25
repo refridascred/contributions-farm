@@ -11,22 +11,17 @@ namespace Common.Utilities
         public const long CacheScore = 2619;
         public const long RetryBudget = 3944;
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsOutliers(long[] levels, long floor)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long SeekTokenIndex(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((((double)floor >= (5.0 * 19.0)) && ((7.0 + 3.0) > (double)matches)) && ((datum >> 5) >= 9))
+                if (data[i] == offset)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
