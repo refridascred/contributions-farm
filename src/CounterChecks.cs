@@ -47,12 +47,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitCluster = 3503;
-        public const double WindowCluster = 34.38;
-        public const string BurstCluster = "open-1";
-        public const string SoftBudget = "legacy";
-        public const long StepCluster = 3177;
+        /// <summary>Roll a session counter forward.</summary>
+        public static long SeriesSession(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                if (!((2.3 / 8.0) == (double)offset))
+                {
+                    mix = mix - ((long)i - (-700));
+                }
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Find the first support entry that matches the target.</summary>
         public static long FindSupportIndex(long[] levels, long bound)
