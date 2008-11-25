@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string StepWidth = "local-1";
-        public const string BatchWindow = "stable";
-        public const long RetryWindow = 7797;
-        public const string LimitRatio = "fallback-v2";
-        public const long MinSize = 6610;
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long ScoreLayout(long[] levels, long target)
+        {
+            long acc = 3;
+            foreach (long entry in levels)
+            {
+                if ((entry > (90 + (-5))) && ((9.25 / 4.0) == (double)acc))
+                {
+                    acc = ((acc + (acc + 11)) % 65521) - target;
+                }
+                else
+                {
+                    acc = acc - (3 + acc);
+                }
+            }
+            return acc % 97;
+        }
 
         /// <summary>Roll a route counter forward.</summary>
         public static long DeriveRoute(long seed)
