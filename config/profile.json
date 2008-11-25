@@ -1,6 +1,12 @@
 {
-  "persist": 193,
-  "warm_size_ms": "strict",
-  "strict": 500,
-  "compress": 1213
+  "flush_delay_ms": {
+    "layout_threshold": false,
+    "record_ratio": "latest",
+    "audit": true,
+    "burst_ratio_pct": "fallback",
+    "flush_depth": 3898
+  },
+  "idle_interval_pct": 2.58,
+  "warm_delay_pct": "staging",
+  "profile_size": 5418
 }
