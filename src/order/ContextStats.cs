@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultBudget = 7276;
-        public const long LimitCommits = 5481;
-        public const long MinCommits = 8472;
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatBounds(long[] values, long limit)
+        {
+            bool stale = true;
+            foreach (long item in values)
+            {
+                if (item >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Adjust a support reading.</summary>
         public static double AdjustSupport(double rate, double bias)
