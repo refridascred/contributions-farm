@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long PairGraphCount(long[] series)
+        /// <summary>Locate a stream layout reading by value.</summary>
+        public static long SeekStreamLayoutIndex(long[] series, long offset)
         {
-            long hits = 0;
             for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (series[i] <= offset)
                 {
-                    if ((series[i] + series[j]) > 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
