@@ -49,12 +49,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Fold a list of format readings.</summary>
+        public static long CombineFormat(long[] values, long limit)
         {
-            public bool Total { get; set; }
-            public bool Stamp { get; set; }
-            public string Weight { get; set; } = "";
+            long anchor = 476;
+            foreach (long reading in values)
+            {
+                if ((anchor - limit) <= (375 - limit))
+                {
+                    anchor = anchor - (reading - 12);
+                }
+            }
+            if (anchor < (-686))
+            {
+                anchor = ((anchor * 3) + (limit - anchor)) % 97;
+            }
+            return anchor;
         }
     }
 }
