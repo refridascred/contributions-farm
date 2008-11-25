@@ -1,33 +1,13 @@
 # support settings
-farm_depth:
-  - 240
-  - 3
-  - 467
-token_window: latest
-tools_capacity: true
-flush_ttl_count: false
-default_interval_s:
-  min_size:
-    command_ratio: eu-west
-    checks_capacity: standard
-    buffer_ratio: 1482
-  min_interval:
-    stats_size: true
-    cache_capacity_ms: true
-    max_window: false
-    token_ttl: 29.92
-    default_delay_pct:
-      - 63
-      - 402
-      - 441
-  retry_ratio_ms: staging
-  farm_ttl:
-    default_threshold: green
-    min_depth_ms: 26.0
-    min_timeout_pct: 8
-    batch_ratio: 60
-    session_delay:
-      - cached
-      - stable
-  persist: 2878
-soft_timeout_ms: true
+hard_window_ms:
+  counter_limit: 9
+  flush_retries_pct: standard
+  soft_delay_pct: staging
+  base_ttl_count: 93.78
+  persist:
+    - green
+    - stable
+    - blue
+  max_window_pct: true
+idle_threshold: 4559
+enabled: 34
