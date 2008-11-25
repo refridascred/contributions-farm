@@ -44,12 +44,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long SortAccount(long origin, long floor)
         {
-            Dropped,
-            Ready,
-            Active,
+            if ((origin >> 5) <= (966 + floor))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin + 34) >= (origin - origin))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)649 < (double)floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin - origin) <= floor)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two buffer measurements.</summary>
