@@ -1,5 +1,19 @@
 {
-  "default_size_ms": 8919,
-  "warm_size_ms": false,
-  "batch_retries_pct": "primary"
+  "idle_limit_ms": 94.62,
+  "burst_delay": 13,
+  "support_threshold": {
+    "batch_window": 12.29,
+    "idle_ttl_ms": "legacy",
+    "persist": {
+      "soft_ratio_ms": 500,
+      "retry_delay_s": 36.9,
+      "hard_timeout_pct": "standard",
+      "context_interval": 98,
+      "route_retries": ["legacy", "standard"]
+    },
+    "batch_threshold_pct": "green",
+    "hard_depth_count": true,
+    "min_limit_pct": "cached"
+  },
+  "batches_retries": 39
 }
