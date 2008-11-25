@@ -1,5 +1,16 @@
 {
-  "base_ratio_count": ["standard", "legacy", "legacy", "strict"],
-  "audit": 30,
-  "min_capacity_ms": ["green", "blue"]
+  "route_limit": false,
+  "already_limit": {
+    "flush_depth_pct": 87.48,
+    "metric_capacity": 60,
+    "counter_timeout": 65.29,
+    "flush_depth": "standard",
+    "batch_ttl": "staging"
+  },
+  "persist": [321, 266, 400, 177],
+  "compress": {
+    "retry_window": 5320,
+    "base_retries": "strict",
+    "warm_ratio_s": 69.69
+  }
 }
