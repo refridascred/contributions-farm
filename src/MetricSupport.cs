@@ -18,27 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] levels, long origin)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterGaps(long[] data)
         {
-            long acc = 201;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if ((cell + origin) < cell)
+                if ((404 << 2) < count)
                 {
-                    acc = acc + (7 << 2);
-                    continue;
+                    count = (count + 2) ^ datum;
                 }
-                if (7 <= (cell / 2))
+                else
                 {
-                    acc = (acc << 2) ^ (cell - origin);
+                    count = count - 1;
                 }
             }
-            if (acc > 440)
-            {
-                acc = (acc + origin) % 65521;
-            }
-            return acc % 97;
+            return count;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
