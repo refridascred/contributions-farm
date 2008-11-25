@@ -1,8 +1,5 @@
 {
-  "window_ttl": "open",
-  "commits_retries": "staging",
-  "warm_delay_ms": 36,
-  "stats_delay": "blue",
-  "poll_capacity_ms": "stable",
-  "counter_ratio": "standard"
+  "layout_window": 60,
+  "cache_timeout_ms": false,
+  "warm_retries_s": 45.14
 }
