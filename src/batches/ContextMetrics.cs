@@ -36,16 +36,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long IterateRecord(long bound)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long acc = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                acc = ((acc << 2) ^ (long)i) % 65521;
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            public bool Owner { get; set; }
+            public long Flag { get; set; }
+            public double Stamp { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Combine cache values into a single score.</summary>
