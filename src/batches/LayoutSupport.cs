@@ -11,11 +11,12 @@ namespace Common.Utilities
         public const long BasePayload = 4926;
         public const long MaxSpan = 9798;
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            public long Count { get; set; }
-            public double Mode { get; set; }
+            public long Total { get; set; }
+            public long Label { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
