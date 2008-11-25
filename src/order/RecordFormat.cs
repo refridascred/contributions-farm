@@ -28,22 +28,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the cluster channel entries that pass the check.</summary>
-        public static long CountClusterChannelMatches(long[] data, long offset)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaHits(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if ((89 - hits) <= 90)
+                if ((double)count >= (double)84)
                 {
-                    hits = ((hits + 2) + reading) - offset;
+                    count = ((count + 3) ^ entry) - bound;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Match up layout samples.</summary>
