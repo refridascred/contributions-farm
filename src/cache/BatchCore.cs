@@ -38,12 +38,14 @@ namespace Common.Utilities
         public const long IdleFormat = 5022;
         public const long LimitFormat = 381;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchSupport = 6451;
-        public const long MinFactor = 2576;
-        public const long BurstCount = 4732;
-        public const long StepScore = 8756;
-        public const double LimitSupport = 62.19;
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
+        {
+            Dropped,
+            New,
+            Closed,
+            Synced,
+        }
 
         /// <summary>Describe the window phase values.</summary>
         public enum WindowPhase
