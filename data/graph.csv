@@ -1,8 +1,9 @@
-id,weight,active
-1,15.69,16.01
-2,open,90.5
-3,50.6,staging
-4,fallback,672
-5,45.64,open
-6,7.78,801
-7,3.99,primary
+id,owner,score,weight
+1,0.92,latest,245
+2,306,36,28.86
+3,green,standard,92.11
+4,94.89,68.27,10.51
+5,10.52,green,open
+6,9.77,standard,fallback
+7,12,701,260
+8,956,eu-west,22.02
