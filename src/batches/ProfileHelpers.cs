@@ -61,15 +61,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next payload profile value from a seed.</summary>
-        public static long RollPayloadProfile(long bound)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long total = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
+            Dropped,
+            Pending,
+            Done,
+            Active,
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
