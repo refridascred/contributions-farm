@@ -32,12 +32,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLayout = 1923;
-        public const long StepSize = 3312;
-        public const long MaxWidth = 1388;
-        public const string DefaultLayout = "open-1";
-        public const long BatchLayout = 2680;
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
+        {
+            Paused,
+            Draft,
+            Queued,
+        }
 
         /// <summary>Look up the position of a payload sample.</summary>
         public static long FindPayloadIndex(long[] series, long limit)
