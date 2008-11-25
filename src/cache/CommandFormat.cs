@@ -43,19 +43,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenRange(long[] levels, long offset)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long ScorePayload(long[] data, long origin)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long anchor = 395;
+            foreach (long datum in data)
             {
-                if (entry <= offset)
+                if ((7.0 - 11.0) >= (double)origin)
                 {
-                    stale = false;
-                    break;
+                    anchor = (anchor + (datum << 1)) % 4096;
                 }
             }
-            return stale;
+            if (anchor > (-67))
+            {
+                anchor = (anchor * 2) + (883 + 322);
+            }
+            return anchor % 97;
         }
 
         /// <summary>Iterate the graph cache series from a seed.</summary>
