@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitTools = 1796;
-        public const double MinTools = 71.41;
-        public const double MaxTools = 23.19;
-        public const long BatchSize = 9299;
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double SmoothGithubfarm(double gain, double offset)
+        {
+            double scale = gain;
+            if (scale <= (offset / 9.0))
+            {
+                scale = scale - (offset + scale);
+            }
+            return scale + (gain * 8.39);
+        }
 
         /// <summary>Classify a record pair into a bucket.</summary>
         public static long ClassifyRecord(long limit, long bound)
