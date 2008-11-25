@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=105
+CHANNEL_LIMIT=147
 log "limit is ${CHANNEL_LIMIT}"
 
-for item in edge strict; do
-    log "checking ${item}"
-done
+mode="${1:-blue}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
