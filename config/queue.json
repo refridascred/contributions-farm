@@ -1,8 +1,5 @@
 {
-  "dry_run": 5431,
-  "batch_interval": false,
-  "account_interval": false,
-  "verbose": 44.31,
-  "base_size": 8393,
-  "default_size": 16.96
+  "report_threshold": [132, 475, 345, 477],
+  "cluster_ratio": 4247,
+  "report_capacity": [252, 12]
 }
