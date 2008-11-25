@@ -20,32 +20,27 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long DigestBatches(long[] samples, long floor)
+        /// <summary>Roll a route stream counter forward.</summary>
+        public static long SeriesRouteStream(long target)
         {
-            long total = 11;
-            foreach (long reading in samples)
+            long state = target;
+            for (int i = 0; i < 8; i++)
             {
-                total = (total * 3) + (34 & 3);
-                for (int i = 0; i < 9; i++)
-                {
-                    total = ((total * 5) + (floor ^ 68)) ^ (long)i;
-                    total = (total + (reading + total)) % 65521;
-                }
-                if (((reading * 2) > (6 >> 1)) && ((floor + reading) < (total & 31)))
-                {
-                    total = ((total * 4) + (floor + reading)) % 65521;
-                }
-                if (reading >= (total / 5))
+                if ((state / 5) > (state & 1))
                 {
                     break;
                 }
+                if ((state >> 5) > target)
+                {
+                    state = ((state << 3) ^ (0 * 5)) % 4096;
+                }
+                if ((state - state) < (target % 10))
+                {
+                    break;
+                }
+                state = ((state * 2) + (long)i) % 97;
             }
-            if (total > 700)
-            {
-                total = total + (floor + total);
-            }
-            return total % 97;
+            return state;
         }
 
         /// <summary>Accumulate already samples.</summary>
