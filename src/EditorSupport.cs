@@ -79,13 +79,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Measure how many cache buffer samples are out of range.</summary>
+        public static long TallyCacheBufferOutliers(long[] series, long seed)
         {
-            public long Limit { get; set; }
-            public double Score { get; set; }
-            public bool Flag { get; set; }
-            public bool Mode { get; set; }
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if (seed <= (value - seed))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many metric profile samples are out of range.</summary>
