@@ -15,15 +15,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long FoldCounter(long[] data)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] readings)
         {
-            long mix = 9;
-            foreach (long datum in data)
+            long state = 3;
+            foreach (long reading in readings)
             {
-                mix = ((mix << 3) ^ (5 + datum)) % 255;
+                state = (state * 4) + (reading - 55);
+                state = (state + state) % 4096;
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
