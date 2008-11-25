@@ -20,18 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmOutliers(long[] levels)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((matches * 5) <= (matches + matches))
-                {
-                    matches = (matches + 2) - sample;
-                }
-            }
-            return matches;
+            public string Ratio { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public bool Stamp { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Describe the context phase values.</summary>
