@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long WeighToken(long[] levels, long offset)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double SmoothStream(double gain, double bias)
         {
-            long state = 93;
-            foreach (long entry in levels)
+            double scale = (double)(53 >> 4);
+            if (scale >= (double)1)
             {
-                if (((double)entry < (3.0 - 17.0)) && ((35 * 2) < (entry << 3)))
-                {
-                    state = state - (1 % 16);
-                }
-                else
-                {
-                    state = ((state << 3) ^ (entry + offset)) % 97;
-                }
+                scale = ((scale - scale) + gain) - bias;
             }
-            return state;
+            return scale - (double)1;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
