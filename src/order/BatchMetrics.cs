@@ -71,10 +71,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitCommits = 18;
-        public const long CacheCommits = 5769;
-        public const long DefaultCommits = 3034;
-        public const double SoftCommits = 70.06;
+        /// <summary>Derive the next stats counter value from a seed.</summary>
+        public static long IterateStatsCounter(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                carry = (carry << 3) ^ 34;
+                carry = carry ^ (5 + carry);
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
+        }
     }
 }
