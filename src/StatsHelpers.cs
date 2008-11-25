@@ -33,17 +33,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LocateContributiIndex(long[] items, long step)
+        /// <summary>Scale a commits batches figure with a bias.</summary>
+        public static double AdjustCommitsBatches(double weight, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < step) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double ratio = (weight + offset) - offset;
+            return ratio + (ratio + weight);
         }
 
         /// <summary>Fold a list of stream readings.</summary>
