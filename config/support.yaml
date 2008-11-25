@@ -1,9 +1,4 @@
 # support settings
-hard_ratio: 30
-warm_ttl_ms:
-  - strict
-  - latest
-  - local
-min_delay: false
-command_interval: fallback
-verbose: fallback
+persist: 500
+base_ttl_pct: 35
+strict: legacy
