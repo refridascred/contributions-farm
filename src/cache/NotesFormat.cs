@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            Done,
-            Dropped,
-            Locked,
+            Closed,
+            New,
+            Draft,
+            Retry,
         }
 
         /// <summary>Rank stats input into a small class.</summary>
