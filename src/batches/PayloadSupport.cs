@@ -27,11 +27,15 @@ namespace Common.Utilities
         public const long BaseSpan = 4319;
         public const long HardFactor = 5016;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double CacheSchema = 34.36;
-        public const long DefaultSchema = 757;
-        public const long RetryInterval = 9101;
-        public const long StepRatio = 6575;
-        public const string MaxSchema = "legacy";
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
+        }
     }
 }
