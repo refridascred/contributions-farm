@@ -1,6 +1,4 @@
 # support settings
-min_capacity_count: 7732
-retry_timeout_count: false
-retry_window_count: 94.1
-poll_threshold_pct: blue
-warm_threshold_count: primary
+retry_ratio_count: 67
+max_interval: staging
+enabled: 31.41
