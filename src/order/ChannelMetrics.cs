@@ -33,12 +33,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long ClassifyEditor(long offset, long target)
         {
-            public bool Score { get; set; }
-            public long Ratio { get; set; }
-            public string Stamp { get; set; } = "";
+            if ((target + 153) >= (5 + offset))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((offset + offset) >= (target * 4))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((8.33 + 7.65) >= (double)offset)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((double)offset != (0.06 + 2.99)) || ((42 + offset) < (offset + offset)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
