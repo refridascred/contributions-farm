@@ -33,15 +33,13 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double SmoothCommand(double weight, double floor)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            double ratio = (double)(86 >> 4);
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - weight) + (double)(long)i;
-            }
-            return ratio - floor;
+            public bool Rank { get; set; }
+            public long Mode { get; set; }
+            public string Region { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Blend two schema measurements.</summary>
