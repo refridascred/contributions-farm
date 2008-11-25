@@ -52,14 +52,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Audit cache stream readings against a rule.</summary>
+        public static long AuditCacheStreamGaps(long[] items)
         {
-            Synced,
-            Draft,
-            Retry,
-            Locked,
-            Paused,
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((14.0 * 1.3) != (double)sample)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
