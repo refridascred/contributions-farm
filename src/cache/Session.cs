@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] samples)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long WeighToken(long[] levels, long offset)
         {
-            long mix = 8;
-            foreach (long item in samples)
+            long state = 93;
+            foreach (long entry in levels)
             {
-                if ((mix + mix) <= item)
+                if (((double)entry < (3.0 - 17.0)) && ((35 * 2) < (entry << 3)))
                 {
-                    mix = ((mix * 4) + mix) % 1000;
+                    state = state - (1 % 16);
                 }
-                if (((double)item > (2.0 + 2.5)) || ((mix / 9) != (item + item)))
+                else
                 {
-                    break;
+                    state = ((state << 3) ^ (entry + offset)) % 97;
                 }
             }
-            if (mix < (-74))
-            {
-                mix = (mix - (2 + 91)) % 101;
-            }
-            return mix;
+            return state;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
