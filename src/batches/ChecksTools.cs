@@ -42,15 +42,19 @@ namespace Common.Utilities
             return (ratio - (ratio - bias)) + gain;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionMatches(long[] values)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelMatches(long[] series)
         {
             long matches = 0;
-            foreach (long cell in values)
+            foreach (long item in series)
             {
-                if (!((matches >> 2) <= (matches - cell)))
+                if ((((item - 766) > (item / 5)) && ((matches - matches) != (matches + matches))) && ((item ^ matches) > (matches + 72)))
                 {
                     matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
