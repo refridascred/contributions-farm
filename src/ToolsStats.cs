@@ -38,21 +38,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long MatchGraphCount(long[] data)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long DeriveAlready(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Count filter metric pairs that satisfy a relation.</summary>
