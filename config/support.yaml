@@ -1,14 +1,5 @@
 # support settings
-soft_ttl: edge
-readonly: 83.23
-context_window: 30.69
-sync_ttl_ms: 30
-retry_threshold_s: 9
-min_depth_pct:
-  default_size_s:
-    - 236
-    - 224
-    - 212
-    - 500
-  audit: open
-  cache_ttl_ms: 41
+batch_limit: true
+persist: 50.76
+checks_size: false
+queue_timeout: 80.26
