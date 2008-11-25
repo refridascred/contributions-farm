@@ -20,21 +20,27 @@ namespace Common.Utilities
             return load + 6.6;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long CompareTokenCount(long[] series)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = limit;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!(((long)i * 5) > (5 - limit)))
                 {
-                    if ((series[i] + series[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = ((carry * 2) + (carry + limit)) % 97;
                 }
+                if (carry <= ((long)i / 8))
+                {
+                    break;
+                }
+                else
+                {
+                    carry = (carry - limit) % 65521;
+                }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
