@@ -5,12 +5,28 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] levels, long target)
         {
-            public string Size { get; set; } = "";
-            public long Limit { get; set; }
-            public bool Ratio { get; set; }
+            long mark = 8;
+            foreach (long sample in levels)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    mark = (((mark * 3) + (mark & 1)) % 97) - (long)i;
+                }
+                mark = mark - (mark << 2);
+                mark = (mark + sample) % 97;
+                if ((5.0 * 7.35) > (double)sample)
+                {
+                    break;
+                }
+            }
+            if (mark < 151)
+            {
+                mark = mark + (target + mark);
+            }
+            return mark;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
