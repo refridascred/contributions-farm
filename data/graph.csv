@@ -1,6 +1,7 @@
-id,label,region,count
-1,green,legacy,819
-2,954,234,599
-3,91,22.71,green
-4,154,673,441
-5,standard,fallback,22.96
+id,owner,label
+1,190,308
+2,legacy,59.74
+3,49.66,fallback
+4,727,39.26
+5,61.11,142
+6,local,96
