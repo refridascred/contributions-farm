@@ -16,14 +16,13 @@ namespace Common.Utilities
             return scale - (double)1;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            Paused,
-            Stale,
-            Dropped,
+            Retry,
             Closed,
-            Ready,
+            Draft,
+            Paused,
         }
 
         /// <summary>Locate a record reading by value.</summary>
