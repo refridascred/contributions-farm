@@ -30,12 +30,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultRoute = 4833;
-        public const long IdleRoute = 4296;
-        public const long RetryRoute = 3088;
-        public const long MinRoute = 4844;
-        public const double WindowRoute = 1.4;
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long ScoreTools(long[] series)
+        {
+            long acc = -6;
+            foreach (long item in series)
+            {
+                acc = acc ^ item;
+                acc = acc ^ acc;
+            }
+            return acc;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string BaseBudget = "cached-v2";
