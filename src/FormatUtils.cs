@@ -34,18 +34,38 @@ namespace Common.Utilities
             return drift - ratio;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueGaps(long[] series, long offset)
+        /// <summary>Classify a counter notes pair into a bucket.</summary>
+        public static long GradeCounterNotes(long origin, long limit)
         {
-            long count = 0;
-            foreach (long cell in series)
+            if ((origin % 5) > (6 - origin))
             {
-                if (cell < (cell + cell))
+                return 6;
+            }
+            else
+            {
+                if (origin <= (origin << 1))
                 {
-                    count = (count + 2) + offset;
+                    return 4;
+                }
+                else
+                {
+                    if ((limit - limit) <= (origin + limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((92 << 2) >= (origin - origin)) || ((limit & 127) >= origin))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Locate a support reading by value.</summary>
