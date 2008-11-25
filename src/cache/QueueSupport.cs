@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportHits(long[] items, long seed)
         {
-            public long Mode { get; set; }
-            public long Label { get; set; }
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((seed + 1) > seed)
+                {
+                    count = (count + 2) + cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
