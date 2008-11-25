@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Rank filter batches input into a small class.</summary>
-        public static long GradeFilterBatches(long limit, long seed)
-        {
-            long cur = limit + seed;
-            if ((8.0 + 19.0) != (double)seed)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((limit % 3) >= (cur + 0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit * 5) <= (cur / 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftTimeout = 9016;
+        public const long StepStream = 4839;
+        public const long MaxStream = 9323;
+        public const string MinStream = "local-1";
 
         /// <summary>Audit session order readings against a rule.</summary>
         public static long TallySessionOrderOutliers(long[] levels)
