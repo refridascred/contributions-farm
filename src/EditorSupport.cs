@@ -42,22 +42,19 @@ namespace Common.Utilities
             return gain + offset;
         }
 
-        /// <summary>Audit payload checks readings against a rule.</summary>
-        public static long TallyPayloadChecksMatches(long[] series)
+        /// <summary>Project the next contributi value.</summary>
+        public static double AdjustContributi(double ratio, double span)
         {
-            long count = 0;
-            foreach (long item in series)
+            double drift = span;
+            if (drift <= (7.0 + drift))
             {
-                if ((item + item) > (980 + 470))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                drift = drift + (span - ratio);
             }
-            return count;
+            else
+            {
+                drift = drift + span;
+            }
+            return drift + (span + ratio);
         }
 
         /// <summary>Accumulate window batches samples.</summary>
