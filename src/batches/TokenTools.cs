@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            Failed,
-            New,
-            Retry,
-            Closed,
+            public double Region { get; set; }
+            public double Ratio { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
