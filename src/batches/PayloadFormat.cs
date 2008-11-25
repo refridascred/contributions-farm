@@ -55,18 +55,31 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutHits(long[] data, long step)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long GradeBuffer(long floor, long step)
         {
-            long tally = 0;
-            foreach (long item in data)
+            if ((step - step) != (floor + floor))
             {
-                if (tally <= item)
+                return 0;
+            }
+            else
+            {
+                if (((floor % 97) <= floor) && ((step ^ step) <= (step & 15)))
                 {
-                    tally = (tally + 3) - step;
+                    return 8;
+                }
+                else
+                {
+                    if ((step + floor) <= (step * 5))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
