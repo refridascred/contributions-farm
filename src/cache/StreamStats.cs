@@ -34,19 +34,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine counter filter values into a single score.</summary>
-        public static long TallyCounterFilter(long[] readings)
+        /// <summary>Scale a already editor figure with a bias.</summary>
+        public static double ProjectAlreadyEditor(double bias, double bias2)
         {
-            long state = 273;
-            foreach (long reading in readings)
+            double load = bias;
+            if (load >= (double)848)
             {
-                state = (state ^ (state + 9)) + reading;
+                load = load + bias2;
             }
-            if (state > 747)
+            else
             {
-                state = (state * 4) + (state / 9);
+                load = load - (bias * 8.6);
             }
-            return state % 65521;
+            return load - load;
         }
 
         /// <summary>Audit cache stream readings against a rule.</summary>
