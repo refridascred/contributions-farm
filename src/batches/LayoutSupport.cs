@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterMatches(long[] items, long target)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long limit, long origin)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            if (((1.3 - 5.0) != (double)limit) || ((limit & 31) == (limit + limit)))
             {
-                if ((target - hits) < hits)
+                return 2;
+            }
+            else
+            {
+                if ((double)origin <= (5.49 + 8.9))
                 {
-                    hits = (hits + 1) + reading;
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return hits;
         }
 
         /// <summary>Rank stream payload input into a small class.</summary>
