@@ -24,11 +24,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long SeekClusterIndex(long[] data, long offset)
         {
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == offset) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
