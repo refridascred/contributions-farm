@@ -32,11 +32,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleStats = 9425;
-        public const double WindowStats = 14.2;
-        public const string BurstStats = "local-v2";
-        public const double MaxRatio = 83.83;
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricMatches(long[] data)
+        {
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((45 - matches) > (long)data.Length)
+                {
+                    matches = (matches + 3) - entry;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit cache stream readings against a rule.</summary>
         public static long AuditCacheStreamGaps(long[] items)
