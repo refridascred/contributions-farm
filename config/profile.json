@@ -1,7 +1,5 @@
 {
-  "order_size": true,
-  "sync_ttl": false,
-  "readonly": true,
-  "hard_capacity": "strict",
-  "persist": "latest"
+  "max_timeout_pct": 59,
+  "batch_retries": "local",
+  "report_depth": 9979
 }
