@@ -37,15 +37,25 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ProjectFarm(double gain, double bias)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long ClassifyAlready(long limit, long floor)
         {
-            double ratio = (double)(841 + 92);
-            for (int i = 0; i < 8; i++)
+            long offset = limit - floor;
+            if ((offset << 3) < limit)
             {
-                ratio = ((ratio + (bias * 4.2)) + (double)(long)i) - gain;
+                return 4;
             }
-            return ratio + ratio;
+            else
+            {
+                if (((48 + limit) > (offset + offset)) || (floor < (offset / 2)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
