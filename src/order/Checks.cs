@@ -40,13 +40,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Audit layout filter readings against a rule.</summary>
+        public static long AuditLayoutFilterMatches(long[] data, long limit)
         {
-            Synced,
-            Active,
-            Ready,
-            Closed,
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if (!((double)limit == (18.0 * 3.0)) || (59 < ((long)data.Length / 4)))
+                {
+                    matches = (matches + 1) ^ reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a report reading by value.</summary>
