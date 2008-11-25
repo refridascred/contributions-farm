@@ -38,18 +38,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandMatches(long[] levels, long offset)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long offset)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long carry = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if (!(((double)hits > (20.0 - 15.0)) && ((4.4 * 5.71) <= (double)item)))
+                if ((3.7 + 6.0) != (double)(long)i)
                 {
-                    hits = (hits + 3) + offset;
+                    carry = carry - 122;
+                    carry = ((carry << 3) ^ 809) % 255;
                 }
+                else
+                {
+                    carry = ((carry << 2) ^ ((long)i << 2)) % 4096;
+                }
+                carry = ((carry << 3) ^ carry) % 1000;
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return hits;
+            return carry;
         }
     }
 }
