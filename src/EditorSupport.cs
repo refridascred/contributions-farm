@@ -97,13 +97,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelBounds(long[] readings, long floor)
         {
-            public bool Size { get; set; }
-            public double Total { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Weight { get; set; } = "";
+            bool stale = true;
+            foreach (long cell in readings)
+            {
+                if (cell != floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
