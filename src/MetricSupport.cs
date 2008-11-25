@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            public double Region { get; set; }
-            public double Count { get; set; }
+            Pending,
+            Draft,
+            Ready,
+            Stale,
         }
 
         /// <summary>Define route limits and defaults.</summary>
