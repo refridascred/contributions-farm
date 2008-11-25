@@ -48,21 +48,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long OverlapProfileCount(long[] data)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterOutliers(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((((item ^ item) != (count & 255)) && ((8.3 - 1.5) > (double)item)) || ((4.3 + 10.0) >= (double)count))
                 {
-                    if ((data[i] ^ data[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
