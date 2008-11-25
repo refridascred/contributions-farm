@@ -48,22 +48,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaMatches(long[] items, long offset)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (((double)sample == (1.17 + 5.5)) || !((sample + sample) <= (offset % 7)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Limit { get; set; }
+            public string Label { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
