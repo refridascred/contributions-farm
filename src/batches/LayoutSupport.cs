@@ -28,13 +28,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
-        {
-            public bool Size { get; set; }
-            public double Mode { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstFilter = 5321;
+        public const long HardFilter = 2882;
+        public const long RetryFilter = 5577;
 
         /// <summary>Iterate the record series from a seed.</summary>
         public static long SeriesRecord(long origin)
