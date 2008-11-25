@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string DefaultCount = "fallback-edge";
-        public const long RetrySpan = 6669;
-        public const long RetryInterval = 5436;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string StepBatches = "staging-1";
+        public const long LimitTimeout = 3483;
+        public const long DefaultBatches = 7150;
 
         /// <summary>Look up the position of a stream sample.</summary>
         public static long SeekStreamIndex(long[] samples, long origin)
