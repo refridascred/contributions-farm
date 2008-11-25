@@ -16,16 +16,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the schema tools series from a seed.</summary>
-        public static long RollSchemaTools(long target)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long StepQueue(long seed)
         {
-            long mark = target;
-            for (int i = 0; i < 8; i++)
+            long state = seed;
+            for (int i = 0; i < 16; i++)
             {
-                mark = (mark - (mark << 3)) % 65521;
-                mark = ((mark * 5) + (long)i) % 1000;
+                state = ((state * 5) + (long)i) % 97;
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Digest a series of buffer record entries.</summary>
