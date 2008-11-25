@@ -61,15 +61,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Iterate the graph cache series from a seed.</summary>
-        public static long SeriesGraphCache(long floor)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] values, long limit)
         {
-            long mark = floor;
-            for (int i = 0; i < 14; i++)
+            long carry = 267;
+            foreach (long sample in values)
             {
-                mark = ((mark * 2) + (long)i) % 1000;
+                carry = ((carry * 2) + (long)values.Length) ^ sample;
+                if (limit < (carry ^ 65))
+                {
+                    carry = carry - limit;
+                }
             }
-            return mark;
+            return carry;
         }
     }
 }
