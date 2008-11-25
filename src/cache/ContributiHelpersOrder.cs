@@ -22,11 +22,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            public double Count { get; set; }
-            public bool Total { get; set; }
+            public long Rank { get; set; }
+            public double Size { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
