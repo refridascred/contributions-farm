@@ -26,18 +26,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordGaps(long[] series)
+        /// <summary>Count the session order entries that pass the check.</summary>
+        public static long CountSessionOrderOutliers(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (((sample + (long)series.Length) == (sample & 31)) || !((2.8 + 15.0) == (double)hits))
+                if (636 > (seen - seen))
                 {
-                    hits = hits + 3;
+                    seen = ((seen + 3) ^ reading) - bound;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Accumulate filter session samples.</summary>
