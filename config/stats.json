@@ -1,19 +1,6 @@
 {
-  "batch_capacity_s": 84,
-  "default_retries_ms": {
-    "base_threshold_count": [54, 94, 423],
-    "counter_size": 68.21,
-    "compress": "cached",
-    "min_limit_s": {
-      "warm_interval": 46.61,
-      "persist": 53.71,
-      "enabled": "open"
-    },
-    "poll_window_pct": "primary"
-  },
-  "persist": {
-    "hard_depth": "cached",
-    "min_ttl_s": 17.26,
-    "flush_delay_ms": 500
-  }
+  "default_capacity": 44.89,
+  "max_window": "staging",
+  "audit": 96.05,
+  "flush_threshold_ms": [270, 192]
 }
