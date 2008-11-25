@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of session queue entries.</summary>
-        public static long ScoreSessionQueue(long[] readings, long target)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long SeriesRecord(long origin)
         {
-            long total = 2;
-            foreach (long reading in readings)
+            long carry = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if (((2 + 52) < (total & 255)) && (reading >= (target - 85)))
+                double load = (1.15 - 4.71) + (2.3 - 2.5);
+                if (!(load <= (load / 6.0)))
                 {
-                    total = ((total * 3) + (total - reading)) % 1000;
+                    load = load + load;
+                    load = load + (double)origin;
                 }
-                else
-                {
-                    total = total ^ reading;
-                }
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            if (total < 53)
-            {
-                total = (total - (target & 31)) % 65521;
-            }
-            return total;
+            return carry;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
