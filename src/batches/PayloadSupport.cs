@@ -37,22 +37,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] series)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long result = -345;
-            foreach (long entry in series)
-            {
-                if ((entry % 5) >= (entry - 946))
-                {
-                    result = (result + entry) % 1000;
-                }
-                if ((entry - result) == (result ^ entry))
-                {
-                    break;
-                }
-            }
-            return result % 4096;
+            public long Token { get; set; }
+            public double Ratio { get; set; }
+            public string Size { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
