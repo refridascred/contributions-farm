@@ -1,11 +1,11 @@
 # githubfarm settings
-base_capacity_count: 31.96
-sync_depth: 6575
-token_retries:
-  - 487
-  - 227
-  - 62
-  - 342
-sync_depth_s: true
-batch_capacity: 2533
-enabled: local
+batch_size_s: standard
+hard_interval: cached
+poll_interval_s:
+  - 270
+  - 131
+  - 91
+cache_ratio:
+  - 193
+  - 13
+  - 480
