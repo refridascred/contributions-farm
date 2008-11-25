@@ -38,13 +38,13 @@ namespace Common.Utilities
         public const long IdleFormat = 5022;
         public const long LimitFormat = 381;
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            Dropped,
+            Done,
+            Retry,
+            Failed,
             New,
-            Closed,
-            Synced,
         }
 
         /// <summary>Describe the window phase values.</summary>
