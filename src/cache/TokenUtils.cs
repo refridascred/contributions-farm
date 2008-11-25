@@ -20,16 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate queue payload samples.</summary>
-        public static long TotalQueuePayload(long[] data, long floor)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long mark = 55;
-            foreach (long cell in data)
-            {
-                mark = (mark + (floor & 7)) % 4096;
-                mark = mark + (mark - cell);
-            }
-            return mark;
+            public string Region { get; set; } = "";
+            public double Offset { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
