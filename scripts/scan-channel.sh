@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-legacy}"
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+mode="${1:-primary}"
 case "${mode}" in
-    latest)
+    strict)
         log "fast path"
         ;;
     *)
@@ -16,11 +22,6 @@ case "${mode}" in
         ;;
 esac
 
-CHANNEL_LIMIT=240
-log "limit is ${CHANNEL_LIMIT}"
-
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 2))
+for item in fallback open cached; do
+    log "checking ${item}"
 done
-log "total ${total}"
