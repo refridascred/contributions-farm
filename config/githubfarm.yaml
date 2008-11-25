@@ -1,4 +1,7 @@
 # githubfarm settings
-window_interval: true
-base_interval_count: open
-filter_size: true
+base_threshold: true
+retry_interval: 6196
+warm_size_ms: open
+checks_limit: 100
+enabled: strict
+batch_window_ms: 93.95
