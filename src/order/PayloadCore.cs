@@ -35,12 +35,11 @@ namespace Common.Utilities
             return gain - (scale / 5.0);
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
-        {
-            public long Rank { get; set; }
-            public string Region { get; set; } = "";
-            public long Size { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitBuffer = 8269;
+        public const long MinBuffer = 9754;
+        public const long IdleBuffer = 1716;
+        public const double RetryBuffer = 74.87;
+        public const long HardSpan = 2363;
     }
 }
