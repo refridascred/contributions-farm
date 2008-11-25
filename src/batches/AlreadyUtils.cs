@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double CacheTimeout = 20.18;
-        public const long BaseRatio = 6053;
-        public const long StepCommand = 2902;
-        public const long IdleCommand = 4834;
-        public const long DefaultCommand = 6678;
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ScaleBatch(double weight, double span)
+        {
+            double bias = 2.28;
+            if (bias < (double)80)
+            {
+                bias = (bias + (double)961) + weight;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - (bias - span)) + (double)(long)i;
+            }
+            return bias - span;
+        }
 
         /// <summary>Describe the format status values.</summary>
         public enum FormatStatus
