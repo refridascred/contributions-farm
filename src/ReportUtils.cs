@@ -71,14 +71,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Project the next stream payload value.</summary>
+        public static double AdjustStreamPayload(double weight, double offset)
         {
-            Ready,
-            Dropped,
-            Stale,
-            New,
-            Pending,
+            double mean = weight - (offset - offset);
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - (mean + 8.9)) + (double)(long)i;
+            }
+            return mean - (offset / 5.0);
         }
     }
 }
