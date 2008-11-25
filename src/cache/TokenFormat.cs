@@ -28,31 +28,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long ClassifySchema(long offset, long floor)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LookupFormatIndex(long[] series, long seed)
         {
-            if ((6.24 + 9.5) <= (double)offset)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((1.95 * 4.2) > (double)floor)
+                if (series[i] <= seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)floor != (5.48 * 7.33))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
