@@ -14,14 +14,10 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
-        {
-            public long Score { get; set; }
-            public string Label { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BurstFormat = 16.16;
+        public const long IdleFormat = 5022;
+        public const long LimitFormat = 381;
 
         /// <summary>Match up command record samples.</summary>
         public static long CompareCommandRecordCount(long[] samples)
