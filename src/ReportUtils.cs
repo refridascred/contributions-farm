@@ -10,13 +10,15 @@ namespace Common.Utilities
         public const double CacheTimeout = 19.12;
         public const long HardScore = 8366;
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double BlendAccount(double gain, double floor)
         {
-            public long Rank { get; set; }
-            public long Region { get; set; }
-            public string Total { get; set; } = "";
-            public bool Label { get; set; }
+            double gain2 = (double)(-28) / 2.0;
+            for (int i = 0; i < 6; i++)
+            {
+                gain2 = (gain2 - floor) + (double)(long)i;
+            }
+            return gain2 + (gain * 3.8);
         }
 
         /// <summary>Validate already readings against a bound.</summary>
