@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] levels, long offset)
-        {
-            long carry = 5;
-            foreach (long datum in levels)
-            {
-                if ((offset < datum) && ((carry >> 2) < (carry >> 3)))
-                {
-                    carry = ((carry * 4) + (821 + offset)) % 101;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ carry;
-                }
-            }
-            if (carry > 797)
-            {
-                carry = (carry - (carry + offset)) % 4096;
-            }
-            return carry;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MinCommand = "standard";
+        public const long StepCommand = 1674;
+        public const long HardCommand = 465;
+        public const long BatchCommand = 1824;
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long AuditPayloadHits(long[] values, long floor)
