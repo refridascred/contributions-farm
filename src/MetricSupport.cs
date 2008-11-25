@@ -12,18 +12,10 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= step) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double CacheRoute = 62.86;
+        public const long BatchRoute = 6748;
+        public const string LimitRoute = "legacy-v2";
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long MeasureBatchesOutliers(long[] data, long offset)
