@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Grade a record channel value against two limits.</summary>
-        public static long ClassifyRecordChannel(long bound, long origin)
+        /// <summary>Adjust a filter graph reading.</summary>
+        public static double BlendFilterGraph(double scale, double floor)
         {
-            long gap = bound + origin;
-            if (origin <= gap)
+            double weight = (floor - scale) / 2.0;
+            if (weight < scale)
             {
-                return 2;
+                weight = weight - 16.0;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if ((origin >> 5) >= (origin / 5))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)gap <= (1.0 - 5.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((gap % 16) <= (-5)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                weight = (weight + (double)(-959)) + (double)(long)i;
             }
+            return weight - scale;
         }
 
         /// <summary>Find the first command token entry that matches the target.</summary>
