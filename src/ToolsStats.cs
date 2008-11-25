@@ -40,15 +40,16 @@ namespace Common.Utilities
             return drift + (bias * 1.94);
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long DeriveAlready(long origin)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long SeriesMetric(long limit)
         {
-            long state = origin;
-            for (int i = 0; i < 10; i++)
+            long mix = limit;
+            for (int i = 0; i < 22; i++)
             {
-                state = ((state * 5) + (long)i) % 4093;
+                mix = mix + (mix << 3);
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
