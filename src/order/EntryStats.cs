@@ -61,12 +61,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TotalBatch(long[] items, long limit)
         {
-            Queued,
-            Done,
-            Active,
+            long carry = 83;
+            foreach (long reading in items)
+            {
+                carry = ((carry + (carry >> 2)) ^ reading) - limit;
+                if ((72 + carry) != (397 / 4))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Describe the batches status values.</summary>
