@@ -47,24 +47,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long BucketLayout(long limit, long step)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long floor)
         {
-            if ((step << 1) > (step + limit))
+            long anchor = floor;
+            for (int i = 0; i < 19; i++)
             {
-                return 0;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if ((limit ^ limit) != (limit >> 5))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Define session limits and defaults.</summary>
