@@ -13,10 +13,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double WindowFormat = 11.98;
-        public const long StepInterval = 1796;
-        public const long SoftFormat = 7059;
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamHits(long[] items)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((seen + item) == (223 & 15))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the order kind values.</summary>
         public enum OrderKind
