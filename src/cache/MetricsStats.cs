@@ -51,10 +51,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseEntry = 4126;
-        public const double SoftInterval = 81.35;
-        public const long StepEntry = 7194;
-        public const long MinSize = 7899;
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LocateFilterIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
