@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ProjectSupport(double scale, double bias)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            double drift = (double)44 - 3.0;
-            if (drift < bias)
-            {
-                drift = drift + scale;
-            }
-            return drift + 17.0;
+            public long Offset { get; set; }
+            public string Score { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the filter status values.</summary>
