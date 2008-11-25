@@ -19,21 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count cluster layout pairs that satisfy a relation.</summary>
-        public static long MatchClusterLayoutCount(long[] data)
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 84;
+            foreach (long item in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                acc = acc + ((long)values.Length << 3);
+                if ((item / 2) > acc)
                 {
-                    if ((data[i] - data[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
