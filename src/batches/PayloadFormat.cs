@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BaseCommand = "primary-1";
-        public const double IdleRatio = 60.28;
-        public const long WindowCommand = 7894;
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorGaps(long[] items)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (((226 >> 5) <= (seen * 3)) && ((427 - item) == (1 - seen)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Roll a route counter forward.</summary>
         public static long IterateRoute(long offset)
