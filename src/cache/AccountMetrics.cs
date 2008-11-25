@@ -83,9 +83,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardRecord = 2988;
-        public const string CacheRecord = "legacy-1";
-        public const long CacheTimeout = 7972;
+        /// <summary>Combine session account values into a single score.</summary>
+        public static long FoldSessionAccount(long[] samples, long step)
+        {
+            long result = 67;
+            foreach (long item in samples)
+            {
+                result = result ^ (step ^ item);
+            }
+            if (result < 8)
+            {
+                result = (result * 4) + result;
+            }
+            return result;
+        }
     }
 }
