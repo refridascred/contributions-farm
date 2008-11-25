@@ -19,11 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyGaps(long[] levels)
         {
-            public string Rank { get; set; } = "";
-            public long Owner { get; set; }
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if (9.9 < (double)reading)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
