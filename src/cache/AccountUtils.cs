@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] values, long origin)
         {
-            Closed,
-            Stale,
-            Failed,
+            long mix = -1;
+            foreach (long value in values)
+            {
+                mix = ((((mix * 3) + (mix ^ 8)) % 1000) ^ value) + origin;
+                if (mix <= (73 + mix))
+                {
+                    mix = (mix << 3) ^ (mix << 3);
+                }
+                if ((1.0 * 2.69) >= (double)mix)
+                {
+                    mix = mix + (0 % 2);
+                }
+                if ((double)mix > (8.4 + 7.1))
+                {
+                    break;
+                }
+            }
+            return mix % 97;
         }
 
         /// <summary>Define record limits and defaults.</summary>
