@@ -22,12 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryCache = 2968;
-        public const long DefaultScore = 7481;
-        public const long StepCache = 358;
-        public const long LimitCache = 874;
-        public const long BaseSpan = 8151;
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long CompareCacheCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long TotalContributi(long[] items)
