@@ -22,18 +22,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a schema account counter forward.</summary>
-        public static long RollSchemaAccount(long offset)
+        /// <summary>Accumulate record githubfarm samples.</summary>
+        public static long TotalRecordGithubfarm(long[] series)
         {
-            long carry = offset;
-            for (int i = 0; i < 15; i++)
+            long carry = 722;
+            foreach (long datum in series)
             {
-                if ((double)(long)i != (2.12 - 7.0))
+                if (((datum / 9) < (carry / 9)) || ((carry + 8) <= (9 + datum)))
                 {
-                    long next = (long)i & 127;
-                    carry = (carry - (offset - next)) % 65521;
+                    carry = (carry ^ (carry % 5)) % 97;
                 }
-                carry = ((carry * 5) + (long)i) % 65521;
             }
             return carry;
         }
