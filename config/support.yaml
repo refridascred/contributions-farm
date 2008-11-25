@@ -1,34 +1,43 @@
 # support settings
-default_delay:
-  - standard
-  - latest
-  - latest
-compress: 96
-account_ratio:
-  - legacy
-  - stable
-  - legacy
-  - green
-warm_interval:
-  profile_threshold:
-    retry_interval_s: 3856
-    sync_ttl:
-      - 452
-      - 189
-      - 197
-      - 15
-    verbose: true
-  base_capacity:
-    persist: open
-    sync_threshold_count: 14.23
-    soft_delay_ms: 78
-    flush_limit_count: cached
-    profile_ratio: latest
-  cluster_ratio: 6643
-enabled:
-  soft_interval_count: 63
-  idle_window_ms: 500
-  burst_ratio_count: true
-  audit: 91.91
-  poll_limit: 84
-  batch_timeout_s: 11.72
+min_depth: 60
+account_interval:
+  batch_size_ms:
+    notes_window: fallback
+    checks_limit: 269
+    verbose: 5075
+    editor_threshold: standard
+    min_interval_s: standard
+    min_capacity_ms: false
+  flush_threshold_count: false
+  queue_ratio:
+    - green
+    - legacy
+  notes_retries:
+    session_limit: fallback
+    sync_threshold:
+      - 81
+      - 322
+    githubfarm_ttl: 6
+    retry_limit_ms: true
+  verbose: staging
+persist:
+  verbose: standard
+  batch_threshold_ms: stable
+  base_depth_ms:
+    cache_window_count: stable
+    max_size_ms:
+      - blue
+      - staging
+    default_retries: stable
+    sync_delay_s: 6612
+    poll_limit: 1024
+    warm_timeout:
+      - green
+      - edge
+      - strict
+      - blue
+sync_limit_pct: false
+default_retries_pct: 16.14
+flush_size_count:
+  - 404
+  - 219
