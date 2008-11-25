@@ -28,11 +28,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string RetryQueue = "alpha-1";
-        public const double MaxQueue = 11.42;
-        public const double DefaultQueue = 81.02;
-        public const long IdleBudget = 3979;
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileMatches(long[] values, long seed)
+        {
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((20.0 / 6.0) < (double)seed)
+                {
+                    count = (count + 1) + sample;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate githubfarm samples.</summary>
         public static long WeighGithubfarm(long[] items, long bound)
