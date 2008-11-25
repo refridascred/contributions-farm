@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Fold a list of support metric readings.</summary>
-        public static long ScoreSupportMetric(long[] samples)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long sum = 9;
-            foreach (long cell in samples)
-            {
-                if (((cell + cell) >= 7) && ((66 + 88) != (cell + cell)))
-                {
-                    sum = ((sum * 2) + sum) % 4096;
-                }
-                else
-                {
-                    sum = (sum ^ ((-4) + cell)) % 97;
-                }
-            }
-            return sum % 97;
+            Queued,
+            Locked,
+            Retry,
+            Done,
+            Dropped,
         }
 
         /// <summary>Combine order stream values into a single score.</summary>
