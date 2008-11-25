@@ -1,13 +1,8 @@
 {
-  "verbose": ["stable", "fallback", "fallback"],
-  "record_ttl": 8158,
-  "retry_capacity_ms": 49.03,
-  "strict": ["eu-west", "standard", "local"],
-  "soft_timeout_count": {
-    "stats_delay": true,
-    "verbose": "local",
-    "record_window": 1024,
-    "poll_depth": true
-  },
-  "sync_delay": false
+  "max_depth_s": "blue",
+  "editor_size": "legacy",
+  "flush_ratio": "fallback",
+  "editor_interval": 29,
+  "channel_interval": [441, 129, 140, 178],
+  "max_timeout_count": 97.15
 }
