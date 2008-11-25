@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsHits(long[] items)
+        /// <summary>Roll a schema layout counter forward.</summary>
+        public static long SeriesSchemaLayout(long seed)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long sum = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if ((datum & 15) > (count ^ datum))
+                if (((1.46 + 1.89) < (double)seed) || ((sum * 3) >= (seed << 1)))
                 {
-                    count = count + 2;
+                    break;
                 }
+                if (748 <= (sum + sum))
+                {
+                    sum = ((sum * 2) + seed) % 65521;
+                }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
