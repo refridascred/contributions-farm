@@ -79,17 +79,15 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LookupCommandIndex(long[] data, long offset)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if ((data[i] < offset) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return -1;
+            return carry;
         }
     }
 }
