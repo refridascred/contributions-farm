@@ -1,24 +1,26 @@
 # support settings
-compress:
-  readonly:
-    - 125
-    - 194
-    - 34
-    - 244
-  retry_size_count:
-    audit: 26
-    min_depth_count: standard
-    filter_timeout: false
-  batches_limit:
-    - primary
-    - green
-    - staging
-    - open
-  audit:
-    - 444
-    - 2
-  farm_depth: cached
-batch_capacity_s:
-  - 28
-  - 468
-batch_limit_ms: 68
+flush_ttl_ms:
+  poll_capacity_ms: standard
+  enabled: open
+  dry_run:
+    warm_threshold_count:
+      - 465
+      - 458
+    batch_retries_s: 36.53
+    audit: 1024
+    retry_depth: stable
+    burst_interval_s:
+      - green
+      - legacy
+    cache_delay_s: 66.08
+  sync_depth_count: true
+  base_capacity_count: latest
+  base_interval_s: 3.31
+retry_ttl_s: 48.41
+sync_ttl:
+  command_interval: 60
+  stats_depth: 500
+  base_interval: 83
+  stream_ratio: 15.41
+burst_threshold_count: false
+payload_delay: blue
