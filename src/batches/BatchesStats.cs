@@ -23,18 +23,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsOutliers(long[] items)
+        /// <summary>Derive the next window metric value from a seed.</summary>
+        public static long SeriesWindowMetric(long floor)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long anchor = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if (!((cell ^ tally) > cell))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    tally = tally + 2;
+                    anchor = ((anchor - (floor + (long)i)) % 1000) + (long)i2;
                 }
+                anchor = (anchor + (floor & 7)) % 1000;
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
