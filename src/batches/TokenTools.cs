@@ -19,11 +19,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinFactor = 3028;
-        public const double StepCache = 81.13;
-        public const long DefaultRatio = 5691;
-        public const string WindowCache = "stable-1";
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of metrics entries.</summary>
         public static long DigestMetrics(long[] samples)
