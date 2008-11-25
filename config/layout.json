@@ -1,13 +1,10 @@
 {
-  "audit": 2887,
-  "retry_depth_s": "primary",
-  "max_ratio_count": 57.22,
-  "enabled": {
-    "retry_threshold_s": "local",
-    "readonly": 100,
-    "warm_retries_ms": [55, 386],
-    "cluster_limit": 250
+  "notes_depth": 35.05,
+  "max_window": {
+    "compress": false,
+    "poll_limit_s": "fallback",
+    "hard_ratio_pct": 4453
   },
-  "batch_retries_s": 55,
-  "strict": true
+  "batch_ttl": "cached",
+  "command_size": 71
 }
