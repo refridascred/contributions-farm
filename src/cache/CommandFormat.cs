@@ -34,38 +34,18 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Grade a report route value against two limits.</summary>
-        public static long RankReportRoute(long target, long seed)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] levels)
         {
-            if (((-4) + seed) >= (target + target))
+            long state = 8;
+            foreach (long sample in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target ^ seed) <= (target - target))
+                if (((335 ^ state) == (sample + state)) || ((double)sample <= (double)state))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((target + seed) < (5 - seed)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((seed / 8) < (seed & 255)) && ((target + target) < (7 + seed)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    state = (state + (state ^ 8)) % 255;
                 }
             }
+            return state;
         }
 
         /// <summary>Hold a tools entry.</summary>
