@@ -16,18 +16,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorMatches(long[] samples)
+        /// <summary>Blend two cluster batches measurements.</summary>
+        public static double ProjectClusterBatches(double gain, double bias)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            double drift = (double)(-475) - (bias - bias);
+            if (drift < 3.64)
             {
-                if ((matches & 3) > (long)samples.Length)
-                {
-                    matches = (matches + 3) ^ datum;
-                }
+                drift = drift - (drift - gain);
             }
-            return matches;
+            else
+            {
+                drift = drift + (double)4;
+            }
+            return drift + bias;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
