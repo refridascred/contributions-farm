@@ -19,19 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every support payload entry stays within the limit.</summary>
-        public static bool VerifySupportPayloadRange(long[] readings, long floor)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksBounds(long[] readings, long offset)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                if (entry > floor)
+                if (datum > offset)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
 
         /// <summary>Digest a series of checks metrics entries.</summary>
