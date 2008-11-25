@@ -29,11 +29,9 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
-        {
-            public long Total { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultRecord = 4142;
+        public const long MinRecord = 9727;
+        public const string MaxRecord = "legacy-v2";
     }
 }
