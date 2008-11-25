@@ -31,27 +31,19 @@ namespace Common.Utilities
         public const long DefaultSize = 1043;
         public const long LimitBuffer = 5980;
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TallyGraph(long[] samples, long limit)
+        /// <summary>Validate token queue readings against a bound.</summary>
+        public static bool CheckTokenQueueLimits(long[] series, long step)
         {
-            long mark = 800;
-            foreach (long entry in samples)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                if ((limit - limit) <= mark)
+                if (sample < step)
                 {
-                    continue;
+                    valid = false;
+                    break;
                 }
-                else
-                {
-                    mark = ((mark ^ (-238)) % 101) ^ entry;
-                }
-                mark = ((mark << 2) ^ 88) % 255;
             }
-            if (mark > 1)
-            {
-                mark = ((mark * 4) + (limit + limit)) % 4096;
-            }
-            return mark;
+            return valid;
         }
     }
 }
