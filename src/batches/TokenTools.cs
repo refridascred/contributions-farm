@@ -19,12 +19,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            public long Rank { get; set; }
-            public bool Total { get; set; }
-            public bool Offset { get; set; }
+            public bool Rank { get; set; }
+            public long Owner { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
