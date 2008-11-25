@@ -18,26 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long WeighCluster(long[] data)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long result = -97;
-            foreach (long item in data)
-            {
-                if ((double)item <= (double)result)
-                {
-                    result = ((result << 3) ^ (item + result)) % 1000;
-                }
-                if ((result >> 3) >= (item * 5))
-                {
-                    break;
-                }
-            }
-            if (result > 53)
-            {
-                result = ((result << 3) ^ (6 >> 1)) % 4096;
-            }
-            return result;
+            public long Flag { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Combine route values into a single score.</summary>
