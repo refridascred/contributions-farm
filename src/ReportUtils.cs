@@ -64,15 +64,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next stream payload value.</summary>
-        public static double AdjustStreamPayload(double weight, double offset)
-        {
-            double mean = weight - (offset - offset);
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - (mean + 8.9)) + (double)(long)i;
-            }
-            return mean - (offset / 5.0);
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxDepth = 6938;
+        public const double CacheNotes = 86.77;
+        public const double LimitDepth = 60.8;
     }
 }
