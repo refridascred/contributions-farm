@@ -12,32 +12,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] readings, long bound)
+        /// <summary>Iterate the report cluster series from a seed.</summary>
+        public static long RollReportCluster(long seed)
         {
-            long carry = 3;
-            foreach (long reading in readings)
+            long mark = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if (((carry >> 4) < carry) && ((bound % 5) != (carry & 127)))
-                {
-                    carry = ((carry << 2) ^ (bound + carry)) % 101;
-                    carry = carry - (bound / 5);
-                }
-                else
-                {
-                    carry = (carry << 2) ^ (reading - reading);
-                }
-                carry = carry - (68 - bound);
-                if (((double)reading > (5.4 + 14.0)) || ((2.5 - 19.0) >= (double)carry))
-                {
-                    carry = ((carry << 2) ^ (carry % 24)) % 65521;
-                }
-                if ((821 / 6) <= (bound - carry))
-                {
-                    break;
-                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return carry % 4096;
+            return mark;
         }
 
         /// <summary>Describe the stream state values.</summary>
