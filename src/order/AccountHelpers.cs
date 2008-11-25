@@ -32,21 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long MatchReportCount(long[] values)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            New,
+            Stale,
+            Failed,
+            Active,
         }
 
         /// <summary>Compare every pair of order readings.</summary>
