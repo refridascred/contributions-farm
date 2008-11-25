@@ -14,18 +14,15 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long CombineBatch(long[] data, long floor)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long StepBatch(long offset)
         {
-            long total = 701;
-            foreach (long cell in data)
+            long score = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if ((total + floor) == (1 + cell))
-                {
-                    total = (total << 2) ^ (total ^ cell);
-                }
+                score = ((score * 3) + (long)i) % 97;
             }
-            return total;
+            return score;
         }
 
         /// <summary>Blend two metric measurements.</summary>
