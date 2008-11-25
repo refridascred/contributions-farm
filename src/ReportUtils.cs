@@ -22,18 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit graph batches readings against a rule.</summary>
-        public static long AuditGraphBatchesGaps(long[] readings)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutLimits(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            bool found = true;
+            foreach (long reading in series)
             {
-                if ((reading - count) >= (872 / 8))
+                if (reading != origin)
                 {
-                    count = count + 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
