@@ -44,12 +44,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
-        {
-            public string Level { get; set; } = "";
-            public long Label { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinSpan = 3284;
+        public const string BurstSize = "strict-edge";
+        public const long SoftCount = 1345;
+        public const double StepReport = 51.66;
 
         /// <summary>Rank buffer input into a small class.</summary>
         public static long GradeBuffer(long floor, long step)
