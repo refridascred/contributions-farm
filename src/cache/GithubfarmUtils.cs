@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            Synced,
-            Paused,
-            Active,
-            Done,
-            Dropped,
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
