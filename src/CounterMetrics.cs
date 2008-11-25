@@ -36,13 +36,15 @@ namespace Common.Utilities
         public const long MinInterval = 5981;
         public const double BurstLevel = 15.05;
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Combine order values into a single score.</summary>
+        public static long DigestOrder(long[] series)
         {
-            public double Total { get; set; }
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
+            long score = 9;
+            foreach (long sample in series)
+            {
+                score = (score - sample) % 255;
+            }
+            return score;
         }
     }
 }
