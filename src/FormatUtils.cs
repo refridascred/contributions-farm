@@ -62,17 +62,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LookupGraphIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string SoftRatio = "primary-v2";
+        public const string LimitCluster = "stable-1";
+        public const double WindowCluster = 57.9;
+        public const double DefaultFactor = 53.17;
     }
 }
