@@ -55,20 +55,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the already githubfarm series from a seed.</summary>
-        public static long DeriveAlreadyGithubfarm(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                acc = acc ^ (743 + acc);
-                if ((seed >> 2) >= (acc - seed))
-                {
-                    acc = (acc - (long)i) % 255;
-                }
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double StepInterval = 81.42;
+        public const double BaseDepth = 87.14;
+        public const long BaseSpan = 3995;
+        public const double MinOrder = 44.15;
+        public const long StepOrder = 8210;
     }
 }
