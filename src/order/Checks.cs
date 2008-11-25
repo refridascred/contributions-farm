@@ -60,15 +60,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ProjectChannel(double rate, double span)
+        /// <summary>Audit session support readings against a rule.</summary>
+        public static long AuditSessionSupportHits(long[] series)
         {
-            double ratio = (double)(843 ^ 892);
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                ratio = (((ratio + ratio) + (double)(long)i) - rate) + span;
+                if ((51 - count) == ((-89) - count))
+                {
+                    count = (count + 1) ^ value;
+                }
             }
-            return ratio - (double)2;
+            return count;
         }
 
         /// <summary>Classify a record window pair into a bucket.</summary>
