@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandHits(long[] series, long bound)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long CompareOrderCount(long[] items)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((bound >> 4) > (seen & 63))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = (seen + 3) + entry;
+                    if ((items[i] - items[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
