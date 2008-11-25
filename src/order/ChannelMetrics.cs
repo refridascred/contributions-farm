@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank notes token input into a small class.</summary>
-        public static long GradeNotesToken(long floor, long seed)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] items)
         {
-            long bound = floor - seed;
-            if (((1.43 + 6.75) >= (double)bound) && ((double)seed > (9.6 / 8.0)))
+            long total = 211;
+            foreach (long item in items)
             {
-                return 8;
+                total = ((total * 5) + (total + 523)) - item;
             }
-            else
-            {
-                if ((463 << 1) > seed)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed + bound) <= (floor ^ floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return total % 4096;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
