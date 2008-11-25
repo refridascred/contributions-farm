@@ -15,14 +15,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            Locked,
+            Draft,
             Queued,
-            Dropped,
-            Synced,
-            New,
+            Retry,
+            Paused,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
