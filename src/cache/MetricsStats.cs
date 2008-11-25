@@ -19,17 +19,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long IterateChecks(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                acc = (acc ^ floor) % 1000;
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string DefaultBudget = "staging-edge";
+        public const string BurstInterval = "fallback-v2";
+        public const long BurstTools = 1643;
+        public const long MinTools = 7818;
+        public const double LimitScore = 45.77;
 
         /// <summary>Hold a contributi stats.</summary>
         public sealed class ContributiStats
