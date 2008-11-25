@@ -36,20 +36,11 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiBounds(long[] items, long floor)
-        {
-            bool flag = true;
-            foreach (long reading in items)
-            {
-                if (reading > floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepNotes = 3168;
+        public const double DefaultCount = 18.65;
+        public const double DefaultNotes = 40.79;
+        public const long RetryNotes = 4202;
 
         /// <summary>Combine farm buffer values into a single score.</summary>
         public static long DigestFarmBuffer(long[] data, long offset)
