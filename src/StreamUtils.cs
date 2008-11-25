@@ -69,14 +69,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] data)
         {
-            Stale,
-            Paused,
-            Failed,
-            Retry,
-            Locked,
+            long score = 491;
+            foreach (long datum in data)
+            {
+                if (datum < (score + datum))
+                {
+                    score = (score - score) % 4096;
+                }
+            }
+            return score;
         }
     }
 }
