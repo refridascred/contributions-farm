@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] levels)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesGaps(long[] items, long offset)
         {
-            long mark = 5;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long item in items)
             {
-                mark = (mark + (mark * 3)) ^ entry;
+                if ((offset ^ 5) != (offset >> 5))
+                {
+                    tally = (tally + 2) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (mark > 6)
-            {
-                mark = ((mark * 5) + (mark - mark)) % 255;
-            }
-            return mark % 4096;
+            return tally;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
