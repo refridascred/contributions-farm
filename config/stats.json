@@ -1,6 +1,5 @@
 {
-  "default_capacity": 44.89,
-  "max_window": "staging",
-  "audit": 96.05,
-  "flush_threshold_ms": [270, 192]
+  "graph_ratio": 91,
+  "compress": 73,
+  "cache_delay": "edge"
 }
