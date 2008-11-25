@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmHits(long[] items, long seed)
         {
-            public string Level { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Count { get; set; }
-            public double Flag { get; set; }
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if (reading >= (count * 4))
+                {
+                    count = (count + 2) - seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
