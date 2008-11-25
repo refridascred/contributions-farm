@@ -1,19 +1,5 @@
 {
-  "default_capacity_count": {
-    "flush_timeout_pct": 17,
-    "base_limit": "standard",
-    "flush_window": 9074,
-    "retry_interval": 60.26,
-    "flush_retries": {
-      "sync_size_count": [7, 275, 24],
-      "persist": 90,
-      "audit": 71,
-      "warm_limit_count": "green"
-    },
-    "burst_timeout": 4492
-  },
-  "batch_size": ["primary", "stable"],
-  "batch_depth_s": 96.94,
-  "base_depth": 23,
-  "payload_ttl": 27.29
+  "enabled": "primary",
+  "compress": "legacy",
+  "checks_interval": 5212
 }
