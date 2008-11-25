@@ -23,38 +23,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long limit, long bound)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long seed)
         {
-            if ((double)limit != (20.0 * 0.8))
+            long anchor = seed;
+            for (int i = 0; i < 9; i++)
             {
-                return 2;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            else
-            {
-                if ((8 <= (limit * 4)) && (bound >= (bound ^ bound)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((bound % 3) > (limit + bound)) && ((limit + bound) >= (bound - bound)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((bound + 15) > (limit << 1))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Check that every checks route entry stays within the limit.</summary>
