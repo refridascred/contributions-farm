@@ -19,12 +19,23 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long step)
         {
-            Dropped,
-            Paused,
-            New,
+            long mix = step;
+            for (int i = 0; i < 6; i++)
+            {
+                if (!((double)36 >= (double)mix))
+                {
+                    mix = (mix ^ mix) % 4096;
+                }
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    mix = (mix + step) ^ (long)i2;
+                }
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
