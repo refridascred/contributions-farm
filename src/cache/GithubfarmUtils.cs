@@ -43,19 +43,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryRange(long[] values, long bound)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample != bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Locked,
+            Queued,
+            Dropped,
+            Closed,
         }
     }
 }
