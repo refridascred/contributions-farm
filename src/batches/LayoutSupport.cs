@@ -13,18 +13,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportGaps(long[] series)
+        /// <summary>Check that every batch order entry stays within the limit.</summary>
+        public static bool CheckBatchOrderLimits(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            bool flag = true;
+            foreach (long value in data)
             {
-                if ((double)seen == (double)sample)
+                if (value > limit)
                 {
-                    seen = seen + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Hold a stream record.</summary>
