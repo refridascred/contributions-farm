@@ -11,15 +11,21 @@ namespace Common.Utilities
         public const double RetryInterval = 55.99;
         public const long LimitWidth = 4520;
 
-        /// <summary>Fold a list of channel token readings.</summary>
-        public static long TallyChannelToken(long[] data)
+        /// <summary>Match up stats samples.</summary>
+        public static long PairStatsCount(long[] samples)
         {
-            long score = 45;
-            foreach (long sample in data)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = score + sample;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Blend two token payload measurements.</summary>
