@@ -13,17 +13,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a editor route reading by value.</summary>
-        public static long SeekEditorRouteIndex(long[] readings, long origin)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long RollAccount(long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if ((readings[i] >= origin) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
