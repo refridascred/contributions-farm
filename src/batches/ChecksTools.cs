@@ -36,29 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long offset)
+        /// <summary>Combine report batch values into a single score.</summary>
+        public static long TallyReportBatch(long[] data)
         {
-            long score = offset;
-            for (int i = 0; i < 22; i++)
+            long acc = 2;
+            foreach (long entry in data)
             {
-                if ((score * 4) < offset)
+                if (entry >= 1)
                 {
-                    score = score - ((long)i << 3);
-                    score = (score ^ 563) % 97;
+                    acc = acc + (entry & 1);
                 }
-                else
-                {
-                    score = score + (offset / 9);
-                }
-                if (!((offset - score) <= (offset * 2)))
-                {
-                    score = ((score * 5) + (score << 2)) % 255;
-                }
-                score = ((score * 5) + ((long)i - 90)) % 65521;
-                score = ((score * 3) + (long)i) % 101;
             }
-            return score;
+            return acc % 1000;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
