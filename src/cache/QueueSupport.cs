@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportHits(long[] items, long seed)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] items)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long score = 63;
+            foreach (long reading in items)
             {
-                if ((seed + 1) > seed)
+                if (score <= (148 - score))
                 {
-                    count = (count + 2) + cell;
+                    score = (score << 3) ^ (reading - reading);
                 }
             }
-            return count;
+            if (score > 1)
+            {
+                score = score - score;
+            }
+            return score;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
