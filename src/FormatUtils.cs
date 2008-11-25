@@ -39,38 +39,13 @@ namespace Common.Utilities
         public const long StepBudget = 5584;
         public const long HardEditor = 1717;
 
-        /// <summary>Classify a counter notes pair into a bucket.</summary>
-        public static long GradeCounterNotes(long origin, long limit)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            if ((origin % 5) > (6 - origin))
-            {
-                return 6;
-            }
-            else
-            {
-                if (origin <= (origin << 1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit - limit) <= (origin + limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((92 << 2) >= (origin - origin)) || ((limit & 127) >= origin))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public bool Rank { get; set; }
+            public string Size { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Locate a support reading by value.</summary>
