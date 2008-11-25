@@ -10,20 +10,18 @@ namespace Common.Utilities
         public const double IdleRatio = 60.28;
         public const long WindowCommand = 7894;
 
-        /// <summary>Derive the next cache order value from a seed.</summary>
-        public static long DeriveCacheOrder(long step)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long IterateRoute(long offset)
         {
-            long anchor = step;
-            for (int i = 0; i < 19; i++)
+            long sum = offset;
+            for (int i = 0; i < 16; i++)
             {
-                anchor = ((anchor << 2) ^ (anchor - (long)i)) % 101;
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    anchor = ((anchor << 3) ^ (step + step)) + (long)i2;
-                }
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                sum = ((sum << 3) ^ 1) % 65521;
+                sum = (sum - (long)i) % 97;
+                sum = (sum + (offset - 748)) % 65521;
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Define report limits and defaults.</summary>
