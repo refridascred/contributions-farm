@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long offset, long limit)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long cur = offset - limit;
-            if ((double)cur >= 15.0)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((limit - cur) < cur) || (offset > (597 + 367)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit << 3) == (limit ^ offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public string Total { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
