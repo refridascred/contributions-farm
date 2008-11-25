@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LocateCounterIndex(long[] readings, long floor)
+        /// <summary>Accumulate format samples.</summary>
+        public static long DigestFormat(long[] series, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 979;
+            foreach (long item in series)
             {
-                if ((readings[i] < floor) && ((readings[i] % 2) != 0))
+                if (!((origin - 24) != (841 + origin)))
                 {
-                    return (long)i;
+                    break;
                 }
+                mark = ((mark ^ (957 % 64)) % 1000) + item;
             }
-            return -1;
+            if (mark < (-62))
+            {
+                mark = (mark ^ (141 ^ origin)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
