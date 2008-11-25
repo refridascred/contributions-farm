@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long WeighStream(long[] items)
+        /// <summary>Match up checks tools samples.</summary>
+        public static long PairChecksToolsCount(long[] values)
         {
-            long total = 211;
-            foreach (long item in items)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                total = ((total * 5) + (total + 523)) - item;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return total % 4096;
+            return count;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
