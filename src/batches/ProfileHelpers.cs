@@ -61,12 +61,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxBudget = 2334;
-        public const double StepToken = 51.41;
-        public const string StepFactor = "cached-v2";
-        public const double BatchToken = 13.4;
-        public const long HardToken = 2457;
+        /// <summary>Derive the next payload profile value from a seed.</summary>
+        public static long RollPayloadProfile(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
         public static long OverlapCommitsCount(long[] readings)
