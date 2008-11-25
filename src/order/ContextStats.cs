@@ -37,13 +37,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatGaps(long[] values)
         {
-            Paused,
-            New,
-            Ready,
-            Failed,
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((reading > count) && ((double)count > (7.92 + 7.0)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the already githubfarm series from a seed.</summary>
