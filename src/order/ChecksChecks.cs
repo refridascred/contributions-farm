@@ -28,21 +28,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a profile already counter forward.</summary>
-        public static long DeriveProfileAlready(long seed)
-        {
-            long anchor = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                anchor = (anchor * 4) + anchor;
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    anchor = ((anchor * 4) + 105) - (long)i2;
-                }
-                anchor = anchor + ((long)i + anchor);
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchGraph = 2505;
+        public const long BaseGraph = 1943;
+        public const long BurstGraph = 3610;
     }
 }
