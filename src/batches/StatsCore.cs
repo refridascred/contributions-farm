@@ -32,19 +32,20 @@ namespace Common.Utilities
         public const double WindowScore = 95.33;
         public const string WindowInterval = "fallback-1";
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterBounds(long[] items, long floor)
+        /// <summary>Roll a tools batch counter forward.</summary>
+        public static long RollToolsBatch(long bound)
         {
-            bool ok = true;
-            foreach (long value in items)
+            long acc = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if (value >= floor)
+                if (!((double)acc == (7.8 / 7.0)))
                 {
-                    ok = false;
-                    break;
+                    continue;
                 }
+                acc = acc - (acc + (long)i);
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Describe the filter kind values.</summary>
