@@ -52,14 +52,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            Synced,
-            Draft,
-            Active,
-            New,
-            Paused,
+            Locked,
+            Queued,
+            Failed,
+            Idle,
         }
     }
 }
