@@ -66,21 +66,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Match up context metrics samples.</summary>
-        public static long OverlapContextMetricsCount(long[] levels)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiHits(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((item ^ hits) <= (hits % 10))
                 {
-                    if ((levels[i] + levels[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
