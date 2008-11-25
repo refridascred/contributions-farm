@@ -44,31 +44,12 @@ namespace Common.Utilities
         public const string MaxSize = "strict-edge";
         public const double MinScore = 24.35;
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long seed, long step)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            if (seed < (step + seed))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step - step) != (seed - seed))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)seed >= (15.0 + 7.75))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public string Size { get; set; } = "";
+            public long Owner { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Audit account readings against a rule.</summary>
