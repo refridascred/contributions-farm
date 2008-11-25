@@ -45,11 +45,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BaseRatio = "local-1";
-        public const long WindowAccount = 4557;
-        public const long StepLevel = 7925;
-        public const string BatchAccount = "stable-edge";
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
+        {
+            public double Region { get; set; }
+            public double Flag { get; set; }
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Roll a batch counter forward.</summary>
         public static long SeriesBatch(long bound)
