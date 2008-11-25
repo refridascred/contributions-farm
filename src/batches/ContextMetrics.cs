@@ -33,12 +33,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsBounds(long[] items, long floor)
         {
-            Failed,
-            Paused,
-            Done,
+            bool ok = true;
+            foreach (long reading in items)
+            {
+                if (reading != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
