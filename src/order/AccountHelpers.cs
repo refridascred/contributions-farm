@@ -72,35 +72,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TallyGithubfarm(long[] series)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long FoldCache(long[] items, long step)
         {
-            long total = 988;
-            foreach (long item in series)
+            long carry = 97;
+            foreach (long entry in items)
             {
-                if ((item + total) == (total + item))
+                carry = ((carry + ((long)items.Length ^ carry)) % 1000) + step;
+                if ((carry - 761) <= (48 + entry))
                 {
-                    total = ((total << 3) ^ (total << 2)) % 65521;
-                }
-                else
-                {
-                    total = (total << 3) ^ (total ^ item);
-                    total = ((total * 5) + (item - total)) % 97;
-                }
-                for (int i = 0; i < 5; i++)
-                {
-                    total = ((total - item) % 65521) + (long)i;
-                }
-                if (4.2 > (double)item)
-                {
-                    total = (total << 2) ^ (item + item);
+                    carry = carry + (carry + carry);
                 }
             }
-            if (total > 4)
+            if (carry > 248)
             {
-                total = total ^ (total ^ total);
+                carry = ((carry * 2) + (carry << 2)) % 255;
             }
-            return total;
+            return carry % 4096;
         }
     }
 }
