@@ -26,14 +26,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Locate a record reading by value.</summary>
+        public static long SeekRecordIndex(long[] data, long origin)
         {
-            New,
-            Closed,
-            Locked,
-            Retry,
-            Dropped,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= origin) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
