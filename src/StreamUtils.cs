@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextLimits(long[] items, long target)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            bool ready = true;
-            foreach (long reading in items)
-            {
-                if (reading <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Count { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Accumulate commits batches samples.</summary>
