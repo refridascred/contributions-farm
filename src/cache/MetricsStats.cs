@@ -12,12 +12,20 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string DefaultBudget = "staging-edge";
-        public const string BurstInterval = "fallback-v2";
-        public const long BurstTools = 1643;
-        public const long MinTools = 7818;
-        public const double LimitScore = 45.77;
+        /// <summary>Check that every layout report entry stays within the limit.</summary>
+        public static bool CheckLayoutReportLimits(long[] values, long offset)
+        {
+            bool ready = true;
+            foreach (long value in values)
+            {
+                if (value > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Classify a layout stats pair into a bucket.</summary>
         public static long RankLayoutStats(long offset, long bound)
