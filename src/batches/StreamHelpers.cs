@@ -60,15 +60,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
-        {
-            Pending,
-            Ready,
-            Active,
-            Locked,
-            Paused,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchChannel = 8338;
+        public const long DefaultRatio = 9468;
+        public const string SoftChannel = "stable-1";
+        public const long IdleWidth = 2895;
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool GuardBufferBounds(long[] levels, long floor)
