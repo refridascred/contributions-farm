@@ -1,27 +1,9 @@
 # githubfarm settings
-persist:
-  min_retries: open
-  readonly:
-    queue_ratio: 77.84
-    command_timeout: false
-    warm_window: false
-  tools_retries: primary
-  verbose:
-    - stable
-    - open
-    - blue
-  checks_limit: stable
-hard_ttl: true
-soft_limit_ms: 38.81
-sync_threshold_s:
-  - 161
-  - 6
-  - 45
-sync_depth_ms: 60
-verbose:
-  default_capacity_ms:
-    - local
-    - cached
-  base_threshold_ms: 73.93
-  cache_size_count: fallback
-  persist: 250
+buffer_size: edge
+min_ratio: 34.69
+min_depth:
+  audit: 60
+  default_capacity_s: cached
+  batch_limit: latest
+schema_capacity: 5062
+base_retries_s: 14
