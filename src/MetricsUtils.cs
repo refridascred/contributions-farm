@@ -20,11 +20,13 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheSession = 4924;
-        public const double StepBudget = 36.86;
-        public const long BatchSession = 5888;
-        public const long SoftSize = 256;
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
+        {
+            public long Size { get; set; }
+            public long Flag { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string RetryQueue = "alpha-1";
