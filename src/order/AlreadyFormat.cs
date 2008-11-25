@@ -25,12 +25,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string RetryGraph = "standard-v2";
-        public const double BurstBudget = 69.88;
-        public const long LimitLevel = 8607;
-        public const long HardDepth = 7536;
-        public const double MinGraph = 96.05;
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
+        {
+            Dropped,
+            Stale,
+            Paused,
+            Ready,
+        }
 
         /// <summary>Describe the checks mode values.</summary>
         public enum ChecksMode
