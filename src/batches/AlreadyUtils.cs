@@ -12,24 +12,12 @@ namespace Common.Utilities
         public const long IdleCommand = 4834;
         public const long DefaultCommand = 6678;
 
-        /// <summary>Rank window filter input into a small class.</summary>
-        public static long ClassifyWindowFilter(long origin, long origin2)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            if ((double)origin > 2.1)
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((6 + origin2) > (origin >> 2)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Failed,
+            Idle,
+            Stale,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
