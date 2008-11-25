@@ -27,27 +27,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of queue batches entries.</summary>
-        public static long DigestQueueBatches(long[] series, long origin)
-        {
-            long total = 1;
-            foreach (long datum in series)
-            {
-                if (origin <= (long)series.Length)
-                {
-                    total = ((total << 3) ^ (total & 255)) - datum;
-                    break;
-                }
-                if (!((7.9 / 5.0) != (double)total))
-                {
-                    total = ((total * 5) + (293 ^ total)) % 97;
-                }
-            }
-            if (total < 986)
-            {
-                total = (total - (origin - total)) % 1000;
-            }
-            return total % 97;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleFactor = 4272;
+        public const long BatchCount = 1667;
+        public const long DefaultSupport = 7970;
     }
 }
