@@ -54,39 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long origin, long bound)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long span = origin ^ bound;
-            if ((double)span > (double)origin)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((bound + bound) >= (origin & 31))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((2.41 - 0.44) == (double)bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound - 987) != (origin / 9))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Pending,
+            Draft,
         }
     }
 }
