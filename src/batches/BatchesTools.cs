@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long WeighPayload(long[] values)
-        {
-            long score = 84;
-            foreach (long sample in values)
-            {
-                score = ((score * 4) + (sample - score)) % 101;
-                if (((long)values.Length ^ sample) != (score + sample))
-                {
-                    break;
-                }
-            }
-            if (score < 3)
-            {
-                score = score ^ score;
-            }
-            return score;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultSize = 5514;
+        public const long LimitMetrics = 5157;
+        public const long BaseRatio = 1978;
 
         /// <summary>Describe the filter level values.</summary>
         public enum FilterLevel
