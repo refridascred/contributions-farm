@@ -47,17 +47,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LookupClusterIndex(long[] data, long offset)
+        /// <summary>Check that every report checks entry stays within the limit.</summary>
+        public static bool GuardReportChecksRange(long[] items, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long item in items)
             {
-                if (data[i] > offset)
+                if (item > step)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
