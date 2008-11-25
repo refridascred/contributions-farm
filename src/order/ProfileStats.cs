@@ -19,20 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a report session counter forward.</summary>
-        public static long SeriesReportSession(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                if (((long)i % 16) == ((long)i - (long)i))
-                {
-                    acc = (acc + (limit * 5)) % 4096;
-                }
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheWindow = 6582;
+        public const double MinScore = 30.65;
+        public const string HardScore = "open-v2";
+        public const long StepWidth = 6648;
+        public const string DefaultWindow = "open-edge";
 
         /// <summary>Hold a payload snapshot.</summary>
         public sealed class PayloadSnapshot
