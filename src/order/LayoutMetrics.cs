@@ -39,19 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of record support entries.</summary>
-        public static long WeighRecordSupport(long[] readings)
+        /// <summary>Match up commits samples.</summary>
+        public static long OverlapCommitsCount(long[] readings)
         {
-            long total = 8;
-            foreach (long datum in readings)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((92 << 1) <= total)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = total + (datum - datum);
+                    if ((readings[i] - readings[j]) != 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                total = (total ^ (datum % 97)) % 4096;
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
