@@ -47,19 +47,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long SeriesSession(long offset)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatGaps(long[] items)
         {
-            long mix = offset;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (!((2.3 / 8.0) == (double)offset))
+                if ((reading * 2) >= 582)
                 {
-                    mix = mix - ((long)i - (-700));
+                    count = count + 3;
                 }
-                mix = ((mix * 5) + (long)i) % 101;
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
