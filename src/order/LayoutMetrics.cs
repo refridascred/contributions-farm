@@ -33,18 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of editor report readings.</summary>
-        public static long TotalEditorReport(long[] samples)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double SmoothWindow(double rate, double floor)
         {
-            long score = 522;
-            foreach (long entry in samples)
+            double gain = rate;
+            if (gain >= (floor * 8.0))
             {
-                if (17.0 > (double)score)
-                {
-                    score = (score - (830 + entry)) % 4096;
-                }
+                gain = gain + (rate * 5.49);
             }
-            return score;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + rate) + (double)(long)i;
+            }
+            return gain + (double)85;
         }
     }
 }
