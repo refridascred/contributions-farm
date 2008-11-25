@@ -27,27 +27,13 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] levels, long seed)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long anchor = 796;
-            foreach (long datum in levels)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    anchor = ((anchor * 3) + (seed - datum)) ^ (long)i;
-                }
-                anchor = (anchor - datum) % 97;
-                if (seed > (27 << 1))
-                {
-                    break;
-                }
-            }
-            if (anchor < (-9))
-            {
-                anchor = anchor ^ seed;
-            }
-            return anchor;
+            public double Stamp { get; set; }
+            public bool Level { get; set; }
+            public bool Owner { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
