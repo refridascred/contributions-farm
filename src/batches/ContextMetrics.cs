@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutHits(long[] samples)
         {
-            public bool Ratio { get; set; }
-            public double Rank { get; set; }
-            public long Region { get; set; }
-            public bool Token { get; set; }
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((((3.1 - 0.1) > (double)reading) && ((double)(long)samples.Length < (20.0 - 2.6))) && ((reading * 5) <= 3))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of record entries.</summary>
