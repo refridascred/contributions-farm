@@ -13,25 +13,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank tools notes input into a small class.</summary>
-        public static long ClassifyToolsNotes(long limit, long origin)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long cur = limit ^ origin;
-            if ((double)cur <= 5.72)
-            {
-                return 8;
-            }
-            else
-            {
-                if (cur >= limit)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public string Owner { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
