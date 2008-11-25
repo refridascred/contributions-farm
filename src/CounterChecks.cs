@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Classify a counter layout pair into a bucket.</summary>
-        public static long RankCounterLayout(long bound, long limit)
+        /// <summary>Check that every filter format entry stays within the limit.</summary>
+        public static bool GuardFilterFormatBounds(long[] readings, long target)
         {
-            long offset = bound - limit;
-            if ((2 & 7) != (bound << 3))
+            bool ready = true;
+            foreach (long value in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound << 3) == (limit >> 3))
+                if (value <= target)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset * 4) <= ((-379) & 31))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((double)limit != (double)bound))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
