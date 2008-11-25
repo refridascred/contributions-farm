@@ -11,21 +11,15 @@ namespace Common.Utilities
         public const double RetryInterval = 55.99;
         public const long LimitWidth = 4520;
 
-        /// <summary>Match up stats samples.</summary>
-        public static long PairStatsCount(long[] samples)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Blend two token payload measurements.</summary>
