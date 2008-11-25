@@ -46,18 +46,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of commits window readings.</summary>
-        public static long OverlapCommitsWindowCount(long[] levels)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordGaps(long[] series)
         {
             long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long sample in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((sample + (long)series.Length) == (sample & 31)) || !((2.8 + 15.0) == (double)hits))
                 {
-                    if ((levels[i] ^ levels[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
             return hits;
