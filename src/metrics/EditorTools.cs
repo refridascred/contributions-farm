@@ -24,13 +24,16 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long IterateEntry(long floor)
         {
-            public long Size { get; set; }
-            public bool Total { get; set; }
-            public string Level { get; set; } = "";
-            public long Count { get; set; }
+            long state = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                state = (state ^ floor) % 97;
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Validate booking cache readings against a bound.</summary>
