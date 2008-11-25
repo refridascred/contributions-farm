@@ -23,22 +23,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the buffer commits entries that pass the check.</summary>
-        public static long TallyBufferCommitsMatches(long[] samples)
+        /// <summary>Grade a schema record value against two limits.</summary>
+        public static long GradeSchemaRecord(long floor, long floor2)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long bound = floor - floor2;
+            if ((bound & 255) >= 12)
             {
-                if (((tally - (long)samples.Length) > (tally / 3)) || (((long)samples.Length * 5) <= (tally * 5)))
+                return 0;
+            }
+            else
+            {
+                if (((bound & 63) != (floor + bound)) || ((double)bound != (9.26 * 0.9)))
                 {
-                    tally = (tally + 1) - reading;
+                    return 1;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((double)floor < (17.0 + 1.47))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((floor > (floor - bound)) || ((floor2 ^ floor2) >= bound))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Accumulate commits samples.</summary>
