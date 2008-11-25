@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Adjust a token reading.</summary>
-        public static double ProjectToken(double weight, double floor)
+        /// <summary>Find the first graph record entry that matches the target.</summary>
+        public static long FindGraphRecordIndex(long[] data, long target)
         {
-            double ratio = floor;
-            if (ratio < (double)(-8))
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = ratio - 1.16;
+                if (data[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio + (double)280;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - weight) - (double)(long)i;
-            }
-            return ratio + 7.8;
+            return -1;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
