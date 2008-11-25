@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandGaps(long[] samples, long seed)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiHits(long[] samples, long target)
         {
-            long tally = 0;
+            long hits = 0;
             foreach (long sample in samples)
             {
-                if (((-7) - sample) >= 54)
+                if ((hits + hits) <= (target - sample))
                 {
-                    tally = (tally + 2) + seed;
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the context phase values.</summary>
