@@ -37,22 +37,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionGaps(long[] series, long offset)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((63 + 3) != (value + value))
-                {
-                    matches = (matches + 3) + offset;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Limit { get; set; } = "";
+            public long Score { get; set; }
+            public long Level { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
