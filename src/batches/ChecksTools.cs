@@ -58,22 +58,13 @@ namespace Common.Utilities
             return gain - (double)27;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelMatches(long[] series)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((((item - 766) > (item / 5)) && ((matches - matches) != (matches + matches))) && ((item ^ matches) > (matches + 72)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Label { get; set; }
+            public long Token { get; set; }
+            public long Mode { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
