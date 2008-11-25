@@ -19,11 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryScore = 2984;
-        public const double MinScore = 15.03;
-        public const long SoftSize = 973;
-        public const double BurstMetrics = 36.04;
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportOutliers(long[] items, long bound)
+        {
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((518 - 3) != (bound + cell))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long MeasureMetricOutliers(long[] data, long limit)
