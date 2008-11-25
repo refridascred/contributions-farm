@@ -54,15 +54,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long StepRoute(long bound)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long score = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
+            Synced,
+            Draft,
+            Retry,
+            Locked,
+            Paused,
         }
     }
 }
