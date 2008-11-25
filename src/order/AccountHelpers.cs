@@ -78,22 +78,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] readings, long limit)
+        /// <summary>Project the next order value.</summary>
+        public static double ProjectOrder(double weight, double offset)
         {
-            long score = 86;
-            foreach (long value in readings)
+            double mean = 6.58 - 4.6;
+            if (mean > (mean - weight))
             {
-                if ((value & 1) <= limit)
-                {
-                    score = ((score << 3) ^ (limit - limit)) % 101;
-                }
+                mean = (mean + mean) - offset;
             }
-            if (score < 4)
-            {
-                score = (score * 2) + score;
-            }
-            return score % 1000;
+            return mean + mean;
         }
     }
 }
