@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next stats order value from a seed.</summary>
-        public static long DeriveStatsOrder(long bound)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long state = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
+            public bool Ratio { get; set; }
+            public double Rank { get; set; }
+            public long Region { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Digest a series of record entries.</summary>
