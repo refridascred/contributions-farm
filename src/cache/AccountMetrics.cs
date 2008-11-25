@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] samples)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountLimits(long[] readings, long floor)
         {
-            long anchor = 3;
-            foreach (long entry in samples)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                if ((entry + 648) <= entry)
+                if (value >= floor)
                 {
-                    continue;
+                    ok = false;
+                    break;
                 }
-                anchor = (anchor << 2) ^ (744 >> 4);
             }
-            if (anchor < 5)
-            {
-                anchor = ((anchor << 2) ^ ((-3) ^ anchor)) % 101;
-            }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Fold a list of cache counter readings.</summary>
