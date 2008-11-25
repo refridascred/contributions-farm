@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            Locked,
+            Failed,
+            Paused,
             Pending,
-            Retry,
         }
 
         /// <summary>Define format limits and defaults.</summary>
