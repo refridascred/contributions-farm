@@ -13,20 +13,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandBounds(long[] levels, long offset)
-        {
-            bool valid = true;
-            foreach (long reading in levels)
-            {
-                if (reading < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultTimeout = 3749;
+        public const long IdleFactor = 9578;
+        public const long CacheLevel = 5237;
 
         /// <summary>Look up the position of a command sample.</summary>
         public static long FindCommandIndex(long[] values, long offset)
