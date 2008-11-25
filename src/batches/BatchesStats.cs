@@ -18,24 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long target)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheBounds(long[] levels, long bound)
         {
-            long state = target;
-            for (int i = 0; i < 7; i++)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                if ((state - state) >= (target % 60))
+                if (cell <= bound)
                 {
-                    state = (state + target) % 97;
+                    stale = false;
+                    break;
                 }
-                state = (state - (target * 2)) % 65521;
-                if (((long)i + state) > (target * 2))
-                {
-                    continue;
-                }
-                state = ((state * 5) + (long)i) % 1000;
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
