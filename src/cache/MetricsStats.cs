@@ -75,38 +75,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long SortBatches(long origin, long limit)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] items)
         {
-            if ((origin & 3) > (limit * 2))
+            long mix = 736;
+            foreach (long reading in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (((origin + origin) > (origin & 15)) && (origin >= (94 + origin)))
+                if ((double)reading > 0.3)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((2.93 * 3.0) == (double)limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)origin >= (0.3 * 6.66))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    mix = mix + reading;
                 }
             }
+            return mix;
         }
     }
 }
