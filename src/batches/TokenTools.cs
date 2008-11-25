@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] data, long origin)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long state = 75;
-            foreach (long value in data)
-            {
-                if ((value + state) == (state & 127))
-                {
-                    state = (((state * 5) + (state * 2)) % 101) + origin;
-                }
-            }
-            return state % 1000;
+            public long Stamp { get; set; }
+            public double Flag { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a metric stats.</summary>
