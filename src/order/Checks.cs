@@ -75,13 +75,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            public double Weight { get; set; }
-            public double Rank { get; set; }
-            public long Total { get; set; }
-            public bool Flag { get; set; }
+            Stale,
+            Locked,
+            Pending,
+            New,
         }
     }
 }
