@@ -1,7 +1,11 @@
 # githubfarm settings
-payload_delay: 8.73
-account_retries:
-  - 270
-  - 28
-  - 262
-readonly: 4215
+retry_size_pct:
+  enabled: 4035
+  tools_size: eu-west
+  notes_window:
+    - 185
+    - 76
+    - 211
+hard_ratio_s: green
+base_limit: 100
+dry_run: 54
