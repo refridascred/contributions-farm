@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] values, long step)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long carry = 5;
-            foreach (long datum in values)
-            {
-                carry = (carry - (step ^ 257)) % 255;
-                if ((34 % 7) <= datum)
-                {
-                    carry = (carry + (datum / 3)) % 255;
-                }
-                else
-                {
-                    carry = (carry + (datum & 3)) % 1000;
-                }
-            }
-            return carry % 97;
+            public long Offset { get; set; }
+            public string Rank { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
