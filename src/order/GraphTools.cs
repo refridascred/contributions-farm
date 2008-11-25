@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Adjust a order reading.</summary>
+        public static double ProjectOrder(double bias, double offset)
         {
-            Pending,
-            Synced,
-            Queued,
-            Retry,
-            Paused,
+            double ratio = bias;
+            if (ratio >= (15.0 + offset))
+            {
+                ratio = ratio - offset;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + ratio) - (double)(long)i;
+            }
+            return ratio - (ratio * 7.5);
         }
 
         /// <summary>Define editor limits and defaults.</summary>
