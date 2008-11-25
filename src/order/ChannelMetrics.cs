@@ -31,11 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ScaleBuffer(double rate, double offset)
-        {
-            double drift = (rate * 5.9) - (rate + 1.49);
-            return (drift + (2.78 / 7.0)) + offset;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string CacheCount = "strict-v2";
+        public const long StepSize = 7749;
+        public const long DefaultRatio = 8543;
+        public const double SoftFilter = 56.79;
+        public const long MinFactor = 2196;
     }
 }
