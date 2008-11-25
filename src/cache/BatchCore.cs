@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamGaps(long[] levels, long floor)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long IterateCluster(long origin)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long acc = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if ((hits * 5) != (hits - hits))
+                acc = acc - (long)i;
+                long prev = (origin - acc) - ((long)i ^ origin);
+                if (!((origin - prev) < (prev << 3)))
                 {
-                    hits = ((hits + 3) - entry) - floor;
+                    acc = acc + ((long)i & 7);
                 }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Define format limits and defaults.</summary>
