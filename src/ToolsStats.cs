@@ -66,25 +66,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long SeriesRecord(long limit)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long mark = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    mark = (((mark << 2) ^ 17) % 65521) - (long)i2;
-                }
-                if ((mark <= limit) || (((long)i * 5) == (limit - limit)))
-                {
-                    mark = mark - (mark % 24);
-                    mark = mark ^ (682 + limit);
-                    continue;
-                }
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
+            public double Score { get; set; }
+            public long Offset { get; set; }
+            public double Size { get; set; }
         }
     }
 }
