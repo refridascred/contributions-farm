@@ -1,6 +1,9 @@
 # githubfarm settings
-max_retries_count: legacy
-soft_ratio_count: open
-batch_retries: latest
-max_size: 0.38
-hard_interval: edge
+support_ratio:
+  retry_ttl_count: 98.66
+  dry_run: false
+  batches_ttl: green
+enabled: legacy
+record_timeout: true
+dry_run: 18.02
+soft_ttl: true
