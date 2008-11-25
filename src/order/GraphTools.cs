@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Locate a stream layout reading by value.</summary>
-        public static long SeekStreamLayoutIndex(long[] series, long offset)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Closed,
+            New,
+            Locked,
+            Idle,
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
