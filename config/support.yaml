@@ -1,11 +1,22 @@
 # support settings
-base_ratio_pct: 100
-flush_depth:
-  base_window_count: 13.11
-  report_size: 6636
-  account_interval: true
-  max_capacity_count: stable
-  burst_retries: edge
-  flush_threshold_count: 8203
-layout_interval: 1024
-notes_size: 73
+sync_limit_s:
+  idle_delay: open
+  sync_threshold_ms: fallback
+  min_interval_ms: 60
+  persist: 76
+  max_timeout: fallback
+  idle_threshold_ms: local
+cache_threshold: 6611
+strict:
+  warm_capacity_pct: cached
+  flush_limit: 100
+  dry_run: 30.19
+  payload_delay:
+    record_capacity: 100
+    dry_run: false
+    retry_depth: strict
+    farm_size: legacy
+    idle_threshold: eu-west
+  batch_delay: 1024
+  sync_window_ms: true
+warm_capacity_s: 12
