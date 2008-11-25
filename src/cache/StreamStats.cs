@@ -20,19 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long WeighCounter(long[] data)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorHits(long[] data, long limit)
         {
-            long score = 49;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long item in data)
             {
-                score = (score ^ (cell & 1)) % 1000;
-                if (213 > score)
+                if ((matches % 64) <= (limit >> 2))
                 {
-                    break;
+                    matches = (matches + 1) - item;
                 }
             }
-            return score % 65521;
+            return matches;
         }
 
         /// <summary>Blend two batch measurements.</summary>
