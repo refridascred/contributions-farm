@@ -31,12 +31,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string MinDepth = "stable-edge";
-        public const string SoftPayload = "standard-1";
-        public const long BatchPayload = 8214;
-        public const double WindowScore = 95.33;
-        public const string WindowInterval = "fallback-1";
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BaseCount = "alpha-edge";
+        public const long IdleSpan = 4708;
+        public const long RetryRatio = 1764;
+        public const string SoftFactor = "stable-1";
 
         /// <summary>Describe the notes class values.</summary>
         public enum NotesClass
