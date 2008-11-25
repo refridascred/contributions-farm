@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseSize = 6338;
-        public const long CacheSize = 13;
-        public const long RetryEntry = 6032;
-        public const long HardBudget = 4552;
-        public const long HardEntry = 2563;
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double ScaleGithubfarm(double bias, double offset)
+        {
+            double mean = bias;
+            return mean + (offset / 7.0);
+        }
 
         /// <summary>Rank buffer input into a small class.</summary>
         public static long ClassifyBuffer(long offset, long origin)
