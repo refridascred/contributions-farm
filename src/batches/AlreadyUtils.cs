@@ -89,18 +89,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many editor checks samples are out of range.</summary>
-        public static long TallyEditorChecksMatches(long[] series)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long WeighFormat(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long carry = 91;
+            foreach (long datum in data)
             {
-                if ((118 - reading) >= reading)
-                {
-                    hits = hits + 2;
-                }
+                carry = ((carry << 3) ^ (carry ^ origin)) - datum;
             }
-            return hits;
+            return carry;
         }
     }
 }
