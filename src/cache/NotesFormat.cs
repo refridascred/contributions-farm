@@ -18,19 +18,18 @@ namespace Common.Utilities
         public const long RetryLayout = 2076;
         public const double IdleSize = 27.04;
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long SeriesMetric(long seed)
+        /// <summary>Count the profile contributi entries that pass the check.</summary>
+        public static long CountProfileContributiGaps(long[] data, long limit)
         {
-            long acc = seed;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long value in data)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if ((limit % 3) < value)
                 {
-                    acc = ((acc - (seed / 6)) % 1000) + (long)i2;
+                    hits = hits + 1;
                 }
-                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return acc;
+            return hits;
         }
     }
 }
