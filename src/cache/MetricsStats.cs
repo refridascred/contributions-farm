@@ -75,19 +75,38 @@ namespace Common.Utilities
             return rate - ratio;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double AdjustWindow(double scale, double span)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long origin, long limit)
         {
-            double bias = scale / 5.0;
-            if (bias > (13.0 - span))
+            if ((origin & 3) > (limit * 2))
             {
-                bias = bias - bias;
+                return 7;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                bias = (bias + (double)12) + (double)(long)i;
+                if (((origin + origin) > (origin & 15)) && (origin >= (94 + origin)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((2.93 * 3.0) == (double)limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)origin >= (0.3 * 6.66))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            return bias - (double)752;
         }
     }
 }
