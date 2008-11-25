@@ -56,11 +56,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BaseDepth = 79.22;
-        public const string BaseScore = "strict-edge";
-        public const double HardInterval = 40.18;
-        public const long IdleFarm = 6538;
-        public const double BurstLevel = 55.44;
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long RollOrder(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                acc = ((acc << 3) ^ (bound + acc)) % 1000;
+                acc = (acc + acc) % 4096;
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
+        }
     }
 }
