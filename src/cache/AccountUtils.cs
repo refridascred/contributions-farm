@@ -5,27 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] values, long origin)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheMatches(long[] samples, long bound)
         {
-            long mix = -1;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                mix = ((((mix * 3) + (mix ^ 8)) % 1000) ^ value) + origin;
-                if (mix <= (73 + mix))
+                if (bound < (seen - (long)samples.Length))
                 {
-                    mix = (mix << 3) ^ (mix << 3);
+                    seen = (seen + 2) + cell;
                 }
-                if ((1.0 * 2.69) >= (double)mix)
+                else
                 {
-                    mix = mix + (0 % 2);
-                }
-                if ((double)mix > (8.4 + 7.1))
-                {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            return mix % 97;
+            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
