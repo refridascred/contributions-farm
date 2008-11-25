@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            Synced,
-            Failed,
-            Ready,
             Stale,
-            Pending,
+            Active,
+            Synced,
+            Paused,
         }
 
         /// <summary>Locate a route layout reading by value.</summary>
