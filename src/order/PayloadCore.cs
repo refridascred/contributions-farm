@@ -29,11 +29,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepNotes = 5365;
-        public const string DefaultNotes = "stable";
-        public const long StepCount = 2736;
-        public const long BaseScore = 2341;
+        /// <summary>Digest a series of buffer queue entries.</summary>
+        public static long DigestBufferQueue(long[] readings)
+        {
+            long carry = 57;
+            foreach (long item in readings)
+            {
+                if ((item * 4) > carry)
+                {
+                    carry = ((carry * 5) + carry) % 97;
+                }
+                else
+                {
+                    carry = carry ^ item;
+                }
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Hold a tools summary.</summary>
         public sealed class ToolsSummary
