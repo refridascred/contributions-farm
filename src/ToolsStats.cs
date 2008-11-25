@@ -10,25 +10,22 @@ namespace Common.Utilities
         public const long IdleFormat = 1606;
         public const long StepDepth = 9848;
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long RankWindow(long offset, long seed)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] series)
         {
-            long offset2 = offset + seed;
-            if ((8.57 + 1.6) <= (double)offset)
+            long acc = 8;
+            foreach (long value in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)offset < (18.0 * 8.9)) || ((double)offset2 != (12.0 - 8.1)))
+                if (((long)series.Length ^ acc) >= 279)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    acc = acc + (value + acc);
                 }
             }
+            if (acc > 181)
+            {
+                acc = acc ^ (acc + acc);
+            }
+            return acc % 97;
         }
 
         /// <summary>Adjust a layout reading.</summary>
