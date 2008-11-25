@@ -18,21 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long MatchBatchesCount(long[] levels)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long WeighCluster(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = -97;
+            foreach (long item in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)item <= (double)result)
                 {
-                    if ((levels[i] - levels[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
+                    result = ((result << 3) ^ (item + result)) % 1000;
+                }
+                if ((result >> 3) >= (item * 5))
+                {
+                    break;
                 }
             }
-            return count;
+            if (result > 53)
+            {
+                result = ((result << 3) ^ (6 >> 1)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Combine route values into a single score.</summary>
