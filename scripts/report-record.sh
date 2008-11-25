@@ -7,10 +7,21 @@ log() {
 }
 
 total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 4))
+for i in $(seq 1 4); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
 
-RECORD_LIMIT=485
-log "limit is ${RECORD_LIMIT}"
+for item in latest staging strict; do
+    log "checking ${item}"
+done
+
+mode="${1:-edge}"
+case "${mode}" in
+    edge)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
