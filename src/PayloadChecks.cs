@@ -24,19 +24,17 @@ namespace Common.Utilities
             return gain - rate;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double BlendFilter(double weight, double span)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LookupClusterIndex(long[] series, long target)
         {
-            double scale = (double)(74 - 59);
-            if (scale > (double)730)
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = (scale - (weight + weight)) + span;
+                if (series[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + (double)276) + (double)(long)i;
-            }
-            return scale - (double)18;
+            return -1;
         }
 
         /// <summary>Audit metric report readings against a rule.</summary>
