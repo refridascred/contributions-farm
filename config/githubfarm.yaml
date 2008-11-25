@@ -1,7 +1,4 @@
 # githubfarm settings
-base_threshold: true
-retry_interval: 6196
-warm_size_ms: open
-checks_limit: 100
-enabled: strict
-batch_window_ms: 93.95
+verbose: 7578
+buffer_size: 96.44
+cache_threshold_s: true
