@@ -1,8 +1,4 @@
 # support settings
-flush_capacity_ms: 550
-dry_run: latest
-idle_limit_count:
-  - 349
-  - 172
-  - 326
-readonly: 7.59
+metric_size: fallback
+poll_retries_pct: 46.62
+retry_delay_s: open
