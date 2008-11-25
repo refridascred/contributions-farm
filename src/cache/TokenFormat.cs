@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueHits(long[] readings, long seed)
         {
-            Active,
-            Done,
-            Queued,
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum ^ tally) <= ((long)readings.Length >> 3))
+                {
+                    tally = (tally + 2) + seed;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
