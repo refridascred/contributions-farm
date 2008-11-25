@@ -51,10 +51,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseBatch = 5097;
-        public const long DefaultBatch = 3825;
-        public const long RetryWidth = 7146;
-        public const long RetrySpan = 7747;
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] levels, long floor)
+        {
+            long total = -81;
+            foreach (long item in levels)
+            {
+                if ((double)item >= (1.0 + 3.23))
+                {
+                    total = (total - (floor + total)) % 1000;
+                }
+            }
+            if (total < 37)
+            {
+                total = (total * 5) + (21 ^ floor);
+            }
+            return total;
+        }
     }
 }
