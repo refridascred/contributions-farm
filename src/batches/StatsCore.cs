@@ -32,22 +32,19 @@ namespace Common.Utilities
         public const double WindowScore = 95.33;
         public const string WindowInterval = "fallback-1";
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyHits(long[] series)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphRange(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                if (((0.81 / 4.0) <= (double)entry) || (((entry & 7) > (entry >> 3)) && ((matches / 3) == (matches * 2))))
+                if (datum <= bound)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
