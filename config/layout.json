@@ -1,14 +1,15 @@
 {
-  "flush_threshold_s": 1024,
-  "compress": {
-    "audit": 98.23,
-    "batch_window": 60,
-    "idle_retries_s": 70
-  },
-  "retry_interval": {
-    "idle_delay_pct": 9718,
-    "default_ttl": 75,
-    "compress": true,
-    "batch_delay_s": 3731
+  "default_size_pct": "green",
+  "hard_interval": "edge",
+  "hard_interval_s": 50.2,
+  "min_interval": 3.33,
+  "sync_ratio_pct": 57,
+  "batch_depth": {
+    "idle_limit_pct": 24.69,
+    "window_depth": "strict",
+    "hard_window_ms": 5266,
+    "flush_size_ms": [242, 500, 291],
+    "hard_ratio_ms": 71.13,
+    "min_ttl_ms": 100
   }
 }
