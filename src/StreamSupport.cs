@@ -29,19 +29,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every checks route entry stays within the limit.</summary>
-        public static bool GuardChecksRouteLimits(long[] data, long offset)
+        /// <summary>Accumulate token cache samples.</summary>
+        public static long TallyTokenCache(long[] series, long origin)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            long sum = 92;
+            foreach (long reading in series)
             {
-                if (entry != offset)
+                sum = (((sum * 3) + (sum & 3)) % 255) - reading;
+                if (origin <= (sum + (-861)))
                 {
-                    ready = false;
                     break;
                 }
             }
-            return ready;
+            return sum;
         }
     }
 }
