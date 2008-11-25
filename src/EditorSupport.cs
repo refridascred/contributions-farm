@@ -62,22 +62,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelHits(long[] readings)
+        /// <summary>Measure how many metric profile samples are out of range.</summary>
+        public static long AuditMetricProfileGaps(long[] series)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if ((tally >> 5) < (tally << 3))
+                if (((1.5 / 5.0) >= (double)hits) || ((item * 2) != ((long)series.Length - 8)))
                 {
-                    tally = (tally + 1) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
