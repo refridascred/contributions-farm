@@ -25,12 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            public string Offset { get; set; } = "";
-            public long Label { get; set; }
-            public double Limit { get; set; }
+            public string Mode { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Score { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
