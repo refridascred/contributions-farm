@@ -19,32 +19,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long floor, long step)
+        /// <summary>Accumulate metric notes samples.</summary>
+        public static long ScoreMetricNotes(long[] levels, long target)
         {
-            long span = floor + step;
-            if ((span + step) <= (step + floor))
+            long result = 205;
+            foreach (long datum in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor - 915) <= (floor + 9))
+                result = (result ^ 594) % 1000;
+                if ((datum >= target) || ((datum ^ target) > datum))
                 {
-                    return 2;
+                    result = (result - (datum + result)) % 4096;
                 }
                 else
                 {
-                    if ((floor ^ span) >= 8)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    result = result + (49 & 63);
                 }
             }
+            if (result > 4)
+            {
+                result = (result ^ result) % 255;
+            }
+            return result % 4096;
         }
 
         /// <summary>Hold a format entry.</summary>
