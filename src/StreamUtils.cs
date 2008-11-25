@@ -47,38 +47,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a checks stats value against two limits.</summary>
-        public static long RankChecksStats(long step, long limit)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            if (((9.0 / 3.0) < (double)limit) || (limit > (835 - step)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step << 1) < (step * 4))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((step - step) > (limit - limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((step + limit) < 279) && ((limit ^ limit) < limit))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public long Region { get; set; }
+            public long Rank { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Describe the report kind values.</summary>
