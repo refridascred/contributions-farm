@@ -14,15 +14,15 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long StepBatch(long offset)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long WeighEntry(long[] samples)
         {
-            long score = offset;
-            for (int i = 0; i < 12; i++)
+            long sum = 9;
+            foreach (long entry in samples)
             {
-                score = ((score * 3) + (long)i) % 97;
+                sum = (sum ^ 1) ^ entry;
             }
-            return score;
+            return sum % 65521;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
