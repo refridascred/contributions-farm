@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            public long Limit { get; set; }
-            public string Level { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            public bool Owner { get; set; }
+            public string Token { get; set; } = "";
             public double Mode { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
