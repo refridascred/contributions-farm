@@ -1,6 +1,23 @@
 {
-  "burst_ratio_pct": "latest",
-  "dry_run": 36.22,
-  "default_size": [248, 346, 494],
-  "editor_timeout": [79, 106, 120, 328]
+  "batch_ratio_pct": [126, 98],
+  "metric_retries": "legacy",
+  "max_ttl_s": 30,
+  "hard_capacity_ms": {
+    "audit": true,
+    "soft_depth": 70,
+    "soft_limit_s": "standard",
+    "soft_size": 38
+  },
+  "readonly": {
+    "poll_capacity_ms": ["strict", "stable", "green"],
+    "schema_retries": {
+      "session_retries": "open",
+      "hard_threshold_count": "eu-west",
+      "hard_ttl": 32.18,
+      "readonly": 27
+    },
+    "poll_delay_count": 24,
+    "warm_timeout": "legacy",
+    "idle_size_ms": 51.46
+  }
 }
