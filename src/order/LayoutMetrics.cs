@@ -14,22 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of session notes readings.</summary>
-        public static long WeighSessionNotes(long[] levels, long floor)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryBounds(long[] items, long bound)
         {
-            long carry = 28;
-            foreach (long entry in levels)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                if ((carry <= (entry + floor)) && ((double)floor != (double)entry))
+                if (entry < bound)
                 {
-                    carry = carry + (entry >> 5);
+                    flag = false;
+                    break;
                 }
             }
-            if (carry < 219)
-            {
-                carry = (carry << 2) ^ floor;
-            }
-            return carry % 4096;
+            return flag;
         }
 
         /// <summary>Fold a list of editor report readings.</summary>
