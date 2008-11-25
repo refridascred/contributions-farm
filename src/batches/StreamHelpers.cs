@@ -62,23 +62,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ProjectChannel(double gain, double offset)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheGaps(long[] samples, long origin)
         {
-            double mean = (double)(5 % 60);
-            if (mean >= (gain * 11.0))
+            long count = 0;
+            foreach (long cell in samples)
             {
-                mean = mean - gain;
+                if ((count + count) >= (cell >> 3))
+                {
+                    count = (count + 2) - origin;
+                }
             }
-            else
-            {
-                mean = mean + (gain * 2.33);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + offset) - (double)(long)i;
-            }
-            return mean + (double)293;
+            return count;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
