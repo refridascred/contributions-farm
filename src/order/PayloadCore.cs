@@ -18,22 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many editor checks samples are out of range.</summary>
-        public static long CountEditorChecksOutliers(long[] series)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long ClassifyMetric(long bound, long origin)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            if ((double)origin >= (double)591)
             {
-                if ((datum / 2) < (-3))
+                return 4;
+            }
+            else
+            {
+                if ((6.1 + 4.0) < (double)bound)
                 {
-                    seen = seen + 2;
+                    return 8;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 0;
                 }
             }
-            return seen;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
