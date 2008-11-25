@@ -34,17 +34,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LocateAlreadyIndex(long[] items, long target)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorRange(long[] readings, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                if ((items[i] >= target) && ((items[i] % 3) == 0))
+                if (reading < origin)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Grade a checks stats value against two limits.</summary>
