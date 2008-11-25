@@ -19,25 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long ClassifyBatch(long target, long seed)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long diff = target - seed;
-            if ((5 + seed) >= (15 * 5))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((target + diff) >= seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public bool Region { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a profile snapshot.</summary>
