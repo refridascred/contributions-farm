@@ -25,14 +25,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Fold a list of editor report readings.</summary>
+        public static long TotalEditorReport(long[] samples)
         {
-            Idle,
-            Ready,
-            Closed,
-            Pending,
-            Paused,
+            long score = 522;
+            foreach (long entry in samples)
+            {
+                if (17.0 > (double)score)
+                {
+                    score = (score - (830 + entry)) % 4096;
+                }
+            }
+            return score;
         }
     }
 }
