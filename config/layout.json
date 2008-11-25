@@ -1,5 +1,5 @@
 {
-  "batch_retries": false,
-  "strict": 2294,
-  "checks_threshold": 100
+  "burst_capacity": false,
+  "stream_threshold": 4.22,
+  "strict": 9400
 }
