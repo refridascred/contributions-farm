@@ -1,29 +1,6 @@
 # entry settings
-counter_retries:
-  - strict
-  - open
-  - latest
-  - edge
-dry_run:
-  cache_depth_count:
-    payload_interval:
-      - 143
-      - 97
-      - 213
-    strict: eu-west
-    min_capacity:
-      - standard
-      - primary
-      - local
-      - legacy
-    poll_delay: eu-west
-    batch_timeout_count: 64.27
-  verbose: true
-  cache_retries_count: eu-west
-  persist:
-    - cached
-    - primary
-  hard_delay_pct: 6444
-  strict: stable
-warm_delay_count: strict
-poll_ttl: true
+hard_window_count: 1024
+format_size: 100
+flush_ttl_s: green
+base_ttl_s: green
+graph_ttl: eu-west
