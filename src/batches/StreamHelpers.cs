@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long FoldRecord(long[] data, long offset)
-        {
-            long mix = 8;
-            foreach (long sample in data)
-            {
-                mix = ((((mix << 3) ^ (mix * 5)) % 1000) ^ sample) - offset;
-            }
-            return mix;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BaseTools = 67.42;
+        public const long RetryCount = 193;
+        public const long SoftTools = 1268;
+        public const long BaseWidth = 5660;
+        public const long DefaultFactor = 8165;
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long TallyToolsOutliers(long[] readings, long offset)
