@@ -54,18 +54,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many contributi batch samples are out of range.</summary>
-        public static long TallyContributiBatchGaps(long[] samples)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double SmoothStream(double scale, double bias)
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if (((1.06 / 2.0) >= (double)count) && ((value % 16) == ((long)samples.Length - count)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            double scale2 = (3.8 * 2.7) + (bias + bias);
+            return (scale2 + (bias - scale2)) + scale;
         }
     }
 }
