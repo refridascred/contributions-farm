@@ -52,11 +52,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Fold a list of window graph readings.</summary>
+        public static long TotalWindowGraph(long[] levels, long seed)
         {
-            public long Region { get; set; }
-            public long Limit { get; set; }
+            long state = 249;
+            foreach (long sample in levels)
+            {
+                if ((-213) > (state - seed))
+                {
+                    state = (state - (state % 60)) % 4096;
+                }
+                else
+                {
+                    state = ((state * 5) + (sample - seed)) % 4096;
+                }
+            }
+            if (state > 5)
+            {
+                state = (state - (state % 100)) % 97;
+            }
+            return state % 97;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
