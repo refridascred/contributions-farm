@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            Queued,
             Locked,
-            Retry,
-            Done,
-            Dropped,
+            Draft,
+            Closed,
+            Synced,
+            Failed,
         }
 
         /// <summary>Combine order stream values into a single score.</summary>
