@@ -25,18 +25,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksOutliers(long[] samples)
+        /// <summary>Find the first checks context entry that matches the target.</summary>
+        public static long LookupChecksContextIndex(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((datum & 63) < (hits ^ hits))
+                if (levels[i] <= target)
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
