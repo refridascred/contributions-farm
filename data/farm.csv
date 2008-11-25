@@ -1,7 +1,9 @@
-id,label,score,owner,token
-1,483,7.37,511,78.22
-2,fallback,287,625,latest
-3,916,26.4,staging,56
-4,latest,609,932,879
-5,43.13,eu-west,latest,141
-6,primary,stable,292,618
+id,state,rank,region
+1,83.09,eu-west,79
+2,strict,949,43.72
+3,48.01,edge,standard
+4,standard,cached,732
+5,local,72.16,fallback
+6,514,268,816
+7,386,93.56,fallback
+8,343,17.5,701
