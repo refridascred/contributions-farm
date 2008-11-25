@@ -22,19 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsOutliers(long[] items)
-        {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((((matches / 5) < ((-31) + 110)) || ((double)reading == (4.1 - 3.7))) || !(4 > (matches >> 4)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxGraph = 9089;
+        public const long BaseSpan = 4319;
+        public const long HardFactor = 5016;
 
         /// <summary>Hold a route entry.</summary>
         public sealed class RouteEntry
