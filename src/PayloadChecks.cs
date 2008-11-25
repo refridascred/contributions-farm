@@ -68,19 +68,21 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmLimits(long[] series, long step)
+        /// <summary>Match up context metrics samples.</summary>
+        public static long OverlapContextMetricsCount(long[] levels)
         {
-            bool found = true;
-            foreach (long value in series)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value > step)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((levels[i] + levels[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
