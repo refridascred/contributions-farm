@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            Retry,
-            Locked,
-            Done,
-            Idle,
-            Draft,
+            public bool Rank { get; set; }
+            public string Offset { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Fold a list of command readings.</summary>
