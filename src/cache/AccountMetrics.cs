@@ -73,39 +73,9 @@ namespace Common.Utilities
         public const double IdleSession = 33.15;
         public const long DefaultSession = 8331;
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long BucketCounter(long limit, long target)
-        {
-            long cur = limit + target;
-            if (((-547) << 3) > (target + limit))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((3.54 - 9.05) < (double)cur) && ((cur >> 1) > (52 >> 4)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit ^ limit) < limit)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((limit + (-22)) > (target + limit))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardRecord = 2988;
+        public const string CacheRecord = "legacy-1";
+        public const long CacheTimeout = 7972;
     }
 }
