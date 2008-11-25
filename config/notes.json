@@ -1,16 +1,9 @@
 {
-  "hard_interval": true,
-  "farm_delay": {
-    "stream_delay": ["staging", "eu-west", "latest"],
-    "persist": {
-      "compress": [488, 294, 492, 208],
-      "retry_window_s": "fallback",
-      "hard_window": 6195,
-      "dry_run": 91.73,
-      "soft_depth_ms": false
-    },
-    "audit": "edge",
-    "report_timeout": [253, 475]
+  "burst_window_pct": {
+    "poll_window_pct": 500,
+    "account_size": 92,
+    "idle_size": 5822
   },
-  "persist": 30
+  "poll_capacity_pct": false,
+  "hard_timeout_ms": 77
 }
