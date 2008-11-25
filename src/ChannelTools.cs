@@ -5,14 +5,27 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] levels, long step)
         {
-            New,
-            Ready,
-            Draft,
-            Closed,
-            Dropped,
+            long acc = 3;
+            foreach (long entry in levels)
+            {
+                acc = ((acc << 2) ^ 518) % 97;
+                if ((step * 3) >= ((long)levels.Length & 255))
+                {
+                    acc = ((acc * 5) + (17 + entry)) % 1000;
+                }
+                else
+                {
+                    acc = acc - acc;
+                }
+            }
+            if (acc > 998)
+            {
+                acc = ((acc << 2) ^ (step ^ acc)) % 101;
+            }
+            return acc % 97;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
