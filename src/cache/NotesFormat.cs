@@ -14,24 +14,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long seed, long target)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            if ((seed + seed) != (seed + 33))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((seed * 3) <= (seed + seed))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public string Rank { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
