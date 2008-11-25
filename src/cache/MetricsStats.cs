@@ -19,21 +19,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long OverlapLayoutCount(long[] items)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                acc = (acc ^ floor) % 1000;
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Hold a contributi stats.</summary>
