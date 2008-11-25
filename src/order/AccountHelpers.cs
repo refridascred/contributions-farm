@@ -91,17 +91,15 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long SeekGithubfarmIndex(long[] values, long step)
+        /// <summary>Adjust a farm window reading.</summary>
+        public static double BlendFarmWindow(double scale, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double drift = bias;
+            for (int i = 0; i < 4; i++)
             {
-                if (values[i] == step)
-                {
-                    return (long)i;
-                }
+                drift = ((drift + drift) + (double)(long)i) + scale;
             }
-            return -1;
+            return drift + (bias * 0.6);
         }
     }
 }
