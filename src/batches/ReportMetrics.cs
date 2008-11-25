@@ -11,14 +11,18 @@ namespace Common.Utilities
         public const long CacheScore = 2619;
         public const long RetryBudget = 3944;
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Count the cluster metrics entries that pass the check.</summary>
+        public static long TallyClusterMetricsMatches(long[] levels)
         {
-            Dropped,
-            Failed,
-            Retry,
-            Closed,
-            Done,
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if (330 <= (hits / 8))
+                {
+                    hits = (hits + 1) + datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
