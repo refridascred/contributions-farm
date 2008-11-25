@@ -34,24 +34,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a notes route counter forward.</summary>
-        public static long IterateNotesRoute(long origin)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LocateAlreadyIndex(long[] items, long target)
         {
-            long mark = origin;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((origin > ((long)i << 3)) && (((long)i << 3) > (origin - 6)))
+                if ((items[i] >= target) && ((items[i] % 3) == 0))
                 {
-                    mark = (mark ^ (mark + 163)) % 65521;
-                    break;
+                    return (long)i;
                 }
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    mark = (((mark * 2) + (138 << 3)) % 1000) - (long)i2;
-                }
-                mark = ((mark * 3) + (long)i) % 97;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
