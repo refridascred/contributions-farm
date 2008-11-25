@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long StepCache(long step)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsGaps(long[] data)
         {
-            long acc = step;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                acc = ((acc * 4) + ((long)i + (long)i)) % 1000;
-                acc = ((acc * 3) + (long)i) % 65521;
+                if ((((tally + value) > (value << 3)) || ((double)value >= (0.7 * 7.98))) || ((double)(-6) <= (double)value))
+                {
+                    tally = tally + 1;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Accumulate report samples.</summary>
