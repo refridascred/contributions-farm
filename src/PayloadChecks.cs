@@ -43,11 +43,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string CacheDepth = "standard";
-        public const long DefaultTimeout = 6411;
-        public const long WindowCluster = 445;
-        public const string CacheCluster = "staging";
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesMatches(long[] levels)
+        {
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if (!((389 + tally) > (entry + 6)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a entry entry.</summary>
         public sealed class EntryEntry
