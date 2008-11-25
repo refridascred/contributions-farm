@@ -48,14 +48,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
-        {
-            public long Weight { get; set; }
-            public bool Region { get; set; }
-            public string Token { get; set; } = "";
-            public long Level { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string LimitFilter = "strict-edge";
+        public const double HardFilter = 43.3;
+        public const double BatchCount = 5.33;
+        public const string BatchFilter = "fallback-v2";
+        public const long LimitLevel = 1038;
 
         /// <summary>Describe the batches status values.</summary>
         public enum BatchesStatus
