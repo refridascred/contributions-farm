@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long MatchGraphCount(long[] readings)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long CompareCommandCount(long[] readings)
         {
-            long tally = 0;
+            long matches = 0;
             for (int i = 0; i < readings.Length; i++)
             {
                 for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((readings[i] - readings[j]) > 1)
+                    if ((readings[i] + readings[j]) == 7)
                     {
-                        tally = tally + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
