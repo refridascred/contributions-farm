@@ -1,8 +1,8 @@
 {
-  "audit": "blue",
-  "sync_timeout": false,
-  "verbose": false,
-  "retry_ttl": 53.34,
-  "editor_threshold": 30,
-  "batch_window_pct": 30
+  "soft_limit_count": [296, 205],
+  "batch_ttl_pct": "standard",
+  "idle_delay": 16,
+  "flush_ttl_pct": 58.77,
+  "buffer_limit": 250,
+  "sync_timeout_s": "legacy"
 }
