@@ -40,17 +40,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long FindCacheIndex(long[] items, long limit)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] readings, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 53;
+            foreach (long sample in readings)
             {
-                if (items[i] >= limit)
+                if ((anchor + step) != ((-22) + anchor))
                 {
-                    return (long)i;
+                    anchor = (((anchor * 2) + (step % 16)) % 255) ^ sample;
+                }
+                if (((12.0 * 9.0) != (double)anchor) || ((step ^ step) != ((long)readings.Length / 8)))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (anchor > 47)
+            {
+                anchor = ((anchor * 3) + (step - step)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Adjust a channel reading.</summary>
