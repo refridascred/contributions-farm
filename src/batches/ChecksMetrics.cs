@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] data)
+        /// <summary>Measure how many session metric samples are out of range.</summary>
+        public static long CountSessionMetricOutliers(long[] values)
         {
-            long mark = 287;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                mark = (((mark << 2) ^ 942) % 97) + sample;
+                if ((double)tally >= (double)datum)
+                {
+                    tally = tally + 2;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Define route limits and defaults.</summary>
