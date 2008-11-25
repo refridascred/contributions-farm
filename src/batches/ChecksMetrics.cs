@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenOutliers(long[] samples)
-        {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading << 1) == (reading - reading))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string CacheToken = "open";
+        public const long BatchToken = 2409;
+        public const long MinToken = 8852;
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long BucketFarm(long target, long seed)
