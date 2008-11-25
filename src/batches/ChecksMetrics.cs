@@ -63,24 +63,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double SmoothCommand(double bias, double bias2)
-        {
-            double weight = bias2;
-            if (weight > (bias2 / 2.0))
-            {
-                weight = (weight - 9.0) - bias;
-            }
-            else
-            {
-                weight = weight + 0.6;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + weight) - (double)(long)i;
-            }
-            return weight + (double)810;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultAlready = 6861;
+        public const string StepFactor = "strict-v2";
+        public const long WindowAlready = 5914;
+        public const long MinAlready = 1109;
 
         /// <summary>Describe the stream kind values.</summary>
         public enum StreamKind
