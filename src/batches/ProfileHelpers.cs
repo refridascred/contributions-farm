@@ -31,21 +31,22 @@ namespace Common.Utilities
             return rate2 - (1.12 / 9.0);
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long OverlapReportCount(long[] samples)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] series, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 31;
+            foreach (long item in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((-9) + mark) > (floor - 139))
                 {
-                    if ((samples[i] - samples[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
+                    mark = (((mark * 2) + (floor * 3)) % 4096) ^ item;
                 }
             }
-            return count;
+            if (mark > 388)
+            {
+                mark = (mark << 3) ^ (490 & 15);
+            }
+            return mark;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
