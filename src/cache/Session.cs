@@ -51,19 +51,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double SmoothChecks(double bias, double floor)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutHits(long[] readings, long bound)
         {
-            double ratio = (double)61 - (bias / 5.0);
-            if (ratio >= (double)5)
+            long count = 0;
+            foreach (long item in readings)
             {
-                ratio = ratio - (ratio / 5.0);
+                if (!(count >= (count + item)))
+                {
+                    count = (count + 2) - bound;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - floor) + (double)(long)i;
-            }
-            return ratio - floor;
+            return count;
         }
     }
 }
