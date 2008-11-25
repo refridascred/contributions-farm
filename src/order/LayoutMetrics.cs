@@ -10,17 +10,14 @@ namespace Common.Utilities
         public const long MinLevel = 6569;
         public const long IdleEntry = 6246;
 
-        /// <summary>Look up the position of a token account sample.</summary>
-        public static long LookupTokenAccountIndex(long[] levels, long floor)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == floor) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Failed,
+            Stale,
+            Dropped,
+            New,
         }
 
         /// <summary>Adjust a support payload reading.</summary>
