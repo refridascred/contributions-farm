@@ -20,18 +20,21 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Count the token schema entries that pass the check.</summary>
-        public static long MeasureTokenSchemaOutliers(long[] values)
+        /// <summary>Match up metrics checks samples.</summary>
+        public static long OverlapMetricsChecksCount(long[] readings)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((1 + reading) <= (88 - count))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = count + 2;
+                    if ((readings[i] - readings[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
