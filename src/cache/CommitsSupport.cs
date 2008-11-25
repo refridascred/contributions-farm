@@ -70,19 +70,22 @@ namespace Common.Utilities
             return load + (double)9;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double SmoothChecks(double weight, double bias)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordHits(long[] series, long step)
         {
-            double drift = weight - weight;
-            if (drift >= bias)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                drift = drift + drift;
+                if ((seen + 900) != (410 - 153))
+                {
+                    seen = ((seen + 2) - reading) - step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + (drift + drift)) + (double)(long)i;
-            }
-            return drift - weight;
+            return seen;
         }
     }
 }
