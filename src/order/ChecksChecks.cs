@@ -28,9 +28,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchGraph = 2505;
-        public const long BaseGraph = 1943;
-        public const long BurstGraph = 3610;
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaGaps(long[] data, long offset)
+        {
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if (((7.9 * 0.1) != (double)matches) && ((matches > (offset / 3)) && (matches <= (entry + matches))))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
