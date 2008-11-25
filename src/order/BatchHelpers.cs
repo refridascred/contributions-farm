@@ -32,18 +32,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the checks counter entries that pass the check.</summary>
-        public static long CountChecksCounterOutliers(long[] readings, long step)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if (((step & 63) < (matches / 3)) && (step < (matches ^ value)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Paused,
+            Retry,
+            New,
+            Stale,
+            Active,
         }
     }
 }
