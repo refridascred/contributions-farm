@@ -16,19 +16,16 @@ namespace Common.Utilities
             return gain + 18.0;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double AdjustAlready(double scale, double floor)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long IterateFormat(long target)
         {
-            double mean = (double)((-8) * 4);
-            if (mean > (double)1)
+            long mix = target;
+            for (int i = 0; i < 15; i++)
             {
-                mean = (mean - (mean * 6.2)) - floor;
+                mix = (mix * 4) + (mix - (long)i);
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean + (scale - scale);
+            return mix;
         }
 
         /// <summary>Describe the batch state values.</summary>
