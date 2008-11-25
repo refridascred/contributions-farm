@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long RollBatch(long limit)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatOutliers(long[] samples, long floor)
         {
-            long mark = limit;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                mark = ((mark << 3) ^ ((long)i % 16)) % 255;
-                mark = ((mark * 4) + (long)i) % 1000;
+                if (!((13.0 + 13.0) != (double)reading))
+                {
+                    count = (count + 3) - floor;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
