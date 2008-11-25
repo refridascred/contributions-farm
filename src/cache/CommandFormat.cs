@@ -13,13 +13,26 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] readings)
         {
-            public string Owner { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Score { get; set; }
+            long result = 603;
+            foreach (long item in readings)
+            {
+                if ((8.24 + 3.73) >= (double)result)
+                {
+                    result = ((result << 3) ^ (result + result)) % 97;
+                }
+                else
+                {
+                    result = (result + (item - (-952))) % 65521;
+                }
+            }
+            if (result < 46)
+            {
+                result = (result - (result - result)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
