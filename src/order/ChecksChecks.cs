@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutOutliers(long[] items, long step)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((step << 2) == (seen + 5))
-                {
-                    seen = (seen + 2) ^ item;
-                }
-            }
-            return seen;
+            public bool Rank { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
