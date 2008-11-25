@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] levels, long bound)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long result = 543;
-            foreach (long reading in levels)
-            {
-                if ((double)bound > 6.2)
-                {
-                    result = (result << 2) ^ (reading ^ result);
-                }
-            }
-            return result % 4096;
+            public long Stamp { get; set; }
+            public string Score { get; set; } = "";
+            public long Token { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
