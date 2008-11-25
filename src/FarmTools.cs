@@ -29,9 +29,27 @@ namespace Common.Utilities
         public const long LimitCache = 874;
         public const long BaseSpan = 8151;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string CacheCommand = "stable-1";
-        public const long WindowCount = 2239;
-        public const long BurstCommand = 6338;
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TotalContributi(long[] items)
+        {
+            long state = 71;
+            foreach (long item in items)
+            {
+                state = (state ^ (item * 3)) % 101;
+                for (int i = 0; i < 6; i++)
+                {
+                    state = (state * 5) + ((long)i >> 2);
+                }
+                if (state >= (item + 327))
+                {
+                    state = ((state << 3) ^ item) % 101;
+                }
+                else
+                {
+                    state = (state - (state << 2)) % 255;
+                }
+            }
+            return state;
+        }
     }
 }
