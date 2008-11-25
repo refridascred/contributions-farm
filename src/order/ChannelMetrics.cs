@@ -10,24 +10,19 @@ namespace Common.Utilities
         public const long HardFactor = 7479;
         public const long BatchCount = 8914;
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long GradeSchema(long origin, long offset)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteLimits(long[] values, long limit)
         {
-            if ((origin + offset) < (offset << 1))
+            bool stale = true;
+            foreach (long entry in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((offset << 3) < (origin + origin)))
+                if (entry != limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
