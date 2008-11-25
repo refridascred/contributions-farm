@@ -25,15 +25,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long RollCache(long floor)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksOutliers(long[] samples)
         {
-            long sum = floor;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                sum = ((sum * 4) + (long)i) % 97;
+                if ((datum & 63) < (hits ^ hits))
+                {
+                    hits = hits + 1;
+                }
             }
-            return sum;
+            return hits;
         }
     }
 }
