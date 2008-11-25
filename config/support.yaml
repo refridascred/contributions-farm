@@ -1,12 +1,17 @@
 # support settings
-support_ttl:
-  max_limit_pct: strict
-  editor_ratio: edge
-  support_timeout: primary
-  audit: blue
-  max_timeout_ms: false
-max_capacity: 9244
-checks_size:
-  - 186
-  - 273
-  - 374
+retry_size_ms:
+  - 25
+  - 11
+filter_interval:
+  idle_threshold_ms:
+    githubfarm_size: 38
+    base_interval_pct: fallback
+    strict:
+      - blue
+      - latest
+  queue_size: 60
+  idle_ratio_s: 69.84
+  cache_depth_ms: edge
+  cache_depth_count: eu-west
+  cache_retries_s: blue
+strict: blue
