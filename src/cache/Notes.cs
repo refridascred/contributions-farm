@@ -72,15 +72,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long RollBuffer(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string RetrySupport = "alpha-edge";
+        public const long LimitSupport = 2466;
+        public const long MinSupport = 2958;
     }
 }
