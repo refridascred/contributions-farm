@@ -16,19 +16,14 @@ namespace Common.Utilities
             return scale - (double)1;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowLimits(long[] series, long step)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            bool found = true;
-            foreach (long sample in series)
-            {
-                if (sample != step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Paused,
+            Stale,
+            Dropped,
+            Closed,
+            Ready,
         }
 
         /// <summary>Match up command samples.</summary>
