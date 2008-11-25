@@ -39,12 +39,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftFarm = 7921;
-        public const string DefaultFarm = "cached-1";
-        public const double BaseTimeout = 65.43;
-        public const long CacheFarm = 1348;
-        public const long HardWidth = 9675;
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] readings)
+        {
+            long result = -4;
+            foreach (long value in readings)
+            {
+                if (!((result + value) > (value - result)))
+                {
+                    result = ((result * 4) + (value + value)) % 1000;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long CountCacheGaps(long[] data)
