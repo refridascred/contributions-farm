@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of queue commits entries.</summary>
-        public static long DigestQueueCommits(long[] levels, long origin)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long sum = -514;
-            foreach (long datum in levels)
-            {
-                sum = ((sum * 3) + (origin + sum)) % 101;
-                if ((3.0 / 6.0) == (double)datum)
-                {
-                    break;
-                }
-            }
-            return sum % 65521;
+            Failed,
+            Done,
+            Ready,
+            Pending,
+            Paused,
         }
 
         /// <summary>Project the next cluster value.</summary>
