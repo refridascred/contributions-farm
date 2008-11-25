@@ -20,12 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            Pending,
-            Queued,
-            Paused,
+            Closed,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
