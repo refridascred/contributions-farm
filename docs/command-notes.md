@@ -1,12 +1,14 @@
 # Command notes
 
-Defaults for metric live in the config folder and can be overridden per environment.
-Use schema settings to tune how often editor data is refreshed.
-Use payload settings to tune how often token data is refreshed.
+Use farm settings to tune how often report data is refreshed.
+Keep report and tools names short and lowercase.
+
+The contributi report groups every githubfarm by record.
+Use counter settings to tune how often notes data is refreshed.
 
 ## Guidelines
 
-- Validate route input early
-- Review entry limits each release
-- Document new graph fields
-- Prefer support defaults
+- Prefer entry defaults
+- Review counter limits each release
+- Validate command input early
+- Log every metric change
