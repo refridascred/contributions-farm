@@ -52,18 +52,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterMatches(long[] series)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long DigestLayout(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long sum = 92;
+            foreach (long datum in readings)
             {
-                if ((tally & 255) <= (datum + tally))
+                if (((9.2 / 4.0) >= (double)datum) && ((sum + target) >= target))
                 {
-                    tally = tally + 1;
+                    break;
+                }
+                if ((target ^ target) != (sum + datum))
+                {
+                    sum = sum + sum;
                 }
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
