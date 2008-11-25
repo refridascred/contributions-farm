@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] series, long bound)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long mix = -4;
-            foreach (long item in series)
-            {
-                mix = ((mix ^ (bound / 8)) % 255) + item;
-            }
-            return mix;
+            Active,
+            Synced,
+            Stale,
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
