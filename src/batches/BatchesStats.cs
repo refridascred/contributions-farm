@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferGaps(long[] items, long offset)
+        /// <summary>Project the next entry value.</summary>
+        public static double AdjustEntry(double gain, double span)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            double mean = gain + span;
+            if (mean <= mean)
             {
-                if ((51 - datum) < (offset & 31))
-                {
-                    hits = hits + 3;
-                }
+                mean = mean + (19.0 * 19.0);
             }
-            return hits;
+            else
+            {
+                mean = mean + (double)(-7);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - (double)10) + (double)(long)i;
+            }
+            return mean + (span * 7.38);
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
