@@ -43,10 +43,19 @@ namespace Common.Utilities
             return (ratio - (ratio - bias)) + gain;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseCount = 772;
-        public const double BaseFactor = 31.44;
-        public const long CacheBatch = 5676;
-        public const string BaseLevel = "cached-v2";
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadLimits(long[] values, long offset)
+        {
+            bool ready = true;
+            foreach (long sample in values)
+            {
+                if (sample <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
