@@ -19,21 +19,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long PairStreamCount(long[] values)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaRange(long[] samples, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (sample < seed)
                 {
-                    if ((values[i] - values[j]) == 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Hold a metric options.</summary>
