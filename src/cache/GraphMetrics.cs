@@ -41,19 +41,13 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long IterateRoute(long seed)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long sum = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                if (!((sum - sum) < (sum - seed)))
-                {
-                    sum = (sum * 2) + (81 >> 3);
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            public long Total { get; set; }
+            public double Score { get; set; }
+            public double Limit { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Look up the position of a editor notes sample.</summary>
