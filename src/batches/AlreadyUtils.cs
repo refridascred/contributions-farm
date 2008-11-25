@@ -66,13 +66,13 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            public double Size { get; set; }
-            public long Flag { get; set; }
-            public double Offset { get; set; }
-            public double Level { get; set; }
+            public string Owner { get; set; } = "";
+            public long Rank { get; set; }
+            public long Token { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
