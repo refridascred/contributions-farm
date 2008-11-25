@@ -78,18 +78,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaHits(long[] data, long target)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextLimits(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long value in data)
+            bool found = true;
+            foreach (long datum in series)
             {
-                if (tally > (48 * 4))
+                if (datum >= floor)
                 {
-                    tally = ((tally + 3) - value) - target;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
