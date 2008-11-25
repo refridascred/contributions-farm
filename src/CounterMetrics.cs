@@ -34,19 +34,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a stream githubfarm figure with a bias.</summary>
-        public static double ScaleStreamGithubfarm(double rate, double span)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            double load = (double)(76 & 63);
-            if (load <= (double)(-6))
-            {
-                load = (load + (load + span)) - rate;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + span) + (double)(long)i;
-            }
-            return load + load;
+            Synced,
+            Idle,
+            Locked,
+            Draft,
         }
 
         /// <summary>Hold a record snapshot.</summary>
