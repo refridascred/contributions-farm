@@ -96,9 +96,19 @@ namespace Common.Utilities
             return scale - rate;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string RetryContributi = "alpha-1";
-        public const string MinFactor = "strict-1";
-        public const long CacheSize = 8451;
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenBounds(long[] items, long limit)
+        {
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
