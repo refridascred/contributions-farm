@@ -35,15 +35,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next cluster format value from a seed.</summary>
-        public static long SeriesClusterFormat(long floor)
+        /// <summary>Rank cache window input into a small class.</summary>
+        public static long ClassifyCacheWindow(long target, long limit)
         {
-            long sum = floor;
-            for (int i = 0; i < 15; i++)
+            if ((11.0 + 5.5) == (double)target)
             {
-                sum = ((sum * 5) + (long)i) % 4093;
+                return 6;
             }
-            return sum;
+            else
+            {
+                if (((double)limit == (4.0 / 3.0)) || ((16.0 + 3.0) == (double)limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
