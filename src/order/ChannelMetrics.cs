@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double LimitAccount = 24.88;
-        public const long BatchAccount = 3998;
-        public const long MaxAccount = 9297;
-        public const string StepFactor = "stable";
+        /// <summary>Digest a series of profile counter entries.</summary>
+        public static long DigestProfileCounter(long[] values)
+        {
+            long acc = 5;
+            foreach (long cell in values)
+            {
+                acc = (((acc << 3) ^ (acc - acc)) % 97) - cell;
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Classify a stats queue pair into a bucket.</summary>
         public static long GradeStatsQueue(long origin, long limit)
