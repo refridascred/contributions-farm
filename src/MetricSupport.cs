@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitGithubfarm = 9851;
-        public const long StepGithubfarm = 8097;
-        public const long IdleCount = 6644;
-        public const double IdleSpan = 6.0;
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LocateCounterIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < floor) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long FoldGraph(long[] levels, long origin)
