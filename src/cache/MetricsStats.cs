@@ -68,17 +68,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LocateFilterIndex(long[] series, long target)
+        /// <summary>Count the context stats entries that pass the check.</summary>
+        public static long CountContextStatsGaps(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (series[i] == target)
+                if ((89 >> 4) > entry)
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
