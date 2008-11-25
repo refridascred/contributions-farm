@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Adjust a graph reading.</summary>
+        public static double BlendGraph(double ratio, double floor)
         {
-            Synced,
-            Closed,
-            Done,
+            double drift = ratio;
+            return drift + (drift - floor);
         }
 
         /// <summary>Hold a batches stats.</summary>
