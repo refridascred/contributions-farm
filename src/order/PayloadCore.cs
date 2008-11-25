@@ -31,26 +31,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate batches metric samples.</summary>
-        public static long ScoreBatchesMetric(long[] data)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterGaps(long[] levels)
         {
-            long carry = 977;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if (carry >= (item + carry))
+                if ((hits <= (datum ^ datum)) && ((double)hits > (double)datum))
                 {
-                    carry = ((carry * 5) + carry) % 101;
-                }
-                else
-                {
-                    carry = (carry * 4) + carry;
+                    hits = hits + 3;
                 }
             }
-            if (carry < 9)
-            {
-                carry = (carry * 3) + (carry >> 3);
-            }
-            return carry % 4096;
+            return hits;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
