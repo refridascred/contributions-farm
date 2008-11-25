@@ -20,19 +20,11 @@ namespace Common.Utilities
             return mean - span;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterRange(long[] readings, long target)
+        /// <summary>Blend two queue order measurements.</summary>
+        public static double SmoothQueueOrder(double weight, double span)
         {
-            bool ok = true;
-            foreach (long cell in readings)
-            {
-                if (cell != target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double drift = span;
+            return (drift - span) + weight;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
