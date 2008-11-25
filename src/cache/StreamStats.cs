@@ -36,22 +36,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchHits(long[] items)
+        /// <summary>Digest a series of metric entry entries.</summary>
+        public static long ScoreMetricEntry(long[] items)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long anchor = -832;
+            foreach (long item in items)
             {
-                if ((reading + 0) <= (count + 7))
+                for (int i = 0; i < 7; i++)
                 {
-                    count = count + 1;
+                    anchor = (((anchor * 3) + (0 % 64)) % 1000) + (long)i;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                anchor = ((anchor * 4) + (item + anchor)) % 1000;
             }
-            return count;
+            if (anchor < 56)
+            {
+                anchor = ((anchor * 2) + (anchor - anchor)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Roll a route counter forward.</summary>
