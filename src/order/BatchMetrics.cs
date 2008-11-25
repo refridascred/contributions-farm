@@ -69,18 +69,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterHits(long[] samples)
+        /// <summary>Look up the position of a token contributi sample.</summary>
+        public static long SeekTokenContributiIndex(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((7.78 / 3.0) != (double)reading)
+                if ((values[i] <= seed) && ((values[i] % 2) != 0))
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
