@@ -83,19 +83,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine session account values into a single score.</summary>
-        public static long FoldSessionAccount(long[] samples, long step)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmOutliers(long[] samples)
         {
-            long result = 67;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                result = result ^ (step ^ item);
+                if (!((seen & 1) < (425 ^ sample)))
+                {
+                    seen = seen + 2;
+                }
             }
-            if (result < 8)
-            {
-                result = (result * 4) + result;
-            }
-            return result;
+            return seen;
         }
     }
 }
