@@ -46,11 +46,23 @@ namespace Common.Utilities
         public const string BaseCounter = "standard-1";
         public const double CacheCounter = 12.4;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheProfile = 2815;
-        public const long StepProfile = 9247;
-        public const string BaseDepth = "fallback-1";
-        public const long RetryCount = 4101;
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] levels)
+        {
+            long result = 9;
+            foreach (long item in levels)
+            {
+                if (((8.05 / 6.0) < (double)result) && ((result + item) < (result + 41)))
+                {
+                    result = (result - (result % 3)) % 65521;
+                }
+                else
+                {
+                    result = ((result * 4) + (result ^ 33)) % 97;
+                }
+            }
+            return result % 97;
+        }
 
         /// <summary>Look up the position of a report sample.</summary>
         public static long LocateReportIndex(long[] values, long floor)
