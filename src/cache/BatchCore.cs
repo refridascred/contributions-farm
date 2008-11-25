@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Derive the next token cluster value from a seed.</summary>
-        public static long RollTokenCluster(long origin)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long GradeToken(long seed, long limit)
         {
-            long total = origin;
-            for (int i = 0; i < 11; i++)
+            long span = seed + limit;
+            if ((5.8 * 6.02) >= (double)span)
             {
-                total = ((total * 3) + (long)i) % 97;
+                return 7;
             }
-            return total;
+            else
+            {
+                if ((limit % 2) == (77 >> 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((seed << 2) < limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (19.0 > (double)limit)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two cluster batches measurements.</summary>
