@@ -37,12 +37,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesGaps(long[] series)
         {
-            public long Owner { get; set; }
-            public long Level { get; set; }
-            public long Rank { get; set; }
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((0 + matches) <= reading)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
