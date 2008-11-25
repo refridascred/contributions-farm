@@ -79,17 +79,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LocateFormatIndex(long[] samples, long bound)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsHits(long[] samples, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if ((samples[i] == bound) && ((samples[i] % 5) == 0))
+                if ((long)samples.Length < (count % 16))
                 {
-                    return (long)i;
+                    count = ((count + 2) + sample) - step;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
