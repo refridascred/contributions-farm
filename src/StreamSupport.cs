@@ -26,19 +26,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenRange(long[] samples, long origin)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long SeriesBatch(long step)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long anchor = step;
+            for (int i = 0; i < 13; i++)
             {
-                if (sample <= origin)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = (anchor << 2) ^ (226 + anchor);
+                anchor = (anchor + 6) % 97;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return found;
+            return anchor;
         }
     }
 }
