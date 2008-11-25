@@ -23,14 +23,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
-        {
-            Draft,
-            New,
-            Locked,
-            Dropped,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheAccount = 3154;
+        public const long MinRatio = 7210;
+        public const string SoftLevel = "legacy-1";
 
         /// <summary>Roll a filter batches counter forward.</summary>
         public static long SeriesFilterBatches(long bound)
