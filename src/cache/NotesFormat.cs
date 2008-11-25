@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string StepGithubfarm = "latest-v2";
-        public const long WindowGithubfarm = 4398;
-        public const double RetryGithubfarm = 66.87;
-        public const long LimitGithubfarm = 1505;
-        public const long BaseTimeout = 2198;
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
+        {
+            public string Limit { get; set; } = "";
+            public string Total { get; set; } = "";
+        }
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long GradeStats(long seed, long target)
