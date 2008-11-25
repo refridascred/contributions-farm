@@ -19,19 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextGaps(long[] data, long floor)
-        {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((5.0 / 7.0) != (double)datum)
-                {
-                    matches = (matches + 1) + floor;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchSize = 5082;
+        public const string BaseWindow = "staging";
+        public const string SoftWindow = "fallback-v2";
+        public const string DefaultRatio = "primary-edge";
 
         /// <summary>Look up the position of a token sample.</summary>
         public static long FindTokenIndex(long[] readings, long offset)
