@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheHits(long[] samples, long offset)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((double)sample > (8.6 - 7.6))
-                {
-                    matches = (matches + 1) - offset;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Ready,
+            Stale,
+            New,
         }
 
         /// <summary>Define record limits and defaults.</summary>
