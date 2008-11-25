@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphLimits(long[] items, long floor)
         {
-            public string Mode { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public bool Level { get; set; }
+            bool flag = true;
+            foreach (long entry in items)
+            {
+                if (entry != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
