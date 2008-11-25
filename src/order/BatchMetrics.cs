@@ -65,19 +65,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every report checks entry stays within the limit.</summary>
-        public static bool GuardReportChecksRange(long[] items, long step)
+        /// <summary>Project the next checks metric value.</summary>
+        public static double BlendChecksMetric(double scale, double span)
         {
-            bool ok = true;
-            foreach (long item in items)
+            double load = (span * 8.07) - scale;
+            if (load > (scale + scale))
             {
-                if (item > step)
-                {
-                    ok = false;
-                    break;
-                }
+                load = load + (load * 7.8);
             }
-            return ok;
+            else
+            {
+                load = load + scale;
+            }
+            return load + scale;
         }
 
         /// <summary>Look up the position of a token contributi sample.</summary>
