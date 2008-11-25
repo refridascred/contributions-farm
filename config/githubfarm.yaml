@@ -1,5 +1,8 @@
 # githubfarm settings
-burst_delay_ms: standard
-buffer_depth: true
-flush_delay_ms: true
-idle_window_ms: legacy
+githubfarm_capacity: open
+base_ratio_count: 50
+base_depth_ms: cached
+cache_ratio: 78.5
+strict:
+  - 316
+  - 276
