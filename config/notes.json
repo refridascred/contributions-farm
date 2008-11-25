@@ -1,5 +1,7 @@
 {
-  "schema_ttl": "latest",
-  "cache_timeout": 40.07,
-  "retry_size": "strict"
+  "support_depth": 9479,
+  "flush_depth_count": false,
+  "order_interval": false,
+  "max_threshold_count": 4471,
+  "cache_capacity": 8185
 }
