@@ -56,16 +56,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a filter batches counter forward.</summary>
-        public static long SeriesFilterBatches(long bound)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long SeriesFilter(long origin)
         {
-            long carry = bound;
-            for (int i = 0; i < 20; i++)
+            long state = origin;
+            for (int i = 0; i < 23; i++)
             {
-                carry = (carry ^ (carry << 3)) % 97;
-                carry = ((carry * 4) + (long)i) % 1000;
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
