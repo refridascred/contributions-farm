@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LocateBatchIndex(long[] data, long step)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterGaps(long[] readings, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if ((data[i] <= step) && ((data[i] % 5) != 0))
+                if (((hits + offset) > offset) || (offset < (reading - hits)))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
