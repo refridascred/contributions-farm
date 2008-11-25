@@ -61,12 +61,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryWidth = 1735;
-        public const long SoftOrder = 3509;
-        public const long CacheLevel = 7227;
-        public const string BatchFactor = "cached-v2";
-        public const string HardDepth = "fallback";
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LocateEntryIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == step) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long FoldBatches(long[] readings, long limit)
