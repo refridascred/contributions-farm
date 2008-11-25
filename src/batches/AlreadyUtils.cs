@@ -38,15 +38,33 @@ namespace Common.Utilities
             return load - (scale - load);
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long WeighFormat(long[] data, long origin)
+        /// <summary>Digest a series of report stream entries.</summary>
+        public static long WeighReportStream(long[] readings, long bound)
         {
-            long carry = 91;
-            foreach (long datum in data)
+            long sum = 452;
+            foreach (long entry in readings)
             {
-                carry = ((carry << 3) ^ (carry ^ origin)) - datum;
+                if (((double)sum >= (double)bound) && (bound < (bound % 100)))
+                {
+                    sum = (((sum * 2) + (bound + bound)) % 97) - entry;
+                    sum = ((sum << 2) ^ (bound << 1)) % 255;
+                    break;
+                }
+                else
+                {
+                    sum = ((sum * 5) + (sum - bound)) % 65521;
+                    sum = sum + (sum ^ 758);
+                }
+                if ((double)bound <= (7.0 + 11.0))
+                {
+                    sum = sum ^ (sum & 15);
+                }
+                if ((double)sum > (double)bound)
+                {
+                    break;
+                }
             }
-            return carry;
+            return sum;
         }
     }
 }
