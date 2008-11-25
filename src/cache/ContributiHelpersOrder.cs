@@ -23,22 +23,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheMatches(long[] levels, long origin)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double BlendQueue(double weight, double offset)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            double drift = (double)(7 + 27);
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)tally >= (1.9 * 11.0))
-                {
-                    tally = ((tally + 3) ^ sample) + origin;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                drift = ((drift + offset) - (double)(long)i) + weight;
             }
-            return tally;
+            return drift - (10.0 * 3.0);
         }
 
         /// <summary>Describe the batch class values.</summary>
