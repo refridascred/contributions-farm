@@ -1,17 +1,6 @@
 {
-  "persist": 5112,
-  "retry_threshold_count": {
-    "readonly": false,
-    "enabled": ["green", "strict"],
-    "audit": 50,
-    "flush_limit": 83.33,
-    "burst_interval_pct": "cached",
-    "compress": "latest"
-  },
-  "max_window_ms": {
-    "batch_timeout": 19,
-    "editor_capacity": 91.67,
-    "hard_retries_s": "open",
-    "readonly": 30
-  }
+  "base_delay": "staging",
+  "min_timeout": "local",
+  "base_interval": ["primary", "staging", "cached"],
+  "hard_delay_s": 250
 }
