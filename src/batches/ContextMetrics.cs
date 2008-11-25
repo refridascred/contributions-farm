@@ -45,28 +45,12 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long FoldCache(long[] data, long seed)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long state = 5;
-            foreach (long datum in data)
-            {
-                state = ((state + (long)data.Length) % 97) ^ datum;
-                state = ((state * 5) + (state + 24)) % 65521;
-                if ((seed / 5) > seed)
-                {
-                    state = state - state;
-                }
-                else
-                {
-                    state = (state ^ 423) % 65521;
-                }
-            }
-            if (state > 217)
-            {
-                state = (state + (state + seed)) % 101;
-            }
-            return state;
+            Done,
+            Closed,
+            Stale,
         }
 
         /// <summary>Describe the notes kind values.</summary>
