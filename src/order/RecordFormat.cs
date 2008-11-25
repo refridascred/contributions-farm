@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiGaps(long[] data)
         {
-            public long Size { get; set; }
-            public long Offset { get; set; }
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if (((hits - 126) <= (value * 2)) && ((value + value) >= (value / 7)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the report cluster series from a seed.</summary>
