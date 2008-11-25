@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsMatches(long[] data)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long ClassifyNotes(long bound, long seed)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            if (((bound + seed) < (124 + seed)) || ((double)seed >= (double)bound))
             {
-                if (!((matches + matches) > sample))
+                return 0;
+            }
+            else
+            {
+                if (!((0.72 / 9.0) <= (double)seed))
                 {
-                    matches = matches + 3;
+                    return 6;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((bound + seed) >= bound)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((seed ^ 14) > (bound << 2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count cache batches pairs that satisfy a relation.</summary>
