@@ -13,19 +13,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every buffer graph entry stays within the limit.</summary>
-        public static bool ValidateBufferGraphBounds(long[] levels, long bound)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long origin)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            long total = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if (sample < bound)
-                {
-                    ready = false;
-                    break;
-                }
+                total = total - (4 + 83);
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
