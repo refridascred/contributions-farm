@@ -50,11 +50,33 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MinChannel = "open-1";
-        public const string IdleFactor = "cached-v2";
-        public const long BaseChannel = 4591;
-        public const long WindowTimeout = 9145;
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long RankCluster(long step, long offset)
+        {
+            long cur = step - offset;
+            if ((55 + step) < step)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)cur > (double)step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((7.52 * 15.0) >= (double)cur)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of record entries.</summary>
         public static long CombineRecord(long[] series)
