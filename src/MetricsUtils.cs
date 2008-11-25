@@ -61,15 +61,20 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long limit)
+        /// <summary>Combine cache contributi values into a single score.</summary>
+        public static long DigestCacheContributi(long[] values)
         {
-            long carry = limit;
-            for (int i = 0; i < 24; i++)
+            long state = 948;
+            foreach (long cell in values)
             {
-                carry = ((carry * 5) + (long)i) % 4093;
+                state = state - cell;
+                state = ((state << 2) ^ (cell % 5)) % 65521;
             }
-            return carry;
+            if (state < 11)
+            {
+                state = state + (595 - state);
+            }
+            return state;
         }
     }
 }
