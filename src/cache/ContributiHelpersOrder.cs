@@ -22,12 +22,16 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long offset)
         {
-            public long Rank { get; set; }
-            public double Size { get; set; }
-            public double Stamp { get; set; }
+            long state = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                state = (state << 2) ^ offset;
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
         }
     }
 }
