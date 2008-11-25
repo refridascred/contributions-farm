@@ -48,18 +48,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenHits(long[] readings, long target)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if (((sample - matches) > (target + matches)) || ((matches + matches) != (sample & 15)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Synced,
+            Draft,
+            Active,
+            New,
+            Paused,
         }
     }
 }
