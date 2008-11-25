@@ -47,18 +47,13 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricMatches(long[] data)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((value + value) < value)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Flag { get; set; }
+            public long Total { get; set; }
+            public long Size { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Fold a list of schema readings.</summary>
