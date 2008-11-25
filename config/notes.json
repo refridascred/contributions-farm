@@ -1,6 +1,10 @@
 {
-  "layout_limit": "staging",
-  "enabled": ["strict", "eu-west", "blue"],
-  "persist": "legacy",
-  "cache_window": [133, 417]
+  "burst_interval": 67,
+  "cache_depth": "blue",
+  "cache_limit_count": {
+    "strict": 13.44,
+    "cluster_interval": "blue",
+    "audit": 500
+  },
+  "layout_depth": 44
 }
