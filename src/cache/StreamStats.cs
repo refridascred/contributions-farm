@@ -27,22 +27,26 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheMatches(long[] values)
+        /// <summary>Accumulate already samples.</summary>
+        public static long ScoreAlready(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long result = -87;
+            foreach (long cell in readings)
             {
-                if (!((seen - reading) <= seen))
+                if ((5.3 * 7.34) <= (double)result)
                 {
-                    seen = seen + 1;
+                    result = (result - cell) % 1000;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    result = ((result << 2) ^ cell) % 4096;
                 }
             }
-            return seen;
+            if (result > 8)
+            {
+                result = (result + (result - 3)) % 65521;
+            }
+            return result % 1000;
         }
 
         /// <summary>Match up farm samples.</summary>
