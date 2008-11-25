@@ -41,17 +41,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long SeekContributiIndex(long[] values, long seed)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long RollChannel(long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = target;
+            for (int i = 0; i < 5; i++)
             {
-                if ((values[i] > seed) && ((values[i] % 5) != 0))
+                if ((5.71 + 5.2) == (double)(long)i)
                 {
-                    return (long)i;
+                    state = ((state * 2) + state) % 1000;
                 }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
