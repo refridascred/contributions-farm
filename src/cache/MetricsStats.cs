@@ -34,13 +34,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsGaps(long[] readings)
         {
-            public string Owner { get; set; } = "";
-            public double Score { get; set; }
-            public double Level { get; set; }
-            public long Flag { get; set; }
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if (hits >= entry)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
