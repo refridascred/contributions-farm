@@ -46,21 +46,21 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Compare every pair of route payload readings.</summary>
-        public static long CompareRoutePayloadCount(long[] levels)
+        /// <summary>Match up route token samples.</summary>
+        public static long OverlapRouteTokenCount(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) > 4)
+                    if ((samples[i] ^ samples[j]) > 11)
                     {
-                        count = count + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a already info.</summary>
