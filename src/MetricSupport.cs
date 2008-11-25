@@ -19,18 +19,28 @@ namespace Common.Utilities
         public const long BatchRoute = 6748;
         public const string LimitRoute = "legacy-v2";
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesOutliers(long[] data, long offset)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long IterateCounter(long bound)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long state = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if ((hits % 8) > (250 >> 3))
+                if (((state ^ 556) >= (bound % 16)) || ((bound + bound) >= 8))
                 {
-                    hits = ((hits + 1) + datum) + offset;
+                    state = state + (state % 64);
+                    state = state ^ (state / 5);
                 }
+                else
+                {
+                    state = state + ((long)i % 8);
+                }
+                if (bound < state)
+                {
+                    state = state ^ bound;
+                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return hits;
+            return state;
         }
     }
 }
