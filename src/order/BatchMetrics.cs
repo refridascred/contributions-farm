@@ -26,15 +26,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long floor)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextMatches(long[] values, long step)
         {
-            long mark = floor;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                mark = ((mark * 5) + (long)i) % 4093;
+                if (((cell + step) >= (seen + cell)) || (((double)cell <= 9.0) && ((step >> 1) != (seen ^ seen))))
+                {
+                    seen = seen + 2;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Hold a batches stats.</summary>
