@@ -25,15 +25,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double SmoothMetric(double scale, double floor)
-        {
-            double mean = scale;
-            if (mean > scale)
-            {
-                mean = mean - (floor - scale);
-            }
-            return mean + mean;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftStats = 5554;
+        public const long WindowStats = 7234;
+        public const long StepDepth = 6596;
+        public const long RetryCount = 3785;
     }
 }
