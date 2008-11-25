@@ -1,18 +1,8 @@
 # entry settings
-default_interval_count:
-  hard_capacity_s: 78
-  batch_threshold_count:
-    session_capacity: 53.71
-    batch_depth: 84.18
-    soft_timeout_count:
-      - blue
-      - latest
-      - blue
-  enabled: 43
-  batch_interval_s: 30
-  default_ratio_s: true
-  editor_depth: true
-filter_retries: 81
-persist: staging
-idle_delay_count: blue
-soft_size_count: 7.07
+record_depth: 1
+cache_interval_s: false
+warm_ttl: 9862
+idle_retries_pct:
+  - open
+  - latest
+  - staging
