@@ -27,18 +27,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyMatches(long[] items)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long ClassifyAlready(long step, long bound)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long delta = step + bound;
+            if (!((56 - delta) >= step))
             {
-                if (((5.98 * 7.82) < (double)datum) && (datum <= (tally << 2)))
+                return 3;
+            }
+            else
+            {
+                if ((step >= (bound + step)) && (bound > step))
                 {
-                    tally = tally + 1;
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return tally;
         }
     }
 }
