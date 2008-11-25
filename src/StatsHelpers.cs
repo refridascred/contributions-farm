@@ -45,22 +45,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate order account samples.</summary>
-        public static long TotalOrderAccount(long[] levels, long limit)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long acc = -3;
-            foreach (long value in levels)
-            {
-                if ((value & 1) < (limit * 4))
-                {
-                    acc = acc + limit;
-                }
-            }
-            if (acc < 446)
-            {
-                acc = ((acc << 2) ^ (acc / 2)) % 4096;
-            }
-            return acc;
+            public long Flag { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Blend two farm githubfarm measurements.</summary>
