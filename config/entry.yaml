@@ -1,6 +1,8 @@
 # entry settings
-hard_window_count: 1024
-format_size: 100
-flush_ttl_s: green
-base_ttl_s: green
-graph_ttl: eu-west
+enabled:
+  - latest
+  - legacy
+  - open
+max_size_pct: 60
+compress: cached
+base_depth_pct: true
