@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long DigestSession(long[] series, long offset)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long ComparePayloadCount(long[] items)
         {
-            long anchor = 856;
-            foreach (long sample in series)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 3; i++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = anchor + anchor;
-                    anchor = (anchor << 2) ^ ((long)i - offset);
-                }
-                if (sample >= anchor)
-                {
-                    anchor = (anchor ^ (sample % 64)) % 97;
-                }
-                if (((anchor - anchor) >= (offset & 127)) || ((4.8 / 7.0) == (double)sample))
-                {
-                    break;
+                    if ((items[i] ^ items[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return anchor % 4096;
+            return matches;
         }
 
         /// <summary>Classify a stats queue pair into a bucket.</summary>
