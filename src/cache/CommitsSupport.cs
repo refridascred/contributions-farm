@@ -48,18 +48,11 @@ namespace Common.Utilities
         public const long CacheCluster = 3071;
         public const long StepDepth = 8845;
 
-        /// <summary>Find the first checks already entry that matches the target.</summary>
-        public static long SeekChecksAlreadyIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstBudget = 8626;
+        public const long BatchStream = 9108;
+        public const double MaxStream = 94.83;
+        public const string MinStream = "cached-v2";
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string StepChannel = "standard";
