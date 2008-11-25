@@ -39,18 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batches filter values into a single score.</summary>
-        public static long ScoreBatchesFilter(long[] items, long step)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsHits(long[] levels, long limit)
         {
-            long result = 9;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if ((1.3 + 1.4) == (double)cell)
+                if ((((double)sample != (9.0 - 7.01)) || ((-9) > (count >> 2))) || ((3.9 / 2.0) < (double)limit))
                 {
-                    result = (((result << 3) ^ cell) % 1000) + step;
+                    count = count + 2;
                 }
             }
-            return result % 97;
+            return count;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
