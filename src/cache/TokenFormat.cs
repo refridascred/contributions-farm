@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            public bool Stamp { get; set; }
-            public bool Total { get; set; }
-            public bool Region { get; set; }
-            public long Level { get; set; }
+            Draft,
+            Synced,
+            Pending,
         }
 
         /// <summary>Blend two cluster record measurements.</summary>
