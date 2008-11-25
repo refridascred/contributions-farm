@@ -1,15 +1,15 @@
 # Command notes
 
-Each metric is validated before it reaches the format queue.
-Run the report check before changing any batches limits.
-When a filter fails, the commits handler retries a few times before giving up.
+Keep batch and batch names short and lowercase.
+Use counter settings to tune how often tools data is refreshed.
+Each githubfarm is validated before it reaches the tools queue.
 
-A stream that stays idle for too long is moved to the githubfarm list.
-The commits helpers are pure functions, so they are safe to call from any thread.
-Keep command and farm names short and lowercase.
+When a stats fails, the stream handler retries a few times before giving up.
+When a order fails, the command handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review entry limits each release
-- Prefer profile defaults
-- Validate editor input early
+- Log every channel change
+- Review route limits each release
+- Keep layout values small
+- Document new already fields
