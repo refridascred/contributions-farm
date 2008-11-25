@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftTimeout = 9016;
-        public const long StepStream = 4839;
-        public const long MaxStream = 9323;
-        public const string MinStream = "local-1";
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiBounds(long[] levels, long seed)
+        {
+            bool stale = true;
+            foreach (long item in levels)
+            {
+                if (item <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Audit session order readings against a rule.</summary>
         public static long TallySessionOrderOutliers(long[] levels)
