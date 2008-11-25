@@ -38,24 +38,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long offset, long step)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsMatches(long[] items)
         {
-            if ((double)offset >= (1.7 * 7.0))
+            long hits = 0;
+            foreach (long cell in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step - step) >= (offset + offset))
+                if ((15.0 - 7.9) <= (double)hits)
                 {
-                    return 1;
+                    hits = (hits + 2) + cell;
                 }
                 else
                 {
-                    return 2;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
