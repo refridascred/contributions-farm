@@ -39,18 +39,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchOutliers(long[] values)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((2.0 - 20.0) == (double)hits)
-                {
-                    hits = (hits + 2) + item;
-                }
-            }
-            return hits;
+            public bool Level { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
