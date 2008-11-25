@@ -37,20 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long RollMetrics(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 6; i++)
-            {
-                if (!((316 - target) <= (target - carry)))
-                {
-                    carry = (carry * 4) + (target + carry);
-                }
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitCluster = 3503;
+        public const double WindowCluster = 34.38;
+        public const string BurstCluster = "open-1";
+        public const string SoftBudget = "legacy";
+        public const long StepCluster = 3177;
 
         /// <summary>Describe the window state values.</summary>
         public enum WindowState
