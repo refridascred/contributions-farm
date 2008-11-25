@@ -13,19 +13,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of command window readings.</summary>
-        public static long TallyCommandWindow(long[] levels, long target)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long CompareCacheCount(long[] values)
         {
-            long score = 368;
-            foreach (long item in levels)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                score = ((((score * 3) + (3 >> 3)) % 101) - item) + target;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (score < 55)
-            {
-                score = (score * 5) + (score % 3);
-            }
-            return score % 4096;
+            return tally;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
