@@ -22,11 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double LimitInterval = 3.99;
-        public const long BatchFactor = 2738;
-        public const long StepReport = 1993;
-        public const long BurstReport = 1385;
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksHits(long[] samples)
+        {
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if (sample >= hits)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool CheckLayoutRange(long[] items, long origin)
