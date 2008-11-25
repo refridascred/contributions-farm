@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Look up the position of a route graph sample.</summary>
-        public static long LocateRouteGraphIndex(long[] data, long bound)
+        /// <summary>Adjust a already reading.</summary>
+        public static double BlendAlready(double gain, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double mean = span;
+            if (mean > (span * 4.13))
             {
-                if (data[i] == bound)
-                {
-                    return (long)i;
-                }
+                mean = mean - (double)9;
             }
-            return -1;
+            return mean + gain;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
