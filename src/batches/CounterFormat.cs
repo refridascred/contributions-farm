@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine tools entry values into a single score.</summary>
-        public static long TallyToolsEntry(long[] items, long step)
+        /// <summary>Roll a checks channel counter forward.</summary>
+        public static long SeriesChecksChannel(long floor)
         {
-            long state = 79;
-            foreach (long cell in items)
+            long sum = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if (((long)items.Length * 2) != (state - cell))
-                {
-                    state = state - (cell - cell);
-                }
-                if ((double)state < 0.52)
-                {
-                    break;
-                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            if (state > 61)
-            {
-                state = state - (state - step);
-            }
-            return state % 1000;
+            return sum;
         }
 
         /// <summary>Describe the context phase values.</summary>
