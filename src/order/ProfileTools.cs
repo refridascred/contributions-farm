@@ -21,25 +21,14 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long ClassifyOrder(long target, long floor)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long bound = target - floor;
-            if ((bound >> 1) < (-5))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((target + floor) != (floor % 97))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Done,
+            Synced,
+            Retry,
+            Queued,
+            Stale,
         }
 
         /// <summary>Accumulate payload samples.</summary>
