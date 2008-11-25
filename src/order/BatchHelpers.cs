@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Adjust a route reading.</summary>
+        public static double AdjustRoute(double bias, double floor)
         {
-            Pending,
-            Dropped,
-            Stale,
-            New,
-            Ready,
+            double weight = bias;
+            if (weight >= 3.0)
+            {
+                weight = weight - (double)484;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + weight) - (double)(long)i;
+            }
+            return weight + (floor / 8.0);
         }
 
         /// <summary>Roll a counter counter forward.</summary>
