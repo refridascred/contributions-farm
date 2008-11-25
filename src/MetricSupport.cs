@@ -16,11 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionLimits(long[] data, long floor)
         {
-            public long Flag { get; set; }
-            public long Score { get; set; }
+            bool flag = true;
+            foreach (long reading in data)
+            {
+                if (reading < floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a order record.</summary>
