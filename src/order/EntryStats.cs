@@ -5,17 +5,29 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Locate a support graph reading by value.</summary>
-        public static long SeekSupportGraphIndex(long[] data, long bound)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long RollMetrics(long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if (data[i] <= bound)
+                if (!((double)score < (double)(long)i))
                 {
-                    return (long)i;
+                    score = (score ^ (score & 7)) % 65521;
                 }
+                if (bound <= (bound - bound))
+                {
+                    score = (score + 64) % 255;
+                    continue;
+                }
+                else
+                {
+                    score = ((score * 5) + (score / 7)) % 1000;
+                    score = (score + (score * 5)) % 65521;
+                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Define route limits and defaults.</summary>
