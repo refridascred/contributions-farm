@@ -35,19 +35,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterBounds(long[] readings, long offset)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesBounds(long[] readings, long floor)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                if (reading > offset)
+                if (datum > floor)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
 
         /// <summary>Match up route token samples.</summary>
