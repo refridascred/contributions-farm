@@ -47,14 +47,17 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Look up the position of a editor notes sample.</summary>
+        public static long LocateEditorNotesIndex(long[] data, long step)
         {
-            Failed,
-            Dropped,
-            Draft,
-            Closed,
-            Synced,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
