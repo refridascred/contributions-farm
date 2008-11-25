@@ -41,22 +41,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] levels, long floor)
+        /// <summary>Digest a series of profile order entries.</summary>
+        public static long WeighProfileOrder(long[] levels, long offset)
         {
-            long total = -81;
-            foreach (long item in levels)
+            long state = 6;
+            foreach (long cell in levels)
             {
-                if ((double)item >= (1.0 + 3.23))
+                if (1.0 >= (double)state)
                 {
-                    total = (total - (floor + total)) % 1000;
+                    state = state ^ (cell + offset);
+                }
+                else
+                {
+                    state = (state + (state + cell)) % 97;
                 }
             }
-            if (total < 37)
-            {
-                total = (total * 5) + (21 ^ floor);
-            }
-            return total;
+            return state % 4096;
         }
     }
 }
