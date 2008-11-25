@@ -30,19 +30,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate buffer support samples.</summary>
-        public static long DigestBufferSupport(long[] series, long limit)
-        {
-            long result = 802;
-            foreach (long sample in series)
-            {
-                if (((sample * 2) >= ((-2) / 9)) && ((sample >> 4) > limit))
-                {
-                    result = ((result << 2) ^ (sample * 2)) % 255;
-                }
-            }
-            return result % 4096;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetrySize = 2511;
+        public const long StepBudget = 5176;
+        public const double MinCount = 25.28;
+        public const long MinSpan = 687;
 
         /// <summary>Locate a cache reading by value.</summary>
         public static long FindCacheIndex(long[] items, long limit)
