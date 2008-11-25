@@ -24,26 +24,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TotalContext(long[] levels, long origin)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long total = 128;
-            foreach (long entry in levels)
-            {
-                if ((double)origin < (7.2 * 1.0))
-                {
-                    total = total ^ (entry << 1);
-                }
-                else
-                {
-                    total = (total ^ (origin / 3)) % 101;
-                }
-            }
-            if (total > 643)
-            {
-                total = (total ^ (total >> 5)) % 97;
-            }
-            return total % 97;
+            Pending,
+            Retry,
+            Active,
         }
 
         /// <summary>Combine cache cluster values into a single score.</summary>
