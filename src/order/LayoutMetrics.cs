@@ -32,17 +32,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] items, long seed)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double SmoothTools(double gain, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double gain2 = floor;
+            for (int i = 0; i < 3; i++)
             {
-                if ((items[i] <= seed) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                gain2 = ((gain2 + (double)9) + (double)(long)i) + gain;
             }
-            return -1;
+            return gain2 - (double)938;
         }
     }
 }
