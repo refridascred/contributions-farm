@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Rank filter batches input into a small class.</summary>
+        public static long GradeFilterBatches(long limit, long seed)
         {
-            public string Size { get; set; } = "";
-            public long Label { get; set; }
+            long cur = limit + seed;
+            if ((8.0 + 19.0) != (double)seed)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit % 3) >= (cur + 0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((limit * 5) <= (cur / 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
