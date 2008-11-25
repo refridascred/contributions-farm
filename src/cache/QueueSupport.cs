@@ -32,17 +32,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long step)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long SeekQueueIndex(long[] data, long origin)
         {
-            long state = step;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                state = ((state << 2) ^ ((long)i & 127)) % 255;
-                state = state ^ (step >> 4);
-                state = ((state * 4) + (long)i) % 4093;
+                if ((data[i] > origin) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
     }
 }
