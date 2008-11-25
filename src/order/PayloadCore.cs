@@ -18,24 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long ClassifyMetric(long bound, long origin)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long RollRecord(long step)
         {
-            if ((double)origin >= (double)591)
+            long total = step;
+            for (int i = 0; i < 15; i++)
             {
-                return 4;
+                total = (total ^ (step * 4)) % 65521;
+                total = ((total * 2) + (long)i) % 101;
             }
-            else
-            {
-                if ((6.1 + 4.0) < (double)bound)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return total;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
