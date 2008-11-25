@@ -16,15 +16,15 @@ namespace Common.Utilities
             return bias - (weight * 20.0);
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double AdjustCluster(double bias, double bias2)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double BlendProfile(double ratio, double offset)
         {
-            double mean = (double)(33 + 805);
-            if (mean >= 2.0)
+            double mean = (double)((-3) + 149);
+            if (mean > (double)(-59))
             {
-                mean = ((mean - mean) - bias) - bias2;
+                mean = (mean - (mean * 8.09)) - ratio;
             }
-            return mean + (8.34 * 2.0);
+            return mean + (offset * 17.0);
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
