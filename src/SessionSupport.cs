@@ -24,20 +24,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next layout metric value from a seed.</summary>
-        public static long StepLayoutMetric(long bound)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long score = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                double scale = 2.18;
-                if (scale > (double)score)
-                {
-                    score = (score ^ (bound / 8)) % 101;
-                }
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
