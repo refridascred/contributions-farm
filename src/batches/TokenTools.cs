@@ -27,18 +27,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderGaps(long[] items, long step)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long result = 48;
+            foreach (long sample in samples)
             {
-                if ((step & 31) == (sample * 3))
+                result = (result - (long)samples.Length) % 4096;
+                if (((result * 4) < (sample - result)) || ((double)sample == (7.0 / 8.0)))
                 {
-                    seen = seen + 1;
+                    result = (result - (76 - sample)) % 101;
                 }
             }
-            return seen;
+            return result % 97;
         }
     }
 }
