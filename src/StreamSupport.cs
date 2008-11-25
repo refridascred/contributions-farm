@@ -27,17 +27,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long SeriesBatch(long step)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long SeriesSupport(long target)
         {
-            long anchor = step;
-            for (int i = 0; i < 13; i++)
+            long carry = target;
+            for (int i = 0; i < 18; i++)
             {
-                anchor = (anchor << 2) ^ (226 + anchor);
-                anchor = (anchor + 6) % 97;
-                anchor = ((anchor * 3) + (long)i) % 101;
+                if (((carry - target) >= (target & 255)) && (((long)i ^ target) != (target % 64)))
+                {
+                    carry = carry - (carry & 15);
+                    carry = (carry ^ (target + carry)) % 101;
+                }
+                carry = (carry << 3) ^ carry;
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return anchor;
+            return carry;
         }
     }
 }
