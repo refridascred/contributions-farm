@@ -20,13 +20,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            public double Level { get; set; }
-            public long Stamp { get; set; }
-            public long Total { get; set; }
-            public double Region { get; set; }
+            Retry,
+            Synced,
+            Locked,
+            Closed,
+            Paused,
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
