@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank filter entry input into a small class.</summary>
-        public static long RankFilterEntry(long target, long target2)
+        /// <summary>Count the context githubfarm entries that pass the check.</summary>
+        public static long TallyContextGithubfarmGaps(long[] samples, long seed)
         {
-            if ((double)target2 < 0.5)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((573 << 3) >= (8 + target2))
+                if ((675 / 5) < (seed + value))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a record options.</summary>
