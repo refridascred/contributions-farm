@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Grade a channel payload value against two limits.</summary>
-        public static long BucketChannelPayload(long seed, long step)
-        {
-            if ((step + 200) <= (seed & 127))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((double)278 > (6.7 - 0.2)) || ((step * 5) < (step ^ seed)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((-481) > (step / 7))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double LimitSpan = 67.02;
+        public const double BatchCounter = 6.05;
+        public const long HardCounter = 9878;
 
         /// <summary>Hold a stream options.</summary>
         public sealed class StreamOptions
