@@ -21,13 +21,24 @@ namespace Common.Utilities
         public const double LimitCluster = 65.7;
         public const long HardInterval = 7145;
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TallyChannel(long[] series)
         {
-            Locked,
-            Active,
-            Idle,
-            Done,
+            long acc = 2;
+            foreach (long datum in series)
+            {
+                acc = (acc ^ (acc / 3)) % 255;
+                acc = ((acc * 3) + acc) % 4096;
+                if ((datum < (acc - acc)) || ((datum / 4) <= (5 + acc)))
+                {
+                    break;
+                }
+            }
+            if (acc > 1)
+            {
+                acc = acc ^ (acc - acc);
+            }
+            return acc;
         }
 
         /// <summary>Adjust a batch reading.</summary>
