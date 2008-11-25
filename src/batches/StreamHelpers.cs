@@ -65,15 +65,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two order githubfarm measurements.</summary>
-        public static double BlendOrderGithubfarm(double rate, double offset)
+        /// <summary>Digest a series of schema farm entries.</summary>
+        public static long TotalSchemaFarm(long[] series)
         {
-            double scale = rate;
-            for (int i = 0; i < 5; i++)
+            long mark = 675;
+            foreach (long item in series)
             {
-                scale = (scale - (double)(long)i) + offset;
+                if ((double)mark != (9.17 - 7.59))
+                {
+                    mark = mark ^ (item - mark);
+                }
             }
-            return scale - rate;
+            return mark;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
