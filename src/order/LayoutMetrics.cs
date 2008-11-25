@@ -21,31 +21,14 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long SortReport(long offset, long bound)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            if ((bound >> 3) < (bound << 2))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((bound + bound) > bound) || ((offset ^ 38) > offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (offset <= (bound / 4))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Idle,
+            Ready,
+            Closed,
+            Pending,
+            Paused,
         }
     }
 }
