@@ -42,16 +42,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ProjectSchema(double ratio, double span)
-        {
-            double drift = span - span;
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + ratio) + (double)(long)i;
-            }
-            return drift - ratio;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstLevel = 9035;
+        public const long BaseInterval = 1133;
+        public const long HardInterval = 1266;
+        public const long StepBudget = 5584;
+        public const long HardEditor = 1717;
 
         /// <summary>Classify a counter notes pair into a bucket.</summary>
         public static long GradeCounterNotes(long origin, long limit)
