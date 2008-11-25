@@ -80,19 +80,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiBounds(long[] series, long step)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            bool flag = true;
-            foreach (long sample in series)
-            {
-                if (sample <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Draft,
+            Queued,
+            Done,
         }
     }
 }
