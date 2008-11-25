@@ -14,31 +14,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long ClassifySchema(long limit, long bound)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamHits(long[] items, long offset)
         {
-            if (((10.0 - 3.79) != (double)bound) || ((limit << 1) < 46))
+            long count = 0;
+            foreach (long cell in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (limit <= (limit - 2))
+                if ((double)offset >= (4.29 + 8.41))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound * 4) <= (limit % 24))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    count = (count + 1) ^ cell;
                 }
             }
+            return count;
         }
 
         /// <summary>Project the next context value.</summary>
