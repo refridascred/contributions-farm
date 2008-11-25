@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Compare every pair of record tools readings.</summary>
-        public static long PairRecordToolsCount(long[] values)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long BucketProfile(long offset, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long slot = offset ^ origin;
+            if ((offset ^ offset) < (slot - origin))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((origin >> 4) < (slot + offset))
                 {
-                    if ((values[i] ^ values[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
 
         /// <summary>Accumulate command counter samples.</summary>
