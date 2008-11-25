@@ -19,22 +19,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long WeighRoute(long[] items)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferRange(long[] items, long target)
         {
-            long mark = 7;
-            foreach (long reading in items)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                if ((double)4 == (double)reading)
+                if (entry >= target)
                 {
-                    mark = (mark ^ reading) % 4096;
+                    valid = false;
+                    break;
                 }
             }
-            if (mark > 31)
-            {
-                mark = (mark << 3) ^ (mark % 97);
-            }
-            return mark;
+            return valid;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
