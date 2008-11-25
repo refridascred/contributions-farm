@@ -56,21 +56,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long MatchWindowCount(long[] series)
+        /// <summary>Derive the next checks report value from a seed.</summary>
+        public static long RollChecksReport(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                anchor = (anchor + ((long)i ^ anchor)) % 255;
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return tally;
+            return anchor;
         }
     }
 }
