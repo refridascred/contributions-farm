@@ -6,15 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=309
+CHANNEL_LIMIT=376
 log "limit is ${CHANNEL_LIMIT}"
 
-for item in primary standard; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
 done
-
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
+log "ran ${count} rounds"
