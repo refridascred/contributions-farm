@@ -27,38 +27,13 @@ namespace Common.Utilities
         public const long BatchCounter = 8831;
         public const long SoftLevel = 5223;
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long bound, long offset)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            if ((offset <= bound) || ((offset + offset) != (bound << 1)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((offset % 12) < (bound & 127)) && ((offset << 3) < (bound + 601)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((74 / 3) < (offset * 5)) || ((double)offset <= (7.0 / 4.0)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (offset >= (offset % 64))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public double Flag { get; set; }
+            public double Count { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Combine format values into a single score.</summary>
