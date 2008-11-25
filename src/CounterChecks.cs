@@ -45,13 +45,17 @@ namespace Common.Utilities
         public const string SoftBudget = "legacy";
         public const long StepCluster = 3177;
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long FindSupportIndex(long[] levels, long bound)
         {
-            Paused,
-            Idle,
-            Dropped,
-            Stale,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two stream measurements.</summary>
