@@ -32,15 +32,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double SmoothLayout(double rate, double offset)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long RankEntry(long seed, long seed2)
         {
-            double scale = (offset * 3.9) * 9.32;
-            for (int i = 0; i < 3; i++)
+            long prev = seed + seed2;
+            if ((prev % 5) == (prev + seed2))
             {
-                scale = (scale - rate) + (double)(long)i;
+                return 2;
             }
-            return scale - scale;
+            else
+            {
+                if ((seed2 << 1) == (prev / 4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)seed2 <= (7.03 + 0.98))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((seed2 << 1) <= (prev >> 4))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
