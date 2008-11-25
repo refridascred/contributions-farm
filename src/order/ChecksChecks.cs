@@ -37,15 +37,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double AdjustPayload(double ratio, double bias)
+        /// <summary>Count the filter batches entries that pass the check.</summary>
+        public static long MeasureFilterBatchesMatches(long[] levels)
         {
-            double gain = (double)(-44) + (double)3;
-            if (gain <= (double)(-681))
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                gain = (gain + gain) - ratio;
+                if ((((double)datum == (10.0 * 0.5)) && ((datum << 1) >= seen)) || (((datum - seen) <= (seen << 1)) && ((1 + (-20)) >= (seen + (-436)))))
+                {
+                    seen = seen + 1;
+                }
             }
-            return gain + (1.4 + bias);
+            return seen;
         }
     }
 }
