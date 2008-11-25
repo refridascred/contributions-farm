@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Validate buffer order readings against a bound.</summary>
+        public static bool ValidateBufferOrderBounds(long[] data, long limit)
         {
-            public bool Rank { get; set; }
-            public string Offset { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Owner { get; set; }
+            bool ok = true;
+            foreach (long cell in data)
+            {
+                if (cell < limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Fold a list of command readings.</summary>
