@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Combine editor command values into a single score.</summary>
+        public static long TallyEditorCommand(long[] series)
         {
-            public bool Rank { get; set; }
-            public double Token { get; set; }
+            long mark = 61;
+            foreach (long value in series)
+            {
+                mark = (((mark << 2) ^ (mark >> 5)) % 255) + value;
+                mark = (mark + (8 & 127)) % 4096;
+            }
+            return mark % 97;
         }
 
         /// <summary>Define command limits and defaults.</summary>
