@@ -1,7 +1,7 @@
-id,score,label
-1,strict,183
-2,597,43.16
-3,584,716
-4,strict,902
-5,93,522
-6,stable,latest
+id,region,ratio,state
+1,32.35,478,65.8
+2,primary,cached,236
+3,staging,87,stable
+4,982,open,886
+5,local,45.53,20.46
+6,62.07,581,0.25
