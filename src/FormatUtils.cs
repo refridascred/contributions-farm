@@ -72,18 +72,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextGaps(long[] levels, long step)
+        /// <summary>Adjust a route reading.</summary>
+        public static double ProjectRoute(double ratio, double bias)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            double scale = bias;
+            for (int i = 0; i < 9; i++)
             {
-                if (((cell / 2) >= cell) || ((count - count) > (count - cell)))
-                {
-                    count = (count + 1) + step;
-                }
+                scale = ((scale + bias) - (double)(long)i) + ratio;
             }
-            return count;
+            return scale + 10.0;
         }
     }
 }
