@@ -31,12 +31,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchSize = 8448;
-        public const double LimitProfile = 66.44;
-        public const long BatchProfile = 2064;
-        public const string WindowDepth = "fallback-edge";
-        public const long BaseProfile = 9227;
+        /// <summary>Match up notes route samples.</summary>
+        public static long OverlapNotesRouteCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the schema state values.</summary>
         public enum SchemaState
