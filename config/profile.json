@@ -1,9 +1,14 @@
 {
-  "counter_interval": {
-    "flush_threshold_s": ["standard", "green", "blue", "local"],
-    "base_limit": true,
-    "cache_ttl_pct": ["local", "primary", "fallback", "legacy"]
+  "compress": 6976,
+  "default_window": 7345,
+  "verbose": true,
+  "default_window_ms": 24,
+  "command_capacity": {
+    "poll_limit": "cached",
+    "batch_ttl_ms": ["stable", "legacy", "green"],
+    "batch_window": "local",
+    "hard_retries_pct": ["standard", "standard"],
+    "filter_threshold": [181, 34, 74, 333]
   },
-  "contributi_ratio": "staging",
-  "warm_delay_ms": 74.13
+  "retry_retries_ms": 60
 }
