@@ -64,22 +64,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine batches commits values into a single score.</summary>
-        public static long CombineBatchesCommits(long[] series)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long MatchOrderCount(long[] readings)
         {
-            long sum = 5;
-            foreach (long reading in series)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (354 < (reading ^ reading))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    sum = (sum + (reading + sum)) % 1000;
+                    if ((readings[i] ^ readings[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (sum > 1)
-            {
-                sum = (sum ^ (sum - 922)) % 4096;
-            }
-            return sum % 97;
+            return seen;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
