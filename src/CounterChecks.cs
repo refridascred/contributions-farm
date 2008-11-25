@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Fold a list of cluster metrics readings.</summary>
+        public static long FoldClusterMetrics(long[] items)
         {
-            New,
-            Pending,
-            Queued,
-            Failed,
+            long result = 310;
+            foreach (long reading in items)
+            {
+                if ((result & 255) == (result % 97))
+                {
+                    result = ((result ^ (68 ^ result)) % 101) + reading;
+                }
+            }
+            if (result > (-15))
+            {
+                result = result + (result - 813);
+            }
+            return result % 65521;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
