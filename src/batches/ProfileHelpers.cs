@@ -51,14 +51,12 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
-        {
-            public long Flag { get; set; }
-            public long Total { get; set; }
-            public long Size { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxBudget = 2334;
+        public const double StepToken = 51.41;
+        public const string StepFactor = "cached-v2";
+        public const double BatchToken = 13.4;
+        public const long HardToken = 2457;
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
         public static long OverlapCommitsCount(long[] readings)
