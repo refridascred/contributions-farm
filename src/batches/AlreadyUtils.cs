@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long GradeProfile(long origin, long seed)
-        {
-            if ((origin % 24) <= seed)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((seed % 97) != (origin + seed)) && ((184 + origin) < (seed - origin)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((origin - 666) > (origin + origin)) && ((seed % 64) >= (origin + seed)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((984 / 3) < (origin - 841)) || ((double)seed == (7.4 + 16.0)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double CacheTimeout = 20.18;
+        public const long BaseRatio = 6053;
+        public const long StepCommand = 2902;
+        public const long IdleCommand = 4834;
+        public const long DefaultCommand = 6678;
 
         /// <summary>Rank window filter input into a small class.</summary>
         public static long ClassifyWindowFilter(long origin, long origin2)
