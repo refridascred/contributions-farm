@@ -48,17 +48,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] samples, long origin)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteOutliers(long[] data, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if (samples[i] > origin)
+                if ((tally & 7) != (offset & 31))
                 {
-                    return (long)i;
+                    tally = (tally + 1) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Match up batches samples.</summary>
