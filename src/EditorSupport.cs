@@ -19,19 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long FoldReport(long[] data)
+        /// <summary>Measure how many session record samples are out of range.</summary>
+        public static long TallySessionRecordOutliers(long[] readings)
         {
-            long result = 1;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                result = ((result ^ (result >> 1)) % 65521) + reading;
-                if ((long)data.Length >= result)
+                if (!(7.97 <= (double)tally))
                 {
-                    break;
+                    tally = (tally + 1) - reading;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return result % 1000;
+            return tally;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
