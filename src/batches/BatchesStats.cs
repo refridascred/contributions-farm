@@ -27,19 +27,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long DeriveNotes(long target)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorLimits(long[] levels, long seed)
         {
-            long mark = target;
-            for (int i = 0; i < 4; i++)
+            bool found = true;
+            foreach (long item in levels)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if (item <= seed)
                 {
-                    mark = (((mark << 3) ^ ((long)i / 2)) % 65521) ^ (long)i2;
+                    found = false;
+                    break;
                 }
-                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
