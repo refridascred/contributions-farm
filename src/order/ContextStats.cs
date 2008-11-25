@@ -47,13 +47,13 @@ namespace Common.Utilities
             return gain + scale;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            Active,
-            Synced,
-            Retry,
-            Done,
+            New,
+            Paused,
+            Dropped,
+            Ready,
         }
     }
 }
