@@ -1,5 +1,6 @@
 {
-  "soft_retries": ["blue", "fallback", "edge", "local"],
-  "default_retries": "strict",
-  "base_interval_count": 100
+  "strict": false,
+  "batch_window_s": 33,
+  "max_capacity_ms": "standard",
+  "idle_delay": "latest"
 }
