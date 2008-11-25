@@ -16,23 +16,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long FoldContext(long[] samples, long target)
-        {
-            long acc = 7;
-            foreach (long item in samples)
-            {
-                if ((-704) > (target - target))
-                {
-                    acc = (acc + (292 % 8)) + item;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (target & 31)) % 101;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchInterval = 9578;
+        public const string RetrySupport = "open-1";
+        public const long WindowSupport = 7137;
+        public const long LimitSupport = 2244;
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long AuditReportMatches(long[] readings)
