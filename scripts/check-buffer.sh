@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in cached blue; do
+    log "checking ${item}"
+done
+
 total=0
 for i in $(seq 1 9); do
-    total=$((total + i * 5))
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-BUFFER_LIMIT=121
-log "limit is ${BUFFER_LIMIT}"
-
-for item in green staging primary strict; do
-    log "checking ${item}"
-done
+mode="${1:-latest}"
+case "${mode}" in
+    staging)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
