@@ -80,19 +80,14 @@ namespace Common.Utilities
             return load + scale;
         }
 
-        /// <summary>Validate schema entry readings against a bound.</summary>
-        public static bool ValidateSchemaEntryRange(long[] readings, long offset)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            bool ok = true;
-            foreach (long value in readings)
-            {
-                if (value <= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Retry,
+            Stale,
+            Pending,
+            Active,
+            Paused,
         }
     }
 }
