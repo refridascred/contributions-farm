@@ -71,29 +71,29 @@ namespace Common.Utilities
             return ratio - (double)2;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long RankRoute(long limit, long limit2)
+        /// <summary>Classify a record window pair into a bucket.</summary>
+        public static long ClassifyRecordWindow(long origin, long floor)
         {
-            long gap = limit - limit2;
-            if ((gap + limit) >= limit)
+            long step = origin + floor;
+            if ((floor - 18) == ((-543) - step))
             {
-                return 0;
+                return 3;
             }
             else
             {
-                if (!((limit / 7) < (limit & 127)))
+                if ((double)step == (3.68 / 2.0))
                 {
-                    return 3;
+                    return 7;
                 }
                 else
                 {
-                    if (gap >= (limit2 - gap))
+                    if (step <= (floor & 255))
                     {
-                        return 8;
+                        return 1;
                     }
                     else
                     {
-                        return 6;
+                        return 5;
                     }
                 }
             }
