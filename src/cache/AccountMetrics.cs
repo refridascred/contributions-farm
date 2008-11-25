@@ -73,19 +73,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double SmoothMetric(double scale, double span)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            double load = scale * 5.98;
-            if (load >= (double)23)
-            {
-                load = load + (span + load);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load + 0.98;
+            public long Owner { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
