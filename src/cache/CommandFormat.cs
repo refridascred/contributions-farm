@@ -43,12 +43,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            public double Rank { get; set; }
+            public double Weight { get; set; }
+            public long Label { get; set; }
             public long Limit { get; set; }
-            public bool Size { get; set; }
+            public long Total { get; set; }
         }
     }
 }
