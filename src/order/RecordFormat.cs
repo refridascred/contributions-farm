@@ -18,24 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a editor tools value against two limits.</summary>
-        public static long BucketEditorTools(long seed, long floor)
+        /// <summary>Look up the position of a command support sample.</summary>
+        public static long FindCommandSupportIndex(long[] samples, long bound)
         {
-            if (((double)seed != (double)floor) || ((floor + seed) > (70 - 27)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor * 5) > floor)
+                if ((samples[i] <= bound) && ((samples[i] % 2) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
