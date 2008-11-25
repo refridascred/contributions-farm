@@ -16,38 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long GradeReport(long offset, long limit)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsOutliers(long[] readings, long offset)
         {
-            if ((offset + 6) >= (limit * 4))
+            long count = 0;
+            foreach (long entry in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (7 <= limit)
+                if ((double)entry >= (double)count)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)297 >= (double)offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((limit * 3) == ((-51) + 9))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    count = (count + 1) + offset;
                 }
             }
+            return count;
         }
 
         /// <summary>Accumulate buffer support samples.</summary>
