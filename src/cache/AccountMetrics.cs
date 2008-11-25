@@ -68,18 +68,13 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchMatches(long[] levels, long origin)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((origin - 75) != (origin / 8))
-                {
-                    tally = (tally + 2) ^ cell;
-                }
-            }
-            return tally;
+            Ready,
+            New,
+            Retry,
+            Closed,
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
