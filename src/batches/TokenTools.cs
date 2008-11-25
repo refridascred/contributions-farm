@@ -27,13 +27,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphHits(long[] values, long seed)
         {
-            public double Stamp { get; set; }
-            public bool Level { get; set; }
-            public bool Owner { get; set; }
-            public string Offset { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((reading - reading) <= seed)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
