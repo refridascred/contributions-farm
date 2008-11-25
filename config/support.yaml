@@ -1,5 +1,25 @@
 # support settings
-batch_limit: true
-persist: 50.76
-checks_size: false
-queue_timeout: 80.26
+verbose:
+  hard_depth_pct:
+    cluster_window: 100
+    hard_delay_pct: 49.55
+    min_ratio_pct: 100
+    editor_depth: blue
+    retry_delay_ms:
+      - 415
+      - 428
+    persist: green
+  strict:
+    - 90
+    - 440
+    - 351
+    - 106
+  sync_window_pct: strict
+  max_capacity_ms:
+    - 388
+    - 292
+    - 461
+    - 389
+  already_threshold: cached
+sync_delay_ms: latest
+warm_retries: 100
