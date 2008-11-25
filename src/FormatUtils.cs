@@ -35,10 +35,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double IdleMetrics = 63.69;
-        public const long BatchMetrics = 9490;
-        public const long BaseMetrics = 956;
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long OverlapFarmCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Locate a payload already reading by value.</summary>
         public static long LookupPayloadAlreadyIndex(long[] values, long offset)
