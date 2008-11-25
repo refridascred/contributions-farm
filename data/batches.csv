@@ -1,9 +1,7 @@
-id,ratio,score
-1,522,44.25
-2,794,blue
-3,staging,399
-4,845,fallback
-5,edge,98.01
-6,80.01,open
-7,840,29.46
-8,74.2,72.34
+id,owner,region,ratio
+1,latest,50.46,811
+2,66.08,20,open
+3,92.47,221,172
+4,815,234,498
+5,45,209,open
+6,283,243,legacy
