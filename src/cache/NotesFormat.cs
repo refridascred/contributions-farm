@@ -24,18 +24,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long OverlapClusterCount(long[] data)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaOutliers(long[] samples)
         {
             long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((cell << 3) <= (-5))
                 {
-                    if ((data[i] + data[j]) > 20)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 2;
                 }
             }
             return count;
