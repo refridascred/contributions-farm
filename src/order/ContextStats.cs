@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Look up the position of a order filter sample.</summary>
-        public static long LocateOrderFilterIndex(long[] series, long step)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] levels, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 369;
+            foreach (long item in levels)
             {
-                if (series[i] >= step)
-                {
-                    return (long)i;
-                }
+                sum = ((sum - (sum + (-1))) - item) - bound;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
