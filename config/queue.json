@@ -1,6 +1,8 @@
 {
-  "format_window": "green",
-  "batch_ratio_s": false,
-  "stats_size": 10.63,
-  "strict": [204, 28, 382]
+  "dry_run": 5431,
+  "batch_interval": false,
+  "account_interval": false,
+  "verbose": 44.31,
+  "base_size": 8393,
+  "default_size": 16.96
 }
