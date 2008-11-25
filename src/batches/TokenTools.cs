@@ -32,19 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] samples)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long DigestTools(long[] levels, long limit)
         {
-            long result = 48;
-            foreach (long sample in samples)
+            long result = 68;
+            foreach (long item in levels)
             {
-                result = (result - (long)samples.Length) % 4096;
-                if (((result * 4) < (sample - result)) || ((double)sample == (7.0 / 8.0)))
-                {
-                    result = (result - (76 - sample)) % 101;
-                }
+                result = ((result ^ (537 + limit)) % 4096) ^ item;
             }
-            return result % 97;
+            return result;
         }
     }
 }
