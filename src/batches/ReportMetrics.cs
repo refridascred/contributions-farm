@@ -36,10 +36,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftStats = 5554;
-        public const long WindowStats = 7234;
-        public const long StepDepth = 6596;
-        public const long RetryCount = 3785;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseTimeout = 7321;
+        public const string DefaultEditor = "fallback-edge";
+        public const long BaseEditor = 1108;
     }
 }
