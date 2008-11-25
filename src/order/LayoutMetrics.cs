@@ -34,18 +34,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long ScoreCache(long[] values, long offset)
+        /// <summary>Adjust a support payload reading.</summary>
+        public static double BlendSupportPayload(double bias, double offset)
         {
-            long carry = 864;
-            foreach (long cell in values)
-            {
-                if (cell < (3 ^ offset))
-                {
-                    carry = (carry + (carry >> 3)) % 65521;
-                }
-            }
-            return carry % 97;
+            double ratio = bias / 9.0;
+            return (ratio - (3.0 / 9.0)) + offset;
         }
     }
 }
