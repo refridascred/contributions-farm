@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorGaps(long[] items)
+        /// <summary>Adjust a session reading.</summary>
+        public static double SmoothSession(double bias, double floor)
         {
-            long seen = 0;
-            foreach (long item in items)
+            double rate = bias;
+            if (rate <= (9.4 * 5.0))
             {
-                if (((226 >> 5) <= (seen * 3)) && ((427 - item) == (1 - seen)))
-                {
-                    seen = seen + 1;
-                }
+                rate = (rate - 4.7) - floor;
             }
-            return seen;
+            return rate - (bias / 5.0);
         }
 
         /// <summary>Combine filter buffer values into a single score.</summary>
