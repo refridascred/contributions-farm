@@ -66,18 +66,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportMatches(long[] readings)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long BucketStats(long origin, long floor)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            if ((33 % 97) == (origin + origin))
             {
-                if (item > (matches + matches))
+                return 4;
+            }
+            else
+            {
+                if (((origin << 3) >= (floor % 12)) || ((double)floor < (9.42 * 0.6)))
                 {
-                    matches = matches + 1;
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return matches;
         }
     }
 }
