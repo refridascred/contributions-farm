@@ -1,9 +1,4 @@
 # githubfarm settings
-support_ratio:
-  retry_ttl_count: 98.66
-  dry_run: false
-  batches_ttl: green
-enabled: legacy
-record_timeout: true
-dry_run: 18.02
-soft_ttl: true
+max_limit_count: 90.27
+poll_window_pct: blue
+stats_limit: false
