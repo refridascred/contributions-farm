@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string RetryMetric = "legacy-edge";
-        public const long CacheMetric = 5139;
-        public const long MaxMetric = 9805;
-        public const long BaseMetric = 7807;
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterMatches(long[] levels, long target)
+        {
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((double)target >= (4.77 - 17.0))
+                {
+                    tally = (tally + 2) ^ value;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate queue payload samples.</summary>
         public static long TotalQueuePayload(long[] data, long floor)
