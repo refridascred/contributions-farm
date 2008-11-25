@@ -23,10 +23,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheAccount = 3154;
-        public const long MinRatio = 7210;
-        public const string SoftLevel = "legacy-1";
+        /// <summary>Count cache batches pairs that satisfy a relation.</summary>
+        public static long OverlapCacheBatchesCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Roll a filter batches counter forward.</summary>
         public static long SeriesFilterBatches(long bound)
