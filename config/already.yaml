@@ -1,5 +1,10 @@
 # already settings
-cache_timeout: fallback
-enabled: 1544
-hard_window_ms: 9843
-hard_depth_pct: 3595
+default_window: true
+warm_delay_pct: false
+hard_window: staging
+hard_window_s: false
+base_size_s:
+  - 145
+  - 473
+  - 88
+base_depth: 4.36
