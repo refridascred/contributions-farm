@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TallyAlready(long[] series, long floor)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long acc = 309;
-            foreach (long entry in series)
-            {
-                acc = acc - (entry - floor);
-                if ((floor < (acc + entry)) && ((entry * 5) >= entry))
-                {
-                    acc = (acc + entry) % 65521;
-                }
-            }
-            return acc % 97;
+            Synced,
+            Failed,
+            Ready,
+            Stale,
+            Pending,
         }
 
         /// <summary>Digest a series of counter entries.</summary>
