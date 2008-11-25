@@ -40,11 +40,21 @@ namespace Common.Utilities
             return gain - (scale / 5.0);
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitBuffer = 8269;
-        public const long MinBuffer = 9754;
-        public const long IdleBuffer = 1716;
-        public const double RetryBuffer = 74.87;
-        public const long HardSpan = 2363;
+        /// <summary>Count stream tools pairs that satisfy a relation.</summary>
+        public static long CompareStreamToolsCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
