@@ -43,15 +43,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long RollChannel(long step)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryRange(long[] values, long bound)
         {
-            long sum = step;
-            for (int i = 0; i < 9; i++)
+            bool found = true;
+            foreach (long sample in values)
             {
-                sum = ((sum * 4) + (long)i) % 1000;
+                if (sample != bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return sum;
+            return found;
         }
     }
 }
