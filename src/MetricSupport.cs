@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterGaps(long[] values, long seed)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if (!((3.0 * 7.69) > (double)datum) || (seed <= (datum + matches)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            New,
+            Idle,
+            Ready,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
