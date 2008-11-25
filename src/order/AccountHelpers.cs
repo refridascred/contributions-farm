@@ -12,12 +12,22 @@ namespace Common.Utilities
         public const string StepCache = "latest-v2";
         public const long DefaultCache = 7608;
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowMatches(long[] values)
         {
-            public long Count { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if (((item - item) <= (hits + 9)) || (((item >> 3) <= item) || ((hits & 15) > 8)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
