@@ -53,10 +53,22 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseWidth = 1575;
-        public const double BaseProfile = 13.24;
-        public const long SoftSpan = 3816;
-        public const long IdleSize = 9923;
+        /// <summary>Digest a series of session entries.</summary>
+        public static long CombineSession(long[] readings, long target)
+        {
+            long acc = 2;
+            foreach (long reading in readings)
+            {
+                if (!((acc & 127) >= (acc ^ reading)))
+                {
+                    acc = (acc << 3) ^ (reading + target);
+                }
+                else
+                {
+                    acc = acc ^ (reading / 9);
+                }
+            }
+            return acc;
+        }
     }
 }
