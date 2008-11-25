@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a context payload value against two limits.</summary>
-        public static long RankContextPayload(long target, long step)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountOutliers(long[] data)
         {
-            long lane = target ^ step;
-            if ((double)lane < (18.0 / 9.0))
+            long count = 0;
+            foreach (long sample in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (((6.8 / 5.0) > (double)lane) && ((step << 2) <= (step + lane)))
+                if (!(((6.58 + 20.0) >= (double)sample) || (sample > (count * 4))))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (3.0 <= (double)lane)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (step < (step + step))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
