@@ -48,25 +48,12 @@ namespace Common.Utilities
         public const long CacheWindow = 9686;
         public const double MinWindow = 22.93;
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long limit)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long state = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                state = (state ^ state) % 4096;
-                if (!((double)limit == (4.9 - 9.0)))
-                {
-                    state = ((state * 5) + (0 % 2)) % 65521;
-                }
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    state = ((state * 5) + limit) ^ (long)i2;
-                    state = state + state;
-                }
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
+            Synced,
+            Done,
+            Stale,
         }
     }
 }
