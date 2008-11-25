@@ -20,21 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long MatchSupportCount(long[] readings)
+        /// <summary>Locate a token buffer reading by value.</summary>
+        public static long LookupTokenBufferIndex(long[] values, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((values[i] < limit) && ((values[i] % 2) != 0))
                 {
-                    if ((readings[i] ^ readings[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a support info.</summary>
