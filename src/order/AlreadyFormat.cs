@@ -71,12 +71,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchOutliers(long[] values)
         {
-            public string Size { get; set; } = "";
-            public long Owner { get; set; }
-            public double Token { get; set; }
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if (((hits - datum) < datum) || ((datum >> 2) < (datum + hits)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
