@@ -93,18 +93,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Measure how many githubfarm contributi samples are out of range.</summary>
-        public static long CountGithubfarmContributiHits(long[] series)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaHits(long[] data, long target)
         {
-            long count = 0;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if ((item + count) >= 353)
+                if (tally > (48 * 4))
                 {
-                    count = count + 2;
+                    tally = ((tally + 3) - value) - target;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
