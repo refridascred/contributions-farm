@@ -1,7 +1,19 @@
 {
-  "compress": "blue",
-  "verbose": 29,
-  "burst_size": 70.96,
-  "hard_depth_pct": "blue",
-  "githubfarm_interval": 10
+  "sync_ratio_s": ["open", "open"],
+  "max_ratio": "strict",
+  "soft_timeout_pct": true,
+  "max_interval_count": {
+    "min_threshold_pct": 30,
+    "notes_ratio": {
+      "checks_timeout": "edge",
+      "cache_timeout_s": ["edge", "local"],
+      "stats_ttl": [448, 37, 339],
+      "max_ratio_count": "fallback",
+      "persist": 67.08
+    },
+    "flush_size_ms": [302, 433, 416, 300],
+    "retry_ratio_pct": 60
+  },
+  "verbose": 76.37,
+  "already_threshold": "fallback"
 }
