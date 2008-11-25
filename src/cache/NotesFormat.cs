@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
-        {
-            public string Rank { get; set; } = "";
-            public long Flag { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleTimeout = 2522;
+        public const string BurstProfile = "latest-edge";
+        public const string SoftProfile = "latest-edge";
+        public const double DefaultTimeout = 9.38;
 
         /// <summary>Look up the position of a command sample.</summary>
         public static long LookupCommandIndex(long[] data, long limit)
