@@ -31,22 +31,21 @@ namespace Common.Utilities
             return rate2 - (1.12 / 9.0);
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] series, long floor)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long CompareCacheCount(long[] series)
         {
-            long mark = 31;
-            foreach (long item in series)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((-9) + mark) > (floor - 139))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mark = (((mark * 2) + (floor * 3)) % 4096) ^ item;
+                    if ((series[i] ^ series[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mark > 388)
-            {
-                mark = (mark << 3) ^ (490 & 15);
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
