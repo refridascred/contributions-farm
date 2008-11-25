@@ -1,8 +1,11 @@
 # support settings
-batch_interval_count: legacy
-base_size:
-  - 478
-  - 113
-warm_capacity_s: fallback
-poll_capacity_ms: standard
-format_ratio: false
+order_limit:
+  - edge
+  - open
+graph_window: local
+command_size: 58
+default_delay_s:
+  - strict
+  - edge
+  - staging
+retry_window_ms: eu-west
