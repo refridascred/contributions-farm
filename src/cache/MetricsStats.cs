@@ -34,21 +34,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long MatchBatchesCount(long[] levels)
+        /// <summary>Accumulate payload session samples.</summary>
+        public static long WeighPayloadSession(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 349;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                sum = ((sum << 3) ^ sum) - sample;
             }
-            return count;
+            if (sum > 8)
+            {
+                sum = (sum ^ (9 + 1)) % 65521;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
