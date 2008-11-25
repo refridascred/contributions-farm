@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueOutliers(long[] data)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((double)tally <= (double)sample)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public bool Rank { get; set; }
+            public bool Stamp { get; set; }
+            public long Owner { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Rank schema input into a small class.</summary>
