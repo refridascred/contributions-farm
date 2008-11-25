@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleTimeout = 8105;
-        public const long BatchMetric = 5894;
-        public const long CacheMetric = 5845;
-        public const long BurstMetric = 1379;
-        public const long LimitMetric = 2725;
+        /// <summary>Match up metric tools samples.</summary>
+        public static long OverlapMetricToolsCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Locate a schema reading by value.</summary>
         public static long LocateSchemaIndex(long[] levels, long floor)
