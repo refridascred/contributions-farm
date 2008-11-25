@@ -22,19 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate cache contributi readings against a bound.</summary>
-        public static bool ValidateCacheContributiRange(long[] data, long seed)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueHits(long[] samples)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (item > seed)
+                if ((7.0 < (double)matches) && ((matches % 10) <= item))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
