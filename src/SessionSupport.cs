@@ -24,38 +24,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long BucketCounter(long origin, long step)
+        /// <summary>Derive the next layout metric value from a seed.</summary>
+        public static long StepLayoutMetric(long bound)
         {
-            if ((8 % 16) != (origin - origin))
+            long score = bound;
+            for (int i = 0; i < 17; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((step + step) <= step) && ((step * 5) > (origin >> 4)))
+                double scale = 2.18;
+                if (scale > (double)score)
                 {
-                    return 0;
+                    score = (score ^ (bound / 8)) % 101;
                 }
-                else
-                {
-                    if ((step % 12) >= (step >> 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((step * 3) < 30) && ((double)origin < 1.4))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                score = ((score * 5) + (long)i) % 101;
             }
+            return score;
         }
     }
 }
