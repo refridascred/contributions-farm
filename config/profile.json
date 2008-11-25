@@ -1,5 +1,13 @@
 {
-  "already_limit": "legacy",
-  "notes_ttl": 67.83,
-  "command_interval": 64.97
+  "metric_delay": {
+    "idle_size": "primary",
+    "batch_ratio": 1426,
+    "soft_ratio_pct": "fallback",
+    "base_size_count": 60
+  },
+  "warm_ttl_s": "local",
+  "max_depth_s": "latest",
+  "max_delay": false,
+  "audit": 5960,
+  "default_limit_s": ["open", "legacy"]
 }
