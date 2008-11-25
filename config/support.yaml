@@ -1,6 +1,7 @@
 # support settings
-poll_threshold_ms: blue
-cache_timeout: true
-retry_size_ms: 0.93
-sync_depth: eu-west
-persist: 500
+min_size_s:
+  - legacy
+  - edge
+  - blue
+dry_run: 1024
+enabled: 8.74
