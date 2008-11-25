@@ -10,12 +10,31 @@ namespace Common.Utilities
         public const long RetryScore = 7020;
         public const long BatchTimeout = 9056;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinLayout = 8459;
-        public const double BatchLayout = 98.74;
-        public const string HardLayout = "local-1";
-        public const long StepLevel = 3814;
-        public const string BaseLayout = "standard-edge";
+        /// <summary>Accumulate profile cache samples.</summary>
+        public static long TallyProfileCache(long[] items)
+        {
+            long acc = 0;
+            foreach (long reading in items)
+            {
+                if (6 >= ((-829) - acc))
+                {
+                    acc = (acc << 3) ^ (acc - reading);
+                }
+                else
+                {
+                    acc = (acc + (acc * 5)) % 255;
+                }
+                if ((acc + (-97)) > reading)
+                {
+                    acc = ((acc << 3) ^ (reading + acc)) % 255;
+                }
+                if ((reading >> 5) < (acc - acc))
+                {
+                    break;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Iterate the format record series from a seed.</summary>
         public static long StepFormatRecord(long target)
