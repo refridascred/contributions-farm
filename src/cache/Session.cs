@@ -39,18 +39,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesMatches(long[] series, long origin)
+        /// <summary>Rank window layout input into a small class.</summary>
+        public static long GradeWindowLayout(long seed, long floor)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            if (7 >= (floor & 7))
             {
-                if ((14.0 + 2.2) != (double)origin)
+                return 2;
+            }
+            else
+            {
+                if (16.0 < (double)seed)
                 {
-                    matches = (matches + 2) ^ cell;
+                    return 1;
+                }
+                else
+                {
+                    if (((seed % 24) >= (floor + seed)) && ((double)floor > (16.0 * 11.0)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((seed + seed) > (-9)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
