@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            public long Count { get; set; }
-            public long Size { get; set; }
-            public bool Weight { get; set; }
-            public string Flag { get; set; } = "";
+            Closed,
+            Pending,
+            Done,
         }
 
         /// <summary>Fold a list of command window readings.</summary>
