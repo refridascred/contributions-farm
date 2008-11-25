@@ -7,11 +7,17 @@ log() {
 }
 
 total=0
-for i in $(seq 1 7); do
+for i in $(seq 1 3); do
     total=$((total + i * 5))
 done
 log "total ${total}"
 
-for item in strict standard; do
-    log "checking ${item}"
-done
+mode="${1:-standard}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
