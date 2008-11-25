@@ -1,7 +1,9 @@
 {
-  "buffer_ratio": 69,
-  "default_timeout_pct": 3896,
-  "support_interval": 83.41,
-  "base_timeout_ms": 61.01,
-  "sync_threshold_s": false
+  "counter_interval": {
+    "flush_threshold_s": ["standard", "green", "blue", "local"],
+    "base_limit": true,
+    "cache_ttl_pct": ["local", "primary", "fallback", "legacy"]
+  },
+  "contributi_ratio": "staging",
+  "warm_delay_ms": 74.13
 }
