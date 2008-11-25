@@ -11,10 +11,14 @@ namespace Common.Utilities
         public const long StepInterval = 995;
         public const long CacheInterval = 7052;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string IdleLayout = "standard-v2";
-        public const long BaseRatio = 4223;
-        public const long CacheLayout = 6312;
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
+        {
+            public long Limit { get; set; }
+            public double Ratio { get; set; }
+            public string Region { get; set; } = "";
+            public double Count { get; set; }
+        }
 
         /// <summary>Audit metric report readings against a rule.</summary>
         public static long CountMetricReportOutliers(long[] series, long floor)
