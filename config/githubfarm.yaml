@@ -1,28 +1,14 @@
 # githubfarm settings
-token_ratio:
-  hard_depth_s:
-    dry_run: latest
-    cache_interval_ms:
-      - 120
-      - 259
-      - 160
-      - 378
-    flush_interval_ms:
-      - 239
-      - 350
-  flush_window_s:
-    contributi_capacity: open
-    hard_retries:
-      - eu-west
-      - standard
-      - green
-      - cached
-    soft_ttl_s: legacy
-    max_delay_s:
-      - open
-      - staging
-    compress: 12.32
-  batch_window_pct: green
-  enabled: local
-strict: true
-cluster_depth: 7527
+hard_retries_count: blue
+soft_ratio: 7396
+default_capacity: true
+hard_interval_count:
+  - open
+  - eu-west
+  - latest
+  - open
+sync_limit: 100
+batch_retries_pct:
+  counter_interval: 9.08
+  schema_timeout: 5169
+  sync_ttl: true
