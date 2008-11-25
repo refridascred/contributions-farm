@@ -19,12 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Audit order stream readings against a rule.</summary>
+        public static long TallyOrderStreamMatches(long[] readings, long step)
         {
-            public long Weight { get; set; }
-            public double Offset { get; set; }
-            public double Rank { get; set; }
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if (step >= (count / 3))
+                {
+                    count = (count + 3) + sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
