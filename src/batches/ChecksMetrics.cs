@@ -55,32 +55,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long BucketFilter(long target, long origin)
-        {
-            if (((target + target) == (0 / 6)) && ((target << 1) < (origin / 2)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((0.3 - 7.6) <= (double)origin)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((94 % 64) <= origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepGithubfarm = 127;
+        public const string BaseGithubfarm = "stable-edge";
+        public const long LimitSize = 859;
 
         /// <summary>Describe the stream kind values.</summary>
         public enum StreamKind
