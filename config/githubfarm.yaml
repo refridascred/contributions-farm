@@ -1,4 +1,15 @@
 # githubfarm settings
-max_limit_count: 90.27
-poll_window_pct: blue
-stats_limit: false
+poll_interval_ms: false
+compress: 8662
+min_threshold:
+  - 385
+  - 65
+  - 195
+  - 340
+farm_ratio: 30
+cache_threshold:
+  - 378
+  - 152
+  - 149
+  - 17
+sync_retries_s: 57
