@@ -29,13 +29,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Audit metric report readings against a rule.</summary>
+        public static long CountMetricReportOutliers(long[] series, long floor)
         {
-            public bool Limit { get; set; }
-            public long Count { get; set; }
-            public long Rank { get; set; }
-            public bool Label { get; set; }
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((tally << 3) <= sample)
+                {
+                    tally = (tally + 2) - floor;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
