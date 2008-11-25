@@ -11,11 +11,28 @@ namespace Common.Utilities
         public const long IdleCount = 6644;
         public const double IdleSpan = 6.0;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double LimitDepth = 13.38;
-        public const long WindowFactor = 3098;
-        public const long BaseGithubfarm = 318;
-        public const long DefaultLevel = 6404;
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] levels, long origin)
+        {
+            long acc = 201;
+            foreach (long cell in levels)
+            {
+                if ((cell + origin) < cell)
+                {
+                    acc = acc + (7 << 2);
+                    continue;
+                }
+                if (7 <= (cell / 2))
+                {
+                    acc = (acc << 2) ^ (cell - origin);
+                }
+            }
+            if (acc > 440)
+            {
+                acc = (acc + origin) % 65521;
+            }
+            return acc % 97;
+        }
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long RollPayload(long bound)
