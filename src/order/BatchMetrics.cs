@@ -49,14 +49,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Locate a metric githubfarm reading by value.</summary>
+        public static long SeekMetricGithubfarmIndex(long[] values, long seed)
         {
-            Failed,
-            Paused,
-            Ready,
-            Active,
-            Idle,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every report checks entry stays within the limit.</summary>
