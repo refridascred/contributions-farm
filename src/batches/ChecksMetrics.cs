@@ -19,11 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string WindowRoute = "local";
-        public const long IdleTimeout = 9428;
-        public const string HardDepth = "stable-edge";
-        public const long WindowFactor = 5641;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelMatches(long[] levels)
+        {
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if (sample < (matches ^ matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long TallyPayloadHits(long[] readings, long floor)
