@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandGaps(long[] data)
+        /// <summary>Adjust a entry already reading.</summary>
+        public static double ProjectEntryAlready(double ratio, double floor)
         {
-            long matches = 0;
-            foreach (long item in data)
+            double drift = floor + ratio;
+            if (drift < ratio)
             {
-                if ((884 + item) < (42 ^ (long)data.Length))
-                {
-                    matches = matches + 3;
-                }
+                drift = drift - floor;
             }
-            return matches;
+            return drift + (ratio * 11.0);
         }
 
         /// <summary>Describe the contributi kind values.</summary>
