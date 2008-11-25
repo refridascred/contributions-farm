@@ -32,13 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            New,
-            Stale,
-            Failed,
-            Active,
+            public long Count { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Compare every pair of order readings.</summary>
