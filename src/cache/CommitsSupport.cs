@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            public double Score { get; set; }
-            public long Weight { get; set; }
-            public double Total { get; set; }
+            Ready,
+            Pending,
+            Closed,
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
