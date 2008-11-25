@@ -50,29 +50,35 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long RankCluster(long step, long offset)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long limit, long floor)
         {
-            long cur = step - offset;
-            if ((55 + step) < step)
+            if (((limit - limit) > (limit / 2)) || (limit <= floor))
             {
-                return 4;
+                return 8;
             }
             else
             {
-                if ((double)cur > (double)step)
+                if (((-45) + 8) > (limit + limit))
                 {
-                    return 3;
+                    return 1;
                 }
                 else
                 {
-                    if ((7.52 * 15.0) >= (double)cur)
+                    if (!(limit < (limit >> 1)))
                     {
                         return 5;
                     }
                     else
                     {
-                        return 6;
+                        if (floor < (limit >> 4))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
