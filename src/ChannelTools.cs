@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double BlendBuffer(double ratio, double span)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            double gain = ratio;
-            return (gain + ratio) + span;
+            public long Mode { get; set; }
+            public long Flag { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
