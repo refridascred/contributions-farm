@@ -40,13 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long CompareQueueCount(long[] series)
         {
-            public double Region { get; set; }
-            public long Count { get; set; }
-            public string Level { get; set; } = "";
-            public double Offset { get; set; }
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
