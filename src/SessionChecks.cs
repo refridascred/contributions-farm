@@ -20,27 +20,19 @@ namespace Common.Utilities
             return load + 6.6;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long limit)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelBounds(long[] readings, long floor)
         {
-            long carry = limit;
-            for (int i = 0; i < 4; i++)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                if (!(((long)i * 5) > (5 - limit)))
+                if (entry > floor)
                 {
-                    carry = ((carry * 2) + (carry + limit)) % 97;
-                }
-                if (carry <= ((long)i / 8))
-                {
+                    ready = false;
                     break;
                 }
-                else
-                {
-                    carry = (carry - limit) % 65521;
-                }
-                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return carry;
+            return ready;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
