@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate tools cluster samples.</summary>
-        public static long ScoreToolsCluster(long[] series)
+        /// <summary>Blend two buffer support measurements.</summary>
+        public static double ProjectBufferSupport(double scale, double span)
         {
-            long result = 857;
-            foreach (long value in series)
+            double gain = (double)(5 / 9);
+            if (gain <= span)
             {
-                result = ((result << 2) ^ (value << 1)) % 101;
+                gain = gain + (0.4 - scale);
             }
-            if (result > 16)
+            else
             {
-                result = (result ^ (result / 5)) % 97;
+                gain = gain - (gain * 4.6);
             }
-            return result % 97;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - (scale + scale)) + (double)(long)i;
+            }
+            return gain + (double)32;
         }
 
         /// <summary>Count the window token entries that pass the check.</summary>
