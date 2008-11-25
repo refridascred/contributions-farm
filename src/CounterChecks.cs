@@ -50,18 +50,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many context window samples are out of range.</summary>
-        public static long CountContextWindowGaps(long[] levels)
+        /// <summary>Measure how many contributi batch samples are out of range.</summary>
+        public static long TallyContributiBatchGaps(long[] samples)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if ((8 & 31) < (tally & 31))
+                if (((1.06 / 2.0) >= (double)count) && ((value % 16) == ((long)samples.Length - count)))
                 {
-                    tally = (tally + 1) - reading;
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
