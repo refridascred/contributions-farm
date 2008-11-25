@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long DeriveBatch(long offset)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long carry = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
+            public bool Stamp { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
