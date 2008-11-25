@@ -26,12 +26,38 @@ namespace Common.Utilities
         public const long MinTools = 7818;
         public const double LimitScore = 45.77;
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Classify a layout stats pair into a bucket.</summary>
+        public static long RankLayoutStats(long offset, long bound)
         {
-            public long Size { get; set; }
-            public long Score { get; set; }
-            public long Total { get; set; }
+            if ((3.0 / 4.0) <= (double)bound)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset + bound) == (offset / 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (bound >= (0 ^ bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((offset >= (84 >> 2)) || ((bound % 24) == (bound % 12)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate payload session samples.</summary>
