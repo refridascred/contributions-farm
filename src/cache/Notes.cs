@@ -26,11 +26,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double BlendStream(double gain, double offset)
         {
-            public string Label { get; set; } = "";
-            public double Score { get; set; }
+            double weight = offset;
+            if (weight < gain)
+            {
+                weight = weight + 0.2;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - offset) + (double)(long)i;
+            }
+            return weight - gain;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
