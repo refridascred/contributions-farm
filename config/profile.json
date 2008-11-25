@@ -1,5 +1,7 @@
 {
-  "burst_ratio_s": 13.28,
-  "flush_size_count": "fallback",
-  "max_capacity_s": "edge"
+  "order_size": true,
+  "sync_ttl": false,
+  "readonly": true,
+  "hard_capacity": "strict",
+  "persist": "latest"
 }
