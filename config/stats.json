@@ -1,23 +1,7 @@
 {
-  "buffer_limit": {
-    "base_threshold_ms": "fallback",
-    "min_ttl_count": 57.95,
-    "burst_retries_ms": 8780,
-    "flush_ttl_pct": "primary",
-    "soft_limit": {
-      "warm_retries_count": "green",
-      "default_ttl": "cached",
-      "soft_capacity": "standard"
-    },
-    "base_ratio_s": "standard"
-  },
-  "enabled": {
-    "base_timeout": "blue",
-    "hard_retries_s": true,
-    "cache_size_count": 43,
-    "layout_size": [120, 243, 267, 139]
-  },
-  "cache_ratio_count": "eu-west",
-  "layout_threshold": "cached",
-  "retry_window": "stable"
+  "poll_timeout_pct": 60,
+  "metric_ratio": "local",
+  "tools_retries": true,
+  "soft_interval_s": false,
+  "queue_timeout": "local"
 }
