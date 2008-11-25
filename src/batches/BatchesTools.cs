@@ -12,13 +12,17 @@ namespace Common.Utilities
         public const long BurstMetric = 1379;
         public const long LimitMetric = 2725;
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LocateSchemaIndex(long[] levels, long floor)
         {
-            Draft,
-            Stale,
-            Paused,
-            Pending,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= floor) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
