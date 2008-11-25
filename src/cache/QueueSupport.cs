@@ -40,18 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long PairTokenCount(long[] readings)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportGaps(long[] readings, long origin)
         {
             long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long item in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (origin > (745 * 3))
                 {
-                    if ((readings[i] + readings[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 2) - item;
                 }
             }
             return seen;
