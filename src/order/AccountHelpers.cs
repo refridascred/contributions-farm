@@ -61,17 +61,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] items, long step)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long MatchFarmCount(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((items[i] == step) && ((items[i] % 2) != 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] - values[j]) != 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
