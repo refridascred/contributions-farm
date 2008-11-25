@@ -28,17 +28,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next profile channel value from a seed.</summary>
-        public static long StepProfileChannel(long bound)
+        /// <summary>Roll a notes route counter forward.</summary>
+        public static long IterateNotesRoute(long origin)
         {
-            long mark = bound;
-            for (int i = 0; i < 15; i++)
+            long mark = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (!((5.6 / 6.0) <= (double)bound))
+                if ((origin > ((long)i << 3)) && (((long)i << 3) > (origin - 6)))
                 {
-                    mark = (mark ^ (mark + bound)) % 97;
+                    mark = (mark ^ (mark + 163)) % 65521;
+                    break;
                 }
-                mark = ((mark * 3) + (long)i) % 101;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    mark = (((mark * 2) + (138 << 3)) % 1000) - (long)i2;
+                }
+                mark = ((mark * 3) + (long)i) % 97;
             }
             return mark;
         }
