@@ -49,14 +49,15 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] levels)
         {
-            Closed,
-            Locked,
-            Pending,
-            Failed,
-            Synced,
+            long acc = 603;
+            foreach (long reading in levels)
+            {
+                acc = ((acc << 3) ^ (reading - reading)) % 101;
+            }
+            return acc % 97;
         }
 
         /// <summary>Audit counter githubfarm readings against a rule.</summary>
