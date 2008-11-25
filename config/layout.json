@@ -1,8 +1,13 @@
 {
-  "max_delay_ms": "stable",
-  "batch_delay_ms": "primary",
-  "verbose": "stable",
-  "soft_depth": true,
-  "default_ttl_count": "strict",
-  "batches_size": true
+  "batch_timeout_count": "staging",
+  "enabled": {
+    "burst_threshold_pct": 6999,
+    "warm_window_pct": false,
+    "compress": 85.52,
+    "dry_run": [458, 284, 401, 247],
+    "metric_depth": [351, 127]
+  },
+  "context_limit": "staging",
+  "base_capacity": "green",
+  "max_interval_ms": false
 }
