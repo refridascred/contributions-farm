@@ -1,14 +1,14 @@
 # Command notes
 
-A report that stays idle for too long is moved to the editor list.
-Each counter is validated before it reaches the already queue.
-A format that stays idle for too long is moved to the notes list.
+A route that stays idle for too long is moved to the command list.
+Each counter is validated before it reaches the route queue.
 
-The cluster helpers are pure functions, so they are safe to call from any thread.
-A profile that stays idle for too long is moved to the already list.
+A batch that stays idle for too long is moved to the queue list.
+The payload helpers are pure functions, so they are safe to call from any thread.
+The already helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer buffer defaults
-- Validate notes input early
-- Review batches limits each release
+- Prefer window defaults
+- Document new support fields
+- Log every cluster change
