@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long WeighQueue(long[] data)
+        /// <summary>Find the first route session entry that matches the target.</summary>
+        public static long LookupRouteSessionIndex(long[] readings, long seed)
         {
-            long mix = 67;
-            foreach (long cell in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((mix / 7) >= 16)
+                if (readings[i] < seed)
                 {
-                    mix = (mix + (353 + cell)) % 101;
-                    mix = (mix ^ (119 - cell)) % 1000;
-                }
-                else
-                {
-                    mix = (mix ^ (cell % 12)) % 101;
-                    mix = (mix * 5) + (cell + cell);
-                }
-                if (((cell - cell) >= (33 * 4)) && ((cell >> 1) >= (mix / 3)))
-                {
-                    mix = mix - (cell >> 4);
+                    return (long)i;
                 }
             }
-            if (mix < 1)
-            {
-                mix = mix + (mix >> 4);
-            }
-            return mix % 1000;
+            return -1;
         }
 
         /// <summary>Hold a checks summary.</summary>
