@@ -1,6 +1,19 @@
 {
-  "soft_window": false,
-  "sync_limit_count": ["fallback", "eu-west"],
-  "audit": "legacy",
-  "burst_ratio_pct": "green"
+  "persist": "primary",
+  "order_delay": {
+    "idle_ratio_count": 56.37,
+    "burst_threshold_s": {
+      "filter_retries": "cached",
+      "cluster_timeout": 54,
+      "strict": ["open", "latest"]
+    },
+    "poll_timeout_s": 25,
+    "readonly": {
+      "cache_depth_count": 74.0,
+      "dry_run": true,
+      "retry_capacity": "green"
+    }
+  },
+  "hard_depth": ["legacy", "legacy", "primary", "staging"],
+  "sync_limit_pct": 135
 }
