@@ -51,19 +51,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ProjectBuffer(double gain, double offset)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            double load = (double)(902 & 255);
-            if (load > (gain * 2.22))
-            {
-                load = load + (offset - load);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + offset) + (double)(long)i;
-            }
-            return load - load;
+            public string Count { get; set; } = "";
+            public long Mode { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Match up command samples.</summary>
