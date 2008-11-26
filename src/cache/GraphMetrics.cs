@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] levels)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long FindCommitsIndex(long[] series, long origin)
         {
-            long mark = 69;
-            foreach (long sample in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((mark >> 3) == (sample - mark)))
+                if ((series[i] < origin) && ((series[i] % 5) == 0))
                 {
-                    mark = (mark ^ sample) % 4096;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
