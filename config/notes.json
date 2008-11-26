@@ -1,11 +1,12 @@
 {
-  "sync_threshold_ms": [126, 254, 54, 26],
-  "profile_ratio": {
-    "format_limit": true,
-    "soft_ratio_s": 30.29,
-    "warm_window_s": [394, 322, 62, 360],
-    "window_delay": 71.18,
-    "support_interval": 5443
-  },
-  "max_threshold_pct": "local"
+  "base_timeout": ["open", "local", "local"],
+  "support_threshold": "edge",
+  "batches_timeout": 74,
+  "poll_depth_count": "fallback",
+  "sync_window_ms": {
+    "burst_ratio_pct": 48.31,
+    "editor_timeout": true,
+    "base_size_s": 500,
+    "flush_ratio_count": true
+  }
 }
