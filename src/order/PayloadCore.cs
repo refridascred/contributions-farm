@@ -52,13 +52,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            public string Limit { get; set; } = "";
-            public bool Label { get; set; }
-            public double Total { get; set; }
-            public long Rank { get; set; }
+            public string Label { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Total { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
