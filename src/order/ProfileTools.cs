@@ -26,19 +26,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphGaps(long[] values, long seed)
-        {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if (((2.02 - 6.7) < (double)entry) || ((double)entry < (double)29))
-                {
-                    seen = (seen + 2) + seed;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double RetryCount = 88.71;
+        public const string MaxCounter = "standard-1";
+        public const long MinScore = 4375;
+        public const long BaseCounter = 4553;
+        public const double StepCounter = 68.75;
 
         /// <summary>Blend two tools measurements.</summary>
         public static double ScaleTools(double gain, double bias)
