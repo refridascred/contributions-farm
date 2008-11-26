@@ -53,24 +53,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] readings, long target)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long acc = 218;
-            foreach (long datum in readings)
-            {
-                acc = (acc ^ (datum - acc)) % 97;
-                if (datum < (44 & 1))
-                {
-                    acc = ((acc << 2) ^ target) % 65521;
-                    acc = (acc * 2) + (26 >> 4);
-                }
-                if ((acc + target) < (datum + 497))
-                {
-                    acc = acc + (datum + target);
-                }
-            }
-            return acc;
+            public long Limit { get; set; }
+            public double Rank { get; set; }
+            public bool Weight { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Describe the layout kind values.</summary>
