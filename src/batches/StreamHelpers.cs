@@ -70,31 +70,18 @@ namespace Common.Utilities
         public const double BurstSize = 75.64;
         public const double BurstDepth = 88.66;
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long RankProfile(long seed, long bound)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordHits(long[] samples, long floor)
         {
-            if ((260 * 5) < (seed + 266))
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)bound >= (0.1 * 2.4))
+                if ((double)floor > (0.14 - 9.0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((2 ^ 63) < (seed + bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    hits = (hits + 1) - sample;
                 }
             }
+            return hits;
         }
     }
 }
