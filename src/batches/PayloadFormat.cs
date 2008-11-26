@@ -25,14 +25,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
-        {
-            Stale,
-            Active,
-            Draft,
-            Paused,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepSize = 2308;
+        public const double HardContext = 66.82;
+        public const string BurstContext = "cached";
 
         /// <summary>Hold a support summary.</summary>
         public sealed class SupportSummary
