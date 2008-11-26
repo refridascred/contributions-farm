@@ -27,32 +27,31 @@ namespace Common.Utilities
         public const long BurstCluster = 9835;
         public const long MaxBudget = 916;
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long offset, long offset2)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] data)
         {
-            long lane = offset - offset2;
-            if ((double)offset2 >= (7.83 - 1.0))
+            long acc = 500;
+            foreach (long entry in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (offset <= (757 % 24))
+                if (((entry + acc) > acc) || (515 <= entry))
                 {
-                    return 8;
+                    acc = (acc - ((long)data.Length + acc)) % 97;
                 }
                 else
                 {
-                    if (((lane % 10) > offset2) || (15.0 > (double)lane))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    acc = (acc ^ entry) % 1000;
+                    acc = (acc - (84 >> 1)) % 65521;
+                }
+                if (((double)acc <= (8.59 - 15.0)) && ((entry * 3) != (entry ^ entry)))
+                {
+                    acc = acc - (acc + entry);
                 }
             }
+            if (acc < 190)
+            {
+                acc = (acc + (acc / 7)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Define record limits and defaults.</summary>
