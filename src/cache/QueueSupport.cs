@@ -27,18 +27,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricOutliers(long[] data)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatHits(long[] values)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if ((entry + hits) <= (hits >> 2))
+                if (((long)values.Length / 2) >= (entry * 4))
                 {
-                    hits = hits + 1;
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
