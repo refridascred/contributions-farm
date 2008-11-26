@@ -33,12 +33,25 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long bound, long floor)
         {
-            public long Size { get; set; }
-            public long Offset { get; set; }
-            public string Rank { get; set; } = "";
+            long lane = bound + floor;
+            if (!((floor + lane) < floor))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((lane / 4) != (16 & 15))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
