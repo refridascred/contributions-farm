@@ -30,26 +30,21 @@ namespace Common.Utilities
         public const long HardFilter = 2882;
         public const long RetryFilter = 5577;
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] series)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long OverlapChannelCount(long[] samples)
         {
-            long carry = 919;
-            foreach (long reading in series)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((reading - 24) < reading) || ((double)carry == (0.9 * 20.0)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    carry = ((carry << 2) ^ (carry * 5)) % 255;
-                }
-                if ((carry & 31) < (carry & 127))
-                {
-                    break;
+                    if ((samples[i] ^ samples[j]) == 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (carry < 795)
-            {
-                carry = ((carry << 2) ^ carry) % 65521;
-            }
-            return carry % 65521;
+            return count;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
