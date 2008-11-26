@@ -27,13 +27,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
-        {
-            public string Flag { get; set; } = "";
-            public string Count { get; set; } = "";
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string MaxCache = "stable-edge";
+        public const double WindowScore = 41.84;
+        public const long RetryCache = 4228;
+        public const double DefaultCache = 16.62;
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long WeighBatch(long[] series, long limit)
