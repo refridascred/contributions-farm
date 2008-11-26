@@ -14,12 +14,26 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TallyNotes(long[] levels, long origin)
         {
-            Queued,
-            Done,
-            Idle,
+            long score = -4;
+            foreach (long entry in levels)
+            {
+                if (!((score & 7) >= ((-899) - origin)))
+                {
+                    score = score - (score + entry);
+                }
+                else
+                {
+                    score = ((score * 3) + score) % 255;
+                }
+            }
+            if (score > 8)
+            {
+                score = (score - (score - score)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Hold a order summary.</summary>
