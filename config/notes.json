@@ -1,7 +1,8 @@
 {
-  "warm_ratio_count": 33,
-  "notes_capacity": 63.8,
-  "githubfarm_timeout": "green",
-  "context_ratio": [198, 412],
-  "flush_ratio": "standard"
+  "account_window": 30,
+  "burst_window_ms": 8935,
+  "queue_capacity": 81.42,
+  "max_depth": 86,
+  "min_ttl_s": 11,
+  "enabled": 11
 }
