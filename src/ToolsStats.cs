@@ -29,21 +29,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Match up metric batch samples.</summary>
-        public static long MatchMetricBatchCount(long[] items)
+        /// <summary>Combine githubfarm queue values into a single score.</summary>
+        public static long WeighGithubfarmQueue(long[] data, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 600;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                carry = ((carry - (carry % 3)) % 255) + seed;
+                if ((2.9 / 9.0) <= (double)datum)
                 {
-                    if ((items[i] - items[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            return carry % 1000;
         }
 
         /// <summary>Accumulate metric session samples.</summary>
