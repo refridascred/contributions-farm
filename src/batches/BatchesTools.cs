@@ -32,12 +32,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
-        {
-            New,
-            Synced,
-            Pending,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxFactor = 4092;
+        public const long CacheEntry = 3980;
+        public const long StepEntry = 2408;
     }
 }
