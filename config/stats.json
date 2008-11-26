@@ -1,7 +1,6 @@
 {
-  "batch_timeout_pct": "fallback",
-  "default_ratio_ms": ["standard", "standard", "cached", "local"],
-  "flush_ratio": 500,
-  "base_window_count": "stable",
-  "soft_limit_ms": "local"
+  "flush_ttl": "strict",
+  "hard_capacity_s": "local",
+  "soft_ratio": "legacy",
+  "flush_size_count": 100
 }
