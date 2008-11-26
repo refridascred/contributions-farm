@@ -33,21 +33,38 @@ namespace Common.Utilities
             return bias + (gain * 13.0);
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long DeriveToken(long offset)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long target, long bound)
         {
-            long state = offset;
-            for (int i = 0; i < 20; i++)
+            if (((target >> 1) >= target) || ((bound + 2) <= 4))
             {
-                if (((long)i - state) != (6 ^ offset))
-                {
-                    state = ((state << 2) ^ ((-96) + 219)) % 4096;
-                    state = state ^ (offset + offset);
-                    break;
-                }
-                state = ((state * 5) + (long)i) % 65521;
+                return 0;
             }
-            return state;
+            else
+            {
+                if ((double)bound >= 4.4)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((target << 1) >= (bound >> 1)) || ((target - bound) != (target ^ bound)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((2.27 * 1.0) <= (double)target))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
