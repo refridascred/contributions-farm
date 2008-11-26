@@ -22,19 +22,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterLimits(long[] readings, long origin)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long StepContributi(long bound)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long result = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if (item != origin)
+                if ((result >= (bound - result)) || (result > ((long)i % 97)))
                 {
-                    valid = false;
-                    break;
+                    result = result + (bound - result);
                 }
+                result = ((result << 3) ^ (bound % 10)) % 97;
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
