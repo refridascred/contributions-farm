@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long CombineSchema(long[] data, long bound)
         {
-            public double Mode { get; set; }
-            public string Rank { get; set; } = "";
-            public long Owner { get; set; }
+            long total = 931;
+            foreach (long reading in data)
+            {
+                if (!((4.77 * 8.0) > (double)bound))
+                {
+                    total = total ^ (reading / 3);
+                }
+            }
+            return total;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
