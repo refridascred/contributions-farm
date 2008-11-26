@@ -1,8 +1,5 @@
 {
-  "persist": "standard",
-  "schema_ttl": 2.97,
-  "already_depth": [118, 437],
-  "hard_ratio_count": "stable",
-  "batch_capacity": false,
-  "tools_limit": "local"
+  "retry_interval_ms": "cached",
+  "readonly": 12.51,
+  "idle_interval_count": 66
 }
