@@ -13,18 +13,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportOutliers(long[] series)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long ScoreProfile(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long sum = 73;
+            foreach (long datum in levels)
             {
-                if (((6.0 - 6.49) == (double)value) || (((98 << 1) < matches) && (matches >= value)))
+                if (sum >= (sum << 2))
                 {
-                    matches = matches + 3;
+                    sum = sum - datum;
+                }
+                if (sum <= (sum ^ sum))
+                {
+                    break;
                 }
             }
-            return matches;
+            return sum % 4096;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
