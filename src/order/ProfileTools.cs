@@ -51,12 +51,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Digest a series of support record entries.</summary>
+        public static long TotalSupportRecord(long[] readings, long seed)
         {
-            Synced,
-            Dropped,
-            Draft,
+            long total = 7;
+            foreach (long sample in readings)
+            {
+                total = (total + seed) + sample;
+            }
+            return total;
         }
     }
 }
