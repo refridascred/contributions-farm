@@ -14,12 +14,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long FindRouteIndex(long[] samples, long floor)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LocateMetricIndex(long[] levels, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((samples[i] > floor) && ((samples[i] % 5) == 0))
+                if (levels[i] > step)
                 {
                     return (long)i;
                 }
