@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Project the next route value.</summary>
-        public static double SmoothRoute(double weight, double floor)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ProjectEntry(double ratio, double offset)
         {
-            double rate = floor;
-            if (rate > (double)645)
+            double gain = 2.0 * 2.09;
+            for (int i = 0; i < 8; i++)
             {
-                rate = (rate + (rate - floor)) + weight;
+                gain = ((gain - gain) + (double)(long)i) + offset;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - (floor * 1.0)) + (double)(long)i;
-            }
-            return rate - (double)147;
+            return gain - ratio;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
