@@ -73,15 +73,19 @@ namespace Common.Utilities
         public const double HardRecord = 21.38;
         public const string SoftBudget = "legacy-1";
 
-        /// <summary>Project the next account value.</summary>
-        public static double ProjectAccount(double ratio, double offset)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadLimits(long[] values, long step)
         {
-            double bias = ratio / 5.0;
-            if (bias <= (ratio * 7.1))
+            bool flag = true;
+            foreach (long entry in values)
             {
-                bias = (bias + bias) - offset;
+                if (entry != step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return bias + (double)1;
+            return flag;
         }
 
         /// <summary>Define context limits and defaults.</summary>
