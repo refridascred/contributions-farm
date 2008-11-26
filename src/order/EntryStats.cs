@@ -49,18 +49,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteHits(long[] values, long bound)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((bound / 2) > (bound % 12))
-                {
-                    count = (count + 2) + datum;
-                }
-            }
-            return count;
+            Draft,
+            New,
+            Done,
+            Failed,
         }
 
         /// <summary>Measure how many profile format samples are out of range.</summary>
