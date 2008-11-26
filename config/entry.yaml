@@ -1,18 +1,22 @@
 # entry settings
-retry_threshold_s: staging
-retry_limit_pct: 1024
-burst_size_pct: strict
-cluster_delay:
-  - 296
-  - 242
-payload_interval: primary
-metrics_timeout:
-  max_delay_pct: primary
-  strict: legacy
-  farm_retries: true
-  audit: 100
-  retry_retries_pct: standard
-  min_timeout_count:
-    - 179
-    - 265
-    - 353
+schema_depth: true
+layout_limit: 53.05
+batch_delay_pct:
+  support_ttl: 5326
+  min_window_ms: standard
+  soft_delay_pct:
+    base_retries_pct: cached
+    max_ratio: 100
+    batches_depth: standard
+    batch_ttl: 34.72
+  soft_interval:
+    audit: 45.38
+    cache_limit_count: false
+    notes_capacity: 60
+    cluster_interval:
+      - local
+      - open
+      - eu-west
+      - green
+    flush_interval: 12
+  entry_ttl: 89.73
