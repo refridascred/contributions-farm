@@ -41,21 +41,17 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long CompareLayoutCount(long[] series)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LocateCommandIndex(long[] values, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((values[i] == floor) && ((values[i] % 5) == 0))
                 {
-                    if ((series[i] ^ series[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
