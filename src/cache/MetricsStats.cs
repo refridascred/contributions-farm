@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Look up the position of a stats already sample.</summary>
-        public static long SeekStatsAlreadyIndex(long[] samples, long bound)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmOutliers(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if ((samples[i] >= bound) && ((samples[i] % 3) != 0))
+                if ((seen % 8) > (reading << 1))
                 {
-                    return (long)i;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Check that every layout report entry stays within the limit.</summary>
