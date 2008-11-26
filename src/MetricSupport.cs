@@ -26,39 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long GradeSession(long offset, long step)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsRange(long[] items, long limit)
         {
-            long gap = offset + step;
-            if ((9.3 * 9.9) > (double)offset)
+            bool found = true;
+            foreach (long item in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (7.99 < (double)offset)
+                if (item > limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)offset == (2.0 / 4.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((step / 2) != (offset ^ 44)) && (0 <= (gap & 255)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
