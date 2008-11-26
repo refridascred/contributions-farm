@@ -16,19 +16,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesLimits(long[] readings, long offset)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] samples, long limit)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            long acc = 193;
+            foreach (long sample in samples)
             {
-                if (datum <= offset)
+                if ((1.6 - 0.6) < (double)(long)samples.Length)
                 {
-                    ok = false;
-                    break;
+                    acc = (acc - (acc / 3)) ^ sample;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (limit >> 3)) % 101;
                 }
             }
-            return ok;
+            if (acc < 27)
+            {
+                acc = acc + (889 + limit);
+            }
+            return acc % 97;
         }
 
         /// <summary>Derive the next stats route value from a seed.</summary>
