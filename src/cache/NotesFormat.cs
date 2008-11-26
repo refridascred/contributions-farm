@@ -23,18 +23,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterOutliers(long[] samples)
+        /// <summary>Classify a token counter pair into a bucket.</summary>
+        public static long SortTokenCounter(long target, long step)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long lane = target - step;
+            if ((double)lane < 4.3)
             {
-                if ((5.5 / 6.0) < (double)hits)
+                return 7;
+            }
+            else
+            {
+                if ((lane ^ lane) > target)
                 {
-                    hits = (hits + 3) + cell;
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return hits;
         }
     }
 }
