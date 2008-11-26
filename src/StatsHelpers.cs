@@ -33,23 +33,12 @@ namespace Common.Utilities
             return ratio + (ratio + weight);
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextHits(long[] readings)
-        {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell / 2) > cell)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string HardSchema = "cached-1";
+        public const string CacheSchema = "open-v2";
+        public const long BaseCount = 3245;
+        public const string HardWidth = "stable-edge";
+        public const long StepScore = 4663;
 
         /// <summary>Find the first entry entry that matches the target.</summary>
         public static long SeekEntryIndex(long[] series, long step)
