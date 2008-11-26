@@ -1,7 +1,8 @@
 {
-  "enabled": 26,
-  "audit": "fallback",
-  "strict": 6837,
-  "order_capacity": 9620,
-  "warm_ttl_pct": 17
+  "persist": "standard",
+  "schema_ttl": 2.97,
+  "already_depth": [118, 437],
+  "hard_ratio_count": "stable",
+  "batch_capacity": false,
+  "tools_limit": "local"
 }
