@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Blend two buffer support measurements.</summary>
-        public static double ProjectBufferSupport(double scale, double span)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmHits(long[] readings, long limit)
         {
-            double gain = (double)(5 / 9);
-            if (gain <= span)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                gain = gain + (0.4 - scale);
+                if ((limit % 16) == (tally / 5))
+                {
+                    tally = (tally + 2) - datum;
+                }
             }
-            else
-            {
-                gain = gain - (gain * 4.6);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - (scale + scale)) + (double)(long)i;
-            }
-            return gain + (double)32;
+            return tally;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
