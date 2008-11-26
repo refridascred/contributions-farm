@@ -56,18 +56,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit batch order readings against a rule.</summary>
-        public static long AuditBatchOrderHits(long[] levels)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LocateFormatIndex(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((hits & 31) < (hits << 1))
+                if ((levels[i] < seed) && ((levels[i] % 5) == 0))
                 {
-                    hits = (hits + 1) ^ value;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
