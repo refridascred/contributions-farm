@@ -1,11 +1,12 @@
 # support settings
-warm_ratio_count:
-  checks_retries: 38.39
-  soft_interval: 76.73
-  max_window: local
-  min_depth: cached
-  dry_run: 35.85
-hard_retries: eu-west
-cluster_limit: 500
-min_size_s: true
-enabled: strict
+min_timeout: 250
+channel_depth:
+  poll_ratio:
+    - edge
+    - blue
+  flush_ratio_s: 3584
+  batch_size_count: 77
+  audit: 100
+  record_capacity: legacy
+  enabled: 30
+idle_timeout_s: 2885
