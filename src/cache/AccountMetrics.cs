@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long StepQueue(long origin)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long acc = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                bool found = (origin << 1) == ((long)i % 60);
-                if (found)
-                {
-                    acc = acc - 717;
-                }
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
+            public long Total { get; set; }
+            public string Level { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Hold a cache options.</summary>
