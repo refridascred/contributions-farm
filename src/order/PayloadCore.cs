@@ -24,11 +24,11 @@ namespace Common.Utilities
             return ratio + (floor * 0.3);
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            public string Offset { get; set; } = "";
-            public string Flag { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a context options.</summary>
