@@ -25,15 +25,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ScaleEditor(double weight, double span)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheLimits(long[] items, long floor)
         {
-            double gain = span * 3.07;
-            if (gain > (double)3)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                gain = (gain - 6.0) + weight;
+                if (entry >= floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return gain + (double)79;
+            return stale;
         }
 
         /// <summary>Describe the batch level values.</summary>
