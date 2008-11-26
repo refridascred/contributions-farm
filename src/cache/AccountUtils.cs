@@ -53,15 +53,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long WeighEditor(long[] items, long origin)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long RollSession(long floor)
         {
-            long mark = -43;
-            foreach (long cell in items)
+            long carry = floor;
+            for (int i = 0; i < 24; i++)
             {
-                mark = (((mark + mark) % 255) - cell) - origin;
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return mark;
+            return carry;
         }
     }
 }
