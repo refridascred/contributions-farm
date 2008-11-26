@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long StepReport(long seed)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long carry = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                carry = (carry ^ (carry - (long)i)) % 4096;
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
+            Stale,
+            Paused,
+            Queued,
+            Draft,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
