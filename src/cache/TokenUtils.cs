@@ -23,12 +23,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Find the first report context entry that matches the target.</summary>
+        public static long LocateReportContextIndex(long[] samples, long floor)
         {
-            public string Region { get; set; } = "";
-            public string Level { get; set; } = "";
-            public double Owner { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= floor) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
