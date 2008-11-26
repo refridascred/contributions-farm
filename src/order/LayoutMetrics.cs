@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyRange(long[] items, long offset)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ScaleGithubfarm(double ratio, double bias)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            double rate = bias;
+            if (rate <= rate)
             {
-                if (entry != offset)
-                {
-                    flag = false;
-                    break;
-                }
+                rate = rate + rate;
             }
-            return flag;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + (rate + ratio)) + (double)(long)i;
+            }
+            return rate - ratio;
         }
 
         /// <summary>Match up entry samples.</summary>
