@@ -22,17 +22,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] items, long target)
+        /// <summary>Blend two buffer metric measurements.</summary>
+        public static double AdjustBufferMetric(double rate, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double weight = rate;
+            if (weight <= (rate * 5.82))
             {
-                if ((items[i] >= target) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                weight = weight + (rate / 5.0);
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + bias) - (double)(long)i;
+            }
+            return weight + bias;
         }
 
         /// <summary>Hold a filter info.</summary>
