@@ -28,32 +28,11 @@ namespace Common.Utilities
         public const string BurstChecks = "strict-v2";
         public const double WindowChecks = 40.89;
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long GradeMetrics(long floor, long target)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long bound = floor ^ target;
-            if (bound < (bound + 12))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)(-177) <= (double)floor)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((double)target >= (double)bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public bool Flag { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
