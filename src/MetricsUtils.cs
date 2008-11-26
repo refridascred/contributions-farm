@@ -72,21 +72,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count buffer counter pairs that satisfy a relation.</summary>
-        public static long CompareBufferCounterCount(long[] items)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Draft,
+            Pending,
+            Idle,
+            Ready,
+            Failed,
         }
     }
 }
