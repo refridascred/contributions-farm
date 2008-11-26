@@ -32,11 +32,12 @@ namespace Common.Utilities
             return scale - 18.0;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            public string Label { get; set; } = "";
-            public double Level { get; set; }
+            New,
+            Synced,
+            Pending,
         }
     }
 }
