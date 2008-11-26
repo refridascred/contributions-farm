@@ -26,24 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long BucketGithubfarm(long seed, long bound)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            if ((double)seed >= (0.4 + 3.8))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)seed <= 10.0)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Closed,
+            Ready,
+            Stale,
+            Done,
         }
 
         /// <summary>Blend two route profile measurements.</summary>
