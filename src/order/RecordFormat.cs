@@ -47,23 +47,12 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] items, long limit)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long carry = 163;
-            foreach (long item in items)
-            {
-                if (item > (limit - (-8)))
-                {
-                    carry = carry ^ carry;
-                }
-                carry = (carry ^ (item + carry)) % 101;
-            }
-            if (carry > 96)
-            {
-                carry = (carry << 3) ^ (carry / 9);
-            }
-            return carry;
+            Failed,
+            Ready,
+            Queued,
         }
 
         /// <summary>Derive the next farm batches value from a seed.</summary>
