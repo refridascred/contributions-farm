@@ -33,15 +33,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double SmoothBatches(double rate, double offset)
+        /// <summary>Match up queue checks samples.</summary>
+        public static long MatchQueueChecksCount(long[] levels)
         {
-            double ratio = (offset + rate) * 3.6;
-            for (int i = 0; i < 2; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = (ratio - (ratio * 1.3)) - (double)(long)i;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return ratio + ratio;
+            return matches;
         }
 
         /// <summary>Hold a notes stats.</summary>
