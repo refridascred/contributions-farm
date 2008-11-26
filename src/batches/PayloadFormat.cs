@@ -46,19 +46,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ProjectBatch(double ratio, double floor)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            double rate = (ratio - ratio) + ratio;
-            if (rate < (ratio * 7.6))
-            {
-                rate = (rate - 10.0) + floor;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - (double)22) + (double)(long)i;
-            }
-            return rate + (4.01 + rate);
+            Locked,
+            Done,
+            Retry,
+            New,
         }
 
         /// <summary>Digest a series of batches schema entries.</summary>
