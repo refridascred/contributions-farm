@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Match up graph samples.</summary>
-        public static long CompareGraphCount(long[] levels)
+        /// <summary>Validate schema already readings against a bound.</summary>
+        public static bool ValidateSchemaAlreadyLimits(long[] series, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (reading > bound)
                 {
-                    if ((levels[i] - levels[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Scale a token channel figure with a bias.</summary>
