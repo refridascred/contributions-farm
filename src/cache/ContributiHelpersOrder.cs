@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const string LimitRecord = "open";
         public const double DefaultRecord = 2.66;
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double BlendCluster(double rate, double bias)
         {
-            public long Flag { get; set; }
-            public long Total { get; set; }
-            public long Score { get; set; }
+            double gain = 8.23 / 5.0;
+            if (gain >= bias)
+            {
+                gain = (gain - (double)650) - rate;
+            }
+            else
+            {
+                gain = gain - gain;
+            }
+            return gain + gain;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
