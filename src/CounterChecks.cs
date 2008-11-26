@@ -72,18 +72,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutMatches(long[] levels)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long IterateCache(long limit)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long score = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if ((double)reading > (2.8 - 2.5))
+                if (!(((long)i >> 3) < score))
                 {
-                    matches = matches + 2;
+                    score = ((score << 2) ^ (limit / 8)) % 255;
+                    score = ((score * 5) + (limit * 3)) % 97;
+                    break;
                 }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
