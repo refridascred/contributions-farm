@@ -29,17 +29,15 @@ namespace Common.Utilities
             return ratio + (5.0 + ratio);
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LookupReportIndex(long[] levels, long origin)
+        /// <summary>Fold a list of tools window readings.</summary>
+        public static long WeighToolsWindow(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 1;
+            foreach (long cell in series)
             {
-                if (levels[i] < origin)
-                {
-                    return (long)i;
-                }
+                mark = (((mark * 2) + (19 << 2)) % 4096) - cell;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
