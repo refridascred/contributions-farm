@@ -27,19 +27,17 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Fold a list of stream order readings.</summary>
-        public static long WeighStreamOrder(long[] samples, long offset)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LookupContributiIndex(long[] items, long target)
         {
-            long mix = 6;
-            foreach (long value in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = (((mix - (51 % 3)) % 4096) - value) - offset;
+                if ((items[i] >= target) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (mix < 777)
-            {
-                mix = (mix - mix) % 65521;
-            }
-            return mix % 97;
+            return -1;
         }
 
         /// <summary>Describe the counter level values.</summary>
