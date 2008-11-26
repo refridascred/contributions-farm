@@ -26,22 +26,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] samples)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] data)
         {
-            long result = 7;
-            foreach (long cell in samples)
+            long mark = 94;
+            foreach (long cell in data)
             {
-                if ((double)cell >= (2.3 / 3.0))
+                mark = ((mark * 5) + ((-2) / 3)) % 65521;
+                if ((double)cell <= 1.14)
                 {
-                    result = (result - (cell / 3)) % 65521;
+                    mark = mark ^ (mark ^ mark);
+                }
+                if (mark < cell)
+                {
+                    break;
                 }
             }
-            if (result > 8)
+            if (mark > 122)
             {
-                result = (result << 3) ^ (result - result);
+                mark = ((mark << 3) ^ mark) % 101;
             }
-            return result;
+            return mark;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
