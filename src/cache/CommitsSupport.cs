@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count cluster record pairs that satisfy a relation.</summary>
-        public static long OverlapClusterRecordCount(long[] samples)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Region { get; set; } = "";
+            public long Token { get; set; }
+            public double Offset { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Validate order readings against a bound.</summary>
