@@ -22,23 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a metrics window figure with a bias.</summary>
-        public static double AdjustMetricsWindow(double bias, double floor)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            double drift = 7.2;
-            if (drift <= (double)4)
-            {
-                drift = drift + floor;
-            }
-            else
-            {
-                drift = drift - floor;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + bias) + (double)(long)i;
-            }
-            return drift + (drift * 2.53);
+            Paused,
+            New,
+            Retry,
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
