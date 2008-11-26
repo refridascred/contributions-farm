@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            Queued,
-            Idle,
-            Locked,
+            public bool Stamp { get; set; }
+            public bool Count { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the route kind values.</summary>
