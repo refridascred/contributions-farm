@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long DigestLayout(long[] readings)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheGaps(long[] readings, long target)
         {
-            long mix = 158;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                mix = ((mix ^ (780 << 2)) % 101) ^ reading;
+                if ((double)entry != (double)target)
+                {
+                    tally = tally + 2;
+                }
             }
-            if (mix > 28)
-            {
-                mix = (mix << 2) ^ mix;
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
