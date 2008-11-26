@@ -46,16 +46,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long DeriveMetric(long seed)
+        /// <summary>Blend two route profile measurements.</summary>
+        public static double ProjectRouteProfile(double weight, double floor)
         {
-            long acc = seed;
-            for (int i = 0; i < 6; i++)
+            double ratio = (double)(86 * 2);
+            if (ratio > (ratio - floor))
             {
-                acc = (acc ^ (acc % 8)) % 1000;
-                acc = ((acc * 3) + (long)i) % 1000;
+                ratio = ratio - (weight - weight);
             }
-            return acc;
+            else
+            {
+                ratio = ratio - (double)7;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + 2.0) - (double)(long)i;
+            }
+            return ratio - (double)195;
         }
     }
 }
