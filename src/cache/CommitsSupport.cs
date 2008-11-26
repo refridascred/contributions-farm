@@ -35,35 +35,29 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long SortAccount(long origin, long floor)
+        /// <summary>Grade a farm filter value against two limits.</summary>
+        public static long ClassifyFarmFilter(long limit, long target)
         {
-            if ((origin >> 5) <= (966 + floor))
+            long lane = limit - target;
+            if ((15.0 / 4.0) >= (double)lane)
             {
-                return 1;
+                return 5;
             }
             else
             {
-                if ((origin + 34) >= (origin - origin))
+                if (0.6 > (double)target)
                 {
-                    return 5;
+                    return 2;
                 }
                 else
                 {
-                    if ((double)649 < (double)floor)
+                    if (((-4) + lane) < (7 << 1))
                     {
-                        return 8;
+                        return 0;
                     }
                     else
                     {
-                        if ((origin - origin) <= floor)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        return 8;
                     }
                 }
             }
