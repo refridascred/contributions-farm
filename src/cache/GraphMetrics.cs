@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaRange(long[] samples, long seed)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            bool ready = true;
-            foreach (long sample in samples)
-            {
-                if (sample < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Mode { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the batches phase values.</summary>
