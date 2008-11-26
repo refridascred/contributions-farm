@@ -1,19 +1,13 @@
 {
-  "min_timeout": "fallback",
-  "enabled": {
-    "verbose": true,
-    "hard_threshold_pct": 9,
-    "poll_limit_count": 34.07
+  "idle_ttl": {
+    "dry_run": 22.83,
+    "strict": "strict",
+    "soft_timeout_pct": "legacy",
+    "min_delay": 5178,
+    "hard_capacity": "stable"
   },
-  "stream_capacity": {
-    "base_retries_s": 1342,
-    "base_ttl": 100,
-    "enabled": 250,
-    "base_limit_count": [204, 190],
-    "poll_interval_s": "edge",
-    "readonly": false
-  },
-  "hard_depth_ms": "fallback",
-  "burst_retries_pct": "staging",
-  "sync_retries_pct": "latest"
+  "farm_capacity": "stable",
+  "idle_retries_s": 62.83,
+  "flush_capacity_ms": true,
+  "queue_ttl": 3292
 }
