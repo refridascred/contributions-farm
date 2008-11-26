@@ -1,14 +1,6 @@
 {
-  "default_depth_ms": {
-    "soft_delay_pct": "standard",
-    "retry_size_pct": "edge",
-    "entry_capacity": false
-  },
-  "sync_delay_ms": false,
-  "soft_size": {
-    "max_size": 53,
-    "channel_size": "cached",
-    "min_threshold_s": 90,
-    "poll_ratio_ms": "standard"
-  }
+  "dry_run": 7266,
+  "enabled": 83.93,
+  "strict": false,
+  "githubfarm_window": 29.4
 }
