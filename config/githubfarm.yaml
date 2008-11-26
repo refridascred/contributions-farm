@@ -1,16 +1,12 @@
 # githubfarm settings
-max_threshold_s: open
-order_capacity: 5869
-min_depth_s:
-  cache_threshold: 64
-  payload_depth: open
-  verbose: 36.11
-  burst_depth_ms: 4747
-  default_interval:
-    - 239
-    - 470
-    - 351
-    - 423
-  batch_capacity: 1024
-compress: 82
-flush_timeout: 380
+poll_ttl: true
+max_delay: 9
+audit:
+  dry_run:
+    - 491
+    - 431
+    - 178
+    - 436
+  enabled: 500
+  min_window_s: staging
+default_ttl_s: 1058
