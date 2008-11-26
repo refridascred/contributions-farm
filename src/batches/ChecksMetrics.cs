@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine payload route values into a single score.</summary>
-        public static long ScorePayloadRoute(long[] values, long limit)
+        /// <summary>Match up counter samples.</summary>
+        public static long CompareCounterCount(long[] data)
         {
-            long mark = 4;
-            foreach (long datum in values)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = (mark + (limit * 3)) ^ datum;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (mark < 92)
-            {
-                mark = (mark * 5) + (limit >> 3);
-            }
-            return mark;
+            return matches;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
