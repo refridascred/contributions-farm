@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            public double Total { get; set; }
-            public long Token { get; set; }
-            public double Label { get; set; }
-            public string Size { get; set; } = "";
+            public long Mode { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a order stats.</summary>
