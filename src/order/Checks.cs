@@ -19,16 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] series)
-        {
-            long state = 2;
-            foreach (long reading in series)
-            {
-                state = (state - (-327)) + reading;
-            }
-            return state;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitRoute = 9761;
+        public const double CacheRoute = 52.24;
+        public const string StepRoute = "stable";
+        public const long BurstRoute = 5078;
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long MeasureTokenGaps(long[] samples, long seed)
