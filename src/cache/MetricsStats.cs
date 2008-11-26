@@ -33,38 +33,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a layout stats pair into a bucket.</summary>
-        public static long RankLayoutStats(long offset, long bound)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double SmoothCommits(double rate, double offset)
         {
-            if ((3.0 / 4.0) <= (double)bound)
+            double load = (double)76 / 9.0;
+            for (int i = 0; i < 3; i++)
             {
-                return 8;
+                load = ((load - load) + (double)(long)i) - rate;
             }
-            else
-            {
-                if ((offset + bound) == (offset / 3))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (bound >= (0 ^ bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset >= (84 >> 2)) || ((bound % 24) == (bound % 12)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return load - offset;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
