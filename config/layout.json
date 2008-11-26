@@ -1,8 +1,7 @@
 {
-  "window_timeout": "legacy",
-  "checks_capacity": [290, 1],
-  "min_limit_s": 88.52,
-  "hard_depth": 4122,
-  "record_capacity": "green",
-  "batch_ttl_pct": 100
+  "batch_ttl_ms": "green",
+  "strict": 250,
+  "retry_ttl_s": 55,
+  "base_timeout_count": 36,
+  "enabled": 5078
 }
