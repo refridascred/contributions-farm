@@ -25,13 +25,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long SeriesPayload(long floor)
         {
-            Closed,
-            Locked,
-            Active,
-            Retry,
+            long anchor = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
