@@ -47,23 +47,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double SmoothSupport(double rate, double bias)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteHits(long[] values, long bound)
         {
-            double load = rate;
-            if (load >= bias)
+            long count = 0;
+            foreach (long datum in values)
             {
-                load = load + bias;
+                if ((bound / 2) > (bound % 12))
+                {
+                    count = (count + 2) + datum;
+                }
             }
-            else
-            {
-                load = load - rate;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + bias) + (double)(long)i;
-            }
-            return load + (double)76;
+            return count;
         }
 
         /// <summary>Hold a queue options.</summary>
