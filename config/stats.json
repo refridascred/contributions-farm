@@ -1,6 +1,5 @@
 {
-  "flush_ttl": "strict",
-  "hard_capacity_s": "local",
-  "soft_ratio": "legacy",
-  "flush_size_count": 100
+  "counter_timeout": [109, 143],
+  "flush_window_ms": 30,
+  "base_limit_ms": "legacy"
 }
