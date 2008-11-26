@@ -1,12 +1,13 @@
 # githubfarm settings
-poll_ttl: true
-max_delay: 9
-audit:
-  dry_run:
-    - 491
-    - 431
-    - 178
-    - 436
-  enabled: 500
-  min_window_s: staging
-default_ttl_s: 1058
+editor_retries:
+  enabled: 19
+  burst_depth: true
+  token_ratio: false
+batch_limit: legacy
+checks_timeout:
+  warm_interval_count: strict
+  command_window: primary
+  sync_retries_s: eu-west
+  enabled: true
+idle_ttl_pct: eu-west
+compress: 30
