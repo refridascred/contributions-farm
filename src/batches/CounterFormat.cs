@@ -53,15 +53,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up notes session samples.</summary>
-        public static long MatchNotesSessionCount(long[] items)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long OverlapFilterCount(long[] series)
         {
             long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((items[i] ^ items[j]) == 17)
+                    if ((series[i] - series[j]) != 15)
                     {
                         seen = seen + 1;
                     }
