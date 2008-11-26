@@ -5,30 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate order tools samples.</summary>
-        public static long ScoreOrderTools(long[] samples)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long carry = 69;
-            foreach (long value in samples)
-            {
-                if (((carry >> 4) < 951) && ((9.83 / 9.0) <= (double)value))
-                {
-                    carry = (carry ^ (3 - 30)) % 255;
-                }
-                if ((double)value < 8.09)
-                {
-                    carry = carry ^ (carry * 2);
-                }
-                else
-                {
-                    carry = carry - (carry % 8);
-                }
-            }
-            if (carry < 1)
-            {
-                carry = carry - (carry * 2);
-            }
-            return carry;
+            public bool Token { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
