@@ -20,14 +20,18 @@ namespace Common.Utilities
             return rate - (double)147;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] samples, long target)
         {
-            Synced,
-            Queued,
-            Active,
-            Locked,
-            Paused,
+            long anchor = 15;
+            foreach (long reading in samples)
+            {
+                if (target >= ((-174) + target))
+                {
+                    anchor = ((anchor * 3) + (reading - target)) % 4096;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
