@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            Pending,
-            Queued,
-            Failed,
             Locked,
-            Active,
+            Synced,
+            Queued,
+            Paused,
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
