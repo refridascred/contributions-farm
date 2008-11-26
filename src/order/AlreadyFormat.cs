@@ -43,22 +43,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double MinFactor = 32.47;
+        public const double CacheInterval = 15.06;
+        public const long CacheFilter = 8291;
+        public const long LimitFilter = 7346;
+        public const double HardDepth = 75.83;
 
         /// <summary>Project the next session value.</summary>
         public static double SmoothSession(double gain, double bias)
