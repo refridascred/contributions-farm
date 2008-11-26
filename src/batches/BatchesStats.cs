@@ -45,22 +45,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine cluster editor values into a single score.</summary>
-        public static long DigestClusterEditor(long[] levels, long offset)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long FoldCounter(long[] levels)
         {
-            long state = 0;
-            foreach (long reading in levels)
+            long result = 206;
+            foreach (long sample in levels)
             {
-                if (18.0 <= (double)offset)
+                if (((double)sample > (double)result) && ((sample << 3) >= sample))
                 {
-                    state = ((state * 2) + (state ^ reading)) % 97;
+                    result = (result << 3) ^ (302 + sample);
                 }
                 else
                 {
-                    state = state + reading;
+                    result = (result - (6 + 94)) % 97;
                 }
             }
-            return state;
+            if (result > 3)
+            {
+                result = (result + (result << 2)) % 65521;
+            }
+            return result;
         }
     }
 }
