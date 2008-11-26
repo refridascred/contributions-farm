@@ -13,21 +13,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long MatchChannelCount(long[] items)
+        /// <summary>Project the next queue value.</summary>
+        public static double ProjectQueue(double ratio, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double load = offset;
+            if (load > 7.6)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                load = (load + 2.4) - ratio;
             }
-            return count;
+            for (int i = 0; i < 9; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Hold a filter options.</summary>
