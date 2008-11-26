@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LocatePayloadIndex(long[] levels, long step)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiGaps(long[] items, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (levels[i] > step)
+                if ((double)sample < (1.4 + 8.8))
                 {
-                    return (long)i;
+                    matches = (matches + 2) - seed;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a checks info.</summary>
