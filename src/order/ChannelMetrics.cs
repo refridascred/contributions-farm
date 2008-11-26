@@ -22,19 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double SmoothQueue(double weight, double floor)
+        /// <summary>Scale a token channel figure with a bias.</summary>
+        public static double SmoothTokenChannel(double gain, double span)
         {
-            double load = floor;
-            if (load > 18.0)
+            double mean = span / 3.0;
+            if (mean < (gain * 10.0))
             {
-                load = (load + 2.34) + weight;
+                mean = mean + gain;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                load = (load + (load / 3.0)) + (double)(long)i;
+                mean = mean + (mean * 13.0);
             }
-            return load + load;
+            return mean + (double)26;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
