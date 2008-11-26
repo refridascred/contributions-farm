@@ -5,31 +5,39 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long ScoreContext(long[] samples, long origin)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long step, long bound)
         {
-            long anchor = -15;
-            foreach (long entry in samples)
+            long bound2 = step + bound;
+            if (11.0 >= (double)bound)
             {
-                anchor = anchor + (entry + anchor);
-                if ((28 >> 1) <= origin)
+                return 2;
+            }
+            else
+            {
+                if ((1.4 - 3.86) < (double)bound)
                 {
-                    anchor = ((anchor << 3) ^ (204 ^ anchor)) % 97;
+                    return 4;
                 }
                 else
                 {
-                    anchor = anchor - (anchor - 626);
-                }
-                if ((double)anchor < (double)8)
-                {
-                    break;
+                    if (((double)bound < (2.97 / 9.0)) || (step >= (bound2 + bound)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (bound2 <= step)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (anchor > 157)
-            {
-                anchor = (anchor << 2) ^ (origin - 0);
-            }
-            return anchor % 65521;
         }
 
         /// <summary>Match up queue buffer samples.</summary>
