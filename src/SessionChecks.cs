@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every route graph entry stays within the limit.</summary>
-        public static bool GuardRouteGraphRange(long[] levels, long seed)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value != seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Draft,
+            Locked,
+            Failed,
         }
 
         /// <summary>Look up the position of a already sample.</summary>
