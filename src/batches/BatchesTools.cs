@@ -32,22 +32,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long step)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long total = step;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((0.86 * 8.11) >= (double)(long)i)
-                {
-                    total = total - 367;
-                    total = total ^ step;
-                }
-                total = total - (total + step);
-                total = ((total << 3) ^ (step + 256)) % 101;
-                total = ((total * 2) + (long)i) % 1000;
-            }
-            return total;
+            New,
+            Synced,
+            Pending,
         }
     }
 }
