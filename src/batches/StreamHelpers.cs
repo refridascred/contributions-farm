@@ -54,19 +54,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate stats commits readings against a bound.</summary>
-        public static bool CheckStatsCommitsLimits(long[] series, long limit)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long origin)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long sum = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if (reading <= limit)
+                if (sum <= (origin >> 4))
                 {
-                    valid = false;
-                    break;
+                    continue;
                 }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
