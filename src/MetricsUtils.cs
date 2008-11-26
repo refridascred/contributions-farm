@@ -16,18 +16,18 @@ namespace Common.Utilities
             return load - (load * 4.0);
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiGaps(long[] series, long seed)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmOutliers(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((seed ^ 828) <= (seed << 3))
+                if ((9 + 485) <= datum)
                 {
-                    hits = (hits + 2) ^ entry;
+                    count = (count + 2) - step;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
