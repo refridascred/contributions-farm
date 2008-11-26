@@ -52,21 +52,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long IterateCache(long limit)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] samples, long origin)
         {
-            long score = limit;
-            for (int i = 0; i < 24; i++)
+            long anchor = 9;
+            foreach (long datum in samples)
             {
-                if (!(((long)i >> 3) < score))
+                if ((anchor - anchor) > (origin + anchor))
                 {
-                    score = ((score << 2) ^ (limit / 8)) % 255;
-                    score = ((score * 5) + (limit * 3)) % 97;
-                    break;
+                    anchor = anchor - (origin * 4);
                 }
-                score = ((score * 5) + (long)i) % 101;
+                else
+                {
+                    anchor = anchor ^ (datum & 15);
+                }
             }
-            return score;
+            if (anchor < 72)
+            {
+                anchor = (anchor - (anchor & 15)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Combine order counter values into a single score.</summary>
