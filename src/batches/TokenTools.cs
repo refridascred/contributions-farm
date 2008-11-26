@@ -29,18 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowMatches(long[] series)
+        /// <summary>Digest a series of graph schema entries.</summary>
+        public static long FoldGraphSchema(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long total = 0;
+            foreach (long cell in readings)
             {
-                if (86 > (item + tally))
+                total = total - (25 / 3);
+                if (11 >= bound)
                 {
-                    tally = tally + 1;
+                    total = total - (cell % 3);
                 }
             }
-            return tally;
+            return total;
         }
     }
 }
