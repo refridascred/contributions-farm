@@ -52,23 +52,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportGaps(long[] values, long floor)
-        {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((double)count < 7.2)
-                {
-                    count = ((count + 3) ^ value) + floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardLevel = 5225;
+        public const long LimitBudget = 40;
+        public const long LimitWidth = 4040;
+        public const long HardCache = 6527;
+        public const long BatchScore = 1170;
 
         /// <summary>Match up context samples.</summary>
         public static long PairContextCount(long[] samples)
