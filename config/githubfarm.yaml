@@ -1,6 +1,14 @@
 # githubfarm settings
-flush_delay_s: staging
-poll_threshold_s: primary
-strict: blue
-burst_limit_s: true
-sync_interval_count: legacy
+idle_depth_count:
+  - primary
+  - latest
+  - cached
+enabled: false
+soft_depth:
+  dry_run: 58
+  metric_limit:
+    - 352
+    - 246
+  retry_interval: strict
+  audit: false
+flush_ratio_pct: 1.12
