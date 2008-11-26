@@ -62,13 +62,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
-        {
-            Locked,
-            Failed,
-            Ready,
-            Paused,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstFilter = 4924;
+        public const string IdleTimeout = "open-1";
+        public const string HardInterval = "fallback";
     }
 }
