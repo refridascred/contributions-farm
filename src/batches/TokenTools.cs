@@ -20,22 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit batches command readings against a rule.</summary>
-        public static long TallyBatchesCommandMatches(long[] values)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if (!((tally + datum) > (tally + tally)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            New,
+            Failed,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Digest a series of graph schema entries.</summary>
