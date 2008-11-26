@@ -21,19 +21,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricRange(long[] samples, long seed)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long IterateBatches(long bound)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long state = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if (value > seed)
-                {
-                    ready = false;
-                    break;
-                }
+                state = state - (618 - (long)i);
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
