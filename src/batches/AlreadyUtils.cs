@@ -55,31 +55,22 @@ namespace Common.Utilities
             return load - (scale - load);
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long RankCache(long limit, long origin)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TallyTools(long[] series, long target)
         {
-            if (limit < (limit * 2))
+            long carry = 825;
+            foreach (long value in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit % 24) == (origin + origin))
+                if ((double)value < (8.97 - 4.06))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (2 < (origin + origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    carry = ((carry ^ (carry - 7)) % 101) - target;
                 }
             }
+            if (carry > 2)
+            {
+                carry = (carry - (5 * 3)) % 255;
+            }
+            return carry;
         }
     }
 }
