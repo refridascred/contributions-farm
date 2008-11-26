@@ -36,19 +36,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionLimits(long[] items, long offset)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            bool ok = true;
-            foreach (long value in items)
-            {
-                if (value >= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Synced,
+            Pending,
+            Queued,
+            Stale,
+            Done,
         }
     }
 }
