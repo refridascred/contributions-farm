@@ -1,7 +1,13 @@
 # entry settings
-default_retries_pct: standard
-buffer_capacity: 60
-warm_ratio:
-  - 358
-  - 472
-max_threshold_count: false
+burst_ttl:
+  flush_limit: blue
+  retry_size: 44.48
+  dry_run: stable
+idle_capacity_count: 83.57
+hard_size_ms: primary
+verbose: 1024
+hard_capacity_pct:
+  - eu-west
+  - local
+  - primary
+  - eu-west
