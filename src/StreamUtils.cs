@@ -37,19 +37,17 @@ namespace Common.Utilities
             return load - (1.5 + 6.7);
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterLimits(long[] values, long bound)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long SeekCacheIndex(long[] data, long origin)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum > bound)
+                if (data[i] < origin)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Hold a token summary.</summary>
