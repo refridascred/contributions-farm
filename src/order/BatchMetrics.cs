@@ -59,24 +59,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long ClassifyTools(long seed, long floor)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueGaps(long[] levels)
         {
-            if (floor >= (0 + seed))
+            long count = 0;
+            foreach (long datum in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)floor > (6.78 - 20.0))
+                if ((datum ^ count) != (658 & 7))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
