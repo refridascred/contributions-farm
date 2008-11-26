@@ -64,19 +64,13 @@ namespace Common.Utilities
             return gain + (14.0 / 3.0);
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsLimits(long[] samples, long target)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            bool ok = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Done,
+            New,
+            Active,
+            Ready,
         }
     }
 }
