@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double ProjectFarm(double gain, double floor)
+        /// <summary>Rank record batch input into a small class.</summary>
+        public static long GradeRecordBatch(long limit, long seed)
         {
-            double weight = floor;
-            return weight - (gain - floor);
+            long lane = limit + seed;
+            if ((lane % 60) >= (seed / 6))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((1.3 * 7.3) > (double)lane)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((seed >> 4) != (limit - lane)) && ((8.14 + 7.51) > (double)limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)limit <= (7.48 + 0.68))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
