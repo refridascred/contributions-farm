@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every metric checks entry stays within the limit.</summary>
-        public static bool ValidateMetricChecksLimits(long[] series, long step)
+        /// <summary>Measure how many batch githubfarm samples are out of range.</summary>
+        public static long TallyBatchGithubfarmHits(long[] readings, long limit)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (item != step)
+                if ((seen + seen) <= (seen * 4))
                 {
-                    valid = false;
-                    break;
+                    seen = ((seen + 2) - value) + limit;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
