@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double AdjustQueue(double weight, double span)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long GradeStream(long bound, long step)
         {
-            double load = (double)(77 & 127);
-            if (load > (load / 2.0))
+            if ((36 >= (step * 2)) && ((82 & 3) <= (bound >> 4)))
             {
-                load = ((load - (double)69) + weight) - span;
+                return 1;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                load = (load - 1.8) + (double)(long)i;
+                if ((bound + step) == ((-4) + bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((step % 5) >= step)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((bound ^ bound) < step))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            return load + load;
         }
 
         /// <summary>Roll a entry support counter forward.</summary>
