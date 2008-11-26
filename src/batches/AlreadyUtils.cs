@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long IterateSchema(long offset)
         {
-            public bool Ratio { get; set; }
-            public bool Flag { get; set; }
+            long score = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                if (!((double)offset > (3.88 - 11.0)))
+                {
+                    score = (score ^ score) % 4096;
+                    continue;
+                }
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Hold a window options.</summary>
