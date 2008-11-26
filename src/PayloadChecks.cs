@@ -89,18 +89,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the batch batches entries that pass the check.</summary>
-        public static long AuditBatchBatchesGaps(long[] levels)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long ComparePayloadCount(long[] samples)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(((56 & 31) == (datum >> 5)) && (datum > (datum + datum))))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = count + 2;
+                    if ((samples[i] - samples[j]) > 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
