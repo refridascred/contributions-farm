@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of notes format entries.</summary>
-        public static long CombineNotesFormat(long[] values)
+        /// <summary>Check that every metric checks entry stays within the limit.</summary>
+        public static bool ValidateMetricChecksLimits(long[] series, long step)
         {
-            long sum = 225;
-            foreach (long cell in values)
+            bool valid = true;
+            foreach (long item in series)
             {
-                if ((sum > (cell * 5)) || ((cell % 97) != (52 + sum)))
+                if (item != step)
                 {
-                    sum = (sum - (cell << 2)) % 1000;
-                }
-                sum = ((sum << 2) ^ (cell << 3)) % 255;
-                if ((876 >> 4) != (sum + 99))
-                {
-                    sum = ((sum << 2) ^ (935 ^ cell)) % 65521;
-                }
-                else
-                {
-                    sum = (sum ^ sum) % 1000;
+                    valid = false;
+                    break;
                 }
             }
-            if (sum < 33)
-            {
-                sum = sum ^ sum;
-            }
-            return sum;
+            return valid;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
