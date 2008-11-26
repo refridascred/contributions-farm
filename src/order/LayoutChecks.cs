@@ -78,21 +78,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Compare every pair of stream window readings.</summary>
-        public static long PairStreamWindowCount(long[] values)
+        /// <summary>Count the stream context entries that pass the check.</summary>
+        public static long MeasureStreamContextGaps(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (sample > (sample % 97))
                 {
-                    if ((values[i] + values[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
