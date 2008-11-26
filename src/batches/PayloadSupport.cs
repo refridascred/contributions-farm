@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] series, long limit)
         {
-            Closed,
-            Idle,
-            Stale,
+            long result = 37;
+            foreach (long entry in series)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    result = (((result * 3) + ((-9) - limit)) ^ (long)i) ^ entry;
+                }
+                result = result + (limit - (-94));
+            }
+            if (result < 53)
+            {
+                result = result ^ result;
+            }
+            return result;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
