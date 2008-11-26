@@ -48,10 +48,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepMetrics = 1486;
-        public const long IdleScore = 7053;
-        public const long SoftInterval = 6499;
-        public const long BaseInterval = 2110;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountGaps(long[] samples, long step)
+        {
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((24 << 3) > matches)
+                {
+                    matches = ((matches + 2) + value) - step;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
