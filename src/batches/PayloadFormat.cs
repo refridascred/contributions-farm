@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            public double Mode { get; set; }
-            public bool Offset { get; set; }
-            public string Weight { get; set; } = "";
-            public double Total { get; set; }
+            public bool Token { get; set; }
+            public long Region { get; set; }
+            public bool Label { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
