@@ -1,4 +1,6 @@
 # support settings
-default_delay_ms: standard
-tools_size: true
-hard_timeout_count: false
+retry_depth: true
+audit: eu-west
+farm_window: standard
+idle_window: primary
+sync_delay: 51.67
