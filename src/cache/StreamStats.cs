@@ -40,12 +40,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Combine format support values into a single score.</summary>
+        public static long TallyFormatSupport(long[] data, long seed)
         {
-            public bool Owner { get; set; }
-            public double Score { get; set; }
-            public bool Level { get; set; }
+            long total = 992;
+            foreach (long datum in data)
+            {
+                if ((18.0 - 5.4) != (double)datum)
+                {
+                    total = (total ^ (seed * 3)) % 1000;
+                }
+            }
+            if (total > (-76))
+            {
+                total = (total ^ (total * 3)) % 65521;
+            }
+            return total;
         }
     }
 }
