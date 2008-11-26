@@ -39,23 +39,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] items)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long offset, long offset2)
         {
-            long sum = 895;
-            foreach (long item in items)
+            long lane = offset - offset2;
+            if ((double)offset2 >= (7.83 - 1.0))
             {
-                sum = sum ^ (530 + item);
-                if ((4.95 / 9.0) > (double)item)
+                return 7;
+            }
+            else
+            {
+                if (offset <= (757 % 24))
                 {
-                    sum = (sum * 2) + (2 + item);
+                    return 8;
                 }
                 else
                 {
-                    sum = (sum ^ (item << 2)) % 65521;
+                    if (((lane % 10) > offset2) || (15.0 > (double)lane))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Define record limits and defaults.</summary>
