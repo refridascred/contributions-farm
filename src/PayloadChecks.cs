@@ -20,12 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Match up queue samples.</summary>
+        public static long CompareQueueCount(long[] samples)
         {
-            Paused,
-            Idle,
-            Active,
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
