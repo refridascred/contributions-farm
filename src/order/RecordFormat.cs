@@ -41,17 +41,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first payload command entry that matches the target.</summary>
-        public static long LocatePayloadCommandIndex(long[] data, long target)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == target) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Token { get; set; }
+            public bool Total { get; set; }
+            public long Weight { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Combine schema values into a single score.</summary>
