@@ -21,14 +21,17 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long FindAlreadyIndex(long[] data, long bound)
         {
-            Stale,
-            Draft,
-            Synced,
-            Dropped,
-            Ready,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
