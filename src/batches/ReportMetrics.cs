@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
-        {
-            public string Weight { get; set; } = "";
-            public double Rank { get; set; }
-            public long Owner { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultFactor = 6627;
+        public const string HardLevel = "strict-v2";
+        public const long IdleScore = 5769;
 
         /// <summary>Accumulate checks samples.</summary>
         public static long DigestChecks(long[] series, long step)
