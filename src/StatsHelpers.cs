@@ -27,12 +27,14 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double MinFactor = 80.82;
-        public const long MinPayload = 2382;
-        public const double RetryPayload = 35.57;
-        public const long BasePayload = 5844;
-        public const double MaxCount = 43.49;
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
+        {
+            Queued,
+            Pending,
+            Closed,
+            Dropped,
+        }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
         public static long MatchEditorCount(long[] levels)
