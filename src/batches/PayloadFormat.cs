@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Find the first checks stream entry that matches the target.</summary>
-        public static long FindChecksStreamIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < seed) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchToken = 2507;
+        public const long MaxSize = 6432;
+        public const long MaxScore = 3154;
+        public const double CacheTimeout = 2.96;
+        public const long StepToken = 5189;
 
         /// <summary>Combine filter buffer values into a single score.</summary>
         public static long ScoreFilterBuffer(long[] samples, long origin)
