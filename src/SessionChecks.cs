@@ -52,17 +52,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] levels, long bound)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long ScoreCommits(long[] series, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 4;
+            foreach (long value in series)
             {
-                if ((levels[i] == bound) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mix = (mix ^ (value << 3)) - bound;
             }
-            return -1;
+            return mix % 97;
         }
 
         /// <summary>Project the next buffer value.</summary>
