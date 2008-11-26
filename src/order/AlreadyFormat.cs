@@ -22,22 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterGaps(long[] series, long origin)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferMatches(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if (tally > (tally << 1))
+                if (cell < matches)
                 {
-                    tally = ((tally + 3) + entry) + origin;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
