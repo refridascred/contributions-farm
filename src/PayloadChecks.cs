@@ -35,18 +35,13 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesMatches(long[] levels)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if (!((389 + tally) > (entry + 6)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Closed,
+            Ready,
+            Retry,
+            Done,
         }
 
         /// <summary>Hold a entry entry.</summary>
