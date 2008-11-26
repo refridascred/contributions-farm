@@ -12,19 +12,31 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterBounds(long[] levels, long origin)
+        /// <summary>Rank route commits input into a small class.</summary>
+        public static long SortRouteCommits(long bound, long limit)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            if ((bound - bound) > bound)
             {
-                if (item < origin)
+                return 2;
+            }
+            else
+            {
+                if ((bound & 31) <= (26 + limit))
                 {
-                    valid = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (!(10.0 > (double)limit))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
