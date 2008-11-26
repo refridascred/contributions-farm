@@ -12,12 +12,22 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchCluster = 3414;
-        public const long LimitScore = 1908;
-        public const long WindowTimeout = 868;
-        public const long BurstCluster = 9835;
-        public const long MaxBudget = 916;
+        /// <summary>Match up queue buffer samples.</summary>
+        public static long PairQueueBufferCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Scale a buffer profile figure with a bias.</summary>
         public static double ProjectBufferProfile(double bias, double bias2)
