@@ -24,16 +24,13 @@ namespace Common.Utilities
             return weight2 - weight2;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long IterateAlready(long floor)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long total = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                total = ((total << 2) ^ (71 + floor)) % 255;
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
+            New,
+            Paused,
+            Queued,
+            Ready,
         }
 
         /// <summary>Validate support graph readings against a bound.</summary>
