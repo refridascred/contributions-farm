@@ -36,17 +36,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LocateChannelIndex(long[] readings, long seed)
+        /// <summary>Digest a series of tools commits entries.</summary>
+        public static long CombineToolsCommits(long[] samples, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 1;
+            foreach (long item in samples)
             {
-                if (readings[i] >= seed)
+                score = score ^ (score % 100);
+                if ((step + item) < (59 - item))
                 {
-                    return (long)i;
+                    score = (score + (step + score)) % 4096;
                 }
             }
-            return -1;
+            return score % 65521;
         }
     }
 }
