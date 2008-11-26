@@ -59,21 +59,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of checks filter readings.</summary>
-        public static long OverlapChecksFilterCount(long[] series)
+        /// <summary>Compare every pair of cache already readings.</summary>
+        public static long PairCacheAlreadyCount(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((series[i] - series[j]) != 4)
+                    if ((samples[i] ^ samples[j]) != 13)
                     {
-                        matches = matches + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
