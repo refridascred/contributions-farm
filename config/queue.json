@@ -1,5 +1,8 @@
 {
-  "editor_limit": "legacy",
-  "cache_limit_s": 9464,
-  "hard_window": 2373
+  "warm_threshold_count": 0.43,
+  "session_ratio": "cached",
+  "default_retries": ["staging", "strict"],
+  "compress": "eu-west",
+  "max_timeout_s": 32.09,
+  "max_timeout_ms": [314, 441]
 }
