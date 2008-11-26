@@ -1,20 +1,22 @@
 # entry settings
-hard_timeout_count: 500
-dry_run:
-  - standard
-  - legacy
-readonly: 32
-batch_depth_s:
-  - standard
-  - latest
-  - primary
-batch_threshold_s:
-  burst_delay:
-    - primary
-    - strict
-  notes_window: false
-  cache_capacity_pct: 57.94
-  editor_interval: 6540
-  base_interval_ms: 60
-  min_interval_ms: 6809
-idle_timeout_count: 57.94
+audit:
+  verbose: 29.88
+  contributi_threshold:
+    cache_threshold_ms: 93.53
+    retry_threshold: fallback
+    idle_depth: legacy
+    order_threshold: 30
+  max_capacity_pct: true
+sync_limit_s:
+  - edge
+  - stable
+retry_ratio: staging
+notes_delay:
+  hard_ratio_s:
+    - local
+    - staging
+    - staging
+  base_delay_pct: eu-west
+  cluster_ratio: primary
+batch_ttl: 30
+sync_timeout_ms: 100
