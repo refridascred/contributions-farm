@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstLevel = 3354;
-        public const double BatchSize = 70.25;
-        public const long BurstNotes = 8006;
-        public const double HardNotes = 46.5;
-        public const double HardTimeout = 30.06;
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
+        {
+            public bool Ratio { get; set; }
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Hold a window options.</summary>
         public sealed class WindowOptions
