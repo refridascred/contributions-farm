@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxGithubfarm = 82;
-        public const string SoftBudget = "latest";
-        public const string CacheGithubfarm = "latest-v2";
-        public const long BurstGithubfarm = 8182;
-        public const string HardGithubfarm = "latest-v2";
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterMatches(long[] series)
+        {
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((cell % 2) >= cell)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long WeighQueue(long[] values)
