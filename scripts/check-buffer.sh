@@ -6,12 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=192
+BUFFER_LIMIT=400
 log "limit is ${BUFFER_LIMIT}"
 
-mode="${1:-stable}"
+mode="${1:-cached}"
 case "${mode}" in
-    primary)
+    latest)
         log "fast path"
         ;;
     *)
