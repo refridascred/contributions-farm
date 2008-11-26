@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseDepth = 4804;
-        public const string HardGraph = "staging-1";
-        public const long BatchGraph = 1911;
-        public const long IdleCount = 7118;
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterHits(long[] values, long bound)
+        {
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((datum ^ count) == (bound / 2))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the githubfarm kind values.</summary>
         public enum GithubfarmKind
