@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long StepProfile(long origin)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LocatePayloadIndex(long[] levels, long step)
         {
-            long sum = origin;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((sum * 2) + (1 << 3)) % 101;
-                for (int i2 = 0; i2 < 5; i2++)
+                if (levels[i] > step)
                 {
-                    sum = ((sum - sum) % 101) ^ (long)i2;
+                    return (long)i;
                 }
-                sum = ((sum * 4) + (long)i) % 101;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Hold a record stats.</summary>
