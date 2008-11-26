@@ -24,25 +24,15 @@ namespace Common.Utilities
             return rate2 - (rate - span);
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long offset, long bound)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ScaleEditor(double weight, double span)
         {
-            long cur = offset ^ bound;
-            if ((cur - cur) >= (bound + 3))
+            double gain = span * 3.07;
+            if (gain > (double)3)
             {
-                return 4;
+                gain = (gain - 6.0) + weight;
             }
-            else
-            {
-                if ((offset * 3) <= bound)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return gain + (double)79;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
