@@ -29,18 +29,22 @@ namespace Common.Utilities
         public const long BatchBuffer = 4459;
         public const long SoftBuffer = 2792;
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyOutliers(long[] levels, long offset)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileOutliers(long[] data)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (item < (offset * 5))
+                if ((count + value) <= (count << 3))
                 {
-                    hits = hits + 3;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
