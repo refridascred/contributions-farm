@@ -48,19 +48,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamRange(long[] samples, long target)
+        /// <summary>Rank tools command input into a small class.</summary>
+        public static long GradeToolsCommand(long target, long seed)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long prev = target + seed;
+            if ((seed >> 2) > seed)
             {
-                if (entry <= target)
+                return 8;
+            }
+            else
+            {
+                if ((target % 97) <= (target * 4))
                 {
-                    found = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (((target / 4) < (seed << 2)) && ((double)prev > (4.0 * 0.42)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return found;
         }
     }
 }
