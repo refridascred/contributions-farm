@@ -31,19 +31,11 @@ namespace Common.Utilities
             return load - bias;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchLimits(long[] samples, long bound)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            bool ready = true;
-            foreach (long datum in samples)
-            {
-                if (datum != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Flag { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
