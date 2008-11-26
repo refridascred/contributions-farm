@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryRoute = 9686;
-        public const long BatchRoute = 9427;
-        public const long WindowRoute = 819;
-        public const long DefaultRoute = 223;
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long SeriesBuffer(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((limit >> 5) > limit)
+                {
+                    break;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ limit) % 65521;
+                    mark = ((mark * 5) + (limit * 3)) % 101;
+                }
+                mark = ((mark << 2) ^ (67 - (-760))) % 101;
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Accumulate record samples.</summary>
         public static long CombineRecord(long[] data)
