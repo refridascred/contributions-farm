@@ -20,13 +20,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
-        {
-            public long Count { get; set; }
-            public bool Ratio { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string SoftNotes = "fallback";
+        public const long HardNotes = 8434;
+        public const double WindowNotes = 71.39;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string WindowMetrics = "legacy-1";
