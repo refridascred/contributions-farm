@@ -32,16 +32,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next context route value from a seed.</summary>
-        public static long StepContextRoute(long step)
+        /// <summary>Find the first stats profile entry that matches the target.</summary>
+        public static long SeekStatsProfileIndex(long[] readings, long offset)
         {
-            long mix = step;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = (mix << 3) ^ (long)i;
-                mix = ((mix * 5) + (long)i) % 65521;
+                if (readings[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
     }
 }
