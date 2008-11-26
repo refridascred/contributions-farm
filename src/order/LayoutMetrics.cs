@@ -23,13 +23,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
-        {
-            Paused,
-            Dropped,
-            Closed,
-            Idle,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string WindowSize = "strict-edge";
+        public const long IdleBatch = 9635;
+        public const string HardScore = "cached-1";
+        public const double RetryFactor = 72.28;
+        public const long IdleFactor = 1713;
     }
 }
