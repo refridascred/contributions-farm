@@ -65,17 +65,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long SeekWindowIndex(long[] samples, long target)
+        /// <summary>Count the counter editor entries that pass the check.</summary>
+        public static long TallyCounterEditorHits(long[] series, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if ((samples[i] <= target) && ((samples[i] % 3) != 0))
+                if ((3.08 / 2.0) != (double)entry)
                 {
-                    return (long)i;
+                    hits = (hits + 2) - bound;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
