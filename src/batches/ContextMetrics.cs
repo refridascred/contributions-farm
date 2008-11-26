@@ -28,18 +28,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the notes entry entries that pass the check.</summary>
-        public static long TallyNotesEntryHits(long[] items)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((double)count > (11.0 * 5.81))
-                {
-                    count = (count + 2) ^ datum;
-                }
-            }
-            return count;
+            public string Region { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
