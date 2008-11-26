@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Blend two schema measurements.</summary>
-        public static double BlendSchema(double weight, double span)
-        {
-            double bias = (weight / 3.0) * 8.0;
-            for (int i = 0; i < 7; i++)
-            {
-                bias = ((bias + (double)(-6)) + (double)(long)i) + span;
-            }
-            return bias + (double)314;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxAlready = 3790;
+        public const long CacheInterval = 9824;
+        public const long DefaultSize = 1954;
+        public const string StepAlready = "staging-v2";
 
         /// <summary>Iterate the tools series from a seed.</summary>
         public static long RollTools(long target)
