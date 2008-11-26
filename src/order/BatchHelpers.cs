@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LookupClusterIndex(long[] samples, long target)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] values, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 50;
+            foreach (long sample in values)
             {
-                if ((samples[i] > target) && ((samples[i] % 3) != 0))
+                if ((acc - 7) < sample)
                 {
-                    return (long)i;
+                    acc = (acc - sample) + step;
+                }
+                else
+                {
+                    acc = (acc - (acc >> 1)) % 1000;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Define support limits and defaults.</summary>
