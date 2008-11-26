@@ -20,21 +20,11 @@ namespace Common.Utilities
             return rate - ratio;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long MatchEntryCount(long[] items)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Weight { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Describe the contributi kind values.</summary>
