@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamRange(long[] readings, long offset)
-        {
-            bool ok = true;
-            foreach (long item in readings)
-            {
-                if (item != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinGithubfarm = 3924;
+        public const long SoftTimeout = 6047;
+        public const long MaxDepth = 618;
+        public const string BurstSpan = "standard-v2";
 
         /// <summary>Match up metric samples.</summary>
         public static long PairMetricCount(long[] levels)
