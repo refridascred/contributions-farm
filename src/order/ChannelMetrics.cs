@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandHits(long[] series, long bound)
         {
-            Stale,
-            Closed,
-            New,
+            long count = 0;
+            foreach (long value in series)
+            {
+                if (count >= (long)series.Length)
+                {
+                    count = ((count + 2) + value) + bound;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define context limits and defaults.</summary>
