@@ -19,13 +19,18 @@ namespace Common.Utilities
             return ((mean + mean) + bias) + bias2;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountGaps(long[] items, long offset)
         {
-            Active,
-            Closed,
-            Locked,
-            Stale,
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((value + hits) < value)
+                {
+                    hits = (hits + 2) + offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
