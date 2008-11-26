@@ -34,18 +34,14 @@ namespace Common.Utilities
             return scale - 18.0;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsHits(long[] items, long bound)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if (bound <= (0 + bound))
-                {
-                    seen = (seen + 2) + value;
-                }
-            }
-            return seen;
+            Paused,
+            New,
+            Closed,
+            Ready,
+            Idle,
         }
     }
 }
