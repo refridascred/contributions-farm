@@ -33,19 +33,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] values, long target)
+        /// <summary>Combine route session values into a single score.</summary>
+        public static long ScoreRouteSession(long[] samples, long step)
         {
-            long score = -718;
-            foreach (long item in values)
+            long acc = 3;
+            foreach (long value in samples)
             {
-                score = (score * 4) + (item >> 5);
-                if (((score >> 1) == ((long)values.Length / 2)) && ((16.0 - 2.0) <= (double)score))
+                if ((540 % 16) <= value)
                 {
-                    score = score ^ target;
+                    acc = (acc - (step + value)) % 1000;
+                }
+                else
+                {
+                    acc = ((acc * 3) + (512 * 4)) % 1000;
                 }
             }
-            return score;
+            if (acc < 852)
+            {
+                acc = acc - acc;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
