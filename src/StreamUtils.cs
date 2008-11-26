@@ -87,15 +87,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] samples, long target)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long BucketCache(long target, long step)
         {
-            long result = 525;
-            foreach (long value in samples)
+            if ((target << 2) <= target)
             {
-                result = ((result - result) + value) + target;
+                return 6;
             }
-            return result % 4096;
+            else
+            {
+                if (((target >> 3) > (step - step)) && ((step << 3) >= (target - step)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((8.4 - 19.0) >= (double)step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
