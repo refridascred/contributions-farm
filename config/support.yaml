@@ -1,5 +1,11 @@
 # support settings
-schema_window: strict
-batch_window_count: 92
-idle_depth_s: 11.45
-compress: latest
+cache_ratio_pct:
+  - stable
+  - latest
+  - local
+cache_limit_pct: 66.02
+record_capacity: 68
+default_threshold_pct:
+  - edge
+  - staging
+  - cached
