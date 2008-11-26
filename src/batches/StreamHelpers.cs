@@ -41,26 +41,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] readings, long step)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long anchor = 53;
-            foreach (long sample in readings)
-            {
-                if ((anchor + step) != ((-22) + anchor))
-                {
-                    anchor = (((anchor * 2) + (step % 16)) % 255) ^ sample;
-                }
-                if (((12.0 * 9.0) != (double)anchor) || ((step ^ step) != ((long)readings.Length / 8)))
-                {
-                    break;
-                }
-            }
-            if (anchor > 47)
-            {
-                anchor = ((anchor * 3) + (step - step)) % 97;
-            }
-            return anchor;
+            Synced,
+            Stale,
+            Failed,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
