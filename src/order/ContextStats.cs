@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardBudget = 3500;
-        public const double IdleBudget = 61.2;
-        public const long SoftSchema = 5308;
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long DeriveContributi(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Audit githubfarm metrics readings against a rule.</summary>
         public static long MeasureGithubfarmMetricsHits(long[] items)
