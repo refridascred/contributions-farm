@@ -27,19 +27,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two token payload measurements.</summary>
-        public static double SmoothTokenPayload(double gain, double span)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            double drift = (double)(241 & 63);
-            if (drift < 3.9)
-            {
-                drift = ((drift + (5.9 * 3.0)) - gain) - span;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + (double)51) - (double)(long)i;
-            }
-            return drift + (double)2;
+            public long Ratio { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
