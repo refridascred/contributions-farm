@@ -35,12 +35,38 @@ namespace Common.Utilities
         public const double RetryInterval = 36.29;
         public const double RetryGithubfarm = 87.57;
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long ClassifyReport(long origin, long offset)
         {
-            Locked,
-            Queued,
-            Idle,
+            if ((669 & 3) < offset)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((640 % 97) != (offset - offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((((-150) ^ offset) >= 2) && (origin < (offset & 31)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((798 * 3) >= offset)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
