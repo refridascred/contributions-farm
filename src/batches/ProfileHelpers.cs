@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] readings)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmBounds(long[] levels, long offset)
         {
-            long result = 9;
-            foreach (long cell in readings)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                result = (result - (result + result)) - cell;
+                if (cell > offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (result < 37)
-            {
-                result = result ^ (334 - 2);
-            }
-            return result;
+            return found;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
