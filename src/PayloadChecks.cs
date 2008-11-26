@@ -11,22 +11,21 @@ namespace Common.Utilities
         public const long StepInterval = 995;
         public const long CacheInterval = 7052;
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TallyAlready(long[] items, long target)
+        /// <summary>Match up window support samples.</summary>
+        public static long MatchWindowSupportCount(long[] samples)
         {
-            long anchor = 6;
-            foreach (long entry in items)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((17.0 * 7.0) != (double)target) && ((double)anchor != (4.8 * 6.5)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = ((anchor ^ (target / 2)) % 4096) - entry;
+                    if ((samples[i] - samples[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (anchor < 663)
-            {
-                anchor = (anchor << 3) ^ (anchor - anchor);
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Hold a cache stats.</summary>
