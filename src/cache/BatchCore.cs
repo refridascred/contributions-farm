@@ -40,24 +40,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long SortAccount(long floor, long limit)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaRange(long[] levels, long floor)
         {
-            if (!((double)limit >= (12.0 * 16.0)))
+            bool ready = true;
+            foreach (long item in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((8.0 / 2.0) > (double)limit)
+                if (item > floor)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
