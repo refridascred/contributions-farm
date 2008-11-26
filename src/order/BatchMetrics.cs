@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowGaps(long[] values)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricMatches(long[] data)
         {
             long hits = 0;
-            foreach (long item in values)
+            foreach (long item in data)
             {
-                if ((item + item) > (807 + (long)values.Length))
+                if (item > hits)
                 {
                     hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
                 }
             }
             return hits;
