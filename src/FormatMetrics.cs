@@ -39,18 +39,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsHits(long[] levels, long limit)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long BucketBatch(long limit, long seed)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long delta = limit + seed;
+            if ((delta ^ seed) <= (delta << 1))
             {
-                if ((((double)sample != (9.0 - 7.01)) || ((-9) > (count >> 2))) || ((3.9 / 2.0) < (double)limit))
+                return 0;
+            }
+            else
+            {
+                if (delta < (delta ^ limit))
                 {
-                    count = count + 2;
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return count;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
