@@ -30,11 +30,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Count already cache pairs that satisfy a relation.</summary>
+        public static long MatchAlreadyCacheCount(long[] readings)
         {
-            public double Owner { get; set; }
-            public bool Ratio { get; set; }
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
