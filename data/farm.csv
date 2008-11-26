@@ -1,7 +1,10 @@
-id,level,ratio,rank,count
-1,59.19,592,38.59,standard
-2,60,latest,96.1,21.02
-3,65.45,primary,49.94,84.64
-4,21.7,primary,open,412
-5,80.5,83.43,10.28,open
-6,380,stable,693,141
+id,ratio,score
+1,legacy,strict
+2,533,662
+3,11,636
+4,401,green
+5,stable,standard
+6,17.93,650
+7,76.52,58.47
+8,588,edge
+9,stable,378
