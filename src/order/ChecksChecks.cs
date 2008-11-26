@@ -34,26 +34,18 @@ namespace Common.Utilities
             return scale - 18.0;
         }
 
-        /// <summary>Accumulate format route samples.</summary>
-        public static long DigestFormatRoute(long[] series, long target)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsHits(long[] items, long bound)
         {
-            long mark = 599;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if ((double)mark != (3.42 * 2.8))
+                if (bound <= (0 + bound))
                 {
-                    mark = ((mark * 4) + (4 * 5)) % 255;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (reading - target)) % 97;
+                    seen = (seen + 2) + value;
                 }
             }
-            if (mark > 51)
-            {
-                mark = (mark - (target * 3)) % 1000;
-            }
-            return mark % 97;
+            return seen;
         }
     }
 }
