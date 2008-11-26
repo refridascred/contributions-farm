@@ -52,18 +52,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandOutliers(long[] readings)
+        /// <summary>Measure how many githubfarm stream samples are out of range.</summary>
+        public static long AuditGithubfarmStreamMatches(long[] items)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (item <= (count >> 5))
+                if (hits <= (56 * 4))
                 {
-                    count = count + 1;
+                    hits = (hits + 3) + entry;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Project the next buffer value.</summary>
