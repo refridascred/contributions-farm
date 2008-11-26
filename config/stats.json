@@ -1,17 +1,7 @@
 {
-  "burst_timeout_s": "green",
-  "sync_capacity_ms": [485, 333],
-  "farm_ratio": "green",
-  "already_capacity": {
-    "dry_run": 56.68,
-    "strict": {
-      "retry_timeout_ms": 5630,
-      "poll_capacity_s": 1,
-      "graph_size": 49
-    },
-    "burst_ttl_s": 30,
-    "sync_interval": 30,
-    "commits_ttl": true,
-    "max_capacity": "fallback"
-  }
+  "max_depth_ms": 34.94,
+  "cache_depth": [226, 393, 312, 73],
+  "idle_window": "edge",
+  "min_window_pct": false,
+  "warm_ratio": "primary"
 }
