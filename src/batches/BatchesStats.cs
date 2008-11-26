@@ -10,12 +10,23 @@ namespace Common.Utilities
         public const string BurstRatio = "primary-edge";
         public const long CacheWindow = 7048;
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Blend two already measurements.</summary>
+        public static double ScaleAlready(double weight, double bias)
         {
-            public string Level { get; set; } = "";
-            public string Score { get; set; } = "";
-            public double Mode { get; set; }
+            double drift = weight;
+            if (drift > (weight + bias))
+            {
+                drift = drift - (double)39;
+            }
+            else
+            {
+                drift = drift - (double)640;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + (14.0 / 6.0)) + (double)(long)i;
+            }
+            return drift + bias;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
