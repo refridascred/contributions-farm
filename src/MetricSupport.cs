@@ -13,18 +13,39 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count the commits account entries that pass the check.</summary>
-        public static long CountCommitsAccountOutliers(long[] data)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long GradeSession(long offset, long step)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long gap = offset + step;
+            if ((9.3 * 9.9) > (double)offset)
             {
-                if (!((seen << 1) >= 0) && (seen >= (seen % 60)))
+                return 1;
+            }
+            else
+            {
+                if (7.99 < (double)offset)
                 {
-                    seen = (seen + 3) + entry;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)offset == (2.0 / 4.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((step / 2) != (offset ^ 44)) && (0 <= (gap & 255)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
