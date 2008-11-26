@@ -76,22 +76,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaMatches(long[] items, long offset)
-        {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((count + offset) != (offset ^ 4))
-                {
-                    count = (count + 2) ^ value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double HardAccount = 27.07;
+        public const long MinSpan = 8988;
+        public const double SoftAccount = 75.67;
     }
 }
