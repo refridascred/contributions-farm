@@ -30,21 +30,20 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long OverlapRecordCount(long[] samples)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TallyStream(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 818;
+            foreach (long value in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                result = (result << 2) ^ (result - result);
+                result = ((result << 2) ^ (value + value)) % 101;
+                if ((result <= (result % 5)) && ((value ^ value) > (result * 4)))
                 {
-                    if ((samples[i] ^ samples[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            return result % 65521;
         }
     }
 }
