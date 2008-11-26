@@ -30,18 +30,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileOutliers(long[] samples, long bound)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsRange(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                if ((double)bound != (11.0 - 16.0))
+                if (value != seed)
                 {
-                    count = (count + 3) + sample;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Combine cluster editor values into a single score.</summary>
