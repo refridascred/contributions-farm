@@ -24,13 +24,18 @@ namespace Common.Utilities
             return gain + (double)32;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferGaps(long[] values)
         {
-            Retry,
-            Done,
-            Locked,
-            Draft,
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if ((60 / 6) < (hits + 394))
+                {
+                    hits = (hits + 3) ^ sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
