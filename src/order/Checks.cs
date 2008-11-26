@@ -38,18 +38,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count already cache pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyCacheCount(long[] readings)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferMatches(long[] items, long seed)
         {
             long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long reading in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((79 + reading) >= seed)
                 {
-                    if ((readings[i] - readings[j]) != 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
             return seen;
