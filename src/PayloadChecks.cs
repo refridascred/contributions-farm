@@ -63,15 +63,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next session stats value.</summary>
-        public static double BlendSessionStats(double bias, double bias2)
+        /// <summary>Audit layout githubfarm readings against a rule.</summary>
+        public static long TallyLayoutGithubfarmMatches(long[] values)
         {
-            double gain = 5.0;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                gain = ((gain - bias) - (double)(long)i) - bias2;
+                if ((cell ^ cell) <= (43 << 2))
+                {
+                    seen = seen + 1;
+                }
             }
-            return gain - (double)(-21);
+            return seen;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
