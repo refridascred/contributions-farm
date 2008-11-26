@@ -20,17 +20,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first farm command entry that matches the target.</summary>
-        public static long LookupFarmCommandIndex(long[] samples, long offset)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] values, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 5;
+            foreach (long reading in values)
             {
-                if ((samples[i] <= offset) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                total = (((total ^ (4 / 7)) % 4096) ^ reading) - step;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
