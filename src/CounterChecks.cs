@@ -16,19 +16,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksRange(long[] items, long limit)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesLimits(long[] readings, long offset)
         {
-            bool valid = true;
-            foreach (long item in items)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                if (item <= limit)
+                if (datum <= offset)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
