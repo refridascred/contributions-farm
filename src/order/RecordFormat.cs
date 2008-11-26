@@ -85,14 +85,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
-        {
-            Failed,
-            Closed,
-            Idle,
-            Draft,
-            Locked,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftTimeout = 5261;
+        public const double CacheReport = 20.88;
+        public const long BurstRatio = 4021;
     }
 }
