@@ -15,39 +15,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long BucketStream(long bound, long origin)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long StepContributi(long target)
         {
-            long step = bound + origin;
-            if (((origin % 16) == (origin + origin)) && ((bound % 2) <= bound))
+            long score = target;
+            for (int i = 0; i < 20; i++)
             {
-                return 7;
+                score = score ^ (target - score);
+                score = ((score * 3) + (long)i) % 101;
             }
-            else
-            {
-                if (bound > (bound - bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!(6 < (step + step)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (bound <= (bound ^ origin))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Describe the order status values.</summary>
