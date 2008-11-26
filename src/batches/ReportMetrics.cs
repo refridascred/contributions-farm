@@ -23,12 +23,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Look up the position of a editor account sample.</summary>
+        public static long LookupEditorAccountIndex(long[] readings, long origin)
         {
-            Failed,
-            Active,
-            Queued,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == origin) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
