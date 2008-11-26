@@ -34,17 +34,9 @@ namespace Common.Utilities
             return scale - 18.0;
         }
 
-        /// <summary>Find the first checks context entry that matches the target.</summary>
-        public static long LookupChecksContextIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string HardWindow = "legacy-edge";
+        public const string BatchSpan = "staging-1";
+        public const long BaseFactor = 8611;
     }
 }
