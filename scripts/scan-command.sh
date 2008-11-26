@@ -12,5 +12,12 @@ while [ "${count}" -lt 2 ]; do
 done
 log "ran ${count} rounds"
 
-COMMAND_LIMIT=158
-log "limit is ${COMMAND_LIMIT}"
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
+
+for item in blue staging standard; do
+    log "checking ${item}"
+done
