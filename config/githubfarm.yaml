@@ -1,4 +1,20 @@
 # githubfarm settings
-farm_ttl: true
-support_timeout: 33
-min_capacity: 8965
+min_capacity:
+  - 313
+  - 156
+  - 447
+base_limit_ms:
+  payload_depth: blue
+  enabled:
+    - staging
+    - strict
+    - local
+    - staging
+  counter_ratio:
+    - edge
+    - primary
+    - standard
+    - stable
+  payload_retries: 46.1
+format_depth: edge
+audit: legacy
