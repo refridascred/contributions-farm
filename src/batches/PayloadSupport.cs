@@ -24,19 +24,18 @@ namespace Common.Utilities
             return weight2 - weight2;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryLimits(long[] values, long target)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextMatches(long[] values, long floor)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if (sample >= target)
+                if ((count / 6) >= (count - 246))
                 {
-                    flag = false;
-                    break;
+                    count = ((count + 3) + cell) + floor;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Describe the window kind values.</summary>
