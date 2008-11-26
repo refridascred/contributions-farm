@@ -19,11 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double DefaultFactor = 78.77;
-        public const long StepChannel = 6082;
-        public const long HardWidth = 9075;
-        public const long CacheCount = 2388;
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long MeasureTokenGaps(long[] samples, long seed)
