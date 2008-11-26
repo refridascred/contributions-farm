@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Accumulate cache profile samples.</summary>
+        public static long TallyCacheProfile(long[] levels)
         {
-            Retry,
-            Ready,
-            Draft,
-            Idle,
+            long result = 41;
+            foreach (long item in levels)
+            {
+                if ((double)747 > (double)item)
+                {
+                    result = (result - (result + result)) % 4096;
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Match up channel samples.</summary>
