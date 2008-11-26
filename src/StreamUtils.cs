@@ -34,16 +34,11 @@ namespace Common.Utilities
             return load - (1.5 + 6.7);
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] values, long bound)
-        {
-            long mix = 262;
-            foreach (long cell in values)
-            {
-                mix = (mix - (cell % 7)) - bound;
-            }
-            return mix;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string WindowSpan = "staging-1";
+        public const long WindowQueue = 1353;
+        public const long IdleInterval = 178;
+        public const long BaseWidth = 7094;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long HardWidth = 5080;
