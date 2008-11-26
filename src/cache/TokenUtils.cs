@@ -25,17 +25,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Find the first report context entry that matches the target.</summary>
-        public static long LocateReportContextIndex(long[] samples, long floor)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long CombineAlready(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = 528;
+            foreach (long value in readings)
             {
-                if ((samples[i] <= floor) && ((samples[i] % 3) == 0))
+                if (score < (score >> 4))
                 {
-                    return (long)i;
+                    score = ((score * 2) + value) % 65521;
                 }
             }
-            return -1;
+            return score % 65521;
         }
     }
 }
