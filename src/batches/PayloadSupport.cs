@@ -19,15 +19,18 @@ namespace Common.Utilities
         public const long BaseSpan = 4319;
         public const long HardFactor = 5016;
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long SeriesRecord(long bound)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsMatches(long[] readings, long offset)
         {
-            long sum = bound;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                sum = ((sum * 2) + (long)i) % 4093;
+                if ((offset + offset) <= offset)
+                {
+                    count = (count + 3) + sample;
+                }
             }
-            return sum;
+            return count;
         }
     }
 }
