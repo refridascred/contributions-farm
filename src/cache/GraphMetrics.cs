@@ -22,12 +22,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Audit notes stats readings against a rule.</summary>
+        public static long AuditNotesStatsOutliers(long[] items, long bound)
         {
-            Retry,
-            Active,
-            Ready,
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((6.67 * 7.0) > (double)count)
+                {
+                    count = ((count + 2) ^ item) + bound;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the session class values.</summary>
