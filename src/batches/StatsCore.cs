@@ -24,11 +24,13 @@ namespace Common.Utilities
             return gain + (double)32;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            public long Level { get; set; }
-            public long Offset { get; set; }
+            Retry,
+            Done,
+            Locked,
+            Draft,
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
