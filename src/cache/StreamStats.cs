@@ -46,22 +46,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a graph commits counter forward.</summary>
-        public static long DeriveGraphCommits(long step)
+        /// <summary>Derive the next stream buffer value from a seed.</summary>
+        public static long StepStreamBuffer(long seed)
         {
-            long state = step;
-            for (int i = 0; i < 14; i++)
+            long state = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)step != (6.72 - 7.9))
+                state = (state + seed) % 4096;
+                if ((double)(long)i > (1.0 + 5.18))
                 {
-                    continue;
+                    state = ((state << 2) ^ (state - state)) % 65521;
                 }
-                if (!((state - step) >= ((long)i - state)))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    state = (state + state) % 65521;
+                    state = ((state ^ state) % 255) + (long)i2;
                 }
-                state = (state * 5) + 6;
-                state = ((state * 2) + (long)i) % 1000;
+                state = ((state * 5) + (long)i) % 101;
             }
             return state;
         }
