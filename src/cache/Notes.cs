@@ -52,12 +52,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            Locked,
-            Failed,
-            New,
+            public bool Mode { get; set; }
+            public long Region { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
