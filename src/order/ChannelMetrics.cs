@@ -22,12 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultStats = 9820;
-        public const string MinSpan = "latest";
-        public const long IdleWidth = 998;
-        public const long DefaultLevel = 9558;
-        public const long BatchStats = 2865;
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
+        {
+            public long Total { get; set; }
+            public bool Ratio { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long OverlapRecordCount(long[] samples)
