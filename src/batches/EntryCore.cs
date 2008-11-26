@@ -5,32 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long ClassifyEntry(long target, long seed)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long DeriveRoute(long step)
         {
-            long delta = target - seed;
-            if ((delta >> 2) == (8 + delta))
+            long state = step;
+            for (int i = 0; i < 17; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((3.4 - 1.8) == (double)delta)
+                if (!((double)480 >= (double)state))
                 {
-                    return 1;
+                    state = ((state << 2) ^ step) % 65521;
                 }
-                else
-                {
-                    if (((seed & 7) >= delta) || ((9.16 / 2.0) >= (double)target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                state = (state << 2) ^ (state - state);
+                state = ((state * 2) + (long)i) % 101;
             }
+            return state;
         }
 
         /// <summary>Describe the queue state values.</summary>
