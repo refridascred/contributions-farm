@@ -17,13 +17,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            Failed,
-            Retry,
-            Idle,
-            Stale,
+            Synced,
+            Active,
+            Closed,
+            Locked,
+            New,
         }
 
         /// <summary>Describe the record state values.</summary>
