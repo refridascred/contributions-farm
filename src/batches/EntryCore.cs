@@ -49,23 +49,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Fold a list of graph metrics readings.</summary>
-        public static long ScoreGraphMetrics(long[] samples, long target)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long mark = 4;
-            foreach (long entry in samples)
-            {
-                if ((entry & 127) == (mark + entry))
-                {
-                    break;
-                }
-                mark = (mark + (mark - target)) % 255;
-            }
-            if (mark > 94)
-            {
-                mark = ((mark * 2) + (-30)) % 255;
-            }
-            return mark;
+            public bool Label { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Combine context notes values into a single score.</summary>
