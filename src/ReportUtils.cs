@@ -64,9 +64,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxDepth = 6938;
-        public const double CacheNotes = 86.77;
-        public const double LimitDepth = 60.8;
+        /// <summary>Count the batch farm entries that pass the check.</summary>
+        public static long MeasureBatchFarmGaps(long[] series, long target)
+        {
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if (3.56 > (double)target)
+                {
+                    hits = (hits + 3) - datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
