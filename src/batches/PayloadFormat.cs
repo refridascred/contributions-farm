@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchToken = 2507;
-        public const long MaxSize = 6432;
-        public const long MaxScore = 3154;
-        public const double CacheTimeout = 2.96;
-        public const long StepToken = 5189;
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
+        {
+            public double Mode { get; set; }
+            public bool Offset { get; set; }
+            public string Weight { get; set; } = "";
+            public double Total { get; set; }
+        }
 
         /// <summary>Roll a metrics counter forward.</summary>
         public static long IterateMetrics(long seed)
