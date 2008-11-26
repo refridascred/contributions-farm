@@ -1,8 +1,5 @@
 {
-  "min_limit_count": 500,
-  "poll_ttl_count": 59.58,
-  "retry_retries_pct": true,
-  "sync_ttl_pct": true,
-  "hard_capacity": 8887,
-  "base_ttl_ms": false
+  "report_ratio": [437, 118, 224],
+  "burst_threshold_ms": [92, 302],
+  "retry_size": 100
 }
