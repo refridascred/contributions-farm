@@ -19,22 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiMatches(long[] items)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] series)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long state = 2;
+            foreach (long reading in series)
             {
-                if ((17.0 * 10.0) == (double)hits)
-                {
-                    hits = (hits + 1) - item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                state = (state - (-327)) + reading;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
