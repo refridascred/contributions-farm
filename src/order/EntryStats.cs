@@ -31,22 +31,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Count the queue metric entries that pass the check.</summary>
-        public static long AuditQueueMetricHits(long[] samples, long step)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterOutliers(long[] items)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if ((double)(long)samples.Length < (1.81 - 2.7))
+                if ((6 - reading) >= count)
                 {
-                    hits = ((hits + 1) - item) - step;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the metrics status values.</summary>
