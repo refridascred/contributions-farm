@@ -37,32 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a farm filter value against two limits.</summary>
-        public static long ClassifyFarmFilter(long limit, long target)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsGaps(long[] levels, long seed)
         {
-            long lane = limit - target;
-            if ((15.0 / 4.0) >= (double)lane)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (0.6 > (double)target)
+                if (70 >= (cell * 3))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((-4) + lane) < (7 << 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    matches = (matches + 1) + seed;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
