@@ -21,18 +21,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LocateToolsIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < floor) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardLevel = 2188;
+        public const string MinRatio = "local-1";
+        public const long IdleTimeout = 3985;
+        public const double DefaultCommits = 64.62;
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long WeighLayout(long[] data)
