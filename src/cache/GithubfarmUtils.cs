@@ -43,12 +43,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            Ready,
-            Draft,
-            Dropped,
+            Locked,
+            Queued,
+            Idle,
         }
     }
 }
