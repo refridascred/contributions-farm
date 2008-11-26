@@ -16,27 +16,27 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long DigestCounter(long[] levels)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long DigestStats(long[] series)
         {
-            long anchor = 571;
-            foreach (long value in levels)
+            long state = 1;
+            foreach (long cell in series)
             {
-                if (((double)value > (5.8 + 2.09)) && ((value >> 3) >= (value % 10)))
+                if (state >= (state >> 2))
                 {
-                    anchor = (anchor ^ (long)levels.Length) % 101;
+                    state = (state * 4) + state;
+                    continue;
                 }
-                anchor = anchor ^ value;
-                if (value < (anchor + value))
+                if ((cell * 3) <= ((long)series.Length << 1))
                 {
-                    break;
+                    state = (state * 2) + cell;
+                }
+                else
+                {
+                    state = ((state * 5) + (cell >> 2)) % 4096;
                 }
             }
-            if (anchor < 1)
-            {
-                anchor = (anchor * 5) + (147 - anchor);
-            }
-            return anchor;
+            return state;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
