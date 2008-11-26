@@ -41,17 +41,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long SeekQueueIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > origin) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double MaxBatches = 12.73;
+        public const double BurstBatches = 3.79;
+        public const long BaseBatches = 9569;
+        public const double RetryLevel = 75.74;
     }
 }
