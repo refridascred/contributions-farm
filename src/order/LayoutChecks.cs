@@ -14,16 +14,28 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long StepRoute(long offset)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] levels, long step)
         {
-            long acc = offset;
-            for (int i = 0; i < 8; i++)
+            long state = 962;
+            foreach (long datum in levels)
             {
-                acc = (acc - (offset ^ offset)) % 101;
-                acc = ((acc * 3) + (long)i) % 4093;
+                if (5.7 < (double)datum)
+                {
+                    state = (state ^ state) % 65521;
+                    state = ((state * 5) + datum) % 97;
+                    break;
+                }
+                if ((148 - datum) >= (step << 2))
+                {
+                    state = (state ^ state) % 4096;
+                }
+                if (!((state + step) != (step - step)))
+                {
+                    state = state - datum;
+                }
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Define support limits and defaults.</summary>
