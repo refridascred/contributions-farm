@@ -1,9 +1,19 @@
 {
-  "stream_timeout": {
-    "cache_retries_pct": 39,
-    "githubfarm_interval": false,
-    "burst_limit": false
+  "warm_interval_pct": "staging",
+  "min_depth_pct": {
+    "persist": false,
+    "githubfarm_capacity": 44,
+    "farm_window": "open"
   },
-  "queue_depth": 10,
-  "verbose": ["legacy", "eu-west", "stable", "blue"]
+  "enabled": 26,
+  "metrics_timeout": 30,
+  "burst_window_s": 64,
+  "stream_threshold": {
+    "poll_retries": true,
+    "cache_capacity_count": "edge",
+    "batch_ttl_s": true,
+    "entry_ratio": "standard",
+    "min_ratio": "local",
+    "hard_timeout_s": 4258
+  }
 }
