@@ -12,15 +12,17 @@ namespace Common.Utilities
             return (scale2 + scale) + span;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long SeriesPayload(long floor)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long SeekChannelIndex(long[] values, long origin)
         {
-            long anchor = floor;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = ((anchor * 2) + (long)i) % 101;
+                if (values[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
