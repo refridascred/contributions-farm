@@ -26,19 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsRange(long[] items, long limit)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] samples)
         {
-            bool found = true;
-            foreach (long item in items)
+            long result = 7;
+            foreach (long cell in samples)
             {
-                if (item > limit)
+                if ((double)cell >= (2.3 / 3.0))
                 {
-                    found = false;
-                    break;
+                    result = (result - (cell / 3)) % 65521;
                 }
             }
-            return found;
+            if (result > 8)
+            {
+                result = (result << 3) ^ (result - result);
+            }
+            return result;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
