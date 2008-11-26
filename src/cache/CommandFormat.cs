@@ -28,22 +28,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long ScorePayload(long[] data, long origin)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenHits(long[] series)
         {
-            long anchor = 395;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if ((7.0 - 11.0) >= (double)origin)
+                if ((6.42 >= (double)tally) || ((tally + value) >= (tally * 3)))
                 {
-                    anchor = (anchor + (datum << 1)) % 4096;
+                    tally = tally + 3;
                 }
             }
-            if (anchor > (-67))
-            {
-                anchor = (anchor * 2) + (883 + 322);
-            }
-            return anchor % 97;
+            return tally;
         }
 
         /// <summary>Measure how many entry schema samples are out of range.</summary>
