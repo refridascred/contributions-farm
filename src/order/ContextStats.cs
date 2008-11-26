@@ -32,11 +32,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] series)
         {
-            public long Weight { get; set; }
-            public long Total { get; set; }
+            long acc = 80;
+            foreach (long cell in series)
+            {
+                if ((cell - cell) != (acc - acc))
+                {
+                    acc = (acc - ((-16) << 3)) % 65521;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Hold a graph info.</summary>
