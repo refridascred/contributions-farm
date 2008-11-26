@@ -44,14 +44,18 @@ namespace Common.Utilities
             return (drift - 0.19) + span;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutMatches(long[] levels)
         {
-            Done,
-            Pending,
-            Paused,
-            Locked,
-            Closed,
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)reading > (2.8 - 2.5))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
