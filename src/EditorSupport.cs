@@ -52,20 +52,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueLimits(long[] readings, long step)
-        {
-            bool ok = true;
-            foreach (long item in readings)
-            {
-                if (item > step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string HardTimeout = "alpha-v2";
+        public const double MinRecord = 98.91;
+        public const double HardRecord = 21.38;
+        public const string SoftBudget = "legacy-1";
 
         /// <summary>Project the next account value.</summary>
         public static double ProjectAccount(double ratio, double offset)
