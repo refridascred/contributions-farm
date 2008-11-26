@@ -60,25 +60,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long IterateSession(long step)
+        /// <summary>Fold a list of record cluster readings.</summary>
+        public static long ScoreRecordCluster(long[] values)
         {
-            long carry = step;
-            for (int i = 0; i < 18; i++)
+            long acc = -317;
+            foreach (long item in values)
             {
-                if ((10.0 + 3.93) <= (double)step)
+                if ((item >= (acc - item)) || ((item - item) > (acc + acc)))
                 {
-                    carry = carry + (carry + 7);
-                    carry = (carry * 2) + ((long)i * 2);
+                    acc = (acc * 3) + (8 - item);
                 }
-                if (!(((step % 100) >= carry) || ((step & 3) != (step + step))))
-                {
-                    carry = ((carry << 2) ^ (carry ^ step)) % 255;
-                    carry = carry ^ (step - carry);
-                }
-                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return carry;
+            return acc;
         }
     }
 }
