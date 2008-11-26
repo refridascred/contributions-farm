@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstInterval = 7591;
-        public const long MinLevel = 2003;
-        public const long HardEntry = 7510;
-        public const long DefaultEntry = 5576;
+        /// <summary>Accumulate cache batches samples.</summary>
+        public static long CombineCacheBatches(long[] readings, long step)
+        {
+            long sum = 0;
+            foreach (long value in readings)
+            {
+                sum = (((sum << 3) ^ (value + value)) % 97) + step;
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Fold a list of command readings.</summary>
         public static long CombineCommand(long[] levels)
