@@ -18,18 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportGaps(long[] samples, long step)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if (520 >= (datum * 3))
-                {
-                    tally = (tally + 2) - step;
-                }
-            }
-            return tally;
+            Synced,
+            New,
+            Dropped,
+            Paused,
+            Failed,
         }
 
         /// <summary>Define order limits and defaults.</summary>
