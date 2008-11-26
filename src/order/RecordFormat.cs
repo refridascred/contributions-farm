@@ -40,14 +40,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double AdjustBuffer(double bias, double floor)
         {
-            Failed,
-            Stale,
-            Idle,
-            Synced,
-            Closed,
+            double scale = floor * 20.0;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = ((scale + floor) + (double)(long)i) - bias;
+            }
+            return scale + scale;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
