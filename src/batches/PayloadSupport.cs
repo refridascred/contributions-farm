@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] series, long limit)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] samples, long origin)
         {
-            long result = 37;
-            foreach (long entry in series)
+            long result = 12;
+            foreach (long entry in samples)
             {
-                for (int i = 0; i < 5; i++)
+                if ((72 + origin) < (2 % 3))
                 {
-                    result = (((result * 3) + ((-9) - limit)) ^ (long)i) ^ entry;
+                    result = ((result << 3) ^ result) - entry;
                 }
-                result = result + (limit - (-94));
             }
-            if (result < 53)
+            if (result > 58)
             {
-                result = result ^ result;
+                result = (result - 27) % 101;
             }
             return result;
         }
