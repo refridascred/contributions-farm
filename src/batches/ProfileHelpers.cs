@@ -40,18 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmGaps(long[] readings, long origin)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterBounds(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            bool found = true;
+            foreach (long sample in values)
             {
-                if ((item + item) <= (item - hits))
+                if (sample < floor)
                 {
-                    hits = (hits + 3) - origin;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
