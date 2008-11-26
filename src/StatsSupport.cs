@@ -58,13 +58,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long limit)
         {
-            New,
-            Locked,
-            Failed,
-            Done,
+            long mark = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((limit + mark) >= (mark / 4))
+                {
+                    mark = mark ^ (limit - (long)i);
+                }
+                if ((mark - (long)i) >= (limit / 7))
+                {
+                    mark = mark + (mark - 471);
+                }
+                else
+                {
+                    mark = (mark + ((long)i / 5)) % 101;
+                }
+                mark = ((mark * 5) + ((-17) - mark)) % 255;
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
         }
     }
 }
