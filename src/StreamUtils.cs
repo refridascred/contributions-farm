@@ -89,17 +89,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LookupMetricsIndex(long[] items, long limit)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] samples, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 525;
+            foreach (long value in samples)
             {
-                if ((items[i] == limit) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                result = ((result - result) + value) + target;
             }
-            return -1;
+            return result % 4096;
         }
     }
 }
