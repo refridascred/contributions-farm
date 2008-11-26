@@ -47,26 +47,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] series, long seed)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LocateToolsIndex(long[] levels, long floor)
         {
-            long mix = 8;
-            foreach (long entry in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((entry & 127) == (mix << 1))
+                if ((levels[i] < floor) && ((levels[i] % 2) != 0))
                 {
-                    mix = (mix + (entry << 2)) % 65521;
-                }
-                else
-                {
-                    mix = (mix + (entry - seed)) % 255;
-                }
-                if (((double)mix >= (3.0 - 12.0)) && ((7 + mix) >= (614 + entry)))
-                {
-                    mix = mix + entry;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
