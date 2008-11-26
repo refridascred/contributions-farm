@@ -20,13 +20,13 @@ namespace Common.Utilities
             return weight - scale;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            Closed,
-            Pending,
-            Synced,
-            Retry,
+            public long Limit { get; set; }
+            public long Count { get; set; }
+            public long Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
