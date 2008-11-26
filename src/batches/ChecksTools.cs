@@ -39,11 +39,22 @@ namespace Common.Utilities
             return rate + (7.7 - rate);
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterMatches(long[] data)
         {
-            public string Offset { get; set; } = "";
-            public bool Level { get; set; }
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((69 * 2) >= (tally * 3))
+                {
+                    tally = (tally + 3) + datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
