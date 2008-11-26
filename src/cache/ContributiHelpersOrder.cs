@@ -27,14 +27,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderRange(long[] samples, long offset)
         {
-            Dropped,
-            Done,
-            Synced,
-            Locked,
-            Closed,
+            bool ready = true;
+            foreach (long datum in samples)
+            {
+                if (datum > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
