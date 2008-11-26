@@ -28,19 +28,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the editor format series from a seed.</summary>
-        public static long StepEditorFormat(long step)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long DeriveFarm(long step)
         {
-            long state = step;
-            for (int i = 0; i < 22; i++)
+            long mark = step;
+            for (int i = 0; i < 23; i++)
             {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    state = (((state * 3) + state) % 4096) ^ (long)i2;
-                }
-                state = ((state * 2) + (long)i) % 1000;
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Hold a stream stats.</summary>
