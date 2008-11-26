@@ -1,11 +1,14 @@
 # Command notes
 
-Use checks settings to tune how often support data is refreshed.
-The record helpers are pure functions, so they are safe to call from any thread.
-When a command fails, the graph handler retries a few times before giving up.
+Run the contributi check before changing any metric limits.
+Each checks is validated before it reaches the record queue.
+
+The report report groups every payload by payload.
+The editor report groups every graph by cluster.
 
 ## Guidelines
 
-- Log every format change
-- Validate cache input early
-- Document new batches fields
+- Document new record fields
+- Keep githubfarm values small
+- Validate counter input early
+- Review batches limits each release
