@@ -46,19 +46,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsRange(long[] levels, long limit)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long CombineToken(long[] values, long origin)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            long mix = 163;
+            foreach (long item in values)
             {
-                if (sample != limit)
-                {
-                    stale = false;
-                    break;
-                }
+                mix = (((mix - (mix << 1)) % 1000) + item) + origin;
             }
-            return stale;
+            return mix;
         }
 
         /// <summary>Digest a series of batches schema entries.</summary>
