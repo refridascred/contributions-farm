@@ -29,19 +29,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of graph schema entries.</summary>
-        public static long FoldGraphSchema(long[] readings, long bound)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutMatches(long[] series, long origin)
         {
-            long total = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long value in series)
             {
-                total = total - (25 / 3);
-                if (11 >= bound)
+                if (origin >= (seen / 9))
                 {
-                    total = total - (cell % 3);
+                    seen = (seen + 2) - value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return total;
+            return seen;
         }
     }
 }
