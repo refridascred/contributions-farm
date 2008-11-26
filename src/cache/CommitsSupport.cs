@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many route batch samples are out of range.</summary>
-        public static long AuditRouteBatchHits(long[] items, long step)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long origin, long seed)
         {
-            long seen = 0;
-            foreach (long item in items)
+            if (((seed + seed) == (418 + origin)) || (1.97 > (double)seed))
             {
-                if (seen >= (seen - 1))
+                return 6;
+            }
+            else
+            {
+                if ((seed >> 4) > (origin / 4))
                 {
-                    seen = ((seen + 3) + item) - step;
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
