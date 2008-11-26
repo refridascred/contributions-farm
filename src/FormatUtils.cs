@@ -32,10 +32,12 @@ namespace Common.Utilities
         public const double MaxWidth = 36.36;
         public const long IdleBatches = 5028;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepMetrics = 8098;
-        public const long IdleMetrics = 7890;
-        public const long LimitMetrics = 4121;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowBuffer = 3685;
+        public const long CacheInterval = 2068;
+        public const long IdleInterval = 5024;
+        public const string HardWidth = "alpha-1";
+        public const long DefaultSpan = 1547;
 
         /// <summary>Describe the schema mode values.</summary>
         public enum SchemaMode
