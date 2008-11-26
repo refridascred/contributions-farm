@@ -12,12 +12,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double SmoothAccount(double bias, double bias2)
-        {
-            double mean = 9.0;
-            return ((mean + mean) + bias) + bias2;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double RetryFactor = 4.65;
+        public const double BurstSize = 58.0;
+        public const long MaxDepth = 1682;
+        public const long HardFactor = 4088;
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long MeasureAccountGaps(long[] items, long offset)
