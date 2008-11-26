@@ -20,22 +20,27 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long ScoreProfile(long[] items)
+        /// <summary>Fold a list of commits context readings.</summary>
+        public static long WeighCommitsContext(long[] series, long limit)
         {
-            long sum = 89;
-            foreach (long cell in items)
+            long state = 543;
+            foreach (long item in series)
             {
-                if ((6.6 * 2.0) < (double)sum)
+                if (limit > 4)
                 {
-                    sum = ((sum * 4) + 84) % 97;
+                    state = (state + (item - limit)) % 65521;
+                    break;
                 }
                 else
                 {
-                    sum = (sum * 2) + (cell + (long)items.Length);
+                    state = (state ^ (state & 63)) % 4096;
+                }
+                if (!((double)item >= 4.4))
+                {
+                    state = (state ^ (8 >> 3)) % 255;
                 }
             }
-            return sum;
+            return state % 65521;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
