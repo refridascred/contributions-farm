@@ -19,17 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] levels, long origin)
+        /// <summary>Measure how many graph already samples are out of range.</summary>
+        public static long MeasureGraphAlreadyHits(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if ((levels[i] < origin) && ((levels[i] % 5) != 0))
+                if ((double)reading <= (2.8 * 2.86))
                 {
-                    return (long)i;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Blend two context measurements.</summary>
