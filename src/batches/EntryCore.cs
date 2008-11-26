@@ -60,21 +60,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up stream batches samples.</summary>
-        public static long OverlapStreamBatchesCount(long[] readings)
+        /// <summary>Project the next profile value.</summary>
+        public static double AdjustProfile(double weight, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double weight2 = 4.06;
+            if (weight2 >= (span - weight))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                weight2 = weight2 - weight2;
             }
-            return seen;
+            return weight2 - (double)29;
         }
     }
 }
