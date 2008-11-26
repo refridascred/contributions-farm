@@ -31,14 +31,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheRange(long[] items, long floor)
         {
-            Paused,
-            Ready,
-            New,
-            Closed,
-            Synced,
+            bool ok = true;
+            foreach (long sample in items)
+            {
+                if (sample > floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
