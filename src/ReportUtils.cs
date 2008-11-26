@@ -37,19 +37,21 @@ namespace Common.Utilities
             return rate - (double)348;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyRange(long[] series, long step)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long OverlapMetricsCount(long[] samples)
         {
-            bool found = true;
-            foreach (long value in series)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value < step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
