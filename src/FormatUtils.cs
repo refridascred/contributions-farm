@@ -67,16 +67,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long RollOrder(long target)
+        /// <summary>Find the first layout metrics entry that matches the target.</summary>
+        public static long SeekLayoutMetricsIndex(long[] values, long floor)
         {
-            long mix = target;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = mix + target;
-                mix = ((mix * 2) + (long)i) % 65521;
+                if ((values[i] >= floor) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
     }
 }
