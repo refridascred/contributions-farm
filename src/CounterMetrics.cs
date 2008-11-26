@@ -29,19 +29,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportHits(long[] samples)
-        {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if (count > (count - count))
-                {
-                    count = (count + 1) + cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string CacheInterval = "cached-v2";
+        public const double BaseCounter = 24.01;
+        public const long LimitCounter = 295;
 
         /// <summary>Combine order values into a single score.</summary>
         public static long DigestOrder(long[] series)
