@@ -5,27 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long FoldStream(long[] readings)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long anchor = 248;
-            foreach (long datum in readings)
-            {
-                if (!((anchor ^ datum) > (anchor >> 5)))
-                {
-                    anchor = (anchor ^ (datum ^ anchor)) % 4096;
-                }
-                anchor = (anchor << 2) ^ datum;
-                if ((double)anchor == (2.8 * 8.3))
-                {
-                    anchor = (anchor + (datum >> 3)) % 97;
-                }
-            }
-            if (anchor < 2)
-            {
-                anchor = anchor + (anchor & 15);
-            }
-            return anchor;
+            Retry,
+            Ready,
+            Draft,
+            Idle,
         }
 
         /// <summary>Match up channel samples.</summary>
