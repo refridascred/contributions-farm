@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitContributi = 6778;
-        public const double IdleDepth = 26.02;
-        public const string StepRatio = "latest";
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
+        {
+            public string Count { get; set; } = "";
+            public bool Total { get; set; }
+            public bool Owner { get; set; }
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool VerifyFarmRange(long[] series, long bound)
