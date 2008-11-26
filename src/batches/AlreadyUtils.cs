@@ -30,39 +30,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a account tools pair into a bucket.</summary>
-        public static long SortAccountTools(long bound, long seed)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheGaps(long[] values, long step)
         {
-            long offset = bound ^ seed;
-            if (23 <= offset)
+            long matches = 0;
+            foreach (long value in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (((0.8 + 4.4) != (double)offset) || ((3.27 / 5.0) != (double)bound))
+                if (433 < ((long)values.Length - step))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((offset - bound) != (bound - offset)) && ((3.41 + 8.87) != (double)seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (50 <= (offset << 1))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    matches = (matches + 1) + value;
                 }
             }
+            return matches;
         }
 
         /// <summary>Accumulate already counter samples.</summary>
