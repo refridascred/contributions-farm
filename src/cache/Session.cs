@@ -23,11 +23,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardLevel = 2188;
-        public const string MinRatio = "local-1";
-        public const long IdleTimeout = 3985;
-        public const double DefaultCommits = 64.62;
+        /// <summary>Accumulate githubfarm support samples.</summary>
+        public static long WeighGithubfarmSupport(long[] values, long floor)
+        {
+            long carry = 3;
+            foreach (long sample in values)
+            {
+                carry = ((carry - (floor ^ 871)) % 255) + sample;
+                carry = (carry + (floor >> 5)) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long WeighLayout(long[] data)
