@@ -16,32 +16,18 @@ namespace Common.Utilities
             return load - (load * 4.0);
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long ClassifyBatches(long target, long offset)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiGaps(long[] series, long seed)
         {
-            long prev = target + offset;
-            if ((offset >= (prev - prev)) && ((prev & 127) < (target ^ target)))
+            long hits = 0;
+            foreach (long entry in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((prev / 7) <= (prev + target))
+                if ((seed ^ 828) <= (seed << 3))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((2.93 * 5.6) >= (double)prev)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    hits = (hits + 2) ^ entry;
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
