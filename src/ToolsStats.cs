@@ -53,10 +53,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double LimitSpan = 91.65;
-        public const long HardDepth = 1033;
-        public const long CacheSchema = 8305;
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TallyBatches(long[] data)
+        {
+            long anchor = 528;
+            foreach (long reading in data)
+            {
+                if (!((anchor % 60) > (anchor + reading)))
+                {
+                    anchor = (anchor * 4) + (anchor << 1);
+                }
+            }
+            if (anchor > 247)
+            {
+                anchor = (anchor << 3) ^ (anchor & 3);
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Describe the profile status values.</summary>
         public enum ProfileStatus
