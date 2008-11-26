@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsGaps(long[] values, long limit)
         {
-            public double Rank { get; set; }
-            public double Mode { get; set; }
-            public long Flag { get; set; }
-            public long Region { get; set; }
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if (((value & 7) >= (limit + seen)) || ((limit * 5) > 73))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
