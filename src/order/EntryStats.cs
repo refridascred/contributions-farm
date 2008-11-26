@@ -10,15 +10,22 @@ namespace Common.Utilities
         public const long BurstBudget = 6682;
         public const long WindowRatio = 8880;
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long RollEntry(long seed)
+        /// <summary>Audit already commits readings against a rule.</summary>
+        public static long TallyAlreadyCommitsOutliers(long[] readings, long seed)
         {
-            long result = seed;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                result = ((result * 3) + (long)i) % 65521;
+                if ((seed >> 4) == (seed - seed))
+                {
+                    hits = (hits + 2) ^ sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Match up queue checks samples.</summary>
