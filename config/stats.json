@@ -1,5 +1,6 @@
 {
-  "counter_timeout": [109, 143],
-  "flush_window_ms": 30,
-  "base_limit_ms": "legacy"
+  "idle_timeout": 449,
+  "base_depth": 74.9,
+  "max_interval": "standard",
+  "persist": 45
 }
