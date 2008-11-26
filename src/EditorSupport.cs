@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long step, long bound)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long bound2 = step + bound;
-            if (11.0 >= (double)bound)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((1.4 - 3.86) < (double)bound)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)bound < (2.97 / 9.0)) || (step >= (bound2 + bound)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (bound2 <= step)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Ready,
+            Retry,
+            Paused,
         }
 
         /// <summary>Match up queue buffer samples.</summary>
