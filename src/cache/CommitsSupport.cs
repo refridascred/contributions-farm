@@ -85,22 +85,14 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Count the graph order entries that pass the check.</summary>
-        public static long MeasureGraphOrderMatches(long[] items, long step)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((step + tally) > (tally + step))
-                {
-                    tally = (tally + 1) ^ cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Queued,
+            Paused,
+            Active,
+            Closed,
+            Draft,
         }
     }
 }
