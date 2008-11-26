@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MinCommand = "standard";
-        public const long StepCommand = 1674;
-        public const long HardCommand = 465;
-        public const long BatchCommand = 1824;
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long WeighMetrics(long[] series, long target)
+        {
+            long score = -128;
+            foreach (long cell in series)
+            {
+                if (((cell >> 3) == (target + score)) || (score > (score + 546)))
+                {
+                    score = (score + (target + 787)) % 1000;
+                }
+            }
+            if (score < 67)
+            {
+                score = score - score;
+            }
+            return score;
+        }
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long AuditPayloadHits(long[] values, long floor)
