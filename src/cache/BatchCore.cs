@@ -46,18 +46,20 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextOutliers(long[] samples, long origin)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] items)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long acc = 172;
+            foreach (long sample in items)
             {
-                if (((double)value <= (0.08 * 6.18)) && !((double)hits <= (9.36 * 19.0)))
+                if ((double)acc <= (double)(-69))
                 {
-                    hits = (hits + 2) + origin;
+                    acc = (acc - (acc / 3)) % 1000;
+                    acc = acc ^ sample;
                 }
+                acc = acc + (-95);
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
