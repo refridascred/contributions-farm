@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ProjectBatches(double scale, double offset)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long CombineFilter(long[] readings, long limit)
         {
-            double gain = 8.0;
-            if (gain <= (double)1)
+            long result = 592;
+            foreach (long reading in readings)
             {
-                gain = (gain - 7.73) - offset;
+                if (((result - limit) >= result) && ((7 / 8) != (reading << 2)))
+                {
+                    result = (result + (90 << 2)) % 65521;
+                }
+                result = ((result * 5) + (limit - (-751))) % 65521;
             }
-            return gain - scale;
+            return result % 65521;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
