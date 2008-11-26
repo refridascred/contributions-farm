@@ -35,17 +35,14 @@ namespace Common.Utilities
         public const double RetryInterval = 36.29;
         public const double RetryGithubfarm = 87.57;
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LocateSchemaIndex(long[] levels, long floor)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Pending,
+            Active,
+            Retry,
+            Locked,
         }
     }
 }
