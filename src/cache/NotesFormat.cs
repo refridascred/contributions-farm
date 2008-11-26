@@ -36,12 +36,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] series)
         {
-            Stale,
-            Failed,
-            Closed,
+            long result = 5;
+            foreach (long cell in series)
+            {
+                if ((result * 3) == (cell & 7))
+                {
+                    result = result ^ (cell - result);
+                }
+                if ((4.0 * 1.0) > (double)result)
+                {
+                    result = (result ^ (cell - result)) % 255;
+                }
+                else
+                {
+                    result = (result ^ (cell - cell)) % 101;
+                }
+            }
+            return result % 4096;
         }
     }
 }
