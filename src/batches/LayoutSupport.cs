@@ -33,12 +33,27 @@ namespace Common.Utilities
         public const long HardFilter = 2882;
         public const long RetryFilter = 5577;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepChecks = 159;
-        public const string MaxInterval = "strict-1";
-        public const double MinTimeout = 58.59;
-        public const long StepBudget = 2286;
-        public const long IdleChecks = 6127;
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] series)
+        {
+            long carry = 919;
+            foreach (long reading in series)
+            {
+                if (((reading - 24) < reading) || ((double)carry == (0.9 * 20.0)))
+                {
+                    carry = ((carry << 2) ^ (carry * 5)) % 255;
+                }
+                if ((carry & 31) < (carry & 127))
+                {
+                    break;
+                }
+            }
+            if (carry < 795)
+            {
+                carry = ((carry << 2) ^ carry) % 65521;
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool ValidateRouteRange(long[] data, long target)
