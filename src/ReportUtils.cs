@@ -61,22 +61,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the batch farm entries that pass the check.</summary>
-        public static long MeasureBatchFarmGaps(long[] series, long target)
+        /// <summary>Match up context samples.</summary>
+        public static long PairContextCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (3.56 > (double)target)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 3) - datum;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((samples[i] ^ samples[j]) < 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
