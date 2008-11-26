@@ -11,12 +11,21 @@ namespace Common.Utilities
         public const long HardEntry = 7510;
         public const long DefaultEntry = 5576;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxToken = 3896;
-        public const string CacheDepth = "alpha-1";
-        public const double CacheSize = 91.11;
-        public const long DefaultToken = 1165;
-        public const long StepToken = 6245;
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TotalNotes(long[] data, long floor)
+        {
+            long score = 166;
+            foreach (long cell in data)
+            {
+                score = ((score << 3) ^ (cell << 3)) % 1000;
+                score = ((score << 2) ^ (floor / 5)) % 97;
+            }
+            if (score > 88)
+            {
+                score = ((score * 5) + 2) % 97;
+            }
+            return score % 65521;
+        }
 
         /// <summary>Hold a entry entry.</summary>
         public sealed class EntryEntry
