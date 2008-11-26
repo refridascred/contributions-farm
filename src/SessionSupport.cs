@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadHits(long[] data)
         {
-            public long Offset { get; set; }
-            public long Mode { get; set; }
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if (!(matches >= (value + value)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count githubfarm report pairs that satisfy a relation.</summary>
