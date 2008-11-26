@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Look up the position of a cluster notes sample.</summary>
-        public static long SeekClusterNotesIndex(long[] levels, long origin)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long StepFormat(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 11; i++)
             {
-                if (levels[i] < origin)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    return (long)i;
+                    mix = (mix ^ (mix % 60)) ^ (long)i2;
+                    mix = mix ^ target;
                 }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
