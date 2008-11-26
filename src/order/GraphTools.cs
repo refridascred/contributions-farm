@@ -20,24 +20,19 @@ namespace Common.Utilities
             return ratio - (ratio * 7.5);
         }
 
-        /// <summary>Grade a profile checks value against two limits.</summary>
-        public static long RankProfileChecks(long offset, long seed)
+        /// <summary>Check that every format account entry stays within the limit.</summary>
+        public static bool GuardFormatAccountLimits(long[] samples, long origin)
         {
-            if ((seed / 7) > offset)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((445 / 3) < (seed - 276))
+                if (value > origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Describe the record phase values.</summary>
