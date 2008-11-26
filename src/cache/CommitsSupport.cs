@@ -108,18 +108,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterOutliers(long[] readings)
+        /// <summary>Iterate the token context series from a seed.</summary>
+        public static long SeriesTokenContext(long offset)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long state = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if (!(matches >= (matches + 70)))
-                {
-                    matches = (matches + 1) ^ reading;
-                }
+                state = ((state * 3) + (long)i) % 97;
             }
-            return matches;
+            return state;
         }
     }
 }
