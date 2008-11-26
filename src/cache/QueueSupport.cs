@@ -27,13 +27,11 @@ namespace Common.Utilities
         public const long MaxMetrics = 3684;
         public const long HardMetrics = 6896;
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
-        {
-            public double Owner { get; set; }
-            public bool Label { get; set; }
-            public double Offset { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleRatio = 2589;
+        public const long MinInterval = 6295;
+        public const long IdleSize = 7914;
+        public const long HardProfile = 3049;
+        public const long LimitProfile = 4501;
     }
 }
