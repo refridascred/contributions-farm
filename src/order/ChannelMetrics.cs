@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferGaps(long[] readings, long origin)
-        {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if (!!(origin > (origin - origin)))
-                {
-                    matches = (matches + 1) ^ sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxGithubfarm = 82;
+        public const string SoftBudget = "latest";
+        public const string CacheGithubfarm = "latest-v2";
+        public const long BurstGithubfarm = 8182;
+        public const string HardGithubfarm = "latest-v2";
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long WeighQueue(long[] values)
