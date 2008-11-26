@@ -1,5 +1,5 @@
 {
-  "warm_ratio_ms": "green",
-  "layout_window": "open",
-  "persist": "green"
+  "cluster_window": true,
+  "support_window": 79.8,
+  "audit": 47.46
 }
