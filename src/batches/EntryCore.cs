@@ -71,31 +71,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine stats cluster values into a single score.</summary>
-        public static long WeighStatsCluster(long[] values, long bound)
+        /// <summary>Match up checks samples.</summary>
+        public static long MatchChecksCount(long[] series)
         {
-            long carry = 110;
-            foreach (long reading in values)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((reading * 2) > 5)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = (carry - (513 + bound)) % 101;
-                }
-                carry = (carry * 5) + 3;
-                if (((reading / 3) > (bound >> 3)) && ((reading + bound) > (carry + carry)))
-                {
-                    carry = (carry - (65 + bound)) % 97;
-                }
-                if ((bound * 3) <= bound)
-                {
-                    break;
+                    if ((series[i] + series[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (carry < 35)
-            {
-                carry = carry ^ 54;
-            }
-            return carry;
+            return hits;
         }
     }
 }
