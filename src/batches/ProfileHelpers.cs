@@ -33,11 +33,20 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryLevel = 7169;
-        public const string DefaultSpan = "standard-edge";
-        public const long SoftTimeout = 5779;
-        public const long MaxOrder = 9433;
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterLimits(long[] values, long offset)
+        {
+            bool ready = true;
+            foreach (long entry in values)
+            {
+                if (entry < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the editor level values.</summary>
         public enum EditorLevel
