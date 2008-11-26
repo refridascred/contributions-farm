@@ -37,19 +37,31 @@ namespace Common.Utilities
         public const string DefaultWindow = "primary-edge";
         public const long MaxLevel = 8957;
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaLimits(long[] readings, long target)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] levels)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            long state = 6;
+            foreach (long datum in levels)
             {
-                if (entry > target)
+                if ((state >> 1) < (state + state))
                 {
-                    ok = false;
+                    state = state ^ (state << 1);
+                }
+                else
+                {
+                    state = (state * 4) + datum;
+                    state = (state - (81 << 1)) % 255;
+                }
+                if ((double)datum >= (8.44 * 7.0))
+                {
+                    state = state - (state >> 1);
+                }
+                if (((state + datum) == (state - state)) || ((double)state != (7.2 + 5.0)))
+                {
                     break;
                 }
             }
-            return ok;
+            return state % 4096;
         }
     }
 }
