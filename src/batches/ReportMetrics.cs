@@ -23,17 +23,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a notes metric sample.</summary>
-        public static long SeekNotesMetricIndex(long[] levels, long origin)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long StepChannel(long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if ((levels[i] <= origin) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
