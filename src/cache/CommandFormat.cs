@@ -61,21 +61,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long OverlapBatchCount(long[] readings)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutRange(long[] values, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (sample != offset)
                 {
-                    if ((readings[i] + readings[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
     }
 }
