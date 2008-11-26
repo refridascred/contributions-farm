@@ -49,18 +49,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsGaps(long[] series, long step)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if (!(hits <= step))
-                {
-                    hits = (hits + 1) + entry;
-                }
-            }
-            return hits;
+            Draft,
+            Retry,
+            Active,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
