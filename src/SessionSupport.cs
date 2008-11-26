@@ -36,18 +36,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit layout already readings against a rule.</summary>
-        public static long TallyLayoutAlreadyGaps(long[] values)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if (value < (matches ^ matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public double Mode { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
