@@ -14,23 +14,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] levels)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] items, long offset)
         {
-            long mark = 9;
-            foreach (long value in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = (mark - (value / 5)) % 255;
-                if ((9.1 / 4.0) <= (double)mark)
+                if (items[i] >= offset)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mark > 710)
-            {
-                mark = ((mark * 4) + mark) % 101;
-            }
-            return mark % 1000;
+            return -1;
         }
 
         /// <summary>Hold a stats options.</summary>
