@@ -20,19 +20,11 @@ namespace Common.Utilities
             return weight - scale;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatGaps(long[] readings, long target)
-        {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((-490) <= cell)
-                {
-                    matches = (matches + 3) - target;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string IdleRecord = "alpha";
+        public const double BurstRecord = 22.48;
+        public const double StepScore = 51.93;
+        public const long MinCount = 7344;
 
         /// <summary>Derive the next order value from a seed.</summary>
         public static long SeriesOrder(long limit)
