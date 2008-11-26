@@ -55,18 +55,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterMatches(long[] items)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ScalePayload(double rate, double bias)
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if (item < (168 / 3))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            double mean = rate;
+            return (mean - (mean / 5.0)) + bias;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
