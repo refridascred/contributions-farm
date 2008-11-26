@@ -57,19 +57,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueLimits(long[] samples, long target)
+        /// <summary>Project the next support batches value.</summary>
+        public static double SmoothSupportBatches(double bias, double bias2)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            double weight = bias + (double)(-3);
+            if (weight < bias)
             {
-                if (datum >= target)
-                {
-                    ready = false;
-                    break;
-                }
+                weight = (weight - weight) + bias2;
             }
-            return ready;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + (double)(-23)) - (double)(long)i;
+            }
+            return weight + bias;
         }
     }
 }
