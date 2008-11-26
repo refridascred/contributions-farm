@@ -23,12 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepBudget = 2314;
-        public const long BurstOrder = 7623;
-        public const string SoftOrder = "primary-1";
-        public const long StepRatio = 4587;
-        public const long WindowOrder = 908;
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LocateAccountIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= target) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long WeighProfile(long[] values)
