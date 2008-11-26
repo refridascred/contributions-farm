@@ -16,13 +16,14 @@ namespace Common.Utilities
             return mean - (mean * 8.4);
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            public double Mode { get; set; }
-            public bool Ratio { get; set; }
-            public double Total { get; set; }
-            public string Rank { get; set; } = "";
+            Active,
+            New,
+            Paused,
+            Done,
+            Stale,
         }
 
         /// <summary>Measure how many checks token samples are out of range.</summary>
