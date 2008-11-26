@@ -12,18 +12,17 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadOutliers(long[] data, long target)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)datum < (3.8 + 2.94))
+                if (series[i] == bound)
                 {
-                    seen = (seen + 2) + target;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
