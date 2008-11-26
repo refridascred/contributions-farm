@@ -12,14 +12,22 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportMatches(long[] levels, long limit)
         {
-            Failed,
-            Active,
-            Locked,
-            Draft,
-            Closed,
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((8 + limit) < (limit - entry))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
