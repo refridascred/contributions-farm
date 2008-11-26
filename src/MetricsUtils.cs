@@ -22,12 +22,33 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepQueue = 4871;
-        public const long LimitQueue = 1148;
-        public const long WindowQueue = 288;
-        public const double MaxSize = 39.4;
-        public const long BatchDepth = 3613;
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long ClassifyBatches(long target, long offset)
+        {
+            long prev = target + offset;
+            if ((offset >= (prev - prev)) && ((prev & 127) < (target ^ target)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((prev / 7) <= (prev + target))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((2.93 * 5.6) >= (double)prev)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first context entry that matches the target.</summary>
         public static long SeekContextIndex(long[] series, long step)
