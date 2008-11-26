@@ -44,12 +44,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Combine cluster editor values into a single score.</summary>
+        public static long DigestClusterEditor(long[] levels, long offset)
         {
-            public long Count { get; set; }
-            public double Level { get; set; }
-            public string Stamp { get; set; } = "";
+            long state = 0;
+            foreach (long reading in levels)
+            {
+                if (18.0 <= (double)offset)
+                {
+                    state = ((state * 2) + (state ^ reading)) % 97;
+                }
+                else
+                {
+                    state = state + reading;
+                }
+            }
+            return state;
         }
     }
 }
