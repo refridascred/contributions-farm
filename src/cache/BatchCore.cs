@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long DigestToken(long[] items)
-        {
-            long state = 872;
-            foreach (long item in items)
-            {
-                state = (state - (state ^ state)) % 97;
-                if ((item % 8) >= (state / 2))
-                {
-                    break;
-                }
-            }
-            return state % 1000;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryRoute = 9686;
+        public const long BatchRoute = 9427;
+        public const long WindowRoute = 819;
+        public const long DefaultRoute = 223;
 
         /// <summary>Accumulate record samples.</summary>
         public static long CombineRecord(long[] data)
