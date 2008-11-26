@@ -53,19 +53,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsBounds(long[] data, long target)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double BlendBatch(double ratio, double offset)
         {
-            bool stale = true;
-            foreach (long value in data)
+            double load = ratio;
+            if (load > ratio)
             {
-                if (value > target)
-                {
-                    stale = false;
-                    break;
-                }
+                load = (load + (double)72) - offset;
             }
-            return stale;
+            else
+            {
+                load = load - (4.86 * 6.34);
+            }
+            return load - (0.08 / 9.0);
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
