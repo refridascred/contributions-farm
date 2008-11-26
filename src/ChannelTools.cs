@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double IdleBatches = 78.84;
-        public const long WindowDepth = 7177;
-        public const long BatchBatches = 8063;
-        public const long LimitBatches = 969;
-        public const long HardScore = 2428;
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
+        {
+            Failed,
+            Idle,
+            Done,
+        }
 
         /// <summary>Iterate the entry series from a seed.</summary>
         public static long RollEntry(long limit)
