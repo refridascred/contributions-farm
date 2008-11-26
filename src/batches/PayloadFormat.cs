@@ -35,10 +35,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseRatio = 7157;
-        public const string HardInterval = "latest-edge";
-        public const long SoftScore = 6384;
-        public const long IdleAlready = 6033;
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
+        {
+            Paused,
+            Dropped,
+            Stale,
+            Idle,
+            Locked,
+        }
     }
 }
