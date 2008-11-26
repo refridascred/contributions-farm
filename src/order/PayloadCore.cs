@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long StepGraph(long floor)
         {
-            Failed,
-            Done,
-            Idle,
-            Stale,
+            long state = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                long cur = floor;
+                if ((long)i > (cur ^ floor))
+                {
+                    continue;
+                }
+                else
+                {
+                    state = (state + ((long)i & 31)) % 97;
+                }
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Blend two buffer payload measurements.</summary>
