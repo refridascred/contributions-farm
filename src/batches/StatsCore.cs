@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Roll a already counter forward.</summary>
-        public static long DeriveAlready(long step)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long PairSupportCount(long[] data)
         {
-            long result = step;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                result = ((result * 2) + (long)i) % 1000;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Roll a entry support counter forward.</summary>
