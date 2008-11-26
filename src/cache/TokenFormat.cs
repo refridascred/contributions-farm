@@ -25,11 +25,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxAccount = 7060;
-        public const string LimitAccount = "local";
-        public const long RetryTimeout = 1407;
-        public const long BatchAccount = 5272;
-        public const string CacheInterval = "staging-v2";
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long PairContributiCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
