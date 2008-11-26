@@ -18,18 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferGaps(long[] values)
+        /// <summary>Roll a entry support counter forward.</summary>
+        public static long SeriesEntrySupport(long limit)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long mix = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if ((60 / 6) < (hits + 394))
-                {
-                    hits = (hits + 3) ^ sample;
-                }
+                mix = (mix - (mix * 3)) % 101;
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
