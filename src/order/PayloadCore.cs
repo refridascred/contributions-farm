@@ -44,14 +44,32 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long seed, long offset)
         {
-            Retry,
-            Closed,
-            Failed,
-            Done,
-            Idle,
+            long slot = seed ^ offset;
+            if ((offset + slot) <= (seed - slot))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((seed / 5) <= (seed - 62)) && ((offset - 795) > seed))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((offset % 5) != (slot + seed)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
