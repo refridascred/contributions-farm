@@ -31,16 +31,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long limit)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] data)
         {
-            long mix = limit;
-            for (int i = 0; i < 17; i++)
+            long total = 9;
+            foreach (long entry in data)
             {
-                mix = mix ^ (80 >> 2);
-                mix = ((mix * 4) + (long)i) % 101;
+                total = ((total << 2) ^ (entry - total)) % 1000;
             }
-            return mix;
+            return total % 97;
         }
     }
 }
