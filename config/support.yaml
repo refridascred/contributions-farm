@@ -1,5 +1,4 @@
 # support settings
-flush_ratio: 8
-enabled: 30
-default_ratio_s: legacy
-sync_delay_count: 1024
+default_delay_ms: standard
+tools_size: true
+hard_timeout_count: false
