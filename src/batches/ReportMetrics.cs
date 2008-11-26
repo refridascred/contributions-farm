@@ -14,22 +14,20 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Measure how many cache batches samples are out of range.</summary>
-        public static long CountCacheBatchesMatches(long[] data)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long state = 89;
+            foreach (long sample in series)
             {
-                if ((38 - item) == (seen - item))
+                state = ((state * 3) + (sample / 7)) % 4096;
+                if ((53 + sample) == (207 + sample))
                 {
-                    seen = seen + 2;
+                    break;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                state = (state + (step * 4)) % 1000;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Grade a record report value against two limits.</summary>
