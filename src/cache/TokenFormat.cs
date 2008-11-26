@@ -36,12 +36,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionMatches(long[] samples)
         {
-            public double Flag { get; set; }
-            public long Count { get; set; }
-            public double Offset { get; set; }
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if (((double)datum != (double)9) || (count < (count >> 5)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
