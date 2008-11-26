@@ -27,21 +27,17 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long OverlapAlreadyCount(long[] readings)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LocateReportIndex(long[] series, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (series[i] >= floor)
                 {
-                    if ((readings[i] + readings[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
