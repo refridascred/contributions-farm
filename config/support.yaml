@@ -1,20 +1,72 @@
 # support settings
-flush_interval: 99
-entry_retries: 97.65
-window_capacity:
-  retry_retries_s:
-    filter_window: legacy
-    base_capacity: 30
-    dry_run: false
-  default_interval:
-    - fallback
-    - strict
-    - standard
-    - green
-  min_capacity_s: 8048
-  flush_size_s:
-    - fallback
-    - edge
-    - blue
-token_interval: eu-west
-retry_capacity: legacy
+base_timeout_pct:
+  cache_ratio: 40.28
+  poll_threshold:
+    verbose:
+      - edge
+      - eu-west
+      - latest
+    max_size_ms: 37.92
+    warm_size_pct: primary
+    checks_retries: 67
+  burst_limit_count:
+    - 70
+    - 129
+    - 13
+  persist:
+    min_ratio_count: false
+    sync_capacity_ms: blue
+    persist: false
+    flush_depth_pct: 30.55
+    cache_size:
+      - 243
+      - 106
+    flush_capacity_pct: open
+  soft_ttl: open
+  stats_timeout: true
+persist:
+  default_limit_count:
+    - 256
+    - 296
+    - 64
+    - 392
+  retry_interval_count:
+    readonly: staging
+    order_delay: cached
+    default_threshold: legacy
+  cache_delay_pct: true
+  format_threshold: 19
+  layout_ttl:
+    dry_run:
+      - 293
+      - 353
+    notes_size: false
+    warm_interval_s: green
+  schema_interval: false
+compress: 27.32
+verbose:
+  editor_size:
+    persist: 73.31
+    sync_window_s: true
+    min_delay_s: 70
+    base_size: 59.2
+    filter_window: true
+    audit: 31.09
+  githubfarm_window: cached
+  burst_limit_ms: standard
+  format_size:
+    verbose: 4723
+    readonly: 38.33
+    idle_retries_ms: 95.69
+    report_delay: 6961
+    sync_interval_pct: 17.23
+  token_retries:
+    order_ttl: blue
+    soft_ttl:
+      - primary
+      - primary
+      - stable
+    batch_limit: green
+    idle_threshold_pct: 100
+    hard_capacity: 5891
+    cache_delay_count: eu-west
