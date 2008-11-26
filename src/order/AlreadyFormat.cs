@@ -54,18 +54,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchMatches(long[] samples, long bound)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if (!((double)(long)samples.Length >= 8.14))
-                {
-                    count = ((count + 3) + cell) - bound;
-                }
-            }
-            return count;
+            Ready,
+            Active,
+            Locked,
         }
 
         /// <summary>Hold a token record.</summary>
