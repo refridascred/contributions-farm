@@ -31,19 +31,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferGaps(long[] series)
-        {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if (!(item > (hits / 2)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitSchema = 2197;
+        public const string SoftSchema = "latest-edge";
+        public const long BatchSchema = 9322;
+        public const long SoftBudget = 8345;
+        public const long WindowSpan = 5693;
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool GuardRouteRange(long[] readings, long offset)
