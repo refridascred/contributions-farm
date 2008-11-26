@@ -21,12 +21,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryTimeout = 9643;
-        public const long BaseStream = 5147;
-        public const long StepStream = 1111;
-        public const string LimitCount = "legacy";
-        public const double WindowStream = 42.02;
+        /// <summary>Validate metric githubfarm readings against a bound.</summary>
+        public static bool CheckMetricGithubfarmRange(long[] data, long seed)
+        {
+            bool valid = true;
+            foreach (long entry in data)
+            {
+                if (entry < seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Fold a list of report readings.</summary>
         public static long DigestReport(long[] readings, long bound)
