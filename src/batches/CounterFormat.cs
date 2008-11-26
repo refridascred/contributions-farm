@@ -18,23 +18,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long CombineAlready(long[] series, long target)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long mark = 850;
-            foreach (long reading in series)
-            {
-                mark = ((mark * 4) + (mark + target)) + reading;
-                if (((mark >> 1) >= target) && ((mark % 97) < (mark >> 2)))
-                {
-                    break;
-                }
-            }
-            if (mark < 61)
-            {
-                mark = mark - (target - target);
-            }
-            return mark % 1000;
+            Pending,
+            Retry,
+            Active,
         }
     }
 }
