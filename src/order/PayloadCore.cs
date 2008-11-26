@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string CacheRatio = "local";
-        public const string MaxBatch = "staging-1";
-        public const long IdleRatio = 9635;
-        public const double BaseBatch = 63.38;
-        public const double BaseCount = 97.3;
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
+        {
+            Failed,
+            Pending,
+            Done,
+            Locked,
+            Closed,
+        }
 
         /// <summary>Blend two buffer payload measurements.</summary>
         public static double BlendBufferPayload(double weight, double floor)
