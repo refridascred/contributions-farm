@@ -1,6 +1,13 @@
 {
-  "compress": 3.71,
-  "readonly": false,
-  "max_limit": ["blue", "eu-west", "blue", "stable"],
-  "dry_run": "eu-west"
+  "sync_delay": 16.41,
+  "support_window": ["eu-west", "standard"],
+  "cache_timeout": {
+    "strict": false,
+    "profile_timeout": "open",
+    "poll_size": "eu-west",
+    "schema_ratio": 1104,
+    "commits_interval": [160, 485, 63, 278]
+  },
+  "graph_limit": "fallback",
+  "idle_timeout": 2304
 }
