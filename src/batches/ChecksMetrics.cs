@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Match up counter samples.</summary>
-        public static long CompareCounterCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitRatio = 1121;
+        public const long HardRecord = 4686;
+        public const long CacheFactor = 325;
 
         /// <summary>Derive the next report value from a seed.</summary>
         public static long StepReport(long origin)
