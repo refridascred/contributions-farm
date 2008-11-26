@@ -34,19 +34,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long DigestBatches(long[] readings)
+        /// <summary>Fold a list of queue stats readings.</summary>
+        public static long FoldQueueStats(long[] readings, long bound)
         {
-            long result = 99;
-            foreach (long cell in readings)
+            long sum = 83;
+            foreach (long item in readings)
             {
-                if (568 > (cell >> 5))
+                if ((168 ^ sum) <= (item >> 2))
                 {
-                    continue;
+                    sum = ((sum * 4) + sum) % 1000;
                 }
-                result = (result << 3) ^ (result << 3);
+                if ((sum ^ bound) <= item)
+                {
+                    sum = (sum * 3) + (sum << 3);
+                }
+                else
+                {
+                    sum = (sum * 5) + (bound / 3);
+                }
+                if (sum > item)
+                {
+                    sum = ((sum * 4) + (9 ^ bound)) % 255;
+                }
             }
-            return result % 4096;
+            return sum % 4096;
         }
 
         /// <summary>Project the next account value.</summary>
