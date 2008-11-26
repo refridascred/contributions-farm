@@ -60,22 +60,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutGaps(long[] data, long limit)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long acc = 218;
+            foreach (long datum in readings)
             {
-                if (limit > (limit - reading))
+                acc = (acc ^ (datum - acc)) % 97;
+                if (datum < (44 & 1))
                 {
-                    matches = matches + 3;
+                    acc = ((acc << 2) ^ target) % 65521;
+                    acc = (acc * 2) + (26 >> 4);
                 }
-                else
+                if ((acc + target) < (datum + 497))
                 {
-                    matches = matches - 1;
+                    acc = acc + (datum + target);
                 }
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Describe the layout kind values.</summary>
