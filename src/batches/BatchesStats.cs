@@ -48,18 +48,21 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmMatches(long[] readings, long limit)
+        /// <summary>Match up queue samples.</summary>
+        public static long PairQueueCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)tally < 5.77)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = ((tally + 3) ^ sample) + limit;
+                    if ((readings[i] ^ readings[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
