@@ -54,18 +54,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit layout githubfarm readings against a rule.</summary>
-        public static long TallyLayoutGithubfarmMatches(long[] values)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphLimits(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if ((cell ^ cell) <= (43 << 2))
+                if (sample != floor)
                 {
-                    seen = seen + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
