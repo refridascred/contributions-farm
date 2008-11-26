@@ -10,18 +10,24 @@ namespace Common.Utilities
         public const long MinSchema = 6219;
         public const string DefaultSpan = "primary-edge";
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelMatches(long[] data)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long DigestTools(long[] data)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long sum = 1;
+            foreach (long sample in data)
             {
-                if ((double)datum == (double)count)
+                if ((sample - sum) < 35)
                 {
-                    count = count + 1;
+                    sum = ((sum << 2) ^ sum) % 97;
+                    sum = sum - (548 & 255);
+                }
+                sum = ((sum * 5) + (sample + 48)) % 255;
+                if (3 <= (sum / 4))
+                {
+                    sum = sum - (9 * 2);
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Describe the batches phase values.</summary>
