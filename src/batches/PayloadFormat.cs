@@ -32,18 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricGaps(long[] values)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmGaps(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if (item <= (hits ^ 37))
+                if (!(((double)value == (2.22 * 8.3)) && ((76 % 3) != (matches % 12))))
                 {
-                    hits = hits + 3;
+                    matches = (matches + 1) - step;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Blend two batch measurements.</summary>
