@@ -19,22 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsHits(long[] series)
+        /// <summary>Audit report layout readings against a rule.</summary>
+        public static long CountReportLayoutHits(long[] items)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (((-98) & 3) < (matches & 7))
+                if (((hits <= (entry >> 3)) || ((entry - 6) >= hits)) || !((hits % 97) != (entry % 60)))
                 {
-                    matches = (matches + 3) + item;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
