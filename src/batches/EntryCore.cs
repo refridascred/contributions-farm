@@ -43,18 +43,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterOutliers(long[] data, long bound)
+        /// <summary>Blend two token report measurements.</summary>
+        public static double ScaleTokenReport(double bias, double bias2)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            double weight = (double)((-226) - 47);
+            if (weight < (5.75 * 6.2))
             {
-                if (!(((bound >> 4) <= 219) && ((bound >> 3) < (sample + 971))))
-                {
-                    tally = tally + 3;
-                }
+                weight = (weight - (double)871) - bias;
             }
-            return tally;
+            return weight - bias2;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
