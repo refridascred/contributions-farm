@@ -97,9 +97,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchToken = 3599;
-        public const long SoftToken = 5145;
-        public const long IdleCount = 5358;
+        /// <summary>Grade a counter order value against two limits.</summary>
+        public static long BucketCounterOrder(long step, long origin)
+        {
+            long offset = step + origin;
+            if ((double)origin != (double)offset)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((8.0 <= (double)step) && ((double)origin >= 2.77))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin ^ origin) == (5 + 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((80 + step) == (offset << 2)) || ((step + offset) >= (step + 270)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
