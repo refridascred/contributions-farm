@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string CacheFarm = "alpha-1";
-        public const long BurstFarm = 9616;
-        public const double MinFarm = 68.85;
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] samples)
+        {
+            long anchor = 29;
+            foreach (long sample in samples)
+            {
+                if ((anchor >> 4) >= sample)
+                {
+                    anchor = (anchor + (anchor + sample)) % 97;
+                }
+            }
+            if (anchor < 0)
+            {
+                anchor = anchor ^ (anchor + 989);
+            }
+            return anchor;
+        }
 
         /// <summary>Look up the position of a notes metric sample.</summary>
         public static long SeekNotesMetricIndex(long[] levels, long origin)
