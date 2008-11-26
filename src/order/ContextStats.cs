@@ -10,21 +10,18 @@ namespace Common.Utilities
         public const double IdleBudget = 61.2;
         public const long SoftSchema = 5308;
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long OverlapAccountCount(long[] series)
+        /// <summary>Audit githubfarm metrics readings against a rule.</summary>
+        public static long MeasureGithubfarmMetricsHits(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((((-1) <= seen) && ((double)cell <= (1.19 * 18.0))) || ((13.0 + 3.91) == (double)seen))
                 {
-                    if ((series[i] - series[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
