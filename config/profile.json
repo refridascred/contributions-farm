@@ -1,6 +1,12 @@
 {
-  "poll_window_ms": true,
-  "window_interval": "strict",
-  "warm_depth_pct": false,
-  "strict": [139, 367, 80]
+  "flush_limit_pct": [167, 47, 439, 52],
+  "base_interval_s": {
+    "notes_window": 97,
+    "poll_capacity": "legacy",
+    "schema_timeout": 44,
+    "compress": "primary",
+    "audit": "open"
+  },
+  "compress": 67,
+  "audit": 6115
 }
