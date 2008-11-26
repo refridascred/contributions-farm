@@ -23,17 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LocateAccountIndex(long[] series, long target)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double BlendGithubfarm(double bias, double bias2)
         {
-            for (int i = 0; i < series.Length; i++)
+            double gain = 17.0;
+            if (gain > 0.94)
             {
-                if ((series[i] <= target) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                gain = (gain + gain) + bias;
             }
-            return -1;
+            else
+            {
+                gain = gain + bias2;
+            }
+            return gain - (double)13;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
