@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterHits(long[] values, long bound)
-        {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((datum ^ count) == (bound / 2))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstGithubfarm = 5015;
+        public const long WindowBudget = 5978;
+        public const long StepLevel = 1353;
+        public const long CacheTimeout = 8326;
 
         /// <summary>Describe the githubfarm kind values.</summary>
         public enum GithubfarmKind
