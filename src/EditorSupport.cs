@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryLimits(long[] readings, long step)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            bool ok = true;
-            foreach (long sample in readings)
-            {
-                if (sample != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Size { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
