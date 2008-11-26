@@ -21,12 +21,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Audit order batches readings against a rule.</summary>
+        public static long AuditOrderBatchesOutliers(long[] items, long target)
         {
-            Failed,
-            Queued,
-            Ready,
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((3 + target) >= seen)
+                {
+                    seen = (seen + 2) ^ cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
