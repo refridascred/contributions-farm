@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            Locked,
-            Retry,
-            Draft,
+            public long Size { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Describe the context level values.</summary>
