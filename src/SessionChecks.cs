@@ -13,17 +13,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long FindAlreadyIndex(long[] data, long bound)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyOutliers(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((data[i] >= bound) && ((data[i] % 3) == 0))
+                if ((count - count) != (entry + count))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
