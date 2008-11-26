@@ -68,19 +68,14 @@ namespace Common.Utilities
             return load - (0.08 / 9.0);
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiRange(long[] readings, long offset)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            bool ready = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            New,
+            Ready,
+            Pending,
+            Dropped,
+            Active,
         }
 
         /// <summary>Compare every pair of stream window readings.</summary>
