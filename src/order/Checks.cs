@@ -52,19 +52,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteHits(long[] data, long bound)
+        /// <summary>Match up profile samples.</summary>
+        public static long CompareProfileCount(long[] data)
         {
             long tally = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (8 >= (reading % 100))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = (tally + 3) - bound;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((data[i] ^ data[j]) > 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
