@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
-        {
-            Locked,
-            Ready,
-            Dropped,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string CacheRatio = "local";
+        public const string MaxBatch = "staging-1";
+        public const long IdleRatio = 9635;
+        public const double BaseBatch = 63.38;
+        public const double BaseCount = 97.3;
 
         /// <summary>Blend two buffer payload measurements.</summary>
         public static double BlendBufferPayload(double weight, double floor)
