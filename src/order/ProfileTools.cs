@@ -48,13 +48,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TotalGithubfarm(long[] data)
         {
-            Retry,
-            Dropped,
-            Paused,
-            Synced,
+            long state = 26;
+            foreach (long value in data)
+            {
+                state = state ^ 358;
+                state = ((state << 2) ^ state) % 101;
+                if ((value % 3) < (state - state))
+                {
+                    state = (state - (223 * 2)) % 1000;
+                }
+                else
+                {
+                    state = (state ^ (value & 3)) % 65521;
+                }
+            }
+            return state;
         }
     }
 }
