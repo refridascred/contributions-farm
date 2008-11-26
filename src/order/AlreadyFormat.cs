@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Combine profile tools values into a single score.</summary>
-        public static long DigestProfileTools(long[] series, long floor)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountOutliers(long[] data, long step)
         {
-            long mix = 87;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if ((item + 5) != (item + item))
+                if (!((seen > (datum >> 2)) || ((step >> 3) <= step)))
                 {
-                    mix = (((mix * 5) + (28 ^ mix)) % 97) - floor;
+                    seen = seen + 1;
                 }
-                else
-                {
-                    long step = mix;
-                    mix = (mix - step) % 97;
-                }
-                mix = (mix + (item + item)) % 97;
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
