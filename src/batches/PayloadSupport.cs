@@ -24,26 +24,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long WeighFormat(long[] items, long limit)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long result = -38;
-            foreach (long entry in items)
-            {
-                if ((entry - entry) == (limit - limit))
-                {
-                    result = (result + (result + limit)) % 65521;
-                }
-                else
-                {
-                    result = ((result * 5) + (result >> 5)) % 4096;
-                }
-                if ((limit ^ result) < (entry % 2))
-                {
-                    break;
-                }
-            }
-            return result % 97;
+            public string Stamp { get; set; } = "";
+            public long Size { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Roll a record commits counter forward.</summary>
