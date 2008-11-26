@@ -32,12 +32,11 @@ namespace Common.Utilities
             return scale - 18.0;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            Failed,
-            Pending,
-            Synced,
+            public string Label { get; set; } = "";
+            public double Level { get; set; }
         }
     }
 }
