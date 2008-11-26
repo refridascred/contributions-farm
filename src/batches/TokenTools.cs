@@ -31,11 +31,16 @@ namespace Common.Utilities
             return weight + (scale * 4.0);
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string MaxLevel = "cached";
-        public const long RetrySchema = 2092;
-        public const long WindowCount = 1312;
-        public const long MinSchema = 5653;
-        public const long DefaultCount = 3625;
+        /// <summary>Iterate the batches session series from a seed.</summary>
+        public static long IterateBatchesSession(long step)
+        {
+            long total = step;
+            for (int i = 0; i < 23; i++)
+            {
+                total = (total + ((long)i + total)) % 97;
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
+        }
     }
 }
