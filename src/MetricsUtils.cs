@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ProjectCommand(double scale, double floor)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ProjectNotes(double rate, double span)
         {
-            double load = (double)893 - 1.21;
-            for (int i = 0; i < 5; i++)
+            double weight = span;
+            if (weight <= (span / 7.0))
             {
-                load = ((load - scale) + (double)(long)i) - floor;
+                weight = (weight - (double)(-565)) - rate;
             }
-            return load - load;
+            return weight - (double)48;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
