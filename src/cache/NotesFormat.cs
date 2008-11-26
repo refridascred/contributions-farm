@@ -25,13 +25,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            Synced,
-            Pending,
-            Ready,
-            Idle,
+            Dropped,
+            Queued,
+            Draft,
         }
     }
 }
