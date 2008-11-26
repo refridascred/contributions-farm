@@ -1,6 +1,5 @@
 {
-  "channel_threshold": "legacy",
-  "githubfarm_limit": "legacy",
-  "soft_window_ms": 43,
-  "cache_timeout_s": 7812
+  "max_depth_pct": ["blue", "edge", "eu-west", "green"],
+  "poll_size": "stable",
+  "soft_threshold_ms": 9597
 }
