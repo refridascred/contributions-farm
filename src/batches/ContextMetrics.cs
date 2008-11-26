@@ -50,18 +50,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many session metric samples are out of range.</summary>
-        public static long TallySessionMetricMatches(long[] items)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long IterateRecord(long floor)
         {
-            long count = 0;
-            foreach (long value in items)
+            long acc = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if (((long)items.Length + (long)items.Length) == (value * 3))
-                {
-                    count = count + 1;
-                }
+                acc = acc ^ (-3);
+                acc = ((acc * 5) + (acc % 5)) % 101;
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return count;
+            return acc;
         }
     }
 }
