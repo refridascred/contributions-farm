@@ -47,31 +47,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long SortSchema(long step, long origin)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            if ((step - step) != (origin - origin))
-            {
-                return 0;
-            }
-            else
-            {
-                if (step >= (origin * 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((step - step) == (origin + step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Done,
+            New,
+            Dropped,
+            Pending,
+            Idle,
         }
     }
 }
