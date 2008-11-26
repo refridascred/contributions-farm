@@ -1,5 +1,8 @@
 {
-  "max_depth_pct": ["blue", "edge", "eu-west", "green"],
-  "poll_size": "stable",
-  "soft_threshold_ms": 9597
+  "min_limit_count": 500,
+  "poll_ttl_count": 59.58,
+  "retry_retries_pct": true,
+  "sync_ttl_pct": true,
+  "hard_capacity": 8887,
+  "base_ttl_ms": false
 }
