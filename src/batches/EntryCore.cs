@@ -57,12 +57,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxTimeout = 576;
-        public const double WindowFactor = 56.02;
-        public const double StepCount = 0.32;
-        public const long IdleBudget = 5448;
-        public const string DefaultSchema = "primary-1";
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiRange(long[] levels, long limit)
+        {
+            bool valid = true;
+            foreach (long reading in levels)
+            {
+                if (reading > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Iterate the session series from a seed.</summary>
         public static long IterateSession(long step)
