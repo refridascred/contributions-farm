@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] series, long origin)
         {
-            public bool Flag { get; set; }
-            public double Stamp { get; set; }
+            long result = 5;
+            foreach (long datum in series)
+            {
+                if ((origin & 255) < origin)
+                {
+                    result = ((result << 2) ^ (origin + result)) + datum;
+                }
+                if ((double)0 >= (double)origin)
+                {
+                    break;
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Hold a metric info.</summary>
