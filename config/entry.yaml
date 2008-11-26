@@ -1,22 +1,7 @@
 # entry settings
-audit:
-  verbose: 29.88
-  contributi_threshold:
-    cache_threshold_ms: 93.53
-    retry_threshold: fallback
-    idle_depth: legacy
-    order_threshold: 30
-  max_capacity_pct: true
-sync_limit_s:
-  - edge
-  - stable
-retry_ratio: staging
-notes_delay:
-  hard_ratio_s:
-    - local
-    - staging
-    - staging
-  base_delay_pct: eu-west
-  cluster_ratio: primary
-batch_ttl: 30
-sync_timeout_ms: 100
+metrics_interval: false
+report_ratio:
+  - 107
+  - 466
+  - 167
+burst_depth: 23.89
