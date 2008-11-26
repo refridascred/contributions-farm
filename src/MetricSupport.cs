@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
-        {
-            Queued,
-            Synced,
-            Ready,
-            Dropped,
-            New,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinQueue = 2380;
+        public const long IdleWidth = 7407;
+        public const long StepQueue = 3414;
+        public const long LimitQueue = 9566;
 
         /// <summary>Describe the payload kind values.</summary>
         public enum PayloadKind
