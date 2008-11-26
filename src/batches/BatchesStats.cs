@@ -29,11 +29,24 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftBatches = 7819;
-        public const long BatchBudget = 1982;
-        public const long BatchTimeout = 114;
-        public const string BurstBatches = "local-v2";
+        /// <summary>Blend two farm measurements.</summary>
+        public static double BlendFarm(double bias, double span)
+        {
+            double drift = bias;
+            if (drift >= span)
+            {
+                drift = drift + bias;
+            }
+            else
+            {
+                drift = drift - (double)75;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - (drift * 8.0)) + (double)(long)i;
+            }
+            return drift - drift;
+        }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long CountFarmMatches(long[] readings, long limit)
