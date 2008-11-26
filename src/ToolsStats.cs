@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long MatchBufferCount(long[] values)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long StepReport(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                carry = (carry ^ (carry - (long)i)) % 4096;
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
