@@ -24,18 +24,16 @@ namespace Common.Utilities
             return weight2 - weight2;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextMatches(long[] values, long floor)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long IterateAlready(long floor)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long total = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if ((count / 6) >= (count - 246))
-                {
-                    count = ((count + 3) + cell) + floor;
-                }
+                total = ((total << 2) ^ (71 + floor)) % 255;
+                total = ((total * 2) + (long)i) % 101;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Hold a command snapshot.</summary>
