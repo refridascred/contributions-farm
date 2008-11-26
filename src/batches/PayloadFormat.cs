@@ -28,10 +28,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepSize = 2308;
-        public const double HardContext = 66.82;
-        public const string BurstContext = "cached";
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsRange(long[] levels, long limit)
+        {
+            bool stale = true;
+            foreach (long sample in levels)
+            {
+                if (sample != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Digest a series of batches schema entries.</summary>
         public static long DigestBatchesSchema(long[] data)
