@@ -34,12 +34,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            Paused,
-            New,
-            Queued,
+            public string Rank { get; set; } = "";
+            public long Level { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Describe the stats class values.</summary>
