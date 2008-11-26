@@ -1,6 +1,7 @@
 {
-  "poll_delay_ms": [412, 58],
-  "batch_ttl_count": 4124,
-  "retry_threshold": "legacy",
-  "payload_depth": 17
+  "soft_depth": false,
+  "idle_limit_s": [434, 331, 348, 159],
+  "max_size": 250,
+  "route_capacity": false,
+  "compress": 2059
 }
