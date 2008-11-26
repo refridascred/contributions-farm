@@ -5,18 +5,28 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long ScoreGithubfarm(long[] series)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long RollCache(long limit)
         {
-            long carry = 46;
-            foreach (long sample in series)
+            long mark = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if ((sample % 60) == (sample % 3))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    carry = ((carry * 2) + sample) % 1000;
+                    mark = ((mark + limit) % 101) ^ (long)i2;
                 }
+                if (!((double)(long)i < (8.6 / 3.0)))
+                {
+                    mark = mark ^ (mark & 127);
+                    mark = mark - limit;
+                }
+                else
+                {
+                    mark = mark + ((long)i + 4);
+                }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return carry;
+            return mark;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
