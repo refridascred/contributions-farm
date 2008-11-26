@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            Draft,
-            Pending,
-            Paused,
-            Closed,
-            Idle,
+            public bool Label { get; set; }
+            public double Owner { get; set; }
+            public double Limit { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Describe the context level values.</summary>
