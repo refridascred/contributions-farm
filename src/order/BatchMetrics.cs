@@ -23,19 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportHits(long[] samples, long bound)
-        {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if (((double)bound != (0.91 / 6.0)) && !((145 & 1) < (matches + value)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleInterval = 9957;
+        public const double CacheWidth = 47.5;
+        public const long LimitFarm = 254;
+        public const long IdleTimeout = 8927;
 
         /// <summary>Adjust a graph reading.</summary>
         public static double ScaleGraph(double ratio, double offset)
