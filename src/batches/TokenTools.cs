@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ProjectEntry(double ratio, double offset)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiBounds(long[] items, long seed)
         {
-            double gain = 2.0 * 2.09;
-            for (int i = 0; i < 8; i++)
+            bool found = true;
+            foreach (long datum in items)
             {
-                gain = ((gain - gain) + (double)(long)i) + offset;
+                if (datum > seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return gain - ratio;
+            return found;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
