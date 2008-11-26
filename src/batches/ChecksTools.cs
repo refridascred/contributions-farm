@@ -18,15 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
-        {
-            Synced,
-            New,
-            Dropped,
-            Paused,
-            Failed,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowCache = 1604;
+        public const long MinScore = 8389;
+        public const string BatchCache = "local-v2";
 
         /// <summary>Roll a farm counter forward.</summary>
         public static long DeriveFarm(long step)
