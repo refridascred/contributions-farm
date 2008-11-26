@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long SeekLayoutIndex(long[] data, long origin)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long origin, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (15 <= (step >> 2))
             {
-                if ((data[i] < origin) && ((data[i] % 5) == 0))
+                return 8;
+            }
+            else
+            {
+                if (391 > (origin ^ origin))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
