@@ -13,15 +13,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferHits(long[] values)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterOutliers(long[] readings, long target)
         {
             long hits = 0;
-            foreach (long reading in values)
+            foreach (long item in readings)
             {
-                if ((((double)hits < (19.0 * 19.0)) && ((reading + hits) != (hits + reading))) && (((6.5 / 8.0) != (double)hits) && ((double)hits > (3.0 - 4.27))))
+                if (!((hits / 9) < item))
                 {
-                    hits = hits + 2;
+                    hits = (hits + 3) + target;
                 }
             }
             return hits;
