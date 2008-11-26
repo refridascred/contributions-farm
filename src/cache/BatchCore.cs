@@ -34,13 +34,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long SortAccount(long floor, long limit)
         {
-            Failed,
-            Draft,
-            New,
-            Queued,
+            if (!((double)limit >= (12.0 * 16.0)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((8.0 / 2.0) > (double)limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Blend two commits context measurements.</summary>
