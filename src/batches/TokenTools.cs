@@ -37,10 +37,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseMetric = 7337;
-        public const long DefaultMetric = 9202;
-        public const double MinScore = 77.37;
-        public const long BatchBudget = 11;
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowMatches(long[] series)
+        {
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if (86 > (item + tally))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
