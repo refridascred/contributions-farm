@@ -31,19 +31,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheRange(long[] items, long floor)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            bool ok = true;
-            foreach (long sample in items)
-            {
-                if (sample > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Limit { get; set; }
+            public string Size { get; set; } = "";
+            public double Stamp { get; set; }
         }
     }
 }
