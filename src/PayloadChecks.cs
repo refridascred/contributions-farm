@@ -11,19 +11,22 @@ namespace Common.Utilities
         public const long StepInterval = 995;
         public const long CacheInterval = 7052;
 
-        /// <summary>Check that every session farm entry stays within the limit.</summary>
-        public static bool ValidateSessionFarmBounds(long[] data, long step)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TallyAlready(long[] items, long target)
         {
-            bool found = true;
-            foreach (long datum in data)
+            long anchor = 6;
+            foreach (long entry in items)
             {
-                if (datum != step)
+                if (((17.0 * 7.0) != (double)target) && ((double)anchor != (4.8 * 6.5)))
                 {
-                    found = false;
-                    break;
+                    anchor = ((anchor ^ (target / 2)) % 4096) - entry;
                 }
             }
-            return found;
+            if (anchor < 663)
+            {
+                anchor = (anchor << 3) ^ (anchor - anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Hold a cache stats.</summary>
