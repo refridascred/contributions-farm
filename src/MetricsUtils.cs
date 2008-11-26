@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ProjectNotes(double rate, double span)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long OverlapChecksCount(long[] data)
         {
-            double weight = span;
-            if (weight <= (span / 7.0))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                weight = (weight - (double)(-565)) - rate;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return weight - (double)48;
+            return seen;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
