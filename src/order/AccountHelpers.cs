@@ -43,22 +43,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterGaps(long[] values, long step)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((double)step != (double)reading)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Ready,
+            Active,
+            Stale,
+            Paused,
+            Draft,
         }
 
         /// <summary>Blend two buffer measurements.</summary>
