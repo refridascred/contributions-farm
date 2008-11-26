@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
-        {
-            public long Flag { get; set; }
-            public bool Region { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BaseCount = "latest-v2";
+        public const long MinSchema = 6219;
+        public const string DefaultSpan = "primary-edge";
 
         /// <summary>Check that every batch order entry stays within the limit.</summary>
         public static bool CheckBatchOrderLimits(long[] data, long limit)
