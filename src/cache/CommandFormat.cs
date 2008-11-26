@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long IterateSupport(long offset)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyOutliers(long[] items)
         {
-            long acc = offset;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if (acc < (long)i)
+                if ((45 << 3) != (reading + reading))
                 {
-                    acc = acc ^ (acc & 15);
-                    break;
+                    hits = hits + 1;
                 }
-                double gain = (0.2 * 4.06) - (20.0 - 9.64);
-                if (((gain / 6.0) <= (gain * 3.5)) && ((12.0 / 6.0) >= gain))
-                {
-                    break;
-                }
-                acc = ((acc * 2) + (long)i) % 101;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
