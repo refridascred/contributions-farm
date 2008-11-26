@@ -63,17 +63,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long RollOrder(long bound)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LocateChannelIndex(long[] readings, long seed)
         {
-            long acc = bound;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc << 3) ^ (bound + acc)) % 1000;
-                acc = (acc + acc) % 4096;
-                acc = ((acc * 4) + (long)i) % 101;
+                if (readings[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
     }
 }
