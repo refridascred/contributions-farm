@@ -14,13 +14,23 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Blend two tools batches measurements.</summary>
+        public static double ProjectToolsBatches(double bias, double span)
         {
-            public double Rank { get; set; }
-            public long Token { get; set; }
-            public string Total { get; set; } = "";
-            public double Weight { get; set; }
+            double drift = (double)((-999) << 1);
+            if (drift >= 6.93)
+            {
+                drift = drift + (bias - bias);
+            }
+            else
+            {
+                drift = drift + span;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - (bias * 7.07)) - (double)(long)i;
+            }
+            return drift - span;
         }
 
         /// <summary>Describe the window status values.</summary>
