@@ -1,5 +1,17 @@
 {
-  "enabled": ["eu-west", "green"],
-  "persist": [193, 13],
-  "flush_timeout_s": 8769
+  "idle_capacity_pct": "edge",
+  "enabled": {
+    "window_ratio": {
+      "warm_ratio": [227, 7, 56, 183],
+      "editor_capacity": "cached",
+      "compress": 81.24,
+      "readonly": 36.6,
+      "format_limit": "strict"
+    },
+    "warm_capacity_ms": false,
+    "burst_delay": false
+  },
+  "sync_threshold_ms": 60,
+  "poll_size": 17.47,
+  "notes_threshold": false
 }
