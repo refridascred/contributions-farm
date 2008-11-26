@@ -23,19 +23,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double SmoothFarm(double rate, double floor)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            double weight = (double)122 / 8.0;
-            if (weight <= floor)
-            {
-                weight = weight - (3.0 / 4.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - (weight + weight)) + (double)(long)i;
-            }
-            return weight + (rate + rate);
+            Synced,
+            Idle,
+            Draft,
         }
 
         /// <summary>Blend two route profile measurements.</summary>
