@@ -1,6 +1,6 @@
-id,label,count,weight
-1,56.21,blue,839
-2,32.19,23.84,749
-3,44.51,latest,88.89
-4,967,18.66,38.49
-5,53.26,21.98,525
+id,region,weight,owner
+1,eu-west,stable,94.16
+2,70.42,standard,strict
+3,green,local,5.03
+4,547,41.55,94.0
+5,873,33.58,481
