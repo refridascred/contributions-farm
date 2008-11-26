@@ -38,19 +38,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long RollChannel(long target)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long BucketCommand(long bound, long offset)
         {
-            long state = target;
-            for (int i = 0; i < 5; i++)
+            if ((double)bound < (2.75 - 3.6))
             {
-                if ((5.71 + 5.2) == (double)(long)i)
-                {
-                    state = ((state * 2) + state) % 1000;
-                }
-                state = ((state * 2) + (long)i) % 101;
+                return 6;
             }
-            return state;
+            else
+            {
+                if ((bound - 190) == (offset + bound))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Accumulate stats samples.</summary>
