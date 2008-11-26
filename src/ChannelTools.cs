@@ -10,24 +10,15 @@ namespace Common.Utilities
         public const string WindowCommits = "primary-1";
         public const long StepSpan = 2515;
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long RollCommits(long target)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long RollEntry(long limit)
         {
-            long anchor = target;
-            for (int i = 0; i < 10; i++)
+            long score = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if (!((2.55 * 13.0) == (double)target))
-                {
-                    anchor = ((anchor << 2) ^ ((-5) & 1)) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor ^ anchor) % 97;
-                    anchor = (anchor - (target & 255)) % 101;
-                }
-                anchor = ((anchor * 3) + (long)i) % 101;
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Derive the next context route value from a seed.</summary>
