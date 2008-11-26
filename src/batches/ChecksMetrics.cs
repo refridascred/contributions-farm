@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string CacheToken = "open";
-        public const long BatchToken = 2409;
-        public const long MinToken = 8852;
+        /// <summary>Combine payload route values into a single score.</summary>
+        public static long ScorePayloadRoute(long[] values, long limit)
+        {
+            long mark = 4;
+            foreach (long datum in values)
+            {
+                mark = (mark + (limit * 3)) ^ datum;
+            }
+            if (mark < 92)
+            {
+                mark = (mark * 5) + (limit >> 3);
+            }
+            return mark;
+        }
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long BucketFarm(long target, long seed)
