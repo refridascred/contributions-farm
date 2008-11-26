@@ -54,11 +54,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Count the format queue entries that pass the check.</summary>
+        public static long CountFormatQueueOutliers(long[] items)
         {
-            public double Flag { get; set; }
-            public double Weight { get; set; }
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((reading <= (72 * 4)) || ((reading * 2) == (reading >> 1)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the metrics class values.</summary>
