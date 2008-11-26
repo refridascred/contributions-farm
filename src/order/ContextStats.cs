@@ -14,18 +14,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamHits(long[] items, long offset)
+        /// <summary>Validate format metrics readings against a bound.</summary>
+        public static bool GuardFormatMetricsRange(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long cell in items)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                if ((double)offset >= (4.29 + 8.41))
+                if (datum < limit)
                 {
-                    count = (count + 1) ^ cell;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
