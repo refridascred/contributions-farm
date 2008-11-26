@@ -34,15 +34,9 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Roll a graph cache counter forward.</summary>
-        public static long RollGraphCache(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BurstEntry = "open-v2";
+        public const long StepEntry = 4514;
+        public const long StepCount = 6360;
     }
 }
