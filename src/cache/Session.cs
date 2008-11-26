@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long OverlapCommitsCount(long[] levels)
+        /// <summary>Roll a format checks counter forward.</summary>
+        public static long SeriesFormatChecks(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = offset;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
-                }
+                anchor = (anchor << 2) ^ ((long)i / 2);
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
