@@ -34,18 +34,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportHits(long[] data)
+        /// <summary>Audit layout already readings against a rule.</summary>
+        public static long TallyLayoutAlreadyGaps(long[] values)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if ((value - value) >= tally)
+                if (value < (matches ^ matches))
                 {
-                    tally = tally + 1;
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
