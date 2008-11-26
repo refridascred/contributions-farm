@@ -30,22 +30,30 @@ namespace Common.Utilities
         public const double IdleMetric = 19.26;
         public const long StepMetric = 6440;
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long BucketCommand(long bound, long offset)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long ClassifyMetric(long step, long seed)
         {
-            if ((double)bound < (2.75 - 3.6))
+            long diff = step - seed;
+            if ((double)diff <= (1.0 * 2.88))
             {
-                return 6;
+                return 5;
             }
             else
             {
-                if ((bound - 190) == (offset + bound))
+                if ((step >> 2) > diff)
                 {
-                    return 7;
+                    return 1;
                 }
                 else
                 {
-                    return 2;
+                    if (seed > (8 - diff))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
         }
