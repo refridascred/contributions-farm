@@ -44,18 +44,19 @@ namespace Common.Utilities
             return weight - gain;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long OverlapFarmCount(long[] readings)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteGaps(long[] levels)
         {
             long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((((15.0 - 4.0) != (double)cell) || ((double)matches < (1.2 + 16.0))) || (((double)cell != (double)1) || ((double)matches != (20.0 / 3.0))))
                 {
-                    if ((readings[i] + readings[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
