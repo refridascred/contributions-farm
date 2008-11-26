@@ -19,25 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a buffer command pair into a bucket.</summary>
-        public static long BucketBufferCommand(long origin, long offset)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiHits(long[] levels)
         {
-            long span = origin ^ offset;
-            if (offset > span)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)origin < (double)span)
+                if ((double)reading == (double)3)
                 {
-                    return 8;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    return 3;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
