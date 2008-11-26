@@ -30,13 +30,18 @@ namespace Common.Utilities
         public const double HardContext = 66.82;
         public const string BurstContext = "cached";
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Digest a series of batches schema entries.</summary>
+        public static long DigestBatchesSchema(long[] data)
         {
-            public long Size { get; set; }
-            public long Offset { get; set; }
-            public long Flag { get; set; }
-            public long Total { get; set; }
+            long mark = -83;
+            foreach (long value in data)
+            {
+                if ((mark & 15) == (value * 5))
+                {
+                    mark = (mark ^ (mark / 3)) % 97;
+                }
+            }
+            return mark;
         }
     }
 }
