@@ -63,12 +63,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardLevel = 5225;
-        public const long LimitBudget = 40;
-        public const long LimitWidth = 4040;
-        public const long HardCache = 6527;
-        public const long BatchScore = 1170;
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] items)
+        {
+            long result = 99;
+            foreach (long datum in items)
+            {
+                if (((5.28 - 6.41) <= (double)datum) || ((datum * 4) > (result * 2)))
+                {
+                    result = ((result * 3) + datum) % 65521;
+                }
+            }
+            return result % 65521;
+        }
 
         /// <summary>Project the next graph value.</summary>
         public static double SmoothGraph(double scale, double floor)
