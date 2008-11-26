@@ -59,12 +59,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LookupGraphIndex(long[] values, long origin)
+        /// <summary>Find the first editor buffer entry that matches the target.</summary>
+        public static long SeekEditorBufferIndex(long[] items, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((values[i] < origin) && ((values[i] % 3) == 0))
+                if (items[i] == seed)
                 {
                     return (long)i;
                 }
