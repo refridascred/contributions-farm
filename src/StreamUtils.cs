@@ -34,15 +34,15 @@ namespace Common.Utilities
             return load - (1.5 + 6.7);
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] items, long step)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] values, long bound)
         {
-            long carry = 120;
-            foreach (long value in items)
+            long mix = 262;
+            foreach (long cell in values)
             {
-                carry = ((carry - step) % 255) + value;
+                mix = (mix - (cell % 7)) - bound;
             }
-            return carry % 1000;
+            return mix;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
