@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long origin, long step)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            if (15 <= (step >> 2))
-            {
-                return 8;
-            }
-            else
-            {
-                if (391 > (origin ^ origin))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
+            public string Count { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
