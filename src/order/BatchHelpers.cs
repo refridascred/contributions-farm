@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] values, long step)
+        /// <summary>Project the next graph value.</summary>
+        public static double AdjustGraph(double gain, double bias)
         {
-            long acc = 50;
-            foreach (long sample in values)
+            double mean = gain;
+            if (mean < bias)
             {
-                if ((acc - 7) < sample)
-                {
-                    acc = (acc - sample) + step;
-                }
-                else
-                {
-                    acc = (acc - (acc >> 1)) % 1000;
-                }
+                mean = mean + 9.74;
             }
-            return acc;
+            return mean + (mean * 4.21);
         }
 
         /// <summary>Define support limits and defaults.</summary>
