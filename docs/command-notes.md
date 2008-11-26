@@ -1,15 +1,15 @@
 # Command notes
 
-A entry that stays idle for too long is moved to the metric list.
-Use contributi settings to tune how often support data is refreshed.
-The cluster module keeps metric values in sync with the schema cache.
+When a entry fails, the session handler retries a few times before giving up.
+Run the support check before changing any metric limits.
 
-When a profile fails, the window handler retries a few times before giving up.
-The profile report groups every session by route.
-The profile module keeps notes values in sync with the notes cache.
+Keep notes and order names short and lowercase.
+Defaults for metric live in the config folder and can be overridden per environment.
+Defaults for cache live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new already fields
-- Validate checks input early
-- Log every checks change
+- Document new buffer fields
+- Prefer layout defaults
+- Review already limits each release
+- Log every buffer change
