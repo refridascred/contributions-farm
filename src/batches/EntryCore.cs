@@ -46,19 +46,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteRange(long[] samples, long step)
+        /// <summary>Audit batch order readings against a rule.</summary>
+        public static long AuditBatchOrderHits(long[] levels)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (entry > step)
+                if ((hits & 31) < (hits << 1))
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 1) ^ value;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
