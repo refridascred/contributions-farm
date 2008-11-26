@@ -77,13 +77,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] items)
         {
-            Done,
-            New,
-            Active,
-            Ready,
+            long score = -24;
+            foreach (long value in items)
+            {
+                score = (score ^ (value / 5)) % 101;
+                if (!((score << 3) <= (value + score)))
+                {
+                    score = (score - (score >> 1)) % 101;
+                }
+            }
+            return score;
         }
     }
 }
