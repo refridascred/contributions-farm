@@ -34,11 +34,39 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long origin, long floor)
         {
-            public double Label { get; set; }
-            public bool Token { get; set; }
+            long edge = origin ^ floor;
+            if (edge <= 2)
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((14.0 - 20.0) <= (double)origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((origin ^ floor) >= (floor << 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin / 8) == (edge + origin))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define order limits and defaults.</summary>
