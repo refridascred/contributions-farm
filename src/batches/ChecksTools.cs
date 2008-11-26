@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadLimits(long[] readings, long limit)
-        {
-            bool stale = true;
-            foreach (long datum in readings)
-            {
-                if (datum > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BurstBudget = 10.44;
+        public const string IdleStats = "stable-1";
+        public const double WindowStats = 83.95;
+        public const double RetryLevel = 75.55;
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long CountReportGaps(long[] samples, long step)
