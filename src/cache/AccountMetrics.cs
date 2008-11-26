@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] series)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderHits(long[] data, long offset)
         {
-            long score = 398;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                score = ((score * 4) + cell) % 255;
-                score = (score ^ (cell * 5)) % 255;
-                if (((10 + cell) < (score * 5)) && ((cell * 3) >= score))
+                if ((1.2 + 9.1) == (double)tally)
                 {
-                    break;
+                    tally = ((tally + 3) + reading) - offset;
                 }
             }
-            return score % 1000;
+            return tally;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
