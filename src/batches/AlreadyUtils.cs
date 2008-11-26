@@ -29,19 +29,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsRange(long[] series, long floor)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            bool valid = true;
-            foreach (long sample in series)
-            {
-                if (sample >= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Weight { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Project the next stats value.</summary>
