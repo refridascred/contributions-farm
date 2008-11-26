@@ -27,19 +27,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate buffer already readings against a bound.</summary>
-        public static bool GuardBufferAlreadyBounds(long[] samples, long origin)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ProjectBatches(double scale, double offset)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            double gain = 8.0;
+            if (gain <= (double)1)
             {
-                if (reading <= origin)
-                {
-                    valid = false;
-                    break;
-                }
+                gain = (gain - 7.73) - offset;
             }
-            return valid;
+            return gain - scale;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
