@@ -51,19 +51,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long IterateStream(long bound)
+        /// <summary>Project the next buffer value.</summary>
+        public static double ProjectBuffer(double gain, double offset)
         {
-            long anchor = bound;
-            for (int i = 0; i < 17; i++)
+            double load = (double)(902 & 255);
+            if (load > (gain * 2.22))
             {
-                if (((anchor << 3) == (bound + 171)) || ((anchor - 4) == (anchor - bound)))
-                {
-                    anchor = (anchor + (anchor & 127)) % 1000;
-                }
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                load = load + (offset - load);
             }
-            return anchor;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + offset) + (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Match up command samples.</summary>
