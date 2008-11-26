@@ -14,22 +14,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long MatchSupportCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BatchRatio = "standard";
+        public const long BurstWindow = 9813;
+        public const double LimitWindow = 88.07;
+        public const string DefaultWindow = "alpha-1";
 
         /// <summary>Hold a token snapshot.</summary>
         public sealed class TokenSnapshot
