@@ -20,22 +20,12 @@ namespace Common.Utilities
         public const double MaxFormat = 5.23;
         public const long HardWidth = 7841;
 
-        /// <summary>Measure how many notes tools samples are out of range.</summary>
-        public static long CountNotesToolsOutliers(long[] levels)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((3.69 - 1.3) != (double)hits)
-                {
-                    hits = (hits + 3) + entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Owner { get; set; }
+            public bool Region { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Blend two route profile measurements.</summary>
