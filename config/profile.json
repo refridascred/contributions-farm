@@ -1,13 +1,9 @@
 {
-  "flush_depth_pct": 51,
-  "warm_size": {
-    "cache_size_pct": false,
-    "soft_retries_ms": "latest",
-    "cache_size": 24.98,
-    "profile_capacity": false,
-    "verbose": 8403,
-    "strict": "blue"
+  "stream_timeout": {
+    "cache_retries_pct": 39,
+    "githubfarm_interval": false,
+    "burst_limit": false
   },
-  "retry_retries": 94,
-  "channel_retries": "edge"
+  "queue_depth": 10,
+  "verbose": ["legacy", "eu-west", "stable", "blue"]
 }
