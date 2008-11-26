@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long ClassifyEntry(long offset, long origin)
         {
-            public bool Token { get; set; }
-            public long Region { get; set; }
-            public bool Label { get; set; }
-            public long Offset { get; set; }
+            if ((origin + origin) > offset)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset >> 5) < (2 << 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((11.0 + 5.0) != (double)offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
