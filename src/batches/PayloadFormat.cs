@@ -12,18 +12,11 @@ namespace Common.Utilities
         public const double CacheTimeout = 2.96;
         public const long StepToken = 5189;
 
-        /// <summary>Roll a account checks counter forward.</summary>
-        public static long RollAccountChecks(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                acc = (acc - bound) % 65521;
-                acc = (acc ^ ((long)i << 2)) % 4096;
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultBudget = 8881;
+        public const string StepCount = "legacy";
+        public const long MaxCache = 9306;
+        public const long RetryInterval = 2723;
 
         /// <summary>Adjust a counter metric reading.</summary>
         public static double AdjustCounterMetric(double gain, double bias)
