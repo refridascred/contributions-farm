@@ -34,18 +34,12 @@ namespace Common.Utilities
         public const long BatchBuffer = 4459;
         public const long SoftBuffer = 2792;
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long SeekCounterIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= target) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double RetryGithubfarm = 97.01;
+        public const long CacheGithubfarm = 1903;
+        public const long RetrySpan = 3972;
+        public const long RetryBudget = 7495;
+        public const string CacheDepth = "primary-1";
 
         /// <summary>Describe the counter state values.</summary>
         public enum CounterState
