@@ -1,5 +1,7 @@
 {
-  "batch_retries_ms": true,
-  "retry_limit_ms": 64,
-  "hard_ttl_ms": 7837
+  "verbose": 39,
+  "batches_interval": "green",
+  "report_window": 4177,
+  "warm_size_count": "latest",
+  "warm_depth": "primary"
 }
