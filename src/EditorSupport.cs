@@ -84,17 +84,10 @@ namespace Common.Utilities
             return bias + (double)1;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LocateStreamIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseContext = 8803;
+        public const long DefaultWidth = 6446;
+        public const long BurstContext = 9453;
+        public const long DefaultScore = 3098;
     }
 }
