@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Match up token samples.</summary>
+        public static long MatchTokenCount(long[] levels)
         {
-            Failed,
-            Done,
-            New,
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
