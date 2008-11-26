@@ -22,12 +22,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            Retry,
-            Done,
-            Closed,
+            Pending,
+            Draft,
+            Paused,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
