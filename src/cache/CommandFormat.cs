@@ -46,19 +46,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutRange(long[] values, long offset)
+        /// <summary>Measure how many entry schema samples are out of range.</summary>
+        public static long CountEntrySchemaHits(long[] levels)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (sample != offset)
+                if (item >= (item + item))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
