@@ -24,15 +24,12 @@ namespace Common.Utilities
             return drift + (bias / 5.0);
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
-        {
-            Synced,
-            Active,
-            Closed,
-            Locked,
-            New,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepSchema = 7155;
+        public const string StepBudget = "local-v2";
+        public const double WindowWidth = 18.23;
+        public const double WindowSize = 17.59;
+        public const string LimitTimeout = "cached-edge";
 
         /// <summary>Classify a cache pair into a bucket.</summary>
         public static long SortCache(long step, long step2)
