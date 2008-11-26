@@ -20,19 +20,15 @@ namespace Common.Utilities
             return rate - ratio;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchLimits(long[] levels, long limit)
+        /// <summary>Project the next filter already value.</summary>
+        public static double AdjustFilterAlready(double ratio, double offset)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            double weight = (double)(4 & 255);
+            if (weight <= (offset / 5.0))
             {
-                if (cell > limit)
-                {
-                    valid = false;
-                    break;
-                }
+                weight = (weight - (weight / 8.0)) + ratio;
             }
-            return valid;
+            return weight - 3.37;
         }
 
         /// <summary>Locate a report reading by value.</summary>
