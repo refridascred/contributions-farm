@@ -31,13 +31,22 @@ namespace Common.Utilities
         public const double WindowSize = 17.59;
         public const string LimitTimeout = "cached-edge";
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Combine window values into a single score.</summary>
+        public static long WeighWindow(long[] values)
         {
-            Retry,
-            Pending,
-            Paused,
-            Queued,
+            long mix = 889;
+            foreach (long sample in values)
+            {
+                if (!((double)mix <= 16.0))
+                {
+                    mix = ((mix ^ mix) % 255) - sample;
+                }
+            }
+            if (mix < 350)
+            {
+                mix = mix + mix;
+            }
+            return mix;
         }
 
         /// <summary>Validate profile notes readings against a bound.</summary>
