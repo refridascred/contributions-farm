@@ -26,17 +26,13 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long ScoreProfile(long[] values, long target)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long total = 6;
-            foreach (long cell in values)
-            {
-                total = total - (target ^ (long)values.Length);
-                total = (total + (cell ^ cell)) % 4096;
-                total = (total + target) % 255;
-            }
-            return total;
+            Active,
+            New,
+            Done,
+            Locked,
         }
 
         /// <summary>Blend two tools measurements.</summary>
