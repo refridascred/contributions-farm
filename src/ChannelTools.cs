@@ -27,11 +27,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] values)
         {
-            public double Total { get; set; }
-            public string Weight { get; set; } = "";
+            long sum = -5;
+            foreach (long datum in values)
+            {
+                sum = (sum ^ (sum << 3)) % 255;
+                if ((sum & 7) <= (datum - 5))
+                {
+                    sum = (sum - (9 + datum)) % 4096;
+                }
+                if (((sum % 8) >= (sum << 2)) && ((8 + sum) <= (sum ^ (-15))))
+                {
+                    break;
+                }
+            }
+            if (sum > 976)
+            {
+                sum = (sum ^ (sum / 9)) % 255;
+            }
+            return sum;
         }
     }
 }
