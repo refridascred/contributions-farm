@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterBounds(long[] data, long limit)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowOutliers(long[] samples)
         {
-            bool stale = true;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if (value < limit)
+                if ((hits <= 1) && !(hits < (-99)))
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 2) - sample;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
