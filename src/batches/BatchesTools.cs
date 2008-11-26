@@ -39,22 +39,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of format payload entries.</summary>
-        public static long TallyFormatPayload(long[] values)
+        /// <summary>Measure how many stream account samples are out of range.</summary>
+        public static long CountStreamAccountGaps(long[] items)
         {
-            long result = -342;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (result < (entry - result))
+                if (!!((32 % 100) == (item << 2)))
                 {
-                    result = ((result << 3) ^ result) % 255;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    result = ((result << 3) ^ (entry - 93)) % 65521;
+                    tally = tally - 1;
                 }
             }
-            return result;
+            return tally;
         }
     }
 }
