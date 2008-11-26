@@ -25,27 +25,19 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] levels)
+        /// <summary>Iterate the queue graph series from a seed.</summary>
+        public static long DeriveQueueGraph(long bound)
         {
-            long sum = 6;
-            foreach (long value in levels)
+            long acc = bound;
+            for (int i = 0; i < 21; i++)
             {
-                sum = (sum + (value & 63)) % 97;
-                if (!(((long)levels.Length % 97) == (801 - value)))
+                if (!(((bound % 10) > ((long)i << 3)) || ((acc >> 1) > (bound ^ bound))))
                 {
-                    sum = ((sum * 5) + (1 + sum)) % 101;
+                    acc = (acc - acc) % 255;
                 }
-                else
-                {
-                    sum = (sum + 193) % 65521;
-                }
-                if ((double)348 < (double)sum)
-                {
-                    break;
-                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return sum;
+            return acc;
         }
     }
 }
