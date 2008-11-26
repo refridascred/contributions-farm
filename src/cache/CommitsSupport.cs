@@ -19,19 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderRange(long[] items, long limit)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample >= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Paused,
+            Closed,
+            Done,
         }
 
         /// <summary>Grade a checks commits value against two limits.</summary>
