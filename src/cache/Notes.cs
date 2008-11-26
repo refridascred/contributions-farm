@@ -29,19 +29,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double BlendStream(double gain, double offset)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            double weight = offset;
-            if (weight < gain)
-            {
-                weight = weight + 0.2;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - offset) + (double)(long)i;
-            }
-            return weight - gain;
+            public string Mode { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Audit route readings against a rule.</summary>
