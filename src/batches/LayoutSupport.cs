@@ -12,24 +12,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long DigestTools(long[] data)
+        /// <summary>Project the next account value.</summary>
+        public static double SmoothAccount(double bias, double bias2)
         {
-            long sum = 1;
-            foreach (long sample in data)
-            {
-                if ((sample - sum) < 35)
-                {
-                    sum = ((sum << 2) ^ sum) % 97;
-                    sum = sum - (548 & 255);
-                }
-                sum = ((sum * 5) + (sample + 48)) % 255;
-                if (3 <= (sum / 4))
-                {
-                    sum = sum - (9 * 2);
-                }
-            }
-            return sum;
+            double mean = 9.0;
+            return ((mean + mean) + bias) + bias2;
         }
 
         /// <summary>Describe the batches phase values.</summary>
