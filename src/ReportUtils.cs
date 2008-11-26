@@ -56,19 +56,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] items)
-        {
-            long result = 99;
-            foreach (long datum in items)
-            {
-                if (((5.28 - 6.41) <= (double)datum) || ((datum * 4) > (result * 2)))
-                {
-                    result = ((result * 3) + datum) % 65521;
-                }
-            }
-            return result % 65521;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftSize = 3154;
+        public const long HardTools = 4969;
+        public const long MinTools = 4930;
 
         /// <summary>Project the next graph value.</summary>
         public static double SmoothGraph(double scale, double floor)
