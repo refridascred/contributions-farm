@@ -52,32 +52,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long RankOrder(long step, long origin)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportGaps(long[] values, long floor)
         {
-            long delta = step - origin;
-            if (!((step + origin) > (origin + origin)))
+            long count = 0;
+            foreach (long value in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (((394 ^ step) > (756 % 100)) || ((origin ^ delta) == (origin >> 1)))
+                if ((double)count < 7.2)
                 {
-                    return 7;
+                    count = ((count + 3) ^ value) + floor;
                 }
                 else
                 {
-                    if (!((step >> 2) > (9 / 8)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Match up context samples.</summary>
