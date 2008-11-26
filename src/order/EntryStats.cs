@@ -41,9 +41,32 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultAccount = 6606;
-        public const long BaseAccount = 9858;
-        public const string MinSpan = "open-edge";
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long BucketStream(long origin, long target)
+        {
+            long bound = origin ^ target;
+            if ((target << 3) > (origin % 2))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound << 2) > (target ^ origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((7 - bound) <= origin)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
     }
 }
