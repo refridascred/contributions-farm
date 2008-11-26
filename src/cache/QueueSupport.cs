@@ -21,15 +21,32 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] samples, long seed)
+        /// <summary>Classify a graph metric pair into a bucket.</summary>
+        public static long ClassifyGraphMetric(long floor, long seed)
         {
-            long result = 6;
-            foreach (long entry in samples)
+            long lane = floor ^ seed;
+            if (((seed % 16) < floor) && ((double)lane >= (13.0 - 6.0)))
             {
-                result = ((result ^ entry) % 97) + seed;
+                return 4;
             }
-            return result % 1000;
+            else
+            {
+                if ((seed & 255) >= (lane ^ lane))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((32 ^ lane) == (lane << 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
