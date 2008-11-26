@@ -20,21 +20,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up layout batch samples.</summary>
-        public static long CompareLayoutBatchCount(long[] values)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Owner { get; set; }
+            public bool Weight { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
