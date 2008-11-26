@@ -1,5 +1,8 @@
 {
-  "min_ratio_ms": false,
-  "githubfarm_ratio": [242, 438, 377],
-  "flush_limit": "local"
+  "burst_ttl": 96,
+  "max_retries_s": "primary",
+  "readonly": 66.5,
+  "max_ttl_s": "standard",
+  "default_window_count": "latest",
+  "warm_ratio": "primary"
 }
