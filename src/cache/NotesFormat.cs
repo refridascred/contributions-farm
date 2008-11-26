@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            Idle,
-            Synced,
-            Retry,
+            public long Label { get; set; }
+            public string Region { get; set; } = "";
+            public double Level { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Derive the next graph account value from a seed.</summary>
