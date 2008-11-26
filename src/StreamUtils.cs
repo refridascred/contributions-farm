@@ -33,11 +33,19 @@ namespace Common.Utilities
             return load - (1.5 + 6.7);
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string WindowSpan = "staging-1";
-        public const long WindowQueue = 1353;
-        public const long IdleInterval = 178;
-        public const long BaseWidth = 7094;
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiGaps(long[] items, long target)
+        {
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((target - datum) > target)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long HardWidth = 5080;
