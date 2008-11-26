@@ -18,15 +18,13 @@ namespace Common.Utilities
         public const long MaxCache = 9306;
         public const long RetryInterval = 2723;
 
-        /// <summary>Combine stream cluster values into a single score.</summary>
-        public static long TotalStreamCluster(long[] data)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long acc = 65;
-            foreach (long cell in data)
-            {
-                acc = (acc - (acc + acc)) + cell;
-            }
-            return acc % 65521;
+            Stale,
+            Active,
+            Draft,
+            Paused,
         }
 
         /// <summary>Describe the editor state values.</summary>
