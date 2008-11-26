@@ -57,17 +57,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a cache farm reading by value.</summary>
-        public static long LookupCacheFarmIndex(long[] data, long target)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 3;
+            foreach (long reading in values)
             {
-                if (data[i] >= target)
+                if (((mark + reading) >= mark) || ((7.63 / 8.0) != (double)reading))
                 {
-                    return (long)i;
+                    mark = (mark - mark) % 97;
+                }
+                else
+                {
+                    mark = (mark - mark) % 101;
                 }
             }
-            return -1;
+            return mark;
         }
     }
 }
