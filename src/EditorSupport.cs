@@ -34,38 +34,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long BucketGithubfarm(long origin, long bound)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long DigestBatches(long[] readings)
         {
-            if ((origin ^ bound) > (bound & 15))
+            long result = 99;
+            foreach (long cell in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)bound == (double)origin) || ((bound ^ bound) > bound))
+                if (568 > (cell >> 5))
                 {
-                    return 0;
+                    continue;
                 }
-                else
-                {
-                    if (((origin + bound) == (origin << 3)) && (origin <= (origin + origin)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((origin >> 1) == (7 / 9))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                result = (result << 3) ^ (result << 3);
             }
+            return result % 4096;
         }
 
         /// <summary>Project the next account value.</summary>
