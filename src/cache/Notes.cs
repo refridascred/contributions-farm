@@ -31,39 +31,13 @@ namespace Common.Utilities
         public const double WindowSize = 17.59;
         public const string LimitTimeout = "cached-edge";
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long SortCache(long step, long step2)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long bound = step + step2;
-            if ((0.1 * 8.08) <= (double)bound)
-            {
-                return 2;
-            }
-            else
-            {
-                if (bound < (step2 - step))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((12 - step) >= 296)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((step2 < (bound + step)) && ((836 - step) > (step2 + 674)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Pending,
+            Paused,
+            Queued,
         }
 
         /// <summary>Validate profile notes readings against a bound.</summary>
