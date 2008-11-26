@@ -20,12 +20,18 @@ namespace Common.Utilities
             return weight - scale;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatGaps(long[] readings, long target)
         {
-            Done,
-            Queued,
-            Active,
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((-490) <= cell)
+                {
+                    matches = (matches + 3) - target;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
