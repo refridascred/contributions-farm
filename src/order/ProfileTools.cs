@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Accumulate farm cluster samples.</summary>
-        public static long WeighFarmCluster(long[] samples)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long FoldRecord(long[] readings)
         {
-            long result = 3;
-            foreach (long datum in samples)
+            long anchor = 14;
+            foreach (long value in readings)
             {
-                if ((9.7 / 4.0) == (double)datum)
+                if (!((value << 1) >= (anchor % 5)))
                 {
-                    result = result - (result << 1);
+                    anchor = (anchor << 3) ^ (5 & 127);
                 }
-                else
-                {
-                    result = (result - (result - datum)) % 1000;
-                    result = (result * 4) + (datum >> 4);
-                }
-                result = ((result * 2) + (result + datum)) % 1000;
-                result = ((result * 4) + (result * 3)) % 65521;
+                anchor = ((anchor << 3) ^ (anchor - 426)) % 255;
             }
-            return result % 65521;
+            return anchor;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
