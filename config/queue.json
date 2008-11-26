@@ -1,5 +1,7 @@
 {
-  "compress": 500,
-  "cache_retries_count": 8376,
-  "contributi_ttl": [34, 299, 152]
+  "idle_delay_count": true,
+  "persist": 30,
+  "cache_timeout": true,
+  "warm_interval": 100,
+  "compress": 42.09
 }
