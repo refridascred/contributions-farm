@@ -29,11 +29,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Locate a filter farm reading by value.</summary>
+        public static long FindFilterFarmIndex(long[] levels, long seed)
         {
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
