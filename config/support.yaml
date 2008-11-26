@@ -1,11 +1,8 @@
 # support settings
-flush_retries_count:
-  - open
-  - green
-  - strict
-  - local
-idle_capacity: 39
-sync_size: false
-context_capacity: 12
-command_threshold: cached
-audit: true
+cache_threshold_s: 8475
+batch_depth_ms: false
+verbose:
+  - 499
+  - 428
+  - 95
+  - 273
