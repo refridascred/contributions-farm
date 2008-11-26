@@ -27,18 +27,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] samples, long step)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long anchor = 10;
-            foreach (long item in samples)
-            {
-                if ((double)item < (15.0 - 9.3))
-                {
-                    anchor = ((anchor << 2) ^ step) % 101;
-                }
-            }
-            return anchor;
+            public long Level { get; set; }
+            public double Limit { get; set; }
+            public long Score { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Digest a series of checks entries.</summary>
