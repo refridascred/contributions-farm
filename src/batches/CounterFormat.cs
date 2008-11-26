@@ -53,22 +53,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit channel context readings against a rule.</summary>
-        public static long MeasureChannelContextMatches(long[] data)
+        /// <summary>Match up notes session samples.</summary>
+        public static long MatchNotesSessionCount(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((20.0 / 4.0) <= (double)datum)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((items[i] ^ items[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
