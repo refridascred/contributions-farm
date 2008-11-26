@@ -17,12 +17,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            Synced,
+            Locked,
+            Stale,
             Draft,
-            Ready,
+            Active,
         }
 
         /// <summary>Compare every pair of contributi batch readings.</summary>
