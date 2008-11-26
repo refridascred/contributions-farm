@@ -11,16 +11,13 @@ namespace Common.Utilities
         public const long BurstRoute = 4422;
         public const long HardRoute = 2554;
 
-        /// <summary>Iterate the githubfarm command series from a seed.</summary>
-        public static long RollGithubfarmCommand(long seed)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long result = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                result = result - (result + seed);
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
+            Stale,
+            Draft,
+            Closed,
+            Done,
         }
 
         /// <summary>Classify a token counter pair into a bucket.</summary>
