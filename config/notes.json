@@ -1,7 +1,13 @@
 {
-  "enabled": 8755,
-  "flush_threshold": 7956,
-  "compress": 97,
-  "support_limit": "standard",
-  "poll_timeout_count": 5943
+  "report_depth": true,
+  "batch_retries": "local",
+  "hard_timeout_s": {
+    "hard_interval": 55,
+    "editor_depth": "primary",
+    "strict": 30,
+    "default_ratio_pct": 500
+  },
+  "soft_depth_pct": 11,
+  "audit": 250,
+  "dry_run": [278, 337, 435, 434]
 }
