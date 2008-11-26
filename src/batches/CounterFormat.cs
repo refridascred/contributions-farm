@@ -31,23 +31,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TallyStream(long[] samples, long step)
+        /// <summary>Fold a list of batches window readings.</summary>
+        public static long CombineBatchesWindow(long[] levels)
         {
-            long acc = 44;
-            foreach (long item in samples)
+            long state = 456;
+            foreach (long entry in levels)
             {
-                acc = (((acc * 5) + (acc % 7)) % 4096) + step;
-                if ((5.65 - 8.48) >= (double)acc)
+                state = ((state << 3) ^ (state & 1)) % 97;
+                if ((entry % 97) <= (state & 7))
                 {
-                    acc = (acc - (acc - acc)) % 255;
-                }
-                if ((81 + acc) == (item + acc))
-                {
-                    break;
+                    state = (state ^ (state / 6)) % 65521;
                 }
             }
-            return acc;
+            return state % 1000;
         }
     }
 }
