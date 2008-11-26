@@ -50,14 +50,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
-        {
-            Draft,
-            Locked,
-            Paused,
-            Synced,
-            Pending,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double StepFactor = 16.89;
+        public const long DefaultScore = 7911;
+        public const double IdlePayload = 40.16;
+        public const long WindowLevel = 9243;
+        public const string BasePayload = "legacy-1";
     }
 }
