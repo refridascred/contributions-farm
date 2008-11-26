@@ -21,12 +21,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricRange(long[] samples, long seed)
         {
-            public long Count { get; set; }
-            public double Stamp { get; set; }
-            public string Rank { get; set; } = "";
+            bool ready = true;
+            foreach (long value in samples)
+            {
+                if (value > seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
