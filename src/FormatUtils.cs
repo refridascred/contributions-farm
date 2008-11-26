@@ -51,15 +51,21 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ScaleFormat(double rate, double offset)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long PairMetricCount(long[] data)
         {
-            double gain = (double)367 / 7.0;
-            if (gain <= gain)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = (gain + (rate / 3.0)) + offset;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return gain - gain;
+            return count;
         }
 
         /// <summary>Hold a counter stats.</summary>
