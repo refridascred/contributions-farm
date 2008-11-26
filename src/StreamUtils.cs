@@ -78,10 +78,15 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleContext = 7157;
-        public const long CacheContext = 4971;
-        public const long BatchContext = 4332;
-        public const double MinContext = 56.46;
+        /// <summary>Roll a token stream counter forward.</summary>
+        public static long RollTokenStream(long target)
+        {
+            long anchor = target;
+            for (int i = 0; i < 17; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
+        }
     }
 }
