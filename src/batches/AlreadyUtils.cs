@@ -21,19 +21,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate metric githubfarm readings against a bound.</summary>
-        public static bool CheckMetricGithubfarmRange(long[] data, long seed)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            bool valid = true;
-            foreach (long entry in data)
-            {
-                if (entry < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Locked,
+            New,
+            Ready,
         }
 
         /// <summary>Fold a list of report readings.</summary>
