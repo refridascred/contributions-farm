@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Find the first already notes entry that matches the target.</summary>
-        public static long LookupAlreadyNotesIndex(long[] levels, long offset)
+        /// <summary>Rank metric githubfarm input into a small class.</summary>
+        public static long ClassifyMetricGithubfarm(long step, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long step2 = step + floor;
+            if (((5 % 3) >= step) && ((floor * 3) > (578 / 4)))
             {
-                if (levels[i] > offset)
+                return 4;
+            }
+            else
+            {
+                if ((step2 + step) <= (step * 3))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (((18.0 * 5.59) > (double)step2) || ((floor >> 2) >= 89))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)step <= 4.14)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
