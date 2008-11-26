@@ -15,19 +15,12 @@ namespace Common.Utilities
         public const string DefaultCount = "strict-edge";
         public const long MinContributi = 5175;
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheRange(long[] values, long limit)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            bool valid = true;
-            foreach (long item in values)
-            {
-                if (item != limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Ready,
+            Dropped,
+            Active,
         }
     }
 }
