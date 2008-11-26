@@ -1,6 +1,6 @@
 # githubfarm settings
-batch_interval_s: blue
-default_window_s: cached
-dry_run: cached
-support_timeout: stable
-warm_interval: fallback
+flush_delay_s: staging
+poll_threshold_s: primary
+strict: blue
+burst_limit_s: true
+sync_interval_count: legacy
