@@ -14,16 +14,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Derive the next graph account value from a seed.</summary>
-        public static long SeriesGraphAccount(long floor)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricOutliers(long[] values, long offset)
         {
-            long state = floor;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                state = ((state * 5) + 584) % 4096;
-                state = ((state * 3) + (long)i) % 4093;
+                if (!((14.0 - 7.9) > (double)matches))
+                {
+                    matches = ((matches + 2) ^ entry) - offset;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
