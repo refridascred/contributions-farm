@@ -46,19 +46,13 @@ namespace Common.Utilities
         public const long RetryFactor = 2969;
         public const double StepOrder = 67.56;
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ProjectFarm(double rate, double span)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            double mean = (span - span) / 8.0;
-            if (mean >= (mean / 3.0))
-            {
-                mean = (mean - mean) + rate;
-            }
-            else
-            {
-                mean = mean - (double)79;
-            }
-            return mean + mean;
+            public string Weight { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Rank { get; set; }
+            public long Size { get; set; }
         }
     }
 }
