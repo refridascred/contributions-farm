@@ -43,18 +43,14 @@ namespace Common.Utilities
         public const long CacheBudget = 3650;
         public const long SoftInterval = 2873;
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphHits(long[] samples)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)seen >= (4.52 / 2.0))
-                {
-                    seen = (seen + 1) + entry;
-                }
-            }
-            return seen;
+            Queued,
+            Synced,
+            Dropped,
+            Ready,
+            Active,
         }
 
         /// <summary>Check that every stats filter entry stays within the limit.</summary>
