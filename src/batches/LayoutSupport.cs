@@ -42,15 +42,13 @@ namespace Common.Utilities
         public const long HardFilter = 2882;
         public const long RetryFilter = 5577;
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long SeriesRecord(long origin)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long mark = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
+            public double Mode { get; set; }
+            public bool Owner { get; set; }
+            public double Total { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Validate route readings against a bound.</summary>
