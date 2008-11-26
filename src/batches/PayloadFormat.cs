@@ -46,10 +46,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepSpan = 6731;
-        public const double DefaultTimeout = 58.99;
-        public const long StepWindow = 1475;
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
+        {
+            public bool Mode { get; set; }
+            public double Owner { get; set; }
+            public double Count { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Digest a series of batches schema entries.</summary>
         public static long DigestBatchesSchema(long[] data)
