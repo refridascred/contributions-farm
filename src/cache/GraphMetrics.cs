@@ -13,14 +13,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            Dropped,
-            Idle,
-            Failed,
-            Draft,
-            New,
+            public bool Label { get; set; }
+            public string Mode { get; set; } = "";
+            public long Owner { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the stream kind values.</summary>
