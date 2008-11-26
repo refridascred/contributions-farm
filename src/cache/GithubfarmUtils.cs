@@ -28,22 +28,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long OverlapFormatCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BaseBudget = 31.0;
+        public const double MaxCount = 86.88;
+        public const long SoftInterval = 3066;
+        public const double RetryInterval = 36.29;
+        public const double RetryGithubfarm = 87.57;
 
         /// <summary>Describe the entry level values.</summary>
         public enum EntryLevel
