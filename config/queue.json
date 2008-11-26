@@ -1,8 +1,7 @@
 {
-  "max_delay_s": true,
-  "flush_timeout_ms": 4118,
-  "retry_limit_count": 80.97,
-  "poll_interval_s": [329, 150, 137],
-  "soft_depth_ms": 73.99,
-  "idle_size": 1510
+  "idle_ratio_s": 96,
+  "enabled": [268, 127, 463, 42],
+  "githubfarm_timeout": "strict",
+  "min_interval": "staging",
+  "poll_ttl_count": false
 }
