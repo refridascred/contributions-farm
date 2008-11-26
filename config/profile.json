@@ -1,14 +1,6 @@
 {
-  "default_ttl_ms": "open",
-  "window_delay": "local",
-  "hard_ratio_pct": [327, 403],
-  "hard_threshold": {
-    "notes_delay": false,
-    "default_threshold": 30,
-    "min_window_ms": ["staging", "staging"],
-    "default_window_s": 3586,
-    "batch_ttl_s": "stable",
-    "tools_capacity": 63.88
-  },
-  "default_timeout_s": "legacy"
+  "poll_window_ms": true,
+  "window_interval": "strict",
+  "warm_depth_pct": false,
+  "strict": [139, 367, 80]
 }
