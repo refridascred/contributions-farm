@@ -35,12 +35,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long ClassifyNotes(long origin, long floor)
         {
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-            public long Token { get; set; }
+            if ((origin & 15) > (floor & 255))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((211 - origin) < origin) && ((floor - origin) >= 644))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
