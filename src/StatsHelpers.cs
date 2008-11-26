@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LookupRouteIndex(long[] readings, long offset)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long limit, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)target < (4.0 + 11.0))
             {
-                if (readings[i] <= offset)
+                return 5;
+            }
+            else
+            {
+                if ((double)limit >= (6.66 * 6.5))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (target > (target + limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (limit < (target % 12))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a cache record.</summary>
