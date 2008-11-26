@@ -1,11 +1,6 @@
-id,state,owner,rank
-1,587,eu-west,676
-2,fallback,legacy,65.27
-3,29.17,24.25,35.42
-4,556,349,blue
-5,legacy,edge,green
-6,51.82,806,fallback
-7,latest,23,26.77
-8,623,blue,edge
-9,81,legacy,42.22
-10,441,43.2,619
+id,label,count,weight
+1,56.21,blue,839
+2,32.19,23.84,749
+3,44.51,latest,88.89
+4,967,18.66,38.49
+5,53.26,21.98,525
