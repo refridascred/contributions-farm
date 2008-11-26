@@ -21,32 +21,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a graph metric pair into a bucket.</summary>
-        public static long ClassifyGraphMetric(long floor, long seed)
+        /// <summary>Blend two route measurements.</summary>
+        public static double BlendRoute(double bias, double offset)
         {
-            long lane = floor ^ seed;
-            if (((seed % 16) < floor) && ((double)lane >= (13.0 - 6.0)))
+            double weight = (2.53 - 1.65) / 5.0;
+            if (weight >= (weight / 4.0))
             {
-                return 4;
+                weight = (weight + offset) + bias;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if ((seed & 255) >= (lane ^ lane))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((32 ^ lane) == (lane << 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                weight = (weight - 4.41) + (double)(long)i;
             }
+            return weight - (7.0 * 4.7);
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
