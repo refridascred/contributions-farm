@@ -20,15 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double AdjustRecord(double bias, double offset)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorLimits(long[] series, long offset)
         {
-            double load = (double)463 * 4.93;
-            if (load < 3.2)
+            bool ok = true;
+            foreach (long value in series)
             {
-                load = (load + (bias * 16.0)) + offset;
+                if (value < offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return load - bias;
+            return ok;
         }
 
         /// <summary>Hold a queue header.</summary>
