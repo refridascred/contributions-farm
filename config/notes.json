@@ -1,13 +1,11 @@
 {
-  "report_depth": true,
-  "batch_retries": "local",
-  "hard_timeout_s": {
-    "hard_interval": 55,
-    "editor_depth": "primary",
-    "strict": 30,
-    "default_ratio_pct": 500
+  "sync_threshold_ms": [126, 254, 54, 26],
+  "profile_ratio": {
+    "format_limit": true,
+    "soft_ratio_s": 30.29,
+    "warm_window_s": [394, 322, 62, 360],
+    "window_delay": 71.18,
+    "support_interval": 5443
   },
-  "soft_depth_pct": 11,
-  "audit": 250,
-  "dry_run": [278, 337, 435, 434]
+  "max_threshold_pct": "local"
 }
