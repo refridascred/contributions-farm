@@ -29,17 +29,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Locate a filter farm reading by value.</summary>
-        public static long FindFilterFarmIndex(long[] levels, long seed)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamRange(long[] samples, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                if (levels[i] < seed)
+                if (cell <= offset)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
