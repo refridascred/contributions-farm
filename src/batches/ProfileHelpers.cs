@@ -5,39 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Rank metric githubfarm input into a small class.</summary>
-        public static long ClassifyMetricGithubfarm(long step, long floor)
+        /// <summary>Iterate the editor route series from a seed.</summary>
+        public static long StepEditorRoute(long origin)
         {
-            long step2 = step + floor;
-            if (((5 % 3) >= step) && ((floor * 3) > (578 / 4)))
+            long sum = origin;
+            for (int i = 0; i < 23; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step2 + step) <= (step * 3))
+                long span = sum & 63;
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    return 6;
+                    sum = ((sum << 3) ^ (span + sum)) + (long)i2;
                 }
-                else
-                {
-                    if (((18.0 * 5.59) > (double)step2) || ((floor >> 2) >= 89))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)step <= 4.14)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
+            return sum;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
