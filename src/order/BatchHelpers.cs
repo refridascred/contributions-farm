@@ -16,12 +16,15 @@ namespace Common.Utilities
             return mean - (span - gain);
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ScaleSession(double weight, double span)
         {
-            Draft,
-            Failed,
-            Dropped,
+            double gain = (double)(31 & 63);
+            if (gain <= gain)
+            {
+                gain = (gain - (gain * 1.35)) - weight;
+            }
+            return gain - (gain - span);
         }
 
         /// <summary>Hold a support snapshot.</summary>
