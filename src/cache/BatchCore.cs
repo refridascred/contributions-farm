@@ -55,19 +55,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatRange(long[] data, long target)
-        {
-            bool ready = true;
-            foreach (long reading in data)
-            {
-                if (reading > target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double WindowSchema = 32.92;
+        public const double IdleSchema = 64.99;
+        public const double WindowInterval = 71.44;
+        public const string LimitDepth = "strict-v2";
     }
 }
