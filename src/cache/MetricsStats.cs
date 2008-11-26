@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Find the first metrics githubfarm entry that matches the target.</summary>
-        public static long FindMetricsGithubfarmIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= step) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseDepth = 4804;
+        public const string HardGraph = "staging-1";
+        public const long BatchGraph = 1911;
+        public const long IdleCount = 7118;
 
         /// <summary>Describe the githubfarm kind values.</summary>
         public enum GithubfarmKind
