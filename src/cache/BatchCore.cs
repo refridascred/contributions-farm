@@ -58,10 +58,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double WindowSchema = 32.92;
-        public const double IdleSchema = 64.99;
-        public const double WindowInterval = 71.44;
-        public const string LimitDepth = "strict-v2";
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] samples, long origin)
+        {
+            long mix = 7;
+            foreach (long entry in samples)
+            {
+                mix = (((mix << 3) ^ ((long)samples.Length + mix)) % 4096) - entry;
+                mix = mix + (6 - origin);
+            }
+            if (mix > 292)
+            {
+                mix = (mix + (mix << 3)) % 255;
+            }
+            return mix;
+        }
     }
 }
