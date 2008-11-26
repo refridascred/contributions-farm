@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long bound, long bound2)
+        /// <summary>Project the next already record value.</summary>
+        public static double ProjectAlreadyRecord(double scale, double span)
         {
-            long gap = bound ^ bound2;
-            if ((25 * 2) > (bound - gap))
+            double ratio = (double)(56 & 3);
+            if (ratio > 10.0)
             {
-                return 4;
+                ratio = ratio + (span - 9.36);
             }
             else
             {
-                if ((600 * 4) != (bound >> 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
+                ratio = ratio - scale;
             }
+            return ratio - scale;
         }
 
         /// <summary>Hold a window options.</summary>
