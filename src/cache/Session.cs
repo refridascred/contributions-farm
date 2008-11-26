@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long IterateEditor(long offset)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long state = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    state = ((state - (offset ^ state)) % 4096) + (long)i2;
-                }
-                for (int i3 = 0; i3 < 5; i3++)
-                {
-                    state = (state ^ 906) - (long)i3;
-                }
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
+            Draft,
+            Active,
+            Stale,
+            Done,
+            Queued,
         }
 
         /// <summary>Describe the report class values.</summary>
