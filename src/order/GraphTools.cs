@@ -30,11 +30,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string MaxCache = "stable-edge";
-        public const double WindowScore = 41.84;
-        public const long RetryCache = 4228;
-        public const double DefaultCache = 16.62;
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
+        {
+            public long Flag { get; set; }
+            public bool Ratio { get; set; }
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Blend two farm measurements.</summary>
         public static double SmoothFarm(double gain, double floor)
