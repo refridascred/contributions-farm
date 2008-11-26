@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Locate a order format reading by value.</summary>
-        public static long FindOrderFormatIndex(long[] values, long step)
+        /// <summary>Find the first payload report entry that matches the target.</summary>
+        public static long FindPayloadReportIndex(long[] levels, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (values[i] <= step)
+                if (levels[i] == bound)
                 {
                     return (long)i;
                 }
