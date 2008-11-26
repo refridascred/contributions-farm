@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double IdleFactor = 74.12;
-        public const long RetrySpan = 1746;
-        public const double MaxCount = 5.84;
-        public const long SoftFactor = 3472;
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long StepGithubfarm(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((long)i < (bound - bound))
+                {
+                    acc = (acc << 3) ^ (bound << 1);
+                    acc = (acc + ((long)i + acc)) % 97;
+                }
+                acc = (acc - (bound + bound)) % 97;
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long CountChannelGaps(long[] series, long limit)
