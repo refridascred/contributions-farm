@@ -14,18 +14,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Audit account githubfarm readings against a rule.</summary>
-        public static long CountAccountGithubfarmMatches(long[] readings)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TallyGraph(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long state = 3;
+            foreach (long reading in values)
             {
-                if (!(((long)readings.Length & 127) <= (19 % 100)) && !((seen << 2) >= 6))
+                if (state >= (state >> 1))
                 {
-                    seen = (seen + 2) - cell;
+                    state = ((state + offset) % 4096) ^ reading;
                 }
             }
-            return seen;
+            if (state > 324)
+            {
+                state = (state - (state - state)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
