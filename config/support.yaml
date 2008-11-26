@@ -1,10 +1,18 @@
 # support settings
-hard_timeout:
-  - 157
-  - 81
-  - 458
-min_ttl: latest
-audit: 5925
-min_threshold_pct: 250
-stream_threshold: staging
-verbose: 63
+flush_threshold_pct: false
+batch_retries:
+  enabled: stable
+  account_interval: 500
+  batches_threshold: 88
+  audit:
+    context_interval: green
+    flush_limit_s: fallback
+    dry_run: 69
+    strict: 56.01
+    batch_threshold: true
+    verbose: 60
+command_interval: 996
+enabled:
+  - edge
+  - open
+  - primary
