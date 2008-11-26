@@ -34,12 +34,20 @@ namespace Common.Utilities
         public const long BatchBuffer = 4459;
         public const long SoftBuffer = 2792;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double RetryGithubfarm = 97.01;
-        public const long CacheGithubfarm = 1903;
-        public const long RetrySpan = 3972;
-        public const long RetryBudget = 7495;
-        public const string CacheDepth = "primary-1";
+        /// <summary>Check that every commits context entry stays within the limit.</summary>
+        public static bool CheckCommitsContextBounds(long[] readings, long offset)
+        {
+            bool ready = true;
+            foreach (long value in readings)
+            {
+                if (value < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the counter state values.</summary>
         public enum CounterState
