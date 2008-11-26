@@ -13,14 +13,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
             Ready,
-            Failed,
-            New,
-            Locked,
             Paused,
+            New,
+            Failed,
         }
 
         /// <summary>Describe the editor class values.</summary>
