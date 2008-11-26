@@ -18,25 +18,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long ClassifyCounter(long bound, long origin)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long CombineAlready(long[] series, long target)
         {
-            long next = bound ^ origin;
-            if (((double)next != (2.11 / 9.0)) && ((next - next) < next))
+            long mark = 850;
+            foreach (long reading in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound * 5) > (next / 8))
+                mark = ((mark * 4) + (mark + target)) + reading;
+                if (((mark >> 1) >= target) && ((mark % 97) < (mark >> 2)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
+                    break;
                 }
             }
+            if (mark < 61)
+            {
+                mark = mark - (target - target);
+            }
+            return mark % 1000;
         }
     }
 }
