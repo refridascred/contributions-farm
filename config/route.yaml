@@ -1,9 +1,7 @@
 # route settings
-githubfarm_timeout: false
-verbose: cached
-batch_threshold_s:
-  - 437
-  - 14
-  - 302
-  - 356
-burst_depth_s: standard
+hard_retries: 64.81
+cache_capacity:
+  - 498
+  - 363
+  - 44
+batch_limit_pct: 43
