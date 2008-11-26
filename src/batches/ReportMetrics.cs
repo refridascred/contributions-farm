@@ -34,9 +34,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string CacheCommits = "open-1";
-        public const long BatchFactor = 1097;
-        public const double BatchSize = 88.8;
+        /// <summary>Classify a contributi batches pair into a bucket.</summary>
+        public static long SortContributiBatches(long offset, long offset2)
+        {
+            if ((double)offset2 != (14.0 + 5.99))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((offset2 + offset2) <= (offset2 + offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
     }
 }
