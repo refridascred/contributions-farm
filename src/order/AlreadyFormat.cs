@@ -54,12 +54,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchMatches(long[] samples, long bound)
         {
-            public string Count { get; set; } = "";
-            public long Mode { get; set; }
-            public double Stamp { get; set; }
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if (!((double)(long)samples.Length >= 8.14))
+                {
+                    count = ((count + 3) + cell) - bound;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up command samples.</summary>
