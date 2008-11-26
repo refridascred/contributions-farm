@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long DeriveRoute(long step)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmBounds(long[] values, long step)
         {
-            long state = step;
-            for (int i = 0; i < 17; i++)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                if (!((double)480 >= (double)state))
+                if (sample != step)
                 {
-                    state = ((state << 2) ^ step) % 65521;
+                    valid = false;
+                    break;
                 }
-                state = (state << 2) ^ (state - state);
-                state = ((state * 2) + (long)i) % 101;
             }
-            return state;
+            return valid;
         }
 
         /// <summary>Describe the queue state values.</summary>
