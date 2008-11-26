@@ -66,9 +66,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double MinRecord = 93.16;
-        public const long WindowRecord = 570;
-        public const string RetryRatio = "latest";
+        /// <summary>Combine notes channel values into a single score.</summary>
+        public static long TallyNotesChannel(long[] data)
+        {
+            long sum = 63;
+            foreach (long reading in data)
+            {
+                sum = (sum - (reading + sum)) % 101;
+            }
+            return sum;
+        }
     }
 }
