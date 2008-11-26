@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesLimits(long[] readings, long step)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            bool stale = true;
-            foreach (long sample in readings)
-            {
-                if (sample >= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Active,
+            Draft,
+            Failed,
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
