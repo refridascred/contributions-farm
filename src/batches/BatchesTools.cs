@@ -38,15 +38,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ProjectStream(double scale, double span)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteRange(long[] samples, long bound)
         {
-            double load = (double)29 / 5.0;
-            if (load > (scale - span))
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                load = load - (0.28 - span);
+                if (cell > bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return load + scale;
+            return valid;
         }
     }
 }
