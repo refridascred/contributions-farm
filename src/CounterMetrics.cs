@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long origin, long seed)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            if (seed > (seed * 4))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((seed >= (seed >> 5)) && ((10.0 + 9.5) > (double)origin))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Active,
+            Pending,
+            Paused,
+            Failed,
         }
 
         /// <summary>Describe the support level values.</summary>
