@@ -29,17 +29,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LocateCacheIndex(long[] samples, long target)
+        /// <summary>Classify a contributi context pair into a bucket.</summary>
+        public static long SortContributiContext(long floor, long floor2)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((floor >= 272) && ((floor / 9) < floor2))
             {
-                if ((samples[i] <= target) && ((samples[i] % 3) != 0))
+                return 1;
+            }
+            else
+            {
+                if ((8 ^ floor) == (floor2 >> 3))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((floor < (75 + floor)) || ((floor << 1) > (floor + floor2)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((double)floor == (1.1 / 3.0)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
