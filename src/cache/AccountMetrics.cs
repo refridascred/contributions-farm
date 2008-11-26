@@ -46,21 +46,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of farm route readings.</summary>
-        public static long MatchFarmRouteCount(long[] samples)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long DigestQueue(long[] readings, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 71;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((target & 255) <= carry)
                 {
-                    if ((samples[i] + samples[j]) < 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = (carry + (entry + entry)) % 255;
+                }
+                if (!((carry / 2) < (target * 4)))
+                {
+                    break;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
