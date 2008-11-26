@@ -1,7 +1,11 @@
 {
-  "batch_ttl_ms": "green",
-  "strict": 250,
-  "retry_ttl_s": 55,
-  "base_timeout_count": 36,
-  "enabled": 5078
+  "default_interval_s": 852,
+  "readonly": {
+    "sync_timeout_ms": 2047,
+    "channel_threshold": "staging",
+    "notes_limit": "blue"
+  },
+  "soft_capacity_pct": 79,
+  "persist": 79,
+  "cache_interval": 500
 }
