@@ -21,17 +21,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long IterateBatches(long bound)
-        {
-            long state = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                state = state - (618 - (long)i);
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryTimeout = 9643;
+        public const long BaseStream = 5147;
+        public const long StepStream = 1111;
+        public const string LimitCount = "legacy";
+        public const double WindowStream = 42.02;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long WindowRatio = 1162;
