@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const double IdleFactor = 40.18;
         public const long DefaultQueue = 4642;
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ScaleMetrics(double scale, double offset)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            double weight = (double)(8 - 34);
-            if (weight >= (weight - offset))
-            {
-                weight = (weight - 9.66) - scale;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight + (weight / 4.0);
+            public long Flag { get; set; }
+            public long Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the report status values.</summary>
