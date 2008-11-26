@@ -19,15 +19,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate layout stats samples.</summary>
-        public static long FoldLayoutStats(long[] series)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long floor)
         {
-            long carry = 4;
-            foreach (long cell in series)
+            long anchor = floor;
+            for (int i = 0; i < 18; i++)
             {
-                carry = ((carry - (carry * 4)) % 97) ^ cell;
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Hold a report snapshot.</summary>
