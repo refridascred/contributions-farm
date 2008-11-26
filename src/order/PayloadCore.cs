@@ -35,32 +35,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long seed, long offset)
+        /// <summary>Combine metric batch values into a single score.</summary>
+        public static long CombineMetricBatch(long[] items, long seed)
         {
-            long slot = seed ^ offset;
-            if ((offset + slot) <= (seed - slot))
+            long result = 10;
+            foreach (long entry in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (((seed / 5) <= (seed - 62)) && ((offset - 795) > seed))
+                if (seed < 9)
                 {
-                    return 5;
+                    result = ((result + (0 % 5)) % 4096) + entry;
                 }
-                else
+                if ((result >= seed) && (5 < (result >> 4)))
                 {
-                    if (!((offset % 5) != (slot + seed)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    break;
                 }
             }
+            if (result > 25)
+            {
+                result = ((result << 2) ^ (result % 16)) % 65521;
+            }
+            return result;
         }
     }
 }
