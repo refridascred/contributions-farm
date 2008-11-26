@@ -19,11 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            public double Flag { get; set; }
-            public string Stamp { get; set; } = "";
+            public bool Offset { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Adjust a layout reading.</summary>
