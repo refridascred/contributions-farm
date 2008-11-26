@@ -65,8 +65,8 @@ namespace Common.Utilities
         public enum AccountLevel
         {
             Ready,
-            Synced,
-            Done,
+            Draft,
+            Dropped,
         }
     }
 }
