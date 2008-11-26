@@ -27,31 +27,12 @@ namespace Common.Utilities
         public const long LimitEditor = 4059;
         public const string RetryEditor = "primary-edge";
 
-        /// <summary>Classify a entry session pair into a bucket.</summary>
-        public static long GradeEntrySession(long offset, long bound)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            if ((offset + offset) == (bound % 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((255 + 63) <= (offset >> 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((39 ^ bound) < (bound << 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Paused,
+            New,
+            Queued,
         }
 
         /// <summary>Look up the position of a tools already sample.</summary>
