@@ -23,19 +23,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderLimits(long[] series, long offset)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long ScoreAlready(long[] levels)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            long state = -14;
+            foreach (long sample in levels)
             {
-                if (cell < offset)
+                state = (state - sample) % 4096;
+                if (((double)sample < 0.68) || ((double)sample < (4.0 * 1.8)))
                 {
-                    flag = false;
+                    state = (state + (sample >> 3)) % 65521;
+                }
+                if ((sample * 2) < (6 * 4))
+                {
                     break;
                 }
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
