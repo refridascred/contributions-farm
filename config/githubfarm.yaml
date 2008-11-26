@@ -1,5 +1,10 @@
 # githubfarm settings
-poll_size_pct: 250
-warm_threshold: false
-filter_ttl: 8112
-poll_limit: 94.88
+enabled: false
+tools_delay:
+  max_depth_count: blue
+  soft_retries: false
+  enabled: 86
+  retry_depth: false
+warm_interval:
+  - eu-west
+  - eu-west
