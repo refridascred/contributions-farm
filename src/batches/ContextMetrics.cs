@@ -57,23 +57,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long IterateCache(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((carry >> 2) < (seed & 7))
-                {
-                    carry = (carry + ((long)i / 4)) % 1000;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ ((long)i << 2);
-                }
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchCount = 1276;
+        public const long MaxAccount = 9543;
+        public const long BaseSize = 6770;
     }
 }
