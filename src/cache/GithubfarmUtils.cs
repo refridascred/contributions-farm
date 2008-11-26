@@ -33,17 +33,32 @@ namespace Common.Utilities
             return mean + (offset * 17.0);
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] items, long offset)
+        /// <summary>Classify a profile graph pair into a bucket.</summary>
+        public static long ClassifyProfileGraph(long limit, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long cur = limit ^ target;
+            if (((cur + limit) >= (-927)) || ((target % 16) == (8 % 3)))
             {
-                if (items[i] >= offset)
+                return 8;
+            }
+            else
+            {
+                if ((target ^ limit) <= (cur % 10))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((4.8 / 8.0) < (double)target)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
