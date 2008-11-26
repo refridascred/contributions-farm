@@ -1,11 +1,11 @@
 {
-  "channel_timeout": "green",
-  "flush_ratio_count": {
-    "base_delay": 25.04,
-    "enabled": "blue",
-    "max_timeout_count": false
+  "counter_timeout": "latest",
+  "graph_depth": {
+    "base_depth_count": [405, 365],
+    "retry_threshold_count": 250,
+    "idle_threshold_s": 4.02,
+    "cache_timeout": false,
+    "sync_threshold_pct": false
   },
-  "hard_retries_count": 27,
-  "warm_retries_count": "blue",
-  "retry_ratio": "open"
+  "entry_delay": true
 }
