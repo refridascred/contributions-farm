@@ -29,12 +29,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
-        {
-            public double Weight { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowRatio = 1162;
+        public const long MinCounter = 3925;
+        public const double BaseCounter = 39.84;
 
         /// <summary>Project the next stats value.</summary>
         public static double ScaleStats(double scale, double offset)
