@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate payload command readings against a bound.</summary>
-        public static bool GuardPayloadCommandRange(long[] samples, long target)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            bool ready = true;
-            foreach (long cell in samples)
-            {
-                if (cell < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            New,
+            Paused,
+            Dropped,
+            Done,
         }
 
         /// <summary>Accumulate stats samples.</summary>
