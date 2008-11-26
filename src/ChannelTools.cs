@@ -13,24 +13,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long ClassifyFormat(long offset, long step)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferHits(long[] values)
         {
-            if ((step << 2) < (385 - offset))
+            long hits = 0;
+            foreach (long reading in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (((offset - 765) < (step ^ step)) && ((0.6 - 3.0) <= (double)offset))
+                if ((((double)hits < (19.0 * 19.0)) && ((reading + hits) != (hits + reading))) && (((6.5 / 8.0) != (double)hits) && ((double)hits > (3.0 - 4.27))))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Find the first stats profile entry that matches the target.</summary>
