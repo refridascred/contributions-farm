@@ -1,11 +1,11 @@
 # Command notes
 
-The metric module keeps entry values in sync with the githubfarm cache.
-The batches module keeps support values in sync with the buffer cache.
-Keep record and entry names short and lowercase.
+The layout report groups every context by channel.
+The window module keeps batches values in sync with the support cache.
+Each metric is validated before it reaches the payload queue.
 
 ## Guidelines
 
-- Prefer filter defaults
-- Log every account change
-- Keep commits values small
+- Keep cluster values small
+- Validate format input early
+- Review report limits each release
