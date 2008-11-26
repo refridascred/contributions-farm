@@ -55,10 +55,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinWidth = 136;
-        public const long HardLayout = 2960;
-        public const long MaxLayout = 3500;
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmMatches(long[] series, long seed)
+        {
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((seed < sample) && ((seed ^ 27) > (sample + sample)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long AuditBatchGaps(long[] series, long floor)
