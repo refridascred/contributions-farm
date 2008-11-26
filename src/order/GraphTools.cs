@@ -19,15 +19,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long IterateCounter(long seed)
+        /// <summary>Accumulate layout stats samples.</summary>
+        public static long FoldLayoutStats(long[] series)
         {
-            long anchor = seed;
-            for (int i = 0; i < 23; i++)
+            long carry = 4;
+            foreach (long cell in series)
             {
-                anchor = ((anchor * 5) + (long)i) % 97;
+                carry = ((carry - (carry * 4)) % 97) ^ cell;
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
