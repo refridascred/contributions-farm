@@ -85,19 +85,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadLimits(long[] values, long step)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long origin, long floor)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long cur = origin ^ floor;
+            if (((double)cur > (double)origin) && ((floor + cur) > 6))
             {
-                if (entry != step)
+                return 6;
+            }
+            else
+            {
+                if ((origin * 4) > (68 & 15))
                 {
-                    flag = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((origin / 4) < (floor << 1))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
