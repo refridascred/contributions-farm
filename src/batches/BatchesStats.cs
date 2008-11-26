@@ -37,31 +37,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a farm order pair into a bucket.</summary>
-        public static long ClassifyFarmOrder(long floor, long origin)
-        {
-            if ((double)floor >= (double)2)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)origin >= 7.9)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)floor <= (7.2 / 9.0)) || ((origin + origin) == (origin & 7)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowBudget = 8718;
+        public const string RetrySize = "latest-v2";
+        public const string IdleBatches = "fallback";
     }
 }
