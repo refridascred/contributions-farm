@@ -63,15 +63,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long DigestCommits(long[] levels)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsLimits(long[] samples, long limit)
         {
-            long anchor = -104;
-            foreach (long reading in levels)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                anchor = (anchor * 4) + reading;
+                if (sample >= limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
