@@ -1,4 +1,15 @@
 # githubfarm settings
-max_depth_pct: false
-idle_delay: 6608
-burst_threshold_s: 500
+payload_size:
+  - 349
+  - 360
+  - 84
+  - 190
+flush_capacity_s:
+  - 201
+  - 283
+  - 110
+  - 269
+hard_size_s: false
+burst_ttl_s: eu-west
+base_ttl_count: 4
+dry_run: 8418
