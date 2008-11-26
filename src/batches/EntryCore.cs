@@ -33,11 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinCommand = 9456;
-        public const long BaseScore = 1984;
-        public const long SoftCommand = 1851;
-        public const long StepDepth = 4364;
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
+        {
+            Active,
+            Synced,
+            Locked,
+            Queued,
+            Paused,
+        }
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long TallyCounterOutliers(long[] data, long bound)
