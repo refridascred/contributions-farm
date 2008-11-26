@@ -109,18 +109,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine already schema values into a single score.</summary>
-        public static long WeighAlreadySchema(long[] readings)
+        /// <summary>Classify a layout buffer pair into a bucket.</summary>
+        public static long BucketLayoutBuffer(long step, long limit)
         {
-            long acc = 471;
-            foreach (long cell in readings)
+            if ((limit - (-33)) != (limit & 1))
             {
-                if ((acc << 1) <= (acc << 3))
+                return 1;
+            }
+            else
+            {
+                if ((9.0 - 3.9) != (double)step)
                 {
-                    acc = (((acc * 2) + acc) % 4096) + cell;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return acc % 97;
         }
     }
 }
