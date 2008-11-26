@@ -1,4 +1,7 @@
 # githubfarm settings
-support_ttl: 100
-base_timeout_count: 100
-soft_retries_s: strict
+dry_run: strict
+flush_depth_ms:
+  channel_window: latest
+  graph_limit: true
+  base_threshold: true
+poll_ttl_ms: cached
