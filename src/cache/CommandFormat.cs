@@ -61,19 +61,21 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] values, long limit)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long OverlapBatchCount(long[] readings)
         {
-            long carry = 267;
-            foreach (long sample in values)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = ((carry * 2) + (long)values.Length) ^ sample;
-                if (limit < (carry ^ 65))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = carry - limit;
+                    if ((readings[i] + readings[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry;
+            return count;
         }
     }
 }
