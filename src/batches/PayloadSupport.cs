@@ -13,14 +13,24 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long origin, long bound)
         {
-            Closed,
-            Idle,
-            New,
-            Ready,
-            Draft,
+            if ((double)bound == (9.4 * 2.0))
+            {
+                return 1;
+            }
+            else
+            {
+                if (origin > 631)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
