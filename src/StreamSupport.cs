@@ -47,14 +47,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            Paused,
+            Queued,
+            Dropped,
+            Closed,
             Locked,
-            Active,
-            Synced,
-            Draft,
+            Stale,
         }
     }
 }
