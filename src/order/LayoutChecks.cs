@@ -14,39 +14,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long RankCounter(long offset, long floor)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long StepRoute(long offset)
         {
-            long cur = offset - floor;
-            if (cur < 801)
+            long acc = offset;
+            for (int i = 0; i < 8; i++)
             {
-                return 8;
+                acc = (acc - (offset ^ offset)) % 101;
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if (((double)offset >= (3.76 / 2.0)) || ((floor / 9) <= (cur - cur)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (cur <= floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (offset < (floor & 255))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Define support limits and defaults.</summary>
