@@ -85,21 +85,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long PairGraphCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string LimitContributi = "cached";
+        public const string CacheContributi = "legacy-edge";
+        public const long WindowContributi = 8854;
+        public const long DefaultInterval = 3133;
+        public const double MaxContributi = 7.79;
     }
 }
