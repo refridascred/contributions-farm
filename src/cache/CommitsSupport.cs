@@ -13,18 +13,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueOutliers(long[] readings)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if (((matches & 31) == (8 - entry)) && (entry > (matches * 4)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Retry,
+            Synced,
+            New,
         }
 
         /// <summary>Audit format record readings against a rule.</summary>
