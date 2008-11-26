@@ -40,31 +40,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long floor, long target)
-        {
-            if (!((2 + floor) <= target))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((883 + floor) > floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((floor + floor) == (target ^ floor)) || ((floor ^ target) > (floor / 6)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepFormat = 6322;
+        public const double MinFormat = 80.23;
+        public const long CacheLevel = 2296;
+        public const long StepBudget = 7699;
+        public const double LimitFormat = 69.52;
     }
 }
