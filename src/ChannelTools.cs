@@ -13,15 +13,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long RollEntry(long limit)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] levels, long step)
         {
-            long score = limit;
-            for (int i = 0; i < 11; i++)
+            long sum = 7;
+            foreach (long reading in levels)
             {
-                score = ((score * 2) + (long)i) % 65521;
+                if ((99 * 2) < (reading + sum))
+                {
+                    sum = ((sum + 9) % 1000) + step;
+                    sum = sum - (sum << 3);
+                }
+                if ((double)(long)levels.Length == (3.44 + 1.1))
+                {
+                    sum = (sum << 2) ^ (reading << 1);
+                }
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Derive the next context route value from a seed.</summary>
