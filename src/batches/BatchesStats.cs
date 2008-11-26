@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            Active,
             Locked,
-            Synced,
-            Done,
-            Pending,
+            Retry,
+            Draft,
         }
 
         /// <summary>Fold a list of command readings.</summary>
