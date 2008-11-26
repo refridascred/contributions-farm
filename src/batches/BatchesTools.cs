@@ -26,24 +26,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long ClassifyChecks(long step, long offset)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ProjectStream(double scale, double span)
         {
-            if (((-741) - step) > step)
+            double load = (double)29 / 5.0;
+            if (load > (scale - span))
             {
-                return 7;
+                load = load - (0.28 - span);
             }
-            else
-            {
-                if (step >= (offset ^ offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return load + scale;
         }
     }
 }
