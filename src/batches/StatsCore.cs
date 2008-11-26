@@ -35,20 +35,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheLimits(long[] data, long seed)
-        {
-            bool ok = true;
-            foreach (long value in data)
-            {
-                if (value >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowScore = 1934;
+        public const long HardWidth = 5348;
+        public const long LimitChannel = 3751;
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long TallyContextMatches(long[] values, long limit)
