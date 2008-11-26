@@ -54,18 +54,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelGaps(long[] readings)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] data)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long carry = -275;
+            foreach (long sample in data)
             {
-                if (!((double)item > (9.39 / 9.0)))
+                carry = carry + (sample + sample);
+                if ((sample + carry) < (carry % 24))
                 {
-                    seen = seen + 3;
+                    carry = (carry * 4) + (carry + carry);
                 }
             }
-            return seen;
+            return carry;
         }
     }
 }
