@@ -20,10 +20,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleContext = 4663;
-        public const long MaxContext = 3717;
-        public const double IdleSize = 15.89;
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] readings)
+        {
+            long result = 183;
+            foreach (long cell in readings)
+            {
+                if ((double)result >= 11.0)
+                {
+                    result = ((result ^ 120) % 65521) + cell;
+                }
+            }
+            if (result > 10)
+            {
+                result = (result - (result + result)) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Blend two profile measurements.</summary>
         public static double SmoothProfile(double bias, double bias2)
