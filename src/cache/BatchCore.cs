@@ -39,17 +39,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a token tools sample.</summary>
-        public static long SeekTokenToolsIndex(long[] data, long floor)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 11;
+            foreach (long value in series)
             {
-                if (data[i] >= floor)
+                if ((value >> 2) >= (611 * 2))
                 {
-                    return (long)i;
+                    carry = (carry - (value / 6)) % 97;
+                }
+                else
+                {
+                    carry = (carry << 3) ^ (long)series.Length;
                 }
             }
-            return -1;
+            if (carry < 835)
+            {
+                carry = carry - (359 / 2);
+            }
+            return carry % 65521;
         }
 
         /// <summary>Describe the session state values.</summary>
