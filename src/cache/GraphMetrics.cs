@@ -31,12 +31,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            Draft,
-            Paused,
-            Queued,
+            Dropped,
+            New,
+            Failed,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
