@@ -70,18 +70,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmOutliers(long[] series, long step)
+        /// <summary>Project the next order cluster value.</summary>
+        public static double AdjustOrderCluster(double gain, double floor)
         {
-            long tally = 0;
-            foreach (long value in series)
+            double rate = gain;
+            if (rate > rate)
             {
-                if ((value >= (tally ^ value)) && ((tally & 7) >= (tally + value)))
-                {
-                    tally = (tally + 1) + step;
-                }
+                rate = rate + (floor - gain);
             }
-            return tally;
+            else
+            {
+                rate = rate + floor;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + (floor * 8.0)) - (double)(long)i;
+            }
+            return rate + (double)78;
         }
 
         /// <summary>Rank account input into a small class.</summary>
