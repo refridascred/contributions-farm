@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Blend two session measurements.</summary>
+        public static double AdjustSession(double bias, double floor)
         {
-            Dropped,
-            Ready,
-            Retry,
-            Paused,
+            double ratio = floor;
+            if (ratio >= ratio)
+            {
+                ratio = ratio - ratio;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - bias) + (double)(long)i;
+            }
+            return ratio + floor;
         }
 
         /// <summary>Match up queue buffer samples.</summary>
