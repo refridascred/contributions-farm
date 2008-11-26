@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderLimits(long[] series, long limit)
+        /// <summary>Count notes githubfarm pairs that satisfy a relation.</summary>
+        public static long PairNotesGithubfarmCount(long[] levels)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample < limit)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((levels[i] - levels[j]) != 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
