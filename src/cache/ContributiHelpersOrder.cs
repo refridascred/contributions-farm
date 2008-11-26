@@ -23,24 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the command stats series from a seed.</summary>
-        public static long StepCommandStats(long target)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterHits(long[] items, long origin)
         {
-            long result = target;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                result = (result ^ (target - target)) % 1000;
-                if (((double)target < (5.5 - 9.0)) || ((target + target) > (-89)))
+                if ((double)reading <= (3.8 / 9.0))
                 {
-                    result = (result ^ (long)i) % 4096;
+                    matches = (matches + 1) + origin;
                 }
                 else
                 {
-                    result = result - (result + target);
+                    matches = matches - 1;
                 }
-                result = ((result * 5) + (long)i) % 4093;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
