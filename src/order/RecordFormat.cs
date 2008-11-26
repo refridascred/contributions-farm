@@ -41,22 +41,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaHits(long[] data, long bound)
+        /// <summary>Find the first payload command entry that matches the target.</summary>
+        public static long LocatePayloadCommandIndex(long[] data, long target)
         {
-            long count = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)count >= (double)84)
+                if ((data[i] == target) && ((data[i] % 5) == 0))
                 {
-                    count = ((count + 3) ^ entry) - bound;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
