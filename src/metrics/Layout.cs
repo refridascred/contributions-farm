@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout helpers.</summary>
     public static class Layout
     {
-        /// <summary>Digest a series of command schema entries.</summary>
-        public static long TallyCommandSchema(long[] readings, long origin)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionMatches(long[] data)
         {
-            long score = 35;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long item in data)
             {
-                score = (score ^ datum) + origin;
-                if ((50 % 60) > score)
+                if ((item << 3) > 66)
                 {
-                    break;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return score % 97;
+            return hits;
         }
 
         /// <summary>Adjust a layout reading.</summary>
