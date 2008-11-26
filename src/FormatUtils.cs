@@ -51,20 +51,15 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long IterateBatches(long target)
+        /// <summary>Blend two format measurements.</summary>
+        public static double ScaleFormat(double rate, double offset)
         {
-            long state = target;
-            for (int i = 0; i < 8; i++)
+            double gain = (double)367 / 7.0;
+            if (gain <= gain)
             {
-                if (((long)i & 127) < state)
-                {
-                    state = ((state << 2) ^ (target - target)) % 255;
-                    break;
-                }
-                state = ((state * 3) + (long)i) % 97;
+                gain = (gain + (rate / 3.0)) + offset;
             }
-            return state;
+            return gain - gain;
         }
 
         /// <summary>Hold a counter stats.</summary>
