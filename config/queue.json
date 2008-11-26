@@ -1,28 +1,6 @@
 {
-  "base_delay": 40,
-  "cache_capacity": {
-    "verbose": 100,
-    "audit": false,
-    "schema_threshold": "staging",
-    "notes_limit": 100,
-    "sync_interval": 53.38,
-    "entry_delay": 6
-  },
-  "cache_timeout": 11,
-  "context_limit": [154, 302],
-  "compress": ["edge", "open", "stable", "stable"],
-  "record_ttl": {
-    "hard_capacity_pct": "staging",
-    "retry_threshold_ms": 1024,
-    "contributi_timeout": 99,
-    "format_delay": {
-      "min_ttl_s": 35.05,
-      "base_size": 1024,
-      "hard_timeout_ms": false,
-      "burst_window_count": "green",
-      "audit": "latest"
-    },
-    "token_threshold": "legacy",
-    "idle_ttl_pct": [182, 349]
-  }
+  "already_ratio": "open",
+  "idle_retries_count": "eu-west",
+  "strict": 42,
+  "enabled": [198, 339]
 }
