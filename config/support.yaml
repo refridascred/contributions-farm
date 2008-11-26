@@ -1,9 +1,5 @@
 # support settings
-idle_depth_ms: eu-west
-support_capacity: fallback
-sync_interval_count: true
-retry_ttl_ms:
-  persist: green
-  cache_interval_count: 2391
-  githubfarm_threshold: true
-  batch_ttl_ms: true
+flush_timeout: 4084
+verbose: 23
+profile_interval: true
+warm_limit_pct: 500
