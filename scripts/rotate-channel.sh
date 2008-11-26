@@ -6,19 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+CHANNEL_LIMIT=182
+log "limit is ${CHANNEL_LIMIT}"
 
-for item in primary edge; do
-    log "checking ${item}"
-done
-
-mode="${1:-green}"
+mode="${1:-staging}"
 case "${mode}" in
-    eu-west)
+    fallback)
         log "fast path"
         ;;
     *)
