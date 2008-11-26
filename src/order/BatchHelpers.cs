@@ -16,11 +16,13 @@ namespace Common.Utilities
             return mean - (span - gain);
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetrySupport = 1948;
-        public const long LimitRatio = 3715;
-        public const long SoftSupport = 7065;
-        public const double DefaultDepth = 3.51;
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
+        {
+            Draft,
+            Failed,
+            Dropped,
+        }
 
         /// <summary>Hold a support snapshot.</summary>
         public sealed class SupportSnapshot
