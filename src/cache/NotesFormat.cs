@@ -14,18 +14,16 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricOutliers(long[] values, long offset)
+        /// <summary>Iterate the githubfarm command series from a seed.</summary>
+        public static long RollGithubfarmCommand(long seed)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long result = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if (!((14.0 - 7.9) > (double)matches))
-                {
-                    matches = ((matches + 2) ^ entry) - offset;
-                }
+                result = result - (result + seed);
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
