@@ -21,39 +21,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long SortSupport(long bound, long origin)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long DeriveCache(long seed)
         {
-            long cur = bound + origin;
-            if ((cur >= (bound + 721)) && ((218 >> 4) >= (7 - origin)))
+            long sum = seed;
+            for (int i = 0; i < 11; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((bound ^ cur) > (-18)) && ((cur + 894) > (598 & 31)))
+                if (((seed >> 3) <= (76 >> 1)) && ((double)sum <= (7.69 + 0.34)))
                 {
-                    return 3;
+                    sum = ((sum << 3) ^ (seed % 97)) % 1000;
+                    sum = ((sum << 3) ^ (seed - 64)) % 65521;
                 }
-                else
-                {
-                    if (((cur ^ origin) <= cur) && ((1.7 + 6.52) == (double)origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (cur >= (cur & 255))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
+            return sum;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
