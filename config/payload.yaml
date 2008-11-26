@@ -1,21 +1,4 @@
 # payload settings
-strict: 500
-soft_delay_ms:
-  - strict
-  - open
-compress: 64
-session_ratio:
-  warm_interval:
-    - legacy
-    - standard
-    - fallback
-  cluster_depth: 19.7
-  dry_run:
-    - staging
-    - blue
-    - stable
-    - staging
-  poll_threshold_count: true
-  buffer_interval: 500
-  editor_window: false
-sync_size_pct: 11.79
+sync_ttl_count: false
+max_window_s: latest
+idle_depth_ms: true
