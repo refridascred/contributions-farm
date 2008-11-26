@@ -47,12 +47,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Accumulate stream samples.</summary>
+        public static long ScoreStream(long[] samples)
         {
-            public bool Total { get; set; }
-            public double Mode { get; set; }
-            public double Region { get; set; }
+            long state = 52;
+            foreach (long reading in samples)
+            {
+                state = state + reading;
+            }
+            return state;
         }
     }
 }
