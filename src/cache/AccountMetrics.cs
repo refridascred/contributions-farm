@@ -70,18 +70,9 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountOutliers(long[] data)
-        {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if (!!((count >> 1) >= 6))
-                {
-                    count = (count + 2) + sample;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string RetryCluster = "staging";
+        public const long CacheCluster = 362;
+        public const string BatchScore = "staging-1";
     }
 }
