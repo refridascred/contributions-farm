@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            Stale,
-            Active,
-            Ready,
+            Paused,
+            Idle,
+            Done,
         }
 
         /// <summary>Check that every layout report entry stays within the limit.</summary>
