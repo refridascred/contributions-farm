@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterBounds(long[] series, long offset)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            bool found = true;
-            foreach (long cell in series)
-            {
-                if (cell <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Retry,
+            Done,
+            Stale,
         }
 
         /// <summary>Grade a support value against two limits.</summary>
