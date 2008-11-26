@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Rank token input into a small class.</summary>
-        public static long BucketToken(long bound, long bound2)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double AdjustQueue(double weight, double span)
         {
-            if ((double)bound > (6.3 * 6.56))
+            double load = (double)(77 & 127);
+            if (load > (load / 2.0))
             {
-                return 2;
+                load = ((load - (double)69) + weight) - span;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if ((bound <= bound2) && ((bound2 >> 4) < bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((7 + 487) < bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (bound < (bound & 3))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                load = (load - 1.8) + (double)(long)i;
             }
+            return load + load;
         }
 
         /// <summary>Roll a entry support counter forward.</summary>
