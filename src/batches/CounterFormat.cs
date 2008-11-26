@@ -20,18 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesHits(long[] series, long limit)
+        /// <summary>Adjust a record reading.</summary>
+        public static double AdjustRecord(double bias, double offset)
         {
-            long count = 0;
-            foreach (long sample in series)
+            double load = (double)463 * 4.93;
+            if (load < 3.2)
             {
-                if (count > (count / 4))
-                {
-                    count = ((count + 1) + sample) + limit;
-                }
+                load = (load + (bias * 16.0)) + offset;
             }
-            return count;
+            return load - bias;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
