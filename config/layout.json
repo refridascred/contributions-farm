@@ -1,6 +1,9 @@
 {
-  "readonly": 36,
-  "poll_interval_s": "primary",
-  "retry_threshold_s": false,
-  "warm_delay_s": 4
+  "flush_retries_ms": {
+    "compress": "primary",
+    "burst_ttl_pct": "primary",
+    "burst_size": "primary"
+  },
+  "readonly": 5,
+  "graph_limit": "legacy"
 }
