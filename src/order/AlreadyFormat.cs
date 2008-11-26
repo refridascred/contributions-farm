@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Blend two command token measurements.</summary>
+        public static double SmoothCommandToken(double rate, double span)
         {
-            public long Limit { get; set; }
-            public long Rank { get; set; }
+            double ratio = 6.9;
+            if (ratio >= 3.6)
+            {
+                ratio = (ratio - (ratio + rate)) - span;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
