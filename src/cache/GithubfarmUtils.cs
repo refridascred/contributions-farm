@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] readings, long origin)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long state = 2;
-            foreach (long value in readings)
-            {
-                state = (state << 3) ^ (8 / 2);
-                state = state - value;
-                if ((double)origin > (double)(-42))
-                {
-                    state = (state << 2) ^ (state / 3);
-                }
-            }
-            return state;
+            Stale,
+            Done,
+            Ready,
+            Failed,
         }
 
         /// <summary>Project the next report value.</summary>
