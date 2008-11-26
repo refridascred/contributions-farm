@@ -11,14 +11,12 @@ namespace Common.Utilities
         public const long StepQueue = 3414;
         public const long LimitQueue = 9566;
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
-        {
-            Dropped,
-            Failed,
-            Ready,
-            Queued,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepBudget = 2314;
+        public const long BurstOrder = 7623;
+        public const string SoftOrder = "primary-1";
+        public const long StepRatio = 4587;
+        public const long WindowOrder = 908;
 
         /// <summary>Count the cluster record entries that pass the check.</summary>
         public static long AuditClusterRecordHits(long[] values)
