@@ -34,11 +34,15 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxWindow = 5293;
-        public const long BurstWindow = 3708;
-        public const string LimitWindow = "local-v2";
-        public const long BurstScore = 8748;
-        public const long RetryInterval = 2206;
+        /// <summary>Roll a graph cache counter forward.</summary>
+        public static long RollGraphCache(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
+        }
     }
 }
