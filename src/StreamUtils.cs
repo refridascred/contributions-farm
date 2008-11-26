@@ -90,39 +90,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long BucketRoute(long floor, long origin)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long cur = floor - origin;
-            if (((cur << 1) >= origin) && ((origin - origin) == (178 ^ origin)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((origin ^ cur) < cur)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((9.65 + 5.5) == (double)origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((cur - origin) >= (84 >> 4)) && ((double)origin < (3.82 - 5.0)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public bool Size { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
