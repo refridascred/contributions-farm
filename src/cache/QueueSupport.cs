@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BaseScore = 83.49;
-        public const double MinCounter = 21.89;
-        public const double BurstBudget = 51.23;
+        /// <summary>Iterate the metrics counter series from a seed.</summary>
+        public static long IterateMetricsCounter(long target)
+        {
+            long acc = target;
+            for (int i = 0; i < 11; i++)
+            {
+                acc = (acc - acc) % 1000;
+                if ((acc * 4) == (target - target))
+                {
+                    acc = acc ^ 2;
+                }
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long FoldContributi(long[] samples, long seed)
