@@ -22,19 +22,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Adjust a filter route reading.</summary>
-        public static double ScaleFilterRoute(double weight, double bias)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelBounds(long[] readings, long offset)
         {
-            double weight2 = bias;
-            if (weight2 < (7.22 - weight2))
+            bool valid = true;
+            foreach (long item in readings)
             {
-                weight2 = weight2 + weight;
+                if (item >= offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight2 = (weight2 + (weight2 / 8.0)) + (double)(long)i;
-            }
-            return weight2 - bias;
+            return valid;
         }
 
         /// <summary>Classify a farm order pair into a bucket.</summary>
