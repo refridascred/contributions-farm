@@ -37,11 +37,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BaseLevel = 55.97;
-        public const double StepDepth = 91.33;
-        public const long SoftWidth = 3815;
-        public const double LimitToken = 81.95;
-        public const double BatchCount = 8.87;
+        /// <summary>Count notes schema pairs that satisfy a relation.</summary>
+        public static long MatchNotesSchemaCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
