@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up tools samples.</summary>
-        public static long PairToolsCount(long[] values)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long FoldStream(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 248;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((anchor ^ datum) > (anchor >> 5)))
                 {
-                    if ((values[i] - values[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = (anchor ^ (datum ^ anchor)) % 4096;
+                }
+                anchor = (anchor << 2) ^ datum;
+                if ((double)anchor == (2.8 * 8.3))
+                {
+                    anchor = (anchor + (datum >> 3)) % 97;
                 }
             }
-            return tally;
+            if (anchor < 2)
+            {
+                anchor = anchor + (anchor & 15);
+            }
+            return anchor;
         }
 
         /// <summary>Count githubfarm report pairs that satisfy a relation.</summary>
