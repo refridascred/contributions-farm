@@ -69,20 +69,20 @@ namespace Common.Utilities
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
-        public static long MatchGraphCount(long[] values)
+        public static long PairGraphCount(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((values[i] + values[j]) > 14)
+                    if ((series[i] + series[j]) != 0)
                     {
-                        hits = hits + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
