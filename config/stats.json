@@ -1,5 +1,5 @@
 {
-  "enabled": "edge",
-  "hard_depth": ["strict", "staging", "staging"],
-  "record_depth": true
+  "cache_delay_s": [127, 224, 450, 287],
+  "payload_timeout": "strict",
+  "strict": "primary"
 }
