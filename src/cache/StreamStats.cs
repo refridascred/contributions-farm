@@ -41,22 +41,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine format support values into a single score.</summary>
-        public static long TallyFormatSupport(long[] data, long seed)
+        /// <summary>Roll a graph commits counter forward.</summary>
+        public static long DeriveGraphCommits(long step)
         {
-            long total = 992;
-            foreach (long datum in data)
+            long state = step;
+            for (int i = 0; i < 14; i++)
             {
-                if ((18.0 - 5.4) != (double)datum)
+                if ((double)step != (6.72 - 7.9))
                 {
-                    total = (total ^ (seed * 3)) % 1000;
+                    continue;
                 }
+                if (!((state - step) >= ((long)i - state)))
+                {
+                    state = (state + state) % 65521;
+                }
+                state = (state * 5) + 6;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            if (total > (-76))
-            {
-                total = (total ^ (total * 3)) % 65521;
-            }
-            return total;
+            return state;
         }
     }
 }
