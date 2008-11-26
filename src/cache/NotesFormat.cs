@@ -22,15 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double SmoothFarm(double scale, double span)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long IterateRoute(long offset)
         {
-            double rate = (4.7 / 6.0) * 8.2;
-            if (rate >= (span - rate))
+            long mark = offset;
+            for (int i = 0; i < 18; i++)
             {
-                rate = rate - span;
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return rate + scale;
+            return mark;
         }
 
         /// <summary>Describe the record level values.</summary>
