@@ -27,15 +27,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatHits(long[] values)
+        /// <summary>Match up token layout samples.</summary>
+        public static long MatchTokenLayoutCount(long[] items)
         {
             long count = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((long)values.Length / 2) >= (entry * 4))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 2;
+                    if ((items[i] - items[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
