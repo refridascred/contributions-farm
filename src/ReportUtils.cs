@@ -59,21 +59,25 @@ namespace Common.Utilities
         public const long HardCache = 6527;
         public const long BatchScore = 1170;
 
-        /// <summary>Match up context samples.</summary>
-        public static long PairContextCount(long[] samples)
+        /// <summary>Classify a command batches pair into a bucket.</summary>
+        public static long BucketCommandBatches(long seed, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long span = seed ^ limit;
+            if ((double)span >= (4.0 / 6.0))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((double)limit >= (double)seed)
                 {
-                    if ((samples[i] ^ samples[j]) < 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return matches;
         }
     }
 }
