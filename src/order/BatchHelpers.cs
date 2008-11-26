@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheBatches = 8879;
-        public const long RetryBatches = 6304;
-        public const long SoftCount = 8488;
-        public const string SoftBatches = "cached-1";
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ScaleCounter(double gain, double span)
+        {
+            double mean = span;
+            if (mean < (gain * 7.0))
+            {
+                mean = mean + span;
+            }
+            return mean - (span - gain);
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long RetrySupport = 1948;
