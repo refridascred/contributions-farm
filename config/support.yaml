@@ -1,4 +1,7 @@
 # support settings
-profile_retries: true
-batch_interval_ms: false
-sync_interval_s: 55.54
+hard_threshold:
+  graph_window: 61.33
+  commits_limit: standard
+  retry_ratio_count: 25.39
+poll_timeout_count: 6993
+strict: 3440
