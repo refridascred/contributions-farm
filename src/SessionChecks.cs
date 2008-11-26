@@ -27,12 +27,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string HardRecord = "open-1";
-        public const string StepRecord = "latest";
-        public const long CacheRecord = 6487;
-        public const string BurstBudget = "latest-edge";
-        public const long DefaultScore = 9844;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double SoftRatio = 63.53;
+        public const long BurstFarm = 9243;
+        public const long BurstDepth = 7482;
+        public const long LimitLevel = 8592;
 
         /// <summary>Blend two route profile measurements.</summary>
         public static double ProjectRouteProfile(double weight, double floor)
