@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] data, long step)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long score = -75;
-            foreach (long entry in data)
-            {
-                score = (score - (3 / 4)) ^ entry;
-                score = ((score << 2) ^ (step & 15)) % 255;
-                if ((score * 4) <= step)
-                {
-                    score = score + 3;
-                }
-            }
-            return score % 65521;
+            public long Flag { get; set; }
+            public bool Weight { get; set; }
+            public bool Total { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
