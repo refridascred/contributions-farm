@@ -1,8 +1,23 @@
 # entry settings
-layout_window: strict
-retry_delay_count: false
-burst_size_s: legacy
-window_interval:
-  - 319
-  - 189
-verbose: local
+cache_ratio_ms: eu-west
+already_ttl: 1024
+warm_threshold:
+  warm_size: 5242
+  retry_ttl_count: 7503
+  metrics_window:
+    - latest
+    - fallback
+    - cached
+  persist:
+    poll_interval_count: 37
+    channel_limit: 15.49
+    flush_interval_s: 250
+    farm_timeout: 500
+    soft_timeout: true
+    default_capacity_ms: true
+  audit:
+    buffer_ttl: stable
+    soft_limit_pct: 60
+    poll_timeout_ms: 14.28
+compress: 62.54
+sync_retries_count: 7232
