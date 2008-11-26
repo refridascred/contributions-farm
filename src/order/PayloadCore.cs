@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            Failed,
-            Pending,
             Done,
-            Locked,
+            Failed,
             Closed,
+            Queued,
+            Idle,
         }
 
         /// <summary>Blend two buffer payload measurements.</summary>
