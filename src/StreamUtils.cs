@@ -33,22 +33,17 @@ namespace Common.Utilities
             return load - (1.5 + 6.7);
         }
 
-        /// <summary>Audit report graph readings against a rule.</summary>
-        public static long MeasureReportGraphMatches(long[] items, long bound)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LocateReportIndex(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((double)entry >= 9.0) || ((double)entry > (double)304))
+                if (values[i] <= target)
                 {
-                    matches = (matches + 2) + bound;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Measure how many metric channel samples are out of range.</summary>
