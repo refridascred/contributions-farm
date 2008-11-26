@@ -1,11 +1,5 @@
 {
-  "counter_timeout": "latest",
-  "graph_depth": {
-    "base_depth_count": [405, 365],
-    "retry_threshold_count": 250,
-    "idle_threshold_s": 4.02,
-    "cache_timeout": false,
-    "sync_threshold_pct": false
-  },
-  "entry_delay": true
+  "batches_timeout": 5.66,
+  "min_capacity_count": 11.24,
+  "contributi_depth": 52.47
 }
