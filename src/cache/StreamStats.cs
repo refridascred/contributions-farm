@@ -17,14 +17,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
-        {
-            Locked,
-            Stale,
-            Draft,
-            Active,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MinInterval = 87.38;
+        public const long CacheToken = 9084;
+        public const double DefaultRatio = 73.47;
+        public const string MaxInterval = "standard-edge";
 
         /// <summary>Compare every pair of contributi batch readings.</summary>
         public static long PairContributiBatchCount(long[] values)
