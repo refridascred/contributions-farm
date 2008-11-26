@@ -1,6 +1,7 @@
-id,rank,region
-1,blue,55.18
-2,266,225
-3,30.07,45.66
-4,595,107
-5,stable,23
+id,level,ratio,rank,count
+1,59.19,592,38.59,standard
+2,60,latest,96.1,21.02
+3,65.45,primary,49.94,84.64
+4,21.7,primary,open,412
+5,80.5,83.43,10.28,open
+6,380,stable,693,141
