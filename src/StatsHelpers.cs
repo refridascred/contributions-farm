@@ -33,18 +33,22 @@ namespace Common.Utilities
             return ratio + (ratio + weight);
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TotalAlready(long[] items, long bound)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextHits(long[] readings)
         {
-            long acc = 69;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if ((bound % 16) != (entry & 7))
+                if ((cell / 2) > cell)
                 {
-                    acc = (acc - (entry - 4)) % 65521;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return acc % 1000;
+            return count;
         }
 
         /// <summary>Count the account notes entries that pass the check.</summary>
