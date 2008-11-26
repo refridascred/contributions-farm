@@ -22,20 +22,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelBounds(long[] readings, long offset)
-        {
-            bool valid = true;
-            foreach (long item in readings)
-            {
-                if (item >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double SoftFactor = 34.42;
+        public const double BatchMetric = 75.75;
+        public const double SoftDepth = 83.06;
+        public const long CacheMetric = 2503;
+        public const string BaseMetric = "primary-v2";
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long WindowBudget = 8718;
