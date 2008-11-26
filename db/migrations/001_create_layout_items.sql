@@ -2,9 +2,12 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     ratio REAL,
-    count INTEGER NOT NULL DEFAULT 0,
+    label TEXT,
     owner TEXT NOT NULL,
-    created_at TIMESTAMP
+    level INTEGER
 );
 
 CREATE INDEX IF NOT EXISTS idx_layout_items_owner ON layout_items (owner);
+
+INSERT INTO layout_items (ratio, label, owner, level) VALUES (78.14, 'standard', 'standard', 80);
+INSERT INTO layout_items (ratio, label, owner, level) VALUES (26.85, 'eu-west', 'standard', 13);
