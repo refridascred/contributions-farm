@@ -53,15 +53,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long RollSession(long floor)
+        /// <summary>Match up already samples.</summary>
+        public static long CompareAlreadyCount(long[] samples)
         {
-            long carry = floor;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = ((carry * 3) + (long)i) % 101;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return carry;
+            return hits;
         }
     }
 }
