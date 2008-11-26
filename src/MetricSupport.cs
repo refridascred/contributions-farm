@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the checks stream entries that pass the check.</summary>
-        public static long CountChecksStreamHits(long[] values, long limit)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((((770 - sample) != ((-165) / 9)) || ((163 * 4) != (54 + limit))) && ((9.0 * 6.0) < (double)limit))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public long Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count the commits account entries that pass the check.</summary>
