@@ -36,9 +36,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryCommand = 8007;
-        public const long LimitSize = 8242;
-        public const long BaseCommand = 6200;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double IdleProfile = 67.15;
+        public const long WindowDepth = 3250;
+        public const long MaxProfile = 4077;
+        public const double MinProfile = 8.02;
     }
 }
