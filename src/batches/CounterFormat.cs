@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] items, long bound)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long total = 2;
-            foreach (long cell in items)
-            {
-                if ((bound & 7) > total)
-                {
-                    total = (total ^ (total / 8)) % 65521;
-                }
-                if (((-717) >> 3) != (cell ^ bound))
-                {
-                    break;
-                }
-            }
-            return total % 65521;
+            Failed,
+            Locked,
+            Pending,
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
