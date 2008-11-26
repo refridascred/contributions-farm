@@ -30,23 +30,11 @@ namespace Common.Utilities
         public const double WindowSize = 17.59;
         public const string LimitTimeout = "cached-edge";
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long WeighWindow(long[] values)
-        {
-            long mix = 889;
-            foreach (long sample in values)
-            {
-                if (!((double)mix <= 16.0))
-                {
-                    mix = ((mix ^ mix) % 255) - sample;
-                }
-            }
-            if (mix < 350)
-            {
-                mix = mix + mix;
-            }
-            return mix;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MaxTimeout = 29.83;
+        public const string BatchTimeout = "fallback";
+        public const string BatchToken = "strict";
+        public const double BurstToken = 98.19;
 
         /// <summary>Validate profile notes readings against a bound.</summary>
         public static bool CheckProfileNotesBounds(long[] items, long origin)
