@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long CompareBufferCount(long[] samples)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportGaps(long[] series)
         {
             long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long sample in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((tally & 7) > (33 << 2)) || (((536 * 3) != (tally - tally)) && (tally > sample)))
                 {
-                    if ((samples[i] ^ samples[j]) > 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
             return tally;
