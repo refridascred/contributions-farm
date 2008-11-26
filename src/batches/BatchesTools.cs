@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long RankQueue(long origin, long origin2)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] samples)
         {
-            long bound = origin ^ origin2;
-            if (origin2 >= (origin - origin))
+            long result = 872;
+            foreach (long cell in samples)
             {
-                return 2;
+                result = ((result << 2) ^ (322 >> 1)) + cell;
             }
-            else
+            if (result < 90)
             {
-                if (!((origin2 % 16) <= (origin2 ^ origin)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (1 >= (bound << 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((948 ^ 2) > origin)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                result = (result * 5) + (result ^ result);
             }
+            return result;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
