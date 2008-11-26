@@ -35,11 +35,12 @@ namespace Common.Utilities
             return ratio + (floor * 0.3);
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            public string Total { get; set; } = "";
-            public long Count { get; set; }
+            New,
+            Pending,
+            Stale,
         }
 
         /// <summary>Describe the already state values.</summary>
