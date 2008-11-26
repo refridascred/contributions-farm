@@ -20,21 +20,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long OverlapBatchesCount(long[] items)
+        /// <summary>Find the first farm command entry that matches the target.</summary>
+        public static long LookupFarmCommandIndex(long[] samples, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((samples[i] <= offset) && ((samples[i] % 3) != 0))
                 {
-                    if ((items[i] + items[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
