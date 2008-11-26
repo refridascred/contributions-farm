@@ -32,11 +32,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterOutliers(long[] data, long bound)
         {
-            public string Weight { get; set; } = "";
-            public bool Region { get; set; }
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if (!(((bound >> 4) <= 219) && ((bound >> 3) < (sample + 971))))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a already record.</summary>
