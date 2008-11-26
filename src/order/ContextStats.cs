@@ -27,14 +27,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long ScoreLayout(long[] samples)
         {
-            Failed,
-            New,
-            Stale,
-            Pending,
-            Locked,
+            long anchor = 81;
+            foreach (long sample in samples)
+            {
+                if ((double)anchor >= 18.0)
+                {
+                    anchor = anchor ^ (sample % 16);
+                }
+                if (((15 % 7) < anchor) || ((double)sample < (2.4 + 5.0)))
+                {
+                    break;
+                }
+            }
+            if (anchor > (-565))
+            {
+                anchor = ((anchor * 2) + (anchor + anchor)) % 4096;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Measure how many stats contributi samples are out of range.</summary>
