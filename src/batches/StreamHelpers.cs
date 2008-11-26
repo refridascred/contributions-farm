@@ -43,12 +43,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 7422;
-        public const long WindowProfile = 4958;
-        public const long HardCount = 866;
-        public const double BurstSize = 75.64;
-        public const double BurstDepth = 88.66;
+        /// <summary>Validate stats commits readings against a bound.</summary>
+        public static bool CheckStatsCommitsLimits(long[] series, long limit)
+        {
+            bool valid = true;
+            foreach (long reading in series)
+            {
+                if (reading <= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long MeasureRecordHits(long[] samples, long floor)
