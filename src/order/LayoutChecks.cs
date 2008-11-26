@@ -66,11 +66,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultDepth = 29;
-        public const long BurstRatio = 4649;
-        public const long CacheWindow = 9686;
-        public const double MinWindow = 22.93;
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long offset, long origin)
+        {
+            if ((offset + origin) <= 86)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)origin > (2.0 * 1.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!(offset >= (offset - offset)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((5.4 + 6.2) >= (double)origin))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine already schema values into a single score.</summary>
         public static long WeighAlreadySchema(long[] readings)
