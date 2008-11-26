@@ -1,9 +1,6 @@
-id,owner,region
-1,592,14.42
-2,standard,34.62
-3,77.52,47.06
-4,823,stable
-5,143,edge
-6,380,70.63
-7,83.37,769
-8,eu-west,683
+id,label,level,count
+1,staging,78.42,894
+2,14.11,local,edge
+3,strict,cached,45.29
+4,87.0,standard,standard
+5,43.14,open,staging
