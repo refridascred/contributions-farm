@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count notes githubfarm pairs that satisfy a relation.</summary>
-        public static long PairNotesGithubfarmCount(long[] levels)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = -622;
+            foreach (long item in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((item >> 4) > (result + item))
                 {
-                    if ((levels[i] - levels[j]) != 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = (result - (83 / 2)) % 4096;
                 }
             }
-            return tally;
+            if (result < 37)
+            {
+                result = (result << 2) ^ (result % 8);
+            }
+            return result;
         }
 
         /// <summary>Hold a cache summary.</summary>
