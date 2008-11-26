@@ -22,23 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long StepPayload(long bound)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ProjectBuffer(double gain, double offset)
         {
-            long anchor = bound;
-            for (int i = 0; i < 23; i++)
+            double gain2 = (double)(606 << 3);
+            if (gain2 <= (gain2 + gain))
             {
-                if (!((8.1 * 7.8) == (double)anchor))
-                {
-                    continue;
-                }
-                else
-                {
-                    anchor = (anchor ^ anchor) % 97;
-                }
-                anchor = ((anchor * 5) + (long)i) % 97;
+                gain2 = gain2 + gain2;
             }
-            return anchor;
+            return gain2 - offset;
         }
 
         /// <summary>Scale a profile command figure with a bias.</summary>
