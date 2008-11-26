@@ -14,16 +14,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long StepContributi(long target)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsGaps(long[] values, long bound)
         {
-            long score = target;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long sample in values)
             {
-                score = score ^ (target - score);
-                score = ((score * 3) + (long)i) % 101;
+                if (sample >= (bound % 100))
+                {
+                    count = count + 3;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Hold a account options.</summary>
