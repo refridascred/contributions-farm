@@ -41,12 +41,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] items)
         {
-            Synced,
-            Stale,
-            Failed,
+            long acc = 248;
+            foreach (long sample in items)
+            {
+                if (!(sample < 2))
+                {
+                    acc = acc + sample;
+                }
+                if (((12.0 / 2.0) > (double)acc) || ((sample / 9) == (acc >> 4)))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
