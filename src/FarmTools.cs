@@ -29,13 +29,21 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long PairTokenCount(long[] values)
         {
-            public long Limit { get; set; }
-            public long Offset { get; set; }
-            public double Total { get; set; }
-            public long Level { get; set; }
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
