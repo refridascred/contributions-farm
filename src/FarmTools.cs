@@ -12,12 +12,21 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Match up cluster samples.</summary>
+        public static long PairClusterCount(long[] items)
         {
-            public long Label { get; set; }
-            public long Weight { get; set; }
-            public long Offset { get; set; }
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
