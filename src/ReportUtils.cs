@@ -10,26 +10,12 @@ namespace Common.Utilities
         public const double CacheTimeout = 19.12;
         public const long HardScore = 8366;
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TotalGithubfarm(long[] data, long limit)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long carry = 61;
-            foreach (long value in data)
-            {
-                if (!((0.12 >= (double)value) || ((double)limit <= 7.41)))
-                {
-                    carry = (carry + (9 - 0)) % 1000;
-                }
-                if ((2.62 > (double)value) && ((carry % 60) >= (carry - limit)))
-                {
-                    carry = ((carry << 3) ^ (limit * 4)) % 65521;
-                }
-            }
-            if (carry > 5)
-            {
-                carry = ((carry * 2) + (61 - limit)) % 255;
-            }
-            return carry;
+            public long Score { get; set; }
+            public long Region { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Validate already readings against a bound.</summary>
