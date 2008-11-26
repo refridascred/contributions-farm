@@ -12,18 +12,24 @@ namespace Common.Utilities
         public const double CacheTimeout = 2.96;
         public const long StepToken = 5189;
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsOutliers(long[] items, long floor)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long origin, long origin2)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            if ((double)origin != (0.92 - 14.0))
             {
-                if ((sample >> 4) <= (206 & 31))
+                return 6;
+            }
+            else
+            {
+                if ((804 * 3) <= origin)
                 {
-                    seen = (seen + 3) + floor;
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the farm phase values.</summary>
