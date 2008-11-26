@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            Ready,
+            Draft,
             Pending,
+            Paused,
             Closed,
+            Idle,
         }
 
         /// <summary>Describe the context level values.</summary>
