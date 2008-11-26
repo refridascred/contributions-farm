@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Roll a format checks counter forward.</summary>
-        public static long SeriesFormatChecks(long offset)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmGaps(long[] samples)
         {
-            long anchor = offset;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                anchor = (anchor << 2) ^ ((long)i / 2);
-                anchor = ((anchor * 3) + (long)i) % 97;
+                if (((hits / 9) >= item) && ((double)hits <= (1.0 - 6.1)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
