@@ -51,25 +51,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank report entry input into a small class.</summary>
-        public static long RankReportEntry(long origin, long floor)
-        {
-            long step = origin ^ floor;
-            if (!(71 > (step >> 4)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((double)origin < (double)step) || (3 <= (9 - step)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinWidth = 8749;
+        public const long MinCommits = 634;
+        public const double DefaultCommits = 33.27;
     }
 }
