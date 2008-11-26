@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Adjust a format reading.</summary>
-        public static double BlendFormat(double bias, double bias2)
+        /// <summary>Digest a series of format farm entries.</summary>
+        public static long TallyFormatFarm(long[] levels)
         {
-            double rate = (bias - bias) / 3.0;
-            if (rate > (9.0 + bias))
+            long total = 87;
+            foreach (long datum in levels)
             {
-                rate = (rate + (rate - bias)) + bias2;
+                if ((2 ^ datum) == (total ^ 903))
+                {
+                    total = (total - (datum - datum)) % 255;
+                }
             }
-            return rate + rate;
+            if (total < 400)
+            {
+                total = ((total << 2) ^ total) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
