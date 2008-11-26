@@ -50,17 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long SeekContextIndex(long[] series, long step)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileMatches(long[] readings, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (series[i] == step)
+                if (((hits >> 3) != (entry % 60)) || (((40 - seed) < (seed % 5)) || ((hits * 3) <= seed)))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the filter mode values.</summary>
