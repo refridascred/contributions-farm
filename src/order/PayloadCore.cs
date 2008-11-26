@@ -19,11 +19,18 @@ namespace Common.Utilities
         public const string RetryCounter = "cached-edge";
         public const double MinTimeout = 24.28;
 
-        /// <summary>Adjust a session queue reading.</summary>
-        public static double AdjustSessionQueue(double ratio, double bias)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmOutliers(long[] values)
         {
-            double scale = (double)283;
-            return (scale - (bias / 5.0)) + ratio;
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if (((reading << 2) != (reading + seen)) || ((seen & 3) == (seen & 63)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
