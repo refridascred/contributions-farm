@@ -33,22 +33,14 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterMatches(long[] series, long origin)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if (0 > (item & 63))
-                {
-                    tally = (tally + 2) - origin;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Stale,
+            Draft,
+            Synced,
+            Dropped,
+            Ready,
         }
     }
 }
