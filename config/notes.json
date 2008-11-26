@@ -1,8 +1,15 @@
 {
-  "counter_depth": "cached",
-  "buffer_retries": "staging",
-  "max_capacity_pct": false,
-  "warm_interval": [159, 146],
-  "sync_timeout_count": [292, 37, 179, 45],
-  "cache_interval": ["local", "staging"]
+  "flush_interval_s": 6467,
+  "compress": 7121,
+  "soft_window": {
+    "burst_retries": true,
+    "readonly": 60,
+    "flush_timeout": "open",
+    "max_interval_ms": "local",
+    "tools_ratio": {
+      "strict": "cached",
+      "base_delay_ms": [384, 33, 178],
+      "poll_limit": 30.87
+    }
+  }
 }
