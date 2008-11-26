@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            Ready,
-            Stale,
-            Active,
+            Synced,
+            Failed,
+            Pending,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
