@@ -1,8 +1,6 @@
 {
-  "verbose": 27.85,
-  "hard_ratio_count": "strict",
-  "soft_limit_s": [271, 80],
-  "hard_threshold_ms": "staging",
-  "retry_ttl_pct": [109, 446, 468, 287],
-  "dry_run": 60
+  "flush_window_ms": "strict",
+  "channel_size": "eu-west",
+  "stream_limit": 14,
+  "hard_timeout_s": "primary"
 }
