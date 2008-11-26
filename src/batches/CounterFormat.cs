@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double RetryInterval = 80.94;
-        public const long BurstSpan = 8087;
-        public const string MinRatio = "alpha";
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long seed, long step)
+        {
+            long prev = seed + step;
+            if (0 > seed)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)prev == (double)seed)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Rank contributi input into a small class.</summary>
         public static long ClassifyContributi(long floor, long target)
