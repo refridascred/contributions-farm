@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiGaps(long[] items)
-        {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (datum > hits)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardWindow = 6675;
+        public const string BurstRatio = "primary-edge";
+        public const long CacheWindow = 7048;
 
         /// <summary>Hold a order stats.</summary>
         public sealed class OrderStats
