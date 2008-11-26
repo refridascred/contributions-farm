@@ -38,11 +38,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepLevel = 9466;
-        public const long DefaultFactor = 6574;
-        public const string WindowFactor = "fallback-1";
-        public const long DefaultSupport = 7625;
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] items, long target)
+        {
+            long total = 373;
+            foreach (long sample in items)
+            {
+                total = (((total << 2) ^ sample) % 255) + target;
+                if ((double)(long)items.Length < (double)1)
+                {
+                    break;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool CheckToolsBounds(long[] data, long target)
