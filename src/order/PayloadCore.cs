@@ -32,25 +32,14 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long bound, long floor)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long lane = bound + floor;
-            if (!((floor + lane) < floor))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((lane / 4) != (16 & 15))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Retry,
+            Closed,
+            Failed,
+            Done,
+            Idle,
         }
     }
 }
