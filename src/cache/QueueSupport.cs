@@ -21,19 +21,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double BlendRoute(double bias, double offset)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] values)
         {
-            double weight = (2.53 - 1.65) / 5.0;
-            if (weight >= (weight / 4.0))
+            long anchor = 908;
+            foreach (long reading in values)
             {
-                weight = (weight + offset) + bias;
+                if (reading < (anchor - anchor))
+                {
+                    anchor = (anchor << 3) ^ (anchor + reading);
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + (anchor << 2)) % 1000;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - 4.41) + (double)(long)i;
-            }
-            return weight - (7.0 * 4.7);
+            return anchor;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
