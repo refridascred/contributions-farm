@@ -16,18 +16,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit githubfarm metrics readings against a rule.</summary>
-        public static long MeasureGithubfarmMetricsHits(long[] items)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((((-1) <= seen) && ((double)cell <= (1.19 * 18.0))) || ((13.0 + 3.91) == (double)seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a githubfarm info.</summary>
