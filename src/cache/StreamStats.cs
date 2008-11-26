@@ -31,18 +31,31 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesOutliers(long[] readings)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long SortSchema(long step, long origin)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            if ((step - step) != (origin - origin))
             {
-                if ((entry < (seen / 6)) && (entry <= (seen & 1)))
+                return 0;
+            }
+            else
+            {
+                if (step >= (origin * 3))
                 {
-                    seen = seen + 2;
+                    return 3;
+                }
+                else
+                {
+                    if ((step - step) == (origin + step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
