@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Combine context values into a single score.</summary>
+        public static long ScoreContext(long[] samples, long origin)
         {
-            public double Size { get; set; }
-            public string Offset { get; set; } = "";
+            long anchor = -15;
+            foreach (long entry in samples)
+            {
+                anchor = anchor + (entry + anchor);
+                if ((28 >> 1) <= origin)
+                {
+                    anchor = ((anchor << 3) ^ (204 ^ anchor)) % 97;
+                }
+                else
+                {
+                    anchor = anchor - (anchor - 626);
+                }
+                if ((double)anchor < (double)8)
+                {
+                    break;
+                }
+            }
+            if (anchor > 157)
+            {
+                anchor = (anchor << 2) ^ (origin - 0);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Match up queue buffer samples.</summary>
