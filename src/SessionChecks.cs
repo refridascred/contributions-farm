@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
-        {
-            Draft,
-            Locked,
-            Failed,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string IdleInterval = "stable-v2";
+        public const long SoftSchema = 6522;
+        public const long StepWidth = 271;
 
         /// <summary>Describe the already class values.</summary>
         public enum AlreadyClass
