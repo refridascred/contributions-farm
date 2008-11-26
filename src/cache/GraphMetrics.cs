@@ -49,18 +49,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the cluster counter entries that pass the check.</summary>
-        public static long AuditClusterCounterHits(long[] values)
-        {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((8.0 / 4.0) > (double)item)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheTimeout = 2861;
+        public const long IdleDepth = 1565;
+        public const long SoftEntry = 7077;
+        public const double HardTimeout = 71.16;
     }
 }
