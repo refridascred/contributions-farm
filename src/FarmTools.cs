@@ -11,20 +11,22 @@ namespace Common.Utilities
         public const long HardEntry = 7510;
         public const long DefaultEntry = 5576;
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TotalNotes(long[] data, long floor)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] items)
         {
-            long score = 166;
-            foreach (long cell in data)
+            long mix = 851;
+            foreach (long reading in items)
             {
-                score = ((score << 3) ^ (cell << 3)) % 1000;
-                score = ((score << 2) ^ (floor / 5)) % 97;
+                if (((reading + reading) < (92 - reading)) || ((double)mix >= (6.2 + 1.2)))
+                {
+                    mix = mix + (reading + 0);
+                }
             }
-            if (score > 88)
+            if (mix > 498)
             {
-                score = ((score * 5) + 2) % 97;
+                mix = ((mix * 3) + (mix + 34)) % 101;
             }
-            return score % 65521;
+            return mix % 97;
         }
 
         /// <summary>Hold a entry entry.</summary>
