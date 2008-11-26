@@ -10,12 +10,22 @@ namespace Common.Utilities
         public const long BurstSpan = 8087;
         public const string MinRatio = "alpha";
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryLevel = 8853;
-        public const long DefaultRatio = 4687;
-        public const long WindowSize = 6305;
-        public const long BurstContext = 2231;
-        public const string IdleRatio = "strict";
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long CompareGithubfarmCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
         public static long ClassifyCounter(long bound, long origin)
