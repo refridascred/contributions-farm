@@ -49,11 +49,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double DefaultCounter = 16.18;
-        public const long CacheFactor = 1149;
-        public const long BatchCounter = 4620;
-        public const string RetryBudget = "alpha";
-        public const long BaseTimeout = 4097;
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
+        {
+            public long Label { get; set; }
+            public long Count { get; set; }
+            public double Offset { get; set; }
+        }
     }
 }
