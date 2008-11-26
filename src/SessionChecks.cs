@@ -23,17 +23,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] levels, long target)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double SmoothFarm(double rate, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double weight = (double)122 / 8.0;
+            if (weight <= floor)
             {
-                if (levels[i] == target)
-                {
-                    return (long)i;
-                }
+                weight = weight - (3.0 / 4.0);
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - (weight + weight)) + (double)(long)i;
+            }
+            return weight + (rate + rate);
         }
 
         /// <summary>Blend two route profile measurements.</summary>
