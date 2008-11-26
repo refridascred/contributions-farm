@@ -1,7 +1,23 @@
 # entry settings
-soft_timeout_s: 98.07
-strict: 100
-layout_ratio: legacy
-readonly: standard
-idle_timeout: 71
-verbose: true
+cache_interval:
+  soft_threshold_s: open
+  persist: 82
+  min_size_pct: 60
+  readonly: 2033
+base_timeout_ms:
+  - 470
+  - 274
+counter_interval: 44.28
+record_delay: false
+flush_capacity_ms:
+  persist: standard
+  enabled: 3694
+  warm_ttl:
+    - local
+    - staging
+  verbose:
+    farm_interval: cached
+    dry_run: 28.01
+    max_capacity: 54.61
+    record_delay: blue
+    payload_capacity: 57.07
