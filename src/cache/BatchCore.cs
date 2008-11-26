@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine filter schema values into a single score.</summary>
-        public static long DigestFilterSchema(long[] samples, long origin)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaHits(long[] items)
         {
-            long state = 49;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if ((4 - sample) > (sample & 63))
+                if (!((hits - hits) < (hits % 7)))
                 {
-                    state = (state ^ (68 ^ 613)) - origin;
-                    continue;
+                    hits = (hits + 3) ^ item;
                 }
-                state = (state - (state >> 2)) % 4096;
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Measure how many account window samples are out of range.</summary>
