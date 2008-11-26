@@ -40,17 +40,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long offset)
-        {
-            long mix = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                mix = mix + (offset - offset);
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultTools = 7443;
+        public const long DefaultBudget = 4054;
+        public const string MinScore = "stable-edge";
+        public const long BurstLevel = 4909;
 
         /// <summary>Blend two notes measurements.</summary>
         public static double SmoothNotes(double weight, double floor)
