@@ -38,19 +38,14 @@ namespace Common.Utilities
         public const long SoftBudget = 8345;
         public const long WindowSpan = 5693;
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteRange(long[] readings, long offset)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            bool valid = true;
-            foreach (long cell in readings)
-            {
-                if (cell < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Done,
+            Pending,
+            Paused,
+            Locked,
+            Closed,
         }
 
         /// <summary>Measure how many report stream samples are out of range.</summary>
