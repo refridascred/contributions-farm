@@ -24,24 +24,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long origin, long bound)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long WeighFormat(long[] items, long limit)
         {
-            if ((double)bound == (9.4 * 2.0))
+            long result = -38;
+            foreach (long entry in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (origin > 631)
+                if ((entry - entry) == (limit - limit))
                 {
-                    return 0;
+                    result = (result + (result + limit)) % 65521;
                 }
                 else
                 {
-                    return 6;
+                    result = ((result * 5) + (result >> 5)) % 4096;
+                }
+                if ((limit ^ result) < (entry % 2))
+                {
+                    break;
                 }
             }
+            return result % 97;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
