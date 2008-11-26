@@ -13,18 +13,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyOutliers(long[] levels)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((count - count) != (entry + count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            New,
+            Done,
+            Pending,
+            Closed,
         }
 
         /// <summary>Locate a account reading by value.</summary>
