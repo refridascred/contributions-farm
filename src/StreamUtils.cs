@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordMatches(long[] items)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long StepCommits(long target)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long score = target;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)cell >= (double)count)
-                {
-                    count = count + 1;
-                }
+                score = score ^ (target - target);
+                score = (score * 2) + 55;
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
