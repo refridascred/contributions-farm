@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterBounds(long[] series, long offset)
         {
-            public string Count { get; set; } = "";
-            public bool Total { get; set; }
-            public bool Owner { get; set; }
-            public string Token { get; set; } = "";
+            bool found = true;
+            foreach (long cell in series)
+            {
+                if (cell <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
