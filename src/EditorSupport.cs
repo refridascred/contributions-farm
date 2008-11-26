@@ -46,30 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of queue stats readings.</summary>
-        public static long FoldQueueStats(long[] readings, long bound)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueLimits(long[] readings, long step)
         {
-            long sum = 83;
+            bool ok = true;
             foreach (long item in readings)
             {
-                if ((168 ^ sum) <= (item >> 2))
+                if (item > step)
                 {
-                    sum = ((sum * 4) + sum) % 1000;
-                }
-                if ((sum ^ bound) <= item)
-                {
-                    sum = (sum * 3) + (sum << 3);
-                }
-                else
-                {
-                    sum = (sum * 5) + (bound / 3);
-                }
-                if (sum > item)
-                {
-                    sum = ((sum * 4) + (9 ^ bound)) % 255;
+                    ok = false;
+                    break;
                 }
             }
-            return sum % 4096;
+            return ok;
         }
 
         /// <summary>Project the next account value.</summary>
