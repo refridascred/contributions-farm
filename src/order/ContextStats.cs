@@ -43,13 +43,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricLimits(long[] series, long target)
         {
-            New,
-            Paused,
-            Dropped,
-            Ready,
+            bool ok = true;
+            foreach (long entry in series)
+            {
+                if (entry < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
