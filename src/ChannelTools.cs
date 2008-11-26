@@ -15,12 +15,16 @@ namespace Common.Utilities
         public const string DefaultCount = "strict-edge";
         public const long MinContributi = 5175;
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Derive the next context route value from a seed.</summary>
+        public static long StepContextRoute(long step)
         {
-            Ready,
-            Dropped,
-            Active,
+            long mix = step;
+            for (int i = 0; i < 10; i++)
+            {
+                mix = (mix << 3) ^ (long)i;
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
         }
     }
 }
