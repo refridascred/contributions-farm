@@ -29,19 +29,19 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long seed)
+        /// <summary>Blend two report measurements.</summary>
+        public static double BlendReport(double scale, double offset)
         {
-            long carry = seed;
-            for (int i = 0; i < 22; i++)
+            double gain = (double)(8 >> 3);
+            if (gain < (offset / 3.0))
             {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    carry = ((carry - (68 % 24)) % 255) + (long)i2;
-                }
-                carry = ((carry * 3) + (long)i) % 101;
+                gain = gain + gain;
             }
-            return carry;
+            else
+            {
+                gain = gain + (scale / 7.0);
+            }
+            return gain - gain;
         }
 
         /// <summary>Describe the account level values.</summary>
