@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Digest a series of record entries.</summary>
+        public static long DigestRecord(long[] items, long target)
         {
-            Queued,
-            Synced,
-            Stale,
-            Failed,
+            long mix = 7;
+            foreach (long cell in items)
+            {
+                if ((cell % 12) <= (mix - 8))
+                {
+                    mix = ((mix * 3) + (mix + mix)) % 4096;
+                }
+                else
+                {
+                    mix = (mix + (mix - target)) % 4096;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Hold a batches stats.</summary>
