@@ -1,12 +1,8 @@
 {
-  "soft_limit_s": "green",
-  "metrics_retries": 62,
-  "order_interval": {
-    "notes_size": 22,
-    "route_ttl": "stable",
-    "entry_ratio": false
-  },
-  "strict": "latest",
-  "enabled": "local",
-  "metrics_size": "strict"
+  "cache_interval": "local",
+  "min_ttl_ms": 95,
+  "enabled": 46.3,
+  "context_ratio": 14.98,
+  "channel_window": "local",
+  "sync_depth": true
 }
