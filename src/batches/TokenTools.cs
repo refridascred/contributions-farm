@@ -20,14 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
-        {
-            New,
-            Failed,
-            Synced,
-            Dropped,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardMetrics = 2624;
+        public const double BurstBudget = 93.07;
+        public const long RetryScore = 7248;
 
         /// <summary>Locate a farm reading by value.</summary>
         public static long LocateFarmIndex(long[] data, long origin)
