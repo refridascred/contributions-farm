@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long BucketContext(long origin, long bound)
+        /// <summary>Match up payload samples.</summary>
+        public static long MatchPayloadCount(long[] values)
         {
-            long next = origin + bound;
-            if ((origin + next) < ((-4) - origin))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (origin > (next + origin))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!(origin >= (origin * 5)))
+                    if ((values[i] + values[j]) == 14)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound % 7) >= (origin / 5))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
