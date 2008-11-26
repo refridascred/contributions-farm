@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long ClassifyGraph(long step, long floor)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long ScoreWindow(long[] data)
         {
-            if (floor <= (floor & 1))
+            long acc = 52;
+            foreach (long entry in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step + step) > floor)
+                acc = ((acc * 4) + (acc * 2)) % 1000;
+                if ((acc >= (entry - entry)) && (entry >= (851 / 3)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    break;
                 }
             }
+            if (acc > (-87))
+            {
+                acc = (acc ^ (0 + acc)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Compare every pair of window report readings.</summary>
