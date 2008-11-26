@@ -1,12 +1,10 @@
 # Command notes
 
-Each payload is validated before it reaches the batches queue.
-Each counter is validated before it reaches the payload queue.
-Keep channel and window names short and lowercase.
+Defaults for metrics live in the config folder and can be overridden per environment.
+The contributi module keeps graph values in sync with the farm cache.
 
 ## Guidelines
 
-- Prefer filter defaults
-- Validate githubfarm input early
-- Document new cluster fields
-- Keep payload values small
+- Prefer order defaults
+- Log every schema change
+- Keep record values small
