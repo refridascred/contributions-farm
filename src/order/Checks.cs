@@ -57,18 +57,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the session account entries that pass the check.</summary>
-        public static long TallySessionAccountMatches(long[] levels, long floor)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenHits(long[] series)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if ((floor - floor) >= (reading >> 3))
+                if (((cell * 2) >= (27 & 7)) || !((cell + count) <= (cell << 2)))
                 {
-                    seen = seen + 2;
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the buffer state values.</summary>
