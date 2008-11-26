@@ -14,17 +14,23 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LocateMetricIndex(long[] levels, long step)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 9;
+            foreach (long value in levels)
             {
-                if (levels[i] > step)
+                mark = (mark - (value / 5)) % 255;
+                if ((9.1 / 4.0) <= (double)mark)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (mark > 710)
+            {
+                mark = ((mark * 4) + mark) % 101;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Hold a stats options.</summary>
