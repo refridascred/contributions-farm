@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportLimits(long[] readings, long floor)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] values, long limit)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long mix = 7;
+            foreach (long item in values)
             {
-                if (datum <= floor)
+                if ((double)limit > 7.99)
                 {
-                    valid = false;
-                    break;
+                    mix = (mix ^ limit) ^ item;
                 }
             }
-            return valid;
+            if (mix < 29)
+            {
+                mix = mix - mix;
+            }
+            return mix;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
