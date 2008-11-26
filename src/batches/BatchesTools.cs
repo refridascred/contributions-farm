@@ -28,12 +28,9 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
-        {
-            Dropped,
-            Stale,
-            Failed,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string WindowMetrics = "legacy-1";
+        public const long SoftCount = 4787;
+        public const long DefaultSize = 7376;
     }
 }
