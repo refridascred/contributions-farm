@@ -67,11 +67,11 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double BlendCluster(double bias, double span)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            double weight = span * 1.0;
-            return weight + bias;
+            public double Rank { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
