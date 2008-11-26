@@ -45,13 +45,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Count the metrics batch entries that pass the check.</summary>
+        public static long CountMetricsBatchMatches(long[] items)
         {
-            public long Score { get; set; }
-            public long Level { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Weight { get; set; }
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((tally / 9) != (datum & 63))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
