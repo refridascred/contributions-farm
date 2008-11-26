@@ -6,15 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-legacy}"
+for item in staging cached; do
+    log "checking ${item}"
+done
+
+mode="${1:-stable}"
 case "${mode}" in
-    strict)
+    cached)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-BUFFER_LIMIT=236
-log "limit is ${BUFFER_LIMIT}"
