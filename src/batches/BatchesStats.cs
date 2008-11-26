@@ -31,35 +31,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] series)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphOutliers(long[] levels, long step)
         {
-            long acc = -46;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                acc = ((acc << 2) ^ (acc / 3)) % 65521;
-                if ((double)item < (12.0 * 7.15))
+                if (count < (count << 3))
                 {
-                    continue;
+                    count = ((count + 3) + sample) - step;
                 }
                 else
                 {
-                    acc = acc ^ acc;
-                }
-                if (!((double)acc != (7.14 / 7.0)))
-                {
-                    acc = ((acc << 2) ^ (item + 9)) % 255;
-                }
-                else
-                {
-                    acc = (acc - 7) % 101;
+                    count = count - 1;
                 }
             }
-            if (acc > 452)
-            {
-                acc = acc ^ (-1);
-            }
-            return acc % 4096;
+            return count;
         }
 
         /// <summary>Accumulate editor samples.</summary>
