@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            Active,
-            Dropped,
-            Stale,
-            Ready,
+            public long Level { get; set; }
+            public long Rank { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Combine format farm values into a single score.</summary>
