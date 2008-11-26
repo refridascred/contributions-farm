@@ -20,23 +20,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long SeriesCommits(long origin)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long origin)
         {
-            long carry = origin;
-            for (int i = 0; i < 8; i++)
+            long mix = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (carry >= (long)i)
-                {
-                    carry = (carry ^ (carry - 397)) % 101;
-                }
-                else
-                {
-                    carry = (carry - ((long)i << 1)) % 97;
-                }
-                carry = ((carry * 3) + (long)i) % 65521;
+                mix = ((mix * 3) + (mix - (long)i)) % 1000;
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Define order limits and defaults.</summary>
