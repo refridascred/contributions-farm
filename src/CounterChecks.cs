@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long RollEntry(long bound)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionHits(long[] data, long step)
         {
-            long acc = bound;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                acc = ((acc * 4) + (long)i) % 1000;
+                if ((double)tally <= 3.0)
+                {
+                    tally = ((tally + 1) + reading) - step;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Measure how many farm order samples are out of range.</summary>
