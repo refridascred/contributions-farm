@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountLimits(long[] series, long target)
+        /// <summary>Count the checks stream entries that pass the check.</summary>
+        public static long CountChecksStreamHits(long[] values, long limit)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if (reading < target)
+                if ((((770 - sample) != ((-165) / 9)) || ((163 * 4) != (54 + limit))) && ((9.0 * 6.0) < (double)limit))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
