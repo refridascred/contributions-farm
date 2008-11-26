@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] data)
+        /// <summary>Fold a list of buffer metric readings.</summary>
+        public static long CombineBufferMetric(long[] data)
         {
-            long carry = 11;
+            long total = 38;
             foreach (long value in data)
             {
-                if (value < (859 / 3))
+                total = (total ^ (value - total)) % 1000;
+                if (total > (2 << 2))
                 {
-                    carry = (carry * 2) + 723;
+                    total = ((total << 2) ^ (value % 5)) % 1000;
+                    continue;
+                }
+                if ((total * 2) > (total + (long)data.Length))
+                {
+                    total = (total << 3) ^ 8;
                 }
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
