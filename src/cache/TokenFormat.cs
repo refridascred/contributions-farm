@@ -25,15 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long offset)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long score = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
+            public string Flag { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Audit session readings against a rule.</summary>
