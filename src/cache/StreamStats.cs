@@ -43,26 +43,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long ScoreAlready(long[] readings)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderRange(long[] values, long offset)
         {
-            long result = -87;
-            foreach (long cell in readings)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                if ((5.3 * 7.34) <= (double)result)
+                if (entry <= offset)
                 {
-                    result = (result - cell) % 1000;
-                }
-                else
-                {
-                    result = ((result << 2) ^ cell) % 4096;
+                    stale = false;
+                    break;
                 }
             }
-            if (result > 8)
-            {
-                result = (result + (result - 3)) % 65521;
-            }
-            return result % 1000;
+            return stale;
         }
 
         /// <summary>Combine format values into a single score.</summary>
