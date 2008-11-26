@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of layout queue readings.</summary>
-        public static long DigestLayoutQueue(long[] items)
+        /// <summary>Locate a session layout reading by value.</summary>
+        public static long LookupSessionLayoutIndex(long[] items, long limit)
         {
-            long score = 9;
-            foreach (long cell in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (score > (cell - score))
+                if (items[i] >= limit)
                 {
-                    score = (score + 4) % 255;
-                }
-                if ((double)cell < (2.27 + 8.93))
-                {
-                    score = score + (score + cell);
-                }
-                if ((1.8 + 5.0) != (double)cell)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
