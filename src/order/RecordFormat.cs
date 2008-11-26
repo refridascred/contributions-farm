@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Blend two filter measurements.</summary>
-        public static double SmoothFilter(double gain, double bias)
+        /// <summary>Match up editor graph samples.</summary>
+        public static long PairEditorGraphCount(long[] items)
         {
-            double bias2 = 9.62;
-            if (bias2 <= 3.2)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                bias2 = bias2 - (bias * 16.0);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 10)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                bias2 = bias2 + (gain / 4.0);
-            }
-            return bias2 + (double)3;
+            return count;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
