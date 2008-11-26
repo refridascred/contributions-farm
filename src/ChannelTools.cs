@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
-        {
-            public long Token { get; set; }
-            public bool Level { get; set; }
-            public long Mode { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstCommits = 140;
+        public const string WindowCommits = "primary-1";
+        public const long StepSpan = 2515;
 
         /// <summary>Adjust a metric reading.</summary>
         public static double ProjectMetric(double gain, double span)
