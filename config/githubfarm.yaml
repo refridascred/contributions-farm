@@ -1,8 +1,4 @@
 # githubfarm settings
-base_interval_count: latest
-command_capacity: legacy
-tools_limit:
-  - standard
-  - edge
-  - latest
-  - fallback
+support_ttl: 100
+base_timeout_count: 100
+soft_retries_s: strict
