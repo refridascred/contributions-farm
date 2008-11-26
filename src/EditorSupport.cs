@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long DigestCommits(long[] items, long limit)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long ScoreFormat(long[] data, long bound)
         {
-            long mix = 4;
-            foreach (long item in items)
+            long total = -4;
+            foreach (long item in data)
             {
-                mix = (((mix * 5) + (limit ^ 5)) % 1000) ^ item;
-                mix = (mix + 7) % 4096;
-                if (!((mix >> 3) != (67 / 3)))
+                total = ((total * 2) + item) % 101;
+                if ((22 + item) > (bound ^ total))
                 {
-                    mix = mix - (mix >> 3);
+                    total = (total + bound) % 4096;
                 }
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
