@@ -26,19 +26,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] samples)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long RollCommand(long offset)
         {
-            long result = -2;
-            foreach (long reading in samples)
+            long anchor = offset;
+            for (int i = 0; i < 8; i++)
             {
-                result = result + (reading % 16);
+                anchor = (anchor + offset) % 1000;
+                anchor = ((anchor << 2) ^ (anchor * 5)) % 4096;
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            if (result < 6)
-            {
-                result = (result << 2) ^ result;
-            }
-            return result;
+            return anchor;
         }
     }
 }
