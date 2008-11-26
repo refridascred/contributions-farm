@@ -1,7 +1,6 @@
-id,count,rank,active
-1,11,edge,1.41
-2,legacy,strict,latest
-3,765,fallback,71
-4,46.3,336,75.64
-5,107,12.64,319
-6,open,588,722
+id,label,score,region
+1,97,739,228
+2,primary,eu-west,55.15
+3,174,375,primary
+4,primary,139,36.24
+5,97.11,94.57,82.99
