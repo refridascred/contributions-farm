@@ -55,19 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two githubfarm account measurements.</summary>
-        public static double BlendGithubfarmAccount(double ratio, double bias)
+        /// <summary>Measure how many session metric samples are out of range.</summary>
+        public static long TallySessionMetricMatches(long[] items)
         {
-            double gain = bias;
-            if (gain <= (double)(-91))
+            long count = 0;
+            foreach (long value in items)
             {
-                gain = (gain + (bias * 2.5)) + ratio;
+                if (((long)items.Length + (long)items.Length) == (value * 3))
+                {
+                    count = count + 1;
+                }
             }
-            else
-            {
-                gain = gain + (bias * 14.0);
-            }
-            return gain + (double)764;
+            return count;
         }
     }
 }
