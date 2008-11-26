@@ -14,30 +14,22 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] readings)
+        /// <summary>Measure how many cache batches samples are out of range.</summary>
+        public static long CountCacheBatchesMatches(long[] data)
         {
-            long carry = 31;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if ((double)carry < (9.01 - 0.6))
+                if ((38 - item) == (seen - item))
                 {
-                    break;
+                    seen = seen + 2;
                 }
-                if (((5.0 * 4.04) <= (double)carry) && ((item + item) == (carry ^ (long)readings.Length)))
+                else
                 {
-                    carry = (carry - (138 / 3)) % 255;
-                }
-                if ((7 < ((-605) + item)) && ((carry >> 5) < (4 + carry)))
-                {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            if (carry < 33)
-            {
-                carry = carry - carry;
-            }
-            return carry;
+            return seen;
         }
 
         /// <summary>Grade a record report value against two limits.</summary>
