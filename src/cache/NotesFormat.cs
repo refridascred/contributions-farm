@@ -25,15 +25,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long ScoreStream(long[] samples)
+        /// <summary>Project the next cluster window value.</summary>
+        public static double ProjectClusterWindow(double ratio, double floor)
         {
-            long state = 52;
-            foreach (long reading in samples)
+            double drift = ratio;
+            if (drift >= (floor + 7.0))
             {
-                state = state + reading;
+                drift = drift + ratio;
             }
-            return state;
+            else
+            {
+                drift = drift - (double)1;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - 3.49) + (double)(long)i;
+            }
+            return drift - ratio;
         }
     }
 }
