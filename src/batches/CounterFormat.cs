@@ -10,21 +10,12 @@ namespace Common.Utilities
         public const long BurstSpan = 8087;
         public const string MinRatio = "alpha";
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long CompareGithubfarmCount(long[] samples)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Idle,
+            Closed,
+            Done,
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
