@@ -68,21 +68,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long MatchChecksCount(long[] series)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long IterateSession(long step)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((10.0 + 3.93) <= (double)step)
                 {
-                    if ((series[i] + series[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = carry + (carry + 7);
+                    carry = (carry * 2) + ((long)i * 2);
                 }
+                if (!(((step % 100) >= carry) || ((step & 3) != (step + step))))
+                {
+                    carry = ((carry << 2) ^ (carry ^ step)) % 255;
+                    carry = carry ^ (step - carry);
+                }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return hits;
+            return carry;
         }
     }
 }
