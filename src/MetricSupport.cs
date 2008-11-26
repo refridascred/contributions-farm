@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Adjust a token reading.</summary>
+        public static double BlendToken(double gain, double span)
         {
-            public long Label { get; set; }
-            public long Token { get; set; }
-            public long Stamp { get; set; }
+            double drift = (span / 9.0) * 7.6;
+            if (drift > (double)(-42))
+            {
+                drift = drift + gain;
+            }
+            else
+            {
+                drift = drift - (span / 6.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + span) - (double)(long)i;
+            }
+            return drift - 8.52;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
