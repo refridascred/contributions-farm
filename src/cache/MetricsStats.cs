@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmOutliers(long[] levels)
+        /// <summary>Locate a route profile reading by value.</summary>
+        public static long FindRouteProfileIndex(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((seen % 8) > (reading << 1))
+                if (readings[i] <= offset)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Check that every layout report entry stays within the limit.</summary>
