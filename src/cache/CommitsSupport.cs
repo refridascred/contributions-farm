@@ -23,18 +23,39 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit format record readings against a rule.</summary>
-        public static long MeasureFormatRecordOutliers(long[] samples)
+        /// <summary>Grade a checks commits value against two limits.</summary>
+        public static long ClassifyChecksCommits(long target, long target2)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long edge = target + target2;
+            if (!((double)target < 3.4))
             {
-                if (((hits + hits) < (item + hits)) || (hits <= (hits * 4)))
+                return 6;
+            }
+            else
+            {
+                if (target > 1)
                 {
-                    hits = hits + 2;
+                    return 1;
+                }
+                else
+                {
+                    if ((target2 & 255) < (9 & 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((edge & 1) >= ((-4) >> 3))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
