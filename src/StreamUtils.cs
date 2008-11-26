@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            New,
-            Retry,
-            Pending,
+            Failed,
             Done,
+            New,
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
