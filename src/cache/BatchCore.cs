@@ -46,31 +46,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long floor, long offset)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextOutliers(long[] samples, long origin)
         {
-            if ((double)floor < 9.3)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)offset < (2.4 * 4.0))
+                if (((double)value <= (0.08 * 6.18)) && !((double)hits <= (9.36 * 19.0)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((13.0 * 8.8) > (double)floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    hits = (hits + 2) + origin;
                 }
             }
+            return hits;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
