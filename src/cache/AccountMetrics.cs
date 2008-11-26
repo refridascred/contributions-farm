@@ -71,11 +71,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueLimits(long[] samples, long target)
         {
-            public double Rank { get; set; }
-            public string Token { get; set; } = "";
+            bool ready = true;
+            foreach (long datum in samples)
+            {
+                if (datum >= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
