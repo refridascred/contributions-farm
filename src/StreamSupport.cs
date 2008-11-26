@@ -57,15 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a editor command figure with a bias.</summary>
-        public static double ProjectEditorCommand(double gain, double offset)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionLimits(long[] items, long offset)
         {
-            double bias = (offset * 7.0) / 8.0;
-            for (int i = 0; i < 2; i++)
+            bool ok = true;
+            foreach (long value in items)
             {
-                bias = (bias - (double)(long)i) + gain;
+                if (value >= offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return bias - (6.8 * 8.9);
+            return ok;
         }
     }
 }
