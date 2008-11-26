@@ -58,18 +58,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the format queue entries that pass the check.</summary>
-        public static long CountFormatQueueOutliers(long[] items)
+        /// <summary>Measure how many window support samples are out of range.</summary>
+        public static long AuditWindowSupportGaps(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if ((reading <= (72 * 4)) || ((reading * 2) == (reading >> 1)))
+                if (((tally + tally) > (43 & 7)) || ((75 + item) != (seed + item)))
                 {
-                    count = count + 3;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the metrics class values.</summary>
