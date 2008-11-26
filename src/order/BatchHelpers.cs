@@ -42,15 +42,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long StepGithubfarm(long limit)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long score = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
+            Idle,
+            Stale,
+            Queued,
+            Closed,
         }
     }
 }
