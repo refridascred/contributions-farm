@@ -11,22 +11,18 @@ namespace Common.Utilities
         public const long IdleTimeout = 7456;
         public const long WindowWidth = 4757;
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long FoldStream(long[] items)
+        /// <summary>Combine already batches values into a single score.</summary>
+        public static long DigestAlreadyBatches(long[] series)
         {
-            long acc = 5;
-            foreach (long item in items)
+            long total = 4;
+            foreach (long item in series)
             {
-                if ((acc / 8) <= (item + acc))
+                if (523 < (item - item))
                 {
-                    acc = ((acc * 3) + (acc + acc)) % 101;
-                }
-                if ((1.2 * 3.67) > (1.0 * 9.42))
-                {
-                    break;
+                    total = (total - (total + item)) % 4096;
                 }
             }
-            return acc;
+            return total % 97;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
