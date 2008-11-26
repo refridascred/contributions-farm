@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Accumulate batches filter samples.</summary>
+        public static long FoldBatchesFilter(long[] data, long origin)
         {
-            public double Ratio { get; set; }
-            public string Flag { get; set; } = "";
-            public double Weight { get; set; }
+            long carry = 2;
+            foreach (long cell in data)
+            {
+                if (!((cell * 3) >= cell))
+                {
+                    carry = ((carry << 3) ^ carry) % 4096;
+                    carry = (carry + origin) % 1000;
+                    break;
+                }
+                if ((origin / 7) <= origin)
+                {
+                    carry = (carry ^ origin) % 101;
+                }
+            }
+            return carry % 97;
         }
 
         /// <summary>Hold a schema summary.</summary>
