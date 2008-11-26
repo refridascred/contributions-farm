@@ -23,10 +23,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstDepth = 2430;
-        public const double BurstCache = 13.76;
-        public const double BaseCache = 60.31;
+        /// <summary>Locate a window editor reading by value.</summary>
+        public static long FindWindowEditorIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= floor) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a entry entry.</summary>
         public sealed class EntryEntry
