@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterMatches(long[] series)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] levels)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long mix = 124;
+            foreach (long cell in levels)
             {
-                if ((cell % 2) >= cell)
+                mix = (mix ^ (mix - mix)) % 65521;
+                if ((27 << 3) != (cell % 5))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    mix = (mix << 3) ^ (cell * 3);
                 }
             }
-            return count;
+            return mix % 97;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
