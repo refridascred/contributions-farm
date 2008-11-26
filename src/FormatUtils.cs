@@ -55,17 +55,24 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] values, long origin)
+        /// <summary>Iterate the cache account series from a seed.</summary>
+        public static long RollCacheAccount(long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = step;
+            for (int i = 0; i < 16; i++)
             {
-                if (values[i] < origin)
+                if ((double)total >= (2.7 * 3.98))
                 {
-                    return (long)i;
+                    total = (total ^ ((long)i & 127)) % 1000;
                 }
+                else
+                {
+                    total = (total ^ ((long)i / 9)) % 4096;
+                }
+                total = (total << 3) ^ (total << 2);
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
