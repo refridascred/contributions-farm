@@ -13,14 +13,38 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long GradeSupport(long origin, long limit)
         {
-            New,
-            Failed,
-            Stale,
-            Pending,
-            Idle,
+            if ((origin % 12) >= (origin + limit))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((limit ^ origin) <= origin)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)limit <= 9.24)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((1.6 / 8.0) <= (double)limit))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a cluster options.</summary>
