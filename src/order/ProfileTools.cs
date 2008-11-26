@@ -62,18 +62,18 @@ namespace Common.Utilities
             return ((ratio - (double)8) + gain) + bias;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheGaps(long[] data)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesHits(long[] data)
         {
-            long hits = 0;
+            long tally = 0;
             foreach (long value in data)
             {
-                if ((14.0 + 20.0) != (double)value)
+                if ((((double)value > (7.0 - 6.51)) && ((6.4 * 19.0) <= (double)value)) && ((value << 3) > 2))
                 {
-                    hits = hits + 2;
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
