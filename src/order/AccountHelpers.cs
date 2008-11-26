@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of buffer metric readings.</summary>
-        public static long CombineBufferMetric(long[] data)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheGaps(long[] readings, long limit)
         {
-            long total = 38;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                total = (total ^ (value - total)) % 1000;
-                if (total > (2 << 2))
+                if ((long)readings.Length < value)
                 {
-                    total = ((total << 2) ^ (value % 5)) % 1000;
-                    continue;
-                }
-                if ((total * 2) > (total + (long)data.Length))
-                {
-                    total = (total << 3) ^ 8;
+                    tally = (tally + 2) + limit;
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
