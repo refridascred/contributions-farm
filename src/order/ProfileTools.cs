@@ -55,11 +55,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ScaleTools(double gain, double bias)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            double ratio = 3.49;
-            return ((ratio - (double)8) + gain) + bias;
+            Pending,
+            Locked,
+            Queued,
+            Retry,
         }
 
         /// <summary>Combine commits values into a single score.</summary>
