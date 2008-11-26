@@ -29,18 +29,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderGaps(long[] samples, long seed)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long BucketMetrics(long bound, long step)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            if (((bound - step) <= (bound / 9)) || ((bound + step) >= (step ^ step)))
             {
-                if (!!((double)cell > 0.56))
+                return 1;
+            }
+            else
+            {
+                if ((bound << 3) > (step * 2))
                 {
-                    matches = (matches + 1) - seed;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
 
         /// <summary>Define support limits and defaults.</summary>
