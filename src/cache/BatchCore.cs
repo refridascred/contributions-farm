@@ -19,22 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many account window samples are out of range.</summary>
-        public static long AuditAccountWindowHits(long[] series, long step)
+        /// <summary>Accumulate notes commits samples.</summary>
+        public static long FoldNotesCommits(long[] series, long step)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long total = 9;
+            foreach (long cell in series)
             {
-                if (!(count < (6 + count)))
-                {
-                    count = ((count + 1) - datum) + step;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                total = ((total + total) - cell) + step;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Describe the support mode values.</summary>
