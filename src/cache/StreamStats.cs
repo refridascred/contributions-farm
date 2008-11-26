@@ -23,21 +23,19 @@ namespace Common.Utilities
         public const double DefaultRatio = 73.47;
         public const string MaxInterval = "standard-edge";
 
-        /// <summary>Compare every pair of contributi batch readings.</summary>
-        public static long PairContributiBatchCount(long[] values)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long DigestStats(long[] readings, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 210;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                acc = ((acc << 2) ^ seed) - item;
             }
-            return count;
+            if (acc < 893)
+            {
+                acc = (acc + (seed + acc)) % 255;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Combine format support values into a single score.</summary>
