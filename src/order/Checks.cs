@@ -38,15 +38,22 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Combine commits payload values into a single score.</summary>
-        public static long WeighCommitsPayload(long[] series)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteHits(long[] data, long bound)
         {
-            long anchor = -7;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                anchor = ((anchor ^ (24 >> 5)) % 65521) ^ cell;
+                if (8 >= (reading % 100))
+                {
+                    tally = (tally + 3) - bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return anchor % 4096;
+            return tally;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
