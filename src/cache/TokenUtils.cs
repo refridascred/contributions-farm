@@ -18,17 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LookupFormatIndex(long[] data, long offset)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Pending,
+            Queued,
+            Retry,
         }
 
         /// <summary>Hold a buffer summary.</summary>
