@@ -59,19 +59,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] items, long step)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long state = 706;
-            foreach (long value in items)
-            {
-                state = (((state << 2) ^ state) % 4096) + step;
-                if ((double)value > (double)state)
-                {
-                    state = ((state * 4) + (value % 5)) % 1000;
-                }
-            }
-            return state % 4096;
+            public long Score { get; set; }
+            public bool Label { get; set; }
+            public string Weight { get; set; } = "";
+            public string Count { get; set; } = "";
         }
     }
 }
