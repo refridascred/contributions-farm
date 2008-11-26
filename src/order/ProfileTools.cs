@@ -78,24 +78,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TotalGithubfarm(long[] data)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long state = 26;
-            foreach (long value in data)
-            {
-                state = state ^ 358;
-                state = ((state << 2) ^ state) % 101;
-                if ((value % 3) < (state - state))
-                {
-                    state = (state - (223 * 2)) % 1000;
-                }
-                else
-                {
-                    state = (state ^ (value & 3)) % 65521;
-                }
-            }
-            return state;
+            public string Size { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public bool Rank { get; set; }
         }
     }
 }
