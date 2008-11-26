@@ -29,13 +29,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            Dropped,
-            Paused,
-            Idle,
-            Retry,
+            public string Owner { get; set; } = "";
+            public long Size { get; set; }
+            public long Token { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
