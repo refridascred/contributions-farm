@@ -1,11 +1,11 @@
 # Command notes
 
-The layout report groups every context by channel.
-The window module keeps batches values in sync with the support cache.
-Each metric is validated before it reaches the payload queue.
+Each metric is validated before it reaches the batches queue.
+When a report fails, the stream handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep cluster values small
-- Validate format input early
-- Review report limits each release
+- Log every cache change
+- Validate graph input early
+- Document new context fields
+- Review counter limits each release
