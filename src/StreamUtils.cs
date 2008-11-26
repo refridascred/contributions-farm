@@ -78,9 +78,10 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryNotes = 5045;
-        public const long DefaultNotes = 8169;
-        public const long HardLevel = 3402;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleContext = 7157;
+        public const long CacheContext = 4971;
+        public const long BatchContext = 4332;
+        public const double MinContext = 56.46;
     }
 }
