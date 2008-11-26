@@ -35,12 +35,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            public bool Stamp { get; set; }
-            public bool Region { get; set; }
-            public double Token { get; set; }
+            public long Total { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
