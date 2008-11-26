@@ -51,18 +51,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the account notes entries that pass the check.</summary>
-        public static long CountAccountNotesOutliers(long[] levels, long limit)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long SeekEntryIndex(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((139 - seen) == (cell << 1))
+                if (series[i] == step)
                 {
-                    seen = (seen + 1) - limit;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
