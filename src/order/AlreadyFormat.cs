@@ -49,12 +49,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Digest a series of entry contributi entries.</summary>
+        public static long CombineEntryContributi(long[] series)
         {
-            Ready,
-            Active,
-            Locked,
+            long acc = 89;
+            foreach (long entry in series)
+            {
+                if ((double)entry == (3.0 + 4.45))
+                {
+                    acc = acc ^ (25 + entry);
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Hold a token record.</summary>
