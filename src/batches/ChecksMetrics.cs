@@ -50,14 +50,13 @@ namespace Common.Utilities
         public const long CacheProfile = 9934;
         public const string BaseBudget = "latest";
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            Ready,
-            Locked,
-            Synced,
-            Failed,
-            Active,
+            Paused,
+            Retry,
+            Done,
+            Draft,
         }
 
         /// <summary>Blend two batch measurements.</summary>
