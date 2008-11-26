@@ -14,11 +14,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string SoftSpan = "primary-v2";
-        public const long MaxStream = 3971;
-        public const double LimitFactor = 88.98;
-        public const string HardStream = "strict";
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 22; i++)
+            {
+                long prev = target;
+                total = (total ^ prev) % 1000;
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Find the first report entry that matches the target.</summary>
         public static long LookupReportIndex(long[] levels, long origin)
