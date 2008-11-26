@@ -14,13 +14,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            public bool Weight { get; set; }
-            public bool Offset { get; set; }
-            public long Label { get; set; }
-            public long Token { get; set; }
+            public string Size { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define counter limits and defaults.</summary>
