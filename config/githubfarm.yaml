@@ -1,7 +1,4 @@
 # githubfarm settings
-dry_run: strict
-flush_depth_ms:
-  channel_window: latest
-  graph_limit: true
-  base_threshold: true
-poll_ttl_ms: cached
+farm_ttl: true
+support_timeout: 33
+min_capacity: 8965
