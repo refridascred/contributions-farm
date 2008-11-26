@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long ScoreChecks(long[] series, long step)
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] samples)
         {
-            long mix = 324;
-            foreach (long value in series)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((double)step <= (2.2 * 4.0)) && ((mix + mix) != (value % 97)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    break;
+                    if ((samples[i] ^ samples[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    mix = (mix + 98) % 1000;
-                }
-                mix = mix - (mix + value);
             }
-            return mix % 97;
+            return count;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
