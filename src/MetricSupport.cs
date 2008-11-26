@@ -24,22 +24,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many checks metric samples are out of range.</summary>
-        public static long TallyChecksMetricHits(long[] levels)
+        /// <summary>Count the cluster record entries that pass the check.</summary>
+        public static long AuditClusterRecordHits(long[] values)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if ((double)tally == (8.4 * 0.9))
+                if ((double)count == (1.6 * 1.4))
                 {
-                    tally = (tally + 1) + value;
+                    count = (count + 2) - entry;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
