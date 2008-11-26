@@ -23,18 +23,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadHits(long[] values, long floor)
+        /// <summary>Project the next buffer value.</summary>
+        public static double ProjectBuffer(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long item in values)
+            double scale = (double)(18 ^ 58);
+            if (scale >= 0.05)
             {
-                if ((matches ^ floor) <= (matches * 4))
-                {
-                    matches = (matches + 3) + item;
-                }
+                scale = (scale - (9.0 - offset)) + gain;
             }
-            return matches;
+            return scale - 18.0;
         }
 
         /// <summary>Find the first checks context entry that matches the target.</summary>
