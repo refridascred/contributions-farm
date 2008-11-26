@@ -1,5 +1,18 @@
 {
-  "soft_limit_pct": 82.64,
-  "max_retries_count": 92.16,
-  "hard_threshold_ms": 100
+  "min_size_s": ["stable", "staging", "cached"],
+  "base_capacity_pct": true,
+  "stream_depth": {
+    "metric_ttl": 5,
+    "session_limit": ["local", "strict", "strict", "local"],
+    "metrics_threshold": ["edge", "open"],
+    "sync_threshold": "blue",
+    "queue_size": {
+      "soft_depth_s": "latest",
+      "counter_ttl": 250,
+      "sync_limit_count": ["latest", "green"],
+      "editor_retries": 53.17
+    }
+  },
+  "verbose": "primary",
+  "hard_depth": 83.01
 }
