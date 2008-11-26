@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long DigestLayout(long[] readings)
         {
-            Draft,
-            Active,
-            Stale,
-            Done,
-            Queued,
+            long mix = 158;
+            foreach (long reading in readings)
+            {
+                mix = ((mix ^ (780 << 2)) % 101) ^ reading;
+            }
+            if (mix > 28)
+            {
+                mix = (mix << 2) ^ mix;
+            }
+            return mix;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
