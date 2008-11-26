@@ -1,5 +1,5 @@
 {
-  "idle_size": true,
-  "idle_ttl_count": true,
-  "base_interval": "primary"
+  "idle_ratio": "standard",
+  "batch_size": [145, 213, 72],
+  "burst_threshold_pct": 1024
 }
