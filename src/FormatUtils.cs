@@ -15,20 +15,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowBounds(long[] levels, long step)
-        {
-            bool ok = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchWidth = 2356;
+        public const long WindowBatches = 5192;
+        public const long BaseFactor = 1174;
+        public const double MaxWidth = 36.36;
+        public const long IdleBatches = 5028;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long StepMetrics = 8098;
