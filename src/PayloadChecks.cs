@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Check that every batches record entry stays within the limit.</summary>
-        public static bool GuardBatchesRecordBounds(long[] data, long bound)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long OverlapOrderCount(long[] values)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell > bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((values[i] + values[j]) > 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Match up queue samples.</summary>
