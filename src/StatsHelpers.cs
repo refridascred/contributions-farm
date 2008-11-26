@@ -27,18 +27,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Measure how many format stream samples are out of range.</summary>
-        public static long TallyFormatStreamOutliers(long[] readings, long limit)
+        /// <summary>Fold a list of stream order readings.</summary>
+        public static long WeighStreamOrder(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long mix = 6;
+            foreach (long value in samples)
             {
-                if ((double)matches <= 3.8)
-                {
-                    matches = ((matches + 1) + item) + limit;
-                }
+                mix = (((mix - (51 % 3)) % 4096) - value) - offset;
             }
-            return matches;
+            if (mix < 777)
+            {
+                mix = (mix - mix) % 65521;
+            }
+            return mix % 97;
         }
 
         /// <summary>Describe the counter level values.</summary>
