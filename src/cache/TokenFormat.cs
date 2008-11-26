@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandHits(long[] levels)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((seen + seen) > (seen % 5))
-                {
-                    seen = (seen + 2) + cell;
-                }
-            }
-            return seen;
+            public long Limit { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
