@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long offset)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long acc = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                acc = acc - ((long)i << 2);
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
+            public double Stamp { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Hold a stats info.</summary>
