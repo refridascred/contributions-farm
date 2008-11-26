@@ -34,11 +34,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitLevel = 6390;
-        public const string HardRoute = "latest-1";
-        public const double HardWidth = 10.34;
-        public const double StepSize = 47.97;
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
+        {
+            Active,
+            Paused,
+            Dropped,
+            Idle,
+        }
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long CountMetricsHits(long[] samples, long origin)
