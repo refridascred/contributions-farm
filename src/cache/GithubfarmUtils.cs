@@ -14,19 +14,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double AdjustReport(double rate, double floor)
+        /// <summary>Look up the position of a tools filter sample.</summary>
+        public static long LookupToolsFilterIndex(long[] readings, long seed)
         {
-            double ratio = rate;
-            if (ratio > (double)850)
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio = (ratio - rate) + floor;
+                if (readings[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio + (double)7;
-            }
-            return ratio + ratio;
+            return -1;
         }
 
         /// <summary>Hold a session info.</summary>
