@@ -1,14 +1,10 @@
 # support settings
-retry_window:
-  max_window_count: 250
-  strict:
-    - primary
-    - legacy
-    - standard
-  contributi_threshold: 67.65
-  warm_timeout: 250
-  dry_run: 500
-editor_threshold: 64
-farm_ttl: 100
-burst_depth_ms: false
-account_timeout: edge
+verbose: blue
+dry_run: edge
+filter_interval: fallback
+enabled: 60
+persist: 80
+default_interval_pct:
+  stream_depth: 40.5
+  cluster_delay: false
+  burst_limit_pct: eu-west
