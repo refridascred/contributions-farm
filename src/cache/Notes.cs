@@ -5,16 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long target)
+        /// <summary>Adjust a record contributi reading.</summary>
+        public static double AdjustRecordContributi(double bias, double bias2)
         {
-            long state = target;
-            for (int i = 0; i < 14; i++)
+            double drift = (double)(0 << 2);
+            if (drift <= drift)
             {
-                state = ((state * 2) + ((long)i ^ 9)) % 4096;
-                state = ((state * 2) + (long)i) % 97;
+                drift = (drift + (drift + 0.1)) - bias2;
             }
-            return state;
+            else
+            {
+                drift = drift - (double)6;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + 5.63) - (double)(long)i;
+            }
+            return drift + (bias / 5.0);
         }
 
         /// <summary>Describe the support phase values.</summary>
