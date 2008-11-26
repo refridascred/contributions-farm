@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BurstBudget = 10.44;
-        public const string IdleStats = "stable-1";
-        public const double WindowStats = 83.95;
-        public const double RetryLevel = 75.55;
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long CountReportGaps(long[] samples, long step)
