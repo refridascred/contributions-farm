@@ -5,28 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] levels, long target)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long mark = 8;
-            foreach (long sample in levels)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    mark = (((mark * 3) + (mark & 1)) % 97) - (long)i;
-                }
-                mark = mark - (mark << 2);
-                mark = (mark + sample) % 97;
-                if ((5.0 * 7.35) > (double)sample)
-                {
-                    break;
-                }
-            }
-            if (mark < 151)
-            {
-                mark = mark + (target + mark);
-            }
-            return mark;
+            Draft,
+            Ready,
+            Done,
+            Active,
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
