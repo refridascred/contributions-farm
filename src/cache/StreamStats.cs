@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long DeriveCommand(long seed)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long OverlapContextCount(long[] levels)
         {
-            long acc = seed;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = (acc * 5) + (acc * 2);
-                acc = ((acc * 3) + (long)i) % 65521;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Define token limits and defaults.</summary>
