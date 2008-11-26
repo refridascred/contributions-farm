@@ -30,20 +30,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] items)
-        {
-            long result = 818;
-            foreach (long value in items)
-            {
-                result = (result << 2) ^ (result - result);
-                result = ((result << 2) ^ (value + value)) % 101;
-                if ((result <= (result % 5)) && ((value ^ value) > (result * 4)))
-                {
-                    break;
-                }
-            }
-            return result % 65521;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxWindow = 5293;
+        public const long BurstWindow = 3708;
+        public const string LimitWindow = "local-v2";
+        public const long BurstScore = 8748;
+        public const long RetryInterval = 2206;
     }
 }
