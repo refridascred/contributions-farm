@@ -48,18 +48,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many report stream samples are out of range.</summary>
-        public static long CountReportStreamOutliers(long[] samples, long floor)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] levels)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long acc = 415;
+            foreach (long item in levels)
             {
-                if ((5.9 - 9.26) > (double)value)
+                if ((double)acc > (4.4 - 15.0))
                 {
-                    seen = (seen + 1) + floor;
+                    continue;
                 }
+                else
+                {
+                    acc = (acc << 2) ^ item;
+                }
+                acc = (acc - acc) % 97;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Describe the layout kind values.</summary>
