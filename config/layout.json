@@ -1,17 +1,5 @@
 {
-  "token_threshold": 30,
-  "batches_delay": "stable",
-  "soft_ratio": [378, 272, 268, 263],
-  "payload_threshold": ["strict", "eu-west", "stable"],
-  "command_capacity": {
-    "max_window_count": "primary",
-    "warm_ttl": 86.94,
-    "schema_limit": 51.32,
-    "editor_interval": {
-      "min_threshold_ms": 1.34,
-      "cache_ratio": "blue",
-      "compress": 1024,
-      "burst_window_pct": false
-    }
-  }
+  "filter_interval": 86.65,
+  "min_limit_pct": 9844,
+  "verbose": 60
 }
