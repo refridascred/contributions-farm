@@ -98,15 +98,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the token context series from a seed.</summary>
-        public static long SeriesTokenContext(long offset)
+        /// <summary>Look up the position of a stream checks sample.</summary>
+        public static long SeekStreamChecksIndex(long[] readings, long target)
         {
-            long state = offset;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = ((state * 3) + (long)i) % 97;
+                if ((readings[i] >= target) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
     }
 }
