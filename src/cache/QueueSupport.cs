@@ -21,11 +21,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string MaxScore = "local-v2";
-        public const long BurstRatio = 1977;
-        public const long MaxMetrics = 3684;
-        public const long HardMetrics = 6896;
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmHits(long[] series)
+        {
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if (sample <= (sample & 3))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long IdleRatio = 2589;
