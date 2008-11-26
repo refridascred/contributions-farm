@@ -68,31 +68,18 @@ namespace Common.Utilities
             return drift + (gain - offset);
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long SortStream(long target, long floor)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordMatches(long[] series, long target)
         {
-            if ((double)floor != (15.0 * 9.3))
+            long tally = 0;
+            foreach (long reading in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (((19.0 * 2.76) != (double)target) && (target > floor))
+                if ((double)target > (double)9)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((11.0 * 9.0) >= (double)floor)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    tally = (tally + 3) ^ reading;
                 }
             }
+            return tally;
         }
 
         /// <summary>Validate graph report readings against a bound.</summary>
