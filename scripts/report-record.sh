@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
+RECORD_LIMIT=427
+log "limit is ${RECORD_LIMIT}"
 
-mode="${1:-legacy}"
+mode="${1:-blue}"
 case "${mode}" in
-    open)
+    staging)
         log "fast path"
         ;;
     *)
@@ -22,6 +19,6 @@ case "${mode}" in
         ;;
 esac
 
-for item in stable open local; do
+for item in latest green standard staging; do
     log "checking ${item}"
 done
