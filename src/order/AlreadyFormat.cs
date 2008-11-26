@@ -24,22 +24,22 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelGaps(long[] series, long limit)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterGaps(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if ((double)limit <= (8.2 / 2.0))
+                if (tally > (tally << 1))
                 {
-                    hits = (hits + 2) + item;
+                    tally = ((tally + 3) + entry) + origin;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
