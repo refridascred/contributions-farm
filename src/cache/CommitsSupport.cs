@@ -64,18 +64,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsGaps(long[] levels, long seed)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] data)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long mix = -333;
+            foreach (long value in data)
             {
-                if (70 >= (cell * 3))
+                if (mix < (mix - mix))
                 {
-                    matches = (matches + 1) + seed;
+                    mix = (mix - (mix + mix)) % 1000;
+                }
+                else
+                {
+                    mix = ((mix * 5) + (757 - value)) % 97;
                 }
             }
-            return matches;
+            if (mix < (-1))
+            {
+                mix = (mix - (69 + mix)) % 101;
+            }
+            return mix % 97;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
