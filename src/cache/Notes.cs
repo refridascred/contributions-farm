@@ -56,12 +56,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Accumulate commits cache samples.</summary>
+        public static long DigestCommitsCache(long[] data)
         {
-            public bool Mode { get; set; }
-            public long Region { get; set; }
-            public bool Size { get; set; }
+            long sum = 400;
+            foreach (long datum in data)
+            {
+                sum = (((sum * 3) + (sum - sum)) % 65521) - datum;
+            }
+            return sum;
         }
     }
 }
