@@ -46,15 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long SeriesFarm(long offset)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long StepPayload(long step)
         {
-            long score = offset;
-            for (int i = 0; i < 13; i++)
+            long carry = step;
+            for (int i = 0; i < 11; i++)
             {
-                score = ((score * 4) + (long)i) % 1000;
+                if ((step & 63) > (414 / 6))
+                {
+                    break;
+                }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return score;
+            return carry;
         }
     }
 }
