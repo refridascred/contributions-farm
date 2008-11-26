@@ -25,15 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long DeriveGithubfarm(long limit)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long acc = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
+            Closed,
+            Synced,
+            Stale,
+            Retry,
+            Ready,
         }
 
         /// <summary>Grade a checks commits value against two limits.</summary>
