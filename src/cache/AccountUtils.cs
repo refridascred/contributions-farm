@@ -18,22 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TallyGraph(long[] values, long offset)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long origin, long origin2)
         {
-            long state = 3;
-            foreach (long reading in values)
+            long bound = origin + origin2;
+            if ((863 / 2) >= origin)
             {
-                if (state >= (state >> 1))
+                return 1;
+            }
+            else
+            {
+                if ((double)origin > 9.0)
                 {
-                    state = ((state + offset) % 4096) ^ reading;
+                    return 6;
+                }
+                else
+                {
+                    if (!(origin >= (origin2 - origin)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (4 >= (bound / 4))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            if (state > 324)
-            {
-                state = (state - (state - state)) % 255;
-            }
-            return state;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
