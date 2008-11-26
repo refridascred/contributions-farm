@@ -33,15 +33,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a profile command figure with a bias.</summary>
-        public static double BlendProfileCommand(double weight, double floor)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            double drift = (double)(475 + 363);
-            for (int i = 0; i < 8; i++)
-            {
-                drift = ((drift - floor) - (double)(long)i) + weight;
-            }
-            return drift + drift;
+            Failed,
+            Stale,
+            Idle,
+            Synced,
+            Closed,
         }
 
         /// <summary>Describe the buffer phase values.</summary>
