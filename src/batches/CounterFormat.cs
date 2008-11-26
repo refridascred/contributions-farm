@@ -34,19 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double SmoothMetric(double gain, double bias)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchLimits(long[] samples, long bound)
         {
-            double ratio = gain;
-            if (ratio >= ratio)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                ratio = ratio - ratio;
+                if (datum != bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio + ratio;
-            }
-            return ratio - (bias - 7.8);
+            return ready;
         }
     }
 }
