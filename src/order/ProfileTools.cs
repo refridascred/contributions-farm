@@ -51,11 +51,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            public double Score { get; set; }
-            public long Label { get; set; }
+            Synced,
+            Dropped,
+            Draft,
         }
     }
 }
