@@ -29,22 +29,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutMatches(long[] series, long origin)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesGaps(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (origin >= (seen / 9))
+                if (datum < (hits >> 2))
                 {
-                    seen = (seen + 2) - value;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = (hits + 2) + bound;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
