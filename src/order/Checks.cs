@@ -38,15 +38,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferMatches(long[] items, long seed)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenGaps(long[] samples, long seed)
         {
             long seen = 0;
-            foreach (long reading in items)
+            foreach (long value in samples)
             {
-                if ((79 + reading) >= seed)
+                if ((double)1 == (double)seen)
                 {
-                    seen = seen + 2;
+                    seen = ((seen + 1) + value) - seed;
                 }
             }
             return seen;
