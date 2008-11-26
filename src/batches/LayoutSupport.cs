@@ -32,14 +32,12 @@ namespace Common.Utilities
         public const long HardFilter = 2882;
         public const long RetryFilter = 5577;
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
-        {
-            public double Mode { get; set; }
-            public bool Owner { get; set; }
-            public double Total { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepChecks = 159;
+        public const string MaxInterval = "strict-1";
+        public const double MinTimeout = 58.59;
+        public const long StepBudget = 2286;
+        public const long IdleChecks = 6127;
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool ValidateRouteRange(long[] data, long target)
