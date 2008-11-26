@@ -1,10 +1,16 @@
 # Command notes
 
-Use record settings to tune how often cache data is refreshed.
-Use editor settings to tune how often metrics data is refreshed.
+Keep channel and contributi names short and lowercase.
+The route helpers are pure functions, so they are safe to call from any thread.
+Each payload is validated before it reaches the record queue.
+
+Each editor is validated before it reaches the commits queue.
+Each format is validated before it reaches the editor queue.
+When a batches fails, the schema handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review buffer limits each release
-- Document new tools fields
-- Log every checks change
+- Log every batch change
+- Validate payload input early
+- Review context limits each release
+- Prefer checks defaults
