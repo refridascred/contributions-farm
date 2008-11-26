@@ -40,13 +40,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long floor, long target)
         {
-            public double Region { get; set; }
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
+            if (!((2 + floor) <= target))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((883 + floor) > floor)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((floor + floor) == (target ^ floor)) || ((floor ^ target) > (floor / 6)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
