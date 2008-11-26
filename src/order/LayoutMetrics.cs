@@ -29,39 +29,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a contributi context pair into a bucket.</summary>
-        public static long SortContributiContext(long floor, long floor2)
-        {
-            if ((floor >= 272) && ((floor / 9) < floor2))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((8 ^ floor) == (floor2 >> 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor < (75 + floor)) || ((floor << 1) > (floor + floor2)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((double)floor == (1.1 / 3.0)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryTimeout = 9303;
+        public const long IdleOrder = 2291;
+        public const long StepSpan = 8965;
+        public const string SoftOrder = "fallback-1";
+        public const long BaseFactor = 7957;
 
         /// <summary>Look up the position of a channel sample.</summary>
         public static long LocateChannelIndex(long[] readings, long seed)
