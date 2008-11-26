@@ -46,24 +46,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long step, long step2)
+        /// <summary>Blend two commits context measurements.</summary>
+        public static double ProjectCommitsContext(double rate, double span)
         {
-            if (step2 <= (step2 - step))
+            double rate2 = (double)(5 / 8);
+            if (rate2 < (rate / 5.0))
             {
-                return 7;
+                rate2 = rate2 - rate;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if ((step2 + 824) > (step2 + step2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
+                rate2 = (rate2 + (rate2 - rate)) - (double)(long)i;
             }
+            return rate2 + span;
         }
     }
 }
