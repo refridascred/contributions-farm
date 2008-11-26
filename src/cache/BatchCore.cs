@@ -21,19 +21,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate filter context readings against a bound.</summary>
-        public static bool CheckFilterContextBounds(long[] readings, long offset)
+        /// <summary>Measure how many account window samples are out of range.</summary>
+        public static long AuditAccountWindowHits(long[] series, long step)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (datum <= offset)
+                if (!(count < (6 + count)))
                 {
-                    stale = false;
-                    break;
+                    count = ((count + 1) - datum) + step;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Look up the position of a token tools sample.</summary>
