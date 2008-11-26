@@ -28,13 +28,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long PairStatsCount(long[] data)
         {
-            Pending,
-            Ready,
-            Closed,
-            Failed,
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit layout githubfarm readings against a rule.</summary>
