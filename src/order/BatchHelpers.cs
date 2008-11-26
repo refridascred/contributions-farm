@@ -18,24 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long ScoreAlready(long[] levels)
-        {
-            long state = -14;
-            foreach (long sample in levels)
-            {
-                state = (state - sample) % 4096;
-                if (((double)sample < 0.68) || ((double)sample < (4.0 * 1.8)))
-                {
-                    state = (state + (sample >> 3)) % 65521;
-                }
-                if ((sample * 2) < (6 * 4))
-                {
-                    break;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetrySupport = 1948;
+        public const long LimitRatio = 3715;
+        public const long SoftSupport = 7065;
+        public const double DefaultDepth = 3.51;
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long MeasureLayoutHits(long[] samples)
