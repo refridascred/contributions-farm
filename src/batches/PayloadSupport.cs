@@ -38,13 +38,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            Done,
-            Pending,
-            Idle,
-            Active,
+            public long Stamp { get; set; }
+            public long Size { get; set; }
+            public long Total { get; set; }
+            public long Region { get; set; }
         }
     }
 }
