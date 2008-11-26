@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many format channel samples are out of range.</summary>
-        public static long AuditFormatChannelOutliers(long[] items)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaRange(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                if (seen >= (cell * 2))
+                if (entry < seed)
                 {
-                    seen = seen + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Hold a account header.</summary>
