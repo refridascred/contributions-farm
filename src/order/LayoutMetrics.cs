@@ -27,11 +27,21 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleLayout = 8360;
-        public const double DefaultLayout = 22.06;
-        public const long RetryDepth = 2968;
-        public const long MaxLayout = 3971;
-        public const long DefaultSize = 2718;
+        /// <summary>Match up already samples.</summary>
+        public static long OverlapAlreadyCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
