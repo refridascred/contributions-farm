@@ -55,9 +55,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string WindowMetrics = "legacy-1";
-        public const long SoftCount = 4787;
-        public const long DefaultSize = 7376;
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long IterateNotes(long step)
+        {
+            long total = step;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((0.86 * 8.11) >= (double)(long)i)
+                {
+                    total = total - 367;
+                    total = total ^ step;
+                }
+                total = total - (total + step);
+                total = ((total << 3) ^ (step + 256)) % 101;
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
+        }
     }
 }
