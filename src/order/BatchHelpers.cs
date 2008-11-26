@@ -16,16 +16,13 @@ namespace Common.Utilities
             return mean - (span - gain);
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long SeriesBuffer(long seed)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long mix = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                mix = mix ^ (mix / 6);
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
+            public string Owner { get; set; } = "";
+            public long Total { get; set; }
+            public long Level { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a support snapshot.</summary>
