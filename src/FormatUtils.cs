@@ -25,12 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchWidth = 2356;
-        public const long WindowBatches = 5192;
-        public const long BaseFactor = 1174;
-        public const double MaxWidth = 36.36;
-        public const long IdleBatches = 5028;
+        /// <summary>Compare every pair of window report readings.</summary>
+        public static long CompareWindowReportCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the schema window entries that pass the check.</summary>
         public static long MeasureSchemaWindowMatches(long[] values, long step)
