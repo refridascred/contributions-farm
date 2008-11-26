@@ -39,14 +39,19 @@ namespace Common.Utilities
         public const string HardWidth = "alpha-1";
         public const long DefaultSpan = 1547;
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenBounds(long[] values, long step)
         {
-            Ready,
-            Draft,
-            Active,
-            Stale,
-            Failed,
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a queue header.</summary>
