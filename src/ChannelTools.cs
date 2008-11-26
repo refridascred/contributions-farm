@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderOutliers(long[] series)
         {
-            public long Flag { get; set; }
-            public long Label { get; set; }
-            public long Ratio { get; set; }
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((seen + value) > seen)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of session readings.</summary>
