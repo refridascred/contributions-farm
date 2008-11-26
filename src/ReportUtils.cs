@@ -20,13 +20,17 @@ namespace Common.Utilities
             return ratio - scale;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Locate a buffer record reading by value.</summary>
+        public static long LookupBufferRecordIndex(long[] samples, long offset)
         {
-            public double Count { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Weight { get; set; }
-            public double Level { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
