@@ -75,11 +75,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseContext = 2260;
-        public const long StepContext = 4013;
-        public const long WindowContext = 9263;
-        public const long LimitDepth = 4150;
-        public const long StepWidth = 6714;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BatchRatio = 76.36;
+        public const long MinSpan = 8531;
+        public const double StepStream = 3.84;
+        public const long MaxStream = 6636;
     }
 }
