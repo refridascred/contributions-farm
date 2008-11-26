@@ -29,13 +29,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
-        {
-            public string Mode { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinScore = 6168;
+        public const long BatchContributi = 7425;
+        public const double SoftContributi = 70.75;
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long AuditRouteGaps(long[] levels)
