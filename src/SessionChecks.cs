@@ -27,12 +27,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
-        {
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string HardRecord = "open-1";
+        public const string StepRecord = "latest";
+        public const long CacheRecord = 6487;
+        public const string BurstBudget = "latest-edge";
+        public const long DefaultScore = 9844;
 
         /// <summary>Blend two route profile measurements.</summary>
         public static double ProjectRouteProfile(double weight, double floor)
