@@ -16,16 +16,18 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Iterate the contributi editor series from a seed.</summary>
-        public static long IterateContributiEditor(long origin)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamGaps(long[] values)
         {
-            long state = origin;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                state = (state << 3) ^ (2 % 24);
-                state = ((state * 2) + (long)i) % 4093;
+                if (!(sample >= (matches << 1)))
+                {
+                    matches = matches + 3;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Scale a session command figure with a bias.</summary>
