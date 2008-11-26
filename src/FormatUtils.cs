@@ -28,19 +28,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metric profile entries that pass the check.</summary>
-        public static long MeasureMetricProfileMatches(long[] items, long offset)
-        {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if (!(offset < (7 >> 1)))
-                {
-                    count = (count + 3) - reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepMetrics = 8098;
+        public const long IdleMetrics = 7890;
+        public const long LimitMetrics = 4121;
 
         /// <summary>Describe the schema mode values.</summary>
         public enum SchemaMode
