@@ -100,19 +100,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmLimits(long[] levels, long seed)
-        {
-            bool ok = true;
-            foreach (long item in levels)
-            {
-                if (item > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string WindowDepth = "latest-edge";
+        public const string BatchRecord = "cached-edge";
+        public const double RetryDepth = 31.75;
     }
 }
