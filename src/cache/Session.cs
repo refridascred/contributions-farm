@@ -13,31 +13,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long bound, long seed)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            if (bound < seed)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((553 - bound) > (67 + bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((4 - seed) == ((-566) % 7))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Ready,
+            Retry,
+            Queued,
         }
 
         /// <summary>Locate a tools reading by value.</summary>
