@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] levels)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long mix = 124;
-            foreach (long cell in levels)
-            {
-                mix = (mix ^ (mix - mix)) % 65521;
-                if ((27 << 3) != (cell % 5))
-                {
-                    mix = (mix << 3) ^ (cell * 3);
-                }
-            }
-            return mix % 97;
+            Pending,
+            Synced,
+            Done,
         }
 
         /// <summary>Combine queue values into a single score.</summary>
