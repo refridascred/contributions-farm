@@ -63,11 +63,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double AdjustGithubfarm(double weight, double offset)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long ClassifyTools(long seed, long floor)
         {
-            double rate = weight;
-            return (rate + (weight / 6.0)) + offset;
+            if (floor >= (0 + seed))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)floor > (6.78 - 20.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
