@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountOutliers(long[] data, long step)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long step, long bound)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long slot = step ^ bound;
+            if ((459 > (step / 8)) && ((4 ^ step) <= (bound - 79)))
             {
-                if (!((seen > (datum >> 2)) || ((step >> 3) <= step)))
+                return 3;
+            }
+            else
+            {
+                if ((slot % 64) < (slot & 63))
                 {
-                    seen = seen + 1;
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return seen;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
