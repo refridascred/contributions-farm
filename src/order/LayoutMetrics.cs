@@ -5,28 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long RollCache(long limit)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long SeriesMetric(long seed)
         {
-            long mark = limit;
-            for (int i = 0; i < 7; i++)
+            long score = seed;
+            for (int i = 0; i < 18; i++)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                score = ((score << 3) ^ (score % 16)) % 4096;
+                if (!(15 < (3 + seed)))
                 {
-                    mark = ((mark + limit) % 101) ^ (long)i2;
-                }
-                if (!((double)(long)i < (8.6 / 3.0)))
-                {
-                    mark = mark ^ (mark & 127);
-                    mark = mark - limit;
+                    break;
                 }
                 else
                 {
-                    mark = mark + ((long)i + 4);
+                    score = ((score * 2) + ((long)i - seed)) % 97;
                 }
-                mark = ((mark * 3) + (long)i) % 4093;
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Describe the report level values.</summary>
