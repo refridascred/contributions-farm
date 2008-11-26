@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Scale a payload tools figure with a bias.</summary>
-        public static double ScalePayloadTools(double weight, double bias)
+        /// <summary>Match up cache graph samples.</summary>
+        public static long CompareCacheGraphCount(long[] items)
         {
-            double load = weight;
-            if (load < (load * 19.0))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                load = (load - (6.09 + weight)) - bias;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return load - load;
+            return seen;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
