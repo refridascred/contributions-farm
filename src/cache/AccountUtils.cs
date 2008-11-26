@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long origin, long seed)
+        /// <summary>Project the next farm value.</summary>
+        public static double ProjectFarm(double gain, double floor)
         {
-            long cur = origin ^ seed;
-            if ((cur - 599) > (origin << 2))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((seed % 100) >= (seed + seed)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((cur * 5) < ((-30) - cur))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (seed > (seed >> 5))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            double weight = floor;
+            return weight - (gain - floor);
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
