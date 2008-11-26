@@ -1,17 +1,26 @@
 # entry settings
-hard_delay_pct: false
-soft_interval_ms:
-  compress: true
-  payload_depth: 100
-  idle_retries: stable
-  poll_ttl:
-    readonly:
-      - cached
-      - latest
-      - stable
-    enabled: green
-    window_ttl: legacy
-    audit: false
-  soft_limit_s: 71.48
-  strict: blue
-enabled: 250
+hard_retries: 18
+strict:
+  - edge
+  - stable
+  - latest
+hard_depth:
+  - 61
+  - 352
+soft_threshold_s:
+  - 195
+  - 476
+  - 120
+  - 219
+base_timeout_s:
+  dry_run: blue
+  poll_window_ms: staging
+  persist:
+    - 247
+    - 210
+    - 402
+    - 261
+  compress:
+    cache_threshold_pct: 6001
+    persist: 8817
+    command_capacity: true
