@@ -55,30 +55,19 @@ namespace Common.Utilities
         public const string WindowFactor = "fallback-1";
         public const long DefaultSupport = 7625;
 
-        /// <summary>Combine record support values into a single score.</summary>
-        public static long FoldRecordSupport(long[] items, long target)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsBounds(long[] data, long target)
         {
-            long sum = 345;
-            foreach (long datum in items)
+            bool stale = true;
+            foreach (long value in data)
             {
-                if ((3.49 - 6.0) != (double)sum)
+                if (value > target)
                 {
-                    sum = (sum + target) % 1000;
-                }
-                if (sum <= (target - datum))
-                {
-                    sum = (sum << 2) ^ (datum ^ target);
-                }
-                if ((target & 15) > (datum ^ datum))
-                {
+                    stale = false;
                     break;
                 }
             }
-            if (sum > 0)
-            {
-                sum = (sum + sum) % 97;
-            }
-            return sum;
+            return stale;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
