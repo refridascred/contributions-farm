@@ -14,17 +14,16 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] items, long step)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long SeriesRoute(long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (items[i] <= step)
-                {
-                    return (long)i;
-                }
+                anchor = (anchor * 5) + (target - anchor);
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Iterate the account support series from a seed.</summary>
