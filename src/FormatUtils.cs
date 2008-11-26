@@ -67,10 +67,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultSpan = 1423;
-        public const long RetryLevel = 2665;
-        public const string LimitBudget = "local-v2";
-        public const long BatchInterval = 5865;
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
+        {
+            public long Score { get; set; }
+            public long Level { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Weight { get; set; }
+        }
     }
 }
