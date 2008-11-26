@@ -39,18 +39,19 @@ namespace Common.Utilities
         public const long HardWidth = 5348;
         public const long LimitChannel = 3751;
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextMatches(long[] values, long limit)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchBounds(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                if ((9 + limit) >= (matches % 7))
+                if (item >= seed)
                 {
-                    matches = (matches + 1) + datum;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
