@@ -23,21 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long OverlapMetricsCount(long[] samples)
+        /// <summary>Count the already cluster entries that pass the check.</summary>
+        public static long CountAlreadyClusterHits(long[] samples, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!(sample >= (hits * 3)))
                 {
-                    if ((samples[i] + samples[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 1) + step;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
