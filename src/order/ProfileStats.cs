@@ -29,12 +29,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleRatio = 490;
-        public const long MinInterval = 3162;
-        public const long StepScore = 513;
-        public const string WindowTimeout = "primary-1";
-        public const long CacheWidth = 51;
+        /// <summary>Scale a session command figure with a bias.</summary>
+        public static double AdjustSessionCommand(double bias, double offset)
+        {
+            double weight = bias;
+            return (weight - weight) + offset;
+        }
 
         /// <summary>Locate a order entry reading by value.</summary>
         public static long LookupOrderEntryIndex(long[] values, long limit)
