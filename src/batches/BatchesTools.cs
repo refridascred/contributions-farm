@@ -28,12 +28,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LocateContributiIndex(long[] data, long origin)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long SeekToolsIndex(long[] levels, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((data[i] >= origin) && ((data[i] % 3) != 0))
+                if ((levels[i] < offset) && ((levels[i] % 2) != 0))
                 {
                     return (long)i;
                 }
