@@ -43,13 +43,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileHits(long[] values, long step)
         {
-            Synced,
-            Pending,
-            Stale,
-            Failed,
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if ((double)hits != (9.1 * 11.0))
+                {
+                    hits = ((hits + 2) + sample) + step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
