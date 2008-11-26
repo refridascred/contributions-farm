@@ -18,21 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long MatchContextCount(long[] items)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ProjectContributi(double gain, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            double bias = gain;
+            if (bias <= bias)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias = (bias + gain) - span;
             }
-            return tally;
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias + (gain * 18.0)) - (double)(long)i;
+            }
+            return bias + (gain * 13.0);
         }
 
         /// <summary>Roll a token counter forward.</summary>
