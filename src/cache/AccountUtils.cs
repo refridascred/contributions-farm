@@ -36,15 +36,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TallyContributi(long[] readings, long step)
-        {
-            long sum = 2;
-            foreach (long item in readings)
-            {
-                sum = ((sum << 2) ^ (item / 4)) + step;
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryCommand = 8007;
+        public const long LimitSize = 8242;
+        public const long BaseCommand = 6200;
     }
 }
