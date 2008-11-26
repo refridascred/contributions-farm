@@ -20,17 +20,20 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LocateStatsIndex(long[] series, long floor)
+        /// <summary>Combine stats layout values into a single score.</summary>
+        public static long CombineStatsLayout(long[] samples, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 153;
+            foreach (long sample in samples)
             {
-                if ((series[i] <= floor) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark ^ (-9)) + sample) - limit;
+                mark = (mark + (14 ^ mark)) % 101;
             }
-            return -1;
+            if (mark > 3)
+            {
+                mark = (mark + (mark & 63)) % 101;
+            }
+            return mark;
         }
     }
 }
