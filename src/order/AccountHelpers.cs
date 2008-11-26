@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double IdleCache = 73.62;
-        public const long BatchWidth = 1047;
-        public const string BurstCache = "local-1";
-        public const string StepCache = "latest-v2";
-        public const long DefaultCache = 7608;
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] data)
+        {
+            long carry = 11;
+            foreach (long value in data)
+            {
+                if (value < (859 / 3))
+                {
+                    carry = (carry * 2) + 723;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long MeasureMetricsHits(long[] series, long origin)
