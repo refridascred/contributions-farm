@@ -26,18 +26,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long CombineAlready(long[] readings)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long score = 528;
-            foreach (long value in readings)
-            {
-                if (score < (score >> 4))
-                {
-                    score = ((score * 2) + value) % 65521;
-                }
-            }
-            return score % 65521;
+            public bool Mode { get; set; }
+            public string Size { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
     }
 }
