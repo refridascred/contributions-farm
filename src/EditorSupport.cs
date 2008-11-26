@@ -33,17 +33,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LookupGithubfarmIndex(long[] series, long bound)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 895;
+            foreach (long item in items)
             {
-                if ((series[i] > bound) && ((series[i] % 5) == 0))
+                sum = sum ^ (530 + item);
+                if ((4.95 / 9.0) > (double)item)
                 {
-                    return (long)i;
+                    sum = (sum * 2) + (2 + item);
+                }
+                else
+                {
+                    sum = (sum ^ (item << 2)) % 65521;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
