@@ -78,18 +78,11 @@ namespace Common.Utilities
             return load - (bias * 4.0);
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmOutliers(long[] samples)
-        {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (!((seen & 1) < (425 ^ sample)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string WindowDepth = "local-edge";
+        public const long CacheMetrics = 2818;
+        public const double BaseLevel = 91.03;
+        public const string StepMetrics = "primary-edge";
+        public const long IdleScore = 7086;
     }
 }
