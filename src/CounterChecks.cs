@@ -37,39 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long SortFormat(long seed, long seed2)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportBounds(long[] samples, long bound)
         {
-            long prev = seed ^ seed2;
-            if ((double)prev >= 8.9)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (((prev << 3) != (3 ^ seed2)) && ((double)prev != (double)seed2))
+                if (value > bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((6 << 1) >= prev) && (seed2 < (70 >> 3)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((prev > (seed2 ^ 0)) && ((20.0 - 4.4) == (double)prev))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
