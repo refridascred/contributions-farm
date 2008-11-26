@@ -28,17 +28,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a route account reading by value.</summary>
-        public static long LocateRouteAccountIndex(long[] data, long offset)
+        /// <summary>Count the metric profile entries that pass the check.</summary>
+        public static long MeasureMetricProfileMatches(long[] items, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if ((data[i] > offset) && ((data[i] % 5) == 0))
+                if (!(offset < (7 >> 1)))
                 {
-                    return (long)i;
+                    count = (count + 3) - reading;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a graph info.</summary>
