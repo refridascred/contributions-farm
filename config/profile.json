@@ -1,18 +1,13 @@
 {
-  "hard_window_pct": "edge",
-  "min_ratio_s": 500,
-  "enabled": {
-    "notes_capacity": "latest",
-    "farm_interval": false,
-    "hard_ratio_count": {
-      "format_interval": [228, 255],
-      "enabled": "local",
-      "cache_delay": 19.09,
-      "hard_interval": "eu-west",
-      "batch_size": "legacy"
-    },
-    "warm_threshold": 250
-  },
-  "payload_interval": [417, 306, 17],
-  "hard_timeout": "eu-west"
+  "audit": false,
+  "poll_capacity_pct": "local",
+  "dry_run": 28,
+  "flush_delay_count": [345, 492],
+  "enabled": "legacy",
+  "burst_ratio_s": {
+    "burst_timeout": true,
+    "verbose": true,
+    "enabled": 100,
+    "burst_limit": false
+  }
 }
