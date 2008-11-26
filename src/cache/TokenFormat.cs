@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long origin)
+        /// <summary>Classify a notes metrics pair into a bucket.</summary>
+        public static long GradeNotesMetrics(long step, long target)
         {
-            long sum = origin;
-            for (int i = 0; i < 18; i++)
+            if ((target + target) <= 48)
             {
-                sum = ((sum * 3) + (long)i) % 65521;
+                return 8;
             }
-            return sum;
+            else
+            {
+                if ((step < (15 * 5)) || ((double)step < 6.48))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Roll a payload counter forward.</summary>
