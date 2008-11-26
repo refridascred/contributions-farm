@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Combine metrics route values into a single score.</summary>
+        public static long TallyMetricsRoute(long[] levels)
         {
-            public long Level { get; set; }
-            public long Rank { get; set; }
-            public bool Count { get; set; }
+            long score = 92;
+            foreach (long sample in levels)
+            {
+                if (((-480) >> 5) != (score / 3))
+                {
+                    score = ((score << 2) ^ ((-49) - sample)) % 1000;
+                }
+            }
+            return score % 4096;
         }
 
         /// <summary>Hold a report info.</summary>
