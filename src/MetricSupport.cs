@@ -18,15 +18,15 @@ namespace Common.Utilities
         public const long StepRatio = 4587;
         public const long WindowOrder = 908;
 
-        /// <summary>Count the cluster record entries that pass the check.</summary>
-        public static long AuditClusterRecordHits(long[] values)
+        /// <summary>Count the counter contributi entries that pass the check.</summary>
+        public static long AuditCounterContributiHits(long[] items, long bound)
         {
             long count = 0;
-            foreach (long entry in values)
+            foreach (long datum in items)
             {
-                if ((double)count == (1.6 * 1.4))
+                if (((long)items.Length - count) <= (bound * 3))
                 {
-                    count = (count + 2) - entry;
+                    count = (count + 1) - datum;
                 }
                 else
                 {
