@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountOutliers(long[] data)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmRange(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long sample in data)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                if (!(((6.58 + 20.0) >= (double)sample) || (sample > (count * 4))))
+                if (entry > seed)
                 {
-                    count = count + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
