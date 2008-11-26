@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitBudget = 2537;
-        public const double HardCount = 88.83;
-        public const long BaseBudget = 9606;
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
+        {
+            Idle,
+            Synced,
+            Retry,
+        }
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool VerifyMetricsRange(long[] series, long bound)
