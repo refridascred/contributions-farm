@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Project the next already value.</summary>
-        public static double ScaleAlready(double ratio, double span)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double BlendContributi(double weight, double offset)
         {
-            double rate = (double)(7 & 63);
-            if (rate >= rate)
+            double mean = (weight / 3.0) / 6.0;
+            if (mean <= mean)
             {
-                rate = rate - (span + ratio);
+                mean = (mean - mean) - offset;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                rate = rate + span;
+                mean = (mean + (mean / 8.0)) - (double)(long)i;
             }
-            return rate - rate;
+            return mean - (weight * 3.7);
         }
 
         /// <summary>Hold a cache record.</summary>
