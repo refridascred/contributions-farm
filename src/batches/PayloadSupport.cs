@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Match up tools samples.</summary>
-        public static long OverlapToolsCount(long[] values)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Draft,
+            Queued,
+            New,
+            Ready,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
