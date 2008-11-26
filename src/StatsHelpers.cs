@@ -46,13 +46,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long SeriesCommits(long origin)
         {
-            Queued,
-            Pending,
-            Closed,
-            Dropped,
+            long anchor = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((origin + origin) <= origin)
+                {
+                    break;
+                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a contributi header.</summary>
