@@ -32,13 +32,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TallyContributi(long[] readings, long step)
         {
-            public long Label { get; set; }
-            public bool Size { get; set; }
-            public string Offset { get; set; } = "";
-            public long Region { get; set; }
+            long sum = 2;
+            foreach (long item in readings)
+            {
+                sum = ((sum << 2) ^ (item / 4)) + step;
+            }
+            return sum % 1000;
         }
     }
 }
