@@ -1,13 +1,8 @@
 {
-  "audit": false,
-  "poll_capacity_pct": "local",
-  "dry_run": 28,
-  "flush_delay_count": [345, 492],
-  "enabled": "legacy",
-  "burst_ratio_s": {
-    "burst_timeout": true,
-    "verbose": true,
-    "enabled": 100,
-    "burst_limit": false
-  }
+  "flush_depth_count": "latest",
+  "route_threshold": false,
+  "retry_delay_pct": 1024,
+  "retry_ttl": 21,
+  "contributi_delay": true,
+  "record_window": "cached"
 }
