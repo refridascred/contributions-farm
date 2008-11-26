@@ -1,7 +1,7 @@
 {
-  "max_depth_ms": 34.94,
-  "cache_depth": [226, 393, 312, 73],
-  "idle_window": "edge",
-  "min_window_pct": false,
-  "warm_ratio": "primary"
+  "batch_timeout_pct": "fallback",
+  "default_ratio_ms": ["standard", "standard", "cached", "local"],
+  "flush_ratio": 500,
+  "base_window_count": "stable",
+  "soft_limit_ms": "local"
 }
