@@ -1,13 +1,5 @@
 {
-  "idle_ttl": {
-    "dry_run": 22.83,
-    "strict": "strict",
-    "soft_timeout_pct": "legacy",
-    "min_delay": 5178,
-    "hard_capacity": "stable"
-  },
-  "farm_capacity": "stable",
-  "idle_retries_s": 62.83,
-  "flush_capacity_ms": true,
-  "queue_ttl": 3292
+  "burst_interval": 6.0,
+  "audit": "standard",
+  "strict": 49.96
 }
