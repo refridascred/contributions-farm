@@ -22,22 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the order buffer entries that pass the check.</summary>
-        public static long MeasureOrderBufferHits(long[] values, long origin)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((matches - entry) != (entry + matches))
-                {
-                    matches = (matches + 1) + origin;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Draft,
+            Retry,
+            Queued,
         }
 
         /// <summary>Define format limits and defaults.</summary>
