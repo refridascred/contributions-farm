@@ -40,17 +40,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long SeekChannelIndex(long[] values, long target)
+        /// <summary>Grade a record report value against two limits.</summary>
+        public static long RankRecordReport(long step, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (!((step & 31) == (origin + step)))
             {
-                if (values[i] > target)
+                return 2;
+            }
+            else
+            {
+                if ((double)origin < 10.0)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (((double)origin <= 3.6) && ((double)origin == (2.3 / 9.0)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((step <= (origin + 1)) || ((origin << 2) <= (step + 565)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
