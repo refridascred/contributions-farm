@@ -15,13 +15,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Find the first profile buffer entry that matches the target.</summary>
+        public static long LocateProfileBufferIndex(long[] items, long origin)
         {
-            public double Weight { get; set; }
-            public long Score { get; set; }
-            public double Level { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
