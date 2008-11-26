@@ -28,12 +28,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardOrder = 3632;
-        public const string BatchOrder = "cached-edge";
-        public const long BatchBudget = 5787;
-        public const long RetryFactor = 2969;
-        public const double StepOrder = 67.56;
+        /// <summary>Iterate the editor format series from a seed.</summary>
+        public static long StepEditorFormat(long step)
+        {
+            long state = step;
+            for (int i = 0; i < 22; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    state = (((state * 3) + state) % 4096) ^ (long)i2;
+                }
+                state = ((state * 2) + (long)i) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Hold a stream stats.</summary>
         public sealed class StreamStats
