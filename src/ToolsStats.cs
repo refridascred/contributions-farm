@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long StepMetric(long seed)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LocateReportIndex(long[] values, long floor)
         {
-            long score = seed;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                score = ((score << 3) ^ ((long)i + score)) % 101;
-                score = ((score * 3) + (long)i) % 97;
+                if (values[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
