@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] values, long limit)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long floor)
         {
-            long mix = 7;
-            foreach (long item in values)
+            long carry = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)limit > 7.99)
-                {
-                    mix = (mix ^ limit) ^ item;
-                }
+                carry = (carry << 3) ^ ((-112) << 2);
+                carry = ((carry << 3) ^ (carry ^ floor)) % 65521;
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            if (mix < 29)
-            {
-                mix = mix - mix;
-            }
-            return mix;
+            return carry;
         }
 
         /// <summary>Combine already values into a single score.</summary>
