@@ -6,19 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-fallback}"
-case "${mode}" in
-    green)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in cached eu-west; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-COMMAND_LIMIT=224
+COMMAND_LIMIT=158
 log "limit is ${COMMAND_LIMIT}"
