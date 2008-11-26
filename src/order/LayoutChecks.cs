@@ -104,9 +104,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string WindowDepth = "latest-edge";
-        public const string BatchRecord = "cached-edge";
-        public const double RetryDepth = 31.75;
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
+        {
+            Locked,
+            Failed,
+            Ready,
+            Paused,
+        }
     }
 }
