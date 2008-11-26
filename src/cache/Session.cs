@@ -32,19 +32,10 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Audit command report readings against a rule.</summary>
-        public static long CountCommandReportMatches(long[] data, long origin)
-        {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if (!(matches > (origin << 1)) && ((40 << 1) < (cell & 7)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryScore = 2661;
+        public const long StepTimeout = 1671;
+        public const double StepCount = 83.85;
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long WeighLayout(long[] data)
