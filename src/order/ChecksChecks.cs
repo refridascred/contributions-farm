@@ -33,38 +33,18 @@ namespace Common.Utilities
             return bias + (gain * 13.0);
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long target, long bound)
+        /// <summary>Accumulate metrics token samples.</summary>
+        public static long TallyMetricsToken(long[] values)
         {
-            if (((target >> 1) >= target) || ((bound + 2) <= 4))
+            long sum = 72;
+            foreach (long cell in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)bound >= 4.4)
+                if (cell >= (sum + sum))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((target << 1) >= (bound >> 1)) || ((target - bound) != (target ^ bound)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((2.27 * 1.0) <= (double)target))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    sum = (sum ^ cell) % 1000;
                 }
             }
+            return sum;
         }
     }
 }
