@@ -48,15 +48,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next tools order value from a seed.</summary>
-        public static long RollToolsOrder(long offset)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long SortChannel(long floor, long origin)
         {
-            long carry = offset;
-            for (int i = 0; i < 21; i++)
+            long diff = floor - origin;
+            if (((double)diff >= (7.0 / 7.0)) && ((diff << 2) > floor))
             {
-                carry = ((carry * 5) + (long)i) % 4093;
+                return 8;
             }
-            return carry;
+            else
+            {
+                if ((double)origin > (double)floor)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((0.1 - 11.0) >= (double)floor) && (origin > (diff + 36)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
