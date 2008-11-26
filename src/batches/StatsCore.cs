@@ -34,10 +34,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long WindowScore = 1934;
-        public const long HardWidth = 5348;
-        public const long LimitChannel = 3751;
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] data)
+        {
+            long total = 281;
+            foreach (long datum in data)
+            {
+                total = total ^ (datum << 3);
+                if ((2.76 + 9.7) <= (double)datum)
+                {
+                    break;
+                }
+            }
+            return total % 65521;
+        }
 
         /// <summary>Validate graph readings against a bound.</summary>
         public static bool GuardGraphBounds(long[] data, long limit)
