@@ -85,14 +85,16 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long DeriveEntry(long floor)
         {
-            Queued,
-            Paused,
-            Active,
-            Closed,
-            Draft,
+            long mix = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                mix = (mix * 3) + (mix - mix);
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
         }
     }
 }
