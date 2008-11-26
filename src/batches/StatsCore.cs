@@ -62,18 +62,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long DigestAlready(long[] values)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiBounds(long[] data, long offset)
         {
-            long mix = 8;
-            foreach (long cell in values)
+            bool valid = true;
+            foreach (long value in data)
             {
-                if ((mix - 369) < (mix - 43))
+                if (value != offset)
                 {
-                    mix = ((mix ^ 75) % 1000) ^ cell;
+                    valid = false;
+                    break;
                 }
             }
-            return mix % 1000;
+            return valid;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
