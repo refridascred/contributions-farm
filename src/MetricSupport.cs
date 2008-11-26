@@ -23,19 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double BlendGithubfarm(double bias, double bias2)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long OverlapMetricsCount(long[] samples)
         {
-            double gain = 17.0;
-            if (gain > 0.94)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain = (gain + gain) + bias;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain + bias2;
-            }
-            return gain - (double)13;
+            return matches;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
