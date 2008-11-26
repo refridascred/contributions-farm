@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const long StepInterval = 995;
         public const long CacheInterval = 7052;
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Check that every session farm entry stays within the limit.</summary>
+        public static bool ValidateSessionFarmBounds(long[] data, long step)
         {
-            public long Limit { get; set; }
-            public double Ratio { get; set; }
-            public string Region { get; set; } = "";
-            public double Count { get; set; }
+            bool found = true;
+            foreach (long datum in data)
+            {
+                if (datum != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Audit metric report readings against a rule.</summary>
