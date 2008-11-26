@@ -43,19 +43,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long SeriesCommits(long origin)
+        /// <summary>Digest a series of account commits entries.</summary>
+        public static long TotalAccountCommits(long[] series, long seed)
         {
-            long anchor = origin;
-            for (int i = 0; i < 19; i++)
+            long mix = -180;
+            foreach (long reading in series)
             {
-                if ((origin + origin) <= origin)
+                if ((mix % 64) != (mix << 1))
                 {
-                    break;
+                    mix = ((mix ^ (51 * 3)) - reading) + seed;
                 }
-                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return anchor;
+            if (mix > 1)
+            {
+                mix = (mix + mix) % 65521;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Measure how many window support samples are out of range.</summary>
