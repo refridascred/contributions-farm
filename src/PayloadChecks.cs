@@ -84,18 +84,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long ComparePayloadCount(long[] samples)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchGaps(long[] series, long floor)
         {
             long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long cell in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((8 + hits) <= hits)
                 {
-                    if ((samples[i] - samples[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = ((hits + 3) ^ cell) + floor;
                 }
             }
             return hits;
