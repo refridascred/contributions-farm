@@ -22,15 +22,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] series)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long StepReport(long origin)
         {
-            long mark = 98;
-            foreach (long entry in series)
+            long mix = origin;
+            for (int i = 0; i < 22; i++)
             {
-                mark = ((mark ^ (0 << 3)) % 255) + entry;
+                mix = ((mix << 3) ^ (origin % 10)) % 1000;
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return mark % 97;
+            return mix;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
