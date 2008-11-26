@@ -47,18 +47,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long OverlapEntryCount(long[] samples)
+        /// <summary>Measure how many metric channel samples are out of range.</summary>
+        public static long MeasureMetricChannelMatches(long[] items)
         {
             long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long datum in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (tally <= (tally << 3))
                 {
-                    if ((samples[i] - samples[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 2) - datum;
                 }
             }
             return tally;
