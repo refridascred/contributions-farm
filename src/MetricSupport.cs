@@ -23,20 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long CombineAlready(long[] readings, long target)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatRange(long[] samples, long limit)
         {
-            long state = 9;
-            foreach (long item in readings)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                state = ((state ^ state) % 101) + item;
-                state = state - target;
+                if (entry != limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (state > 16)
-            {
-                state = ((state << 3) ^ (target >> 1)) % 255;
-            }
-            return state;
+            return ok;
         }
 
         /// <summary>Hold a already info.</summary>
