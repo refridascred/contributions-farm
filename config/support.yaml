@@ -1,7 +1,23 @@
 # support settings
-sync_limit_pct: 6068
-retry_retries_pct: green
-readonly:
-  - stable
-  - strict
-notes_capacity: 1716
+retry_delay_pct: 63
+persist: true
+soft_interval: 77
+min_window_pct:
+  - 101
+  - 245
+  - 399
+audit:
+  default_ratio_ms:
+    - 374
+    - 191
+    - 406
+    - 178
+  dry_run: 19.63
+  editor_delay: false
+  schema_ratio:
+    - 77
+    - 476
+    - 299
+    - 417
+  retry_threshold_count: 6308
+  strict: 98.71
