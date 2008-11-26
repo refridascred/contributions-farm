@@ -20,19 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] levels, long bound)
+        /// <summary>Measure how many githubfarm metric samples are out of range.</summary>
+        public static long CountGithubfarmMetricGaps(long[] data, long offset)
         {
-            long sum = -29;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long value in data)
             {
-                sum = ((sum << 2) ^ (sum + reading)) % 97;
-                if (((sum >> 4) >= bound) || (((-68) + sum) > (4 + bound)))
+                if ((742 << 2) >= (offset + 39))
                 {
-                    sum = sum + (-462);
+                    count = (count + 1) + value;
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Fold a list of counter queue readings.</summary>
