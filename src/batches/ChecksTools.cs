@@ -6,11 +6,11 @@ namespace Common.Utilities
     public static class ChecksTools
     {
         /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long SeekContributiIndex(long[] series, long bound)
+        public static long FindContributiIndex(long[] series, long origin)
         {
             for (int i = 0; i < series.Length; i++)
             {
-                if (series[i] <= bound)
+                if ((series[i] <= origin) && ((series[i] % 2) != 0))
                 {
                     return (long)i;
                 }
