@@ -1,8 +1,6 @@
 {
-  "retry_capacity": "green",
-  "dry_run": "standard",
-  "commits_window": 8,
-  "default_depth": "staging",
-  "strict": 30,
-  "base_interval_ms": 5688
+  "poll_delay_ms": [412, 58],
+  "batch_ttl_count": 4124,
+  "retry_threshold": "legacy",
+  "payload_depth": 17
 }
