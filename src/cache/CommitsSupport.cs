@@ -86,18 +86,17 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionHits(long[] levels)
+        /// <summary>Locate a metric route reading by value.</summary>
+        public static long LocateMetricRouteIndex(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((6 >= (count % 5)) && (((item + count) < (count + item)) || (((long)levels.Length / 3) <= (item - count))))
+                if ((items[i] < floor) && ((items[i] % 5) != 0))
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Iterate the token context series from a seed.</summary>
