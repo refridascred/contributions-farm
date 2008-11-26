@@ -32,14 +32,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            Paused,
-            Dropped,
-            Stale,
-            Idle,
-            Locked,
+            public long Size { get; set; }
+            public long Offset { get; set; }
+            public long Flag { get; set; }
+            public long Total { get; set; }
         }
     }
 }
