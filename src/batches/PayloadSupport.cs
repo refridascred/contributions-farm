@@ -32,12 +32,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryLimits(long[] values, long target)
         {
-            public string Stamp { get; set; } = "";
-            public long Size { get; set; }
-            public bool Rank { get; set; }
+            bool flag = true;
+            foreach (long sample in values)
+            {
+                if (sample >= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a tools header.</summary>
