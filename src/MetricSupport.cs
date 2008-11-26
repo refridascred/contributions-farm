@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double LimitTimeout = 43.01;
-        public const double IdleSupport = 45.15;
-        public const long RetrySupport = 3427;
-        public const double LimitRatio = 45.61;
-        public const long BaseCount = 481;
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmOutliers(long[] series, long floor)
+        {
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if ((638 + 5) < (floor << 2))
+                {
+                    tally = (tally + 2) ^ reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long StepBudget = 2314;
