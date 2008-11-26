@@ -43,19 +43,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderRange(long[] values, long offset)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            bool stale = true;
-            foreach (long entry in values)
-            {
-                if (entry <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Locked,
+            Retry,
+            Failed,
         }
 
         /// <summary>Combine format values into a single score.</summary>
