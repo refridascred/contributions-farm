@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of stream schema entries.</summary>
-        public static long DigestStreamSchema(long[] series)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutOutliers(long[] items, long target)
         {
-            long score = 0;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (!((9.8 <= (double)value) && ((value % 16) >= value)))
+                if (!((matches + sample) >= (835 >> 3)))
                 {
-                    score = ((score * 3) + (value & 3)) % 255;
-                }
-                if (!((score + score) > ((-665) - score)))
-                {
-                    score = (score + (value * 5)) % 1000;
-                }
-                if ((score + score) < (value ^ score))
-                {
-                    break;
+                    matches = (matches + 3) - target;
                 }
             }
-            return score % 97;
+            return matches;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
