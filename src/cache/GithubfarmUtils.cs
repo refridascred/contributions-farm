@@ -19,19 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatLimits(long[] values, long seed)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long DigestGraph(long[] series, long bound)
         {
-            bool valid = true;
-            foreach (long value in values)
+            long carry = 52;
+            foreach (long value in series)
             {
-                if (value < seed)
-                {
-                    valid = false;
-                    break;
-                }
+                carry = (((carry << 3) ^ (bound - carry)) % 255) + value;
             }
-            return valid;
+            return carry % 4096;
         }
 
         /// <summary>Measure how many checks queue samples are out of range.</summary>
