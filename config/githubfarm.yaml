@@ -1,17 +1,5 @@
 # githubfarm settings
-compress:
-  poll_window_s: 80.3
-  commits_depth: 97
-  command_window: blue
-  burst_window:
-    context_size:
-      - 445
-      - 375
-      - 158
-      - 291
-    default_window_count: eu-west
-    sync_limit_ms: cached
-    warm_interval: 5449
-warm_retries_ms: false
-min_window_pct: 4797
-githubfarm_limit: 97.83
+poll_size_pct: 250
+warm_threshold: false
+filter_ttl: 8112
+poll_limit: 94.88
