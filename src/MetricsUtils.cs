@@ -57,39 +57,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long BucketBuffer(long step, long floor)
-        {
-            long step2 = step - floor;
-            if ((step <= ((-1) & 1)) && ((step - step) < (step2 >> 4)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((step * 5) != (floor - step)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((4.08 / 5.0) >= (double)step2)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((500 - floor) <= step2) && ((7.0 + 1.0) != (double)step))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double MinEditor = 39.16;
+        public const long BatchScore = 3737;
+        public const string SoftSize = "cached-1";
+        public const double WindowEditor = 79.93;
     }
 }
