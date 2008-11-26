@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Adjust a metrics stats reading.</summary>
+        public static double ScaleMetricsStats(double gain, double floor)
         {
-            Synced,
-            Failed,
-            Pending,
+            double drift = gain;
+            if (drift < (5.4 - gain))
+            {
+                drift = drift + (floor / 2.0);
+            }
+            return drift - floor;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
