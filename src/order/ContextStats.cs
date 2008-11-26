@@ -40,19 +40,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricLimits(long[] series, long target)
+        /// <summary>Measure how many stats contributi samples are out of range.</summary>
+        public static long MeasureStatsContributiHits(long[] series, long origin)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if (entry < target)
+                if ((50 ^ origin) > origin)
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 2) - cell;
                 }
             }
-            return ok;
+            return hits;
         }
     }
 }
