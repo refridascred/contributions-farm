@@ -1,9 +1,17 @@
 # entry settings
-window_depth: 35.31
-max_delay_s: fallback
-flush_depth_ms:
-  - latest
-  - green
-  - strict
-  - green
-retry_delay: latest
+hard_delay_pct: false
+soft_interval_ms:
+  compress: true
+  payload_depth: 100
+  idle_retries: stable
+  poll_ttl:
+    readonly:
+      - cached
+      - latest
+      - stable
+    enabled: green
+    window_ttl: legacy
+    audit: false
+  soft_limit_s: 71.48
+  strict: blue
+enabled: 250
