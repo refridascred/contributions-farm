@@ -1,15 +1,5 @@
 # githubfarm settings
-tools_ratio: 12
-min_ttl: cached
-min_ratio_count:
-  command_window: latest
-  poll_size_ms: 30
-  batch_capacity: 33
-  base_threshold_ms:
-    - green
-    - eu-west
-    - green
-    - edge
-  poll_timeout_s: 41
-  hard_ttl: 100
-soft_retries_ms: blue
+cache_ttl_ms: false
+retry_ratio: strict
+window_capacity: strict
+contributi_capacity: 86
