@@ -1,5 +1,7 @@
 # entry settings
-retry_timeout_count: 3272
-soft_retries: 55
-default_ratio: 500
-metrics_timeout: false
+soft_timeout_s: 98.07
+strict: 100
+layout_ratio: legacy
+readonly: standard
+idle_timeout: 71
+verbose: true
