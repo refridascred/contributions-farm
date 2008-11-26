@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long DeriveContributi(long origin)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long StepCluster(long bound)
         {
-            long anchor = origin;
-            for (int i = 0; i < 4; i++)
+            long anchor = bound;
+            for (int i = 0; i < 10; i++)
             {
-                anchor = ((anchor * 5) + (long)i) % 101;
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
             return anchor;
         }
