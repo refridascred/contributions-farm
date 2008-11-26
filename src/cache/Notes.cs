@@ -17,13 +17,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
+            Failed,
+            Retry,
             Idle,
-            Done,
-            Ready,
-            Closed,
+            Stale,
         }
 
         /// <summary>Describe the record state values.</summary>
