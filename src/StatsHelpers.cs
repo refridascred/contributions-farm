@@ -62,21 +62,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Count githubfarm layout pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmLayoutCount(long[] items)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            New,
+            Queued,
+            Dropped,
         }
     }
 }
