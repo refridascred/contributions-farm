@@ -1,15 +1,5 @@
 {
-  "flush_interval_s": 6467,
-  "compress": 7121,
-  "soft_window": {
-    "burst_retries": true,
-    "readonly": 60,
-    "flush_timeout": "open",
-    "max_interval_ms": "local",
-    "tools_ratio": {
-      "strict": "cached",
-      "base_delay_ms": [384, 33, 178],
-      "poll_limit": 30.87
-    }
-  }
+  "warm_ratio_ms": "green",
+  "layout_window": "open",
+  "persist": "green"
 }
