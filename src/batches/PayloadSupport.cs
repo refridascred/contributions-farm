@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Blend two already cache measurements.</summary>
-        public static double SmoothAlreadyCache(double gain, double span)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            double bias = span;
-            if (bias > 0.08)
-            {
-                bias = (bias + bias) - gain;
-            }
-            return bias + (double)788;
+            Closed,
+            Done,
+            Paused,
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
