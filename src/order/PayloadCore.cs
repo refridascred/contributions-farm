@@ -23,11 +23,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportLimits(long[] readings, long target)
         {
-            public double Region { get; set; }
-            public long Offset { get; set; }
+            bool ready = true;
+            foreach (long value in readings)
+            {
+                if (value <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
