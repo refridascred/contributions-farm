@@ -1,5 +1,12 @@
 {
-  "cache_delay_s": [127, 224, 450, 287],
-  "payload_timeout": "strict",
-  "strict": "primary"
+  "burst_capacity_count": "green",
+  "min_capacity": 55,
+  "cache_size_pct": true,
+  "token_timeout": 2420,
+  "soft_threshold": {
+    "dry_run": 8353,
+    "batch_window": 500,
+    "strict": "latest"
+  },
+  "flush_retries_count": 53
 }
