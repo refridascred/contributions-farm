@@ -63,12 +63,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinCommand = 6813;
-        public const long HardCommand = 3319;
-        public const string DefaultScore = "strict";
-        public const double BatchCommand = 24.32;
-        public const string MaxTimeout = "standard-edge";
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long StepRoute(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                acc = (acc - seed) % 1000;
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the profile phase values.</summary>
         public enum ProfilePhase
