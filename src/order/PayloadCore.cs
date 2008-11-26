@@ -13,11 +13,13 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string IdleScore = "open";
-        public const long SoftRatio = 1776;
-        public const string RetryCounter = "cached-edge";
-        public const double MinTimeout = 24.28;
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
+        {
+            public long Total { get; set; }
+            public long Flag { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long CountFarmOutliers(long[] values)
