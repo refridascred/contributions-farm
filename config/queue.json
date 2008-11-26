@@ -1,6 +1,6 @@
 {
-  "already_ratio": "open",
-  "idle_retries_count": "eu-west",
-  "strict": 42,
-  "enabled": [198, 339]
+  "persist": "staging",
+  "poll_ratio": 76,
+  "batch_size": ["blue", "green"],
+  "verbose": 1024
 }
