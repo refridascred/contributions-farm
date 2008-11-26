@@ -40,22 +40,18 @@ namespace Common.Utilities
             return load - (scale - load);
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TallyTools(long[] series, long target)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaMatches(long[] samples, long offset)
         {
-            long carry = 825;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if ((double)value < (8.97 - 4.06))
+                if (offset <= (8 / 9))
                 {
-                    carry = ((carry ^ (carry - 7)) % 101) - target;
+                    hits = (hits + 1) ^ item;
                 }
             }
-            if (carry > 2)
-            {
-                carry = (carry - (5 * 3)) % 255;
-            }
-            return carry;
+            return hits;
         }
     }
 }
