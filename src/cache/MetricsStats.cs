@@ -33,15 +33,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double SmoothCommits(double rate, double offset)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            double load = (double)76 / 9.0;
-            for (int i = 0; i < 3; i++)
-            {
-                load = ((load - load) + (double)(long)i) - rate;
-            }
-            return load - offset;
+            Pending,
+            Closed,
+            Done,
+            Active,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
