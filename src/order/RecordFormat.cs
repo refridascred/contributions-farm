@@ -22,15 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double AdjustReport(double bias, double floor)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] samples, long seed)
         {
-            double gain = bias;
-            if (gain > bias)
+            long total = 871;
+            foreach (long cell in samples)
             {
-                gain = (gain + (bias + bias)) + floor;
+                total = (((total << 3) ^ (87 + total)) % 65521) + seed;
+                total = ((total * 5) + (cell << 2)) % 97;
+                total = (total + (-643)) % 97;
             }
-            return gain + gain;
+            if (total < 2)
+            {
+                total = ((total << 3) ^ (total + total)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
