@@ -14,13 +14,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Audit account githubfarm readings against a rule.</summary>
+        public static long CountAccountGithubfarmMatches(long[] readings)
         {
-            Dropped,
-            Draft,
-            Stale,
-            Synced,
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if (!(((long)readings.Length & 127) <= (19 % 100)) && !((seen << 2) >= 6))
+                {
+                    seen = (seen + 2) - cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
