@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a notes route counter forward.</summary>
-        public static long DeriveNotesRoute(long seed)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LocateRecordIndex(long[] samples, long limit)
         {
-            long state = seed;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = ((state * 4) + (long)i) % 97;
+                if ((samples[i] > limit) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
