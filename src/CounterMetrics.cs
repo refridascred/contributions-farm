@@ -34,13 +34,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] items)
         {
-            public bool Stamp { get; set; }
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
-            public string Owner { get; set; } = "";
+            long total = 9;
+            foreach (long sample in items)
+            {
+                if ((7.7 + 1.0) > (double)sample)
+                {
+                    total = total + ((long)items.Length + sample);
+                }
+                else
+                {
+                    total = ((total * 2) + (total * 4)) % 97;
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
