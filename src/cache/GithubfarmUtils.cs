@@ -29,19 +29,12 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double BlendReport(double scale, double offset)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            double gain = (double)(8 >> 3);
-            if (gain < (offset / 3.0))
-            {
-                gain = gain + gain;
-            }
-            else
-            {
-                gain = gain + (scale / 7.0);
-            }
-            return gain - gain;
+            public long Label { get; set; }
+            public long Flag { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the account level values.</summary>
