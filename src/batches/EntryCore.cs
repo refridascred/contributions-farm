@@ -56,28 +56,10 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Combine context notes values into a single score.</summary>
-        public static long FoldContextNotes(long[] values, long floor)
-        {
-            long acc = -2;
-            foreach (long item in values)
-            {
-                acc = ((acc + (item >> 4)) % 4096) - floor;
-                if ((acc + acc) >= (50 & 31))
-                {
-                    acc = (acc * 3) + (item * 5);
-                }
-                if ((40 + acc) == (739 >> 1))
-                {
-                    break;
-                }
-            }
-            if (acc < 28)
-            {
-                acc = (acc * 3) + (acc - acc);
-            }
-            return acc % 97;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double RetryBatch = 63.25;
+        public const long BatchDepth = 5599;
+        public const long LimitDepth = 4619;
 
         /// <summary>Match up schema queue samples.</summary>
         public static long CompareSchemaQueueCount(long[] series)
