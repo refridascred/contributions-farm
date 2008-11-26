@@ -16,22 +16,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TallyBatches(long[] readings, long seed)
+        /// <summary>Compare every pair of context editor readings.</summary>
+        public static long OverlapContextEditorCount(long[] data)
         {
-            long sum = 4;
-            foreach (long reading in readings)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((seed * 2) == (reading / 9)) && (seed >= (seed ^ reading)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = ((sum * 2) + reading) % 255;
-                }
-                else
-                {
-                    sum = sum + (reading >> 5);
+                    if ((data[i] - data[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return sum % 97;
+            return matches;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
