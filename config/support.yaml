@@ -1,15 +1,5 @@
 # support settings
-readonly:
-  session_threshold: 30
-  cache_delay: blue
-  burst_capacity_count:
-    - cached
-    - blue
-    - blue
-channel_ratio: 28.25
-buffer_interval:
-  - 357
-  - 225
-idle_capacity: true
-verbose: 500
-base_limit_pct: 60
+batch_window: green
+token_depth: open
+min_capacity_pct: 57.67
+command_ratio: 16.94
