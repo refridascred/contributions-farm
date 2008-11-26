@@ -20,10 +20,11 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheRatio = 5091;
-        public const long MinScore = 2410;
-        public const string MinLevel = "staging";
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftBatches = 7819;
+        public const long BatchBudget = 1982;
+        public const long BatchTimeout = 114;
+        public const string BurstBatches = "local-v2";
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
