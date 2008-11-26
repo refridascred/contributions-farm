@@ -37,11 +37,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double ScaleContext(double rate, double span)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long SortFormat(long seed, long seed2)
         {
-            double drift = rate;
-            return (drift - 0.19) + span;
+            long prev = seed ^ seed2;
+            if ((double)prev >= 8.9)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((prev << 3) != (3 ^ seed2)) && ((double)prev != (double)seed2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((6 << 1) >= prev) && (seed2 < (70 >> 3)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((prev > (seed2 ^ 0)) && ((20.0 - 4.4) == (double)prev))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
