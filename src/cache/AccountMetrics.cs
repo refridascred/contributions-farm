@@ -13,19 +13,18 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double BlendContributi(double gain, double span)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsOutliers(long[] levels)
         {
-            double gain2 = (double)651 / 5.0;
-            if (gain2 <= 1.0)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                gain2 = ((gain2 + (gain2 / 7.0)) - gain) + span;
+                if (!((entry % 97) <= (entry * 4)))
+                {
+                    seen = seen + 3;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain2 = (gain2 + gain2) - (double)(long)i;
-            }
-            return gain2 + (gain2 / 2.0);
+            return seen;
         }
 
         /// <summary>Describe the command state values.</summary>
