@@ -21,13 +21,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
-        {
-            public long Token { get; set; }
-            public bool Level { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string MaxScore = "local-v2";
+        public const long BurstRatio = 1977;
+        public const long MaxMetrics = 3684;
+        public const long HardMetrics = 6896;
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool GuardStreamRange(long[] samples, long offset)
