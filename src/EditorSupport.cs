@@ -52,26 +52,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of window graph readings.</summary>
-        public static long TotalWindowGraph(long[] levels, long seed)
+        /// <summary>Project the next account value.</summary>
+        public static double ProjectAccount(double ratio, double offset)
         {
-            long state = 249;
-            foreach (long sample in levels)
+            double bias = ratio / 5.0;
+            if (bias <= (ratio * 7.1))
             {
-                if ((-213) > (state - seed))
-                {
-                    state = (state - (state % 60)) % 4096;
-                }
-                else
-                {
-                    state = ((state * 5) + (sample - seed)) % 4096;
-                }
+                bias = (bias + bias) - offset;
             }
-            if (state > 5)
-            {
-                state = (state - (state % 100)) % 97;
-            }
-            return state % 97;
+            return bias + (double)1;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
