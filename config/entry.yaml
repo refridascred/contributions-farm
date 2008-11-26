@@ -1,7 +1,8 @@
 # entry settings
-already_retries: true
-burst_timeout_count: 91
-soft_threshold_pct: true
-default_limit_pct:
-  - 262
-  - 160
+layout_window: strict
+retry_delay_count: false
+burst_size_s: legacy
+window_interval:
+  - 319
+  - 189
+verbose: local
