@@ -43,13 +43,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            public long Score { get; set; }
-            public bool Label { get; set; }
-            public string Weight { get; set; } = "";
-            public string Count { get; set; } = "";
+            public bool Owner { get; set; }
+            public double Score { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
