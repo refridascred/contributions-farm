@@ -65,11 +65,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Adjust a already reading.</summary>
+        public static double AdjustAlready(double gain, double bias)
         {
-            public long Owner { get; set; }
-            public double Rank { get; set; }
+            double load = bias;
+            if (load > (load + 4.0))
+            {
+                load = (load - 1.4) - gain;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + bias) - (double)(long)i;
+            }
+            return load - (bias * 4.0);
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
