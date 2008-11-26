@@ -36,19 +36,17 @@ namespace Common.Utilities
         public const string BatchToken = "strict";
         public const double BurstToken = 98.19;
 
-        /// <summary>Validate profile notes readings against a bound.</summary>
-        public static bool CheckProfileNotesBounds(long[] items, long origin)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] readings, long target)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell >= origin)
+                if (readings[i] > target)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
