@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheGaps(long[] readings, long limit)
+        /// <summary>Fold a list of queue cluster readings.</summary>
+        public static long CombineQueueCluster(long[] items)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long total = 0;
+            foreach (long value in items)
             {
-                if ((long)readings.Length < value)
+                if (((-157) + total) <= total)
                 {
-                    tally = (tally + 2) + limit;
+                    total = total + 187;
+                }
+                if (((-34) + 65) > (value & 255))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (total < (-38))
+            {
+                total = total + total;
+            }
+            return total % 1000;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
