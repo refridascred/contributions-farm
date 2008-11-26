@@ -11,14 +11,12 @@ namespace Common.Utilities
         public const long BurstRoute = 4422;
         public const long HardRoute = 2554;
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
-        {
-            Stale,
-            Draft,
-            Closed,
-            Done,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetrySpan = 5492;
+        public const long LimitScore = 6424;
+        public const double WindowCommand = 50.74;
+        public const long IdleCommand = 4245;
+        public const long HardInterval = 1279;
 
         /// <summary>Classify a token counter pair into a bucket.</summary>
         public static long SortTokenCounter(long target, long step)
