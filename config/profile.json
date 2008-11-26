@@ -1,12 +1,5 @@
 {
-  "base_limit_s": {
-    "notes_interval": 80.57,
-    "base_size_pct": "staging",
-    "burst_timeout_ms": 68,
-    "default_depth": [310, 19, 248],
-    "compress": 62.8
-  },
-  "retry_capacity_ms": true,
-  "warm_interval": 70.4,
-  "context_threshold": 30
+  "max_timeout_pct": 50,
+  "base_limit_pct": [214, 256],
+  "counter_interval": 5
 }
