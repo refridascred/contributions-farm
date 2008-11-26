@@ -35,11 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a session command figure with a bias.</summary>
-        public static double AdjustSessionCommand(double bias, double offset)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            double weight = bias;
-            return (weight - weight) + offset;
+            public long Ratio { get; set; }
+            public long Size { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
