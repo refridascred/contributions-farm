@@ -29,16 +29,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the batches session series from a seed.</summary>
-        public static long IterateBatchesSession(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 23; i++)
-            {
-                total = (total + ((long)i + total)) % 97;
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinDepth = 7124;
+        public const long IdleContext = 9622;
+        public const long DefaultSpan = 3774;
     }
 }
