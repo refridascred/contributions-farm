@@ -39,15 +39,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long DigestToken(long[] items)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsOutliers(long[] samples, long step)
         {
-            long anchor = 349;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                anchor = (((anchor * 4) + 81) % 1000) ^ item;
+                if ((seen + 55) < seen)
+                {
+                    seen = ((seen + 3) + reading) - step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
