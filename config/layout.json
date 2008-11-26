@@ -1,6 +1,18 @@
 {
-  "warm_size_s": 9939,
-  "dry_run": false,
-  "retry_interval_ms": "cached",
-  "sync_capacity": 26.02
+  "warm_size_count": 136,
+  "min_ttl_s": true,
+  "poll_delay_count": {
+    "readonly": {
+      "max_capacity_s": "cached",
+      "audit": 746,
+      "compress": 500,
+      "warm_limit": 60.7
+    },
+    "retry_capacity_ms": ["latest", "blue", "blue", "latest"],
+    "layout_delay": 48,
+    "githubfarm_capacity": "local",
+    "hard_retries": 4270
+  },
+  "persist": ["eu-west", "local", "latest"],
+  "audit": "stable"
 }
