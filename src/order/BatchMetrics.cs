@@ -84,14 +84,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsHits(long[] values, long limit)
         {
-            Retry,
-            Stale,
-            Pending,
-            Active,
-            Paused,
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((0 + count) >= value)
+                {
+                    count = (count + 1) + limit;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
