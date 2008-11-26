@@ -12,31 +12,18 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Rank route commits input into a small class.</summary>
-        public static long SortRouteCommits(long bound, long limit)
+        /// <summary>Audit counter contributi readings against a rule.</summary>
+        public static long CountCounterContributiHits(long[] items)
         {
-            if ((bound - bound) > bound)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound & 31) <= (26 + limit))
+                if (!((tally - entry) < (tally - 6)) && !((56 << 2) != (entry - tally)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!(10.0 > (double)limit))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
