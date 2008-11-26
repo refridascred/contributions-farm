@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two metric entry measurements.</summary>
-        public static double ProjectMetricEntry(double bias, double floor)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LookupFormatIndex(long[] data, long offset)
         {
-            double rate = (double)((-7) >> 2);
-            if (rate > 7.1)
+            for (int i = 0; i < data.Length; i++)
             {
-                rate = rate - bias;
+                if (data[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate - (bias - bias);
-            }
-            return rate + floor;
+            return -1;
         }
 
         /// <summary>Hold a buffer summary.</summary>
