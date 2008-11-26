@@ -38,10 +38,11 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double RetryInterval = 17.09;
-        public const long StepFilter = 2993;
-        public const long CacheFactor = 7460;
-        public const long MinFactor = 711;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchCount = 7235;
+        public const string BurstWidth = "standard-edge";
+        public const double WindowCount = 59.44;
+        public const long CacheTimeout = 1388;
+        public const long IdleCache = 7393;
     }
 }
