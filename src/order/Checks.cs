@@ -14,11 +14,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BatchRatio = "standard";
-        public const long BurstWindow = 9813;
-        public const double LimitWindow = 88.07;
-        public const string DefaultWindow = "alpha-1";
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
+        {
+            Failed,
+            Draft,
+            Active,
+            New,
+            Locked,
+        }
 
         /// <summary>Hold a token snapshot.</summary>
         public sealed class TokenSnapshot
