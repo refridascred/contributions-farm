@@ -20,11 +20,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesRange(long[] items, long target)
         {
-            public long Token { get; set; }
-            public string Count { get; set; } = "";
+            bool found = true;
+            foreach (long sample in items)
+            {
+                if (sample <= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a report info.</summary>
