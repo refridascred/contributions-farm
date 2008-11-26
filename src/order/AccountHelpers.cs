@@ -66,19 +66,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every commits batch entry stays within the limit.</summary>
-        public static bool ValidateCommitsBatchLimits(long[] samples, long seed)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchOutliers(long[] levels, long limit)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if (sample <= seed)
+                if ((seen + datum) > (seen * 4))
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 1) + limit;
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
