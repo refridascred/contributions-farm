@@ -51,16 +51,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next checks report value from a seed.</summary>
-        public static long RollChecksReport(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                anchor = (anchor + ((long)i ^ anchor)) % 255;
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MinRecord = 93.16;
+        public const long WindowRecord = 570;
+        public const string RetryRatio = "latest";
     }
 }
