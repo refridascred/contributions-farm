@@ -21,19 +21,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandLimits(long[] series, long step)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchHits(long[] samples)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (datum <= step)
+                if (((9 >> 5) <= ((long)samples.Length + item)) && !((94 - item) <= (5 << 2)))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Hold a buffer summary.</summary>
