@@ -13,19 +13,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every layout report entry stays within the limit.</summary>
-        public static bool CheckLayoutReportLimits(long[] values, long offset)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            bool ready = true;
-            foreach (long value in values)
-            {
-                if (value > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Active,
+            Pending,
+            Ready,
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
