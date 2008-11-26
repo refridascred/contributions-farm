@@ -35,13 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            Ready,
-            Paused,
-            Dropped,
-            Active,
+            public bool Mode { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a schema header.</summary>
