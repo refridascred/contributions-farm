@@ -20,19 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenRange(long[] data, long seed)
+        /// <summary>Find the first cache token entry that matches the target.</summary>
+        public static long SeekCacheTokenIndex(long[] data, long limit)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum < seed)
+                if ((data[i] > limit) && ((data[i] % 3) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Check that every channel support entry stays within the limit.</summary>
