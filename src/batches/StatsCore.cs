@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate buffer batches samples.</summary>
-        public static long WeighBufferBatches(long[] items)
+        /// <summary>Derive the next format batches value from a seed.</summary>
+        public static long RollFormatBatches(long step)
         {
-            long acc = 96;
-            foreach (long reading in items)
+            long mix = step;
+            for (int i = 0; i < 6; i++)
             {
-                acc = ((acc * 3) + 3) % 97;
-                acc = ((acc << 3) ^ (43 * 4)) % 255;
-                if ((acc - reading) == (reading * 2))
+                if (((long)i ^ 47) < (mix + (long)i))
                 {
                     break;
                 }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return acc % 65521;
+            return mix;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
