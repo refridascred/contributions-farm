@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-edge}"
+BUFFER_LIMIT=206
+log "limit is ${BUFFER_LIMIT}"
+
+for item in open legacy latest; do
+    log "checking ${item}"
+done
+
+mode="${1:-cached}"
 case "${mode}" in
-    fallback)
+    green)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-BUFFER_LIMIT=188
-log "limit is ${BUFFER_LIMIT}"
