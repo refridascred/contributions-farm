@@ -1,6 +1,4 @@
 # githubfarm settings
-buffer_delay: 51.33
-warm_interval: false
-dry_run: 100
-channel_size: stable
-cache_interval_ms: blue
+max_depth_pct: false
+idle_delay: 6608
+burst_threshold_s: 500
