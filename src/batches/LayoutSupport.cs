@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheProfile = 8153;
-        public const long CacheLevel = 9169;
-        public const string SoftDepth = "staging";
-        public const long MinLevel = 3461;
-        public const long MaxProfile = 9036;
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
+        {
+            public long Flag { get; set; }
+            public bool Region { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Check that every batch order entry stays within the limit.</summary>
         public static bool CheckBatchOrderLimits(long[] data, long limit)
