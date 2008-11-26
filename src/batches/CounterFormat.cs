@@ -13,23 +13,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long ScoreProfile(long[] levels)
-        {
-            long sum = 73;
-            foreach (long datum in levels)
-            {
-                if (sum >= (sum << 2))
-                {
-                    sum = sum - datum;
-                }
-                if (sum <= (sum ^ sum))
-                {
-                    break;
-                }
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryLevel = 8853;
+        public const long DefaultRatio = 4687;
+        public const long WindowSize = 6305;
+        public const long BurstContext = 2231;
+        public const string IdleRatio = "strict";
 
         /// <summary>Fold a list of batches window readings.</summary>
         public static long CombineBatchesWindow(long[] levels)
