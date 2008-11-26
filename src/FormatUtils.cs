@@ -38,19 +38,12 @@ namespace Common.Utilities
         public const long LimitRatio = 2253;
         public const long HardTimeout = 145;
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenBounds(long[] values, long step)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            bool ready = true;
-            foreach (long item in values)
-            {
-                if (item != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Paused,
+            Done,
+            New,
         }
 
         /// <summary>Locate a account reading by value.</summary>
