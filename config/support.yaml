@@ -1,8 +1,11 @@
 # support settings
-route_delay: true
-retry_window_count: 60
-base_ttl_ms:
-  - 363
-  - 458
-dry_run: 593
-verbose: false
+cache_window:
+  - staging
+  - open
+  - standard
+  - cached
+dry_run: legacy
+metric_depth: staging
+verbose: stable
+cache_retries: 87
+window_delay: 500
