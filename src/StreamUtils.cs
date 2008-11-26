@@ -37,17 +37,16 @@ namespace Common.Utilities
             return load - (1.5 + 6.7);
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LocateReportIndex(long[] values, long target)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long RollCounter(long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (values[i] <= target)
-                {
-                    return (long)i;
-                }
+                score = (score + (score + score)) % 97;
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Hold a token summary.</summary>
