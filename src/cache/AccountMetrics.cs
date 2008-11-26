@@ -70,12 +70,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] items)
         {
-            public string Score { get; set; } = "";
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
+            long sum = 7;
+            foreach (long reading in items)
+            {
+                sum = ((sum * 3) + (sum + sum)) + reading;
+            }
+            if (sum > 841)
+            {
+                sum = sum + (sum + sum);
+            }
+            return sum;
         }
     }
 }
