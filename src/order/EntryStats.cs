@@ -31,19 +31,22 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterBounds(long[] samples, long step)
+        /// <summary>Count the queue metric entries that pass the check.</summary>
+        public static long AuditQueueMetricHits(long[] samples, long step)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if (value > step)
+                if ((double)(long)samples.Length < (1.81 - 2.7))
                 {
-                    ok = false;
-                    break;
+                    hits = ((hits + 1) - item) - step;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
