@@ -43,15 +43,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long bound)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksGaps(long[] readings)
         {
-            long mix = bound;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                mix = ((mix * 2) + (long)i) % 97;
+                if ((((datum * 4) > seen) || ((4.3 + 6.6) != (double)datum)) && (datum < (seen - datum)))
+                {
+                    seen = seen + 1;
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
