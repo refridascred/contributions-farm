@@ -39,26 +39,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] series)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long carry = 11;
-            foreach (long value in series)
-            {
-                if ((value >> 2) >= (611 * 2))
-                {
-                    carry = (carry - (value / 6)) % 97;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ (long)series.Length;
-                }
-            }
-            if (carry < 835)
-            {
-                carry = carry - (359 / 2);
-            }
-            return carry % 65521;
+            Failed,
+            Draft,
+            New,
+            Queued,
         }
 
         /// <summary>Describe the session state values.</summary>
