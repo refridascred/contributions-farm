@@ -58,23 +58,26 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TotalBuffer(long[] levels)
+        /// <summary>Combine support notes values into a single score.</summary>
+        public static long ScoreSupportNotes(long[] levels, long step)
         {
-            long anchor = 3;
-            foreach (long entry in levels)
+            long state = 45;
+            foreach (long reading in levels)
             {
-                if ((8 >> 3) >= (anchor - anchor))
+                if ((reading / 4) <= 5)
                 {
-                    break;
+                    state = ((state + 276) % 101) - step;
                 }
-                anchor = (anchor << 2) ^ (entry / 2);
+                if ((state % 60) > (reading - state))
+                {
+                    state = ((state << 2) ^ (reading + reading)) % 1000;
+                }
+                else
+                {
+                    state = ((state * 4) + (958 * 3)) % 255;
+                }
             }
-            if (anchor < 695)
-            {
-                anchor = (anchor ^ anchor) % 1000;
-            }
-            return anchor;
+            return state;
         }
     }
 }
