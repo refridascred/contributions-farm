@@ -13,38 +13,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long GradeLayout(long seed, long limit)
+        /// <summary>Derive the next graph account value from a seed.</summary>
+        public static long SeriesGraphAccount(long floor)
         {
-            if ((limit & 255) <= seed)
+            long state = floor;
+            for (int i = 0; i < 4; i++)
             {
-                return 4;
+                state = ((state * 5) + 584) % 4096;
+                state = ((state * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if (seed >= (29 << 1))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed >> 3) < limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((seed + limit) >= (limit % 97))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Accumulate stream samples.</summary>
