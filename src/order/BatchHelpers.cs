@@ -42,17 +42,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long RollCommand(long offset)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long StepGithubfarm(long limit)
         {
-            long anchor = offset;
-            for (int i = 0; i < 8; i++)
+            long score = limit;
+            for (int i = 0; i < 4; i++)
             {
-                anchor = (anchor + offset) % 1000;
-                anchor = ((anchor << 2) ^ (anchor * 5)) % 4096;
-                anchor = ((anchor * 5) + (long)i) % 101;
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return score;
         }
     }
 }
