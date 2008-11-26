@@ -21,12 +21,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelGaps(long[] values)
         {
-            Locked,
-            New,
-            Ready,
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if (!((tally + value) >= (tally / 9)) && ((value - tally) < (tally ^ tally)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of report readings.</summary>
