@@ -1,6 +1,8 @@
-id,region,rank,token,count
-1,131,36.71,88.03,77.93
-2,standard,62.7,cached,525
-3,53.12,408,72.38,257
-4,409,28.48,92.57,primary
-5,82.56,77.06,78,606
+id,score,token
+1,fallback,25.16
+2,796,51.02
+3,20.44,blue
+4,308,stable
+5,39.24,568
+6,cached,46
+7,legacy,open
