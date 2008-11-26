@@ -11,13 +11,15 @@ namespace Common.Utilities
         public const long MaxDepth = 618;
         public const string BurstSpan = "standard-v2";
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ProjectContributi(double scale, double bias)
         {
-            public long Offset { get; set; }
-            public bool Region { get; set; }
-            public long Level { get; set; }
-            public double Rank { get; set; }
+            double rate = (scale * 6.84) / 4.0;
+            if (rate < (6.0 - scale))
+            {
+                rate = rate + bias;
+            }
+            return rate - (double)348;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
