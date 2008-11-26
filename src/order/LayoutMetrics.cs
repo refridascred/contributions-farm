@@ -36,19 +36,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of tools commits entries.</summary>
-        public static long CombineToolsCommits(long[] samples, long step)
-        {
-            long score = 1;
-            foreach (long item in samples)
-            {
-                score = score ^ (score % 100);
-                if ((step + item) < (59 - item))
-                {
-                    score = (score + (step + score)) % 4096;
-                }
-            }
-            return score % 65521;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double StepRatio = 93.54;
+        public const double IdleCount = 60.22;
+        public const double LimitPayload = 44.16;
+        public const long WindowPayload = 7471;
     }
 }
