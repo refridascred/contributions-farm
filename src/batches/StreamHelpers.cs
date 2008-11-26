@@ -69,18 +69,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordHits(long[] samples, long floor)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphBounds(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                if ((double)floor > (0.14 - 9.0))
+                if (cell > target)
                 {
-                    hits = (hits + 1) - sample;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
     }
 }
