@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Fold a list of token readings.</summary>
+        public static long DigestToken(long[] items)
         {
-            public bool Limit { get; set; }
-            public long Count { get; set; }
-            public long Weight { get; set; }
-            public bool Score { get; set; }
+            long state = 872;
+            foreach (long item in items)
+            {
+                state = (state - (state ^ state)) % 97;
+                if ((item % 8) >= (state / 2))
+                {
+                    break;
+                }
+            }
+            return state % 1000;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
