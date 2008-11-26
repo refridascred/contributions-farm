@@ -1,5 +1,6 @@
 {
-  "burst_interval": 6.0,
-  "audit": "standard",
-  "strict": 49.96
+  "compress": 3.71,
+  "readonly": false,
+  "max_limit": ["blue", "eu-west", "blue", "stable"],
+  "dry_run": "eu-west"
 }
