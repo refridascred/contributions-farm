@@ -66,19 +66,11 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] items)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double BlendCluster(double bias, double span)
         {
-            long sum = 7;
-            foreach (long reading in items)
-            {
-                sum = ((sum * 3) + (sum + sum)) + reading;
-            }
-            if (sum > 841)
-            {
-                sum = sum + (sum + sum);
-            }
-            return sum;
+            double weight = span * 1.0;
+            return weight + bias;
         }
     }
 }
