@@ -53,9 +53,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MinStream = "open-1";
-        public const double DefaultSpan = 4.84;
-        public const double MinSpan = 6.07;
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsHits(long[] samples)
+        {
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if (!((sample + sample) <= (sample + tally)) && (sample < (tally ^ tally)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
     }
 }
