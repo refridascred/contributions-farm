@@ -12,21 +12,12 @@ namespace Common.Utilities
         public const double HardNotes = 46.5;
         public const double HardTimeout = 30.06;
 
-        /// <summary>Match up counter samples.</summary>
-        public static long PairCounterCount(long[] samples)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public double Stamp { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define counter limits and defaults.</summary>
