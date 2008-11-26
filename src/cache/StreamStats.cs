@@ -31,15 +31,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long WeighFormat(long[] values)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesOutliers(long[] readings)
         {
-            long acc = 0;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                acc = acc + (sample >> 1);
+                if ((entry < (seen / 6)) && (entry <= (seen & 1)))
+                {
+                    seen = seen + 2;
+                }
             }
-            return acc % 1000;
+            return seen;
         }
     }
 }
