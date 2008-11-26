@@ -45,22 +45,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long RollRecord(long limit)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiGaps(long[] values, long seed)
         {
-            long anchor = limit;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                bool ready = (double)anchor == (double)(long)i;
-                anchor = (anchor << 2) ^ (anchor + (long)i);
-                if (ready)
+                if ((-608) >= datum)
                 {
-                    anchor = (anchor << 3) ^ (limit << 3);
-                    break;
+                    count = (count + 3) - seed;
                 }
-                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Hold a metric record.</summary>
