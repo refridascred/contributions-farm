@@ -27,12 +27,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            public string Rank { get; set; } = "";
-            public long Level { get; set; }
-            public double Ratio { get; set; }
+            public string Flag { get; set; } = "";
+            public string Count { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Combine batch values into a single score.</summary>
