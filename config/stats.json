@@ -1,6 +1,6 @@
 {
-  "flush_window_ms": "strict",
-  "channel_size": "eu-west",
-  "stream_limit": 14,
-  "hard_timeout_s": "primary"
+  "flush_limit": "green",
+  "enabled": "legacy",
+  "flush_retries_pct": ["cached", "latest", "blue", "blue"],
+  "idle_threshold_pct": 35
 }
