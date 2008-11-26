@@ -28,19 +28,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double BlendSession(double bias, double bias2)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsLimits(long[] items, long seed)
         {
-            double gain = bias * 5.1;
-            if (gain > gain)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                gain = (gain - (17.0 / 7.0)) - bias2;
+                if (cell >= seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain + (gain / 2.0);
-            }
-            return gain - gain;
+            return stale;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
