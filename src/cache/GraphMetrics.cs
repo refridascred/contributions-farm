@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long bound, long limit)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            if ((bound + limit) == (11 / 2))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound & 63) == (bound ^ limit))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)limit >= (double)bound)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((bound << 2) >= (0 & 3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Failed,
+            Ready,
         }
 
         /// <summary>Describe the stats phase values.</summary>
