@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long ScoreFormat(long[] data, long bound)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long FindRecordIndex(long[] items, long offset)
         {
-            long total = -4;
-            foreach (long item in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = ((total * 2) + item) % 101;
-                if ((22 + item) > (bound ^ total))
+                if ((items[i] <= offset) && ((items[i] % 2) == 0))
                 {
-                    total = (total + bound) % 4096;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
