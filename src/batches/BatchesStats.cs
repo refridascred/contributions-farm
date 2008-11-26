@@ -49,31 +49,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] levels)
+        /// <summary>Classify a farm order pair into a bucket.</summary>
+        public static long ClassifyFarmOrder(long floor, long origin)
         {
-            long state = 6;
-            foreach (long datum in levels)
+            if ((double)floor >= (double)2)
             {
-                if ((state >> 1) < (state + state))
+                return 8;
+            }
+            else
+            {
+                if ((double)origin >= 7.9)
                 {
-                    state = state ^ (state << 1);
+                    return 5;
                 }
                 else
                 {
-                    state = (state * 4) + datum;
-                    state = (state - (81 << 1)) % 255;
-                }
-                if ((double)datum >= (8.44 * 7.0))
-                {
-                    state = state - (state >> 1);
-                }
-                if (((state + datum) == (state - state)) || ((double)state != (7.2 + 5.0)))
-                {
-                    break;
+                    if (((double)floor <= (7.2 / 9.0)) || ((origin + origin) == (origin & 7)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return state % 4096;
         }
     }
 }
