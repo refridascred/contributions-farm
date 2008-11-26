@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandHits(long[] levels)
         {
-            public long Flag { get; set; }
-            public bool Weight { get; set; }
-            public bool Total { get; set; }
-            public double Count { get; set; }
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((seen + seen) > (seen % 5))
+                {
+                    seen = (seen + 2) + cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
