@@ -49,12 +49,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteBounds(long[] values, long offset)
         {
-            public double Label { get; set; }
-            public double Count { get; set; }
-            public string Total { get; set; } = "";
+            bool found = true;
+            foreach (long datum in values)
+            {
+                if (datum <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a metric record.</summary>
