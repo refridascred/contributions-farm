@@ -70,32 +70,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a route githubfarm pair into a bucket.</summary>
-        public static long GradeRouteGithubfarm(long seed, long seed2)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutRange(long[] samples, long bound)
         {
-            long span = seed + seed2;
-            if (66 < seed)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed2 + seed2) != (seed + seed2))
+                if (reading < bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (span >= (seed << 1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Locate a metric route reading by value.</summary>
