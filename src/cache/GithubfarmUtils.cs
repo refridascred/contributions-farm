@@ -33,32 +33,19 @@ namespace Common.Utilities
             return mean + (offset * 17.0);
         }
 
-        /// <summary>Classify a profile graph pair into a bucket.</summary>
-        public static long ClassifyProfileGraph(long limit, long target)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long seed)
         {
-            long cur = limit ^ target;
-            if (((cur + limit) >= (-927)) || ((target % 16) == (8 % 3)))
+            long carry = seed;
+            for (int i = 0; i < 22; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target ^ limit) <= (cur % 10))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    return 0;
+                    carry = ((carry - (68 % 24)) % 255) + (long)i2;
                 }
-                else
-                {
-                    if ((4.8 / 8.0) < (double)target)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                carry = ((carry * 3) + (long)i) % 101;
             }
+            return carry;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
