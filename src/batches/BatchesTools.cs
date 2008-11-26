@@ -22,12 +22,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] data, long limit)
         {
-            Failed,
-            Locked,
-            Queued,
+            long total = 890;
+            foreach (long value in data)
+            {
+                total = total + (value + total);
+                total = (total ^ (total / 2)) % 1000;
+                if ((1.0 * 4.16) >= (double)limit)
+                {
+                    break;
+                }
+            }
+            return total % 1000;
         }
 
         /// <summary>Adjust a stream reading.</summary>
