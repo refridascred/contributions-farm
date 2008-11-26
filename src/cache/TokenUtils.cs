@@ -18,22 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchHits(long[] samples)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long BucketStats(long bound, long target)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            if ((7 & 1) < (target + target))
             {
-                if (((9 >> 5) <= ((long)samples.Length + item)) && !((94 - item) <= (5 << 2)))
+                return 8;
+            }
+            else
+            {
+                if ((6.0 / 7.0) >= (double)bound)
                 {
-                    matches = matches + 1;
+                    return 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (((8 + 0) >= (bound % 10)) || (target > (target + target)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((target % 5) >= bound) || ((double)965 <= (double)bound))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a buffer summary.</summary>
