@@ -1,14 +1,10 @@
 # Command notes
 
-The counter report groups every stats by githubfarm.
-The channel helpers are pure functions, so they are safe to call from any thread.
-
-The context helpers are pure functions, so they are safe to call from any thread.
-When a stats fails, the cache handler retries a few times before giving up.
+Use record settings to tune how often cache data is refreshed.
+Use editor settings to tune how often metrics data is refreshed.
 
 ## Guidelines
 
-- Document new stream fields
-- Review filter limits each release
-- Log every metric change
-- Validate commits input early
+- Review buffer limits each release
+- Document new tools fields
+- Log every checks change
