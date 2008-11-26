@@ -75,18 +75,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsMatches(long[] values)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long SeekWindowIndex(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((count >> 2) != ((-6) / 8)))
+                if ((samples[i] <= target) && ((samples[i] % 3) != 0))
                 {
-                    count = (count + 2) + datum;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
