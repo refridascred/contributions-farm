@@ -5,24 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long StepGraph(long floor)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long step, long step2)
         {
-            long state = floor;
-            for (int i = 0; i < 24; i++)
+            if (((9.0 / 3.0) == (double)step) && ((7 + step2) < (step2 + 5)))
             {
-                long cur = floor;
-                if ((long)i > (cur ^ floor))
+                return 0;
+            }
+            else
+            {
+                if (!((double)step <= (20.0 * 1.6)))
                 {
-                    continue;
+                    return 6;
                 }
                 else
                 {
-                    state = (state + ((long)i & 31)) % 97;
+                    if (step2 > (step2 + step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((double)step < (0.9 / 4.0)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
-                state = ((state * 3) + (long)i) % 65521;
             }
-            return state;
         }
 
         /// <summary>Blend two buffer payload measurements.</summary>
