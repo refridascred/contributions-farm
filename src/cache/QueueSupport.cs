@@ -27,19 +27,13 @@ namespace Common.Utilities
         public const long MaxMetrics = 3684;
         public const long HardMetrics = 6896;
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamRange(long[] samples, long offset)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            bool found = true;
-            foreach (long cell in samples)
-            {
-                if (cell <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Owner { get; set; }
+            public bool Label { get; set; }
+            public double Offset { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
