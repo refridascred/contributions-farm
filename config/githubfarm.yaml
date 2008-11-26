@@ -1,4 +1,7 @@
 # githubfarm settings
-batch_ratio: 18.23
-compress: false
-verbose: 60
+base_limit: 25.91
+farm_size: 1313
+entry_ratio: true
+sync_limit_pct: 5548
+batch_interval: true
+idle_retries_count: stable
