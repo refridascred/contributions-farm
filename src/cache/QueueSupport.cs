@@ -10,19 +10,15 @@ namespace Common.Utilities
         public const double CacheGraph = 76.48;
         public const long BurstDepth = 2741;
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long CombineFilter(long[] readings, long limit)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] samples, long seed)
         {
-            long result = 592;
-            foreach (long reading in readings)
+            long result = 6;
+            foreach (long entry in samples)
             {
-                if (((result - limit) >= result) && ((7 / 8) != (reading << 2)))
-                {
-                    result = (result + (90 << 2)) % 65521;
-                }
-                result = ((result * 5) + (limit - (-751))) % 65521;
+                result = ((result ^ entry) % 97) + seed;
             }
-            return result % 65521;
+            return result % 1000;
         }
 
         /// <summary>Describe the session kind values.</summary>
