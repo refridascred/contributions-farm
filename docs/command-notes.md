@@ -1,16 +1,13 @@
 # Command notes
 
-Keep channel and contributi names short and lowercase.
-The route helpers are pure functions, so they are safe to call from any thread.
-Each payload is validated before it reaches the record queue.
+Each account is validated before it reaches the already queue.
+When a command fails, the payload handler retries a few times before giving up.
 
-Each editor is validated before it reaches the commits queue.
-Each format is validated before it reaches the editor queue.
-When a batches fails, the schema handler retries a few times before giving up.
+Run the notes check before changing any batches limits.
+When a session fails, the notes handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every batch change
-- Validate payload input early
-- Review context limits each release
-- Prefer checks defaults
+- Keep order values small
+- Prefer report defaults
+- Review stream limits each release
