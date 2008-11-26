@@ -27,11 +27,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double SoftRatio = 63.53;
-        public const long BurstFarm = 9243;
-        public const long BurstDepth = 7482;
-        public const long LimitLevel = 8592;
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two route profile measurements.</summary>
         public static double ProjectRouteProfile(double weight, double floor)
