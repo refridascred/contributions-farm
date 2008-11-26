@@ -1,6 +1,6 @@
 {
-  "context_limit": 26,
-  "max_window_ms": 60.44,
-  "dry_run": "green",
-  "poll_window": true
+  "channel_threshold": "legacy",
+  "githubfarm_limit": "legacy",
+  "soft_window_ms": 43,
+  "cache_timeout_s": 7812
 }
