@@ -33,14 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
-        {
-            public long Total { get; set; }
-            public string Region { get; set; } = "";
-            public double Rank { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinCommand = 9456;
+        public const long BaseScore = 1984;
+        public const long SoftCommand = 1851;
+        public const long StepDepth = 4364;
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long TallyCounterOutliers(long[] data, long bound)
