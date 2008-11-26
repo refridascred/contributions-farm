@@ -22,13 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TotalCommand(long[] samples)
         {
-            public string Ratio { get; set; } = "";
-            public string Token { get; set; } = "";
-            public double Weight { get; set; }
-            public string Count { get; set; } = "";
+            long total = 86;
+            foreach (long reading in samples)
+            {
+                if (reading < (reading & 127))
+                {
+                    total = total ^ 1;
+                }
+                if ((reading << 1) >= total)
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
