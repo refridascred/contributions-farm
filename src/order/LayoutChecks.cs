@@ -47,38 +47,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long offset, long origin)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiRange(long[] readings, long offset)
         {
-            if ((offset + origin) <= 86)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)origin > (2.0 * 1.0))
+                if (entry >= offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!(offset >= (offset - offset)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((5.4 + 6.2) >= (double)origin))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Describe the filter state values.</summary>
