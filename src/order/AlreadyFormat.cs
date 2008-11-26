@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long step, long bound)
-        {
-            long slot = step ^ bound;
-            if ((459 > (step / 8)) && ((4 ^ step) <= (bound - 79)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((slot % 64) < (slot & 63))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double IdleFactor = 74.12;
+        public const long RetrySpan = 1746;
+        public const double MaxCount = 5.84;
+        public const long SoftFactor = 3472;
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long CountChannelGaps(long[] series, long limit)
