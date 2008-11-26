@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long MatchAccountCount(long[] data)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double BlendFormat(double rate, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double load = (double)(7 << 3);
+            if (load < load)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = ((load - (double)7) + rate) - span;
             }
-            return seen;
+            return load - (load * 4.0);
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
