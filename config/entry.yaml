@@ -1,22 +1,7 @@
 # entry settings
-schema_depth: true
-layout_limit: 53.05
-batch_delay_pct:
-  support_ttl: 5326
-  min_window_ms: standard
-  soft_delay_pct:
-    base_retries_pct: cached
-    max_ratio: 100
-    batches_depth: standard
-    batch_ttl: 34.72
-  soft_interval:
-    audit: 45.38
-    cache_limit_count: false
-    notes_capacity: 60
-    cluster_interval:
-      - local
-      - open
-      - eu-west
-      - green
-    flush_interval: 12
-  entry_ttl: 89.73
+already_retries: true
+burst_timeout_count: 91
+soft_threshold_pct: true
+default_limit_pct:
+  - 262
+  - 160
