@@ -1,5 +1,11 @@
 {
-  "base_ttl_ms": "staging",
-  "poll_timeout": "latest",
-  "support_size": "legacy"
+  "channel_timeout": "green",
+  "flush_ratio_count": {
+    "base_delay": 25.04,
+    "enabled": "blue",
+    "max_timeout_count": false
+  },
+  "hard_retries_count": 27,
+  "warm_retries_count": "blue",
+  "retry_ratio": "open"
 }
