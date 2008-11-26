@@ -30,18 +30,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LocateAlreadyIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string StepCommand = "local-edge";
+        public const long HardCommand = 993;
+        public const long IdleDepth = 8227;
 
         /// <summary>Blend two buffer measurements.</summary>
         public static double BlendBuffer(double gain, double offset)
