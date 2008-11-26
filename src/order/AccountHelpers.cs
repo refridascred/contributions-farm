@@ -77,19 +77,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadRange(long[] readings, long seed)
-        {
-            bool ready = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchToken = 3599;
+        public const long SoftToken = 5145;
+        public const long IdleCount = 5358;
     }
 }
