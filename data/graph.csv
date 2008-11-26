@@ -1,9 +1,6 @@
-id,state,active,score
-1,staging,staging,staging
-2,44.98,primary,stable
-3,79.15,staging,82.19
-4,47.07,fallback,primary
-5,staging,green,12.87
-6,188,41.64,272
-7,116,30.28,21.97
-8,986,91.1,405
+id,owner,state,rank
+1,47.63,green,146
+2,991,26.31,41.01
+3,edge,standard,eu-west
+4,13.85,954,641
+5,55.83,890,green
