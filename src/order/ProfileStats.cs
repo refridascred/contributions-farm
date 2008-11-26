@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
-        {
-            Pending,
-            Idle,
-            Closed,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchBudget = 8716;
+        public const string DefaultScore = "legacy-1";
+        public const string MaxLevel = "strict-1";
+        public const long SoftWidth = 323;
 
         /// <summary>Iterate the tools series from a seed.</summary>
         public static long RollTools(long target)
