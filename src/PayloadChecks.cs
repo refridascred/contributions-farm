@@ -28,13 +28,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long SortToken(long bound, long offset)
         {
-            public long Score { get; set; }
-            public long Flag { get; set; }
-            public long Size { get; set; }
-            public double Token { get; set; }
+            long cur = bound ^ offset;
+            if ((cur + bound) > bound)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((cur & 127) > bound) || (3 < (cur * 2)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((132 ^ offset) > (437 >> 3)) || ((8.69 / 8.0) > (double)cur))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((7 << 2) < (cur + bound))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next session stats value.</summary>
