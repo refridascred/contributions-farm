@@ -38,11 +38,22 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BurstMetric = 35.1;
-        public const double RetryMetric = 52.17;
-        public const double IdleMetric = 19.26;
-        public const long StepMetric = 6440;
+        /// <summary>Match up commits samples.</summary>
+        public static long OverlapCommitsCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Grade a metric value against two limits.</summary>
         public static long ClassifyMetric(long step, long seed)
