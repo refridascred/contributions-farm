@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long DeriveCommand(long seed)
         {
-            public string Score { get; set; } = "";
-            public long Count { get; set; }
-            public string Limit { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long acc = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                acc = (acc * 5) + (acc * 2);
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
