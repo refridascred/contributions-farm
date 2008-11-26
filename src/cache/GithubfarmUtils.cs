@@ -5,16 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long IterateFarm(long offset)
+        /// <summary>Blend two account measurements.</summary>
+        public static double BlendAccount(double rate, double floor)
         {
-            long total = offset;
-            for (int i = 0; i < 15; i++)
+            double drift = (double)(83 & 31);
+            if (drift < (floor / 6.0))
             {
-                total = total ^ (offset - offset);
-                total = ((total * 3) + (long)i) % 101;
+                drift = (drift - drift) - rate;
             }
-            return total;
+            else
+            {
+                drift = drift + (floor / 3.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - floor) + (double)(long)i;
+            }
+            return drift - (drift - drift);
         }
 
         /// <summary>Blend two profile measurements.</summary>
