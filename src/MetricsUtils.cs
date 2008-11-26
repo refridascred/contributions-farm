@@ -16,18 +16,19 @@ namespace Common.Utilities
             return load - (load * 4.0);
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmOutliers(long[] values, long step)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricLimits(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long datum in values)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                if ((9 + 485) <= datum)
+                if (cell > offset)
                 {
-                    count = (count + 2) - step;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
