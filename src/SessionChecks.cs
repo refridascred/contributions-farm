@@ -14,14 +14,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
-        {
-            New,
-            Done,
-            Pending,
-            Closed,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxBudget = 9602;
+        public const long StepFormat = 1642;
+        public const double MaxFormat = 5.23;
+        public const long HardWidth = 7841;
 
         /// <summary>Measure how many notes tools samples are out of range.</summary>
         public static long CountNotesToolsOutliers(long[] levels)
