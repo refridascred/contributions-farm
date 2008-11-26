@@ -16,15 +16,16 @@ namespace Common.Utilities
             return mean - (span - gain);
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ScaleSession(double weight, double span)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long SeriesBuffer(long seed)
         {
-            double gain = (double)(31 & 63);
-            if (gain <= gain)
+            long mix = seed;
+            for (int i = 0; i < 9; i++)
             {
-                gain = (gain - (gain * 1.35)) - weight;
+                mix = mix ^ (mix / 6);
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return gain - (gain - span);
+            return mix;
         }
 
         /// <summary>Hold a support snapshot.</summary>
