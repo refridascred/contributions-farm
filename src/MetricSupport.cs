@@ -15,18 +15,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricMatches(long[] levels)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheHits(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if ((sample - sample) >= (tally + tally))
+                if ((datum * 5) == (bound ^ 7))
                 {
-                    tally = tally + 1;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
