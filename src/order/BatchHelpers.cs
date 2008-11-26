@@ -37,25 +37,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long ClassifyAlready(long limit, long floor)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutHits(long[] samples)
         {
-            long offset = limit - floor;
-            if ((offset << 3) < limit)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (((48 + limit) > (offset + offset)) || (floor < (offset / 2)))
+                if ((double)tally >= (double)datum)
                 {
-                    return 6;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    return 0;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
