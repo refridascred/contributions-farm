@@ -1,4 +1,8 @@
 # payload settings
-sync_ttl_count: false
-max_window_s: latest
-idle_depth_ms: true
+flush_ttl: true
+account_timeout: 98
+persist: fallback
+idle_ttl_ms:
+  - staging
+  - stable
+soft_threshold: 278
