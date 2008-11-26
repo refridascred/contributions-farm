@@ -62,22 +62,22 @@ namespace Common.Utilities
             return (load + (load / 8.0)) + offset;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteOutliers(long[] data, long offset)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextGaps(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if ((tally & 7) != (offset & 31))
+                if (hits < (reading + reading))
                 {
-                    tally = (tally + 1) + value;
+                    hits = (hits + 3) + floor;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Match up batches samples.</summary>
