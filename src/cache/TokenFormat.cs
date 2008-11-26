@@ -37,11 +37,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double SmoothBatch(double bias, double floor)
-        {
-            double load = bias;
-            return (load - load) + floor;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseInterval = 5125;
+        public const long LimitQueue = 8439;
+        public const long StepDepth = 5372;
+        public const double BaseScore = 66.04;
+        public const long HardQueue = 6049;
     }
 }
