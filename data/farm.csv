@@ -1,8 +1,7 @@
-id,ratio,count,weight,state
-1,47.88,43.5,908,160
-2,46.06,679,standard,604
-3,fallback,47.19,103,742
-4,225,483,62.21,112
-5,726,1.23,blue,63.91
-6,strict,208,921,5.91
-7,141,edge,4.26,35.6
+id,active,label,count
+1,48.42,456,444
+2,standard,standard,508
+3,264,open,cached
+4,153,64.3,23.52
+5,505,97,857
+6,56.06,518,767
