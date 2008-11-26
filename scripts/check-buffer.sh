@@ -6,19 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-eu-west}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-BUFFER_LIMIT=51
-log "limit is ${BUFFER_LIMIT}"
-
-for item in stable standard staging eu-west; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 4))
 done
+log "total ${total}"
+
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+BUFFER_LIMIT=144
+log "limit is ${BUFFER_LIMIT}"
