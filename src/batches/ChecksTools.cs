@@ -23,15 +23,19 @@ namespace Common.Utilities
         public const long MinScore = 8389;
         public const string BatchCache = "local-v2";
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long DeriveFarm(long step)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ScaleLayout(double ratio, double floor)
         {
-            long mark = step;
-            for (int i = 0; i < 23; i++)
+            double rate = (double)(58 - 1);
+            if (rate > (4.72 / 6.0))
             {
-                mark = ((mark * 2) + (long)i) % 4093;
+                rate = (rate + floor) - ratio;
             }
-            return mark;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - (rate * 7.1)) + (double)(long)i;
+            }
+            return rate + (7.7 - rate);
         }
 
         /// <summary>Hold a stream stats.</summary>
