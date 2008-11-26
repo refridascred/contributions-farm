@@ -31,12 +31,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            public long Limit { get; set; }
-            public string Size { get; set; } = "";
-            public double Stamp { get; set; }
+            Done,
+            Pending,
+            Idle,
+            Active,
         }
     }
 }
