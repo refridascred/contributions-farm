@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate schema already readings against a bound.</summary>
-        public static bool ValidateSchemaAlreadyLimits(long[] series, long bound)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferGaps(long[] readings, long origin)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if (reading > bound)
+                if (!!(origin > (origin - origin)))
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 1) ^ sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Scale a token channel figure with a bias.</summary>
