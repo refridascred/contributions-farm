@@ -39,14 +39,17 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Locate a filter stats reading by value.</summary>
+        public static long LocateFilterStatsIndex(long[] values, long target)
         {
-            Failed,
-            Draft,
-            Locked,
-            Ready,
-            Paused,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= target) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
