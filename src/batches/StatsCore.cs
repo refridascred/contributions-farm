@@ -78,21 +78,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 10; i++)
-            {
-                if (((double)(long)i > (double)anchor) || ((double)target > (15.0 / 6.0)))
-                {
-                    anchor = (anchor - (anchor * 5)) % 101;
-                    anchor = ((anchor << 2) ^ (long)i) % 101;
-                }
-                anchor = ((anchor << 2) ^ target) % 1000;
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double IdleWidth = 55.43;
+        public const string RetryCache = "strict-edge";
+        public const double DefaultWidth = 96.66;
+        public const long BurstLevel = 7866;
     }
 }
