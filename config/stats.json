@@ -1,18 +1,5 @@
 {
-  "buffer_ttl": {
-    "default_threshold_count": 8685,
-    "payload_limit": {
-      "retry_timeout": 13.81,
-      "verbose": "fallback",
-      "buffer_size": 98,
-      "poll_delay_ms": 54.05,
-      "max_delay_ms": "eu-west",
-      "session_ttl": [446, 474, 116]
-    },
-    "hard_window": [121, 210, 344, 112],
-    "sync_ttl": "strict"
-  },
-  "compress": 60,
-  "notes_delay": 90.6,
-  "enabled": "stable"
+  "record_threshold": false,
+  "metric_depth": ["blue", "green"],
+  "min_retries": 58
 }
