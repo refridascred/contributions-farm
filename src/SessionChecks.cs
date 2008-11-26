@@ -52,15 +52,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long ScoreCommits(long[] series, long bound)
+        /// <summary>Scale a buffer cache figure with a bias.</summary>
+        public static double AdjustBufferCache(double gain, double floor)
         {
-            long mix = 4;
-            foreach (long value in series)
+            double scale = (gain - gain) + (floor / 9.0);
+            if (scale >= (scale - gain))
             {
-                mix = (mix ^ (value << 3)) - bound;
+                scale = scale + scale;
             }
-            return mix % 97;
+            else
+            {
+                scale = scale - gain;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + (floor / 5.0)) + (double)(long)i;
+            }
+            return scale + 15.0;
         }
 
         /// <summary>Project the next buffer value.</summary>
