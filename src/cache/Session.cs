@@ -15,12 +15,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] items, long bound)
         {
-            Ready,
-            Retry,
-            Queued,
+            long acc = 16;
+            foreach (long reading in items)
+            {
+                if ((double)bound < 1.65)
+                {
+                    continue;
+                }
+                if (!((acc << 2) >= (bound + reading)))
+                {
+                    acc = (acc << 3) ^ (acc + bound);
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Accumulate githubfarm support samples.</summary>
