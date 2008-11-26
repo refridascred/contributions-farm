@@ -35,17 +35,14 @@ namespace Common.Utilities
             return gain + (double)79;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long SeekClusterIndex(long[] levels, long step)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Done,
+            Stale,
+            Closed,
+            New,
         }
 
         /// <summary>Describe the notes phase values.</summary>
