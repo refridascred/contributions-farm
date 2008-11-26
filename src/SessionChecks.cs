@@ -28,19 +28,23 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long CombineFormat(long[] data, long limit)
+        /// <summary>Project the next buffer value.</summary>
+        public static double SmoothBuffer(double weight, double bias)
         {
-            long state = 46;
-            foreach (long datum in data)
+            double ratio = weight;
+            if (ratio < (weight / 4.0))
             {
-                state = ((state * 5) + (datum - limit)) % 101;
+                ratio = ratio + ratio;
             }
-            if (state < 430)
+            else
             {
-                state = (state ^ (state & 127)) % 1000;
+                ratio = ratio - weight;
             }
-            return state % 4096;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - (8.7 - bias)) + (double)(long)i;
+            }
+            return ratio - bias;
         }
     }
 }
