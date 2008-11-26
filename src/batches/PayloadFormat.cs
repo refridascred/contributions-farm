@@ -18,19 +18,15 @@ namespace Common.Utilities
         public const long MaxCache = 9306;
         public const long RetryInterval = 2723;
 
-        /// <summary>Adjust a counter metric reading.</summary>
-        public static double AdjustCounterMetric(double gain, double bias)
+        /// <summary>Combine stream cluster values into a single score.</summary>
+        public static long TotalStreamCluster(long[] data)
         {
-            double weight = gain + (gain + bias);
-            if (weight >= weight)
+            long acc = 65;
+            foreach (long cell in data)
             {
-                weight = weight - (gain - bias);
+                acc = (acc - (acc + acc)) + cell;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - 9.0) + (double)(long)i;
-            }
-            return weight + weight;
+            return acc % 65521;
         }
 
         /// <summary>Describe the editor state values.</summary>
