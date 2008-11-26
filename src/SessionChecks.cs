@@ -52,21 +52,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next metric filter value from a seed.</summary>
-        public static long RollMetricFilter(long floor)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long SeekSessionIndex(long[] levels, long bound)
         {
-            long anchor = floor;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                double ratio = (6.0 / 8.0) - (double)0;
-                if (!((ratio - ratio) >= ratio))
+                if ((levels[i] == bound) && ((levels[i] % 3) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
-                anchor = ((anchor << 3) ^ (anchor * 4)) % 65521;
-                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Project the next buffer value.</summary>
