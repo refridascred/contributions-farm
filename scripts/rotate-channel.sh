@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-primary}"
+mode="${1:-latest}"
 case "${mode}" in
-    primary)
+    green)
         log "fast path"
         ;;
     *)
@@ -16,9 +16,12 @@ case "${mode}" in
         ;;
 esac
 
-CHANNEL_LIMIT=63
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in blue standard; do
+for item in local staging; do
     log "checking ${item}"
 done
+
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
