@@ -12,13 +12,25 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long floor, long target)
         {
-            Dropped,
-            Queued,
-            Failed,
-            Synced,
+            long gap = floor + target;
+            if ((gap >= (gap % 64)) || ((target ^ floor) < target))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((target + gap) >= (target * 5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
