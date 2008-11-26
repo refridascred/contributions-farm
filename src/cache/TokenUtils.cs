@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ProjectGraph(double ratio, double floor)
         {
-            Dropped,
-            Closed,
-            Paused,
-            Active,
-            Locked,
+            double rate = (double)5 * 2.78;
+            if (rate < rate)
+            {
+                rate = (rate - (floor - rate)) - ratio;
+            }
+            return rate - (rate * 2.5);
         }
 
         /// <summary>Describe the queue kind values.</summary>
