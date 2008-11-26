@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            Retry,
-            Failed,
-            Paused,
+            public long Limit { get; set; }
+            public double Label { get; set; }
+            public long Region { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Measure how many format stream samples are out of range.</summary>
