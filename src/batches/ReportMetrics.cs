@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Roll a buffer counter counter forward.</summary>
-        public static long StepBufferCounter(long bound)
+        /// <summary>Project the next report session value.</summary>
+        public static double SmoothReportSession(double bias, double bias2)
         {
-            long score = bound;
-            for (int i = 0; i < 8; i++)
+            double mean = bias;
+            if (mean < (bias2 * 5.3))
             {
-                score = ((score * 3) + (long)i) % 101;
+                mean = mean - (double)(-703);
             }
-            return score;
+            return mean - (mean * 8.4);
         }
 
         /// <summary>Hold a order entry.</summary>
