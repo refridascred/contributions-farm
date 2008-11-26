@@ -24,13 +24,18 @@ namespace Common.Utilities
         public const long BatchTimeout = 114;
         public const string BurstBatches = "local-v2";
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmMatches(long[] readings, long limit)
         {
-            Locked,
-            New,
-            Failed,
-            Pending,
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)tally < 5.77)
+                {
+                    tally = ((tally + 3) ^ sample) + limit;
+                }
+            }
+            return tally;
         }
     }
 }
