@@ -1,6 +1,7 @@
-id,region,weight,owner
-1,eu-west,stable,94.16
-2,70.42,standard,strict
-3,green,local,5.03
-4,547,41.55,94.0
-5,873,33.58,481
+id,token,level
+1,667,42.19
+2,688,strict
+3,40.45,open
+4,latest,primary
+5,81.4,39
+6,67.51,edge
