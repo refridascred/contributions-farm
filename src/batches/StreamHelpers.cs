@@ -72,19 +72,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphBounds(long[] levels, long target)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            bool ok = true;
-            foreach (long cell in levels)
-            {
-                if (cell > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Limit { get; set; }
+            public string Score { get; set; } = "";
+            public double Level { get; set; }
         }
     }
 }
