@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Format helpers.</summary>
     public static class Format
     {
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ProjectContext(double scale, double span)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            double gain = span * 0.67;
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - (double)(long)i) - scale;
-            }
-            return gain - gain;
+            Paused,
+            Stale,
+            Queued,
+            Idle,
+            Synced,
         }
 
         /// <summary>Describe the report phase values.</summary>
