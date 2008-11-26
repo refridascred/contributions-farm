@@ -39,22 +39,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many stream account samples are out of range.</summary>
-        public static long CountStreamAccountGaps(long[] items)
-        {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if (!!((32 % 100) == (item << 2)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepProfile = 8203;
+        public const long CacheDepth = 9099;
+        public const double IdleProfile = 28.14;
     }
 }
