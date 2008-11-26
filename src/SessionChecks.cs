@@ -52,23 +52,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a buffer cache figure with a bias.</summary>
-        public static double AdjustBufferCache(double gain, double floor)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandOutliers(long[] readings)
         {
-            double scale = (gain - gain) + (floor / 9.0);
-            if (scale >= (scale - gain))
+            long count = 0;
+            foreach (long item in readings)
             {
-                scale = scale + scale;
+                if (item <= (count >> 5))
+                {
+                    count = count + 1;
+                }
             }
-            else
-            {
-                scale = scale - gain;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + (floor / 5.0)) + (double)(long)i;
-            }
-            return scale + 15.0;
+            return count;
         }
 
         /// <summary>Project the next buffer value.</summary>
