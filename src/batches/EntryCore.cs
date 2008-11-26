@@ -31,11 +31,15 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Blend two channel measurements.</summary>
+        public static double AdjustChannel(double ratio, double span)
         {
-            public bool Label { get; set; }
-            public long Owner { get; set; }
+            double rate = (6.19 * 8.78) + (ratio + 8.2);
+            if (rate > (span - span))
+            {
+                rate = rate + (double)(-82);
+            }
+            return rate + (ratio - rate);
         }
 
         /// <summary>Hold a already record.</summary>
