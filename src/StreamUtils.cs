@@ -41,18 +41,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metric channel samples are out of range.</summary>
-        public static long MeasureMetricChannelMatches(long[] items)
+        /// <summary>Roll a filter channel counter forward.</summary>
+        public static long StepFilterChannel(long seed)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long sum = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if (tally <= (tally << 3))
+                sum = (sum * 4) + (sum + sum);
+                if (((double)562 >= (9.29 / 6.0)) || ((sum << 3) >= (long)i))
                 {
-                    tally = (tally + 2) - datum;
+                    sum = (sum << 2) ^ 63;
+                    break;
                 }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Fold a list of context readings.</summary>
