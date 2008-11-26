@@ -22,12 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardBatches = 4593;
-        public const long CacheBatches = 7834;
-        public const long RetryBatches = 7310;
-        public const long StepWidth = 8972;
-        public const string SoftTimeout = "fallback-v2";
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
+        {
+            public string Ratio { get; set; } = "";
+            public string Token { get; set; } = "";
+            public double Weight { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool GuardFarmLimits(long[] samples, long origin)
