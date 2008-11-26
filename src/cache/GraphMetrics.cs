@@ -32,13 +32,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            Ready,
-            Draft,
-            Done,
+            Retry,
             Active,
+            Ready,
         }
 
         /// <summary>Accumulate tools batch samples.</summary>
