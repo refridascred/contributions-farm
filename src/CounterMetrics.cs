@@ -38,15 +38,31 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long DigestOrder(long[] series)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long BucketFormat(long step, long target)
         {
-            long score = 9;
-            foreach (long sample in series)
+            if ((step % 97) < (step - 30))
             {
-                score = (score - sample) % 255;
+                return 3;
             }
-            return score;
+            else
+            {
+                if (!((double)step <= (19.0 * 18.0)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((target + step) >= step) && (4 > (target * 4)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
