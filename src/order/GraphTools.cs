@@ -48,19 +48,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] data)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long carry = -275;
-            foreach (long sample in data)
-            {
-                carry = carry + (sample + sample);
-                if ((sample + carry) < (carry % 24))
-                {
-                    carry = (carry * 4) + (carry + carry);
-                }
-            }
-            return carry;
+            public long Token { get; set; }
+            public long Weight { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
