@@ -1,13 +1,6 @@
 {
-  "counter_ratio": 8875,
-  "persist": {
-    "cache_ttl": 7961,
-    "persist": false,
-    "dry_run": "cached",
-    "githubfarm_retries": false
-  },
-  "base_ttl": 19.3,
-  "command_window": [87, 261],
-  "audit": "legacy",
-  "burst_retries": 42.4
+  "notes_size": false,
+  "warm_delay_ms": "cached",
+  "context_interval": "stable",
+  "sync_threshold_count": 5355
 }
