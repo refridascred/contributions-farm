@@ -41,12 +41,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string HardSchema = "cached-1";
-        public const string CacheSchema = "open-v2";
-        public const long BaseCount = 3245;
-        public const string HardWidth = "stable-edge";
-        public const long StepScore = 4663;
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
+        {
+            Ready,
+            Paused,
+            Dropped,
+            Active,
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const double DefaultCounter = 16.18;
