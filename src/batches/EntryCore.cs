@@ -38,10 +38,14 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double RetryBatch = 63.25;
-        public const long BatchDepth = 5599;
-        public const long LimitDepth = 4619;
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
+        {
+            public long Token { get; set; }
+            public double Limit { get; set; }
+            public bool Ratio { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Match up schema queue samples.</summary>
         public static long CompareSchemaQueueCount(long[] series)
