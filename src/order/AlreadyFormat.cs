@@ -50,11 +50,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Project the next session value.</summary>
+        public static double SmoothSession(double gain, double bias)
         {
-            public long Count { get; set; }
-            public string Flag { get; set; } = "";
+            double drift = (double)73 * 7.43;
+            return (drift - (gain * 6.26)) + bias;
         }
     }
 }
