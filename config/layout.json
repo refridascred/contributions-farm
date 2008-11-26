@@ -1,5 +1,5 @@
 {
-  "persist": [95, 203],
-  "warm_depth": false,
-  "burst_ratio_count": 30
+  "base_ttl_ms": "staging",
+  "poll_timeout": "latest",
+  "support_size": "legacy"
 }
