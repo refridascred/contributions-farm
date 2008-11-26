@@ -22,20 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long StepQueue(long target)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long anchor = target;
-            for (int i = 0; i < 24; i++)
-            {
-                if (!(((long)i ^ anchor) > target))
-                {
-                    anchor = anchor + target;
-                }
-                anchor = anchor - target;
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
+            public double Region { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
