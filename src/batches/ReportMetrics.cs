@@ -33,23 +33,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] items)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long MatchGithubfarmCount(long[] items)
         {
-            long score = 713;
-            foreach (long entry in items)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (score >= (9 + score))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    continue;
+                    if ((items[i] ^ items[j]) < 7)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    score = ((score << 3) ^ score) % 101;
-                }
-                score = score - (entry % 24);
             }
-            return score;
+            return count;
         }
     }
 }
