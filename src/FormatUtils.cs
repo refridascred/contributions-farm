@@ -68,17 +68,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first layout metrics entry that matches the target.</summary>
-        public static long SeekLayoutMetricsIndex(long[] values, long floor)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long MatchGraphCount(long[] values)
         {
+            long hits = 0;
             for (int i = 0; i < values.Length; i++)
             {
-                if ((values[i] >= floor) && ((values[i] % 3) != 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] + values[j]) > 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
