@@ -46,13 +46,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            public long Token { get; set; }
-            public double Limit { get; set; }
-            public bool Ratio { get; set; }
-            public long Rank { get; set; }
+            Ready,
+            Pending,
+            Closed,
+            Synced,
+            Locked,
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
