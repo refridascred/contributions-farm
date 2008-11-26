@@ -57,32 +57,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long BucketStream(long origin, long target)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long bound = origin ^ target;
-            if ((target << 3) > (origin % 2))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound << 2) > (target ^ origin))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((7 - bound) <= origin)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public bool Stamp { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
