@@ -30,21 +30,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] series, long origin)
-        {
-            long mix = 70;
-            foreach (long reading in series)
-            {
-                mix = (mix - (mix % 5)) - reading;
-                mix = (mix ^ (origin + origin)) % 97;
-            }
-            if (mix > (-53))
-            {
-                mix = (mix * 4) + (mix * 3);
-            }
-            return mix % 97;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryProfile = 8901;
+        public const long DefaultProfile = 4950;
+        public const long WindowProfile = 7205;
+        public const long CacheProfile = 9934;
+        public const string BaseBudget = "latest";
 
         /// <summary>Match up report command samples.</summary>
         public static long OverlapReportCommandCount(long[] values)
