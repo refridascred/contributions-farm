@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long target)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long origin)
         {
-            long score = target;
-            for (int i = 0; i < 8; i++)
+            long sum = origin;
+            for (int i = 0; i < 18; i++)
             {
-                score = (score << 2) ^ ((long)i + (-782));
-                if ((target * 3) == (target % 8))
-                {
-                    break;
-                }
-                score = ((score * 3) + (long)i) % 1000;
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
