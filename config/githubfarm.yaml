@@ -1,10 +1,17 @@
 # githubfarm settings
-queue_limit: 45.62
-enabled: 95
-retry_limit: cached
-warm_limit_count:
-  cache_limit_ms: 8.19
-  strict: 1024
-  commits_interval: 30
-  sync_interval: 21.67
-retry_threshold_s: 67.72
+compress:
+  poll_window_s: 80.3
+  commits_depth: 97
+  command_window: blue
+  burst_window:
+    context_size:
+      - 445
+      - 375
+      - 158
+      - 291
+    default_window_count: eu-west
+    sync_limit_ms: cached
+    warm_interval: 5449
+warm_retries_ms: false
+min_window_pct: 4797
+githubfarm_limit: 97.83
