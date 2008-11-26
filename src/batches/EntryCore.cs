@@ -54,19 +54,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutOutliers(long[] samples)
-        {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((8.0 * 1.0) >= (double)value)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxTimeout = 576;
+        public const double WindowFactor = 56.02;
+        public const double StepCount = 0.32;
+        public const long IdleBudget = 5448;
+        public const string DefaultSchema = "primary-1";
 
         /// <summary>Iterate the session series from a seed.</summary>
         public static long IterateSession(long step)
