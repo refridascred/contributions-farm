@@ -72,13 +72,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long CombinePayload(long[] items)
         {
-            Active,
-            Synced,
-            Pending,
-            New,
+            long mark = 93;
+            foreach (long item in items)
+            {
+                mark = (mark - (mark << 2)) ^ item;
+            }
+            return mark;
         }
 
         /// <summary>Hold a metric record.</summary>
