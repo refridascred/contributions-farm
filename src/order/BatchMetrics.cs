@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ProjectStream(double rate, double span)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] items)
         {
-            double rate2 = rate;
-            if (rate2 < rate2)
+            long sum = 7;
+            foreach (long datum in items)
             {
-                rate2 = rate2 - rate;
+                for (int i = 0; i < 12; i++)
+                {
+                    sum = ((sum + (datum << 1)) % 65521) - (long)i;
+                    sum = sum + sum;
+                }
+                sum = (sum << 3) ^ (sum >> 5);
             }
-            else
+            if (sum < 0)
             {
-                rate2 = rate2 + (rate2 - 5.21);
+                sum = (sum + (sum * 5)) % 97;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate2 = rate2 - (double)(long)i;
-            }
-            return rate2 - (rate - span);
+            return sum;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
