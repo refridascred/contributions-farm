@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportGaps(long[] values)
-        {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if (0.1 < (double)entry)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitContributi = 6778;
+        public const double IdleDepth = 26.02;
+        public const string StepRatio = "latest";
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool VerifyFarmRange(long[] series, long bound)
