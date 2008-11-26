@@ -41,12 +41,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
+            Failed,
             Draft,
+            Locked,
+            Ready,
             Paused,
-            New,
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
