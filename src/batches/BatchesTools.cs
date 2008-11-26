@@ -39,9 +39,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxFactor = 4092;
-        public const long CacheEntry = 3980;
-        public const long StepEntry = 2408;
+        /// <summary>Digest a series of format payload entries.</summary>
+        public static long TallyFormatPayload(long[] values)
+        {
+            long result = -342;
+            foreach (long entry in values)
+            {
+                if (result < (entry - result))
+                {
+                    result = ((result << 3) ^ result) % 255;
+                }
+                else
+                {
+                    result = ((result << 3) ^ (entry - 93)) % 65521;
+                }
+            }
+            return result;
+        }
     }
 }
