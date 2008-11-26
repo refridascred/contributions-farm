@@ -37,38 +37,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long seed, long limit)
+        /// <summary>Locate a order entry reading by value.</summary>
+        public static long LookupOrderEntryIndex(long[] values, long limit)
         {
-            if (!((seed + seed) >= 456))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (limit > seed)
+                if (values[i] > limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((seed * 3) <= limit) || ((limit % 10) <= (seed >> 1)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((6.0 / 4.0) <= (double)seed))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
