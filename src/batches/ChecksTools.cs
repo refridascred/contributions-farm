@@ -66,15 +66,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine notes channel values into a single score.</summary>
-        public static long TallyNotesChannel(long[] data)
+        /// <summary>Blend two account measurements.</summary>
+        public static double SmoothAccount(double bias, double span)
         {
-            long sum = 63;
-            foreach (long reading in data)
+            double drift = (6.9 - 1.3) + bias;
+            if (drift > bias)
             {
-                sum = (sum - (reading + sum)) % 101;
+                drift = (drift + (drift + 10.0)) - span;
             }
-            return sum;
+            else
+            {
+                drift = drift - bias;
+            }
+            return drift + drift;
         }
     }
 }
