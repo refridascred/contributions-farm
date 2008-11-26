@@ -11,11 +11,27 @@ namespace Common.Utilities
         public const long HardEntry = 7510;
         public const long DefaultEntry = 5576;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinNotes = 5654;
-        public const long LimitNotes = 4984;
-        public const long RetryFactor = 7492;
-        public const long BurstFactor = 1960;
+        /// <summary>Fold a list of command readings.</summary>
+        public static long CombineCommand(long[] levels)
+        {
+            long mark = 88;
+            foreach (long value in levels)
+            {
+                if (((-77) ^ mark) == ((long)levels.Length % 12))
+                {
+                    mark = mark - value;
+                }
+                else
+                {
+                    mark = ((mark * 2) + (mark + mark)) % 1000;
+                }
+                if ((mark - mark) < (value + 4))
+                {
+                    break;
+                }
+            }
+            return mark % 97;
+        }
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long TallyWindowOutliers(long[] items, long offset)
