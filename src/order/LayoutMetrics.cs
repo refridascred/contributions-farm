@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Project the next cache cluster value.</summary>
-        public static double SmoothCacheCluster(double scale, double span)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyRange(long[] items, long offset)
         {
-            double scale2 = (double)16 + scale;
-            return (scale2 + scale) + span;
+            bool flag = true;
+            foreach (long entry in items)
+            {
+                if (entry != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Adjust a batches reading.</summary>
