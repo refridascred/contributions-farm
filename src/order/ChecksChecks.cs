@@ -34,9 +34,26 @@ namespace Common.Utilities
             return scale - 18.0;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string HardWindow = "legacy-edge";
-        public const string BatchSpan = "staging-1";
-        public const long BaseFactor = 8611;
+        /// <summary>Accumulate format route samples.</summary>
+        public static long DigestFormatRoute(long[] series, long target)
+        {
+            long mark = 599;
+            foreach (long reading in series)
+            {
+                if ((double)mark != (3.42 * 2.8))
+                {
+                    mark = ((mark * 4) + (4 * 5)) % 255;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (reading - target)) % 97;
+                }
+            }
+            if (mark > 51)
+            {
+                mark = (mark - (target * 3)) % 1000;
+            }
+            return mark % 97;
+        }
     }
 }
