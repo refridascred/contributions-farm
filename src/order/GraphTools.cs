@@ -33,19 +33,19 @@ namespace Common.Utilities
         public const long RetryCache = 4228;
         public const double DefaultCache = 16.62;
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long WeighBatch(long[] series, long limit)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double SmoothFarm(double gain, double floor)
         {
-            long sum = 2;
-            foreach (long value in series)
+            double bias = gain;
+            if (bias >= gain)
             {
-                sum = sum - ((-258) + value);
-                if ((1 % 16) == (limit + 6))
-                {
-                    break;
-                }
+                bias = bias + floor;
             }
-            return sum % 1000;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias - (gain - gain)) + (double)(long)i;
+            }
+            return bias - (bias * 15.0);
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
