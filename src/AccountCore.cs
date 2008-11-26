@@ -57,32 +57,17 @@ namespace Common.Utilities
         public const string HardChecks = "cached";
         public const long WindowDepth = 6757;
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long RollLayout(long target)
+        /// <summary>Find the first order profile entry that matches the target.</summary>
+        public static long LocateOrderProfileIndex(long[] samples, long origin)
         {
-            long result = target;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((result * 5) >= (result + result))
+                if ((samples[i] >= origin) && ((samples[i] % 5) != 0))
                 {
-                    result = (result - (9 + result)) % 4096;
-                    result = (result << 3) ^ (result + (-9));
+                    return (long)i;
                 }
-                if (((double)result != (3.0 * 4.5)) && ((target >> 3) < (target + result)))
-                {
-                    result = (result * 2) + (result / 9);
-                }
-                else
-                {
-                    result = result ^ target;
-                }
-                if (((target / 4) <= (result & 255)) && ((double)(long)i <= (double)result))
-                {
-                    result = (result ^ ((long)i + (long)i)) % 65521;
-                }
-                result = ((result * 2) + (long)i) % 4093;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
