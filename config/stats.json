@@ -1,13 +1,12 @@
 {
-  "sync_delay": 16.41,
-  "support_window": ["eu-west", "standard"],
-  "cache_timeout": {
-    "strict": false,
-    "profile_timeout": "open",
-    "poll_size": "eu-west",
-    "schema_ratio": 1104,
-    "commits_interval": [160, 485, 63, 278]
+  "min_capacity_count": {
+    "context_timeout": "standard",
+    "readonly": 1249,
+    "strict": true,
+    "sync_ratio_ms": 6647
   },
-  "graph_limit": "fallback",
-  "idle_timeout": 2304
+  "compress": true,
+  "sync_window_ms": true,
+  "soft_limit": false,
+  "readonly": 49.46
 }
