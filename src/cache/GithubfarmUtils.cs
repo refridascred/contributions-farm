@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutOutliers(long[] items, long target)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long RollEntry(long limit)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long mix = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if (!((matches + sample) >= (835 >> 3)))
-                {
-                    matches = (matches + 3) - target;
-                }
+                mix = mix ^ (limit % 3);
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
