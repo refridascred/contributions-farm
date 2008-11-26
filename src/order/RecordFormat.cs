@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Compare every pair of payload record readings.</summary>
-        public static long ComparePayloadRecordCount(long[] readings)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long PairBufferCount(long[] values)
         {
             long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((readings[i] ^ readings[j]) == 11)
+                    if ((values[i] - values[j]) > 20)
                     {
                         tally = tally + 1;
                     }
