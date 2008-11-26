@@ -55,18 +55,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Match up schema queue samples.</summary>
-        public static long CompareSchemaQueueCount(long[] series)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchGaps(long[] samples, long limit)
         {
             long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long value in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((tally + tally) > value)
                 {
-                    if ((series[i] ^ series[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 3) + limit;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
