@@ -33,17 +33,22 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LookupEditorIndex(long[] samples, long step)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterMatches(long[] series, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (samples[i] > step)
+                if (0 > (item & 63))
                 {
-                    return (long)i;
+                    tally = (tally + 2) - origin;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
