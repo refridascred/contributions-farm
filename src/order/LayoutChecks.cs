@@ -14,19 +14,39 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double BlendMetrics(double weight, double offset)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long RankCounter(long offset, long floor)
         {
-            double ratio = (double)78;
-            if (ratio <= (double)28)
+            long cur = offset - floor;
+            if (cur < 801)
             {
-                ratio = ratio - (weight - weight);
+                return 8;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                ratio = (ratio + (offset * 16.0)) + (double)(long)i;
+                if (((double)offset >= (3.76 / 2.0)) || ((floor / 9) <= (cur - cur)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (cur <= floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (offset < (floor & 255))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            return ratio + offset;
         }
 
         /// <summary>Define support limits and defaults.</summary>
