@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long FindCommitsIndex(long[] series, long origin)
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 7;
+            foreach (long entry in samples)
             {
-                if ((series[i] < origin) && ((series[i] % 5) == 0))
+                if ((entry / 5) >= (entry << 2))
                 {
-                    return (long)i;
+                    state = (state << 3) ^ (state % 24);
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
