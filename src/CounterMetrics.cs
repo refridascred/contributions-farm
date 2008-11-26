@@ -48,17 +48,15 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LookupCommitsIndex(long[] items, long limit)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long StepBuffer(long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if ((items[i] == limit) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
     }
 }
