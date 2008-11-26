@@ -29,20 +29,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] levels)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long mark = 3;
-            foreach (long datum in levels)
-            {
-                mark = (mark ^ (mark - mark)) % 255;
-                mark = (mark ^ datum) % 1000;
-            }
-            if (mark > 33)
-            {
-                mark = (mark + (mark & 1)) % 4096;
-            }
-            return mark % 97;
+            public bool Stamp { get; set; }
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Combine order values into a single score.</summary>
