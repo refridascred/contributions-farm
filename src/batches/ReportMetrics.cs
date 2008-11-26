@@ -23,17 +23,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a editor account sample.</summary>
-        public static long LookupEditorAccountIndex(long[] readings, long origin)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TallyChecks(long[] levels, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 91;
+            foreach (long entry in levels)
             {
-                if ((readings[i] == origin) && ((readings[i] % 5) == 0))
+                if (((3.0 * 5.9) < (double)sum) && (entry > (target / 6)))
                 {
-                    return (long)i;
+                    sum = sum - (330 + entry);
+                }
+                else
+                {
+                    sum = sum + (entry + sum);
                 }
             }
-            return -1;
+            if (sum < 235)
+            {
+                sum = sum - (sum >> 5);
+            }
+            return sum % 4096;
         }
     }
 }
