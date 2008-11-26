@@ -38,14 +38,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            Pending,
-            Done,
-            Stale,
-            Closed,
-            New,
+            public bool Limit { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
