@@ -42,13 +42,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Project the next checks value.</summary>
+        public static double ScaleChecks(double bias, double floor)
         {
-            public long Region { get; set; }
-            public bool Rank { get; set; }
-            public string Size { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            double load = (floor + floor) - (floor * 3.5);
+            if (load < load)
+            {
+                load = load - bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + bias) + (double)(long)i;
+            }
+            return load + (bias / 6.0);
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
