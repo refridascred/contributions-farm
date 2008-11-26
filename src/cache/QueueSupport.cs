@@ -49,17 +49,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long FindAlreadyIndex(long[] data, long bound)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutHits(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (data[i] > bound)
+                if ((9.54 / 6.0) > (double)datum)
                 {
-                    return (long)i;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
