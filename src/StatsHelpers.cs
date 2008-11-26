@@ -47,19 +47,15 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderOutliers(long[] data)
+        /// <summary>Count the account notes entries that pass the check.</summary>
+        public static long CountAccountNotesOutliers(long[] levels, long limit)
         {
             long seen = 0;
-            foreach (long reading in data)
+            foreach (long cell in levels)
             {
-                if ((reading % 2) < reading)
+                if ((139 - seen) == (cell << 1))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = (seen + 1) - limit;
                 }
             }
             return seen;
