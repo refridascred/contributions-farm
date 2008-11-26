@@ -33,18 +33,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowOutliers(long[] items, long offset)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchBounds(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                if ((8 <= (value ^ offset)) && !((value - value) <= value))
+                if (reading >= step)
                 {
-                    tally = tally + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
