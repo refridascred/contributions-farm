@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] series, long target)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long score = -128;
-            foreach (long cell in series)
-            {
-                if (((cell >> 3) == (target + score)) || (score > (score + 546)))
-                {
-                    score = (score + (target + 787)) % 1000;
-                }
-            }
-            if (score < 67)
-            {
-                score = score - score;
-            }
-            return score;
+            Dropped,
+            Failed,
+            Draft,
+            Stale,
+            Retry,
         }
 
         /// <summary>Project the next buffer value.</summary>
