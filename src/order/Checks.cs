@@ -20,14 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiMatches(long[] items)
         {
-            Failed,
-            Draft,
-            Active,
-            New,
-            Locked,
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((17.0 * 10.0) == (double)hits)
+                {
+                    hits = (hits + 1) - item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count already cache pairs that satisfy a relation.</summary>
