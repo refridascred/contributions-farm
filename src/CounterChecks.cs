@@ -105,18 +105,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferHits(long[] readings)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((item << 2) < 99)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public double Ratio { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Total { get; set; }
         }
     }
 }
