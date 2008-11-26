@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Digest a series of stream schema entries.</summary>
+        public static long DigestStreamSchema(long[] series)
         {
-            Stale,
-            Done,
-            Ready,
-            Failed,
+            long score = 0;
+            foreach (long value in series)
+            {
+                if (!((9.8 <= (double)value) && ((value % 16) >= value)))
+                {
+                    score = ((score * 3) + (value & 3)) % 255;
+                }
+                if (!((score + score) > ((-665) - score)))
+                {
+                    score = (score + (value * 5)) % 1000;
+                }
+                if ((score + score) < (value ^ score))
+                {
+                    break;
+                }
+            }
+            return score % 97;
         }
 
         /// <summary>Look up the position of a tools filter sample.</summary>
