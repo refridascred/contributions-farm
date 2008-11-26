@@ -71,11 +71,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Count the batch batches entries that pass the check.</summary>
+        public static long AuditBatchBatchesGaps(long[] levels)
         {
-            public string Rank { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if (!(((56 & 31) == (datum >> 5)) && (datum > (datum + datum))))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
