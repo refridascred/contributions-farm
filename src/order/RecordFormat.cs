@@ -22,18 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphGaps(long[] values)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if (count >= reading)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Retry,
+            Synced,
+            Closed,
+            Active,
+            Ready,
         }
 
         /// <summary>Scale a profile command figure with a bias.</summary>
