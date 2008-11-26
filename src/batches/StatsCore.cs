@@ -39,19 +39,19 @@ namespace Common.Utilities
         public const long HardWidth = 5348;
         public const long LimitChannel = 3751;
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchBounds(long[] samples, long seed)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphBounds(long[] data, long limit)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            bool valid = true;
+            foreach (long item in data)
             {
-                if (item >= seed)
+                if (item >= limit)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
