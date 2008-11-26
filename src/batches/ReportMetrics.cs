@@ -10,20 +10,13 @@ namespace Common.Utilities
         public const string HardLevel = "strict-v2";
         public const long IdleScore = 5769;
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] series, long step)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long state = 89;
-            foreach (long sample in series)
-            {
-                state = ((state * 3) + (sample / 7)) % 4096;
-                if ((53 + sample) == (207 + sample))
-                {
-                    break;
-                }
-                state = (state + (step * 4)) % 1000;
-            }
-            return state;
+            public double Mode { get; set; }
+            public bool Ratio { get; set; }
+            public double Total { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Adjust a profile window reading.</summary>
