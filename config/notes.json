@@ -1,5 +1,8 @@
 {
-  "report_ratio": [437, 118, 224],
-  "burst_threshold_ms": [92, 302],
-  "retry_size": 100
+  "retry_capacity": "green",
+  "dry_run": "standard",
+  "commits_window": 8,
+  "default_depth": "staging",
+  "strict": 30,
+  "base_interval_ms": 5688
 }
