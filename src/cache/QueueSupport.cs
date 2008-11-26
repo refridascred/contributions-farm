@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many channel stats samples are out of range.</summary>
-        public static long TallyChannelStatsOutliers(long[] series, long step)
+        /// <summary>Fold a list of layout queue readings.</summary>
+        public static long DigestLayoutQueue(long[] items)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long score = 9;
+            foreach (long cell in items)
             {
-                if ((seen % 12) >= seen)
+                if (score > (cell - score))
                 {
-                    seen = ((seen + 2) + item) + step;
+                    score = (score + 4) % 255;
+                }
+                if ((double)cell < (2.27 + 8.93))
+                {
+                    score = score + (score + cell);
+                }
+                if ((1.8 + 5.0) != (double)cell)
+                {
+                    break;
                 }
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
