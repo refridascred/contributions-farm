@@ -18,38 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long BucketStats(long bound, long target)
+        /// <summary>Blend two metric entry measurements.</summary>
+        public static double ProjectMetricEntry(double bias, double floor)
         {
-            if ((7 & 1) < (target + target))
+            double rate = (double)((-7) >> 2);
+            if (rate > 7.1)
             {
-                return 8;
+                rate = rate - bias;
             }
             else
             {
-                if ((6.0 / 7.0) >= (double)bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((8 + 0) >= (bound % 10)) || (target > (target + target)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((target % 5) >= bound) || ((double)965 <= (double)bound))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                rate = rate - (bias - bias);
             }
+            return rate + floor;
         }
 
         /// <summary>Hold a buffer summary.</summary>
