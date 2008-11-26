@@ -56,12 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchOutliers(long[] levels)
         {
-            public bool Size { get; set; }
-            public long Offset { get; set; }
-            public string Total { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry / 7) <= (seen * 5))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a profile info.</summary>
