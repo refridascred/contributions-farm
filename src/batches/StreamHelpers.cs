@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Roll a contributi batch counter forward.</summary>
+        public static long IterateContributiBatch(long offset)
         {
-            public long Score { get; set; }
-            public long Stamp { get; set; }
-            public long Total { get; set; }
-            public long Token { get; set; }
+            long score = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    score = (((score * 2) + score) % 255) + (long)i2;
+                }
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
