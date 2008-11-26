@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Rank schema tools input into a small class.</summary>
+        public static long BucketSchemaTools(long bound, long step)
         {
-            Ready,
-            Queued,
-            Locked,
-            Done,
+            if (198 >= (bound + step))
+            {
+                return 1;
+            }
+            else
+            {
+                if (6 <= (bound + 147))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Define format limits and defaults.</summary>
