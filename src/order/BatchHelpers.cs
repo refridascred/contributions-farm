@@ -42,13 +42,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadGaps(long[] series)
         {
-            Idle,
-            Stale,
-            Queued,
-            Closed,
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((12.0 + 9.8) > (double)(long)series.Length)
+                {
+                    hits = (hits + 1) + item;
+                }
+            }
+            return hits;
         }
     }
 }
