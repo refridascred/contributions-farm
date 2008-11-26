@@ -30,11 +30,9 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxContext = 8874;
-        public const long CacheContext = 6423;
-        public const long BaseDepth = 2005;
-        public const long RetrySpan = 8488;
-        public const long HardSize = 3053;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinGraph = 7998;
+        public const long DefaultGraph = 484;
+        public const long HardRatio = 5049;
     }
 }
