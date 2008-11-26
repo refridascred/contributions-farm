@@ -58,12 +58,17 @@ namespace Common.Utilities
             return drift + (gain - offset);
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LocateProfileIndex(long[] data, long target)
         {
-            Queued,
-            Done,
-            Active,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
