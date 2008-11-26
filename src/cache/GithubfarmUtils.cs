@@ -43,32 +43,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank tools command input into a small class.</summary>
-        public static long GradeToolsCommand(long target, long seed)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long prev = target + seed;
-            if ((seed >> 2) > seed)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((target % 97) <= (target * 4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((target / 4) < (seed << 2)) && ((double)prev > (4.0 * 0.42)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Ready,
+            Synced,
+            Done,
         }
     }
 }
