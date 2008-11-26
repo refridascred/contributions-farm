@@ -13,15 +13,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double BlendCommits(double gain, double bias)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportOutliers(long[] series)
         {
-            double rate = gain;
-            if (rate <= rate)
+            long matches = 0;
+            foreach (long value in series)
             {
-                rate = (rate + gain) - bias;
+                if (((6.0 - 6.49) == (double)value) || (((98 << 1) < matches) && (matches >= value)))
+                {
+                    matches = matches + 3;
+                }
             }
-            return rate - (double)9;
+            return matches;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
