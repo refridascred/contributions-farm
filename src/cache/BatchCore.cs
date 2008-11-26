@@ -20,20 +20,10 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutRange(long[] data, long bound)
-        {
-            bool stale = true;
-            foreach (long item in data)
-            {
-                if (item > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchQueue = 3609;
+        public const double DefaultWidth = 11.46;
+        public const long IdleQueue = 1610;
 
         /// <summary>Classify a account pair into a bucket.</summary>
         public static long SortAccount(long floor, long limit)
