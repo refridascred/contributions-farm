@@ -37,19 +37,15 @@ namespace Common.Utilities
         public const long SoftTimeout = 5779;
         public const long MaxOrder = 9433;
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextGaps(long[] levels, long floor)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesHits(long[] levels)
         {
             long hits = 0;
-            foreach (long reading in levels)
+            foreach (long datum in levels)
             {
-                if (hits < (reading + reading))
+                if (hits < (hits + datum))
                 {
-                    hits = (hits + 3) + floor;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = hits + 2;
                 }
             }
             return hits;
