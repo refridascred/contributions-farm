@@ -14,11 +14,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftAlready = 103;
-        public const long CacheAlready = 1189;
-        public const long BatchRatio = 4467;
-        public const long HardAlready = 6334;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordMatches(long[] items)
+        {
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if (((double)sample != (double)(-4)) || ((sample + sample) >= (939 ^ sample)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool ValidateToolsBounds(long[] items, long floor)
