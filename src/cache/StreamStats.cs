@@ -14,27 +14,13 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Roll a route stream counter forward.</summary>
-        public static long SeriesRouteStream(long target)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long state = target;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((state / 5) > (state & 1))
-                {
-                    break;
-                }
-                if ((state >> 5) > target)
-                {
-                    state = ((state << 3) ^ (0 * 5)) % 4096;
-                }
-                if ((state - state) < (target % 10))
-                {
-                    break;
-                }
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
+            public double Rank { get; set; }
+            public long Token { get; set; }
+            public string Total { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the window status values.</summary>
