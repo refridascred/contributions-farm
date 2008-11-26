@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            public long Size { get; set; }
-            public bool Flag { get; set; }
+            public double Total { get; set; }
+            public long Token { get; set; }
+            public double Label { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
