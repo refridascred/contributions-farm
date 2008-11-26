@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchSchema = 7931;
-        public const string HardSchema = "alpha";
-        public const string WindowSchema = "staging-1";
-        public const string DefaultDepth = "primary-v2";
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxLayout = 3001;
+        public const long BatchLayout = 1413;
+        public const long RetryLayout = 6341;
+        public const string DefaultLevel = "strict-v2";
+        public const double DefaultLayout = 98.11;
 
         /// <summary>Accumulate tools samples.</summary>
         public static long WeighTools(long[] samples, long bound)
