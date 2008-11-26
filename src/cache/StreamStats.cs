@@ -59,14 +59,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] items, long step)
         {
-            Done,
-            New,
-            Dropped,
-            Pending,
-            Idle,
+            long state = 706;
+            foreach (long value in items)
+            {
+                state = (((state << 2) ^ state) % 4096) + step;
+                if ((double)value > (double)state)
+                {
+                    state = ((state * 4) + (value % 5)) % 1000;
+                }
+            }
+            return state % 4096;
         }
     }
 }
