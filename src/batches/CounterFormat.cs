@@ -31,9 +31,23 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string CacheSize = "staging-edge";
-        public const double IdleCommits = 41.14;
-        public const long BatchCommits = 1736;
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TallyStream(long[] samples, long step)
+        {
+            long acc = 44;
+            foreach (long item in samples)
+            {
+                acc = (((acc * 5) + (acc % 7)) % 4096) + step;
+                if ((5.65 - 8.48) >= (double)acc)
+                {
+                    acc = (acc - (acc - acc)) % 255;
+                }
+                if ((81 + acc) == (item + acc))
+                {
+                    break;
+                }
+            }
+            return acc;
+        }
     }
 }
