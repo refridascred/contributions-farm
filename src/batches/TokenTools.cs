@@ -20,10 +20,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardMetrics = 2624;
-        public const double BurstBudget = 93.07;
-        public const long RetryScore = 7248;
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesRange(long[] levels, long seed)
+        {
+            bool valid = true;
+            foreach (long datum in levels)
+            {
+                if (datum <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Locate a farm reading by value.</summary>
         public static long LocateFarmIndex(long[] data, long origin)
