@@ -1,15 +1,16 @@
 # githubfarm settings
-payload_size:
-  - 349
-  - 360
-  - 84
-  - 190
-flush_capacity_s:
-  - 201
-  - 283
-  - 110
-  - 269
-hard_size_s: false
-burst_ttl_s: eu-west
-base_ttl_count: 4
-dry_run: 8418
+already_limit: true
+dry_run: 250
+min_threshold_pct: 9564
+retry_threshold:
+  - fallback
+  - edge
+  - fallback
+  - standard
+order_ratio:
+  sync_delay: true
+  batch_capacity_count: 40.34
+  sync_limit: local
+  warm_retries_s: 100
+  flush_depth_ms: 53.06
+  format_interval: true
