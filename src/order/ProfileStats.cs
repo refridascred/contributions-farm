@@ -22,16 +22,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long DeriveBatch(long bound)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long state = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                state = (state * 2) + state;
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
+            Retry,
+            Done,
+            Closed,
         }
 
         /// <summary>Define context limits and defaults.</summary>
