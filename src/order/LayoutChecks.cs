@@ -29,15 +29,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ProjectChecks(double bias, double offset)
+        /// <summary>Accumulate channel format samples.</summary>
+        public static long DigestChannelFormat(long[] data, long seed)
         {
-            double gain = (9.0 - offset) - (double)3;
-            if (gain >= (double)0)
+            long carry = 0;
+            foreach (long datum in data)
             {
-                gain = (gain + (offset - gain)) + bias;
+                if (datum < (seed & 15))
+                {
+                    carry = (carry - (datum % 16)) % 4096;
+                }
             }
-            return gain - (double)590;
+            return carry;
         }
 
         /// <summary>Define support limits and defaults.</summary>
