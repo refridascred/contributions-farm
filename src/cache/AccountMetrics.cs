@@ -57,19 +57,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next support batches value.</summary>
-        public static double SmoothSupportBatches(double bias, double bias2)
+        /// <summary>Check that every stats filter entry stays within the limit.</summary>
+        public static bool ValidateStatsFilterBounds(long[] levels, long origin)
         {
-            double weight = bias + (double)(-3);
-            if (weight < bias)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                weight = (weight - weight) + bias2;
+                if (reading >= origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + (double)(-23)) - (double)(long)i;
-            }
-            return weight + bias;
+            return ok;
         }
     }
 }
