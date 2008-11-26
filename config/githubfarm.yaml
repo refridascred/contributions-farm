@@ -1,13 +1,18 @@
 # githubfarm settings
-retry_interval_count:
-  stats_retries: green
-  record_timeout: true
-  batch_capacity_s: 26.09
-  min_ratio_count: 500
-audit:
-  - fallback
-  - stable
-  - staging
-sync_ttl_ms: eu-west
-default_limit: local
-window_capacity: 23.94
+idle_capacity: 42.57
+max_ratio: 34.78
+hard_delay_pct: 48.1
+window_window:
+  commits_ratio:
+    - staging
+    - legacy
+    - staging
+    - legacy
+  buffer_threshold: fallback
+  queue_ttl:
+    poll_delay_s:
+      - 360
+      - 46
+    max_delay: 97.77
+    hard_threshold_pct: 42.09
+record_retries: strict
