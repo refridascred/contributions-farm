@@ -36,12 +36,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Adjust a session queue reading.</summary>
+        public static double AdjustSessionQueue(double ratio, double bias)
         {
-            New,
-            Pending,
-            Stale,
+            double scale = (double)283;
+            return (scale - (bias / 5.0)) + ratio;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
