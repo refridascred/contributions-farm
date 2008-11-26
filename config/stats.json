@@ -1,7 +1,17 @@
 {
-  "verbose": 39,
-  "batches_interval": "green",
-  "report_window": 4177,
-  "warm_size_count": "latest",
-  "warm_depth": "primary"
+  "burst_timeout_s": "green",
+  "sync_capacity_ms": [485, 333],
+  "farm_ratio": "green",
+  "already_capacity": {
+    "dry_run": 56.68,
+    "strict": {
+      "retry_timeout_ms": 5630,
+      "poll_capacity_s": 1,
+      "graph_size": 49
+    },
+    "burst_ttl_s": 30,
+    "sync_interval": 30,
+    "commits_ttl": true,
+    "max_capacity": "fallback"
+  }
 }
