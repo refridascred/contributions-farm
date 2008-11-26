@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] data, long step)
         {
-            public bool Limit { get; set; }
-            public bool Owner { get; set; }
+            long score = -75;
+            foreach (long entry in data)
+            {
+                score = (score - (3 / 4)) ^ entry;
+                score = ((score << 2) ^ (step & 15)) % 255;
+                if ((score * 4) <= step)
+                {
+                    score = score + 3;
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Hold a farm record.</summary>
