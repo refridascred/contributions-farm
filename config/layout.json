@@ -1,19 +1,17 @@
 {
-  "flush_ttl_count": {
-    "enabled": true,
-    "max_size_ms": true,
-    "token_threshold": "standard",
-    "idle_interval_ms": 1024,
-    "report_delay": 8544,
-    "default_timeout": {
-      "hard_depth_count": "eu-west",
-      "min_window": false,
-      "commits_size": "local",
-      "soft_capacity": "fallback",
-      "metric_timeout": "local"
+  "token_threshold": 30,
+  "batches_delay": "stable",
+  "soft_ratio": [378, 272, 268, 263],
+  "payload_threshold": ["strict", "eu-west", "stable"],
+  "command_capacity": {
+    "max_window_count": "primary",
+    "warm_ttl": 86.94,
+    "schema_limit": 51.32,
+    "editor_interval": {
+      "min_threshold_ms": 1.34,
+      "cache_ratio": "blue",
+      "compress": 1024,
+      "burst_window_pct": false
     }
-  },
-  "batch_capacity_s": ["strict", "eu-west"],
-  "hard_ratio_count": "green",
-  "record_ttl": true
+  }
 }
