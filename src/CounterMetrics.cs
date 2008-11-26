@@ -20,13 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            New,
+            Stale,
+            Ready,
+            Locked,
             Failed,
-            Dropped,
-            Draft,
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
