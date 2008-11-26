@@ -1,12 +1,14 @@
 # support settings
-verbose:
-  farm_ttl: 29.76
-  min_interval_ms: 50.91
-  verbose: strict
-  strict:
-    - 386
-    - 32
-burst_depth_pct: 2917
-enabled: open
-batch_timeout_count: local
-flush_timeout: true
+base_ratio:
+  - 97
+  - 8
+  - 229
+metrics_ratio: true
+format_ratio: 90.15
+flush_timeout_pct:
+  default_interval:
+    - 136
+    - 80
+  verbose: 4338
+  schema_delay: 55
+token_capacity: 71.08
