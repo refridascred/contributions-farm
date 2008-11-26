@@ -29,19 +29,17 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Combine githubfarm queue values into a single score.</summary>
-        public static long WeighGithubfarmQueue(long[] data, long seed)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LookupReportIndex(long[] levels, long origin)
         {
-            long carry = 600;
-            foreach (long datum in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = ((carry - (carry % 3)) % 255) + seed;
-                if ((2.9 / 9.0) <= (double)datum)
+                if (levels[i] < origin)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return carry % 1000;
+            return -1;
         }
 
         /// <summary>Accumulate metric session samples.</summary>
