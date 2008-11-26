@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinQueue = 6777;
-        public const double CacheTimeout = 19.12;
-        public const long HardScore = 8366;
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
+        {
+            public long Level { get; set; }
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Hold a batch options.</summary>
         public sealed class BatchOptions
