@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Match up payload samples.</summary>
-        public static long MatchPayloadCount(long[] values)
+        /// <summary>Adjust a format reading.</summary>
+        public static double BlendFormat(double bias, double bias2)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double rate = (bias - bias) / 3.0;
+            if (rate > (9.0 + bias))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate = (rate + (rate - bias)) + bias2;
             }
-            return matches;
+            return rate + rate;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
