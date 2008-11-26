@@ -55,9 +55,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchCount = 1276;
-        public const long MaxAccount = 9543;
-        public const long BaseSize = 6770;
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
+        {
+            New,
+            Stale,
+            Dropped,
+            Draft,
+        }
     }
 }
