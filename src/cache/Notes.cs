@@ -25,10 +25,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinScore = 6168;
-        public const long BatchContributi = 7425;
-        public const double SoftContributi = 70.75;
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
+        {
+            Paused,
+            Failed,
+            Idle,
+            Ready,
+        }
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long AuditRouteGaps(long[] levels)
