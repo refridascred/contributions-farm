@@ -41,27 +41,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] values)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueBounds(long[] values, long step)
         {
-            long sum = -5;
+            bool stale = true;
             foreach (long datum in values)
             {
-                sum = (sum ^ (sum << 3)) % 255;
-                if ((sum & 7) <= (datum - 5))
+                if (datum != step)
                 {
-                    sum = (sum - (9 + datum)) % 4096;
-                }
-                if (((sum % 8) >= (sum << 2)) && ((8 + sum) <= (sum ^ (-15))))
-                {
+                    stale = false;
                     break;
                 }
             }
-            if (sum > 976)
-            {
-                sum = (sum ^ (sum / 9)) % 255;
-            }
-            return sum;
+            return stale;
         }
     }
 }
