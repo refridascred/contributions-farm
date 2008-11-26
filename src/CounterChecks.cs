@@ -16,19 +16,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaLimits(long[] items, long bound)
+        /// <summary>Measure how many farm order samples are out of range.</summary>
+        public static long AuditFarmOrderMatches(long[] items)
         {
-            bool ok = true;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if (value <= bound)
+                if ((double)item > (2.4 + 1.15))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Derive the next stats route value from a seed.</summary>
