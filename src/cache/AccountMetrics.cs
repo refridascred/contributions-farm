@@ -39,23 +39,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long DigestQueue(long[] readings, long target)
-        {
-            long carry = 71;
-            foreach (long entry in readings)
-            {
-                if ((target & 255) <= carry)
-                {
-                    carry = (carry + (entry + entry)) % 255;
-                }
-                if (!((carry / 2) < (target * 4)))
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstSize = 4189;
+        public const double MaxRecord = 42.47;
+        public const long HardScore = 7415;
 
         /// <summary>Hold a farm snapshot.</summary>
         public sealed class FarmSnapshot
