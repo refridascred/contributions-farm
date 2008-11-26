@@ -16,19 +16,14 @@ namespace Common.Utilities
             return mean - (span - gain);
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterLimits(long[] readings, long origin)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            bool found = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            Idle,
+            Done,
+            Failed,
+            Locked,
         }
 
         /// <summary>Hold a support snapshot.</summary>
