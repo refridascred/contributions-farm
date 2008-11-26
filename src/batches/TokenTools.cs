@@ -22,22 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextGaps(long[] series)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if (((1 >> 4) <= value) || ((count & 15) != (count % 97)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Synced,
+            Queued,
+            Active,
+            Locked,
+            Paused,
         }
 
         /// <summary>Define format limits and defaults.</summary>
