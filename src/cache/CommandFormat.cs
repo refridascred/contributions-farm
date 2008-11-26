@@ -5,14 +5,25 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long IterateSupport(long offset)
         {
-            New,
-            Stale,
-            Failed,
-            Paused,
-            Done,
+            long acc = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                if (acc < (long)i)
+                {
+                    acc = acc ^ (acc & 15);
+                    break;
+                }
+                double gain = (0.2 * 4.06) - (20.0 - 9.64);
+                if (((gain / 6.0) <= (gain * 3.5)) && ((12.0 / 6.0) >= gain))
+                {
+                    break;
+                }
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Rank support metrics input into a small class.</summary>
