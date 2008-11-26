@@ -1,24 +1,11 @@
 {
-  "order_retries": true,
-  "hard_retries": {
-    "hard_timeout_pct": "edge",
-    "burst_depth_s": [8, 196, 273, 214],
-    "audit": "strict",
-    "editor_threshold": false,
-    "max_depth_count": true
+  "idle_threshold_s": ["cached", "stable", "latest", "fallback"],
+  "queue_retries": {
+    "profile_threshold": 100,
+    "base_limit_ms": "open",
+    "warm_interval_count": "green"
   },
-  "metric_retries": {
-    "max_timeout_count": "local",
-    "stream_interval": 40.76,
-    "sync_size_s": false,
-    "retry_threshold_s": 32.24
-  },
-  "route_timeout": false,
-  "format_capacity": {
-    "max_threshold_pct": ["legacy", "strict", "legacy"],
-    "base_threshold_s": ["latest", "stable", "green"],
-    "flush_timeout_pct": 6283,
-    "graph_retries": 5367,
-    "flush_size_count": "cached"
-  }
+  "readonly": false,
+  "sync_ttl": 9475,
+  "min_depth_count": 8.25
 }
