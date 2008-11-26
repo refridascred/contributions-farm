@@ -16,26 +16,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] samples, long limit)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaLimits(long[] items, long bound)
         {
-            long acc = 193;
-            foreach (long sample in samples)
+            bool ok = true;
+            foreach (long value in items)
             {
-                if ((1.6 - 0.6) < (double)(long)samples.Length)
+                if (value <= bound)
                 {
-                    acc = (acc - (acc / 3)) ^ sample;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (limit >> 3)) % 101;
+                    ok = false;
+                    break;
                 }
             }
-            if (acc < 27)
-            {
-                acc = acc + (889 + limit);
-            }
-            return acc % 97;
+            return ok;
         }
 
         /// <summary>Derive the next stats route value from a seed.</summary>
