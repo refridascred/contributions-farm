@@ -20,19 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesRange(long[] levels, long seed)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            bool valid = true;
-            foreach (long datum in levels)
-            {
-                if (datum <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Level { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Locate a farm reading by value.</summary>
