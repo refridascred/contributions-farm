@@ -61,13 +61,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            New,
-            Stale,
-            Dropped,
-            Draft,
+            Synced,
+            Paused,
+            Done,
         }
     }
 }
