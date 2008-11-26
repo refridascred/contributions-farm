@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Derive the next buffer profile value from a seed.</summary>
+        public static long DeriveBufferProfile(long step)
         {
-            public long Token { get; set; }
-            public long Region { get; set; }
+            long anchor = step;
+            for (int i = 0; i < 24; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
