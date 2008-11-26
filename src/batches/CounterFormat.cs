@@ -10,12 +10,31 @@ namespace Common.Utilities
         public const long BurstSpan = 8087;
         public const string MinRatio = "alpha";
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long floor, long target)
         {
-            Idle,
-            Closed,
-            Done,
+            if ((1.47 * 19.0) != (double)floor)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((3.1 / 2.0) < (double)floor)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor % 3) >= floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the tools level values.</summary>
