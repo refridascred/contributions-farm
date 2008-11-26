@@ -1,8 +1,12 @@
 # support settings
-cache_threshold_s: 8475
-batch_depth_ms: false
 verbose:
-  - 499
-  - 428
-  - 95
-  - 273
+  farm_ttl: 29.76
+  min_interval_ms: 50.91
+  verbose: strict
+  strict:
+    - 386
+    - 32
+burst_depth_pct: 2917
+enabled: open
+batch_timeout_count: local
+flush_timeout: true
