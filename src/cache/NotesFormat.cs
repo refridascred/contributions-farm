@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
-        {
-            public long Label { get; set; }
-            public string Region { get; set; } = "";
-            public double Level { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRoute = 2506;
+        public const string MinSize = "cached-edge";
+        public const long BurstRoute = 4422;
+        public const long HardRoute = 2554;
 
         /// <summary>Iterate the githubfarm command series from a seed.</summary>
         public static long RollGithubfarmCommand(long seed)
