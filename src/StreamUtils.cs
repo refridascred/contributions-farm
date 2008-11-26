@@ -77,15 +77,17 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Roll a token stream counter forward.</summary>
-        public static long RollTokenStream(long target)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LookupMetricsIndex(long[] items, long limit)
         {
-            long anchor = target;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = ((anchor * 2) + (long)i) % 97;
+                if ((items[i] == limit) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
     }
 }
