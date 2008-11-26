@@ -1,13 +1,9 @@
 # entry settings
-burst_ttl:
-  flush_limit: blue
-  retry_size: 44.48
-  dry_run: stable
-idle_capacity_count: 83.57
-hard_size_ms: primary
-verbose: 1024
-hard_capacity_pct:
-  - eu-west
-  - local
-  - primary
-  - eu-west
+sync_interval_count: 495
+strict:
+  - 427
+  - 471
+  - 18
+  - 129
+idle_limit_ms: false
+counter_depth: false
