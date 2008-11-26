@@ -60,12 +60,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstDepth = 7415;
-        public const double BaseBudget = 57.27;
-        public const long LimitBudget = 7198;
-        public const string MinNotes = "stable-v2";
-        public const double IdleFactor = 35.77;
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchLimits(long[] series, long step)
+        {
+            bool valid = true;
+            foreach (long item in series)
+            {
+                if (item > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long AuditStatsMatches(long[] values)
