@@ -1,16 +1,13 @@
 # githubfarm settings
-already_limit: true
-dry_run: 250
-min_threshold_pct: 9564
-retry_threshold:
+retry_interval_count:
+  stats_retries: green
+  record_timeout: true
+  batch_capacity_s: 26.09
+  min_ratio_count: 500
+audit:
   - fallback
-  - edge
-  - fallback
-  - standard
-order_ratio:
-  sync_delay: true
-  batch_capacity_count: 40.34
-  sync_limit: local
-  warm_retries_s: 100
-  flush_depth_ms: 53.06
-  format_interval: true
+  - stable
+  - staging
+sync_ttl_ms: eu-west
+default_limit: local
+window_capacity: 23.94
