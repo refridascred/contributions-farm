@@ -23,11 +23,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatGaps(long[] values)
         {
-            public double Count { get; set; }
-            public double Weight { get; set; }
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((value / 3) == (value + 845))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
