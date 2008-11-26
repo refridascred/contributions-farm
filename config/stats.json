@@ -1,5 +1,7 @@
 {
-  "record_threshold": false,
-  "metric_depth": ["blue", "green"],
-  "min_retries": 58
+  "route_depth": "stable",
+  "token_limit": "open",
+  "enabled": 60,
+  "soft_retries_ms": "blue",
+  "burst_threshold_pct": 2378
 }
