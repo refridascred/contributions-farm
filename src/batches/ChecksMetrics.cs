@@ -22,22 +22,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadHits(long[] readings, long floor)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((matches - value) < floor)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Region { get; set; }
+            public double Level { get; set; }
+            public double Limit { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Define tools limits and defaults.</summary>
