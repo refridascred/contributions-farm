@@ -36,18 +36,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheOutliers(long[] series, long seed)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long offset)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long total = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if ((10.0 * 5.0) > (double)seed)
-                {
-                    count = (count + 3) + sample;
-                }
+                total = (total ^ total) % 1000;
+                total = (total * 3) + ((long)i * 5);
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Hold a order record.</summary>
