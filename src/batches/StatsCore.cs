@@ -52,13 +52,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowMatches(long[] samples)
         {
-            Active,
-            Idle,
-            Pending,
-            Retry,
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((40 - value) > (value + tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a layout header.</summary>
