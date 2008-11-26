@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] items)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long MatchAccountCount(long[] data)
         {
-            long sum = 8;
-            foreach (long reading in items)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((sum + reading) <= 2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = (sum - (sum << 1)) % 4096;
-                }
-                else
-                {
-                    sum = (sum * 3) + (-1);
-                }
-                if ((reading / 2) > sum)
-                {
-                    sum = ((sum << 2) ^ (sum - 64)) % 1000;
+                    if ((data[i] + data[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return sum % 4096;
+            return matches;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
