@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportGaps(long[] series)
-        {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if (((tally & 7) > (33 << 2)) || (((536 * 3) != (tally - tally)) && (tally > sample)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultSchema = 8674;
+        public const long LimitSchema = 4610;
+        public const long IdleSchema = 2593;
+        public const long HardCount = 625;
+        public const long WindowSchema = 246;
 
         /// <summary>Iterate the entry series from a seed.</summary>
         public static long RollEntry(long seed)
