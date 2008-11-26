@@ -43,39 +43,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long seed, long origin)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long bound)
         {
-            long bound = seed + origin;
-            if ((7 - seed) < (seed ^ 427))
+            long mix = bound;
+            for (int i = 0; i < 16; i++)
             {
-                return 6;
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            else
-            {
-                if (((origin - 930) >= seed) && ((double)origin > (5.1 + 3.2)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((6.3 + 2.1) == (double)bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((seed / 4) > (seed << 3)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
