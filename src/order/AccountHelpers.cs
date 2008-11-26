@@ -27,19 +27,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueRange(long[] items, long origin)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportGaps(long[] items, long seed)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (datum != origin)
+                if (((-4) + hits) < 679)
                 {
-                    stale = false;
-                    break;
+                    hits = ((hits + 3) + sample) + seed;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Accumulate farm samples.</summary>
