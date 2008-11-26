@@ -68,13 +68,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferHits(long[] readings)
         {
-            Stale,
-            New,
-            Paused,
-            Retry,
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((item << 2) < 99)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
