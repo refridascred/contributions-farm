@@ -50,10 +50,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double MinEditor = 39.16;
-        public const long BatchScore = 3737;
-        public const string SoftSize = "cached-1";
-        public const double WindowEditor = 79.93;
+        /// <summary>Count buffer counter pairs that satisfy a relation.</summary>
+        public static long CompareBufferCounterCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
