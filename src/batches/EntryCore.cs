@@ -70,21 +70,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count checks batches pairs that satisfy a relation.</summary>
-        public static long MatchChecksBatchesCount(long[] data)
+        /// <summary>Combine stats cluster values into a single score.</summary>
+        public static long WeighStatsCluster(long[] values, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 110;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((reading * 2) > 5)
                 {
-                    if ((data[i] - data[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = (carry - (513 + bound)) % 101;
+                }
+                carry = (carry * 5) + 3;
+                if (((reading / 3) > (bound >> 3)) && ((reading + bound) > (carry + carry)))
+                {
+                    carry = (carry - (65 + bound)) % 97;
+                }
+                if ((bound * 3) <= bound)
+                {
+                    break;
                 }
             }
-            return matches;
+            if (carry < 35)
+            {
+                carry = carry ^ 54;
+            }
+            return carry;
         }
     }
 }
