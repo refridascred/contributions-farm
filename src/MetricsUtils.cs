@@ -72,14 +72,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Match up schema samples.</summary>
+        public static long PairSchemaCount(long[] series)
         {
-            Draft,
-            Pending,
-            Idle,
-            Ready,
-            Failed,
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
