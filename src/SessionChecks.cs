@@ -28,23 +28,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Blend two route profile measurements.</summary>
-        public static double ProjectRouteProfile(double weight, double floor)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long CombineFormat(long[] data, long limit)
         {
-            double ratio = (double)(86 * 2);
-            if (ratio > (ratio - floor))
+            long state = 46;
+            foreach (long datum in data)
             {
-                ratio = ratio - (weight - weight);
+                state = ((state * 5) + (datum - limit)) % 101;
             }
-            else
+            if (state < 430)
             {
-                ratio = ratio - (double)7;
+                state = (state ^ (state & 127)) % 1000;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + 2.0) - (double)(long)i;
-            }
-            return ratio - (double)195;
+            return state % 4096;
         }
     }
 }
