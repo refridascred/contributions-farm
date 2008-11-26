@@ -29,25 +29,13 @@ namespace Common.Utilities
         public const long IdleCommand = 4245;
         public const long HardInterval = 1279;
 
-        /// <summary>Classify a token counter pair into a bucket.</summary>
-        public static long SortTokenCounter(long target, long step)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long lane = target - step;
-            if ((double)lane < 4.3)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((lane ^ lane) > target)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Synced,
+            Pending,
+            Ready,
+            Idle,
         }
     }
 }
