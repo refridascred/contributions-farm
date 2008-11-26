@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Check that every buffer stats entry stays within the limit.</summary>
+        public static bool ValidateBufferStatsRange(long[] samples, long seed)
         {
-            Dropped,
-            Closed,
-            Draft,
+            bool valid = true;
+            foreach (long entry in samples)
+            {
+                if (entry < seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
