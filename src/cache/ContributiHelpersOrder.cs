@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchFormat = 7451;
-        public const long CacheFormat = 8755;
-        public const long LimitLevel = 4529;
-        public const long BatchFactor = 2169;
-        public const long IdleLevel = 2605;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseTimeout = 1248;
+        public const double IdleFactor = 40.18;
+        public const long DefaultQueue = 4642;
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long MeasureCounterHits(long[] items, long origin)
