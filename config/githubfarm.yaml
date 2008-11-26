@@ -1,24 +1,10 @@
 # githubfarm settings
-verbose: stable
-contributi_window:
-  persist: 60
-  base_interval_count: 98.03
-  min_size_count:
-    batch_ttl: 84.16
-    batch_ttl_pct: false
-    burst_size: 4711
-  window_window:
-    - 161
-    - 413
-    - 360
-  notes_window:
-    - eu-west
-    - open
-    - staging
-    - local
-max_window_ms: latest
-retry_limit_pct:
-  - 290
-  - 187
-  - 459
-  - 249
+flush_capacity_s: edge
+dry_run: 1233
+editor_window: 45.45
+verbose: 94
+batch_threshold_pct:
+  - local
+  - primary
+  - legacy
+batch_capacity: 6294
