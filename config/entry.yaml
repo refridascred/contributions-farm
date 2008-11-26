@@ -1,23 +1,9 @@
 # entry settings
-cache_interval:
-  soft_threshold_s: open
-  persist: 82
-  min_size_pct: 60
-  readonly: 2033
-base_timeout_ms:
-  - 470
-  - 274
-counter_interval: 44.28
-record_delay: false
-flush_capacity_ms:
-  persist: standard
-  enabled: 3694
-  warm_ttl:
-    - local
-    - staging
-  verbose:
-    farm_interval: cached
-    dry_run: 28.01
-    max_capacity: 54.61
-    record_delay: blue
-    payload_capacity: 57.07
+audit: 50
+batch_threshold: fallback
+idle_ttl_pct: 37
+warm_size_count: local
+enabled: stable
+verbose:
+  - 138
+  - 141
