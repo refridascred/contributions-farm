@@ -31,18 +31,11 @@ namespace Common.Utilities
             return weight + (scale * 4.0);
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderHits(long[] values, long target)
-        {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if (((double)target > (9.0 * 0.54)) && (((entry + target) == (target - target)) || ((matches >> 1) <= (0 * 2))))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string MaxLevel = "cached";
+        public const long RetrySchema = 2092;
+        public const long WindowCount = 1312;
+        public const long MinSchema = 5653;
+        public const long DefaultCount = 3625;
     }
 }
