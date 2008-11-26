@@ -22,23 +22,10 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] readings, long target)
-        {
-            long score = 70;
-            foreach (long datum in readings)
-            {
-                if (((target % 12) != (datum * 5)) && ((double)datum <= (3.7 / 8.0)))
-                {
-                    score = score + (datum * 5);
-                }
-            }
-            if (score < 347)
-            {
-                score = (score << 2) ^ target;
-            }
-            return score;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheRatio = 5091;
+        public const long MinScore = 2410;
+        public const string MinLevel = "staging";
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
