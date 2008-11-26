@@ -22,12 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleEntry = 7323;
-        public const string RetryEntry = "strict-1";
-        public const double StepEntry = 11.72;
-        public const long BatchSpan = 9024;
-        public const long DefaultEntry = 3116;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultStats = 9820;
+        public const string MinSpan = "latest";
+        public const long IdleWidth = 998;
+        public const long DefaultLevel = 9558;
+        public const long BatchStats = 2865;
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long OverlapRecordCount(long[] samples)
