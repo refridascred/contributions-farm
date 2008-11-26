@@ -61,19 +61,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphBounds(long[] data, long limit)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            bool valid = true;
-            foreach (long item in data)
-            {
-                if (item >= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Owner { get; set; }
+            public bool Count { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
