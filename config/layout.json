@@ -1,17 +1,5 @@
 {
-  "profile_interval": 7641,
-  "profile_delay": 31.0,
-  "readonly": 74,
-  "strict": {
-    "dry_run": 250,
-    "cache_ttl_s": {
-      "warm_capacity_s": ["open", "stable"],
-      "hard_interval_ms": ["latest", "local", "fallback", "blue"],
-      "min_ttl_pct": true
-    },
-    "hard_timeout_ms": 84,
-    "min_ttl_count": "staging",
-    "batch_delay": ["open", "green"],
-    "verbose": 14.29
-  }
+  "default_depth": 60,
+  "base_depth_ms": 79,
+  "buffer_limit": "fallback"
 }
