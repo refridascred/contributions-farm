@@ -29,10 +29,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string CacheGraph = "stable-edge";
-        public const long IdleGraph = 8255;
-        public const long MaxTimeout = 6895;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderGaps(long[] samples, long seed)
+        {
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if (!!((double)cell > 0.56))
+                {
+                    matches = (matches + 1) - seed;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long StepLevel = 9466;
