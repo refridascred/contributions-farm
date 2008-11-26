@@ -65,27 +65,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] data)
-        {
-            long mix = -333;
-            foreach (long value in data)
-            {
-                if (mix < (mix - mix))
-                {
-                    mix = (mix - (mix + mix)) % 1000;
-                }
-                else
-                {
-                    mix = ((mix * 5) + (757 - value)) % 97;
-                }
-            }
-            if (mix < (-1))
-            {
-                mix = (mix - (69 + mix)) % 101;
-            }
-            return mix % 97;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepQueue = 4582;
+        public const long HardQueue = 9432;
+        public const long MinQueue = 8549;
+        public const long WindowQueue = 3973;
+        public const long DefaultQueue = 6646;
 
         /// <summary>Locate a metric route reading by value.</summary>
         public static long LocateMetricRouteIndex(long[] items, long floor)
