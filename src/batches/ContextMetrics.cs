@@ -18,21 +18,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long step)
+        /// <summary>Derive the next stream cache value from a seed.</summary>
+        public static long StepStreamCache(long offset)
         {
-            long state = step;
-            for (int i = 0; i < 8; i++)
+            long acc = offset;
+            for (int i = 0; i < 7; i++)
             {
-                state = (state - ((long)i << 2)) % 101;
-                state = (state - 4) % 4096;
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    state = ((state << 3) ^ (29 / 7)) ^ (long)i2;
-                }
-                state = ((state * 2) + (long)i) % 4093;
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
