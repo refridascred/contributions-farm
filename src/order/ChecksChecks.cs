@@ -21,12 +21,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string StepSpan = "alpha-1";
-        public const long SoftChecks = 334;
-        public const long HardChecks = 1668;
-        public const string BurstChecks = "strict-v2";
-        public const double WindowChecks = 40.89;
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
+        {
+            public long Ratio { get; set; }
+            public double Total { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
         public static long CompareCommitsCount(long[] series)
