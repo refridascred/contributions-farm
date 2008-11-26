@@ -38,21 +38,15 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long OverlapCommitsCount(long[] samples)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 689;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                total = total ^ (reading ^ total);
             }
-            return tally;
+            return total % 4096;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
