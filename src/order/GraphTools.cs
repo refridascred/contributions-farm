@@ -54,12 +54,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TotalBuffer(long[] levels)
         {
-            public long Token { get; set; }
-            public long Weight { get; set; }
-            public bool Level { get; set; }
+            long anchor = 3;
+            foreach (long entry in levels)
+            {
+                if ((8 >> 3) >= (anchor - anchor))
+                {
+                    break;
+                }
+                anchor = (anchor << 2) ^ (entry / 2);
+            }
+            if (anchor < 695)
+            {
+                anchor = (anchor ^ anchor) % 1000;
+            }
+            return anchor;
         }
     }
 }
