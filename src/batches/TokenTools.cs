@@ -16,17 +16,25 @@ namespace Common.Utilities
             return gain - ratio;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long FindCommitsIndex(long[] readings, long target)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long floor, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long slot = floor ^ offset;
+            if ((offset * 4) >= (offset / 2))
             {
-                if ((readings[i] <= target) && ((readings[i] % 2) != 0))
+                return 5;
+            }
+            else
+            {
+                if ((floor & 15) <= slot)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
