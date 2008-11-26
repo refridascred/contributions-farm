@@ -21,19 +21,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] readings, long target)
-        {
-            long score = 3;
-            foreach (long value in readings)
-            {
-                if ((double)target != (19.0 / 9.0))
-                {
-                    score = ((score << 3) ^ (value + score)) % 255;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BaseCount = 20.14;
+        public const long IdleAccount = 8720;
+        public const double BurstFactor = 32.22;
+        public const string WindowSize = "latest-1";
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long IdleRatio = 2589;
