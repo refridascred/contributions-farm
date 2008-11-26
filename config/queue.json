@@ -1,5 +1,6 @@
 {
-  "retry_interval_ms": "cached",
-  "readonly": 12.51,
-  "idle_interval_count": 66
+  "max_limit": "green",
+  "readonly": [244, 205, 71, 94],
+  "burst_capacity": false,
+  "min_window": "local"
 }
