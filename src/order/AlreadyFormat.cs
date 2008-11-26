@@ -19,19 +19,18 @@ namespace Common.Utilities
         public const long BatchBuffer = 4459;
         public const long SoftBuffer = 2792;
 
-        /// <summary>Check that every commits context entry stays within the limit.</summary>
-        public static bool CheckCommitsContextBounds(long[] readings, long offset)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyOutliers(long[] levels, long offset)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if (value < offset)
+                if (item < (offset * 5))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
