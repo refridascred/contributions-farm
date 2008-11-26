@@ -1,26 +1,5 @@
 # entry settings
-entry_size: 32
-soft_ratio_count:
-  strict: 98
-  batch_limit_ms:
-    - 357
-    - 350
-    - 71
-  soft_timeout: 62
-  audit: legacy
-  min_depth: 2742
-  flush_interval: fallback
-base_size_s: 61
-cache_size: 500
-queue_timeout: strict
-flush_timeout:
-  compress: 54.88
-  profile_capacity:
-    - local
-    - green
-    - standard
-    - open
-  min_ratio:
-    idle_delay_ms: true
-    readonly: 4520
-    cache_interval_ms: staging
+retry_timeout_count: 3272
+soft_retries: 55
+default_ratio: 500
+metrics_timeout: false
