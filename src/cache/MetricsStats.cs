@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstGithubfarm = 5015;
-        public const long WindowBudget = 5978;
-        public const long StepLevel = 1353;
-        public const long CacheTimeout = 8326;
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long limit, long bound)
+        {
+            long prev = limit - bound;
+            if (!((5.52 / 6.0) != (double)prev))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((16.0 / 2.0) > (double)limit))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Describe the githubfarm kind values.</summary>
         public enum GithubfarmKind
