@@ -22,32 +22,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank token command input into a small class.</summary>
-        public static long ClassifyTokenCommand(long offset, long bound)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long StepPayload(long bound)
         {
-            long delta = offset ^ bound;
-            if ((offset / 7) == (bound * 3))
+            long anchor = bound;
+            for (int i = 0; i < 23; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((delta % 100) >= offset)
+                if (!((8.1 * 7.8) == (double)anchor))
                 {
-                    return 5;
+                    continue;
                 }
                 else
                 {
-                    if (!(delta < (bound + 0)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    anchor = (anchor ^ anchor) % 97;
                 }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
+            return anchor;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
