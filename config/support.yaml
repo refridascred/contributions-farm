@@ -1,23 +1,7 @@
 # support settings
-retry_delay_pct: 63
-persist: true
-soft_interval: 77
-min_window_pct:
-  - 101
-  - 245
-  - 399
-audit:
-  default_ratio_ms:
-    - 374
-    - 191
-    - 406
-    - 178
-  dry_run: 19.63
-  editor_delay: false
-  schema_ratio:
-    - 77
-    - 476
-    - 299
-    - 417
-  retry_threshold_count: 6308
-  strict: 98.71
+default_size_ms:
+  - 175
+  - 443
+cache_ttl: true
+hard_size: 8
+retry_retries_pct: 500
