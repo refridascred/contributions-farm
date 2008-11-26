@@ -45,18 +45,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderGaps(long[] data, long limit)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((limit << 2) <= 492)
-                {
-                    tally = (tally + 3) + value;
-                }
-            }
-            return tally;
+            Pending,
+            Retry,
+            Draft,
         }
     }
 }
