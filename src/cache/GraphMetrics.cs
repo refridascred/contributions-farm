@@ -39,18 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteMatches(long[] items)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if (sample <= (sample + matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Dropped,
+            Idle,
+            Failed,
+            Draft,
+            New,
         }
 
         /// <summary>Describe the stream kind values.</summary>
