@@ -18,26 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TallyNotes(long[] levels, long origin)
+        /// <summary>Blend two channel stream measurements.</summary>
+        public static double AdjustChannelStream(double scale, double span)
         {
-            long score = -4;
-            foreach (long entry in levels)
+            double drift = 6.43;
+            if (drift > scale)
             {
-                if (!((score & 7) >= ((-899) - origin)))
-                {
-                    score = score - (score + entry);
-                }
-                else
-                {
-                    score = ((score * 3) + score) % 255;
-                }
+                drift = drift - (span + scale);
             }
-            if (score > 8)
+            else
             {
-                score = (score - (score - score)) % 101;
+                drift = drift + (5.2 - drift);
             }
-            return score;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + (span / 6.0)) + (double)(long)i;
+            }
+            return drift - (double)769;
         }
 
         /// <summary>Hold a order summary.</summary>
