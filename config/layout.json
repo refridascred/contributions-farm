@@ -1,8 +1,7 @@
 {
-  "retry_size_ms": 16,
-  "warm_retries_count": false,
-  "account_limit": "eu-west",
-  "cache_threshold_pct": "blue",
-  "retry_limit_s": "open",
-  "poll_capacity_ms": "blue"
+  "schema_depth": [129, 12, 47, 303],
+  "strict": "eu-west",
+  "readonly": "staging",
+  "min_delay": 38.17,
+  "min_size_pct": [91, 156, 382, 442]
 }
