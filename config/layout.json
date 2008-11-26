@@ -1,5 +1,6 @@
 {
-  "filter_interval": 86.65,
-  "min_limit_pct": 9844,
-  "verbose": 60
+  "readonly": 36,
+  "poll_interval_s": "primary",
+  "retry_threshold_s": false,
+  "warm_delay_s": 4
 }
