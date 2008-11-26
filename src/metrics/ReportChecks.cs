@@ -72,31 +72,21 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Classify a stream cluster pair into a bucket.</summary>
-        public static long BucketStreamCluster(long offset, long step)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long MatchSupportCount(long[] readings)
         {
-            if (offset < (offset % 10))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step <= (step + offset)) || ((step % 60) != (offset >> 5)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((step + 7) < (offset >> 3))
+                    if ((readings[i] + readings[j]) > 8)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
