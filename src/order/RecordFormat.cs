@@ -22,14 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Iterate the filter cache series from a seed.</summary>
+        public static long RollFilterCache(long seed)
         {
-            Retry,
-            Synced,
-            Closed,
-            Active,
-            Ready,
+            long score = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Scale a profile command figure with a bias.</summary>
