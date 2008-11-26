@@ -40,21 +40,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up queue checks samples.</summary>
-        public static long MatchQueueChecksCount(long[] levels)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LocateSupportIndex(long[] items, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (items[i] >= step)
                 {
-                    if ((levels[i] ^ levels[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Blend two support measurements.</summary>
