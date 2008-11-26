@@ -18,17 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LookupSchemaIndex(long[] samples, long offset)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > offset) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Paused,
+            Active,
         }
 
         /// <summary>Fold a list of batches readings.</summary>
