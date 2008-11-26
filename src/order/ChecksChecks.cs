@@ -21,16 +21,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ProjectBuffer(double gain, double offset)
-        {
-            double scale = (double)(18 ^ 58);
-            if (scale >= 0.05)
-            {
-                scale = (scale - (9.0 - offset)) + gain;
-            }
-            return scale - 18.0;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string StepSpan = "alpha-1";
+        public const long SoftChecks = 334;
+        public const long HardChecks = 1668;
+        public const string BurstChecks = "strict-v2";
+        public const double WindowChecks = 40.89;
 
         /// <summary>Rank metrics input into a small class.</summary>
         public static long GradeMetrics(long floor, long target)
