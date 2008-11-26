@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double BlendCluster(double bias, double bias2)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long SeekPayloadIndex(long[] data, long bound)
         {
-            double gain = (double)(79 + (-795));
-            if (gain <= (double)22)
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = ((gain + (double)3) - bias) - bias2;
+                if ((data[i] < bound) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return gain + gain;
+            return -1;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
