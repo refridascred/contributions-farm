@@ -1,19 +1,7 @@
 {
-  "hard_capacity_count": {
-    "notes_limit": {
-      "audit": 53.03,
-      "burst_retries_s": 70,
-      "sync_threshold": "fallback",
-      "enabled": 57.67,
-      "flush_window_pct": false,
-      "readonly": "open"
-    },
-    "profile_ttl": "edge",
-    "burst_window_count": "latest",
-    "dry_run": ["cached", "blue", "primary", "open"],
-    "entry_threshold": 38.75
-  },
-  "route_delay": "local",
-  "base_interval_ms": "fallback",
-  "sync_retries": "stable"
+  "enabled": 26,
+  "audit": "fallback",
+  "strict": 6837,
+  "order_capacity": 9620,
+  "warm_ttl_pct": 17
 }
