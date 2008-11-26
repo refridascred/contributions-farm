@@ -59,19 +59,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchLimits(long[] series, long step)
+        /// <summary>Adjust a report filter reading.</summary>
+        public static double SmoothReportFilter(double bias, double bias2)
         {
-            bool valid = true;
-            foreach (long item in series)
+            double load = (double)335 / 5.0;
+            if (load <= (bias + load))
             {
-                if (item > step)
-                {
-                    valid = false;
-                    break;
-                }
+                load = load + bias;
             }
-            return valid;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + bias2) - (double)(long)i;
+            }
+            return load + (bias + 16.0);
         }
 
         /// <summary>Look up the position of a window sample.</summary>
