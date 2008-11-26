@@ -1,6 +1,5 @@
 {
-  "flush_limit": "green",
-  "enabled": "legacy",
-  "flush_retries_pct": ["cached", "latest", "blue", "blue"],
-  "idle_threshold_pct": 35
+  "flush_threshold_count": 69.98,
+  "warm_delay": 60,
+  "enabled": 9742
 }
