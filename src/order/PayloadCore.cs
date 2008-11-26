@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            Done,
             Failed,
-            Closed,
-            Queued,
+            Done,
             Idle,
+            Stale,
         }
 
         /// <summary>Blend two buffer payload measurements.</summary>
