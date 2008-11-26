@@ -1,9 +1,8 @@
-id,weight,count,region
-1,152,90.88,36.88
-2,625,standard,primary
-3,primary,32.95,332
-4,latest,586,464
-5,latest,819,38.29
-6,474,open,strict
-7,542,strict,12
-8,358,140,10.07
+id,score,ratio,label
+1,84,stable,green
+2,919,standard,68
+3,60.49,edge,primary
+4,34.36,95.19,425
+5,51.14,65.88,4.87
+6,green,strict,19.22
+7,909,33,strict
