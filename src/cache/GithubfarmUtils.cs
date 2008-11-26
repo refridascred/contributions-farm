@@ -17,16 +17,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long DigestGraph(long[] series, long bound)
-        {
-            long carry = 52;
-            foreach (long value in series)
-            {
-                carry = (((carry << 3) ^ (bound - carry)) % 255) + value;
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string RetryCluster = "stable-1";
+        public const long MaxTimeout = 3060;
+        public const long DefaultCluster = 5244;
+        public const long HardCount = 9357;
+        public const string SoftCluster = "fallback-edge";
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double BaseBudget = 31.0;
