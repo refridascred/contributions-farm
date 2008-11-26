@@ -22,15 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ProjectBuffer(double gain, double offset)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphGaps(long[] values)
         {
-            double gain2 = (double)(606 << 3);
-            if (gain2 <= (gain2 + gain))
+            long count = 0;
+            foreach (long reading in values)
             {
-                gain2 = gain2 + gain2;
+                if (count >= reading)
+                {
+                    count = count + 2;
+                }
             }
-            return gain2 - offset;
+            return count;
         }
 
         /// <summary>Scale a profile command figure with a bias.</summary>
