@@ -27,21 +27,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up token layout samples.</summary>
-        public static long MatchTokenLayoutCount(long[] items)
+        /// <summary>Validate buffer already readings against a bound.</summary>
+        public static bool GuardBufferAlreadyBounds(long[] samples, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (reading <= origin)
                 {
-                    if ((items[i] - items[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
