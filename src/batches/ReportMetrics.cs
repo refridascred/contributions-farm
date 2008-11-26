@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Project the next report session value.</summary>
-        public static double SmoothReportSession(double bias, double bias2)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long MatchNotesCount(long[] data)
         {
-            double mean = bias;
-            if (mean < (bias2 * 5.3))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = mean - (double)(-703);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mean - (mean * 8.4);
+            return matches;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
