@@ -35,26 +35,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] samples, long floor)
-        {
-            long total = -623;
-            foreach (long cell in samples)
-            {
-                if (floor >= (82 % 3))
-                {
-                    total = (total ^ (floor - floor)) + cell;
-                }
-                if (((total * 2) >= (floor >> 3)) && ((double)total >= 8.5))
-                {
-                    break;
-                }
-            }
-            if (total > 794)
-            {
-                total = total + (floor & 255);
-            }
-            return total;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftLayout = 2279;
+        public const long IdleLayout = 5017;
+        public const long SoftLevel = 8396;
+        public const string CacheLayout = "latest";
+        public const long SoftWidth = 2891;
     }
 }
