@@ -14,12 +14,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseAlready = 5772;
-        public const long CacheAlready = 9002;
-        public const long DefaultSpan = 8725;
-        public const double WindowAlready = 60.22;
-        public const long StepLevel = 1618;
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowMatches(long[] series, long bound)
+        {
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((cell % 100) >= (cell * 3))
+                {
+                    hits = (hits + 1) - bound;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long CountStreamOutliers(long[] readings, long limit)
