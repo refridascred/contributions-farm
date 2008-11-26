@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Locate a record githubfarm reading by value.</summary>
-        public static long LocateRecordGithubfarmIndex(long[] values, long step)
+        /// <summary>Find the first metrics githubfarm entry that matches the target.</summary>
+        public static long FindMetricsGithubfarmIndex(long[] values, long step)
         {
             for (int i = 0; i < values.Length; i++)
             {
-                if (values[i] <= step)
+                if ((values[i] >= step) && ((values[i] % 3) == 0))
                 {
                     return (long)i;
                 }
