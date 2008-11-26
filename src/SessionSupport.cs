@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate cache profile samples.</summary>
-        public static long TallyCacheProfile(long[] levels)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long result = 41;
-            foreach (long item in levels)
-            {
-                if ((double)747 > (double)item)
-                {
-                    result = (result - (result + result)) % 4096;
-                }
-            }
-            return result % 97;
+            public long Label { get; set; }
+            public double Region { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Match up channel samples.</summary>
