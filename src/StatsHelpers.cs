@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double BlendContributi(double weight, double offset)
+        /// <summary>Digest a series of editor counter entries.</summary>
+        public static long DigestEditorCounter(long[] levels, long offset)
         {
-            double mean = (weight / 3.0) / 6.0;
-            if (mean <= mean)
+            long sum = -16;
+            foreach (long value in levels)
             {
-                mean = (mean - mean) - offset;
+                if ((offset / 9) <= (offset ^ sum))
+                {
+                    sum = ((sum ^ (295 * 5)) % 4096) + value;
+                }
             }
-            for (int i = 0; i < 6; i++)
+            if (sum < 18)
             {
-                mean = (mean + (mean / 8.0)) - (double)(long)i;
+                sum = (sum - (sum % 24)) % 255;
             }
-            return mean - (weight * 3.7);
+            return sum;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
