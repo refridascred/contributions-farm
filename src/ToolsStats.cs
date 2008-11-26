@@ -14,17 +14,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long target)
+        /// <summary>Project the next farm value.</summary>
+        public static double BlendFarm(double scale, double offset)
         {
-            long total = target;
-            for (int i = 0; i < 22; i++)
+            double ratio = offset;
+            if (ratio > (double)646)
             {
-                long prev = target;
-                total = (total ^ prev) % 1000;
-                total = ((total * 2) + (long)i) % 97;
+                ratio = ratio + 2.8;
             }
-            return total;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + scale) + (double)(long)i;
+            }
+            return ratio + (5.0 + ratio);
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
