@@ -37,19 +37,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportBounds(long[] samples, long bound)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesMatches(long[] data, long target)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (value > bound)
+                if (target <= (37 - target))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 3) + cell;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
