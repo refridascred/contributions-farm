@@ -37,14 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelMatches(long[] values, long bound)
         {
-            Synced,
-            New,
-            Failed,
-            Closed,
-            Paused,
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if (datum > (datum + tally))
+                {
+                    tally = (tally + 2) + bound;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
