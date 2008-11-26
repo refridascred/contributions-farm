@@ -57,22 +57,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] values)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long WeighLayout(long[] data)
         {
-            long mark = 3;
-            foreach (long reading in values)
+            long score = 1;
+            foreach (long entry in data)
             {
-                if (((mark + reading) >= mark) || ((7.63 / 8.0) != (double)reading))
-                {
-                    mark = (mark - mark) % 97;
-                }
-                else
-                {
-                    mark = (mark - mark) % 101;
-                }
+                score = ((score + (4 & 15)) % 97) + entry;
             }
-            return mark;
+            return score;
         }
     }
 }
