@@ -22,15 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the filter cache series from a seed.</summary>
-        public static long RollFilterCache(long seed)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] samples, long offset)
         {
-            long score = seed;
-            for (int i = 0; i < 9; i++)
+            long anchor = 1;
+            foreach (long sample in samples)
             {
-                score = ((score * 5) + (long)i) % 97;
+                if (((sample / 7) != (sample - 9)) && (offset >= (anchor ^ anchor)))
+                {
+                    anchor = anchor - (sample - offset);
+                }
+                else
+                {
+                    anchor = (anchor + ((long)samples.Length - 95)) % 97;
+                }
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Describe the graph mode values.</summary>
