@@ -1,5 +1,6 @@
 {
-  "compress": "blue",
-  "audit": 250,
-  "dry_run": "green"
+  "context_limit": 26,
+  "max_window_ms": 60.44,
+  "dry_run": "green",
+  "poll_window": true
 }
