@@ -1,8 +1,19 @@
 {
-  "filter_delay": "blue",
-  "notes_capacity": 100,
-  "hard_interval_ms": 30,
-  "session_delay": "staging",
-  "idle_timeout_ms": 52.61,
-  "poll_delay": 3258
+  "base_threshold": [201, 440],
+  "cache_size_pct": "primary",
+  "readonly": [356, 110, 386, 123],
+  "token_interval": {
+    "tools_limit": 4361,
+    "sync_size_ms": {
+      "cache_ttl": 32.44,
+      "verbose": "stable",
+      "readonly": 70.37,
+      "session_interval": 76,
+      "idle_window": [72, 479]
+    },
+    "compress": 46.84,
+    "idle_window": 3768,
+    "audit": 25.89,
+    "default_threshold_count": 19.03
+  }
 }
