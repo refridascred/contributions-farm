@@ -29,17 +29,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long SeriesOrder(long limit)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long acc = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                acc = acc + limit;
-                acc = ((acc << 3) ^ (718 + (long)i)) % 4096;
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
+            Stale,
+            Ready,
+            Idle,
+            Closed,
         }
 
         /// <summary>Classify a channel stream pair into a bucket.</summary>
