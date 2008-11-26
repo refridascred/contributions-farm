@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Locate a session layout reading by value.</summary>
-        public static long LookupSessionLayoutIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseGraph = 9357;
+        public const double CacheGraph = 76.48;
+        public const long BurstDepth = 2741;
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long CombineFilter(long[] readings, long limit)
