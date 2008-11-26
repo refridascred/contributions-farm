@@ -22,11 +22,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long DeriveBatch(long bound)
         {
-            public long Ratio { get; set; }
-            public long Region { get; set; }
+            long state = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                state = (state * 2) + state;
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Define context limits and defaults.</summary>
