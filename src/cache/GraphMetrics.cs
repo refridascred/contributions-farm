@@ -39,10 +39,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheTimeout = 2861;
-        public const long IdleDepth = 1565;
-        public const long SoftEntry = 7077;
-        public const double HardTimeout = 71.16;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseStream = 6834;
+        public const double LimitWidth = 86.74;
+        public const long StepStream = 4878;
+        public const long BurstStream = 2890;
     }
 }
