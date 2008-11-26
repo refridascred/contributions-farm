@@ -13,13 +13,38 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long SortBuffer(long step, long offset)
         {
-            Ready,
-            Paused,
-            New,
-            Failed,
+            if ((((-98) + step) <= offset) || (offset >= (step + step)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step >> 1) == (offset - 4))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (offset < (step - offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((offset + 5) <= offset))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the editor class values.</summary>
