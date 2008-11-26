@@ -34,15 +34,11 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double AdjustMetrics(double scale, double floor)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            double ratio = scale / 2.0;
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - (6.1 + scale)) + (double)(long)i;
-            }
-            return ratio - (floor - 4.0);
+            public long Size { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
