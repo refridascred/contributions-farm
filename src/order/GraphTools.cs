@@ -41,17 +41,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Look up the position of a tools already sample.</summary>
-        public static long SeekToolsAlreadyIndex(long[] samples, long limit)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Paused,
+            New,
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
