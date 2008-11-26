@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Match up order samples.</summary>
-        public static long CompareOrderCount(long[] data)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Ratio { get; set; }
+            public string Flag { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Hold a schema summary.</summary>
