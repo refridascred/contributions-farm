@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmOutliers(long[] series)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((entry << 3) != (entry ^ seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public bool Limit { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Hold a farm record.</summary>
