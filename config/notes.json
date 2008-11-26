@@ -1,7 +1,18 @@
 {
-  "soft_depth": false,
-  "idle_limit_s": [434, 331, 348, 159],
-  "max_size": 250,
-  "route_capacity": false,
-  "compress": 2059
+  "flush_limit_count": 82.66,
+  "hard_limit_ms": "local",
+  "stream_threshold": {
+    "command_threshold": "local",
+    "context_window": {
+      "idle_interval": 100,
+      "batch_threshold": "edge",
+      "format_limit": 56
+    },
+    "base_timeout_pct": {
+      "soft_depth_ms": 85,
+      "batch_ratio": "legacy",
+      "cache_limit_ms": "legacy",
+      "idle_depth_count": false
+    }
+  }
 }
