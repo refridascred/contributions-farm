@@ -28,9 +28,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxCache = 2258;
-        public const long StepSize = 8189;
-        public const long LimitDepth = 2344;
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long DeriveStream(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
+        }
     }
 }
