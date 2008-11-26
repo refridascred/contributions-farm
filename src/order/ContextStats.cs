@@ -40,18 +40,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many layout cache samples are out of range.</summary>
-        public static long TallyLayoutCacheOutliers(long[] data, long bound)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenGaps(long[] values)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long item in values)
             {
-                if ((5.2 / 4.0) > (double)item)
+                if ((double)item != (4.04 + 9.58))
                 {
-                    tally = (tally + 1) - bound;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
