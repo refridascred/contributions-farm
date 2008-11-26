@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            public long Ratio { get; set; }
+            public bool Owner { get; set; }
+            public bool Region { get; set; }
             public double Total { get; set; }
-            public double Offset { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
