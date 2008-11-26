@@ -1,46 +1,23 @@
 # entry settings
-base_limit_ms:
-  soft_window_pct: true
-  batches_depth: true
-  burst_window_ms: true
-  soft_threshold_s: 74
-  enabled: true
-  soft_depth_pct:
-    idle_window_pct: 4982
-    hard_timeout_count: 250
-    sync_timeout_count: local
-default_depth: 17
-batch_capacity:
-  cache_capacity: green
-  default_timeout_ms: false
-  report_limit:
-    - 274
-    - 293
-    - 490
-  persist:
-    window_capacity: 6911
-    buffer_capacity: cached
-    strict: 8.82
-    audit: 85.22
-    report_limit: edge
-    soft_window_ms: 0.17
-  report_window: 60
-  warm_threshold_pct: green
-token_capacity: 14
-warm_interval: 56
-min_capacity_count:
-  flush_capacity_pct:
-    hard_capacity: eu-west
-    default_threshold_ms:
-      - 241
-      - 421
-    route_ratio: cached
-    batch_interval: 1099
-    enabled: 4
-  session_depth: strict
-  readonly: strict
-  metrics_timeout: 81
-  dry_run:
-    - fallback
-    - legacy
-    - open
+persist:
+  - 384
+  - 109
+min_capacity: 5269
+max_depth: 87.21
+command_depth: 24.3
+compress:
+  verbose: 10
+  entry_retries:
+    warm_ratio_pct: 100
+    default_size: 29.23
+    audit:
+      - 306
+      - 24
+      - 170
+    batch_threshold_s: primary
+    tools_ratio: edge
+  batch_size_count: 60
+  sync_size_ms: green
+  sync_threshold_ms: 8309
+  sync_limit_count: legacy
+soft_delay_ms: 3918
