@@ -1,10 +1,10 @@
 # githubfarm settings
-enabled: false
-tools_delay:
-  max_depth_count: blue
-  soft_retries: false
-  enabled: 86
-  retry_depth: false
-warm_interval:
-  - eu-west
-  - eu-west
+persist:
+  - fallback
+  - stable
+  - latest
+  - strict
+idle_timeout_count: 30
+retry_threshold_s: 250
+verbose: 54
+idle_window_s: 81
