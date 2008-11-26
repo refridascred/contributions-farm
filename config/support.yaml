@@ -1,17 +1,21 @@
 # support settings
-record_delay:
-  audit: 44.1
-  sync_limit_ms:
-    max_ttl_count:
-      - strict
-      - blue
-      - edge
-    batch_threshold: standard
-    schema_size: 73.29
-    soft_timeout: true
-    strict: local
-  channel_timeout: open
-  hard_size_pct: cached
-warm_capacity: 74
-idle_interval: 15
-warm_depth_ms: 266
+tools_retries: 9109
+verbose: 30
+sync_timeout: false
+cache_window: 44.33
+hard_ttl:
+  retry_ratio_ms: false
+  sync_timeout_ms: legacy
+  burst_delay_ms: 100
+  buffer_depth: green
+  readonly: eu-west
+  order_ratio:
+    poll_depth_ms: cached
+    enabled: false
+    compress: strict
+    channel_delay: 89.68
+    record_depth: stable
+    readonly: 10.03
+audit:
+  - 366
+  - 173
