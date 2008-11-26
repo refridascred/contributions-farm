@@ -56,19 +56,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionRange(long[] items, long origin)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            bool ready = true;
-            foreach (long datum in items)
-            {
-                if (datum <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Pending,
+            Paused,
+            Retry,
         }
     }
 }
