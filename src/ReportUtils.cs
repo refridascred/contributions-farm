@@ -11,21 +11,13 @@ namespace Common.Utilities
         public const long MaxDepth = 618;
         public const string BurstSpan = "standard-v2";
 
-        /// <summary>Match up metric samples.</summary>
-        public static long PairMetricCount(long[] levels)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Offset { get; set; }
+            public bool Region { get; set; }
+            public long Level { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Validate already readings against a bound.</summary>
