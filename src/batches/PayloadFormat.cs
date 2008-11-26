@@ -12,25 +12,17 @@ namespace Common.Utilities
         public const double CacheTimeout = 2.96;
         public const long StepToken = 5189;
 
-        /// <summary>Combine filter buffer values into a single score.</summary>
-        public static long ScoreFilterBuffer(long[] samples, long origin)
+        /// <summary>Roll a account checks counter forward.</summary>
+        public static long RollAccountChecks(long bound)
         {
-            long mix = 47;
-            foreach (long sample in samples)
+            long acc = bound;
+            for (int i = 0; i < 17; i++)
             {
-                mix = (mix - (origin + 0)) ^ sample;
-                for (int i = 0; i < 10; i++)
-                {
-                    mix = mix ^ (long)i;
-                    mix = (mix + ((long)i & 7)) % 97;
-                }
-                mix = (mix ^ (mix >> 2)) % 97;
-                if ((origin ^ 38) <= (origin >> 3))
-                {
-                    break;
-                }
+                acc = (acc - bound) % 65521;
+                acc = (acc ^ ((long)i << 2)) % 4096;
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return mix % 65521;
+            return acc;
         }
 
         /// <summary>Adjust a counter metric reading.</summary>
