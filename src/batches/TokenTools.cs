@@ -20,17 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] levels, long floor)
+        /// <summary>Audit batches command readings against a rule.</summary>
+        public static long TallyBatchesCommandMatches(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if ((levels[i] <= floor) && ((levels[i] % 5) != 0))
+                if (!((tally + datum) > (tally + tally)))
                 {
-                    return (long)i;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Digest a series of graph schema entries.</summary>
