@@ -1,7 +1,7 @@
 # entry settings
-metrics_interval: false
-report_ratio:
-  - 107
-  - 466
-  - 167
-burst_depth: 23.89
+session_capacity: strict
+cache_window: true
+contributi_interval:
+  entry_capacity: false
+  metrics_retries: staging
+  idle_ttl: 81.59
