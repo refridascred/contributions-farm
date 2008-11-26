@@ -33,19 +33,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteLimits(long[] readings, long floor)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long SeriesOrder(long limit)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            long acc = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if (reading > floor)
-                {
-                    ready = false;
-                    break;
-                }
+                acc = acc + limit;
+                acc = ((acc << 3) ^ (718 + (long)i)) % 4096;
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Compare every pair of farm route readings.</summary>
