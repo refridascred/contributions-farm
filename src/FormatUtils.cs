@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long ClassifyGraph(long step, long floor)
         {
-            Locked,
-            Draft,
-            Closed,
-            Synced,
-            Failed,
+            if (floor <= (floor & 1))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step + step) > floor)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
