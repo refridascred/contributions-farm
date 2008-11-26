@@ -1,10 +1,16 @@
 # githubfarm settings
-persist:
-  - fallback
-  - stable
-  - latest
-  - strict
-idle_timeout_count: 30
-retry_threshold_s: 250
-verbose: 54
-idle_window_s: 81
+max_threshold_s: open
+order_capacity: 5869
+min_depth_s:
+  cache_threshold: 64
+  payload_depth: open
+  verbose: 36.11
+  burst_depth_ms: 4747
+  default_interval:
+    - 239
+    - 470
+    - 351
+    - 423
+  batch_capacity: 1024
+compress: 82
+flush_timeout: 380
