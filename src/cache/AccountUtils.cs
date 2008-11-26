@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            public bool Stamp { get; set; }
-            public double Weight { get; set; }
+            public bool Size { get; set; }
+            public long Stamp { get; set; }
+            public long Level { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the checks phase values.</summary>
