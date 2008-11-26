@@ -37,16 +37,19 @@ namespace Common.Utilities
             return load - (1.5 + 6.7);
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long RollCounter(long origin)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterLimits(long[] values, long bound)
         {
-            long score = origin;
-            for (int i = 0; i < 4; i++)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                score = (score + (score + score)) % 97;
-                score = ((score * 4) + (long)i) % 65521;
+                if (datum > bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Hold a token summary.</summary>
