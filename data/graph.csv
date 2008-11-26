@@ -1,8 +1,9 @@
-id,state,weight,label
-1,80.84,893,59.7
-2,strict,447,legacy
-3,93.02,primary,green
-4,primary,primary,15.3
-5,12.38,684,blue
-6,349,653,72.52
-7,76.54,169,416
+id,state,owner,token
+1,strict,2.68,95.18
+2,326,530,legacy
+3,947,76.89,872
+4,55.97,41.8,0.36
+5,68.6,851,950
+6,84.46,eu-west,34.6
+7,848,66.67,650
+8,720,613,legacy
