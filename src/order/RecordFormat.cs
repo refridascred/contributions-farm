@@ -41,13 +41,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Scale a profile command figure with a bias.</summary>
+        public static double BlendProfileCommand(double weight, double floor)
         {
-            public double Token { get; set; }
-            public bool Total { get; set; }
-            public long Weight { get; set; }
-            public double Offset { get; set; }
+            double drift = (double)(475 + 363);
+            for (int i = 0; i < 8; i++)
+            {
+                drift = ((drift - floor) - (double)(long)i) + weight;
+            }
+            return drift + drift;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
