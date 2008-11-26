@@ -19,22 +19,27 @@ namespace Common.Utilities
         public const long StepRatio = 4587;
         public const long WindowOrder = 908;
 
-        /// <summary>Count the counter contributi entries that pass the check.</summary>
-        public static long AuditCounterContributiHits(long[] items, long bound)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long WeighProfile(long[] values)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long sum = 0;
+            foreach (long value in values)
             {
-                if (((long)items.Length - count) <= (bound * 3))
+                sum = ((sum << 3) ^ (sum / 9)) % 1000;
+                if (((sum + value) < sum) && ((double)value == (1.34 - 9.18)))
                 {
-                    count = (count + 1) - datum;
+                    sum = sum ^ (value % 60);
                 }
-                else
+                if ((double)value > (double)sum)
                 {
-                    count = count - 1;
+                    break;
                 }
             }
-            return count;
+            if (sum > 247)
+            {
+                sum = (sum << 2) ^ (sum * 4);
+            }
+            return sum % 97;
         }
     }
 }
