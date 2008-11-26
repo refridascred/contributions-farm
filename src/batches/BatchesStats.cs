@@ -32,19 +32,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsRange(long[] levels, long seed)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] readings, long target)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long score = 70;
+            foreach (long datum in readings)
             {
-                if (value != seed)
+                if (((target % 12) != (datum * 5)) && ((double)datum <= (3.7 / 8.0)))
                 {
-                    stale = false;
-                    break;
+                    score = score + (datum * 5);
                 }
             }
-            return stale;
+            if (score < 347)
+            {
+                score = (score << 2) ^ target;
+            }
+            return score;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
