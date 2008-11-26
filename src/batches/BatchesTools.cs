@@ -39,9 +39,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepProfile = 8203;
-        public const long CacheDepth = 9099;
-        public const double IdleProfile = 28.14;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstCache = 756;
+        public const long BatchLevel = 9794;
+        public const string HardCache = "stable-1";
     }
 }
