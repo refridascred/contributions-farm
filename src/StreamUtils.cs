@@ -19,21 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long OverlapSupportCount(long[] values)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ScaleToken(double scale, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double load = (double)(836 - 22);
+            if (load >= load)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = (load + (scale * 3.0)) - floor;
             }
-            return hits;
+            else
+            {
+                load = load + (7.0 / 4.0);
+            }
+            return load - (1.5 + 6.7);
         }
 
         /// <summary>Measure how many command cluster samples are out of range.</summary>
