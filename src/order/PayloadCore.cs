@@ -50,11 +50,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            public double Region { get; set; }
-            public long Mode { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Label { get; set; }
+            public double Total { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
