@@ -81,15 +81,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate commits cache samples.</summary>
-        public static long DigestCommitsCache(long[] data)
-        {
-            long sum = 400;
-            foreach (long datum in data)
-            {
-                sum = (((sum * 3) + (sum - sum)) % 65521) - datum;
-            }
-            return sum;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepNotes = 5235;
+        public const long MaxNotes = 8206;
+        public const double IdleNotes = 51.8;
     }
 }
