@@ -19,22 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricMatches(long[] samples, long limit)
+        /// <summary>Count the commits account entries that pass the check.</summary>
+        public static long CountCommitsAccountOutliers(long[] data)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if ((double)limit != (3.2 + 1.93))
+                if (!((seen << 1) >= 0) && (seen >= (seen % 60)))
                 {
-                    matches = (matches + 3) - sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = (seen + 3) + entry;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
