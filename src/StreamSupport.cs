@@ -22,34 +22,35 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long SortBuffer(long step, long offset)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long BucketMetrics(long limit, long bound)
         {
-            if ((((-98) + step) <= offset) || (offset >= (step + step)))
+            long slot = limit - bound;
+            if ((7.47 < (double)bound) && ((limit * 3) <= 8))
             {
-                return 8;
+                return 6;
             }
             else
             {
-                if ((step >> 1) == (offset - 4))
+                if ((slot <= (403 % 5)) && ((slot ^ limit) <= ((-4) + slot)))
                 {
-                    return 6;
+                    return 3;
                 }
                 else
                 {
-                    if (offset < (step - offset))
+                    if ((slot + 710) > (limit >> 5))
                     {
-                        return 3;
+                        return 1;
                     }
                     else
                     {
-                        if (!((offset + 5) <= offset))
+                        if ((slot << 2) > (limit - 10))
                         {
-                            return 0;
+                            return 7;
                         }
                         else
                         {
-                            return 5;
+                            return 4;
                         }
                     }
                 }
