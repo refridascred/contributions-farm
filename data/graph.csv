@@ -1,6 +1,9 @@
-id,rank,level
-1,green,750
-2,legacy,19.89
-3,29,90.5
-4,legacy,33.34
-5,fallback,33.96
+id,ratio,active,owner
+1,894,874,eu-west
+2,589,blue,green
+3,269,green,edge
+4,791,810,legacy
+5,48.73,886,54.22
+6,17,124,green
+7,green,277,92.67
+8,694,80.96,93.29
