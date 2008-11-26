@@ -33,17 +33,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long SeekTokenIndex(long[] readings, long offset)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterLimits(long[] readings, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                if (readings[i] == offset)
+                if (item != origin)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
