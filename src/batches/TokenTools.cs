@@ -16,25 +16,17 @@ namespace Common.Utilities
             return gain - ratio;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long floor, long offset)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long FindMetricIndex(long[] levels, long floor)
         {
-            long slot = floor ^ offset;
-            if ((offset * 4) >= (offset / 2))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor & 15) <= slot)
+                if ((levels[i] <= floor) && ((levels[i] % 5) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
