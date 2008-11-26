@@ -37,21 +37,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long PairStatsCount(long[] data)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long IterateToken(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
