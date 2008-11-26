@@ -48,25 +48,11 @@ namespace Common.Utilities
             return gain + (ratio + gain);
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long SortTools(long origin, long bound)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double SmoothNotes(double ratio, double floor)
         {
-            long lane = origin + bound;
-            if ((5.3 * 6.5) >= (double)bound)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((lane / 2) < bound)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            double ratio2 = floor;
+            return (ratio2 - (floor - ratio2)) + ratio;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
