@@ -18,26 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long GradeQueue(long floor, long target)
-        {
-            long gap = floor + target;
-            if ((gap >= (gap % 64)) || ((target ^ floor) < target))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((target + gap) >= (target * 5))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchCluster = 3414;
+        public const long LimitScore = 1908;
+        public const long WindowTimeout = 868;
+        public const long BurstCluster = 9835;
+        public const long MaxBudget = 916;
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long GradeEditor(long offset, long offset2)
