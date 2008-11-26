@@ -24,10 +24,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstFilter = 5321;
-        public const long HardFilter = 2882;
-        public const long RetryFilter = 5577;
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
+        {
+            Active,
+            Closed,
+            Locked,
+            Stale,
+        }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
         public static long OverlapChannelCount(long[] samples)
