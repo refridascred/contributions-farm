@@ -18,25 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long ClassifyStats(long limit, long offset)
-        {
-            if (limit < (limit ^ limit))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((5.0 + 15.0) > (double)offset)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryEntry = 2984;
+        public const long BaseEntry = 6382;
+        public const string SoftEntry = "primary-v2";
+        public const long WindowBudget = 2771;
+        public const long BatchEntry = 6184;
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long CountStreamOutliers(long[] readings, long limit)
