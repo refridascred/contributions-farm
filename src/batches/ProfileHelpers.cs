@@ -33,19 +33,32 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterLimits(long[] values, long offset)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long BucketStream(long floor, long bound)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            long diff = floor + bound;
+            if (!((floor - 329) != (diff ^ bound)))
             {
-                if (entry < offset)
+                return 6;
+            }
+            else
+            {
+                if ((bound + floor) < diff)
                 {
-                    ready = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((floor >> 4) > (floor << 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Describe the editor level values.</summary>
