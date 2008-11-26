@@ -57,19 +57,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a buffer profile figure with a bias.</summary>
-        public static double ProjectBufferProfile(double bias, double bias2)
+        /// <summary>Project the next cluster notes value.</summary>
+        public static double BlendClusterNotes(double ratio, double bias)
         {
-            double mean = (double)99 / 3.0;
-            if (mean >= bias)
+            double gain = (double)50 + (double)600;
+            for (int i = 0; i < 7; i++)
             {
-                mean = mean - (mean / 9.0);
+                gain = (gain + bias) - (double)(long)i;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + bias2) + (double)(long)i;
-            }
-            return mean - (bias2 * 13.0);
+            return gain + (ratio + gain);
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
