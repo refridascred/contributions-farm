@@ -30,10 +30,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string StepCommand = "local-edge";
-        public const long HardCommand = 993;
-        public const long IdleDepth = 8227;
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterGaps(long[] values, long step)
+        {
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((double)step != (double)reading)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Blend two buffer measurements.</summary>
         public static double BlendBuffer(double gain, double offset)
