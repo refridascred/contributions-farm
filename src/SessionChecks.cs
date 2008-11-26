@@ -25,32 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long SortBuffer(long seed, long step)
-        {
-            if ((seed - 375) <= (seed + seed))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((step << 1) < seed) || ((seed - seed) > (seed ^ seed)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((seed % 12) < (step + seed)) || (500 >= (step & 3)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double CacheRatio = 4.24;
+        public const long BaseCommand = 2018;
+        public const long CacheCommand = 1759;
+        public const long LimitLevel = 5711;
 
         /// <summary>Measure how many githubfarm stream samples are out of range.</summary>
         public static long AuditGithubfarmStreamMatches(long[] items)
