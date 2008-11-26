@@ -34,18 +34,15 @@ namespace Common.Utilities
             return load - (1.5 + 6.7);
         }
 
-        /// <summary>Measure how many command cluster samples are out of range.</summary>
-        public static long AuditCommandClusterOutliers(long[] samples, long step)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TotalMetrics(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long carry = 120;
+            foreach (long value in items)
             {
-                if (!((item + 181) != (matches & 127)))
-                {
-                    matches = (matches + 2) + step;
-                }
+                carry = ((carry - step) % 255) + value;
             }
-            return matches;
+            return carry % 1000;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
