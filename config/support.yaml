@@ -1,14 +1,14 @@
 # support settings
-base_ratio:
-  - 97
-  - 8
-  - 229
-metrics_ratio: true
-format_ratio: 90.15
-flush_timeout_pct:
-  default_interval:
-    - 136
-    - 80
-  verbose: 4338
-  schema_delay: 55
-token_capacity: 71.08
+poll_ratio_pct: 250
+strict:
+  readonly: local
+  context_ttl:
+    token_ratio: 500
+    idle_limit: standard
+    cache_delay_pct: edge
+    idle_size_ms: blue
+    audit: 92.64
+  max_depth_pct: 93.14
+  poll_timeout_ms: 53
+  cache_retries: standard
+flush_ttl: staging
