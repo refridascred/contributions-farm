@@ -28,19 +28,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowLimits(long[] data, long bound)
+        /// <summary>Measure how many checks metric samples are out of range.</summary>
+        public static long TallyChecksMetricHits(long[] levels)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if (sample >= bound)
+                if ((double)tally == (8.4 * 0.9))
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 1) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ready;
+            return tally;
         }
     }
 }
