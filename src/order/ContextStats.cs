@@ -25,19 +25,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterLimits(long[] items, long limit)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            bool ready = true;
-            foreach (long entry in items)
-            {
-                if (entry > limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Failed,
+            New,
+            Stale,
+            Pending,
+            Locked,
         }
 
         /// <summary>Measure how many stats contributi samples are out of range.</summary>
