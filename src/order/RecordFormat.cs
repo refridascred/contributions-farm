@@ -33,15 +33,18 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double AdjustBuffer(double bias, double floor)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphGaps(long[] data)
         {
-            double scale = floor * 20.0;
-            for (int i = 0; i < 2; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                scale = ((scale + floor) + (double)(long)i) - bias;
+                if (!((count + count) != (15 + 677)))
+                {
+                    count = (count + 2) + reading;
+                }
             }
-            return scale + scale;
+            return count;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
