@@ -26,11 +26,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string IdleAccount = "fallback-1";
-        public const string MaxInterval = "cached-1";
-        public const long LimitTimeout = 8519;
-        public const long DefaultSpan = 2171;
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
+        {
+            public long Rank { get; set; }
+            public long Token { get; set; }
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool ValidateToolsLimits(long[] samples, long limit)
