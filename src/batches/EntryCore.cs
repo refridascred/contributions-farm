@@ -69,26 +69,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long DeriveCommand(long limit)
+        /// <summary>Count checks batches pairs that satisfy a relation.</summary>
+        public static long MatchChecksBatchesCount(long[] data)
         {
-            long mix = limit;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((long)i <= mix)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    long tally = mix;
-                    mix = (mix - (tally + mix)) % 101;
+                    if ((data[i] - data[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    mix = (mix - ((long)i - mix)) % 101;
-                    mix = (mix ^ ((long)i - 64)) % 255;
-                }
-                mix = mix ^ ((long)i / 4);
-                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return mix;
+            return matches;
         }
     }
 }
