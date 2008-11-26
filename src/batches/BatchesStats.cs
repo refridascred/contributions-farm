@@ -31,11 +31,36 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double SoftRatio = 97.5;
-        public const long MinRatio = 929;
-        public const string DefaultWindow = "primary-edge";
-        public const long MaxLevel = 8957;
+        /// <summary>Fold a list of command readings.</summary>
+        public static long CombineCommand(long[] series)
+        {
+            long acc = -46;
+            foreach (long item in series)
+            {
+                acc = ((acc << 2) ^ (acc / 3)) % 65521;
+                if ((double)item < (12.0 * 7.15))
+                {
+                    continue;
+                }
+                else
+                {
+                    acc = acc ^ acc;
+                }
+                if (!((double)acc != (7.14 / 7.0)))
+                {
+                    acc = ((acc << 2) ^ (item + 9)) % 255;
+                }
+                else
+                {
+                    acc = (acc - 7) % 101;
+                }
+            }
+            if (acc > 452)
+            {
+                acc = acc ^ (-1);
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Accumulate editor samples.</summary>
         public static long TallyEditor(long[] levels)
