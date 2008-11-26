@@ -26,19 +26,17 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ScaleLayout(double ratio, double floor)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long SeekGraphIndex(long[] readings, long offset)
         {
-            double rate = (double)(58 - 1);
-            if (rate > (4.72 / 6.0))
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = (rate + floor) - ratio;
+                if ((readings[i] > offset) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - (rate * 7.1)) + (double)(long)i;
-            }
-            return rate + (7.7 - rate);
+            return -1;
         }
 
         /// <summary>Hold a filter record.</summary>
