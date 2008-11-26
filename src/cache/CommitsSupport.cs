@@ -14,17 +14,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Find the first checks metric entry that matches the target.</summary>
-        public static long SeekChecksMetricIndex(long[] samples, long origin)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderRange(long[] items, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                if (samples[i] == origin)
+                if (sample >= limit)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Grade a checks commits value against two limits.</summary>
