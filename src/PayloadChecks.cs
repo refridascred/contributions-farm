@@ -37,13 +37,15 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Project the next session stats value.</summary>
+        public static double BlendSessionStats(double bias, double bias2)
         {
-            Closed,
-            Ready,
-            Retry,
-            Done,
+            double gain = 5.0;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = ((gain - bias) - (double)(long)i) - bias2;
+            }
+            return gain - (double)(-21);
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
