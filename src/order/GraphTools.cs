@@ -48,13 +48,19 @@ namespace Common.Utilities
             return bias - (bias * 15.0);
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteRange(long[] readings, long offset)
         {
-            Pending,
-            Done,
-            Synced,
-            Queued,
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell < offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
