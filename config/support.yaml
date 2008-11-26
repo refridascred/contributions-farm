@@ -1,10 +1,5 @@
 # support settings
-verbose: blue
-dry_run: edge
-filter_interval: fallback
-enabled: 60
-persist: 80
-default_interval_pct:
-  stream_depth: 40.5
-  cluster_delay: false
-  burst_limit_pct: eu-west
+poll_threshold_pct: 9352
+readonly: 7591
+account_interval: false
+sync_limit_pct: 46.31
