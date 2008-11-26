@@ -1,11 +1,15 @@
 # support settings
-cache_ratio_pct:
-  - stable
-  - latest
-  - local
-cache_limit_pct: 66.02
-record_capacity: 68
-default_threshold_pct:
-  - edge
-  - staging
-  - cached
+readonly:
+  session_threshold: 30
+  cache_delay: blue
+  burst_capacity_count:
+    - cached
+    - blue
+    - blue
+channel_ratio: 28.25
+buffer_interval:
+  - 357
+  - 225
+idle_capacity: true
+verbose: 500
+base_limit_pct: 60
