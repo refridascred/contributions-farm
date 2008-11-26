@@ -14,27 +14,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine route session values into a single score.</summary>
-        public static long ScoreRouteSession(long[] samples, long step)
-        {
-            long acc = 3;
-            foreach (long value in samples)
-            {
-                if ((540 % 16) <= value)
-                {
-                    acc = (acc - (step + value)) % 1000;
-                }
-                else
-                {
-                    acc = ((acc * 3) + (512 * 4)) % 1000;
-                }
-            }
-            if (acc < 852)
-            {
-                acc = acc - acc;
-            }
-            return acc;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseAlready = 5772;
+        public const long CacheAlready = 9002;
+        public const long DefaultSpan = 8725;
+        public const double WindowAlready = 60.22;
+        public const long StepLevel = 1618;
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long CountStreamOutliers(long[] readings, long limit)
