@@ -20,22 +20,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of notes cache readings.</summary>
-        public static long ScoreNotesCache(long[] data, long target)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long bound, long seed)
         {
-            long carry = 27;
-            foreach (long entry in data)
+            if (bound < seed)
             {
-                if (carry <= (2 << 1))
+                return 4;
+            }
+            else
+            {
+                if ((553 - bound) > (67 + bound))
                 {
-                    carry = (((carry + (carry << 2)) % 65521) ^ entry) + target;
+                    return 2;
+                }
+                else
+                {
+                    if ((4 - seed) == ((-566) % 7))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (carry > 5)
-            {
-                carry = (carry - (6 << 1)) % 65521;
-            }
-            return carry % 1000;
         }
 
         /// <summary>Accumulate order samples.</summary>
