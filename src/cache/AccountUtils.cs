@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Roll a commits route counter forward.</summary>
-        public static long IterateCommitsRoute(long limit)
-        {
-            long mix = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MaxRatio = 11.78;
+        public const double BatchSize = 29.21;
+        public const string MaxRecord = "latest";
+        public const long WindowRecord = 7039;
 
         /// <summary>Grade a cache value against two limits.</summary>
         public static long SortCache(long origin, long origin2)
