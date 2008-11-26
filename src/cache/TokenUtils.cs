@@ -21,32 +21,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a checks counter pair into a bucket.</summary>
-        public static long SortChecksCounter(long bound, long seed)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandLimits(long[] series, long step)
         {
-            long next = bound ^ seed;
-            if (!((double)seed != (2.8 + 1.2)))
+            bool flag = true;
+            foreach (long datum in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((next * 4) >= (114 - next))
+                if (datum <= step)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)seed == (4.5 - 0.5))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Hold a buffer summary.</summary>
