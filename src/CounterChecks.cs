@@ -53,13 +53,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Measure how many report stream samples are out of range.</summary>
+        public static long CountReportStreamOutliers(long[] samples, long floor)
         {
-            public long Limit { get; set; }
-            public double Rank { get; set; }
-            public bool Weight { get; set; }
-            public bool Token { get; set; }
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((5.9 - 9.26) > (double)value)
+                {
+                    seen = (seen + 1) + floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the layout kind values.</summary>
