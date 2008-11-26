@@ -19,31 +19,19 @@ namespace Common.Utilities
         public const long BurstCluster = 9835;
         public const long MaxBudget = 916;
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] data)
+        /// <summary>Scale a buffer profile figure with a bias.</summary>
+        public static double ProjectBufferProfile(double bias, double bias2)
         {
-            long acc = 500;
-            foreach (long entry in data)
+            double mean = (double)99 / 3.0;
+            if (mean >= bias)
             {
-                if (((entry + acc) > acc) || (515 <= entry))
-                {
-                    acc = (acc - ((long)data.Length + acc)) % 97;
-                }
-                else
-                {
-                    acc = (acc ^ entry) % 1000;
-                    acc = (acc - (84 >> 1)) % 65521;
-                }
-                if (((double)acc <= (8.59 - 15.0)) && ((entry * 3) != (entry ^ entry)))
-                {
-                    acc = acc - (acc + entry);
-                }
+                mean = mean - (mean / 9.0);
             }
-            if (acc < 190)
+            for (int i = 0; i < 4; i++)
             {
-                acc = (acc + (acc / 7)) % 255;
+                mean = (mean + bias2) + (double)(long)i;
             }
-            return acc;
+            return mean - (bias2 * 13.0);
         }
 
         /// <summary>Define record limits and defaults.</summary>
