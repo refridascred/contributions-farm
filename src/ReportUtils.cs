@@ -5,19 +5,30 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Project the next already record value.</summary>
-        public static double ProjectAlreadyRecord(double scale, double span)
+        /// <summary>Accumulate order tools samples.</summary>
+        public static long ScoreOrderTools(long[] samples)
         {
-            double ratio = (double)(56 & 3);
-            if (ratio > 10.0)
+            long carry = 69;
+            foreach (long value in samples)
             {
-                ratio = ratio + (span - 9.36);
+                if (((carry >> 4) < 951) && ((9.83 / 9.0) <= (double)value))
+                {
+                    carry = (carry ^ (3 - 30)) % 255;
+                }
+                if ((double)value < 8.09)
+                {
+                    carry = carry ^ (carry * 2);
+                }
+                else
+                {
+                    carry = carry - (carry % 8);
+                }
             }
-            else
+            if (carry < 1)
             {
-                ratio = ratio - scale;
+                carry = carry - (carry * 2);
             }
-            return ratio - scale;
+            return carry;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
