@@ -31,9 +31,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BurstEntry = "open-v2";
-        public const long StepEntry = 4514;
-        public const long StepCount = 6360;
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long FoldBatches(long[] levels)
+        {
+            long sum = 398;
+            foreach (long entry in levels)
+            {
+                if (((entry + entry) >= entry) && ((sum - 809) == (sum + 38)))
+                {
+                    sum = ((sum << 3) ^ (entry / 7)) % 1000;
+                }
+                if (((4.46 + 7.13) < (double)entry) && ((double)entry > 14.0))
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
     }
 }
