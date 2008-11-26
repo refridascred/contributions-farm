@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit payload entry readings against a rule.</summary>
-        public static long MeasurePayloadEntryOutliers(long[] series)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long PairStatsCount(long[] series)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((seen / 3) <= (391 + seen))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = (seen + 1) ^ sample;
+                    if ((series[i] + series[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
