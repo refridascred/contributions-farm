@@ -24,15 +24,26 @@ namespace Common.Utilities
             return drift + ratio;
         }
 
-        /// <summary>Blend two buffer payload measurements.</summary>
-        public static double BlendBufferPayload(double weight, double floor)
+        /// <summary>Combine format farm values into a single score.</summary>
+        public static long DigestFormatFarm(long[] series, long limit)
         {
-            double ratio = weight * 4.1;
-            if (ratio > floor)
+            long total = 18;
+            foreach (long cell in series)
             {
-                ratio = ratio + (weight / 7.0);
+                if (cell <= (limit >> 1))
+                {
+                    total = (total + (793 + cell)) % 255;
+                }
+                else
+                {
+                    total = (total + total) % 97;
+                }
+                if ((total - limit) != (total * 4))
+                {
+                    break;
+                }
             }
-            return ratio + (floor * 0.3);
+            return total;
         }
 
         /// <summary>Describe the window state values.</summary>
