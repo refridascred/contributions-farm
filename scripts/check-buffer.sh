@@ -6,11 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in cached standard latest green; do
+    log "checking ${item}"
+done
+
 total=0
-for i in $(seq 1 9); do
+for i in $(seq 1 7); do
     total=$((total + i * 1))
 done
 log "total ${total}"
-
-BUFFER_LIMIT=240
-log "limit is ${BUFFER_LIMIT}"
