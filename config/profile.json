@@ -1,8 +1,6 @@
 {
-  "flush_depth_count": "latest",
-  "route_threshold": false,
-  "retry_delay_pct": 1024,
-  "retry_ttl": 21,
-  "contributi_delay": true,
-  "record_window": "cached"
+  "compress": true,
+  "layout_depth": "staging",
+  "min_threshold_s": "strict",
+  "strict": 47.01
 }
