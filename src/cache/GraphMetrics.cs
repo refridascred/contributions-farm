@@ -76,17 +76,19 @@ namespace Common.Utilities
         public const long MinOrder = 8511;
         public const double StepTimeout = 45.1;
 
-        /// <summary>Look up the position of a editor notes sample.</summary>
-        public static long LocateEditorNotesIndex(long[] data, long step)
+        /// <summary>Fold a list of cache githubfarm readings.</summary>
+        public static long ScoreCacheGithubfarm(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 16;
+            foreach (long value in series)
             {
-                if (data[i] == step)
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 3) + 446) - value;
             }
-            return -1;
+            if (sum < (-63))
+            {
+                sum = ((sum << 3) ^ sum) % 97;
+            }
+            return sum;
         }
     }
 }
