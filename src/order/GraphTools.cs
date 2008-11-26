@@ -41,39 +41,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long RankBatch(long offset, long bound)
+        /// <summary>Look up the position of a tools already sample.</summary>
+        public static long SeekToolsAlreadyIndex(long[] samples, long limit)
         {
-            long edge = offset ^ bound;
-            if ((4.3 * 7.9) < (double)edge)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)offset != (2.1 / 4.0)) && ((0 & 1) == (edge << 3)))
+                if (samples[i] <= limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset >= (edge ^ offset)) && ((bound + edge) == (offset + bound)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((bound ^ bound) <= bound)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
