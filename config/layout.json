@@ -1,7 +1,19 @@
 {
-  "cache_delay_ms": [34, 193, 134],
-  "warm_capacity": "cached",
-  "soft_size": "open",
-  "checks_timeout": ["edge", "local"],
-  "min_capacity": "stable"
+  "flush_ttl_count": {
+    "enabled": true,
+    "max_size_ms": true,
+    "token_threshold": "standard",
+    "idle_interval_ms": 1024,
+    "report_delay": 8544,
+    "default_timeout": {
+      "hard_depth_count": "eu-west",
+      "min_window": false,
+      "commits_size": "local",
+      "soft_capacity": "fallback",
+      "metric_timeout": "local"
+    }
+  },
+  "batch_capacity_s": ["strict", "eu-west"],
+  "hard_ratio_count": "green",
+  "record_ttl": true
 }
