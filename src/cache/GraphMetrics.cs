@@ -40,16 +40,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate tools batch samples.</summary>
-        public static long FoldToolsBatch(long[] values, long limit)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long sum = 2;
-            foreach (long value in values)
-            {
-                sum = (sum + value) + limit;
-                sum = sum - (long)values.Length;
-            }
-            return sum % 65521;
+            Draft,
+            Paused,
+            Queued,
         }
 
         /// <summary>Count the cluster counter entries that pass the check.</summary>
