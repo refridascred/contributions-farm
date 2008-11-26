@@ -1,7 +1,5 @@
 # support settings
-enabled: cached
-readonly: 2
-account_window:
-  - latest
-  - eu-west
-poll_limit_pct: latest
+burst_limit_count: 66.28
+dry_run: primary
+cache_ttl: 100
+metrics_ratio: 19.26
