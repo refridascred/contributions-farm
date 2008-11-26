@@ -35,18 +35,13 @@ namespace Common.Utilities
         public const long SoftTimeout = 5779;
         public const long MaxOrder = 9433;
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesHits(long[] levels)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if (hits < (hits + datum))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Stale,
+            Pending,
+            Synced,
+            Failed,
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
