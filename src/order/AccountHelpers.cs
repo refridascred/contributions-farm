@@ -82,19 +82,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate graph report readings against a bound.</summary>
-        public static bool GuardGraphReportBounds(long[] values, long origin)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadRange(long[] readings, long seed)
         {
-            bool found = true;
-            foreach (long sample in values)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                if (sample >= origin)
+                if (reading <= seed)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
     }
 }
