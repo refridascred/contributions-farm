@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long seed, long step)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteBounds(long[] series, long bound)
         {
-            long prev = seed + step;
-            if (0 > seed)
+            bool stale = true;
+            foreach (long item in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)prev == (double)seed)
+                if (item <= bound)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
