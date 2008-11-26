@@ -1,9 +1,15 @@
 # entry settings
-sync_interval_count: 495
-strict:
-  - 427
-  - 471
-  - 18
-  - 129
-idle_limit_ms: false
-counter_depth: false
+order_timeout:
+  route_ratio: edge
+  record_ratio:
+    - green
+    - standard
+    - local
+    - staging
+  sync_window_pct: false
+  dry_run: false
+  sync_capacity: legacy
+idle_retries_s: legacy
+readonly:
+  - blue
+  - eu-west
