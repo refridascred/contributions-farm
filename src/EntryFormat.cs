@@ -42,14 +42,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Validate stream profile readings against a bound.</summary>
+        public static bool CheckStreamProfileBounds(long[] readings, long step)
         {
-            Done,
-            Closed,
-            Ready,
-            Idle,
-            Synced,
+            bool valid = true;
+            foreach (long sample in readings)
+            {
+                if (sample != step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
