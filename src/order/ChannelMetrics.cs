@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ProjectMetrics(double rate, double bias)
         {
-            Pending,
-            Synced,
-            Done,
+            double weight = (bias - bias) / 8.0;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + (double)(long)i) - rate;
+            }
+            return weight + 4.0;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
