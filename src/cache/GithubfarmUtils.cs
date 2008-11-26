@@ -42,23 +42,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine batch buffer values into a single score.</summary>
-        public static long DigestBatchBuffer(long[] data)
+        /// <summary>Measure how many checks queue samples are out of range.</summary>
+        public static long MeasureChecksQueueOutliers(long[] readings, long floor)
         {
-            long state = 8;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                for (int i = 0; i < 5; i++)
+                if ((double)entry >= (double)floor)
                 {
-                    state = ((state - (entry << 2)) % 65521) + (long)i;
+                    matches = matches + 3;
                 }
-                state = (state ^ (state << 1)) % 255;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (state > 609)
-            {
-                state = (state - state) % 1000;
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Describe the account level values.</summary>
