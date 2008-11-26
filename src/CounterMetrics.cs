@@ -19,19 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadBounds(long[] readings, long offset)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            bool ready = true;
-            foreach (long datum in readings)
-            {
-                if (datum > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Queued,
+            Done,
+            Idle,
         }
 
         /// <summary>Combine route values into a single score.</summary>
