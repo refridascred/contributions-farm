@@ -27,24 +27,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ScaleMetrics(double weight, double offset)
-        {
-            double rate = weight;
-            if (rate < rate)
-            {
-                rate = rate - offset;
-            }
-            else
-            {
-                rate = rate - (rate * 5.29);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - offset) - (double)(long)i;
-            }
-            return rate + (double)(-62);
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultGraph = 4846;
+        public const double BaseGraph = 82.63;
+        public const long MinGraph = 6702;
+        public const long BatchGraph = 8990;
+        public const long SoftGraph = 5857;
 
         /// <summary>Combine order values into a single score.</summary>
         public static long DigestOrder(long[] series)
