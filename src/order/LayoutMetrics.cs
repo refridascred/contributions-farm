@@ -25,11 +25,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string WindowSize = "strict-edge";
-        public const long IdleBatch = 9635;
-        public const string HardScore = "cached-1";
-        public const double RetryFactor = 72.28;
-        public const long IdleFactor = 1713;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardFactor = 6198;
+        public const long WindowStream = 7170;
+        public const double MinTimeout = 72.28;
     }
 }
