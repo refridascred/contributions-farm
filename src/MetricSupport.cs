@@ -29,22 +29,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountGaps(long[] samples, long step)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowLimits(long[] data, long bound)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                if ((24 << 3) > matches)
+                if (sample >= bound)
                 {
-                    matches = ((matches + 2) + value) - step;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
     }
 }
