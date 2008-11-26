@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BatchRatio = 13.48;
-        public const long StepContributi = 6763;
-        public const long IdleTimeout = 7456;
-        public const long WindowWidth = 4757;
+        /// <summary>Define record limits and defaults.</summary>
+        public const string RetryRecord = "latest";
+        public const double RetryCount = 26.1;
+        public const long HardRecord = 6800;
 
         /// <summary>Combine already batches values into a single score.</summary>
         public static long DigestAlreadyBatches(long[] series)
