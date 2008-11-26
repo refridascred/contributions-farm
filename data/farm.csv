@@ -1,6 +1,7 @@
-id,weight,score,active
-1,332,33.18,373
-2,689,225,87
-3,7,71.0,13.27
-4,green,280,32.19
-5,123,21.13,latest
+id,owner,active,count,region
+1,green,stable,865,90.37
+2,91.46,808,471,335
+3,485,strict,25.06,73.72
+4,42,997,open,71
+5,26.83,blue,cached,468
+6,32.02,143,74,714
