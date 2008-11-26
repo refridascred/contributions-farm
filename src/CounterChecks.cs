@@ -89,20 +89,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TotalGithubfarm(long[] items)
+        /// <summary>Match up editor samples.</summary>
+        public static long OverlapEditorCount(long[] items)
         {
-            long state = 788;
-            foreach (long datum in items)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                state = (state << 3) ^ (datum * 4);
-                state = (state ^ (state / 3)) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (state < 780)
-            {
-                state = (state + (state / 5)) % 4096;
-            }
-            return state % 65521;
+            return matches;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
