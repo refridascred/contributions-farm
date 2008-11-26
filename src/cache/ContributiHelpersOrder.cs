@@ -28,15 +28,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] data)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long total = 9;
-            foreach (long entry in data)
-            {
-                total = ((total << 2) ^ (entry - total)) % 1000;
-            }
-            return total % 97;
+            Dropped,
+            Done,
+            Synced,
+            Locked,
+            Closed,
         }
     }
 }
