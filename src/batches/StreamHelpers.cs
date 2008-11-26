@@ -20,19 +20,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesRange(long[] items, long target)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportGaps(long[] values)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (sample <= target)
+                if (((count <= (count * 3)) || ((entry / 5) <= (33 + entry))) || ((count ^ 15) <= (entry - 49)))
                 {
-                    found = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Hold a contributi header.</summary>
