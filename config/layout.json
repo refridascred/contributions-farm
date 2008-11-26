@@ -1,8 +1,6 @@
 {
-  "soft_ttl_ms": "primary",
-  "queue_size": 17.68,
-  "contributi_window": [201, 65, 262, 212],
-  "window_interval": 27,
-  "sync_interval_s": 1395,
-  "retry_interval_count": 25.41
+  "warm_size_s": 9939,
+  "dry_run": false,
+  "retry_interval_ms": "cached",
+  "sync_capacity": 26.02
 }
