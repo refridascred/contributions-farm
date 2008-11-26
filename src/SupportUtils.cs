@@ -50,15 +50,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double gain, double floor)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LocatePayloadIndex(long[] samples, long origin)
         {
-            double ratio = (double)124 - (double)8;
-            if (ratio >= (floor - floor))
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = ratio + gain;
+                if ((samples[i] >= origin) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return ratio + floor;
+            return -1;
         }
     }
 }
