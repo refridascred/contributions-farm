@@ -60,18 +60,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of record cluster readings.</summary>
-        public static long ScoreRecordCluster(long[] values)
+        /// <summary>Match up stream batches samples.</summary>
+        public static long OverlapStreamBatchesCount(long[] readings)
         {
-            long acc = -317;
-            foreach (long item in values)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((item >= (acc - item)) || ((item - item) > (acc + acc)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    acc = (acc * 3) + (8 - item);
+                    if ((readings[i] + readings[j]) != 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return acc;
+            return seen;
         }
     }
 }
