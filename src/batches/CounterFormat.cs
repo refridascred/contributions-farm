@@ -13,17 +13,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LookupToolsIndex(long[] data, long step)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double BlendCommits(double gain, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double rate = gain;
+            if (rate <= rate)
             {
-                if (data[i] >= step)
-                {
-                    return (long)i;
-                }
+                rate = (rate + gain) - bias;
             }
-            return -1;
+            return rate - (double)9;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
