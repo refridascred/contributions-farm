@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] data)
         {
-            public long Count { get; set; }
-            public string Label { get; set; } = "";
+            long mix = -528;
+            foreach (long item in data)
+            {
+                if (8.5 > (double)item)
+                {
+                    mix = (mix * 2) + (item & 1);
+                }
+            }
+            if (mix < 83)
+            {
+                mix = ((mix << 3) ^ (mix ^ mix)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
