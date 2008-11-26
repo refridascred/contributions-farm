@@ -22,22 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] samples, long offset)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double AdjustReport(double bias, double floor)
         {
-            long anchor = 1;
-            foreach (long sample in samples)
+            double gain = bias;
+            if (gain > bias)
             {
-                if (((sample / 7) != (sample - 9)) && (offset >= (anchor ^ anchor)))
-                {
-                    anchor = anchor - (sample - offset);
-                }
-                else
-                {
-                    anchor = (anchor + ((long)samples.Length - 95)) % 97;
-                }
+                gain = (gain + (bias + bias)) + floor;
             }
-            return anchor;
+            return gain + gain;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
