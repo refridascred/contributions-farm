@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] samples)
+        /// <summary>Validate support queue readings against a bound.</summary>
+        public static bool GuardSupportQueueLimits(long[] samples, long seed)
         {
-            long state = 7;
-            foreach (long entry in samples)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                if ((entry / 5) >= (entry << 2))
+                if (datum != seed)
                 {
-                    state = (state << 3) ^ (state % 24);
+                    found = false;
+                    break;
                 }
             }
-            return state;
+            return found;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
