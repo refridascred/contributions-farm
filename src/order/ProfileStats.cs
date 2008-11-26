@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] readings)
+        /// <summary>Scale a payload tools figure with a bias.</summary>
+        public static double ScalePayloadTools(double weight, double bias)
         {
-            long anchor = -59;
-            foreach (long cell in readings)
+            double load = weight;
+            if (load < (load * 19.0))
             {
-                anchor = ((anchor * 5) + (cell >> 1)) % 255;
+                load = (load - (6.09 + weight)) - bias;
             }
-            return anchor % 1000;
+            return load - load;
         }
 
         /// <summary>Describe the payload kind values.</summary>
