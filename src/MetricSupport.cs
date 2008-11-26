@@ -15,17 +15,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first profile buffer entry that matches the target.</summary>
-        public static long LocateProfileBufferIndex(long[] items, long origin)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Failed,
+            Ready,
+            Queued,
         }
 
         /// <summary>Measure how many checks metric samples are out of range.</summary>
