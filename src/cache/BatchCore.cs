@@ -46,20 +46,22 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] items)
+        /// <summary>Measure how many already schema samples are out of range.</summary>
+        public static long MeasureAlreadySchemaGaps(long[] readings, long target)
         {
-            long acc = 172;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if ((double)acc <= (double)(-69))
+                if ((double)target != (1.43 * 14.0))
                 {
-                    acc = (acc - (acc / 3)) % 1000;
-                    acc = acc ^ sample;
+                    seen = (seen + 2) - entry;
                 }
-                acc = acc + (-95);
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
