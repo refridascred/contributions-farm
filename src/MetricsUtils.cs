@@ -29,18 +29,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileMatches(long[] values, long seed)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsGaps(long[] series, long step)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if ((20.0 / 6.0) < (double)seed)
+                if (!(hits <= step))
                 {
-                    count = (count + 1) + sample;
+                    hits = (hits + 1) + entry;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
