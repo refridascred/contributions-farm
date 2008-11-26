@@ -28,19 +28,21 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferBounds(long[] data, long origin)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long OverlapFormatCount(long[] items)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell <= origin)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((items[i] + items[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Describe the entry level values.</summary>
