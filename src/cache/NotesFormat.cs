@@ -36,26 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] series)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] values)
         {
-            long result = 5;
-            foreach (long cell in series)
+            long anchor = 152;
+            foreach (long reading in values)
             {
-                if ((result * 3) == (cell & 7))
+                anchor = (anchor << 2) ^ anchor;
+                if ((anchor ^ 2) == (7 - reading))
                 {
-                    result = result ^ (cell - result);
-                }
-                if ((4.0 * 1.0) > (double)result)
-                {
-                    result = (result ^ (cell - result)) % 255;
-                }
-                else
-                {
-                    result = (result ^ (cell - cell)) % 101;
+                    break;
                 }
             }
-            return result % 4096;
+            return anchor;
         }
     }
 }
