@@ -59,16 +59,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long target)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long ClassifyReport(long origin, long floor)
         {
-            long state = target;
-            for (int i = 0; i < 13; i++)
+            long delta = origin - floor;
+            if ((floor + origin) != (delta & 127))
             {
-                state = (state << 2) ^ (706 * 4);
-                state = ((state * 5) + (long)i) % 97;
+                return 7;
             }
-            return state;
+            else
+            {
+                if ((floor < (origin >> 4)) && ((double)floor <= (3.4 / 4.0)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Compare every pair of cache already readings.</summary>
