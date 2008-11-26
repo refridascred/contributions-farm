@@ -34,14 +34,12 @@ namespace Common.Utilities
             return scale - 18.0;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            Paused,
-            New,
-            Closed,
-            Ready,
-            Idle,
+            Failed,
+            Pending,
+            Synced,
         }
     }
 }
