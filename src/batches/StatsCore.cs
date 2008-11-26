@@ -39,16 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a entry support counter forward.</summary>
-        public static long SeriesEntrySupport(long limit)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LocateContextIndex(long[] readings, long seed)
         {
-            long mix = limit;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = (mix - (mix * 3)) % 101;
-                mix = ((mix * 2) + (long)i) % 97;
+                if (readings[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the farm mode values.</summary>
