@@ -13,18 +13,26 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterOutliers(long[] readings, long target)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long carry = -668;
+            foreach (long reading in data)
             {
-                if (!((hits / 9) < item))
+                if (!(2.0 > (double)seed))
                 {
-                    hits = (hits + 3) + target;
+                    carry = ((carry * 4) + (carry - reading)) % 101;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ seed;
                 }
             }
-            return hits;
+            if (carry < 4)
+            {
+                carry = (carry + (seed * 5)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
