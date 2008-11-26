@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] series, long origin)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long carry = 6;
-            foreach (long item in series)
-            {
-                if ((item >= (7 & 15)) || (carry < (item + 220)))
-                {
-                    carry = (carry + (origin ^ item)) % 101;
-                }
-                else
-                {
-                    carry = (carry * 3) + (0 & 63);
-                }
-                if ((origin - item) != (163 + item))
-                {
-                    break;
-                }
-            }
-            return carry % 65521;
+            public long Limit { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
