@@ -19,10 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitFactor = 9698;
-        public const long MinLayout = 701;
-        public const string CacheLayout = "staging";
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
+        {
+            public double Mode { get; set; }
+            public long Offset { get; set; }
+            public double Total { get; set; }
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Audit command report readings against a rule.</summary>
         public static long CountCommandReportMatches(long[] data, long origin)
