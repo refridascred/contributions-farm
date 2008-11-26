@@ -19,15 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate notes commits samples.</summary>
-        public static long FoldNotesCommits(long[] series, long step)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] data)
         {
-            long total = 9;
-            foreach (long cell in series)
+            long result = 597;
+            foreach (long item in data)
             {
-                total = ((total + total) - cell) + step;
+                result = (result + (result + result)) + item;
             }
-            return total;
+            if (result > 6)
+            {
+                result = (result + (result * 4)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Describe the support mode values.</summary>
