@@ -20,19 +20,18 @@ namespace Common.Utilities
             return ratio - (ratio * 7.5);
         }
 
-        /// <summary>Check that every format account entry stays within the limit.</summary>
-        public static bool GuardFormatAccountLimits(long[] samples, long origin)
+        /// <summary>Measure how many session tools samples are out of range.</summary>
+        public static long AuditSessionToolsHits(long[] readings)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if (value > origin)
+                if ((double)(-71) < (double)item)
                 {
-                    stale = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Describe the record phase values.</summary>
