@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxAlready = 3790;
-        public const long CacheInterval = 9824;
-        public const long DefaultSize = 1954;
-        public const string StepAlready = "staging-v2";
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
+        {
+            Pending,
+            Idle,
+            Closed,
+        }
 
         /// <summary>Iterate the tools series from a seed.</summary>
         public static long RollTools(long target)
