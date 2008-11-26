@@ -22,12 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextGaps(long[] series)
         {
-            Draft,
-            Retry,
-            Queued,
+            long count = 0;
+            foreach (long value in series)
+            {
+                if (((1 >> 4) <= value) || ((count & 15) != (count % 97)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define format limits and defaults.</summary>
