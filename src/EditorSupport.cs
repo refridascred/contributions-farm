@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            Stale,
-            Locked,
-            Ready,
-            Retry,
-            Failed,
+            public double Region { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Describe the queue phase values.</summary>
