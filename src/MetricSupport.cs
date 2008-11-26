@@ -27,11 +27,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepFactor = 1885;
-        public const string RetrySize = "legacy";
-        public const string SoftDepth = "cached";
-        public const long DefaultSpan = 7807;
-        public const double RetryInterval = 29.27;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepMetrics = 1486;
+        public const long IdleScore = 7053;
+        public const long SoftInterval = 6499;
+        public const long BaseInterval = 2110;
     }
 }
