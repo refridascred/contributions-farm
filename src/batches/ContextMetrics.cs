@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LocateTokenIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BatchRatio = 13.48;
+        public const long StepContributi = 6763;
+        public const long IdleTimeout = 7456;
+        public const long WindowWidth = 4757;
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long CombineContributi(long[] data, long step)
