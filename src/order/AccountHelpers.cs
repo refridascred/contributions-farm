@@ -71,18 +71,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchOutliers(long[] levels, long limit)
+        /// <summary>Validate graph report readings against a bound.</summary>
+        public static bool GuardGraphReportBounds(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            bool found = true;
+            foreach (long sample in values)
             {
-                if ((seen + datum) > (seen * 4))
+                if (sample >= origin)
                 {
-                    seen = (seen + 1) + limit;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
     }
 }
