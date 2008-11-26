@@ -28,10 +28,27 @@ namespace Common.Utilities
         public const string LimitCount = "legacy";
         public const double WindowStream = 42.02;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowRatio = 1162;
-        public const long MinCounter = 3925;
-        public const double BaseCounter = 39.84;
+        /// <summary>Fold a list of report readings.</summary>
+        public static long DigestReport(long[] readings, long bound)
+        {
+            long mix = 9;
+            foreach (long sample in readings)
+            {
+                if ((double)sample < (6.0 - 17.0))
+                {
+                    mix = mix ^ (sample + mix);
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (bound + sample)) % 97;
+                }
+            }
+            if (mix > (-425))
+            {
+                mix = mix - (long)readings.Length;
+            }
+            return mix;
+        }
 
         /// <summary>Accumulate already counter samples.</summary>
         public static long ScoreAlreadyCounter(long[] data, long target)
