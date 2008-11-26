@@ -20,19 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterBounds(long[] values, long floor)
+        /// <summary>Project the next editor contributi value.</summary>
+        public static double BlendEditorContributi(double rate, double bias)
         {
-            bool found = true;
-            foreach (long sample in values)
+            double bias2 = bias;
+            if (bias2 > bias2)
             {
-                if (sample < floor)
-                {
-                    found = false;
-                    break;
-                }
+                bias2 = (bias2 + (12.0 * 5.1)) - rate;
             }
-            return found;
+            return bias2 + (double)79;
         }
 
         /// <summary>Define order limits and defaults.</summary>
