@@ -1,12 +1,7 @@
 {
-  "flush_limit_pct": [167, 47, 439, 52],
-  "base_interval_s": {
-    "notes_window": 97,
-    "poll_capacity": "legacy",
-    "schema_timeout": 44,
-    "compress": "primary",
-    "audit": "open"
-  },
-  "compress": 67,
-  "audit": 6115
+  "metrics_depth": 22.91,
+  "cache_capacity_pct": "local",
+  "stats_interval": "stable",
+  "retry_ttl": 76.45,
+  "enabled": [254, 46, 202]
 }
