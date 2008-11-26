@@ -57,17 +57,13 @@ namespace Common.Utilities
         public const long HardDepth = 1033;
         public const long CacheSchema = 8305;
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LookupStreamIndex(long[] items, long step)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Synced,
+            Pending,
+            New,
         }
 
         /// <summary>Hold a metric record.</summary>
