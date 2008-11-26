@@ -14,11 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadBounds(long[] readings, long offset)
         {
-            public string Size { get; set; } = "";
-            public string Owner { get; set; } = "";
+            bool ready = true;
+            foreach (long datum in readings)
+            {
+                if (datum > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
