@@ -31,12 +31,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitSchema = 2197;
-        public const string SoftSchema = "latest-edge";
-        public const long BatchSchema = 9322;
-        public const long SoftBudget = 8345;
-        public const long WindowSpan = 5693;
+        /// <summary>Derive the next stats route value from a seed.</summary>
+        public static long DeriveStatsRoute(long limit)
+        {
+            long anchor = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the support level values.</summary>
         public enum SupportLevel
