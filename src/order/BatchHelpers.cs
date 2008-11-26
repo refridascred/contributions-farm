@@ -16,13 +16,19 @@ namespace Common.Utilities
             return mean - (span - gain);
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterLimits(long[] readings, long origin)
         {
-            public string Owner { get; set; } = "";
-            public long Total { get; set; }
-            public long Level { get; set; }
-            public long Limit { get; set; }
+            bool found = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a support snapshot.</summary>
