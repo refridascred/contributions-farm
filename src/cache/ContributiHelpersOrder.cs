@@ -43,11 +43,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitEntry = 5498;
-        public const double MaxTimeout = 90.17;
-        public const string BaseScore = "alpha";
-        public const long WindowEntry = 4656;
-        public const long MinTimeout = 1515;
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                mix = mix ^ (80 >> 2);
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
+        }
     }
 }
