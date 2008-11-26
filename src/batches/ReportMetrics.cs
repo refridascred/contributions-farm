@@ -23,26 +23,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TallyChecks(long[] levels, long target)
-        {
-            long sum = 91;
-            foreach (long entry in levels)
-            {
-                if (((3.0 * 5.9) < (double)sum) && (entry > (target / 6)))
-                {
-                    sum = sum - (330 + entry);
-                }
-                else
-                {
-                    sum = sum + (entry + sum);
-                }
-            }
-            if (sum < 235)
-            {
-                sum = sum - (sum >> 5);
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string CacheCommits = "open-1";
+        public const long BatchFactor = 1097;
+        public const double BatchSize = 88.8;
     }
 }
