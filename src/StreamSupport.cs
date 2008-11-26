@@ -36,14 +36,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            Synced,
-            Pending,
-            Queued,
-            Stale,
-            Done,
+            public long Level { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
