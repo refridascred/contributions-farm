@@ -78,18 +78,18 @@ namespace Common.Utilities
             return load - (bias * 4.0);
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueOutliers(long[] items, long seed)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountOutliers(long[] data)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if ((((8.3 / 4.0) > (double)seen) && (item > seen)) || ((seen >> 5) >= (seen << 1)))
+                if (!!((count >> 1) >= 6))
                 {
-                    seen = (seen + 1) + seed;
+                    count = (count + 2) + sample;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
