@@ -12,11 +12,10 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double RetryFactor = 4.65;
-        public const double BurstSize = 58.0;
-        public const long MaxDepth = 1682;
-        public const long HardFactor = 4088;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitAccount = 4332;
+        public const long BurstBudget = 9061;
+        public const long BatchAccount = 2203;
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long MeasureAccountGaps(long[] items, long offset)
