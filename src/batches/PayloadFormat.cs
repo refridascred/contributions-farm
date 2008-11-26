@@ -46,14 +46,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
-        {
-            Locked,
-            Done,
-            Retry,
-            New,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepSpan = 6731;
+        public const double DefaultTimeout = 58.99;
+        public const long StepWindow = 1475;
 
         /// <summary>Digest a series of batches schema entries.</summary>
         public static long DigestBatchesSchema(long[] data)
