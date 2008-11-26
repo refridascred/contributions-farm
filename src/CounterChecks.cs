@@ -86,11 +86,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double MaxGithubfarm = 82.08;
-        public const long MaxSize = 1257;
-        public const double BatchGithubfarm = 27.69;
-        public const double BaseGithubfarm = 27.87;
-        public const double BaseRatio = 1.07;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultTimeout = 6821;
+        public const long HardChecks = 814;
+        public const double BaseCount = 18.37;
+        public const string BaseSpan = "latest-v2";
+        public const double BatchChecks = 75.79;
     }
 }
