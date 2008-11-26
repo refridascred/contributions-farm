@@ -45,15 +45,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
-        {
-            Draft,
-            Dropped,
-            Active,
-            Idle,
-            Locked,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardInterval = 6119;
+        public const string MaxCache = "staging-v2";
+        public const long DefaultCache = 1356;
+        public const string StepCount = "standard-1";
 
         /// <summary>Define command limits and defaults.</summary>
         public const long MinCommand = 6813;
