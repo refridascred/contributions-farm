@@ -29,18 +29,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesGaps(long[] series, long bound)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LocateFarmIndex(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum < (hits >> 2))
+                if (data[i] >= origin)
                 {
-                    hits = (hits + 2) + bound;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
