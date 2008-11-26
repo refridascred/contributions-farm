@@ -63,19 +63,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheGaps(long[] samples, long origin)
-        {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((count + count) >= (cell >> 3))
-                {
-                    count = (count + 2) - origin;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxProfile = 7422;
+        public const long WindowProfile = 4958;
+        public const long HardCount = 866;
+        public const double BurstSize = 75.64;
+        public const double BurstDepth = 88.66;
 
         /// <summary>Classify a profile pair into a bucket.</summary>
         public static long RankProfile(long seed, long bound)
