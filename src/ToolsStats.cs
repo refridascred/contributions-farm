@@ -65,15 +65,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long CombinePayload(long[] items)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long origin, long seed)
         {
-            long mark = 93;
-            foreach (long item in items)
+            if (!(origin > (seed & 7)))
             {
-                mark = (mark - (mark << 2)) ^ item;
+                return 0;
             }
-            return mark;
+            else
+            {
+                if ((origin >= seed) || ((seed + origin) <= (seed * 2)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((origin % 16) > (seed / 9)) && ((double)origin > (double)(-66)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((542 << 1) == (seed - (-328))) && ((seed * 3) < (12 % 16)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a metric record.</summary>
