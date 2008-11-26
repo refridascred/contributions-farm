@@ -46,14 +46,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
-        {
-            public bool Mode { get; set; }
-            public double Owner { get; set; }
-            public double Count { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleAlready = 8222;
+        public const double BurstAlready = 3.81;
+        public const long BaseSize = 1831;
+        public const string CacheSize = "primary";
 
         /// <summary>Digest a series of batches schema entries.</summary>
         public static long DigestBatchesSchema(long[] data)
