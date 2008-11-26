@@ -27,12 +27,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Iterate the account support series from a seed.</summary>
+        public static long SeriesAccountSupport(long limit)
         {
-            Retry,
-            Pending,
-            Done,
+            long state = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                if (((1 + (long)i) > limit) && (((long)i / 4) != (long)i))
+                {
+                    state = ((state << 3) ^ (state + 0)) % 65521;
+                    break;
+                }
+                state = ((state << 3) ^ (state / 9)) % 65521;
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
