@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next editor contributi value.</summary>
-        public static double BlendEditorContributi(double rate, double bias)
+        /// <summary>Accumulate already checks samples.</summary>
+        public static long CombineAlreadyChecks(long[] data, long offset)
         {
-            double bias2 = bias;
-            if (bias2 > bias2)
+            long mark = -503;
+            foreach (long reading in data)
             {
-                bias2 = (bias2 + (12.0 * 5.1)) - rate;
+                if ((double)mark > (8.66 - 8.9))
+                {
+                    mark = (mark - (reading / 3)) % 97;
+                }
+                mark = (mark * 5) + (offset + (-42));
             }
-            return bias2 + (double)79;
+            return mark % 1000;
         }
 
         /// <summary>Define order limits and defaults.</summary>
