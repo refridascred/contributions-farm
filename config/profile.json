@@ -1,7 +1,7 @@
 {
-  "metrics_depth": 22.91,
-  "cache_capacity_pct": "local",
-  "stats_interval": "stable",
-  "retry_ttl": 76.45,
-  "enabled": [254, 46, 202]
+  "poll_threshold_s": false,
+  "counter_size": 79,
+  "burst_depth_count": true,
+  "burst_ratio": "edge",
+  "strict": "open"
 }
