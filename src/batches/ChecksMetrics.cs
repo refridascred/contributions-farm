@@ -22,21 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long PairBatchCount(long[] readings)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 98;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = ((mark ^ (0 << 3)) % 255) + entry;
             }
-            return hits;
+            return mark % 97;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
