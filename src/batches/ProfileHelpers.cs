@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double AdjustCommits(double bias, double offset)
+        /// <summary>Find the first already notes entry that matches the target.</summary>
+        public static long LookupAlreadyNotesIndex(long[] levels, long offset)
         {
-            double scale = offset;
-            if (scale < bias)
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale = scale - bias;
+                if (levels[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return scale + (offset - bias);
+            return -1;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
