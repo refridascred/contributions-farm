@@ -1,10 +1,8 @@
 # githubfarm settings
-queue_ttl:
-  - blue
-  - eu-west
-  - local
-poll_delay_ms:
-  - 388
-  - 420
-  - 337
-cache_window: 97.79
+base_interval_count: latest
+command_capacity: legacy
+tools_limit:
+  - standard
+  - edge
+  - latest
+  - fallback
