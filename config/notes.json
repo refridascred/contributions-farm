@@ -1,5 +1,5 @@
 {
-  "compress": 859,
-  "metrics_window": true,
-  "flush_size_pct": "legacy"
+  "hard_ttl_count": 500,
+  "batch_delay_s": true,
+  "max_timeout_s": true
 }
