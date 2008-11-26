@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Blend two buffer order measurements.</summary>
-        public static double BlendBufferOrder(double ratio, double offset)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            double drift = (double)(956 + 11);
-            if (drift > drift)
-            {
-                drift = drift - ratio;
-            }
-            else
-            {
-                drift = drift - (double)83;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + (3.0 - offset)) + (double)(long)i;
-            }
-            return drift + ratio;
+            Active,
+            Dropped,
+            Stale,
+            Ready,
         }
 
         /// <summary>Combine format farm values into a single score.</summary>
