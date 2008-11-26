@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] items, long limit)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 398;
+            foreach (long cell in series)
             {
-                if ((items[i] <= limit) && ((items[i] % 2) == 0))
+                score = ((score * 4) + cell) % 255;
+                score = (score ^ (cell * 5)) % 255;
+                if (((10 + cell) < (score * 5)) && ((cell * 3) >= score))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return score % 1000;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
