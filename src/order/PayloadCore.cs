@@ -33,17 +33,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Find the first session schema entry that matches the target.</summary>
-        public static long SeekSessionSchemaIndex(long[] samples, long offset)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Size { get; set; }
+            public long Offset { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
