@@ -50,17 +50,31 @@ namespace Common.Utilities
             return drift + (gain - offset);
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] data, long target)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long SortStream(long target, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((double)floor != (15.0 * 9.3))
             {
-                if (data[i] >= target)
+                return 4;
+            }
+            else
+            {
+                if (((19.0 * 2.76) != (double)target) && (target > floor))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((11.0 * 9.0) >= (double)floor)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate graph report readings against a bound.</summary>
