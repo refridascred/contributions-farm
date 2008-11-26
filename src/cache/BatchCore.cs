@@ -36,13 +36,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Look up the position of a token tools sample.</summary>
+        public static long SeekTokenToolsIndex(long[] data, long floor)
         {
-            public long Label { get; set; }
-            public double Offset { get; set; }
-            public double Level { get; set; }
-            public long Region { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the session state values.</summary>
