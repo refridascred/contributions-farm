@@ -1,12 +1,11 @@
 # support settings
-min_timeout: 250
-channel_depth:
-  poll_ratio:
-    - edge
-    - blue
-  flush_ratio_s: 3584
-  batch_size_count: 77
-  audit: 100
-  record_capacity: legacy
-  enabled: 30
-idle_timeout_s: 2885
+flush_retries_count:
+  - open
+  - green
+  - strict
+  - local
+idle_capacity: 39
+sync_size: false
+context_capacity: 12
+command_threshold: cached
+audit: true
