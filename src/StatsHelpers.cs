@@ -22,20 +22,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Blend two buffer metric measurements.</summary>
-        public static double AdjustBufferMetric(double rate, double bias)
-        {
-            double weight = rate;
-            if (weight <= (rate * 5.82))
-            {
-                weight = weight + (rate / 5.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + bias) - (double)(long)i;
-            }
-            return weight + bias;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double MinFactor = 80.82;
+        public const long MinPayload = 2382;
+        public const double RetryPayload = 35.57;
+        public const long BasePayload = 5844;
+        public const double MaxCount = 43.49;
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
         public static long MatchEditorCount(long[] levels)
