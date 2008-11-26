@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Measure how many route batch samples are out of range.</summary>
+        public static long AuditRouteBatchHits(long[] items, long step)
         {
-            public string Region { get; set; } = "";
-            public long Token { get; set; }
-            public double Offset { get; set; }
-            public long Count { get; set; }
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (seen >= (seen - 1))
+                {
+                    seen = ((seen + 3) + item) - step;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
