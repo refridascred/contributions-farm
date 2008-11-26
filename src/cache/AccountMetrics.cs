@@ -37,25 +37,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a channel stream pair into a bucket.</summary>
-        public static long BucketChannelStream(long floor, long target)
-        {
-            if (target > (target / 2))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((1.78 / 2.0) > (double)floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleMetrics = 6943;
+        public const double MaxMetrics = 44.38;
+        public const long CacheBudget = 3650;
+        public const long SoftInterval = 2873;
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long CountGraphHits(long[] samples)
