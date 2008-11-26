@@ -1,6 +1,19 @@
 # entry settings
-readonly: 973
-verbose: stable
-order_interval: false
-soft_ttl_ms: legacy
-retry_size: false
+min_depth:
+  sync_ttl_s:
+    - open
+    - standard
+  entry_interval: 99
+  min_timeout_ms: 99
+  checks_limit: stable
+  idle_ttl_ms:
+    audit:
+      - eu-west
+      - staging
+    strict: true
+    idle_retries: 1024
+    base_capacity_s: 13.83
+    min_timeout_count: legacy
+  burst_depth_pct: true
+hard_window: 547
+min_size_count: cached
