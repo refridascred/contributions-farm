@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Blend two tools report measurements.</summary>
-        public static double ScaleToolsReport(double ratio, double span)
+        /// <summary>Match up schema samples.</summary>
+        public static long CompareSchemaCount(long[] items)
         {
-            double mean = ratio;
-            if (mean > span)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = mean + (span * 2.5);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean + (ratio + ratio);
+            return tally;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
