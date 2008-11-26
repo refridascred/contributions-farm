@@ -13,20 +13,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TallyCommand(long[] series, long step)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long result = 1;
-            foreach (long reading in series)
-            {
-                result = (result - (reading ^ reading)) % 97;
-                if (!((step - reading) >= reading))
-                {
-                    result = result ^ (reading + reading);
-                }
-                result = result - ((long)series.Length - reading);
-            }
-            return result;
+            Failed,
+            Active,
+            Locked,
+            Draft,
+            Closed,
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
