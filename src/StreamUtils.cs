@@ -90,18 +90,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long WeighContributi(long[] data)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long floor, long origin)
         {
-            long score = 491;
-            foreach (long datum in data)
+            long cur = floor - origin;
+            if (((cur << 1) >= origin) && ((origin - origin) == (178 ^ origin)))
             {
-                if (datum < (score + datum))
+                return 0;
+            }
+            else
+            {
+                if ((origin ^ cur) < cur)
                 {
-                    score = (score - score) % 4096;
+                    return 5;
+                }
+                else
+                {
+                    if ((9.65 + 5.5) == (double)origin)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((cur - origin) >= (84 >> 4)) && ((double)origin < (3.82 - 5.0)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return score;
         }
     }
 }
