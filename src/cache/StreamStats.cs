@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Blend two cache stream measurements.</summary>
-        public static double AdjustCacheStream(double scale, double offset)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            double bias = (double)602 - (6.97 / 5.0);
-            if (bias < (double)103)
-            {
-                bias = (bias - bias) + offset;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + (bias + scale)) + (double)(long)i;
-            }
-            return bias + bias;
+            public string Score { get; set; } = "";
+            public long Count { get; set; }
+            public string Limit { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Roll a route stream counter forward.</summary>
