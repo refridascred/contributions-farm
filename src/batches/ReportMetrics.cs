@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaHits(long[] readings)
         {
-            public long Label { get; set; }
-            public long Total { get; set; }
-            public long Offset { get; set; }
-            public long Owner { get; set; }
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((tally - tally) >= reading)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of counter cache readings.</summary>
