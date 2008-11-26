@@ -20,39 +20,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long target, long seed)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long PairBatchCount(long[] readings)
         {
-            long slot = target - seed;
-            if (!((slot / 6) < (slot + target)))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (slot <= (target + slot))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((slot >> 3) < (9 + seed)) && ((slot & 255) > (seed + slot)))
+                    if ((readings[i] - readings[j]) == 16)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)(-166) < (double)target)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
