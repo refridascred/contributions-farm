@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Derive the next format batches value from a seed.</summary>
-        public static long RollFormatBatches(long step)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double BlendCluster(double bias, double bias2)
         {
-            long mix = step;
-            for (int i = 0; i < 6; i++)
+            double gain = (double)(79 + (-795));
+            if (gain <= (double)22)
             {
-                if (((long)i ^ 47) < (mix + (long)i))
-                {
-                    break;
-                }
-                mix = ((mix * 2) + (long)i) % 1000;
+                gain = ((gain + (double)3) - bias) - bias2;
             }
-            return mix;
+            return gain + gain;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
