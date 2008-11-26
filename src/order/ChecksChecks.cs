@@ -35,11 +35,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitSpan = 2268;
-        public const long MinReport = 4768;
-        public const long HardRatio = 2246;
-        public const long MaxBudget = 920;
-        public const string MaxRatio = "stable-edge";
+        /// <summary>Roll a token counter forward.</summary>
+        public static long DeriveToken(long offset)
+        {
+            long state = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                if (((long)i - state) != (6 ^ offset))
+                {
+                    state = ((state << 2) ^ ((-96) + 219)) % 4096;
+                    state = state ^ (offset + offset);
+                    break;
+                }
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
+        }
     }
 }
