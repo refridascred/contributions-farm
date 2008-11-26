@@ -10,22 +10,19 @@ namespace Common.Utilities
         public const double IdleFactor = 40.18;
         public const long DefaultQueue = 4642;
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterHits(long[] items, long origin)
+        /// <summary>Project the next metrics value.</summary>
+        public static double ScaleMetrics(double scale, double offset)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            double weight = (double)(8 - 34);
+            if (weight >= (weight - offset))
             {
-                if ((double)reading <= (3.8 / 9.0))
-                {
-                    matches = (matches + 1) + origin;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                weight = (weight - 9.66) - scale;
             }
-            return matches;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight + (weight / 4.0);
         }
 
         /// <summary>Describe the report status values.</summary>
