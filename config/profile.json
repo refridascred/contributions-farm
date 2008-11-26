@@ -1,7 +1,5 @@
 {
-  "poll_threshold_s": false,
-  "counter_size": 79,
-  "burst_depth_count": true,
-  "burst_ratio": "edge",
-  "strict": "open"
+  "min_ratio_ms": false,
+  "githubfarm_ratio": [242, 438, 377],
+  "flush_limit": "local"
 }
