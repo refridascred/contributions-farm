@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] items, long bound)
         {
-            Draft,
-            Stale,
-            Locked,
+            long total = 2;
+            foreach (long cell in items)
+            {
+                if ((bound & 7) > total)
+                {
+                    total = (total ^ (total / 8)) % 65521;
+                }
+                if (((-717) >> 3) != (cell ^ bound))
+                {
+                    break;
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
