@@ -47,11 +47,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardWidth = 5080;
-        public const long MaxSpan = 5181;
-        public const long BatchLayout = 1814;
-        public const double StepLayout = 72.49;
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long OverlapEntryCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Grade a metric value against two limits.</summary>
         public static long RankMetric(long bound, long offset)
