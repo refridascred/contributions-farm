@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxLayout = 3001;
-        public const long BatchLayout = 1413;
-        public const long RetryLayout = 6341;
-        public const string DefaultLevel = "strict-v2";
-        public const double DefaultLayout = 98.11;
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long MatchBufferCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const string SoftSpan = "primary-v2";
