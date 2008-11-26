@@ -63,16 +63,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long StepRoute(long seed)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double AdjustGithubfarm(double weight, double offset)
         {
-            long acc = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                acc = (acc - seed) % 1000;
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
+            double rate = weight;
+            return (rate + (weight / 6.0)) + offset;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
