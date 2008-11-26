@@ -41,22 +41,11 @@ namespace Common.Utilities
             return rate + (7.7 - rate);
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterMatches(long[] data)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((69 * 2) >= (tally * 3))
-                {
-                    tally = (tally + 3) + datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Region { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
