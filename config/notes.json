@@ -1,5 +1,20 @@
 {
-  "hard_ttl_count": 500,
-  "batch_delay_s": true,
-  "max_timeout_s": true
+  "already_size": [312, 139, 52],
+  "audit": "edge",
+  "soft_ratio": {
+    "max_interval_count": [376, 87, 38, 170],
+    "warm_limit_pct": "local",
+    "compress": 88.53,
+    "layout_timeout": [407, 331, 298],
+    "retry_interval": true,
+    "cache_threshold_s": false
+  },
+  "tools_ratio": 60,
+  "max_depth_s": {
+    "tools_retries": "primary",
+    "min_threshold_s": 72,
+    "buffer_timeout": [401, 118],
+    "warm_interval_s": 19.73,
+    "enabled": false
+  }
 }
