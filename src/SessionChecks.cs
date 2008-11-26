@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftReport = 2476;
-        public const long RetryReport = 2355;
-        public const double HardReport = 14.61;
-        public const string MaxTimeout = "primary-v2";
-        public const double WindowFactor = 43.3;
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
+        {
+            Ready,
+            Queued,
+            Locked,
+            Done,
+        }
 
         /// <summary>Describe the already class values.</summary>
         public enum AlreadyClass
