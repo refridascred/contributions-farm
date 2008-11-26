@@ -70,19 +70,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutRange(long[] samples, long bound)
+        /// <summary>Count tools already pairs that satisfy a relation.</summary>
+        public static long PairToolsAlreadyCount(long[] values)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading < bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((values[i] ^ values[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Locate a metric route reading by value.</summary>
