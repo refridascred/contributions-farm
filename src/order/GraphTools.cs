@@ -20,17 +20,24 @@ namespace Common.Utilities
             return ratio - (ratio * 7.5);
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] readings, long target)
+        /// <summary>Grade a profile checks value against two limits.</summary>
+        public static long RankProfileChecks(long offset, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((seed / 7) > offset)
             {
-                if (readings[i] > target)
+                return 7;
+            }
+            else
+            {
+                if ((445 / 3) < (seed - 276))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the record phase values.</summary>
