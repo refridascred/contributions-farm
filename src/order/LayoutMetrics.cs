@@ -19,19 +19,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferRange(long[] items, long target)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LocateCacheIndex(long[] samples, long target)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry >= target)
+                if ((samples[i] <= target) && ((samples[i] % 3) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
