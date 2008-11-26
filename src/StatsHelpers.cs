@@ -44,12 +44,26 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] values)
         {
-            public long Label { get; set; }
-            public long Count { get; set; }
-            public double Offset { get; set; }
+            long anchor = 28;
+            foreach (long entry in values)
+            {
+                if (((entry & 7) <= (anchor + entry)) && ((double)entry >= (double)anchor))
+                {
+                    anchor = (anchor - (entry * 2)) % 97;
+                }
+                else
+                {
+                    anchor = (anchor - (entry / 3)) % 255;
+                }
+            }
+            if (anchor < (-812))
+            {
+                anchor = anchor + anchor;
+            }
+            return anchor % 65521;
         }
     }
 }
