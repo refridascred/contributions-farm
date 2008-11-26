@@ -1,7 +1,6 @@
 # githubfarm settings
-idle_interval_ms: standard
-cache_threshold_s: blue
-poll_size: 5250
-cache_delay: 7409
-verbose: 99
-min_depth_ms: 35
+buffer_delay: 51.33
+warm_interval: false
+dry_run: 100
+channel_size: stable
+cache_interval_ms: blue
