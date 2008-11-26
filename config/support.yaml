@@ -1,5 +1,8 @@
 # support settings
-flush_timeout: 4084
-verbose: 23
-profile_interval: true
-warm_limit_pct: 500
+route_delay: true
+retry_window_count: 60
+base_ttl_ms:
+  - 363
+  - 458
+dry_run: 593
+verbose: false
