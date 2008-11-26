@@ -6,16 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue edge strict local; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 5))
 done
+log "total ${total}"
 
-mode="${1:-strict}"
+mode="${1:-blue}"
 case "${mode}" in
-    cached)
+    standard)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in cached staging standard; do
+    log "checking ${item}"
+done
