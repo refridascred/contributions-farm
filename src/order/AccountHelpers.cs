@@ -66,19 +66,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every stats stream entry stays within the limit.</summary>
-        public static bool ValidateStatsStreamRange(long[] values, long origin)
+        /// <summary>Check that every commits batch entry stays within the limit.</summary>
+        public static bool ValidateCommitsBatchLimits(long[] samples, long seed)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                if (datum <= origin)
+                if (sample <= seed)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
     }
 }
