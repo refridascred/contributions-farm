@@ -21,22 +21,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] values)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long PairContextCount(long[] data)
         {
-            long anchor = 908;
-            foreach (long reading in values)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading < (anchor - anchor))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    anchor = (anchor << 3) ^ (anchor + reading);
-                }
-                else
-                {
-                    anchor = ((anchor * 2) + (anchor << 2)) % 1000;
+                    if ((data[i] - data[j]) < 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Hold a commits stats.</summary>
