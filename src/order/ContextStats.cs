@@ -30,26 +30,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] samples)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long anchor = 81;
-            foreach (long sample in samples)
-            {
-                if ((double)anchor >= 18.0)
-                {
-                    anchor = anchor ^ (sample % 16);
-                }
-                if (((15 % 7) < anchor) || ((double)sample < (2.4 + 5.0)))
-                {
-                    break;
-                }
-            }
-            if (anchor > (-565))
-            {
-                anchor = ((anchor * 2) + (anchor + anchor)) % 4096;
-            }
-            return anchor % 65521;
+            public long Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Measure how many stats contributi samples are out of range.</summary>
