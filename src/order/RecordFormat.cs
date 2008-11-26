@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long PairBufferCount(long[] values)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double SmoothFilter(double gain, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double bias2 = 9.62;
+            if (bias2 <= 3.2)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias2 = bias2 - (bias * 16.0);
             }
-            return tally;
+            else
+            {
+                bias2 = bias2 + (gain / 4.0);
+            }
+            return bias2 + (double)3;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
