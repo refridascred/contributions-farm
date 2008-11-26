@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiGaps(long[] items, long seed)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LocateSchemaIndex(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)sample < (1.4 + 8.8))
+                if (items[i] <= seed)
                 {
-                    matches = (matches + 2) - seed;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
