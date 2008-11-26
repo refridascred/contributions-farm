@@ -62,38 +62,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long SortOrder(long origin, long seed)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long RollRecord(long limit)
         {
-            if (!(origin > (seed & 7)))
+            long anchor = limit;
+            for (int i = 0; i < 22; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin >= seed) || ((seed + origin) <= (seed * 2)))
+                bool ready = (double)anchor == (double)(long)i;
+                anchor = (anchor << 2) ^ (anchor + (long)i);
+                if (ready)
                 {
-                    return 2;
+                    anchor = (anchor << 3) ^ (limit << 3);
+                    break;
                 }
-                else
-                {
-                    if (((origin % 16) > (seed / 9)) && ((double)origin > (double)(-66)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((542 << 1) == (seed - (-328))) && ((seed * 3) < (12 % 16)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
+            return anchor;
         }
 
         /// <summary>Hold a metric record.</summary>
