@@ -12,22 +12,10 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long PairClusterCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstDepth = 2430;
+        public const double BurstCache = 13.76;
+        public const double BaseCache = 60.31;
 
         /// <summary>Derive the next profile value from a seed.</summary>
         public static long StepProfile(long step)
