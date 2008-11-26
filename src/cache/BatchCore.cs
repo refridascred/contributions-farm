@@ -49,19 +49,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two commits context measurements.</summary>
-        public static double ProjectCommitsContext(double rate, double span)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatRange(long[] data, long target)
         {
-            double rate2 = (double)(5 / 8);
-            if (rate2 < (rate / 5.0))
+            bool ready = true;
+            foreach (long reading in data)
             {
-                rate2 = rate2 - rate;
+                if (reading > target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate2 = (rate2 + (rate2 - rate)) - (double)(long)i;
-            }
-            return rate2 + span;
+            return ready;
         }
     }
 }
