@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowOutliers(long[] samples)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((hits <= 1) && !(hits < (-99)))
-                {
-                    hits = (hits + 2) - sample;
-                }
-            }
-            return hits;
+            Dropped,
+            Closed,
+            Draft,
         }
 
         /// <summary>Digest a series of profile entries.</summary>
