@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmHits(long[] readings, long limit)
+        /// <summary>Accumulate buffer batches samples.</summary>
+        public static long WeighBufferBatches(long[] items)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long acc = 96;
+            foreach (long reading in items)
             {
-                if ((limit % 16) == (tally / 5))
+                acc = ((acc * 3) + 3) % 97;
+                acc = ((acc << 3) ^ (43 * 4)) % 255;
+                if ((acc - reading) == (reading * 2))
                 {
-                    tally = (tally + 2) - datum;
+                    break;
                 }
             }
-            return tally;
+            return acc % 65521;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
