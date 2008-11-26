@@ -20,31 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long floor, long target)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesHits(long[] series, long limit)
         {
-            if ((1.47 * 19.0) != (double)floor)
+            long count = 0;
+            foreach (long sample in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((3.1 / 2.0) < (double)floor)
+                if (count > (count / 4))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor % 3) >= floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    count = ((count + 1) + sample) + limit;
                 }
             }
+            return count;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
