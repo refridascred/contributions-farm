@@ -1,7 +1,5 @@
 {
-  "batch_ttl_s": "green",
-  "default_delay_ms": 19,
-  "flush_ttl_count": "staging",
-  "readonly": 54.97,
-  "command_ratio": 250
+  "poll_delay_ms": "strict",
+  "min_limit_pct": 36.95,
+  "audit": 7
 }
