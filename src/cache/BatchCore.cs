@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaHits(long[] items)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if (!((hits - hits) < (hits % 7)))
-                {
-                    hits = (hits + 3) ^ item;
-                }
-            }
-            return hits;
+            public bool Limit { get; set; }
+            public long Count { get; set; }
+            public long Weight { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
