@@ -16,26 +16,21 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] levels)
+        /// <summary>Compare every pair of counter metrics readings.</summary>
+        public static long OverlapCounterMetricsCount(long[] readings)
         {
-            long mark = 88;
-            foreach (long value in levels)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((-77) ^ mark) == ((long)levels.Length % 12))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mark = mark - value;
-                }
-                else
-                {
-                    mark = ((mark * 2) + (mark + mark)) % 1000;
-                }
-                if ((mark - mark) < (value + 4))
-                {
-                    break;
+                    if ((readings[i] ^ readings[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mark % 97;
+            return hits;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
