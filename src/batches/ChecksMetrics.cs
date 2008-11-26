@@ -67,19 +67,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] items)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ProjectBatch(double scale, double floor)
         {
-            long score = -24;
-            foreach (long value in items)
+            double load = scale;
+            if (load < (scale * 6.3))
             {
-                score = (score ^ (value / 5)) % 101;
-                if (!((score << 3) <= (value + score)))
-                {
-                    score = (score - (score >> 1)) % 101;
-                }
+                load = (load - (double)55) + floor;
             }
-            return score;
+            else
+            {
+                load = load - scale;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - (4.1 + scale)) + (double)(long)i;
+            }
+            return load + 9.6;
         }
     }
 }
