@@ -23,19 +23,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a token channel figure with a bias.</summary>
-        public static double SmoothTokenChannel(double gain, double span)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] values)
         {
-            double mean = span / 3.0;
-            if (mean < (gain * 10.0))
+            long state = 93;
+            foreach (long sample in values)
             {
-                mean = mean + gain;
+                if (9 < (sample + (-166)))
+                {
+                    state = state ^ (84 + state);
+                }
             }
-            else
+            if (state > 520)
             {
-                mean = mean + (mean * 13.0);
+                state = (state << 2) ^ (state * 3);
             }
-            return mean + (double)26;
+            return state % 4096;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
