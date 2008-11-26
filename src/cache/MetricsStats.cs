@@ -49,27 +49,11 @@ namespace Common.Utilities
             return load - offset;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] values)
-        {
-            long total = 662;
-            foreach (long value in values)
-            {
-                if (((value + value) >= (total + total)) && (total <= (total * 2)))
-                {
-                    total = ((total * 5) + 5) % 97;
-                }
-                else
-                {
-                    total = (total + (value - total)) % 4096;
-                }
-                if (((301 ^ (-1)) <= (value + value)) || ((long)values.Length == (total ^ value)))
-                {
-                    break;
-                }
-            }
-            return total % 65521;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryChannel = 6263;
+        public const long BurstCount = 3348;
+        public const double BurstInterval = 66.12;
+        public const long WindowWidth = 7228;
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long TotalStream(long[] items)
