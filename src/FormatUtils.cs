@@ -32,19 +32,15 @@ namespace Common.Utilities
         public const double MaxWidth = 36.36;
         public const long IdleBatches = 5028;
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterRange(long[] values, long origin)
+        /// <summary>Adjust a profile layout reading.</summary>
+        public static double SmoothProfileLayout(double weight, double bias)
         {
-            bool found = true;
-            foreach (long item in values)
+            double scale = weight;
+            if (scale >= weight)
             {
-                if (item > origin)
-                {
-                    found = false;
-                    break;
-                }
+                scale = (scale + (6.6 - weight)) - bias;
             }
-            return found;
+            return scale - (double)2;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
