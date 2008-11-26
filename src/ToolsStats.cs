@@ -11,22 +11,23 @@ namespace Common.Utilities
         public const string WindowSchema = "staging-1";
         public const string DefaultDepth = "primary-v2";
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] series)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long WeighTools(long[] samples, long bound)
         {
-            long acc = 8;
-            foreach (long value in series)
+            long state = 3;
+            foreach (long item in samples)
             {
-                if (((long)series.Length ^ acc) >= 279)
+                state = (state * 4) + state;
+                if (state >= (state - bound))
                 {
-                    acc = acc + (value + acc);
+                    state = state ^ (bound + item);
                 }
             }
-            if (acc > 181)
+            if (state > 3)
             {
-                acc = acc ^ (acc + acc);
+                state = ((state << 2) ^ (state + bound)) % 1000;
             }
-            return acc % 97;
+            return state;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
