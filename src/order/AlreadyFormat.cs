@@ -22,19 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferMatches(long[] items)
-        {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if (cell < matches)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardBatches = 4593;
+        public const long CacheBatches = 7834;
+        public const long RetryBatches = 7310;
+        public const long StepWidth = 8972;
+        public const string SoftTimeout = "fallback-v2";
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool GuardFarmLimits(long[] samples, long origin)
