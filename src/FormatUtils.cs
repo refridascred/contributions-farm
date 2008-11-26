@@ -66,10 +66,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string SoftRatio = "primary-v2";
-        public const string LimitCluster = "stable-1";
-        public const double WindowCluster = 57.9;
-        public const double DefaultFactor = 53.17;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultSpan = 1423;
+        public const long RetryLevel = 2665;
+        public const string LimitBudget = "local-v2";
+        public const long BatchInterval = 5865;
     }
 }
