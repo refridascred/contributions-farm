@@ -1,6 +1,11 @@
-id,ratio,weight
-1,80.34,93.23
-2,203,58.87
-3,9.7,open
-4,primary,latest
-5,cached,local
+id,count,weight,rank,token
+1,staging,897,61.98,edge
+2,77.48,standard,cached,456
+3,405,16.74,568,42.12
+4,565,stable,57.77,15.02
+5,latest,597,335,663
+6,latest,801,693,582
+7,35.36,35.44,81.59,694
+8,560,edge,35.65,74.1
+9,legacy,528,10,34.85
+10,702,local,785,82
