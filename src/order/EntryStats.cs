@@ -50,11 +50,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Blend two support measurements.</summary>
+        public static double SmoothSupport(double rate, double bias)
         {
-            public long Size { get; set; }
-            public long Token { get; set; }
+            double load = rate;
+            if (load >= bias)
+            {
+                load = load + bias;
+            }
+            else
+            {
+                load = load - rate;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + bias) + (double)(long)i;
+            }
+            return load + (double)76;
         }
 
         /// <summary>Hold a batches summary.</summary>
