@@ -25,15 +25,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Adjust a profile window reading.</summary>
-        public static double SmoothProfileWindow(double ratio, double span)
+        /// <summary>Measure how many checks token samples are out of range.</summary>
+        public static long MeasureChecksTokenOutliers(long[] series, long offset)
         {
-            double rate = ratio;
-            for (int i = 0; i < 2; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                rate = ((rate + 1.06) + (double)(long)i) + span;
+                if ((double)tally > (7.55 + 12.0))
+                {
+                    tally = ((tally + 3) - datum) - offset;
+                }
             }
-            return rate + 8.1;
+            return tally;
         }
     }
 }
