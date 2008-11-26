@@ -20,15 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a support notes reading.</summary>
-        public static double ProjectSupportNotes(double gain, double bias)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricMatches(long[] samples, long limit)
         {
-            double scale = 12.0;
-            if (scale <= (scale / 5.0))
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                scale = (scale + (double)73) + bias;
+                if ((double)limit != (3.2 + 1.93))
+                {
+                    matches = (matches + 3) - sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return scale - gain;
+            return matches;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
