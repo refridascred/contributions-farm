@@ -26,13 +26,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphGaps(long[] values, long seed)
         {
-            Active,
-            New,
-            Done,
-            Locked,
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if (((2.02 - 6.7) < (double)entry) || ((double)entry < (double)29))
+                {
+                    seen = (seen + 2) + seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Blend two tools measurements.</summary>
