@@ -47,17 +47,11 @@ namespace Common.Utilities
         public const string HardWidth = "stable-edge";
         public const long StepScore = 4663;
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long SeekEntryIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double DefaultCounter = 16.18;
+        public const long CacheFactor = 1149;
+        public const long BatchCounter = 4620;
+        public const string RetryBudget = "alpha";
+        public const long BaseTimeout = 4097;
     }
 }
