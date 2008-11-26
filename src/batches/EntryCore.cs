@@ -31,15 +31,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double AdjustChannel(double ratio, double span)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            double rate = (6.19 * 8.78) + (ratio + 8.2);
-            if (rate > (span - span))
-            {
-                rate = rate + (double)(-82);
-            }
-            return rate + (ratio - rate);
+            public string Weight { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Hold a already record.</summary>
