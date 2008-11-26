@@ -1,9 +1,6 @@
-id,score,owner
-1,466,eu-west
-2,8.83,19.13
-3,557,edge
-4,78,green
-5,4.16,178
-6,19.93,standard
-7,24.13,568
-8,fallback,48.89
+id,weight,score,active
+1,332,33.18,373
+2,689,225,87
+3,7,71.0,13.27
+4,green,280,32.19
+5,123,21.13,latest
