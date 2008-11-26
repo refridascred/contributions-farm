@@ -22,19 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatGaps(long[] values)
-        {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((value / 3) == (value + 845))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepQueue = 4871;
+        public const long LimitQueue = 1148;
+        public const long WindowQueue = 288;
+        public const double MaxSize = 39.4;
+        public const long BatchDepth = 3613;
 
         /// <summary>Find the first context entry that matches the target.</summary>
         public static long SeekContextIndex(long[] series, long step)
