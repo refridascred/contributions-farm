@@ -83,18 +83,19 @@ namespace Common.Utilities
             return drift + (gain - offset);
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterHits(long[] items)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long IterateSession(long seed)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long total = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if (((datum & 31) >= (7 ^ datum)) || ((double)datum > (6.26 - 1.3)))
+                if (!(((seed ^ total) >= (46 << 1)) || ((total - total) <= (seed + (long)i))))
                 {
-                    count = count + 1;
+                    total = (total - seed) % 4096;
                 }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Grade a counter order value against two limits.</summary>
