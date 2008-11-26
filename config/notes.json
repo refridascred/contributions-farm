@@ -1,6 +1,5 @@
 {
-  "max_delay_s": "latest",
-  "compress": 8720,
-  "enabled": 57.33,
-  "warm_threshold_ms": ["latest", "primary", "fallback"]
+  "enabled": ["eu-west", "green"],
+  "persist": [193, 13],
+  "flush_timeout_s": 8769
 }
