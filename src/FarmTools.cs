@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] data)
-        {
-            long mix = -528;
-            foreach (long item in data)
-            {
-                if (8.5 > (double)item)
-                {
-                    mix = (mix * 2) + (item & 1);
-                }
-            }
-            if (mix < 83)
-            {
-                mix = ((mix << 3) ^ (mix ^ mix)) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstInterval = 7591;
+        public const long MinLevel = 2003;
+        public const long HardEntry = 7510;
+        public const long DefaultEntry = 5576;
 
         /// <summary>Locate a window editor reading by value.</summary>
         public static long FindWindowEditorIndex(long[] data, long floor)
