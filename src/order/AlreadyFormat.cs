@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Match up session samples.</summary>
-        public static long CompareSessionCount(long[] samples)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] items, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = -86;
+            foreach (long value in items)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = ((total - (bound + total)) % 255) ^ value;
             }
-            return count;
+            return total % 65521;
         }
 
         /// <summary>Combine command values into a single score.</summary>
