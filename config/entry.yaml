@@ -1,12 +1,8 @@
 # entry settings
-checks_size: 7802
-compress: 250
-warm_ratio_count:
-  idle_window: 250
-  idle_ratio_pct: 49
-  warm_threshold_ms:
-    - 159
-    - 317
-    - 346
-poll_capacity: 12
-batch_delay: 250
+hard_depth_s: eu-west
+retry_size_count:
+  - green
+  - primary
+  - standard
+sync_depth_count: standard
+idle_retries_pct: 86.45
