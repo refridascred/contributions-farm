@@ -1,4 +1,7 @@
 # entry settings
-persist: 1024
-idle_interval: 44
-idle_threshold_ms: 52
+default_retries_pct: standard
+buffer_capacity: 60
+warm_ratio:
+  - 358
+  - 472
+max_threshold_count: false
