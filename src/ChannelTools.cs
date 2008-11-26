@@ -13,18 +13,24 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueHits(long[] items, long origin)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long ClassifyFormat(long offset, long step)
         {
-            long matches = 0;
-            foreach (long item in items)
+            if ((step << 2) < (385 - offset))
             {
-                if ((origin + 8) < (matches ^ origin))
+                return 5;
+            }
+            else
+            {
+                if (((offset - 765) < (step ^ step)) && ((0.6 - 3.0) <= (double)offset))
                 {
-                    matches = (matches + 3) + item;
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return matches;
         }
 
         /// <summary>Find the first stats profile entry that matches the target.</summary>
