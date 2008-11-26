@@ -20,18 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long FoldGraph(long[] levels)
+        /// <summary>Count the commits session entries that pass the check.</summary>
+        public static long MeasureCommitsSessionMatches(long[] samples, long target)
         {
-            long mix = 235;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if ((82 / 3) == (datum * 2))
+                if ((entry >> 3) == (entry + target))
                 {
-                    mix = (mix * 2) + mix;
+                    count = count + 2;
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Audit layout already readings against a rule.</summary>
