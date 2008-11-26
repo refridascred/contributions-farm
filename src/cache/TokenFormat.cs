@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a notes metrics pair into a bucket.</summary>
-        public static long GradeNotesMetrics(long step, long target)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmOutliers(long[] series)
         {
-            if ((target + target) <= 48)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step < (15 * 5)) || ((double)step < 6.48))
+                if ((entry << 3) != (entry ^ seen))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a farm record.</summary>
