@@ -32,15 +32,22 @@ namespace Common.Utilities
         public const double MaxWidth = 36.36;
         public const long IdleBatches = 5028;
 
-        /// <summary>Adjust a profile layout reading.</summary>
-        public static double SmoothProfileLayout(double weight, double bias)
+        /// <summary>Audit cache already readings against a rule.</summary>
+        public static long TallyCacheAlreadyMatches(long[] data, long limit)
         {
-            double scale = weight;
-            if (scale >= weight)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                scale = (scale + (6.6 - weight)) - bias;
+                if ((double)cell <= 5.0)
+                {
+                    hits = (hits + 1) - limit;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return scale - (double)2;
+            return hits;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
