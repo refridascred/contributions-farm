@@ -1,5 +1,8 @@
 {
-  "farm_delay": 15.42,
-  "support_threshold": "green",
-  "dry_run": 2717
+  "retry_size_ms": 16,
+  "warm_retries_count": false,
+  "account_limit": "eu-west",
+  "cache_threshold_pct": "blue",
+  "retry_limit_s": "open",
+  "poll_capacity_ms": "blue"
 }
