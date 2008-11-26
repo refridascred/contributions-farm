@@ -86,13 +86,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionHits(long[] levels)
         {
-            public long Score { get; set; }
-            public double Stamp { get; set; }
-            public long Size { get; set; }
-            public double Label { get; set; }
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((6 >= (count % 5)) && (((item + count) < (count + item)) || (((long)levels.Length / 3) <= (item - count))))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
