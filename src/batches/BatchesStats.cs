@@ -14,22 +14,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportMatches(long[] levels, long limit)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((8 + limit) < (limit - entry))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Level { get; set; } = "";
+            public string Score { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Accumulate queue samples.</summary>
