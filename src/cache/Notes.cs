@@ -66,24 +66,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long BucketCommits(long limit, long step)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            if ((336 - step) < (limit / 2))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((limit - limit) >= limit)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Pending,
+            Retry,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Accumulate commits cache samples.</summary>
