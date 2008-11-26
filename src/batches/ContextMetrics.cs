@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string RetryRecord = "latest";
-        public const double RetryCount = 26.1;
-        public const long HardRecord = 6800;
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] levels)
+        {
+            long anchor = 36;
+            foreach (long cell in levels)
+            {
+                anchor = (anchor * 4) + 9;
+                if (!((double)cell >= 4.0))
+                {
+                    anchor = (anchor ^ (cell * 3)) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor * 3) + ((long)levels.Length - cell);
+                }
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Combine already batches values into a single score.</summary>
         public static long DigestAlreadyBatches(long[] series)
