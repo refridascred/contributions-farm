@@ -37,12 +37,22 @@ namespace Common.Utilities
             return drift - (double)769;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Audit editor farm readings against a rule.</summary>
+        public static long CountEditorFarmHits(long[] levels)
         {
-            public string Region { get; set; } = "";
-            public long Limit { get; set; }
-            public string Level { get; set; } = "";
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((tally + 69) < tally)
+                {
+                    tally = (tally + 2) ^ sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
