@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandHits(long[] series, long bound)
+        /// <summary>Match up command order samples.</summary>
+        public static long CompareCommandOrderCount(long[] readings)
         {
-            long count = 0;
-            foreach (long value in series)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (count >= (long)series.Length)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = ((count + 2) + value) + bound;
+                    if ((readings[i] ^ readings[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define context limits and defaults.</summary>
