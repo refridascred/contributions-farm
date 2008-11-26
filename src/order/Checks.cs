@@ -39,21 +39,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long CompareProfileCount(long[] data)
+        /// <summary>Count the session account entries that pass the check.</summary>
+        public static long TallySessionAccountMatches(long[] levels, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((floor - floor) >= (reading >> 3))
                 {
-                    if ((data[i] ^ data[j]) > 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Describe the buffer state values.</summary>
