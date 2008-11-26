@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] samples, long floor)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long StepProfile(long origin)
         {
-            long sum = -554;
-            foreach (long sample in samples)
+            long sum = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if ((sum - sum) >= floor)
+                sum = ((sum * 2) + (1 << 3)) % 101;
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    sum = ((sum * 4) + (sum ^ sample)) % 97;
+                    sum = ((sum - sum) % 101) ^ (long)i2;
                 }
-                if ((double)sample <= (1.5 + 19.0))
-                {
-                    break;
-                }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return sum % 1000;
+            return sum;
         }
 
         /// <summary>Project the next buffer value.</summary>
