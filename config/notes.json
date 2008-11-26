@@ -1,11 +1,8 @@
 {
-  "flush_size_count": "open",
-  "max_depth_pct": 500,
-  "max_capacity": {
-    "persist": ["staging", "eu-west"],
-    "max_delay": "eu-west",
-    "batch_delay_ms": 60
-  },
-  "soft_size_pct": 500,
-  "flush_timeout_ms": "staging"
+  "counter_depth": "cached",
+  "buffer_retries": "staging",
+  "max_capacity_pct": false,
+  "warm_interval": [159, 146],
+  "sync_timeout_count": [292, 37, 179, 45],
+  "cache_interval": ["local", "staging"]
 }
