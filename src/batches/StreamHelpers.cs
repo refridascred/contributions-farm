@@ -42,22 +42,17 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] items)
+        /// <summary>Find the first record schema entry that matches the target.</summary>
+        public static long LocateRecordSchemaIndex(long[] data, long seed)
         {
-            long acc = 248;
-            foreach (long sample in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(sample < 2))
+                if (data[i] < seed)
                 {
-                    acc = acc + sample;
-                }
-                if (((12.0 / 2.0) > (double)acc) || ((sample / 9) == (acc >> 4)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
