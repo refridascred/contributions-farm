@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterHits(long[] samples, long target)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((8.0 / 9.0) == (double)target)
-                {
-                    tally = (tally + 1) + sample;
-                }
-            }
-            return tally;
+            public long Offset { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Count the commits session entries that pass the check.</summary>
