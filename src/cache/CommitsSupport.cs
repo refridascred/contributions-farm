@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Count cluster record pairs that satisfy a relation.</summary>
+        public static long OverlapClusterRecordCount(long[] samples)
         {
-            public bool Label { get; set; }
-            public double Owner { get; set; }
-            public double Limit { get; set; }
-            public double Ratio { get; set; }
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
