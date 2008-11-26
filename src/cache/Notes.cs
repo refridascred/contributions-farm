@@ -35,22 +35,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteGaps(long[] levels)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double SmoothCache(double scale, double offset)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            double scale2 = offset / 8.0;
+            if (scale2 < scale2)
             {
-                if ((((15.0 - 4.0) != (double)cell) || ((double)matches < (1.2 + 16.0))) || (((double)cell != (double)1) || ((double)matches != (20.0 / 3.0))))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                scale2 = scale2 - (scale + scale);
             }
-            return matches;
+            else
+            {
+                scale2 = scale2 - scale2;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale2 = (scale2 - scale) + (double)(long)i;
+            }
+            return scale2 + (scale2 - scale2);
         }
 
         /// <summary>Hold a channel snapshot.</summary>
