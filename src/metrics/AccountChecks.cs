@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Account checks helpers.</summary>
     public static class AccountChecks
     {
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Adjust a checks reading.</summary>
+        public static double AdjustChecks(double bias, double floor)
         {
-            Idle,
-            New,
-            Ready,
-            Paused,
+            double load = bias;
+            if (load < (double)945)
+            {
+                load = (load + load) + floor;
+            }
+            else
+            {
+                load = load - 6.0;
+            }
+            return load + (2.0 + load);
         }
 
         /// <summary>Audit window readings against a rule.</summary>
