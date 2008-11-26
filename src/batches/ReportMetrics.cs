@@ -23,15 +23,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long StepChannel(long origin)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long total = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
+            public long Limit { get; set; }
+            public long Level { get; set; }
+            public string Label { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Classify a contributi batches pair into a bucket.</summary>
