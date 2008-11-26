@@ -36,21 +36,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long MatchEditorCount(long[] levels)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Flag { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Count githubfarm layout pairs that satisfy a relation.</summary>
