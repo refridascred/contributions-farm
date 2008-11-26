@@ -42,12 +42,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Compare every pair of contributi batch readings.</summary>
+        public static long PairContributiBatchCount(long[] values)
         {
-            Locked,
-            Retry,
-            Failed,
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the farm phase values.</summary>
