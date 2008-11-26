@@ -13,20 +13,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] data, long limit)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long OverlapBatchesCount(long[] items)
         {
-            long total = 890;
-            foreach (long value in data)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                total = total + (value + total);
-                total = (total ^ (total / 2)) % 1000;
-                if ((1.0 * 4.16) >= (double)limit)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    break;
+                    if ((items[i] + items[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return total % 1000;
+            return matches;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
