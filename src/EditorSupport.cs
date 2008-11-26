@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long DigestCommits(long[] items, long limit)
         {
-            public double Region { get; set; }
-            public bool Weight { get; set; }
+            long mix = 4;
+            foreach (long item in items)
+            {
+                mix = (((mix * 5) + (limit ^ 5)) % 1000) ^ item;
+                mix = (mix + 7) % 4096;
+                if (!((mix >> 3) != (67 / 3)))
+                {
+                    mix = mix - (mix >> 3);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
