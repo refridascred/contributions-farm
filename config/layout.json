@@ -1,11 +1,7 @@
 {
-  "default_interval_s": 852,
-  "readonly": {
-    "sync_timeout_ms": 2047,
-    "channel_threshold": "staging",
-    "notes_limit": "blue"
-  },
-  "soft_capacity_pct": 79,
-  "persist": 79,
-  "cache_interval": 500
+  "cache_delay_ms": [34, 193, 134],
+  "warm_capacity": "cached",
+  "soft_size": "open",
+  "checks_timeout": ["edge", "local"],
+  "min_capacity": "stable"
 }
