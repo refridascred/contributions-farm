@@ -32,14 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileMatches(long[] levels)
         {
-            Synced,
-            Idle,
-            Done,
-            Failed,
-            Locked,
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if (!((entry / 6) > entry))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
