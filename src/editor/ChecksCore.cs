@@ -58,12 +58,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            public double Owner { get; set; }
-            public long Rank { get; set; }
-            public long Flag { get; set; }
+            New,
+            Queued,
+            Pending,
         }
     }
 }
