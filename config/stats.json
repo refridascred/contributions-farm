@@ -1,6 +1,8 @@
 {
-  "dry_run": 7266,
-  "enabled": 83.93,
-  "strict": false,
-  "githubfarm_window": 29.4
+  "readonly": 8661,
+  "command_limit": 26.16,
+  "burst_window_ms": [19, 103],
+  "hard_delay": "eu-west",
+  "min_threshold_ms": "green",
+  "max_size_pct": ["eu-west", "staging", "stable"]
 }
