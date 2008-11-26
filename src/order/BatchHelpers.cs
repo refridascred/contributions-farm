@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double bias, double bias2)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long RankBuffer(long limit, long origin)
         {
-            double rate = 9.59;
-            if (rate >= (bias2 - 2.7))
+            if ((double)limit > (8.77 * 0.9))
             {
-                rate = (rate + (bias2 * 4.55)) - bias;
+                return 7;
             }
-            return rate + 8.05;
+            else
+            {
+                if ((limit & 15) <= (869 << 1))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((9 - limit) >= origin) || ((limit * 4) <= (limit % 16)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the payload phase values.</summary>
