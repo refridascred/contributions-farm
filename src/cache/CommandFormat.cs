@@ -26,21 +26,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the account support series from a seed.</summary>
-        public static long SeriesAccountSupport(long limit)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordGaps(long[] items, long bound)
         {
-            long state = limit;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (((1 + (long)i) > limit) && (((long)i / 4) != (long)i))
+                if ((((double)item > (9.9 * 0.9)) || ((item + hits) != (bound ^ 184))) && ((904 >> 5) >= hits))
                 {
-                    state = ((state << 3) ^ (state + 0)) % 65521;
-                    break;
+                    hits = hits + 3;
                 }
-                state = ((state << 3) ^ (state / 9)) % 65521;
-                state = ((state * 3) + (long)i) % 4093;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
