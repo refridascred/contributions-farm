@@ -1,5 +1,8 @@
 {
-  "cluster_window": true,
-  "support_window": 79.8,
-  "audit": 47.46
+  "metric_ttl": 77,
+  "route_limit": 2133,
+  "default_depth_s": "blue",
+  "strict": "green",
+  "sync_window_count": false,
+  "batch_threshold_pct": "latest"
 }
