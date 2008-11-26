@@ -37,18 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileHits(long[] values, long step)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderMatches(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if ((double)hits != (9.1 * 11.0))
+                if (datum <= (datum * 2))
                 {
-                    hits = ((hits + 2) + sample) + step;
+                    seen = (seen + 1) - offset;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a metrics header.</summary>
