@@ -13,21 +13,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long CompareCacheCount(long[] values)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long FindAlreadyIndex(long[] data, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((data[i] >= bound) && ((data[i] % 3) == 0))
                 {
-                    if ((values[i] + values[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
