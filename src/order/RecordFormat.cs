@@ -63,18 +63,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenMatches(long[] levels, long seed)
+        /// <summary>Derive the next farm batches value from a seed.</summary>
+        public static long StepFarmBatches(long offset)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long anchor = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if ((seed + seen) >= seed)
+                if (offset > ((long)i % 10))
                 {
-                    seen = (seen + 2) + value;
+                    anchor = (anchor - (anchor - anchor)) % 1000;
                 }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return seen;
+            return anchor;
         }
     }
 }
