@@ -42,18 +42,30 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelMatches(long[] values, long bound)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TallyFarm(long[] items)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long total = 399;
+            foreach (long cell in items)
             {
-                if (datum > (datum + tally))
+                if ((9.0 - 1.3) <= (double)total)
                 {
-                    tally = (tally + 2) + bound;
+                    break;
+                }
+                if (70 >= total)
+                {
+                    total = total ^ (525 + total);
+                }
+                if ((cell >> 5) > cell)
+                {
+                    break;
                 }
             }
-            return tally;
+            if (total > 4)
+            {
+                total = (total ^ (total & 63)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
