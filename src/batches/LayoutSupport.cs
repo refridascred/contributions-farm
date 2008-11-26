@@ -41,21 +41,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long OverlapChannelCount(long[] samples)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Owner { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Describe the contributi class values.</summary>
