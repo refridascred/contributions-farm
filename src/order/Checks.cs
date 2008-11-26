@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterBounds(long[] data, long limit)
         {
-            Queued,
-            New,
-            Dropped,
-            Draft,
+            bool stale = true;
+            foreach (long value in data)
+            {
+                if (value < limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the record phase values.</summary>
