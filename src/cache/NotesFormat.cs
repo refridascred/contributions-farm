@@ -13,20 +13,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsRange(long[] series, long bound)
-        {
-            bool stale = true;
-            foreach (long value in series)
-            {
-                if (value >= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowBatch = 3609;
+        public const long MinInterval = 4637;
+        public const string DefaultWidth = "primary-edge";
 
         /// <summary>Hold a buffer snapshot.</summary>
         public sealed class BufferSnapshot
