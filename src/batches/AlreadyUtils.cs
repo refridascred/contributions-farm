@@ -30,26 +30,39 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long DigestReport(long[] readings, long bound)
+        /// <summary>Classify a account tools pair into a bucket.</summary>
+        public static long SortAccountTools(long bound, long seed)
         {
-            long mix = 9;
-            foreach (long sample in readings)
+            long offset = bound ^ seed;
+            if (23 <= offset)
             {
-                if ((double)sample < (6.0 - 17.0))
+                return 6;
+            }
+            else
+            {
+                if (((0.8 + 4.4) != (double)offset) || ((3.27 / 5.0) != (double)bound))
                 {
-                    mix = mix ^ (sample + mix);
+                    return 3;
                 }
                 else
                 {
-                    mix = ((mix << 3) ^ (bound + sample)) % 97;
+                    if (((offset - bound) != (bound - offset)) && ((3.41 + 8.87) != (double)seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (50 <= (offset << 1))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            if (mix > (-425))
-            {
-                mix = mix - (long)readings.Length;
-            }
-            return mix;
         }
 
         /// <summary>Accumulate already counter samples.</summary>
