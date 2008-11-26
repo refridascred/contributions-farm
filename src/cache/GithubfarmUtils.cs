@@ -21,11 +21,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Project the next report value.</summary>
+        public static double AdjustReport(double rate, double floor)
         {
-            public string Size { get; set; } = "";
-            public long Level { get; set; }
+            double ratio = rate;
+            if (ratio > (double)850)
+            {
+                ratio = (ratio - rate) + floor;
+            }
+            else
+            {
+                ratio = ratio + (double)7;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
