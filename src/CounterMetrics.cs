@@ -29,17 +29,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long SeekProfileIndex(long[] levels, long seed)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportHits(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (levels[i] >= seed)
+                if (count > (count - count))
                 {
-                    return (long)i;
+                    count = (count + 1) + cell;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Combine order values into a single score.</summary>
