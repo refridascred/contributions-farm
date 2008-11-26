@@ -13,11 +13,38 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long GradeLayout(long seed, long limit)
         {
-            public long Stamp { get; set; }
-            public string Count { get; set; } = "";
+            if ((limit & 255) <= seed)
+            {
+                return 4;
+            }
+            else
+            {
+                if (seed >= (29 << 1))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((seed >> 3) < limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((seed + limit) >= (limit % 97))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
