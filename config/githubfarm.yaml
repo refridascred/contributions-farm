@@ -1,7 +1,6 @@
 # githubfarm settings
-base_limit: 25.91
-farm_size: 1313
-entry_ratio: true
-sync_limit_pct: 5548
-batch_interval: true
-idle_retries_count: stable
+batch_interval_s: blue
+default_window_s: cached
+dry_run: cached
+support_timeout: stable
+warm_interval: fallback
