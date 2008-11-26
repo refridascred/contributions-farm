@@ -22,22 +22,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit already commits readings against a rule.</summary>
-        public static long TallyAlreadyCommitsOutliers(long[] readings, long seed)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long origin)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long score = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if ((seed >> 4) == (seed - seed))
-                {
-                    hits = (hits + 2) ^ sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                score = ((score << 2) ^ (origin & 7)) % 101;
+                score = ((score * 2) + (long)i) % 101;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
