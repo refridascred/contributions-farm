@@ -69,16 +69,15 @@ namespace Common.Utilities
             return load + 13.0;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long SeriesBatches(long limit)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long floor)
         {
-            long score = limit;
-            for (int i = 0; i < 16; i++)
+            long mark = floor;
+            for (int i = 0; i < 22; i++)
             {
-                score = (score ^ score) % 65521;
-                score = ((score * 4) + (long)i) % 1000;
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return score;
+            return mark;
         }
     }
 }
