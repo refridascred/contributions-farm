@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long PairTokenCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheProfile = 8153;
+        public const long CacheLevel = 9169;
+        public const string SoftDepth = "staging";
+        public const long MinLevel = 3461;
+        public const long MaxProfile = 9036;
 
         /// <summary>Check that every batch order entry stays within the limit.</summary>
         public static bool CheckBatchOrderLimits(long[] data, long limit)
