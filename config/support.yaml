@@ -1,5 +1,10 @@
 # support settings
-burst_limit_count: 66.28
-dry_run: primary
-cache_ttl: 100
-metrics_ratio: 19.26
+hard_timeout:
+  - 157
+  - 81
+  - 458
+min_ttl: latest
+audit: 5925
+min_threshold_pct: 250
+stream_threshold: staging
+verbose: 63
