@@ -15,23 +15,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] items, long bound)
-        {
-            long acc = 16;
-            foreach (long reading in items)
-            {
-                if ((double)bound < 1.65)
-                {
-                    continue;
-                }
-                if (!((acc << 2) >= (bound + reading)))
-                {
-                    acc = (acc << 3) ^ (acc + bound);
-                }
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string MinSpan = "fallback-edge";
+        public const string IdleChecks = "legacy-1";
+        public const long SoftSize = 7618;
+        public const string RetryChecks = "legacy-v2";
 
         /// <summary>Audit command report readings against a rule.</summary>
         public static long CountCommandReportMatches(long[] data, long origin)
