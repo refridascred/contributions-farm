@@ -27,12 +27,11 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
-        {
-            Retry,
-            Dropped,
-            Paused,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleLayout = 8360;
+        public const double DefaultLayout = 22.06;
+        public const long RetryDepth = 2968;
+        public const long MaxLayout = 3971;
+        public const long DefaultSize = 2718;
     }
 }
