@@ -1,18 +1,7 @@
 # support settings
-flush_threshold_pct: false
-batch_retries:
-  enabled: stable
-  account_interval: 500
-  batches_threshold: 88
-  audit:
-    context_interval: green
-    flush_limit_s: fallback
-    dry_run: 69
-    strict: 56.01
-    batch_threshold: true
-    verbose: 60
-command_interval: 996
-enabled:
-  - edge
-  - open
-  - primary
+sync_limit_pct: 6068
+retry_retries_pct: green
+readonly:
+  - stable
+  - strict
+notes_capacity: 1716
