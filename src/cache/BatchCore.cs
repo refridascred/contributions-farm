@@ -46,12 +46,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long step, long step2)
         {
-            Pending,
-            Retry,
-            Draft,
+            if (step2 <= (step2 - step))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step2 + 824) > (step2 + step2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
