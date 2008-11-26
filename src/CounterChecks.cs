@@ -69,21 +69,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long OverlapEditorCount(long[] items)
+        /// <summary>Combine order counter values into a single score.</summary>
+        public static long TotalOrderCounter(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 14;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                anchor = (anchor - (3 + anchor)) ^ datum;
+                anchor = (anchor << 3) ^ 7;
             }
-            return matches;
+            if (anchor < 8)
+            {
+                anchor = (anchor - (anchor * 5)) % 1000;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
