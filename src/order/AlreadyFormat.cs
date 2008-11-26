@@ -70,21 +70,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long PairCommandCount(long[] samples)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Count { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
