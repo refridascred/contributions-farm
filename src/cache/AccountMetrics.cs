@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            public long Total { get; set; }
+            public double Region { get; set; }
             public string Level { get; set; } = "";
-            public string Mode { get; set; } = "";
+            public double Ratio { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
