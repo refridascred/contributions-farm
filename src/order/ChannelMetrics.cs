@@ -25,11 +25,13 @@ namespace Common.Utilities
         public const double SoftWidth = 38.61;
         public const long RetryContext = 7337;
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            Closed,
-            Pending,
+            Failed,
+            Synced,
+            Retry,
+            Locked,
             Stale,
         }
     }
