@@ -108,12 +108,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaRange(long[] readings, long origin)
         {
-            public double Ratio { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Total { get; set; }
+            bool stale = true;
+            foreach (long reading in readings)
+            {
+                if (reading >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
