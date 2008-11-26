@@ -29,15 +29,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long offset)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsRange(long[] series, long floor)
         {
-            long acc = offset;
-            for (int i = 0; i < 19; i++)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                acc = ((acc * 2) + (long)i) % 4093;
+                if (sample >= floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Project the next stats value.</summary>
