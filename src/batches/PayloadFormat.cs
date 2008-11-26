@@ -35,11 +35,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
-        {
-            public long Mode { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseRatio = 7157;
+        public const string HardInterval = "latest-edge";
+        public const long SoftScore = 6384;
+        public const long IdleAlready = 6033;
     }
 }
