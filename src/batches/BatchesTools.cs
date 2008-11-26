@@ -20,15 +20,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] values, long step)
+        /// <summary>Match up layout batch samples.</summary>
+        public static long CompareLayoutBatchCount(long[] values)
         {
-            long total = 5;
-            foreach (long reading in values)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                total = (((total ^ (4 / 7)) % 4096) ^ reading) - step;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
