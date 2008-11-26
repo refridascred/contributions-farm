@@ -21,12 +21,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string RetryCluster = "stable-1";
-        public const long MaxTimeout = 3060;
-        public const long DefaultCluster = 5244;
-        public const long HardCount = 9357;
-        public const string SoftCluster = "fallback-edge";
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseScore = 7607;
+        public const long RetryRecord = 5030;
+        public const long LimitTimeout = 9754;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double BaseBudget = 31.0;
