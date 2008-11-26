@@ -47,14 +47,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Grade a profile stream value against two limits.</summary>
+        public static long BucketProfileStream(long seed, long bound)
         {
-            Queued,
-            Dropped,
-            Closed,
-            Locked,
-            Stale,
+            long span = seed + bound;
+            if (((span ^ seed) == (seed & 7)) && ((bound + bound) <= 2))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound + seed) < (bound / 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((bound << 3) > 104)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((bound + span) == (seed + 4)) && (span > (bound - span)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
