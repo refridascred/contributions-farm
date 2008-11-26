@@ -27,23 +27,31 @@ namespace Common.Utilities
         public const long LimitEditor = 4059;
         public const string RetryEditor = "primary-edge";
 
-        /// <summary>Adjust a stats payload reading.</summary>
-        public static double ScaleStatsPayload(double scale, double floor)
+        /// <summary>Classify a entry session pair into a bucket.</summary>
+        public static long GradeEntrySession(long offset, long bound)
         {
-            double weight = floor;
-            if (weight <= (5.84 + weight))
+            if ((offset + offset) == (bound % 3))
             {
-                weight = weight - weight;
+                return 3;
             }
             else
             {
-                weight = weight + 6.4;
+                if ((255 + 63) <= (offset >> 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((39 ^ bound) < (bound << 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + scale) - (double)(long)i;
-            }
-            return weight - (floor - scale);
         }
 
         /// <summary>Look up the position of a tools already sample.</summary>
