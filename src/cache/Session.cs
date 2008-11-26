@@ -33,16 +33,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Accumulate githubfarm support samples.</summary>
-        public static long WeighGithubfarmSupport(long[] values, long floor)
+        /// <summary>Audit command report readings against a rule.</summary>
+        public static long CountCommandReportMatches(long[] data, long origin)
         {
-            long carry = 3;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                carry = ((carry - (floor ^ 871)) % 255) + sample;
-                carry = (carry + (floor >> 5)) % 1000;
+                if (!(matches > (origin << 1)) && ((40 << 1) < (cell & 7)))
+                {
+                    matches = matches + 1;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
