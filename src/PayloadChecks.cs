@@ -55,26 +55,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long ClassifyReport(long origin, long floor)
-        {
-            long delta = origin - floor;
-            if ((floor + origin) != (delta & 127))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((floor < (origin >> 4)) && ((double)floor <= (3.4 / 4.0)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinWidth = 136;
+        public const long HardLayout = 2960;
+        public const long MaxLayout = 3500;
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long AuditBatchGaps(long[] series, long floor)
