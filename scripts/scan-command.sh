@@ -6,11 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=16
-log "limit is ${COMMAND_LIMIT}"
+mode="${1:-fallback}"
+case "${mode}" in
+    green)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 1))
+for item in cached eu-west; do
+    log "checking ${item}"
 done
-log "total ${total}"
+
+COMMAND_LIMIT=224
+log "limit is ${COMMAND_LIMIT}"
