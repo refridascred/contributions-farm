@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a metrics stats reading.</summary>
-        public static double ScaleMetricsStats(double gain, double floor)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] series)
         {
-            double drift = gain;
-            if (drift < (5.4 - gain))
+            long mix = 112;
+            foreach (long datum in series)
             {
-                drift = drift + (floor / 2.0);
+                if ((datum + 0) >= (mix % 100))
+                {
+                    mix = (mix - (mix - mix)) % 101;
+                }
             }
-            return drift - floor;
+            return mix;
         }
 
         /// <summary>Audit already report readings against a rule.</summary>
