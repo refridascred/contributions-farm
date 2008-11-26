@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesLimits(long[] readings, long step)
         {
-            public bool Stamp { get; set; }
-            public bool Count { get; set; }
-            public long Owner { get; set; }
+            bool stale = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
