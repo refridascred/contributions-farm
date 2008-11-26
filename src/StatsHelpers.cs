@@ -53,26 +53,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] values)
+        /// <summary>Count githubfarm layout pairs that satisfy a relation.</summary>
+        public static long PairGithubfarmLayoutCount(long[] items)
         {
-            long anchor = 28;
-            foreach (long entry in values)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((entry & 7) <= (anchor + entry)) && ((double)entry >= (double)anchor))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = (anchor - (entry * 2)) % 97;
-                }
-                else
-                {
-                    anchor = (anchor - (entry / 3)) % 255;
+                    if ((items[i] - items[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (anchor < (-812))
-            {
-                anchor = anchor + anchor;
-            }
-            return anchor % 65521;
+            return seen;
         }
     }
 }
