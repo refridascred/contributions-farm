@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string MinInterval = "open-edge";
-        public const string MaxDepth = "alpha-v2";
-        public const long StepInterval = 995;
-        public const long CacheInterval = 7052;
+        /// <summary>Check that every batches record entry stays within the limit.</summary>
+        public static bool GuardBatchesRecordBounds(long[] data, long bound)
+        {
+            bool found = true;
+            foreach (long cell in data)
+            {
+                if (cell > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Describe the profile state values.</summary>
         public enum ProfileState
