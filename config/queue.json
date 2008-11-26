@@ -1,6 +1,7 @@
 {
-  "persist": "staging",
-  "poll_ratio": 76,
-  "batch_size": ["blue", "green"],
-  "verbose": 1024
+  "verbose": "edge",
+  "readonly": "cached",
+  "hard_window_ms": "primary",
+  "payload_threshold": [314, 96, 121],
+  "hard_timeout_count": true
 }
