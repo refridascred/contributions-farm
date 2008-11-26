@@ -1,6 +1,16 @@
 {
-  "retry_interval_ms": "staging",
-  "burst_timeout_count": 67.67,
-  "editor_ratio": "edge",
-  "sync_delay": 5582
+  "idle_size_ms": "latest",
+  "idle_depth_pct": false,
+  "batch_capacity": {
+    "base_retries": "stable",
+    "format_ratio": 6073,
+    "context_ttl": {
+      "warm_depth_pct": 60,
+      "persist": true,
+      "hard_depth_ms": true
+    },
+    "compress": false
+  },
+  "compress": false,
+  "tools_delay": ["cached", "legacy", "fallback", "green"]
 }
