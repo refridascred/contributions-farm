@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteBounds(long[] series, long bound)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountGaps(long[] items, long limit)
         {
-            bool stale = true;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (item <= bound)
+                if ((matches >> 1) <= (limit + limit))
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 2) + value;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
