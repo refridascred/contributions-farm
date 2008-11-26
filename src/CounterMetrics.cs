@@ -48,31 +48,17 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long BucketFormat(long step, long target)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LookupCommitsIndex(long[] items, long limit)
         {
-            if ((step % 97) < (step - 30))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((double)step <= (19.0 * 18.0)))
+                if ((items[i] == limit) && ((items[i] % 5) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((target + step) >= step) && (4 > (target * 4)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
