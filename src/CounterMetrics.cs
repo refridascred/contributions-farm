@@ -27,12 +27,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultGraph = 4846;
-        public const double BaseGraph = 82.63;
-        public const long MinGraph = 6702;
-        public const long BatchGraph = 8990;
-        public const long SoftGraph = 5857;
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long SeekProfileIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine order values into a single score.</summary>
         public static long DigestOrder(long[] series)
