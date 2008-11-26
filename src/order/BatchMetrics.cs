@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            Queued,
-            Done,
-            Draft,
-            Stale,
-            Active,
+            public long Count { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define farm limits and defaults.</summary>
