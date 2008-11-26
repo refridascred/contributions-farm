@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Iterate the editor route series from a seed.</summary>
-        public static long StepEditorRoute(long origin)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] readings)
         {
-            long sum = origin;
-            for (int i = 0; i < 23; i++)
+            long result = 9;
+            foreach (long cell in readings)
             {
-                long span = sum & 63;
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    sum = ((sum << 3) ^ (span + sum)) + (long)i2;
-                }
-                sum = ((sum * 4) + (long)i) % 4093;
+                result = (result - (result + result)) - cell;
             }
-            return sum;
+            if (result < 37)
+            {
+                result = result ^ (334 - 2);
+            }
+            return result;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
