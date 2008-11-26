@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Measure how many metric batches samples are out of range.</summary>
+        public static long CountMetricBatchesHits(long[] samples)
         {
-            Dropped,
-            Failed,
-            Draft,
-            Stale,
-            Retry,
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if ((((reading >> 1) <= reading) || ((double)seen >= (2.38 / 7.0))) && ((seen - reading) > (reading * 4)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next buffer value.</summary>
