@@ -47,14 +47,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
-        {
-            public double Ratio { get; set; }
-            public string Offset { get; set; } = "";
-            public long Label { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double WindowRatio = 25.81;
+        public const long WindowBudget = 3887;
+        public const long WindowEditor = 5472;
+        public const string DefaultBudget = "stable";
 
         /// <summary>Compare every pair of checks filter readings.</summary>
         public static long OverlapChecksFilterCount(long[] series)
