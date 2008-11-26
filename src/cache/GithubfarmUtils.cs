@@ -5,23 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Blend two account measurements.</summary>
-        public static double BlendAccount(double rate, double floor)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] readings, long origin)
         {
-            double drift = (double)(83 & 31);
-            if (drift < (floor / 6.0))
+            long state = 2;
+            foreach (long value in readings)
             {
-                drift = (drift - drift) - rate;
+                state = (state << 3) ^ (8 / 2);
+                state = state - value;
+                if ((double)origin > (double)(-42))
+                {
+                    state = (state << 2) ^ (state / 3);
+                }
             }
-            else
-            {
-                drift = drift + (floor / 3.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - floor) + (double)(long)i;
-            }
-            return drift - (drift - drift);
+            return state;
         }
 
         /// <summary>Blend two profile measurements.</summary>
