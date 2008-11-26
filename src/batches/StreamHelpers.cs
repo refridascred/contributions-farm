@@ -14,24 +14,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long SeriesEntry(long origin)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long mix = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                long seen = (mix % 2) + (long)i;
-                if ((double)seen == (6.19 + 9.0))
-                {
-                    seen = ((seen * 5) + (seen - seen)) % 1000;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (mix - mix)) % 97;
-                }
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
+            public long Token { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a stats options.</summary>
