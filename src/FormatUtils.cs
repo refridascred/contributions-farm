@@ -32,23 +32,11 @@ namespace Common.Utilities
         public const double MaxWidth = 36.36;
         public const long IdleBatches = 5028;
 
-        /// <summary>Audit cache already readings against a rule.</summary>
-        public static long TallyCacheAlreadyMatches(long[] data, long limit)
-        {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((double)cell <= 5.0)
-                {
-                    hits = (hits + 1) - limit;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitContext = 3985;
+        public const double HardFactor = 68.6;
+        public const long LimitRatio = 2253;
+        public const long HardTimeout = 145;
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool CheckTokenBounds(long[] values, long step)
