@@ -23,22 +23,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphOutliers(long[] levels, long step)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportLimits(long[] values, long target)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                if (count < (count << 3))
+                if (reading >= target)
                 {
-                    count = ((count + 3) + sample) - step;
-                }
-                else
-                {
-                    count = count - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Classify a farm order pair into a bucket.</summary>
