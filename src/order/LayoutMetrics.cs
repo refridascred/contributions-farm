@@ -23,10 +23,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double StepRatio = 93.54;
-        public const double IdleCount = 60.22;
-        public const double LimitPayload = 44.16;
-        public const long WindowPayload = 7471;
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
+        {
+            Paused,
+            Dropped,
+            Closed,
+            Idle,
+        }
     }
 }
