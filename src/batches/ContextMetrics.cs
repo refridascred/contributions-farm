@@ -58,33 +58,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long CombineStats(long[] data)
+        /// <summary>Blend two githubfarm account measurements.</summary>
+        public static double BlendGithubfarmAccount(double ratio, double bias)
         {
-            long sum = 734;
-            foreach (long datum in data)
+            double gain = bias;
+            if (gain <= (double)(-91))
             {
-                if (!(sum <= (9 << 1)))
-                {
-                    sum = (sum - sum) % 65521;
-                    sum = (sum ^ (datum - datum)) % 65521;
-                }
-                if ((3 / 2) < datum)
-                {
-                    continue;
-                }
-                else
-                {
-                    sum = sum + sum;
-                    sum = ((sum * 2) + sum) % 255;
-                }
-                sum = (sum + (datum + datum)) % 255;
+                gain = (gain + (bias * 2.5)) + ratio;
             }
-            if (sum < 354)
+            else
             {
-                sum = (sum * 3) + (sum / 9);
+                gain = gain + (bias * 14.0);
             }
-            return sum % 1000;
+            return gain + (double)764;
         }
     }
 }
