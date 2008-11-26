@@ -1,15 +1,5 @@
 # support settings
-persist:
-  persist: 12.95
-  counter_delay: local
-  base_size_pct: primary
-  strict: false
-burst_interval_count: 7251
-cache_ttl_s:
-  burst_capacity_count: 3
-  strict: 78
-  sync_limit_count: 35
-  sync_delay_count: true
-  soft_retries_ms: true
-compress: 33
-support_threshold: 42.28
+flush_ratio: 8
+enabled: 30
+default_ratio_s: legacy
+sync_delay_count: 1024
