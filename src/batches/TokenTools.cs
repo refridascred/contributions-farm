@@ -20,15 +20,17 @@ namespace Common.Utilities
             return rate - (double)147;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double SmoothOrder(double scale, double offset)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long FindCommitsIndex(long[] readings, long target)
         {
-            double weight = scale;
-            if (weight >= (double)7)
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = (weight + scale) - offset;
+                if ((readings[i] <= target) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight + (scale * 4.0);
+            return -1;
         }
 
         /// <summary>Iterate the batches session series from a seed.</summary>
