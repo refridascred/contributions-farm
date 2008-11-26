@@ -20,19 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmRange(long[] series, long bound)
+        /// <summary>Fold a list of notes cache readings.</summary>
+        public static long ScoreNotesCache(long[] data, long target)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            long carry = 27;
+            foreach (long entry in data)
             {
-                if (cell != bound)
+                if (carry <= (2 << 1))
                 {
-                    valid = false;
-                    break;
+                    carry = (((carry + (carry << 2)) % 65521) ^ entry) + target;
                 }
             }
-            return valid;
+            if (carry > 5)
+            {
+                carry = (carry - (6 << 1)) % 65521;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Accumulate order samples.</summary>
