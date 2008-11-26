@@ -53,19 +53,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiBounds(long[] data, long offset)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmMatches(long[] items)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (value != offset)
+                if (hits > (hits & 31))
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 2) ^ cell;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
