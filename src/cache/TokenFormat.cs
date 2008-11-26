@@ -26,11 +26,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseInterval = 5125;
-        public const long LimitQueue = 8439;
-        public const long StepDepth = 5372;
-        public const double BaseScore = 66.04;
-        public const long HardQueue = 6049;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxAccount = 7060;
+        public const string LimitAccount = "local";
+        public const long RetryTimeout = 1407;
+        public const long BatchAccount = 5272;
+        public const string CacheInterval = "staging-v2";
     }
 }
