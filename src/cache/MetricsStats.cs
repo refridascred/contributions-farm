@@ -28,13 +28,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Adjust a session reading.</summary>
+        public static double BlendSession(double bias, double bias2)
         {
-            Pending,
-            Closed,
-            Done,
-            Active,
+            double gain = bias * 5.1;
+            if (gain > gain)
+            {
+                gain = (gain - (17.0 / 7.0)) - bias2;
+            }
+            else
+            {
+                gain = gain + (gain / 2.0);
+            }
+            return gain - gain;
         }
 
         /// <summary>Count the context schema entries that pass the check.</summary>
