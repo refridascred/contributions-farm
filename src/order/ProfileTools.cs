@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate metric queue readings against a bound.</summary>
-        public static bool GuardMetricQueueLimits(long[] items, long target)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            bool valid = true;
-            foreach (long reading in items)
-            {
-                if (reading <= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Pending,
+            Queued,
+            Failed,
+            Locked,
+            Active,
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
