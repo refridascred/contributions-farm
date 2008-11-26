@@ -1,11 +1,18 @@
 {
-  "idle_threshold_s": ["cached", "stable", "latest", "fallback"],
-  "queue_retries": {
-    "profile_threshold": 100,
-    "base_limit_ms": "open",
-    "warm_interval_count": "green"
-  },
-  "readonly": false,
-  "sync_ttl": 9475,
-  "min_depth_count": 8.25
+  "base_retries": 60,
+  "githubfarm_timeout": [295, 127],
+  "batch_window_pct": "edge",
+  "min_timeout": {
+    "readonly": {
+      "buffer_delay": 500,
+      "context_retries": "latest",
+      "context_ttl": "staging",
+      "warm_retries_s": [170, 171],
+      "verbose": 40,
+      "max_capacity_count": false
+    },
+    "idle_ttl_ms": "edge",
+    "cache_threshold_ms": 30,
+    "audit": false
+  }
 }
