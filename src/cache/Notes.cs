@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Adjust a record contributi reading.</summary>
-        public static double AdjustRecordContributi(double bias, double bias2)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] series, long target)
         {
-            double drift = (double)(0 << 2);
-            if (drift <= drift)
+            long state = 1;
+            foreach (long value in series)
             {
-                drift = (drift + (drift + 0.1)) - bias2;
+                if ((value >= (value >> 3)) || ((double)state < (2.7 - 6.0)))
+                {
+                    state = (((state * 3) + (value % 60)) % 101) - target;
+                }
             }
-            else
+            if (state < 38)
             {
-                drift = drift - (double)6;
+                state = (state + state) % 1000;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + 5.63) - (double)(long)i;
-            }
-            return drift + (bias / 5.0);
+            return state;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
