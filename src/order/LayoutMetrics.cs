@@ -27,9 +27,17 @@ namespace Common.Utilities
             return gain - (5.0 * 9.27);
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardFactor = 6198;
-        public const long WindowStream = 7170;
-        public const double MinTimeout = 72.28;
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LocateEditorIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
