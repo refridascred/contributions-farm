@@ -44,9 +44,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowBudget = 8718;
-        public const string RetrySize = "latest-v2";
-        public const string IdleBatches = "fallback";
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
+        {
+            public long Count { get; set; }
+            public double Level { get; set; }
+            public string Stamp { get; set; } = "";
+        }
     }
 }
