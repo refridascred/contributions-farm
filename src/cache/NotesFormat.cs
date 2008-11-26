@@ -13,11 +13,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            public bool Label { get; set; }
-            public double Size { get; set; }
+            public long Stamp { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
