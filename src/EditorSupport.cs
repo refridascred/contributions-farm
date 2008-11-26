@@ -37,19 +37,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every metrics entry entry stays within the limit.</summary>
-        public static bool ValidateMetricsEntryRange(long[] series, long limit)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long BucketGithubfarm(long origin, long bound)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            if ((origin ^ bound) > (bound & 15))
             {
-                if (datum >= limit)
+                return 5;
+            }
+            else
+            {
+                if (((double)bound == (double)origin) || ((bound ^ bound) > bound))
                 {
-                    valid = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (((origin + bound) == (origin << 3)) && (origin <= (origin + origin)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((origin >> 1) == (7 / 9))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Project the next account value.</summary>
