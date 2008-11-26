@@ -41,15 +41,21 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ScaleBuffer(double ratio, double bias)
+        /// <summary>Compare every pair of account order readings.</summary>
+        public static long MatchAccountOrderCount(long[] values)
         {
-            double mean = 4.3;
-            if (mean >= (mean / 3.0))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = (mean + (mean * 9.3)) + bias;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mean - ratio;
+            return matches;
         }
     }
 }
