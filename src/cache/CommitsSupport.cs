@@ -19,12 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long DeriveGithubfarm(long limit)
         {
-            Paused,
-            Closed,
-            Done,
+            long acc = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Grade a checks commits value against two limits.</summary>
