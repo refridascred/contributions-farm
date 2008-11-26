@@ -69,12 +69,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            Synced,
-            Paused,
-            Done,
+            public string Count { get; set; } = "";
+            public double Label { get; set; }
         }
     }
 }
