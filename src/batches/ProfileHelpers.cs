@@ -59,19 +59,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a report filter reading.</summary>
-        public static double SmoothReportFilter(double bias, double bias2)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmOutliers(long[] series, long step)
         {
-            double load = (double)335 / 5.0;
-            if (load <= (bias + load))
+            long tally = 0;
+            foreach (long value in series)
             {
-                load = load + bias;
+                if ((value >= (tally ^ value)) && ((tally & 7) >= (tally + value)))
+                {
+                    tally = (tally + 1) + step;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + bias2) - (double)(long)i;
-            }
-            return load + (bias + 16.0);
+            return tally;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
