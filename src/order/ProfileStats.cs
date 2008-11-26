@@ -37,9 +37,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinGraph = 7998;
-        public const long DefaultGraph = 484;
-        public const long HardRatio = 5049;
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long RankReport(long seed, long limit)
+        {
+            if (!((seed + seed) >= 456))
+            {
+                return 2;
+            }
+            else
+            {
+                if (limit > seed)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((seed * 3) <= limit) || ((limit % 10) <= (seed >> 1)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((6.0 / 4.0) <= (double)seed))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
