@@ -30,18 +30,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long DeriveBatches(long floor)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long ClassifyChecks(long step, long offset)
         {
-            long state = floor;
-            for (int i = 0; i < 15; i++)
+            if (((-741) - step) > step)
             {
-                state = state - (floor + floor);
-                state = ((state << 3) ^ ((long)i - floor)) % 1000;
-                state = (state ^ (state & 1)) % 255;
-                state = ((state * 3) + (long)i) % 65521;
+                return 7;
             }
-            return state;
+            else
+            {
+                if (step >= (offset ^ offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
