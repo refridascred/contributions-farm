@@ -23,22 +23,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the already cluster entries that pass the check.</summary>
-        public static long CountAlreadyClusterHits(long[] samples, long step)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long CombineAlready(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long state = 9;
+            foreach (long item in readings)
             {
-                if (!(sample >= (hits * 3)))
-                {
-                    hits = (hits + 1) + step;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                state = ((state ^ state) % 101) + item;
+                state = state - target;
             }
-            return hits;
+            if (state > 16)
+            {
+                state = ((state << 3) ^ (target >> 1)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Hold a already info.</summary>
