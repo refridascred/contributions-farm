@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Validate support queue readings against a bound.</summary>
-        public static bool GuardSupportQueueLimits(long[] samples, long seed)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long bound, long limit)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            if ((bound + limit) == (11 / 2))
             {
-                if (datum != seed)
+                return 0;
+            }
+            else
+            {
+                if ((bound & 63) == (bound ^ limit))
                 {
-                    found = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)limit >= (double)bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((bound << 2) >= (0 & 3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
