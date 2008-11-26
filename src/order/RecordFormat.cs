@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitTimeout = 8810;
-        public const long DefaultChannel = 5249;
-        public const long MinFactor = 1521;
+        /// <summary>Compare every pair of payload record readings.</summary>
+        public static long ComparePayloadRecordCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Rank token command input into a small class.</summary>
         public static long ClassifyTokenCommand(long offset, long bound)
