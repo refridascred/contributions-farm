@@ -1,16 +1,6 @@
 {
-  "readonly": [64, 277, 367, 172],
-  "poll_delay_pct": 60,
-  "compress": 23,
-  "profile_limit": {
-    "report_threshold": "fallback",
-    "poll_delay_pct": 51.88,
-    "cache_ratio_count": true,
-    "cache_interval_s": 67,
-    "cluster_window": {
-      "enabled": false,
-      "cache_retries": "green",
-      "persist": [351, 212, 145]
-    }
-  }
+  "max_delay_s": "latest",
+  "compress": 8720,
+  "enabled": 57.33,
+  "warm_threshold_ms": ["latest", "primary", "fallback"]
 }
