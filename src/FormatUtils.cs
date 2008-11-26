@@ -53,19 +53,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorBounds(long[] samples, long target)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] values, long origin)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell < target)
+                if (values[i] < origin)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
