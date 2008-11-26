@@ -79,13 +79,21 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Match up schema queue samples.</summary>
+        public static long CompareSchemaQueueCount(long[] series)
         {
-            New,
-            Idle,
-            Stale,
-            Done,
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
