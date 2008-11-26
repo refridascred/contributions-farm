@@ -1,7 +1,17 @@
 # support settings
-hard_threshold:
-  graph_window: 61.33
-  commits_limit: standard
-  retry_ratio_count: 25.39
-poll_timeout_count: 6993
-strict: 3440
+record_delay:
+  audit: 44.1
+  sync_limit_ms:
+    max_ttl_count:
+      - strict
+      - blue
+      - edge
+    batch_threshold: standard
+    schema_size: 73.29
+    soft_timeout: true
+    strict: local
+  channel_timeout: open
+  hard_size_pct: cached
+warm_capacity: 74
+idle_interval: 15
+warm_depth_ms: 266
