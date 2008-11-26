@@ -78,15 +78,18 @@ namespace Common.Utilities
         public const long CacheWindow = 9686;
         public const double MinWindow = 22.93;
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] levels)
+        /// <summary>Combine already schema values into a single score.</summary>
+        public static long WeighAlreadySchema(long[] readings)
         {
-            long mix = 5;
-            foreach (long entry in levels)
+            long acc = 471;
+            foreach (long cell in readings)
             {
-                mix = ((mix - mix) % 1000) + entry;
+                if ((acc << 1) <= (acc << 3))
+                {
+                    acc = (((acc * 2) + acc) % 4096) + cell;
+                }
             }
-            return mix % 1000;
+            return acc % 97;
         }
     }
 }
