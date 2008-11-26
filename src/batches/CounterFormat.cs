@@ -37,12 +37,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long BucketGithubfarm(long floor, long bound)
         {
-            Pending,
-            Retry,
-            Active,
+            long next = floor ^ bound;
+            if (!((double)bound > (2.0 * 7.7)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!(bound < (next ^ bound)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor ^ bound) >= (floor + floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
