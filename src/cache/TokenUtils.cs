@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ProjectGraph(double ratio, double floor)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long step)
         {
-            double rate = (double)5 * 2.78;
-            if (rate < rate)
+            long score = step;
+            for (int i = 0; i < 12; i++)
             {
-                rate = (rate - (floor - rate)) - ratio;
+                if (!(2.14 > (double)step))
+                {
+                    score = (score - (step + 55)) % 65521;
+                    score = (score << 2) ^ (score - score);
+                }
+                score = ((score * 2) + (long)i) % 97;
             }
-            return rate - (rate * 2.5);
+            return score;
         }
 
         /// <summary>Classify a checks counter pair into a bucket.</summary>
