@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long RankQueue(long origin, long origin2)
         {
-            Queued,
-            Idle,
-            Failed,
+            long bound = origin ^ origin2;
+            if (origin2 >= (origin - origin))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((origin2 % 16) <= (origin2 ^ origin)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (1 >= (bound << 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((948 ^ 2) > origin)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
