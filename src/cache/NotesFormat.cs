@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultRoute = 2506;
-        public const string MinSize = "cached-edge";
-        public const long BurstRoute = 4422;
-        public const long HardRoute = 2554;
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TotalTools(long[] samples)
+        {
+            long score = 517;
+            foreach (long datum in samples)
+            {
+                if ((score - 80) < datum)
+                {
+                    score = (score + (score + datum)) % 65521;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long RetrySpan = 5492;
