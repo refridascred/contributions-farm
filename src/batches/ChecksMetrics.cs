@@ -22,13 +22,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            public bool Region { get; set; }
-            public double Level { get; set; }
-            public double Limit { get; set; }
-            public string Ratio { get; set; } = "";
+            Dropped,
+            Retry,
+            New,
+            Paused,
+            Ready,
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
