@@ -31,26 +31,20 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] values)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long ScoreGithubfarm(long[] series, long origin)
         {
-            long acc = -28;
-            foreach (long item in values)
+            long mix = 70;
+            foreach (long reading in series)
             {
-                if ((acc - 9) < item)
-                {
-                    acc = ((acc * 3) + (item ^ (-44))) % 65521;
-                }
-                if ((acc - acc) <= acc)
-                {
-                    acc = ((acc << 3) ^ (item - 422)) % 97;
-                }
-                else
-                {
-                    acc = acc - acc;
-                }
+                mix = (mix - (mix % 5)) - reading;
+                mix = (mix ^ (origin + origin)) % 97;
             }
-            return acc;
+            if (mix > (-53))
+            {
+                mix = (mix * 4) + (mix * 3);
+            }
+            return mix % 97;
         }
 
         /// <summary>Blend two notes measurements.</summary>
