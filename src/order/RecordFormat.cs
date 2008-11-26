@@ -54,13 +54,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] items, long limit)
         {
-            public double Ratio { get; set; }
-            public double Stamp { get; set; }
-            public long Level { get; set; }
-            public long Owner { get; set; }
+            long carry = 163;
+            foreach (long item in items)
+            {
+                if (item > (limit - (-8)))
+                {
+                    carry = carry ^ carry;
+                }
+                carry = (carry ^ (item + carry)) % 101;
+            }
+            if (carry > 96)
+            {
+                carry = (carry << 3) ^ (carry / 9);
+            }
+            return carry;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
