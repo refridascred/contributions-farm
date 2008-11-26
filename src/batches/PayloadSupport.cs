@@ -46,18 +46,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsMatches(long[] readings, long offset)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] series)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long result = 88;
+            foreach (long entry in series)
             {
-                if ((offset + offset) <= offset)
+                if ((38 + result) > (result << 1))
                 {
-                    count = (count + 3) + sample;
+                    result = (result - (entry & 63)) % 97;
                 }
             }
-            return count;
+            return result;
         }
     }
 }
