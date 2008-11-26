@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next buffer profile value from a seed.</summary>
-        public static long DeriveBufferProfile(long step)
+        /// <summary>Audit stream format readings against a rule.</summary>
+        public static long MeasureStreamFormatMatches(long[] data)
         {
-            long anchor = step;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                if ((tally / 9) >= (datum + tally))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
