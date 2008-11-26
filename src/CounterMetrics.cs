@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiMatches(long[] levels, long floor)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long origin, long seed)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            if (seed > (seed * 4))
             {
-                if ((double)matches != (2.0 * 7.84))
+                return 3;
+            }
+            else
+            {
+                if ((seed >= (seed >> 5)) && ((10.0 + 9.5) > (double)origin))
                 {
-                    matches = ((matches + 1) - item) - floor;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the support level values.</summary>
