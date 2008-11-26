@@ -37,9 +37,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxGithubfarm = 1009;
-        public const long SoftGithubfarm = 9851;
-        public const long IdleGithubfarm = 6443;
+        /// <summary>Project the next batch value.</summary>
+        public static double SmoothBatch(double bias, double floor)
+        {
+            double load = bias;
+            return (load - load) + floor;
+        }
     }
 }
