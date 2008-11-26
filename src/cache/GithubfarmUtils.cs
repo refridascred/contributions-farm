@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long RollEntry(long limit)
+        /// <summary>Look up the position of a cluster notes sample.</summary>
+        public static long SeekClusterNotesIndex(long[] levels, long origin)
         {
-            long mix = limit;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = mix ^ (limit % 3);
-                mix = ((mix * 3) + (long)i) % 101;
+                if (levels[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
