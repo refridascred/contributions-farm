@@ -35,13 +35,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            public long Stamp { get; set; }
-            public bool Token { get; set; }
-            public bool Mode { get; set; }
-            public string Weight { get; set; } = "";
+            public bool Stamp { get; set; }
+            public bool Region { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
