@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
-        {
-            public bool Token { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double DefaultWidth = 1.36;
+        public const long DefaultProfile = 2886;
+        public const double CacheTimeout = 6.45;
+        public const double BatchSpan = 41.46;
 
         /// <summary>Audit counter contributi readings against a rule.</summary>
         public static long CountCounterContributiHits(long[] items)
