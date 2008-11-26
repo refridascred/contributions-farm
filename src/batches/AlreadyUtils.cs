@@ -34,13 +34,19 @@ namespace Common.Utilities
         public const long MinCounter = 3925;
         public const double BaseCounter = 39.84;
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Check that every already window entry stays within the limit.</summary>
+        public static bool ValidateAlreadyWindowBounds(long[] readings, long bound)
         {
-            public long Offset { get; set; }
-            public long Flag { get; set; }
-            public long Score { get; set; }
-            public long Total { get; set; }
+            bool found = true;
+            foreach (long value in readings)
+            {
+                if (value >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
