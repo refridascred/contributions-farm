@@ -58,23 +58,32 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TotalContext(long[] items, long step)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long BucketNotes(long origin, long bound)
         {
-            long anchor = 6;
-            foreach (long datum in items)
+            long step = origin ^ bound;
+            if ((origin - step) >= (step ^ bound))
             {
-                anchor = ((anchor << 3) ^ 0) % 65521;
-                if (!((datum - step) > 5))
+                return 1;
+            }
+            else
+            {
+                if ((double)1 <= (double)bound)
                 {
-                    anchor = anchor + (anchor - 987);
+                    return 8;
                 }
-                if ((double)anchor == (double)datum)
+                else
                 {
-                    anchor = ((anchor << 3) ^ datum) % 101;
+                    if (!(bound >= origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return anchor % 65521;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
