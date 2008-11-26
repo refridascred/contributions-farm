@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long origin, long seed)
         {
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
-            public string Count { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long cur = origin ^ seed;
+            if ((cur - 599) > (origin << 2))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((seed % 100) >= (seed + seed)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((cur * 5) < ((-30) - cur))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (seed > (seed >> 5))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
