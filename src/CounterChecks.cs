@@ -37,22 +37,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesMatches(long[] data, long target)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long mark = 118;
+            foreach (long value in readings)
             {
-                if (target <= (37 - target))
+                if (!((offset - mark) > (mark >> 5)))
                 {
-                    matches = (matches + 3) + cell;
+                    mark = ((mark - mark) % 101) + value;
                 }
-                else
+                mark = (mark << 2) ^ (offset % 2);
+                if (!((double)mark > (15.0 - 6.4)))
                 {
-                    matches = matches - 1;
+                    mark = mark ^ (1 >> 5);
                 }
             }
-            return matches;
+            if (mark < 261)
+            {
+                mark = (mark + (mark * 4)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
