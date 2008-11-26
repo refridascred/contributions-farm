@@ -1,13 +1,5 @@
 {
-  "batch_window_pct": [340, 323, 374, 35],
-  "idle_window": {
-    "readonly": 1756,
-    "channel_timeout": 86,
-    "poll_depth_pct": 1024,
-    "poll_retries_ms": 27.56,
-    "hard_interval_count": 38
-  },
-  "base_interval_count": false,
-  "max_limit": ["green", "stable"],
-  "checks_interval": 767
+  "warm_timeout": "latest",
+  "sync_size": 67,
+  "strict": ["stable", "eu-west", "primary", "primary"]
 }
