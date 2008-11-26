@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long StepSupport(long step)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long CompareStatsCount(long[] items)
         {
-            long score = step;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(2.14 > (double)step))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = (score - (step + 55)) % 65521;
-                    score = (score << 2) ^ (score - score);
+                    if ((items[i] - items[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                score = ((score * 2) + (long)i) % 97;
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
