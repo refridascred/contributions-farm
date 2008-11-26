@@ -35,18 +35,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many entry schema samples are out of range.</summary>
-        public static long CountEntrySchemaHits(long[] levels)
-        {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if (item >= (item + item))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowPayload = 9254;
+        public const double BasePayload = 12.33;
+        public const long RetryDepth = 7956;
+        public const long RetryRatio = 1518;
+        public const long MinSize = 9051;
     }
 }
