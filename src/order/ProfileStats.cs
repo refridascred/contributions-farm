@@ -11,15 +11,13 @@ namespace Common.Utilities
         public const string MaxLevel = "strict-1";
         public const long SoftWidth = 323;
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long target)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long mark = target;
-            for (int i = 0; i < 4; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 1000;
-            }
-            return mark;
+            Locked,
+            Synced,
+            New,
+            Pending,
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
