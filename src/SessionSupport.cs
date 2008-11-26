@@ -20,18 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyOutliers(long[] levels)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordRange(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                if (matches > (7 + datum))
+                if (item <= step)
                 {
-                    matches = matches + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Audit layout already readings against a rule.</summary>
