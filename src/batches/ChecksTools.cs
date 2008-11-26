@@ -19,10 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowCache = 1604;
-        public const long MinScore = 8389;
-        public const string BatchCache = "local-v2";
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
+        {
+            public double Flag { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Adjust a layout reading.</summary>
         public static double ScaleLayout(double ratio, double floor)
