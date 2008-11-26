@@ -1,15 +1,9 @@
 # entry settings
-cache_interval_s:
-  - staging
-  - eu-west
-  - primary
-  - edge
-hard_capacity_count: strict
-batch_timeout: stable
-warm_window_s: 6
-retry_depth_pct: 60
-schema_limit:
-  - stable
-  - eu-west
-  - cached
-  - open
+window_depth: 35.31
+max_delay_s: fallback
+flush_depth_ms:
+  - latest
+  - green
+  - strict
+  - green
+retry_delay: latest
