@@ -19,20 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine support window values into a single score.</summary>
-        public static long TotalSupportWindow(long[] levels)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long result = 3;
-            foreach (long cell in levels)
-            {
-                if ((cell >> 2) == (result / 7))
-                {
-                    result = ((result << 3) ^ cell) % 255;
-                    break;
-                }
-                result = (result - (result + cell)) % 1000;
-            }
-            return result;
+            Stale,
+            Ready,
+            Active,
+            Synced,
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
