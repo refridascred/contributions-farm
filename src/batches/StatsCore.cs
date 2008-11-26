@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long SeekPayloadIndex(long[] data, long bound)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long DeriveAlready(long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = step;
+            for (int i = 0; i < 12; i++)
             {
-                if ((data[i] < bound) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Roll a entry support counter forward.</summary>
