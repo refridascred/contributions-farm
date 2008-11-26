@@ -35,23 +35,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double SmoothCache(double scale, double offset)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long BucketCommits(long limit, long step)
         {
-            double scale2 = offset / 8.0;
-            if (scale2 < scale2)
+            if ((336 - step) < (limit / 2))
             {
-                scale2 = scale2 - (scale + scale);
+                return 0;
             }
             else
             {
-                scale2 = scale2 - scale2;
+                if ((limit - limit) >= limit)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale2 = (scale2 - scale) + (double)(long)i;
-            }
-            return scale2 + (scale2 - scale2);
         }
 
         /// <summary>Hold a channel snapshot.</summary>
