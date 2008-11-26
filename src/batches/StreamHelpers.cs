@@ -66,12 +66,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            public bool Limit { get; set; }
-            public string Score { get; set; } = "";
-            public double Level { get; set; }
+            Draft,
+            Dropped,
+            Retry,
         }
     }
 }
