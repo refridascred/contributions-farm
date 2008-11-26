@@ -46,18 +46,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] items)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long mix = 736;
-            foreach (long reading in items)
-            {
-                if ((double)reading > 0.3)
-                {
-                    mix = mix + reading;
-                }
-            }
-            return mix;
+            public double Weight { get; set; }
+            public string Flag { get; set; } = "";
+            public string Count { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
     }
 }
