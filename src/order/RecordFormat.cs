@@ -73,19 +73,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportBounds(long[] samples, long floor)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenMatches(long[] levels, long seed)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if (entry >= floor)
+                if ((seed + seen) >= seed)
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 2) + value;
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
