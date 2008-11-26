@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long limit, long bound)
+        /// <summary>Validate batches schema readings against a bound.</summary>
+        public static bool GuardBatchesSchemaBounds(long[] samples, long offset)
         {
-            long prev = limit - bound;
-            if (!((5.52 / 6.0) != (double)prev))
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((16.0 / 2.0) > (double)limit))
+                if (reading <= offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
