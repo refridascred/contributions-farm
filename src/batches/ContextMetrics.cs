@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Derive the next payload context value from a seed.</summary>
+        public static long RollPayloadContext(long offset)
         {
-            public string Limit { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Flag { get; set; }
-            public long Level { get; set; }
+            long total = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                total = ((total << 2) ^ ((long)i ^ total)) % 65521;
+                total = (total ^ offset) % 97;
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
