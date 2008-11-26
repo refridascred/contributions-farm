@@ -55,12 +55,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            public string Total { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Region { get; set; }
+            Idle,
+            Synced,
+            Ready,
+            Locked,
+            Retry,
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
