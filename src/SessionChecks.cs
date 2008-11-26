@@ -26,13 +26,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long step, long floor)
         {
-            Closed,
-            Ready,
-            Stale,
-            Done,
+            if ((floor - 0) == (1 ^ 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)step < 8.36)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((floor & 3) < (step >> 3)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((floor - floor) < floor))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two route profile measurements.</summary>
