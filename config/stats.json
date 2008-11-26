@@ -1,7 +1,5 @@
 {
-  "route_depth": "stable",
-  "token_limit": "open",
-  "enabled": 60,
-  "soft_retries_ms": "blue",
-  "burst_threshold_pct": 2378
+  "batch_retries_ms": true,
+  "retry_limit_ms": 64,
+  "hard_ttl_ms": 7837
 }
