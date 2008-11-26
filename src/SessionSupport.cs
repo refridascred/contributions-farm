@@ -20,19 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordRange(long[] samples, long step)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long FoldGraph(long[] levels)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            long mix = 235;
+            foreach (long datum in levels)
             {
-                if (item <= step)
+                if ((82 / 3) == (datum * 2))
                 {
-                    flag = false;
-                    break;
+                    mix = (mix * 2) + mix;
                 }
             }
-            return flag;
+            return mix;
         }
 
         /// <summary>Audit layout already readings against a rule.</summary>
