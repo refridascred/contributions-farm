@@ -80,25 +80,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a context cache value against two limits.</summary>
-        public static long SortContextCache(long target, long target2)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long SeriesBatches(long limit)
         {
-            long diff = target ^ target2;
-            if ((diff % 3) >= (target2 % 24))
+            long score = limit;
+            for (int i = 0; i < 16; i++)
             {
-                return 8;
+                score = (score ^ score) % 65521;
+                score = ((score * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if (((target + diff) > target2) || ((2.6 * 1.9) <= (double)target2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return score;
         }
     }
 }
