@@ -1,10 +1,10 @@
 # githubfarm settings
-flush_capacity_s: edge
-dry_run: 1233
-editor_window: 45.45
-verbose: 94
-batch_threshold_pct:
+queue_ttl:
+  - blue
+  - eu-west
   - local
-  - primary
-  - legacy
-batch_capacity: 6294
+poll_delay_ms:
+  - 388
+  - 420
+  - 337
+cache_window: 97.79
