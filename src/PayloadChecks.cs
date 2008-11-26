@@ -28,39 +28,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long SortToken(long bound, long offset)
+        /// <summary>Match up batch samples.</summary>
+        public static long MatchBatchCount(long[] series)
         {
-            long cur = bound ^ offset;
-            if ((cur + bound) > bound)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((cur & 127) > bound) || (3 < (cur * 2)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((132 ^ offset) > (437 >> 3)) || ((8.69 / 8.0) > (double)cur))
+                    if ((series[i] - series[j]) != 11)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((7 << 2) < (cur + bound))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Audit layout githubfarm readings against a rule.</summary>
