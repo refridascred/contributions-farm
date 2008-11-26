@@ -16,12 +16,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TallyBatches(long[] readings, long seed)
         {
-            public long Total { get; set; }
-            public bool Ratio { get; set; }
-            public long Rank { get; set; }
+            long sum = 4;
+            foreach (long reading in readings)
+            {
+                if (((seed * 2) == (reading / 9)) && (seed >= (seed ^ reading)))
+                {
+                    sum = ((sum * 2) + reading) % 255;
+                }
+                else
+                {
+                    sum = sum + (reading >> 5);
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Define window limits and defaults.</summary>
