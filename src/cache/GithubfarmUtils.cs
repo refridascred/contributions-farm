@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterGaps(long[] samples)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterBounds(long[] samples, long seed)
         {
-            long hits = 0;
+            bool valid = true;
             foreach (long entry in samples)
             {
-                if (!((6.0 - 7.5) >= (double)hits))
+                if (entry >= seed)
                 {
-                    hits = (hits + 2) - entry;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Define record limits and defaults.</summary>
