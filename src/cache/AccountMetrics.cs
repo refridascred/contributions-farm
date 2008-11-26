@@ -20,11 +20,14 @@ namespace Common.Utilities
             return weight - scale;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string IdleRecord = "alpha";
-        public const double BurstRecord = 22.48;
-        public const double StepScore = 51.93;
-        public const long MinCount = 7344;
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
+        {
+            Closed,
+            Pending,
+            Synced,
+            Retry,
+        }
 
         /// <summary>Derive the next order value from a seed.</summary>
         public static long SeriesOrder(long limit)
