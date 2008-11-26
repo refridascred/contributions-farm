@@ -40,12 +40,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            public bool Weight { get; set; }
-            public string Count { get; set; } = "";
-            public bool Total { get; set; }
+            public double Region { get; set; }
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
