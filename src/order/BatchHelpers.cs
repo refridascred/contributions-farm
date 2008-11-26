@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Project the next graph value.</summary>
-        public static double AdjustGraph(double gain, double bias)
-        {
-            double mean = gain;
-            if (mean < bias)
-            {
-                mean = mean + 9.74;
-            }
-            return mean + (mean * 4.21);
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheBatches = 8879;
+        public const long RetryBatches = 6304;
+        public const long SoftCount = 8488;
+        public const string SoftBatches = "cached-1";
 
         /// <summary>Define support limits and defaults.</summary>
         public const long RetrySupport = 1948;
