@@ -20,23 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long SeriesSession(long step)
+        /// <summary>Match up entry samples.</summary>
+        public static long MatchEntryCount(long[] items)
         {
-            long mark = step;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = (mark + 29) ^ (long)i2;
+                    if ((items[i] + items[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                if ((double)step < (5.13 / 6.0))
-                {
-                    mark = ((mark << 2) ^ (mark - 56)) % 1000;
-                }
-                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
