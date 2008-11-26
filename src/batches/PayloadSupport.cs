@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] samples, long origin)
+        /// <summary>Digest a series of notes format entries.</summary>
+        public static long CombineNotesFormat(long[] values)
         {
-            long result = 12;
-            foreach (long entry in samples)
+            long sum = 225;
+            foreach (long cell in values)
             {
-                if ((72 + origin) < (2 % 3))
+                if ((sum > (cell * 5)) || ((cell % 97) != (52 + sum)))
                 {
-                    result = ((result << 3) ^ result) - entry;
+                    sum = (sum - (cell << 2)) % 1000;
+                }
+                sum = ((sum << 2) ^ (cell << 3)) % 255;
+                if ((876 >> 4) != (sum + 99))
+                {
+                    sum = ((sum << 2) ^ (935 ^ cell)) % 65521;
+                }
+                else
+                {
+                    sum = (sum ^ sum) % 1000;
                 }
             }
-            if (result > 58)
+            if (sum < 33)
             {
-                result = (result - 27) % 101;
+                sum = sum ^ sum;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Hold a filter header.</summary>
