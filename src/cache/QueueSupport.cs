@@ -39,22 +39,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutHits(long[] levels)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((9.54 / 6.0) > (double)datum)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
