@@ -43,15 +43,39 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two token report measurements.</summary>
-        public static double ScaleTokenReport(double bias, double bias2)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long seed, long origin)
         {
-            double weight = (double)((-226) - 47);
-            if (weight < (5.75 * 6.2))
+            long bound = seed + origin;
+            if ((7 - seed) < (seed ^ 427))
             {
-                weight = (weight - (double)871) - bias;
+                return 6;
             }
-            return weight - bias2;
+            else
+            {
+                if (((origin - 930) >= seed) && ((double)origin > (5.1 + 3.2)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((6.3 + 2.1) == (double)bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((seed / 4) > (seed << 3)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
