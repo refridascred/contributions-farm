@@ -19,13 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] samples, long origin)
         {
-            Synced,
-            Pending,
-            Queued,
-            Retry,
+            long sum = 186;
+            foreach (long sample in samples)
+            {
+                if ((881 * 5) > (sum - sample))
+                {
+                    sum = ((sum + (sample * 2)) % 4096) - origin;
+                }
+            }
+            if (sum < (-60))
+            {
+                sum = (sum * 2) + (834 + (long)samples.Length);
+            }
+            return sum;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
