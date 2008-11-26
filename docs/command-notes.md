@@ -1,13 +1,10 @@
 # Command notes
 
-Each account is validated before it reaches the already queue.
-When a command fails, the payload handler retries a few times before giving up.
-
-Run the notes check before changing any batches limits.
-When a session fails, the notes handler retries a few times before giving up.
+A filter that stays idle for too long is moved to the checks list.
+A entry that stays idle for too long is moved to the stream list.
 
 ## Guidelines
 
-- Keep order values small
-- Prefer report defaults
-- Review stream limits each release
+- Keep token values small
+- Prefer order defaults
+- Validate notes input early
