@@ -36,13 +36,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Validate support graph readings against a bound.</summary>
+        public static bool VerifySupportGraphLimits(long[] samples, long seed)
         {
-            public long Stamp { get; set; }
-            public long Size { get; set; }
-            public long Total { get; set; }
-            public long Region { get; set; }
+            bool ok = true;
+            foreach (long value in samples)
+            {
+                if (value > seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
