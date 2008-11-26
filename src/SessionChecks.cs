@@ -25,11 +25,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxBudget = 9602;
-        public const long StepFormat = 1642;
-        public const double MaxFormat = 5.23;
-        public const long HardWidth = 7841;
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long SortBuffer(long seed, long step)
+        {
+            if ((seed - 375) <= (seed + seed))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((step << 1) < seed) || ((seed - seed) > (seed ^ seed)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((seed % 12) < (step + seed)) || (500 >= (step & 3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Derive the next metric filter value from a seed.</summary>
         public static long RollMetricFilter(long floor)
