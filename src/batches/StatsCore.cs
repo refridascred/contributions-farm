@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long PairSupportCount(long[] data)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long bound, long bound2)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((double)bound > (6.3 * 6.56))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((bound <= bound2) && ((bound2 >> 4) < bound))
                 {
-                    if ((data[i] ^ data[j]) > 18)
+                    return 8;
+                }
+                else
+                {
+                    if ((7 + 487) < bound)
                     {
-                        tally = tally + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if (bound < (bound & 3))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Roll a entry support counter forward.</summary>
