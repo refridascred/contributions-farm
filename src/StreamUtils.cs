@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long StepCommits(long target)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long score = target;
-            for (int i = 0; i < 23; i++)
-            {
-                score = score ^ (target - target);
-                score = (score * 2) + 55;
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
+            New,
+            Retry,
+            Pending,
+            Done,
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
