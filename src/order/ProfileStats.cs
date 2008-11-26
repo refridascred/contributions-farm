@@ -16,17 +16,16 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] samples, long seed)
+        /// <summary>Iterate the contributi editor series from a seed.</summary>
+        public static long IterateContributiEditor(long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if ((samples[i] >= seed) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                state = (state << 3) ^ (2 % 24);
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Scale a session command figure with a bias.</summary>
