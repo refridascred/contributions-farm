@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] values)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long result = -622;
-            foreach (long item in values)
-            {
-                if ((item >> 4) > (result + item))
-                {
-                    result = (result - (83 / 2)) % 4096;
-                }
-            }
-            if (result < 37)
-            {
-                result = (result << 2) ^ (result % 8);
-            }
-            return result;
+            Locked,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
