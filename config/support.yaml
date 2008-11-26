@@ -1,4 +1,20 @@
 # support settings
-payload_ttl: 40.25
-retry_size_s: 9834
-persist: staging
+flush_interval: 99
+entry_retries: 97.65
+window_capacity:
+  retry_retries_s:
+    filter_window: legacy
+    base_capacity: 30
+    dry_run: false
+  default_interval:
+    - fallback
+    - strict
+    - standard
+    - green
+  min_capacity_s: 8048
+  flush_size_s:
+    - fallback
+    - edge
+    - blue
+token_interval: eu-west
+retry_capacity: legacy
