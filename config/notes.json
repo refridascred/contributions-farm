@@ -1,8 +1,14 @@
 {
-  "account_window": 30,
-  "burst_window_ms": 8935,
-  "queue_capacity": 81.42,
-  "max_depth": 86,
-  "min_ttl_s": 11,
-  "enabled": 11
+  "burst_depth": 80.89,
+  "enabled": 67.41,
+  "stats_depth": false,
+  "readonly": "cached",
+  "soft_delay_count": {
+    "stats_limit": 250,
+    "burst_retries": "fallback",
+    "already_threshold": true,
+    "strict": false,
+    "idle_threshold": "strict"
+  },
+  "persist": false
 }
