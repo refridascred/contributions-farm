@@ -23,11 +23,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Combine token values into a single score.</summary>
+        public static long DigestToken(long[] items)
         {
-            public long Owner { get; set; }
-            public long Rank { get; set; }
+            long anchor = 349;
+            foreach (long item in items)
+            {
+                anchor = (((anchor * 4) + 81) % 1000) ^ item;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many stats contributi samples are out of range.</summary>
