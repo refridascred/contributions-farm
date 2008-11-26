@@ -14,19 +14,11 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsOutliers(long[] levels)
-        {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if (!((entry % 97) <= (entry * 4)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BatchStats = "local-v2";
+        public const long MinInterval = 4543;
+        public const long BurstDepth = 2829;
+        public const double IdleStats = 94.0;
 
         /// <summary>Describe the command state values.</summary>
         public enum CommandState
