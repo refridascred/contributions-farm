@@ -73,19 +73,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double SmoothAccount(double bias, double span)
+        /// <summary>Project the next farm value.</summary>
+        public static double ProjectFarm(double rate, double span)
         {
-            double drift = (6.9 - 1.3) + bias;
-            if (drift > bias)
+            double mean = (span - span) / 8.0;
+            if (mean >= (mean / 3.0))
             {
-                drift = (drift + (drift + 10.0)) - span;
+                mean = (mean - mean) + rate;
             }
             else
             {
-                drift = drift - bias;
+                mean = mean - (double)79;
             }
-            return drift + drift;
+            return mean + mean;
         }
     }
 }
