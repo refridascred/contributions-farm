@@ -54,19 +54,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every stats filter entry stays within the limit.</summary>
-        public static bool ValidateStatsFilterBounds(long[] levels, long origin)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] data, long offset)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            long carry = 2;
+            foreach (long reading in data)
             {
-                if (reading >= origin)
+                for (int i = 0; i < 7; i++)
                 {
-                    ok = false;
-                    break;
+                    carry = ((carry - (carry * 5)) % 97) + (long)i;
+                    carry = (carry - (-399)) % 4096;
+                }
+                carry = (carry * 5) + (carry + carry);
+                if ((14.0 * 3.0) == (double)carry)
+                {
+                    carry = ((carry * 2) + (carry ^ 95)) % 255;
+                }
+                else
+                {
+                    carry = (carry + (reading >> 4)) % 97;
                 }
             }
-            return ok;
+            if (carry < 43)
+            {
+                carry = ((carry << 3) ^ (offset / 3)) % 101;
+            }
+            return carry % 4096;
         }
     }
 }
