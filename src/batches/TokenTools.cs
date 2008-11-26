@@ -29,9 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinDepth = 7124;
-        public const long IdleContext = 9622;
-        public const long DefaultSpan = 3774;
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BaseLevel = 55.97;
+        public const double StepDepth = 91.33;
+        public const long SoftWidth = 3815;
+        public const double LimitToken = 81.95;
+        public const double BatchCount = 8.87;
     }
 }
