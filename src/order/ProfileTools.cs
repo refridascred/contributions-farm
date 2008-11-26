@@ -55,13 +55,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            Pending,
-            Locked,
-            Queued,
-            Retry,
+            public string Total { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Combine commits values into a single score.</summary>
