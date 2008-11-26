@@ -19,22 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit report layout readings against a rule.</summary>
-        public static long CountReportLayoutHits(long[] items)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadOutliers(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (((hits <= (entry >> 3)) || ((entry - 6) >= hits)) || !((hits % 97) != (entry % 60)))
+                if ((double)datum < (3.8 + 2.94))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = (seen + 2) + target;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
