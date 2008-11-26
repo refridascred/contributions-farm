@@ -1,5 +1,20 @@
 {
-  "batches_timeout": 5.66,
-  "min_capacity_count": 11.24,
-  "contributi_depth": 52.47
+  "verbose": "eu-west",
+  "hard_ratio": {
+    "soft_size": ["eu-west", "staging", "open"],
+    "flush_threshold_s": 5360,
+    "poll_delay_count": {
+      "burst_delay_count": false,
+      "max_size_s": [411, 15],
+      "session_interval": ["latest", "blue"],
+      "base_depth_ms": "stable",
+      "entry_size": ["staging", "strict"],
+      "persist": "local"
+    },
+    "persist": 9209
+  },
+  "audit": true,
+  "context_window": 70.96,
+  "base_depth_ms": false,
+  "base_delay_ms": 24
 }
