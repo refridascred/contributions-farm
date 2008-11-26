@@ -56,17 +56,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LocateFormatIndex(long[] levels, long seed)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if ((levels[i] < seed) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                total = ((total << 3) ^ ((long)i << 3)) % 1000;
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Count checks batches pairs that satisfy a relation.</summary>
