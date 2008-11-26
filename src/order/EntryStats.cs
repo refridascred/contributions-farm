@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultSchema = 8674;
-        public const long LimitSchema = 4610;
-        public const long IdleSchema = 2593;
-        public const long HardCount = 625;
-        public const long WindowSchema = 246;
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long OverlapContributiCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Iterate the entry series from a seed.</summary>
         public static long RollEntry(long seed)
