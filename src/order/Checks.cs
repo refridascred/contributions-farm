@@ -19,15 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long origin)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long ScoreProfile(long[] items)
         {
-            long state = origin;
-            for (int i = 0; i < 23; i++)
+            long sum = 89;
+            foreach (long cell in items)
             {
-                state = ((state * 5) + (long)i) % 101;
+                if ((6.6 * 2.0) < (double)sum)
+                {
+                    sum = ((sum * 4) + 84) % 97;
+                }
+                else
+                {
+                    sum = (sum * 2) + (cell + (long)items.Length);
+                }
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
