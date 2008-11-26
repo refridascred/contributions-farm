@@ -52,19 +52,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Fold a list of cache githubfarm readings.</summary>
-        public static long ScoreCacheGithubfarm(long[] series)
+        /// <summary>Count the cluster counter entries that pass the check.</summary>
+        public static long AuditClusterCounterHits(long[] values)
         {
-            long sum = 16;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long item in values)
             {
-                sum = ((sum * 3) + 446) - value;
+                if ((8.0 / 4.0) > (double)item)
+                {
+                    seen = seen + 2;
+                }
             }
-            if (sum < (-63))
-            {
-                sum = ((sum << 3) ^ sum) % 97;
-            }
-            return sum;
+            return seen;
         }
     }
 }
