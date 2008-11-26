@@ -26,27 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] data)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricMatches(long[] levels)
         {
-            long mark = 94;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                mark = ((mark * 5) + ((-2) / 3)) % 65521;
-                if ((double)cell <= 1.14)
+                if ((sample - sample) >= (tally + tally))
                 {
-                    mark = mark ^ (mark ^ mark);
-                }
-                if (mark < cell)
-                {
-                    break;
+                    tally = tally + 1;
                 }
             }
-            if (mark > 122)
-            {
-                mark = ((mark << 3) ^ mark) % 101;
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
