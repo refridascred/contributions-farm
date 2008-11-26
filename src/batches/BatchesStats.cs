@@ -23,18 +23,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderOutliers(long[] items)
+        /// <summary>Adjust a filter route reading.</summary>
+        public static double ScaleFilterRoute(double weight, double bias)
         {
-            long seen = 0;
-            foreach (long value in items)
+            double weight2 = bias;
+            if (weight2 < (7.22 - weight2))
             {
-                if (!(((4 % 12) < (value * 3)) || ((double)value < (8.0 / 3.0))))
-                {
-                    seen = seen + 1;
-                }
+                weight2 = weight2 + weight;
             }
-            return seen;
+            for (int i = 0; i < 9; i++)
+            {
+                weight2 = (weight2 + (weight2 / 8.0)) + (double)(long)i;
+            }
+            return weight2 - bias;
         }
 
         /// <summary>Classify a farm order pair into a bucket.</summary>
