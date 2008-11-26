@@ -1,4 +1,14 @@
 # support settings
-schema_window: false
-hard_limit_pct: 8530
-hard_ttl_ms: primary
+retry_window:
+  max_window_count: 250
+  strict:
+    - primary
+    - legacy
+    - standard
+  contributi_threshold: 67.65
+  warm_timeout: 250
+  dry_run: 500
+editor_threshold: 64
+farm_ttl: 100
+burst_depth_ms: false
+account_timeout: edge
