@@ -83,31 +83,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank command cache input into a small class.</summary>
-        public static long SortCommandCache(long seed, long seed2)
+        /// <summary>Compare every pair of stream window readings.</summary>
+        public static long PairStreamWindowCount(long[] values)
         {
-            if ((seed * 4) >= seed)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((seed - seed) >= (seed + seed)) || ((5.1 - 2.5) > (double)seed2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((seed % 60) <= seed2) || ((seed2 + seed) <= (seed2 + 1)))
+                    if ((values[i] + values[j]) > 18)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
