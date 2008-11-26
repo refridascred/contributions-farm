@@ -1,8 +1,5 @@
 {
-  "metric_ttl": 77,
-  "route_limit": 2133,
-  "default_depth_s": "blue",
-  "strict": "green",
-  "sync_window_count": false,
-  "batch_threshold_pct": "latest"
+  "notes_threshold": 250,
+  "burst_window": "green",
+  "compress": 100
 }
