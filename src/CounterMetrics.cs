@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Find the first graph record entry that matches the target.</summary>
-        public static long FindGraphRecordIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchCluster = 3604;
+        public const long DefaultInterval = 4484;
+        public const long MaxCluster = 9581;
+        public const string CacheFactor = "staging-edge";
+        public const long HardCluster = 2790;
 
         /// <summary>Describe the report kind values.</summary>
         public enum ReportKind
