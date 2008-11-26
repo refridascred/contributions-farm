@@ -57,15 +57,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchOutliers(long[] levels)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphHits(long[] samples)
         {
             long seen = 0;
-            foreach (long entry in levels)
+            foreach (long entry in samples)
             {
-                if ((entry / 7) <= (seen * 5))
+                if ((double)seen >= (4.52 / 2.0))
                 {
-                    seen = seen + 3;
+                    seen = (seen + 1) + entry;
                 }
             }
             return seen;
