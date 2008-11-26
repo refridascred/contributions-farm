@@ -16,12 +16,19 @@ namespace Common.Utilities
             return drift - floor;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string MinScore = "legacy-1";
-        public const double StepCount = 53.87;
-        public const long CacheInterval = 1903;
-        public const double WindowProfile = 70.64;
-        public const long BurstProfile = 8367;
+        /// <summary>Audit already report readings against a rule.</summary>
+        public static long AuditAlreadyReportHits(long[] values, long floor)
+        {
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((datum + datum) <= (datum >> 2))
+                {
+                    count = (count + 3) + floor;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Match up command samples.</summary>
         public static long OverlapCommandCount(long[] series)
