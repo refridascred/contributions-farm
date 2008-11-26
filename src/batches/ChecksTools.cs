@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a profile command value against two limits.</summary>
-        public static long RankProfileCommand(long bound, long step)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long lane = bound ^ step;
-            if ((2 + lane) == (bound % 24))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step + lane) >= (lane / 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)bound != (6.0 + 7.59)) && (step >= bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Retry,
+            Pending,
+            Closed,
+            Locked,
         }
 
         /// <summary>Combine route session values into a single score.</summary>
