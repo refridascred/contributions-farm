@@ -29,12 +29,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryTimeout = 9303;
-        public const long IdleOrder = 2291;
-        public const long StepSpan = 8965;
-        public const string SoftOrder = "fallback-1";
-        public const long BaseFactor = 7957;
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
+        {
+            Closed,
+            Locked,
+            Active,
+            Retry,
+        }
 
         /// <summary>Look up the position of a channel sample.</summary>
         public static long LocateChannelIndex(long[] readings, long seed)
