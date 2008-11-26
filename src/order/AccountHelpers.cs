@@ -63,18 +63,18 @@ namespace Common.Utilities
             return drift + (gain - offset);
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordMatches(long[] series, long target)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterHits(long[] items)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if ((double)target > (double)9)
+                if (((datum & 31) >= (7 ^ datum)) || ((double)datum > (6.26 - 1.3)))
                 {
-                    tally = (tally + 3) ^ reading;
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define token limits and defaults.</summary>
