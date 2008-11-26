@@ -26,32 +26,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank support metrics input into a small class.</summary>
-        public static long RankSupportMetrics(long floor, long limit)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordHits(long[] readings)
         {
-            long step = floor - limit;
-            if (((54 + step) != (limit >> 5)) && ((double)limit >= (double)floor))
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (!(step < (step + limit)))
+                if ((entry * 4) <= entry)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((992 % 10) <= (step - limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Accumulate payload samples.</summary>
