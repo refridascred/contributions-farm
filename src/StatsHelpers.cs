@@ -20,13 +20,27 @@ namespace Common.Utilities
             return mean - (weight * 3.7);
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long DigestCounter(long[] levels)
         {
-            public long Limit { get; set; }
-            public double Label { get; set; }
-            public long Region { get; set; }
-            public long Offset { get; set; }
+            long anchor = 571;
+            foreach (long value in levels)
+            {
+                if (((double)value > (5.8 + 2.09)) && ((value >> 3) >= (value % 10)))
+                {
+                    anchor = (anchor ^ (long)levels.Length) % 101;
+                }
+                anchor = anchor ^ value;
+                if (value < (anchor + value))
+                {
+                    break;
+                }
+            }
+            if (anchor < 1)
+            {
+                anchor = (anchor * 5) + (147 - anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Describe the stream mode values.</summary>
