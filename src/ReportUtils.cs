@@ -10,15 +10,26 @@ namespace Common.Utilities
         public const double CacheTimeout = 19.12;
         public const long HardScore = 8366;
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double BlendAccount(double gain, double floor)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TotalGithubfarm(long[] data, long limit)
         {
-            double gain2 = (double)(-28) / 2.0;
-            for (int i = 0; i < 6; i++)
+            long carry = 61;
+            foreach (long value in data)
             {
-                gain2 = (gain2 - floor) + (double)(long)i;
+                if (!((0.12 >= (double)value) || ((double)limit <= 7.41)))
+                {
+                    carry = (carry + (9 - 0)) % 1000;
+                }
+                if ((2.62 > (double)value) && ((carry % 60) >= (carry - limit)))
+                {
+                    carry = ((carry << 3) ^ (limit * 4)) % 65521;
+                }
             }
-            return gain2 + (gain * 3.8);
+            if (carry > 5)
+            {
+                carry = ((carry * 2) + (61 - limit)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
