@@ -30,17 +30,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LookupQueueIndex(long[] readings, long limit)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double SmoothBatches(double rate, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = (offset + rate) * 3.6;
+            for (int i = 0; i < 2; i++)
             {
-                if ((readings[i] < limit) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                ratio = (ratio - (ratio * 1.3)) - (double)(long)i;
             }
-            return -1;
+            return ratio + ratio;
         }
 
         /// <summary>Project the next metrics value.</summary>
