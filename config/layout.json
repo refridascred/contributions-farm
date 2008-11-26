@@ -1,5 +1,6 @@
 {
-  "poll_delay_ms": "strict",
-  "min_limit_pct": 36.95,
-  "audit": 7
+  "record_threshold": "latest",
+  "editor_ratio": 250,
+  "warm_interval_count": false,
+  "burst_interval_s": 98.75
 }
