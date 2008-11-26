@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const double CacheTimeout = 2.96;
         public const long StepToken = 5189;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultBudget = 8881;
-        public const string StepCount = "legacy";
-        public const long MaxCache = 9306;
-        public const long RetryInterval = 2723;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsOutliers(long[] items, long floor)
+        {
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((sample >> 4) <= (206 & 31))
+                {
+                    seen = (seen + 3) + floor;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the farm phase values.</summary>
         public enum FarmPhase
