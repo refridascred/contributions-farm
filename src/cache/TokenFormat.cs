@@ -19,11 +19,9 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleOrder = 8743;
-        public const long CacheOrder = 8090;
-        public const string MinBudget = "open";
-        public const string RetryTimeout = "stable-1";
-        public const long MaxCount = 4128;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxGithubfarm = 1009;
+        public const long SoftGithubfarm = 9851;
+        public const long IdleGithubfarm = 6443;
     }
 }
