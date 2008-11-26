@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long SeriesFarm(long offset)
+        /// <summary>Roll a commits route counter forward.</summary>
+        public static long IterateCommitsRoute(long limit)
         {
-            long mix = offset;
-            for (int i = 0; i < 24; i++)
+            long mix = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if (mix > (mix + 9))
-                {
-                    mix = mix - offset;
-                    mix = (mix * 5) + mix;
-                }
-                if (((offset + mix) <= (offset + offset)) && ((double)offset < 3.0))
-                {
-                    mix = mix - (offset - 2);
-                }
-                else
-                {
-                    mix = mix ^ (offset % 16);
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
+                mix = ((mix * 3) + (long)i) % 1000;
             }
             return mix;
         }
