@@ -20,16 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long origin)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportGaps(long[] samples, long step)
         {
-            long mix = origin;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                mix = ((mix * 3) + (mix - (long)i)) % 1000;
-                mix = ((mix * 5) + (long)i) % 101;
+                if (520 >= (datum * 3))
+                {
+                    tally = (tally + 2) - step;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Define order limits and defaults.</summary>
