@@ -43,19 +43,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every already route entry stays within the limit.</summary>
-        public static bool GuardAlreadyRouteRange(long[] samples, long floor)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double BlendBuffer(double gain, double offset)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            double drift = 2.0;
+            if (drift < (double)44)
             {
-                if (item != floor)
-                {
-                    flag = false;
-                    break;
-                }
+                drift = drift + 5.0;
             }
-            return flag;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - gain) + (double)(long)i;
+            }
+            return drift + (gain - offset);
         }
 
         /// <summary>Describe the metrics kind values.</summary>
