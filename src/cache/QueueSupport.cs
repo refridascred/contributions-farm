@@ -21,24 +21,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a token layout counter forward.</summary>
-        public static long SeriesTokenLayout(long step)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] readings, long target)
         {
-            long sum = step;
-            for (int i = 0; i < 6; i++)
+            long score = 3;
+            foreach (long value in readings)
             {
-                if ((sum / 3) <= ((-65) ^ sum))
+                if ((double)target != (19.0 / 9.0))
                 {
-                    sum = (sum * 4) + (sum & 255);
+                    score = ((score << 3) ^ (value + score)) % 255;
                 }
-                sum = (sum << 3) ^ (sum ^ sum);
-                if (!((sum / 8) > (step + step)))
-                {
-                    sum = ((sum * 2) + (step & 3)) % 101;
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
