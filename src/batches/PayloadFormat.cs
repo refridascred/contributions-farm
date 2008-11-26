@@ -12,24 +12,15 @@ namespace Common.Utilities
         public const double CacheTimeout = 2.96;
         public const long StepToken = 5189;
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long origin, long origin2)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long IterateMetrics(long seed)
         {
-            if ((double)origin != (0.92 - 14.0))
+            long anchor = seed;
+            for (int i = 0; i < 4; i++)
             {
-                return 6;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            else
-            {
-                if ((804 * 3) <= origin)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Describe the farm phase values.</summary>
