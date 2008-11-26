@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long floor)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LookupClusterIndex(long[] samples, long target)
         {
-            long carry = floor;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = (carry << 3) ^ ((-112) << 2);
-                carry = ((carry << 3) ^ (carry ^ floor)) % 65521;
-                carry = ((carry * 3) + (long)i) % 101;
+                if ((samples[i] > target) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Combine already values into a single score.</summary>
