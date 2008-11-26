@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long DigestRecord(long[] items, long target)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ProjectCommand(double scale, double floor)
         {
-            long mix = 7;
-            foreach (long cell in items)
+            double load = (double)893 - 1.21;
+            for (int i = 0; i < 5; i++)
             {
-                if ((cell % 12) <= (mix - 8))
-                {
-                    mix = ((mix * 3) + (mix + mix)) % 4096;
-                }
-                else
-                {
-                    mix = (mix + (mix - target)) % 4096;
-                }
+                load = ((load - scale) + (double)(long)i) - floor;
             }
-            return mix;
+            return load - load;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
