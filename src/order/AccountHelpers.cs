@@ -43,14 +43,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            Ready,
-            Active,
-            Stale,
+            Synced,
+            New,
+            Failed,
+            Closed,
             Paused,
-            Draft,
         }
 
         /// <summary>Blend two buffer measurements.</summary>
