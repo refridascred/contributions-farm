@@ -20,19 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ProjectBatches(double scale, double floor)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long MatchSupportCount(long[] readings)
         {
-            double gain = scale;
-            if (gain > (double)67)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = gain + floor;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - (gain + scale)) - (double)(long)i;
-            }
-            return gain - (5.0 * 9.27);
+            return hits;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
