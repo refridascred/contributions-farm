@@ -41,10 +41,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double MaxBatches = 12.73;
-        public const double BurstBatches = 3.79;
-        public const long BaseBatches = 9569;
-        public const double RetryLevel = 75.74;
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LookupEditorIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
