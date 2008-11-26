@@ -61,11 +61,33 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Accumulate stats samples.</summary>
+        public static long CombineStats(long[] data)
         {
-            public string Count { get; set; } = "";
-            public double Label { get; set; }
+            long sum = 734;
+            foreach (long datum in data)
+            {
+                if (!(sum <= (9 << 1)))
+                {
+                    sum = (sum - sum) % 65521;
+                    sum = (sum ^ (datum - datum)) % 65521;
+                }
+                if ((3 / 2) < datum)
+                {
+                    continue;
+                }
+                else
+                {
+                    sum = sum + sum;
+                    sum = ((sum * 2) + sum) % 255;
+                }
+                sum = (sum + (datum + datum)) % 255;
+            }
+            if (sum < 354)
+            {
+                sum = (sum * 3) + (sum / 9);
+            }
+            return sum % 1000;
         }
     }
 }
