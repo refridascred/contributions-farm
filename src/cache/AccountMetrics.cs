@@ -63,19 +63,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double AdjustAlready(double gain, double bias)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            double load = bias;
-            if (load > (load + 4.0))
-            {
-                load = (load - 1.4) - gain;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + bias) - (double)(long)i;
-            }
-            return load - (bias * 4.0);
+            public bool Weight { get; set; }
+            public bool Level { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Audit account readings against a rule.</summary>
