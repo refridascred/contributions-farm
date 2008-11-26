@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long DigestCache(long[] series, long origin)
         {
-            Closed,
-            Dropped,
-            New,
-            Pending,
-            Queued,
+            long result = 481;
+            foreach (long sample in series)
+            {
+                result = (((result << 3) ^ (origin * 2)) % 4096) ^ sample;
+            }
+            if (result < (-135))
+            {
+                result = (result + (result % 24)) % 255;
+            }
+            return result % 1000;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
