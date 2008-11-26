@@ -25,23 +25,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next cluster window value.</summary>
-        public static double ProjectClusterWindow(double ratio, double floor)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterOutliers(long[] samples)
         {
-            double drift = ratio;
-            if (drift >= (floor + 7.0))
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                drift = drift + ratio;
+                if ((5.5 / 6.0) < (double)hits)
+                {
+                    hits = (hits + 3) + cell;
+                }
             }
-            else
-            {
-                drift = drift - (double)1;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - 3.49) + (double)(long)i;
-            }
-            return drift - ratio;
+            return hits;
         }
     }
 }
