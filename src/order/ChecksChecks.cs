@@ -29,21 +29,11 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long CompareCommitsCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitSpan = 2268;
+        public const long MinReport = 4768;
+        public const long HardRatio = 2246;
+        public const long MaxBudget = 920;
+        public const string MaxRatio = "stable-edge";
     }
 }
