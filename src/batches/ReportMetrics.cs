@@ -33,18 +33,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many checks token samples are out of range.</summary>
-        public static long MeasureChecksTokenOutliers(long[] series, long offset)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((double)tally > (7.55 + 12.0))
-                {
-                    tally = ((tally + 3) - datum) - offset;
-                }
-            }
-            return tally;
+            Failed,
+            Active,
+            Queued,
         }
     }
 }
