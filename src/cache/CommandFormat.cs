@@ -27,18 +27,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenHits(long[] series)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((6.42 >= (double)tally) || ((tally + value) >= (tally * 3)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Retry,
+            Pending,
+            Done,
         }
 
         /// <summary>Measure how many entry schema samples are out of range.</summary>
