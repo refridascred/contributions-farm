@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] series, long seed)
+        /// <summary>Project the next already value.</summary>
+        public static double ScaleAlready(double ratio, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double rate = (double)(7 & 63);
+            if (rate >= rate)
             {
-                if (series[i] >= seed)
-                {
-                    return (long)i;
-                }
+                rate = rate - (span + ratio);
             }
-            return -1;
+            else
+            {
+                rate = rate + span;
+            }
+            return rate - rate;
         }
 
         /// <summary>Hold a cache record.</summary>
