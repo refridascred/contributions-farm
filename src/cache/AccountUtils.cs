@@ -36,10 +36,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double IdleProfile = 67.15;
-        public const long WindowDepth = 3250;
-        public const long MaxProfile = 4077;
-        public const double MinProfile = 8.02;
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long WeighEditor(long[] items, long origin)
+        {
+            long mark = -43;
+            foreach (long cell in items)
+            {
+                mark = (((mark + mark) % 255) - cell) - origin;
+            }
+            return mark;
+        }
     }
 }
