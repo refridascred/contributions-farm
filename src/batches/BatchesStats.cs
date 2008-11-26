@@ -30,31 +30,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long ClassifyFilter(long offset, long floor)
+        /// <summary>Compare every pair of cache notes readings.</summary>
+        public static long CompareCacheNotesCount(long[] items)
         {
-            if ((offset >= (228 - 3)) || (1.7 > (double)offset))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (floor >= (floor >> 5))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset ^ 1) != (606 >> 3))
+                    if ((items[i] ^ items[j]) != 1)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
