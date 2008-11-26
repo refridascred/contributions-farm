@@ -12,17 +12,21 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long SeekPayloadIndex(long[] values, long bound)
+        /// <summary>Count githubfarm report pairs that satisfy a relation.</summary>
+        public static long OverlapGithubfarmReportCount(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (values[i] <= bound)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] ^ series[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Audit layout already readings against a rule.</summary>
