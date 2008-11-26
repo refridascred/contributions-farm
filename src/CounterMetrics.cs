@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountLimits(long[] items, long limit)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            bool valid = true;
-            foreach (long cell in items)
-            {
-                if (cell > limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Synced,
+            Active,
+            Queued,
+            Pending,
         }
 
         /// <summary>Hold a graph header.</summary>
