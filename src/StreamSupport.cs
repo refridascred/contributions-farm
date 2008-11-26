@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Blend two tools report measurements.</summary>
+        public static double ScaleToolsReport(double ratio, double span)
         {
-            public string Score { get; set; } = "";
-            public string Level { get; set; } = "";
+            double mean = ratio;
+            if (mean > span)
+            {
+                mean = mean + (span * 2.5);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean + (ratio + ratio);
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
