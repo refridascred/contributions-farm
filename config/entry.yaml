@@ -1,23 +1,26 @@
 # entry settings
-persist:
-  - 384
-  - 109
-min_capacity: 5269
-max_depth: 87.21
-command_depth: 24.3
-compress:
-  verbose: 10
-  entry_retries:
-    warm_ratio_pct: 100
-    default_size: 29.23
-    audit:
-      - 306
-      - 24
-      - 170
-    batch_threshold_s: primary
-    tools_ratio: edge
-  batch_size_count: 60
-  sync_size_ms: green
-  sync_threshold_ms: 8309
-  sync_limit_count: legacy
-soft_delay_ms: 3918
+entry_size: 32
+soft_ratio_count:
+  strict: 98
+  batch_limit_ms:
+    - 357
+    - 350
+    - 71
+  soft_timeout: 62
+  audit: legacy
+  min_depth: 2742
+  flush_interval: fallback
+base_size_s: 61
+cache_size: 500
+queue_timeout: strict
+flush_timeout:
+  compress: 54.88
+  profile_capacity:
+    - local
+    - green
+    - standard
+    - open
+  min_ratio:
+    idle_delay_ms: true
+    readonly: 4520
+    cache_interval_ms: staging
