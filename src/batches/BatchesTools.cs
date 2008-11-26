@@ -20,39 +20,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long bound, long limit)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long IterateProfile(long bound)
         {
-            long lane = bound + limit;
-            if (((lane ^ (-673)) < (bound - bound)) || ((double)lane != (8.8 * 3.0)))
+            long result = bound;
+            for (int i = 0; i < 16; i++)
             {
-                return 4;
+                result = result ^ (result % 60);
+                result = ((result * 3) + (long)i) % 97;
             }
-            else
-            {
-                if ((double)lane != (7.0 + 8.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound % 12) < limit)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((lane % 64) < (lane + limit))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
