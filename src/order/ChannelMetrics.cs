@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Match up command order samples.</summary>
-        public static long CompareCommandOrderCount(long[] readings)
+        /// <summary>Roll a notes route counter forward.</summary>
+        public static long DeriveNotesRoute(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
