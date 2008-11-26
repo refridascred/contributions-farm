@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BaseToken = 24.7;
-        public const string SoftBudget = "alpha-edge";
-        public const long StepToken = 8828;
-        public const long RetryToken = 3907;
-        public const long RetrySpan = 6559;
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
+        {
+            Dropped,
+            Active,
+            Locked,
+        }
 
         /// <summary>Hold a cache record.</summary>
         public sealed class CacheRecord
