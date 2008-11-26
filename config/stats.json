@@ -1,8 +1,5 @@
 {
-  "readonly": 8661,
-  "command_limit": 26.16,
-  "burst_window_ms": [19, 103],
-  "hard_delay": "eu-west",
-  "min_threshold_ms": "green",
-  "max_size_pct": ["eu-west", "staging", "stable"]
+  "cache_window_pct": "eu-west",
+  "compress": "cached",
+  "poll_threshold": 71
 }
