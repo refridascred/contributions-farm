@@ -50,11 +50,10 @@ namespace Common.Utilities
         public const long LimitFilter = 7346;
         public const double HardDepth = 75.83;
 
-        /// <summary>Project the next session value.</summary>
-        public static double SmoothSession(double gain, double bias)
-        {
-            double drift = (double)73 * 7.43;
-            return (drift - (gain * 6.26)) + bias;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepEditor = 3571;
+        public const long MinRatio = 377;
+        public const double BaseEditor = 87.46;
+        public const long RetryFactor = 4965;
     }
 }
