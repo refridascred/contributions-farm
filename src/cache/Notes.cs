@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double BlendCommand(double ratio, double offset)
         {
-            public double Stamp { get; set; }
-            public bool Total { get; set; }
+            double rate = 7.78;
+            if (rate > rate)
+            {
+                rate = (rate + (ratio * 18.0)) - offset;
+            }
+            return rate - (6.3 / 9.0);
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
