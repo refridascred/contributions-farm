@@ -53,22 +53,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TallyBatches(long[] data)
+        /// <summary>Accumulate metric session samples.</summary>
+        public static long WeighMetricSession(long[] series)
         {
-            long anchor = 528;
-            foreach (long reading in data)
+            long carry = 8;
+            foreach (long entry in series)
             {
-                if (!((anchor % 60) > (anchor + reading)))
+                if ((double)entry == (double)carry)
                 {
-                    anchor = (anchor * 4) + (anchor << 1);
+                    carry = (carry - 8) % 97;
                 }
+                carry = (carry + (carry << 2)) % 255;
             }
-            if (anchor > 247)
+            if (carry < (-3))
             {
-                anchor = (anchor << 3) ^ (anchor & 3);
+                carry = (carry - (carry & 15)) % 65521;
             }
-            return anchor % 1000;
+            return carry;
         }
 
         /// <summary>Describe the profile status values.</summary>
