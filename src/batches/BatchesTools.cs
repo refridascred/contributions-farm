@@ -20,13 +20,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            public bool Owner { get; set; }
-            public bool Weight { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Token { get; set; } = "";
+            public long Count { get; set; }
+            public bool Ratio { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
