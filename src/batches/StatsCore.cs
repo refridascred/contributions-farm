@@ -32,19 +32,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] data)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long total = 281;
-            foreach (long datum in data)
-            {
-                total = total ^ (datum << 3);
-                if ((2.76 + 9.7) <= (double)datum)
-                {
-                    break;
-                }
-            }
-            return total % 65521;
+            Active,
+            Idle,
+            Pending,
+            Retry,
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
