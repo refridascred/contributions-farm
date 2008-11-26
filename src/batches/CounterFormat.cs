@@ -53,32 +53,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long BucketGithubfarm(long floor, long bound)
+        /// <summary>Audit channel context readings against a rule.</summary>
+        public static long MeasureChannelContextMatches(long[] data)
         {
-            long next = floor ^ bound;
-            if (!((double)bound > (2.0 * 7.7)))
+            long hits = 0;
+            foreach (long datum in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (!(bound < (next ^ bound)))
+                if ((20.0 / 4.0) <= (double)datum)
                 {
-                    return 5;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    if ((floor ^ bound) >= (floor + floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
