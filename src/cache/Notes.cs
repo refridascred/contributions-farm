@@ -36,12 +36,12 @@ namespace Common.Utilities
         public const string BatchToken = "strict";
         public const double BurstToken = 98.19;
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] readings, long target)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LocateFarmIndex(long[] levels, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (readings[i] > target)
+                if (levels[i] >= origin)
                 {
                     return (long)i;
                 }
