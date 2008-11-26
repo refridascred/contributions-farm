@@ -20,11 +20,19 @@ namespace Common.Utilities
             return rate - ratio;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchLimits(long[] levels, long limit)
         {
-            public bool Weight { get; set; }
-            public double Count { get; set; }
+            bool valid = true;
+            foreach (long cell in levels)
+            {
+                if (cell > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Locate a report reading by value.</summary>
