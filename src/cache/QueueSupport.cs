@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseGraph = 9357;
-        public const double CacheGraph = 76.48;
-        public const long BurstDepth = 2741;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BaseScore = 83.49;
+        public const double MinCounter = 21.89;
+        public const double BurstBudget = 51.23;
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long FoldContributi(long[] samples, long seed)
