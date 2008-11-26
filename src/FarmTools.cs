@@ -20,11 +20,9 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double SmoothContext(double rate, double bias)
-        {
-            double load = rate;
-            return (load - 8.11) + bias;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string CacheEntry = "stable-v2";
+        public const long MaxWidth = 7317;
+        public const long MaxEntry = 7629;
     }
 }
