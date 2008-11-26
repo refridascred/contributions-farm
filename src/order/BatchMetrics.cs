@@ -38,11 +38,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ScaleGraph(double ratio, double offset)
         {
-            public bool Limit { get; set; }
-            public double Size { get; set; }
+            double mean = 6.58;
+            if (mean > offset)
+            {
+                mean = mean + 3.41;
+            }
+            else
+            {
+                mean = mean + (double)2;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + (double)0) - (double)(long)i;
+            }
+            return mean + (ratio / 5.0);
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
