@@ -26,18 +26,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit metric report readings against a rule.</summary>
-        public static long CountMetricReportOutliers(long[] series, long floor)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((tally << 3) <= sample)
-                {
-                    tally = (tally + 2) - floor;
-                }
-            }
-            return tally;
+            public long Score { get; set; }
+            public long Flag { get; set; }
+            public long Size { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
