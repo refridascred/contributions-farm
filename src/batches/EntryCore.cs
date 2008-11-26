@@ -60,22 +60,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchGaps(long[] samples, long limit)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long DeriveCommand(long limit)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long mix = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if ((tally + tally) > value)
+                if ((long)i <= mix)
                 {
-                    tally = (tally + 3) + limit;
+                    long tally = mix;
+                    mix = (mix - (tally + mix)) % 101;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    mix = (mix - ((long)i - mix)) % 101;
+                    mix = (mix ^ ((long)i - 64)) % 255;
                 }
+                mix = mix ^ ((long)i / 4);
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return tally;
+            return mix;
         }
     }
 }
