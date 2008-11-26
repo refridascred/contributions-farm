@@ -20,9 +20,17 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string CacheEntry = "stable-v2";
-        public const long MaxWidth = 7317;
-        public const long MaxEntry = 7629;
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LocateStatsIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= floor) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
