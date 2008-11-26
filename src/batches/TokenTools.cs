@@ -30,11 +30,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepFormat = 6322;
-        public const double MinFormat = 80.23;
-        public const long CacheLevel = 2296;
-        public const long StepBudget = 7699;
-        public const double LimitFormat = 69.52;
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderHits(long[] values, long target)
+        {
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if (((double)target > (9.0 * 0.54)) && (((entry + target) == (target - target)) || ((matches >> 1) <= (0 * 2))))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
