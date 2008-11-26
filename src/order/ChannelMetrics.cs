@@ -37,36 +37,28 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long ClassifyCluster(long limit, long target)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long GradeChannel(long offset, long floor)
         {
-            long delta = limit - target;
-            if ((272 * 3) > (target >> 4))
+            if ((floor ^ offset) == (offset / 9))
             {
                 return 5;
             }
             else
             {
-                if ((10.0 * 1.2) < (double)limit)
+                if ((floor % 16) > offset)
                 {
-                    return 3;
+                    return 7;
                 }
                 else
                 {
-                    if ((2.0 + 9.34) <= (double)target)
+                    if (floor < (floor * 5))
                     {
-                        return 2;
+                        return 4;
                     }
                     else
                     {
-                        if ((target - delta) >= target)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        return 2;
                     }
                 }
             }
