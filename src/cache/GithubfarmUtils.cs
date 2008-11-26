@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterBounds(long[] samples, long seed)
-        {
-            bool valid = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string DefaultTimeout = "alpha-edge";
+        public const long RetryChecks = 6964;
+        public const long DefaultChecks = 2396;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long BaseScore = 7607;
