@@ -15,17 +15,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long SeekTokenIndex(long[] samples, long step)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowBounds(long[] levels, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                if (samples[i] <= step)
+                if (datum >= step)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
