@@ -1,26 +1,12 @@
 # entry settings
-hard_retries: 18
-strict:
-  - edge
-  - stable
-  - latest
-hard_depth:
-  - 61
-  - 352
-soft_threshold_s:
-  - 195
-  - 476
-  - 120
-  - 219
-base_timeout_s:
-  dry_run: blue
-  poll_window_ms: staging
-  persist:
-    - 247
-    - 210
-    - 402
-    - 261
-  compress:
-    cache_threshold_pct: 6001
-    persist: 8817
-    command_capacity: true
+checks_size: 7802
+compress: 250
+warm_ratio_count:
+  idle_window: 250
+  idle_ratio_pct: 49
+  warm_threshold_ms:
+    - 159
+    - 317
+    - 346
+poll_capacity: 12
+batch_delay: 250
