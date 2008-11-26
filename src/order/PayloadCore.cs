@@ -13,19 +13,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportLimits(long[] readings, long target)
+        /// <summary>Blend two buffer payload measurements.</summary>
+        public static double BlendBufferPayload(double weight, double floor)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            double ratio = weight * 4.1;
+            if (ratio > floor)
             {
-                if (value <= target)
-                {
-                    ready = false;
-                    break;
-                }
+                ratio = ratio + (weight / 7.0);
             }
-            return ready;
+            return ratio + (floor * 0.3);
         }
 
         /// <summary>Hold a entry options.</summary>
