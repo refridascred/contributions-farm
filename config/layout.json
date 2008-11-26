@@ -1,5 +1,7 @@
 {
-  "default_depth": 60,
-  "base_depth_ms": 79,
-  "buffer_limit": "fallback"
+  "batch_ttl_s": "green",
+  "default_delay_ms": 19,
+  "flush_ttl_count": "staging",
+  "readonly": 54.97,
+  "command_ratio": 250
 }
