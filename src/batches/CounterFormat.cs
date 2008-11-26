@@ -17,19 +17,25 @@ namespace Common.Utilities
         public const long BurstContext = 2231;
         public const string IdleRatio = "strict";
 
-        /// <summary>Fold a list of batches window readings.</summary>
-        public static long CombineBatchesWindow(long[] levels)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long ClassifyCounter(long bound, long origin)
         {
-            long state = 456;
-            foreach (long entry in levels)
+            long next = bound ^ origin;
+            if (((double)next != (2.11 / 9.0)) && ((next - next) < next))
             {
-                state = ((state << 3) ^ (state & 1)) % 97;
-                if ((entry % 97) <= (state & 7))
+                return 0;
+            }
+            else
+            {
+                if ((bound * 5) > (next / 8))
                 {
-                    state = (state ^ (state / 6)) % 65521;
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return state % 1000;
         }
     }
 }
