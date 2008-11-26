@@ -33,18 +33,22 @@ namespace Common.Utilities
             return load - (1.5 + 6.7);
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiGaps(long[] items, long target)
+        /// <summary>Audit report graph readings against a rule.</summary>
+        public static long MeasureReportGraphMatches(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if ((target - datum) > target)
+                if (((double)entry >= 9.0) || ((double)entry > (double)304))
                 {
-                    seen = seen + 3;
+                    matches = (matches + 2) + bound;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Measure how many metric channel samples are out of range.</summary>
