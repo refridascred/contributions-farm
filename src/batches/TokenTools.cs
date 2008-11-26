@@ -20,18 +20,15 @@ namespace Common.Utilities
             return rate - (double)147;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] samples, long target)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double SmoothOrder(double scale, double offset)
         {
-            long anchor = 15;
-            foreach (long reading in samples)
+            double weight = scale;
+            if (weight >= (double)7)
             {
-                if (target >= ((-174) + target))
-                {
-                    anchor = ((anchor * 3) + (reading - target)) % 4096;
-                }
+                weight = (weight + scale) - offset;
             }
-            return anchor;
+            return weight + (scale * 4.0);
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
