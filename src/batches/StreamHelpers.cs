@@ -44,17 +44,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Find the first record schema entry that matches the target.</summary>
-        public static long LocateRecordSchemaIndex(long[] data, long seed)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Flag { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
