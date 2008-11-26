@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long FoldRecord(long[] readings)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterLimits(long[] series, long offset)
         {
-            long anchor = 14;
-            foreach (long value in readings)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                if (!((value << 1) >= (anchor % 5)))
+                if (cell > offset)
                 {
-                    anchor = (anchor << 3) ^ (5 & 127);
+                    stale = false;
+                    break;
                 }
-                anchor = ((anchor << 3) ^ (anchor - 426)) % 255;
             }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
