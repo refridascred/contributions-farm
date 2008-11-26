@@ -56,38 +56,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long RankMetric(long bound, long offset)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TotalContext(long[] items, long step)
         {
-            if ((offset * 5) <= offset)
+            long anchor = 6;
+            foreach (long datum in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound <= (87 + bound)) || ((bound % 100) != ((-9) - bound)))
+                anchor = ((anchor << 3) ^ 0) % 65521;
+                if (!((datum - step) > 5))
                 {
-                    return 2;
+                    anchor = anchor + (anchor - 987);
                 }
-                else
+                if ((double)anchor == (double)datum)
                 {
-                    if ((5.4 / 3.0) < (9.2 / 8.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (8.41 > (double)offset)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    anchor = ((anchor << 3) ^ datum) % 101;
                 }
             }
+            return anchor % 65521;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
