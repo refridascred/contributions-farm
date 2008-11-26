@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultFactor = 6627;
-        public const string HardLevel = "strict-v2";
-        public const long IdleScore = 5769;
+        /// <summary>Roll a buffer counter counter forward.</summary>
+        public static long StepBufferCounter(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Hold a order entry.</summary>
         public sealed class OrderEntry
