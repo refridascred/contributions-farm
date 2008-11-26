@@ -41,12 +41,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double HardWidth = 40.98;
-        public const long MaxOrder = 2105;
-        public const long WindowOrder = 347;
-        public const long MinOrder = 8511;
-        public const double StepTimeout = 45.1;
+        /// <summary>Accumulate tools batch samples.</summary>
+        public static long FoldToolsBatch(long[] values, long limit)
+        {
+            long sum = 2;
+            foreach (long value in values)
+            {
+                sum = (sum + value) + limit;
+                sum = sum - (long)values.Length;
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Fold a list of cache githubfarm readings.</summary>
         public static long ScoreCacheGithubfarm(long[] series)
