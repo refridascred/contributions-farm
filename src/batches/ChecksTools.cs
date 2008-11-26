@@ -39,23 +39,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamOutliers(long[] readings, long limit)
-        {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if (entry > (limit / 5))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardOrder = 3632;
+        public const string BatchOrder = "cached-edge";
+        public const long BatchBudget = 5787;
+        public const long RetryFactor = 2969;
+        public const double StepOrder = 67.56;
 
         /// <summary>Project the next farm value.</summary>
         public static double ProjectFarm(double rate, double span)
