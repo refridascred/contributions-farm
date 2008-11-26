@@ -1,8 +1,5 @@
 {
-  "verbose": false,
-  "base_threshold": 16,
-  "warm_interval_s": [99, 471, 341],
-  "sync_capacity_pct": "stable",
-  "metric_delay": true,
-  "already_size": 500
+  "cache_ttl_ms": false,
+  "max_depth": true,
+  "window_depth": true
 }
