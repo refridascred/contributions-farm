@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitRatio = 1121;
-        public const long HardRecord = 4686;
-        public const long CacheFactor = 325;
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
+        {
+            Closed,
+            Dropped,
+            New,
+            Pending,
+            Queued,
+        }
 
         /// <summary>Iterate the stats series from a seed.</summary>
         public static long RollStats(long step)
