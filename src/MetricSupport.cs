@@ -5,25 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a channel profile value against two limits.</summary>
-        public static long ClassifyChannelProfile(long floor, long floor2)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long slot = floor ^ floor2;
-            if ((double)slot != (double)floor)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((floor2 >> 2) > floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Queued,
+            Synced,
+            Ready,
+            Dropped,
+            New,
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
