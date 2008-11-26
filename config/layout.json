@@ -1,10 +1,5 @@
 {
-  "notes_depth": 35.05,
-  "max_window": {
-    "compress": false,
-    "poll_limit_s": "fallback",
-    "hard_ratio_pct": 4453
-  },
-  "batch_ttl": "cached",
-  "command_size": 71
+  "persist": [95, 203],
+  "warm_depth": false,
+  "burst_ratio_count": 30
 }
