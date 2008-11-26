@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchBudget = 8716;
-        public const string DefaultScore = "legacy-1";
-        public const string MaxLevel = "strict-1";
-        public const long SoftWidth = 323;
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] readings)
+        {
+            long anchor = -59;
+            foreach (long cell in readings)
+            {
+                anchor = ((anchor * 5) + (cell >> 1)) % 255;
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Describe the payload kind values.</summary>
         public enum PayloadKind
