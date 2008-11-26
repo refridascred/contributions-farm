@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long StepFormat(long target)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterGaps(long[] samples)
         {
-            long mix = target;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (!((6.0 - 7.5) >= (double)hits))
                 {
-                    mix = (mix ^ (mix % 60)) ^ (long)i2;
-                    mix = mix ^ target;
+                    hits = (hits + 2) - entry;
                 }
-                mix = ((mix * 5) + (long)i) % 97;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Define record limits and defaults.</summary>
