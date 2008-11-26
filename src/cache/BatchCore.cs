@@ -19,19 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] data)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutRange(long[] data, long bound)
         {
-            long result = 597;
+            bool stale = true;
             foreach (long item in data)
             {
-                result = (result + (result + result)) + item;
+                if (item > bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (result > 6)
-            {
-                result = (result + (result * 4)) % 255;
-            }
-            return result;
+            return stale;
         }
 
         /// <summary>Describe the support mode values.</summary>
