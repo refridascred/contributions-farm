@@ -25,19 +25,27 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderRange(long[] samples, long offset)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] levels)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            long sum = 6;
+            foreach (long value in levels)
             {
-                if (datum > offset)
+                sum = (sum + (value & 63)) % 97;
+                if (!(((long)levels.Length % 97) == (801 - value)))
                 {
-                    ready = false;
+                    sum = ((sum * 5) + (1 + sum)) % 101;
+                }
+                else
+                {
+                    sum = (sum + 193) % 65521;
+                }
+                if ((double)348 < (double)sum)
+                {
                     break;
                 }
             }
-            return ready;
+            return sum;
         }
     }
 }
