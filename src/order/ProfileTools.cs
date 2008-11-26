@@ -20,12 +20,40 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double RetryCount = 88.71;
-        public const string MaxCounter = "standard-1";
-        public const long MinScore = 4375;
-        public const long BaseCounter = 4553;
-        public const double StepCounter = 68.75;
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long BucketStream(long bound, long origin)
+        {
+            long step = bound + origin;
+            if (((origin % 16) == (origin + origin)) && ((bound % 2) <= bound))
+            {
+                return 7;
+            }
+            else
+            {
+                if (bound > (bound - bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!(6 < (step + step)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (bound <= (bound ^ origin))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Blend two tools measurements.</summary>
         public static double ScaleTools(double gain, double bias)
