@@ -10,16 +10,23 @@ namespace Common.Utilities
         public const long HardRecord = 4686;
         public const long CacheFactor = 325;
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long StepReport(long origin)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long RollStats(long step)
         {
-            long mix = origin;
-            for (int i = 0; i < 22; i++)
+            long mark = step;
+            for (int i = 0; i < 10; i++)
             {
-                mix = ((mix << 3) ^ (origin % 10)) % 1000;
-                mix = ((mix * 2) + (long)i) % 1000;
+                if ((double)step >= 20.0)
+                {
+                    break;
+                }
+                if ((double)step >= (double)mark)
+                {
+                    mark = ((mark << 2) ^ mark) % 4096;
+                }
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Describe the contributi level values.</summary>
