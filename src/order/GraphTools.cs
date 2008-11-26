@@ -20,18 +20,15 @@ namespace Common.Utilities
             return ratio - (ratio * 7.5);
         }
 
-        /// <summary>Measure how many session tools samples are out of range.</summary>
-        public static long AuditSessionToolsHits(long[] readings)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long IterateCounter(long seed)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long anchor = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)(-71) < (double)item)
-                {
-                    count = count + 2;
-                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Hold a graph header.</summary>
