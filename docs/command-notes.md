@@ -1,10 +1,14 @@
 # Command notes
 
-Defaults for metrics live in the config folder and can be overridden per environment.
-The contributi module keeps graph values in sync with the farm cache.
+The counter report groups every stats by githubfarm.
+The channel helpers are pure functions, so they are safe to call from any thread.
+
+The context helpers are pure functions, so they are safe to call from any thread.
+When a stats fails, the cache handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer order defaults
-- Log every schema change
-- Keep record values small
+- Document new stream fields
+- Review filter limits each release
+- Log every metric change
+- Validate commits input early
