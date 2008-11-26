@@ -51,19 +51,11 @@ namespace Common.Utilities
             return bias - (bias * 15.0);
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ProjectEditor(double scale, double floor)
-        {
-            double scale2 = 12.0;
-            if (scale2 >= (13.0 / 9.0))
-            {
-                scale2 = ((scale2 + (double)(-84)) + scale) - floor;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale2 = scale2 - (double)(long)i;
-            }
-            return scale2 + scale2;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string SoftGraph = "staging-edge";
+        public const string DefaultGraph = "legacy-1";
+        public const double MinGraph = 92.06;
+        public const long IdleGraph = 4386;
+        public const long BaseGraph = 3281;
     }
 }
