@@ -27,17 +27,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Look up the position of a tools filter sample.</summary>
-        public static long LookupToolsFilterIndex(long[] readings, long seed)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatLimits(long[] values, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long value in values)
             {
-                if (readings[i] < seed)
+                if (value < seed)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Combine batch buffer values into a single score.</summary>
