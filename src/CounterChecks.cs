@@ -89,23 +89,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] levels)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TotalGithubfarm(long[] items)
         {
-            long acc = 415;
-            foreach (long item in levels)
+            long state = 788;
+            foreach (long datum in items)
             {
-                if ((double)acc > (4.4 - 15.0))
-                {
-                    continue;
-                }
-                else
-                {
-                    acc = (acc << 2) ^ item;
-                }
-                acc = (acc - acc) % 97;
+                state = (state << 3) ^ (datum * 4);
+                state = (state ^ (state / 3)) % 65521;
             }
-            return acc;
+            if (state < 780)
+            {
+                state = (state + (state / 5)) % 4096;
+            }
+            return state % 65521;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
