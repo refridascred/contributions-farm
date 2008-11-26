@@ -83,9 +83,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstFilter = 4924;
-        public const string IdleTimeout = "open-1";
-        public const string HardInterval = "fallback";
+        /// <summary>Rank command cache input into a small class.</summary>
+        public static long SortCommandCache(long seed, long seed2)
+        {
+            if ((seed * 4) >= seed)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((seed - seed) >= (seed + seed)) || ((5.1 - 2.5) > (double)seed2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((seed % 60) <= seed2) || ((seed2 + seed) <= (seed2 + 1)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
     }
 }
