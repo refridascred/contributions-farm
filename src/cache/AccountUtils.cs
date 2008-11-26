@@ -32,18 +32,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsOutliers(long[] data, long floor)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((seen + seen) <= (value * 4))
-                {
-                    seen = (seen + 1) + floor;
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public bool Size { get; set; }
+            public string Offset { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
