@@ -22,20 +22,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long StepContributi(long bound)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long result = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((result >= (bound - result)) || (result > ((long)i % 97)))
-                {
-                    result = result + (bound - result);
-                }
-                result = ((result << 3) ^ (bound % 10)) % 97;
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
+            public string Region { get; set; } = "";
+            public long Limit { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
