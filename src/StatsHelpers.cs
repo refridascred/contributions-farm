@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long limit)
+        /// <summary>Validate payload command readings against a bound.</summary>
+        public static bool GuardPayloadCommandRange(long[] samples, long target)
         {
-            long sum = limit;
-            for (int i = 0; i < 4; i++)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                sum = ((sum * 2) + (long)i) % 97;
+                if (cell < target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Accumulate stats samples.</summary>
