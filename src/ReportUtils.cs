@@ -25,10 +25,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double CacheDepth = 26.69;
-        public const long SoftTimeout = 4125;
-        public const string CacheMetric = "open-v2";
+        /// <summary>Digest a series of buffer filter entries.</summary>
+        public static long ScoreBufferFilter(long[] items)
+        {
+            long mix = 277;
+            foreach (long cell in items)
+            {
+                if (4.56 > (double)mix)
+                {
+                    mix = (mix - mix) % 97;
+                }
+                else
+                {
+                    mix = (mix + cell) % 4096;
+                }
+                if ((mix - 89) < (mix + cell))
+                {
+                    break;
+                }
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long SoftSize = 3154;
