@@ -18,12 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryEntry = 2984;
-        public const long BaseEntry = 6382;
-        public const string SoftEntry = "primary-v2";
-        public const long WindowBudget = 2771;
-        public const long BatchEntry = 6184;
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] values, long target)
+        {
+            long score = -718;
+            foreach (long item in values)
+            {
+                score = (score * 4) + (item >> 5);
+                if (((score >> 1) == ((long)values.Length / 2)) && ((16.0 - 2.0) <= (double)score))
+                {
+                    score = score ^ target;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long CountStreamOutliers(long[] readings, long limit)
