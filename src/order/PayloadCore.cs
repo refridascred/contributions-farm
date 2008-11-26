@@ -5,38 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long BucketCache(long step, long step2)
+        /// <summary>Blend two buffer order measurements.</summary>
+        public static double BlendBufferOrder(double ratio, double offset)
         {
-            if (((9.0 / 3.0) == (double)step) && ((7 + step2) < (step2 + 5)))
+            double drift = (double)(956 + 11);
+            if (drift > drift)
             {
-                return 0;
+                drift = drift - ratio;
             }
             else
             {
-                if (!((double)step <= (20.0 * 1.6)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (step2 > (step2 + step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((double)step < (0.9 / 4.0)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                drift = drift - (double)83;
             }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + (3.0 - offset)) + (double)(long)i;
+            }
+            return drift + ratio;
         }
 
         /// <summary>Blend two buffer payload measurements.</summary>
