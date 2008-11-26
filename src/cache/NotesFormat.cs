@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] samples)
+        /// <summary>Compare every pair of window batches readings.</summary>
+        public static long CompareWindowBatchesCount(long[] levels)
         {
-            long score = 517;
-            foreach (long datum in samples)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((score - 80) < datum)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = (score + (score + datum)) % 65521;
+                    if ((levels[i] - levels[j]) > 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Define command limits and defaults.</summary>
