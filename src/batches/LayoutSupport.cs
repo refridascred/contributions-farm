@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const long MinSchema = 6219;
         public const string DefaultSpan = "primary-edge";
 
-        /// <summary>Check that every batch order entry stays within the limit.</summary>
-        public static bool CheckBatchOrderLimits(long[] data, long limit)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelMatches(long[] data)
         {
-            bool flag = true;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (value > limit)
+                if ((double)datum == (double)count)
                 {
-                    flag = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
