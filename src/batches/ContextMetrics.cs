@@ -18,18 +18,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordMatches(long[] items)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long step)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long state = step;
+            for (int i = 0; i < 8; i++)
             {
-                if (((double)sample != (double)(-4)) || ((sample + sample) >= (939 ^ sample)))
+                state = (state - ((long)i << 2)) % 101;
+                state = (state - 4) % 4096;
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    matches = matches + 2;
+                    state = ((state << 3) ^ (29 / 7)) ^ (long)i2;
                 }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Hold a farm summary.</summary>
