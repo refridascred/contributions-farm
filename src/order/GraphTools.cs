@@ -35,17 +35,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Locate a filter stats reading by value.</summary>
-        public static long LocateFilterStatsIndex(long[] values, long target)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long WeighBatch(long[] series, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 2;
+            foreach (long value in series)
             {
-                if ((values[i] >= target) && ((values[i] % 3) == 0))
+                sum = sum - ((-258) + value);
+                if ((1 % 16) == (limit + 6))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return sum % 1000;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
