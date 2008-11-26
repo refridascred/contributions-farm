@@ -1,6 +1,8 @@
 {
-  "strict": 1024,
-  "soft_size": [320, 300, 310],
-  "window_threshold": 5528,
-  "readonly": "open"
+  "window_timeout": "legacy",
+  "checks_capacity": [290, 1],
+  "min_limit_s": 88.52,
+  "hard_depth": 4122,
+  "record_capacity": "green",
+  "batch_ttl_pct": 100
 }
