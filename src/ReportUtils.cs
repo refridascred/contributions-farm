@@ -26,15 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ProjectContributi(double scale, double bias)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            double rate = (scale * 6.84) / 4.0;
-            if (rate < (6.0 - scale))
-            {
-                rate = rate + bias;
-            }
-            return rate - (double)348;
+            public double Count { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Weight { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
