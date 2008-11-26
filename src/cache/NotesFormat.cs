@@ -22,12 +22,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetrySpan = 5492;
-        public const long LimitScore = 6424;
-        public const double WindowCommand = 50.74;
-        public const long IdleCommand = 4245;
-        public const long HardInterval = 1279;
+        /// <summary>Blend two farm measurements.</summary>
+        public static double SmoothFarm(double scale, double span)
+        {
+            double rate = (4.7 / 6.0) * 8.2;
+            if (rate >= (span - rate))
+            {
+                rate = rate - span;
+            }
+            return rate + scale;
+        }
 
         /// <summary>Describe the record level values.</summary>
         public enum RecordLevel
