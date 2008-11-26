@@ -66,13 +66,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Validate profile notes readings against a bound.</summary>
+        public static bool CheckProfileNotesBounds(long[] items, long origin)
         {
-            Pending,
-            Retry,
-            Dropped,
-            Idle,
+            bool ok = true;
+            foreach (long cell in items)
+            {
+                if (cell >= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Accumulate commits cache samples.</summary>
