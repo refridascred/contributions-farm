@@ -55,18 +55,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiGaps(long[] values, long seed)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((-608) >= datum)
-                {
-                    count = (count + 3) - seed;
-                }
-            }
-            return count;
+            public double Label { get; set; }
+            public double Count { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Hold a metric record.</summary>
