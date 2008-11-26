@@ -1,5 +1,7 @@
 {
-  "flush_threshold_count": 69.98,
-  "warm_delay": 60,
-  "enabled": 9742
+  "persist": ["open", "standard", "green", "open"],
+  "retry_retries": 24.46,
+  "editor_window": 49,
+  "profile_capacity": true,
+  "metric_delay": 4867
 }
