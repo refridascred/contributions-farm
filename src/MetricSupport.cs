@@ -15,22 +15,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheHits(long[] items, long bound)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((datum * 5) == (bound ^ 7))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Weight { get; set; }
+            public long Score { get; set; }
+            public double Level { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Validate window readings against a bound.</summary>
