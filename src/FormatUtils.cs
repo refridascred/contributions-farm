@@ -54,12 +54,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorBounds(long[] samples, long target)
         {
-            public long Weight { get; set; }
-            public long Mode { get; set; }
-            public double Stamp { get; set; }
+            bool ready = true;
+            foreach (long cell in samples)
+            {
+                if (cell < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count the metrics batch entries that pass the check.</summary>
