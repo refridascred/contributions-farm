@@ -46,12 +46,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            Paused,
-            Done,
-            New,
+            public long Stamp { get; set; }
+            public long Count { get; set; }
+            public string Region { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Locate a account reading by value.</summary>
