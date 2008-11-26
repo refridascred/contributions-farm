@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportRange(long[] readings, long target)
-        {
-            bool ok = true;
-            foreach (long value in readings)
-            {
-                if (value >= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleSize = 1834;
+        public const string LimitRecord = "open";
+        public const double DefaultRecord = 2.66;
 
         /// <summary>Hold a account header.</summary>
         public sealed class AccountHeader
