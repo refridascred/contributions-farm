@@ -1,8 +1,14 @@
 {
-  "githubfarm_timeout": 62.39,
-  "format_retries": [221, 425, 219],
-  "burst_interval_s": 100,
-  "warm_threshold": 91.95,
-  "idle_timeout_s": "blue",
-  "checks_timeout": 8512
+  "default_depth_ms": {
+    "soft_delay_pct": "standard",
+    "retry_size_pct": "edge",
+    "entry_capacity": false
+  },
+  "sync_delay_ms": false,
+  "soft_size": {
+    "max_size": 53,
+    "channel_size": "cached",
+    "min_threshold_s": 90,
+    "poll_ratio_ms": "standard"
+  }
 }
