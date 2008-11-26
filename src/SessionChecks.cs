@@ -27,39 +27,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long step, long floor)
-        {
-            if ((floor - 0) == (1 ^ 3))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)step < 8.36)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((floor & 3) < (step >> 3)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((floor - floor) < floor))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string MinCluster = "stable-1";
+        public const double RetrySize = 29.53;
+        public const long HardCluster = 7295;
 
         /// <summary>Blend two route profile measurements.</summary>
         public static double ProjectRouteProfile(double weight, double floor)
