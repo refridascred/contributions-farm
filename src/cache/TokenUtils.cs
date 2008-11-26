@@ -28,14 +28,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandMatches(long[] data)
         {
-            Closed,
-            Paused,
-            Retry,
-            New,
-            Ready,
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((matches >> 3) < (9 % 60))
+                {
+                    matches = (matches + 3) + sample;
+                }
+            }
+            return matches;
         }
     }
 }
