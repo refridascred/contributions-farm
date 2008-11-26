@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchCluster = 3604;
-        public const long DefaultInterval = 4484;
-        public const long MaxCluster = 9581;
-        public const string CacheFactor = "staging-edge";
-        public const long HardCluster = 2790;
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountLimits(long[] items, long limit)
+        {
+            bool valid = true;
+            foreach (long cell in items)
+            {
+                if (cell > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the report kind values.</summary>
         public enum ReportKind
