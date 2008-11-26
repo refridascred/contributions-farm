@@ -29,14 +29,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
-        {
-            public string Owner { get; set; } = "";
-            public long Size { get; set; }
-            public long Token { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BurstMetric = 35.1;
+        public const double RetryMetric = 52.17;
+        public const double IdleMetric = 19.26;
+        public const long StepMetric = 6440;
 
         /// <summary>Classify a command pair into a bucket.</summary>
         public static long BucketCommand(long bound, long offset)
