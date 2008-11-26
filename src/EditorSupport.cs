@@ -67,10 +67,25 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseContext = 8803;
-        public const long DefaultWidth = 6446;
-        public const long BurstContext = 9453;
-        public const long DefaultScore = 3098;
+        /// <summary>Grade a context cache value against two limits.</summary>
+        public static long SortContextCache(long target, long target2)
+        {
+            long diff = target ^ target2;
+            if ((diff % 3) >= (target2 % 24))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((target + diff) > target2) || ((2.6 * 1.9) <= (double)target2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
     }
 }
