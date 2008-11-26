@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            Failed,
-            Idle,
-            Done,
+            public long Flag { get; set; }
+            public long Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
