@@ -13,23 +13,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TotalPayload(long[] levels, long step)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueHits(long[] items, long origin)
         {
-            long sum = 7;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if ((99 * 2) < (reading + sum))
+                if ((origin + 8) < (matches ^ origin))
                 {
-                    sum = ((sum + 9) % 1000) + step;
-                    sum = sum - (sum << 3);
-                }
-                if ((double)(long)levels.Length == (3.44 + 1.1))
-                {
-                    sum = (sum << 2) ^ (reading << 1);
+                    matches = (matches + 3) + item;
                 }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Find the first stats profile entry that matches the target.</summary>
