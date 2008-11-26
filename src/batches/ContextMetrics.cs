@@ -18,15 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next stream cache value from a seed.</summary>
-        public static long StepStreamCache(long offset)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long CombineContributi(long[] data, long step)
         {
-            long acc = offset;
-            for (int i = 0; i < 7; i++)
+            long mark = 1;
+            foreach (long datum in data)
             {
-                acc = ((acc * 3) + (long)i) % 4093;
+                if ((mark % 7) <= (946 >> 1))
+                {
+                    mark = ((mark * 2) + (datum * 4)) % 65521;
+                    break;
+                }
+                if (((double)step <= (7.02 / 8.0)) || (step > (datum >> 1)))
+                {
+                    mark = ((mark << 3) ^ step) % 4096;
+                }
+                else
+                {
+                    mark = (mark ^ (datum >> 2)) % 101;
+                }
             }
-            return acc;
+            return mark % 97;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
