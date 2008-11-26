@@ -1,8 +1,11 @@
 {
-  "burst_ttl": 96,
-  "max_retries_s": "primary",
-  "readonly": 66.5,
-  "max_ttl_s": "standard",
-  "default_window_count": "latest",
-  "warm_ratio": "primary"
+  "entry_window": false,
+  "readonly": 38.58,
+  "sync_depth_s": "stable",
+  "enabled": {
+    "soft_size_s": 30,
+    "verbose": "latest",
+    "burst_ttl_pct": [215, 371, 461, 105],
+    "enabled": 6031
+  }
 }
