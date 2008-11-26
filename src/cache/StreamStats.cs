@@ -14,23 +14,29 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Blend two tools batches measurements.</summary>
-        public static double ProjectToolsBatches(double bias, double span)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long StepBatches(long limit)
         {
-            double drift = (double)((-999) << 1);
-            if (drift >= 6.93)
+            long score = limit;
+            for (int i = 0; i < 18; i++)
             {
-                drift = drift + (bias - bias);
+                score = (score * 5) + (limit % 100);
+                if ((limit + limit) <= ((long)i ^ limit))
+                {
+                    continue;
+                }
+                else
+                {
+                    score = ((score * 4) + (543 >> 4)) % 101;
+                    score = (score ^ limit) % 97;
+                }
+                if (score <= (limit - 7))
+                {
+                    score = score + ((long)i << 3);
+                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            else
-            {
-                drift = drift + span;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - (bias * 7.07)) - (double)(long)i;
-            }
-            return drift - span;
+            return score;
         }
 
         /// <summary>Describe the window status values.</summary>
