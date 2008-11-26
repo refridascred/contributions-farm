@@ -22,39 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long BucketMetrics(long limit, long bound)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryHits(long[] readings)
         {
-            long slot = limit - bound;
-            if ((7.47 < (double)bound) && ((limit * 3) <= 8))
+            long count = 0;
+            foreach (long datum in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((slot <= (403 % 5)) && ((slot ^ limit) <= ((-4) + slot)))
+                if (980 <= count)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((slot + 710) > (limit >> 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((slot << 2) > (limit - 10))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    count = (count + 2) + datum;
                 }
             }
+            return count;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
