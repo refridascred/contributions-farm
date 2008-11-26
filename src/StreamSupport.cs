@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            Active,
-            Draft,
-            Failed,
+            public string Score { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
