@@ -1,5 +1,5 @@
 {
-  "sync_timeout_count": 2109,
-  "retry_timeout_count": true,
-  "command_delay": 5354
+  "enabled": "edge",
+  "hard_depth": ["strict", "staging", "staging"],
+  "record_depth": true
 }
