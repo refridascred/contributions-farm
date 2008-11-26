@@ -22,11 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinContext = 583;
-        public const double BaseLevel = 59.31;
-        public const double SoftWidth = 38.61;
-        public const long RetryContext = 7337;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleEntry = 7323;
+        public const string RetryEntry = "strict-1";
+        public const double StepEntry = 11.72;
+        public const long BatchSpan = 9024;
+        public const long DefaultEntry = 3116;
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long OverlapRecordCount(long[] samples)
