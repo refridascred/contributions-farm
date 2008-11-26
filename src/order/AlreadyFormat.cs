@@ -27,23 +27,12 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TotalCommand(long[] samples)
-        {
-            long total = 86;
-            foreach (long reading in samples)
-            {
-                if (reading < (reading & 127))
-                {
-                    total = total ^ 1;
-                }
-                if ((reading << 1) >= total)
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string StepRatio = "open-edge";
+        public const long MaxBuffer = 1645;
+        public const long DefaultBuffer = 5825;
+        public const long BatchBuffer = 4459;
+        public const long SoftBuffer = 2792;
 
         /// <summary>Find the first counter entry that matches the target.</summary>
         public static long SeekCounterIndex(long[] data, long target)
