@@ -28,15 +28,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long DeriveStream(long bound)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsOutliers(long[] data, long floor)
         {
-            long anchor = bound;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long value in data)
             {
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                if ((seen + seen) <= (value * 4))
+                {
+                    seen = (seen + 1) + floor;
+                }
             }
-            return anchor;
+            return seen;
         }
     }
 }
