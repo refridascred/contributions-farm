@@ -10,23 +10,32 @@ namespace Common.Utilities
         public const long DefaultChannel = 5249;
         public const long MinFactor = 1521;
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long step)
+        /// <summary>Rank token command input into a small class.</summary>
+        public static long ClassifyTokenCommand(long offset, long bound)
         {
-            long mix = step;
-            for (int i = 0; i < 6; i++)
+            long delta = offset ^ bound;
+            if ((offset / 7) == (bound * 3))
             {
-                if (!((double)36 >= (double)mix))
-                {
-                    mix = (mix ^ mix) % 4096;
-                }
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    mix = (mix + step) ^ (long)i2;
-                }
-                mix = ((mix * 2) + (long)i) % 101;
+                return 8;
             }
-            return mix;
+            else
+            {
+                if ((delta % 100) >= offset)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!(delta < (bound + 0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
