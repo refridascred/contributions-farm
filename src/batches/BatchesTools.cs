@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Match up metric tools samples.</summary>
-        public static long OverlapMetricToolsCount(long[] items)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long SeekMetricIndex(long[] items, long origin)
         {
-            long seen = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (items[i] <= origin)
                 {
-                    if ((items[i] ^ items[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the contributi level values.</summary>
