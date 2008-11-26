@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next payload context value from a seed.</summary>
-        public static long RollPayloadContext(long offset)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LocateTokenIndex(long[] data, long offset)
         {
-            long total = offset;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = ((total << 2) ^ ((long)i ^ total)) % 65521;
-                total = (total ^ offset) % 97;
-                total = ((total * 3) + (long)i) % 4093;
+                if (data[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Derive the next stream cache value from a seed.</summary>
