@@ -78,12 +78,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long StepCommits(long step)
         {
-            public string Size { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public bool Rank { get; set; }
+            long acc = step;
+            for (int i = 0; i < 10; i++)
+            {
+                if (((double)acc < (15.0 - 5.5)) && ((968 % 12) > (acc >> 5)))
+                {
+                    acc = (acc << 2) ^ (4 + acc);
+                    continue;
+                }
+                if ((double)(long)i == (10.0 - 9.55))
+                {
+                    continue;
+                }
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
     }
 }
