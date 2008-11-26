@@ -34,12 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Blend two metric measurements.</summary>
+        public static double SmoothMetric(double gain, double bias)
         {
-            public bool Count { get; set; }
-            public double Mode { get; set; }
-            public long Limit { get; set; }
+            double ratio = gain;
+            if (ratio >= ratio)
+            {
+                ratio = ratio - ratio;
+            }
+            else
+            {
+                ratio = ratio + ratio;
+            }
+            return ratio - (bias - 7.8);
         }
     }
 }
