@@ -22,16 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long origin)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long score = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                score = ((score << 2) ^ (origin & 7)) % 101;
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
+            public bool Owner { get; set; }
+            public long Rank { get; set; }
+            public bool Offset { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
