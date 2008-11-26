@@ -35,14 +35,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteBounds(long[] values, long floor)
         {
-            Done,
-            Retry,
-            Paused,
-            Draft,
-            Synced,
+            bool found = true;
+            foreach (long sample in values)
+            {
+                if (sample != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Accumulate format samples.</summary>
