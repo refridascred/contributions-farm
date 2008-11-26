@@ -14,23 +14,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long DeriveCounter(long floor)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricGaps(long[] values)
         {
-            long state = floor;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if ((double)floor >= (double)state)
+                if (item <= (hits ^ 37))
                 {
-                    state = ((state * 5) + (long)i) % 97;
+                    hits = hits + 3;
                 }
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    state = (((state << 2) ^ 22) % 1000) ^ (long)i2;
-                }
-                state = ((state * 3) + (long)i) % 1000;
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Define context limits and defaults.</summary>
