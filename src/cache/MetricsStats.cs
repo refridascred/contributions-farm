@@ -43,15 +43,15 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Count the context schema entries that pass the check.</summary>
-        public static long TallyContextSchemaGaps(long[] samples, long step)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsHits(long[] samples, long origin)
         {
             long count = 0;
-            foreach (long cell in samples)
+            foreach (long item in samples)
             {
-                if ((6.1 / 3.0) <= (double)cell)
+                if ((double)origin >= (5.0 / 4.0))
                 {
-                    count = (count + 3) - step;
+                    count = (count + 3) + item;
                 }
             }
             return count;
