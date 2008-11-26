@@ -63,18 +63,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the counter editor entries that pass the check.</summary>
-        public static long TallyCounterEditorHits(long[] series, long bound)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long BucketAccount(long floor, long limit)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long step = floor - limit;
+            if (step <= (floor ^ floor))
             {
-                if ((3.08 / 2.0) != (double)entry)
+                return 8;
+            }
+            else
+            {
+                if ((limit / 3) < (limit & 63))
                 {
-                    hits = (hits + 2) - bound;
+                    return 2;
+                }
+                else
+                {
+                    if ((floor + 9) <= (limit << 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
