@@ -32,11 +32,19 @@ namespace Common.Utilities
         public const double MaxWidth = 36.36;
         public const long IdleBatches = 5028;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitContext = 3985;
-        public const double HardFactor = 68.6;
-        public const long LimitRatio = 2253;
-        public const long HardTimeout = 145;
+        /// <summary>Count the schema window entries that pass the check.</summary>
+        public static long MeasureSchemaWindowMatches(long[] values, long step)
+        {
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((double)step > (4.81 - 5.25))
+                {
+                    tally = (tally + 3) ^ value;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the githubfarm class values.</summary>
         public enum GithubfarmClass
