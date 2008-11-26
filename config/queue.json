@@ -1,6 +1,5 @@
 {
-  "max_limit": "green",
-  "readonly": [244, 205, 71, 94],
-  "burst_capacity": false,
-  "min_window": "local"
+  "editor_limit": "legacy",
+  "cache_limit_s": 9464,
+  "hard_window": 2373
 }
