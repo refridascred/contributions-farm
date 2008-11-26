@@ -23,21 +23,22 @@ namespace Common.Utilities
         public const double DefaultRatio = 73.47;
         public const string MaxInterval = "standard-edge";
 
-        /// <summary>Match up schema samples.</summary>
-        public static long OverlapSchemaCount(long[] samples)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsMatches(long[] readings, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((264 + item) > origin)
                 {
-                    if ((samples[i] ^ samples[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Combine format support values into a single score.</summary>
