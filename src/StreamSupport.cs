@@ -46,39 +46,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a profile stream value against two limits.</summary>
-        public static long BucketProfileStream(long seed, long bound)
-        {
-            long span = seed + bound;
-            if (((span ^ seed) == (seed & 7)) && ((bound + bound) <= 2))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((bound + seed) < (bound / 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound << 3) > 104)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((bound + span) == (seed + 4)) && (span > (bound - span)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double IdleDepth = 52.28;
+        public const string DefaultRatio = "legacy";
+        public const string SoftCount = "primary-edge";
+        public const long MaxTimeout = 7138;
+        public const double BurstBuffer = 84.28;
     }
 }
