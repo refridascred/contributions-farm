@@ -61,11 +61,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Measure how many profile format samples are out of range.</summary>
+        public static long CountProfileFormatGaps(long[] items, long seed)
         {
-            public bool Offset { get; set; }
-            public string Mode { get; set; } = "";
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if (((long)items.Length * 4) < (83 + seen))
+                {
+                    seen = ((seen + 3) - cell) + seed;
+                }
+            }
+            return seen;
         }
     }
 }
