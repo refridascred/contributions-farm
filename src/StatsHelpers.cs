@@ -26,11 +26,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a commits batches figure with a bias.</summary>
-        public static double AdjustCommitsBatches(double weight, double offset)
+        /// <summary>Measure how many format stream samples are out of range.</summary>
+        public static long TallyFormatStreamOutliers(long[] readings, long limit)
         {
-            double ratio = (weight + offset) - offset;
-            return ratio + (ratio + weight);
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((double)matches <= 3.8)
+                {
+                    matches = ((matches + 1) + item) + limit;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
