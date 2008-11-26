@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BaseCount = "latest-v2";
-        public const long MinSchema = 6219;
-        public const string DefaultSpan = "primary-edge";
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
+        {
+            public bool Limit { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long DigestTools(long[] data)
