@@ -39,13 +39,11 @@ namespace Common.Utilities
         public const long RetryFactor = 2969;
         public const double StepOrder = 67.56;
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            public string Weight { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Rank { get; set; }
-            public long Size { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Level { get; set; }
         }
     }
 }
