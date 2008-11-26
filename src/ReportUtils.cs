@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinGithubfarm = 3924;
-        public const long SoftTimeout = 6047;
-        public const long MaxDepth = 618;
-        public const string BurstSpan = "standard-v2";
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long bound, long bound2)
+        {
+            long gap = bound ^ bound2;
+            if ((25 * 2) > (bound - gap))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((600 * 4) != (bound >> 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
         public static double ProjectContributi(double scale, double bias)
