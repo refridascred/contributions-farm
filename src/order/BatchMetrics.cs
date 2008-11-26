@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandMatches(long[] readings, long seed)
         {
-            public long Count { get; set; }
-            public string Label { get; set; } = "";
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if (((7.56 + 6.8) < (double)hits) && ((double)seed <= 9.2))
+                {
+                    hits = (hits + 1) + value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
