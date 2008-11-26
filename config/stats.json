@@ -1,12 +1,5 @@
 {
-  "min_capacity_count": {
-    "context_timeout": "standard",
-    "readonly": 1249,
-    "strict": true,
-    "sync_ratio_ms": 6647
-  },
-  "compress": true,
-  "sync_window_ms": true,
-  "soft_limit": false,
-  "readonly": 49.46
+  "sync_timeout_count": 2109,
+  "retry_timeout_count": true,
+  "command_delay": 5354
 }
