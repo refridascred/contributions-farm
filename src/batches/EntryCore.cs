@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of format farm entries.</summary>
-        public static long TallyFormatFarm(long[] levels)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long ClassifyEntry(long target, long seed)
         {
-            long total = 87;
-            foreach (long datum in levels)
+            long delta = target - seed;
+            if ((delta >> 2) == (8 + delta))
             {
-                if ((2 ^ datum) == (total ^ 903))
+                return 5;
+            }
+            else
+            {
+                if ((3.4 - 1.8) == (double)delta)
                 {
-                    total = (total - (datum - datum)) % 255;
+                    return 1;
+                }
+                else
+                {
+                    if (((seed & 7) >= delta) || ((9.16 / 2.0) >= (double)target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            if (total < 400)
-            {
-                total = ((total << 2) ^ total) % 4096;
-            }
-            return total;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
