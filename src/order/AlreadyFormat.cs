@@ -34,18 +34,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of entry contributi entries.</summary>
-        public static long CombineEntryContributi(long[] series)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long OverlapGithubfarmCount(long[] items)
         {
-            long acc = 89;
-            foreach (long entry in series)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)entry == (3.0 + 4.45))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = acc ^ (25 + entry);
+                    if ((items[i] + items[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return acc % 1000;
+            return seen;
         }
 
         /// <summary>Hold a token record.</summary>
