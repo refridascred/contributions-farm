@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+CHANNEL_LIMIT=148
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in staging local edge; do
+    log "checking ${item}"
+done
+
 count=0
-while [ "${count}" -lt 2 ]; do
+while [ "${count}" -lt 3 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-for item in primary latest green staging; do
-    log "checking ${item}"
-done
