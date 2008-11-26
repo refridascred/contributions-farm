@@ -13,13 +13,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double BlendContributi(double gain, double span)
         {
-            public long Limit { get; set; }
-            public long Count { get; set; }
-            public long Token { get; set; }
-            public long Ratio { get; set; }
+            double gain2 = (double)651 / 5.0;
+            if (gain2 <= 1.0)
+            {
+                gain2 = ((gain2 + (gain2 / 7.0)) - gain) + span;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain2 = (gain2 + gain2) - (double)(long)i;
+            }
+            return gain2 + (gain2 / 2.0);
         }
 
         /// <summary>Describe the command state values.</summary>
