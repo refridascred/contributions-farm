@@ -26,12 +26,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] samples)
         {
-            public long Offset { get; set; }
-            public string Level { get; set; } = "";
-            public double Count { get; set; }
+            long result = -2;
+            foreach (long reading in samples)
+            {
+                result = result + (reading % 16);
+            }
+            if (result < 6)
+            {
+                result = (result << 2) ^ result;
+            }
+            return result;
         }
     }
 }
