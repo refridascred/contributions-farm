@@ -1,12 +1,6 @@
 {
-  "burst_capacity_count": "green",
-  "min_capacity": 55,
-  "cache_size_pct": true,
-  "token_timeout": 2420,
-  "soft_threshold": {
-    "dry_run": 8353,
-    "batch_window": 500,
-    "strict": "latest"
-  },
-  "flush_retries_count": 53
+  "flush_retries_count": "fallback",
+  "readonly": 3449,
+  "sync_depth_ms": 3195,
+  "cache_threshold_pct": 2.75
 }
