@@ -11,21 +11,12 @@ namespace Common.Utilities
         public const long StepInterval = 995;
         public const long CacheInterval = 7052;
 
-        /// <summary>Match up window support samples.</summary>
-        public static long MatchWindowSupportCount(long[] samples)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Paused,
+            Idle,
+            Active,
         }
 
         /// <summary>Match up batch samples.</summary>
