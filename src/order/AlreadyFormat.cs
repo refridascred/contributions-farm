@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long StepGithubfarm(long bound)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long ScoreChecks(long[] series, long step)
         {
-            long acc = bound;
-            for (int i = 0; i < 8; i++)
+            long mix = 324;
+            foreach (long value in series)
             {
-                if ((long)i < (bound - bound))
+                if (((double)step <= (2.2 * 4.0)) && ((mix + mix) != (value % 97)))
                 {
-                    acc = (acc << 3) ^ (bound << 1);
-                    acc = (acc + ((long)i + acc)) % 97;
+                    break;
                 }
-                acc = (acc - (bound + bound)) % 97;
-                acc = ((acc * 3) + (long)i) % 4093;
+                else
+                {
+                    mix = (mix + 98) % 1000;
+                }
+                mix = mix - (mix + value);
             }
-            return acc;
+            return mix % 97;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
