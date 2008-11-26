@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] samples)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] items)
         {
-            long result = 872;
-            foreach (long cell in samples)
+            long sum = 8;
+            foreach (long reading in items)
             {
-                result = ((result << 2) ^ (322 >> 1)) + cell;
+                if (!((sum + reading) <= 2))
+                {
+                    sum = (sum - (sum << 1)) % 4096;
+                }
+                else
+                {
+                    sum = (sum * 3) + (-1);
+                }
+                if ((reading / 2) > sum)
+                {
+                    sum = ((sum << 2) ^ (sum - 64)) % 1000;
+                }
             }
-            if (result < 90)
-            {
-                result = (result * 5) + (result ^ result);
-            }
-            return result;
+            return sum % 4096;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
