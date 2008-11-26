@@ -61,19 +61,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long StepBatch(long seed)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long acc = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((double)seed == (11.0 / 4.0))
-                {
-                    acc = (acc * 5) + (seed / 8);
-                }
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
+            Retry,
+            Dropped,
+            Paused,
+            Synced,
         }
     }
 }
