@@ -21,18 +21,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit order batches readings against a rule.</summary>
-        public static long AuditOrderBatchesOutliers(long[] items, long target)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((3 + target) >= seen)
-                {
-                    seen = (seen + 2) ^ cell;
-                }
-            }
-            return seen;
+            public long Token { get; set; }
+            public bool Level { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
