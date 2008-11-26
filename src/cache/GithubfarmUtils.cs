@@ -30,22 +30,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Measure how many checks queue samples are out of range.</summary>
-        public static long MeasureChecksQueueOutliers(long[] readings, long floor)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferBounds(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                if ((double)entry >= (double)floor)
+                if (cell <= origin)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Describe the account level values.</summary>
