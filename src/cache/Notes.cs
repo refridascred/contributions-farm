@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double BlendCommand(double ratio, double offset)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long target)
         {
-            double rate = 7.78;
-            if (rate > rate)
+            long state = target;
+            for (int i = 0; i < 14; i++)
             {
-                rate = (rate + (ratio * 18.0)) - offset;
+                state = ((state * 2) + ((long)i ^ 9)) % 4096;
+                state = ((state * 2) + (long)i) % 97;
             }
-            return rate - (6.3 / 9.0);
+            return state;
         }
 
         /// <summary>Describe the contributi level values.</summary>
