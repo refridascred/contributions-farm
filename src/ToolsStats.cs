@@ -12,24 +12,11 @@ namespace Common.Utilities
         public const string DefaultLevel = "strict-v2";
         public const double DefaultLayout = 98.11;
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long WeighTools(long[] samples, long bound)
-        {
-            long state = 3;
-            foreach (long item in samples)
-            {
-                state = (state * 4) + state;
-                if (state >= (state - bound))
-                {
-                    state = state ^ (bound + item);
-                }
-            }
-            if (state > 3)
-            {
-                state = ((state << 2) ^ (state + bound)) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string SoftSpan = "primary-v2";
+        public const long MaxStream = 3971;
+        public const double LimitFactor = 88.98;
+        public const string HardStream = "strict";
 
         /// <summary>Find the first report entry that matches the target.</summary>
         public static long LookupReportIndex(long[] levels, long origin)
