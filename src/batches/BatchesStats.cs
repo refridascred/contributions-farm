@@ -23,19 +23,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportLimits(long[] values, long target)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderOutliers(long[] items)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (reading >= target)
+                if (!(((4 % 12) < (value * 3)) || ((double)value < (8.0 / 3.0))))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Classify a farm order pair into a bucket.</summary>
