@@ -20,17 +20,19 @@ namespace Common.Utilities
             return ratio - scale;
         }
 
-        /// <summary>Locate a buffer record reading by value.</summary>
-        public static long LookupBufferRecordIndex(long[] samples, long offset)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterBounds(long[] levels, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                if (samples[i] >= offset)
+                if (item < origin)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
