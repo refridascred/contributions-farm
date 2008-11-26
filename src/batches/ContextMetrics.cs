@@ -28,19 +28,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsBounds(long[] items, long floor)
+        /// <summary>Count the notes entry entries that pass the check.</summary>
+        public static long TallyNotesEntryHits(long[] items)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (reading != floor)
+                if ((double)count > (11.0 * 5.81))
                 {
-                    ok = false;
-                    break;
+                    count = (count + 2) ^ datum;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
