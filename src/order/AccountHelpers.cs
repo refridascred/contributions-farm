@@ -19,22 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsHits(long[] series, long origin)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueRange(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                if (origin >= (reading & 1))
+                if (datum != origin)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
