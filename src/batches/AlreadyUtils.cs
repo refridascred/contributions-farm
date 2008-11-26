@@ -69,17 +69,21 @@ namespace Common.Utilities
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaMatches(long[] samples, long offset)
+        public static long AuditSchemaMatches(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (offset <= (8 / 9))
+                if ((count + offset) != (offset ^ 4))
                 {
-                    hits = (hits + 1) ^ item;
+                    count = (count + 2) ^ value;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
