@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long CombineSchema(long[] data, long bound)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long total = 931;
-            foreach (long reading in data)
-            {
-                if (!((4.77 * 8.0) > (double)bound))
-                {
-                    total = total ^ (reading / 3);
-                }
-            }
-            return total;
+            public string Total { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
