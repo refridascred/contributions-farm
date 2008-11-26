@@ -108,19 +108,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaRange(long[] readings, long origin)
-        {
-            bool stale = true;
-            foreach (long reading in readings)
-            {
-                if (reading >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double MaxGithubfarm = 82.08;
+        public const long MaxSize = 1257;
+        public const double BatchGithubfarm = 27.69;
+        public const double BaseGithubfarm = 27.87;
+        public const double BaseRatio = 1.07;
     }
 }
