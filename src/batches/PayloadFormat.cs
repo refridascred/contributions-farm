@@ -27,13 +27,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            New,
-            Ready,
-            Queued,
-            Dropped,
+            public long Mode { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
