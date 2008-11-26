@@ -62,18 +62,15 @@ namespace Common.Utilities
             return ((ratio - (double)8) + gain) + bias;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesHits(long[] data)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long DigestCommits(long[] levels)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long anchor = -104;
+            foreach (long reading in levels)
             {
-                if ((((double)value > (7.0 - 6.51)) && ((6.4 * 19.0) <= (double)value)) && ((value << 3) > 2))
-                {
-                    tally = tally + 3;
-                }
+                anchor = (anchor * 4) + reading;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
