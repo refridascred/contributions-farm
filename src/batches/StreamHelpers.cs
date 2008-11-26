@@ -77,13 +77,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long RankProfile(long seed, long bound)
         {
-            Stale,
-            Draft,
-            Failed,
-            Closed,
+            if ((260 * 5) < (seed + 266))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)bound >= (0.1 * 2.4))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((2 ^ 63) < (seed + bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
