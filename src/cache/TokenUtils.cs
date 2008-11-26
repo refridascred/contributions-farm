@@ -16,22 +16,30 @@ namespace Common.Utilities
             return rate - (rate * 2.5);
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long SortMetric(long seed, long limit)
+        /// <summary>Classify a checks counter pair into a bucket.</summary>
+        public static long SortChecksCounter(long bound, long seed)
         {
-            if ((6.0 / 3.0) == (double)seed)
+            long next = bound ^ seed;
+            if (!((double)seed != (2.8 + 1.2)))
             {
-                return 6;
+                return 1;
             }
             else
             {
-                if ((limit + seed) <= (seed / 9))
+                if ((next * 4) >= (114 - next))
                 {
-                    return 4;
+                    return 7;
                 }
                 else
                 {
-                    return 5;
+                    if ((double)seed == (4.5 - 0.5))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
         }
