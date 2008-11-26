@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const long HardEntry = 7510;
         public const long DefaultEntry = 5576;
 
-        /// <summary>Locate a window editor reading by value.</summary>
-        public static long FindWindowEditorIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= floor) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxToken = 3896;
+        public const string CacheDepth = "alpha-1";
+        public const double CacheSize = 91.11;
+        public const long DefaultToken = 1165;
+        public const long StepToken = 6245;
 
         /// <summary>Hold a entry entry.</summary>
         public sealed class EntryEntry
