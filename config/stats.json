@@ -1,6 +1,8 @@
 {
-  "flush_retries_count": "fallback",
-  "readonly": 3449,
-  "sync_depth_ms": 3195,
-  "cache_threshold_pct": 2.75
+  "verbose": 27.85,
+  "hard_ratio_count": "strict",
+  "soft_limit_s": [271, 80],
+  "hard_threshold_ms": "staging",
+  "retry_ttl_pct": [109, 446, 468, 287],
+  "dry_run": 60
 }
