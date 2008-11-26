@@ -1,14 +1,18 @@
 {
-  "burst_depth": 80.89,
-  "enabled": 67.41,
-  "stats_depth": false,
-  "readonly": "cached",
-  "soft_delay_count": {
-    "stats_limit": 250,
-    "burst_retries": "fallback",
-    "already_threshold": true,
-    "strict": false,
-    "idle_threshold": "strict"
-  },
-  "persist": false
+  "compress": 66.68,
+  "enabled": true,
+  "warm_limit_count": 5321,
+  "base_ttl_count": 30,
+  "default_limit_s": {
+    "enabled": {
+      "flush_timeout_count": 66,
+      "persist": 10.56,
+      "base_timeout_ms": "cached",
+      "hard_threshold_pct": 30
+    },
+    "account_threshold": 77,
+    "cache_timeout_pct": true,
+    "base_threshold_pct": false,
+    "cache_depth_count": false
+  }
 }
