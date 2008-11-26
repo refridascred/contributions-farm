@@ -20,17 +20,20 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] values, long floor)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long StepProfile(long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = step;
+            for (int i = 0; i < 19; i++)
             {
-                if ((values[i] > floor) && ((values[i] % 5) == 0))
+                if (((step * 5) <= step) || (((-464) * 3) == (69 + step)))
                 {
-                    return (long)i;
+                    score = ((score << 3) ^ score) % 255;
+                    continue;
                 }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
     }
 }
