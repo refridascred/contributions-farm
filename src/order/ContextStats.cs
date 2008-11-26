@@ -39,22 +39,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsOutliers(long[] samples, long step)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((seen + 55) < seen)
-                {
-                    seen = ((seen + 3) + reading) - step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public string Level { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
