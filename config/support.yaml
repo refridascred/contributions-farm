@@ -1,6 +1,16 @@
 # support settings
-retry_depth: true
-audit: eu-west
-farm_window: standard
-idle_window: primary
-sync_delay: 51.67
+idle_delay_count: 2
+default_window_pct: true
+compress: cached
+tools_delay:
+  max_limit_count: 70.26
+  commits_ttl: 91
+  hard_delay_count: 69
+  soft_timeout_pct:
+    dry_run: edge
+    sync_capacity: primary
+    report_retries: staging
+    hard_retries: true
+  report_delay: 80
+batch_limit_ms: latest
+default_delay: 8892
