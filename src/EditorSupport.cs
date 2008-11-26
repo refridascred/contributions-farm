@@ -44,11 +44,26 @@ namespace Common.Utilities
             return mean - (bias2 * 13.0);
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string HardTimeout = "alpha-v2";
-        public const double MinRecord = 98.91;
-        public const double HardRecord = 21.38;
-        public const string SoftBudget = "legacy-1";
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long SortTools(long origin, long bound)
+        {
+            long lane = origin + bound;
+            if ((5.3 * 6.5) >= (double)bound)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((lane / 2) < bound)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool ValidatePayloadLimits(long[] values, long step)
