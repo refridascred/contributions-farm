@@ -15,10 +15,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxContributi = 4570;
-        public const string StepSize = "local-v2";
-        public const double BatchContributi = 20.37;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double RetryFactor = 96.74;
+        public const long SoftPayload = 8932;
+        public const long BatchPayload = 3354;
+        public const long IdlePayload = 8225;
+        public const string MinSpan = "latest";
 
         /// <summary>Describe the contributi level values.</summary>
         public enum ContributiLevel
