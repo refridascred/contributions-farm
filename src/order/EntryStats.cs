@@ -22,12 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long RollEntry(long seed)
         {
-            Paused,
-            New,
-            Retry,
+            long result = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Adjust a batches reading.</summary>
