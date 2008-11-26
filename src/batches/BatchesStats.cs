@@ -30,12 +30,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double SoftFactor = 34.42;
-        public const double BatchMetric = 75.75;
-        public const double SoftDepth = 83.06;
-        public const long CacheMetric = 2503;
-        public const string BaseMetric = "primary-v2";
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long ClassifyFilter(long offset, long floor)
+        {
+            if ((offset >= (228 - 3)) || (1.7 > (double)offset))
+            {
+                return 7;
+            }
+            else
+            {
+                if (floor >= (floor >> 5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((offset ^ 1) != (606 >> 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long WindowBudget = 8718;
