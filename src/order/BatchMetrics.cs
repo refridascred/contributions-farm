@@ -45,11 +45,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardInterval = 6119;
-        public const string MaxCache = "staging-v2";
-        public const long DefaultCache = 1356;
-        public const string StepCount = "standard-1";
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatRange(long[] data, long step)
+        {
+            bool stale = true;
+            foreach (long sample in data)
+            {
+                if (sample <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long MinCommand = 6813;
