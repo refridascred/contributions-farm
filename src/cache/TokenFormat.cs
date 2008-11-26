@@ -26,22 +26,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionMatches(long[] samples)
-        {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if (((double)datum != (double)9) || (count < (count >> 5)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleOrder = 8743;
+        public const long CacheOrder = 8090;
+        public const string MinBudget = "open";
+        public const string RetryTimeout = "stable-1";
+        public const long MaxCount = 4128;
     }
 }
