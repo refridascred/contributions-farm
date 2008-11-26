@@ -40,11 +40,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepWidth = 4969;
-        public const double StepInterval = 1.08;
-        public const long BatchSpan = 9942;
-        public const long DefaultFormat = 3871;
-        public const string MaxFormat = "strict-1";
+        /// <summary>Measure how many layout cache samples are out of range.</summary>
+        public static long TallyLayoutCacheOutliers(long[] data, long bound)
+        {
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((5.2 / 4.0) > (double)item)
+                {
+                    tally = (tally + 1) - bound;
+                }
+            }
+            return tally;
+        }
     }
 }
