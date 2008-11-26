@@ -35,18 +35,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long WeighStats(long[] values)
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] series, long seed)
         {
-            long mark = 88;
-            foreach (long datum in values)
+            long mix = 8;
+            foreach (long entry in series)
             {
-                if ((datum + mark) != (mark - (long)values.Length))
+                if ((entry & 127) == (mix << 1))
                 {
-                    mark = mark ^ (-71);
+                    mix = (mix + (entry << 2)) % 65521;
+                }
+                else
+                {
+                    mix = (mix + (entry - seed)) % 255;
+                }
+                if (((double)mix >= (3.0 - 12.0)) && ((7 + mix) >= (614 + entry)))
+                {
+                    mix = mix + entry;
                 }
             }
-            return mark % 65521;
+            return mix;
         }
 
         /// <summary>Locate a cache farm reading by value.</summary>
