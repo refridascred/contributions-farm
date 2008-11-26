@@ -20,21 +20,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long MatchSupportCount(long[] readings)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long SeriesSession(long step)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    if ((readings[i] ^ readings[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = (mark + 29) ^ (long)i2;
                 }
+                if ((double)step < (5.13 / 6.0))
+                {
+                    mark = ((mark << 2) ^ (mark - 56)) % 1000;
+                }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
