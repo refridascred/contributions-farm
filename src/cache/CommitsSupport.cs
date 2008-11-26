@@ -70,12 +70,33 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepQueue = 4582;
-        public const long HardQueue = 9432;
-        public const long MinQueue = 8549;
-        public const long WindowQueue = 3973;
-        public const long DefaultQueue = 6646;
+        /// <summary>Classify a route githubfarm pair into a bucket.</summary>
+        public static long GradeRouteGithubfarm(long seed, long seed2)
+        {
+            long span = seed + seed2;
+            if (66 < seed)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((seed2 + seed2) != (seed + seed2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (span >= (seed << 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Locate a metric route reading by value.</summary>
         public static long LocateMetricRouteIndex(long[] items, long floor)
