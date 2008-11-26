@@ -46,14 +46,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteRange(long[] samples, long step)
         {
-            Ready,
-            Pending,
-            Closed,
-            Synced,
-            Locked,
+            bool stale = true;
+            foreach (long entry in samples)
+            {
+                if (entry > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
