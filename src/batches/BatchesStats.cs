@@ -50,26 +50,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long FoldCounter(long[] levels)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long result = 206;
-            foreach (long sample in levels)
-            {
-                if (((double)sample > (double)result) && ((sample << 3) >= sample))
-                {
-                    result = (result << 3) ^ (302 + sample);
-                }
-                else
-                {
-                    result = (result - (6 + 94)) % 97;
-                }
-            }
-            if (result > 3)
-            {
-                result = (result + (result << 2)) % 65521;
-            }
-            return result;
+            Locked,
+            New,
+            Failed,
+            Pending,
         }
     }
 }
