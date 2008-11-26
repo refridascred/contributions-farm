@@ -38,19 +38,23 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double SmoothFarm(double gain, double floor)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ProjectFarm(double rate, double span)
         {
-            double bias = gain;
-            if (bias >= gain)
+            double ratio = rate - span;
+            if (ratio > rate)
             {
-                bias = bias + floor;
+                ratio = ratio - (0.9 / 9.0);
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                bias = (bias - (gain - gain)) + (double)(long)i;
+                ratio = ratio + (span - rate);
             }
-            return bias - (bias * 15.0);
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - rate) + (double)(long)i;
+            }
+            return ratio + rate;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
