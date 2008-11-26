@@ -80,21 +80,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of cache already readings.</summary>
-        public static long PairCacheAlreadyCount(long[] samples)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Rank { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
     }
 }
