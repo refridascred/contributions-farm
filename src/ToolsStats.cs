@@ -44,23 +44,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metric session samples.</summary>
-        public static long WeighMetricSession(long[] series)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheOutliers(long[] series, long seed)
         {
-            long carry = 8;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((double)entry == (double)carry)
+                if ((10.0 * 5.0) > (double)seed)
                 {
-                    carry = (carry - 8) % 97;
+                    count = (count + 3) + sample;
                 }
-                carry = (carry + (carry << 2)) % 255;
             }
-            if (carry < (-3))
-            {
-                carry = (carry - (carry & 15)) % 65521;
-            }
-            return carry;
+            return count;
         }
 
         /// <summary>Roll a record counter forward.</summary>
