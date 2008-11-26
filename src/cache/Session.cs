@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheGaps(long[] readings, long target)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)entry != (double)target)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Flag { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a metric info.</summary>
