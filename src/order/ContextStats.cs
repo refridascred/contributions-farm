@@ -40,18 +40,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many stats contributi samples are out of range.</summary>
-        public static long MeasureStatsContributiHits(long[] series, long origin)
-        {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((50 ^ origin) > origin)
-                {
-                    hits = (hits + 2) - cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepWidth = 4969;
+        public const double StepInterval = 1.08;
+        public const long BatchSpan = 9942;
+        public const long DefaultFormat = 3871;
+        public const string MaxFormat = "strict-1";
     }
 }
