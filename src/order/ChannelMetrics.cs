@@ -38,31 +38,15 @@ namespace Common.Utilities
             return mean + (double)26;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long GradeChannel(long offset, long floor)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ScaleBuffer(double ratio, double bias)
         {
-            if ((floor ^ offset) == (offset / 9))
+            double mean = 4.3;
+            if (mean >= (mean / 3.0))
             {
-                return 5;
+                mean = (mean + (mean * 9.3)) + bias;
             }
-            else
-            {
-                if ((floor % 16) > offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (floor < (floor * 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return mean - ratio;
         }
     }
 }
