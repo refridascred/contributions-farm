@@ -15,24 +15,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long RollStats(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((double)step >= 20.0)
-                {
-                    break;
-                }
-                if ((double)step >= (double)mark)
-                {
-                    mark = ((mark << 2) ^ mark) % 4096;
-                }
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxContributi = 4570;
+        public const string StepSize = "local-v2";
+        public const double BatchContributi = 20.37;
 
         /// <summary>Describe the contributi level values.</summary>
         public enum ContributiLevel
