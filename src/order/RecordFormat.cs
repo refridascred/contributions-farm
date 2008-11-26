@@ -76,13 +76,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportBounds(long[] samples, long floor)
         {
-            public string Mode { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-            public long Limit { get; set; }
+            bool flag = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
