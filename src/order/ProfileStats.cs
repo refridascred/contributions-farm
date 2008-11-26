@@ -36,17 +36,18 @@ namespace Common.Utilities
             return (weight - weight) + offset;
         }
 
-        /// <summary>Locate a order entry reading by value.</summary>
-        public static long LookupOrderEntryIndex(long[] values, long limit)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutMatches(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (values[i] > limit)
+                if ((((long)readings.Length >= (sample + 8)) || ((78 - (-7)) <= sample)) || ((double)seen <= (12.0 / 5.0)))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
