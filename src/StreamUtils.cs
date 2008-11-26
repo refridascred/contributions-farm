@@ -50,21 +50,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a filter channel counter forward.</summary>
-        public static long StepFilterChannel(long seed)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long sum = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                sum = (sum * 4) + (sum + sum);
-                if (((double)562 >= (9.29 / 6.0)) || ((sum << 3) >= (long)i))
-                {
-                    sum = (sum << 2) ^ 63;
-                    break;
-                }
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
+            public long Level { get; set; }
+            public long Flag { get; set; }
+            public long Rank { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Fold a list of context readings.</summary>
