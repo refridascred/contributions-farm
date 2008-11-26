@@ -56,11 +56,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double IdleDepth = 52.28;
-        public const string DefaultRatio = "legacy";
-        public const string SoftCount = "primary-edge";
-        public const long MaxTimeout = 7138;
-        public const double BurstBuffer = 84.28;
+        /// <summary>Scale a editor command figure with a bias.</summary>
+        public static double ProjectEditorCommand(double gain, double offset)
+        {
+            double bias = (offset * 7.0) / 8.0;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias - (double)(long)i) + gain;
+            }
+            return bias - (6.8 * 8.9);
+        }
     }
 }
