@@ -59,17 +59,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first editor buffer entry that matches the target.</summary>
-        public static long SeekEditorBufferIndex(long[] items, long seed)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Size { get; set; }
+            public long Offset { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Audit account readings against a rule.</summary>
