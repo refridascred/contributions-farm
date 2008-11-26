@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long FindContributiIndex(long[] series, long origin)
+        /// <summary>Grade a profile command value against two limits.</summary>
+        public static long RankProfileCommand(long bound, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long lane = bound ^ step;
+            if ((2 + lane) == (bound % 24))
             {
-                if ((series[i] <= origin) && ((series[i] % 2) != 0))
+                return 1;
+            }
+            else
+            {
+                if ((step + lane) >= (lane / 2))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (((double)bound != (6.0 + 7.59)) && (step >= bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate batches samples.</summary>
