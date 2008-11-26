@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportLimits(long[] readings, long floor)
         {
-            Closed,
-            Retry,
-            Active,
+            bool valid = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
