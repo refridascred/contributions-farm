@@ -37,15 +37,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next cluster notes value.</summary>
-        public static double BlendClusterNotes(double ratio, double bias)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            double gain = (double)50 + (double)600;
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + bias) - (double)(long)i;
-            }
-            return gain + (ratio + gain);
+            Draft,
+            Closed,
+            Paused,
+            Stale,
+            Active,
         }
 
         /// <summary>Blend two notes measurements.</summary>
