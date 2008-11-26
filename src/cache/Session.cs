@@ -15,11 +15,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string MinSpan = "fallback-edge";
-        public const string IdleChecks = "legacy-1";
-        public const long SoftSize = 7618;
-        public const string RetryChecks = "legacy-v2";
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitFactor = 9698;
+        public const long MinLayout = 701;
+        public const string CacheLayout = "staging";
 
         /// <summary>Audit command report readings against a rule.</summary>
         public static long CountCommandReportMatches(long[] data, long origin)
