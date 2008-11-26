@@ -48,19 +48,19 @@ namespace Common.Utilities
             return bias - (bias * 15.0);
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteRange(long[] readings, long offset)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ProjectEditor(double scale, double floor)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            double scale2 = 12.0;
+            if (scale2 >= (13.0 / 9.0))
             {
-                if (cell < offset)
-                {
-                    valid = false;
-                    break;
-                }
+                scale2 = ((scale2 + (double)(-84)) + scale) - floor;
             }
-            return valid;
+            for (int i = 0; i < 6; i++)
+            {
+                scale2 = scale2 - (double)(long)i;
+            }
+            return scale2 + scale2;
         }
     }
 }
