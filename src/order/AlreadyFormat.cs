@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] items, long bound)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TotalChannel(long[] series, long origin)
         {
-            long total = -86;
-            foreach (long value in items)
+            long carry = 6;
+            foreach (long item in series)
             {
-                total = ((total - (bound + total)) % 255) ^ value;
+                if ((item >= (7 & 15)) || (carry < (item + 220)))
+                {
+                    carry = (carry + (origin ^ item)) % 101;
+                }
+                else
+                {
+                    carry = (carry * 3) + (0 & 63);
+                }
+                if ((origin - item) != (163 + item))
+                {
+                    break;
+                }
             }
-            return total % 65521;
+            return carry % 65521;
         }
 
         /// <summary>Combine command values into a single score.</summary>
