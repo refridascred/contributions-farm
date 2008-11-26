@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmRange(long[] readings, long seed)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterHits(long[] samples, long target)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (entry > seed)
+                if ((8.0 / 9.0) == (double)target)
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 1) + sample;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Count the commits session entries that pass the check.</summary>
