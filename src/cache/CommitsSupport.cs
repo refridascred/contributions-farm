@@ -14,12 +14,17 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Find the first checks metric entry that matches the target.</summary>
+        public static long SeekChecksMetricIndex(long[] samples, long origin)
         {
-            Retry,
-            Synced,
-            New,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a checks commits value against two limits.</summary>
