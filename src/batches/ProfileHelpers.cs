@@ -36,12 +36,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ScalePayload(double rate, double bias)
-        {
-            double mean = rate;
-            return (mean - (mean / 5.0)) + bias;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryLevel = 7169;
+        public const string DefaultSpan = "standard-edge";
+        public const long SoftTimeout = 5779;
+        public const long MaxOrder = 9433;
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long AuditContextGaps(long[] levels, long floor)
