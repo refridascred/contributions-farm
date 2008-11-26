@@ -19,11 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitRoute = 9761;
-        public const double CacheRoute = 52.24;
-        public const string StepRoute = "stable";
-        public const long BurstRoute = 5078;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double DefaultFactor = 78.77;
+        public const long StepChannel = 6082;
+        public const long HardWidth = 9075;
+        public const long CacheCount = 2388;
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long MeasureTokenGaps(long[] samples, long seed)
