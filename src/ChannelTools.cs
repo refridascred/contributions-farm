@@ -15,22 +15,19 @@ namespace Common.Utilities
         public const string DefaultCount = "strict-edge";
         public const long MinContributi = 5175;
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadGaps(long[] samples)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheRange(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            bool valid = true;
+            foreach (long item in values)
             {
-                if (entry >= count)
+                if (item != limit)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
     }
 }
