@@ -13,23 +13,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long WeighQueue(long[] values)
-        {
-            long state = 93;
-            foreach (long sample in values)
-            {
-                if (9 < (sample + (-166)))
-                {
-                    state = state ^ (84 + state);
-                }
-            }
-            if (state > 520)
-            {
-                state = (state << 2) ^ (state * 3);
-            }
-            return state % 4096;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinContext = 583;
+        public const double BaseLevel = 59.31;
+        public const double SoftWidth = 38.61;
+        public const long RetryContext = 7337;
 
         /// <summary>Describe the report mode values.</summary>
         public enum ReportMode
