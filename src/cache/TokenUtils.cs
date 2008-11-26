@@ -13,18 +13,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit already report readings against a rule.</summary>
-        public static long AuditAlreadyReportHits(long[] values, long floor)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((datum + datum) <= (datum >> 2))
-                {
-                    count = (count + 3) + floor;
-                }
-            }
-            return count;
+            Paused,
+            Closed,
+            Done,
+            Idle,
+            Ready,
         }
 
         /// <summary>Hold a payload header.</summary>
