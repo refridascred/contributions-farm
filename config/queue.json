@@ -1,7 +1,12 @@
 {
-  "verbose": "edge",
-  "readonly": "cached",
-  "hard_window_ms": "primary",
-  "payload_threshold": [314, 96, 121],
-  "hard_timeout_count": true
+  "warm_delay": 49,
+  "max_window_s": {
+    "soft_window_s": true,
+    "flush_limit_ms": 37,
+    "soft_ratio_count": false,
+    "base_ratio_ms": 9251
+  },
+  "idle_ratio_pct": "local",
+  "warm_limit_pct": 26,
+  "soft_ratio_pct": "stable"
 }
