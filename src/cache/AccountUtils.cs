@@ -5,39 +5,28 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank record batch input into a small class.</summary>
-        public static long GradeRecordBatch(long limit, long seed)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long SeriesFarm(long offset)
         {
-            long lane = limit + seed;
-            if ((lane % 60) >= (seed / 6))
+            long mix = offset;
+            for (int i = 0; i < 24; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((1.3 * 7.3) > (double)lane)
+                if (mix > (mix + 9))
                 {
-                    return 3;
+                    mix = mix - offset;
+                    mix = (mix * 5) + mix;
+                }
+                if (((offset + mix) <= (offset + offset)) && ((double)offset < 3.0))
+                {
+                    mix = mix - (offset - 2);
                 }
                 else
                 {
-                    if (((seed >> 4) != (limit - lane)) && ((8.14 + 7.51) > (double)limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)limit <= (7.48 + 0.68))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    mix = mix ^ (offset % 16);
                 }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
+            return mix;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
