@@ -36,12 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            Dropped,
-            Queued,
-            Draft,
+            Stale,
+            Failed,
+            Closed,
         }
     }
 }
