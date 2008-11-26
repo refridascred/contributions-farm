@@ -20,13 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            Stale,
-            Ready,
-            Locked,
-            Failed,
+            public bool Weight { get; set; }
+            public bool Offset { get; set; }
+            public long Label { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
