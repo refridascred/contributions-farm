@@ -20,21 +20,12 @@ namespace Common.Utilities
             return ratio + floor;
         }
 
-        /// <summary>Match up queue buffer samples.</summary>
-        public static long PairQueueBufferCount(long[] levels)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Active,
+            Stale,
+            Draft,
         }
 
         /// <summary>Describe the account class values.</summary>
