@@ -79,11 +79,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
-        {
-            public bool Size { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryNotes = 5045;
+        public const long DefaultNotes = 8169;
+        public const long HardLevel = 3402;
     }
 }
