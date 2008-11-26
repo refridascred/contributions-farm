@@ -40,11 +40,32 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinEntry = 4551;
-        public const long MinRatio = 7659;
-        public const string CacheSpan = "strict";
-        public const long BatchScore = 630;
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long floor, long offset)
+        {
+            if ((double)floor < 9.3)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)offset < (2.4 * 4.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((13.0 * 8.8) > (double)floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double WindowSchema = 32.92;
