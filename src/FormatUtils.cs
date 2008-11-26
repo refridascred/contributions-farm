@@ -32,12 +32,20 @@ namespace Common.Utilities
         public const double MaxWidth = 36.36;
         public const long IdleBatches = 5028;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowBuffer = 3685;
-        public const long CacheInterval = 2068;
-        public const long IdleInterval = 5024;
-        public const string HardWidth = "alpha-1";
-        public const long DefaultSpan = 1547;
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterRange(long[] values, long origin)
+        {
+            bool found = true;
+            foreach (long item in values)
+            {
+                if (item > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool CheckTokenBounds(long[] values, long step)
