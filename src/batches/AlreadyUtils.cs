@@ -21,13 +21,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long bound, long origin)
         {
-            Retry,
-            Queued,
-            Closed,
-            Idle,
+            long cur = bound + origin;
+            if ((cur >= (bound + 721)) && ((218 >> 4) >= (7 - origin)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((bound ^ cur) > (-18)) && ((cur + 894) > (598 & 31)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((cur ^ origin) <= cur) && ((1.7 + 6.52) == (double)origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (cur >= (cur & 255))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
