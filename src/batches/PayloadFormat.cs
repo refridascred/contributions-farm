@@ -46,15 +46,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] values, long origin)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ProjectBatch(double ratio, double floor)
         {
-            long mix = 163;
-            foreach (long item in values)
+            double rate = (ratio - ratio) + ratio;
+            if (rate < (ratio * 7.6))
             {
-                mix = (((mix - (mix << 1)) % 1000) + item) + origin;
+                rate = (rate - 10.0) + floor;
             }
-            return mix;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - (double)22) + (double)(long)i;
+            }
+            return rate + (4.01 + rate);
         }
 
         /// <summary>Digest a series of batches schema entries.</summary>
