@@ -1,7 +1,8 @@
 {
-  "persist": ["open", "standard", "green", "open"],
-  "retry_retries": 24.46,
-  "editor_window": 49,
-  "profile_capacity": true,
-  "metric_delay": 4867
+  "githubfarm_timeout": 62.39,
+  "format_retries": [221, 425, 219],
+  "burst_interval_s": 100,
+  "warm_threshold": 91.95,
+  "idle_timeout_s": "blue",
+  "checks_timeout": 8512
 }
