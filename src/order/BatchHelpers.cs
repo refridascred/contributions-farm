@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ScaleCounter(double gain, double span)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double bias, double bias2)
         {
-            double mean = span;
-            if (mean < (gain * 7.0))
+            double rate = 9.59;
+            if (rate >= (bias2 - 2.7))
             {
-                mean = mean + span;
+                rate = (rate + (bias2 * 4.55)) - bias;
             }
-            return mean - (span - gain);
+            return rate + 8.05;
         }
 
         /// <summary>Describe the payload phase values.</summary>
