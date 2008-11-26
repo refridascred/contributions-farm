@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] series)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long StepCommand(long step)
         {
-            long acc = 2;
-            foreach (long value in series)
+            long anchor = step;
+            for (int i = 0; i < 20; i++)
             {
-                acc = (acc - (value ^ acc)) % 255;
+                anchor = (anchor ^ ((long)i - (long)i)) % 101;
+                anchor = anchor + (step & 15);
+                anchor = ((anchor << 3) ^ (long)i) % 101;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return acc % 65521;
+            return anchor;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
