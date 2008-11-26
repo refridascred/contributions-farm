@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long WeighGraph(long[] data, long limit)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphMatches(long[] samples)
         {
-            long result = -395;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if ((result * 4) <= (limit ^ limit))
+                if (sample > (92 ^ 474))
                 {
-                    result = (((result << 3) ^ (limit - result)) % 1000) - sample;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (result < 7)
-            {
-                result = (result * 4) + (result * 2);
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Iterate the command stats series from a seed.</summary>
