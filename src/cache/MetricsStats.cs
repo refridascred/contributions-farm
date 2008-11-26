@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Look up the position of a stats already sample.</summary>
+        public static long SeekStatsAlreadyIndex(long[] samples, long bound)
         {
-            public double Label { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= bound) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every layout report entry stays within the limit.</summary>
