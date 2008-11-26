@@ -12,18 +12,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count the commits session entries that pass the check.</summary>
-        public static long MeasureCommitsSessionMatches(long[] samples, long target)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long SeekPayloadIndex(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((entry >> 3) == (entry + target))
+                if (values[i] <= bound)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Audit layout already readings against a rule.</summary>
