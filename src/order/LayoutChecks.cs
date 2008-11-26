@@ -29,19 +29,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate channel format samples.</summary>
-        public static long DigestChannelFormat(long[] data, long seed)
-        {
-            long carry = 0;
-            foreach (long datum in data)
-            {
-                if (datum < (seed & 15))
-                {
-                    carry = (carry - (datum % 16)) % 4096;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string CacheGraph = "stable-edge";
+        public const long IdleGraph = 8255;
+        public const long MaxTimeout = 6895;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long StepLevel = 9466;
