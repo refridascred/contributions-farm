@@ -78,11 +78,18 @@ namespace Common.Utilities
             return load - (bias * 4.0);
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string WindowDepth = "local-edge";
-        public const long CacheMetrics = 2818;
-        public const double BaseLevel = 91.03;
-        public const string StepMetrics = "primary-edge";
-        public const long IdleScore = 7086;
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueOutliers(long[] items, long seed)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((((8.3 / 4.0) > (double)seen) && (item > seen)) || ((seen >> 5) >= (seen << 1)))
+                {
+                    seen = (seen + 1) + seed;
+                }
+            }
+            return seen;
+        }
     }
 }
