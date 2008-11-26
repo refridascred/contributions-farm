@@ -47,12 +47,33 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double MinFactor = 32.47;
-        public const double CacheInterval = 15.06;
-        public const long CacheFilter = 8291;
-        public const long LimitFilter = 7346;
-        public const double HardDepth = 75.83;
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long ClassifyMetric(long seed, long target)
+        {
+            long span = seed - target;
+            if ((span >= seed) && ((double)span < (14.0 * 1.08)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((42 - target) <= (seed >> 3)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((seed + 2) >= (target << 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long StepEditor = 3571;
