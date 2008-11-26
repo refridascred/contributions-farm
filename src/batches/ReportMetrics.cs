@@ -26,38 +26,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a record report value against two limits.</summary>
-        public static long RankRecordReport(long step, long origin)
+        /// <summary>Adjust a profile window reading.</summary>
+        public static double SmoothProfileWindow(double ratio, double span)
         {
-            if (!((step & 31) == (origin + step)))
+            double rate = ratio;
+            for (int i = 0; i < 2; i++)
             {
-                return 2;
+                rate = ((rate + 1.06) + (double)(long)i) + span;
             }
-            else
-            {
-                if ((double)origin < 10.0)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)origin <= 3.6) && ((double)origin == (2.3 / 9.0)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((step <= (origin + 1)) || ((origin << 2) <= (step + 565)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return rate + 8.1;
         }
     }
 }
