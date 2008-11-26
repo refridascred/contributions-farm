@@ -27,10 +27,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string MinCluster = "stable-1";
-        public const double RetrySize = 29.53;
-        public const long HardCluster = 7295;
+        /// <summary>Classify a support batch pair into a bucket.</summary>
+        public static long BucketSupportBatch(long seed, long origin)
+        {
+            if (((517 * 4) != (origin + origin)) || ((double)origin < (0.93 * 1.12)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((origin - seed) > (origin % 12))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((seed + origin) < (seed + (-129)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Blend two route profile measurements.</summary>
         public static double ProjectRouteProfile(double weight, double floor)
