@@ -1,11 +1,12 @@
 # Command notes
 
-Keep metric and batches names short and lowercase.
-Defaults for token live in the config folder and can be overridden per environment.
+Each payload is validated before it reaches the batches queue.
+Each counter is validated before it reaches the payload queue.
+Keep channel and window names short and lowercase.
 
 ## Guidelines
 
-- Log every entry change
-- Validate context input early
-- Review support limits each release
-- Prefer contributi defaults
+- Prefer filter defaults
+- Validate githubfarm input early
+- Document new cluster fields
+- Keep payload values small
