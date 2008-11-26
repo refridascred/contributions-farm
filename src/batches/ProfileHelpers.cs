@@ -55,21 +55,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long CompareCacheCount(long[] series)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double AdjustProfile(double bias, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double load = bias;
+            return (load + (load / 8.0)) + offset;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
