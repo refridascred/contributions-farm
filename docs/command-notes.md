@@ -1,10 +1,11 @@
 # Command notes
 
-When a order fails, the stream handler retries a few times before giving up.
-The account report groups every command by session.
+Use format settings to tune how often support data is refreshed.
+A batch that stays idle for too long is moved to the route list.
 
 ## Guidelines
 
-- Review tools limits each release
-- Validate stream input early
-- Prefer metric defaults
+- Log every batch change
+- Prefer editor defaults
+- Keep schema values small
+- Document new entry fields
