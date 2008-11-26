@@ -31,11 +31,12 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchCount = 7235;
-        public const string BurstWidth = "standard-edge";
-        public const double WindowCount = 59.44;
-        public const long CacheTimeout = 1388;
-        public const long IdleCache = 7393;
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
+        {
+            Closed,
+            Pending,
+            Stale,
+        }
     }
 }
