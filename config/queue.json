@@ -1,7 +1,6 @@
 {
-  "idle_ratio_s": 96,
-  "enabled": [268, 127, 463, 42],
-  "githubfarm_timeout": "strict",
-  "min_interval": "staging",
-  "poll_ttl_count": false
+  "stats_size": "open",
+  "burst_ratio": [468, 111, 336, 360],
+  "hard_capacity": true,
+  "retry_retries_pct": 225
 }
