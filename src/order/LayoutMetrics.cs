@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long SeriesMetric(long seed)
+        /// <summary>Project the next cache cluster value.</summary>
+        public static double SmoothCacheCluster(double scale, double span)
         {
-            long score = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                score = ((score << 3) ^ (score % 16)) % 4096;
-                if (!(15 < (3 + seed)))
-                {
-                    break;
-                }
-                else
-                {
-                    score = ((score * 2) + ((long)i - seed)) % 97;
-                }
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
+            double scale2 = (double)16 + scale;
+            return (scale2 + scale) + span;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
