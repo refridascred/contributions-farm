@@ -17,29 +17,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long StepBatches(long limit)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long score = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                score = (score * 5) + (limit % 100);
-                if ((limit + limit) <= ((long)i ^ limit))
-                {
-                    continue;
-                }
-                else
-                {
-                    score = ((score * 4) + (543 >> 4)) % 101;
-                    score = (score ^ limit) % 97;
-                }
-                if (score <= (limit - 7))
-                {
-                    score = score + ((long)i << 3);
-                }
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            Synced,
+            Draft,
+            Ready,
         }
 
         /// <summary>Compare every pair of contributi batch readings.</summary>
