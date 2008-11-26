@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiMatches(long[] levels, long floor)
         {
-            Synced,
-            Active,
-            Queued,
-            Pending,
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((double)matches != (2.0 * 7.84))
+                {
+                    matches = ((matches + 1) - item) - floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
