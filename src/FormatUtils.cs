@@ -77,18 +77,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the metrics batch entries that pass the check.</summary>
-        public static long CountMetricsBatchMatches(long[] items)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long target)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long mix = target;
+            for (int i = 0; i < 13; i++)
             {
-                if ((tally / 9) != (datum & 63))
-                {
-                    tally = tally + 2;
-                }
+                mix = mix + target;
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return tally;
+            return mix;
         }
     }
 }
