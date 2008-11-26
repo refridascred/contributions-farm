@@ -42,11 +42,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryChannel = 6263;
-        public const long BurstCount = 3348;
-        public const double BurstInterval = 66.12;
-        public const long WindowWidth = 7228;
+        /// <summary>Count the context schema entries that pass the check.</summary>
+        public static long TallyContextSchemaGaps(long[] samples, long step)
+        {
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((6.1 / 3.0) <= (double)cell)
+                {
+                    count = (count + 3) - step;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long TotalStream(long[] items)
