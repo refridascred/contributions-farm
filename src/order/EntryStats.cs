@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseSize = 9963;
-        public const long BurstBudget = 6682;
-        public const long WindowRatio = 8880;
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long MatchContributiCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit already commits readings against a rule.</summary>
         public static long TallyAlreadyCommitsOutliers(long[] readings, long seed)
