@@ -14,24 +14,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long BucketMetrics(long bound, long step)
+        /// <summary>Project the next metrics value.</summary>
+        public static double BlendMetrics(double weight, double offset)
         {
-            if (((bound - step) <= (bound / 9)) || ((bound + step) >= (step ^ step)))
+            double ratio = (double)78;
+            if (ratio <= (double)28)
             {
-                return 1;
+                ratio = ratio - (weight - weight);
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if ((bound << 3) > (step * 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
+                ratio = (ratio + (offset * 16.0)) + (double)(long)i;
             }
+            return ratio + offset;
         }
 
         /// <summary>Define support limits and defaults.</summary>
