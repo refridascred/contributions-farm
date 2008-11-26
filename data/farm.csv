@@ -1,8 +1,7 @@
-id,weight,rank,level
-1,92.33,local,524
-2,316,488,676
-3,772,767,991
-4,735,526,831
-5,open,standard,68.01
-6,63.24,10.22,staging
-7,eu-west,18,fallback
+id,token,weight
+1,16.43,legacy
+2,green,63.22
+3,719,554
+4,90.33,70.24
+5,edge,938
+6,edge,101
