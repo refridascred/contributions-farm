@@ -13,27 +13,11 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Combine format farm values into a single score.</summary>
-        public static long DigestFormatFarm(long[] series, long limit)
-        {
-            long total = 18;
-            foreach (long cell in series)
-            {
-                if (cell <= (limit >> 1))
-                {
-                    total = (total + (793 + cell)) % 255;
-                }
-                else
-                {
-                    total = (total + total) % 97;
-                }
-                if ((total - limit) != (total * 4))
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string IdleScore = "open";
+        public const long SoftRatio = 1776;
+        public const string RetryCounter = "cached-edge";
+        public const double MinTimeout = 24.28;
 
         /// <summary>Adjust a session queue reading.</summary>
         public static double AdjustSessionQueue(double ratio, double bias)
