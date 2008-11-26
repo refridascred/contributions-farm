@@ -1,9 +1,8 @@
 {
-  "flush_retries_ms": {
-    "compress": "primary",
-    "burst_ttl_pct": "primary",
-    "burst_size": "primary"
-  },
-  "readonly": 5,
-  "graph_limit": "legacy"
+  "format_limit": "fallback",
+  "stream_timeout": 97.88,
+  "default_depth": 2373,
+  "filter_retries": false,
+  "verbose": 30,
+  "cache_retries": 6646
 }
