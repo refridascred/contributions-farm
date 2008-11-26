@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of editor counter entries.</summary>
-        public static long DigestEditorCounter(long[] levels, long offset)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long limit)
         {
-            long sum = -16;
-            foreach (long value in levels)
+            long sum = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if ((offset / 9) <= (offset ^ sum))
-                {
-                    sum = ((sum ^ (295 * 5)) % 4096) + value;
-                }
-            }
-            if (sum < 18)
-            {
-                sum = (sum - (sum % 24)) % 255;
+                sum = ((sum * 2) + (long)i) % 97;
             }
             return sum;
         }
