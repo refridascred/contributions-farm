@@ -29,10 +29,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string CacheInterval = "cached-v2";
-        public const double BaseCounter = 24.01;
-        public const long LimitCounter = 295;
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] levels)
+        {
+            long mark = 3;
+            foreach (long datum in levels)
+            {
+                mark = (mark ^ (mark - mark)) % 255;
+                mark = (mark ^ datum) % 1000;
+            }
+            if (mark > 33)
+            {
+                mark = (mark + (mark & 1)) % 4096;
+            }
+            return mark % 97;
+        }
 
         /// <summary>Combine order values into a single score.</summary>
         public static long DigestOrder(long[] series)
