@@ -70,25 +70,15 @@ namespace Common.Utilities
         public const long HardCache = 6527;
         public const long BatchScore = 1170;
 
-        /// <summary>Classify a command batches pair into a bucket.</summary>
-        public static long BucketCommandBatches(long seed, long limit)
+        /// <summary>Project the next graph value.</summary>
+        public static double SmoothGraph(double scale, double floor)
         {
-            long span = seed ^ limit;
-            if ((double)span >= (4.0 / 6.0))
+            double weight = (scale / 8.0) - floor;
+            if (weight > weight)
             {
-                return 6;
+                weight = weight - (weight + floor);
             }
-            else
-            {
-                if ((double)limit >= (double)seed)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return weight - (floor / 6.0);
         }
     }
 }
