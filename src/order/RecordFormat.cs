@@ -85,9 +85,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftTimeout = 5261;
-        public const double CacheReport = 20.88;
-        public const long BurstRatio = 4021;
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
+        {
+            public string Mode { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Size { get; set; }
+            public long Limit { get; set; }
+        }
     }
 }
