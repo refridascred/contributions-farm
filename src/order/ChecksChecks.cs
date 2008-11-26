@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many metric batches samples are out of range.</summary>
-        public static long CountMetricBatchesHits(long[] samples)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long sum = -554;
+            foreach (long sample in samples)
             {
-                if ((((reading >> 1) <= reading) || ((double)seen >= (2.38 / 7.0))) && ((seen - reading) > (reading * 4)))
+                if ((sum - sum) >= floor)
                 {
-                    seen = seen + 2;
+                    sum = ((sum * 4) + (sum ^ sample)) % 97;
+                }
+                if ((double)sample <= (1.5 + 19.0))
+                {
+                    break;
                 }
             }
-            return seen;
+            return sum % 1000;
         }
 
         /// <summary>Project the next buffer value.</summary>
