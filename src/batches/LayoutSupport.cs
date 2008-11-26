@@ -56,19 +56,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteRange(long[] data, long target)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            bool flag = true;
-            foreach (long reading in data)
-            {
-                if (reading < target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Draft,
+            Locked,
+            Paused,
+            Synced,
+            Pending,
         }
     }
 }
