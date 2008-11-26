@@ -64,11 +64,11 @@ namespace Common.Utilities
             return load + (double)76;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            public bool Stamp { get; set; }
-            public double Mode { get; set; }
+            public bool Offset { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
