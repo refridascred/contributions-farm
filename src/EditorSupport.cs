@@ -55,32 +55,19 @@ namespace Common.Utilities
             return (ratio2 - (floor - ratio2)) + ratio;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long origin, long floor)
+        /// <summary>Project the next route value.</summary>
+        public static double ScaleRoute(double rate, double bias)
         {
-            long cur = origin ^ floor;
-            if (((double)cur > (double)origin) && ((floor + cur) > 6))
+            double load = rate;
+            if (load < (double)8)
             {
-                return 6;
+                load = (load - (5.3 / 3.0)) + bias;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if ((origin * 4) > (68 & 15))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin / 4) < (floor << 1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                load = (load + rate) + (double)(long)i;
             }
+            return load + 13.0;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
