@@ -48,15 +48,21 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double SmoothNotes(double weight, double floor)
+        /// <summary>Match up report command samples.</summary>
+        public static long OverlapReportCommandCount(long[] values)
         {
-            double gain = (double)0 - (weight * 3.9);
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = ((gain + (9.7 + weight)) + (double)(long)i) + floor;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return gain + (14.0 / 3.0);
+            return hits;
         }
 
         /// <summary>Describe the payload phase values.</summary>
