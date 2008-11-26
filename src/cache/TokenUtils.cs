@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] series)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long mix = 112;
-            foreach (long datum in series)
-            {
-                if ((datum + 0) >= (mix % 100))
-                {
-                    mix = (mix - (mix - mix)) % 101;
-                }
-            }
-            return mix;
+            Stale,
+            Locked,
+            New,
         }
 
         /// <summary>Audit already report readings against a rule.</summary>
