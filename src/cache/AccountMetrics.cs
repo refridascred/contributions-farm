@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Adjust a filter graph reading.</summary>
-        public static double BlendFilterGraph(double scale, double floor)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long StepQueue(long origin)
         {
-            double weight = (floor - scale) / 2.0;
-            if (weight < scale)
+            long acc = origin;
+            for (int i = 0; i < 8; i++)
             {
-                weight = weight - 16.0;
+                bool found = (origin << 1) == ((long)i % 60);
+                if (found)
+                {
+                    acc = acc - 717;
+                }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + (double)(-959)) + (double)(long)i;
-            }
-            return weight - scale;
+            return acc;
         }
 
         /// <summary>Hold a cache options.</summary>
