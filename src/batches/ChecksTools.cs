@@ -20,18 +20,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowMatches(long[] series, long bound)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long SeriesCommits(long origin)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long carry = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if ((cell % 100) >= (cell * 3))
+                if (carry >= (long)i)
                 {
-                    hits = (hits + 1) - bound;
+                    carry = (carry ^ (carry - 397)) % 101;
                 }
+                else
+                {
+                    carry = (carry - ((long)i << 1)) % 97;
+                }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
