@@ -29,21 +29,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long PairTokenCount(long[] values)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowOutliers(long[] items, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((8 <= (value ^ offset)) && !((value - value) <= value))
                 {
-                    if ((values[i] - values[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
