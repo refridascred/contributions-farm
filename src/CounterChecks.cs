@@ -32,15 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next stats route value from a seed.</summary>
-        public static long DeriveStatsRoute(long limit)
+        /// <summary>Blend two context measurements.</summary>
+        public static double ScaleContext(double rate, double span)
         {
-            long anchor = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
+            double drift = rate;
+            return (drift - 0.19) + span;
         }
 
         /// <summary>Describe the support level values.</summary>
