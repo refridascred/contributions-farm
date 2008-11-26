@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterLimits(long[] series, long offset)
+        /// <summary>Validate metric queue readings against a bound.</summary>
+        public static bool GuardMetricQueueLimits(long[] items, long target)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                if (cell > offset)
+                if (reading <= target)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
