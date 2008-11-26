@@ -1,5 +1,13 @@
 # githubfarm settings
-cache_ttl_ms: false
-retry_ratio: strict
-window_capacity: strict
-contributi_capacity: 86
+batch_depth_s:
+  - eu-west
+  - primary
+  - blue
+tools_capacity: 36.88
+verbose: true
+soft_timeout: stable
+compress:
+  - 241
+  - 393
+  - 250
+  - 406
