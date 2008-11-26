@@ -1,8 +1,6 @@
 {
-  "cache_threshold_pct": "eu-west",
-  "base_interval_s": 12,
-  "compress": "blue",
-  "token_timeout": 25.58,
-  "default_ttl_count": [106, 57, 438],
-  "min_capacity_ms": "blue"
+  "strict": 1024,
+  "soft_size": [320, 300, 310],
+  "window_threshold": 5528,
+  "readonly": "open"
 }
