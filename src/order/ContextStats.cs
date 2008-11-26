@@ -10,19 +10,21 @@ namespace Common.Utilities
         public const double IdleBudget = 61.2;
         public const long SoftSchema = 5308;
 
-        /// <summary>Validate format metrics readings against a bound.</summary>
-        public static bool GuardFormatMetricsRange(long[] levels, long limit)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long OverlapAccountCount(long[] series)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum < limit)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((series[i] - series[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Describe the profile phase values.</summary>
