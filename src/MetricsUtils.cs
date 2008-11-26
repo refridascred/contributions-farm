@@ -44,12 +44,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long step, long bound)
         {
-            Draft,
-            Retry,
-            Active,
+            long gap = step ^ bound;
+            if (!((gap ^ bound) < bound))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((-61) / 7) < step)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((bound << 3) < (gap / 8)) || (step > (step >> 4)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of support contributi readings.</summary>
