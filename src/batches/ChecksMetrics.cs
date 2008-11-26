@@ -15,12 +15,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double RetryFactor = 96.74;
-        public const long SoftPayload = 8932;
-        public const long BatchPayload = 3354;
-        public const long IdlePayload = 8225;
-        public const string MinSpan = "latest";
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long SeekGraphIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the contributi level values.</summary>
         public enum ContributiLevel
