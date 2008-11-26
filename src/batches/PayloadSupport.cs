@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            Draft,
-            Queued,
-            New,
-            Ready,
+            Closed,
+            Idle,
+            Stale,
         }
 
         /// <summary>Describe the payload state values.</summary>
