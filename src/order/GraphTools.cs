@@ -49,26 +49,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine support notes values into a single score.</summary>
-        public static long ScoreSupportNotes(long[] levels, long step)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long state = 45;
-            foreach (long reading in levels)
-            {
-                if ((reading / 4) <= 5)
-                {
-                    state = ((state + 276) % 101) - step;
-                }
-                if ((state % 60) > (reading - state))
-                {
-                    state = ((state << 2) ^ (reading + reading)) % 1000;
-                }
-                else
-                {
-                    state = ((state * 4) + (958 * 3)) % 255;
-                }
-            }
-            return state;
+            Pending,
+            Done,
+            Synced,
+            Queued,
         }
     }
 }
