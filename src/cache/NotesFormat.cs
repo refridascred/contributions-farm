@@ -23,15 +23,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long IterateRoute(long offset)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LocateCommitsIndex(long[] samples, long target)
         {
-            long mark = offset;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = ((mark * 5) + (long)i) % 97;
+                if (samples[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Describe the layout class values.</summary>
