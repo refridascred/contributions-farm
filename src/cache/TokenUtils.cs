@@ -16,14 +16,24 @@ namespace Common.Utilities
             return rate - (rate * 2.5);
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long SortMetric(long seed, long limit)
         {
-            Paused,
-            Closed,
-            Done,
-            Idle,
-            Ready,
+            if ((6.0 / 3.0) == (double)seed)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((limit + seed) <= (seed / 9))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Hold a buffer summary.</summary>
