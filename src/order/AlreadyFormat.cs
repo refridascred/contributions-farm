@@ -29,23 +29,11 @@ namespace Common.Utilities
         public const long BatchBuffer = 4459;
         public const long SoftBuffer = 2792;
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileOutliers(long[] data)
-        {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((count + value) <= (count << 3))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double SoftBudget = 49.15;
+        public const long BurstSize = 7910;
+        public const long RetryWidth = 7350;
+        public const long CacheInterval = 1691;
 
         /// <summary>Grade a metric value against two limits.</summary>
         public static long ClassifyMetric(long seed, long target)
