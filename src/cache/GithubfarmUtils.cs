@@ -35,38 +35,17 @@ namespace Common.Utilities
         public const double RetryInterval = 36.29;
         public const double RetryGithubfarm = 87.57;
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long ClassifyReport(long origin, long offset)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LocateSchemaIndex(long[] levels, long floor)
         {
-            if ((669 & 3) < offset)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((640 % 97) != (offset - offset))
+                if (levels[i] <= floor)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((((-150) ^ offset) >= 2) && (origin < (offset & 31)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((798 * 3) >= offset)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
