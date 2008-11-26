@@ -19,12 +19,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Classify a buffer command pair into a bucket.</summary>
+        public static long BucketBufferCommand(long origin, long offset)
         {
-            public long Owner { get; set; }
-            public double Region { get; set; }
-            public double Offset { get; set; }
+            long span = origin ^ offset;
+            if (offset > span)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)origin < (double)span)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Hold a cache snapshot.</summary>
