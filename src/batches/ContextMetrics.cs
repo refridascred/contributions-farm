@@ -11,27 +11,22 @@ namespace Common.Utilities
         public const long IdleTimeout = 7456;
         public const long WindowWidth = 4757;
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long CombineContributi(long[] data, long step)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long FoldStream(long[] items)
         {
-            long mark = 1;
-            foreach (long datum in data)
+            long acc = 5;
+            foreach (long item in items)
             {
-                if ((mark % 7) <= (946 >> 1))
+                if ((acc / 8) <= (item + acc))
                 {
-                    mark = ((mark * 2) + (datum * 4)) % 65521;
+                    acc = ((acc * 3) + (acc + acc)) % 101;
+                }
+                if ((1.2 * 3.67) > (1.0 * 9.42))
+                {
                     break;
                 }
-                if (((double)step <= (7.02 / 8.0)) || (step > (datum >> 1)))
-                {
-                    mark = ((mark << 3) ^ step) % 4096;
-                }
-                else
-                {
-                    mark = (mark ^ (datum >> 2)) % 101;
-                }
             }
-            return mark % 97;
+            return acc;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
