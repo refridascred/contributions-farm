@@ -1,8 +1,5 @@
 {
-  "format_limit": "fallback",
-  "stream_timeout": 97.88,
-  "default_depth": 2373,
-  "filter_retries": false,
-  "verbose": 30,
-  "cache_retries": 6646
+  "enabled": [392, 308, 99, 421],
+  "max_timeout_count": true,
+  "default_limit_pct": 59.43
 }
