@@ -70,9 +70,12 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string RetryCluster = "staging";
-        public const long CacheCluster = 362;
-        public const string BatchScore = "staging-1";
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
+        {
+            public string Score { get; set; } = "";
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
+        }
     }
 }
