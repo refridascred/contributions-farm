@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            Stale,
+            Dropped,
+            Closed,
+            Paused,
+            Active,
             Locked,
-            New,
         }
 
         /// <summary>Describe the queue kind values.</summary>
