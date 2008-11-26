@@ -6,21 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-standard}"
+BUFFER_LIMIT=124
+log "limit is ${BUFFER_LIMIT}"
+
+mode="${1:-primary}"
 case "${mode}" in
-    legacy)
+    open)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-BUFFER_LIMIT=193
-log "limit is ${BUFFER_LIMIT}"
-
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
