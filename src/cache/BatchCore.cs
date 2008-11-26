@@ -40,20 +40,11 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaRange(long[] levels, long floor)
-        {
-            bool ready = true;
-            foreach (long item in levels)
-            {
-                if (item > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinEntry = 4551;
+        public const long MinRatio = 7659;
+        public const string CacheSpan = "strict";
+        public const long BatchScore = 630;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double WindowSchema = 32.92;
