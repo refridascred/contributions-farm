@@ -115,24 +115,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a layout buffer pair into a bucket.</summary>
-        public static long BucketLayoutBuffer(long step, long limit)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmLimits(long[] levels, long seed)
         {
-            if ((limit - (-33)) != (limit & 1))
+            bool ok = true;
+            foreach (long item in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((9.0 - 3.9) != (double)step)
+                if (item > seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
