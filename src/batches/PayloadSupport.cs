@@ -14,10 +14,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxGraph = 9089;
-        public const long BaseSpan = 4319;
-        public const long HardFactor = 5016;
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
+        {
+            Closed,
+            Idle,
+            New,
+            Ready,
+            Draft,
+        }
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long CountStatsMatches(long[] readings, long offset)
