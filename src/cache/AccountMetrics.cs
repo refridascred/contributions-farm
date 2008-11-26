@@ -42,10 +42,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstSize = 4189;
-        public const double MaxRecord = 42.47;
-        public const long HardScore = 7415;
+        /// <summary>Classify a channel stream pair into a bucket.</summary>
+        public static long BucketChannelStream(long floor, long target)
+        {
+            if (target > (target / 2))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((1.78 / 2.0) > (double)floor)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Hold a farm snapshot.</summary>
         public sealed class FarmSnapshot
