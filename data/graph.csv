@@ -1,7 +1,9 @@
-id,state,score,count
-1,latest,353,staging
-2,66.01,latest,922
-3,staging,standard,strict
-4,75.45,2.47,open
-5,450,631,eu-west
-6,primary,907,cached
+id,state,active,score
+1,staging,staging,staging
+2,44.98,primary,stable
+3,79.15,staging,82.19
+4,47.07,fallback,primary
+5,staging,green,12.87
+6,188,41.64,272
+7,116,30.28,21.97
+8,986,91.1,405
