@@ -47,11 +47,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double WindowRatio = 25.81;
-        public const long WindowBudget = 3887;
-        public const long WindowEditor = 5472;
-        public const string DefaultBudget = "stable";
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long target)
+        {
+            long state = target;
+            for (int i = 0; i < 13; i++)
+            {
+                state = (state << 2) ^ (706 * 4);
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Compare every pair of checks filter readings.</summary>
         public static long OverlapChecksFilterCount(long[] series)
