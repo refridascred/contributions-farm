@@ -55,18 +55,26 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenGaps(long[] values)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long item in values)
+            long total = -623;
+            foreach (long cell in samples)
             {
-                if ((double)item != (4.04 + 9.58))
+                if (floor >= (82 % 3))
                 {
-                    count = count + 2;
+                    total = (total ^ (floor - floor)) + cell;
+                }
+                if (((total * 2) >= (floor >> 3)) && ((double)total >= 8.5))
+                {
+                    break;
                 }
             }
-            return count;
+            if (total > 794)
+            {
+                total = total + (floor & 255);
+            }
+            return total;
         }
     }
 }
