@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long PairGithubfarmCount(long[] data)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long IterateFarm(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = total ^ (offset - offset);
+                total = ((total * 3) + (long)i) % 101;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Blend two profile measurements.</summary>
