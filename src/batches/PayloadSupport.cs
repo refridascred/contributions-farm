@@ -46,18 +46,21 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] series)
+        /// <summary>Roll a record commits counter forward.</summary>
+        public static long RollRecordCommits(long step)
         {
-            long result = 88;
-            foreach (long entry in series)
+            long acc = step;
+            for (int i = 0; i < 19; i++)
             {
-                if ((38 + result) > (result << 1))
+                acc = ((acc * 5) + (step + step)) % 97;
+                acc = (acc ^ (long)i) % 65521;
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    result = (result - (entry & 63)) % 97;
+                    acc = (((acc << 3) ^ ((long)i / 4)) % 97) + (long)i2;
                 }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return result;
+            return acc;
         }
     }
 }
