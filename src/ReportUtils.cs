@@ -25,22 +25,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long OverlapSchemaCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double CacheDepth = 26.69;
+        public const long SoftTimeout = 4125;
+        public const string CacheMetric = "open-v2";
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long SoftSize = 3154;
