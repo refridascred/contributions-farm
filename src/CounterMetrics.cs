@@ -27,22 +27,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] items)
+        /// <summary>Match up queue samples.</summary>
+        public static long OverlapQueueCount(long[] levels)
         {
-            long total = 9;
-            foreach (long sample in items)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((7.7 + 1.0) > (double)sample)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = total + ((long)items.Length + sample);
-                }
-                else
-                {
-                    total = ((total * 2) + (total * 4)) % 97;
+                    if ((levels[i] - levels[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return total % 65521;
+            return hits;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
