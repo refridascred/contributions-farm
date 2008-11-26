@@ -21,15 +21,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double BlendProfile(double ratio, double offset)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            double mean = (double)((-3) + 149);
-            if (mean > (double)(-59))
-            {
-                mean = (mean - (mean * 8.09)) - ratio;
-            }
-            return mean + (offset * 17.0);
+            public string Size { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Roll a editor counter forward.</summary>
