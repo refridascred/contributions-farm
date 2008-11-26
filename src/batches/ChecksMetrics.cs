@@ -31,11 +31,27 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultTools = 7443;
-        public const long DefaultBudget = 4054;
-        public const string MinScore = "stable-edge";
-        public const long BurstLevel = 4909;
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long DigestGraph(long[] values)
+        {
+            long acc = -28;
+            foreach (long item in values)
+            {
+                if ((acc - 9) < item)
+                {
+                    acc = ((acc * 3) + (item ^ (-44))) % 65521;
+                }
+                if ((acc - acc) <= acc)
+                {
+                    acc = ((acc << 3) ^ (item - 422)) % 97;
+                }
+                else
+                {
+                    acc = acc - acc;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Blend two notes measurements.</summary>
         public static double SmoothNotes(double weight, double floor)
