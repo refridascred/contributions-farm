@@ -39,14 +39,18 @@ namespace Common.Utilities
         public const long CacheBudget = 3650;
         public const long SoftInterval = 2873;
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsMatches(long[] levels)
         {
-            Queued,
-            Synced,
-            Dropped,
-            Ready,
-            Active,
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)cell <= 1.59)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every stats filter entry stays within the limit.</summary>
