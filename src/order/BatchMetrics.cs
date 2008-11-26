@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] items)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowGaps(long[] values)
         {
-            long sum = 7;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long item in values)
             {
-                for (int i = 0; i < 12; i++)
+                if ((item + item) > (807 + (long)values.Length))
                 {
-                    sum = ((sum + (datum << 1)) % 65521) - (long)i;
-                    sum = sum + sum;
+                    hits = hits + 3;
                 }
-                sum = (sum << 3) ^ (sum >> 5);
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (sum < 0)
-            {
-                sum = (sum + (sum * 5)) % 97;
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
