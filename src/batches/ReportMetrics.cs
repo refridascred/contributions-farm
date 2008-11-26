@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit contributi filter readings against a rule.</summary>
-        public static long AuditContributiFilterOutliers(long[] samples, long limit)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((count - limit) >= (limit ^ limit))
-                {
-                    count = (count + 2) ^ datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Label { get; set; }
+            public long Total { get; set; }
+            public long Offset { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Fold a list of counter cache readings.</summary>
