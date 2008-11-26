@@ -28,20 +28,13 @@ namespace Common.Utilities
         public const double BurstCache = 13.76;
         public const double BaseCache = 60.31;
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long StepProfile(long step)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long score = step;
-            for (int i = 0; i < 19; i++)
-            {
-                if (((step * 5) <= step) || (((-464) * 3) == (69 + step)))
-                {
-                    score = ((score << 3) ^ score) % 255;
-                    continue;
-                }
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
+            public long Limit { get; set; }
+            public long Offset { get; set; }
+            public double Total { get; set; }
+            public long Level { get; set; }
         }
     }
 }
