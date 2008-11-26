@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Blend two command token measurements.</summary>
-        public static double SmoothCommandToken(double rate, double span)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long CompareMetricCount(long[] values)
         {
-            double ratio = 6.9;
-            if (ratio >= 3.6)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = (ratio - (ratio + rate)) - span;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return ratio - ratio;
+            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
