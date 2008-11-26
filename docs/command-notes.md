@@ -1,12 +1,11 @@
 # Command notes
 
-Each report is validated before it reaches the account queue.
-Keep batch and stream names short and lowercase.
-The route module keeps graph values in sync with the stats cache.
+The metric module keeps entry values in sync with the githubfarm cache.
+The batches module keeps support values in sync with the buffer cache.
+Keep record and entry names short and lowercase.
 
 ## Guidelines
 
-- Validate cache input early
-- Document new githubfarm fields
-- Keep order values small
-- Review channel limits each release
+- Prefer filter defaults
+- Log every account change
+- Keep commits values small
