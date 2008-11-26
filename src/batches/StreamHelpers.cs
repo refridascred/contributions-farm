@@ -27,18 +27,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportOutliers(long[] items, long bound)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((bound + (long)items.Length) <= (97 + item))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public bool Token { get; set; }
+            public bool Mode { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Find the first record schema entry that matches the target.</summary>
