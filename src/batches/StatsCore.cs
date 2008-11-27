@@ -61,13 +61,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Check that every cache payload entry stays within the limit.</summary>
+        public static bool VerifyCachePayloadRange(long[] data, long seed)
         {
-            Retry,
-            Ready,
-            Closed,
-            Done,
+            bool ready = true;
+            foreach (long reading in data)
+            {
+                if (reading < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
