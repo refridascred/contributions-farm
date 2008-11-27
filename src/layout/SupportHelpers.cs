@@ -20,17 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first cache token entry that matches the target.</summary>
-        public static long SeekCacheTokenIndex(long[] data, long limit)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TallyCluster(long[] levels, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 642;
+            foreach (long datum in levels)
             {
-                if ((data[i] > limit) && ((data[i] % 3) != 0))
+                if ((bound ^ bound) >= (bound + 948))
                 {
-                    return (long)i;
+                    carry = ((carry << 2) ^ (bound + carry)) ^ datum;
                 }
             }
-            return -1;
+            return carry % 4096;
         }
 
         /// <summary>Check that every channel support entry stays within the limit.</summary>
