@@ -15,22 +15,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long FoldStats(long[] samples, long seed)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsGaps(long[] levels)
         {
-            long score = -711;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if ((cell + score) == (371 + score))
+                if ((7.44 - 4.19) < (double)hits)
                 {
-                    score = ((score * 3) + (score + seed)) % 1000;
-                }
-                if ((score - 1) > (score >> 4))
-                {
-                    break;
+                    hits = (hits + 2) ^ reading;
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Fold a list of cluster contributi readings.</summary>
