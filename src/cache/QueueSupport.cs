@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] levels, long target)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelOutliers(long[] series)
         {
-            long anchor = -9;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (!(datum <= (anchor << 3)))
+                if ((seen >= (seen - item)) || (((8.7 / 7.0) == (double)item) && ((9.0 / 5.0) < (double)item)))
                 {
-                    anchor = (anchor ^ datum) % 97;
-                    anchor = ((anchor * 4) + (anchor ^ anchor)) % 65521;
-                }
-                if ((double)target < (double)499)
-                {
-                    anchor = (anchor - anchor) % 255;
-                }
-                if ((1.72 + 2.0) < (double)anchor)
-                {
-                    break;
+                    seen = seen + 2;
                 }
             }
-            if (anchor > 645)
-            {
-                anchor = ((anchor << 2) ^ target) % 4096;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Describe the entry status values.</summary>
