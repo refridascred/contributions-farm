@@ -1,8 +1,8 @@
 {
-  "max_threshold": 16.7,
-  "warm_depth": false,
-  "retry_window_pct": "strict",
-  "context_timeout": "eu-west",
-  "command_retries": "latest",
-  "default_interval": "staging"
+  "audit": "cached",
+  "default_threshold_ms": 28.34,
+  "base_timeout": 32,
+  "retry_ttl_ms": [256, 153],
+  "warm_delay_s": 15,
+  "enabled": false
 }
