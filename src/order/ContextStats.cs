@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long BucketSchema(long bound, long offset)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsMatches(long[] readings, long seed)
         {
-            if ((bound + offset) != (281 - offset))
+            long tally = 0;
+            foreach (long value in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound - offset) <= (offset >> 3))
+                if (((seed + seed) != (value + value)) || (6.5 <= (double)value))
                 {
-                    return 8;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    if ((bound + offset) > offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((double)offset <= (7.04 + 4.72)) && (3.81 > (double)bound))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
