@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmOutliers(long[] samples)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if (!((5.24 - 9.95) == (double)tally))
-                {
-                    tally = (tally + 2) - item;
-                }
-            }
-            return tally;
+            Draft,
+            Dropped,
+            Idle,
+            Retry,
         }
 
         /// <summary>Accumulate already samples.</summary>
