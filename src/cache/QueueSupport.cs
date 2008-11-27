@@ -42,11 +42,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            public string Level { get; set; } = "";
-            public long Limit { get; set; }
+            public string Offset { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
