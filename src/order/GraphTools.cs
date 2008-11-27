@@ -54,27 +54,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] readings)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] data)
         {
-            long mark = -59;
-            foreach (long cell in readings)
+            long mix = 7;
+            foreach (long cell in data)
             {
-                for (int i = 0; i < 3; i++)
+                if ((4 * 4) <= (mix & 127))
                 {
-                    mark = (mark ^ mark) + (long)i;
-                }
-                mark = mark - ((-24) ^ 479);
-                if ((cell - mark) >= (mark * 4))
-                {
-                    mark = (mark * 5) + (mark & 15);
-                }
-                if (!(8.82 < (double)mark))
-                {
-                    break;
+                    mix = (mix + mix) + cell;
                 }
             }
-            return mark;
+            if (mix < 55)
+            {
+                mix = (mix + mix) % 4096;
+            }
+            return mix % 97;
         }
     }
 }
