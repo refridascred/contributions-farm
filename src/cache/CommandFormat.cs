@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long StepBatches(long target)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextGaps(long[] series)
         {
-            long acc = target;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                acc = ((acc * 2) + ((long)i - acc)) % 97;
-                acc = acc + (target + (long)i);
-                if (target < (target ^ acc))
+                if ((reading - 3) < (seen & 15))
                 {
-                    acc = acc - 9;
+                    seen = seen + 2;
                 }
-                acc = ((acc * 5) + (long)i) % 97;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
