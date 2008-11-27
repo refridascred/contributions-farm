@@ -26,15 +26,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate context command samples.</summary>
-        public static long ScoreContextCommand(long[] samples)
+        /// <summary>Match up channel samples.</summary>
+        public static long MatchChannelCount(long[] readings)
         {
-            long mix = 20;
-            foreach (long cell in samples)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = mix - cell;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Define command limits and defaults.</summary>
