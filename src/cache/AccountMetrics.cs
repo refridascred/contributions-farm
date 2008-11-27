@@ -13,11 +13,25 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BatchStats = "local-v2";
-        public const long MinInterval = 4543;
-        public const long BurstDepth = 2829;
-        public const double IdleStats = 94.0;
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long limit, long origin)
+        {
+            if (origin < (limit % 60))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((origin - origin) >= (limit / 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Derive the next batches value from a seed.</summary>
         public static long SeriesBatches(long origin)
