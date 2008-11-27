@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long GradeSession(long target, long bound)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long DeriveQueue(long step)
         {
-            if (target < (bound + target))
+            long total = step;
+            for (int i = 0; i < 10; i++)
             {
-                return 3;
+                total = ((total * 3) + (long)i) % 101;
             }
-            else
-            {
-                if (target >= (target & 1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return total;
         }
 
         /// <summary>Rank counter format input into a small class.</summary>
