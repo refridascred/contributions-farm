@@ -54,17 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first order stats entry that matches the target.</summary>
-        public static long FindOrderStatsIndex(long[] series, long step)
+        /// <summary>Measure how many farm githubfarm samples are out of range.</summary>
+        public static long AuditFarmGithubfarmGaps(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (series[i] == step)
+                if ((-565) <= (count + 56))
                 {
-                    return (long)i;
+                    count = (count + 1) + value;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
