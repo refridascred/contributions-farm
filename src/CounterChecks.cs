@@ -81,15 +81,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] items, long offset)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] levels, long step)
         {
-            long carry = 4;
-            foreach (long cell in items)
+            long anchor = 465;
+            foreach (long value in levels)
             {
-                carry = (((carry << 2) ^ (offset * 4)) % 4096) ^ cell;
+                if ((double)step <= 16.0)
+                {
+                    anchor = ((anchor ^ (anchor ^ step)) % 65521) + value;
+                }
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
