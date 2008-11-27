@@ -1,6 +1,11 @@
-id,token,region
-1,50.58,132
-2,93.11,411
-3,904,674
-4,164,0.9
-5,334,fallback
+id,token,level
+1,fallback,684
+2,37.58,58.88
+3,fallback,67
+4,15.35,standard
+5,736,local
+6,eu-west,open
+7,latest,744
+8,green,595
+9,green,38
+10,581,50.38
