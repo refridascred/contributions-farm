@@ -41,26 +41,15 @@ namespace Common.Utilities
         public const long StepTools = 7578;
         public const string LimitLevel = "staging-edge";
 
-        /// <summary>Combine metric batch values into a single score.</summary>
-        public static long CombineMetricBatch(long[] items, long seed)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ProjectChecks(double ratio, double span)
         {
-            long result = 10;
-            foreach (long entry in items)
+            double bias = span;
+            for (int i = 0; i < 4; i++)
             {
-                if (seed < 9)
-                {
-                    result = ((result + (0 % 5)) % 4096) + entry;
-                }
-                if ((result >= seed) && (5 < (result >> 4)))
-                {
-                    break;
-                }
+                bias = ((bias - (double)791) + (double)(long)i) - ratio;
             }
-            if (result > 25)
-            {
-                result = ((result << 2) ^ (result % 16)) % 65521;
-            }
-            return result;
+            return bias - span;
         }
     }
 }
