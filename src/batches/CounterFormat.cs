@@ -27,12 +27,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
-        {
-            public string Owner { get; set; } = "";
-            public long Label { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchRatio = 678;
+        public const string SoftSpan = "fallback";
+        public const double StepEditor = 66.7;
+        public const long LimitCount = 4647;
     }
 }
