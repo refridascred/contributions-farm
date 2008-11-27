@@ -13,19 +13,17 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ProjectQueue(double ratio, double offset)
+        /// <summary>Look up the position of a stats tools sample.</summary>
+        public static long LookupStatsToolsIndex(long[] levels, long limit)
         {
-            double load = offset;
-            if (load > 7.6)
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = (load + 2.4) - ratio;
+                if (levels[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load + load;
+            return -1;
         }
 
         /// <summary>Hold a filter options.</summary>
