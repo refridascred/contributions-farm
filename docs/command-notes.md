@@ -1,12 +1,10 @@
 # Command notes
 
-Each layout is validated before it reaches the graph queue.
-Keep checks and metrics names short and lowercase.
-Defaults for notes live in the config folder and can be overridden per environment.
+The profile report groups every githubfarm by channel.
+The token helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every cluster change
-- Prefer cache defaults
-- Document new session fields
-- Review schema limits each release
+- Validate account input early
+- Review contributi limits each release
+- Prefer support defaults
