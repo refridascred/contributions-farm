@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the checks account entries that pass the check.</summary>
-        public static long CountChecksAccountGaps(long[] readings, long seed)
-        {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((tally << 1) <= (seed + seed))
-                {
-                    tally = (tally + 2) - sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BatchInterval = 91.75;
+        public const long BaseSpan = 4669;
+        public const double LimitFarm = 59.39;
 
         /// <summary>Grade a metric value against two limits.</summary>
         public static long GradeMetric(long origin, long limit)
