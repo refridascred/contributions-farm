@@ -49,32 +49,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long ClassifyMetric(long step, long seed)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ProjectFormat(double scale, double offset)
         {
-            long diff = step - seed;
-            if ((double)diff <= (1.0 * 2.88))
+            double gain = (9.7 / 2.0) / 3.0;
+            if (gain <= (scale * 7.0))
             {
-                return 5;
+                gain = gain + (9.78 - offset);
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if ((step >> 2) > diff)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (seed > (8 - diff))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                gain = (gain + gain) + (double)(long)i;
             }
+            return gain + gain;
         }
 
         /// <summary>Roll a record counter forward.</summary>
