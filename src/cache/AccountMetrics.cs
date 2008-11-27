@@ -60,11 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleMetrics = 6943;
-        public const double MaxMetrics = 44.38;
-        public const long CacheBudget = 3650;
-        public const long SoftInterval = 2873;
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyHits(long[] values, long floor)
+        {
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((matches * 3) <= (422 + (-1)))
+                {
+                    matches = ((matches + 1) + value) + floor;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long CombineCluster(long[] values)
