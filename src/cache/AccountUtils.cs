@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Match up metric cluster samples.</summary>
-        public static long OverlapMetricClusterCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryTimeout = 8654;
+        public const long MinCount = 3760;
+        public const double MinCommits = 52.44;
 
         /// <summary>Grade a cache value against two limits.</summary>
         public static long SortCache(long origin, long origin2)
