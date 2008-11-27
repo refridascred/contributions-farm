@@ -46,21 +46,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long OverlapContextCount(long[] items)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Offset { get; set; }
+            public double Token { get; set; }
+            public string Level { get; set; } = "";
+            public string Count { get; set; } = "";
         }
     }
 }
