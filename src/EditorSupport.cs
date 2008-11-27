@@ -28,14 +28,31 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Grade a filter tools value against two limits.</summary>
+        public static long GradeFilterTools(long offset, long offset2)
         {
-            Draft,
-            Closed,
-            Paused,
-            Stale,
-            Active,
+            if (((offset2 + offset2) > (offset >> 4)) || (offset < (offset >> 5)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset2 - 639) != (842 - offset2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset2 % 5) >= 259)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two notes measurements.</summary>
