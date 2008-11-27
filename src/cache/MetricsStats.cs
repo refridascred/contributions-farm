@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowTools = 6793;
-        public const long StepTools = 9737;
-        public const string BurstSpan = "latest-1";
-        public const string HardInterval = "local-v2";
-        public const long MaxTools = 6884;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetrySize = 2361;
+        public const long RetryMetrics = 4207;
+        public const long BatchWidth = 927;
+        public const double RetryBudget = 50.23;
 
         /// <summary>Describe the payload phase values.</summary>
         public enum PayloadPhase
