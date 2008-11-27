@@ -31,12 +31,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            public double Level { get; set; }
-            public long Total { get; set; }
-            public double Flag { get; set; }
+            New,
+            Draft,
+            Ready,
+            Closed,
+            Failed,
         }
     }
 }
