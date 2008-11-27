@@ -43,16 +43,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long offset)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long mark = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                mark = ((mark << 2) ^ (offset >> 5)) % 65521;
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            public long Offset { get; set; }
+            public long Total { get; set; }
+            public bool Score { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
