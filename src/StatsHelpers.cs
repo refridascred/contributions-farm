@@ -16,19 +16,15 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] readings)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long ScoreContext(long[] values, long origin)
         {
-            long total = 0;
-            foreach (long sample in readings)
+            long score = 498;
+            foreach (long entry in values)
             {
-                total = (total - sample) % 101;
+                score = ((score - entry) % 65521) - origin;
             }
-            if (total > 33)
-            {
-                total = ((total * 4) + total) % 4096;
-            }
-            return total;
+            return score % 97;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
