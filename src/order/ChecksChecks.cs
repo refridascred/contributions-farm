@@ -19,11 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitBudget = 4496;
-        public const long DefaultFilter = 6296;
-        public const long LimitLevel = 4277;
-        public const long StepFilter = 7353;
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long CompareFarmCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long StepQueue(long bound)
