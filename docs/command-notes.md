@@ -1,11 +1,11 @@
 # Command notes
 
-Keep stream and farm names short and lowercase.
-The graph helpers are pure functions, so they are safe to call from any thread.
-Run the command check before changing any batches limits.
+The account module keeps command values in sync with the editor cache.
+A stats that stays idle for too long is moved to the counter list.
 
 ## Guidelines
 
-- Log every account change
-- Prefer checks defaults
-- Keep filter values small
+- Review layout limits each release
+- Prefer graph defaults
+- Document new cache fields
+- Validate batches input early
