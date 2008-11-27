@@ -1,8 +1,25 @@
 # entry settings
-max_retries_pct:
-  - 174
-  - 394
-hard_threshold: 6048
-audit: 28
-persist: staging
-max_ratio_pct: 7319
+batch_depth: open
+sync_size:
+  context_size:
+    - 143
+    - 447
+  token_capacity: 53
+  persist: 250
+  max_capacity_ms: staging
+  queue_delay: standard
+  support_threshold:
+    hard_delay: green
+    dry_run: false
+    flush_timeout_count: true
+    burst_delay_count:
+      - 229
+      - 98
+      - 221
+    cache_capacity_count: stable
+    poll_size: 60.46
+filter_interval: edge
+min_timeout_s:
+  - 119
+  - 295
+  - 364
