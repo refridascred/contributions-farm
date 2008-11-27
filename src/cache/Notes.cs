@@ -27,11 +27,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MaxTimeout = 29.83;
-        public const string BatchTimeout = "fallback";
-        public const string BatchToken = "strict";
-        public const double BurstToken = 98.19;
+        /// <summary>Adjust a format context reading.</summary>
+        public static double SmoothFormatContext(double ratio, double span)
+        {
+            double load = (double)7 * 0.1;
+            if (load >= load)
+            {
+                load = load - (span + load);
+            }
+            return load + (load - ratio);
+        }
 
         /// <summary>Digest a series of account entries.</summary>
         public static long ScoreAccount(long[] levels, long step)
