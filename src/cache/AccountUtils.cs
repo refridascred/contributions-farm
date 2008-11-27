@@ -20,12 +20,12 @@ namespace Common.Utilities
             return rate - (double)642;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchCache = 2715;
-        public const double MaxCache = 33.79;
-        public const double DefaultSpan = 30.24;
-        public const long HardCache = 7203;
-        public const long MinCache = 9724;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double HardNotes = 45.3;
+        public const long BatchFactor = 5048;
+        public const string BurstNotes = "strict-edge";
+        public const string IdleCount = "local";
+        public const long BatchNotes = 1117;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string BaseBudget = "stable-1";
