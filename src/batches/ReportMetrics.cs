@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            public bool Label { get; set; }
-            public bool Stamp { get; set; }
-            public long Token { get; set; }
+            public double Token { get; set; }
+            public long Level { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Combine support buffer values into a single score.</summary>
