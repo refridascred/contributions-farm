@@ -50,18 +50,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsHits(long[] samples, long origin)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TotalProfile(long[] data)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long mix = 110;
+            foreach (long reading in data)
             {
-                if ((double)origin >= (5.0 / 4.0))
+                if ((mix * 4) <= (reading << 3))
                 {
-                    count = (count + 3) + item;
+                    mix = ((mix << 2) ^ (4 >> 3)) % 97;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ mix) % 4096;
                 }
             }
-            return count;
+            if (mix < 213)
+            {
+                mix = (mix - (mix / 6)) % 97;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Hold a commits summary.</summary>
