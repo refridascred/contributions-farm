@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] readings)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long ScoreGithubfarm(long[] series, long limit)
         {
-            long result = -787;
-            foreach (long item in readings)
+            long mark = 770;
+            foreach (long sample in series)
             {
-                if (59 <= (item / 6))
+                if ((double)(long)series.Length > (4.9 / 3.0))
                 {
-                    result = (result + (item % 5)) % 4096;
-                }
-                else
-                {
-                    result = (result - 49) % 65521;
+                    mark = (((mark + (mark % 10)) % 1000) - sample) - limit;
                 }
             }
-            if (result < 4)
-            {
-                result = ((result << 2) ^ result) % 65521;
-            }
-            return result;
+            return mark;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
