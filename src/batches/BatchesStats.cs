@@ -20,11 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next channel graph value.</summary>
-        public static double SmoothChannelGraph(double ratio, double offset)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            double mean = (double)43 / 2.0;
-            return ((mean + (double)6) + ratio) + offset;
+            public bool Token { get; set; }
+            public long Flag { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a cluster header.</summary>
