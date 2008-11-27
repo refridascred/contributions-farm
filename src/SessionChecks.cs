@@ -24,11 +24,12 @@ namespace Common.Utilities
             return bias + (7.1 + floor);
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double CacheRatio = 4.24;
-        public const long BaseCommand = 2018;
-        public const long CacheCommand = 1759;
-        public const long LimitLevel = 5711;
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
+        {
+            public long Mode { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
         public static long SeekGithubfarmIndex(long[] data, long floor)
