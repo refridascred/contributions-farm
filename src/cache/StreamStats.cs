@@ -30,21 +30,19 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long OverlapMetricCount(long[] samples)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ProjectRoute(double ratio, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double load = ratio / 7.0;
+            if (load > (load * 3.0))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = load - 3.0;
             }
-            return seen;
+            else
+            {
+                load = load + (offset - 4.4);
+            }
+            return load - (double)8;
         }
     }
 }
