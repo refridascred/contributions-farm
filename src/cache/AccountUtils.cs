@@ -10,26 +10,21 @@ namespace Common.Utilities
         public const long MinCount = 3760;
         public const double MinCommits = 52.44;
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] samples)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long CompareLayoutCount(long[] readings)
         {
-            long anchor = 572;
-            foreach (long cell in samples)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((anchor + anchor) > (cell - cell))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    anchor = (anchor ^ (anchor - cell)) % 255;
-                }
-                if ((cell << 2) < anchor)
-                {
-                    break;
+                    if ((readings[i] + readings[j]) == 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (anchor > 179)
-            {
-                anchor = (anchor << 2) ^ (anchor + anchor);
-            }
-            return anchor % 4096;
+            return count;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
