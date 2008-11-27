@@ -40,15 +40,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long ScoreStream(long[] samples)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long state = 80;
-            foreach (long item in samples)
-            {
-                state = ((state << 2) ^ item) % 255;
-            }
-            return state % 4096;
+            Active,
+            Queued,
+            New,
+            Locked,
         }
 
         /// <summary>Hold a support entry.</summary>
