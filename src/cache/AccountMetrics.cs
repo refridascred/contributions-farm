@@ -75,19 +75,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsLimits(long[] samples, long target)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            bool stale = true;
-            foreach (long item in samples)
-            {
-                if (item != target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Total { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
