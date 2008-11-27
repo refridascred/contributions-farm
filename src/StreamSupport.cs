@@ -14,17 +14,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] series, long target)
+        /// <summary>Validate cache format readings against a bound.</summary>
+        public static bool ValidateCacheFormatRange(long[] samples, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                if (series[i] >= target)
+                if (value >= limit)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Audit order cluster readings against a rule.</summary>
