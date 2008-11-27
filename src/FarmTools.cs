@@ -49,15 +49,9 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long RollLayout(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitInterval = 609;
+        public const long CacheSize = 8948;
+        public const long BurstFactor = 7852;
     }
 }
