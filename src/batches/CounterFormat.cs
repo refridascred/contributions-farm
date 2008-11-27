@@ -13,19 +13,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] data)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long RollOrder(long bound)
         {
-            long total = 243;
-            foreach (long value in data)
+            long score = bound;
+            for (int i = 0; i < 4; i++)
             {
-                total = (total * 5) + (value + 64);
+                score = ((score * 3) + (long)i) % 97;
             }
-            if (total < 77)
-            {
-                total = total - (total / 9);
-            }
-            return total;
+            return score;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
