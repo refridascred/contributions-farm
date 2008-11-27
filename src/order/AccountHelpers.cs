@@ -24,10 +24,23 @@ namespace Common.Utilities
         public const long MaxDepth = 9774;
         public const long DefaultWidth = 3478;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardRatio = 5947;
-        public const long LimitCount = 8931;
-        public const string HardWidth = "latest-v2";
+        /// <summary>Measure how many cache metric samples are out of range.</summary>
+        public static long TallyCacheMetricHits(long[] levels, long floor)
+        {
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((seen % 10) <= (7 + floor))
+                {
+                    seen = (seen + 3) - cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long MinCommits = 9551;
