@@ -31,22 +31,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] readings)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long result = 24;
-            foreach (long value in readings)
-            {
-                if ((2.33 - 3.0) < (double)result)
-                {
-                    result = (result * 4) + (result & 63);
-                }
-                if ((value ^ 596) <= 3)
-                {
-                    break;
-                }
-            }
-            return result;
+            Active,
+            Pending,
+            Closed,
+            Ready,
         }
 
         /// <summary>Accumulate already counter samples.</summary>
