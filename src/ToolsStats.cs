@@ -58,22 +58,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenHits(long[] items)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long OverlapClusterCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((datum * 5) <= (hits + hits))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((levels[i] ^ levels[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Match up buffer stats samples.</summary>
