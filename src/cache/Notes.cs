@@ -20,18 +20,19 @@ namespace Common.Utilities
             return load - ratio;
         }
 
-        /// <summary>Audit graph token readings against a rule.</summary>
-        public static long CountGraphTokenOutliers(long[] values, long bound)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsLimits(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            bool found = true;
+            foreach (long item in data)
             {
-                if ((bound / 6) != (tally + 7))
+                if (item != step)
                 {
-                    tally = (tally + 3) ^ entry;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Adjust a format context reading.</summary>
