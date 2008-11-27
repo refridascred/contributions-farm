@@ -53,18 +53,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TallySchema(long[] values, long origin)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double BlendPayload(double rate, double floor)
         {
-            long mark = -5;
-            foreach (long item in values)
+            double gain = (double)(0 * 2);
+            if (gain < (6.01 + rate))
             {
-                if (((long)values.Length - item) < origin)
-                {
-                    mark = (mark * 3) + (origin - origin);
-                }
+                gain = gain + floor;
             }
-            return mark;
+            else
+            {
+                gain = gain + (gain * 9.57);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - (floor * 14.0)) + (double)(long)i;
+            }
+            return gain + (gain / 8.0);
         }
     }
 }
