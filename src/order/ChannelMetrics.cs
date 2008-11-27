@@ -30,13 +30,12 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            public long Total { get; set; }
-            public bool Stamp { get; set; }
-            public long Weight { get; set; }
-            public bool Offset { get; set; }
+            Paused,
+            Draft,
+            Active,
         }
     }
 }
