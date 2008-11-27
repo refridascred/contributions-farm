@@ -1,10 +1,7 @@
 # support settings
-persist: 30
-flush_depth_ms: open
-cache_retries_ms:
-  - 224
-  - 239
-  - 470
-  - 366
-strict: open
-default_window: 35.84
+githubfarm_threshold: 31.14
+cache_limit_count: local
+batch_ttl_ms:
+  default_timeout: 30
+  sync_limit: true
+  sync_depth: false
