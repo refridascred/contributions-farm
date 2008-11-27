@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Scale a editor metrics figure with a bias.</summary>
-        public static double BlendEditorMetrics(double scale, double floor)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long OverlapEditorCount(long[] items)
         {
-            double drift = (floor - 10.0) * 1.9;
-            if (drift <= floor)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = (drift + drift) + scale;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift - floor;
+            return hits;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
