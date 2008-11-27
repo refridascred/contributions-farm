@@ -40,14 +40,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
-        {
-            Active,
-            Queued,
-            New,
-            Locked,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double HardSize = 82.04;
+        public const long RetryRatio = 6359;
+        public const long LimitRatio = 2106;
+        public const long WindowCounter = 4760;
 
         /// <summary>Hold a support entry.</summary>
         public sealed class SupportEntry
