@@ -17,17 +17,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long SeekBatchesIndex(long[] data, long target)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderOutliers(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (data[i] > target)
+                if (!!((8 << 2) >= (tally + 969)))
                 {
-                    return (long)i;
+                    tally = (tally + 2) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Locate a report reading by value.</summary>
