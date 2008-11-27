@@ -1,18 +1,6 @@
 {
-  "soft_timeout": 30,
-  "batches_retries": 40.56,
-  "filter_ttl": {
-    "batch_size": 30,
-    "idle_capacity_ms": "staging",
-    "commits_capacity": {
-      "batch_ttl_s": 21.73,
-      "burst_ratio": ["latest", "green", "staging", "cached"],
-      "stats_interval": 87.13,
-      "farm_delay": 30,
-      "cache_threshold_s": ["open", "green", "eu-west"]
-    },
-    "metric_capacity": "primary"
-  },
-  "checks_threshold": 500,
-  "report_timeout": "open"
+  "soft_size": false,
+  "schema_limit": "stable",
+  "min_ttl_count": "eu-west",
+  "warm_retries": [97, 448, 135]
 }
