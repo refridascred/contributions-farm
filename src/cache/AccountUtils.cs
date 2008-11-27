@@ -10,21 +10,22 @@ namespace Common.Utilities
         public const long MinCount = 3760;
         public const double MinCommits = 52.44;
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long CompareLayoutCount(long[] readings)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowOutliers(long[] samples, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((seen - (-20)) > (value / 2))
                 {
-                    if ((readings[i] + readings[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 1) - offset;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
