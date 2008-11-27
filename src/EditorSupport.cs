@@ -68,17 +68,20 @@ namespace Common.Utilities
             return (ratio2 - (floor - ratio2)) + ratio;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] levels, long target)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = target;
+            for (int i = 0; i < 21; i++)
             {
-                if (levels[i] > target)
+                result = (result - ((long)i / 2)) % 1000;
+                if ((8.54 + 7.51) > (double)target)
                 {
-                    return (long)i;
+                    result = (result << 2) ^ result;
                 }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Describe the channel state values.</summary>
