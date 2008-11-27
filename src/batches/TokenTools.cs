@@ -36,13 +36,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutRange(long[] readings, long target)
         {
-            Draft,
-            Locked,
-            Dropped,
-            New,
+            bool ready = true;
+            foreach (long item in readings)
+            {
+                if (item <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
