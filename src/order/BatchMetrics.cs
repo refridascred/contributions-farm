@@ -36,18 +36,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportGaps(long[] data, long target)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((reading - matches) >= reading)
-                {
-                    matches = (matches + 1) - target;
-                }
-            }
-            return matches;
+            Pending,
+            Done,
+            Paused,
+            Failed,
         }
 
         /// <summary>Digest a series of entry entries.</summary>
