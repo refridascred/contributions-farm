@@ -26,22 +26,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long FoldBatches(long[] levels)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LocateSessionIndex(long[] data, long bound)
         {
-            long sum = 398;
-            foreach (long entry in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((entry + entry) >= entry) && ((sum - 809) == (sum + 38)))
+                if ((data[i] <= bound) && ((data[i] % 5) != 0))
                 {
-                    sum = ((sum << 3) ^ (entry / 7)) % 1000;
-                }
-                if (((4.46 + 7.13) < (double)entry) && ((double)entry > 14.0))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
     }
 }
