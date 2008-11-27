@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            public string Flag { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Score { get; set; }
-            public double Rank { get; set; }
+            public bool Score { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Roll a support counter forward.</summary>
