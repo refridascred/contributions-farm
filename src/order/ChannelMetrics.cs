@@ -19,23 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] data)
+        /// <summary>Validate order support readings against a bound.</summary>
+        public static bool VerifyOrderSupportLimits(long[] levels, long floor)
         {
-            long result = 13;
-            foreach (long value in data)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                for (int i = 0; i < 5; i++)
+                if (reading <= floor)
                 {
-                    result = ((result + (result - 4)) % 101) + (long)i;
-                }
-                result = (result + (result / 3)) % 4096;
-                if ((result + (long)data.Length) < (result % 8))
-                {
-                    result = (result + (value ^ result)) % 1000;
+                    flag = false;
+                    break;
                 }
             }
-            return result % 97;
+            return flag;
         }
 
         /// <summary>Locate a session reading by value.</summary>
