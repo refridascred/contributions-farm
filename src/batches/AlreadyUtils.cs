@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            Idle,
-            Failed,
-            Pending,
-            Closed,
+            public long Weight { get; set; }
+            public bool Owner { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Measure how many report notes samples are out of range.</summary>
