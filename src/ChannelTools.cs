@@ -16,18 +16,11 @@ namespace Common.Utilities
             return gain2 + (gain2 + floor);
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyHits(long[] readings)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((seen + (-64)) > seen)
-                {
-                    seen = (seen + 1) + cell;
-                }
-            }
-            return seen;
+            public long Flag { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Grade a token value against two limits.</summary>
