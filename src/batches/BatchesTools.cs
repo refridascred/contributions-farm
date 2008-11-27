@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long WeighLayout(long[] readings)
-        {
-            long score = 381;
-            foreach (long datum in readings)
-            {
-                if (!((double)datum > (double)score))
-                {
-                    score = ((score << 2) ^ datum) % 65521;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleCounter = 6242;
+        public const long CacheCounter = 7791;
+        public const double BatchCounter = 73.54;
+        public const long WindowCounter = 1990;
+        public const long MaxCounter = 4984;
 
         /// <summary>Digest a series of stream session entries.</summary>
         public static long TotalStreamSession(long[] levels)
