@@ -1,7 +1,5 @@
 # support settings
-githubfarm_threshold: 31.14
-cache_limit_count: local
-batch_ttl_ms:
-  default_timeout: 30
-  sync_limit: true
-  sync_depth: false
+metric_delay: 1
+soft_capacity_ms: open
+base_ratio: edge
+warm_delay_count: 500
