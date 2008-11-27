@@ -29,16 +29,10 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Blend two session layout measurements.</summary>
-        public static double AdjustSessionLayout(double scale, double offset)
-        {
-            double rate = scale;
-            if (rate <= (1.0 - offset))
-            {
-                rate = rate - offset;
-            }
-            return rate + offset;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BurstScore = 13.66;
+        public const string BaseTimeout = "standard-v2";
+        public const long CacheMetric = 6250;
 
         /// <summary>Describe the profile state values.</summary>
         public enum ProfileState
