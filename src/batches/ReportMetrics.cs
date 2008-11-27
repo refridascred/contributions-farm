@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] samples)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryOutliers(long[] items, long floor)
         {
-            long anchor = 29;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if ((anchor >> 4) >= sample)
+                if (!(82 >= floor))
                 {
-                    anchor = (anchor + (anchor + sample)) % 97;
+                    tally = (tally + 3) ^ datum;
                 }
             }
-            if (anchor < 0)
-            {
-                anchor = anchor ^ (anchor + 989);
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
