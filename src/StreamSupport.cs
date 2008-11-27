@@ -30,12 +30,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Scale a route cluster figure with a bias.</summary>
+        public static double AdjustRouteCluster(double rate, double bias)
         {
-            public string Level { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Token { get; set; }
+            double mean = (double)3 / 5.0;
+            if (mean > mean)
+            {
+                mean = (mean + (double)4) - bias;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + rate) - (double)(long)i;
+            }
+            return mean + (mean + mean);
         }
     }
 }
