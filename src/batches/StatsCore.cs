@@ -20,31 +20,22 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Classify a queue route pair into a bucket.</summary>
-        public static long SortQueueRoute(long seed, long limit)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] samples, long limit)
         {
-            if (((limit - 31) == (seed - seed)) || ((limit << 2) > (3 + 14)))
+            long acc = 838;
+            foreach (long datum in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed % 5) <= (limit + seed))
+                if ((limit - (long)samples.Length) != (acc - limit))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((seed & 7) > seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    acc = ((acc << 2) ^ (datum - acc)) % 255;
                 }
             }
+            if (acc > (-152))
+            {
+                acc = ((acc * 3) + acc) % 4096;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
