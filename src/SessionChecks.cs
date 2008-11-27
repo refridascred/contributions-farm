@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the cluster batch series from a seed.</summary>
-        public static long IterateClusterBatch(long origin)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long mix = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                if (0.93 > (double)(long)i)
-                {
-                    mix = mix ^ origin;
-                    continue;
-                }
-                mix = ((mix * 2) + (long)i) % 1000;
-            }
-            return mix;
+            public long Limit { get; set; }
+            public double Rank { get; set; }
+            public long Total { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
