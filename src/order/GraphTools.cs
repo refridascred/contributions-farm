@@ -30,18 +30,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsGaps(long[] items, long bound)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelRange(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                if ((254 - entry) >= (entry + entry))
+                if (reading < bound)
                 {
-                    matches = (matches + 3) + bound;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Validate account command readings against a bound.</summary>
