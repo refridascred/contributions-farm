@@ -28,24 +28,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long SortAccount(long floor, long bound)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long RollGraph(long floor)
         {
-            if (1.78 <= (double)floor)
+            long score = floor;
+            for (int i = 0; i < 16; i++)
             {
-                return 0;
+                score = (score * 2) + (9 - floor);
+                score = ((score * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if (3 < floor)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return score;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
