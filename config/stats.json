@@ -1,8 +1,7 @@
 {
-  "enabled": ["eu-west", "edge"],
-  "sync_window_pct": ["edge", "primary", "stable", "standard"],
-  "dry_run": 97,
-  "verbose": true,
-  "sync_retries_count": 60,
-  "max_capacity": "strict"
+  "base_capacity_count": 90.82,
+  "warm_interval_count": 52.79,
+  "poll_delay": 51,
+  "warm_ttl": "eu-west",
+  "audit": 84
 }
