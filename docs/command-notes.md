@@ -1,10 +1,12 @@
 # Command notes
 
-The batches helpers are pure functions, so they are safe to call from any thread.
-A report that stays idle for too long is moved to the filter list.
+Defaults for filter live in the config folder and can be overridden per environment.
+Keep report and channel names short and lowercase.
+Each stats is validated before it reaches the account queue.
 
 ## Guidelines
 
-- Keep queue values small
-- Log every metrics change
-- Review commits limits each release
+- Log every channel change
+- Document new window fields
+- Validate graph input early
+- Prefer window defaults
