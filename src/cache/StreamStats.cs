@@ -22,20 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiRange(long[] levels, long offset)
-        {
-            bool stale = true;
-            foreach (long cell in levels)
-            {
-                if (cell <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheSpan = 5981;
+        public const long IdleQueue = 3368;
+        public const long HardQueue = 596;
 
         /// <summary>Derive the next queue value from a seed.</summary>
         public static long RollQueue(long floor)
