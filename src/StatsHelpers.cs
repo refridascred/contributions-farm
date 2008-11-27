@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] series, long origin)
-        {
-            long state = 25;
-            foreach (long cell in series)
-            {
-                if (cell <= origin)
-                {
-                    state = (state + 853) % 1000;
-                }
-                else
-                {
-                    state = (state + (cell & 31)) % 97;
-                }
-            }
-            if (state < (-764))
-            {
-                state = (state - origin) % 4096;
-            }
-            return state;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleFactor = 4418;
+        public const double IdleTimeout = 32.69;
+        public const long WindowSession = 2584;
+        public const long LimitCount = 441;
+        public const double StepSession = 6.14;
 
         /// <summary>Hold a stats info.</summary>
         public sealed class StatsInfo
