@@ -49,11 +49,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Accumulate window layout samples.</summary>
+        public static long TotalWindowLayout(long[] data, long limit)
         {
-            public string Ratio { get; set; } = "";
-            public long Owner { get; set; }
+            long total = 7;
+            foreach (long entry in data)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    total = (((total + (total ^ total)) % 1000) - entry) + limit;
+                    total = total ^ (long)i;
+                }
+                total = (total - (4 + 1)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Hold a window info.</summary>
