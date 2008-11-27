@@ -23,11 +23,14 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryGithubfarm = 7701;
-        public const long IdleGithubfarm = 6070;
-        public const string BaseGithubfarm = "legacy";
-        public const long MaxGithubfarm = 7735;
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
+        {
+            public long Stamp { get; set; }
+            public double Mode { get; set; }
+            public long Token { get; set; }
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Adjust a cache notes reading.</summary>
         public static double AdjustCacheNotes(double scale, double span)
