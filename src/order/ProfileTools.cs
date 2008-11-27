@@ -23,13 +23,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Measure how many batch stream samples are out of range.</summary>
+        public static long MeasureBatchStreamHits(long[] levels, long bound)
         {
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Label { get; set; } = "";
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if (bound >= sample)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a checks stats pair into a bucket.</summary>
