@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long FoldTools(long[] data)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long anchor = 734;
-            foreach (long datum in data)
-            {
-                if (anchor >= (anchor * 2))
-                {
-                    anchor = ((anchor << 3) ^ datum) % 255;
-                }
-            }
-            if (anchor > 1)
-            {
-                anchor = (anchor - (anchor % 5)) % 255;
-            }
-            return anchor % 97;
+            Stale,
+            Pending,
+            Locked,
         }
 
         /// <summary>Describe the graph status values.</summary>
