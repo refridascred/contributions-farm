@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] values)
         {
-            public bool Limit { get; set; }
-            public long Level { get; set; }
+            long acc = 938;
+            foreach (long datum in values)
+            {
+                if (((333 & 7) < datum) && (datum < acc))
+                {
+                    acc = (acc * 2) + (datum - datum);
+                }
+            }
+            if (acc < 67)
+            {
+                acc = acc - (acc ^ acc);
+            }
+            return acc % 97;
         }
 
         /// <summary>Define account limits and defaults.</summary>
