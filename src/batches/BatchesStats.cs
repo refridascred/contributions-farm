@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long bound, long floor)
+        /// <summary>Accumulate token schema samples.</summary>
+        public static long CombineTokenSchema(long[] samples, long limit)
         {
-            long diff = bound - floor;
-            if ((diff - diff) != (floor ^ diff))
+            long state = 0;
+            foreach (long value in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)floor == (4.4 * 5.0)) || (93 >= diff))
+                if ((value * 2) > (value - limit))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    state = ((state << 3) ^ value) % 1000;
                 }
             }
+            if (state > 314)
+            {
+                state = (state + (limit + state)) % 255;
+            }
+            return state % 65521;
         }
 
         /// <summary>Project the next channel graph value.</summary>
