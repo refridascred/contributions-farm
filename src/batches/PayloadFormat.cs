@@ -63,18 +63,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of batches schema entries.</summary>
-        public static long DigestBatchesSchema(long[] data)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long mark = -83;
-            foreach (long value in data)
-            {
-                if ((mark & 15) == (value * 5))
-                {
-                    mark = (mark ^ (mark / 3)) % 97;
-                }
-            }
-            return mark;
+            Done,
+            Failed,
+            Retry,
         }
     }
 }
