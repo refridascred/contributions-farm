@@ -41,19 +41,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate metrics metric readings against a bound.</summary>
-        public static bool ValidateMetricsMetricBounds(long[] series, long origin)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long CompareClusterCount(long[] samples)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry > origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((samples[i] + samples[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
