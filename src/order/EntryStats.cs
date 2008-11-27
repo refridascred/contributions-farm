@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Find the first account report entry that matches the target.</summary>
-        public static long LocateAccountReportIndex(long[] readings, long offset)
+        /// <summary>Measure how many layout window samples are out of range.</summary>
+        public static long MeasureLayoutWindowOutliers(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (readings[i] > offset)
+                if ((cell ^ seen) != (cell + seen))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
