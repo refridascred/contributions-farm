@@ -1,18 +1,17 @@
 # entry settings
-verbose: legacy
-contributi_timeout: 11
-warm_threshold_s:
-  - 375
-  - 262
-strict:
-  stats_ttl: green
-  base_delay_pct: 250
-  counter_interval: 81
-  report_timeout: false
-  contributi_window: false
-base_window_s:
-  - green
-  - fallback
-  - fallback
-  - legacy
-order_interval: eu-west
+tools_interval:
+  compress: local
+  batches_size: false
+  persist: eu-west
+  cluster_ttl:
+    - 168
+    - 77
+  warm_window: 60
+verbose: 88.29
+sync_interval_ms: primary
+readonly:
+  - 312
+  - 388
+  - 236
+  - 413
+filter_ttl: eu-west
