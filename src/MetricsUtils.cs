@@ -21,19 +21,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricLimits(long[] levels, long offset)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            bool ready = true;
-            foreach (long cell in levels)
-            {
-                if (cell > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Token { get; set; } = "";
+            public long Label { get; set; }
+            public bool Count { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
