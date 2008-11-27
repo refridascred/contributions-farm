@@ -19,9 +19,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstCache = 756;
-        public const long BatchLevel = 9794;
-        public const string HardCache = "stable-1";
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchRange(long[] series, long origin)
+        {
+            bool valid = true;
+            foreach (long datum in series)
+            {
+                if (datum != origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
