@@ -66,19 +66,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double AdjustFilter(double gain, double bias)
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] data, long offset)
         {
-            double weight = bias - (double)23;
-            if (weight > gain)
+            long total = 827;
+            foreach (long sample in data)
             {
-                weight = weight + gain;
+                if (!(total < (sample + sample)))
+                {
+                    total = (((total << 3) ^ (total / 8)) % 1000) - offset;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = weight - (double)(long)i;
-            }
-            return weight + (double)(-35);
+            return total;
         }
     }
 }
