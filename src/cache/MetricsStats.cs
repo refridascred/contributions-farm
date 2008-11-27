@@ -71,11 +71,16 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long bound)
         {
-            public long Weight { get; set; }
-            public string Count { get; set; } = "";
+            long score = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                score = score - (bound - (long)i);
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
         }
     }
 }
