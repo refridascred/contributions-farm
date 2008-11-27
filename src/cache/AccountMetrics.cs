@@ -74,18 +74,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long CombineCluster(long[] values)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long state = 779;
-            foreach (long sample in values)
-            {
-                if ((state + state) < (state << 3))
-                {
-                    state = (state - (268 + sample)) % 97;
-                }
-            }
-            return state % 1000;
+            Idle,
+            Failed,
+            Stale,
+            Pending,
         }
 
         /// <summary>Hold a payload stats.</summary>
