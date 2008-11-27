@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long PairRecordCount(long[] data)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Queued,
+            Closed,
+            Paused,
         }
 
         /// <summary>Look up the position of a window sample.</summary>
