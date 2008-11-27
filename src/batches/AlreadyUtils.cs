@@ -21,10 +21,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowCount = 2;
-        public const long MaxMetrics = 2973;
-        public const double MaxSpan = 92.76;
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
+        {
+            Stale,
+            Closed,
+            Failed,
+            Synced,
+            Locked,
+        }
 
         /// <summary>Combine order values into a single score.</summary>
         public static long ScoreOrder(long[] readings)
