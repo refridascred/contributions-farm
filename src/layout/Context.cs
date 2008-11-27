@@ -59,9 +59,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheAlready = 6334;
-        public const long StepAlready = 100;
-        public const long BaseCount = 7531;
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionBounds(long[] levels, long origin)
+        {
+            bool stale = true;
+            foreach (long cell in levels)
+            {
+                if (cell <= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
