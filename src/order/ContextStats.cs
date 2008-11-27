@@ -23,12 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BurstSpan = "cached";
-        public const long RetryWidth = 1597;
-        public const string BatchMetrics = "alpha-v2";
-        public const string StepMetrics = "strict-edge";
-        public const double IdleMetrics = 22.79;
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricHits(long[] series)
+        {
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((entry / 6) < tally)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Look up the position of a batch sample.</summary>
         public static long SeekBatchIndex(long[] levels, long step)
