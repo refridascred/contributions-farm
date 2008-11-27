@@ -23,13 +23,11 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
-        {
-            Done,
-            Paused,
-            New,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string SoftFormat = "local-edge";
+        public const long LimitFactor = 2315;
+        public const double StepTimeout = 97.69;
+        public const long BaseFormat = 2037;
 
         /// <summary>Classify a checks stats pair into a bucket.</summary>
         public static long RankChecksStats(long limit, long seed)
