@@ -1,5 +1,6 @@
 {
-  "notes_threshold": 250,
-  "burst_window": "green",
-  "compress": 100
+  "stream_size": ["strict", "open"],
+  "idle_retries_s": true,
+  "retry_ratio_s": 60,
+  "checks_interval": "blue"
 }
