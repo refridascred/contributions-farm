@@ -22,12 +22,21 @@ namespace Common.Utilities
         public const double LimitProfile = 4.13;
         public const long RetryProfile = 3112;
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Match up route samples.</summary>
+        public static long CompareRouteCount(long[] levels)
         {
-            Stale,
-            Locked,
-            Queued,
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
