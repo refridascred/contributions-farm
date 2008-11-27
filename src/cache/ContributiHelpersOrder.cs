@@ -26,15 +26,11 @@ namespace Common.Utilities
         public const double IdleCounter = 73.35;
         public const long StepLevel = 2420;
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double AdjustMetrics(double gain, double floor)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            double mean = (double)802 + floor;
-            if (mean < (18.0 * 17.0))
-            {
-                mean = mean + (gain / 2.0);
-            }
-            return mean - (gain + floor);
+            public double Size { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
