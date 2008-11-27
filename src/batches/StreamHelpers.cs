@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Compare every pair of contributi cache readings.</summary>
-        public static long MatchContributiCacheCount(long[] series)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long StepGraph(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    if ((series[i] ^ series[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = ((sum ^ 555) % 255) - (long)i2;
                 }
+                if (((sum + step) > (step / 5)) && ((sum / 6) > ((long)i + sum)))
+                {
+                    sum = sum + 4;
+                    break;
+                }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
