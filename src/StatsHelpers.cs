@@ -26,17 +26,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] readings, long origin)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricLimits(long[] samples, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if (readings[i] < origin)
+                if (item != step)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Define command limits and defaults.</summary>
