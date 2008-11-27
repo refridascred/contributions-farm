@@ -19,14 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            Pending,
-            Queued,
-            Done,
-            Dropped,
-            Idle,
+            public long Mode { get; set; }
+            public long Level { get; set; }
+            public long Ratio { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
