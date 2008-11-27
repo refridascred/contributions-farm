@@ -1,13 +1,5 @@
 {
-  "audit": true,
-  "enabled": "fallback",
-  "warm_delay": 13,
-  "dry_run": true,
-  "persist": {
-    "flush_timeout_s": 88,
-    "cache_threshold": "staging",
-    "verbose": 56.02,
-    "max_ttl": false,
-    "channel_interval": 66.09
-  }
+  "compress": "fallback",
+  "tools_ratio": false,
+  "max_depth": [85, 124, 356, 238]
 }
