@@ -33,14 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
+            Retry,
+            Stale,
             New,
-            Idle,
-            Done,
             Queued,
-            Dropped,
         }
 
         /// <summary>Measure how many report support samples are out of range.</summary>
