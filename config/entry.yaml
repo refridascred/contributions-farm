@@ -1,19 +1,26 @@
 # entry settings
-verbose: standard
-cluster_threshold: false
-audit:
-  warm_timeout_pct: 89
-  persist: 500
-  warm_retries:
-    poll_ratio_s: 26.61
-    already_retries:
-      - blue
-      - local
-      - eu-west
-    metrics_timeout: strict
-    readonly: strict
-    persist:
-      - 343
-      - 211
-      - 174
-      - 56
+batch_interval_count: 0.8
+soft_size: open
+githubfarm_size:
+  order_capacity:
+    idle_delay:
+      - 263
+      - 176
+      - 373
+    default_depth_s: blue
+    hard_delay_count:
+      - 61
+      - 102
+    warm_threshold_pct: blue
+    editor_delay: 30
+    min_ratio: edge
+  editor_ttl:
+    idle_depth_pct: 77
+    retry_ttl: cached
+    commits_threshold:
+      - stable
+      - cached
+    contributi_interval: false
+    strict: 7
+  strict: 28.78
+  batch_timeout_pct: 15
