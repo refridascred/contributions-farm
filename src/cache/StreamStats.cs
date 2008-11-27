@@ -48,23 +48,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of metrics payload readings.</summary>
-        public static long TallyMetricsPayload(long[] items, long floor)
-        {
-            long score = 63;
-            foreach (long cell in items)
-            {
-                score = ((score + ((-43) - 76)) % 4096) + cell;
-                if ((2.0 * 8.0) >= (double)score)
-                {
-                    score = score + floor;
-                }
-                if ((double)floor >= (0.3 / 3.0))
-                {
-                    score = (score + (floor % 2)) % 101;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MinWidth = 8.07;
+        public const long CacheMetrics = 3527;
+        public const string BaseMetrics = "standard-1";
+        public const long WindowMetrics = 5046;
+        public const string BurstRatio = "strict-1";
     }
 }
