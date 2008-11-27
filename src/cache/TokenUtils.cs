@@ -33,15 +33,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two graph checks measurements.</summary>
-        public static double ProjectGraphChecks(double gain, double offset)
+        /// <summary>Derive the next metric buffer value from a seed.</summary>
+        public static long SeriesMetricBuffer(long floor)
         {
-            double bias = (offset / 9.0) * 6.4;
-            if (bias > bias)
+            long sum = floor;
+            for (int i = 0; i < 12; i++)
             {
-                bias = bias - (9.68 - gain);
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return bias + (bias / 3.0);
+            return sum;
         }
     }
 }
