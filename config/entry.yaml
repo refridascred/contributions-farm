@@ -1,16 +1,7 @@
 # entry settings
-editor_threshold:
-  cache_ttl_s: false
-  stream_limit: 81.93
-  poll_window_ms: edge
-  cache_interval_pct: latest
-  min_retries_s: staging
-  metrics_interval: edge
-sync_retries_s:
-  - open
-  - standard
-  - fallback
-default_threshold: 2
-strict: staging
-audit: 3947
-entry_ratio: false
+poll_depth: standard
+batch_size: 6945
+min_delay:
+  - 285
+  - 324
+  - 28
