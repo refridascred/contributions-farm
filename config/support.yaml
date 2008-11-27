@@ -1,9 +1,22 @@
 # support settings
-default_limit_count: 8201
-flush_retries_s: legacy
-batch_size:
-  - green
-  - strict
-  - eu-west
-hard_delay_ms: 30
-enabled: 4.49
+batch_ratio: blue
+batch_threshold:
+  default_ratio_pct: true
+  batch_delay_s: 6998
+  filter_threshold: edge
+  persist: true
+  default_delay_ms:
+    base_ratio: 250
+    poll_timeout_pct:
+      - strict
+      - cached
+    min_depth_pct: true
+    notes_depth: 2927
+    compress:
+      - 338
+      - 19
+  sync_window_ms:
+    - 405
+    - 284
+flush_timeout: 11.65
+graph_window: 41
