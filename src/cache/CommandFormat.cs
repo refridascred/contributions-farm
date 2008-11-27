@@ -22,18 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheGaps(long[] samples, long floor)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long FindFilterIndex(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)sample >= (2.89 * 4.31))
+                if (samples[i] <= step)
                 {
-                    tally = (tally + 2) - floor;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the support level values.</summary>
