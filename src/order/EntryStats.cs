@@ -19,31 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long bound, long limit)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountLimits(long[] values, long target)
         {
-            if ((double)limit < 18.0)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (bound >= (103 - limit))
+                if (sample < target)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((16.0 / 7.0) > (double)bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
