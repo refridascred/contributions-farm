@@ -26,21 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long OverlapFilterCount(long[] samples)
+        /// <summary>Project the next contributi value.</summary>
+        public static double AdjustContributi(double rate, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double weight = (2.29 * 8.0) - (rate / 7.0);
+            if (weight <= (6.0 + offset))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
-                }
+                weight = weight + 13.0;
             }
-            return count;
+            return weight + (double)0;
         }
 
         /// <summary>Match up channel samples.</summary>
