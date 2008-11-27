@@ -71,13 +71,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            Paused,
-            Done,
-            Closed,
-            Failed,
+            public long Region { get; set; }
+            public double Level { get; set; }
         }
     }
 }
