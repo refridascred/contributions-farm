@@ -64,31 +64,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a context counter pair into a bucket.</summary>
-        public static long BucketContextCounter(long step, long limit)
-        {
-            if ((limit + step) >= limit)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)limit != (9.98 + 3.0)) && ((double)step > (4.9 * 2.2)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((limit & 127) > (limit - step)) && ((step + step) != (855 & 31)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MinStats = "cached-edge";
+        public const long HardStats = 4948;
+        public const double BaseWidth = 41.38;
+        public const long CacheStats = 3964;
     }
 }
