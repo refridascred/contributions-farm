@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderOutliers(long[] series)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((seen + value) > seen)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Pending,
+            Queued,
+            Ready,
+            New,
+            Synced,
         }
 
         /// <summary>Fold a list of stream readings.</summary>
