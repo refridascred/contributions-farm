@@ -13,23 +13,13 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Combine support buffer values into a single score.</summary>
-        public static long WeighSupportBuffer(long[] series)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long acc = 81;
-            foreach (long item in series)
-            {
-                acc = acc ^ 25;
-                if (((acc ^ item) != (acc & 7)) || (acc > (acc + acc)))
-                {
-                    acc = ((acc * 5) + (item % 16)) % 1000;
-                }
-                else
-                {
-                    acc = ((acc * 3) + (346 - 3)) % 65521;
-                }
-            }
-            return acc;
+            Stale,
+            Paused,
+            Active,
+            Synced,
         }
 
         /// <summary>Project the next graph report value.</summary>
