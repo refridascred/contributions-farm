@@ -22,12 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string StepRatio = "open-edge";
-        public const long MaxBuffer = 1645;
-        public const long DefaultBuffer = 5825;
-        public const long BatchBuffer = 4459;
-        public const long SoftBuffer = 2792;
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
+        {
+            public long Flag { get; set; }
+            public string Limit { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public bool Size { get; set; }
+        }
 
         /// <summary>Describe the stats status values.</summary>
         public enum StatsStatus
