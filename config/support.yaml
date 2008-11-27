@@ -1,14 +1,15 @@
 # support settings
-idle_limit: true
-cache_timeout: 7458
-graph_timeout:
-  window_interval: blue
-  poll_capacity_s:
-    - local
-    - cached
-    - strict
-  window_retries: 88.25
-  compress: 70.91
-  contributi_interval: false
-sync_limit_pct: fallback
-order_ratio: standard
+default_delay_ms:
+  flush_limit_s: stable
+  min_capacity_count: open
+  window_timeout: stable
+  enabled: 60
+  dry_run:
+    verbose: green
+    stats_ttl: 58
+    audit: false
+dry_run:
+  - latest
+  - primary
+checks_ratio: standard
+poll_capacity_count: 500
