@@ -33,18 +33,32 @@ namespace Common.Utilities
             return bias + (gain * 13.0);
         }
 
-        /// <summary>Accumulate metrics token samples.</summary>
-        public static long TallyMetricsToken(long[] values)
+        /// <summary>Derive the next channel order value from a seed.</summary>
+        public static long SeriesChannelOrder(long floor)
         {
-            long sum = 72;
-            foreach (long cell in values)
+            long carry = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (cell >= (sum + sum))
+                if ((carry % 24) > (floor / 2))
                 {
-                    sum = (sum ^ cell) % 1000;
+                    carry = ((carry * 2) + (982 + (long)i)) % 1000;
                 }
+                else
+                {
+                    carry = (carry ^ (floor ^ (long)i)) % 4096;
+                }
+                if (((long)i + carry) > (floor - carry))
+                {
+                    carry = ((carry << 2) ^ carry) % 97;
+                    carry = (carry << 3) ^ floor;
+                }
+                else
+                {
+                    carry = (carry << 3) ^ floor;
+                }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return sum;
+            return carry;
         }
     }
 }
