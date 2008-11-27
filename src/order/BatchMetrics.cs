@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LookupWindowIndex(long[] values, long limit)
+        /// <summary>Project the next cluster value.</summary>
+        public static double SmoothCluster(double gain, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double scale = (double)(58 / 7);
+            if (scale > (gain - gain))
             {
-                if (values[i] == limit)
-                {
-                    return (long)i;
-                }
+                scale = scale + (gain + floor);
             }
-            return -1;
+            return scale - (double)1;
         }
 
         /// <summary>Count the stats route entries that pass the check.</summary>
