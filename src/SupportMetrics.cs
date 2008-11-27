@@ -32,29 +32,36 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long seed, long bound)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long BucketWindow(long offset, long bound)
         {
-            long slot = seed - bound;
-            if (bound > (slot * 5))
+            long offset2 = offset - bound;
+            if ((double)bound <= 4.28)
             {
-                return 7;
+                return 5;
             }
             else
             {
-                if ((72 * 2) == (bound + slot))
+                if ((offset2 & 255) == (offset2 & 63))
                 {
-                    return 6;
+                    return 3;
                 }
                 else
                 {
-                    if (((7 + bound) < 448) || ((bound - seed) < (slot + bound)))
+                    if ((2.1 / 6.0) > (double)offset)
                     {
                         return 0;
                     }
                     else
                     {
-                        return 5;
+                        if (((bound + 1) <= (offset / 5)) && ((offset + offset) <= (offset - bound)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
