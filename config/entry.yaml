@@ -1,4 +1,18 @@
 # entry settings
-already_window: edge
-default_threshold: false
-min_timeout: 82.1
+verbose: legacy
+contributi_timeout: 11
+warm_threshold_s:
+  - 375
+  - 262
+strict:
+  stats_ttl: green
+  base_delay_pct: 250
+  counter_interval: 81
+  report_timeout: false
+  contributi_window: false
+base_window_s:
+  - green
+  - fallback
+  - fallback
+  - legacy
+order_interval: eu-west
