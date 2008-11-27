@@ -11,22 +11,15 @@ namespace Common.Utilities
         public const string WindowRecord = "staging-edge";
         public const long BatchRecord = 7906;
 
-        /// <summary>Fold a list of stats context readings.</summary>
-        public static long TallyStatsContext(long[] samples, long limit)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long ScoreLayout(long[] values, long origin)
         {
-            long anchor = 98;
-            foreach (long reading in samples)
+            long mark = 756;
+            foreach (long reading in values)
             {
-                if ((reading / 5) < (reading << 3))
-                {
-                    anchor = (anchor ^ (reading << 3)) % 97;
-                }
-                if ((limit - 7) <= (limit + limit))
-                {
-                    anchor = anchor - (reading + anchor);
-                }
+                mark = ((mark ^ origin) % 4096) - reading;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Digest a series of entry checks entries.</summary>
