@@ -31,14 +31,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            New,
-            Retry,
-            Locked,
+            Paused,
+            Failed,
             Queued,
-            Active,
         }
     }
 }
