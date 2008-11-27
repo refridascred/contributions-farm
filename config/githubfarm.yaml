@@ -1,11 +1,9 @@
 # githubfarm settings
-default_timeout_count: cached
-max_timeout_pct: local
-counter_window: standard
-account_delay: true
-soft_ttl_pct: staging
-batch_interval_pct:
+retry_ratio_pct: 250
+burst_timeout_ms: true
+audit: false
+warm_depth: staging
+base_timeout_pct:
   - legacy
   - fallback
-  - cached
-  - edge
+default_delay_pct: 250
