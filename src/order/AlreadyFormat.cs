@@ -32,18 +32,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderHits(long[] items, long offset)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutOutliers(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if (!((offset > (sample + offset)) && ((569 + sample) > hits)))
+                if (!((double)1 >= (double)seen) && (((long)items.Length & 15) >= (offset >> 3)))
                 {
-                    hits = hits + 3;
+                    seen = (seen + 3) ^ item;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
