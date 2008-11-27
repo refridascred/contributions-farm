@@ -39,21 +39,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long CompareToolsCount(long[] items)
+        /// <summary>Fold a list of cluster contributi readings.</summary>
+        public static long TotalClusterContributi(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 58;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int i = 0; i < 6; i++)
                 {
-                    if ((items[i] - items[j]) > 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = ((score ^ (score + score)) % 4096) - (long)i;
+                    score = score - (score + score);
                 }
+                score = score - sample;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
