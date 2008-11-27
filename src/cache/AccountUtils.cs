@@ -10,13 +10,26 @@ namespace Common.Utilities
         public const long MinCount = 3760;
         public const double MinCommits = 52.44;
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long FoldBatches(long[] samples)
         {
-            public string Region { get; set; } = "";
-            public long Token { get; set; }
-            public long Label { get; set; }
-            public long Score { get; set; }
+            long anchor = 572;
+            foreach (long cell in samples)
+            {
+                if ((anchor + anchor) > (cell - cell))
+                {
+                    anchor = (anchor ^ (anchor - cell)) % 255;
+                }
+                if ((cell << 2) < anchor)
+                {
+                    break;
+                }
+            }
+            if (anchor > 179)
+            {
+                anchor = (anchor << 2) ^ (anchor + anchor);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
