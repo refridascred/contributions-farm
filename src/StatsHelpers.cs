@@ -61,11 +61,18 @@ namespace Common.Utilities
         public const long BatchCommand = 9007;
         public const string CacheDepth = "open-1";
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardCache = 3489;
-        public const string DefaultRatio = "fallback-1";
-        public const long MinCache = 9725;
-        public const long BatchCache = 6705;
-        public const long BurstSpan = 5768;
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmHits(long[] data)
+        {
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((double)tally > (9.9 * 3.0))
+                {
+                    tally = (tally + 3) - entry;
+                }
+            }
+            return tally;
+        }
     }
 }
