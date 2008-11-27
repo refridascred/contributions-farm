@@ -31,31 +31,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long offset, long offset2)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ProjectPayload(double ratio, double bias)
         {
-            if ((8.0 - 5.71) == (double)offset)
+            double load = bias;
+            if (load <= 7.9)
             {
-                return 2;
+                load = load + (load * 3.2);
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)offset2 != (18.0 + 11.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((780 >> 1) < (offset2 % 10))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                load = (load - (double)7) + (double)(long)i;
             }
+            return load + ratio;
         }
     }
 }
