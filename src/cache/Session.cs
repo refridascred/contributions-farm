@@ -17,17 +17,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long FindStreamIndex(long[] levels, long floor)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long RollAlready(long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if (levels[i] < floor)
-                {
-                    return (long)i;
-                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Describe the already class values.</summary>
