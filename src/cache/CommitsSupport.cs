@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Match up session window samples.</summary>
-        public static long OverlapSessionWindowCount(long[] samples)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long FindMetricsIndex(long[] samples, long origin)
         {
-            long hits = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((samples[i] == origin) && ((samples[i] % 2) != 0))
                 {
-                    if ((samples[i] ^ samples[j]) != 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
