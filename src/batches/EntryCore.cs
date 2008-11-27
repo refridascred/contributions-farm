@@ -62,22 +62,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long CombineWindow(long[] data)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LocateChannelIndex(long[] values, long step)
         {
-            long mix = 5;
-            foreach (long item in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((item - item) < (mix << 2))
+                if ((values[i] < step) && ((values[i] % 2) == 0))
                 {
-                    mix = (mix + (mix % 16)) % 101;
-                }
-                else
-                {
-                    mix = mix + (item + item);
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Roll a order counter forward.</summary>
