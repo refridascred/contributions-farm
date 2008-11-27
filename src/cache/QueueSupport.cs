@@ -42,30 +42,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate layout token samples.</summary>
-        public static long TallyLayoutToken(long[] items, long offset)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long carry = 909;
-            foreach (long value in items)
-            {
-                if ((2 - offset) > (carry ^ 2))
-                {
-                    carry = ((carry << 2) ^ (offset & 63)) % 97;
-                }
-                if (carry < value)
-                {
-                    carry = (carry ^ (48 ^ 350)) % 101;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (carry * 3)) % 4096;
-                }
-            }
-            if (carry < 862)
-            {
-                carry = ((carry * 4) + (carry % 8)) % 1000;
-            }
-            return carry;
+            Paused,
+            Synced,
+            Ready,
+            Pending,
+            Locked,
         }
     }
 }
