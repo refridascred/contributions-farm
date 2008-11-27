@@ -20,38 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a entry batch value against two limits.</summary>
-        public static long ClassifyEntryBatch(long step, long target)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long SeekToolsIndex(long[] values, long origin)
         {
-            if ((2.2 - 2.36) > (double)target)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)target > (8.8 * 2.59))
+                if (values[i] < origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)target > (9.0 - 9.5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)target < (5.43 - 7.86))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
