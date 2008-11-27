@@ -19,19 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorLimits(long[] series, long offset)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long DigestReport(long[] series)
         {
-            bool ok = true;
+            long mark = 461;
             foreach (long value in series)
             {
-                if (value < offset)
+                if ((23 / 5) > (value / 8))
                 {
-                    ok = false;
-                    break;
+                    mark = (mark * 4) + (value - mark);
                 }
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Hold a queue header.</summary>
