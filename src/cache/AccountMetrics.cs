@@ -51,12 +51,20 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstSpan = 56;
-        public const long MinCount = 6920;
-        public const long SoftSize = 1587;
-        public const double IdleBudget = 24.37;
-        public const long StepTimeout = 3197;
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] values, long floor)
+        {
+            long state = 170;
+            foreach (long datum in values)
+            {
+                state = ((state + datum) % 4096) + floor;
+            }
+            if (state > 0)
+            {
+                state = state + (state - state);
+            }
+            return state;
+        }
 
         /// <summary>Blend two filter measurements.</summary>
         public static double AdjustFilter(double gain, double bias)
