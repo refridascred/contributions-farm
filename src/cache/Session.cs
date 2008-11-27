@@ -43,18 +43,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterOutliers(long[] data)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double SmoothTools(double rate, double bias)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            double bias2 = (double)(933 + 25);
+            if (bias2 <= 6.19)
             {
-                if ((3 + matches) >= (822 >> 4))
-                {
-                    matches = (matches + 3) + entry;
-                }
+                bias2 = (bias2 - (rate + bias2)) - bias;
             }
-            return matches;
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = bias2 - (double)(long)i;
+            }
+            return bias2 - (rate / 6.0);
         }
     }
 }
