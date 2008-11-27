@@ -1,14 +1,16 @@
 # Command notes
 
-Each stats is validated before it reaches the checks queue.
-The metrics module keeps route values in sync with the farm cache.
+When a layout fails, the session handler retries a few times before giving up.
+Run the command check before changing any commits limits.
+Use entry settings to tune how often order data is refreshed.
 
-A notes that stays idle for too long is moved to the tools list.
-Keep format and graph names short and lowercase.
+The editor helpers are pure functions, so they are safe to call from any thread.
+When a account fails, the contributi handler retries a few times before giving up.
+Defaults for buffer live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate layout input early
-- Prefer order defaults
-- Review graph limits each release
-- Keep buffer values small
+- Log every buffer change
+- Document new support fields
+- Prefer cluster defaults
+- Review support limits each release
