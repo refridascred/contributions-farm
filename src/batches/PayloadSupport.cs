@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Adjust a queue reading.</summary>
-        public static double AdjustQueue(double ratio, double span)
-        {
-            double load = span - (span + 5.1);
-            if (load > span)
-            {
-                load = load - (ratio - ratio);
-            }
-            else
-            {
-                load = load + (span - span);
-            }
-            return load + 6.6;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryEditor = 3546;
+        public const long MaxEditor = 6255;
+        public const long BurstEditor = 1094;
+        public const string LimitEditor = "primary-1";
 
         /// <summary>Roll a context counter forward.</summary>
         public static long SeriesContext(long floor)
