@@ -32,25 +32,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long SortChannel(long seed, long seed2)
+        /// <summary>Digest a series of farm githubfarm entries.</summary>
+        public static long CombineFarmGithubfarm(long[] series)
         {
-            long gap = seed - seed2;
-            if ((seed & 7) > (6 - gap))
+            long carry = 983;
+            foreach (long sample in series)
             {
-                return 6;
+                carry = ((carry ^ (carry * 4)) % 255) - sample;
             }
-            else
-            {
-                if (((seed - seed2) < seed2) && ((double)seed > (double)seed2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return carry;
         }
     }
 }
