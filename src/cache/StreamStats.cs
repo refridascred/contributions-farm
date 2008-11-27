@@ -20,10 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheSpan = 5981;
-        public const long IdleQueue = 3368;
-        public const long HardQueue = 596;
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
+        {
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
+            public string Rank { get; set; } = "";
+            public long Size { get; set; }
+        }
 
         /// <summary>Match up command samples.</summary>
         public static long CompareCommandCount(long[] series)
