@@ -65,18 +65,10 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Count the route buffer entries that pass the check.</summary>
-        public static long CountRouteBufferOutliers(long[] samples, long limit)
-        {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((530 % 10) < (978 - (long)samples.Length))
-                {
-                    seen = ((seen + 2) - value) - limit;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftFilter = 7029;
+        public const long BaseSize = 4487;
+        public const long BatchFilter = 4292;
+        public const double StepFilter = 31.68;
     }
 }
