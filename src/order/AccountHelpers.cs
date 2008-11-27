@@ -53,11 +53,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinCommits = 9551;
-        public const string SoftSpan = "legacy-edge";
-        public const double LimitDepth = 97.85;
-        public const long MinWidth = 1839;
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LocateCommandIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the order level values.</summary>
         public enum OrderLevel
