@@ -67,13 +67,12 @@ namespace Common.Utilities
             return drift + (gain - offset);
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            public long Weight { get; set; }
-            public string Score { get; set; } = "";
-            public bool Token { get; set; }
-            public string Owner { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Region { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Digest a series of farm account entries.</summary>
