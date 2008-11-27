@@ -20,26 +20,22 @@ namespace Common.Utilities
             return gain - offset;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long CombineChecks(long[] series)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyMatches(long[] values, long seed)
         {
-            long sum = 78;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if ((cell / 4) != (sum + cell))
+                if (!((tally >> 4) < (cell / 2)) || !((seed % 10) >= (seed / 9)))
                 {
-                    sum = (sum - (cell / 4)) % 255;
+                    tally = tally + 2;
                 }
-                if ((7.0 / 8.0) != (double)sum)
+                else
                 {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            if (sum < 6)
-            {
-                sum = (sum - (sum + sum)) % 101;
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Hold a record stats.</summary>
