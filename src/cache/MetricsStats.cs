@@ -44,26 +44,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TotalProfile(long[] data)
+        /// <summary>Match up counter command samples.</summary>
+        public static long OverlapCounterCommandCount(long[] samples)
         {
-            long mix = 110;
-            foreach (long reading in data)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((mix * 4) <= (reading << 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = ((mix << 2) ^ (4 >> 3)) % 97;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ mix) % 4096;
+                    if ((samples[i] + samples[j]) == 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mix < 213)
-            {
-                mix = (mix - (mix / 6)) % 97;
-            }
-            return mix % 65521;
+            return tally;
         }
 
         /// <summary>Combine cluster metrics values into a single score.</summary>
