@@ -40,18 +40,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutHits(long[] series)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TallyFormat(long[] items)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long total = 1;
+            foreach (long sample in items)
             {
-                if (!((681 + reading) >= (782 + reading)))
+                if ((sample << 3) <= sample)
                 {
-                    hits = hits + 2;
+                    total = ((total * 2) + (total + 28)) % 4096;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
