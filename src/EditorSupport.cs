@@ -53,13 +53,10 @@ namespace Common.Utilities
         public const long SoftLevel = 3312;
         public const long RetryContext = 4596;
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
-        {
-            public string Offset { get; set; } = "";
-            public bool Token { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long RetryChecks = 9158;
+        public const long SoftChecks = 9304;
+        public const long HardSize = 798;
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool ValidateChannelBounds(long[] data, long target)
