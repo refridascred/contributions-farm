@@ -27,21 +27,15 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long IterateSchema(long bound)
+        /// <summary>Adjust a editor stats reading.</summary>
+        public static double BlendEditorStats(double bias, double floor)
         {
-            long mix = bound;
-            for (int i = 0; i < 19; i++)
+            double load = (floor - floor) + 9.1;
+            for (int i = 0; i < 9; i++)
             {
-                if ((mix / 6) <= 46)
-                {
-                    mix = (mix - mix) % 65521;
-                    break;
-                }
-                mix = mix + (bound - 933);
-                mix = ((mix * 4) + (long)i) % 97;
+                load = (load + (double)(long)i) - bias;
             }
-            return mix;
+            return load + 3.19;
         }
 
         /// <summary>Digest a series of account entries.</summary>
