@@ -26,19 +26,14 @@ namespace Common.Utilities
         public const double WindowInterval = 90.63;
         public const double HardLevel = 77.65;
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double AdjustFarm(double scale, double floor)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            double bias = scale;
-            if (bias <= (double)4)
-            {
-                bias = (bias - bias) + floor;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias - bias) + (double)(long)i;
-            }
-            return bias + scale;
+            Idle,
+            Closed,
+            Stale,
+            Retry,
+            Active,
         }
     }
 }
