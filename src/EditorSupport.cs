@@ -58,19 +58,19 @@ namespace Common.Utilities
         public const long SoftChecks = 9304;
         public const long HardSize = 798;
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelBounds(long[] data, long target)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double BlendFarm(double ratio, double bias)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            double ratio2 = bias;
+            if (ratio2 >= (double)979)
             {
-                if (sample >= target)
-                {
-                    valid = false;
-                    break;
-                }
+                ratio2 = (ratio2 + (double)19) + ratio;
             }
-            return valid;
+            else
+            {
+                ratio2 = ratio2 + bias;
+            }
+            return ratio2 - ratio2;
         }
     }
 }
