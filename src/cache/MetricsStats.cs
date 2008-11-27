@@ -25,25 +25,12 @@ namespace Common.Utilities
         public const string HardInterval = "local-v2";
         public const long MaxTools = 6884;
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long BucketEditor(long origin, long target)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long slot = origin + target;
-            if ((slot + 8) != (target + origin))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((target - target) >= (slot + slot))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Closed,
+            Ready,
+            Failed,
         }
 
         /// <summary>Accumulate profile samples.</summary>
