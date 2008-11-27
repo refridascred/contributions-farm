@@ -1,5 +1,15 @@
 {
-  "warm_interval_pct": 59.51,
-  "sync_ratio_s": "fallback",
-  "strict": 3344
+  "filter_window": {
+    "strict": ["primary", "stable", "local", "primary"],
+    "cache_threshold_s": 8582,
+    "base_retries": ["blue", "edge", "edge", "cached"]
+  },
+  "min_limit_pct": "stable",
+  "persist": ["green", "standard"],
+  "flush_ratio_ms": {
+    "payload_ratio": "cached",
+    "persist": [164, 500, 483, 474],
+    "compress": 5487,
+    "support_ratio": 8196
+  }
 }
