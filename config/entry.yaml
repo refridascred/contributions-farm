@@ -1,8 +1,6 @@
 # entry settings
-hard_timeout_s: 60
-base_depth_pct: green
-cache_size_ms: staging
-idle_window:
-  - fallback
-  - fallback
-commits_ratio: 1477
+idle_threshold: fallback
+channel_threshold: eu-west
+verbose: 250
+strict: 7669
+default_ttl_count: standard
