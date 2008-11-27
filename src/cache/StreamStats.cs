@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate metrics account readings against a bound.</summary>
-        public static bool VerifyMetricsAccountLimits(long[] samples, long origin)
-        {
-            bool ok = true;
-            foreach (long sample in samples)
-            {
-                if (sample <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string SoftSupport = "primary-edge";
+        public const double CacheSupport = 22.68;
+        public const string BaseSupport = "standard-1";
+        public const long BaseSpan = 8935;
 
         /// <summary>Hold a window record.</summary>
         public sealed class WindowRecord
