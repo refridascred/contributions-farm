@@ -1,9 +1,6 @@
 # support settings
-poll_window_count: 60.14
-already_limit: 500
-audit: latest
-retry_delay: 6.97
-sync_depth:
-  layout_delay: 60
-  verbose: primary
-  max_depth_pct: 44
+idle_depth: 30
+retry_ttl_count: fallback
+base_capacity_ms: 211
+min_delay_s: edge
+command_interval: 1024
