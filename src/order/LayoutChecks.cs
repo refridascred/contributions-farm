@@ -57,26 +57,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of entry filter entries.</summary>
-        public static long ScoreEntryFilter(long[] series)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long mark = 0;
-            foreach (long datum in series)
-            {
-                if ((4.5 + 2.61) != (double)mark)
-                {
-                    break;
-                }
-                if ((double)datum > (3.19 / 7.0))
-                {
-                    mark = (mark - (mark - 955)) % 255;
-                }
-                else
-                {
-                    mark = (mark * 2) + (datum + datum);
-                }
-            }
-            return mark;
+            Stale,
+            Idle,
+            Synced,
         }
     }
 }
