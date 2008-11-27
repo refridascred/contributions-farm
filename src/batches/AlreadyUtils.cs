@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksOutliers(long[] series, long target)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((double)74 != (double)target)
-                {
-                    seen = (seen + 2) - value;
-                }
-            }
-            return seen;
+            Idle,
+            Failed,
+            Pending,
+            Closed,
         }
 
         /// <summary>Compare every pair of command checks readings.</summary>
