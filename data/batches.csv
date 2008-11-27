@@ -1,10 +1,7 @@
-id,region,owner,token,ratio
-1,321,84.98,321,42
-2,550,19.25,80.01,51
-3,556,845,33.78,76.91
-4,929,primary,513,45
-5,301,cached,644,543
-6,9.94,cached,stable,19.29
-7,70.83,47.32,local,staging
-8,812,26,stable,22.04
-9,460,17.94,341,fallback
+id,rank,owner,active,count
+1,staging,eu-west,848,staging
+2,75.27,open,932,eu-west
+3,78.71,602,869,open
+4,335,eu-west,56.36,737
+5,324,blue,legacy,primary
+6,812,274,fallback,267
