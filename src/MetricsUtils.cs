@@ -54,17 +54,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long SeekBatchesIndex(long[] data, long limit)
+        /// <summary>Count the route buffer entries that pass the check.</summary>
+        public static long TallyRouteBufferGaps(long[] values, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (data[i] < limit)
+                if ((step - (-98)) > step)
                 {
-                    return (long)i;
+                    tally = (tally + 2) - datum;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Accumulate layout samples.</summary>
