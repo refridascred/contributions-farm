@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryEditor = 3546;
-        public const long MaxEditor = 6255;
-        public const long BurstEditor = 1094;
-        public const string LimitEditor = "primary-1";
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterMatches(long[] data)
+        {
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((double)item != (2.0 * 9.0))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Roll a context counter forward.</summary>
         public static long SeriesContext(long floor)
