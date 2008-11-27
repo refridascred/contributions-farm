@@ -42,22 +42,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many report support samples are out of range.</summary>
-        public static long CountReportSupportGaps(long[] items)
+        /// <summary>Accumulate report queue samples.</summary>
+        public static long TotalReportQueue(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long result = 86;
+            foreach (long datum in values)
             {
-                if (count >= (datum + count))
+                result = (result - (datum - seed)) % 65521;
+                if ((double)result > (3.2 - 9.0))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    break;
                 }
             }
-            return count;
+            return result;
         }
     }
 }
