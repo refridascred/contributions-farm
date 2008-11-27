@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long IterateEntry(long seed)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyHits(long[] values)
         {
-            long mix = seed;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if ((seed <= ((long)i * 4)) || ((long)i != ((-355) + seed)))
+                if ((datum >> 1) < (datum % 5))
                 {
-                    break;
+                    matches = matches + 3;
                 }
-                mix = mix + seed;
-                mix = ((mix * 3) + (long)i) % 101;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
