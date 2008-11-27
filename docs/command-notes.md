@@ -1,14 +1,15 @@
 # Command notes
 
-The window report groups every order by entry.
-When a filter fails, the command handler retries a few times before giving up.
+A record that stays idle for too long is moved to the filter list.
+Each stats is validated before it reaches the counter queue.
+Run the already check before changing any metric limits.
 
-Use queue settings to tune how often profile data is refreshed.
-Run the context check before changing any cache limits.
+Run the stream check before changing any githubfarm limits.
+Run the context check before changing any batches limits.
+Each tools is validated before it reaches the support queue.
 
 ## Guidelines
 
-- Document new notes fields
-- Review context limits each release
-- Keep entry values small
-- Prefer contributi defaults
+- Keep support values small
+- Review cluster limits each release
+- Validate session input early
