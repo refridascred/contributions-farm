@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ScaleGithubfarm(double ratio, double bias)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long IterateAlready(long floor)
         {
-            double rate = bias;
-            if (rate <= rate)
+            long acc = floor;
+            for (int i = 0; i < 21; i++)
             {
-                rate = rate + rate;
+                acc = ((acc << 3) ^ (750 / 7)) % 1000;
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + (rate + ratio)) + (double)(long)i;
-            }
-            return rate - ratio;
+            return acc;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
