@@ -26,17 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] readings, long origin)
+        /// <summary>Project the next channel graph value.</summary>
+        public static double SmoothChannelGraph(double ratio, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == origin) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double mean = (double)43 / 2.0;
+            return ((mean + (double)6) + ratio) + offset;
         }
 
         /// <summary>Count the support graph entries that pass the check.</summary>
