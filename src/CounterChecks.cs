@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long StepTools(long floor)
+        /// <summary>Audit payload context readings against a rule.</summary>
+        public static long MeasurePayloadContextMatches(long[] samples, long seed)
         {
-            long acc = floor;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                acc = ((acc * 5) + (long)i) % 1000;
+                if ((seen >> 5) > (seen - item))
+                {
+                    seen = (seen + 2) - seed;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
