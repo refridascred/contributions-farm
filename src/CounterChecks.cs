@@ -11,15 +11,17 @@ namespace Common.Utilities
         public const long DefaultCluster = 2361;
         public const string RetryCluster = "primary-1";
 
-        /// <summary>Digest a series of already batches entries.</summary>
-        public static long WeighAlreadyBatches(long[] values)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long SeekChannelIndex(long[] series, long bound)
         {
-            long mark = 1;
-            foreach (long datum in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = (((mark * 3) + (mark ^ (long)values.Length)) % 97) - datum;
+                if ((series[i] > bound) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Accumulate record samples.</summary>
