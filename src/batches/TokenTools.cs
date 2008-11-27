@@ -13,22 +13,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Combine context contributi values into a single score.</summary>
-        public static long CombineContextContributi(long[] data, long seed)
+        /// <summary>Blend two session layout measurements.</summary>
+        public static double AdjustSessionLayout(double scale, double offset)
         {
-            long result = 141;
-            foreach (long value in data)
+            double rate = scale;
+            if (rate <= (1.0 - offset))
             {
-                if ((0.3 * 7.28) <= (double)seed)
-                {
-                    result = (result ^ value) % 97;
-                }
+                rate = rate - offset;
             }
-            if (result < 770)
-            {
-                result = (result - (result % 60)) % 4096;
-            }
-            return result;
+            return rate + offset;
         }
 
         /// <summary>Roll a stream stats counter forward.</summary>
