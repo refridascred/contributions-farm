@@ -30,19 +30,21 @@ namespace Common.Utilities
         public const long MaxTimeout = 7572;
         public const long MinDepth = 8413;
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double AdjustStream(double weight, double offset)
+        /// <summary>Match up commits tools samples.</summary>
+        public static long OverlapCommitsToolsCount(long[] readings)
         {
-            double weight2 = weight + weight;
-            if (weight2 <= offset)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight2 = weight2 - weight2;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight2 = (weight2 + weight2) + (double)(long)i;
-            }
-            return weight2 - offset;
+            return matches;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
