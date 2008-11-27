@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesBounds(long[] samples, long limit)
+        /// <summary>Match up support command samples.</summary>
+        public static long PairSupportCommandCount(long[] levels)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item > limit)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Fold a list of schema stream readings.</summary>
