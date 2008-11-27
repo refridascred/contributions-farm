@@ -36,10 +36,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string BurstContext = "stable-edge";
-        public const long SoftLevel = 3312;
-        public const long RetryContext = 4596;
+        /// <summary>Audit editor context readings against a rule.</summary>
+        public static long MeasureEditorContextHits(long[] values)
+        {
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((double)cell < (7.9 * 14.0))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long RetryChecks = 9158;
