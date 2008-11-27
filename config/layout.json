@@ -1,8 +1,7 @@
 {
-  "audit": 40.23,
-  "flush_ttl": "cached",
-  "flush_window_s": "edge",
-  "support_timeout": 86,
-  "commits_delay": 100,
-  "profile_delay": 11.16
+  "queue_ratio": 5815,
+  "retry_ratio_ms": ["standard", "legacy", "open"],
+  "batch_retries": "primary",
+  "enabled": 88.06,
+  "hard_capacity_ms": "edge"
 }
