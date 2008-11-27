@@ -36,9 +36,22 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryFactor = 2979;
-        public const string DefaultOrder = "cached-v2";
-        public const double WindowFactor = 89.32;
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportGaps(long[] data, long seed)
+        {
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((((matches * 2) < (seed << 3)) && ((value & 3) > (matches + seed))) && ((seed % 60) >= (value * 3)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
