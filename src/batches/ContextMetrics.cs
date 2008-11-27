@@ -44,19 +44,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ProjectFormat(double scale, double offset)
+        /// <summary>Count checks profile pairs that satisfy a relation.</summary>
+        public static long CompareChecksProfileCount(long[] items)
         {
-            double gain = (9.7 / 2.0) / 3.0;
-            if (gain <= (scale * 7.0))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = gain + (9.78 - offset);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 14)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain + gain;
+            return count;
         }
 
         /// <summary>Roll a record counter forward.</summary>
