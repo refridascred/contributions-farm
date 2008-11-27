@@ -1,5 +1,7 @@
 # support settings
-warm_size_s: 15.87
-min_ttl_s: false
-default_interval: 100
-burst_ttl_ms: latest
+compress: 7682
+poll_threshold_ms: 95.15
+base_ratio: staging
+editor_capacity: true
+buffer_size: 8442
+default_window_ms: 62
