@@ -1,16 +1,27 @@
 # githubfarm settings
-session_depth: eu-west
-sync_limit_pct:
-  retry_interval_s:
-    queue_delay: standard
-    sync_ratio_ms: 95
-    default_limit_pct: 60
-  base_capacity: strict
-  min_depth_ms: 100
-  format_size: true
-sync_depth_s:
-  - 377
-  - 215
-poll_timeout_s: 3456
-route_timeout: false
-max_limit_ms: false
+compress: standard
+min_timeout: fallback
+idle_window_pct: 42.95
+persist:
+  max_ttl_pct:
+    editor_retries: false
+    poll_capacity: 4238
+    persist: true
+    warm_limit_s:
+      - standard
+      - primary
+  account_window: latest
+  cache_size:
+    - 81
+    - 21
+    - 424
+    - 438
+  enabled: primary
+  filter_size:
+    burst_ttl_ms: 45.94
+    max_timeout_ms: false
+    tools_threshold: 60.4
+warm_ratio_s:
+  - 261
+  - 462
+payload_window: 250
