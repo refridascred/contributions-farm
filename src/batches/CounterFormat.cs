@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many batches schema samples are out of range.</summary>
-        public static long AuditBatchesSchemaOutliers(long[] values)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamRange(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                if ((hits / 3) < (hits / 2))
+                if (cell > offset)
                 {
-                    hits = (hits + 1) - reading;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
