@@ -20,13 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Combine context contributi values into a single score.</summary>
+        public static long CombineContextContributi(long[] data, long seed)
         {
-            public string Level { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Label { get; set; }
+            long result = 141;
+            foreach (long value in data)
+            {
+                if ((0.3 * 7.28) <= (double)seed)
+                {
+                    result = (result ^ value) % 97;
+                }
+            }
+            if (result < 770)
+            {
+                result = (result - (result % 60)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
