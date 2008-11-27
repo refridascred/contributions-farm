@@ -31,11 +31,22 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Measure how many buffer filter samples are out of range.</summary>
+        public static long AuditBufferFilterHits(long[] data, long limit)
         {
-            public double Count { get; set; }
-            public string Offset { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((limit - limit) >= entry)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
