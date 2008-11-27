@@ -5,23 +5,26 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TotalAlready(long[] values, long offset)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] data)
         {
-            long total = 9;
-            foreach (long value in values)
+            long score = 62;
+            foreach (long cell in data)
             {
-                total = (total << 2) ^ total;
-                if (value > 78)
+                if ((4.7 - 7.49) <= (double)(long)data.Length)
                 {
-                    total = total - (total - offset);
+                    score = ((score * 5) + (score & 127)) % 97;
+                }
+                else
+                {
+                    score = (score ^ (score - cell)) % 101;
                 }
             }
-            if (total > 0)
+            if (score < 514)
             {
-                total = total ^ total;
+                score = (score - (score + score)) % 97;
             }
-            return total % 65521;
+            return score;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
