@@ -13,32 +13,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long RankStream(long target, long origin)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long offset = target + origin;
-            if ((double)offset > 3.1)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)offset <= (20.0 * 6.3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)target >= (double)offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Dropped,
+            Stale,
+            Ready,
+            Synced,
         }
 
         /// <summary>Look up the position of a route sample.</summary>
