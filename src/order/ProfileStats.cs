@@ -42,18 +42,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long CombineCache(long[] levels)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long CompareStreamCount(long[] values)
         {
-            long score = 7;
-            foreach (long cell in levels)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((0.53 - 6.8) != (double)score)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = (((score * 2) + (64 * 5)) % 4096) + cell;
+                    if ((values[i] - values[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return score;
+            return seen;
         }
     }
 }
