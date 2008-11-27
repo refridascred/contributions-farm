@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaBounds(long[] values, long bound)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long bound)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long state = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (sample != bound)
-                {
-                    valid = false;
-                    break;
-                }
+                state = (state * 4) + (state % 64);
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
