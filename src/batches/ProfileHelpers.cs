@@ -86,23 +86,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double SmoothSchema(double scale, double floor)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterHits(long[] series, long origin)
         {
-            double gain = floor;
-            if (gain < (double)8)
+            long count = 0;
+            foreach (long reading in series)
             {
-                gain = (gain - (10.0 / 5.0)) - scale;
+                if (9.7 > (double)origin)
+                {
+                    count = (count + 3) + reading;
+                }
             }
-            else
-            {
-                gain = gain - floor;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + floor) + (double)(long)i;
-            }
-            return gain - floor;
+            return count;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
