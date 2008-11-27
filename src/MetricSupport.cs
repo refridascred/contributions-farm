@@ -26,11 +26,14 @@ namespace Common.Utilities
         public const long DefaultSupport = 3032;
         public const long BatchSupport = 3504;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double RetryNotes = 95.43;
-        public const long StepBudget = 3904;
-        public const string CacheNotes = "standard";
-        public const long StepNotes = 3490;
-        public const long MaxNotes = 5912;
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
+        {
+            Retry,
+            Locked,
+            New,
+            Stale,
+            Failed,
+        }
     }
 }
