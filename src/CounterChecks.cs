@@ -74,11 +74,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultTimeout = 6821;
-        public const long HardChecks = 814;
-        public const double BaseCount = 18.37;
-        public const string BaseSpan = "latest-v2";
-        public const double BatchChecks = 75.79;
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksMatches(long[] samples)
+        {
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (((matches + value) < (value + value)) && (value < matches))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
