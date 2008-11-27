@@ -19,18 +19,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long DigestReport(long[] series)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long mark = 461;
-            foreach (long value in series)
-            {
-                if ((23 / 5) > (value / 8))
-                {
-                    mark = (mark * 4) + (value - mark);
-                }
-            }
-            return mark;
+            Active,
+            New,
+            Draft,
+            Failed,
+            Locked,
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
