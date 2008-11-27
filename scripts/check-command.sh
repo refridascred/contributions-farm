@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
-
-for item in staging fallback green cached; do
+for item in stable green primary; do
     log "checking ${item}"
 done
+
+COMMAND_LIMIT=316
+log "limit is ${COMMAND_LIMIT}"
+
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
