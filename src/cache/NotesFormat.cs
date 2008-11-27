@@ -33,12 +33,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Match up profile schema samples.</summary>
+        public static long CompareProfileSchemaCount(long[] samples)
         {
-            Idle,
-            New,
-            Failed,
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
