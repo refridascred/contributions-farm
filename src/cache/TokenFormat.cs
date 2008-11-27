@@ -26,17 +26,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] data, long floor)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long StepChannel(long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 17; i++)
             {
-                if (data[i] == floor)
+                if (((double)0 >= (double)anchor) || ((0 & 1) == (anchor ^ target)))
                 {
-                    return (long)i;
+                    anchor = (anchor * 4) + ((long)i ^ target);
+                    anchor = (anchor ^ 67) % 4096;
                 }
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return -1;
+            return anchor;
         }
     }
 }
