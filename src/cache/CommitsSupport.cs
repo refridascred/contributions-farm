@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long ClassifyAlready(long origin, long seed)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            if (((seed + seed) == (418 + origin)) || (1.97 > (double)seed))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed >> 4) > (origin / 4))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public bool Label { get; set; }
+            public long Limit { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Blend two cluster measurements.</summary>
