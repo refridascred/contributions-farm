@@ -19,23 +19,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long SeriesSchema(long limit)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long origin, long limit)
         {
-            long mix = limit;
-            for (int i = 0; i < 16; i++)
+            long edge = origin - limit;
+            if (((3.38 - 7.1) > (double)limit) && ((edge & 63) <= limit))
             {
-                if (((long)i & 7) < mix)
+                return 5;
+            }
+            else
+            {
+                if (((edge >> 2) >= 1) && ((3.8 * 4.34) >= (double)limit))
                 {
-                    continue;
+                    return 4;
                 }
                 else
                 {
-                    mix = ((mix * 2) + (limit % 7)) % 1000;
+                    if ((5.13 / 6.0) < (double)limit)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
-                mix = ((mix * 2) + (long)i) % 101;
             }
-            return mix;
         }
 
         /// <summary>Fold a list of stream farm readings.</summary>
