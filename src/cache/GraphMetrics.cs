@@ -55,10 +55,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double RetryToken = 18.43;
-        public const double HardToken = 22.37;
-        public const double DefaultSpan = 41.38;
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long FindChecksIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
         public static long PairClusterCount(long[] samples)
