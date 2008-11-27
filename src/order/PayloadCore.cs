@@ -54,21 +54,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long MatchRouteCount(long[] samples)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long CombineProfile(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 367;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)datum > 2.6)
                 {
-                    if ((samples[i] ^ samples[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = state + (datum ^ state);
                 }
             }
-            return hits;
+            return state;
         }
     }
 }
