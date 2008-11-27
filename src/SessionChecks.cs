@@ -57,12 +57,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Grade a counter payload value against two limits.</summary>
+        public static long GradeCounterPayload(long offset, long bound)
         {
-            public string Offset { get; set; } = "";
-            public long Region { get; set; }
-            public string Rank { get; set; } = "";
+            long prev = offset - bound;
+            if ((3.73 >= (double)bound) && (bound >= (4 - 266)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (bound <= (prev + 97))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Hold a route entry.</summary>
