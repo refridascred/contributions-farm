@@ -37,18 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheMatches(long[] samples, long bound)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if (!((tally >= (tally - tally)) || ((double)bound > (1.3 * 6.5))))
-                {
-                    tally = (tally + 1) ^ entry;
-                }
-            }
-            return tally;
+            public long Stamp { get; set; }
+            public long Count { get; set; }
         }
     }
 }
