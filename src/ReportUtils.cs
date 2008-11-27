@@ -16,13 +16,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            public long Mode { get; set; }
-            public double Offset { get; set; }
-            public long Stamp { get; set; }
-            public long Total { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
