@@ -28,12 +28,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelLimits(long[] samples, long bound)
         {
-            Ready,
-            Done,
-            Draft,
+            bool found = true;
+            foreach (long reading in samples)
+            {
+                if (reading != bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
