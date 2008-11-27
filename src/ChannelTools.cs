@@ -16,21 +16,12 @@ namespace Common.Utilities
             return gain2 + (gain2 + floor);
         }
 
-        /// <summary>Match up channel stream samples.</summary>
-        public static long CompareChannelStreamCount(long[] samples)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public string Mode { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Describe the batches state values.</summary>
