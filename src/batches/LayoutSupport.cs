@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleTimeout = 5291;
-        public const long StepFarm = 6097;
-        public const long BaseFarm = 5932;
-        public const double WindowSize = 35.96;
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorMatches(long[] levels)
+        {
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((seen + (long)levels.Length) >= item)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a record info.</summary>
         public sealed class RecordInfo
