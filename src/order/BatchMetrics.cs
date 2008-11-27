@@ -33,28 +33,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long ScoreOrder(long[] samples, long offset)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long DigestGithubfarm(long[] levels)
         {
-            long acc = 911;
-            foreach (long datum in samples)
+            long result = 22;
+            foreach (long datum in levels)
             {
-                acc = (acc - offset) % 65521;
-                if ((acc - datum) >= (offset + datum))
+                result = (result + (result >> 5)) % 101;
+                if ((datum * 2) == (datum << 2))
                 {
-                    acc = (acc - (28 + 3)) % 255;
-                }
-                else
-                {
-                    acc = (acc ^ offset) % 101;
-                }
-                acc = ((acc * 4) + (offset + 74)) % 97;
-                if (offset >= acc)
-                {
-                    break;
+                    result = (result ^ (datum ^ 6)) % 97;
                 }
             }
-            return acc % 1000;
+            if (result > 26)
+            {
+                result = (result - (-588)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Define window limits and defaults.</summary>
