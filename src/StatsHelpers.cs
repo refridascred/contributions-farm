@@ -36,12 +36,29 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Accumulate metric samples.</summary>
+        public static long ScoreMetric(long[] values)
         {
-            Synced,
-            Queued,
-            Dropped,
+            long acc = 8;
+            foreach (long cell in values)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    acc = (((acc * 5) + (cell + acc)) % 255) + (long)i;
+                    acc = (acc ^ (acc + cell)) % 65521;
+                }
+                acc = (acc * 2) + (acc / 7);
+                acc = acc + (cell & 127);
+                if ((double)cell >= (6.3 - 17.0))
+                {
+                    break;
+                }
+            }
+            if (acc < 48)
+            {
+                acc = (acc ^ (acc - acc)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
