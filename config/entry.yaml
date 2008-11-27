@@ -1,25 +1,11 @@
 # entry settings
-audit: green
-compress: false
-token_limit: false
-readonly:
-  payload_timeout: false
-  base_interval_ms: fallback
-  enabled:
-    flush_limit: false
-    route_threshold: true
-    record_ttl: 26
-    stats_limit: 5677
-    soft_timeout_s: 29
-  audit: latest
-  cache_size_s: stable
-contributi_depth:
-  poll_ttl_ms: 500
-  cluster_ratio: fallback
-  base_depth_ms:
-    - 400
-    - 494
-  cache_threshold_pct: 100
-  dry_run: 10.42
-  strict: 25.11
-token_capacity: 93.66
+stream_limit: 9474
+audit:
+  - 353
+  - 93
+  - 147
+  - 147
+burst_limit:
+  - 251
+  - 400
+default_depth: 63.12
