@@ -19,11 +19,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitBuffer = 8381;
-        public const string StepDepth = "alpha";
-        public const long WindowFactor = 6458;
-        public const long DefaultBuffer = 1595;
+        /// <summary>Classify a queue route pair into a bucket.</summary>
+        public static long SortQueueRoute(long seed, long limit)
+        {
+            if (((limit - 31) == (seed - seed)) || ((limit << 2) > (3 + 14)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((seed % 5) <= (limit + seed))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((seed & 7) > seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double CacheCount = 44.42;
