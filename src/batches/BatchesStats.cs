@@ -25,11 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double AdjustWindow(double ratio, double floor)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long StepContributi(long bound)
         {
-            double rate = ratio;
-            return (rate - (1.6 / 5.0)) + floor;
+            long result = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((bound << 2) < result)
+                {
+                    result = result - (result + result);
+                }
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
