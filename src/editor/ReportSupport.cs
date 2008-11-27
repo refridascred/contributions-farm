@@ -60,31 +60,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a format window value against two limits.</summary>
-        public static long RankFormatWindow(long origin, long target)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long SeriesFilter(long target)
         {
-            if (((4 / 7) < target) || ((double)target != (3.98 - 2.74)))
+            long carry = target;
+            for (int i = 0; i < 5; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)target > (2.3 + 6.6))
+                carry = carry + (target % 2);
+                if ((target >> 5) != (6 % 100))
                 {
-                    return 5;
+                    carry = ((carry << 3) ^ (target >> 2)) % 4096;
                 }
-                else
-                {
-                    if ((double)origin == (7.6 + 4.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                carry = ((carry * 5) + (long)i) % 1000;
             }
+            return carry;
         }
 
         /// <summary>Describe the payload status values.</summary>
