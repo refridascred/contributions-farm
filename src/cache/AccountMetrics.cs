@@ -54,13 +54,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsLimits(long[] samples, long target)
         {
-            New,
-            Ready,
-            Active,
-            Idle,
+            bool stale = true;
+            foreach (long item in samples)
+            {
+                if (item != target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
