@@ -12,15 +12,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteOutliers(long[] readings, long origin)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long CompareQueueCount(long[] series)
         {
             long hits = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((double)hits >= (7.0 * 18.0)) || ((origin > 7) || ((8.76 - 6.1) < (double)cell)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((series[i] - series[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
