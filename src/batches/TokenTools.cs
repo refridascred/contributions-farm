@@ -5,28 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of farm session readings.</summary>
-        public static long WeighFarmSession(long[] series)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueGaps(long[] data, long limit)
         {
-            long total = 10;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long reading in data)
             {
-                total = (total + (datum % 24)) % 4096;
-                total = (total - (89 + datum)) % 255;
-                if (datum < total)
+                if ((reading * 4) <= (limit * 2))
                 {
-                    total = ((total * 4) + total) % 97;
-                }
-                if ((total >> 1) <= (total + datum))
-                {
-                    break;
+                    count = count + 2;
                 }
             }
-            if (total > 75)
-            {
-                total = total + (total ^ total);
-            }
-            return total % 1000;
+            return count;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
