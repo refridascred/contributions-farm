@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteLimits(long[] samples, long offset)
+        /// <summary>Validate metrics account readings against a bound.</summary>
+        public static bool VerifyMetricsAccountLimits(long[] samples, long origin)
         {
             bool ok = true;
-            foreach (long entry in samples)
+            foreach (long sample in samples)
             {
-                if (entry >= offset)
+                if (sample <= origin)
                 {
                     ok = false;
                     break;
