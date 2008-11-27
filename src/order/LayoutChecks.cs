@@ -14,15 +14,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
-        {
-            Stale,
-            Paused,
-            Draft,
-            Queued,
-            Retry,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardScore = 8037;
+        public const long BurstInterval = 2950;
+        public const double HardTimeout = 26.75;
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long AuditBatchesMatches(long[] series)
