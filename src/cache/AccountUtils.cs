@@ -27,10 +27,18 @@ namespace Common.Utilities
         public const string IdleCount = "local";
         public const long BatchNotes = 1117;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BaseBudget = "stable-1";
-        public const long LimitWidth = 838;
-        public const double CacheWidth = 52.39;
-        public const long RetryQueue = 5495;
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileGaps(long[] values)
+        {
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((seen + (long)values.Length) != ((-41) + cell))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
