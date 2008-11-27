@@ -1,16 +1,16 @@
 # Command notes
 
-Use profile settings to tune how often batch data is refreshed.
-The cluster module keeps editor values in sync with the context cache.
-Run the context check before changing any already limits.
+Each entry is validated before it reaches the command queue.
+Each filter is validated before it reaches the queue queue.
+The account helpers are pure functions, so they are safe to call from any thread.
 
-Keep stats and layout names short and lowercase.
-Use layout settings to tune how often token data is refreshed.
-When a token fails, the batches handler retries a few times before giving up.
+When a context fails, the buffer handler retries a few times before giving up.
+Defaults for route live in the config folder and can be overridden per environment.
+Keep cluster and farm names short and lowercase.
 
 ## Guidelines
 
-- Prefer graph defaults
-- Review channel limits each release
-- Validate buffer input early
 - Keep payload values small
+- Prefer record defaults
+- Log every profile change
+- Validate account input early
