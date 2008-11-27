@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            Draft,
-            Synced,
+            New,
+            Idle,
+            Locked,
             Ready,
         }
 
