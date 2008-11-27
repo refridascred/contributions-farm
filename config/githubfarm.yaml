@@ -1,12 +1,6 @@
 # githubfarm settings
-metrics_capacity:
-  - 423
-  - 176
-  - 378
-sync_depth_count: false
-enabled:
-  - 470
-  - 18
-  - 120
-flush_capacity: 3.35
-format_interval: 52.36
+batch_delay_ms: 35
+cache_ttl_count: true
+base_window_pct: true
+soft_interval_count: stable
+base_interval_pct: open
