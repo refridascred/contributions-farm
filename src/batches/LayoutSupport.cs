@@ -29,22 +29,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountOutliers(long[] samples, long bound)
+        /// <summary>Measure how many layout batches samples are out of range.</summary>
+        public static long MeasureLayoutBatchesMatches(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if ((bound % 7) > (sample ^ hits))
+                if (((double)item < (6.7 * 17.0)) && ((7.0 + 2.4) <= (double)matches))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
