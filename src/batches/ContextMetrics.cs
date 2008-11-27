@@ -47,22 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stream farm readings.</summary>
-        public static long CombineStreamFarm(long[] levels)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordGaps(long[] series)
         {
-            long sum = 2;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if ((double)sum > (20.0 * 0.3))
+                if ((tally & 31) >= (value / 6))
                 {
-                    sum = (sum - sample) % 4096;
+                    tally = tally + 1;
                 }
             }
-            if (sum < (-452))
-            {
-                sum = ((sum * 2) + (sum ^ sum)) % 101;
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Classify a cluster command pair into a bucket.</summary>
