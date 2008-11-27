@@ -1,6 +1,7 @@
-id,label,level,count
-1,staging,78.42,894
-2,14.11,local,edge
-3,strict,cached,45.29
-4,87.0,standard,standard
-5,43.14,open,staging
+id,active,state,level
+1,60.54,cached,817
+2,15,latest,edge
+3,817,603,974
+4,36.4,standard,strict
+5,fallback,287,cached
+6,legacy,13.06,139
