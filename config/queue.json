@@ -1,6 +1,7 @@
 {
-  "batch_timeout_pct": false,
-  "strict": 41.45,
-  "burst_limit_s": [497, 424, 96],
-  "warm_interval": ["fallback", "legacy", "stable", "cached"]
+  "record_limit": "fallback",
+  "idle_timeout": [249, 132, 348, 4],
+  "default_retries_s": 5286,
+  "readonly": 60,
+  "soft_depth_pct": 1024
 }
