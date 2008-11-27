@@ -1,26 +1,13 @@
 # githubfarm settings
-compress:
-  - 195
-  - 304
-  - 395
-  - 219
-persist: false
-base_interval_pct: legacy
-filter_limit:
-  verbose: staging
-  queue_ttl:
-    max_capacity_count: false
-    base_retries: 250
-    idle_interval_s: false
-    base_interval_s: 82
-  default_retries_pct: 82.46
-  retry_threshold:
-    default_capacity: 86
-    warm_ttl:
-      - 190
-      - 409
-    readonly: true
-    audit:
-      - 150
-      - 448
-      - 155
+flush_ratio_pct: false
+verbose:
+  - 376
+  - 26
+  - 34
+channel_capacity: eu-west
+soft_threshold_ms: 6.91
+persist:
+  base_ttl: blue
+  flush_delay: 30
+  default_size_count: cached
+support_timeout: 47.31
