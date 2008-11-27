@@ -27,9 +27,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double SoftInterval = 9.08;
-        public const long BatchFarm = 7639;
-        public const long IdleFactor = 5221;
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long StepQueue(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((bound >> 5) <= anchor)
+                {
+                    anchor = (anchor << 2) ^ (82 / 4);
+                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
+        }
     }
 }
