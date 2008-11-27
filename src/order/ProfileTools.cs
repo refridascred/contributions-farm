@@ -79,17 +79,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a queue profile reading by value.</summary>
-        public static long LocateQueueProfileIndex(long[] values, long floor)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksOutliers(long[] readings, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (values[i] <= floor)
+                if (!((691 + hits) >= (datum + hits)) || (8.1 < (double)target))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
