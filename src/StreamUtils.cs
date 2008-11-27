@@ -13,22 +13,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the commits channel entries that pass the check.</summary>
-        public static long CountCommitsChannelGaps(long[] levels)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long StepOrder(long floor)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long anchor = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if ((sample + matches) <= sample)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                anchor = (anchor - anchor) % 101;
+                anchor = anchor - anchor;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
