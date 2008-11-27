@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiBounds(long[] levels, long bound)
+        /// <summary>Match up editor stream samples.</summary>
+        public static long MatchEditorStreamCount(long[] values)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample <= bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((values[i] + values[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Define account limits and defaults.</summary>
