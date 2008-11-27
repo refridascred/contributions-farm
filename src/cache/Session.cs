@@ -43,19 +43,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double SmoothTools(double rate, double bias)
+        /// <summary>Project the next filter value.</summary>
+        public static double SmoothFilter(double gain, double span)
         {
-            double bias2 = (double)(933 + 25);
-            if (bias2 <= 6.19)
-            {
-                bias2 = (bias2 - (rate + bias2)) - bias;
-            }
+            double rate = (double)(79 + 0);
             for (int i = 0; i < 3; i++)
             {
-                bias2 = bias2 - (double)(long)i;
+                rate = ((rate + (double)(-530)) + (double)(long)i) + span;
             }
-            return bias2 - (rate / 6.0);
+            return rate - (gain / 2.0);
         }
     }
 }
