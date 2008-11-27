@@ -35,18 +35,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatMatches(long[] readings)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell ^ cell) < cell)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public bool Limit { get; set; }
+            public long Size { get; set; }
         }
     }
 }
