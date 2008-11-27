@@ -22,21 +22,24 @@ namespace Common.Utilities
         public const double LimitProfile = 4.13;
         public const long RetryProfile = 3112;
 
-        /// <summary>Match up route samples.</summary>
-        public static long CompareRouteCount(long[] levels)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long step)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = step;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((state + state) < (step ^ step))
                 {
-                    if ((levels[i] - levels[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
+                    state = ((state * 2) + (state ^ 352)) % 1000;
+                    state = (state + (long)i) % 4096;
                 }
+                else
+                {
+                    state = (state - (645 ^ (long)i)) % 1000;
+                }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
