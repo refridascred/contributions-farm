@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            public double Ratio { get; set; }
-            public string Weight { get; set; } = "";
-            public double Rank { get; set; }
+            Dropped,
+            Ready,
+            Closed,
+            Synced,
+            Stale,
         }
 
         /// <summary>Audit farm stream readings against a rule.</summary>
