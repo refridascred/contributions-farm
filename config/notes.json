@@ -1,8 +1,12 @@
 {
-  "graph_delay": "cached",
-  "poll_size": [330, 425],
-  "sync_capacity": 22.2,
-  "strict": ["eu-west", "legacy", "latest", "stable"],
-  "burst_depth_count": 40.6,
-  "hard_limit_ms": 60
+  "batch_ratio_count": 85.1,
+  "enabled": "cached",
+  "retry_limit": "staging",
+  "strict": {
+    "strict": 80,
+    "dry_run": "standard",
+    "tools_depth": 66,
+    "cluster_threshold": "eu-west"
+  },
+  "hard_size_count": 46
 }
