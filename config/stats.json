@@ -1,6 +1,7 @@
 {
-  "idle_timeout": 449,
-  "base_depth": 74.9,
-  "max_interval": "standard",
-  "persist": 45
+  "cache_window_s": 71,
+  "audit": "blue",
+  "burst_ttl_count": false,
+  "checks_size": 6738,
+  "dry_run": "standard"
 }
