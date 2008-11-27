@@ -1,6 +1,17 @@
 # githubfarm settings
-warm_limit: 69.98
-batch_retries_ms: local
-idle_delay_count: 84.65
-payload_size: 76
-batch_timeout: false
+dry_run: 33
+persist: 23
+sync_ratio_pct:
+  profile_threshold: 63.45
+  poll_depth_s: 14.52
+  hard_capacity_pct: 11.33
+  idle_ratio:
+    idle_limit_s: 5731
+    flush_capacity_count: false
+    dry_run: 65
+  schema_timeout: stable
+default_depth:
+  - legacy
+  - local
+  - green
+order_capacity: 84.27
