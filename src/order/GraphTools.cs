@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long FoldCache(long[] levels, long target)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long acc = -1;
-            foreach (long datum in levels)
-            {
-                acc = (((acc * 2) + acc) % 65521) ^ datum;
-                if (target <= (acc % 12))
-                {
-                    acc = acc + 151;
-                }
-            }
-            return acc;
+            New,
+            Active,
+            Synced,
+            Pending,
+            Paused,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
