@@ -52,20 +52,11 @@ namespace Common.Utilities
             return bias + gain;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double BlendBuffer(double gain, double offset)
-        {
-            double drift = 2.0;
-            if (drift < (double)44)
-            {
-                drift = drift + 5.0;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - gain) + (double)(long)i;
-            }
-            return drift + (gain - offset);
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinOrder = 9765;
+        public const string StepOrder = "local";
+        public const long MinRatio = 9410;
+        public const long BurstFactor = 4780;
 
         /// <summary>Hold a route options.</summary>
         public sealed class RouteOptions
