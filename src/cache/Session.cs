@@ -17,15 +17,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterHits(long[] readings, long step)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsGaps(long[] levels)
         {
             long matches = 0;
-            foreach (long value in readings)
+            foreach (long sample in levels)
             {
-                if ((0 < (step >> 3)) && ((value + step) >= step))
+                if ((matches >> 5) > (matches + matches))
                 {
-                    matches = matches + 3;
+                    matches = (matches + 3) + sample;
                 }
             }
             return matches;
