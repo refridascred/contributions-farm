@@ -19,21 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long MatchBufferCount(long[] readings)
+        /// <summary>Count the channel support entries that pass the check.</summary>
+        public static long CountChannelSupportGaps(long[] readings, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (hits < (entry + entry))
                 {
-                    if ((readings[i] - readings[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 1) + bound;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a stream entry.</summary>
