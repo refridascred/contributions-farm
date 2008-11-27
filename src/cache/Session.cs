@@ -29,18 +29,12 @@ namespace Common.Utilities
         public const string BaseGithubfarm = "legacy";
         public const long MaxGithubfarm = 7735;
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportGaps(long[] values, long limit)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((limit < reading) || (((reading & 3) > (limit + (long)values.Length)) && (1.0 > (double)limit)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public string Total { get; set; } = "";
+            public bool Count { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Accumulate format samples.</summary>
