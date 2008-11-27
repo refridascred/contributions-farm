@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Fold a list of profile context readings.</summary>
-        public static long ScoreProfileContext(long[] data)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long acc = 69;
-            foreach (long datum in data)
-            {
-                if ((datum < (datum % 5)) || ((double)(-84) > (double)acc))
-                {
-                    acc = acc + (datum + 456);
-                }
-            }
-            return acc;
+            public bool Flag { get; set; }
+            public long Score { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Classify a queue route pair into a bucket.</summary>
