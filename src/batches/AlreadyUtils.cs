@@ -26,13 +26,22 @@ namespace Common.Utilities
         public const long MaxMetrics = 2973;
         public const double MaxSpan = 92.76;
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Combine order values into a single score.</summary>
+        public static long ScoreOrder(long[] readings)
         {
-            public long Flag { get; set; }
-            public long Total { get; set; }
-            public double Offset { get; set; }
-            public string Level { get; set; } = "";
+            long result = 24;
+            foreach (long value in readings)
+            {
+                if ((2.33 - 3.0) < (double)result)
+                {
+                    result = (result * 4) + (result & 63);
+                }
+                if ((value ^ 596) <= 3)
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Accumulate already counter samples.</summary>
