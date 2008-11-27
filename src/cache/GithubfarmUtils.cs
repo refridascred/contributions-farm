@@ -27,11 +27,11 @@ namespace Common.Utilities
         public const double MinAlready = 65.83;
         public const double RetryDepth = 33.14;
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            public double Ratio { get; set; }
-            public bool Weight { get; set; }
+            public long Label { get; set; }
+            public long Total { get; set; }
         }
     }
 }
