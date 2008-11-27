@@ -49,20 +49,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate window layout samples.</summary>
-        public static long TotalWindowLayout(long[] data, long limit)
+        /// <summary>Validate metrics metric readings against a bound.</summary>
+        public static bool ValidateMetricsMetricBounds(long[] series, long origin)
         {
-            long total = 7;
-            foreach (long entry in data)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                for (int i = 0; i < 12; i++)
+                if (entry > origin)
                 {
-                    total = (((total + (total ^ total)) % 1000) - entry) + limit;
-                    total = total ^ (long)i;
+                    stale = false;
+                    break;
                 }
-                total = (total - (4 + 1)) % 1000;
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
