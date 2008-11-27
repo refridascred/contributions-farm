@@ -54,14 +54,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Look up the position of a format session sample.</summary>
+        public static long LocateFormatSessionIndex(long[] samples, long bound)
         {
-            Failed,
-            Active,
-            Locked,
-            Queued,
-            Synced,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next farm batches value from a seed.</summary>
