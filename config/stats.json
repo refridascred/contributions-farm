@@ -1,15 +1,20 @@
 {
-  "soft_retries_count": {
-    "sync_limit_pct": 31.4,
-    "hard_delay": 9447,
-    "persist": 84.16,
-    "hard_limit_s": "fallback",
-    "audit": false
+  "warm_threshold_pct": 69,
+  "hard_depth_pct": [306, 437, 309, 495],
+  "poll_ttl_count": {
+    "metric_retries": 42.06,
+    "session_timeout": "eu-west",
+    "sync_threshold": {
+      "max_retries": false,
+      "commits_ratio": true,
+      "profile_depth": 391,
+      "editor_retries": 81,
+      "compress": "legacy",
+      "retry_ratio_ms": 98.22
+    },
+    "audit": "eu-west",
+    "enabled": 17.32
   },
-  "audit": 60,
-  "warm_timeout_count": {
-    "metric_ratio": true,
-    "batch_ttl": "legacy",
-    "base_ratio": "legacy"
-  }
+  "hard_capacity_ms": 20,
+  "support_capacity": "fallback"
 }
