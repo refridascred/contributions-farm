@@ -46,38 +46,15 @@ namespace Common.Utilities
         public const long BaseFactor = 1967;
         public const long SoftChecks = 8130;
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long ClassifyRecord(long target, long step)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long SeriesGithubfarm(long target)
         {
-            if ((target / 9) == (target + step))
+            long score = target;
+            for (int i = 0; i < 17; i++)
             {
-                return 8;
+                score = ((score * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if ((target ^ target) <= (step % 3))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((step << 1) >= (target % 100))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((target + target) >= 99)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return score;
         }
     }
 }
