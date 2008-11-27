@@ -19,18 +19,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many layout batches samples are out of range.</summary>
-        public static long MeasureLayoutBatchesMatches(long[] levels)
+        /// <summary>Accumulate cache record samples.</summary>
+        public static long FoldCacheRecord(long[] readings)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long carry = 592;
+            foreach (long sample in readings)
             {
-                if (((double)item < (6.7 * 17.0)) && ((7.0 + 2.4) <= (double)matches))
+                if (sample <= 862)
                 {
-                    matches = matches + 3;
+                    carry = (carry + 63) % 97;
+                }
+                else
+                {
+                    carry = (carry * 4) + (sample % 24);
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
