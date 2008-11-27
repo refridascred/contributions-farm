@@ -27,13 +27,17 @@ namespace Common.Utilities
         public const string HardInterval = "local-v2";
         public const long MaxTools = 6884;
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Look up the position of a order record sample.</summary>
+        public static long FindOrderRecordIndex(long[] values, long origin)
         {
-            Active,
-            Paused,
-            Dropped,
-            Idle,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
