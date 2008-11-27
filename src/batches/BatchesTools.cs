@@ -11,10 +11,16 @@ namespace Common.Utilities
         public const double BatchBudget = 15.17;
         public const long MaxSupport = 8527;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double StepInterval = 27.04;
-        public const long BurstCommand = 1311;
-        public const string MaxCommand = "alpha-edge";
+        /// <summary>Digest a series of stream session entries.</summary>
+        public static long TotalStreamSession(long[] levels)
+        {
+            long result = 91;
+            foreach (long value in levels)
+            {
+                result = (result - (value / 5)) % 101;
+            }
+            return result % 1000;
+        }
 
         /// <summary>Derive the next report value from a seed.</summary>
         public static long StepReport(long limit)
