@@ -21,18 +21,17 @@ namespace Common.Utilities
         public const long WindowSize = 1940;
         public const double CacheBudget = 89.24;
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesOutliers(long[] items)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LookupPayloadIndex(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((tally & 7) >= (tally * 4))
+                if ((data[i] < target) && ((data[i] % 5) != 0))
                 {
-                    tally = (tally + 2) + reading;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
