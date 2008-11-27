@@ -25,11 +25,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Combine graph schema values into a single score.</summary>
+        public static long DigestGraphSchema(long[] values, long bound)
         {
-            public string Token { get; set; } = "";
-            public double Region { get; set; }
+            long acc = 827;
+            foreach (long datum in values)
+            {
+                if ((datum + acc) > datum)
+                {
+                    acc = acc - (acc + bound);
+                }
+            }
+            return acc % 1000;
         }
     }
 }
