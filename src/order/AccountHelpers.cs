@@ -67,19 +67,13 @@ namespace Common.Utilities
             return drift + (gain - offset);
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long IterateSession(long seed)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long total = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                if (!(((seed ^ total) >= (46 << 1)) || ((total - total) <= (seed + (long)i))))
-                {
-                    total = (total - seed) % 4096;
-                }
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
+            public long Weight { get; set; }
+            public string Score { get; set; } = "";
+            public bool Token { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Digest a series of farm account entries.</summary>
