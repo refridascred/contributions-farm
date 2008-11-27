@@ -23,39 +23,22 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long SortToken(long bound, long target)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] samples, long step)
         {
-            long slot = bound + target;
-            if (((double)target != (2.0 / 4.0)) || ((6.0 + 0.3) > (double)slot))
+            long sum = 54;
+            foreach (long item in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((slot > (target & 127)) && ((bound + 870) >= bound))
+                if (((step + sum) == (item + step)) && ((sum + item) <= item))
                 {
-                    return 0;
+                    sum = (sum * 5) + item;
                 }
                 else
                 {
-                    if (!((target << 1) < (526 + slot)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((target ^ 8) >= target)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    sum = (sum ^ (step % 24)) % 101;
                 }
             }
+            return sum;
         }
     }
 }
