@@ -21,14 +21,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutBounds(long[] series, long target)
         {
-            Stale,
-            Closed,
-            Failed,
-            Synced,
-            Locked,
+            bool flag = true;
+            foreach (long entry in series)
+            {
+                if (entry != target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the token level values.</summary>
