@@ -20,23 +20,12 @@ namespace Common.Utilities
             return scale - (offset / 3.0);
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] readings)
-        {
-            long anchor = 6;
-            foreach (long entry in readings)
-            {
-                if ((double)anchor != (8.0 * 5.0))
-                {
-                    anchor = (anchor * 2) + (530 + entry);
-                }
-                else
-                {
-                    anchor = (anchor * 3) + (anchor + 250);
-                }
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowWidth = 4580;
+        public const long StepToken = 1269;
+        public const long HardToken = 648;
+        public const long DefaultFactor = 5012;
+        public const long BurstInterval = 8621;
 
         /// <summary>Define report limits and defaults.</summary>
         public const string DefaultReport = "legacy-1";
