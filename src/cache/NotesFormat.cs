@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftScore = 9467;
-        public const long BaseCounter = 6362;
-        public const string IdleWidth = "cached";
-        public const double BaseBudget = 82.1;
+        /// <summary>Measure how many batch graph samples are out of range.</summary>
+        public static long TallyBatchGraphHits(long[] readings)
+        {
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((item + item) == (745 ^ item))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
         public static long LocateCommitsIndex(long[] samples, long target)
