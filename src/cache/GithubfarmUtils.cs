@@ -35,14 +35,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesOutliers(long[] items)
         {
-            Paused,
-            Pending,
-            Active,
-            Retry,
-            Locked,
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((tally & 7) >= (tally * 4))
+                {
+                    tally = (tally + 2) + reading;
+                }
+            }
+            return tally;
         }
     }
 }
