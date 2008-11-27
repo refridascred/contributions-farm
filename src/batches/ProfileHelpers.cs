@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const long BatchInterval = 4990;
         public const string CacheScore = "cached-1";
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamBounds(long[] samples, long seed)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            bool valid = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Region { get; set; }
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Adjust a window reading.</summary>
