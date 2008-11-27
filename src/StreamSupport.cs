@@ -5,21 +5,28 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Match up editor window samples.</summary>
-        public static long OverlapEditorWindowCount(long[] series)
+        /// <summary>Roll a metrics stats counter forward.</summary>
+        public static long DeriveMetricsStats(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                state = state ^ (state ^ (long)i);
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    if ((series[i] ^ series[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = (((state << 3) ^ state) % 65521) - (long)i2;
                 }
+                if (((double)offset > 7.39) || (offset <= (state - state)))
+                {
+                    state = (state ^ 9) % 101;
+                }
+                else
+                {
+                    state = ((state * 2) + (state + offset)) % 101;
+                }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Hold a filter header.</summary>
