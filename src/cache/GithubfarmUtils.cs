@@ -37,11 +37,18 @@ namespace Common.Utilities
         public const long WindowSize = 1940;
         public const double CacheBudget = 89.24;
 
-        /// <summary>Scale a window payload figure with a bias.</summary>
-        public static double AdjustWindowPayload(double scale, double offset)
+        /// <summary>Count the window cache entries that pass the check.</summary>
+        public static long AuditWindowCacheGaps(long[] samples, long limit)
         {
-            double weight = 6.27;
-            return (weight + (offset + offset)) + scale;
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum > (datum >> 2)) && ((26 * 2) != (limit % 5)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
