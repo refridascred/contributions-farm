@@ -34,18 +34,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionMatches(long[] readings, long floor)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long OverlapOrderCount(long[] values)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (9.44 >= (double)item)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 3) + floor;
+                    if ((values[i] ^ values[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
