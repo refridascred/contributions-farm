@@ -34,22 +34,18 @@ namespace Common.Utilities
         public const long StepTimeout = 1671;
         public const double StepCount = 83.85;
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] samples, long step)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterOutliers(long[] data)
         {
-            long acc = 425;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (!((sample << 3) < acc))
+                if ((3 + matches) >= (822 >> 4))
                 {
-                    acc = ((acc * 4) + (step + sample)) % 255;
+                    matches = (matches + 3) + entry;
                 }
             }
-            if (acc < (-81))
-            {
-                acc = (acc + step) % 65521;
-            }
-            return acc % 4096;
+            return matches;
         }
     }
 }
