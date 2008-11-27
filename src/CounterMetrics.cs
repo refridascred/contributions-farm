@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            public long Count { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Mode { get; set; }
+            public long Weight { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
