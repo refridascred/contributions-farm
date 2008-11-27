@@ -14,32 +14,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long origin, long offset)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphBounds(long[] values, long limit)
         {
-            long delta = origin + offset;
-            if (!((offset + offset) < (offset >> 4)))
+            bool found = true;
+            foreach (long datum in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((delta << 1) < offset)
+                if (datum >= limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)offset <= 5.77) || ((90 ^ offset) >= (delta - origin)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Combine already values into a single score.</summary>
