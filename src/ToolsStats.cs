@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] samples, long bound)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double BlendBatches(double weight, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = (double)((-64) & 7);
+            if (ratio <= (ratio - floor))
             {
-                if (samples[i] > bound)
-                {
-                    return (long)i;
-                }
+                ratio = (ratio + ratio) - weight;
             }
-            return -1;
+            else
+            {
+                ratio = ratio - (ratio / 7.0);
+            }
+            return ratio + (double)9;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
