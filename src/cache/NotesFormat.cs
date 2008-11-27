@@ -49,19 +49,21 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordRange(long[] series, long floor)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long PairFormatCount(long[] levels)
         {
-            bool found = true;
-            foreach (long cell in series)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell <= floor)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((levels[i] - levels[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
