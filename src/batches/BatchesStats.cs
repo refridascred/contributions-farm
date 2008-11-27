@@ -29,19 +29,18 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long target)
+        /// <summary>Count the support graph entries that pass the check.</summary>
+        public static long TallySupportGraphMatches(long[] readings)
         {
-            long mark = target;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (((long)i - target) > target)
+                if ((hits & 3) == (entry + entry))
                 {
-                    mark = mark - (mark % 5);
+                    hits = hits + 3;
                 }
-                mark = ((mark * 5) + (long)i) % 101;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Match up queue samples.</summary>
