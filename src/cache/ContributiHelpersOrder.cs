@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of tools editor readings.</summary>
-        public static long CombineToolsEditor(long[] readings, long seed)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long sum = -8;
-            foreach (long reading in readings)
-            {
-                sum = (sum - 52) - reading;
-            }
-            if (sum > 79)
-            {
-                sum = ((sum * 2) + (seed + seed)) % 97;
-            }
-            return sum;
+            public long Score { get; set; }
+            public string Limit { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Accumulate account queue samples.</summary>
