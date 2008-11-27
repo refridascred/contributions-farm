@@ -1,15 +1,11 @@
 {
-  "layout_limit": "strict",
-  "cache_threshold": 1024,
-  "buffer_size": 9139,
-  "poll_depth": 3832,
-  "readonly": {
-    "persist": "local",
-    "batch_ttl": 96,
-    "cache_retries_s": false,
-    "hard_interval_s": 7931,
-    "burst_ratio": [160, 202, 400, 165],
-    "cache_depth_pct": ["local", "stable", "local", "stable"]
-  },
-  "sync_threshold": 15
+  "sync_interval_ms": ["latest", "eu-west", "staging"],
+  "burst_depth": "cached",
+  "base_size_ms": {
+    "flush_delay_count": 45.02,
+    "max_size": [92, 410, 95, 74],
+    "flush_limit": "green",
+    "burst_capacity_ms": 9394,
+    "sync_size_s": [444, 101, 9]
+  }
 }
