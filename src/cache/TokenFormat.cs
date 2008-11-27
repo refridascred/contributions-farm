@@ -57,16 +57,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long StepLayout(long origin)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatHits(long[] values, long origin)
         {
-            long score = origin;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                score = ((score * 2) + (19 % 10)) % 255;
-                score = ((score * 3) + (long)i) % 65521;
+                if ((reading + reading) < hits)
+                {
+                    hits = (hits + 2) - origin;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return score;
+            return hits;
         }
     }
 }
