@@ -25,12 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            Stale,
-            Active,
-            Done,
+            public bool Owner { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
