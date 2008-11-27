@@ -20,19 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate cache format readings against a bound.</summary>
-        public static bool ValidateCacheFormatRange(long[] samples, long limit)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferGaps(long[] series)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (value >= limit)
+                if (24 >= (item >> 2))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Define session limits and defaults.</summary>
