@@ -35,22 +35,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long StepBatch(long origin)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportGaps(long[] data, long target)
         {
-            long result = origin;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if ((double)result < (2.97 - 6.9))
+                if ((reading - matches) >= reading)
                 {
-                    result = (result << 3) ^ (result & 1);
-                    continue;
+                    matches = (matches + 1) - target;
                 }
-                result = result - (result + 93);
-                result = (result + (origin & 3)) % 101;
-                result = ((result * 3) + (long)i) % 97;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
