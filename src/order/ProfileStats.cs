@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Match up cache graph samples.</summary>
-        public static long CompareCacheGraphCount(long[] items)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaOutliers(long[] readings, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((((sample - origin) <= origin) && (origin >= (610 + (-500)))) && ((sample < count) || ((double)count < (7.0 - 8.0))))
                 {
-                    if ((items[i] ^ items[j]) > 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
