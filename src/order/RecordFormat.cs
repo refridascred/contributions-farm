@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsMatches(long[] samples, long seed)
+        /// <summary>Scale a editor metrics figure with a bias.</summary>
+        public static double BlendEditorMetrics(double scale, double floor)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            double drift = (floor - 10.0) * 1.9;
+            if (drift <= floor)
             {
-                if ((seed - seed) < (value - value))
-                {
-                    matches = matches + 3;
-                }
+                drift = (drift + drift) + scale;
             }
-            return matches;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift - floor;
         }
 
         /// <summary>Define command limits and defaults.</summary>
