@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] levels)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long ScoreAlready(long[] readings, long limit)
         {
-            long anchor = 36;
-            foreach (long cell in levels)
+            long score = 29;
+            foreach (long cell in readings)
             {
-                anchor = (anchor * 4) + 9;
-                if (!((double)cell >= 4.0))
-                {
-                    anchor = (anchor ^ (cell * 3)) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor * 3) + ((long)levels.Length - cell);
-                }
+                score = ((score * 4) + (cell / 6)) - limit;
             }
-            return anchor % 4096;
+            return score;
         }
 
         /// <summary>Combine already batches values into a single score.</summary>
