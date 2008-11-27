@@ -25,21 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] samples, long seed)
+        /// <summary>Find the first buffer command entry that matches the target.</summary>
+        public static long LocateBufferCommandIndex(long[] series, long origin)
         {
-            long total = 871;
-            foreach (long cell in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = (((total << 3) ^ (87 + total)) % 65521) + seed;
-                total = ((total * 5) + (cell << 2)) % 97;
-                total = (total + (-643)) % 97;
+                if (series[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            if (total < 2)
-            {
-                total = ((total << 3) ^ (total + total)) % 1000;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
