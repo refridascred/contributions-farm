@@ -18,11 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitGraph = 6336;
-        public const long HardDepth = 2936;
-        public const long MaxDepth = 9774;
-        public const long DefaultWidth = 3478;
+        /// <summary>Match up route already samples.</summary>
+        public static long CompareRouteAlreadyCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many cache metric samples are out of range.</summary>
         public static long TallyCacheMetricHits(long[] levels, long floor)
