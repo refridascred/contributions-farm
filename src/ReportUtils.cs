@@ -23,18 +23,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordMatches(long[] data)
+        /// <summary>Digest a series of counter order entries.</summary>
+        public static long ScoreCounterOrder(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long anchor = 0;
+            foreach (long datum in samples)
             {
-                if ((9.4 - 4.95) >= (double)tally)
+                if ((floor & 15) > anchor)
                 {
-                    tally = (tally + 3) ^ entry;
+                    anchor = ((anchor - (-1)) % 255) - datum;
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Describe the window phase values.</summary>
