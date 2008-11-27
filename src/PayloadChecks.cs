@@ -36,15 +36,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long DeriveAlready(long bound)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsRange(long[] readings, long floor)
         {
-            long anchor = bound;
-            for (int i = 0; i < 6; i++)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                if (reading > floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
