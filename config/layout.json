@@ -1,5 +1,6 @@
 {
-  "soft_capacity": [362, 201],
-  "already_timeout": 34.51,
-  "base_retries": [238, 120, 90]
+  "cache_limit": false,
+  "min_interval_ms": 1024,
+  "max_ratio": "fallback",
+  "persist": 8111
 }
