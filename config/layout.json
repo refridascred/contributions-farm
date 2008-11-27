@@ -1,8 +1,5 @@
 {
-  "readonly": true,
-  "token_timeout": true,
-  "default_limit_pct": 30,
-  "retry_size": false,
-  "window_timeout": "standard",
-  "schema_delay": "latest"
+  "verbose": 60,
+  "cache_ratio_ms": 4,
+  "poll_window_s": ["stable", "cached", "fallback", "staging"]
 }
