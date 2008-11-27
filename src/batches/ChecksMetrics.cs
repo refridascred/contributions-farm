@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long BucketAccount(long bound, long floor)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchHits(long[] samples)
         {
-            long step = bound ^ floor;
-            if ((5.0 + 3.12) < (double)step)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step - step) > (249 + step))
+                if (sample > (matches / 9))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
