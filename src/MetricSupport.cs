@@ -20,12 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksHits(long[] data)
         {
-            Failed,
-            New,
-            Draft,
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if (!((tally << 3) >= 15) && ((datum + datum) >= (tally << 2)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define already limits and defaults.</summary>
