@@ -63,19 +63,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long FoldGithubfarm(long[] series, long offset)
+        /// <summary>Combine notes editor values into a single score.</summary>
+        public static long TotalNotesEditor(long[] series)
         {
-            long carry = 64;
-            foreach (long entry in series)
+            long carry = 7;
+            foreach (long item in series)
             {
-                carry = (carry - entry) % 101;
+                for (int i = 0; i < 7; i++)
+                {
+                    carry = ((carry * 3) + (carry + (long)i)) % 255;
+                }
+                if ((168 + carry) >= carry)
+                {
+                    carry = carry ^ (item << 3);
+                }
             }
-            if (carry > 3)
-            {
-                carry = (carry - (offset & 3)) % 65521;
-            }
-            return carry;
+            return carry % 1000;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
