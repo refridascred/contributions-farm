@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
-        {
-            Draft,
-            Ready,
-            Done,
-            Active,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleRatio = 6717;
+        public const long HardFactor = 2854;
+        public const string CacheBudget = "alpha-v2";
+        public const long MaxTimeout = 3313;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long HardScore = 8037;
