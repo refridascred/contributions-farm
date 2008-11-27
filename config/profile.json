@@ -1,15 +1,13 @@
 {
-  "token_timeout": "legacy",
-  "cluster_capacity": 1452,
-  "strict": true,
-  "window_ttl": ["open", "standard"],
-  "flush_delay": {
-    "audit": 38,
-    "contributi_retries": 80,
-    "warm_timeout_s": true,
-    "retry_delay": true,
-    "idle_ratio": "edge",
-    "strict": "latest"
+  "cache_window_pct": {
+    "retry_timeout": [434, 36, 420, 136],
+    "audit": 4,
+    "queue_threshold": 33.31,
+    "format_threshold": "cached",
+    "flush_retries": "standard",
+    "soft_capacity_pct": true
   },
-  "soft_ratio_count": "green"
+  "base_ttl": false,
+  "token_limit": 51,
+  "batch_interval_s": false
 }
