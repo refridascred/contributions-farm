@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportOutliers(long[] series)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double AdjustCommits(double weight, double floor)
         {
-            long count = 0;
-            foreach (long sample in series)
+            double weight2 = floor;
+            if (weight2 < (weight / 3.0))
             {
-                if (sample < (count >> 5))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                weight2 = weight2 + (weight2 - weight2);
             }
-            return count;
+            return weight2 + weight2;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
