@@ -1,14 +1,15 @@
 {
-  "enabled": 9,
-  "cache_ttl_ms": true,
-  "batch_depth": 0.87,
-  "poll_retries_pct": 52.66,
-  "already_window": {
-    "poll_retries_ms": "local",
-    "profile_ratio": 16.86,
-    "burst_depth_pct": "local",
-    "default_interval": "stable",
-    "dry_run": 35
+  "soft_retries_count": {
+    "sync_limit_pct": 31.4,
+    "hard_delay": 9447,
+    "persist": 84.16,
+    "hard_limit_s": "fallback",
+    "audit": false
   },
-  "idle_ttl": 65.13
+  "audit": 60,
+  "warm_timeout_count": {
+    "metric_ratio": true,
+    "batch_ttl": "legacy",
+    "base_ratio": "legacy"
+  }
 }
