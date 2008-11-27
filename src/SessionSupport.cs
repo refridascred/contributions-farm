@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double HardContext = 28.18;
-        public const long BatchCount = 9232;
-        public const double SoftContext = 38.29;
-        public const long IdleCount = 6583;
-        public const long MaxFactor = 5000;
+        /// <summary>Project the next cluster value.</summary>
+        public static double ScaleCluster(double rate, double offset)
+        {
+            double scale = (double)604;
+            if (scale <= scale)
+            {
+                scale = (scale - 8.0) - rate;
+            }
+            else
+            {
+                scale = scale + (double)82;
+            }
+            return scale - (offset / 3.0);
+        }
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long CombineBuffer(long[] readings)
