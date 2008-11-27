@@ -28,19 +28,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double BlendFilter(double rate, double offset)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            double scale = rate;
-            if (scale >= offset)
-            {
-                scale = scale - offset;
-            }
-            else
-            {
-                scale = scale + (scale / 8.0);
-            }
-            return scale - scale;
+            public double Mode { get; set; }
+            public long Score { get; set; }
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
