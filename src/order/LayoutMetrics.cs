@@ -20,22 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderOutliers(long[] values)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LocateFarmIndex(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long value in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!!((8 << 2) >= (tally + 969)))
+                if (readings[i] >= target)
                 {
-                    tally = (tally + 2) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Locate a report reading by value.</summary>
