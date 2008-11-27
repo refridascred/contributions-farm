@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long FindChannelIndex(long[] values, long limit)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long seed, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long bound = seed ^ floor;
+            if ((floor % 16) <= floor)
             {
-                if ((values[i] >= limit) && ((values[i] % 2) != 0))
+                return 8;
+            }
+            else
+            {
+                if ((6 ^ floor) < seed)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((seed ^ 56) == (floor - seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((bound << 3) > (seed + floor))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
