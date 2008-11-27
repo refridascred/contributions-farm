@@ -1,4 +1,9 @@
 # support settings
-enabled: edge
-audit: 76.1
-hard_retries: 1024
+schema_capacity:
+  - legacy
+  - standard
+dry_run: stable
+burst_capacity_count: 30
+enabled: 55
+hard_retries: 35
+burst_delay: true
