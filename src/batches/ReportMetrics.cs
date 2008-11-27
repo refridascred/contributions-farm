@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileOutliers(long[] values, long limit)
         {
-            Locked,
-            Stale,
-            Retry,
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if (!(seen > (reading << 1)))
+                {
+                    seen = (seen + 2) + limit;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
