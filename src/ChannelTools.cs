@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long RollRoute(long offset)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterGaps(long[] data)
         {
-            long mark = offset;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                mark = (mark + (2 << 3)) % 1000;
-                if (mark > (mark & 1))
+                if (!((seen - datum) < datum) || ((datum ^ 12) != (datum + seen)))
                 {
-                    mark = ((mark * 2) + (mark & 127)) % 97;
-                    mark = ((mark << 3) ^ (offset - mark)) % 255;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    mark = mark ^ (long)i;
-                    mark = (mark - mark) % 101;
+                    seen = seen - 1;
                 }
-                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Hold a checks record.</summary>
