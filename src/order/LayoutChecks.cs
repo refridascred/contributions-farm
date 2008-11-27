@@ -11,18 +11,13 @@ namespace Common.Utilities
         public const string CacheBudget = "alpha-v2";
         public const long MaxTimeout = 3313;
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionHits(long[] series)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if (!((matches / 7) > (reading >> 5)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Failed,
+            Draft,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Hold a route entry.</summary>
