@@ -29,15 +29,11 @@ namespace Common.Utilities
         public const string BaseGithubfarm = "legacy";
         public const long MaxGithubfarm = 7735;
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long IterateCommits(long bound)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long carry = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 65521;
-            }
-            return carry;
+            public string Rank { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
