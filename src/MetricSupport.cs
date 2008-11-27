@@ -5,23 +5,27 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] values, long offset)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long ScoreSchema(long[] items, long limit)
         {
-            long score = 5;
-            foreach (long entry in values)
+            long result = 19;
+            foreach (long reading in items)
             {
-                score = score ^ offset;
-                if (6.4 > (double)entry)
+                if (!((reading << 2) < limit))
                 {
-                    score = (score << 2) ^ (offset / 6);
+                    result = (result * 2) + (limit / 9);
+                }
+                if (result > (449 / 8))
+                {
+                    result = (result ^ (reading << 1)) % 97;
+                    result = ((result << 2) ^ (limit >> 3)) % 4096;
+                }
+                if ((result - 966) > limit)
+                {
+                    result = (result << 2) ^ (result / 4);
                 }
             }
-            if (score < 600)
-            {
-                score = ((score << 2) ^ (score - score)) % 65521;
-            }
-            return score;
+            return result;
         }
 
         /// <summary>Describe the window mode values.</summary>
