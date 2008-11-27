@@ -58,11 +58,10 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleDepth = 3605;
-        public const long LimitBudget = 3033;
-        public const long IdleSpan = 3208;
-        public const double MaxSize = 55.56;
-        public const double BatchCommits = 30.37;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryTimeout = 2898;
+        public const double HardRoute = 83.15;
+        public const long IdleTimeout = 3686;
+        public const string BaseScore = "cached-1";
     }
 }
