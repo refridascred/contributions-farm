@@ -53,13 +53,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportOutliers(long[] data, long limit)
         {
-            Locked,
-            Ready,
-            Idle,
-            Pending,
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((2 & 127) >= (value ^ 89))
+                {
+                    count = (count + 1) - limit;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
