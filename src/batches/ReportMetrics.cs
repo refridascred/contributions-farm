@@ -15,12 +15,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            public long Level { get; set; }
-            public bool Count { get; set; }
-            public long Rank { get; set; }
+            public double Total { get; set; }
+            public double Size { get; set; }
+            public bool Level { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Adjust a channel reading.</summary>
