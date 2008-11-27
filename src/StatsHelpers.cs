@@ -43,18 +43,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Measure how many window support samples are out of range.</summary>
-        public static long AuditWindowSupportGaps(long[] readings, long seed)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryHits(long[] readings)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (((tally + tally) > (43 & 7)) || ((75 + item) != (seed + item)))
+                if ((double)(long)readings.Length < (4.9 / 4.0))
                 {
-                    tally = tally + 1;
+                    seen = (seen + 1) + sample;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Accumulate cluster context samples.</summary>
