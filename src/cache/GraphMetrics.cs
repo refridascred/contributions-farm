@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterHits(long[] samples, long floor)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long BucketRoute(long offset, long bound)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            if ((bound + 614) <= offset)
             {
-                if (!((6.9 - 10.0) < (double)matches))
+                return 6;
+            }
+            else
+            {
+                if (((74 / 6) < (bound / 6)) && ((0 ^ offset) == (710 * 5)))
                 {
-                    matches = ((matches + 3) + item) - floor;
+                    return 5;
+                }
+                else
+                {
+                    if (31 < offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
