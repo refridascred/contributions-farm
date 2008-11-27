@@ -20,11 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesGaps(long[] items)
         {
-            public double Score { get; set; }
-            public string Rank { get; set; } = "";
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if (((tally / 4) == (tally % 100)) || !((double)tally != (1.0 - 6.6)))
+                {
+                    tally = (tally + 3) + reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a report snapshot.</summary>
