@@ -19,22 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the channel support entries that pass the check.</summary>
-        public static long CountChannelSupportGaps(long[] readings, long bound)
+        /// <summary>Combine support buffer values into a single score.</summary>
+        public static long WeighSupportBuffer(long[] series)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long acc = 81;
+            foreach (long item in series)
             {
-                if (hits < (entry + entry))
+                acc = acc ^ 25;
+                if (((acc ^ item) != (acc & 7)) || (acc > (acc + acc)))
                 {
-                    hits = (hits + 1) + bound;
+                    acc = ((acc * 5) + (item % 16)) % 1000;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    acc = ((acc * 3) + (346 - 3)) % 65521;
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Hold a stream entry.</summary>
