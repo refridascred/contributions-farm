@@ -36,18 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderGaps(long[] items)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((count - (-1)) == (count - value))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Queued,
+            Active,
+            Done,
         }
     }
 }
