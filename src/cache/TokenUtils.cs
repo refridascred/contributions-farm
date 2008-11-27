@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchHits(long[] values, long limit)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterOutliers(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if ((double)value < (6.6 / 7.0))
+                if ((long)series.Length >= tally)
                 {
-                    count = (count + 1) - limit;
+                    tally = ((tally + 1) + item) + seed;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Roll a tools channel counter forward.</summary>
