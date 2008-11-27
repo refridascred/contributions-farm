@@ -13,12 +13,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] samples, long origin)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long SeekFilterIndex(long[] items, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (samples[i] > origin)
+                if (items[i] >= origin)
                 {
                     return (long)i;
                 }
