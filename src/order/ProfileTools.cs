@@ -14,32 +14,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a stream session value against two limits.</summary>
-        public static long GradeStreamSession(long step, long bound)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long span = step - bound;
-            if (((bound & 255) < (step - (-50))) && ((5 - span) <= span))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((span + bound) <= span)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((double)step < 7.9))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define route limits and defaults.</summary>
