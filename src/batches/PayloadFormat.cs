@@ -36,13 +36,17 @@ namespace Common.Utilities
             return rate - (rate + bias);
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Locate a batch session reading by value.</summary>
+        public static long SeekBatchSessionIndex(long[] samples, long target)
         {
-            Active,
-            Paused,
-            Locked,
-            Pending,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > target) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
