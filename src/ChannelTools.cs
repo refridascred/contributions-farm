@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] series, long limit)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long mark = 770;
-            foreach (long sample in series)
-            {
-                if ((double)(long)series.Length > (4.9 / 3.0))
-                {
-                    mark = (((mark + (mark % 10)) % 1000) - sample) - limit;
-                }
-            }
-            return mark;
+            public bool Offset { get; set; }
+            public long Flag { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
