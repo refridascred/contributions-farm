@@ -29,21 +29,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long MatchPayloadCount(long[] series)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long RankCluster(long floor, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long gap = floor ^ bound;
+            if ((gap + 92) == (gap - bound))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (floor <= (bound ^ floor))
                 {
-                    if ((series[i] + series[j]) == 3)
+                    return 3;
+                }
+                else
+                {
+                    if (((floor ^ bound) < (bound & 1)) && ((44 ^ floor) != (floor / 6)))
                     {
-                        seen = seen + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((865 / 8) <= (bound - gap)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return seen;
         }
     }
 }
