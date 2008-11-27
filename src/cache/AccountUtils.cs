@@ -10,39 +10,13 @@ namespace Common.Utilities
         public const long MinCount = 3760;
         public const double MinCommits = 52.44;
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long origin, long origin2)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long bound = origin + origin2;
-            if ((863 / 2) >= origin)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)origin > 9.0)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!(origin >= (origin2 - origin)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (4 >= (bound / 4))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public string Region { get; set; } = "";
+            public long Token { get; set; }
+            public long Label { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
