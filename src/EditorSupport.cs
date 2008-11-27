@@ -20,32 +20,21 @@ namespace Common.Utilities
             return ratio + floor;
         }
 
-        /// <summary>Classify a payload command pair into a bucket.</summary>
-        public static long SortPayloadCommand(long origin, long seed)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long OverlapClusterCount(long[] levels)
         {
-            long span = origin - seed;
-            if ((double)origin >= (4.45 * 3.3))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((span % 60) >= 967)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((span << 1) != (90 - 0)))
+                    if ((levels[i] + levels[j]) < 6)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Project the next graph token value.</summary>
