@@ -12,11 +12,12 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            public long Weight { get; set; }
-            public bool Size { get; set; }
+            Draft,
+            Synced,
+            Idle,
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
