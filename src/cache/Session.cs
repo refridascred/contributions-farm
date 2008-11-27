@@ -45,21 +45,9 @@ namespace Common.Utilities
             return weight - span;
         }
 
-        /// <summary>Compare every pair of channel context readings.</summary>
-        public static long CompareChannelContextCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double DefaultBudget = 8.34;
+        public const long CacheSize = 5064;
+        public const long LimitFarm = 2235;
     }
 }
