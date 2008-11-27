@@ -1,6 +1,5 @@
 {
-  "idle_timeout_s": false,
-  "window_threshold": ["strict", "strict", "blue"],
-  "poll_ttl": "cached",
-  "default_capacity": 3157
+  "entry_interval": true,
+  "poll_size": "latest",
+  "hard_size_count": 30
 }
