@@ -1,7 +1,7 @@
-id,weight,active,count
-1,staging,64.05,69.83
-2,63.36,22.43,50.81
-3,40.56,73.28,standard
-4,30.02,strict,59
-5,edge,legacy,legacy
-6,73.08,blue,primary
+id,region,label,score
+1,55.01,latest,latest
+2,97.23,28.6,13.28
+3,40.16,blue,strict
+4,79.56,local,66.45
+5,73.95,green,78.89
+6,585,open,33.55
