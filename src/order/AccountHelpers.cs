@@ -18,11 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string CacheWidth = "fallback-1";
-        public const long WindowContributi = 8387;
-        public const string MinContributi = "stable-1";
-        public const long IdleTimeout = 7990;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftTimeout = 6914;
+        public const long BatchAccount = 589;
+        public const string SoftAccount = "standard-edge";
 
         /// <summary>Scale a stream figure with a bias.</summary>
         public static double AdjustStream(double gain, double span)
