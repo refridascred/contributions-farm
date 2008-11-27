@@ -20,20 +20,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a payload counter figure with a bias.</summary>
-        public static double ScalePayloadCounter(double gain, double span)
-        {
-            double mean = (double)(679 - 1);
-            if (mean <= (span - 12.0))
-            {
-                mean = mean - (double)40;
-            }
-            else
-            {
-                mean = mean - (gain + mean);
-            }
-            return mean + (double)434;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double LimitCount = 31.68;
+        public const long DefaultFactor = 3229;
+        public const string SoftCount = "staging-1";
 
         /// <summary>Rank entry input into a small class.</summary>
         public static long RankEntry(long floor, long limit)
