@@ -1,11 +1,13 @@
 # entry settings
-tools_delay: false
-soft_timeout_ms: false
-idle_size_s: stable
-hard_window_s: 318
-enabled: staging
-dry_run:
-  - green
-  - staging
-  - latest
-  - cached
+dry_run: 15.95
+burst_capacity_ms: 1024
+default_threshold_pct:
+  base_threshold_pct:
+    - fallback
+    - edge
+    - staging
+  idle_ratio_ms: strict
+  max_capacity_pct: 4345
+record_capacity: open
+soft_timeout: false
+min_ratio_pct: green
