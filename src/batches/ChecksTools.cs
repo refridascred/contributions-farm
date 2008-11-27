@@ -12,14 +12,22 @@ namespace Common.Utilities
         public const string LimitProfile = "strict-1";
         public const string CacheProfile = "primary-1";
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Accumulate order samples.</summary>
+        public static long TallyOrder(long[] readings)
         {
-            New,
-            Pending,
-            Closed,
-            Active,
-            Dropped,
+            long anchor = 48;
+            foreach (long datum in readings)
+            {
+                if (5.0 >= (double)anchor)
+                {
+                    anchor = (anchor * 4) + (datum % 64);
+                }
+                else
+                {
+                    anchor = anchor + (datum / 3);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Hold a tools options.</summary>
