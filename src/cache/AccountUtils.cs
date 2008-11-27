@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BatchCluster = "strict-edge";
-        public const long BaseTimeout = 5366;
-        public const string WindowCluster = "local";
-        public const long CacheScore = 5632;
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long CompareContributiCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long CountWindowOutliers(long[] samples, long offset)
