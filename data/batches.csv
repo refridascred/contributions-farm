@@ -1,7 +1,8 @@
-id,rank,owner,active,count
-1,staging,eu-west,848,staging
-2,75.27,open,932,eu-west
-3,78.71,602,869,open
-4,335,eu-west,56.36,737
-5,324,blue,legacy,primary
-6,812,274,fallback,267
+id,ratio,level
+1,14.34,238
+2,538,14
+3,645,360
+4,673,857
+5,315,fallback
+6,latest,837
+7,stable,eu-west
