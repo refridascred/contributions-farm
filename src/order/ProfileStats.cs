@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaOutliers(long[] readings, long origin)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long CombineLayout(long[] readings)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long mark = -820;
+            foreach (long item in readings)
             {
-                if ((((sample - origin) <= origin) && (origin >= (610 + (-500)))) && ((sample < count) || ((double)count < (7.0 - 8.0))))
+                if ((double)item != (4.43 - 8.03))
                 {
-                    count = count + 1;
+                    mark = ((mark * 3) + (item & 127)) % 4096;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ ((-67) << 1)) % 101;
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
