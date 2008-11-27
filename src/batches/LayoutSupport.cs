@@ -19,22 +19,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate cache record samples.</summary>
-        public static long FoldCacheRecord(long[] readings)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long carry = 592;
-            foreach (long sample in readings)
-            {
-                if (sample <= 862)
-                {
-                    carry = (carry + 63) % 97;
-                }
-                else
-                {
-                    carry = (carry * 4) + (sample % 24);
-                }
-            }
-            return carry;
+            Closed,
+            Pending,
+            Retry,
+            Locked,
         }
 
         /// <summary>Describe the report state values.</summary>
