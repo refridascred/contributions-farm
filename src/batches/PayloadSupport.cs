@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyHits(long[] values)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long PairRouteCount(long[] series)
         {
             long matches = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((datum >> 1) < (datum % 5))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((series[i] ^ series[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
