@@ -20,20 +20,11 @@ namespace Common.Utilities
             return load - offset;
         }
 
-        /// <summary>Fold a list of session profile readings.</summary>
-        public static long TallySessionProfile(long[] values, long offset)
-        {
-            long state = 4;
-            foreach (long value in values)
-            {
-                state = (((state << 3) ^ (state + offset)) % 101) + value;
-            }
-            if (state < 968)
-            {
-                state = (state - state) % 1000;
-            }
-            return state % 65521;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardRatio = 8290;
+        public const double BaseBuffer = 40.45;
+        public const long MinScore = 8173;
+        public const double BurstFactor = 7.1;
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long DigestBuffer(long[] values, long origin)
