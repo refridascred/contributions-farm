@@ -21,19 +21,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutBounds(long[] series, long target)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            bool flag = true;
-            foreach (long entry in series)
-            {
-                if (entry != target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Rank { get; set; }
+            public bool Offset { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Compare every pair of already readings.</summary>
