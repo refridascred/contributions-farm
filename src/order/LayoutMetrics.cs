@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] items)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionMatches(long[] readings, long seed)
         {
-            long score = 36;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                score = (score ^ (entry % 7)) % 4096;
-                for (int i = 0; i < 10; i++)
+                if ((value ^ 223) <= (308 + value))
                 {
-                    score = (((score << 2) ^ (entry >> 5)) % 101) + (long)i;
-                }
-                if ((score << 2) <= score)
-                {
-                    score = score ^ (entry + score);
+                    tally = (tally + 2) + seed;
                 }
             }
-            return score % 97;
+            return tally;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
