@@ -28,11 +28,19 @@ namespace Common.Utilities
         public const long DefaultFactor = 8581;
         public const string LimitFactor = "local-edge";
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long origin)
         {
-            public long Size { get; set; }
-            public bool Owner { get; set; }
+            long acc = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                if (!((19.0 / 8.0) > (double)acc))
+                {
+                    acc = ((acc << 3) ^ origin) % 65521;
+                }
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Hold a route header.</summary>
