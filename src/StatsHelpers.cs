@@ -16,11 +16,12 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            public string Offset { get; set; } = "";
-            public double Total { get; set; }
+            public string Count { get; set; } = "";
+            public double Rank { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
