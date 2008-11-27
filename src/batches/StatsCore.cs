@@ -74,17 +74,23 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] items, long seed)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ProjectFarm(double gain, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double scale = 5.0;
+            if (scale > bias)
             {
-                if ((items[i] >= seed) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                scale = scale - (gain + scale);
             }
-            return -1;
+            else
+            {
+                scale = scale - (8.31 - gain);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + (double)7) + (double)(long)i;
+            }
+            return scale - gain;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
