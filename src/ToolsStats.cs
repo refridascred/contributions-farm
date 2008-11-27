@@ -32,39 +32,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long ClassifyBuffer(long bound, long floor)
+        /// <summary>Accumulate queue command samples.</summary>
+        public static long TallyQueueCommand(long[] values)
         {
-            long slot = bound + floor;
-            if (!((floor & 31) < floor))
+            long mark = 631;
+            foreach (long sample in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (floor < slot)
+                if ((double)95 != (double)sample)
                 {
-                    return 4;
+                    mark = (mark + (sample % 5)) % 65521;
                 }
-                else
+                if ((sample + 994) > (sample ^ (long)values.Length))
                 {
-                    if ((double)floor < 6.0)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((slot ^ floor) > (floor + 12))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    break;
                 }
             }
+            return mark % 97;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
