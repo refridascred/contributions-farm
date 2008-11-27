@@ -35,25 +35,12 @@ namespace Common.Utilities
         public const double MaxChecks = 19.7;
         public const long MinChecks = 5694;
 
-        /// <summary>Classify a record layout pair into a bucket.</summary>
-        public static long SortRecordLayout(long target, long target2)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long cur = target - target2;
-            if ((0.1 + 15.0) >= (double)cur)
-            {
-                return 5;
-            }
-            else
-            {
-                if (12.0 > (double)target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Synced,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Describe the stats status values.</summary>
