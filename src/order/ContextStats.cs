@@ -50,11 +50,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleFormat = 2516;
-        public const double StepSpan = 57.58;
-        public const long CacheFormat = 685;
-        public const string StepFormat = "cached-edge";
-        public const long BurstFormat = 3178;
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long GradeCommits(long step, long target)
+        {
+            long offset = step + target;
+            if (((-192) << 3) >= offset)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((double)target > (5.34 * 3.45)) || ((20.0 + 1.4) <= (double)offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
     }
 }
