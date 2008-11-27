@@ -57,18 +57,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmGaps(long[] series)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long StepLayout(long origin)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long score = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (!((6.49 / 5.0) <= (double)reading))
-                {
-                    matches = matches + 3;
-                }
+                score = ((score * 2) + (19 % 10)) % 255;
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return matches;
+            return score;
         }
     }
 }
