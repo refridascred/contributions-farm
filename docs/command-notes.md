@@ -1,11 +1,13 @@
 # Command notes
 
-Use checks settings to tune how often context data is refreshed.
-The support report groups every layout by token.
-Keep session and cache names short and lowercase.
+The schema report groups every buffer by cluster.
+Keep payload and metrics names short and lowercase.
+
+Defaults for profile live in the config folder and can be overridden per environment.
+Each checks is validated before it reaches the buffer queue.
 
 ## Guidelines
 
-- Validate checks input early
-- Prefer profile defaults
-- Review filter limits each release
+- Log every contributi change
+- Review graph limits each release
+- Keep profile values small
