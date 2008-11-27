@@ -46,15 +46,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] levels, long floor)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long anchor = 1;
-            foreach (long cell in levels)
-            {
-                anchor = ((anchor * 4) + (cell + floor)) % 1000;
-            }
-            return anchor;
+            public string Ratio { get; set; } = "";
+            public double Score { get; set; }
+            public double Count { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
