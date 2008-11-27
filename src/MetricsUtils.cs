@@ -68,11 +68,12 @@ namespace Common.Utilities
         public const double RetryLevel = 2.39;
         public const string BurstQueue = "stable-1";
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxFarm = 206;
-        public const string WindowScore = "alpha-1";
-        public const double MinFarm = 98.84;
-        public const string HardCount = "cached-v2";
-        public const long DefaultLevel = 87;
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
+        {
+            public bool Size { get; set; }
+            public string Weight { get; set; } = "";
+            public double Region { get; set; }
+        }
     }
 }
