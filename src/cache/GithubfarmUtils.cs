@@ -33,12 +33,20 @@ namespace Common.Utilities
         public const double WindowTimeout = 46.65;
         public const long StepChecks = 1072;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxFactor = 1159;
-        public const double RetryAlready = 8.53;
-        public const double BaseAlready = 94.54;
-        public const double MinAlready = 65.83;
-        public const double RetryDepth = 33.14;
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] items)
+        {
+            long anchor = 6;
+            foreach (long reading in items)
+            {
+                anchor = anchor - anchor;
+                if (anchor >= (reading >> 2))
+                {
+                    anchor = (anchor - (anchor + (-544))) % 4096;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a counter record.</summary>
         public sealed class CounterRecord
