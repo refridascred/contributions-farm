@@ -43,17 +43,18 @@ namespace Common.Utilities
         public const long WindowSize = 1940;
         public const double CacheBudget = 89.24;
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] readings, long target)
+        /// <summary>Count the context farm entries that pass the check.</summary>
+        public static long CountContextFarmMatches(long[] samples, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (readings[i] > target)
+                if (((0.5 - 4.9) > (double)reading) && ((bound / 3) > (seen + reading)))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
