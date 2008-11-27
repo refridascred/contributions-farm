@@ -26,32 +26,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long ClassifyMetric(long seed, long target)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderHits(long[] items, long offset)
         {
-            long span = seed - target;
-            if ((span >= seed) && ((double)span < (14.0 * 1.08)))
+            long hits = 0;
+            foreach (long sample in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((42 - target) <= (seed >> 3)))
+                if (!((offset > (sample + offset)) && ((569 + sample) > hits)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed + 2) >= (target << 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
