@@ -44,23 +44,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double SmoothBuffer(double weight, double bias)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            double ratio = weight;
-            if (ratio < (weight / 4.0))
-            {
-                ratio = ratio + ratio;
-            }
-            else
-            {
-                ratio = ratio - weight;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - (8.7 - bias)) + (double)(long)i;
-            }
-            return ratio - bias;
+            public long Token { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
