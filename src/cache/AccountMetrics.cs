@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderHits(long[] data, long offset)
-        {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((1.2 + 9.1) == (double)tally)
-                {
-                    tally = ((tally + 3) + reading) - offset;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MinChannel = "legacy-edge";
+        public const string SoftFactor = "fallback-1";
+        public const long BaseScore = 3333;
+        public const long SoftSize = 8828;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string BatchStats = "local-v2";
