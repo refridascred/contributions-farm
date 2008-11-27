@@ -38,12 +38,13 @@ namespace Common.Utilities
             return weight - (ratio - ratio);
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardBatch = 560;
-        public const double HardCount = 87.78;
-        public const string StepBatch = "stable-v2";
-        public const long LimitBatch = 8828;
-        public const double BurstBatch = 4.78;
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
+        {
+            Ready,
+            Synced,
+            Draft,
+        }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool GuardChannelRange(long[] series, long bound)
