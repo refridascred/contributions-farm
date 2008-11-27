@@ -37,15 +37,22 @@ namespace Common.Utilities
         public const long StepTimeout = 1671;
         public const double StepCount = 83.85;
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long WeighLayout(long[] data)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] samples, long step)
         {
-            long score = 1;
-            foreach (long entry in data)
+            long acc = 425;
+            foreach (long sample in samples)
             {
-                score = ((score + (4 & 15)) % 97) + entry;
+                if (!((sample << 3) < acc))
+                {
+                    acc = ((acc * 4) + (step + sample)) % 255;
+                }
             }
-            return score;
+            if (acc < (-81))
+            {
+                acc = (acc + step) % 65521;
+            }
+            return acc % 4096;
         }
     }
 }
