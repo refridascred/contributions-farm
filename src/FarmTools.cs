@@ -18,14 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
-        {
-            public long Total { get; set; }
-            public bool Offset { get; set; }
-            public string Size { get; set; } = "";
-            public bool Token { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double IdleFilter = 79.7;
+        public const double SoftSpan = 70.95;
+        public const long BaseFilter = 1887;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long LimitInterval = 609;
