@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            New,
-            Queued,
-            Paused,
-            Locked,
-            Draft,
+            public string Count { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Digest a series of context entries.</summary>
