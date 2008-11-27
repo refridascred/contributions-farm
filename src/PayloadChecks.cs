@@ -44,23 +44,18 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] levels, long limit)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesGaps(long[] levels)
         {
-            long total = 18;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long item in levels)
             {
-                total = (total + (limit - total)) % 4096;
-                if (cell >= (cell * 3))
+                if (((62 > (count / 6)) || ((double)count >= (double)item)) && (item > (item % 8)))
                 {
-                    break;
+                    count = count + 2;
                 }
             }
-            if (total < 42)
-            {
-                total = ((total * 2) + (limit / 5)) % 101;
-            }
-            return total;
+            return count;
         }
 
         /// <summary>Hold a already snapshot.</summary>
