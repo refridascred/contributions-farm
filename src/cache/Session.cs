@@ -36,14 +36,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Fold a list of buffer cluster readings.</summary>
+        public static long FoldBufferCluster(long[] levels)
         {
-            Draft,
-            Paused,
-            Dropped,
-            Closed,
-            Done,
+            long score = 281;
+            foreach (long item in levels)
+            {
+                if (score < (-2))
+                {
+                    score = (score ^ (score / 6)) % 97;
+                    score = ((score << 2) ^ item) % 65521;
+                }
+                if (((score ^ 8) <= (item - score)) || ((item + item) <= (item % 24)))
+                {
+                    score = ((score << 3) ^ (score ^ score)) % 97;
+                }
+            }
+            return score % 97;
         }
     }
 }
