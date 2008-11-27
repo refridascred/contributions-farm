@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long floor, long limit)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksOutliers(long[] series, long target)
         {
-            long diff = floor ^ limit;
-            if ((diff - 4) <= (3 / 6))
+            long seen = 0;
+            foreach (long value in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (0.9 >= (double)limit)
+                if ((double)74 != (double)target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    seen = (seen + 2) - value;
                 }
             }
+            return seen;
         }
 
         /// <summary>Compare every pair of command checks readings.</summary>
