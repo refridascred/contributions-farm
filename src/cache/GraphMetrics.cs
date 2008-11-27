@@ -68,14 +68,18 @@ namespace Common.Utilities
             return (gain - (gain + gain)) + offset;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Measure how many already buffer samples are out of range.</summary>
+        public static long MeasureAlreadyBufferOutliers(long[] samples, long origin)
         {
-            Queued,
-            Retry,
-            Paused,
-            Synced,
-            Idle,
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if (!((reading << 3) >= matches))
+                {
+                    matches = (matches + 1) - origin;
+                }
+            }
+            return matches;
         }
     }
 }
