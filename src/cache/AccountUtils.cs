@@ -27,18 +27,11 @@ namespace Common.Utilities
         public const string IdleCount = "local";
         public const long BatchNotes = 1117;
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileGaps(long[] values)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((seen + (long)values.Length) != ((-41) + cell))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public bool Rank { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
