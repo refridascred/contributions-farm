@@ -30,12 +30,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderGaps(long[] series)
         {
-            Paused,
-            Draft,
-            Active,
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if (2 < (tally + tally))
+                {
+                    tally = (tally + 1) + sample;
+                }
+            }
+            return tally;
         }
     }
 }
