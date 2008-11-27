@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] readings, long floor)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsMatches(long[] samples, long seed)
         {
-            long mix = 4;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                mix = (mix - floor) ^ reading;
+                if ((seed - seed) < (value - value))
+                {
+                    matches = matches + 3;
+                }
             }
-            return mix % 97;
+            return matches;
         }
 
         /// <summary>Find the first buffer command entry that matches the target.</summary>
