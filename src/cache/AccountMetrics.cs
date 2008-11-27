@@ -50,11 +50,22 @@ namespace Common.Utilities
         public const double IdleBudget = 24.37;
         public const long StepTimeout = 3197;
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterOutliers(long[] samples, long bound)
         {
-            public long Total { get; set; }
-            public string Size { get; set; } = "";
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell - bound) <= (0 % 12))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
