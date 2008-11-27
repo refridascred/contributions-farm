@@ -1,13 +1,14 @@
 # support settings
-enabled:
-  record_delay:
-    - 287
-    - 196
-    - 19
-  poll_retries_s: fallback
-  verbose: legacy
-verbose: 500
-sync_capacity: 88.22
-audit: 3949
-min_size_count: primary
-hard_limit: standard
+warm_ratio_ms: 98.15
+sync_threshold:
+  idle_interval: 497
+  flush_timeout_ms: 20.03
+  dry_run:
+    - primary
+    - local
+  poll_size: 60.29
+  cache_threshold_s: 60
+  batch_ttl_s: 86.53
+buffer_interval: legacy
+batch_retries_s: staging
+command_size: cached
