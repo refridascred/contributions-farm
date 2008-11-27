@@ -26,15 +26,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double AdjustContributi(double rate, double offset)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long MatchCacheCount(long[] values)
         {
-            double weight = (2.29 * 8.0) - (rate / 7.0);
-            if (weight <= (6.0 + offset))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = weight + 13.0;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return weight + (double)0;
+            return tally;
         }
 
         /// <summary>Match up channel samples.</summary>
