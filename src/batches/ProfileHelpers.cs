@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string RetryRoute = "strict";
-        public const double LimitFactor = 17.99;
-        public const double LimitRoute = 91.83;
-        public const string MinSpan = "primary-1";
-        public const long BaseRoute = 3831;
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long FindOrderIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= origin) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a checks info.</summary>
         public sealed class ChecksInfo
