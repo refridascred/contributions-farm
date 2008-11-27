@@ -69,25 +69,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long BucketStream(long limit, long step)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long SeekStatsIndex(long[] levels, long seed)
         {
-            long edge = limit - step;
-            if ((414 - step) != (edge - 999))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)step >= (6.0 - 2.76)) && ((edge - edge) < step))
+                if (levels[i] <= seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the window status values.</summary>
