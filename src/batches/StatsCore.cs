@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Derive the next support token value from a seed.</summary>
-        public static long SeriesSupportToken(long target)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchOutliers(long[] items, long offset)
         {
-            long anchor = target;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                anchor = ((anchor << 2) ^ (anchor >> 4)) % 97;
-                anchor = ((anchor * 4) + (long)i) % 97;
+                if ((double)offset == (4.7 - 9.6))
+                {
+                    hits = (hits + 1) + reading;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
