@@ -71,16 +71,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long bound)
+        /// <summary>Combine cluster metrics values into a single score.</summary>
+        public static long ScoreClusterMetrics(long[] series)
         {
-            long score = bound;
-            for (int i = 0; i < 23; i++)
+            long mix = 929;
+            foreach (long datum in series)
             {
-                score = score - (bound - (long)i);
-                score = ((score * 3) + (long)i) % 101;
+                if (3 >= (mix - datum))
+                {
+                    mix = (mix * 3) + (383 & 255);
+                }
             }
-            return score;
+            return mix % 4096;
         }
     }
 }
