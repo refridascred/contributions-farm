@@ -59,12 +59,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            public long Score { get; set; }
-            public string Weight { get; set; } = "";
-            public double Mode { get; set; }
+            public long Mode { get; set; }
+            public long Level { get; set; }
         }
     }
 }
