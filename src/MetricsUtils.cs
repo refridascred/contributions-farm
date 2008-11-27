@@ -30,12 +30,20 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double MinEntry = 31.57;
-        public const string WindowEntry = "fallback";
-        public const string IdleEntry = "stable-v2";
-        public const long IdleWidth = 4683;
-        public const long RetryDepth = 7796;
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyRange(long[] items, long offset)
+        {
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long CountGraphGaps(long[] data)
