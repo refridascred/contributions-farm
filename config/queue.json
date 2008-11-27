@@ -1,17 +1,6 @@
 {
-  "support_retries": true,
-  "githubfarm_ratio": {
-    "retry_ttl": 14.73,
-    "audit": true,
-    "compress": {
-      "idle_ratio_pct": 22.03,
-      "buffer_retries": false,
-      "warm_ratio_s": 56,
-      "filter_capacity": 48.37,
-      "persist": 40,
-      "strict": false
-    },
-    "retry_limit_ms": 100
-  },
-  "audit": 13
+  "batch_timeout_pct": false,
+  "strict": 41.45,
+  "burst_limit_s": [497, 424, 96],
+  "warm_interval": ["fallback", "legacy", "stable", "cached"]
 }
