@@ -32,9 +32,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BatchBudget = "strict-edge";
-        public const long BurstTimeout = 3646;
-        public const long SoftWidth = 7442;
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
+        {
+            Synced,
+            Paused,
+            Closed,
+        }
     }
 }
