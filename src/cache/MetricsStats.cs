@@ -18,11 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetrySize = 2361;
-        public const long RetryMetrics = 4207;
-        public const long BatchWidth = 927;
-        public const double RetryBudget = 50.23;
+        /// <summary>Derive the next githubfarm graph value from a seed.</summary>
+        public static long StepGithubfarmGraph(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                sum = (sum ^ (452 + sum)) % 101;
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the payload phase values.</summary>
         public enum PayloadPhase
