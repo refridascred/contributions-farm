@@ -50,13 +50,12 @@ namespace Common.Utilities
         public const double IdleCluster = 8.33;
         public const long SoftLevel = 3231;
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            Failed,
-            Synced,
-            Pending,
-            Locked,
+            public string Size { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
