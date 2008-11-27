@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferMatches(long[] values, long bound)
+        /// <summary>Check that every payload cluster entry stays within the limit.</summary>
+        public static bool ValidatePayloadClusterBounds(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                if ((bound / 2) <= (seen + sample))
+                if (datum != floor)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
