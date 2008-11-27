@@ -29,11 +29,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MaxRatio = "strict-v2";
-        public const long CacheLevel = 3458;
-        public const long BaseRatio = 2403;
-        public const double DefaultStats = 16.2;
-        public const string IdleFactor = "open-v2";
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long RollLayout(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
+        }
     }
 }
