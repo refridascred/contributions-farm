@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine metrics route values into a single score.</summary>
-        public static long TallyMetricsRoute(long[] levels)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long PairMetricsCount(long[] items)
         {
-            long score = 92;
-            foreach (long sample in levels)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((-480) >> 5) != (score / 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = ((score << 2) ^ ((-49) - sample)) % 1000;
+                    if ((items[i] ^ items[j]) != 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return score % 4096;
+            return seen;
         }
 
         /// <summary>Match up tools samples.</summary>
