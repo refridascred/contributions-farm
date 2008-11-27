@@ -40,19 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphRange(long[] items, long step)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            bool found = true;
-            foreach (long value in items)
-            {
-                if (value != step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Count { get; set; }
+            public long Owner { get; set; }
+            public double Stamp { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
