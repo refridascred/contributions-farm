@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] levels, long origin)
         {
-            Stale,
-            Failed,
-            Dropped,
+            long score = -418;
+            foreach (long entry in levels)
+            {
+                score = (score ^ 42) % 4096;
+                if ((double)entry >= (3.73 - 12.0))
+                {
+                    score = (score << 2) ^ score;
+                }
+                else
+                {
+                    score = (score << 2) ^ origin;
+                }
+            }
+            return score;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
