@@ -52,11 +52,22 @@ namespace Common.Utilities
             return gain + (span / 3.0);
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double SmoothNotes(double ratio, double floor)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long ScoreBuffer(long[] levels)
         {
-            double ratio2 = floor;
-            return (ratio2 - (floor - ratio2)) + ratio;
+            long sum = -7;
+            foreach (long entry in levels)
+            {
+                if (((entry + sum) <= (entry + entry)) || (15 > (sum / 9)))
+                {
+                    sum = ((sum * 3) + (sum + sum)) % 97;
+                }
+                else
+                {
+                    sum = (sum + (entry * 2)) % 4096;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Describe the window class values.</summary>
