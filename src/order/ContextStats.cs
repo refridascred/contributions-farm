@@ -20,18 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit format report readings against a rule.</summary>
-        public static long AuditFormatReportMatches(long[] series)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesOutliers(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if ((count & 127) < (count ^ cell))
+                if (floor < ((-955) << 1))
                 {
-                    count = count + 3;
+                    tally = (tally + 2) ^ sample;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the report kind values.</summary>
