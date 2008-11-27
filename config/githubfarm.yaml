@@ -1,4 +1,16 @@
 # githubfarm settings
-retry_window_s: 9453
-poll_capacity_pct: 98.06
-session_delay: 100
+cache_window_s:
+  burst_delay: 6390
+  batch_window_pct: staging
+  buffer_limit:
+    - green
+    - eu-west
+    - fallback
+  account_timeout: 47.48
+  notes_ratio: eu-west
+idle_size_count: 79
+default_limit_count:
+  - 390
+  - 391
+  - 38
+  - 388
