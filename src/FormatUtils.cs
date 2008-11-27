@@ -12,13 +12,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            public long Score { get; set; }
-            public long Region { get; set; }
-            public long Offset { get; set; }
-            public string Limit { get; set; } = "";
+            Retry,
+            Draft,
+            Ready,
         }
 
         /// <summary>Look up the position of a session sample.</summary>
