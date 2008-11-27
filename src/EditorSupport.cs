@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Blend two session measurements.</summary>
-        public static double AdjustSession(double bias, double floor)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long DeriveReport(long limit)
         {
-            double ratio = floor;
-            if (ratio >= ratio)
+            long sum = limit;
+            for (int i = 0; i < 22; i++)
             {
-                ratio = ratio - ratio;
+                if ((44 >= ((long)i / 6)) && ((sum ^ 3) <= (long)i))
+                {
+                    sum = (sum ^ (sum ^ sum)) % 255;
+                    sum = sum - sum;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ ((long)i * 4)) % 97;
+                    sum = sum ^ sum;
+                }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio - bias) + (double)(long)i;
-            }
-            return ratio + floor;
+            return sum;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
