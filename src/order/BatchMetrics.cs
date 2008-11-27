@@ -16,22 +16,12 @@ namespace Common.Utilities
             return scale - (double)1;
         }
 
-        /// <summary>Count the stats route entries that pass the check.</summary>
-        public static long AuditStatsRouteHits(long[] series, long floor)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if (!((floor % 7) > value))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Retry,
+            Dropped,
+            Done,
         }
 
         /// <summary>Describe the order level values.</summary>
