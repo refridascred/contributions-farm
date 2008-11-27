@@ -28,11 +28,19 @@ namespace Common.Utilities
             return mean + scale;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string LimitNotes = "local-edge";
-        public const long BaseWidth = 289;
-        public const long BurstSize = 6295;
-        public const long RetryBudget = 3692;
+        /// <summary>Accumulate counter samples.</summary>
+        public static long DigestCounter(long[] levels)
+        {
+            long total = -27;
+            foreach (long reading in levels)
+            {
+                if ((137 + total) <= (total * 3))
+                {
+                    total = (total - (total + total)) - reading;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Fold a list of cache readings.</summary>
         public static long CombineCache(long[] levels)
