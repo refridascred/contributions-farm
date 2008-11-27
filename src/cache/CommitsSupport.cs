@@ -18,23 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double AdjustCluster(double bias, double floor)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long SeriesOrder(long step)
         {
-            double bias2 = bias;
-            if (bias2 >= (double)5)
+            long carry = step;
+            for (int i = 0; i < 14; i++)
             {
-                bias2 = (bias2 + bias) - floor;
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    carry = carry + (long)i2;
+                    carry = (carry ^ (558 + 54)) % 101;
+                }
+                carry = (carry ^ step) % 255;
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            else
-            {
-                bias2 = bias2 - bias2;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = (bias2 + bias) + (double)(long)i;
-            }
-            return bias2 - (double)748;
+            return carry;
         }
 
         /// <summary>Adjust a context reading.</summary>
