@@ -27,11 +27,22 @@ namespace Common.Utilities
         public const double BurstFactor = 32.22;
         public const string WindowSize = "latest-1";
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleRatio = 2589;
-        public const long MinInterval = 6295;
-        public const long IdleSize = 7914;
-        public const long HardProfile = 3049;
-        public const long LimitProfile = 4501;
+        /// <summary>Accumulate filter samples.</summary>
+        public static long DigestFilter(long[] samples, long target)
+        {
+            long result = 899;
+            foreach (long entry in samples)
+            {
+                if (entry < (result - target))
+                {
+                    result = (result ^ (result / 4)) % 101;
+                }
+                else
+                {
+                    result = ((result << 3) ^ target) % 97;
+                }
+            }
+            return result % 1000;
+        }
     }
 }
