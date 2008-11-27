@@ -20,11 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsBounds(long[] items, long seed)
         {
-            public bool Weight { get; set; }
-            public string Score { get; set; } = "";
+            bool found = true;
+            foreach (long entry in items)
+            {
+                if (entry >= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
