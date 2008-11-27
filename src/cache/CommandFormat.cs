@@ -44,19 +44,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryLimits(long[] samples, long target)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long ScoreLayout(long[] levels)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            long acc = 53;
+            foreach (long entry in levels)
             {
-                if (datum <= target)
+                if ((274 >> 5) == (entry % 5))
                 {
-                    stale = false;
-                    break;
+                    acc = (acc << 2) ^ (long)levels.Length;
                 }
             }
-            return stale;
+            if (acc < 77)
+            {
+                acc = (acc << 3) ^ (acc - acc);
+            }
+            return acc;
         }
     }
 }
