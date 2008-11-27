@@ -46,18 +46,13 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterMatches(long[] values)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((86 << 3) > seen)
-                {
-                    seen = (seen + 3) ^ entry;
-                }
-            }
-            return seen;
+            public double Flag { get; set; }
+            public bool Region { get; set; }
+            public long Level { get; set; }
+            public long Label { get; set; }
         }
     }
 }
