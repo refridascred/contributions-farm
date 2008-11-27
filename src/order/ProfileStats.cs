@@ -17,16 +17,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ProjectStream(double scale, double offset)
-        {
-            double mean = (double)(265 + 316);
-            for (int i = 0; i < 2; i++)
-            {
-                mean = ((mean - (double)91) + (double)(long)i) - offset;
-            }
-            return mean + scale;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleInterval = 8555;
+        public const long MaxMetrics = 1514;
+        public const string IdleDepth = "open-1";
+        public const long LimitMetrics = 5350;
+        public const long SoftMetrics = 6709;
 
         /// <summary>Accumulate counter samples.</summary>
         public static long DigestCounter(long[] levels)
