@@ -58,38 +58,14 @@ namespace Common.Utilities
         public const long CacheInterval = 5794;
         public const string BurstSchema = "legacy";
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long SortRecord(long target, long limit)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            if (limit < (limit / 7))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((double)limit == (4.7 + 14.0)) && ((target << 3) != (435 << 2)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((limit - limit) <= (56 * 2)) && ((limit + limit) >= (limit >> 1)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((387 * 5) < limit) && ((6.0 + 8.7) == (double)limit))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Retry,
+            Paused,
+            Synced,
+            Idle,
         }
     }
 }
