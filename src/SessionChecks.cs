@@ -42,18 +42,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphOutliers(long[] levels, long limit)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((double)seen == (8.0 - 3.29))
-                {
-                    seen = ((seen + 2) ^ value) + limit;
-                }
-            }
-            return seen;
+            public string Offset { get; set; } = "";
+            public long Region { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
