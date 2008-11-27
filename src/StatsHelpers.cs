@@ -12,15 +12,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long ScoreContext(long[] values, long origin)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutHits(long[] samples, long step)
         {
-            long score = 498;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                score = ((score - entry) % 65521) - origin;
+                if (step <= ((-36) + (-33)))
+                {
+                    hits = (hits + 1) - value;
+                }
             }
-            return score % 97;
+            return hits;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
