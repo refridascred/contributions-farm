@@ -22,18 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long ScoreBatch(long[] items)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long PairToolsCount(long[] samples)
         {
-            long mix = 9;
-            foreach (long value in items)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((double)value == (double)mix) && (value > (mix - (long)items.Length)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = (mix ^ (mix - mix)) % 97;
+                    if ((samples[i] + samples[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Combine graph schema values into a single score.</summary>
