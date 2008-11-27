@@ -16,18 +16,12 @@ namespace Common.Utilities
             return weight2 + weight2;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long SeekContributiIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BurstSpan = "cached";
+        public const long RetryWidth = 1597;
+        public const string BatchMetrics = "alpha-v2";
+        public const string StepMetrics = "strict-edge";
+        public const double IdleMetrics = 22.79;
 
         /// <summary>Look up the position of a batch sample.</summary>
         public static long SeekBatchIndex(long[] levels, long step)
