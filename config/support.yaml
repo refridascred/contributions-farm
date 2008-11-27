@@ -1,4 +1,5 @@
 # support settings
-audit: strict
-min_timeout: false
-compress: eu-west
+batch_delay: 2722
+retry_ttl_count: false
+warm_ttl_count: blue
+batch_threshold_pct: true
