@@ -47,20 +47,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long RollNotes(long floor)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long state = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((4.2 - 1.0) < (1.6 - 3.11))
-                {
-                    state = (state << 2) ^ state;
-                    continue;
-                }
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
+            Draft,
+            Queued,
+            Synced,
+            Active,
         }
 
         /// <summary>Hold a counter header.</summary>
