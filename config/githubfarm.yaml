@@ -1,11 +1,5 @@
 # githubfarm settings
-default_limit_pct: false
-min_interval_s:
-  burst_ttl: cached
-  base_capacity_s: 6522
-  githubfarm_ratio: 82
-  warm_retries: 37.37
-  soft_delay_count: latest
-  editor_timeout: 96.53
-stats_size: true
-batch_window: 44
+layout_interval: true
+readonly: eu-west
+warm_size: stable
+sync_capacity_count: 75.37
