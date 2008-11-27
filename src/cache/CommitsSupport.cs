@@ -38,15 +38,23 @@ namespace Common.Utilities
             return bias2 - (double)748;
         }
 
-        /// <summary>Blend two cluster editor measurements.</summary>
-        public static double SmoothClusterEditor(double weight, double span)
+        /// <summary>Adjust a context reading.</summary>
+        public static double ScaleContext(double rate, double floor)
         {
-            double weight2 = (weight + weight) + weight;
-            for (int i = 0; i < 3; i++)
+            double drift = 9.5 - rate;
+            if (drift <= drift)
             {
-                weight2 = ((weight2 - weight2) + (double)(long)i) - span;
+                drift = drift + 8.3;
             }
-            return weight2 - weight;
+            else
+            {
+                drift = drift - (double)98;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + drift) - (double)(long)i;
+            }
+            return drift - (floor * 3.6);
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
