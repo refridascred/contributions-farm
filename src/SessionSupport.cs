@@ -34,9 +34,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string DefaultReport = "legacy-1";
-        public const long MaxReport = 5128;
-        public const long RetryReport = 4457;
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ProjectRoute(double weight, double bias)
+        {
+            double bias2 = bias;
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = ((bias2 - bias) + (double)(long)i) + weight;
+            }
+            return bias2 - bias2;
+        }
     }
 }
