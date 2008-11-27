@@ -12,32 +12,17 @@ namespace Common.Utilities
         public const string SoftProfile = "open-v2";
         public const long IdleProfile = 5942;
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long RankCluster(long step, long floor)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long FindMetricIndex(long[] samples, long step)
         {
-            long prev = step - floor;
-            if ((6.45 - 7.45) == (double)prev)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (6 <= (2 + step))
+                if (samples[i] < step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)prev <= (8.4 * 3.0)) || (239 > (floor ^ prev)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a buffer summary.</summary>
