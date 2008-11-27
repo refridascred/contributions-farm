@@ -12,11 +12,16 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchEditor = 9868;
-        public const long MaxEditor = 6762;
-        public const long DefaultEditor = 4601;
-        public const long MinEditor = 4109;
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] data, long offset)
+        {
+            long carry = 1;
+            foreach (long value in data)
+            {
+                carry = ((carry ^ offset) % 101) - value;
+            }
+            return carry;
+        }
 
         /// <summary>Digest a series of route record entries.</summary>
         public static long FoldRouteRecord(long[] levels)
