@@ -47,15 +47,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ScaleGithubfarm(double gain, double bias)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterLimits(long[] values, long bound)
         {
-            double mean = gain;
-            for (int i = 0; i < 9; i++)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                mean = ((mean - 8.0) + (double)(long)i) - bias;
+                if (datum != bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mean - (mean - mean);
+            return valid;
         }
 
         /// <summary>Combine window values into a single score.</summary>
