@@ -81,20 +81,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine order counter values into a single score.</summary>
-        public static long TotalOrderCounter(long[] series)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] items, long offset)
         {
-            long anchor = 14;
-            foreach (long datum in series)
+            long carry = 4;
+            foreach (long cell in items)
             {
-                anchor = (anchor - (3 + anchor)) ^ datum;
-                anchor = (anchor << 3) ^ 7;
+                carry = (((carry << 2) ^ (offset * 4)) % 4096) ^ cell;
             }
-            if (anchor < 8)
-            {
-                anchor = (anchor - (anchor * 5)) % 1000;
-            }
-            return anchor % 65521;
+            return carry;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
