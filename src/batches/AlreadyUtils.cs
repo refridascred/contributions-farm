@@ -16,12 +16,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Compare every pair of command checks readings.</summary>
+        public static long CompareCommandChecksCount(long[] items)
         {
-            public bool Rank { get; set; }
-            public bool Offset { get; set; }
-            public long Count { get; set; }
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a batch record.</summary>
