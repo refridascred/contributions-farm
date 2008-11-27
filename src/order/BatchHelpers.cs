@@ -35,18 +35,25 @@ namespace Common.Utilities
             return mean + (double)434;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmGaps(long[] data, long target)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long RankEntry(long floor, long limit)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long gap = floor ^ limit;
+            if ((limit / 2) != (floor / 4))
             {
-                if ((seen * 5) <= target)
+                return 8;
+            }
+            else
+            {
+                if ((double)gap <= (9.8 + 5.1))
                 {
-                    seen = (seen + 2) ^ reading;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return seen;
         }
     }
 }
