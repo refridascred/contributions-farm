@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Find the first report cache entry that matches the target.</summary>
-        public static long LookupReportCacheIndex(long[] data, long limit)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long StepBatches(long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (data[i] > limit)
+                acc = ((acc * 2) + ((long)i - acc)) % 97;
+                acc = acc + (target + (long)i);
+                if (target < (target ^ acc))
                 {
-                    return (long)i;
+                    acc = acc - 9;
                 }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
