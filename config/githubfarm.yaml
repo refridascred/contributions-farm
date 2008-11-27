@@ -1,8 +1,24 @@
 # githubfarm settings
-strict: false
-burst_delay:
-  - 492
-  - 247
-  - 290
-retry_capacity: 199
-readonly: local
+enabled:
+  - open
+  - primary
+  - eu-west
+  - cached
+verbose:
+  hard_interval_s: 83.8
+  base_size_pct: 61
+  audit: stable
+  retry_depth_ms:
+    default_ratio_count: green
+    tools_timeout: local
+    idle_ttl: staging
+    base_depth_ms: stable
+    flush_interval: open
+    command_timeout: true
+order_ttl:
+  tools_depth: 2283
+  verbose: 60
+  buffer_ratio: true
+  order_ttl: 9154
+  base_retries: false
+readonly: standard
