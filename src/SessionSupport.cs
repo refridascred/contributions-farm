@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up support command samples.</summary>
-        public static long PairSupportCommandCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double HardContext = 28.18;
+        public const long BatchCount = 9232;
+        public const double SoftContext = 38.29;
+        public const long IdleCount = 6583;
+        public const long MaxFactor = 5000;
 
         /// <summary>Fold a list of schema stream readings.</summary>
         public static long ScoreSchemaStream(long[] data)
