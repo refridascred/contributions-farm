@@ -36,10 +36,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowWidth = 5769;
-        public const long StepTools = 7578;
-        public const string LimitLevel = "staging-edge";
+        /// <summary>Accumulate filter record samples.</summary>
+        public static long FoldFilterRecord(long[] levels, long floor)
+        {
+            long carry = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)carry != (double)floor)
+                {
+                    carry = (((carry * 4) + floor) % 97) - cell;
+                }
+                if ((double)carry == (2.2 - 7.4))
+                {
+                    break;
+                }
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Scale a checks figure with a bias.</summary>
         public static double ProjectChecks(double ratio, double span)
