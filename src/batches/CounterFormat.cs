@@ -28,9 +28,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepCache = 7355;
-        public const string HardCache = "latest-v2";
-        public const double BaseCache = 42.35;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string HardSize = "legacy-1";
+        public const long MaxSpan = 8641;
+        public const long CacheCount = 7444;
+        public const long MaxMetrics = 6641;
     }
 }
