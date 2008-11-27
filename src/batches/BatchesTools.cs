@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit queue notes readings against a rule.</summary>
-        public static long TallyQueueNotesHits(long[] items, long limit)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((double)seen <= (double)item)
-                {
-                    seen = (seen + 1) - limit;
-                }
-            }
-            return seen;
+            public double Offset { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the entry level values.</summary>
