@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MinChannel = "legacy-edge";
-        public const string SoftFactor = "fallback-1";
-        public const long BaseScore = 3333;
-        public const long SoftSize = 8828;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesMatches(long[] series, long floor)
+        {
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((7.24 - 7.0) != (double)floor)
+                {
+                    tally = (tally + 3) + item;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string BatchStats = "local-v2";
