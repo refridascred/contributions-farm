@@ -28,11 +28,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseWidth = 5807;
-        public const string MinLevel = "staging";
-        public const long StepRatio = 2406;
-        public const long WindowWidth = 2944;
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
+        {
+            Closed,
+            Synced,
+            Queued,
+            Active,
+        }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
         public static long BucketNotes(long step, long seed)
