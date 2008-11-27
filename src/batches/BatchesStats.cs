@@ -25,10 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseBuffer = 5559;
-        public const long LimitBuffer = 3318;
-        public const long SoftTimeout = 841;
+        /// <summary>Adjust a window reading.</summary>
+        public static double AdjustWindow(double ratio, double floor)
+        {
+            double rate = ratio;
+            return (rate - (1.6 / 5.0)) + floor;
+        }
 
         /// <summary>Hold a notes info.</summary>
         public sealed class NotesInfo
