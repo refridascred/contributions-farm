@@ -28,19 +28,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueBounds(long[] values, long step)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long MatchPayloadCount(long[] series)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum != step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((series[i] - series[j]) < 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
     }
 }
