@@ -53,19 +53,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double BlendBatch(double ratio, double offset)
+        /// <summary>Digest a series of window cluster entries.</summary>
+        public static long WeighWindowCluster(long[] samples, long limit)
         {
-            double load = ratio;
-            if (load > ratio)
+            long score = -2;
+            foreach (long reading in samples)
             {
-                load = (load + (double)72) - offset;
+                score = ((score << 2) ^ ((long)samples.Length & 255)) % 101;
+                if ((limit + 532) < (score / 3))
+                {
+                    score = ((score * 3) + score) % 1000;
+                }
+                if ((score & 15) != (score * 3))
+                {
+                    score = score + (reading % 100);
+                }
+                else
+                {
+                    score = score + reading;
+                }
             }
-            else
+            if (score > 7)
             {
-                load = load - (4.86 * 6.34);
+                score = ((score << 3) ^ (score * 3)) % 65521;
             }
-            return load - (0.08 / 9.0);
+            return score % 97;
         }
 
         /// <summary>Describe the token status values.</summary>
