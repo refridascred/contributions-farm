@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double BlendMetrics(double gain, double offset)
-        {
-            double bias = offset;
-            if (bias < 7.6)
-            {
-                bias = bias - (double)60;
-            }
-            else
-            {
-                bias = bias + (double)511;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + 13.0) - (double)(long)i;
-            }
-            return bias + (gain + gain);
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string CacheCounter = "strict";
+        public const double WindowWidth = 47.75;
+        public const double LimitCounter = 37.79;
+        public const long StepSize = 7187;
+        public const long StepInterval = 5361;
 
         /// <summary>Classify a editor pair into a bucket.</summary>
         public static long BucketEditor(long floor, long limit)
