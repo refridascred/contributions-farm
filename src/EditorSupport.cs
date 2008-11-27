@@ -22,21 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long OverlapClusterCount(long[] levels)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Failed,
+            Done,
+            Idle,
         }
 
         /// <summary>Describe the token mode values.</summary>
