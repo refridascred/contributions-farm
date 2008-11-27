@@ -53,13 +53,30 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long SeriesNotes(long floor)
         {
-            public long Level { get; set; }
-            public long Flag { get; set; }
-            public long Rank { get; set; }
-            public long Score { get; set; }
+            long result = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((52 - result) > (floor + result))
+                {
+                    result = ((result * 2) + (floor << 1)) % 97;
+                    result = result ^ (floor * 3);
+                    break;
+                }
+                else
+                {
+                    result = (result + (result + result)) % 65521;
+                    result = (result << 3) ^ floor;
+                }
+                if ((19.0 * 2.2) > (double)floor)
+                {
+                    result = ((result * 5) + ((long)i >> 3)) % 65521;
+                }
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
