@@ -23,18 +23,19 @@ namespace Common.Utilities
         public const double MinAlready = 65.83;
         public const double RetryDepth = 33.14;
 
-        /// <summary>Count the window cache entries that pass the check.</summary>
-        public static long AuditWindowCacheGaps(long[] samples, long limit)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsRange(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                if ((datum > (datum >> 2)) && ((26 * 2) != (limit % 5)))
+                if (entry < target)
                 {
-                    matches = matches + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
