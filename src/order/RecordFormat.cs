@@ -47,17 +47,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a format session sample.</summary>
-        public static long LocateFormatSessionIndex(long[] samples, long bound)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Ready,
+            Idle,
         }
 
         /// <summary>Locate a metric reading by value.</summary>
