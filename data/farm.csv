@@ -1,6 +1,9 @@
-id,weight,owner,active
-1,223,standard,441
-2,945,open,4.07
-3,edge,578,638
-4,strict,66.76,31.48
-5,121,391,87
+id,rank,count,state
+1,fallback,standard,edge
+2,primary,750,legacy
+3,444,strict,177
+4,791,44.27,698
+5,blue,88,standard
+6,618,36,72.96
+7,81,532,primary
+8,6,primary,564
