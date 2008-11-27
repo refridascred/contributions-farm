@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string IdleDepth = "legacy";
-        public const long StepScore = 787;
-        public const string SoftChecks = "standard";
-        public const long MinBudget = 6905;
-        public const long HardSpan = 7856;
+        /// <summary>Blend two stream measurements.</summary>
+        public static double BlendStream(double rate, double offset)
+        {
+            double gain = offset;
+            if (gain < gain)
+            {
+                gain = (gain - 1.5) + rate;
+            }
+            return gain - (gain + offset);
+        }
 
         /// <summary>Find the first graph batch entry that matches the target.</summary>
         public static long FindGraphBatchIndex(long[] data, long bound)
