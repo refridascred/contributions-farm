@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every order profile entry stays within the limit.</summary>
-        public static bool ValidateOrderProfileLimits(long[] values, long origin)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long FindChannelIndex(long[] values, long limit)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample != origin)
+                if ((values[i] >= limit) && ((values[i] % 2) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
