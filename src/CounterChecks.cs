@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string IdleBudget = "fallback";
-        public const long LimitCluster = 4071;
-        public const long DefaultCluster = 2361;
-        public const string RetryCluster = "primary-1";
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string SoftCache = "local";
+        public const long BatchCache = 9244;
+        public const long SoftTimeout = 7381;
+        public const long IdleCount = 6167;
+        public const double BurstDepth = 26.72;
 
         /// <summary>Locate a channel reading by value.</summary>
         public static long SeekChannelIndex(long[] series, long bound)
