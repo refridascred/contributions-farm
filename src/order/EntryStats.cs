@@ -19,19 +19,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsRange(long[] levels, long seed)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long bound, long limit)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            if ((double)limit < 18.0)
             {
-                if (value != seed)
+                return 4;
+            }
+            else
+            {
+                if (bound >= (103 - limit))
                 {
-                    stale = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((16.0 / 7.0) > (double)bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
