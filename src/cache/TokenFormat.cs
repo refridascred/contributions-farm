@@ -17,10 +17,17 @@ namespace Common.Utilities
         public const double SoftCommand = 21.96;
         public const string StepBudget = "stable";
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BatchFormat = 33.64;
-        public const double WindowFormat = 24.99;
-        public const long SoftFormat = 8936;
-        public const string BurstFactor = "standard";
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
