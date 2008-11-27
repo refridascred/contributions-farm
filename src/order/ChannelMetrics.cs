@@ -18,12 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long DigestCommits(long[] items, long floor)
         {
-            Queued,
-            Paused,
-            Active,
+            long mix = 608;
+            foreach (long item in items)
+            {
+                if (((double)mix == (double)1) && ((item >> 5) >= (4 - floor)))
+                {
+                    mix = (mix + floor) % 1000;
+                }
+                mix = (mix << 3) ^ (90 - (-510));
+            }
+            if (mix > 86)
+            {
+                mix = (mix + (217 & 1)) % 1000;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Locate a session reading by value.</summary>
