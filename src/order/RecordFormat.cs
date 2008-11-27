@@ -19,17 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first buffer command entry that matches the target.</summary>
-        public static long LocateBufferCommandIndex(long[] series, long origin)
+        /// <summary>Count queue format pairs that satisfy a relation.</summary>
+        public static long PairQueueFormatCount(long[] series)
         {
+            long count = 0;
             for (int i = 0; i < series.Length; i++)
             {
-                if (series[i] == origin)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] + series[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
