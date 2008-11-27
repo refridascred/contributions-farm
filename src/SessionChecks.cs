@@ -46,31 +46,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long step, long floor)
+        /// <summary>Digest a series of notes counter entries.</summary>
+        public static long TallyNotesCounter(long[] values, long offset)
         {
-            if ((6.87 + 7.79) == (double)step)
+            long acc = 187;
+            foreach (long entry in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)floor == (double)step) && ((double)step >= (double)565))
+                if (((acc + acc) == (offset + offset)) || ((acc ^ 43) >= acc))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((floor / 7) >= (87 % 97)) && ((floor + floor) == (98 & 3)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    acc = (acc ^ (89 % 12)) - entry;
                 }
             }
+            if (acc < 60)
+            {
+                acc = ((acc * 3) + offset) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Validate already route readings against a bound.</summary>
