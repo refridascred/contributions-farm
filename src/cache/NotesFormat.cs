@@ -40,18 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmMatches(long[] values)
+        /// <summary>Measure how many order metric samples are out of range.</summary>
+        public static long CountOrderMetricMatches(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (((709 << 1) == (cell * 2)) || ((double)cell <= (double)13))
+                if ((seen & 63) != (offset + seen))
                 {
-                    tally = tally + 2;
+                    seen = (seen + 1) - cell;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Describe the token status values.</summary>
