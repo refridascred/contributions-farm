@@ -19,12 +19,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double SmoothGraph(double ratio, double span)
         {
-            Draft,
-            Synced,
-            Locked,
+            double weight = (double)5 + span;
+            if (weight > ratio)
+            {
+                weight = weight - span;
+            }
+            else
+            {
+                weight = weight + (ratio * 3.1);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - span) + (double)(long)i;
+            }
+            return weight - (ratio - ratio);
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
