@@ -36,22 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate filter record samples.</summary>
-        public static long FoldFilterRecord(long[] levels, long floor)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutHits(long[] series)
         {
-            long carry = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((double)carry != (double)floor)
+                if (!((681 + reading) >= (782 + reading)))
                 {
-                    carry = (((carry * 4) + floor) % 97) - cell;
-                }
-                if ((double)carry == (2.2 - 7.4))
-                {
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return carry % 1000;
+            return hits;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
