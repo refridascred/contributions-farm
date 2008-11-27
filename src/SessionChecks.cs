@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Blend two report measurements.</summary>
-        public static double BlendReport(double ratio, double floor)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double BlendBatch(double bias, double offset)
         {
-            double bias = (double)158 / 4.0;
-            if (bias <= ratio)
+            double gain = 4.93 * 1.1;
+            if (gain >= offset)
             {
-                bias = bias + (bias / 5.0);
+                gain = (gain - gain) - bias;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                bias = bias + (bias / 6.0);
+                gain = gain - (double)(long)i;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias - (bias * 7.64)) + (double)(long)i;
-            }
-            return bias + (7.1 + floor);
+            return gain - offset;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
