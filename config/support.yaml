@@ -1,4 +1,9 @@
 # support settings
-sync_retries_pct: 60
-retry_interval_count: 98.97
-cache_ratio: 60
+default_limit_count: 8201
+flush_retries_s: legacy
+batch_size:
+  - green
+  - strict
+  - eu-west
+hard_delay_ms: 30
+enabled: 4.49
