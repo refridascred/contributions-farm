@@ -36,11 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            public long Region { get; set; }
-            public bool Ratio { get; set; }
+            public bool Score { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Region { get; set; }
         }
     }
 }
