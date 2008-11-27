@@ -34,10 +34,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxSize = 6702;
-        public const long DefaultSize = 1036;
-        public const long HardSpan = 488;
-        public const long DefaultCommits = 6526;
+        /// <summary>Check that every cache filter entry stays within the limit.</summary>
+        public static bool VerifyCacheFilterRange(long[] samples, long step)
+        {
+            bool ready = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
