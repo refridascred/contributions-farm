@@ -42,18 +42,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderGaps(long[] series)
-        {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((count % 60) == (count + datum))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetrySpan = 5514;
+        public const long MaxSize = 5529;
+        public const double WindowSession = 18.88;
+        public const double BurstCount = 1.18;
+        public const long RetryDepth = 830;
     }
 }
