@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of queue cluster readings.</summary>
-        public static long CombineQueueCluster(long[] items)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long FoldChecks(long[] data)
         {
-            long total = 0;
-            foreach (long value in items)
+            long sum = 526;
+            foreach (long cell in data)
             {
-                if (((-157) + total) <= total)
+                if (((cell - sum) >= (cell - cell)) && ((sum & 15) >= (sum + sum)))
                 {
-                    total = total + 187;
+                    sum = (sum + (28 - sum)) % 97;
                 }
-                if (((-34) + 65) > (value & 255))
+                else
                 {
-                    break;
+                    sum = ((sum * 4) + cell) % 4096;
                 }
             }
-            if (total < (-38))
-            {
-                total = total + total;
-            }
-            return total % 1000;
+            return sum;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
