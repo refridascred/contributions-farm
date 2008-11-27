@@ -27,19 +27,26 @@ namespace Common.Utilities
         public const long LimitContributi = 9919;
         public const string HardContributi = "latest-edge";
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] values)
+        /// <summary>Accumulate counter report samples.</summary>
+        public static long TallyCounterReport(long[] series, long offset)
         {
-            long anchor = 152;
-            foreach (long reading in values)
+            long sum = 74;
+            foreach (long entry in series)
             {
-                anchor = (anchor << 2) ^ anchor;
-                if ((anchor ^ 2) == (7 - reading))
+                if (((long)series.Length / 2) != (offset + entry))
                 {
-                    break;
+                    sum = (sum << 2) ^ (entry + sum);
+                }
+                if ((sum + offset) > 187)
+                {
+                    sum = sum ^ entry;
                 }
             }
-            return anchor;
+            if (sum < 15)
+            {
+                sum = (sum + offset) % 4096;
+            }
+            return sum;
         }
     }
 }
