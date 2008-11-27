@@ -27,15 +27,21 @@ namespace Common.Utilities
         public const long CacheQueue = 5906;
         public const string LimitQueue = "legacy-1";
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ProjectCounter(double weight, double floor)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long IterateCounter(long step)
         {
-            double ratio = floor + (double)7;
-            if (ratio > floor)
+            long mark = step;
+            for (int i = 0; i < 9; i++)
             {
-                ratio = ratio - (weight - ratio);
+                mark = (mark << 3) ^ (long)i;
+                if (!((mark > (mark + step)) && ((long)i <= (step * 3))))
+                {
+                    mark = mark + (6 - (-17));
+                    mark = (mark * 2) + step;
+                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return ratio + floor;
+            return mark;
         }
     }
 }
