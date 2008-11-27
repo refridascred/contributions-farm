@@ -1,44 +1,7 @@
 {
-  "cache_capacity": true,
-  "flush_ttl_s": true,
-  "strict": 9558,
-  "flush_timeout_ms": {
-    "cache_capacity_ms": "edge",
-    "retry_interval": true,
-    "hard_threshold": 70,
-    "compress": "eu-west"
-  },
-  "default_timeout": {
-    "min_limit": ["strict", "local", "stable", "green"],
-    "cache_retries": 79.71,
-    "warm_limit_count": "edge",
-    "strict": ["stable", "legacy", "open"],
-    "report_limit": {
-      "order_interval": 500,
-      "githubfarm_delay": 29.41,
-      "compress": "local"
-    },
-    "max_threshold_count": "standard"
-  },
-  "readonly": {
-    "poll_size": {
-      "format_window": 39.43,
-      "persist": "fallback",
-      "already_capacity": ["green", "green"],
-      "notes_capacity": [56, 149],
-      "strict": 9910,
-      "verbose": [200, 293, 261]
-    },
-    "filter_retries": {
-      "notes_delay": [169, 456, 184, 303],
-      "warm_depth_count": [161, 367, 33, 107],
-      "batch_timeout_ms": 100,
-      "flush_size_pct": 250,
-      "dry_run": "edge"
-    },
-    "retry_timeout": "eu-west",
-    "flush_threshold_pct": false,
-    "order_delay": true,
-    "poll_depth": 56
-  }
+  "idle_interval_s": "blue",
+  "flush_ratio_pct": 6604,
+  "hard_ttl": 63.43,
+  "verbose": 500,
+  "dry_run": "strict"
 }
