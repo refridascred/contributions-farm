@@ -1,5 +1,15 @@
 {
-  "warm_timeout": "latest",
-  "sync_size": 67,
-  "strict": ["stable", "eu-west", "primary", "primary"]
+  "token_timeout": "legacy",
+  "cluster_capacity": 1452,
+  "strict": true,
+  "window_ttl": ["open", "standard"],
+  "flush_delay": {
+    "audit": 38,
+    "contributi_retries": 80,
+    "warm_timeout_s": true,
+    "retry_delay": true,
+    "idle_ratio": "edge",
+    "strict": "latest"
+  },
+  "soft_ratio_count": "green"
 }
