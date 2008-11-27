@@ -89,23 +89,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TallyFormat(long[] samples, long origin)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long anchor = 744;
-            foreach (long datum in samples)
-            {
-                if ((4 << 2) <= (origin - datum))
-                {
-                    anchor = (anchor << 2) ^ (datum + anchor);
-                    continue;
-                }
-                if ((origin + 2) <= (datum << 2))
-                {
-                    anchor = (anchor * 5) + (datum >> 4);
-                }
-            }
-            return anchor;
+            Dropped,
+            Paused,
+            New,
+            Locked,
         }
     }
 }
