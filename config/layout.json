@@ -1,8 +1,14 @@
 {
-  "min_retries": 1024,
-  "base_window": 5656,
-  "dry_run": "open",
-  "burst_ratio_count": true,
-  "persist": [427, 31, 499],
-  "editor_timeout": "fallback"
+  "commits_ttl": false,
+  "batch_depth": 35,
+  "dry_run": 100,
+  "compress": "cached",
+  "strict": "eu-west",
+  "batch_retries_count": {
+    "base_threshold_count": "local",
+    "cache_threshold_s": ["edge", "legacy", "fallback", "primary"],
+    "metric_ratio": "latest",
+    "notes_retries": true,
+    "enabled": "legacy"
+  }
 }
