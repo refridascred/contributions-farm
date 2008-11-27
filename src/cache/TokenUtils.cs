@@ -33,15 +33,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next metric buffer value from a seed.</summary>
-        public static long SeriesMetricBuffer(long floor)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long sum = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
+            public double Score { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
