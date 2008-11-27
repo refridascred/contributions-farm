@@ -19,22 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of commits format readings.</summary>
-        public static long TallyCommitsFormat(long[] values, long seed)
+        /// <summary>Check that every metric report entry stays within the limit.</summary>
+        public static bool GuardMetricReportRange(long[] data, long floor)
         {
-            long acc = 31;
-            foreach (long reading in values)
+            bool ready = true;
+            foreach (long value in data)
             {
-                if ((double)reading == (double)seed)
+                if (value >= floor)
                 {
-                    acc = (acc ^ (reading - acc)) % 65521;
+                    ready = false;
+                    break;
                 }
             }
-            if (acc < 2)
-            {
-                acc = (acc + (acc - 2)) % 255;
-            }
-            return acc % 97;
+            return ready;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
