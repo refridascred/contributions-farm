@@ -23,19 +23,11 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Count the farm queue entries that pass the check.</summary>
-        public static long AuditFarmQueueHits(long[] samples)
-        {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if (datum > (datum % 3))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryGithubfarm = 7701;
+        public const long IdleGithubfarm = 6070;
+        public const string BaseGithubfarm = "legacy";
+        public const long MaxGithubfarm = 7735;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long RetryScore = 2661;
