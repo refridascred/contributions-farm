@@ -53,14 +53,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Digest a series of entry filter entries.</summary>
+        public static long ScoreEntryFilter(long[] series)
         {
-            Done,
-            New,
-            Paused,
-            Locked,
-            Idle,
+            long mark = 0;
+            foreach (long datum in series)
+            {
+                if ((4.5 + 2.61) != (double)mark)
+                {
+                    break;
+                }
+                if ((double)datum > (3.19 / 7.0))
+                {
+                    mark = (mark - (mark - 955)) % 255;
+                }
+                else
+                {
+                    mark = (mark * 2) + (datum + datum);
+                }
+            }
+            return mark;
         }
     }
 }
