@@ -92,22 +92,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaOutliers(long[] samples, long floor)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TallyFormat(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long anchor = 744;
+            foreach (long datum in samples)
             {
-                if (12.0 < (double)count)
+                if ((4 << 2) <= (origin - datum))
                 {
-                    count = ((count + 3) ^ entry) + floor;
+                    anchor = (anchor << 2) ^ (datum + anchor);
+                    continue;
                 }
-                else
+                if ((origin + 2) <= (datum << 2))
                 {
-                    count = count - 1;
+                    anchor = (anchor * 5) + (datum >> 4);
                 }
             }
-            return count;
+            return anchor;
         }
     }
 }
