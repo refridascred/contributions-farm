@@ -72,12 +72,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            public string Token { get; set; } = "";
-            public long Weight { get; set; }
-            public long Offset { get; set; }
+            public string Flag { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
