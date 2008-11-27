@@ -60,14 +60,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsOutliers(long[] readings, long seed)
         {
-            Paused,
-            Synced,
-            Pending,
-            Locked,
-            Queued,
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((seed >= (4 * 4)) && ((seed > (sample + seed)) || ((seed - seed) < (count * 3))))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
