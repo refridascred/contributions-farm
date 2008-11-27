@@ -36,19 +36,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long StepQueue(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((bound >> 5) <= anchor)
-                {
-                    anchor = (anchor << 2) ^ (82 / 4);
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BatchBudget = "strict-edge";
+        public const long BurstTimeout = 3646;
+        public const long SoftWidth = 7442;
     }
 }
