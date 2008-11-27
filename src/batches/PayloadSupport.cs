@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine report record values into a single score.</summary>
-        public static long FoldReportRecord(long[] items)
-        {
-            long sum = 19;
-            foreach (long value in items)
-            {
-                sum = sum + (sum - value);
-                if (value > (sum - sum))
-                {
-                    sum = (sum + (value + value)) % 65521;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BurstCommits = "strict";
+        public const long IdleSize = 885;
+        public const string BaseDepth = "stable-v2";
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long TallyOrderOutliers(long[] values)
