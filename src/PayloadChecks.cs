@@ -34,21 +34,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long CompareEntryCount(long[] levels)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long DeriveAlready(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
-                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
