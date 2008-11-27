@@ -32,10 +32,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepWidth = 7051;
-        public const long StepCount = 9349;
-        public const long RetryCount = 1988;
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
+        {
+            Synced,
+            Closed,
+            Draft,
+            New,
+            Paused,
+        }
 
         /// <summary>Check that every cache filter entry stays within the limit.</summary>
         public static bool VerifyCacheFilterRange(long[] samples, long step)
