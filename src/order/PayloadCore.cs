@@ -36,12 +36,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleBudget = 1394;
-        public const long CacheRoute = 301;
-        public const long BatchRoute = 3799;
-        public const string RetrySize = "alpha-v2";
-        public const long LimitScore = 5932;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowWidth = 5769;
+        public const long StepTools = 7578;
+        public const string LimitLevel = "staging-edge";
 
         /// <summary>Combine metric batch values into a single score.</summary>
         public static long CombineMetricBatch(long[] items, long seed)
