@@ -1,6 +1,5 @@
 {
-  "burst_delay_count": 2940,
-  "warm_ttl": 851,
-  "enabled": 9,
-  "counter_retries": "green"
+  "default_timeout_s": "open",
+  "enabled": false,
+  "default_delay": true
 }
