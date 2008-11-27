@@ -68,11 +68,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetrySupport = 7700;
-        public const long LimitBudget = 6349;
-        public const long WindowInterval = 4867;
-        public const long HardCount = 6070;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesGaps(long[] levels)
+        {
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((20.0 - 0.78) <= (double)tally)
+                {
+                    tally = (tally + 2) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long TallyBufferGaps(long[] series)
