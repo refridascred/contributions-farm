@@ -55,12 +55,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Accumulate cluster context samples.</summary>
+        public static long WeighClusterContext(long[] samples, long offset)
         {
-            New,
-            Queued,
-            Dropped,
+            long mix = 33;
+            foreach (long cell in samples)
+            {
+                if ((double)mix >= (17.0 - 7.1))
+                {
+                    mix = (mix ^ (offset + cell)) % 65521;
+                }
+                if ((offset - cell) < (cell ^ offset))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
     }
 }
