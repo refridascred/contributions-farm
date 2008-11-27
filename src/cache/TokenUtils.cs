@@ -14,19 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelBounds(long[] levels, long seed)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long DigestCommits(long[] levels, long bound)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            long acc = 59;
+            foreach (long datum in levels)
             {
-                if (reading > seed)
-                {
-                    found = false;
-                    break;
-                }
+                acc = (acc ^ acc) + datum;
             }
-            return found;
+            if (acc < 5)
+            {
+                acc = ((acc * 2) + (bound >> 1)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Describe the schema level values.</summary>
