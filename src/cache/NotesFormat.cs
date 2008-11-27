@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long ScoreMetrics(long[] items)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TallyContributi(long[] levels)
         {
-            long acc = 5;
-            foreach (long cell in items)
+            long result = 75;
+            foreach (long sample in levels)
             {
-                if ((7.0 - 18.0) >= (double)cell)
-                {
-                    acc = (acc - (acc << 1)) % 1000;
-                }
-                else
-                {
-                    acc = (acc << 2) ^ (cell - (long)items.Length);
-                }
+                result = (result - sample) % 1000;
+                result = (result - (10 - sample)) % 101;
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
