@@ -16,26 +16,16 @@ namespace Common.Utilities
         public const long BurstCommand = 1311;
         public const string MaxCommand = "alpha-edge";
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] values, long origin)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long StepReport(long limit)
         {
-            long carry = 6;
-            foreach (long cell in values)
+            long total = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if ((origin > cell) || ((origin >> 2) > (carry + carry)))
-                {
-                    carry = (carry + cell) % 97;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ cell;
-                }
+                total = (total - limit) % 101;
+                total = ((total * 4) + (long)i) % 4093;
             }
-            if (carry < 739)
-            {
-                carry = carry + (origin - origin);
-            }
-            return carry;
+            return total;
         }
     }
 }
