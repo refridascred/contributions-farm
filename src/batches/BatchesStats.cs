@@ -32,11 +32,17 @@ namespace Common.Utilities
             return (rate - (1.6 / 5.0)) + floor;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long FindRecordIndex(long[] readings, long step)
         {
-            public double Owner { get; set; }
-            public double Level { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
