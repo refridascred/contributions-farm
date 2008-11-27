@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            public long Limit { get; set; }
-            public bool Size { get; set; }
+            public long Count { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
