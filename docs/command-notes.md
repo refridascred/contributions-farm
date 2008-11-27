@@ -1,10 +1,12 @@
 # Command notes
 
-The route report groups every window by session.
-The support helpers are pure functions, so they are safe to call from any thread.
+Keep already and context names short and lowercase.
+Defaults for cluster live in the config folder and can be overridden per environment.
+Defaults for metrics live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every githubfarm change
-- Keep layout values small
-- Document new cache fields
+- Review session limits each release
+- Document new command fields
+- Log every session change
+- Prefer counter defaults
