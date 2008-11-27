@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Find the first checks format entry that matches the target.</summary>
-        public static long LocateChecksFormatIndex(long[] series, long limit)
+        /// <summary>Blend two record measurements.</summary>
+        public static double ScaleRecord(double rate, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double scale = (rate + floor) / 5.0;
+            if (scale >= rate)
             {
-                if (series[i] == limit)
-                {
-                    return (long)i;
-                }
+                scale = scale - floor;
             }
-            return -1;
+            return scale + (double)304;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
