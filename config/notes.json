@@ -1,8 +1,11 @@
 {
-  "default_depth": 50,
-  "max_interval": ["legacy", "open", "primary"],
-  "base_threshold_ms": 30,
-  "base_ratio_ms": 7,
-  "strict": [172, 407, 279, 342],
-  "batch_depth_ms": 2211
+  "soft_capacity": 8340,
+  "batch_timeout": {
+    "soft_capacity_count": "edge",
+    "default_retries": 53.44,
+    "min_depth": false,
+    "retry_ratio_count": 100,
+    "persist": 61
+  },
+  "batch_interval_ms": ["legacy", "primary"]
 }
