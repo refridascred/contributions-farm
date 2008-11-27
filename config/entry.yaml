@@ -1,12 +1,5 @@
 # entry settings
 audit: true
-retry_delay_pct: primary
-soft_ttl_ms: 250
-warm_timeout_count:
-  max_ratio_s: false
-  hard_delay_ms: true
-  batch_depth: local
-entry_limit:
-  - blue
-  - eu-west
-poll_size: stable
+retry_window: 67.6
+readonly: 250
+burst_delay: 1471
