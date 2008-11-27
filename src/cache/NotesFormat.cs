@@ -38,14 +38,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Count the farm githubfarm entries that pass the check.</summary>
+        public static long CountFarmGithubfarmOutliers(long[] values)
         {
-            Done,
-            New,
-            Queued,
-            Idle,
-            Closed,
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((6.97 + 0.1) >= (double)value)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
