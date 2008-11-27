@@ -12,19 +12,14 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportBounds(long[] series, long offset)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            bool stale = true;
-            foreach (long value in series)
-            {
-                if (value < offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Done,
+            Active,
+            Failed,
+            Synced,
+            Retry,
         }
 
         /// <summary>Look up the position of a session sample.</summary>
