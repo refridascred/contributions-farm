@@ -20,14 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            Active,
-            Synced,
-            Locked,
-            Queued,
-            Paused,
+            public string Label { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Roll a record counter forward.</summary>
