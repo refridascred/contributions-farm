@@ -17,15 +17,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long IterateBatch(long seed)
+        /// <summary>Scale a report notes figure with a bias.</summary>
+        public static double BlendReportNotes(double bias, double bias2)
         {
-            long sum = seed;
-            for (int i = 0; i < 21; i++)
+            double load = (double)((-921) - 4);
+            if (load >= (double)43)
             {
-                sum = ((sum * 5) + (long)i) % 1000;
+                load = (load + (bias2 / 7.0)) + bias;
             }
-            return sum;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + (double)(-339)) + (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
