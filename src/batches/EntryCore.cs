@@ -49,18 +49,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < step) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string SoftProfile = "cached-v2";
+        public const long HardProfile = 9095;
+        public const long LimitProfile = 9504;
+        public const long MaxProfile = 8731;
 
         /// <summary>Hold a counter header.</summary>
         public sealed class CounterHeader
