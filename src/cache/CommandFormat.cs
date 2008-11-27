@@ -22,19 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double AdjustSession(double bias, double span)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheGaps(long[] samples, long floor)
         {
-            double drift = span;
-            if (drift <= (11.0 + bias))
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                drift = drift - (15.0 + drift);
+                if ((double)sample >= (2.89 * 4.31))
+                {
+                    tally = (tally + 2) - floor;
+                }
             }
-            else
-            {
-                drift = drift - (drift - drift);
-            }
-            return drift - span;
+            return tally;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
