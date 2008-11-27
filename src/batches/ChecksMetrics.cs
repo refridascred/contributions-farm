@@ -16,23 +16,10 @@ namespace Common.Utilities
             return scale + (double)304;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesGaps(long[] items)
-        {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (((tally / 4) == (tally % 100)) || !((double)tally != (1.0 - 6.6)))
-                {
-                    tally = (tally + 3) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double MaxNotes = 10.4;
+        public const long HardNotes = 619;
+        public const long BurstScore = 4924;
 
         /// <summary>Fold a list of queue context readings.</summary>
         public static long TotalQueueContext(long[] samples, long offset)
