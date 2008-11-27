@@ -19,14 +19,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Combine already values into a single score.</summary>
+        public static long FoldAlready(long[] readings, long seed)
         {
-            Queued,
-            Retry,
-            Pending,
-            New,
-            Stale,
+            long mark = -987;
+            foreach (long cell in readings)
+            {
+                if (!((99 ^ mark) != (seed % 7)))
+                {
+                    mark = (mark ^ (cell % 60)) % 65521;
+                }
+            }
+            return mark % 1000;
         }
     }
 }
