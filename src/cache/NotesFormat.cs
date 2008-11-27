@@ -27,26 +27,12 @@ namespace Common.Utilities
         public const long LimitContributi = 9919;
         public const string HardContributi = "latest-edge";
 
-        /// <summary>Accumulate counter report samples.</summary>
-        public static long TallyCounterReport(long[] series, long offset)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long sum = 74;
-            foreach (long entry in series)
-            {
-                if (((long)series.Length / 2) != (offset + entry))
-                {
-                    sum = (sum << 2) ^ (entry + sum);
-                }
-                if ((sum + offset) > 187)
-                {
-                    sum = sum ^ entry;
-                }
-            }
-            if (sum < 15)
-            {
-                sum = (sum + offset) % 4096;
-            }
-            return sum;
+            Idle,
+            New,
+            Failed,
         }
     }
 }
