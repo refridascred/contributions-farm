@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long RollSupport(long target)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long anchor = target;
-            for (int i = 0; i < 23; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 1000;
-            }
-            return anchor;
+            Active,
+            Locked,
+            Stale,
+            New,
         }
 
         /// <summary>Define account limits and defaults.</summary>
