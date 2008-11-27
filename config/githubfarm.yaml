@@ -1,9 +1,6 @@
 # githubfarm settings
-context_depth: 250
-soft_window_ms: 61.54
-base_depth_ms: 18
-min_size_ms:
-  - 280
-  - 426
-  - 219
-  - 92
+warm_limit: 69.98
+batch_retries_ms: local
+idle_delay_count: 84.65
+payload_size: 76
+batch_timeout: false
