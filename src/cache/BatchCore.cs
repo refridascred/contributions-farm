@@ -46,12 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double BlendBuffer(double weight, double bias)
         {
-            Paused,
-            Locked,
-            Active,
+            double scale = bias + (double)60;
+            if (scale <= (3.0 - weight))
+            {
+                scale = scale + bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + bias) + (double)(long)i;
+            }
+            return scale - weight;
         }
     }
 }
