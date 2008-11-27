@@ -1,9 +1,6 @@
-id,level,score,state
-1,78.05,42.26,blue
-2,primary,20.59,4.21
-3,68,strict,cached
-4,legacy,staging,397
-5,30.5,green,green
-6,223,82.66,88.86
-7,277,78.84,621
-8,413,blue,21.1
+id,ratio,region,rank
+1,574,822,eu-west
+2,770,48.83,61.05
+3,16.19,32.54,local
+4,green,83.12,778
+5,14.57,legacy,98.55
