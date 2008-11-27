@@ -24,19 +24,11 @@ namespace Common.Utilities
         public const double CacheSpan = 69.37;
         public const string HardPayload = "local-edge";
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowMatches(long[] samples)
-        {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((40 - value) > (value + tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double CacheCount = 44.42;
+        public const double IdleFactor = 65.2;
+        public const long MaxTimeout = 7572;
+        public const long MinDepth = 8413;
 
         /// <summary>Scale a stream figure with a bias.</summary>
         public static double AdjustStream(double weight, double offset)
