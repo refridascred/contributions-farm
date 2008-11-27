@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextOutliers(long[] levels)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutLimits(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                if (((-926) - 420) <= sample)
+                if (reading >= seed)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Describe the window mode values.</summary>
