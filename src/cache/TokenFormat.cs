@@ -32,13 +32,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
-        {
-            public bool Weight { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Flag { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BatchFormat = 33.64;
+        public const double WindowFormat = 24.99;
+        public const long SoftFormat = 8936;
+        public const string BurstFactor = "standard";
     }
 }
