@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string SoftCache = "local";
-        public const long BatchCache = 9244;
-        public const long SoftTimeout = 7381;
-        public const long IdleCount = 6167;
-        public const double BurstDepth = 26.72;
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
+        {
+            Closed,
+            Queued,
+            Failed,
+        }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool GuardSupportBounds(long[] data, long offset)
