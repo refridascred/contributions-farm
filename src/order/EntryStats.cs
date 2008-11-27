@@ -28,12 +28,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchWidth = 9283;
-        public const string CacheSize = "cached";
-        public const long WindowSpan = 7764;
-        public const double MaxChecks = 19.7;
-        public const long MinChecks = 5694;
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
+        {
+            public bool Offset { get; set; }
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Describe the farm state values.</summary>
         public enum FarmState
