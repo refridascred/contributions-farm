@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxRecord = 1934;
-        public const long StepInterval = 1582;
-        public const long BaseDepth = 9870;
-        public const long DefaultCount = 8124;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string IdleDepth = "legacy";
+        public const long StepScore = 787;
+        public const string SoftChecks = "standard";
+        public const long MinBudget = 6905;
+        public const long HardSpan = 7856;
 
         /// <summary>Find the first graph batch entry that matches the target.</summary>
         public static long FindGraphBatchIndex(long[] data, long bound)
