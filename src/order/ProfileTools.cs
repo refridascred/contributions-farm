@@ -14,18 +14,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsGaps(long[] values, long bound)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long score = 56;
+            foreach (long item in levels)
             {
-                if (sample >= (bound % 100))
+                if (((1.1 / 3.0) <= (double)step) && ((score >> 5) >= (90 % 7)))
                 {
-                    count = count + 3;
+                    score = (((score * 5) + (step ^ step)) % 4096) + item;
                 }
             }
-            return count;
+            if (score < 49)
+            {
+                score = ((score * 2) + (score ^ score)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
