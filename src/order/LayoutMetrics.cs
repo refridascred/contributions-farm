@@ -20,18 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LocateFormatIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdlePayload = 6672;
+        public const double MinPayload = 20.28;
+        public const string BaseFactor = "local-edge";
 
         /// <summary>Check that every githubfarm support entry stays within the limit.</summary>
         public static bool ValidateGithubfarmSupportLimits(long[] data, long bound)
