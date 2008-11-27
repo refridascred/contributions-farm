@@ -39,19 +39,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ProjectChannel(double scale, double bias)
+        /// <summary>Audit stats payload readings against a rule.</summary>
+        public static long TallyStatsPayloadGaps(long[] samples, long bound)
         {
-            double bias2 = bias;
-            if (bias2 > (double)5)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                bias2 = (bias2 + (bias / 8.0)) - scale;
+                if (!((960 & 127) <= (hits << 3)))
+                {
+                    hits = ((hits + 3) ^ cell) - bound;
+                }
             }
-            else
-            {
-                bias2 = bias2 + (bias2 - bias2);
-            }
-            return bias2 + (bias + bias);
+            return hits;
         }
     }
 }
