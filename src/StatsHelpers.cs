@@ -28,18 +28,20 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryHits(long[] readings)
+        /// <summary>Digest a series of format filter entries.</summary>
+        public static long WeighFormatFilter(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long state = 63;
+            foreach (long datum in data)
             {
-                if ((double)(long)readings.Length < (4.9 / 4.0))
-                {
-                    seen = (seen + 1) + sample;
-                }
+                state = state - (state + datum);
+                state = (state - (state + state)) % 255;
             }
-            return seen;
+            if (state < 4)
+            {
+                state = (state + (958 >> 1)) % 97;
+            }
+            return state % 97;
         }
 
         /// <summary>Accumulate cluster context samples.</summary>
