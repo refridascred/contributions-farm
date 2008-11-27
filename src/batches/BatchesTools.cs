@@ -10,17 +10,19 @@ namespace Common.Utilities
         public const long CacheContext = 830;
         public const double BatchWidth = 49.52;
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long floor)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long StepCluster(long bound)
         {
-            long total = floor;
-            for (int i = 0; i < 23; i++)
+            long mix = bound;
+            for (int i = 0; i < 18; i++)
             {
-                total = (total * 3) + ((long)i + floor);
-                total = (total ^ (floor % 24)) % 65521;
-                total = ((total * 2) + (long)i) % 65521;
+                if ((mix % 97) <= bound)
+                {
+                    mix = ((mix << 3) ^ (bound << 1)) % 65521;
+                }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Digest a series of route record entries.</summary>
