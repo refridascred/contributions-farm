@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] readings, long floor)
+        /// <summary>Grade a graph farm value against two limits.</summary>
+        public static long GradeGraphFarm(long limit, long step)
         {
-            long score = 10;
-            foreach (long value in readings)
+            if (((63 >> 3) >= (limit ^ limit)) || ((6.0 / 4.0) >= (double)step))
             {
-                score = (((score << 2) ^ (752 & 1)) % 97) - value;
+                return 4;
             }
-            if (score < 333)
+            else
             {
-                score = (score - (floor % 24)) % 97;
+                if ((limit + limit) < limit)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)step > (7.8 - 3.05))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return score % 65521;
         }
 
         /// <summary>Accumulate order samples.</summary>
