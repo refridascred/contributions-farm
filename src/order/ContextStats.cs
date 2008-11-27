@@ -14,12 +14,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string LimitChannel = "primary-edge";
-        public const long IdleSpan = 7912;
-        public const long SoftSpan = 78;
-        public const double HardScore = 57.72;
-        public const double SoftFactor = 50.54;
+        /// <summary>Roll a token counter forward.</summary>
+        public static long SeriesToken(long seed)
+        {
+            long mix = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Scale a tools figure with a bias.</summary>
         public static double ProjectTools(double ratio, double span)
