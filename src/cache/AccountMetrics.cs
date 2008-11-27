@@ -49,20 +49,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine order report values into a single score.</summary>
-        public static long TallyOrderReport(long[] data)
-        {
-            long total = 4;
-            foreach (long sample in data)
-            {
-                total = (total ^ total) % 97;
-                if (((double)sample >= 4.7) || (225 >= sample))
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstSpan = 56;
+        public const long MinCount = 6920;
+        public const long SoftSize = 1587;
+        public const double IdleBudget = 24.37;
+        public const long StepTimeout = 3197;
 
         /// <summary>Hold a payload stats.</summary>
         public sealed class PayloadStats
