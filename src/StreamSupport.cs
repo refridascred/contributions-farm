@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            public string Total { get; set; } = "";
-            public long Flag { get; set; }
+            Draft,
+            Synced,
+            Ready,
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
