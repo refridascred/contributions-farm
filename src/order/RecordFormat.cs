@@ -44,12 +44,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Count cluster report pairs that satisfy a relation.</summary>
+        public static long CompareClusterReportCount(long[] items)
         {
-            Pending,
-            Ready,
-            Idle,
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
