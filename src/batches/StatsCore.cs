@@ -59,19 +59,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every cache payload entry stays within the limit.</summary>
-        public static bool VerifyCachePayloadRange(long[] data, long seed)
+        /// <summary>Measure how many context filter samples are out of range.</summary>
+        public static long CountContextFilterHits(long[] series)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (reading < seed)
+                if ((sample % 16) >= sample)
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Check that every buffer record entry stays within the limit.</summary>
