@@ -43,12 +43,32 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long SortCache(long floor, long seed)
         {
-            public long Rank { get; set; }
-            public long Level { get; set; }
-            public long Offset { get; set; }
+            long offset = floor ^ seed;
+            if ((9.3 / 9.0) == (double)offset)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((6.0 - 2.5) < (double)floor)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((9.01 + 0.4) > (double)seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
