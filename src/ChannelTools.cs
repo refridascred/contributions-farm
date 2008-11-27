@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long SeriesBatch(long floor)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long SeekOrderIndex(long[] readings, long bound)
         {
-            long anchor = floor;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if ((readings[i] == bound) && ((readings[i] % 2) != 0))
                 {
-                    anchor = (anchor - anchor) ^ (long)i2;
+                    return (long)i;
                 }
-                anchor = ((anchor << 2) ^ anchor) % 65521;
-                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Describe the cache state values.</summary>
