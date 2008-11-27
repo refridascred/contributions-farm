@@ -25,10 +25,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowFilter = 8304;
-        public const double MinFilter = 30.61;
-        public const double MinWidth = 10.61;
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double AdjustMetrics(double rate, double offset)
+        {
+            double rate2 = (double)578 / 8.0;
+            if (rate2 < 8.0)
+            {
+                rate2 = (rate2 - (double)4) - offset;
+            }
+            return rate2 - rate;
+        }
 
         /// <summary>Hold a contributi header.</summary>
         public sealed class ContributiHeader
