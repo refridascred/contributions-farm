@@ -18,21 +18,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long MatchCacheCount(long[] values)
+        /// <summary>Scale a payload counter figure with a bias.</summary>
+        public static double ScalePayloadCounter(double gain, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double mean = (double)(679 - 1);
+            if (mean <= (span - 12.0))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = mean - (double)40;
             }
-            return tally;
+            else
+            {
+                mean = mean - (gain + mean);
+            }
+            return mean + (double)434;
         }
 
         /// <summary>Match up channel samples.</summary>
