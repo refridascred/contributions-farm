@@ -1,13 +1,10 @@
 # githubfarm settings
-batch_depth_s:
-  - eu-west
+sync_timeout_ms:
+  - cached
+  - stable
+hard_ttl: 47.65
+farm_retries: 40
+min_ratio_pct:
   - primary
-  - blue
-tools_capacity: 36.88
-verbose: true
-soft_timeout: stable
-compress:
-  - 241
-  - 393
-  - 250
-  - 406
+  - cached
+compress: 1024
