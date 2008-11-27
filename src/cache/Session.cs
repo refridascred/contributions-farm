@@ -43,15 +43,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double SmoothFilter(double gain, double span)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TallyFormat(long[] items)
         {
-            double rate = (double)(79 + 0);
-            for (int i = 0; i < 3; i++)
+            long mark = 72;
+            foreach (long reading in items)
             {
-                rate = ((rate + (double)(-530)) + (double)(long)i) + span;
+                if (mark > (mark * 2))
+                {
+                    mark = (mark * 5) + (reading - 2);
+                }
             }
-            return rate - (gain / 2.0);
+            return mark % 1000;
         }
     }
 }
