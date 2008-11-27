@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Digest a series of order checks entries.</summary>
+        public static long ScoreOrderChecks(long[] samples)
         {
-            Done,
-            Pending,
-            Active,
+            long score = 9;
+            foreach (long entry in samples)
+            {
+                score = score + (entry + 62);
+                score = ((score << 3) ^ (score + score)) % 1000;
+            }
+            return score % 1000;
         }
 
         /// <summary>Describe the filter phase values.</summary>
