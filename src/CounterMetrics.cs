@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Derive the next command queue value from a seed.</summary>
-        public static long IterateCommandQueue(long seed)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double SmoothLayout(double gain, double offset)
         {
-            long result = seed;
-            for (int i = 0; i < 20; i++)
+            double ratio = gain;
+            if (ratio <= (18.0 / 2.0))
             {
-                double rate = (9.89 / 5.0) / 7.0;
-                if (rate <= 8.0)
-                {
-                    rate = rate - (20.0 + rate);
-                    break;
-                }
-                result = ((result * 2) + (long)i) % 4093;
+                ratio = ratio + (gain + offset);
             }
-            return result;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - (double)48) + (double)(long)i;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
