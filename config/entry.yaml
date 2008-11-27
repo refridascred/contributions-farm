@@ -1,13 +1,25 @@
 # entry settings
-dry_run: 15.95
-burst_capacity_ms: 1024
-default_threshold_pct:
-  base_threshold_pct:
-    - fallback
-    - edge
-    - staging
-  idle_ratio_ms: strict
-  max_capacity_pct: 4345
-record_capacity: open
-soft_timeout: false
-min_ratio_pct: green
+audit: green
+compress: false
+token_limit: false
+readonly:
+  payload_timeout: false
+  base_interval_ms: fallback
+  enabled:
+    flush_limit: false
+    route_threshold: true
+    record_ttl: 26
+    stats_limit: 5677
+    soft_timeout_s: 29
+  audit: latest
+  cache_size_s: stable
+contributi_depth:
+  poll_ttl_ms: 500
+  cluster_ratio: fallback
+  base_depth_ms:
+    - 400
+    - 494
+  cache_threshold_pct: 100
+  dry_run: 10.42
+  strict: 25.11
+token_capacity: 93.66
