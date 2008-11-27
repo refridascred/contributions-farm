@@ -71,13 +71,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] series, long seed)
         {
-            Pending,
-            Failed,
-            Dropped,
-            Draft,
+            long acc = -88;
+            foreach (long value in series)
+            {
+                acc = (((acc - ((long)series.Length * 2)) % 101) + value) + seed;
+            }
+            return acc;
         }
     }
 }
