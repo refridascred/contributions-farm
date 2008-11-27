@@ -17,18 +17,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsGaps(long[] levels)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((matches >> 5) > (matches + matches))
-                {
-                    matches = (matches + 3) + sample;
-                }
-            }
-            return matches;
+            public long Mode { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Adjust a cache notes reading.</summary>
