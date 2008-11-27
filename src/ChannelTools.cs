@@ -22,12 +22,15 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Adjust a queue reading.</summary>
+        public static double SmoothQueue(double ratio, double bias)
         {
-            Retry,
-            Done,
-            Locked,
+            double rate = (bias - bias) * 5.53;
+            if (rate > ratio)
+            {
+                rate = rate + rate;
+            }
+            return rate + bias;
         }
     }
 }
