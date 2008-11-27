@@ -39,23 +39,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ProjectQueue(double ratio, double offset)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long IterateChannel(long offset)
         {
-            double bias = (double)6;
-            if (bias <= (offset + ratio))
+            long result = offset;
+            for (int i = 0; i < 9; i++)
             {
-                bias = bias + offset;
+                result = ((result << 2) ^ (result ^ result)) % 255;
+                if ((9.37 / 7.0) > (double)offset)
+                {
+                    result = result ^ offset;
+                    break;
+                }
+                else
+                {
+                    result = (result << 2) ^ (offset & 127);
+                }
+                result = result + 834;
+                result = ((result * 3) + (long)i) % 101;
             }
-            else
-            {
-                bias = bias + (offset / 7.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + (offset / 3.0)) + (double)(long)i;
-            }
-            return bias + bias;
+            return result;
         }
 
         /// <summary>Digest a series of account entries.</summary>
