@@ -52,22 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate entry route samples.</summary>
-        public static long ScoreEntryRoute(long[] readings)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricRange(long[] readings, long offset)
         {
-            long result = 18;
-            foreach (long reading in readings)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if ((result >= (result + reading)) || ((result & 127) != (reading >> 2)))
+                if (item != offset)
                 {
-                    result = result + (reading + result);
-                }
-                else
-                {
-                    result = result - (reading + result);
+                    stale = false;
+                    break;
                 }
             }
-            return result % 97;
+            return stale;
         }
 
         /// <summary>Validate commits cache readings against a bound.</summary>
