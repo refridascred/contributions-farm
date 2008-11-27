@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] series, long origin)
+        /// <summary>Audit route schema readings against a rule.</summary>
+        public static long AuditRouteSchemaMatches(long[] readings, long origin)
         {
-            long result = 5;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((origin & 255) < origin)
+                if (origin < value)
                 {
-                    result = ((result << 2) ^ (origin + result)) + datum;
-                }
-                if ((double)0 >= (double)origin)
-                {
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return result % 1000;
+            return tally;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
