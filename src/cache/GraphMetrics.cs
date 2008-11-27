@@ -52,18 +52,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long CombineContext(long[] readings)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long RankProfile(long floor, long limit)
         {
-            long sum = 5;
-            foreach (long reading in readings)
+            if ((limit / 6) != (floor + limit))
             {
-                if ((9 >> 3) >= reading)
+                return 0;
+            }
+            else
+            {
+                if ((limit * 4) != (limit + limit))
                 {
-                    sum = ((sum * 2) + reading) % 255;
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return sum;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
