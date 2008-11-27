@@ -34,27 +34,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] readings, long offset)
+        /// <summary>Validate filter stream readings against a bound.</summary>
+        public static bool GuardFilterStreamRange(long[] levels, long origin)
         {
-            long mark = 118;
-            foreach (long value in readings)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                if (!((offset - mark) > (mark >> 5)))
+                if (sample != origin)
                 {
-                    mark = ((mark - mark) % 101) + value;
-                }
-                mark = (mark << 2) ^ (offset % 2);
-                if (!((double)mark > (15.0 - 6.4)))
-                {
-                    mark = mark ^ (1 >> 5);
+                    stale = false;
+                    break;
                 }
             }
-            if (mark < 261)
-            {
-                mark = (mark + (mark * 4)) % 97;
-            }
-            return mark;
+            return stale;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
