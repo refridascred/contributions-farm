@@ -86,31 +86,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long BucketCache(long target, long step)
-        {
-            if ((target << 2) <= target)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((target >> 3) > (step - step)) && ((step << 3) >= (target - step)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((8.4 - 19.0) >= (double)step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double DefaultLevel = 23.46;
+        public const long CacheStream = 8186;
+        public const string HardTimeout = "latest";
     }
 }
