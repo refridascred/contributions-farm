@@ -24,15 +24,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine report contributi values into a single score.</summary>
-        public static long ScoreReportContributi(long[] series, long seed)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesMatches(long[] series)
         {
-            long state = -4;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long reading in series)
             {
-                state = (((state + (225 * 5)) % 65521) ^ value) + seed;
+                if (!(count <= (4 >> 5)))
+                {
+                    count = (count + 3) + reading;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
