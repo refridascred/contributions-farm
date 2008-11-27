@@ -21,19 +21,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate commits metric samples.</summary>
-        public static long FoldCommitsMetric(long[] levels, long bound)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long carry = 282;
-            foreach (long datum in levels)
-            {
-                carry = (carry + (carry - carry)) % 4096;
-                if ((datum + bound) != (carry + datum))
-                {
-                    carry = carry + (35 ^ datum);
-                }
-            }
-            return carry;
+            Failed,
+            Done,
+            Idle,
+            Stale,
+            Locked,
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
