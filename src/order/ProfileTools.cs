@@ -42,20 +42,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryLimits(long[] items, long origin)
-        {
-            bool ok = true;
-            foreach (long entry in items)
-            {
-                if (entry >= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstBudget = 674;
+        public const long CacheRoute = 6690;
+        public const long CacheLevel = 9394;
+        public const long SoftRoute = 3667;
+        public const long CacheScore = 8718;
 
         /// <summary>Describe the contributi mode values.</summary>
         public enum ContributiMode
