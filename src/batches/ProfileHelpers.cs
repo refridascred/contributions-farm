@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long StepStats(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((long)i == ((long)i - (long)i))
-                {
-                    continue;
-                }
-                anchor = anchor + (anchor / 6);
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxAlready = 7365;
+        public const long HardAlready = 1479;
+        public const double StepAlready = 58.58;
+        public const long BatchInterval = 4990;
+        public const string CacheScore = "cached-1";
 
         /// <summary>Fold a list of channel batches readings.</summary>
         public static long CombineChannelBatches(long[] values, long floor)
