@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleCounter = 6242;
-        public const long CacheCounter = 7791;
-        public const double BatchCounter = 73.54;
-        public const long WindowCounter = 1990;
-        public const long MaxCounter = 4984;
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] levels)
+        {
+            long anchor = 127;
+            foreach (long sample in levels)
+            {
+                if (anchor > (sample & 63))
+                {
+                    anchor = ((anchor * 4) + (sample >> 3)) % 101;
+                }
+            }
+            if (anchor > (-600))
+            {
+                anchor = (anchor + anchor) % 97;
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Hold a stats options.</summary>
         public sealed class StatsOptions
