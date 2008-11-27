@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsMatches(long[] data, long offset)
         {
-            public bool Label { get; set; }
-            public long Limit { get; set; }
-            public long Rank { get; set; }
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if (!((double)offset < 16.0))
+                {
+                    matches = (matches + 1) + reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
