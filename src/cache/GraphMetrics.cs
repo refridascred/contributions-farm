@@ -25,13 +25,17 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LookupMetricsIndex(long[] samples, long floor)
         {
-            public bool Token { get; set; }
-            public bool Label { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Limit { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == floor) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit notes stats readings against a rule.</summary>
