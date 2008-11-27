@@ -24,15 +24,18 @@ namespace Common.Utilities
             return gain - offset;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long RollAlready(long origin)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterHits(long[] series)
         {
-            long total = origin;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                total = ((total * 5) + (long)i) % 4093;
+                if ((6.9 - 3.92) > (double)seen)
+                {
+                    seen = (seen + 2) ^ cell;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
