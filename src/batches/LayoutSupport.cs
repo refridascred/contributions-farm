@@ -58,11 +58,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ProjectProfile(double scale, double span)
         {
-            public double Level { get; set; }
-            public string Offset { get; set; } = "";
+            double gain = 17.0;
+            if (gain <= (double)76)
+            {
+                gain = (gain + span) - scale;
+            }
+            else
+            {
+                gain = gain + span;
+            }
+            return gain - (gain + gain);
         }
     }
 }
