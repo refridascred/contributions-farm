@@ -36,18 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of cache editor readings.</summary>
-        public static long ScoreCacheEditor(long[] values, long limit)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsMatches(long[] readings)
         {
-            long anchor = 344;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if (700 <= anchor)
+                if ((double)item >= 6.9)
                 {
-                    anchor = ((anchor - ((long)values.Length + sample)) % 101) - limit;
+                    tally = tally + 1;
                 }
             }
-            return anchor % 1000;
+            return tally;
         }
     }
 }
