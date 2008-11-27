@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a report context value against two limits.</summary>
-        public static long ClassifyReportContext(long step, long target)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long bound = step + target;
-            if ((bound + bound) <= bound)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((1 * 2) > (step & 255)) || ((step + 213) >= (step + target)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public bool Level { get; set; }
+            public string Flag { get; set; } = "";
+            public long Owner { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
