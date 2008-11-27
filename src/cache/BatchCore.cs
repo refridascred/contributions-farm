@@ -57,11 +57,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long RankCache(long floor, long offset)
         {
-            public string Mode { get; set; } = "";
-            public string Total { get; set; } = "";
+            if ((floor % 8) == (floor ^ floor))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((floor * 2) < offset)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((14.0 / 8.0) == (double)offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first order stats entry that matches the target.</summary>
