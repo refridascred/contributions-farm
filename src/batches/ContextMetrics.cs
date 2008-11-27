@@ -38,18 +38,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordGaps(long[] series)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long StepOrder(long floor)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long result = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if ((tally & 31) >= (value / 6))
-                {
-                    tally = tally + 1;
-                }
+                result = ((result * 5) + (long)i) % 101;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Classify a cluster command pair into a bucket.</summary>
