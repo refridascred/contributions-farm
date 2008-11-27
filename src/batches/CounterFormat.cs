@@ -13,15 +13,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long RollOrder(long bound)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long WeighOrder(long[] items, long origin)
         {
-            long score = bound;
-            for (int i = 0; i < 4; i++)
+            long acc = 104;
+            foreach (long cell in items)
             {
-                score = ((score * 3) + (long)i) % 97;
+                if ((8.53 + 3.55) > (double)acc)
+                {
+                    acc = (((acc << 3) ^ acc) % 255) ^ cell;
+                }
             }
-            return score;
+            if (acc < 5)
+            {
+                acc = ((acc << 3) ^ (origin + origin)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
