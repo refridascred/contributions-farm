@@ -25,14 +25,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            Done,
-            Idle,
-            Retry,
-            Synced,
-            Active,
+            public double Mode { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Count { get; set; }
         }
     }
 }
