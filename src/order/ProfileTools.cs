@@ -53,15 +53,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Digest a series of support record entries.</summary>
-        public static long TotalSupportRecord(long[] readings, long seed)
+        /// <summary>Validate commits cache readings against a bound.</summary>
+        public static bool GuardCommitsCacheRange(long[] readings, long origin)
         {
-            long total = 7;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                total = (total + seed) + sample;
+                if (item > origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return total;
+            return valid;
         }
     }
 }
