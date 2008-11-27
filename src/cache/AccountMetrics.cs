@@ -17,22 +17,18 @@ namespace Common.Utilities
         public const long BurstDepth = 2829;
         public const double IdleStats = 94.0;
 
-        /// <summary>Digest a series of graph metric entries.</summary>
-        public static long ScoreGraphMetric(long[] samples)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmGaps(long[] items, long step)
         {
-            long result = 61;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if ((17.0 - 19.0) <= (double)(long)samples.Length)
+                if (tally >= (cell << 3))
                 {
-                    result = (result + result) % 97;
-                }
-                if (!((1 ^ 288) > (item / 4)))
-                {
-                    break;
+                    tally = (tally + 3) - step;
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
