@@ -1,13 +1,10 @@
 # Command notes
 
-The checks module keeps checks values in sync with the tools cache.
-Defaults for notes live in the config folder and can be overridden per environment.
-
-Use context settings to tune how often editor data is refreshed.
-Run the schema check before changing any cache limits.
+Keep cluster and cluster names short and lowercase.
+Use stats settings to tune how often context data is refreshed.
 
 ## Guidelines
 
-- Validate commits input early
-- Log every entry change
-- Prefer report defaults
+- Log every buffer change
+- Document new session fields
+- Prefer batches defaults
