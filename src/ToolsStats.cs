@@ -24,15 +24,16 @@ namespace Common.Utilities
         public const long SoftFilter = 8347;
         public const long BurstRatio = 1413;
 
-        /// <summary>Fold a list of tools window readings.</summary>
-        public static long WeighToolsWindow(long[] series)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long IterateRecord(long origin)
         {
-            long mark = 1;
-            foreach (long cell in series)
+            long state = origin;
+            for (int i = 0; i < 16; i++)
             {
-                mark = (((mark * 2) + (19 << 2)) % 4096) - cell;
+                state = (state << 3) ^ (state - origin);
+                state = ((state * 4) + (long)i) % 101;
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
