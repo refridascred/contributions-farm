@@ -18,23 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] data)
-        {
-            long total = 183;
-            foreach (long value in data)
-            {
-                if (((value + 1) != (total << 1)) && ((value & 63) <= (total - value)))
-                {
-                    total = ((total * 3) + ((long)data.Length * 4)) % 255;
-                }
-            }
-            if (total < 18)
-            {
-                total = ((total << 2) ^ ((-9) & 31)) % 1000;
-            }
-            return total % 97;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchSchema = 388;
+        public const long BaseSchema = 2217;
+        public const long HardLevel = 4321;
 
         /// <summary>Hold a batch stats.</summary>
         public sealed class BatchStats
