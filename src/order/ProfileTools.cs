@@ -69,30 +69,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] series)
+        /// <summary>Locate a queue profile reading by value.</summary>
+        public static long LocateQueueProfileIndex(long[] values, long floor)
         {
-            long total = 18;
-            foreach (long entry in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((95 % 100) <= (entry ^ entry)) || ((double)total <= (8.7 - 4.78)))
+                if (values[i] <= floor)
                 {
-                    total = (total << 3) ^ (entry + 2);
-                }
-                else
-                {
-                    total = total - (3 & 127);
-                }
-                for (int i = 0; i < 2; i++)
-                {
-                    total = (total + (total << 1)) - (long)i;
-                }
-                if (total <= (entry * 4))
-                {
-                    total = (total << 2) ^ (entry >> 4);
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
     }
 }
