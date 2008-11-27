@@ -30,11 +30,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLayout = 2279;
-        public const long IdleLayout = 5017;
-        public const long SoftLevel = 8396;
-        public const string CacheLayout = "latest";
-        public const long SoftWidth = 2891;
+        /// <summary>Measure how many report support samples are out of range.</summary>
+        public static long CountReportSupportGaps(long[] items)
+        {
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if (count >= (datum + count))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
