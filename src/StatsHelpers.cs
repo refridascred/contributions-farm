@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleFactor = 4418;
-        public const double IdleTimeout = 32.69;
-        public const long WindowSession = 2584;
-        public const long LimitCount = 441;
-        public const double StepSession = 6.14;
+        /// <summary>Scale a profile commits figure with a bias.</summary>
+        public static double BlendProfileCommits(double ratio, double bias)
+        {
+            double bias2 = ratio;
+            if (bias2 <= (bias2 / 6.0))
+            {
+                bias2 = bias2 + bias2;
+            }
+            return bias2 - bias;
+        }
 
         /// <summary>Hold a stats info.</summary>
         public sealed class StatsInfo
