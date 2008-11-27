@@ -25,24 +25,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] data, long floor)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportMatches(long[] series)
         {
-            long carry = 77;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long item in series)
             {
-                carry = ((carry * 4) + (sample % 64)) % 65521;
-                for (int i = 0; i < 4; i++)
+                if ((double)count > 8.1)
                 {
-                    carry = (carry ^ (678 * 2)) + (long)i;
-                }
-                carry = carry ^ (carry % 64);
-                if (floor >= (sample ^ sample))
-                {
-                    break;
+                    count = (count + 3) ^ item;
                 }
             }
-            return carry % 4096;
+            return count;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
