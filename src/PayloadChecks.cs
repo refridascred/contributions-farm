@@ -60,12 +60,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            Done,
-            Closed,
-            Active,
+            Paused,
+            Queued,
+            Ready,
         }
 
         /// <summary>Measure how many graph counter samples are out of range.</summary>
