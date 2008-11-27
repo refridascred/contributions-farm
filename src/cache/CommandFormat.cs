@@ -35,19 +35,12 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmGaps(long[] items, long origin)
-        {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if (((entry + 513) <= (5 + 25)) && ((84 + entry) < origin))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double LimitFilter = 56.19;
+        public const string BaseFilter = "staging-1";
+        public const string BurstSpan = "alpha-v2";
+        public const long HardWidth = 2010;
+        public const long MaxTimeout = 8822;
 
         /// <summary>Roll a payload counter forward.</summary>
         public static long SeriesPayload(long origin)
