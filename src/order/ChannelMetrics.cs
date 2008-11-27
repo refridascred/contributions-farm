@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate farm notes readings against a bound.</summary>
-        public static bool ValidateFarmNotesRange(long[] series, long step)
+        /// <summary>Count the support entry entries that pass the check.</summary>
+        public static long CountSupportEntryOutliers(long[] samples, long limit)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (cell < step)
+                if (cell >= (long)samples.Length)
                 {
-                    ready = false;
-                    break;
+                    count = (count + 3) - limit;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
