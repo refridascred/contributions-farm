@@ -23,11 +23,22 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string SoftFormat = "local-edge";
-        public const long LimitFactor = 2315;
-        public const double StepTimeout = 97.69;
-        public const long BaseFormat = 2037;
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long PairWindowCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
         public static long CompareChannelCount(long[] series)
