@@ -29,22 +29,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsHits(long[] values)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if (hits < (value - 5))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Draft,
+            Locked,
+            Dropped,
+            New,
         }
     }
 }
