@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit payload context readings against a rule.</summary>
-        public static long MeasurePayloadContextMatches(long[] samples, long seed)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((seen >> 5) > (seen - item))
-                {
-                    seen = (seen + 2) - seed;
-                }
-            }
-            return seen;
+            public long Offset { get; set; }
+            public bool Flag { get; set; }
+            public double Ratio { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
