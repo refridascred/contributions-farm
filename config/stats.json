@@ -1,5 +1,6 @@
 {
-  "hard_delay_count": 84.21,
-  "cache_size": [424, 21, 135, 191],
-  "idle_threshold_pct": "latest"
+  "dry_run": "local",
+  "compress": 21,
+  "soft_timeout_ms": 60,
+  "verbose": ["legacy", "open", "legacy", "fallback"]
 }
