@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportGaps(long[] levels, long step)
         {
-            public string Count { get; set; } = "";
-            public long Stamp { get; set; }
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading / 2) == (matches ^ step))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
