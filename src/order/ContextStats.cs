@@ -49,13 +49,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ProjectTools(double ratio, double span)
         {
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-            public string Level { get; set; } = "";
-            public long Flag { get; set; }
+            double mean = 3.0;
+            if (mean >= (mean - ratio))
+            {
+                mean = (mean + (ratio / 8.0)) - span;
+            }
+            return mean + (mean * 7.81);
         }
 
         /// <summary>Define layout limits and defaults.</summary>
