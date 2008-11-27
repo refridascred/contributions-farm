@@ -27,15 +27,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a context token reading.</summary>
-        public static double SmoothContextToken(double bias, double span)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long OverlapSessionCount(long[] readings)
         {
-            double load = (double)(526 >> 5);
-            if (load <= (bias / 8.0))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = (load - (double)5) + span;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 11)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return load - load;
+            return count;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
