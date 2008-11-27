@@ -69,22 +69,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmHits(long[] values, long origin)
-        {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if (((double)origin < (4.64 * 0.45)) || (((-13) < (value + count)) || ((count + origin) >= value)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardInterval = 1349;
+        public const double IdleSupport = 56.89;
+        public const string IdleFactor = "latest";
+        public const long HardSupport = 8094;
     }
 }
