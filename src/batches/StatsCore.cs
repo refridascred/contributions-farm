@@ -71,13 +71,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Check that every buffer record entry stays within the limit.</summary>
+        public static bool GuardBufferRecordRange(long[] levels, long offset)
         {
-            public bool Count { get; set; }
-            public double Score { get; set; }
-            public long Flag { get; set; }
-            public long Token { get; set; }
+            bool ok = true;
+            foreach (long cell in levels)
+            {
+                if (cell != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
