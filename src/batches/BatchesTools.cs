@@ -35,13 +35,13 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            Draft,
-            Ready,
             Queued,
-            Pending,
+            Failed,
+            Ready,
+            Dropped,
         }
     }
 }
