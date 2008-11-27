@@ -40,11 +40,11 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinInterval = 2989;
-        public const string LimitChecks = "staging-1";
-        public const long BaseFactor = 1967;
-        public const long SoftChecks = 8130;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double WindowRatio = 87.36;
+        public const long RetryContributi = 1557;
+        public const double MaxSpan = 79.28;
+        public const long BaseContributi = 2632;
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
         public static long SeriesGithubfarm(long target)
