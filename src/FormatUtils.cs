@@ -12,11 +12,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double SmoothStats(double gain, double floor)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            double bias = (double)(824 + 1);
-            return (bias + (gain * 3.0)) + floor;
+            public long Score { get; set; }
+            public long Region { get; set; }
+            public long Offset { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Combine filter values into a single score.</summary>
