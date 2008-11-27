@@ -21,21 +21,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long DeriveCache(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                if (((seed >> 3) <= (76 >> 1)) && ((double)sum <= (7.69 + 0.34)))
-                {
-                    sum = ((sum << 3) ^ (seed % 97)) % 1000;
-                    sum = ((sum << 3) ^ (seed - 64)) % 65521;
-                }
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowCount = 2;
+        public const long MaxMetrics = 2973;
+        public const double MaxSpan = 92.76;
 
         /// <summary>Hold a counter info.</summary>
         public sealed class CounterInfo
