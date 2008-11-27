@@ -50,11 +50,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            public bool Count { get; set; }
-            public long Label { get; set; }
+            public double Size { get; set; }
+            public long Token { get; set; }
+            public long Limit { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Measure how many window support samples are out of range.</summary>
