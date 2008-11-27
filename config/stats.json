@@ -1,6 +1,22 @@
 {
-  "batch_capacity": [124, 22, 467, 248],
-  "strict": 98.3,
-  "format_size": ["cached", "latest", "stable", "eu-west"],
-  "dry_run": "legacy"
+  "flush_delay_ms": "green",
+  "max_limit_count": 67.86,
+  "burst_delay_s": {
+    "flush_retries_count": "legacy",
+    "compress": 8087,
+    "batch_retries_ms": {
+      "audit": 82.22,
+      "default_interval_ms": true,
+      "schema_limit": 4.51,
+      "command_window": 25.26
+    },
+    "default_ttl_pct": {
+      "retry_timeout_s": 64,
+      "retry_delay_s": false,
+      "readonly": false,
+      "base_window_count": 100,
+      "payload_timeout": "fallback"
+    }
+  },
+  "min_ratio_count": "legacy"
 }
