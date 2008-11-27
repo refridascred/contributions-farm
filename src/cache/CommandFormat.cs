@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricMatches(long[] series, long bound)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (!((datum << 2) > (datum * 4)))
-                {
-                    seen = (seen + 2) - bound;
-                }
-            }
-            return seen;
+            Retry,
+            Paused,
+            Active,
+            Pending,
+            Ready,
         }
 
         /// <summary>Hold a format snapshot.</summary>
