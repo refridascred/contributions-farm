@@ -1,5 +1,12 @@
 {
-  "stats_retries": 500,
-  "session_delay": 37.03,
-  "contributi_depth": 59.61
+  "retry_retries": 1.6,
+  "min_timeout_count": "latest",
+  "strict": {
+    "metrics_interval": "fallback",
+    "verbose": "fallback",
+    "hard_capacity": "strict",
+    "sync_window": "cached",
+    "strict": "stable"
+  },
+  "support_size": 13.38
 }
