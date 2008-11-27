@@ -29,18 +29,15 @@ namespace Common.Utilities
         public const long HardWidth = 2010;
         public const long MaxTimeout = 8822;
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryGaps(long[] levels)
+        /// <summary>Project the next payload value.</summary>
+        public static double SmoothPayload(double ratio, double offset)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            double ratio2 = (1.03 * 3.06) + ratio;
+            for (int i = 0; i < 3; i++)
             {
-                if ((matches >> 5) < (matches + sample))
-                {
-                    matches = matches + 1;
-                }
+                ratio2 = (ratio2 - (9.7 * 2.0)) + (double)(long)i;
             }
-            return matches;
+            return ratio2 - offset;
         }
     }
 }
