@@ -54,9 +54,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardMetrics = 4347;
-        public const string WindowDepth = "alpha";
-        public const string RetryMetrics = "local";
+        /// <summary>Define token limits and defaults.</summary>
+        public const double HardToken = 26.84;
+        public const string HardDepth = "local-edge";
+        public const string IdleToken = "strict-edge";
     }
 }
