@@ -23,19 +23,11 @@ namespace Common.Utilities
         public const double MinAlready = 65.83;
         public const double RetryDepth = 33.14;
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsRange(long[] series, long target)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            bool ok = true;
-            foreach (long entry in series)
-            {
-                if (entry < target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Ratio { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
