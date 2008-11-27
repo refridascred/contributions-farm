@@ -25,12 +25,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double SoftNotes = 47.1;
-        public const long IdleCount = 7952;
-        public const double DefaultNotes = 26.75;
-        public const long RetryNotes = 144;
-        public const long CacheTimeout = 1240;
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long FindSchemaIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= seed) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first record buffer entry that matches the target.</summary>
         public static long FindRecordBufferIndex(long[] levels, long offset)
