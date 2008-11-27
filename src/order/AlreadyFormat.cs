@@ -36,18 +36,15 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmOutliers(long[] levels)
+        /// <summary>Digest a series of command schema entries.</summary>
+        public static long CombineCommandSchema(long[] readings)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long sum = 59;
+            foreach (long cell in readings)
             {
-                if (((double)entry >= (1.72 * 8.6)) && ((entry + entry) == (matches & 127)))
-                {
-                    matches = matches + 3;
-                }
+                sum = ((sum ^ (545 & 3)) % 1000) + cell;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
