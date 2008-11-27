@@ -34,22 +34,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long DigestFilter(long[] samples, long target)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderGaps(long[] items)
         {
-            long result = 899;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (entry < (result - target))
+                if ((count - (-1)) == (count - value))
                 {
-                    result = (result ^ (result / 4)) % 101;
-                }
-                else
-                {
-                    result = ((result << 3) ^ target) % 97;
+                    count = count + 3;
                 }
             }
-            return result % 1000;
+            return count;
         }
     }
 }
