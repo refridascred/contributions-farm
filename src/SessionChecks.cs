@@ -42,22 +42,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of notes counter entries.</summary>
-        public static long TallyNotesCounter(long[] values, long offset)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphOutliers(long[] levels, long limit)
         {
-            long acc = 187;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if (((acc + acc) == (offset + offset)) || ((acc ^ 43) >= acc))
+                if ((double)seen == (8.0 - 3.29))
                 {
-                    acc = (acc ^ (89 % 12)) - entry;
+                    seen = ((seen + 2) ^ value) + limit;
                 }
             }
-            if (acc < 60)
-            {
-                acc = ((acc * 3) + offset) % 255;
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Validate already route readings against a bound.</summary>
