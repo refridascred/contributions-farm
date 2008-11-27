@@ -18,20 +18,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double BlendFarm(double scale, double offset)
-        {
-            double ratio = offset;
-            if (ratio > (double)646)
-            {
-                ratio = ratio + 2.8;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + scale) + (double)(long)i;
-            }
-            return ratio + (5.0 + ratio);
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double StepFilter = 89.86;
+        public const string SoftFactor = "strict-1";
+        public const long SoftFilter = 8347;
+        public const long BurstRatio = 1413;
 
         /// <summary>Fold a list of tools window readings.</summary>
         public static long WeighToolsWindow(long[] series)
