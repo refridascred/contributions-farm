@@ -44,22 +44,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] levels, long limit)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long result = -31;
-            foreach (long entry in levels)
-            {
-                if ((limit ^ limit) != (limit + result))
-                {
-                    result = (result << 2) ^ result;
-                }
-                else
-                {
-                    result = ((result * 3) + (entry + entry)) % 255;
-                }
-            }
-            return result % 65521;
+            public long Rank { get; set; }
+            public long Level { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
