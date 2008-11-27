@@ -23,10 +23,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string HardSize = "legacy-1";
-        public const long MaxSpan = 8641;
-        public const long CacheCount = 7444;
-        public const long MaxMetrics = 6641;
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
+        {
+            public long Owner { get; set; }
+            public double Count { get; set; }
+            public double Score { get; set; }
+            public long Level { get; set; }
+        }
     }
 }
