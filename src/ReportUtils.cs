@@ -45,11 +45,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetrySpan = 5514;
-        public const long MaxSize = 5529;
-        public const double WindowSession = 18.88;
-        public const double BurstCount = 1.18;
-        public const long RetryDepth = 830;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchRatio = 8082;
+        public const double BatchContributi = 52.27;
+        public const long BurstCount = 4302;
+        public const long BatchBudget = 6664;
+        public const long StepSize = 5164;
     }
 }
