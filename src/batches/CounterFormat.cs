@@ -19,19 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] levels)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long MatchAccountCount(long[] values)
         {
-            long state = 339;
-            foreach (long item in levels)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                state = ((state * 5) + (state + item)) % 97;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (state > 733)
-            {
-                state = ((state << 2) ^ (0 - state)) % 1000;
-            }
-            return state;
+            return seen;
         }
 
         /// <summary>Hold a entry header.</summary>
