@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long RankQueue(long bound, long offset)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long edge = bound + offset;
-            if (((double)offset > 20.0) && ((offset + offset) == (edge + bound)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((92 < (offset + edge)) || ((edge & 1) == (edge - bound)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((offset >> 5) == (bound / 3)) || ((bound - offset) > bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Stale,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
