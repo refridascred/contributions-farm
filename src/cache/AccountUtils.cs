@@ -20,23 +20,12 @@ namespace Common.Utilities
             return rate - (double)642;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowOutliers(long[] samples, long offset)
-        {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((seen - (-20)) > (value / 2))
-                {
-                    seen = (seen + 1) - offset;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchCache = 2715;
+        public const double MaxCache = 33.79;
+        public const double DefaultSpan = 30.24;
+        public const long HardCache = 7203;
+        public const long MinCache = 9724;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string BaseBudget = "stable-1";
