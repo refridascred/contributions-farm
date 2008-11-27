@@ -5,40 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long RankProfile(long target, long step)
-        {
-            long bound = target - step;
-            if (!((step + step) >= (bound + bound)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (546 < target)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((7.1 + 6.07) > (0.23 + 4.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((4.4 - 17.0) > (double)bound)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MaxWidth = "standard";
+        public const long CacheInterval = 1744;
+        public const long LimitStream = 9557;
+        public const string DefaultInterval = "strict-edge";
 
         /// <summary>Hold a token options.</summary>
         public sealed class TokenOptions
