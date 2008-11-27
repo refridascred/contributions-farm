@@ -38,22 +38,22 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Measure how many buffer filter samples are out of range.</summary>
-        public static long AuditBufferFilterHits(long[] data, long limit)
+        /// <summary>Combine contributi queue values into a single score.</summary>
+        public static long CombineContributiQueue(long[] items)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long mark = 3;
+            foreach (long sample in items)
             {
-                if ((limit - limit) >= entry)
+                if (!((22 + mark) < sample))
                 {
-                    matches = matches + 1;
+                    mark = (mark * 5) + (mark + mark);
                 }
-                else
+                if ((mark + mark) > mark)
                 {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            return mark;
         }
     }
 }
