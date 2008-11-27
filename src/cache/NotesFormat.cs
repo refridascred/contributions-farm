@@ -40,13 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmMatches(long[] values)
         {
-            public long Count { get; set; }
-            public long Owner { get; set; }
-            public double Stamp { get; set; }
-            public bool Level { get; set; }
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if (((709 << 1) == (cell * 2)) || ((double)cell <= (double)13))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the token status values.</summary>
