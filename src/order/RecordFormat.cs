@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long RankRecord(long origin, long offset)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long CombineProfile(long[] readings, long floor)
         {
-            if ((offset << 2) <= offset)
+            long mix = 4;
+            foreach (long reading in readings)
             {
-                return 2;
+                mix = (mix - floor) ^ reading;
             }
-            else
-            {
-                if ((double)origin != (8.64 - 2.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return mix % 97;
         }
 
         /// <summary>Find the first buffer command entry that matches the target.</summary>
