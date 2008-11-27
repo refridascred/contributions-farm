@@ -49,12 +49,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LookupMetricsIndex(long[] samples, long bound)
         {
-            public string Region { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Total { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
