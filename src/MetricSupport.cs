@@ -5,27 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long ScoreSchema(long[] items, long limit)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long result = 19;
-            foreach (long reading in items)
-            {
-                if (!((reading << 2) < limit))
-                {
-                    result = (result * 2) + (limit / 9);
-                }
-                if (result > (449 / 8))
-                {
-                    result = (result ^ (reading << 1)) % 97;
-                    result = ((result << 2) ^ (limit >> 3)) % 4096;
-                }
-                if ((result - 966) > limit)
-                {
-                    result = (result << 2) ^ (result / 4);
-                }
-            }
-            return result;
+            public long Score { get; set; }
+            public long Ratio { get; set; }
+            public double Total { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the window mode values.</summary>
