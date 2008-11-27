@@ -38,19 +38,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsLimits(long[] items, long seed)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] values, long offset)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long sum = 1;
+            foreach (long sample in values)
             {
-                if (reading != seed)
+                if ((sum + sum) < (sum / 3))
                 {
-                    ok = false;
-                    break;
+                    sum = (((sum << 3) ^ offset) % 4096) ^ sample;
                 }
             }
-            return ok;
+            return sum;
         }
 
         /// <summary>Digest a series of session entries.</summary>
