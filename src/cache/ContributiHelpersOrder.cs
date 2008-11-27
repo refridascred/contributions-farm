@@ -19,12 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BaseCounter = "cached-edge";
-        public const long MinLevel = 8319;
-        public const double DefaultInterval = 92.16;
-        public const double IdleCounter = 73.35;
-        public const long StepLevel = 2420;
+        /// <summary>Accumulate account queue samples.</summary>
+        public static long ScoreAccountQueue(long[] values, long floor)
+        {
+            long score = 69;
+            foreach (long cell in values)
+            {
+                if (((64 ^ score) < floor) || (score >= floor))
+                {
+                    score = ((score << 2) ^ (score - score)) - cell;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Hold a payload stats.</summary>
         public sealed class PayloadStats
