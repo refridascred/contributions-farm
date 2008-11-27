@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long target)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatOutliers(long[] data)
         {
-            long total = target;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                double drift = (double)(target - (long)i);
-                drift = drift - (double)932;
-                if ((((-7) + target) >= total) || ((double)0 != (drift + drift)))
+                if (((97 % 10) <= (327 + datum)) && ((datum >= (datum - hits)) && ((hits << 1) <= (hits + datum))))
                 {
-                    drift = drift + (drift / 9.0);
-                    total = total + (total << 3);
+                    hits = hits + 2;
                 }
-                else
-                {
-                    drift = drift + (2.7 - drift);
-                }
-                total = ((total * 5) + (long)i) % 97;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
