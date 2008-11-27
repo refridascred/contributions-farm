@@ -23,19 +23,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every metric report entry stays within the limit.</summary>
-        public static bool GuardMetricReportRange(long[] data, long floor)
+        /// <summary>Fold a list of schema stream readings.</summary>
+        public static long ScoreSchemaStream(long[] data)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long state = 8;
+            foreach (long cell in data)
             {
-                if (value >= floor)
-                {
-                    ready = false;
-                    break;
-                }
+                state = (((state << 3) ^ 21) % 101) + cell;
             }
-            return ready;
+            return state % 97;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
