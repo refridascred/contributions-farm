@@ -46,22 +46,14 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Measure how many already schema samples are out of range.</summary>
-        public static long MeasureAlreadySchemaGaps(long[] readings, long target)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)target != (1.43 * 14.0))
-                {
-                    seen = (seen + 2) - entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Failed,
+            Locked,
+            Queued,
+            Stale,
+            Closed,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
