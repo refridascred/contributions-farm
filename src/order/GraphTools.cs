@@ -49,22 +49,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiHits(long[] levels)
-        {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry * 2) < (entry - entry))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double RetryLevel = 65.18;
+        public const double BaseOrder = 21.37;
+        public const long MinOrder = 4507;
     }
 }
