@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            Retry,
-            Draft,
-            Dropped,
-            Synced,
-            Closed,
+            public double Ratio { get; set; }
+            public string Weight { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Audit farm stream readings against a rule.</summary>
