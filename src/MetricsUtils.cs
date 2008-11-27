@@ -71,24 +71,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long StepGithubfarm(long limit)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long mix = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                mix = (mix + 2) % 97;
-                if ((925 ^ limit) > (limit * 3))
-                {
-                    mix = (mix ^ (mix - limit)) % 97;
-                }
-                else
-                {
-                    mix = (mix ^ (mix >> 5)) % 97;
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
+            Pending,
+            Failed,
+            Dropped,
+            Draft,
         }
     }
 }
