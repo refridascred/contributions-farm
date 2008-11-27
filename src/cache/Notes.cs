@@ -27,19 +27,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] data, long origin)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long PairFormatCount(long[] series)
         {
-            long carry = -62;
-            foreach (long cell in data)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = carry + cell;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (carry < 714)
-            {
-                carry = ((carry << 3) ^ origin) % 1000;
-            }
-            return carry;
+            return tally;
         }
 
         /// <summary>Validate metrics metric readings against a bound.</summary>
