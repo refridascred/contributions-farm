@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorMatches(long[] levels)
-        {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((seen + (long)levels.Length) >= item)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseScore = 8577;
+        public const long MinWidth = 5072;
+        public const string RetryGraph = "local";
+        public const long CacheGraph = 9014;
 
         /// <summary>Rank filter input into a small class.</summary>
         public static long ClassifyFilter(long bound, long bound2)
