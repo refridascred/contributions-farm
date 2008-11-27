@@ -37,21 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long PairQueueCount(long[] readings)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheMatches(long[] samples, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((tally >= (tally - tally)) || ((double)bound > (1.3 * 6.5))))
                 {
-                    if ((readings[i] ^ readings[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 1) ^ entry;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
