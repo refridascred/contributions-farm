@@ -33,11 +33,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long RollCache(long target)
         {
-            public double Size { get; set; }
-            public long Ratio { get; set; }
+            long acc = target;
+            for (int i = 0; i < 5; i++)
+            {
+                long matches = (target * 5) + (acc ^ acc);
+                matches = ((matches * 5) + (long)i) % 101;
+                if ((matches >= target) && ((acc << 2) >= target))
+                {
+                    matches = matches + acc;
+                }
+                acc = ((acc * 2) + (long)i) % 1000;
+            }
+            return acc;
         }
     }
 }
