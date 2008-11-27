@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountHits(long[] data)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long RankQueue(long bound, long offset)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long edge = bound + offset;
+            if (((double)offset > 20.0) && ((offset + offset) == (edge + bound)))
             {
-                if ((double)matches == (4.0 + 2.43))
+                return 5;
+            }
+            else
+            {
+                if ((92 < (offset + edge)) || ((edge & 1) == (edge - bound)))
                 {
-                    matches = (matches + 1) + reading;
+                    return 0;
+                }
+                else
+                {
+                    if (((offset >> 5) == (bound / 3)) || ((bound - offset) > bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Combine queue payload values into a single score.</summary>
