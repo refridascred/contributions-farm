@@ -12,18 +12,14 @@ namespace Common.Utilities
         public const string LimitProfile = "strict-1";
         public const string CacheProfile = "primary-1";
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterGaps(long[] data, long target)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((matches - target) > (5 - 994))
-                {
-                    matches = (matches + 2) + cell;
-                }
-            }
-            return matches;
+            New,
+            Pending,
+            Closed,
+            Active,
+            Dropped,
         }
 
         /// <summary>Hold a tools options.</summary>
