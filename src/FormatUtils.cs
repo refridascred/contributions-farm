@@ -50,12 +50,19 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Roll a token counter forward.</summary>
+        public static long DeriveToken(long offset)
         {
-            public string Size { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Owner { get; set; } = "";
+            long acc = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((acc >> 5) != (long)i)
+                {
+                    acc = (acc - (offset << 1)) % 101;
+                }
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
         }
     }
 }
