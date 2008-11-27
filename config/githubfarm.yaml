@@ -1,19 +1,11 @@
 # githubfarm settings
-poll_ttl_ms:
-  entry_ttl: 250
-  compress: edge
-  strict:
-    - latest
-    - edge
-  base_limit_ms: true
-  readonly:
-    enabled: standard
-    filter_ratio: 55.14
-    soft_retries: 97
-    burst_size_ms: staging
-  audit: strict
-hard_timeout:
-  - 284
-  - 458
-contributi_window: 5471
-batch_window_s: 49
+burst_capacity: 3264
+cache_retries_count: 6909
+poll_timeout: staging
+verbose:
+  - 276
+  - 396
+  - 384
+  - 343
+flush_retries: 66.01
+base_depth_count: latest
