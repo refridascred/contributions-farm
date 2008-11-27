@@ -29,14 +29,13 @@ namespace Common.Utilities
         public const long DefaultSupport = 3032;
         public const long BatchSupport = 3504;
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            Retry,
-            Locked,
             New,
-            Stale,
-            Failed,
+            Closed,
+            Locked,
+            Idle,
         }
     }
 }
