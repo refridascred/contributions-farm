@@ -1,13 +1,6 @@
 {
-  "strict": 59.16,
-  "audit": 67.44,
-  "order_size": 30,
-  "editor_ttl": true,
-  "record_depth": {
-    "sync_interval_count": ["latest", "staging", "edge", "edge"],
-    "batch_capacity_count": 1024,
-    "soft_timeout_pct": 5491,
-    "order_ttl": ["blue", "open", "legacy"],
-    "window_limit": 81.9
-  }
+  "burst_delay_count": 2940,
+  "warm_ttl": 851,
+  "enabled": 9,
+  "counter_retries": "green"
 }
