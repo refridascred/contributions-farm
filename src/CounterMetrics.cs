@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsRange(long[] data, long origin)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesLimits(long[] data, long step)
         {
-            bool ready = true;
-            foreach (long value in data)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                if (value > origin)
+                if (sample < step)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
