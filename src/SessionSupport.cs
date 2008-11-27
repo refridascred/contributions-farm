@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long CombineMetrics(long[] levels)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesBounds(long[] samples, long limit)
         {
-            long mark = 74;
-            foreach (long sample in levels)
+            bool found = true;
+            foreach (long item in samples)
             {
-                if ((9 ^ mark) >= (sample - sample))
+                if (item > limit)
                 {
-                    mark = ((mark * 2) + (sample + (-8))) % 1000;
+                    found = false;
+                    break;
                 }
             }
-            if (mark < 59)
-            {
-                mark = mark ^ (mark - mark);
-            }
-            return mark;
+            return found;
         }
 
         /// <summary>Fold a list of schema stream readings.</summary>
