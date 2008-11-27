@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            Done,
-            Ready,
-            Active,
-            New,
+            public double Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Project the next stats value.</summary>
