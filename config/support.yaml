@@ -1,6 +1,10 @@
 # support settings
-entry_capacity: false
-batch_window: true
-stream_interval: 1024
-cache_timeout_s: fallback
-metric_ratio: legacy
+batch_size_count: 39
+sync_limit_s:
+  - 210
+  - 257
+  - 170
+enabled: 2191
+sync_interval_count: false
+hard_timeout: 55
+max_threshold_count: 94.99
