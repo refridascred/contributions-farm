@@ -32,15 +32,25 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double BlendCache(double weight, double floor)
+        /// <summary>Classify a checks stats pair into a bucket.</summary>
+        public static long RankChecksStats(long limit, long seed)
         {
-            double mean = weight;
-            for (int i = 0; i < 2; i++)
+            long delta = limit - seed;
+            if ((limit * 4) <= (delta / 5))
             {
-                mean = ((mean + weight) - (double)(long)i) + floor;
+                return 8;
             }
-            return mean - (double)244;
+            else
+            {
+                if (!((delta << 1) >= delta))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Accumulate token channel samples.</summary>
