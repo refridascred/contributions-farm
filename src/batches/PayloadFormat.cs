@@ -36,16 +36,18 @@ namespace Common.Utilities
             return rate - (rate + bias);
         }
 
-        /// <summary>Derive the next farm entry value from a seed.</summary>
-        public static long SeriesFarmEntry(long floor)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] readings, long limit)
         {
-            long sum = floor;
-            for (int i = 0; i < 20; i++)
+            long state = 41;
+            foreach (long sample in readings)
             {
-                sum = sum ^ (39 << 1);
-                sum = ((sum * 3) + (long)i) % 101;
+                if ((state + sample) < (limit + limit))
+                {
+                    state = (state << 2) ^ (sample + state);
+                }
             }
-            return sum;
+            return state % 65521;
         }
     }
 }
