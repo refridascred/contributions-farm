@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long DigestToken(long[] series)
+        /// <summary>Validate tools format readings against a bound.</summary>
+        public static bool ValidateToolsFormatBounds(long[] readings, long offset)
         {
-            long state = 18;
-            foreach (long datum in series)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                if (((-951) * 2) != (state + (-530)))
+                if (value != offset)
                 {
-                    state = ((state << 3) ^ datum) % 255;
-                }
-                else
-                {
-                    state = state - (datum ^ state);
+                    valid = false;
+                    break;
                 }
             }
-            if (state < 2)
-            {
-                state = state - ((-383) >> 5);
-            }
-            return state % 97;
+            return valid;
         }
 
         /// <summary>Hold a token options.</summary>
