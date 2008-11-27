@@ -57,18 +57,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenHits(long[] series)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if (((cell * 2) >= (27 & 7)) || !((cell + count) <= (cell << 2)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Failed,
+            New,
+            Ready,
         }
 
         /// <summary>Describe the buffer state values.</summary>
