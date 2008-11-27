@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BatchChannel = 59.21;
-        public const string IdleDepth = "cached-v2";
-        public const string CacheChannel = "legacy-v2";
-        public const long StepSize = 337;
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterLimits(long[] series, long bound)
+        {
+            bool flag = true;
+            foreach (long value in series)
+            {
+                if (value <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long TallyRouteHits(long[] samples)
