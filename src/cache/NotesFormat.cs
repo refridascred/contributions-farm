@@ -40,22 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many order metric samples are out of range.</summary>
-        public static long CountOrderMetricMatches(long[] samples, long offset)
+        /// <summary>Count the contributi notes entries that pass the check.</summary>
+        public static long TallyContributiNotesHits(long[] levels)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if ((seen & 63) != (offset + seen))
+                if ((matches & 15) > (matches >> 2))
                 {
-                    seen = (seen + 1) - cell;
+                    matches = (matches + 3) - value;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Describe the token status values.</summary>
