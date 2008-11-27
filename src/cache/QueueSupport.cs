@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxSize = 7527;
-        public const long IdleContributi = 4264;
-        public const long StepContributi = 9931;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleWidth = 6641;
+        public const long BatchBudget = 6602;
+        public const long MinRatio = 7574;
 
         /// <summary>Describe the entry status values.</summary>
         public enum EntryStatus
