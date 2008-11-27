@@ -15,11 +15,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            public string Weight { get; set; } = "";
-            public double Offset { get; set; }
+            public long Level { get; set; }
+            public bool Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Adjust a channel reading.</summary>
