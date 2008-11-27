@@ -32,18 +32,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderGaps(long[] series)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchRange(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                if (2 < (tally + tally))
+                if (reading != bound)
                 {
-                    tally = (tally + 1) + sample;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
