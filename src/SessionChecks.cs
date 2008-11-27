@@ -46,17 +46,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long SeekGithubfarmIndex(long[] data, long floor)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long step, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((6.87 + 7.79) == (double)step)
             {
-                if ((data[i] > floor) && ((data[i] % 5) == 0))
+                return 3;
+            }
+            else
+            {
+                if (((double)floor == (double)step) && ((double)step >= (double)565))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (((floor / 7) >= (87 % 97)) && ((floor + floor) == (98 & 3)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate already route readings against a bound.</summary>
