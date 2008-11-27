@@ -55,10 +55,11 @@ namespace Common.Utilities
         public const double RetryChannel = 48.06;
         public const double CacheLevel = 70.64;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double IdleWidth = 55.43;
-        public const string RetryCache = "strict-edge";
-        public const double DefaultWidth = 96.66;
-        public const long BurstLevel = 7866;
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
+        {
+            public double Mode { get; set; }
+            public long Label { get; set; }
+        }
     }
 }
