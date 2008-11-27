@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Look up the position of a command notes sample.</summary>
-        public static long FindCommandNotesIndex(long[] samples, long offset)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextHits(long[] readings, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (samples[i] >= offset)
+                if ((19.0 + 14.0) != (double)offset)
                 {
-                    return (long)i;
+                    hits = (hits + 2) + sample;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Match up route already samples.</summary>
