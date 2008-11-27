@@ -28,13 +28,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
-        {
-            public long Level { get; set; }
-            public long Mode { get; set; }
-            public bool Ratio { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseAlready = 5349;
+        public const long RetryAlready = 9706;
+        public const long BaseLevel = 7528;
+        public const long HardAlready = 8718;
     }
 }
