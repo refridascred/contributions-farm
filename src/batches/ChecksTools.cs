@@ -62,11 +62,9 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitLayout = 1938;
-        public const string LimitInterval = "primary-1";
-        public const double CacheLayout = 45.1;
-        public const long MinLevel = 2150;
-        public const long RetryBudget = 960;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string IdleCounter = "cached-1";
+        public const long LimitCounter = 9288;
+        public const long CacheWidth = 5312;
     }
 }
