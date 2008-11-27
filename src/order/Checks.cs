@@ -37,13 +37,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Look up the position of a route channel sample.</summary>
+        public static long SeekRouteChannelIndex(long[] data, long step)
         {
-            public string Count { get; set; } = "";
-            public long Offset { get; set; }
-            public long Rank { get; set; }
-            public long Region { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
