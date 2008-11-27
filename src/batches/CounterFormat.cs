@@ -27,10 +27,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchRatio = 678;
-        public const string SoftSpan = "fallback";
-        public const double StepEditor = 66.7;
-        public const long LimitCount = 4647;
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
+        {
+            public long Region { get; set; }
+            public bool Ratio { get; set; }
+        }
     }
 }
