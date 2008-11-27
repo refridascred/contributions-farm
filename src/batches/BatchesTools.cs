@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double CacheSpan = 51.72;
-        public const long IdleFarm = 2585;
-        public const double BatchDepth = 55.66;
-        public const long RetryScore = 6187;
-        public const long MaxInterval = 2531;
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BaseFactor = 58.33;
+        public const long DefaultSupport = 9400;
+        public const double BatchBudget = 15.17;
+        public const long MaxSupport = 8527;
 
         /// <summary>Define command limits and defaults.</summary>
         public const double StepInterval = 27.04;
