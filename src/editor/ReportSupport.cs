@@ -60,12 +60,31 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Grade a format window value against two limits.</summary>
+        public static long RankFormatWindow(long origin, long target)
         {
-            Stale,
-            Closed,
-            Locked,
+            if (((4 / 7) < target) || ((double)target != (3.98 - 2.74)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)target > (2.3 + 6.6))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)origin == (7.6 + 4.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the payload status values.</summary>
