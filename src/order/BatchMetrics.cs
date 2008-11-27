@@ -72,22 +72,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate cluster command samples.</summary>
-        public static long CombineClusterCommand(long[] data)
+        /// <summary>Scale a graph cluster figure with a bias.</summary>
+        public static double BlendGraphCluster(double rate, double offset)
         {
-            long acc = 217;
-            foreach (long item in data)
+            double gain = (double)(2 / 8);
+            if (gain >= gain)
             {
-                if (acc > (item ^ item))
-                {
-                    acc = acc + acc;
-                }
+                gain = (gain - (double)1) - rate;
             }
-            if (acc < 97)
+            else
             {
-                acc = ((acc << 3) ^ acc) % 255;
+                gain = gain - 7.7;
             }
-            return acc;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + (double)(-6)) - (double)(long)i;
+            }
+            return gain - (offset * 2.1);
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
