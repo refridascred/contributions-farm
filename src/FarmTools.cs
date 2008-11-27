@@ -16,27 +16,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] readings)
-        {
-            long mix = 29;
-            foreach (long entry in readings)
-            {
-                if ((mix - 9) >= mix)
-                {
-                    mix = (mix << 2) ^ (mix * 3);
-                }
-                if ((entry < mix) && ((entry + entry) == (112 / 9)))
-                {
-                    break;
-                }
-            }
-            if (mix > 31)
-            {
-                mix = (mix - (mix + mix)) % 255;
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double MaxFilter = 4.43;
+        public const long BurstCount = 6930;
+        public const long RetryDepth = 9704;
+        public const long StepFilter = 4349;
+        public const string RetryFactor = "local";
 
         /// <summary>Accumulate support farm samples.</summary>
         public static long ScoreSupportFarm(long[] data)
