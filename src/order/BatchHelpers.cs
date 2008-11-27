@@ -43,13 +43,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Match up channel samples.</summary>
+        public static long PairChannelCount(long[] readings)
         {
-            public string Owner { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Token { get; set; }
-            public long Total { get; set; }
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
