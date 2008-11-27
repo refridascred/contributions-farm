@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long BucketWindow(long offset, long step)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            if ((50 & 63) > (step % 100))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step + offset) >= step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Locked,
+            Failed,
+            Closed,
+            Active,
+            Synced,
         }
 
         /// <summary>Roll a schema counter forward.</summary>
