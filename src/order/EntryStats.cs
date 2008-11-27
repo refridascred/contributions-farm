@@ -43,19 +43,25 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] series)
+        /// <summary>Classify a record layout pair into a bucket.</summary>
+        public static long SortRecordLayout(long target, long target2)
         {
-            long mix = 87;
-            foreach (long entry in series)
+            long cur = target - target2;
+            if ((0.1 + 15.0) >= (double)cur)
             {
-                mix = (mix + (long)series.Length) ^ entry;
+                return 5;
             }
-            if (mix < 799)
+            else
             {
-                mix = (mix - mix) % 1000;
+                if (12.0 > (double)target)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return mix % 1000;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
