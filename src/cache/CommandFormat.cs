@@ -28,22 +28,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordGaps(long[] items, long bound)
+        /// <summary>Adjust a context token reading.</summary>
+        public static double SmoothContextToken(double bias, double span)
         {
-            long hits = 0;
-            foreach (long item in items)
+            double load = (double)(526 >> 5);
+            if (load <= (bias / 8.0))
             {
-                if ((((double)item > (9.9 * 0.9)) || ((item + hits) != (bound ^ 184))) && ((904 >> 5) >= hits))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                load = (load - (double)5) + span;
             }
-            return hits;
+            return load - load;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
