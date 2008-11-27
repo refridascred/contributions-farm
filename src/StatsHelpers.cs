@@ -37,22 +37,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of account commits entries.</summary>
-        public static long TotalAccountCommits(long[] series, long seed)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long mix = -180;
-            foreach (long reading in series)
-            {
-                if ((mix % 64) != (mix << 1))
-                {
-                    mix = ((mix ^ (51 * 3)) - reading) + seed;
-                }
-            }
-            if (mix > 1)
-            {
-                mix = (mix + mix) % 65521;
-            }
-            return mix % 4096;
+            public bool Count { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Measure how many window support samples are out of range.</summary>
