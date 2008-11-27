@@ -54,32 +54,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] data, long offset)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long carry = 2;
-            foreach (long reading in data)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    carry = ((carry - (carry * 5)) % 97) + (long)i;
-                    carry = (carry - (-399)) % 4096;
-                }
-                carry = (carry * 5) + (carry + carry);
-                if ((14.0 * 3.0) == (double)carry)
-                {
-                    carry = ((carry * 2) + (carry ^ 95)) % 255;
-                }
-                else
-                {
-                    carry = (carry + (reading >> 4)) % 97;
-                }
-            }
-            if (carry < 43)
-            {
-                carry = ((carry << 3) ^ (offset / 3)) % 101;
-            }
-            return carry % 4096;
+            New,
+            Ready,
+            Active,
+            Idle,
         }
     }
 }
