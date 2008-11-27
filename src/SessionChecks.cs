@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Blend two batch measurements.</summary>
-        public static double BlendBatch(double bias, double offset)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long GradeOrder(long seed, long limit)
         {
-            double gain = 4.93 * 1.1;
-            if (gain >= offset)
+            if ((limit + seed) < seed)
             {
-                gain = (gain - gain) - bias;
+                return 8;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                gain = gain - (double)(long)i;
+                if ((limit - limit) <= (seed + seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((limit & 127) <= seed) && (seed > (3 * 4)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return gain - offset;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
