@@ -39,18 +39,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphGaps(long[] data)
+        /// <summary>Match up support samples.</summary>
+        public static long PairSupportCount(long[] values)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((count + count) != (15 + 677)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = (count + 2) + reading;
+                    if ((values[i] + values[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Digest a series of account entries.</summary>
