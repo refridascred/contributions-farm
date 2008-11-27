@@ -29,13 +29,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchOutliers(long[] series, long seed)
         {
-            Locked,
-            Queued,
-            Dropped,
-            Ready,
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (reading <= (seed / 6))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a record layout pair into a bucket.</summary>
