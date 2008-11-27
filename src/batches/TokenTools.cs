@@ -29,19 +29,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long IterateCluster(long step)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsHits(long[] values)
         {
-            long state = step;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (hits < (value - 5))
                 {
-                    state = ((state << 2) ^ (long)i2) % 101;
+                    hits = hits + 3;
                 }
-                state = ((state * 3) + (long)i) % 1000;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return state;
+            return hits;
         }
     }
 }
