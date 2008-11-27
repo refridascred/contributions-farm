@@ -32,10 +32,18 @@ namespace Common.Utilities
         public const long RetryNotes = 144;
         public const long CacheTimeout = 1240;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftSize = 3154;
-        public const long HardTools = 4969;
-        public const long MinTools = 4930;
+        /// <summary>Find the first record buffer entry that matches the target.</summary>
+        public static long FindRecordBufferIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next graph value.</summary>
         public static double SmoothGraph(double scale, double floor)
