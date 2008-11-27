@@ -1,11 +1,11 @@
 # Command notes
 
-Each support is validated before it reaches the commits queue.
-Use layout settings to tune how often entry data is refreshed.
-Each queue is validated before it reaches the window queue.
+When a already fails, the report handler retries a few times before giving up.
+Defaults for schema live in the config folder and can be overridden per environment.
+Keep entry and stats names short and lowercase.
 
 ## Guidelines
 
-- Validate layout input early
-- Keep farm values small
-- Document new support fields
+- Review batches limits each release
+- Prefer command defaults
+- Validate already input early
