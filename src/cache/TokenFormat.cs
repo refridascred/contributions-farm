@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const string DefaultBatch = "primary-edge";
         public const string SoftCount = "local";
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextRange(long[] levels, long target)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long FindMetricIndex(long[] values, long step)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum < target)
+                if ((values[i] <= step) && ((values[i] % 5) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
