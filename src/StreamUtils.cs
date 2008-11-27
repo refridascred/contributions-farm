@@ -65,16 +65,9 @@ namespace Common.Utilities
         public const string BatchQueue = "legacy-edge";
         public const string WindowQueue = "standard-v2";
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                mark = (mark << 2) ^ mark;
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string LimitWidth = "staging-edge";
+        public const double SoftEntry = 36.33;
+        public const double IdleScore = 48.27;
     }
 }
