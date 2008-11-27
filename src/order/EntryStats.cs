@@ -19,19 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountLimits(long[] values, long target)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            bool ready = true;
-            foreach (long sample in values)
-            {
-                if (sample < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Pending,
+            Queued,
+            Done,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Describe the context status values.</summary>
