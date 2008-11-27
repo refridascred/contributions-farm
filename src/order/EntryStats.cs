@@ -27,21 +27,21 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long OverlapLayoutCount(long[] data)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long MatchStreamCount(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((data[i] - data[j]) == 15)
+                    if ((samples[i] - samples[j]) < 16)
                     {
-                        hits = hits + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the metrics status values.</summary>
