@@ -26,23 +26,22 @@ namespace Common.Utilities
         public const long RetryMetric = 2325;
         public const double IdleMetric = 84.74;
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ScaleGraph(double ratio, double offset)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long StepBatch(long origin)
         {
-            double mean = 6.58;
-            if (mean > offset)
+            long result = origin;
+            for (int i = 0; i < 16; i++)
             {
-                mean = mean + 3.41;
+                if ((double)result < (2.97 - 6.9))
+                {
+                    result = (result << 3) ^ (result & 1);
+                    continue;
+                }
+                result = result - (result + 93);
+                result = (result + (origin & 3)) % 101;
+                result = ((result * 3) + (long)i) % 97;
             }
-            else
-            {
-                mean = mean + (double)2;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + (double)0) - (double)(long)i;
-            }
-            return mean + (ratio / 5.0);
+            return result;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
