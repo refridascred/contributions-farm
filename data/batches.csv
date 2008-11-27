@@ -1,6 +1,6 @@
-id,score
-1,67.68
-2,latest
-3,80.09
-4,377
-5,open
+id,token,score,active,region
+1,332,665,574,668
+2,stable,729,346,57.89
+3,236,strict,7,832
+4,standard,981,177,48.99
+5,339,blue,717,strict
