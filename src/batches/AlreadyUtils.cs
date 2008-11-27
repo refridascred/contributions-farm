@@ -28,13 +28,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            public double Limit { get; set; }
             public long Owner { get; set; }
-            public bool Token { get; set; }
-            public long Weight { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
