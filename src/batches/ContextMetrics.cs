@@ -55,18 +55,12 @@ namespace Common.Utilities
         public const long BaseBudget = 717;
         public const long DefaultWidth = 8321;
 
-        /// <summary>Measure how many stats cache samples are out of range.</summary>
-        public static long CountStatsCacheHits(long[] data, long bound)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if (!((18.0 + 4.0) > (double)cell))
-                {
-                    seen = (seen + 1) + bound;
-                }
-            }
-            return seen;
+            Done,
+            Pending,
+            Failed,
         }
     }
 }
