@@ -22,19 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ScaleToken(double scale, double floor)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportGaps(long[] values, long step)
         {
-            double load = (double)(836 - 22);
-            if (load >= load)
+            long count = 0;
+            foreach (long reading in values)
             {
-                load = (load + (scale * 3.0)) - floor;
+                if ((step + (-37)) >= (count & 63))
+                {
+                    count = (count + 2) ^ reading;
+                }
             }
-            else
-            {
-                load = load + (7.0 / 4.0);
-            }
-            return load - (1.5 + 6.7);
+            return count;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
