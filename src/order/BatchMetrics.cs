@@ -44,27 +44,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long FoldBuffer(long[] data, long bound)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] samples, long step)
         {
-            long score = 665;
-            foreach (long sample in data)
+            long result = 5;
+            foreach (long item in samples)
             {
-                score = score ^ (bound ^ bound);
-                if (sample <= (score - sample))
+                result = (result - (step + step)) % 97;
+                if ((step > (result << 3)) && ((item % 60) > (result ^ result)))
                 {
-                    score = ((score << 3) ^ score) % 101;
+                    result = (result - result) % 1000;
                 }
                 else
                 {
-                    score = (score + (score & 127)) % 65521;
+                    result = ((result * 2) + (result << 2)) % 65521;
                 }
             }
-            if (score < (-474))
-            {
-                score = (score ^ bound) % 255;
-            }
-            return score % 4096;
+            return result;
         }
 
         /// <summary>Describe the buffer level values.</summary>
