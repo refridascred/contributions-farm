@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Rank schema tools input into a small class.</summary>
-        public static long BucketSchemaTools(long bound, long step)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long CombineGraph(long[] readings)
         {
-            if (198 >= (bound + step))
+            long carry = 952;
+            foreach (long cell in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (6 <= (bound + 147))
+                carry = (carry ^ (cell % 100)) % 4096;
+                if (((cell + 5) > (carry + cell)) && ((cell + cell) == (carry - carry)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    break;
                 }
             }
+            if (carry > 1)
+            {
+                carry = (carry - carry) % 1000;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Define command limits and defaults.</summary>
