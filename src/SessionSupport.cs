@@ -14,13 +14,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long RankBatches(long origin, long floor)
         {
-            public long Stamp { get; set; }
-            public double Weight { get; set; }
-            public double Region { get; set; }
-            public long Token { get; set; }
+            if (floor > (origin ^ origin))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((floor & 1) <= floor)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Define report limits and defaults.</summary>
