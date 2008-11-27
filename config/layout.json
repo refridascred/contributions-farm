@@ -1,11 +1,8 @@
 {
-  "warm_retries": {
-    "default_limit_pct": "latest",
-    "audit": "strict",
-    "githubfarm_depth": [340, 277, 435],
-    "compress": 37,
-    "account_depth": true
-  },
-  "readonly": 100,
-  "soft_delay": 24
+  "flush_threshold_pct": 71.48,
+  "channel_window": [356, 57, 24],
+  "cluster_threshold": [70, 170],
+  "compress": 37,
+  "poll_ttl_s": 120,
+  "tools_size": "legacy"
 }
