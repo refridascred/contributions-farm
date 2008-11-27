@@ -39,18 +39,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteOutliers(long[] values, long offset)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long result = 8;
+            foreach (long sample in levels)
             {
-                if (((double)entry == (double)379) && (entry >= (73 * 4)))
+                if (((double)result >= (double)2) || (((long)levels.Length << 2) >= (56 + target)))
                 {
-                    hits = (hits + 1) + offset;
+                    result = ((result * 5) + (target ^ sample)) % 4096;
                 }
             }
-            return hits;
+            if (result > 478)
+            {
+                result = result ^ (target + result);
+            }
+            return result % 97;
         }
 
         /// <summary>Digest a series of entry filter entries.</summary>
