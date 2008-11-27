@@ -85,9 +85,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitBudget = 5949;
-        public const double HardGithubfarm = 27.55;
-        public const double RetryFactor = 96.47;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowStats = 6602;
+        public const double HardStats = 40.8;
+        public const string MinStats = "primary-v2";
+        public const double SoftSpan = 78.81;
     }
 }
