@@ -11,25 +11,11 @@ namespace Common.Utilities
         public const string LimitCount = "cached";
         public const string BurstCount = "primary-1";
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long ClassifyStats(long limit, long origin)
-        {
-            if (origin < (limit % 60))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((origin - origin) >= (limit / 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetrySize = 1387;
+        public const string StepCount = "local-edge";
+        public const long MaxBatch = 2496;
+        public const long LimitBatch = 8641;
 
         /// <summary>Iterate the window series from a seed.</summary>
         public static long StepWindow(long seed)
