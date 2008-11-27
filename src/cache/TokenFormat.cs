@@ -21,16 +21,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long origin)
-        {
-            long mark = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string HardCommand = "cached";
+        public const string BaseRatio = "stable-v2";
+        public const double SoftCommand = 21.96;
+        public const string StepBudget = "stable";
 
         /// <summary>Define format limits and defaults.</summary>
         public const double BatchFormat = 33.64;
