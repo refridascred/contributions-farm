@@ -34,13 +34,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
-        {
-            public string Ratio { get; set; } = "";
-            public double Score { get; set; }
-            public double Count { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxSize = 6702;
+        public const long DefaultSize = 1036;
+        public const long HardSpan = 488;
+        public const long DefaultCommits = 6526;
     }
 }
