@@ -29,14 +29,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
-        {
-            public long Total { get; set; }
-            public double Region { get; set; }
-            public string Count { get; set; } = "";
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxStream = 8741;
+        public const string BaseTimeout = "primary-1";
+        public const double WindowInterval = 90.63;
+        public const double HardLevel = 77.65;
 
         /// <summary>Classify a command farm pair into a bucket.</summary>
         public static long RankCommandFarm(long step, long bound)
