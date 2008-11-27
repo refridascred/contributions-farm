@@ -1,6 +1,4 @@
 # entry settings
-burst_timeout: 100
-idle_threshold_count: 100
-default_limit_count: cached
-default_threshold: standard
-batch_ratio_pct: blue
+soft_timeout_ms: fallback
+flush_ratio_pct: 23.68
+batch_threshold_ms: 53.76
