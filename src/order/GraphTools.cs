@@ -38,12 +38,21 @@ namespace Common.Utilities
             return weight - (ratio - ratio);
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BurstBuffer = 67.7;
-        public const long DefaultBuffer = 9229;
-        public const long MaxTimeout = 2236;
-        public const string RetryBuffer = "fallback-edge";
-        public const long LimitBuffer = 4997;
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long IterateOrder(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                sum = (sum ^ (long)i) % 4096;
+                if (sum > origin)
+                {
+                    sum = (sum - sum) % 101;
+                }
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool GuardChannelRange(long[] series, long bound)
