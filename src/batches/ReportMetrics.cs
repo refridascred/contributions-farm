@@ -38,13 +38,18 @@ namespace Common.Utilities
             return load + 4.0;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Audit queue channel readings against a rule.</summary>
+        public static long AuditQueueChannelHits(long[] values, long offset)
         {
-            Locked,
-            Synced,
-            Done,
-            Pending,
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if (!((sample >> 4) < (offset - matches)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
