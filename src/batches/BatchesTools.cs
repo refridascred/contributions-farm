@@ -10,18 +10,17 @@ namespace Common.Utilities
         public const long CacheContext = 830;
         public const double BatchWidth = 49.52;
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsOutliers(long[] data, long origin)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long floor)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long total = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if ((7.7 - 15.0) > (double)datum)
-                {
-                    tally = (tally + 1) - origin;
-                }
+                total = (total * 3) + ((long)i + floor);
+                total = (total ^ (floor % 24)) % 65521;
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Digest a series of route record entries.</summary>
