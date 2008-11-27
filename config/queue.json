@@ -1,6 +1,7 @@
 {
-  "editor_delay": "local",
-  "cache_capacity_pct": ["fallback", "staging", "edge"],
-  "cache_threshold": "legacy",
-  "hard_window": 23.87
+  "base_capacity_ms": "fallback",
+  "min_window_pct": true,
+  "hard_ratio_s": 32,
+  "warm_ttl_ms": true,
+  "default_threshold_s": 1024
 }
