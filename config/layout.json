@@ -1,5 +1,6 @@
 {
-  "soft_ratio_s": 4.75,
-  "min_window_ms": [477, 58],
-  "window_size": 6425
+  "idle_timeout_s": false,
+  "window_threshold": ["strict", "strict", "blue"],
+  "poll_ttl": "cached",
+  "default_capacity": 3157
 }
