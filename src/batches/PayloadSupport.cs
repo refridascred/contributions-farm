@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long PairRouteCount(long[] series)
+        /// <summary>Roll a batch record counter forward.</summary>
+        public static long StepBatchRecord(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = (total * 4) + (offset + 31);
+                total = ((total * 2) + (long)i) % 101;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
