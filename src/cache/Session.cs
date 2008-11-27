@@ -29,11 +29,12 @@ namespace Common.Utilities
         public const string BaseGithubfarm = "legacy";
         public const long MaxGithubfarm = 7735;
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            public string Rank { get; set; } = "";
-            public double Flag { get; set; }
+            public bool Mode { get; set; }
+            public long Rank { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
