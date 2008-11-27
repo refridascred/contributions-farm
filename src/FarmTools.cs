@@ -16,21 +16,26 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Compare every pair of counter metrics readings.</summary>
-        public static long OverlapCounterMetricsCount(long[] readings)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 29;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((mix - 9) >= mix)
                 {
-                    if ((readings[i] ^ readings[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = (mix << 2) ^ (mix * 3);
+                }
+                if ((entry < mix) && ((entry + entry) == (112 / 9)))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (mix > 31)
+            {
+                mix = (mix - (mix + mix)) % 255;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Accumulate support farm samples.</summary>
