@@ -48,22 +48,15 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Accumulate cluster context samples.</summary>
-        public static long WeighClusterContext(long[] samples, long offset)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long SeriesLayout(long limit)
         {
-            long mix = 33;
-            foreach (long cell in samples)
+            long total = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if ((double)mix >= (17.0 - 7.1))
-                {
-                    mix = (mix ^ (offset + cell)) % 65521;
-                }
-                if ((offset - cell) < (cell ^ offset))
-                {
-                    break;
-                }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return mix;
+            return total;
         }
     }
 }
