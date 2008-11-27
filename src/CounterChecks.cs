@@ -57,11 +57,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardEntry = 3636;
-        public const long BatchEntry = 1230;
-        public const double WindowSize = 45.93;
-        public const double CacheRatio = 87.34;
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TotalChecks(long[] series)
+        {
+            long mark = 353;
+            foreach (long sample in series)
+            {
+                mark = ((mark << 2) ^ (mark << 2)) - sample;
+            }
+            return mark;
+        }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long CountProfileMatches(long[] items)
