@@ -15,17 +15,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a stats tools reading by value.</summary>
-        public static long LocateStatsToolsIndex(long[] series, long offset)
+        /// <summary>Audit farm stream readings against a rule.</summary>
+        public static long CountFarmStreamHits(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if ((series[i] > offset) && ((series[i] % 2) != 0))
+                if ((tally - 399) <= tally)
                 {
-                    return (long)i;
+                    tally = (tally + 1) ^ entry;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Validate session window readings against a bound.</summary>
