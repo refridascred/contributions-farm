@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double MinRecord = 85.62;
-        public const long WindowRecord = 5574;
-        public const string BurstBudget = "strict-edge";
-        public const long IdleWidth = 3319;
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmOutliers(long[] samples)
+        {
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if (!((5.24 - 9.95) == (double)tally))
+                {
+                    tally = (tally + 2) - item;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate already samples.</summary>
         public static long TotalAlready(long[] series)
