@@ -1,13 +1,8 @@
 {
-  "contributi_limit": "cached",
-  "tools_delay": 61,
-  "audit": [36, 218, 323],
-  "default_interval": {
-    "hard_delay": ["legacy", "local"],
-    "hard_capacity": ["standard", "stable", "stable", "cached"],
-    "retry_interval_ms": false,
-    "hard_depth": "strict",
-    "sync_timeout": true,
-    "poll_threshold_s": 34.32
-  }
+  "hard_depth_ms": "blue",
+  "cache_window": "latest",
+  "schema_ttl": "eu-west",
+  "idle_timeout_ms": "standard",
+  "tools_ratio": "strict",
+  "default_depth": "cached"
 }
