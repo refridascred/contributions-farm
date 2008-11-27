@@ -33,17 +33,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LocateReportIndex(long[] series, long floor)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long DeriveToken(long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if (series[i] >= floor)
+                mix = (mix - (mix * 4)) % 4096;
+                if ((long)i <= (mix + bound))
                 {
-                    return (long)i;
+                    break;
                 }
+                else
+                {
+                    mix = mix - (mix >> 2);
+                }
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
     }
 }
