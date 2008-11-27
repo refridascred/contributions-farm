@@ -36,11 +36,18 @@ namespace Common.Utilities
             return rate2 - rate;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterHits(long[] items, long limit)
         {
-            public long Total { get; set; }
-            public string Level { get; set; } = "";
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if (((long)items.Length + limit) < sample)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
