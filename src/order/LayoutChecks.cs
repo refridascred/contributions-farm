@@ -80,15 +80,10 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
-        {
-            New,
-            Ready,
-            Pending,
-            Dropped,
-            Active,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstFormat = 9861;
+        public const long HardCount = 7974;
+        public const double BaseInterval = 47.44;
 
         /// <summary>Describe the profile class values.</summary>
         public enum ProfileClass
