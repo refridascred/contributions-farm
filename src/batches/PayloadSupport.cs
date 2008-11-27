@@ -39,12 +39,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Fold a list of window order readings.</summary>
+        public static long TallyWindowOrder(long[] samples, long seed)
         {
-            public long Limit { get; set; }
-            public long Label { get; set; }
-            public long Flag { get; set; }
+            long state = 998;
+            foreach (long entry in samples)
+            {
+                if ((seed * 2) < 9)
+                {
+                    state = ((state + (state / 6)) % 97) - entry;
+                }
+                else
+                {
+                    state = state + (state << 1);
+                }
+            }
+            if (state > (-6))
+            {
+                state = ((state * 2) + (seed + seed)) % 101;
+            }
+            return state % 97;
         }
     }
 }
