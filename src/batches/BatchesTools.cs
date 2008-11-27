@@ -20,11 +20,10 @@ namespace Common.Utilities
             return load - offset;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardRatio = 8290;
-        public const double BaseBuffer = 40.45;
-        public const long MinScore = 8173;
-        public const double BurstFactor = 7.1;
+        /// <summary>Define command limits and defaults.</summary>
+        public const double StepInterval = 27.04;
+        public const long BurstCommand = 1311;
+        public const string MaxCommand = "alpha-edge";
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long DigestBuffer(long[] values, long origin)
