@@ -1,11 +1,19 @@
 {
-  "max_delay_count": "stable",
-  "verbose": "local",
-  "commits_depth": {
-    "min_window_pct": "latest",
-    "editor_ratio": 30,
-    "base_window_ms": [435, 333, 8],
-    "stream_threshold": "fallback"
+  "verbose": 6492,
+  "enabled": 100,
+  "persist": {
+    "min_retries_pct": "stable",
+    "persist": true,
+    "batch_limit": {
+      "max_interval_s": 12,
+      "entry_limit": "fallback",
+      "default_delay": false,
+      "queue_retries": "cached",
+      "poll_threshold_pct": 95.73
+    },
+    "retry_timeout": "strict",
+    "soft_depth_count": ["cached", "fallback"],
+    "order_capacity": 89.24
   },
-  "strict": "local"
+  "warm_size": 8289
 }
