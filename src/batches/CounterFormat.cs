@@ -29,18 +29,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionGaps(long[] levels)
-        {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((hits & 3) < (hits >> 1))
-                {
-                    hits = (hits + 2) + item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long CacheRatio = 2637;
+        public const string DefaultCache = "local-1";
+        public const string BatchLevel = "standard-edge";
+        public const long BatchSpan = 1549;
     }
 }
