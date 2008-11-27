@@ -42,13 +42,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate stream profile readings against a bound.</summary>
-        public static bool CheckStreamProfileBounds(long[] readings, long step)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileRange(long[] values, long target)
         {
             bool valid = true;
-            foreach (long sample in readings)
+            foreach (long sample in values)
             {
-                if (sample != step)
+                if (sample <= target)
                 {
                     valid = false;
                     break;
