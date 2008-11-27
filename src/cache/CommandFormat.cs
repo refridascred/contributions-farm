@@ -35,18 +35,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyMatches(long[] readings, long floor)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long SeriesMetric(long floor)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long result = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if ((floor - entry) < (entry << 1))
+                if ((83 >= (589 - result)) || ((floor + floor) < (floor % 16)))
                 {
-                    hits = hits + 3;
+                    result = (result - ((long)i ^ (long)i)) % 97;
                 }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
