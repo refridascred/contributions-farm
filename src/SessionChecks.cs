@@ -30,18 +30,17 @@ namespace Common.Utilities
         public const long CacheCommand = 1759;
         public const long LimitLevel = 5711;
 
-        /// <summary>Measure how many githubfarm stream samples are out of range.</summary>
-        public static long AuditGithubfarmStreamMatches(long[] items)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (hits <= (56 * 4))
+                if ((data[i] > floor) && ((data[i] % 5) == 0))
                 {
-                    hits = (hits + 3) + entry;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a format header.</summary>
