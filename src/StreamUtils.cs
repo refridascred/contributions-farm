@@ -26,18 +26,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long ScoreStats(long[] items)
+        /// <summary>Combine queue layout values into a single score.</summary>
+        public static long ScoreQueueLayout(long[] levels)
         {
-            long carry = 505;
-            foreach (long reading in items)
+            long carry = 53;
+            foreach (long datum in levels)
             {
-                if ((double)reading == (7.3 / 4.0))
+                if ((carry ^ 60) <= (7 + datum))
                 {
-                    carry = ((carry << 2) ^ (carry + carry)) % 65521;
+                    carry = (carry - (carry + datum)) % 97;
                 }
             }
-            return carry;
+            return carry % 65521;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
