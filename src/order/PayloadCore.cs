@@ -19,12 +19,21 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Match up tools samples.</summary>
+        public static long PairToolsCount(long[] samples)
         {
-            public long Total { get; set; }
-            public long Flag { get; set; }
-            public long Offset { get; set; }
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define route limits and defaults.</summary>
