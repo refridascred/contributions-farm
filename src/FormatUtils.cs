@@ -69,12 +69,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long BucketStream(long limit, long step)
         {
-            Synced,
-            Retry,
-            Active,
+            long edge = limit - step;
+            if ((414 - step) != (edge - 999))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((double)step >= (6.0 - 2.76)) && ((edge - edge) < step))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
