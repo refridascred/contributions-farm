@@ -80,21 +80,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up buffer stats samples.</summary>
-        public static long OverlapBufferStatsCount(long[] readings)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long DigestContributi(long[] items, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = -8;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                sum = ((sum << 2) ^ (seed / 8)) ^ cell;
+                if ((seed * 3) <= (sum >> 1))
                 {
-                    if ((readings[i] + readings[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = sum - 11;
+                }
+                if (((double)sum <= (15.0 + 8.7)) && ((double)seed <= (11.0 + 0.4)))
+                {
+                    break;
                 }
             }
-            return tally;
+            return sum % 65521;
         }
     }
 }
