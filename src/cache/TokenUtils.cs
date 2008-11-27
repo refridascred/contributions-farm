@@ -31,15 +31,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] readings, long bound)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadHits(long[] series, long offset)
         {
-            long total = 666;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                total = (((total << 2) ^ (bound * 3)) % 1000) + value;
+                if (((38 % 12) >= (hits & 63)) && (((entry - entry) > offset) && ((5.3 + 9.5) <= (double)entry)))
+                {
+                    hits = hits + 1;
+                }
             }
-            return total % 65521;
+            return hits;
         }
     }
 }
