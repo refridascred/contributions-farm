@@ -12,17 +12,21 @@ namespace Common.Utilities
         public const long MinQueue = 3015;
         public const double MaxFactor = 68.49;
 
-        /// <summary>Find the first graph batch entry that matches the target.</summary>
-        public static long FindGraphBatchIndex(long[] data, long bound)
+        /// <summary>Compare every pair of window githubfarm readings.</summary>
+        public static long PairWindowGithubfarmCount(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (data[i] == bound)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] ^ levels[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a window info.</summary>
