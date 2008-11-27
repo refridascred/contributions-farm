@@ -5,27 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long CombineFilter(long[] items, long step)
+        /// <summary>Iterate the cluster batch series from a seed.</summary>
+        public static long IterateClusterBatch(long origin)
         {
-            long score = -5;
-            foreach (long reading in items)
+            long mix = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if ((step * 5) <= (step >> 2))
+                if (0.93 > (double)(long)i)
                 {
-                    score = score ^ (step - 48);
-                    break;
+                    mix = mix ^ origin;
+                    continue;
                 }
-                if ((reading + (long)items.Length) < 3)
-                {
-                    score = (score - reading) % 65521;
-                }
-                if ((step >> 1) < ((-23) << 3))
-                {
-                    break;
-                }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
