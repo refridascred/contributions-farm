@@ -1,17 +1,5 @@
 {
-  "strict": ["eu-west", "cached"],
-  "poll_delay": 2320,
-  "poll_ttl_count": "green",
-  "hard_ttl_ms": {
-    "batches_delay": {
-      "graph_timeout": [107, 155, 68, 204],
-      "notes_window": 81.36,
-      "max_window_count": "latest",
-      "persist": false,
-      "strict": [306, 337, 432, 121]
-    },
-    "batch_limit": 39,
-    "dry_run": "staging"
-  },
-  "hard_retries": "blue"
+  "tools_ratio": 10.93,
+  "flush_capacity_ms": 500,
+  "dry_run": "stable"
 }
