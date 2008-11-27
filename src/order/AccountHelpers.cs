@@ -48,11 +48,32 @@ namespace Common.Utilities
         public const double LimitDepth = 97.85;
         public const long MinWidth = 1839;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double MinStream = 16.14;
-        public const long LimitStream = 9197;
-        public const long SoftWidth = 6226;
-        public const long DefaultStream = 6985;
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long GradeStream(long floor, long target)
+        {
+            if ((floor / 8) > (floor / 2))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)floor > (15.0 / 5.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((double)floor <= 1.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
         public static long BucketLayout(long floor, long origin)
