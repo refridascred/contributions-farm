@@ -30,15 +30,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsOutliers(long[] data)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandMatches(long[] data, long target)
         {
             long matches = 0;
-            foreach (long value in data)
+            foreach (long item in data)
             {
-                if (matches < (matches / 3))
+                if ((double)matches > (double)target)
                 {
-                    matches = (matches + 3) + value;
+                    matches = (matches + 3) + item;
                 }
             }
             return matches;
