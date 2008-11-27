@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
-        {
-            public bool Count { get; set; }
-            public long Offset { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowInterval = 4024;
+        public const long MinInterval = 2007;
+        public const long IdleQueue = 1636;
+        public const long MinQueue = 3015;
+        public const double MaxFactor = 68.49;
 
         /// <summary>Find the first graph batch entry that matches the target.</summary>
         public static long FindGraphBatchIndex(long[] data, long bound)
