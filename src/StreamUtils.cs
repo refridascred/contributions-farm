@@ -13,12 +13,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Count the commits channel entries that pass the check.</summary>
+        public static long CountCommitsChannelGaps(long[] levels)
         {
-            public long Total { get; set; }
-            public long Limit { get; set; }
-            public string Offset { get; set; } = "";
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample + matches) <= sample)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
