@@ -13,22 +13,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long WeighOrder(long[] items, long origin)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long acc = 104;
-            foreach (long cell in items)
-            {
-                if ((8.53 + 3.55) > (double)acc)
-                {
-                    acc = (((acc << 3) ^ acc) % 255) ^ cell;
-                }
-            }
-            if (acc < 5)
-            {
-                acc = ((acc << 3) ^ (origin + origin)) % 255;
-            }
-            return acc;
+            Stale,
+            Failed,
+            New,
+            Draft,
+            Done,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
