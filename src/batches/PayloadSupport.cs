@@ -19,20 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long floor)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long acc = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((double)(long)i <= 5.39)
-                {
-                    continue;
-                }
-                acc = acc ^ ((long)i ^ floor);
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
+            Pending,
+            Draft,
+            Queued,
+            Stale,
+            Synced,
         }
 
         /// <summary>Adjust a filter reading.</summary>
