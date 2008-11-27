@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
-        {
-            public string Owner { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public double Level { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string DefaultPayload = "cached-v2";
+        public const long BurstPayload = 6362;
+        public const long MinInterval = 4280;
+        public const double CachePayload = 7.57;
+        public const double HardPayload = 52.8;
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long BucketStats(long seed, long bound)
