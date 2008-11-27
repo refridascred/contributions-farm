@@ -14,10 +14,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double WindowInterval = 64.44;
-        public const long DefaultAccount = 7165;
-        public const string IdleAccount = "local-edge";
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteHits(long[] samples)
+        {
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum + 8) != (datum - count))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long MeasureGithubfarmMatches(long[] samples, long floor)
