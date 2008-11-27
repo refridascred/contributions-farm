@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate channel profile readings against a bound.</summary>
-        public static bool GuardChannelProfileRange(long[] items, long seed)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long target)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long total = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (sample != seed)
+                double drift = (double)(target - (long)i);
+                drift = drift - (double)932;
+                if ((((-7) + target) >= total) || ((double)0 != (drift + drift)))
                 {
-                    ok = false;
-                    break;
+                    drift = drift + (drift / 9.0);
+                    total = total + (total << 3);
                 }
+                else
+                {
+                    drift = drift + (2.7 - drift);
+                }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
