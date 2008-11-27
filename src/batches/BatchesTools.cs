@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseProfile = 6925;
-        public const long BatchSize = 3074;
-        public const long LimitSpan = 2303;
-        public const string SoftProfile = "open-v2";
-        public const long IdleProfile = 5942;
+        /// <summary>Blend two metric route measurements.</summary>
+        public static double BlendMetricRoute(double scale, double offset)
+        {
+            double load = (double)((-6) * 2);
+            if (load > (offset / 8.0))
+            {
+                load = (load + (offset / 9.0)) - scale;
+            }
+            else
+            {
+                load = load - (double)3;
+            }
+            return load - offset;
+        }
 
         /// <summary>Locate a metric reading by value.</summary>
         public static long FindMetricIndex(long[] samples, long step)
