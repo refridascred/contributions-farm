@@ -14,28 +14,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] levels, long step)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long state = 962;
-            foreach (long datum in levels)
-            {
-                if (5.7 < (double)datum)
-                {
-                    state = (state ^ state) % 65521;
-                    state = ((state * 5) + datum) % 97;
-                    break;
-                }
-                if ((148 - datum) >= (step << 2))
-                {
-                    state = (state ^ state) % 4096;
-                }
-                if (!((state + step) != (step - step)))
-                {
-                    state = state - datum;
-                }
-            }
-            return state;
+            Stale,
+            Paused,
+            Draft,
+            Queued,
+            Retry,
         }
 
         /// <summary>Combine report contributi values into a single score.</summary>
