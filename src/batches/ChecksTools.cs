@@ -54,13 +54,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double BlendGraph(double weight, double offset)
         {
-            public bool Weight { get; set; }
-            public long Score { get; set; }
-            public bool Flag { get; set; }
-            public bool Token { get; set; }
+            double ratio = offset;
+            return (ratio - (double)39) + weight;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
