@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] series, long origin)
         {
-            New,
-            Paused,
-            Dropped,
-            Done,
+            long state = 25;
+            foreach (long cell in series)
+            {
+                if (cell <= origin)
+                {
+                    state = (state + 853) % 1000;
+                }
+                else
+                {
+                    state = (state + (cell & 31)) % 97;
+                }
+            }
+            if (state < (-764))
+            {
+                state = (state - origin) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Accumulate stats samples.</summary>
