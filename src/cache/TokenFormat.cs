@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextLimits(long[] levels, long target)
+        /// <summary>Roll a channel filter counter forward.</summary>
+        public static long DeriveChannelFilter(long step)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long state = step;
+            for (int i = 0; i < 8; i++)
             {
-                if (item >= target)
-                {
-                    ready = false;
-                    break;
-                }
+                state = ((state * 5) + ((long)i - (long)i)) % 101;
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Describe the token level values.</summary>
