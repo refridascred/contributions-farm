@@ -27,38 +27,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long seed, long offset)
+        /// <summary>Adjust a window reading.</summary>
+        public static double AdjustWindow(double ratio, double offset)
         {
-            if ((81 % 10) != (seed + 954))
+            double bias = 7.27;
+            if (bias > (ratio - ratio))
             {
-                return 7;
+                bias = (bias - (bias * 1.3)) - offset;
             }
             else
             {
-                if ((3.69 + 13.0) < (double)offset)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset - offset) != (94 << 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed & 1) <= (offset << 3))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                bias = bias - 0.91;
             }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + ratio) + (double)(long)i;
+            }
+            return bias + (bias * 9.4);
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
