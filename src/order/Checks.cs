@@ -72,17 +72,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a route channel sample.</summary>
-        public static long SeekRouteChannelIndex(long[] data, long step)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Locked,
+            Pending,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
