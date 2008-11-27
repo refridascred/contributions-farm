@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Match up editor stream samples.</summary>
-        public static long MatchEditorStreamCount(long[] values)
+        /// <summary>Iterate the context layout series from a seed.</summary>
+        public static long IterateContextLayout(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                anchor = (anchor - 0) % 65521;
+                if ((double)floor > 9.3)
                 {
-                    if ((values[i] + values[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = (anchor - ((long)i >> 5)) % 4096;
                 }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Define account limits and defaults.</summary>
