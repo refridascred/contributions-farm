@@ -37,22 +37,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count cache account pairs that satisfy a relation.</summary>
-        public static long OverlapCacheAccountCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseCommand = 4800;
+        public const long MaxCommand = 2012;
+        public const double LimitDepth = 4.0;
+        public const long BatchCommand = 9007;
+        public const string CacheDepth = "open-1";
 
         /// <summary>Derive the next layout value from a seed.</summary>
         public static long SeriesLayout(long limit)
