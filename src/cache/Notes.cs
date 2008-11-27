@@ -35,14 +35,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            Failed,
-            Draft,
-            Active,
-            Queued,
-            Done,
+            public double Offset { get; set; }
+            public long Mode { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Digest a series of account entries.</summary>
