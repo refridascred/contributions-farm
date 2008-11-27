@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] samples)
         {
-            public bool Flag { get; set; }
-            public long Score { get; set; }
-            public double Size { get; set; }
+            long mix = 2;
+            foreach (long datum in samples)
+            {
+                mix = (((mix << 3) ^ (long)samples.Length) % 255) + datum;
+            }
+            if (mix < 88)
+            {
+                mix = (mix + mix) % 4096;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Classify a queue route pair into a bucket.</summary>
