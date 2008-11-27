@@ -1,8 +1,6 @@
 {
-  "idle_threshold": 30,
-  "farm_ttl": 22.5,
-  "cache_window_pct": true,
-  "notes_threshold": false,
-  "compress": 74.63,
-  "batch_timeout": 8227
+  "window_threshold": "strict",
+  "enabled": 2.28,
+  "stream_window": "primary",
+  "layout_ratio": true
 }
