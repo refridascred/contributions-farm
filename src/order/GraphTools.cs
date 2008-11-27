@@ -12,14 +12,12 @@ namespace Common.Utilities
         public const double CachePayload = 7.57;
         public const double HardPayload = 52.8;
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
+            Draft,
             Synced,
-            Active,
-            New,
-            Dropped,
-            Pending,
+            Locked,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
