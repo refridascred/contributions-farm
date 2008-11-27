@@ -1,11 +1,4 @@
 # support settings
-cache_window:
-  - staging
-  - open
-  - standard
-  - cached
-dry_run: legacy
-metric_depth: staging
-verbose: stable
-cache_retries: 87
-window_delay: 500
+flush_size_count: 57
+enabled: latest
+poll_ratio_pct: 4756
