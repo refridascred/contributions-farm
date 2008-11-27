@@ -14,12 +14,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowWidth = 4580;
-        public const long StepToken = 1269;
-        public const long HardToken = 648;
-        public const long DefaultFactor = 5012;
-        public const long BurstInterval = 8621;
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
+        {
+            public long Stamp { get; set; }
+            public double Weight { get; set; }
+            public double Region { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const string DefaultReport = "legacy-1";
