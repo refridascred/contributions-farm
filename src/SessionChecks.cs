@@ -56,19 +56,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate already route readings against a bound.</summary>
-        public static bool ValidateAlreadyRouteRange(long[] samples, long target)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterMatches(long[] values)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if (value > target)
+                if ((86 << 3) > seen)
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 3) ^ entry;
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
