@@ -54,18 +54,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many profile format samples are out of range.</summary>
-        public static long CountProfileFormatGaps(long[] items, long seed)
-        {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if (((long)items.Length * 4) < (83 + seen))
-                {
-                    seen = ((seen + 3) - cell) + seed;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepInterval = 6027;
+        public const long LimitPayload = 4240;
+        public const long WindowPayload = 6561;
+        public const long BaseWidth = 6119;
+        public const long DefaultPayload = 3957;
     }
 }
