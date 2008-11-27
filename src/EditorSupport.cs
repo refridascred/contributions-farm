@@ -19,13 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
-        {
-            Failed,
-            Done,
-            Idle,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string SoftRecord = "staging-edge";
+        public const long CacheSize = 9193;
+        public const long RetryRatio = 7076;
+        public const long MinDepth = 7949;
+        public const string CacheFactor = "local";
 
         /// <summary>Describe the token mode values.</summary>
         public enum TokenMode
