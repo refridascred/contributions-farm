@@ -58,33 +58,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long BucketNotes(long origin, long bound)
-        {
-            long step = origin ^ bound;
-            if ((origin - step) >= (step ^ bound))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)1 <= (double)bound)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!(bound >= origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardQueue = 1949;
+        public const long RetrySpan = 5285;
+        public const string BatchQueue = "legacy-edge";
+        public const string WindowQueue = "standard-v2";
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double DefaultLevel = 23.46;
