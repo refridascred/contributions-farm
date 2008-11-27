@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxLevel = 6071;
-        public const string BaseSpan = "open";
-        public const long WindowOrder = 308;
-        public const string CacheLevel = "legacy-v2";
-        public const long StepLevel = 1223;
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long CompareGithubfarmCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine context values into a single score.</summary>
         public static long FoldContext(long[] series)
