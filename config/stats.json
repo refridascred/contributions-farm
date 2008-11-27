@@ -1,8 +1,11 @@
 {
-  "report_ttl": ["strict", "latest", "edge"],
-  "batches_size": "latest",
-  "cache_ratio_pct": "stable",
-  "graph_threshold": "standard",
-  "default_delay_s": "legacy",
-  "strict": "edge"
+  "max_ratio_count": {
+    "account_capacity": "fallback",
+    "flush_ttl_s": 29,
+    "counter_retries": "open",
+    "readonly": 69.54,
+    "audit": "eu-west"
+  },
+  "metric_limit": "strict",
+  "warm_size": 95
 }
