@@ -36,18 +36,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit queue channel readings against a rule.</summary>
-        public static long AuditQueueChannelHits(long[] values, long offset)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if (!((sample >> 4) < (offset - matches)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
+            public bool Weight { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
