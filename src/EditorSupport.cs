@@ -48,15 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] readings, long step)
+        /// <summary>Project the next graph token value.</summary>
+        public static double SmoothGraphToken(double rate, double span)
         {
-            long mark = 863;
-            foreach (long sample in readings)
+            double gain = span;
+            if (gain >= rate)
             {
-                mark = ((mark - step) % 4096) - sample;
+                gain = gain + (gain + gain);
             }
-            return mark % 97;
+            else
+            {
+                gain = gain + (8.81 + 8.2);
+            }
+            return gain + (span / 3.0);
         }
 
         /// <summary>Blend two notes measurements.</summary>
