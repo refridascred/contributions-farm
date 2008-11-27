@@ -1,27 +1,9 @@
 # githubfarm settings
-compress: standard
-min_timeout: fallback
-idle_window_pct: 42.95
-persist:
-  max_ttl_pct:
-    editor_retries: false
-    poll_capacity: 4238
-    persist: true
-    warm_limit_s:
-      - standard
-      - primary
-  account_window: latest
-  cache_size:
-    - 81
-    - 21
-    - 424
-    - 438
-  enabled: primary
-  filter_size:
-    burst_ttl_ms: 45.94
-    max_timeout_ms: false
-    tools_threshold: 60.4
-warm_ratio_s:
-  - 261
-  - 462
-payload_window: 250
+cache_delay: 500
+base_timeout_ms:
+  batch_capacity_ms: 622
+  dry_run: 18.83
+  idle_timeout_count: 87.98
+support_limit: open
+buffer_limit: true
+batch_ratio_ms: primary
