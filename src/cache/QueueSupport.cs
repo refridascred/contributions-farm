@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] values, long bound)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long FindBatchesIndex(long[] series, long origin)
         {
-            long sum = 33;
-            foreach (long item in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = ((sum - (bound << 3)) % 101) ^ item;
+                if ((series[i] >= origin) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
