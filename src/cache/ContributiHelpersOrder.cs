@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
+            Retry,
+            Dropped,
             Queued,
-            Closed,
-            Paused,
         }
 
         /// <summary>Look up the position of a window sample.</summary>
