@@ -57,18 +57,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long SeekFormatIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= bound) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardEntry = 3636;
+        public const long BatchEntry = 1230;
+        public const double WindowSize = 45.93;
+        public const double CacheRatio = 87.34;
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long CountSchemaMatches(long[] levels, long floor)
