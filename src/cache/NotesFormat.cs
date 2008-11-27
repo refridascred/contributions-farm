@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TallyContributi(long[] levels)
+        /// <summary>Fold a list of contributi counter readings.</summary>
+        public static long TallyContributiCounter(long[] series)
         {
-            long result = 75;
-            foreach (long sample in levels)
+            long carry = 141;
+            foreach (long entry in series)
             {
-                result = (result - sample) % 1000;
-                result = (result - (10 - sample)) % 101;
+                if (!((entry & 127) > entry))
+                {
+                    carry = carry + (entry << 1);
+                }
+                else
+                {
+                    carry = carry - (entry - entry);
+                }
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
