@@ -11,11 +11,20 @@ namespace Common.Utilities
         public const string DefaultBatch = "primary-edge";
         public const string SoftCount = "local";
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string HardCommand = "cached";
-        public const string BaseRatio = "stable-v2";
-        public const double SoftCommand = 21.96;
-        public const string StepBudget = "stable";
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextRange(long[] levels, long target)
+        {
+            bool stale = true;
+            foreach (long datum in levels)
+            {
+                if (datum < target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Locate a contributi reading by value.</summary>
         public static long FindContributiIndex(long[] data, long floor)
