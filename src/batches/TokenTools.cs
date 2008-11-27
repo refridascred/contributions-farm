@@ -40,13 +40,14 @@ namespace Common.Utilities
             return rate + offset;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            public double Limit { get; set; }
-            public long Token { get; set; }
-            public string Count { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            Synced,
+            Failed,
+            Retry,
+            Paused,
+            Pending,
         }
     }
 }
