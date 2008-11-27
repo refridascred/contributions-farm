@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardWindow = 6675;
-        public const string BurstRatio = "primary-edge";
-        public const long CacheWindow = 7048;
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long bound, long floor)
+        {
+            long diff = bound - floor;
+            if ((diff - diff) != (floor ^ diff))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((double)floor == (4.4 * 5.0)) || (93 >= diff))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Look up the position of a contributi sample.</summary>
         public static long LookupContributiIndex(long[] readings, long origin)
