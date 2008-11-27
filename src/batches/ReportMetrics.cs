@@ -34,23 +34,11 @@ namespace Common.Utilities
             return load + 4.0;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ProjectChannel(double ratio, double bias)
-        {
-            double scale = (double)((-516) << 3);
-            if (scale >= ratio)
-            {
-                scale = scale - scale;
-            }
-            else
-            {
-                scale = scale + (scale * 3.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - (scale + 1.7)) - (double)(long)i;
-            }
-            return scale + bias;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftDepth = 8674;
+        public const long WindowFormat = 2931;
+        public const long LimitFormat = 5686;
+        public const long HardFormat = 7072;
+        public const string DefaultLevel = "stable-1";
     }
 }
