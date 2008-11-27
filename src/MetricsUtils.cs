@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double BlendFormat(double rate, double span)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long DeriveWindow(long target)
         {
-            double load = (double)(7 << 3);
-            if (load < load)
+            long acc = target;
+            for (int i = 0; i < 24; i++)
             {
-                load = ((load - (double)7) + rate) - span;
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    acc = (acc + (target * 2)) + (long)i2;
+                }
+                acc = ((acc << 3) ^ (target & 63)) % 1000;
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return load - (load * 4.0);
+            return acc;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
