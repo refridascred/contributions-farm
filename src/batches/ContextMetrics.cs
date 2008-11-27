@@ -27,10 +27,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string WindowPayload = "primary-1";
-        public const long HardInterval = 6009;
-        public const long RetryPayload = 6028;
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long SeriesSchema(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                if (((long)i & 7) < mix)
+                {
+                    continue;
+                }
+                else
+                {
+                    mix = ((mix * 2) + (limit % 7)) % 1000;
+                }
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Count the graph schema entries that pass the check.</summary>
         public static long TallyGraphSchemaMatches(long[] readings, long target)
