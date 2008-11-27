@@ -56,17 +56,20 @@ namespace Common.Utilities
         public const string SoftFormat = "staging";
         public const long HardFormat = 2904;
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long FindQueueIndex(long[] values, long limit)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long RollEditor(long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if ((values[i] <= limit) && ((values[i] % 5) != 0))
+                long offset = (mark & 3) * 4;
+                if (((long)i * 3) < (2 ^ mark))
                 {
-                    return (long)i;
+                    mark = mark ^ (origin ^ offset);
                 }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return -1;
+            return mark;
         }
     }
 }
