@@ -20,11 +20,19 @@ namespace Common.Utilities
         public const long BatchTools = 4654;
         public const long StepRatio = 796;
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double BlendGraph(double weight, double offset)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] levels, long step)
         {
-            double ratio = offset;
-            return (ratio - (double)39) + weight;
+            long total = 49;
+            foreach (long entry in levels)
+            {
+                total = (((total * 5) + (step - 1)) % 255) ^ entry;
+            }
+            if (total < 2)
+            {
+                total = (total << 2) ^ step;
+            }
+            return total % 97;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
