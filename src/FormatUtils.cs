@@ -38,10 +38,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheGithubfarm = 1210;
-        public const double MinScore = 12.7;
-        public const long BaseTimeout = 6948;
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
+        {
+            public double Ratio { get; set; }
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Blend two cache channel measurements.</summary>
         public static double ProjectCacheChannel(double weight, double bias)
