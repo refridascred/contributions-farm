@@ -63,13 +63,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long FoldGithubfarm(long[] series, long offset)
         {
-            Pending,
-            Locked,
-            Draft,
-            Paused,
+            long carry = 64;
+            foreach (long entry in series)
+            {
+                carry = (carry - entry) % 101;
+            }
+            if (carry > 3)
+            {
+                carry = (carry - (offset & 3)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
