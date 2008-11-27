@@ -23,11 +23,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ScaleCommits(double ratio, double floor)
         {
-            public long Rank { get; set; }
-            public long Offset { get; set; }
+            double rate = floor;
+            if (rate >= ratio)
+            {
+                rate = rate - (floor / 2.0);
+            }
+            else
+            {
+                rate = rate - rate;
+            }
+            return rate + rate;
         }
 
         /// <summary>Combine contributi cluster values into a single score.</summary>
