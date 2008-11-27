@@ -36,18 +36,31 @@ namespace Common.Utilities
             return rate2 - rate;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterHits(long[] items, long limit)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long GradeChannel(long origin, long origin2)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            if ((double)origin2 <= (19.0 + 6.0))
             {
-                if (((long)items.Length + limit) < sample)
+                return 3;
+            }
+            else
+            {
+                if (!((double)origin2 > (1.7 * 9.3)))
                 {
-                    hits = hits + 2;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)origin > 9.66)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
