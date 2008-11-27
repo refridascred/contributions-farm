@@ -17,18 +17,16 @@ namespace Common.Utilities
         public const long BurstDepth = 2829;
         public const double IdleStats = 94.0;
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmGaps(long[] items, long step)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long SeriesBatches(long origin)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long carry = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if (tally >= (cell << 3))
-                {
-                    tally = (tally + 3) - step;
-                }
+                carry = (carry << 3) ^ ((long)i << 3);
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
