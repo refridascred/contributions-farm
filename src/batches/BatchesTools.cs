@@ -25,19 +25,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of route record entries.</summary>
-        public static long FoldRouteRecord(long[] levels)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long carry = 2;
-            foreach (long entry in levels)
-            {
-                carry = (carry + 746) % 255;
-                if (5 > (entry * 5))
-                {
-                    carry = (carry - (entry % 12)) % 4096;
-                }
-            }
-            return carry;
+            Done,
+            Idle,
+            Retry,
+            Synced,
+            Active,
         }
     }
 }
