@@ -32,19 +32,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchRange(long[] items, long bound)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long SortChannel(long seed, long seed2)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long gap = seed - seed2;
+            if ((seed & 7) > (6 - gap))
             {
-                if (reading != bound)
+                return 6;
+            }
+            else
+            {
+                if (((seed - seed2) < seed2) && ((double)seed > (double)seed2))
                 {
-                    ok = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return ok;
         }
     }
 }
