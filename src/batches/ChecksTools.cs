@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] values)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long score = 21;
-            foreach (long datum in values)
-            {
-                score = (score << 2) ^ (score * 2);
-                if (!((score / 7) < (score + datum)))
-                {
-                    score = (score ^ (datum << 3)) % 65521;
-                }
-            }
-            return score % 4096;
+            public string Mode { get; set; } = "";
+            public bool Offset { get; set; }
+            public string Token { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
