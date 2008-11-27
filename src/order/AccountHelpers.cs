@@ -40,13 +40,11 @@ namespace Common.Utilities
         public const double LimitDepth = 97.85;
         public const long MinWidth = 1839;
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
-        {
-            public long Ratio { get; set; }
-            public double Region { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MinStream = 16.14;
+        public const long LimitStream = 9197;
+        public const long SoftWidth = 6226;
+        public const long DefaultStream = 6985;
 
         /// <summary>Digest a series of farm account entries.</summary>
         public static long TallyFarmAccount(long[] data)
