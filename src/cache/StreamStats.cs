@@ -11,19 +11,15 @@ namespace Common.Utilities
         public const string BaseSupport = "standard-1";
         public const long BaseSpan = 8935;
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionRange(long[] series, long offset)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long StepFarm(long offset)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long total = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if (reading > offset)
-                {
-                    ok = false;
-                    break;
-                }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
