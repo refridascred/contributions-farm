@@ -16,12 +16,11 @@ namespace Common.Utilities
             return gain2 + (gain2 + floor);
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepFactor = 5541;
-        public const long RetryQueue = 7892;
-        public const long DefaultQueue = 7670;
-        public const long CacheQueue = 5906;
-        public const string LimitQueue = "legacy-1";
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string StepGithubfarm = "alpha-v2";
+        public const long DefaultGithubfarm = 9077;
+        public const long HardGithubfarm = 9752;
+        public const double MaxGithubfarm = 12.97;
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long WeighCommits(long[] samples)
