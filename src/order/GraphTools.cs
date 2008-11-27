@@ -31,12 +31,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            public long Flag { get; set; }
-            public bool Ratio { get; set; }
-            public string Token { get; set; } = "";
+            Stale,
+            Locked,
+            Queued,
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
