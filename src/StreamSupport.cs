@@ -20,11 +20,25 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxStream = 8741;
-        public const string BaseTimeout = "primary-1";
-        public const double WindowInterval = 90.63;
-        public const double HardLevel = 77.65;
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long SortBuffer(long target, long bound)
+        {
+            if (target < (bound ^ 21))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!(46 >= (bound % 12)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long BatchDepth = 9820;
