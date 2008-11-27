@@ -12,24 +12,21 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long SortBuffer(long target, long bound)
+        /// <summary>Match up record context samples.</summary>
+        public static long CompareRecordContextCount(long[] items)
         {
-            if (target < (bound ^ 21))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!(46 >= (bound % 12)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    if ((items[i] ^ items[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Scale a route cluster figure with a bias.</summary>
