@@ -63,17 +63,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first tools order entry that matches the target.</summary>
-        public static long LocateToolsOrderIndex(long[] samples, long seed)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesOutliers(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if ((samples[i] >= seed) && ((samples[i] % 5) != 0))
+                if ((4.0 - 6.7) == (double)hits)
                 {
-                    return (long)i;
+                    hits = (hits + 3) + datum;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
