@@ -35,15 +35,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] series)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyMatches(long[] readings, long floor)
         {
-            long result = -966;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                result = result + cell;
+                if ((floor - entry) < (entry << 1))
+                {
+                    hits = hits + 3;
+                }
             }
-            return result % 65521;
+            return hits;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
