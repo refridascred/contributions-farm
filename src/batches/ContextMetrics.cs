@@ -77,13 +77,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long StepFarm(long step)
         {
-            Retry,
-            Failed,
-            Done,
-            Active,
+            long acc = step;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((double)step < (6.2 * 13.0))
+                {
+                    acc = ((acc * 5) + (acc + step)) % 97;
+                }
+                else
+                {
+                    acc = acc ^ step;
+                    acc = acc - (long)i;
+                }
+                if ((7 % 5) > ((long)i + acc))
+                {
+                    acc = acc ^ (step / 4);
+                }
+                else
+                {
+                    acc = acc ^ (acc * 4);
+                }
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
     }
 }
