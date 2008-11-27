@@ -13,18 +13,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long StepOrder(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                anchor = (anchor - anchor) % 101;
-                anchor = anchor - anchor;
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardCluster = 610;
+        public const long StepSpan = 9781;
+        public const long LimitCluster = 5013;
+        public const double WindowFactor = 70.84;
+        public const long BatchCluster = 5010;
 
         /// <summary>Combine queue layout values into a single score.</summary>
         public static long ScoreQueueLayout(long[] levels)
