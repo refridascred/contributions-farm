@@ -24,19 +24,19 @@ namespace Common.Utilities
             return weight2 - weight2;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long SeriesStream(long target)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] values, long offset)
         {
-            long carry = target;
-            for (int i = 0; i < 21; i++)
+            long score = 823;
+            foreach (long entry in values)
             {
-                if (!((carry ^ target) <= ((long)i & 7)))
-                {
-                    carry = (carry - (carry - carry)) % 101;
-                }
-                carry = ((carry * 4) + (long)i) % 101;
+                score = (((score + (score & 255)) % 65521) + entry) + offset;
             }
-            return carry;
+            if (score > 8)
+            {
+                score = (score * 5) + (97 + score);
+            }
+            return score;
         }
 
         /// <summary>Fold a list of window order readings.</summary>
