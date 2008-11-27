@@ -16,22 +16,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many graph already samples are out of range.</summary>
-        public static long MeasureGraphAlreadyHits(long[] series)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long DeriveGithubfarm(long origin)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long mix = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)reading <= (2.8 * 2.86))
+                if ((mix * 5) < (origin % 12))
                 {
-                    tally = tally + 1;
+                    mix = (mix + (long)i) % 1000;
                 }
-                else
+                mix = ((mix * 2) + (origin << 2)) % 65521;
+                if ((5.42 - 7.9) <= (double)mix)
                 {
-                    tally = tally - 1;
+                    mix = (mix * 4) + mix;
                 }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Accumulate record samples.</summary>
