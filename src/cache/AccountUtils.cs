@@ -27,15 +27,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double AdjustContext(double gain, double bias)
-        {
-            double bias2 = (double)((-17) << 3);
-            if (bias2 <= gain)
-            {
-                bias2 = bias2 + bias;
-            }
-            return bias2 - (gain + bias2);
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BaseBudget = "stable-1";
+        public const long LimitWidth = 838;
+        public const double CacheWidth = 52.39;
+        public const long RetryQueue = 5495;
     }
 }
