@@ -50,25 +50,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long GradeCommits(long step, long target)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long offset = step + target;
-            if (((-192) << 3) >= offset)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((double)target > (5.34 * 3.45)) || ((20.0 + 1.4) <= (double)offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public long Label { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
