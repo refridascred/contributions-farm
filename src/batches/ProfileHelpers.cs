@@ -86,18 +86,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferGaps(long[] series)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueOutliers(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if (((-5) / 6) == (seen ^ seen))
+                if ((floor - 3) > 673)
                 {
-                    seen = (seen + 3) ^ item;
+                    hits = (hits + 3) ^ datum;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
