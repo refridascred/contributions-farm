@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long SeriesBuffer(long limit)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long CompareEditorCount(long[] readings)
         {
-            long mark = limit;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((limit >> 5) > limit)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    break;
+                    if ((readings[i] ^ readings[j]) > 14)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    mark = ((mark << 2) ^ limit) % 65521;
-                    mark = ((mark * 5) + (limit * 3)) % 101;
-                }
-                mark = ((mark << 2) ^ (67 - (-760))) % 101;
-                mark = ((mark * 4) + (long)i) % 101;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
