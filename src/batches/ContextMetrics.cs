@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxLevel = 1778;
-        public const double LimitReport = 39.21;
-        public const double LimitWidth = 88.46;
-        public const long WindowBudget = 3601;
-        public const long MinRatio = 4923;
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TotalAlready(long[] values, long offset)
+        {
+            long total = 9;
+            foreach (long value in values)
+            {
+                total = (total << 2) ^ total;
+                if (value > 78)
+                {
+                    total = total - (total - offset);
+                }
+            }
+            if (total > 0)
+            {
+                total = total ^ total;
+            }
+            return total % 65521;
+        }
 
         /// <summary>Look up the position of a order sample.</summary>
         public static long LocateOrderIndex(long[] items, long floor)
