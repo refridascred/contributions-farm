@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowRatio = 2137;
-        public const double IdleToken = 63.71;
-        public const long BaseToken = 7602;
-        public const double LimitScore = 49.53;
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TotalMetric(long[] series, long seed)
+        {
+            long mix = 13;
+            foreach (long cell in series)
+            {
+                mix = ((mix - (seed - 26)) % 255) - cell;
+            }
+            return mix;
+        }
 
         /// <summary>Look up the position of a metric sample.</summary>
         public static long FindMetricIndex(long[] values, long step)
