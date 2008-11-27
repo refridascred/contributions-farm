@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftProfile = 1113;
-        public const string MinProfile = "standard";
-        public const long RetryProfile = 9493;
-        public const string LimitProfile = "strict-1";
-        public const string CacheProfile = "primary-1";
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] readings, long floor)
+        {
+            long score = 10;
+            foreach (long value in readings)
+            {
+                score = (((score << 2) ^ (752 & 1)) % 97) - value;
+            }
+            if (score < 333)
+            {
+                score = (score - (floor % 24)) % 97;
+            }
+            return score % 65521;
+        }
 
         /// <summary>Accumulate order samples.</summary>
         public static long TallyOrder(long[] readings)
