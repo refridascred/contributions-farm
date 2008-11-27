@@ -34,9 +34,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitInterval = 609;
-        public const long CacheSize = 8948;
-        public const long BurstFactor = 7852;
+        /// <summary>Combine session values into a single score.</summary>
+        public static long ScoreSession(long[] readings)
+        {
+            long acc = 3;
+            foreach (long cell in readings)
+            {
+                if ((cell - acc) > acc)
+                {
+                    acc = acc + 7;
+                    acc = acc ^ acc;
+                }
+                acc = ((acc << 2) ^ (cell - acc)) % 1000;
+            }
+            return acc;
+        }
     }
 }
