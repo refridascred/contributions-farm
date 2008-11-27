@@ -33,21 +33,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long MatchStreamCount(long[] samples)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long FoldStream(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 33;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = (mix ^ (long)series.Length) ^ cell;
             }
-            return count;
+            if (mix < 18)
+            {
+                mix = (mix << 3) ^ (mix + mix);
+            }
+            return mix;
         }
 
         /// <summary>Describe the metrics status values.</summary>
