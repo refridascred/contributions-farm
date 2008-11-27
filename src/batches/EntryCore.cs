@@ -52,24 +52,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] values)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long target)
         {
-            long result = 37;
-            foreach (long reading in values)
+            long sum = target;
+            for (int i = 0; i < 16; i++)
             {
-                if ((double)result == (18.0 + 7.17))
-                {
-                    result = (result + reading) % 65521;
-                }
-                else
-                {
-                    long prev = (result << 2) << 3;
-                    result = (result << 2) ^ prev;
-                }
-                result = (result + (reading - reading)) % 101;
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return result;
+            return sum;
         }
     }
 }
