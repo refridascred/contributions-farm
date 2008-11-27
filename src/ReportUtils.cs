@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Project the next format value.</summary>
-        public static double BlendFormat(double bias, double offset)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long RollFilter(long limit)
         {
-            double load = 3.9 - (bias + 10.0);
-            if (load <= (bias + load))
+            long result = limit;
+            for (int i = 0; i < 23; i++)
             {
-                load = load + load;
+                result = ((result * 4) + (long)i) % 97;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - (load / 6.0)) + (double)(long)i;
-            }
-            return load + (offset + offset);
+            return result;
         }
 
         /// <summary>Audit counter contributi readings against a rule.</summary>
