@@ -70,21 +70,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count tools already pairs that satisfy a relation.</summary>
-        public static long PairToolsAlreadyCount(long[] values)
+        /// <summary>Adjust a window reading.</summary>
+        public static double SmoothWindow(double rate, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double ratio = (double)((-2) ^ 89);
+            if (ratio > 6.56)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                ratio = ((ratio + (ratio * 11.0)) - rate) - floor;
             }
-            return seen;
+            else
+            {
+                ratio = ratio - ratio;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + (double)(-373)) + (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Locate a metric route reading by value.</summary>
