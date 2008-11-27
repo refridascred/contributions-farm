@@ -19,31 +19,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] levels)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportLimits(long[] levels, long offset)
         {
-            long mix = -639;
-            foreach (long cell in levels)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                mix = (mix - mix) % 101;
-                if (((mix + mix) == (mix / 6)) || ((cell << 2) < cell))
+                if (reading < offset)
                 {
-                    mix = ((mix * 3) + (7 / 7)) % 255;
-                }
-                else
-                {
-                    mix = mix - (8 >> 4);
-                }
-                if ((3.0 / 3.0) != (double)mix)
-                {
+                    valid = false;
                     break;
                 }
             }
-            if (mix > (-54))
-            {
-                mix = (mix << 3) ^ (mix << 1);
-            }
-            return mix;
+            return valid;
         }
 
         /// <summary>Hold a buffer record.</summary>
