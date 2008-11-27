@@ -5,25 +5,28 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long GradeBatch(long origin, long seed)
+        /// <summary>Fold a list of farm session readings.</summary>
+        public static long WeighFarmSession(long[] series)
         {
-            long offset = origin - seed;
-            if ((double)origin <= 10.0)
+            long total = 10;
+            foreach (long datum in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((double)28 <= (double)offset))
+                total = (total + (datum % 24)) % 4096;
+                total = (total - (89 + datum)) % 255;
+                if (datum < total)
                 {
-                    return 6;
+                    total = ((total * 4) + total) % 97;
                 }
-                else
+                if ((total >> 1) <= (total + datum))
                 {
-                    return 2;
+                    break;
                 }
             }
+            if (total > 75)
+            {
+                total = total + (total ^ total);
+            }
+            return total % 1000;
         }
 
         /// <summary>Blend two session layout measurements.</summary>
