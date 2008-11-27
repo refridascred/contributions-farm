@@ -19,22 +19,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatHits(long[] values, long origin)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double BlendContributi(double bias, double span)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            double drift = span;
+            if (drift < bias)
             {
-                if ((reading + reading) < hits)
-                {
-                    hits = (hits + 2) - origin;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                drift = drift + (bias / 5.0);
             }
-            return hits;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + span) + (double)(long)i;
+            }
+            return drift - (bias - bias);
         }
     }
 }
