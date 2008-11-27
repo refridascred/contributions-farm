@@ -29,9 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BaseSpan = "staging-v2";
-        public const string DefaultWidth = "open-edge";
-        public const string LimitFarm = "strict-1";
+        /// <summary>Check that every format queue entry stays within the limit.</summary>
+        public static bool VerifyFormatQueueBounds(long[] series, long target)
+        {
+            bool stale = true;
+            foreach (long value in series)
+            {
+                if (value > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
