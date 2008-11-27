@@ -14,12 +14,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadOutliers(long[] values, long step)
         {
-            public long Ratio { get; set; }
-            public string Mode { get; set; } = "";
-            public double Flag { get; set; }
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if (!(((double)datum >= (double)(-6)) && ((double)seen == (9.04 + 3.2))))
+                {
+                    seen = (seen + 3) + step;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
