@@ -19,21 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count queue format pairs that satisfy a relation.</summary>
-        public static long PairQueueFormatCount(long[] series)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double SmoothCommits(double weight, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double load = weight;
+            if (load < (weight * 12.0))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                load = load - (offset * 9.1);
             }
-            return count;
+            else
+            {
+                load = load - (double)3;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = load + (double)(long)i;
+            }
+            return load + (load / 2.0);
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
