@@ -25,14 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double AdjustCluster(double bias, double floor)
         {
-            Closed,
-            Synced,
-            Stale,
-            Retry,
-            Ready,
+            double bias2 = bias;
+            if (bias2 >= (double)5)
+            {
+                bias2 = (bias2 + bias) - floor;
+            }
+            else
+            {
+                bias2 = bias2 - bias2;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = (bias2 + bias) + (double)(long)i;
+            }
+            return bias2 - (double)748;
         }
 
         /// <summary>Grade a checks commits value against two limits.</summary>
