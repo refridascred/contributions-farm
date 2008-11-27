@@ -22,12 +22,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TotalGraph(long[] series)
         {
-            public string Count { get; set; } = "";
-            public long Token { get; set; }
-            public bool Limit { get; set; }
+            long total = -2;
+            foreach (long item in series)
+            {
+                if ((double)item >= 2.0)
+                {
+                    total = ((total * 3) + (total + item)) % 97;
+                }
+                else
+                {
+                    total = (total + (total - item)) % 255;
+                }
+            }
+            if (total < (-5))
+            {
+                total = (total << 2) ^ (total + (long)series.Length);
+            }
+            return total;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
