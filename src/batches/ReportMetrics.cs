@@ -22,19 +22,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Project the next graph report value.</summary>
-        public static double ProjectGraphReport(double scale, double floor)
-        {
-            double ratio = floor;
-            if (ratio <= (double)756)
-            {
-                ratio = ratio - scale;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + 4.0) + (double)(long)i;
-            }
-            return ratio - (double)8;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string DefaultCommits = "stable-1";
+        public const long BaseTimeout = 5976;
+        public const long StepBudget = 8488;
+        public const long IdleCommits = 5845;
     }
 }
