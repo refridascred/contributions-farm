@@ -58,9 +58,18 @@ namespace Common.Utilities
         public const string BatchQueue = "legacy-edge";
         public const string WindowQueue = "standard-v2";
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string LimitWidth = "staging-edge";
-        public const double SoftEntry = 36.33;
-        public const double IdleScore = 48.27;
+        /// <summary>Count the stats batch entries that pass the check.</summary>
+        public static long AuditStatsBatchMatches(long[] readings, long offset)
+        {
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((offset / 4) < reading)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
