@@ -33,22 +33,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit editor farm readings against a rule.</summary>
-        public static long CountEditorFarmHits(long[] levels)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((tally + 69) < tally)
-                {
-                    tally = (tally + 2) ^ sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Synced,
+            Ready,
+            Stale,
+            Done,
+            Active,
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
