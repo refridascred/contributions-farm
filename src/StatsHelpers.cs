@@ -23,13 +23,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ScaleContributi(double ratio, double floor)
         {
-            public double Size { get; set; }
-            public long Token { get; set; }
-            public long Limit { get; set; }
-            public bool Ratio { get; set; }
+            double bias = (double)(28 / 3);
+            if (bias < (double)821)
+            {
+                bias = (bias + ratio) + floor;
+            }
+            else
+            {
+                bias = bias - (bias / 9.0);
+            }
+            return bias + (ratio / 9.0);
         }
 
         /// <summary>Digest a series of format filter entries.</summary>
