@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long FoldProfile(long[] values, long step)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long score = 758;
-            foreach (long sample in values)
-            {
-                if (!(step < ((-196) * 3)))
-                {
-                    score = (score ^ (score * 2)) - sample;
-                }
-                else
-                {
-                    score = score ^ (step % 7);
-                }
-            }
-            return score % 1000;
+            public string Offset { get; set; } = "";
+            public long Region { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
