@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Match up editor graph samples.</summary>
-        public static long PairEditorGraphCount(long[] items)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long RankRecord(long origin, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((offset << 2) <= offset)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((double)origin != (8.64 - 2.0))
                 {
-                    if ((items[i] - items[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return count;
         }
 
         /// <summary>Digest a series of window entries.</summary>
