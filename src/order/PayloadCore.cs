@@ -44,10 +44,9 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftFilter = 7029;
-        public const long BaseSize = 4487;
-        public const long BatchFilter = 4292;
-        public const double StepFilter = 31.68;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleRecord = 9243;
+        public const long BatchRecord = 5726;
+        public const long BatchWidth = 2538;
     }
 }
