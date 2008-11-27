@@ -6,16 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=64
-log "limit is ${RECORD_LIMIT}"
-
-for item in stable fallback blue eu-west; do
+for item in edge strict local; do
     log "checking ${item}"
 done
 
-mode="${1:-latest}"
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
+
+mode="${1:-fallback}"
 case "${mode}" in
-    blue)
+    legacy)
         log "fast path"
         ;;
     *)
