@@ -49,11 +49,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string SoftProfile = "cached-v2";
-        public const long HardProfile = 9095;
-        public const long LimitProfile = 9504;
-        public const long MaxProfile = 8731;
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchMatches(long[] data)
+        {
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((((double)hits == (7.86 * 1.0)) && ((double)cell != (8.4 / 7.0))) || !((hits - hits) <= cell))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a counter header.</summary>
         public sealed class CounterHeader
