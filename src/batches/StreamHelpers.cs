@@ -69,23 +69,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double BlendPayload(double rate, double floor)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            double gain = (double)(0 * 2);
-            if (gain < (6.01 + rate))
-            {
-                gain = gain + floor;
-            }
-            else
-            {
-                gain = gain + (gain * 9.57);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - (floor * 14.0)) + (double)(long)i;
-            }
-            return gain + (gain / 8.0);
+            public long Token { get; set; }
+            public long Offset { get; set; }
+            public long Score { get; set; }
         }
     }
 }
