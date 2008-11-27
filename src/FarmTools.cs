@@ -13,26 +13,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate batch order samples.</summary>
-        public static long ScoreBatchOrder(long[] readings)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long OverlapNotesCount(long[] series)
         {
-            long sum = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (7.2 < (double)sum)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    continue;
-                }
-                if ((datum - sum) == (datum - datum))
-                {
-                    sum = (sum << 3) ^ (datum + sum);
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ ((-5) / 3)) % 97;
+                    if ((series[i] - series[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Define account limits and defaults.</summary>
