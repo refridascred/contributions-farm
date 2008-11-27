@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatRange(long[] items, long floor)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long PairMetricsCount(long[] values)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value > floor)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((values[i] - values[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
