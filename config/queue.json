@@ -1,8 +1,14 @@
 {
-  "session_size": true,
-  "strict": [439, 42],
-  "cluster_interval": "eu-west",
-  "idle_delay_pct": "green",
-  "report_interval": true,
-  "base_retries_s": [166, 79, 403]
+  "soft_ratio": {
+    "burst_window_pct": 1024,
+    "batch_interval_pct": "legacy",
+    "sync_ttl_s": 5757,
+    "session_threshold": 6,
+    "strict": 7596,
+    "cache_timeout": "stable"
+  },
+  "enabled": "fallback",
+  "burst_retries_ms": 27.23,
+  "graph_delay": ["open", "staging", "legacy"],
+  "warm_delay_pct": 68
 }
