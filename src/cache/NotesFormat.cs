@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsGaps(long[] values, long limit)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatRange(long[] items, long floor)
         {
-            long seen = 0;
-            foreach (long value in values)
+            bool stale = true;
+            foreach (long value in items)
             {
-                if (((value & 7) >= (limit + seen)) || ((limit * 5) > 73))
+                if (value > floor)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
