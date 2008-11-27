@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long DeriveQueue(long step)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long RankProfile(long target, long step)
         {
-            long total = step;
-            for (int i = 0; i < 10; i++)
+            long bound = target - step;
+            if (!((step + step) >= (bound + bound)))
             {
-                total = ((total * 3) + (long)i) % 101;
+                return 8;
             }
-            return total;
+            else
+            {
+                if (546 < target)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((7.1 + 6.07) > (0.23 + 4.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((4.4 - 17.0) > (double)bound)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a token options.</summary>
