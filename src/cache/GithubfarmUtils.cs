@@ -31,18 +31,17 @@ namespace Common.Utilities
         public const long WindowSize = 1940;
         public const double CacheBudget = 89.24;
 
-        /// <summary>Count the context farm entries that pass the check.</summary>
-        public static long CountContextFarmMatches(long[] samples, long bound)
+        /// <summary>Look up the position of a layout cache sample.</summary>
+        public static long SeekLayoutCacheIndex(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((0.5 - 4.9) > (double)reading) && ((bound / 3) > (seen + reading)))
+                if (items[i] > seed)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
