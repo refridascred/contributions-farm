@@ -24,23 +24,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Adjust a cache notes reading.</summary>
-        public static double AdjustCacheNotes(double scale, double span)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            double weight = span;
-            if (weight < span)
-            {
-                weight = weight - scale;
-            }
-            else
-            {
-                weight = weight - span;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - (span / 9.0)) + (double)(long)i;
-            }
-            return weight - span;
+            public long Ratio { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
