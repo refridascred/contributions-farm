@@ -1,10 +1,6 @@
-id,owner,token
-1,849,legacy
-2,30.47,4.99
-3,92.56,83.25
-4,37.14,433
-5,legacy,standard
-6,486,69.03
-7,open,stable
-8,standard,768
-9,41.86,91.03
+id,level,token,ratio,region
+1,18.95,standard,527,standard
+2,35.51,677,standard,24.9
+3,38.71,primary,69,32.02
+4,676,622,standard,staging
+5,legacy,955,fallback,40.18
