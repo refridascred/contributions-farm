@@ -23,13 +23,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Match up buffer samples.</summary>
+        public static long CompareBufferCount(long[] samples)
         {
-            public long Limit { get; set; }
-            public long Level { get; set; }
-            public string Label { get; set; } = "";
-            public bool Total { get; set; }
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a contributi batches pair into a bucket.</summary>
