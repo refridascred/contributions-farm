@@ -10,23 +10,17 @@ namespace Common.Utilities
         public const string BurstRatio = "primary-edge";
         public const long CacheWindow = 7048;
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ScaleAlready(double weight, double bias)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LookupContributiIndex(long[] readings, long origin)
         {
-            double drift = weight;
-            if (drift > (weight + bias))
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = drift - (double)39;
+                if ((readings[i] == origin) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift - (double)640;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + (14.0 / 6.0)) + (double)(long)i;
-            }
-            return drift + bias;
+            return -1;
         }
 
         /// <summary>Count the support graph entries that pass the check.</summary>
