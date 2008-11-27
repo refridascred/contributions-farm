@@ -50,9 +50,18 @@ namespace Common.Utilities
             return weight - span;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double DefaultBudget = 8.34;
-        public const long CacheSize = 5064;
-        public const long LimitFarm = 2235;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesGaps(long[] levels, long bound)
+        {
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if (!((57 & 63) != (hits + 8)) && (((bound / 2) == (hits + (long)levels.Length)) && (bound < hits)))
+                {
+                    hits = (hits + 3) + item;
+                }
+            }
+            return hits;
+        }
     }
 }
