@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate githubfarm metric readings against a bound.</summary>
-        public static bool CheckGithubfarmMetricLimits(long[] series, long target)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            bool ok = true;
-            foreach (long entry in series)
-            {
-                if (entry > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Dropped,
+            Synced,
+            Ready,
+            Retry,
+            Locked,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
