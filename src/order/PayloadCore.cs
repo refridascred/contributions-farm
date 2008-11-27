@@ -19,18 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorOutliers(long[] values, long origin)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TotalCache(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long acc = 9;
+            foreach (long reading in series)
             {
-                if ((origin / 6) == (9 >> 4))
-                {
-                    count = (count + 2) ^ datum;
-                }
+                acc = ((acc - (reading & 63)) % 65521) - origin;
+                acc = acc ^ (reading - reading);
             }
-            return count;
+            if (acc > 790)
+            {
+                acc = acc - acc;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Describe the farm kind values.</summary>
