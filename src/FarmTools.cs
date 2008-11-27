@@ -16,12 +16,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double MaxFilter = 4.43;
-        public const long BurstCount = 6930;
-        public const long RetryDepth = 9704;
-        public const long StepFilter = 4349;
-        public const string RetryFactor = "local";
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LocateClusterIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate support farm samples.</summary>
         public static long ScoreSupportFarm(long[] data)
