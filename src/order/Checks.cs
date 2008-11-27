@@ -32,15 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
-        {
-            Ready,
-            Paused,
-            Active,
-            Failed,
-            Pending,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftScore = 2412;
+        public const long DefaultFactor = 8581;
+        public const string LimitFactor = "local-edge";
 
         /// <summary>Hold a session header.</summary>
         public sealed class SessionHeader
