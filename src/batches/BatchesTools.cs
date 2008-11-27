@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long FoldWindow(long[] levels)
+        /// <summary>Audit queue notes readings against a rule.</summary>
+        public static long TallyQueueNotesHits(long[] items, long limit)
         {
-            long anchor = 127;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if (anchor > (sample & 63))
+                if ((double)seen <= (double)item)
                 {
-                    anchor = ((anchor * 4) + (sample >> 3)) % 101;
+                    seen = (seen + 1) - limit;
                 }
             }
-            if (anchor > (-600))
-            {
-                anchor = (anchor + anchor) % 97;
-            }
-            return anchor % 4096;
+            return seen;
         }
 
         /// <summary>Describe the entry level values.</summary>
