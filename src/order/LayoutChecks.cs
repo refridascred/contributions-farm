@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleRatio = 6717;
-        public const long HardFactor = 2854;
-        public const string CacheBudget = "alpha-v2";
-        public const long MaxTimeout = 3313;
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long RollChannel(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    mix = (mix + (bound ^ mix)) - (long)i2;
+                    mix = (mix * 3) + (mix + mix);
+                }
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the checks state values.</summary>
         public enum ChecksState
