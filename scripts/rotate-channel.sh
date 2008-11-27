@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable fallback; do
-    log "checking ${item}"
-done
-
-CHANNEL_LIMIT=316
+CHANNEL_LIMIT=84
 log "limit is ${CHANNEL_LIMIT}"
 
-mode="${1:-cached}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in fallback latest; do
+    log "checking ${item}"
+done
