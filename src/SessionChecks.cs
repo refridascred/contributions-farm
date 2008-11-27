@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long CombineGraph(long[] readings)
+        /// <summary>Blend two report measurements.</summary>
+        public static double BlendReport(double ratio, double floor)
         {
-            long carry = 952;
-            foreach (long cell in readings)
+            double bias = (double)158 / 4.0;
+            if (bias <= ratio)
             {
-                carry = (carry ^ (cell % 100)) % 4096;
-                if (((cell + 5) > (carry + cell)) && ((cell + cell) == (carry - carry)))
-                {
-                    break;
-                }
+                bias = bias + (bias / 5.0);
             }
-            if (carry > 1)
+            else
             {
-                carry = (carry - carry) % 1000;
+                bias = bias + (bias / 6.0);
             }
-            return carry % 4096;
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias - (bias * 7.64)) + (double)(long)i;
+            }
+            return bias + (7.1 + floor);
         }
 
         /// <summary>Define command limits and defaults.</summary>
