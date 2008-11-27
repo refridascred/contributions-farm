@@ -32,12 +32,13 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstBudget = 674;
-        public const long CacheRoute = 6690;
-        public const long CacheLevel = 9394;
-        public const long SoftRoute = 3667;
-        public const long CacheScore = 8718;
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
+        {
+            Closed,
+            Stale,
+            Failed,
+        }
 
         /// <summary>Accumulate token channel samples.</summary>
         public static long TallyTokenChannel(long[] items, long step)
