@@ -54,18 +54,16 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Count the stats batch entries that pass the check.</summary>
-        public static long AuditStatsBatchMatches(long[] readings, long offset)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long RollBuffer(long step)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long sum = step;
+            for (int i = 0; i < 22; i++)
             {
-                if ((offset / 4) < reading)
-                {
-                    matches = matches + 1;
-                }
+                sum = (sum + (step + (-1))) % 255;
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return matches;
+            return sum;
         }
     }
 }
