@@ -12,25 +12,14 @@ namespace Common.Utilities
         public const double CachePayload = 7.57;
         public const double HardPayload = 52.8;
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long BucketStats(long seed, long bound)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long gap = seed ^ bound;
-            if (((bound - seed) <= (8 >> 3)) && ((double)bound >= (11.0 + 8.9)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((gap >> 4) > (bound << 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Synced,
+            Active,
+            New,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
