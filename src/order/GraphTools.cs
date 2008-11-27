@@ -44,14 +44,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Validate account command readings against a bound.</summary>
+        public static bool VerifyAccountCommandLimits(long[] series, long origin)
         {
-            Closed,
-            Locked,
-            Paused,
-            Failed,
-            Ready,
+            bool valid = true;
+            foreach (long entry in series)
+            {
+                if (entry > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
