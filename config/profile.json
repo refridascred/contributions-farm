@@ -1,8 +1,11 @@
 {
-  "window_threshold": 60,
-  "base_threshold_ms": 1772,
-  "flush_retries_pct": 629,
-  "editor_window": 4.16,
-  "sync_timeout_s": "latest",
-  "verbose": true
+  "max_delay_count": "stable",
+  "verbose": "local",
+  "commits_depth": {
+    "min_window_pct": "latest",
+    "editor_ratio": 30,
+    "base_window_ms": [435, 333, 8],
+    "stream_threshold": "fallback"
+  },
+  "strict": "local"
 }
