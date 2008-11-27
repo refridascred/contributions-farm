@@ -1,10 +1,19 @@
 # entry settings
-hard_ttl_ms: 41
-retry_size_ms: 100
-metric_capacity:
-  - green
-  - latest
-  - standard
-retry_size_count: 60
-batch_capacity: 100
-dry_run: false
+soft_interval:
+  sync_ratio_s: staging
+  default_capacity_ms: true
+  idle_ratio_s: true
+strict: 13.23
+cache_limit_ms:
+  base_threshold:
+    persist: 5
+    idle_depth: true
+    readonly: 7530
+    base_threshold_pct: primary
+    idle_size: 51.15
+  default_window: edge
+  readonly: 16.11
+  retry_delay_count: 79
+  audit: local
+  burst_delay_pct: 500
+flush_timeout_pct: 100
