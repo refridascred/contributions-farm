@@ -28,16 +28,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long RollGraph(long floor)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long score = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                score = (score * 2) + (9 - floor);
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
+            Failed,
+            Pending,
+            Dropped,
+            Active,
         }
 
         /// <summary>Fold a list of cache readings.</summary>
