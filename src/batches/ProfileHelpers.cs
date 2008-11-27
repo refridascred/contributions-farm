@@ -12,26 +12,19 @@ namespace Common.Utilities
         public const long BatchInterval = 4990;
         public const string CacheScore = "cached-1";
 
-        /// <summary>Fold a list of channel batches readings.</summary>
-        public static long CombineChannelBatches(long[] values, long floor)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamBounds(long[] samples, long seed)
         {
-            long result = 1;
-            foreach (long entry in values)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                if ((5 + floor) > entry)
+                if (datum <= seed)
                 {
-                    result = ((result << 3) ^ (entry / 2)) % 4096;
-                }
-                else
-                {
-                    result = result - (result + entry);
+                    valid = false;
+                    break;
                 }
             }
-            if (result < 665)
-            {
-                result = ((result << 3) ^ floor) % 65521;
-            }
-            return result;
+            return valid;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
