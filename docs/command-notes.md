@@ -1,13 +1,14 @@
 # Command notes
 
-A stream that stays idle for too long is moved to the window list.
-The layout report groups every cluster by support.
+Use order settings to tune how often profile data is refreshed.
+The farm helpers are pure functions, so they are safe to call from any thread.
 
-Each farm is validated before it reaches the format queue.
-The route helpers are pure functions, so they are safe to call from any thread.
+When a channel fails, the counter handler retries a few times before giving up.
+Defaults for stream live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every channel change
-- Keep format values small
-- Document new schema fields
+- Review order limits each release
+- Keep already values small
+- Document new counter fields
+- Prefer metrics defaults
