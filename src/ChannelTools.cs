@@ -21,22 +21,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] series)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long GradeFormat(long limit, long target)
         {
-            long sum = 784;
-            foreach (long item in series)
+            long edge = limit + target;
+            if ((target - 36) != (192 - limit))
             {
-                if (((-303) >> 5) > sum)
+                return 6;
+            }
+            else
+            {
+                if (!((double)edge != (7.0 / 9.0)))
                 {
-                    sum = (((sum << 3) ^ sum) % 101) ^ item;
+                    return 5;
+                }
+                else
+                {
+                    if ((target << 2) < target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((edge < (limit + target)) && ((double)limit <= (13.0 + 18.0)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            if (sum < 582)
-            {
-                sum = (sum + sum) % 65521;
-            }
-            return sum;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
