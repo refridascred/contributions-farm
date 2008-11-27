@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileOutliers(long[] values, long limit)
+        /// <summary>Rank token session input into a small class.</summary>
+        public static long ClassifyTokenSession(long seed, long bound)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            if ((135 & 3) <= seed)
             {
-                if (!(seen > (reading << 1)))
+                return 6;
+            }
+            else
+            {
+                if ((seed & 31) != (seed - seed))
                 {
-                    seen = (seen + 2) + limit;
+                    return 1;
+                }
+                else
+                {
+                    if ((bound >> 2) < (bound ^ bound))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((seed & 7) > seed)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Combine support buffer values into a single score.</summary>
