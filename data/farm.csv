@@ -1,7 +1,8 @@
-id,owner,token,state
-1,547,7.82,339
-2,41.82,green,green
-3,open,blue,666
-4,staging,62.15,860
-5,local,329,open
-6,legacy,blue,636
+id,count,token,level
+1,13.23,538,795
+2,legacy,34.84,230
+3,546,491,17.02
+4,13.97,64,917
+5,96.35,380,627
+6,staging,90.97,826
+7,81.31,88.25,425
