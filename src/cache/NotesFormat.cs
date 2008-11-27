@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long seed, long floor)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowBounds(long[] levels, long floor)
         {
-            long bound = seed ^ floor;
-            if ((floor % 16) <= floor)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((6 ^ floor) < seed)
+                if (sample > floor)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed ^ 56) == (floor - seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((bound << 3) > (seed + floor))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Count the contributi notes entries that pass the check.</summary>
