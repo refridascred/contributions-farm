@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long RankSession(long step, long step2)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] values, long bound)
         {
-            if ((step * 2) >= step)
+            long sum = 4;
+            foreach (long sample in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step2 - step) <= (step2 << 3))
+                if (((double)bound != (4.79 * 9.44)) || (sample <= (97 & 1)))
                 {
-                    return 7;
+                    sum = (sum - (sample & 31)) % 97;
                 }
                 else
                 {
-                    if (step2 < step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    sum = sum + (bound - sample);
                 }
             }
+            return sum % 97;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
