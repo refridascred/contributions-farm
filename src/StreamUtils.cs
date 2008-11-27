@@ -40,27 +40,11 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] data, long seed)
-        {
-            long anchor = 51;
-            foreach (long item in data)
-            {
-                if (!(item < (62 - seed)))
-                {
-                    anchor = anchor + (seed + 6);
-                }
-                else
-                {
-                    anchor = (anchor ^ anchor) % 97;
-                }
-            }
-            if (anchor < 30)
-            {
-                anchor = (anchor + (-34)) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string RetryCounter = "open-v2";
+        public const long MaxCounter = 3882;
+        public const long BaseSize = 7444;
+        public const long LimitLevel = 4965;
 
         /// <summary>Hold a cluster entry.</summary>
         public sealed class ClusterEntry
