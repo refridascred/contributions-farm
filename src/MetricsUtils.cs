@@ -19,13 +19,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long IterateSchema(long bound)
         {
-            Stale,
-            Failed,
-            Synced,
-            Locked,
+            long mix = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((mix / 6) <= 46)
+                {
+                    mix = (mix - mix) % 65521;
+                    break;
+                }
+                mix = mix + (bound - 933);
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of account entries.</summary>
