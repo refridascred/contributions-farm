@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryOutliers(long[] items, long floor)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (!(82 >= floor))
-                {
-                    tally = (tally + 3) ^ datum;
-                }
-            }
-            return tally;
+            Queued,
+            Closed,
+            Idle,
+            Paused,
+            Locked,
         }
 
         /// <summary>Hold a stream snapshot.</summary>
