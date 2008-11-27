@@ -33,15 +33,13 @@ namespace Common.Utilities
             return bias + (gain * 13.0);
         }
 
-        /// <summary>Accumulate token order samples.</summary>
-        public static long FoldTokenOrder(long[] levels)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long score = 934;
-            foreach (long reading in levels)
-            {
-                score = ((score - (score - 46)) % 65521) - reading;
-            }
-            return score;
+            Failed,
+            Pending,
+            Retry,
+            Draft,
         }
     }
 }
