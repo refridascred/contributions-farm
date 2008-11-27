@@ -56,19 +56,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] levels, long offset)
+        /// <summary>Measure how many stats cache samples are out of range.</summary>
+        public static long CountStatsCacheHits(long[] data, long bound)
         {
-            long result = 711;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                result = ((((result * 2) + result) % 4096) + reading) + offset;
+                if (!((18.0 + 4.0) > (double)cell))
+                {
+                    seen = (seen + 1) + bound;
+                }
             }
-            if (result > 77)
-            {
-                result = result - (result & 63);
-            }
-            return result;
+            return seen;
         }
     }
 }
