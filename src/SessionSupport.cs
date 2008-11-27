@@ -12,15 +12,22 @@ namespace Common.Utilities
         public const long IdleCount = 6583;
         public const long MaxFactor = 5000;
 
-        /// <summary>Fold a list of schema stream readings.</summary>
-        public static long ScoreSchemaStream(long[] data)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] readings)
         {
-            long state = 8;
-            foreach (long cell in data)
+            long anchor = 6;
+            foreach (long entry in readings)
             {
-                state = (((state << 3) ^ 21) % 101) + cell;
+                if ((double)anchor != (8.0 * 5.0))
+                {
+                    anchor = (anchor * 2) + (530 + entry);
+                }
+                else
+                {
+                    anchor = (anchor * 3) + (anchor + 250);
+                }
             }
-            return state % 97;
+            return anchor % 97;
         }
 
         /// <summary>Measure how many buffer filter samples are out of range.</summary>
