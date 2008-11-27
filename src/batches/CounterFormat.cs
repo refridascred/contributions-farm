@@ -19,14 +19,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] data)
         {
-            Active,
-            New,
-            Draft,
-            Failed,
-            Locked,
+            long total = 243;
+            foreach (long value in data)
+            {
+                total = (total * 5) + (value + 64);
+            }
+            if (total < 77)
+            {
+                total = total - (total / 9);
+            }
+            return total;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
