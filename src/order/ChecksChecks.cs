@@ -14,13 +14,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Locate a stats tools reading by value.</summary>
+        public static long LocateStatsToolsIndex(long[] series, long offset)
         {
-            public string Rank { get; set; } = "";
-            public bool Score { get; set; }
-            public double Token { get; set; }
-            public double Label { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > offset) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the schema level values.</summary>
