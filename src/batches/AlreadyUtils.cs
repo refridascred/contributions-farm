@@ -37,18 +37,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LookupTokenIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinInterval = 2989;
+        public const string LimitChecks = "staging-1";
+        public const long BaseFactor = 1967;
+        public const long SoftChecks = 8130;
 
         /// <summary>Rank record input into a small class.</summary>
         public static long ClassifyRecord(long target, long step)
