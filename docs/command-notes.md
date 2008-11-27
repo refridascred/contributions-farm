@@ -1,12 +1,11 @@
 # Command notes
 
-Keep already and context names short and lowercase.
-Defaults for cluster live in the config folder and can be overridden per environment.
-Defaults for metrics live in the config folder and can be overridden per environment.
+Use metrics settings to tune how often session data is refreshed.
+A schema that stays idle for too long is moved to the schema list.
 
 ## Guidelines
 
-- Review session limits each release
-- Document new command fields
-- Log every session change
-- Prefer counter defaults
+- Document new batch fields
+- Prefer cluster defaults
+- Review filter limits each release
+- Keep buffer values small
