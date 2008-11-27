@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=340
-log "limit is ${RECORD_LIMIT}"
-
-for item in eu-west cached; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-mode="${1:-legacy}"
+mode="${1:-standard}"
 case "${mode}" in
-    local)
+    latest)
         log "fast path"
         ;;
     *)
