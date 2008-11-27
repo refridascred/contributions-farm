@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Blend two token measurements.</summary>
-        public static double ScaleToken(double gain, double floor)
-        {
-            double gain2 = (double)(7 >> 2);
-            if (gain2 < 15.0)
-            {
-                gain2 = (gain2 + floor) - gain;
-            }
-            return gain2 + floor;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstBuffer = 4507;
+        public const double MinWidth = 83.35;
+        public const double IdleBuffer = 72.09;
 
         /// <summary>Roll a tools channel counter forward.</summary>
         public static long SeriesToolsChannel(long seed)
