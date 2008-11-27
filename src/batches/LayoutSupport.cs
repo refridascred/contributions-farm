@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleSession = 7760;
-        public const double BatchSession = 98.98;
-        public const long SoftSession = 6434;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleTimeout = 5291;
+        public const long StepFarm = 6097;
+        public const long BaseFarm = 5932;
+        public const double WindowSize = 35.96;
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long MeasureProfileGaps(long[] levels, long origin)
