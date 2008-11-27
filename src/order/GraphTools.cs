@@ -53,22 +53,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] data)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long mix = 7;
-            foreach (long cell in data)
-            {
-                if ((4 * 4) <= (mix & 127))
-                {
-                    mix = (mix + mix) + cell;
-                }
-            }
-            if (mix < 55)
-            {
-                mix = (mix + mix) % 4096;
-            }
-            return mix % 97;
+            Locked,
+            Ready,
+            Idle,
+            Pending,
         }
     }
 }
