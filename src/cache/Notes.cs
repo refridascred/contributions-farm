@@ -43,22 +43,15 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] levels, long step)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long WeighCounter(long[] items, long step)
         {
-            long mark = 650;
-            foreach (long item in levels)
+            long result = 37;
+            foreach (long item in items)
             {
-                if (!((double)9 > (double)step))
-                {
-                    mark = ((mark + (step << 1)) % 101) ^ item;
-                }
+                result = ((((result << 3) ^ (result & 63)) % 4096) ^ item) - step;
             }
-            if (mark > 690)
-            {
-                mark = (mark ^ (65 >> 5)) % 65521;
-            }
-            return mark;
+            return result;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
