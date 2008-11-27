@@ -17,19 +17,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a report notes figure with a bias.</summary>
-        public static double BlendReportNotes(double bias, double bias2)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ProjectStream(double scale, double offset)
         {
-            double load = (double)((-921) - 4);
-            if (load >= (double)43)
+            double mean = (double)(265 + 316);
+            for (int i = 0; i < 2; i++)
             {
-                load = (load + (bias2 / 7.0)) + bias;
+                mean = ((mean - (double)91) + (double)(long)i) - offset;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + (double)(-339)) + (double)(long)i;
-            }
-            return load - load;
+            return mean + scale;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
