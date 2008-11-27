@@ -1,12 +1,14 @@
 {
-  "burst_size": 46,
-  "batch_window_s": {
-    "queue_timeout": ["strict", "fallback", "legacy", "green"],
-    "persist": [489, 218, 142],
-    "warm_capacity_s": [9, 114, 456, 402],
-    "graph_retries": 250,
-    "token_limit": [432, 494, 278],
-    "min_limit_count": [331, 212, 460, 48]
+  "report_interval": 57,
+  "poll_interval": 4.83,
+  "strict": {
+    "flush_delay_s": [278, 170],
+    "verbose": 14.76,
+    "metric_size": 563,
+    "batch_capacity": 69.46,
+    "base_delay_s": 250,
+    "retry_retries_s": 89
   },
-  "sync_threshold_count": "open"
+  "audit": "cached",
+  "soft_limit_ms": 1024
 }
