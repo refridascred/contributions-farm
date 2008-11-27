@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long PairMetricsCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftScore = 9467;
+        public const long BaseCounter = 6362;
+        public const string IdleWidth = "cached";
+        public const double BaseBudget = 82.1;
 
         /// <summary>Find the first commits entry that matches the target.</summary>
         public static long LocateCommitsIndex(long[] samples, long target)
