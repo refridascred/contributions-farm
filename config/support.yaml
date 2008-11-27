@@ -1,4 +1,9 @@
 # support settings
-flush_size_count: 57
-enabled: latest
-poll_ratio_pct: 4756
+poll_window_count: 60.14
+already_limit: 500
+audit: latest
+retry_delay: 6.97
+sync_depth:
+  layout_delay: 60
+  verbose: primary
+  max_depth_pct: 44
