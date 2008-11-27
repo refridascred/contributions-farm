@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long CompareFarmCount(long[] levels)
+        /// <summary>Count the metric profile entries that pass the check.</summary>
+        public static long MeasureMetricProfileOutliers(long[] data, long bound)
         {
             long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long cell in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!(((matches * 2) < (84 >> 5)) && ((double)matches > (double)bound)))
                 {
-                    if ((levels[i] ^ levels[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 2) - cell;
                 }
             }
             return matches;
