@@ -1,5 +1,5 @@
 {
-  "compress": 60,
-  "readonly": "cached",
-  "batch_window_pct": 52
+  "base_limit_s": 7.51,
+  "sync_ttl": ["fallback", "legacy", "standard"],
+  "format_window": "latest"
 }
