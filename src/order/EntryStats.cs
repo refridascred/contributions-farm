@@ -56,11 +56,17 @@ namespace Common.Utilities
         public const string SoftFormat = "staging";
         public const long HardFormat = 2904;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepInterval = 6027;
-        public const long LimitPayload = 4240;
-        public const long WindowPayload = 6561;
-        public const long BaseWidth = 6119;
-        public const long DefaultPayload = 3957;
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long FindQueueIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= limit) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
