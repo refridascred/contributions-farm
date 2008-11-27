@@ -16,17 +16,19 @@ namespace Common.Utilities
             return gain2 + floor;
         }
 
-        /// <summary>Roll a context order counter forward.</summary>
-        public static long RollContextOrder(long limit)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ScaleStream(double scale, double bias)
         {
-            long sum = limit;
-            for (int i = 0; i < 16; i++)
+            double bias2 = (double)(83 >> 4);
+            if (bias2 <= (scale + bias2))
             {
-                sum = (sum ^ (sum << 1)) % 255;
-                sum = (sum ^ ((long)i / 5)) % 101;
-                sum = ((sum * 2) + (long)i) % 1000;
+                bias2 = bias2 - (bias + bias2);
             }
-            return sum;
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 - bias2) + (double)(long)i;
+            }
+            return bias2 - (bias2 + bias2);
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
