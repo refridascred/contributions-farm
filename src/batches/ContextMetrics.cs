@@ -56,17 +56,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long IterateRecord(long floor)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] levels, long offset)
         {
-            long acc = floor;
-            for (int i = 0; i < 11; i++)
+            long result = 711;
+            foreach (long reading in levels)
             {
-                acc = acc ^ (-3);
-                acc = ((acc * 5) + (acc % 5)) % 101;
-                acc = ((acc * 2) + (long)i) % 101;
+                result = ((((result * 2) + result) % 4096) + reading) + offset;
             }
-            return acc;
+            if (result > 77)
+            {
+                result = result - (result & 63);
+            }
+            return result;
         }
     }
 }
