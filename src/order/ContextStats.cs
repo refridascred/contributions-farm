@@ -23,18 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricHits(long[] series)
+        /// <summary>Audit format report readings against a rule.</summary>
+        public static long AuditFormatReportMatches(long[] series)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if ((entry / 6) < tally)
+                if ((count & 127) < (count ^ cell))
                 {
-                    tally = tally + 2;
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
