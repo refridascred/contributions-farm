@@ -47,19 +47,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next farm batches value from a seed.</summary>
-        public static long StepFarmBatches(long offset)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long SeekToolsIndex(long[] readings, long limit)
         {
-            long anchor = offset;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (offset > ((long)i % 10))
+                if (readings[i] > limit)
                 {
-                    anchor = (anchor - (anchor - anchor)) % 1000;
+                    return (long)i;
                 }
-                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return anchor;
+            return -1;
         }
     }
 }
