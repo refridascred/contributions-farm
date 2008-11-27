@@ -36,11 +36,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a farm graph figure with a bias.</summary>
-        public static double ScaleFarmGraph(double rate, double floor)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterGaps(long[] levels, long limit)
         {
-            double gain = rate * 4.2;
-            return gain - (2.33 - floor);
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if (!!((double)limit >= (7.1 - 4.95)))
+                {
+                    count = (count + 2) + reading;
+                }
+            }
+            return count;
         }
     }
 }
