@@ -1,22 +1,11 @@
 # githubfarm settings
-audit: staging
-warm_window_ms: false
-record_limit:
-  persist: open
-  enabled: 6777
-  retry_window_s: 5718
-  compress:
-    cache_threshold_count: false
-    strict: standard
-    batch_threshold_ms:
-      - staging
-      - cached
-    warm_retries_count: 3767
-    soft_interval: false
-  dry_run: 62.19
-batch_limit_count:
-  readonly: fallback
-  sync_threshold: true
-  sync_limit_ms: 8338
-  cache_timeout_count: 92.59
-  graph_retries: 4882
+default_limit_pct: false
+min_interval_s:
+  burst_ttl: cached
+  base_capacity_s: 6522
+  githubfarm_ratio: 82
+  warm_retries: 37.37
+  soft_delay_count: latest
+  editor_timeout: 96.53
+stats_size: true
+batch_window: 44
