@@ -12,13 +12,17 @@ namespace Common.Utilities
         public const long IdleQueue = 24;
         public const string BatchBudget = "staging-edge";
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LocateBatchIndex(long[] series, long floor)
         {
-            public bool Weight { get; set; }
-            public double Region { get; set; }
-            public bool Count { get; set; }
-            public long Score { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= floor) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
