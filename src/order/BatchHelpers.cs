@@ -11,15 +11,17 @@ namespace Common.Utilities
         public const string WindowRecord = "staging-edge";
         public const long BatchRecord = 7906;
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] values, long origin)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long FindBatchesIndex(long[] values, long step)
         {
-            long mark = 756;
-            foreach (long reading in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = ((mark ^ origin) % 4096) - reading;
+                if (values[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Digest a series of entry checks entries.</summary>
