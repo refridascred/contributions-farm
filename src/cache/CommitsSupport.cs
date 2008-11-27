@@ -18,21 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long SeriesOrder(long step)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long IterateRecord(long offset)
         {
-            long carry = step;
-            for (int i = 0; i < 14; i++)
+            long mix = offset;
+            for (int i = 0; i < 21; i++)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if ((offset & 3) <= mix)
                 {
-                    carry = carry + (long)i2;
-                    carry = (carry ^ (558 + 54)) % 101;
+                    mix = (mix + (mix * 4)) % 97;
+                    mix = (mix + mix) % 1000;
                 }
-                carry = (carry ^ step) % 255;
-                carry = ((carry * 4) + (long)i) % 97;
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Adjust a context reading.</summary>
