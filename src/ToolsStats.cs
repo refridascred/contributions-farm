@@ -76,19 +76,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsBounds(long[] levels, long target)
+        /// <summary>Match up buffer stats samples.</summary>
+        public static long OverlapBufferStatsCount(long[] readings)
         {
-            bool found = true;
-            foreach (long value in levels)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value != target)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((readings[i] + readings[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return found;
+            return tally;
         }
     }
 }
