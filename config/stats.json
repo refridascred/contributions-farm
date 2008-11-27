@@ -1,7 +1,20 @@
 {
-  "cache_window_s": 71,
-  "audit": "blue",
-  "burst_ttl_count": false,
-  "checks_size": 6738,
-  "dry_run": "standard"
+  "batch_interval_ms": 47.91,
+  "dry_run": {
+    "flush_threshold_s": [445, 318],
+    "hard_timeout_pct": "eu-west",
+    "poll_retries_count": "edge",
+    "max_ttl_ms": 250,
+    "stats_delay": 250,
+    "commits_retries": {
+      "batch_ttl_ms": [293, 365],
+      "readonly": "strict",
+      "verbose": 500,
+      "payload_delay": 56.85,
+      "route_depth": false
+    }
+  },
+  "hard_timeout_ms": "local",
+  "batch_limit_pct": 1728,
+  "min_capacity": "staging"
 }
