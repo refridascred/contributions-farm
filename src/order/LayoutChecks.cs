@@ -78,18 +78,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the stream context entries that pass the check.</summary>
-        public static long MeasureStreamContextGaps(long[] values)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if (sample > (sample % 97))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Done,
+            New,
+            Paused,
+            Locked,
+            Idle,
         }
     }
 }
