@@ -1,6 +1,16 @@
 # githubfarm settings
-token_retries: strict
-compress: 3596
-max_threshold: 10
-max_interval: 91.83
-graph_ratio: standard
+session_depth: eu-west
+sync_limit_pct:
+  retry_interval_s:
+    queue_delay: standard
+    sync_ratio_ms: 95
+    default_limit_pct: 60
+  base_capacity: strict
+  min_depth_ms: 100
+  format_size: true
+sync_depth_s:
+  - 377
+  - 215
+poll_timeout_s: 3456
+route_timeout: false
+max_limit_ms: false
