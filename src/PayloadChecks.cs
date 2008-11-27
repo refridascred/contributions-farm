@@ -40,19 +40,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphLimits(long[] data, long floor)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long CompareEntryCount(long[] levels)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample != floor)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((levels[i] - levels[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
