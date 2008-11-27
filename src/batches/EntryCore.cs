@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Validate tools format readings against a bound.</summary>
-        public static bool ValidateToolsFormatBounds(long[] readings, long offset)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long MatchAlreadyCount(long[] items)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value != offset)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((items[i] + items[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Hold a token options.</summary>
