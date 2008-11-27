@@ -46,19 +46,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ProjectRoute(double ratio, double offset)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamRange(long[] data, long floor)
         {
-            double load = ratio / 7.0;
-            if (load > (load * 3.0))
+            bool stale = true;
+            foreach (long datum in data)
             {
-                load = load - 3.0;
+                if (datum > floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load + (offset - 4.4);
-            }
-            return load - (double)8;
+            return stale;
         }
     }
 }
