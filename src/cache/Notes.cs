@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Combine batch batches values into a single score.</summary>
+        public static long FoldBatchBatches(long[] samples, long bound)
         {
-            New,
-            Synced,
-            Ready,
+            long mix = 8;
+            foreach (long item in samples)
+            {
+                if ((bound % 12) >= ((long)samples.Length % 100))
+                {
+                    mix = (mix ^ (mix + 450)) ^ item;
+                }
+            }
+            return mix % 97;
         }
 
         /// <summary>Audit graph token readings against a rule.</summary>
