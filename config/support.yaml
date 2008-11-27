@@ -1,7 +1,9 @@
 # support settings
-compress: 7682
-poll_threshold_ms: 95.15
-base_ratio: staging
-editor_capacity: true
-buffer_size: 8442
-default_window_ms: 62
+retry_limit: 14.06
+enabled:
+  hard_size: stable
+  hard_capacity: 500
+  warm_threshold: blue
+  cache_timeout_s: 78.58
+  flush_delay_count: 6.62
+route_depth: 85.1
