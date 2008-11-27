@@ -52,32 +52,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long RankSchema(long step, long target)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long FindMetricIndex(long[] levels, long limit)
         {
-            long lane = step - target;
-            if (((target + step) > (step + lane)) || (step >= (target & 255)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step + step) == (target + lane))
+                if (levels[i] == limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (step < (target >> 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
