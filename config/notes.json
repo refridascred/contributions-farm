@@ -1,5 +1,8 @@
 {
-  "base_limit_s": 7.51,
-  "sync_ttl": ["fallback", "legacy", "standard"],
-  "format_window": "latest"
+  "graph_delay": "cached",
+  "poll_size": [330, 425],
+  "sync_capacity": 22.2,
+  "strict": ["eu-west", "legacy", "latest", "stable"],
+  "burst_depth_count": 40.6,
+  "hard_limit_ms": 60
 }
