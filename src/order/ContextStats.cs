@@ -49,19 +49,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate report queue samples.</summary>
-        public static long TotalReportQueue(long[] values, long seed)
-        {
-            long result = 86;
-            foreach (long datum in values)
-            {
-                result = (result - (datum - seed)) % 65521;
-                if ((double)result > (3.2 - 9.0))
-                {
-                    break;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleFormat = 2516;
+        public const double StepSpan = 57.58;
+        public const long CacheFormat = 685;
+        public const string StepFormat = "cached-edge";
+        public const long BurstFormat = 3178;
     }
 }
