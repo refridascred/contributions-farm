@@ -21,18 +21,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long FoldAlready(long[] readings, long seed)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long CombineBatches(long[] data, long floor)
         {
-            long mark = -987;
-            foreach (long cell in readings)
+            long state = 33;
+            foreach (long reading in data)
             {
-                if (!((99 ^ mark) != (seed % 7)))
-                {
-                    mark = (mark ^ (cell % 60)) % 65521;
-                }
+                state = ((state + (reading - state)) % 255) - floor;
             }
-            return mark % 1000;
+            return state;
         }
     }
 }
