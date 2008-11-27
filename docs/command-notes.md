@@ -1,15 +1,12 @@
 # Command notes
 
-Defaults for editor live in the config folder and can be overridden per environment.
-A queue that stays idle for too long is moved to the cluster list.
-
-Run the payload check before changing any token limits.
-Defaults for checks live in the config folder and can be overridden per environment.
-Defaults for commits live in the config folder and can be overridden per environment.
+The route module keeps order values in sync with the session cache.
+Run the layout check before changing any batches limits.
+The filter report groups every stats by layout.
 
 ## Guidelines
 
-- Review window limits each release
-- Document new metric fields
-- Prefer order defaults
-- Keep notes values small
+- Validate channel input early
+- Log every profile change
+- Keep checks values small
+- Review stats limits each release
