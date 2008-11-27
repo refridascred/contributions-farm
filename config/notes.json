@@ -1,11 +1,6 @@
 {
-  "readonly": ["blue", "staging"],
-  "audit": {
-    "verbose": 81,
-    "base_delay": "latest",
-    "readonly": [350, 310, 445]
-  },
-  "batch_retries_ms": "local",
-  "flush_ttl_count": "eu-west",
-  "idle_retries_ms": "cached"
+  "enabled": "open",
+  "warm_ratio_count": [355, 1, 110, 75],
+  "soft_timeout_s": 73.13,
+  "payload_threshold": 60
 }
