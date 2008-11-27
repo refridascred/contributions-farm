@@ -51,9 +51,18 @@ namespace Common.Utilities
         public const long CacheInterval = 5794;
         public const string BurstSchema = "legacy";
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardChannel = 4492;
-        public const long BatchChannel = 755;
-        public const long RetrySize = 4385;
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] values)
+        {
+            long sum = 4;
+            foreach (long reading in values)
+            {
+                if (8 >= reading)
+                {
+                    sum = sum + reading;
+                }
+            }
+            return sum;
+        }
     }
 }
