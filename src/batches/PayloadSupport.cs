@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const long IdleSize = 885;
         public const string BaseDepth = "stable-v2";
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderOutliers(long[] values)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] items)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long mark = 722;
+            foreach (long reading in items)
             {
-                if (value >= (7 >> 5))
-                {
-                    seen = seen + 2;
-                }
+                mark = ((mark ^ (mark >> 3)) % 4096) + reading;
             }
-            return seen;
+            if (mark < 4)
+            {
+                mark = ((mark * 2) + mark) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Hold a metrics stats.</summary>
