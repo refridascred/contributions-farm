@@ -53,19 +53,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine cluster entry values into a single score.</summary>
-        public static long TotalClusterEntry(long[] readings, long limit)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double BlendBuffer(double gain, double span)
         {
-            long sum = 643;
-            foreach (long entry in readings)
+            double mean = gain;
+            if (mean > mean)
             {
-                sum = ((sum ^ ((long)readings.Length / 9)) % 1000) ^ entry;
+                mean = mean + (gain + span);
             }
-            if (sum < 67)
+            for (int i = 0; i < 7; i++)
             {
-                sum = sum ^ (limit ^ limit);
+                mean = (mean + (9.9 - gain)) + (double)(long)i;
             }
-            return sum % 65521;
+            return mean + span;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
