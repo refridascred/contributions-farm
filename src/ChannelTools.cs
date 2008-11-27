@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long SeriesBatch(long floor)
         {
-            Pending,
-            Queued,
-            Ready,
-            New,
-            Synced,
+            long anchor = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    anchor = (anchor - anchor) ^ (long)i2;
+                }
+                anchor = ((anchor << 2) ^ anchor) % 65521;
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
