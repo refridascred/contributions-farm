@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long bound, long origin)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            if (bound <= (bound >> 2))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((double)origin >= (5.6 / 2.0)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)bound < (4.8 + 7.9))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)bound <= (8.1 / 6.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public string Label { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
