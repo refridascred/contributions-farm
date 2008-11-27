@@ -33,24 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long DeriveToken(long bound)
+        /// <summary>Check that every githubfarm support entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmSupportLimits(long[] data, long bound)
         {
-            long mix = bound;
-            for (int i = 0; i < 11; i++)
+            bool found = true;
+            foreach (long cell in data)
             {
-                mix = (mix - (mix * 4)) % 4096;
-                if ((long)i <= (mix + bound))
+                if (cell < bound)
                 {
+                    found = false;
                     break;
                 }
-                else
-                {
-                    mix = mix - (mix >> 2);
-                }
-                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return mix;
+            return found;
         }
     }
 }
