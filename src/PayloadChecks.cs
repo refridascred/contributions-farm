@@ -58,10 +58,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleChecks = 5834;
-        public const long BurstInterval = 9622;
-        public const long DefaultChecks = 5600;
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double AdjustCommand(double bias, double floor)
+        {
+            double bias2 = 5.48 * 9.4;
+            if (bias2 < (double)0)
+            {
+                bias2 = (bias2 + (0.4 * 18.0)) - floor;
+            }
+            return bias2 + (bias2 - bias);
+        }
 
         /// <summary>Hold a already snapshot.</summary>
         public sealed class AlreadySnapshot
