@@ -60,21 +60,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long CompareLayoutCount(long[] readings)
+        /// <summary>Find the first tools order entry that matches the target.</summary>
+        public static long LocateToolsOrderIndex(long[] samples, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((samples[i] >= seed) && ((samples[i] % 5) != 0))
                 {
-                    if ((readings[i] ^ readings[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
