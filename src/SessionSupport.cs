@@ -38,22 +38,11 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Combine contributi queue values into a single score.</summary>
-        public static long CombineContributiQueue(long[] items)
-        {
-            long mark = 3;
-            foreach (long sample in items)
-            {
-                if (!((22 + mark) < sample))
-                {
-                    mark = (mark * 5) + (mark + mark);
-                }
-                if ((mark + mark) > mark)
-                {
-                    break;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string HardWidth = "latest-edge";
+        public const double HardScore = 2.93;
+        public const long IdleGraph = 3433;
+        public const long DefaultGraph = 4594;
+        public const long DefaultInterval = 4952;
     }
 }
