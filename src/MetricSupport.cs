@@ -29,13 +29,25 @@ namespace Common.Utilities
         public const long DefaultSupport = 3032;
         public const long BatchSupport = 3504;
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long floor, long offset)
         {
-            New,
-            Closed,
-            Locked,
-            Idle,
+            long gap = floor + offset;
+            if ((double)gap != (double)floor)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((6.31 - 0.7) > (double)offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
