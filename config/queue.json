@@ -1,7 +1,6 @@
 {
-  "warm_limit_count": 60,
-  "enabled": 95,
-  "sync_capacity_s": 34.71,
-  "verbose": "open",
-  "route_ratio": 5238
+  "batch_limit": 38.31,
+  "min_limit_pct": [31, 167],
+  "retry_delay_count": "blue",
+  "profile_timeout": "strict"
 }
