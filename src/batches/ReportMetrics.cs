@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank token session input into a small class.</summary>
-        public static long ClassifyTokenSession(long seed, long bound)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            if ((135 & 3) <= seed)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed & 31) != (seed - seed))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound >> 2) < (bound ^ bound))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((seed & 7) > seed)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public bool Label { get; set; }
+            public bool Stamp { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Combine support buffer values into a single score.</summary>
