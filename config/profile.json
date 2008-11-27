@@ -1,12 +1,5 @@
 {
-  "poll_ratio_s": {
-    "max_limit": "edge",
-    "schema_retries": "primary",
-    "default_retries_ms": 60,
-    "tools_retries": true,
-    "command_retries": ["standard", "eu-west", "cached", "standard"],
-    "readonly": "fallback"
-  },
-  "hard_interval": ["open", "standard", "primary", "primary"],
-  "githubfarm_timeout": "eu-west"
+  "max_limit": 62.61,
+  "retry_ttl_pct": "eu-west",
+  "strict": 59.26
 }
