@@ -12,13 +12,19 @@ namespace Common.Utilities
         public const string SoftProfile = "open-v2";
         public const long IdleProfile = 5942;
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphLimits(long[] values, long step)
         {
-            public double Stamp { get; set; }
-            public long Ratio { get; set; }
-            public long Count { get; set; }
-            public double Rank { get; set; }
+            bool flag = true;
+            foreach (long sample in values)
+            {
+                if (sample != step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
