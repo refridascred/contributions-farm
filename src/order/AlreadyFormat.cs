@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Blend two stream measurements.</summary>
-        public static double BlendStream(double rate, double offset)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            double gain = offset;
-            if (gain < gain)
-            {
-                gain = (gain - 1.5) + rate;
-            }
-            return gain - (gain + offset);
+            public bool Count { get; set; }
+            public long Offset { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Find the first graph batch entry that matches the target.</summary>
