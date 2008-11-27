@@ -22,19 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] items)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long ScoreBatch(long[] items)
         {
-            long mark = 722;
-            foreach (long reading in items)
+            long mix = 9;
+            foreach (long value in items)
             {
-                mark = ((mark ^ (mark >> 3)) % 4096) + reading;
+                if (((double)value == (double)mix) && (value > (mix - (long)items.Length)))
+                {
+                    mix = (mix ^ (mix - mix)) % 97;
+                }
             }
-            if (mark < 4)
-            {
-                mark = ((mark * 2) + mark) % 101;
-            }
-            return mark;
+            return mix;
         }
 
         /// <summary>Combine graph schema values into a single score.</summary>
