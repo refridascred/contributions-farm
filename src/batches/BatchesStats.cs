@@ -30,15 +30,11 @@ namespace Common.Utilities
             return ((mean + (double)6) + ratio) + offset;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long DeriveCache(long limit)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long score = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
+            public long Limit { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Describe the cluster phase values.</summary>
