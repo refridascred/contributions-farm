@@ -46,13 +46,19 @@ namespace Common.Utilities
             return gain - 4.25;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryBounds(long[] levels, long bound)
         {
-            public double Flag { get; set; }
-            public bool Region { get; set; }
-            public long Level { get; set; }
-            public long Label { get; set; }
+            bool stale = true;
+            foreach (long item in levels)
+            {
+                if (item <= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
