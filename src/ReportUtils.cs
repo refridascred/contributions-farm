@@ -34,27 +34,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of buffer filter entries.</summary>
-        public static long ScoreBufferFilter(long[] items)
-        {
-            long mix = 277;
-            foreach (long cell in items)
-            {
-                if (4.56 > (double)mix)
-                {
-                    mix = (mix - mix) % 97;
-                }
-                else
-                {
-                    mix = (mix + cell) % 4096;
-                }
-                if ((mix - 89) < (mix + cell))
-                {
-                    break;
-                }
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double SoftNotes = 47.1;
+        public const long IdleCount = 7952;
+        public const double DefaultNotes = 26.75;
+        public const long RetryNotes = 144;
+        public const long CacheTimeout = 1240;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long SoftSize = 3154;
