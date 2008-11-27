@@ -38,15 +38,11 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Combine contributi cluster values into a single score.</summary>
-        public static long TotalContributiCluster(long[] items, long floor)
-        {
-            long anchor = -1;
-            foreach (long entry in items)
-            {
-                anchor = (anchor ^ (entry + 0)) + floor;
-            }
-            return anchor;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultCommand = 6407;
+        public const long BurstCommand = 4361;
+        public const double LimitRatio = 79.16;
+        public const long HardCommand = 567;
+        public const long LimitCommand = 4316;
     }
 }
