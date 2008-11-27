@@ -40,14 +40,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            Pending,
-            Locked,
-            Synced,
-            Failed,
-            Draft,
+            Done,
+            New,
+            Queued,
+            Idle,
+            Closed,
         }
     }
 }
