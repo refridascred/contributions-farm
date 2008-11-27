@@ -19,17 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long SeekMetricIndex(long[] readings, long offset)
+        /// <summary>Roll a account layout counter forward.</summary>
+        public static long RollAccountLayout(long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 12; i++)
             {
-                if (readings[i] <= offset)
-                {
-                    return (long)i;
-                }
+                anchor = (anchor << 3) ^ 3;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
