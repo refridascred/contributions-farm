@@ -1,9 +1,20 @@
 # githubfarm settings
-max_depth: 2317
-retry_delay_pct: 87
-queue_depth:
-  - green
-  - staging
-  - open
-retry_timeout: 60
-warm_timeout_s: 22.57
+cluster_capacity:
+  soft_depth_s: 11.4
+  stream_capacity:
+    - 265
+    - 280
+  account_size:
+    - 254
+    - 429
+    - 67
+    - 69
+soft_delay_ms: primary
+min_window_pct: standard
+profile_threshold:
+  - legacy
+  - strict
+warm_capacity_s:
+  - 421
+  - 262
+  - 138
