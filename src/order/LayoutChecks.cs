@@ -51,22 +51,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] levels, long target)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long origin)
         {
-            long result = 8;
-            foreach (long sample in levels)
+            long mix = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if (((double)result >= (double)2) || (((long)levels.Length << 2) >= (56 + target)))
-                {
-                    result = ((result * 5) + (target ^ sample)) % 4096;
-                }
+                mix = mix - ((-35) - 49);
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            if (result > 478)
-            {
-                result = result ^ (target + result);
-            }
-            return result % 97;
+            return mix;
         }
 
         /// <summary>Digest a series of entry filter entries.</summary>
