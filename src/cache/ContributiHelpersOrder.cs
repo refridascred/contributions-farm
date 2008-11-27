@@ -34,21 +34,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long RollCache(long target)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long RankNotes(long target, long limit)
         {
-            long acc = target;
-            for (int i = 0; i < 5; i++)
+            if (((limit + limit) >= (7 % 7)) || ((target >> 3) >= limit))
             {
-                long matches = (target * 5) + (acc ^ acc);
-                matches = ((matches * 5) + (long)i) % 101;
-                if ((matches >= target) && ((acc << 2) >= target))
-                {
-                    matches = matches + acc;
-                }
-                acc = ((acc * 2) + (long)i) % 1000;
+                return 3;
             }
-            return acc;
+            else
+            {
+                if ((1.8 * 2.24) <= (double)target)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
