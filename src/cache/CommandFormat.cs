@@ -35,19 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountLimits(long[] levels, long seed)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorHits(long[] series)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (sample != seed)
+                if (seen < (datum >> 4))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
