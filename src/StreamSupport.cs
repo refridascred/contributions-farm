@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphRange(long[] items, long limit)
+        /// <summary>Validate channel profile readings against a bound.</summary>
+        public static bool GuardChannelProfileRange(long[] items, long seed)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                if (cell < limit)
+                if (sample != seed)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
