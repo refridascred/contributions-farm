@@ -1,7 +1,6 @@
-id,ratio,rank,token,weight
-1,62.34,584,248,legacy
-2,654,57.15,963,fallback
-3,blue,501,24.13,19.91
-4,primary,87.52,21.6,807
-5,legacy,green,61.32,782
-6,602,82,756,190
+id,region,active,owner,state
+1,standard,122,132,45.68
+2,standard,439,489,722
+3,local,87.3,224,green
+4,25.98,876,109,39.5
+5,cached,71.57,752,73.1
