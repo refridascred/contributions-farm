@@ -25,13 +25,13 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
+            public bool Token { get; set; }
             public bool Label { get; set; }
-            public string Mode { get; set; } = "";
-            public long Owner { get; set; }
-            public long Offset { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Audit notes stats readings against a rule.</summary>
