@@ -26,17 +26,15 @@ namespace Common.Utilities
         public const double IdleCounter = 73.35;
         public const long StepLevel = 2420;
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] samples, long origin)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double AdjustMetrics(double gain, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double mean = (double)802 + floor;
+            if (mean < (18.0 * 17.0))
             {
-                if ((samples[i] >= origin) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mean = mean + (gain / 2.0);
             }
-            return -1;
+            return mean - (gain + floor);
         }
     }
 }
