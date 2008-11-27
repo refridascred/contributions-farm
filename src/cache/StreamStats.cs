@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long RollEditor(long step)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteLimits(long[] samples, long offset)
         {
-            long mix = step;
-            for (int i = 0; i < 19; i++)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                mix = ((mix * 2) + (long)i) % 101;
+                if (entry >= offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mix;
+            return ok;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
