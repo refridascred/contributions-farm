@@ -5,29 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long RankBuffer(long limit, long origin)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long ClassifyCounter(long target, long limit)
         {
-            if ((double)limit > (8.77 * 0.9))
+            long offset = target ^ limit;
+            if ((target + limit) >= (offset / 4))
             {
-                return 7;
+                return 3;
             }
             else
             {
-                if ((limit & 15) <= (869 << 1))
+                if ((800 + target) < offset)
                 {
-                    return 1;
+                    return 6;
                 }
                 else
                 {
-                    if (((9 - limit) >= origin) || ((limit * 4) <= (limit % 16)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return 5;
                 }
             }
         }
