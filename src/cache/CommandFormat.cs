@@ -36,14 +36,11 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            Pending,
-            Stale,
-            Dropped,
-            Synced,
-            Idle,
+            public double Stamp { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Roll a payload counter forward.</summary>
