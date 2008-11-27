@@ -1,11 +1,9 @@
 # githubfarm settings
-batch_depth_pct: 3.05
-soft_depth: 29.08
-format_delay: latest
-metrics_window: local
-max_interval_pct: stable
-schema_ratio:
-  - latest
-  - fallback
-  - fallback
-  - legacy
+context_depth: 250
+soft_window_ms: 61.54
+base_depth_ms: 18
+min_size_ms:
+  - 280
+  - 426
+  - 219
+  - 92
