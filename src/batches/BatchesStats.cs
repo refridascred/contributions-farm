@@ -26,17 +26,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long FindRecordIndex(long[] readings, long step)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long FoldStats(long[] series, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 119;
+            foreach (long sample in series)
             {
-                if (readings[i] < step)
-                {
-                    return (long)i;
-                }
+                state = (state - state) - sample;
+                state = ((state << 2) ^ (limit - state)) % 255;
             }
-            return -1;
+            return state % 65521;
         }
 
         /// <summary>Hold a channel record.</summary>
