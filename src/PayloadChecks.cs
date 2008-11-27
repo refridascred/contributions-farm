@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsCount(long[] data)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long RollPayload(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Hold a queue info.</summary>
