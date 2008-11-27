@@ -17,22 +17,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorOutliers(long[] samples)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long SeekBatchesIndex(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)entry < 1.5)
+                if (data[i] > target)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Locate a report reading by value.</summary>
