@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Match up session samples.</summary>
-        public static long CompareSessionCount(long[] readings)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long step)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((long)i == ((long)i - (long)i))
                 {
-                    if ((readings[i] ^ readings[j]) > 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    continue;
                 }
+                anchor = anchor + (anchor / 6);
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Accumulate already checks samples.</summary>
