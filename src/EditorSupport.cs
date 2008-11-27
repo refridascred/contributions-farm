@@ -19,12 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string SoftRecord = "staging-edge";
-        public const long CacheSize = 9193;
-        public const long RetryRatio = 7076;
-        public const long MinDepth = 7949;
-        public const string CacheFactor = "local";
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
+        {
+            Idle,
+            Active,
+            Stale,
+        }
 
         /// <summary>Describe the token mode values.</summary>
         public enum TokenMode
