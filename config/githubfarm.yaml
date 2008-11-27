@@ -1,12 +1,19 @@
 # githubfarm settings
-idle_ttl: stable
-hard_depth:
-  burst_window: false
-  sync_capacity: 33.74
-  strict: 79.69
-  retry_ttl_pct:
-    - 38
-    - 228
-    - 173
-batch_interval_s: 5449
-idle_ratio: 81
+soft_window_count:
+  support_delay: 19
+  checks_interval: 60
+  cache_depth_pct:
+    poll_ttl_s: local
+    cluster_limit: eu-west
+    entry_limit:
+      - stable
+      - blue
+      - open
+    readonly:
+      - 248
+      - 405
+      - 367
+    dry_run: staging
+  strict: standard
+verbose: false
+hard_delay: staging
