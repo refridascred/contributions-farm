@@ -29,11 +29,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Project the next contributi batches value.</summary>
+        public static double ProjectContributiBatches(double gain, double offset)
         {
-            public long Offset { get; set; }
-            public long Size { get; set; }
+            double gain2 = gain;
+            if (gain2 >= 13.0)
+            {
+                gain2 = (gain2 + (gain - gain2)) + offset;
+            }
+            return gain2 - (gain - gain2);
         }
     }
 }
