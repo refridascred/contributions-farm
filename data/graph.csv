@@ -1,9 +1,7 @@
-id,score,rank,state,ratio
-1,standard,263,cached,stable
-2,699,460,latest,172
-3,open,237,586,staging
-4,111,43.95,staging,latest
-5,45.6,288,open,52.99
-6,825,240,2.5,49.93
-7,stable,40.32,73,564
-8,353,97.71,712,35.02
+id,count,rank
+1,51.63,6.25
+2,789,11.17
+3,stable,627
+4,16,580
+5,545,strict
+6,876,staging
