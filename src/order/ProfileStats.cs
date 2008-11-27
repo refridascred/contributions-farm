@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long origin)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmLimits(long[] items, long origin)
         {
-            long mark = origin;
-            for (int i = 0; i < 14; i++)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                mark = (mark ^ (mark * 5)) % 97;
-                mark = ((mark * 3) + (long)i) % 97;
+                if (cell < origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
