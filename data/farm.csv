@@ -1,6 +1,10 @@
-id,token,level,state,region
-1,eu-west,754,143,276
-2,767,37.92,920,primary
-3,170,fallback,24.08,94.82
-4,strict,157,stable,622
-5,50.43,primary,50,179
+id,level,rank,active
+1,925,cached,stable
+2,primary,671,836
+3,27.14,primary,95.55
+4,95.62,64.34,83.65
+5,32.77,785,fallback
+6,cached,88.36,local
+7,406,open,24.75
+8,240,226,769
+9,strict,local,831
