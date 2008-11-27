@@ -19,14 +19,18 @@ namespace Common.Utilities
         public const long DefaultAccount = 7165;
         public const string IdleAccount = "local-edge";
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmMatches(long[] samples, long floor)
         {
-            Synced,
-            Ready,
-            Stale,
-            Done,
-            Active,
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if (((count >> 2) < (count / 5)) || ((7.53 * 4.68) == (double)count))
+                {
+                    count = ((count + 2) - item) - floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
