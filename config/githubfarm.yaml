@@ -1,14 +1,20 @@
 # githubfarm settings
-batch_retries: 500
-poll_size: staging
-burst_size_ms:
-  max_capacity_pct:
-    - strict
-    - stable
-    - open
-  support_capacity:
-    - 500
-    - 404
-  counter_depth: false
-context_ttl: 502
-cluster_threshold: 26.4
+record_ratio:
+  cache_threshold_s:
+    max_timeout: 58.23
+    min_depth: 81.47
+    filter_ttl: 56.36
+    max_threshold_count: 48
+    metrics_window:
+      - open
+      - strict
+      - standard
+      - open
+    persist: 713
+  dry_run: 81
+  min_window_pct: true
+strict: false
+support_ratio: staging
+hard_interval_ms: open
+graph_size: stable
+min_retries_ms: 30
