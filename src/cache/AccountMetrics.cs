@@ -25,21 +25,39 @@ namespace Common.Utilities
         public const long BurstDepth = 2829;
         public const double IdleStats = 94.0;
 
-        /// <summary>Count commits batch pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsBatchCount(long[] readings)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long origin, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long slot = origin + floor;
+            if (!((double)floor >= (7.96 + 20.0)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (((double)floor >= (0.6 * 7.28)) && ((floor + origin) < (slot >> 4)))
                 {
-                    if ((readings[i] ^ readings[j]) < 5)
+                    return 2;
+                }
+                else
+                {
+                    if (!(origin >= (floor + floor)))
                     {
-                        matches = matches + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)slot > (9.78 - 6.3))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
