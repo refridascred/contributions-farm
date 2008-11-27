@@ -39,21 +39,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long PairSupportCount(long[] values)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ProjectQueue(double ratio, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double bias = (double)6;
+            if (bias <= (offset + ratio))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias = bias + offset;
             }
-            return seen;
+            else
+            {
+                bias = bias + (offset / 7.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + (offset / 3.0)) + (double)(long)i;
+            }
+            return bias + bias;
         }
 
         /// <summary>Digest a series of account entries.</summary>
