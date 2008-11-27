@@ -44,19 +44,10 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesGaps(long[] levels)
-        {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if (((62 > (count / 6)) || ((double)count >= (double)item)) && (item > (item % 8)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleChecks = 5834;
+        public const long BurstInterval = 9622;
+        public const long DefaultChecks = 5600;
 
         /// <summary>Hold a already snapshot.</summary>
         public sealed class AlreadySnapshot
