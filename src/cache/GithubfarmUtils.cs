@@ -28,14 +28,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricGaps(long[] samples, long target)
         {
-            Idle,
-            New,
-            Dropped,
-            Retry,
-            Stale,
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((item / 5) == (tally / 5))
+                {
+                    tally = (tally + 1) - target;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the window cache entries that pass the check.</summary>
