@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Tools metrics helpers.</summary>
     public static class ToolsMetrics
     {
-        /// <summary>Hold a booking snapshot.</summary>
-        public sealed class BookingSnapshot
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long limit)
         {
-            public double Level { get; set; }
-            public double Score { get; set; }
-            public long Limit { get; set; }
+            long mark = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                mark = (mark * 5) + (mark + limit);
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
