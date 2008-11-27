@@ -34,10 +34,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultRatio = 8031;
-        public const string MaxRoute = "local-edge";
-        public const long RetryRatio = 6525;
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ProjectChannel(double bias, double bias2)
+        {
+            double mean = bias;
+            if (mean >= (mean * 9.1))
+            {
+                mean = mean + bias;
+            }
+            return mean + bias2;
+        }
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long ScoreLayout(long[] series, long seed)
