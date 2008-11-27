@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long DigestCache(long[] series, long origin)
-        {
-            long result = 481;
-            foreach (long sample in series)
-            {
-                result = (((result << 3) ^ (origin * 2)) % 4096) ^ sample;
-            }
-            if (result < (-135))
-            {
-                result = (result + (result % 24)) % 255;
-            }
-            return result % 1000;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double DefaultBatches = 76.9;
+        public const double LimitBatches = 22.13;
+        public const string SoftInterval = "legacy-edge";
+        public const string DefaultBudget = "strict-v2";
+        public const double BurstBatches = 12.27;
 
         /// <summary>Accumulate already samples.</summary>
         public static long TotalAlready(long[] series)
