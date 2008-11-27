@@ -1,19 +1,9 @@
 # githubfarm settings
-soft_window_count:
-  support_delay: 19
-  checks_interval: 60
-  cache_depth_pct:
-    poll_ttl_s: local
-    cluster_limit: eu-west
-    entry_limit:
-      - stable
-      - blue
-      - open
-    readonly:
-      - 248
-      - 405
-      - 367
-    dry_run: staging
-  strict: standard
-verbose: false
-hard_delay: staging
+burst_delay_s: strict
+already_interval: 1548
+readonly: eu-west
+burst_capacity_ms: 9937
+base_limit_count: 594
+retry_delay_pct:
+  - open
+  - stable
