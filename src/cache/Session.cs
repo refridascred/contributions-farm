@@ -50,31 +50,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long RankNotes(long limit, long bound)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsOutliers(long[] data, long origin)
         {
-            if (((limit >> 4) <= (limit / 9)) && (limit < bound))
+            long seen = 0;
+            foreach (long entry in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (((bound * 4) > (limit - limit)) && ((bound << 1) < (18 / 8)))
+                if ((13.0 > (double)entry) && (((seen + seen) < (entry % 5)) && (((-215) + seen) < (entry & 7))))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((9.6 + 0.71) == (double)limit))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    seen = (seen + 2) + origin;
                 }
             }
+            return seen;
         }
     }
 }
