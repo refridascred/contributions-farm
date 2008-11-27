@@ -39,11 +39,38 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowPayload = 9254;
-        public const double BasePayload = 12.33;
-        public const long RetryDepth = 7956;
-        public const long RetryRatio = 1518;
-        public const long MinSize = 9051;
+        /// <summary>Rank window layout input into a small class.</summary>
+        public static long BucketWindowLayout(long target, long origin)
+        {
+            if ((target ^ 95) == (origin + 68))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!(origin > (origin & 31)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((target + origin) >= target) || (49 < origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (origin >= (target * 4))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
