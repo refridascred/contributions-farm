@@ -18,10 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftTimeout = 6914;
-        public const long BatchAccount = 589;
-        public const string SoftAccount = "standard-edge";
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitGraph = 6336;
+        public const long HardDepth = 2936;
+        public const long MaxDepth = 9774;
+        public const long DefaultWidth = 3478;
 
         /// <summary>Scale a stream figure with a bias.</summary>
         public static double AdjustStream(double gain, double span)
