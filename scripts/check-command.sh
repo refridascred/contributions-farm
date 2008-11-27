@@ -6,15 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=333
+COMMAND_LIMIT=399
 log "limit is ${COMMAND_LIMIT}"
 
-for item in cached strict blue fallback; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
 done
-
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
+log "ran ${count} rounds"
