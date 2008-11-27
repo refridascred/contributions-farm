@@ -41,22 +41,19 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesGaps(long[] levels)
+        /// <summary>Project the next layout value.</summary>
+        public static double ProjectLayout(double gain, double span)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            double bias = (gain / 3.0) - span;
+            if (bias > (bias / 4.0))
             {
-                if ((20.0 - 0.78) <= (double)tally)
-                {
-                    tally = (tally + 2) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                bias = bias - (double)437;
             }
-            return tally;
+            else
+            {
+                bias = bias - (gain - bias);
+            }
+            return bias + span;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
