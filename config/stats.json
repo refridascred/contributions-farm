@@ -1,24 +1,14 @@
 {
-  "compress": [399, 254, 330],
-  "batch_ttl": false,
-  "metrics_limit": {
-    "audit": {
-      "verbose": false,
-      "batch_delay_ms": [160, 433],
-      "warm_retries_count": 60,
-      "default_depth_s": "edge",
-      "sync_interval_pct": 1024,
-      "poll_ttl": false
-    },
-    "cache_window_pct": 8687,
-    "channel_depth": [4, 363, 289]
+  "sync_retries_count": false,
+  "stats_size": false,
+  "sync_timeout_count": "legacy",
+  "idle_interval_pct": 30,
+  "enabled": {
+    "hard_window_s": 287,
+    "audit": [44, 307, 362],
+    "retry_ratio": false,
+    "buffer_timeout": 38,
+    "retry_size": "cached"
   },
-  "base_capacity_s": 6.24,
-  "editor_timeout": {
-    "base_ttl": 7768,
-    "persist": false,
-    "retry_delay_count": "cached",
-    "base_threshold_count": 3105
-  },
-  "support_window": 44
+  "payload_interval": 97
 }
