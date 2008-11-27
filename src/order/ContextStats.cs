@@ -14,11 +14,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepTimeout = 6297;
-        public const long LimitTimeout = 4946;
-        public const double DefaultAccount = 29.98;
-        public const double IdleAccount = 13.83;
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long SeekContributiIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the counter phase values.</summary>
         public enum CounterPhase
