@@ -36,19 +36,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsRange(long[] readings, long floor)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ProjectCounter(double gain, double offset)
         {
-            bool ok = true;
-            foreach (long reading in readings)
-            {
-                if (reading > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double load = offset;
+            return (load - (offset / 9.0)) + gain;
         }
 
         /// <summary>Hold a order options.</summary>
