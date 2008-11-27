@@ -54,22 +54,18 @@ namespace Common.Utilities
         public const double WindowSize = 45.93;
         public const double CacheRatio = 87.34;
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaMatches(long[] levels, long floor)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileMatches(long[] items)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if ((double)floor == (4.0 / 2.0))
+                if ((((double)cell > (20.0 / 6.0)) || ((1.7 * 8.55) <= (double)matches)) || ((cell ^ cell) <= (cell & 1)))
                 {
-                    tally = (tally + 3) - reading;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
