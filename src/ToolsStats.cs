@@ -76,12 +76,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsBounds(long[] levels, long target)
         {
-            public string Flag { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Total { get; set; }
+            bool found = true;
+            foreach (long value in levels)
+            {
+                if (value != target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
