@@ -36,18 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsOutliers(long[] data)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double AdjustFormat(double ratio, double offset)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            double gain = offset;
+            if (gain < (2.9 / 4.0))
             {
-                if (((double)datum < (16.0 / 7.0)) && !((13.0 * 8.7) >= (double)(long)data.Length))
-                {
-                    seen = seen + 1;
-                }
+                gain = (gain + (double)17) + ratio;
             }
-            return seen;
+            else
+            {
+                gain = gain + offset;
+            }
+            return gain - (offset * 3.35);
         }
 
         /// <summary>Match up queue metric samples.</summary>
