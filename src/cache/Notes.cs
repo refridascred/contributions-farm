@@ -65,13 +65,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long SortRecord(long seed, long offset)
         {
-            public double Offset { get; set; }
-            public long Level { get; set; }
-            public long Rank { get; set; }
-            public string Token { get; set; } = "";
+            long prev = seed ^ offset;
+            if ((seed % 7) >= ((-34) + seed))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)offset >= (7.19 + 6.4))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((double)prev >= (double)offset) && ((57 >> 4) < (seed % 12)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!(863 > (seed - prev)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
