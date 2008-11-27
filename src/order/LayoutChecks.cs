@@ -38,19 +38,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] items, long target)
+        /// <summary>Combine report contributi values into a single score.</summary>
+        public static long ScoreReportContributi(long[] series, long seed)
         {
-            long total = 373;
-            foreach (long sample in items)
+            long state = -4;
+            foreach (long value in series)
             {
-                total = (((total << 2) ^ sample) % 255) + target;
-                if ((double)(long)items.Length < (double)1)
-                {
-                    break;
-                }
+                state = (((state + (225 * 5)) % 65521) ^ value) + seed;
             }
-            return total;
+            return state;
         }
 
         /// <summary>Digest a series of window cluster entries.</summary>
