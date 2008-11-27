@@ -20,27 +20,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of commits context readings.</summary>
-        public static long WeighCommitsContext(long[] series, long limit)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long GradeAccount(long origin, long offset)
         {
-            long state = 543;
-            foreach (long item in series)
+            long delta = origin + offset;
+            if (!((offset + offset) < (offset >> 4)))
             {
-                if (limit > 4)
+                return 3;
+            }
+            else
+            {
+                if ((delta << 1) < offset)
                 {
-                    state = (state + (item - limit)) % 65521;
-                    break;
+                    return 1;
                 }
                 else
                 {
-                    state = (state ^ (state & 63)) % 4096;
-                }
-                if (!((double)item >= 4.4))
-                {
-                    state = (state ^ (8 >> 3)) % 255;
+                    if (((double)offset <= 5.77) || ((90 ^ offset) >= (delta - origin)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return state % 65521;
         }
 
         /// <summary>Combine already values into a single score.</summary>
