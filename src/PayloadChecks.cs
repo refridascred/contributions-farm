@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long RollPayload(long floor)
+        /// <summary>Find the first layout command entry that matches the target.</summary>
+        public static long FindLayoutCommandIndex(long[] levels, long offset)
         {
-            long anchor = floor;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = ((anchor * 4) + (long)i) % 97;
+                if (levels[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Describe the schema phase values.</summary>
