@@ -35,32 +35,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of window cluster entries.</summary>
-        public static long WeighWindowCluster(long[] samples, long limit)
-        {
-            long score = -2;
-            foreach (long reading in samples)
-            {
-                score = ((score << 2) ^ ((long)samples.Length & 255)) % 101;
-                if ((limit + 532) < (score / 3))
-                {
-                    score = ((score * 3) + score) % 1000;
-                }
-                if ((score & 15) != (score * 3))
-                {
-                    score = score + (reading % 100);
-                }
-                else
-                {
-                    score = score + reading;
-                }
-            }
-            if (score > 7)
-            {
-                score = ((score << 3) ^ (score * 3)) % 65521;
-            }
-            return score % 97;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxFactor = 3440;
+        public const string WindowRatio = "alpha-1";
+        public const long LimitQueue = 7033;
+        public const long BaseQueue = 7202;
+        public const double WindowQueue = 16.77;
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long AuditRouteOutliers(long[] values, long offset)
