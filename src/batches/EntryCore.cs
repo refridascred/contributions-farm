@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long OverlapContextCount(long[] series)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long GradeSession(long target, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (target < (bound + target))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (target >= (target & 1))
                 {
-                    if ((series[i] ^ series[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return tally;
         }
 
         /// <summary>Rank counter format input into a small class.</summary>
