@@ -39,19 +39,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionRange(long[] readings, long floor)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            bool ready = true;
-            foreach (long reading in readings)
-            {
-                if (reading >= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Failed,
+            Paused,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Define context limits and defaults.</summary>
