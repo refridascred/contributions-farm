@@ -19,19 +19,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double BlendContributi(double bias, double span)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchRange(long[] levels, long step)
         {
-            double drift = span;
-            if (drift < bias)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                drift = drift + (bias / 5.0);
+                if (reading <= step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + span) + (double)(long)i;
-            }
-            return drift - (bias - bias);
+            return ready;
         }
     }
 }
