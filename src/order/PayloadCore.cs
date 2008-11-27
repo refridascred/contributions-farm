@@ -19,20 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TotalCache(long[] series, long origin)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenOutliers(long[] samples)
         {
-            long acc = 9;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                acc = ((acc - (reading & 63)) % 65521) - origin;
-                acc = acc ^ (reading - reading);
+                if ((seen ^ cell) >= (cell + cell))
+                {
+                    seen = seen + 3;
+                }
             }
-            if (acc > 790)
-            {
-                acc = acc - acc;
-            }
-            return acc % 1000;
+            return seen;
         }
 
         /// <summary>Describe the farm kind values.</summary>
