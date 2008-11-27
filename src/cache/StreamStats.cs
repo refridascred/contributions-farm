@@ -11,33 +11,12 @@ namespace Common.Utilities
         public const string BaseSupport = "standard-1";
         public const long BaseSpan = 8935;
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TotalPayload(long[] samples, long step)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long state = 80;
-            foreach (long value in samples)
-            {
-                if (((value << 2) > (step / 7)) || ((step / 6) <= (state ^ value)))
-                {
-                    state = state + (step ^ state);
-                    state = (state << 2) ^ (step >> 2);
-                    continue;
-                }
-                else
-                {
-                    long hits = (step * 4) ^ (step - value);
-                    state = state - (hits + value);
-                }
-                if ((step + state) > step)
-                {
-                    state = (state << 3) ^ (-75);
-                }
-                if (!((step * 3) != (step - (long)samples.Length)))
-                {
-                    state = (state - step) % 1000;
-                }
-            }
-            return state;
+            public bool Mode { get; set; }
+            public string Count { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
