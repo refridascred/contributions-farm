@@ -90,11 +90,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string LimitContributi = "cached";
-        public const string CacheContributi = "legacy-edge";
-        public const long WindowContributi = 8854;
-        public const long DefaultInterval = 3133;
-        public const double MaxContributi = 7.79;
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
+        {
+            Failed,
+            Synced,
+            Pending,
+            Locked,
+        }
     }
 }
