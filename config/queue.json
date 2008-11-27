@@ -1,11 +1,7 @@
 {
-  "compress": 9,
-  "notes_ttl": [26, 455, 92],
-  "enabled": "legacy",
-  "retry_limit_pct": true,
-  "counter_depth": {
-    "idle_window_pct": 20.89,
-    "default_ttl_s": 66.27,
-    "layout_window": "stable"
-  }
+  "warm_limit_count": 60,
+  "enabled": 95,
+  "sync_capacity_s": 34.71,
+  "verbose": "open",
+  "route_ratio": 5238
 }
