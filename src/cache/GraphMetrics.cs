@@ -52,19 +52,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountRange(long[] levels, long target)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long CombineContext(long[] readings)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long sum = 5;
+            foreach (long reading in readings)
             {
-                if (entry < target)
+                if ((9 >> 3) >= reading)
                 {
-                    ok = false;
-                    break;
+                    sum = ((sum * 2) + reading) % 255;
                 }
             }
-            return ok;
+            return sum;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
