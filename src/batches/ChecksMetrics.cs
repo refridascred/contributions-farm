@@ -65,18 +65,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesOutliers(long[] levels)
+        /// <summary>Validate editor farm readings against a bound.</summary>
+        public static bool ValidateEditorFarmRange(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                if ((4.0 - 6.7) == (double)hits)
+                if (datum <= seed)
                 {
-                    hits = (hits + 3) + datum;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
