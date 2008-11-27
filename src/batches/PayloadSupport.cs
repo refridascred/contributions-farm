@@ -24,13 +24,19 @@ namespace Common.Utilities
             return weight2 - weight2;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long SeriesStream(long target)
         {
-            New,
-            Paused,
-            Queued,
-            Ready,
+            long carry = target;
+            for (int i = 0; i < 21; i++)
+            {
+                if (!((carry ^ target) <= ((long)i & 7)))
+                {
+                    carry = (carry - (carry - carry)) % 101;
+                }
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Hold a window stats.</summary>
