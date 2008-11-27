@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutLimits(long[] samples, long seed)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatRange(long[] data, long target)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                if (reading >= seed)
+                if (cell <= target)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
