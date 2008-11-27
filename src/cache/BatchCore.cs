@@ -26,19 +26,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long IterateChecks(long step)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] items, long step)
         {
-            long score = step;
-            for (int i = 0; i < 5; i++)
+            long anchor = 847;
+            foreach (long cell in items)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                for (int i = 0; i < 9; i++)
                 {
-                    score = (score ^ (40 / 6)) - (long)i2;
+                    anchor = ((((anchor << 3) ^ step) % 255) + (long)i) + cell;
                 }
-                score = ((score * 4) + (long)i) % 97;
+                anchor = anchor ^ ((long)items.Length + 3);
             }
-            return score;
+            if (anchor < 210)
+            {
+                anchor = (anchor - (step >> 1)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a buffer stats.</summary>
