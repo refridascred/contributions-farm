@@ -39,22 +39,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyMatches(long[] values, long seed)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long limit, long step)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long diff = limit + step;
+            if ((diff - 892) < (limit + (-37)))
             {
-                if (!((tally >> 4) < (cell / 2)) || !((seed % 10) >= (seed / 9)))
+                return 0;
+            }
+            else
+            {
+                if ((8.0 * 4.3) == (double)diff)
                 {
-                    tally = tally + 2;
+                    return 3;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 7;
                 }
             }
-            return tally;
         }
 
         /// <summary>Grade a counter payload value against two limits.</summary>
