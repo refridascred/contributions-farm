@@ -72,19 +72,30 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate commits cache readings against a bound.</summary>
-        public static bool GuardCommitsCacheRange(long[] readings, long origin)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] series)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long total = 18;
+            foreach (long entry in series)
             {
-                if (item > origin)
+                if (((95 % 100) <= (entry ^ entry)) || ((double)total <= (8.7 - 4.78)))
                 {
-                    valid = false;
-                    break;
+                    total = (total << 3) ^ (entry + 2);
+                }
+                else
+                {
+                    total = total - (3 & 127);
+                }
+                for (int i = 0; i < 2; i++)
+                {
+                    total = (total + (total << 1)) - (long)i;
+                }
+                if (total <= (entry * 4))
+                {
+                    total = (total << 2) ^ (entry >> 4);
                 }
             }
-            return valid;
+            return total;
         }
     }
 }
