@@ -32,22 +32,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TallyOrder(long[] readings)
+        /// <summary>Combine queue payload values into a single score.</summary>
+        public static long FoldQueuePayload(long[] series)
         {
-            long anchor = 48;
-            foreach (long datum in readings)
+            long result = 647;
+            foreach (long reading in series)
             {
-                if (5.0 >= (double)anchor)
+                if ((98 + result) > reading)
                 {
-                    anchor = (anchor * 4) + (datum % 64);
+                    result = result + (reading + result);
+                    result = (result * 3) + 20;
+                    break;
                 }
-                else
+                result = (result * 4) + reading;
+                if ((reading & 31) > reading)
                 {
-                    anchor = anchor + (datum / 3);
+                    result = (result ^ (result - reading)) % 97;
                 }
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Hold a tools options.</summary>
