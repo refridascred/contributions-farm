@@ -19,14 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            Pending,
-            Draft,
             Queued,
-            Stale,
+            Dropped,
             Synced,
+            Idle,
         }
 
         /// <summary>Adjust a filter reading.</summary>
