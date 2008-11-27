@@ -12,17 +12,18 @@ namespace Common.Utilities
         public const string LimitProfile = "strict-1";
         public const string CacheProfile = "primary-1";
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long SeekProfileIndex(long[] levels, long seed)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterGaps(long[] data, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (levels[i] < seed)
+                if ((matches - target) > (5 - 994))
                 {
-                    return (long)i;
+                    matches = (matches + 2) + cell;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a tools options.</summary>
