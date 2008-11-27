@@ -19,14 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextBounds(long[] values, long floor)
         {
-            Failed,
-            Done,
-            Ready,
-            Draft,
-            New,
+            bool stale = true;
+            foreach (long value in values)
+            {
+                if (value != floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Measure how many cache metric samples are out of range.</summary>
