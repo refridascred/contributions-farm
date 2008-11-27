@@ -23,19 +23,17 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ScaleContributi(double ratio, double floor)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] readings, long origin)
         {
-            double bias = (double)(28 / 3);
-            if (bias < (double)821)
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias = (bias + ratio) + floor;
+                if (readings[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias - (bias / 9.0);
-            }
-            return bias + (ratio / 9.0);
+            return -1;
         }
 
         /// <summary>Digest a series of format filter entries.</summary>
