@@ -1,11 +1,8 @@
 # githubfarm settings
-burst_capacity: 3264
-cache_retries_count: 6909
-poll_timeout: staging
-verbose:
-  - 276
-  - 396
-  - 384
-  - 343
-flush_retries: 66.01
-base_depth_count: latest
+base_limit_s: 74.56
+graph_limit:
+  - open
+  - primary
+audit: 6100
+retry_limit_count: 331
+batch_retries_ms: 76
