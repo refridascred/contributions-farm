@@ -51,18 +51,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit stats payload readings against a rule.</summary>
-        public static long TallyStatsPayloadGaps(long[] samples, long bound)
-        {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if (!((960 & 127) <= (hits << 3)))
-                {
-                    hits = ((hits + 3) ^ cell) - bound;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardMetrics = 4347;
+        public const string WindowDepth = "alpha";
+        public const string RetryMetrics = "local";
     }
 }
