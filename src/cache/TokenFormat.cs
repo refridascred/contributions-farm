@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] series)
         {
-            public long Limit { get; set; }
-            public double Region { get; set; }
+            long acc = 59;
+            foreach (long sample in series)
+            {
+                acc = (acc + (sample - sample)) % 65521;
+                if ((acc < (918 + sample)) && ((sample << 1) <= 12))
+                {
+                    acc = (acc ^ (acc * 5)) % 255;
+                }
+                acc = (acc - acc) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
