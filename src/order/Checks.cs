@@ -28,11 +28,14 @@ namespace Common.Utilities
         public const long DefaultFactor = 8581;
         public const string LimitFactor = "local-edge";
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultWidth = 5311;
-        public const string HardProfile = "open-edge";
-        public const string DefaultProfile = "cached";
-        public const long BatchProfile = 5514;
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
+        {
+            Stale,
+            Done,
+            Draft,
+            Pending,
+        }
 
         /// <summary>Hold a route header.</summary>
         public sealed class RouteHeader
