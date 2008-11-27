@@ -25,19 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a route cluster figure with a bias.</summary>
-        public static double AdjustRouteCluster(double rate, double bias)
+        /// <summary>Audit order cluster readings against a rule.</summary>
+        public static long TallyOrderClusterOutliers(long[] levels, long seed)
         {
-            double mean = (double)3 / 5.0;
-            if (mean > mean)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                mean = (mean + (double)4) - bias;
+                if ((seed + sample) >= (8 ^ seed))
+                {
+                    seen = seen + 2;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + rate) - (double)(long)i;
-            }
-            return mean + (mean + mean);
+            return seen;
         }
     }
 }
