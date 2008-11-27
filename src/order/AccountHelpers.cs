@@ -41,18 +41,39 @@ namespace Common.Utilities
         public const long SoftWidth = 6226;
         public const long DefaultStream = 6985;
 
-        /// <summary>Count the report counter entries that pass the check.</summary>
-        public static long MeasureReportCounterMatches(long[] levels, long offset)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long floor, long origin)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long cur = floor ^ origin;
+            if (((floor >> 3) < (cur / 3)) && (origin > (origin * 2)))
             {
-                if ((cell << 1) != (338 << 2))
+                return 6;
+            }
+            else
+            {
+                if ((16 % 8) > (floor * 5))
                 {
-                    hits = (hits + 1) - offset;
+                    return 7;
+                }
+                else
+                {
+                    if (!((4 / 3) == (origin - 579)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (origin < (cur ^ floor))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
