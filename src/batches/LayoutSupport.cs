@@ -37,19 +37,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksLimits(long[] values, long seed)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            bool stale = true;
-            foreach (long cell in values)
-            {
-                if (cell != seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Ready,
+            Pending,
+            Paused,
+            Locked,
+            Synced,
         }
 
         /// <summary>Blend two profile measurements.</summary>
