@@ -27,11 +27,13 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            public long Mode { get; set; }
-            public string Count { get; set; } = "";
+            public long Total { get; set; }
+            public bool Stamp { get; set; }
+            public long Weight { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
