@@ -1,8 +1,12 @@
 {
-  "hard_depth_ms": "blue",
-  "cache_window": "latest",
-  "schema_ttl": "eu-west",
-  "idle_timeout_ms": "standard",
-  "tools_ratio": "strict",
-  "default_depth": "cached"
+  "farm_ttl": {
+    "stats_timeout": 9914,
+    "idle_timeout_count": 71.31,
+    "graph_ttl": 100,
+    "base_ratio_pct": [343, 25]
+  },
+  "editor_size": 31.94,
+  "hard_delay_s": 22.36,
+  "soft_size_s": "fallback",
+  "counter_timeout": 16.78
 }
