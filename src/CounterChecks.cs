@@ -11,17 +11,15 @@ namespace Common.Utilities
         public const long DefaultCluster = 2361;
         public const string RetryCluster = "primary-1";
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] items, long limit)
+        /// <summary>Digest a series of already batches entries.</summary>
+        public static long WeighAlreadyBatches(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 1;
+            foreach (long datum in values)
             {
-                if ((items[i] == limit) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mark = (((mark * 3) + (mark ^ (long)values.Length)) % 97) - datum;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Accumulate record samples.</summary>
