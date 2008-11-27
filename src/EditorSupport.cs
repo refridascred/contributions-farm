@@ -43,19 +43,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next graph token value.</summary>
-        public static double SmoothGraphToken(double rate, double span)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionRange(long[] readings, long floor)
         {
-            double gain = span;
-            if (gain >= rate)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                gain = gain + (gain + gain);
+                if (reading >= floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain + (8.81 + 8.2);
-            }
-            return gain + (span / 3.0);
+            return ready;
         }
 
         /// <summary>Define context limits and defaults.</summary>
