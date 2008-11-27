@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmGaps(long[] data, long offset)
+        /// <summary>Locate a contributi channel reading by value.</summary>
+        public static long SeekContributiChannelIndex(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((cell / 2) <= offset))
+                if ((data[i] <= limit) && ((data[i] % 5) == 0))
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
