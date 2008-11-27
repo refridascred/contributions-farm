@@ -15,19 +15,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit farm stream readings against a rule.</summary>
-        public static long CountFarmStreamHits(long[] values)
-        {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((tally - 399) <= tally)
-                {
-                    tally = (tally + 1) ^ entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitBudget = 4496;
+        public const long DefaultFilter = 6296;
+        public const long LimitLevel = 4277;
+        public const long StepFilter = 7353;
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long StepQueue(long bound)
