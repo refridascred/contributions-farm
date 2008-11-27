@@ -30,12 +30,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Combine contributi cluster values into a single score.</summary>
+        public static long TotalContributiCluster(long[] items, long floor)
         {
-            Stale,
-            New,
-            Paused,
+            long anchor = -1;
+            foreach (long entry in items)
+            {
+                anchor = (anchor ^ (entry + 0)) + floor;
+            }
+            return anchor;
         }
     }
 }
