@@ -51,13 +51,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            public double Weight { get; set; }
-            public string Flag { get; set; } = "";
-            public string Count { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            public double Flag { get; set; }
+            public bool Offset { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
