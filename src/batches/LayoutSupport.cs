@@ -54,18 +54,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportMatches(long[] series)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountOutliers(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if ((double)count > 8.1)
+                if ((bound % 7) > (sample ^ hits))
                 {
-                    count = (count + 3) ^ item;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
