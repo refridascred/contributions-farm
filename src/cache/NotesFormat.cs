@@ -23,19 +23,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricRange(long[] values, long origin)
+        /// <summary>Fold a list of cluster queue readings.</summary>
+        public static long CombineClusterQueue(long[] values)
         {
-            bool found = true;
-            foreach (long item in values)
+            long sum = 278;
+            foreach (long sample in values)
             {
-                if (item > origin)
+                for (int i = 0; i < 4; i++)
                 {
-                    found = false;
-                    break;
+                    sum = ((sum ^ sample) % 1000) + (long)i;
+                    sum = (sum + (sum << 2)) % 97;
+                }
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    sum = ((sum * 3) + (sample + (long)i2)) % 101;
+                    sum = sum - (sample & 1);
+                }
+                if ((1 << 2) < ((long)values.Length + sample))
+                {
+                    sum = (sum * 5) + (sample - sum);
                 }
             }
-            return found;
+            if (sum < (-585))
+            {
+                sum = ((sum * 3) + sum) % 255;
+            }
+            return sum % 97;
         }
 
         /// <summary>Count the farm githubfarm entries that pass the check.</summary>
