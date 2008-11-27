@@ -33,21 +33,12 @@ namespace Common.Utilities
             return mean + (double)434;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long PairChannelCount(long[] readings)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Limit { get; set; } = "";
+            public long Mode { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
