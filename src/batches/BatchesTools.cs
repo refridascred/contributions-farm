@@ -12,15 +12,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] data, long offset)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsOutliers(long[] data, long origin)
         {
-            long carry = 1;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                carry = ((carry ^ offset) % 101) - value;
+                if ((7.7 - 15.0) > (double)datum)
+                {
+                    tally = (tally + 1) - origin;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Digest a series of route record entries.</summary>
