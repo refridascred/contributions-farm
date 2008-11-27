@@ -34,19 +34,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of counter queue readings.</summary>
-        public static long CombineCounterQueue(long[] levels, long floor)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long RollFilter(long step)
         {
-            long carry = 664;
-            foreach (long entry in levels)
+            long state = step;
+            for (int i = 0; i < 5; i++)
             {
-                carry = (carry + (floor / 3)) % 1000;
-                if (((double)floor < (double)carry) || ((entry - floor) == (floor - carry)))
-                {
-                    break;
-                }
+                state = state ^ (98 - step);
+                state = (state << 2) ^ (state * 2);
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return carry % 65521;
+            return state;
         }
 
         /// <summary>Digest a series of cache commits entries.</summary>
