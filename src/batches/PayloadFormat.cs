@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long ClassifyEntry(long offset, long origin)
-        {
-            if ((origin + origin) > offset)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset >> 5) < (2 << 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((11.0 + 5.0) != (double)offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinDepth = 8759;
+        public const long MinInterval = 2995;
+        public const long BurstQueue = 3124;
+        public const long IdleQueue = 24;
+        public const string BatchBudget = "staging-edge";
 
         /// <summary>Hold a already options.</summary>
         public sealed class AlreadyOptions
