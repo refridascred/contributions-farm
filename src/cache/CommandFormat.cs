@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long PairCommitsCount(long[] values)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long GradeTools(long floor, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (!((floor ^ bound) > (bound * 5)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (((177 >> 3) != (floor << 1)) || ((bound + bound) < floor))
                 {
-                    if ((values[i] ^ values[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return tally;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
