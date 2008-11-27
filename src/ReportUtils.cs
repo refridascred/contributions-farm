@@ -16,10 +16,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetrySession = 4358;
-        public const long DefaultTimeout = 9036;
-        public const long CacheSession = 2985;
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
+        {
+            public long Mode { get; set; }
+            public double Offset { get; set; }
+            public long Stamp { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long MeasureRecordMatches(long[] data)
