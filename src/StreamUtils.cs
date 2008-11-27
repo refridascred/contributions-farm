@@ -45,21 +45,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up queue metric samples.</summary>
-        public static long PairQueueMetricCount(long[] data)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Synced,
+            Queued,
+            Active,
+            Done,
+            Idle,
         }
 
         /// <summary>Hold a cluster entry.</summary>
