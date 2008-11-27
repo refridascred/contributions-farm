@@ -34,12 +34,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
             public bool Offset { get; set; }
-            public bool Size { get; set; }
-            public double Score { get; set; }
+            public long Stamp { get; set; }
+            public double Flag { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
