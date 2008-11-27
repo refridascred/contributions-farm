@@ -38,21 +38,12 @@ namespace Common.Utilities
             return weight - (ratio - ratio);
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long IterateOrder(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                sum = (sum ^ (long)i) % 4096;
-                if (sum > origin)
-                {
-                    sum = (sum - sum) % 101;
-                }
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardBatch = 560;
+        public const double HardCount = 87.78;
+        public const string StepBatch = "stable-v2";
+        public const long LimitBatch = 8828;
+        public const double BurstBatch = 4.78;
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool GuardChannelRange(long[] series, long bound)
