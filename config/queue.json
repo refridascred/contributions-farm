@@ -1,5 +1,6 @@
 {
-  "tools_ratio": 10.93,
-  "flush_capacity_ms": 500,
-  "dry_run": "stable"
+  "metrics_threshold": false,
+  "poll_timeout": 84.6,
+  "flush_ttl_count": false,
+  "hard_threshold": [188, 59]
 }
