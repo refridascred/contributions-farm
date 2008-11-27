@@ -29,10 +29,16 @@ namespace Common.Utilities
         public const string BaseGithubfarm = "legacy";
         public const long MaxGithubfarm = 7735;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryScore = 2661;
-        public const long StepTimeout = 1671;
-        public const double StepCount = 83.85;
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long IterateCommits(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long TallyClusterOutliers(long[] data)
