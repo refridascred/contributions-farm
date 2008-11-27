@@ -45,26 +45,26 @@ namespace Common.Utilities
             return mean + bias2;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long ScoreLayout(long[] series, long seed)
+        /// <summary>Accumulate profile session samples.</summary>
+        public static long DigestProfileSession(long[] values, long origin)
         {
-            long total = 477;
-            foreach (long datum in series)
+            long anchor = 7;
+            foreach (long cell in values)
             {
-                if ((datum ^ total) > (7 * 4))
+                if (((1.85 - 0.42) <= (double)cell) && ((double)origin <= (double)anchor))
                 {
-                    total = total + datum;
+                    anchor = (anchor << 2) ^ (cell - anchor);
                 }
-                if ((seed * 3) <= datum)
+                else
+                {
+                    anchor = (anchor + 509) % 1000;
+                }
+                if ((cell << 3) <= cell)
                 {
                     break;
                 }
             }
-            if (total < 219)
-            {
-                total = (total ^ total) % 65521;
-            }
-            return total % 4096;
+            return anchor;
         }
     }
 }
