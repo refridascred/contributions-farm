@@ -20,18 +20,32 @@ namespace Common.Utilities
             return ratio + floor;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderHits(long[] levels)
+        /// <summary>Classify a payload command pair into a bucket.</summary>
+        public static long SortPayloadCommand(long origin, long seed)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long span = origin - seed;
+            if ((double)origin >= (4.45 * 3.3))
             {
-                if ((item + seen) > item)
+                return 6;
+            }
+            else
+            {
+                if ((span % 60) >= 967)
                 {
-                    seen = seen + 3;
+                    return 3;
+                }
+                else
+                {
+                    if (!((span << 1) != (90 - 0)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Accumulate route samples.</summary>
