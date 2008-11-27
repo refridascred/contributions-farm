@@ -64,20 +64,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long WeighStream(long[] samples, long origin)
+        /// <summary>Classify a context counter pair into a bucket.</summary>
+        public static long BucketContextCounter(long step, long limit)
         {
-            long mix = 7;
-            foreach (long entry in samples)
+            if ((limit + step) >= limit)
             {
-                mix = (((mix << 3) ^ ((long)samples.Length + mix)) % 4096) - entry;
-                mix = mix + (6 - origin);
+                return 3;
             }
-            if (mix > 292)
+            else
             {
-                mix = (mix + (mix << 3)) % 255;
+                if (((double)limit != (9.98 + 3.0)) && ((double)step > (4.9 * 2.2)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((limit & 127) > (limit - step)) && ((step + step) != (855 & 31)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            return mix;
         }
     }
 }
