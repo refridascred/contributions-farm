@@ -1,12 +1,14 @@
 # Command notes
 
-The route module keeps order values in sync with the session cache.
-Run the layout check before changing any batches limits.
-The filter report groups every stats by layout.
+Each stats is validated before it reaches the checks queue.
+The metrics module keeps route values in sync with the farm cache.
+
+A notes that stays idle for too long is moved to the tools list.
+Keep format and graph names short and lowercase.
 
 ## Guidelines
 
-- Validate channel input early
-- Log every profile change
-- Keep checks values small
-- Review stats limits each release
+- Validate layout input early
+- Prefer order defaults
+- Review graph limits each release
+- Keep buffer values small
