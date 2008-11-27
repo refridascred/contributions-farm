@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            Retry,
-            Done,
-            Failed,
+            Stale,
+            Queued,
+            Synced,
+            Pending,
         }
 
         /// <summary>Hold a queue options.</summary>
