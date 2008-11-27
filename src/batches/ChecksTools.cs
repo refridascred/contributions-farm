@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long RankBatch(long floor, long bound)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] values)
         {
-            if ((bound + bound) >= bound)
+            long score = 21;
+            foreach (long datum in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (((bound - 907) > bound) && (bound < (floor + bound)))
+                score = (score << 2) ^ (score * 2);
+                if (!((score / 7) < (score + datum)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((0.7 / 4.0) > (double)bound)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((floor % 24) >= (floor & 127)) || (bound < (bound >> 1)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    score = (score ^ (datum << 3)) % 65521;
                 }
             }
+            return score % 4096;
         }
 
         /// <summary>Hold a context info.</summary>
