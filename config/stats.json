@@ -1,16 +1,8 @@
 {
-  "cache_threshold_count": 24.36,
-  "flush_depth_ms": 85.82,
-  "soft_window": {
-    "soft_timeout": 4,
-    "buffer_threshold": 1024,
-    "max_capacity": {
-      "window_ratio": 21,
-      "idle_threshold": [102, 251, 5],
-      "verbose": [470, 233],
-      "burst_delay_s": false
-    },
-    "order_threshold": 60,
-    "command_threshold": 500
-  }
+  "enabled": ["eu-west", "edge"],
+  "sync_window_pct": ["edge", "primary", "stable", "standard"],
+  "dry_run": 97,
+  "verbose": true,
+  "sync_retries_count": 60,
+  "max_capacity": "strict"
 }
