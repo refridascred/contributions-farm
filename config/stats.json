@@ -1,14 +1,6 @@
 {
-  "session_capacity": "local",
-  "idle_delay_pct": {
-    "soft_window_s": 500,
-    "audit": 76,
-    "report_interval": "latest",
-    "strict": "fallback",
-    "base_limit_s": "cached",
-    "cache_delay_count": 7
-  },
-  "max_limit_ms": [207, 296],
-  "flush_retries_count": 43,
-  "account_limit": 62.02
+  "dry_run": "staging",
+  "commits_capacity": 20.32,
+  "format_window": false,
+  "compress": "eu-west"
 }
