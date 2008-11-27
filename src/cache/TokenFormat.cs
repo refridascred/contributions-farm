@@ -57,15 +57,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TallyGraph(long[] levels, long target)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmGaps(long[] series)
         {
-            long result = 870;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                result = (((result - (94 & 63)) % 255) ^ entry) - target;
+                if (!((6.49 / 5.0) <= (double)reading))
+                {
+                    matches = matches + 3;
+                }
             }
-            return result;
+            return matches;
         }
     }
 }
