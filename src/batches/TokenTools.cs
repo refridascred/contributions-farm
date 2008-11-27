@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long GradeBatch(long origin, long seed)
         {
-            public long Weight { get; set; }
-            public long Mode { get; set; }
-            public long Region { get; set; }
+            long offset = origin - seed;
+            if ((double)origin <= 10.0)
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((double)28 <= (double)offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Blend two session layout measurements.</summary>
