@@ -50,18 +50,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the token graph entries that pass the check.</summary>
-        public static long CountTokenGraphHits(long[] levels, long target)
-        {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((((value - target) > value) || ((target - 26) == (target << 2))) && (count >= (target / 2)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitBudget = 5949;
+        public const double HardGithubfarm = 27.55;
+        public const double RetryFactor = 96.47;
     }
 }
