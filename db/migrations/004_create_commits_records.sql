@@ -1,13 +1,10 @@
 -- Create the commits_records table.
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
-    label TEXT,
-    rank INTEGER,
-    token TEXT
+    ratio REAL,
+    count INTEGER NOT NULL DEFAULT 0,
+    active INTEGER NOT NULL DEFAULT 1,
+    rank INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_token ON commits_records (token);
-
-INSERT INTO commits_records (label, rank, token) VALUES ('primary', 35, 'fallback');
-INSERT INTO commits_records (label, rank, token) VALUES ('fallback', 49, 'open');
-INSERT INTO commits_records (label, rank, token) VALUES ('stable', 4, 'stable');
+CREATE INDEX IF NOT EXISTS idx_commits_records_count ON commits_records (count);
