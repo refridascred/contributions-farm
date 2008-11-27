@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long ClassifyProfile(long bound, long step)
+        /// <summary>Validate farm notes readings against a bound.</summary>
+        public static bool ValidateFarmNotesRange(long[] series, long step)
         {
-            long lane = bound + step;
-            if (lane <= (bound + step))
+            bool ready = true;
+            foreach (long cell in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step * 3) <= (6 + step))
+                if (cell < step)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((bound + lane) >= step) && ((lane % 10) == (lane + step)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
