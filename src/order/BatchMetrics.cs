@@ -60,23 +60,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a graph cluster figure with a bias.</summary>
-        public static double BlendGraphCluster(double rate, double offset)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long IterateCounter(long seed)
         {
-            double gain = (double)(2 / 8);
-            if (gain >= gain)
+            long carry = seed;
+            for (int i = 0; i < 4; i++)
             {
-                gain = (gain - (double)1) - rate;
+                if (carry > (carry & 3))
+                {
+                    carry = (carry - (carry ^ seed)) % 1000;
+                }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            else
-            {
-                gain = gain - 7.7;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + (double)(-6)) - (double)(long)i;
-            }
-            return gain - (offset * 2.1);
+            return carry;
         }
 
         /// <summary>Digest a series of record entries.</summary>
