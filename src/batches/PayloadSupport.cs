@@ -35,18 +35,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine graph schema values into a single score.</summary>
-        public static long DigestGraphSchema(long[] values, long bound)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double BlendFilter(double rate, double offset)
         {
-            long acc = 827;
-            foreach (long datum in values)
+            double scale = rate;
+            if (scale >= offset)
             {
-                if ((datum + acc) > datum)
-                {
-                    acc = acc - (acc + bound);
-                }
+                scale = scale - offset;
             }
-            return acc % 1000;
+            else
+            {
+                scale = scale + (scale / 8.0);
+            }
+            return scale - scale;
         }
     }
 }
