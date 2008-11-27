@@ -38,38 +38,19 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Rank window layout input into a small class.</summary>
-        public static long BucketWindowLayout(long target, long origin)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryLimits(long[] samples, long target)
         {
-            if ((target ^ 95) == (origin + 68))
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (!(origin > (origin & 31)))
+                if (datum <= target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((target + origin) >= target) || (49 < origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (origin >= (target * 4))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
