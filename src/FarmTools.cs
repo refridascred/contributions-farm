@@ -16,22 +16,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksGaps(long[] readings, long seed)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long BucketCommand(long seed, long offset)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            if ((seed - seed) < seed)
             {
-                if ((611 << 2) <= (sample & 15))
+                return 0;
+            }
+            else
+            {
+                if ((double)offset != (1.35 + 5.46))
                 {
-                    tally = (tally + 1) - seed;
+                    return 7;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((seed >> 1) > (seed & 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (seed < ((-29) + (-24)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Combine session values into a single score.</summary>
