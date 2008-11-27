@@ -22,19 +22,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesBounds(long[] levels, long floor)
+        /// <summary>Classify a graph already pair into a bucket.</summary>
+        public static long ClassifyGraphAlready(long seed, long limit)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long diff = seed + limit;
+            if (!((10.0 * 2.6) == (double)seed))
             {
-                if (reading > floor)
+                return 0;
+            }
+            else
+            {
+                if (!((diff + diff) < (diff ^ seed)))
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)limit <= (12.0 + 8.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((limit * 3) <= seed)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Hold a buffer stats.</summary>
