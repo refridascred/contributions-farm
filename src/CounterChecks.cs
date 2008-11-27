@@ -57,18 +57,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Derive the next layout githubfarm value from a seed.</summary>
-        public static long IterateLayoutGithubfarm(long offset)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesRange(long[] series, long seed)
         {
-            long acc = offset;
-            for (int i = 0; i < 15; i++)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                long span = offset;
-                acc = ((acc * 4) + (span + span)) % 97;
-                acc = (acc * 2) + offset;
-                acc = ((acc * 2) + (long)i) % 101;
+                if (cell <= seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
