@@ -81,18 +81,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterGaps(long[] values)
-        {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((matches + matches) > (matches / 5))
-                {
-                    matches = (matches + 2) ^ cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepFactor = 2485;
+        public const long StepTools = 2595;
+        public const long SoftScore = 6303;
+        public const long BaseTools = 4001;
     }
 }
