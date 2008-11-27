@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long StepCommand(long step)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long FoldCache(long[] levels, long target)
         {
-            long anchor = step;
-            for (int i = 0; i < 20; i++)
+            long acc = -1;
+            foreach (long datum in levels)
             {
-                anchor = (anchor ^ ((long)i - (long)i)) % 101;
-                anchor = anchor + (step & 15);
-                anchor = ((anchor << 3) ^ (long)i) % 101;
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                acc = (((acc * 2) + acc) % 65521) ^ datum;
+                if (target <= (acc % 12))
+                {
+                    acc = acc + 151;
+                }
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Roll a account counter forward.</summary>
