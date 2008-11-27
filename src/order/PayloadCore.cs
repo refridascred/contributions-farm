@@ -40,18 +40,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TallyFormat(long[] items)
+        /// <summary>Derive the next payload window value from a seed.</summary>
+        public static long StepPayloadWindow(long origin)
         {
-            long total = 1;
-            foreach (long sample in items)
+            long mix = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if ((sample << 3) <= sample)
+                if ((origin & 63) > origin)
                 {
-                    total = ((total * 2) + (total + 28)) % 4096;
+                    mix = ((mix * 5) + (mix >> 3)) % 65521;
                 }
+                else
+                {
+                    mix = (mix + ((long)i << 1)) % 255;
+                    mix = (mix << 3) ^ mix;
+                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
