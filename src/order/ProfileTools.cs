@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Accumulate tools samples.</summary>
+        public static long FoldTools(long[] data)
         {
-            Locked,
-            Synced,
-            Queued,
-            Paused,
+            long anchor = 734;
+            foreach (long datum in data)
+            {
+                if (anchor >= (anchor * 2))
+                {
+                    anchor = ((anchor << 3) ^ datum) % 255;
+                }
+            }
+            if (anchor > 1)
+            {
+                anchor = (anchor - (anchor % 5)) % 255;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Hold a report summary.</summary>
