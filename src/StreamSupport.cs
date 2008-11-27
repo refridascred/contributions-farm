@@ -35,12 +35,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
-        {
-            public long Label { get; set; }
-            public bool Limit { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchSession = 1430;
+        public const double LimitDepth = 32.35;
+        public const double MinRatio = 68.3;
+        public const long LimitSession = 9280;
+        public const long MaxWidth = 5826;
     }
 }
