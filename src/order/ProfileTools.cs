@@ -50,19 +50,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricRange(long[] readings, long offset)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] data)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long state = 581;
+            foreach (long entry in data)
             {
-                if (item != offset)
+                if (!((5 + 68) == (state & 63)))
                 {
-                    stale = false;
-                    break;
+                    state = (state - state) % 255;
+                }
+                if ((state + entry) >= state)
+                {
+                    state = ((state << 2) ^ (entry - (long)data.Length)) % 4096;
                 }
             }
-            return stale;
+            if (state < 664)
+            {
+                state = ((state * 3) + (state + state)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Validate commits cache readings against a bound.</summary>
