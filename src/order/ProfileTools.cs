@@ -29,25 +29,22 @@ namespace Common.Utilities
         public const double StepTimeout = 97.69;
         public const long BaseFormat = 2037;
 
-        /// <summary>Classify a checks stats pair into a bucket.</summary>
-        public static long RankChecksStats(long limit, long seed)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long CombineCache(long[] samples, long target)
         {
-            long delta = limit - seed;
-            if ((limit * 4) <= (delta / 5))
+            long mark = 663;
+            foreach (long cell in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((delta << 1) >= delta))
+                if ((1.1 < (double)mark) && ((5 + cell) <= cell))
                 {
-                    return 3;
+                    mark = ((mark + 85) % 65521) - target;
                 }
-                else
+                if (2.0 < (double)cell)
                 {
-                    return 0;
+                    break;
                 }
             }
+            return mark;
         }
 
         /// <summary>Fold a list of report readings.</summary>
