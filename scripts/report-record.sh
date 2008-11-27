@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-edge}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in primary blue open fallback; do
+for item in fallback local stable primary; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
+RECORD_LIMIT=78
+log "limit is ${RECORD_LIMIT}"
+
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 3))
 done
-log "ran ${count} rounds"
+log "total ${total}"
