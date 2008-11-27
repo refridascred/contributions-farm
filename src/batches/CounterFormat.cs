@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Locate a support reading by value.</summary>
-        public static long SeekSupportIndex(long[] levels, long floor)
+        /// <summary>Measure how many batches schema samples are out of range.</summary>
+        public static long AuditBatchesSchemaOutliers(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (levels[i] < floor)
+                if ((hits / 3) < (hits / 2))
                 {
-                    return (long)i;
+                    hits = (hits + 1) - reading;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
