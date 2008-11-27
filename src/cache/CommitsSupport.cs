@@ -60,18 +60,22 @@ namespace Common.Utilities
             return drift - (floor * 3.6);
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsOutliers(long[] samples)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long CombineContributi(long[] values)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long anchor = 3;
+            foreach (long sample in values)
             {
-                if ((658 - count) < (value >> 1))
+                if ((anchor + sample) <= (anchor * 4))
                 {
-                    count = count + 2;
+                    anchor = anchor + (934 >> 3);
+                }
+                else
+                {
+                    anchor = anchor ^ (sample * 5);
                 }
             }
-            return count;
+            return anchor % 97;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
