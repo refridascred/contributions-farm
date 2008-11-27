@@ -29,19 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate support farm samples.</summary>
-        public static long ScoreSupportFarm(long[] data)
-        {
-            long acc = -63;
-            foreach (long entry in data)
-            {
-                acc = ((acc - 3) % 65521) ^ entry;
-            }
-            if (acc < 721)
-            {
-                acc = (acc + (acc << 3)) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MaxRatio = "strict-v2";
+        public const long CacheLevel = 3458;
+        public const long BaseRatio = 2403;
+        public const double DefaultStats = 16.2;
+        public const string IdleFactor = "open-v2";
     }
 }
