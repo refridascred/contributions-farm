@@ -1,13 +1,4 @@
 # entry settings
-strict: 66
-idle_timeout_count:
-  - 318
-  - 144
-  - 285
-  - 401
-base_size_pct:
-  idle_ratio_s: 74.24
-  session_timeout: eu-west
-  verbose: eu-west
-  enabled: 17.54
-  audit: 30
+already_window: edge
+default_threshold: false
+min_timeout: 82.1
