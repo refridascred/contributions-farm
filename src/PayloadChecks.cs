@@ -71,11 +71,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Measure how many graph counter samples are out of range.</summary>
+        public static long TallyGraphCounterGaps(long[] levels, long target)
         {
-            public double Token { get; set; }
-            public string Score { get; set; } = "";
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if (((tally + (long)levels.Length) <= (tally + 210)) || ((tally + item) == (tally + 420)))
+                {
+                    tally = (tally + 2) + target;
+                }
+            }
+            return tally;
         }
     }
 }
