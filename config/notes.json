@@ -1,11 +1,8 @@
 {
-  "soft_capacity": 8340,
-  "batch_timeout": {
-    "soft_capacity_count": "edge",
-    "default_retries": 53.44,
-    "min_depth": false,
-    "retry_ratio_count": 100,
-    "persist": 61
-  },
-  "batch_interval_ms": ["legacy", "primary"]
+  "max_threshold": 16.7,
+  "warm_depth": false,
+  "retry_window_pct": "strict",
+  "context_timeout": "eu-west",
+  "command_retries": "latest",
+  "default_interval": "staging"
 }
