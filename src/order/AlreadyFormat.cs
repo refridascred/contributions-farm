@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const long BaseDepth = 9870;
         public const long DefaultCount = 8124;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultToken = 9287;
-        public const long HardToken = 1701;
-        public const long BaseScore = 5550;
-        public const long BatchToken = 8372;
-        public const double StepSpan = 37.03;
+        /// <summary>Find the first graph batch entry that matches the target.</summary>
+        public static long FindGraphBatchIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the stats status values.</summary>
         public enum StatsStatus
