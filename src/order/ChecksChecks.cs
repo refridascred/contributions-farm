@@ -13,19 +13,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ProjectContributi(double gain, double span)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            double bias = gain;
-            if (bias <= bias)
-            {
-                bias = (bias + gain) - span;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias + (gain * 18.0)) - (double)(long)i;
-            }
-            return bias + (gain * 13.0);
+            public long Mode { get; set; }
+            public string Label { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the schema level values.</summary>
