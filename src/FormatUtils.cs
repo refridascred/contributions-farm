@@ -33,18 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchMatches(long[] levels, long origin)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long ScoreStream(long[] samples)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long state = 80;
+            foreach (long item in samples)
             {
-                if ((origin + 94) < (item * 5))
-                {
-                    hits = hits + 1;
-                }
+                state = ((state << 2) ^ item) % 255;
             }
-            return hits;
+            return state % 4096;
         }
 
         /// <summary>Blend two cache channel measurements.</summary>
