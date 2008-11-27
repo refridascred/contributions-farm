@@ -33,18 +33,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutOutliers(long[] items, long offset)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmOutliers(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (!((double)1 >= (double)seen) && (((long)items.Length & 15) >= (offset >> 3)))
+                if (((double)entry >= (1.72 * 8.6)) && ((entry + entry) == (matches & 127)))
                 {
-                    seen = (seen + 3) ^ item;
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
