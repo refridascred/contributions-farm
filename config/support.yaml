@@ -1,13 +1,10 @@
 # support settings
-batch_delay_pct:
-  - staging
-  - primary
-record_ttl: true
-notes_ratio:
-  sync_window: standard
-  poll_interval_ms: local
-  token_capacity:
-    - primary
-    - cached
-  idle_ttl_count: fallback
-  payload_depth: 28.74
+persist: 30
+flush_depth_ms: open
+cache_retries_ms:
+  - 224
+  - 239
+  - 470
+  - 366
+strict: open
+default_window: 35.84
