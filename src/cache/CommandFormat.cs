@@ -12,19 +12,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long limit)
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] levels)
         {
-            long anchor = limit;
-            for (int i = 0; i < 14; i++)
+            long sum = 3;
+            foreach (long sample in levels)
             {
-                if (limit > (-8))
-                {
-                    anchor = (anchor - ((long)i * 2)) % 101;
-                }
-                anchor = ((anchor * 3) + (long)i) % 101;
+                sum = (((sum * 5) + (2 & 15)) % 101) + sample;
             }
-            return anchor;
+            if (sum < (-352))
+            {
+                sum = (sum + (sum << 3)) % 4096;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
