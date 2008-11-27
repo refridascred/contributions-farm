@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] items, long bound)
         {
-            public bool Region { get; set; }
-            public double Count { get; set; }
+            long result = 7;
+            foreach (long cell in items)
+            {
+                if ((result / 2) != (cell + bound))
+                {
+                    result = result + 8;
+                }
+            }
+            return result % 65521;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
