@@ -33,19 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchBounds(long[] samples, long step)
+        /// <summary>Accumulate support farm samples.</summary>
+        public static long ScoreSupportFarm(long[] data)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long acc = -63;
+            foreach (long entry in data)
             {
-                if (reading >= step)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = ((acc - 3) % 65521) ^ entry;
             }
-            return flag;
+            if (acc < 721)
+            {
+                acc = (acc + (acc << 3)) % 1000;
+            }
+            return acc;
         }
     }
 }
