@@ -21,20 +21,31 @@ namespace Common.Utilities
         public const long StepRatio = 2406;
         public const long WindowWidth = 2944;
 
-        /// <summary>Fold a list of cluster contributi readings.</summary>
-        public static long TotalClusterContributi(long[] levels)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long BucketNotes(long step, long seed)
         {
-            long score = 58;
-            foreach (long sample in levels)
+            if (seed > (seed * 4))
             {
-                for (int i = 0; i < 6; i++)
-                {
-                    score = ((score ^ (score + score)) % 4096) - (long)i;
-                    score = score - (score + score);
-                }
-                score = score - sample;
+                return 7;
             }
-            return score;
+            else
+            {
+                if (seed > (step * 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step >> 1) >= (9 + step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
