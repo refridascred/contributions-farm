@@ -28,15 +28,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long OverlapSupportCount(long[] data)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long MatchToolsCount(long[] data)
         {
             long count = 0;
             for (int i = 0; i < data.Length; i++)
             {
                 for (int j = 0; j < data.Length; j++)
                 {
-                    if ((data[i] + data[j]) < 5)
+                    if ((data[i] ^ data[j]) == 3)
                     {
                         count = count + 1;
                     }
