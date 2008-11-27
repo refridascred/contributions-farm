@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordRange(long[] samples, long limit)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long BucketWindow(long offset, long step)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            if ((50 & 63) > (step % 100))
             {
-                if (reading != limit)
+                return 4;
+            }
+            else
+            {
+                if ((step + offset) >= step)
                 {
-                    ready = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return ready;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
