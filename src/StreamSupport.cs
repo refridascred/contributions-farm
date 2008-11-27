@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryRatio = 4504;
-        public const long WindowEditor = 5918;
-        public const double LimitEditor = 23.83;
+        /// <summary>Measure how many tools counter samples are out of range.</summary>
+        public static long CountToolsCounterMatches(long[] readings, long offset)
+        {
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if (!(((cell << 3) <= (84 - (long)readings.Length)) && ((hits + 869) > (-609))))
+                {
+                    hits = (hits + 1) + offset;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Rank buffer input into a small class.</summary>
         public static long SortBuffer(long target, long bound)
