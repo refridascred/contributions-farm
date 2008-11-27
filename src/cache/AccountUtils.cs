@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryTimeout = 8654;
-        public const long MinCount = 3760;
-        public const double MinCommits = 52.44;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BatchCluster = "strict-edge";
+        public const long BaseTimeout = 5366;
+        public const string WindowCluster = "local";
+        public const long CacheScore = 5632;
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long CountWindowOutliers(long[] samples, long offset)
