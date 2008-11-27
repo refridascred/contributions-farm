@@ -15,12 +15,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
-        {
-            public long Ratio { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double SoftStream = 13.91;
+        public const long DefaultStream = 4170;
+        public const string HardStream = "fallback";
+        public const long RetrySpan = 151;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double LimitFilter = 56.19;
