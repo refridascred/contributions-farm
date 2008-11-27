@@ -41,9 +41,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BurstReport = "fallback";
-        public const long BurstTimeout = 1648;
-        public const long DefaultSize = 5541;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftRoute = 7971;
+        public const long BurstRoute = 9317;
+        public const double HardRoute = 24.48;
     }
 }
