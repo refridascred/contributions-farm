@@ -21,39 +21,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long GradeFormat(long limit, long target)
+        /// <summary>Accumulate commits metric samples.</summary>
+        public static long FoldCommitsMetric(long[] levels, long bound)
         {
-            long edge = limit + target;
-            if ((target - 36) != (192 - limit))
+            long carry = 282;
+            foreach (long datum in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((double)edge != (7.0 / 9.0)))
+                carry = (carry + (carry - carry)) % 4096;
+                if ((datum + bound) != (carry + datum))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((target << 2) < target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((edge < (limit + target)) && ((double)limit <= (13.0 + 18.0)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    carry = carry + (35 ^ datum);
                 }
             }
+            return carry;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
