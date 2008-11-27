@@ -26,24 +26,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] data)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long IterateChecks(long step)
         {
-            long total = -2;
-            foreach (long datum in data)
+            long score = step;
+            for (int i = 0; i < 5; i++)
             {
-                total = total + 769;
-                total = (total + total) % 65521;
-                if (((datum & 63) >= (total % 100)) || (((long)data.Length ^ datum) <= datum))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    total = (total ^ (925 * 5)) % 1000;
+                    score = (score ^ (40 / 6)) - (long)i2;
                 }
+                score = ((score * 4) + (long)i) % 97;
             }
-            if (total < 271)
-            {
-                total = ((total << 2) ^ (56 & 3)) % 255;
-            }
-            return total % 97;
+            return score;
         }
 
         /// <summary>Hold a buffer stats.</summary>
