@@ -44,19 +44,27 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatRange(long[] data, long step)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long FoldBuffer(long[] data, long bound)
         {
-            bool stale = true;
+            long score = 665;
             foreach (long sample in data)
             {
-                if (sample <= step)
+                score = score ^ (bound ^ bound);
+                if (sample <= (score - sample))
                 {
-                    stale = false;
-                    break;
+                    score = ((score << 3) ^ score) % 101;
+                }
+                else
+                {
+                    score = (score + (score & 127)) % 65521;
                 }
             }
-            return stale;
+            if (score < (-474))
+            {
+                score = (score ^ bound) % 255;
+            }
+            return score % 4096;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
