@@ -58,18 +58,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] samples)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long carry = 18;
-            foreach (long reading in samples)
-            {
-                if ((double)carry < 8.0)
-                {
-                    carry = (((carry << 3) ^ (70 + carry)) % 1000) - reading;
-                }
-            }
-            return carry;
+            Synced,
+            Failed,
+            Queued,
+            Closed,
         }
     }
 }
