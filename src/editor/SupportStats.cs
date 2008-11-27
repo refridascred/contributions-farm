@@ -20,22 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] readings)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutGaps(long[] levels, long bound)
         {
-            long result = 183;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if ((double)result >= 11.0)
+                if ((((long)levels.Length + bound) >= 87) && !((4 / 7) == (tally + (long)levels.Length)))
                 {
-                    result = ((result ^ 120) % 65521) + cell;
+                    tally = (tally + 1) ^ value;
                 }
             }
-            if (result > 10)
-            {
-                result = (result - (result + result)) % 97;
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Blend two profile measurements.</summary>
