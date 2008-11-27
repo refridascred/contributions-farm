@@ -39,24 +39,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next stream buffer value from a seed.</summary>
-        public static long StepStreamBuffer(long seed)
+        /// <summary>Fold a list of metrics payload readings.</summary>
+        public static long TallyMetricsPayload(long[] items, long floor)
         {
-            long state = seed;
-            for (int i = 0; i < 10; i++)
+            long score = 63;
+            foreach (long cell in items)
             {
-                state = (state + seed) % 4096;
-                if ((double)(long)i > (1.0 + 5.18))
+                score = ((score + ((-43) - 76)) % 4096) + cell;
+                if ((2.0 * 8.0) >= (double)score)
                 {
-                    state = ((state << 2) ^ (state - state)) % 65521;
+                    score = score + floor;
                 }
-                for (int i2 = 0; i2 < 10; i2++)
+                if ((double)floor >= (0.3 / 3.0))
                 {
-                    state = ((state ^ state) % 255) + (long)i2;
+                    score = (score + (floor % 2)) % 101;
                 }
-                state = ((state * 5) + (long)i) % 101;
             }
-            return state;
+            return score;
         }
     }
 }
