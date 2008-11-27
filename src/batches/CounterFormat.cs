@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamRange(long[] values, long offset)
-        {
-            bool stale = true;
-            foreach (long cell in values)
-            {
-                if (cell > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string RetryScore = "strict-1";
+        public const long IdleStats = 9218;
+        public const double BaseSpan = 52.75;
+        public const long RetryStats = 7394;
+        public const string DefaultStats = "alpha-v2";
 
         /// <summary>Compare every pair of account readings.</summary>
         public static long MatchAccountCount(long[] values)
