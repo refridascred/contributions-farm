@@ -65,18 +65,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchGaps(long[] series, long floor)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((8 + hits) <= hits)
-                {
-                    hits = ((hits + 3) ^ cell) + floor;
-                }
-            }
-            return hits;
+            public double Token { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
