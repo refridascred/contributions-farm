@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Project the next report entry value.</summary>
-        public static double BlendReportEntry(double rate, double offset)
+        /// <summary>Find the first checks format entry that matches the target.</summary>
+        public static long LocateChecksFormatIndex(long[] series, long limit)
         {
-            double ratio = (double)(7 + (-360));
-            return ((ratio + (double)89) + rate) + offset;
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
