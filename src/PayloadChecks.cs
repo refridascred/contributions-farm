@@ -43,24 +43,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long GradeCache(long floor, long seed)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long PairFormatCount(long[] readings)
         {
-            if ((floor - seed) <= (8 - seed))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor << 1) == (1 >> 5))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    if ((readings[i] - readings[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
