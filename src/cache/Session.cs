@@ -23,13 +23,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            public double Mode { get; set; }
-            public long Offset { get; set; }
-            public double Total { get; set; }
-            public bool Weight { get; set; }
+            public string Score { get; set; } = "";
+            public string Label { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define farm limits and defaults.</summary>
