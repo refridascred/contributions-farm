@@ -57,11 +57,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long StepGithubfarm(long limit)
         {
-            public bool Total { get; set; }
-            public bool Region { get; set; }
+            long mix = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                mix = (mix + 2) % 97;
+                if ((925 ^ limit) > (limit * 3))
+                {
+                    mix = (mix ^ (mix - limit)) % 97;
+                }
+                else
+                {
+                    mix = (mix ^ (mix >> 5)) % 97;
+                }
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
         }
     }
 }
