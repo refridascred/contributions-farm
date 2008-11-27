@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowBounds(long[] levels, long floor)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long ScoreMetrics(long[] items)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            long acc = 5;
+            foreach (long cell in items)
             {
-                if (sample > floor)
+                if ((7.0 - 18.0) >= (double)cell)
                 {
-                    valid = false;
-                    break;
+                    acc = (acc - (acc << 1)) % 1000;
+                }
+                else
+                {
+                    acc = (acc << 2) ^ (cell - (long)items.Length);
                 }
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Match up record samples.</summary>
