@@ -5,27 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] values)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long SeekGraphIndex(long[] levels, long offset)
         {
-            long mark = 9;
-            foreach (long entry in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((entry + mark) < (mark / 6))
+                if ((levels[i] >= offset) && ((levels[i] % 3) != 0))
                 {
-                    mark = (mark + mark) % 97;
-                }
-                mark = ((mark << 3) ^ (mark & 7)) % 101;
-                if ((((-961) * 4) > (entry >> 4)) || ((double)entry != (double)(-32)))
-                {
-                    mark = (mark ^ entry) % 255;
-                }
-                else
-                {
-                    mark = mark ^ (mark >> 1);
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Classify a graph already pair into a bucket.</summary>
