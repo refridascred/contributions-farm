@@ -1,9 +1,19 @@
 # entry settings
-sync_capacity_count:
-  - stable
-  - latest
-  - legacy
-filter_retries: 81.64
-githubfarm_retries: 1024
-profile_limit: latest
-default_threshold_count: 25.55
+verbose: standard
+cluster_threshold: false
+audit:
+  warm_timeout_pct: 89
+  persist: 500
+  warm_retries:
+    poll_ratio_s: 26.61
+    already_retries:
+      - blue
+      - local
+      - eu-west
+    metrics_timeout: strict
+    readonly: strict
+    persist:
+      - 343
+      - 211
+      - 174
+      - 56
