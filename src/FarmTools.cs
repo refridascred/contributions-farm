@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank batch farm input into a small class.</summary>
-        public static long RankBatchFarm(long origin, long seed)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LocateFormatIndex(long[] levels, long offset)
         {
-            long gap = origin - seed;
-            if (((0.28 + 2.0) != (double)seed) || ((seed % 64) < (gap - seed)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((seed + origin) > (seed / 7))
+                if (levels[i] > offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (seed < (origin << 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((seed * 2) > seed))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a buffer record.</summary>
