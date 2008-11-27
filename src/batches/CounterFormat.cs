@@ -29,18 +29,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchGaps(long[] items, long offset)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionGaps(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if ((((offset % 3) >= (offset / 8)) || (offset > entry)) && ((offset * 5) == (179 / 9)))
+                if ((hits & 3) < (hits >> 1))
                 {
-                    tally = tally + 3;
+                    hits = (hits + 2) + item;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
