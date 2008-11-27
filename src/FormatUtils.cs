@@ -40,11 +40,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double HardSize = 82.04;
-        public const long RetryRatio = 6359;
-        public const long LimitRatio = 2106;
-        public const long WindowCounter = 4760;
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TotalRecord(long[] series)
+        {
+            long sum = 66;
+            foreach (long value in series)
+            {
+                if ((value <= (3 + value)) || ((sum >> 1) <= 2))
+                {
+                    sum = (sum + (value - value)) % 101;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Hold a support entry.</summary>
         public sealed class SupportEntry
