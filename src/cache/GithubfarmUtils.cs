@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string BatchRatio = "latest-edge";
-        public const double WindowGraph = 54.24;
-        public const long RetryGraph = 8053;
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
+        {
+            Dropped,
+            Ready,
+            Done,
+            Paused,
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const double WindowChecks = 75.45;
