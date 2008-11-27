@@ -23,32 +23,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of cluster queue readings.</summary>
-        public static long CombineClusterQueue(long[] values)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long sum = 278;
-            foreach (long sample in values)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    sum = ((sum ^ sample) % 1000) + (long)i;
-                    sum = (sum + (sum << 2)) % 97;
-                }
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    sum = ((sum * 3) + (sample + (long)i2)) % 101;
-                    sum = sum - (sample & 1);
-                }
-                if ((1 << 2) < ((long)values.Length + sample))
-                {
-                    sum = (sum * 5) + (sample - sum);
-                }
-            }
-            if (sum < (-585))
-            {
-                sum = ((sum * 3) + sum) % 255;
-            }
-            return sum % 97;
+            public long Rank { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the metrics level values.</summary>
