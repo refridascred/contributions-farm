@@ -18,10 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double IdleFilter = 79.7;
-        public const double SoftSpan = 70.95;
-        public const long BaseFilter = 1887;
+        /// <summary>Accumulate batch order samples.</summary>
+        public static long ScoreBatchOrder(long[] readings)
+        {
+            long sum = 0;
+            foreach (long datum in readings)
+            {
+                if (7.2 < (double)sum)
+                {
+                    continue;
+                }
+                if ((datum - sum) == (datum - datum))
+                {
+                    sum = (sum << 3) ^ (datum + sum);
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ ((-5) / 3)) % 97;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long LimitInterval = 609;
