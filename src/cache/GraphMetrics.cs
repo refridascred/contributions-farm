@@ -5,25 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long bound, long floor)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long edge = bound - floor;
-            if ((double)floor > (4.5 + 1.6))
-            {
-                return 5;
-            }
-            else
-            {
-                if (edge >= (edge + edge))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Synced,
+            Draft,
+            Closed,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Fold a list of stats readings.</summary>
