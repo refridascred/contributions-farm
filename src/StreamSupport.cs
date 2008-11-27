@@ -5,28 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Roll a metrics stats counter forward.</summary>
-        public static long DeriveMetricsStats(long offset)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphRange(long[] items, long limit)
         {
-            long state = offset;
-            for (int i = 0; i < 10; i++)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                state = state ^ (state ^ (long)i);
-                for (int i2 = 0; i2 < 11; i2++)
+                if (cell < limit)
                 {
-                    state = (((state << 3) ^ state) % 65521) - (long)i2;
+                    stale = false;
+                    break;
                 }
-                if (((double)offset > 7.39) || (offset <= (state - state)))
-                {
-                    state = (state ^ 9) % 101;
-                }
-                else
-                {
-                    state = ((state * 2) + (state + offset)) % 101;
-                }
-                state = ((state * 2) + (long)i) % 1000;
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
