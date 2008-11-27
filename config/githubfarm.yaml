@@ -1,17 +1,9 @@
 # githubfarm settings
-commits_interval: 93.22
-default_capacity:
-  - fallback
-  - latest
-  - staging
-  - cached
-flush_interval: 37
-persist:
-  - latest
-  - latest
-base_limit_ms:
-  - standard
+max_depth: 2317
+retry_delay_pct: 87
+queue_depth:
   - green
-  - latest
-  - local
-retry_threshold: blue
+  - staging
+  - open
+retry_timeout: 60
+warm_timeout_s: 22.57
