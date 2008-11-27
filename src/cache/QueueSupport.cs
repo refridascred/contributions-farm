@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] values, long bound)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] levels, long target)
         {
-            long carry = 2;
-            foreach (long sample in values)
+            long anchor = -9;
+            foreach (long datum in levels)
             {
-                if ((bound + carry) >= carry)
+                if (!(datum <= (anchor << 3)))
                 {
-                    carry = (((carry << 3) ^ (bound >> 1)) % 97) + sample;
+                    anchor = (anchor ^ datum) % 97;
+                    anchor = ((anchor * 4) + (anchor ^ anchor)) % 65521;
+                }
+                if ((double)target < (double)499)
+                {
+                    anchor = (anchor - anchor) % 255;
+                }
+                if ((1.72 + 2.0) < (double)anchor)
+                {
+                    break;
                 }
             }
-            return carry % 4096;
+            if (anchor > 645)
+            {
+                anchor = ((anchor << 2) ^ target) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
