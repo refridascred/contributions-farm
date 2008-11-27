@@ -28,11 +28,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string IdleSchema = "strict-1";
-        public const long BatchSpan = 2481;
-        public const long MaxSchema = 2535;
-        public const long RetryWidth = 6224;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRatio = 8031;
+        public const string MaxRoute = "local-edge";
+        public const long RetryRatio = 6525;
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long ScoreLayout(long[] series, long seed)
