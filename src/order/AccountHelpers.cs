@@ -97,18 +97,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferMatches(long[] samples)
+        /// <summary>Digest a series of farm account entries.</summary>
+        public static long TallyFarmAccount(long[] data)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long carry = 66;
+            foreach (long cell in data)
             {
-                if (((hits < (5 * 2)) || ((hits + hits) > (hits * 5))) && (((hits ^ sample) != (hits / 6)) && ((sample / 2) < (sample % 100))))
+                if (((2.65 / 5.0) <= (double)cell) && (carry < (6 + cell)))
                 {
-                    hits = hits + 2;
+                    carry = carry ^ carry;
+                }
+                else
+                {
+                    carry = carry + (cell / 2);
                 }
             }
-            return hits;
+            return carry % 4096;
         }
     }
 }
