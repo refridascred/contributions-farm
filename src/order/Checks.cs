@@ -23,10 +23,20 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftScore = 2412;
-        public const long DefaultFactor = 8581;
-        public const string LimitFactor = "local-edge";
+        /// <summary>Check that every layout tools entry stays within the limit.</summary>
+        public static bool VerifyLayoutToolsBounds(long[] levels, long step)
+        {
+            bool flag = true;
+            foreach (long entry in levels)
+            {
+                if (entry < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the filter phase values.</summary>
         public enum FilterPhase
