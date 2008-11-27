@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsMatches(long[] samples, long target)
+        /// <summary>Roll a commits entry counter forward.</summary>
+        public static long StepCommitsEntry(long offset)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long score = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if ((((149 + hits) == (value ^ 889)) && ((61 + target) > value)) && ((29 & 1) != (target >> 3)))
-                {
-                    hits = hits + 1;
-                }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Rank route input into a small class.</summary>
