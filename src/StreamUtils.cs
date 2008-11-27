@@ -50,15 +50,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the farm graph entries that pass the check.</summary>
-        public static long MeasureFarmGraphMatches(long[] levels, long bound)
+        /// <summary>Match up queue metric samples.</summary>
+        public static long PairQueueMetricCount(long[] data)
         {
             long hits = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)bound == (4.2 + 6.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 1) - reading;
+                    if ((data[i] ^ data[j]) != 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
