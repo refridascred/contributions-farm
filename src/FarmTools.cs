@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const long RetryFactor = 6491;
         public const long BatchFilter = 1766;
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferHits(long[] items)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((((4 << 1) < datum) || ((5.0 + 1.06) >= (double)count)) && ((datum - count) != (datum ^ datum)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Mode { get; set; }
+            public bool Total { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Combine session values into a single score.</summary>
