@@ -23,18 +23,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileGaps(long[] series)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long IterateBatch(long seed)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long sum = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if ((cell ^ cell) > (seen ^ seen))
-                {
-                    seen = seen + 3;
-                }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
