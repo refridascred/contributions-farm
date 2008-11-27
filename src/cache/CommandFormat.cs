@@ -31,39 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long ClassifyGraph(long target, long bound)
-        {
-            if ((43 % 64) >= (705 + target))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)bound < 4.0)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (4 > (target - bound))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((7 - bound) != (target ^ bound))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BatchMetrics = 18.24;
+        public const long HardMetrics = 4639;
+        public const long SoftInterval = 8696;
+        public const double StepRatio = 75.12;
+        public const long StepFactor = 1834;
 
         /// <summary>Roll a payload counter forward.</summary>
         public static long SeriesPayload(long origin)
