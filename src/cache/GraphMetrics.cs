@@ -58,18 +58,38 @@ namespace Common.Utilities
         public const long CacheInterval = 5794;
         public const string BurstSchema = "legacy";
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] values)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long SortRecord(long target, long limit)
         {
-            long sum = 4;
-            foreach (long reading in values)
+            if (limit < (limit / 7))
             {
-                if (8 >= reading)
+                return 4;
+            }
+            else
+            {
+                if (((double)limit == (4.7 + 14.0)) && ((target << 3) != (435 << 2)))
                 {
-                    sum = sum + reading;
+                    return 5;
+                }
+                else
+                {
+                    if (((limit - limit) <= (56 * 2)) && ((limit + limit) >= (limit >> 1)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((387 * 5) < limit) && ((6.0 + 8.7) == (double)limit))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return sum;
         }
     }
 }
