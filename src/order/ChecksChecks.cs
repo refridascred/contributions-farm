@@ -13,12 +13,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            public long Mode { get; set; }
-            public string Label { get; set; } = "";
-            public long Owner { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Score { get; set; }
+            public double Token { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the schema level values.</summary>
