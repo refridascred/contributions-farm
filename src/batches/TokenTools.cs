@@ -24,16 +24,13 @@ namespace Common.Utilities
             return rate + offset;
         }
 
-        /// <summary>Roll a stream stats counter forward.</summary>
-        public static long DeriveStreamStats(long floor)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long result = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                result = (result + result) % 1000;
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
+            public double Limit { get; set; }
+            public long Token { get; set; }
+            public string Count { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
     }
 }
