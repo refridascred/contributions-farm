@@ -57,9 +57,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double HardAccount = 27.07;
-        public const long MinSpan = 8988;
-        public const double SoftAccount = 75.67;
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
+        {
+            Dropped,
+            Stale,
+            Locked,
+            Retry,
+            Ready,
+        }
     }
 }
