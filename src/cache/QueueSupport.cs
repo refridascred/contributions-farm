@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleWidth = 6641;
-        public const long BatchBudget = 6602;
-        public const long MinRatio = 7574;
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
+        {
+            public bool Stamp { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Describe the entry status values.</summary>
         public enum EntryStatus
