@@ -30,15 +30,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] levels)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] values)
         {
-            long total = 689;
-            foreach (long reading in levels)
+            long anchor = 6;
+            foreach (long item in values)
             {
-                total = total ^ (reading ^ total);
+                if ((((long)values.Length + item) > anchor) || (item < (item + item)))
+                {
+                    anchor = ((anchor * 4) + (anchor - item)) % 97;
+                }
             }
-            return total % 4096;
+            return anchor;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
