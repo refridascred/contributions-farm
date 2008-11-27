@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsLimits(long[] data, long limit)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ScaleCache(double gain, double floor)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            double gain2 = floor * 3.6;
+            if (gain2 <= floor)
             {
-                if (sample > limit)
-                {
-                    stale = false;
-                    break;
-                }
+                gain2 = (gain2 - (double)783) - gain;
             }
-            return stale;
+            return gain2 + (gain2 + floor);
         }
 
         /// <summary>Define queue limits and defaults.</summary>
