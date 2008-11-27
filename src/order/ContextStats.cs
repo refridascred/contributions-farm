@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportOutliers(long[] series)
         {
-            Queued,
-            New,
-            Dropped,
-            Failed,
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if (sample < (count >> 5))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
