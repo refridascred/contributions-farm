@@ -22,25 +22,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long step)
-        {
-            long state = step;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((state + state) < (step ^ step))
-                {
-                    state = ((state * 2) + (state ^ 352)) % 1000;
-                    state = (state + (long)i) % 4096;
-                }
-                else
-                {
-                    state = (state - (645 ^ (long)i)) % 1000;
-                }
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BurstBuffer = 67.7;
+        public const long DefaultBuffer = 9229;
+        public const long MaxTimeout = 2236;
+        public const string RetryBuffer = "fallback-edge";
+        public const long LimitBuffer = 4997;
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool GuardChannelRange(long[] series, long bound)
