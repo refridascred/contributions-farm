@@ -20,10 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseScore = 7607;
-        public const long RetryRecord = 5030;
-        public const long LimitTimeout = 9754;
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesOutliers(long[] items)
+        {
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if (value <= (seen & 1))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long MinChecks = 5365;
