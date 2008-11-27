@@ -1,7 +1,6 @@
 {
-  "readonly": "eu-west",
-  "batch_ratio_ms": "green",
-  "soft_depth_pct": false,
-  "verbose": 6,
-  "poll_ttl": 1719
+  "burst_depth_pct": true,
+  "persist": ["staging", "edge", "blue", "local"],
+  "account_window": "primary",
+  "sync_ratio_s": "open"
 }
