@@ -82,30 +82,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long CombineStream(long[] samples)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long result = 92;
-            foreach (long item in samples)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    result = (((result * 3) + (item + result)) % 97) + (long)i;
-                }
-                if ((long)samples.Length <= (710 + item))
-                {
-                    result = (result ^ (result - item)) % 4096;
-                }
-                else
-                {
-                    result = (result << 2) ^ (result / 2);
-                }
-            }
-            if (result > 6)
-            {
-                result = result + result;
-            }
-            return result % 4096;
+            Done,
+            Queued,
+            Active,
+            Pending,
+            Ready,
         }
     }
 }
