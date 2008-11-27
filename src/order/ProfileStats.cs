@@ -37,21 +37,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long MatchContributiCount(long[] values)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long SortAccount(long floor, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (1.78 <= (double)floor)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (3 < floor)
                 {
-                    if ((values[i] ^ values[j]) < 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
