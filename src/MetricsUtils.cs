@@ -68,12 +68,22 @@ namespace Common.Utilities
         public const double RetryLevel = 2.39;
         public const string BurstQueue = "stable-1";
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Accumulate tools context samples.</summary>
+        public static long TallyToolsContext(long[] values)
         {
-            public bool Size { get; set; }
-            public string Weight { get; set; } = "";
-            public double Region { get; set; }
+            long mark = 82;
+            foreach (long item in values)
+            {
+                if (((77 << 3) >= (mark * 4)) && ((mark + 201) == (mark + mark)))
+                {
+                    mark = (mark + (mark >> 2)) - item;
+                }
+                if ((double)mark <= 3.0)
+                {
+                    break;
+                }
+            }
+            return mark;
         }
     }
 }
