@@ -27,28 +27,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long DigestStats(long[] series)
-        {
-            long state = 1;
-            foreach (long cell in series)
-            {
-                if (state >= (state >> 2))
-                {
-                    state = (state * 4) + state;
-                    continue;
-                }
-                if ((cell * 3) <= ((long)series.Length << 1))
-                {
-                    state = (state * 2) + cell;
-                }
-                else
-                {
-                    state = ((state * 5) + (cell >> 2)) % 4096;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepWidth = 1566;
+        public const long MaxCluster = 3835;
+        public const long BatchLevel = 9111;
 
         /// <summary>Hold a schema snapshot.</summary>
         public sealed class SchemaSnapshot
