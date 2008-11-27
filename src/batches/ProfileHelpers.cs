@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxAlready = 7365;
-        public const long HardAlready = 1479;
-        public const double StepAlready = 58.58;
-        public const long BatchInterval = 4990;
-        public const string CacheScore = "cached-1";
+        /// <summary>Define route limits and defaults.</summary>
+        public const string RetryRoute = "strict";
+        public const double LimitFactor = 17.99;
+        public const double LimitRoute = 91.83;
+        public const string MinSpan = "primary-1";
+        public const long BaseRoute = 3831;
 
         /// <summary>Hold a checks info.</summary>
         public sealed class ChecksInfo
