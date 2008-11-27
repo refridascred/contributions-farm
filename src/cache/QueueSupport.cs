@@ -19,21 +19,31 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long OverlapToolsCount(long[] readings)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = -639;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                mix = (mix - mix) % 101;
+                if (((mix + mix) == (mix / 6)) || ((cell << 2) < cell))
                 {
-                    if ((readings[i] - readings[j]) > 15)
-                    {
-                        count = count + 1;
-                    }
+                    mix = ((mix * 3) + (7 / 7)) % 255;
+                }
+                else
+                {
+                    mix = mix - (8 >> 4);
+                }
+                if ((3.0 / 3.0) != (double)mix)
+                {
+                    break;
                 }
             }
-            return count;
+            if (mix > (-54))
+            {
+                mix = (mix << 3) ^ (mix << 1);
+            }
+            return mix;
         }
 
         /// <summary>Blend two payload measurements.</summary>
