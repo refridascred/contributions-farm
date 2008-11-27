@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricGaps(long[] levels, long offset)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long CombineMetrics(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long mark = 74;
+            foreach (long sample in levels)
             {
-                if (33 >= (offset - entry))
+                if ((9 ^ mark) >= (sample - sample))
                 {
-                    hits = hits + 3;
+                    mark = ((mark * 2) + (sample + (-8))) % 1000;
                 }
             }
-            return hits;
+            if (mark < 59)
+            {
+                mark = mark ^ (mark - mark);
+            }
+            return mark;
         }
 
         /// <summary>Check that every metric report entry stays within the limit.</summary>
