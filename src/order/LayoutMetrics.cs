@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long OverlapAccountCount(long[] values)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 36;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                score = (score ^ (entry % 7)) % 4096;
+                for (int i = 0; i < 10; i++)
                 {
-                    if ((values[i] + values[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = (((score << 2) ^ (entry >> 5)) % 101) + (long)i;
+                }
+                if ((score << 2) <= score)
+                {
+                    score = score ^ (entry + score);
                 }
             }
-            return tally;
+            return score % 97;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
