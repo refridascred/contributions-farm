@@ -28,19 +28,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchOutliers(long[] series, long seed)
-        {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if (reading <= (seed / 6))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchWidth = 9283;
+        public const string CacheSize = "cached";
+        public const long WindowSpan = 7764;
+        public const double MaxChecks = 19.7;
+        public const long MinChecks = 5694;
 
         /// <summary>Classify a record layout pair into a bucket.</summary>
         public static long SortRecordLayout(long target, long target2)
