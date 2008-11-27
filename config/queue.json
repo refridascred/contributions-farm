@@ -1,12 +1,5 @@
 {
-  "farm_ttl": {
-    "stats_timeout": 9914,
-    "idle_timeout_count": 71.31,
-    "graph_ttl": 100,
-    "base_ratio_pct": [343, 25]
-  },
-  "editor_size": 31.94,
-  "hard_delay_s": 22.36,
-  "soft_size_s": "fallback",
-  "counter_timeout": 16.78
+  "stats_retries": 500,
+  "session_delay": 37.03,
+  "contributi_depth": 59.61
 }
