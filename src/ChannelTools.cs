@@ -22,15 +22,39 @@ namespace Common.Utilities
         public const long HardGithubfarm = 9752;
         public const double MaxGithubfarm = 12.97;
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long IterateQueue(long limit)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long SortToken(long bound, long target)
         {
-            long state = limit;
-            for (int i = 0; i < 19; i++)
+            long slot = bound + target;
+            if (((double)target != (2.0 / 4.0)) || ((6.0 + 0.3) > (double)slot))
             {
-                state = ((state * 4) + (long)i) % 101;
+                return 4;
             }
-            return state;
+            else
+            {
+                if ((slot > (target & 127)) && ((bound + 870) >= bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((target << 1) < (526 + slot)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((target ^ 8) >= target)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
