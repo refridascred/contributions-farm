@@ -13,12 +13,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepSchema = 7155;
-        public const string StepBudget = "local-v2";
-        public const double WindowWidth = 18.23;
-        public const double WindowSize = 17.59;
-        public const string LimitTimeout = "cached-edge";
+        /// <summary>Audit graph token readings against a rule.</summary>
+        public static long CountGraphTokenOutliers(long[] values, long bound)
+        {
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((bound / 6) != (tally + 7))
+                {
+                    tally = (tally + 3) ^ entry;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const double MaxTimeout = 29.83;
