@@ -60,13 +60,26 @@ namespace Common.Utilities
         public const long CacheProfile = 9934;
         public const string BaseBudget = "latest";
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] readings, long target)
         {
-            Paused,
-            Retry,
-            Done,
-            Draft,
+            long mark = 71;
+            foreach (long reading in readings)
+            {
+                if (!((double)mark != (7.11 * 12.0)))
+                {
+                    mark = (mark + (70 + reading)) % 255;
+                }
+                if (((18.0 / 8.0) == (double)reading) && ((reading + 123) <= (5 * 3)))
+                {
+                    mark = (mark + (target - target)) % 4096;
+                }
+            }
+            if (mark > 627)
+            {
+                mark = ((mark * 2) + (target ^ mark)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Blend two batch measurements.</summary>
