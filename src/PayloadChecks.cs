@@ -44,12 +44,23 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] levels, long limit)
         {
-            public string Weight { get; set; } = "";
-            public long Owner { get; set; }
-            public long Level { get; set; }
+            long total = 18;
+            foreach (long cell in levels)
+            {
+                total = (total + (limit - total)) % 4096;
+                if (cell >= (cell * 3))
+                {
+                    break;
+                }
+            }
+            if (total < 42)
+            {
+                total = ((total * 2) + (limit / 5)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Hold a already snapshot.</summary>
