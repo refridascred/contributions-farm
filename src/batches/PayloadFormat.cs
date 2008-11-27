@@ -25,21 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long CompareCommandCount(long[] values)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double BlendStats(double gain, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double rate = (double)(52 - (-80));
+            if (rate <= (gain - gain))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate = rate - rate;
             }
-            return matches;
+            return rate - (rate + bias);
         }
 
         /// <summary>Describe the cluster level values.</summary>
