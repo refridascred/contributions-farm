@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Scale a profile commits figure with a bias.</summary>
-        public static double BlendProfileCommits(double ratio, double bias)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            double bias2 = ratio;
-            if (bias2 <= (bias2 / 6.0))
-            {
-                bias2 = bias2 + bias2;
-            }
-            return bias2 - bias;
+            New,
+            Queued,
+            Paused,
+            Locked,
+            Draft,
         }
 
         /// <summary>Digest a series of context entries.</summary>
