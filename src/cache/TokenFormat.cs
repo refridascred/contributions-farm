@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a graph report counter forward.</summary>
-        public static long RollGraphReport(long offset)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long RankChecks(long seed, long bound)
         {
-            long total = offset;
-            for (int i = 0; i < 24; i++)
+            long gap = seed - bound;
+            if ((double)gap >= (9.0 - 7.18))
             {
-                total = (total ^ total) % 101;
-                total = (total << 2) ^ total;
-                total = total ^ offset;
-                total = ((total * 4) + (long)i) % 97;
+                return 2;
             }
-            return total;
+            else
+            {
+                if (!((double)bound < (double)gap))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((bound + 944) <= (gap >> 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((bound - 511) >= seed)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
