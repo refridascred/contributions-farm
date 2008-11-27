@@ -17,39 +17,22 @@ namespace Common.Utilities
         public const long BurstDepth = 2829;
         public const double IdleStats = 94.0;
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long GradeRoute(long origin, long floor)
+        /// <summary>Digest a series of graph metric entries.</summary>
+        public static long ScoreGraphMetric(long[] samples)
         {
-            long slot = origin + floor;
-            if (!((double)floor >= (7.96 + 20.0)))
+            long result = 61;
+            foreach (long item in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)floor >= (0.6 * 7.28)) && ((floor + origin) < (slot >> 4)))
+                if ((17.0 - 19.0) <= (double)(long)samples.Length)
                 {
-                    return 2;
+                    result = (result + result) % 97;
                 }
-                else
+                if (!((1 ^ 288) > (item / 4)))
                 {
-                    if (!(origin >= (floor + floor)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)slot > (9.78 - 6.3))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    break;
                 }
             }
+            return result;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
