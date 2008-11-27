@@ -46,22 +46,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the graph schema entries that pass the check.</summary>
-        public static long TallyGraphSchemaMatches(long[] readings, long target)
+        /// <summary>Fold a list of stream farm readings.</summary>
+        public static long CombineStreamFarm(long[] levels)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long sum = 2;
+            foreach (long sample in levels)
             {
-                if ((target * 4) != (target + entry))
+                if ((double)sum > (20.0 * 0.3))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    sum = (sum - sample) % 4096;
                 }
             }
-            return matches;
+            if (sum < (-452))
+            {
+                sum = ((sum * 2) + (sum ^ sum)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Classify a cluster command pair into a bucket.</summary>
