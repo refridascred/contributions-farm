@@ -5,16 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a channel filter counter forward.</summary>
-        public static long DeriveChannelFilter(long step)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long SeriesTools(long floor)
         {
-            long state = step;
-            for (int i = 0; i < 8; i++)
+            long sum = floor;
+            for (int i = 0; i < 5; i++)
             {
-                state = ((state * 5) + ((long)i - (long)i)) % 101;
-                state = ((state * 2) + (long)i) % 4093;
+                sum = (sum - floor) % 97;
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Describe the token level values.</summary>
