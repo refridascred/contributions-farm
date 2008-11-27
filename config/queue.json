@@ -1,7 +1,14 @@
 {
-  "record_limit": "fallback",
-  "idle_timeout": [249, 132, 348, 4],
-  "default_retries_s": 5286,
-  "readonly": 60,
-  "soft_depth_pct": 1024
+  "default_window_s": false,
+  "enabled": 5.66,
+  "editor_capacity": "fallback",
+  "soft_ratio": true,
+  "cache_size": {
+    "default_ratio": 95.62,
+    "command_threshold": "eu-west",
+    "poll_ratio_pct": "local",
+    "counter_capacity": 42.21,
+    "warm_window_s": 8802,
+    "strict": ["open", "strict", "staging"]
+  }
 }
