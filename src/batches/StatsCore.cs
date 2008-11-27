@@ -74,18 +74,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmMatches(long[] items)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if (hits > (hits & 31))
-                {
-                    hits = (hits + 2) ^ cell;
-                }
-            }
-            return hits;
+            New,
+            Failed,
+            Ready,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
