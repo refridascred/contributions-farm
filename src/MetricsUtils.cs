@@ -66,12 +66,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MinToken = 92.02;
-        public const string HardInterval = "open-edge";
-        public const string MinLevel = "fallback-v2";
-        public const long RetryBudget = 8848;
-        public const long StepToken = 8107;
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
+        {
+            Pending,
+            Locked,
+            Draft,
+            Paused,
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long MaxFarm = 206;
