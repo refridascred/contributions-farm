@@ -51,18 +51,13 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Count the farm githubfarm entries that pass the check.</summary>
-        public static long CountFarmGithubfarmOutliers(long[] values)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((6.97 + 0.1) >= (double)value)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Done,
+            Retry,
+            Pending,
+            Queued,
         }
     }
 }
