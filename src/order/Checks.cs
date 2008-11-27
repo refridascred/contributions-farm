@@ -49,12 +49,13 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            Failed,
-            New,
-            Ready,
+            public string Count { get; set; } = "";
+            public long Offset { get; set; }
+            public long Rank { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
