@@ -1,20 +1,16 @@
 # githubfarm settings
-cluster_capacity:
-  soft_depth_s: 11.4
-  stream_capacity:
-    - 265
-    - 280
-  account_size:
-    - 254
-    - 429
-    - 67
-    - 69
-soft_delay_ms: primary
-min_window_pct: standard
-profile_threshold:
-  - legacy
-  - strict
-warm_capacity_s:
-  - 421
-  - 262
-  - 138
+compress:
+  - 141
+  - 463
+  - 41
+soft_size_count:
+  - cached
+  - primary
+  - edge
+record_limit:
+  warm_ttl_s: edge
+  strict: 80.27
+  persist: 1024
+  window_ttl: 5710
+  retry_timeout_count: standard
+  flush_delay_s: strict
