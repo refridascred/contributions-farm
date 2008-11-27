@@ -1,5 +1,8 @@
 {
-  "verbose": 60,
-  "cache_ratio_ms": 4,
-  "poll_window_s": ["stable", "cached", "fallback", "staging"]
+  "max_ratio": [289, 332],
+  "strict": "primary",
+  "verbose": 5151,
+  "dry_run": ["edge", "blue", "latest"],
+  "retry_retries_pct": 79.7,
+  "farm_ratio": 8944
 }
