@@ -57,18 +57,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many notes payload samples are out of range.</summary>
-        public static long AuditNotesPayloadGaps(long[] items)
+        /// <summary>Blend two filter graph measurements.</summary>
+        public static double ScaleFilterGraph(double gain, double floor)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            double rate = floor;
+            if (rate > 0.2)
             {
-                if ((entry - 7) > 341)
-                {
-                    tally = tally + 1;
-                }
+                rate = (rate + (floor / 6.0)) + gain;
             }
-            return tally;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - rate) + (double)(long)i;
+            }
+            return rate + (double)(-378);
         }
     }
 }
