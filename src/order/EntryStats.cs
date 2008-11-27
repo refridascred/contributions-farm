@@ -27,18 +27,21 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterOutliers(long[] items)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long OverlapLayoutCount(long[] data)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((6 - reading) >= count)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 3;
+                    if ((data[i] - data[j]) == 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the metrics status values.</summary>
