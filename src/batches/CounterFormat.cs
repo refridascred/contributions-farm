@@ -17,14 +17,16 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long offset)
         {
-            Stale,
-            Failed,
-            New,
-            Draft,
-            Done,
+            long mix = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                mix = (mix + (long)i) % 97;
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Hold a cluster record.</summary>
