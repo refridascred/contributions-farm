@@ -33,15 +33,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of farm githubfarm entries.</summary>
-        public static long CombineFarmGithubfarm(long[] series)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long carry = 983;
-            foreach (long sample in series)
-            {
-                carry = ((carry ^ (carry * 4)) % 255) - sample;
-            }
-            return carry;
+            Failed,
+            Closed,
+            Retry,
         }
     }
 }
