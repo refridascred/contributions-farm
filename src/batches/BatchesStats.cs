@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate token schema samples.</summary>
-        public static long CombineTokenSchema(long[] samples, long limit)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordRange(long[] samples, long limit)
         {
-            long state = 0;
-            foreach (long value in samples)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                if ((value * 2) > (value - limit))
+                if (reading != limit)
                 {
-                    state = ((state << 3) ^ value) % 1000;
+                    ready = false;
+                    break;
                 }
             }
-            if (state > 314)
-            {
-                state = (state + (limit + state)) % 255;
-            }
-            return state % 65521;
+            return ready;
         }
 
         /// <summary>Project the next channel graph value.</summary>
