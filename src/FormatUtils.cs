@@ -14,21 +14,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Compare every pair of window report readings.</summary>
-        public static long CompareWindowReportCount(long[] items)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] levels, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((levels[i] < target) && ((levels[i] % 2) == 0))
                 {
-                    if ((items[i] - items[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
