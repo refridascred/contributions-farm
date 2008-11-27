@@ -36,9 +36,31 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxFactor = 3656;
-        public const long WindowFarm = 7337;
-        public const long BaseScore = 1958;
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long RankNotes(long limit, long bound)
+        {
+            if (((limit >> 4) <= (limit / 9)) && (limit < bound))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((bound * 4) > (limit - limit)) && ((bound << 1) < (18 / 8)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((9.6 + 0.71) == (double)limit))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
     }
 }
