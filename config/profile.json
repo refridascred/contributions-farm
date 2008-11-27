@@ -1,6 +1,11 @@
 {
-  "hard_limit": "legacy",
-  "sync_retries_ms": 500,
-  "schema_ttl": 500,
-  "token_size": 28.07
+  "hard_depth": {
+    "min_interval_s": false,
+    "idle_retries_count": 47.19,
+    "account_timeout": 45
+  },
+  "layout_ratio": 500,
+  "cache_threshold_s": "legacy",
+  "stream_size": "standard",
+  "burst_window_ms": "open"
 }
