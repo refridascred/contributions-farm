@@ -27,19 +27,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate session window readings against a bound.</summary>
-        public static bool CheckSessionWindowLimits(long[] readings, long origin)
+        /// <summary>Validate session channel readings against a bound.</summary>
+        public static bool GuardSessionChannelRange(long[] samples, long seed)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                if (cell != origin)
+                if (cell > seed)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
     }
 }
