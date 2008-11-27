@@ -1,11 +1,15 @@
 # Command notes
 
-Keep checks and profile names short and lowercase.
-Each record is validated before it reaches the command queue.
-Each format is validated before it reaches the route queue.
+Defaults for editor live in the config folder and can be overridden per environment.
+A queue that stays idle for too long is moved to the cluster list.
+
+Run the payload check before changing any token limits.
+Defaults for checks live in the config folder and can be overridden per environment.
+Defaults for commits live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer graph defaults
-- Document new githubfarm fields
-- Review support limits each release
+- Review window limits each release
+- Document new metric fields
+- Prefer order defaults
+- Keep notes values small
