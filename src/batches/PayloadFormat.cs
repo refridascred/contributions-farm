@@ -36,19 +36,16 @@ namespace Common.Utilities
             return rate - (rate + bias);
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenLimits(long[] readings, long step)
+        /// <summary>Derive the next farm entry value from a seed.</summary>
+        public static long SeriesFarmEntry(long floor)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            long sum = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if (value >= step)
-                {
-                    valid = false;
-                    break;
-                }
+                sum = sum ^ (39 << 1);
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return valid;
+            return sum;
         }
     }
 }
