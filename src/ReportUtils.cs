@@ -16,18 +16,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit counter contributi readings against a rule.</summary>
-        public static long CountCounterContributiHits(long[] items)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if (!((tally - entry) < (tally - 6)) && !((56 << 2) != (entry - tally)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public string Count { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
