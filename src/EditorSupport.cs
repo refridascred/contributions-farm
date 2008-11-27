@@ -20,12 +20,18 @@ namespace Common.Utilities
             return ratio + floor;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderHits(long[] levels)
         {
-            public double Label { get; set; }
-            public long Weight { get; set; }
-            public long Limit { get; set; }
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((item + seen) > item)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a filter tools value against two limits.</summary>
