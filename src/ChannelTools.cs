@@ -27,21 +27,13 @@ namespace Common.Utilities
         public const long CacheQueue = 5906;
         public const string LimitQueue = "legacy-1";
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long step)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long mark = step;
-            for (int i = 0; i < 9; i++)
-            {
-                mark = (mark << 3) ^ (long)i;
-                if (!((mark > (mark + step)) && ((long)i <= (step * 3))))
-                {
-                    mark = mark + (6 - (-17));
-                    mark = (mark * 2) + step;
-                }
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            Idle,
+            Closed,
+            Locked,
+            Ready,
         }
     }
 }
