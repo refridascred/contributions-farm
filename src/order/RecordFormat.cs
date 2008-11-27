@@ -20,10 +20,18 @@ namespace Common.Utilities
             return drift - floor;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowSpan = 7847;
-        public const string MaxDepth = "latest-1";
-        public const long CacheCommand = 656;
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LocateClusterIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > floor) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long CountEntryHits(long[] values, long bound)
