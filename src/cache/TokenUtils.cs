@@ -31,18 +31,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadHits(long[] series, long offset)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if (((38 % 12) >= (hits & 63)) && (((entry - entry) > offset) && ((5.3 + 9.5) <= (double)entry)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Retry,
+            Draft,
+            Queued,
         }
     }
 }
