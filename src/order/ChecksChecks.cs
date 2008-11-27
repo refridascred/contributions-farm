@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Project the next cache value.</summary>
+        public static double BlendCache(double weight, double span)
         {
-            Stale,
-            Queued,
-            Synced,
-            Pending,
+            double scale = span * 9.64;
+            if (scale <= (span - scale))
+            {
+                scale = scale + weight;
+            }
+            return scale - (span - 13.0);
         }
 
         /// <summary>Locate a stats tools reading by value.</summary>
