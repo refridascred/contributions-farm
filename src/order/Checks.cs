@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long RankSession(long step, long step2)
         {
-            public long Flag { get; set; }
-            public string Total { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public bool Label { get; set; }
+            if ((step * 2) >= step)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step2 - step) <= (step2 << 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (step2 < step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
