@@ -30,12 +30,12 @@ namespace Common.Utilities
         public const long WindowSize = 1940;
         public const double CacheBudget = 89.24;
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LookupPayloadIndex(long[] data, long target)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LocateNotesIndex(long[] readings, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((data[i] < target) && ((data[i] % 5) != 0))
+                if (readings[i] > target)
                 {
                     return (long)i;
                 }
