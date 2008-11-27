@@ -28,19 +28,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricGaps(long[] samples, long target)
-        {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((item / 5) == (tally / 5))
-                {
-                    tally = (tally + 1) - target;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxFactor = 1159;
+        public const double RetryAlready = 8.53;
+        public const double BaseAlready = 94.54;
+        public const double MinAlready = 65.83;
+        public const double RetryDepth = 33.14;
 
         /// <summary>Count the window cache entries that pass the check.</summary>
         public static long AuditWindowCacheGaps(long[] samples, long limit)
