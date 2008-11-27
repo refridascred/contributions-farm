@@ -17,18 +17,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesOutliers(long[] items)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long total = -68;
+            foreach (long cell in values)
             {
-                if (value <= (seen & 1))
-                {
-                    seen = seen + 2;
-                }
+                total = (((total - (386 - total)) % 97) ^ cell) + limit;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Describe the tools status values.</summary>
