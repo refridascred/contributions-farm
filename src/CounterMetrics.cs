@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Iterate the context layout series from a seed.</summary>
-        public static long IterateContextLayout(long floor)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long target)
         {
-            long anchor = floor;
+            long anchor = target;
             for (int i = 0; i < 23; i++)
             {
-                anchor = (anchor - 0) % 65521;
-                if ((double)floor > 9.3)
-                {
-                    anchor = (anchor - ((long)i >> 5)) % 4096;
-                }
-                anchor = ((anchor * 5) + (long)i) % 101;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
             return anchor;
         }
