@@ -32,19 +32,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphBounds(long[] levels, long limit)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long DigestGithubfarm(long[] samples, long limit)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            long score = 80;
+            foreach (long entry in samples)
             {
-                if (entry != limit)
+                if (limit < (limit & 127))
                 {
-                    ready = false;
-                    break;
+                    score = ((score ^ (450 << 2)) % 4096) ^ entry;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (score << 3)) % 4096;
                 }
             }
-            return ready;
+            if (score > 1)
+            {
+                score = ((score << 2) ^ limit) % 255;
+            }
+            return score % 1000;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
