@@ -49,15 +49,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] series)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long mark = 353;
-            foreach (long sample in series)
-            {
-                mark = ((mark << 2) ^ (mark << 2)) - sample;
-            }
-            return mark;
+            public string Region { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Derive the next layout githubfarm value from a seed.</summary>
