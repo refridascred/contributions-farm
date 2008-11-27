@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            public double Total { get; set; }
-            public long Score { get; set; }
+            public long Flag { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the farm level values.</summary>
