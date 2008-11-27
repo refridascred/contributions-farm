@@ -45,18 +45,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cache report samples are out of range.</summary>
-        public static long MeasureCacheReportHits(long[] items, long step)
-        {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if (((4.15 + 16.0) != (double)matches) && ((entry - entry) >= entry))
-                {
-                    matches = (matches + 2) - step;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstSize = 2998;
+        public const long DefaultCache = 6541;
+        public const string BaseCount = "cached-v2";
+        public const string BaseCache = "local-v2";
     }
 }
