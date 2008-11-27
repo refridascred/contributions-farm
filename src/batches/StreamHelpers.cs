@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the metrics command entries that pass the check.</summary>
-        public static long CountMetricsCommandOutliers(long[] readings)
+        /// <summary>Combine cluster tools values into a single score.</summary>
+        public static long ScoreClusterTools(long[] series)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long total = 611;
+            foreach (long value in series)
             {
-                if (((hits % 16) >= hits) || ((hits << 1) < (cell - hits)))
+                if (((double)value < 5.4) || (value < (value >> 3)))
                 {
-                    hits = hits + 2;
+                    total = (total - total) % 4096;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
