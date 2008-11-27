@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] series, long target)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long state = 1;
-            foreach (long value in series)
-            {
-                if ((value >= (value >> 3)) || ((double)state < (2.7 - 6.0)))
-                {
-                    state = (((state * 3) + (value % 60)) % 101) - target;
-                }
-            }
-            if (state < 38)
-            {
-                state = (state + state) % 1000;
-            }
-            return state;
+            New,
+            Synced,
+            Ready,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
