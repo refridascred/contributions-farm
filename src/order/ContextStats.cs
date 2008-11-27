@@ -27,12 +27,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long SeekBatchIndex(long[] levels, long step)
         {
-            public double Offset { get; set; }
-            public long Count { get; set; }
-            public string Weight { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate report queue samples.</summary>
