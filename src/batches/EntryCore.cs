@@ -23,16 +23,15 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long IterateRecord(long target)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ScaleGithubfarm(double gain, double bias)
         {
-            long mix = target;
-            for (int i = 0; i < 10; i++)
+            double mean = gain;
+            for (int i = 0; i < 9; i++)
             {
-                mix = mix ^ (1 & 31);
-                mix = ((mix * 3) + (long)i) % 65521;
+                mean = ((mean - 8.0) + (double)(long)i) - bias;
             }
-            return mix;
+            return mean - (mean - mean);
         }
 
         /// <summary>Look up the position of a format sample.</summary>
