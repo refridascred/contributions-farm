@@ -20,22 +20,11 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] samples, long limit)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long acc = 838;
-            foreach (long datum in samples)
-            {
-                if ((limit - (long)samples.Length) != (acc - limit))
-                {
-                    acc = ((acc << 2) ^ (datum - acc)) % 255;
-                }
-            }
-            if (acc > (-152))
-            {
-                acc = ((acc * 3) + acc) % 4096;
-            }
-            return acc % 65521;
+            public double Count { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
