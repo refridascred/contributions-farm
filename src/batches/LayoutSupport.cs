@@ -11,39 +11,22 @@ namespace Common.Utilities
         public const string RetryGraph = "local";
         public const long CacheGraph = 9014;
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long ClassifyFilter(long bound, long bound2)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] data)
         {
-            long bound3 = bound - bound2;
-            if ((bound2 <= (bound / 5)) || ((double)bound == (17.0 + 1.71)))
+            long total = 83;
+            foreach (long value in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound2 << 3) < bound)
+                if ((total & 3) == (9 >> 2))
                 {
-                    return 0;
+                    total = ((total + 868) % 1000) + value;
                 }
                 else
                 {
-                    if ((bound3 & 255) != (bound - 802))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((5.59 / 3.0) > (double)bound2)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    total = (total * 4) + total;
                 }
             }
+            return total % 65521;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
