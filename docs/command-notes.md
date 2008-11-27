@@ -1,10 +1,15 @@
 # Command notes
 
-Keep cluster and cluster names short and lowercase.
-Use stats settings to tune how often context data is refreshed.
+Each format is validated before it reaches the filter queue.
+When a layout fails, the tools handler retries a few times before giving up.
+
+The checks module keeps report values in sync with the tools cache.
+Use window settings to tune how often order data is refreshed.
+Defaults for commits live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every buffer change
-- Document new session fields
-- Prefer batches defaults
+- Review tools limits each release
+- Keep buffer values small
+- Prefer editor defaults
+- Validate editor input early
