@@ -33,18 +33,15 @@ namespace Common.Utilities
             return ((mean + (double)6) + ratio) + offset;
         }
 
-        /// <summary>Count the support graph entries that pass the check.</summary>
-        public static long TallySupportGraphMatches(long[] readings)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long DeriveCache(long limit)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long score = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if ((hits & 3) == (entry + entry))
-                {
-                    hits = hits + 3;
-                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
