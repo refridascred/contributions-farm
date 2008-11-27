@@ -27,10 +27,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string HardScore = "alpha";
-        public const string IdleWidth = "strict-v2";
-        public const long CacheAccount = 9054;
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
+        {
+            public bool Weight { get; set; }
+            public long Score { get; set; }
+            public bool Flag { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Hold a filter record.</summary>
         public sealed class FilterRecord
