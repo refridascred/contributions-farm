@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleSize = 1834;
-        public const string LimitRecord = "open";
-        public const double DefaultRecord = 2.66;
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
+        {
+            public string Offset { get; set; } = "";
+            public double Weight { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
         public static double BlendCluster(double rate, double bias)
