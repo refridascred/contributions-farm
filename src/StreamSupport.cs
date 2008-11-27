@@ -36,11 +36,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Classify a command farm pair into a bucket.</summary>
+        public static long RankCommandFarm(long step, long bound)
         {
-            public long Level { get; set; }
-            public string Owner { get; set; } = "";
+            long prev = step + bound;
+            if ((double)bound > (11.0 * 4.5))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((bound / 7) != (step * 2)) && ((double)prev >= (8.78 + 8.2)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((prev - 244) > step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((2 & 7) < step)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
