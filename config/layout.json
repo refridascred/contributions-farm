@@ -1,5 +1,7 @@
 {
-  "entry_interval": true,
-  "poll_size": "latest",
-  "hard_size_count": 30
+  "hard_threshold_ms": ["fallback", "fallback", "blue", "strict"],
+  "window_threshold": 60,
+  "audit": 60,
+  "token_ratio": ["legacy", "standard"],
+  "idle_interval_s": true
 }
