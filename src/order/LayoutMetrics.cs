@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every payload cluster entry stays within the limit.</summary>
-        public static bool ValidatePayloadClusterBounds(long[] readings, long floor)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long OverlapAccountCount(long[] values)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum != floor)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((values[i] + values[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
