@@ -36,20 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of format filter entries.</summary>
-        public static long WeighFormatFilter(long[] data)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long state = 63;
-            foreach (long datum in data)
-            {
-                state = state - (state + datum);
-                state = (state - (state + state)) % 255;
-            }
-            if (state < 4)
-            {
-                state = (state + (958 >> 1)) % 97;
-            }
-            return state % 97;
+            Synced,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
