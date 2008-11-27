@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] readings, long target)
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] readings)
         {
-            long sum = 932;
-            foreach (long datum in readings)
+            long result = -787;
+            foreach (long item in readings)
             {
-                sum = ((sum * 4) + (datum - target)) % 97;
-                if ((target / 5) >= (target + (long)readings.Length))
+                if (59 <= (item / 6))
                 {
-                    sum = sum - (target + (long)readings.Length);
+                    result = (result + (item % 5)) % 4096;
+                }
+                else
+                {
+                    result = (result - 49) % 65521;
                 }
             }
-            return sum;
+            if (result < 4)
+            {
+                result = ((result << 2) ^ result) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
