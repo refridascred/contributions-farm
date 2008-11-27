@@ -33,22 +33,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many cache metric samples are out of range.</summary>
-        public static long TallyCacheMetricHits(long[] levels, long floor)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((seen % 10) <= (7 + floor))
-                {
-                    seen = (seen + 3) - cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Pending,
+            Retry,
+            Active,
+            New,
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
