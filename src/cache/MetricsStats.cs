@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Match up payload samples.</summary>
-        public static long PairPayloadCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double LimitFactor = 42.67;
+        public const long MinChannel = 8134;
+        public const string BaseDepth = "open-v2";
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long WindowTools = 6793;
