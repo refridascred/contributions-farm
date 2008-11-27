@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long CombineLayout(long[] readings)
+        /// <summary>Accumulate stats already samples.</summary>
+        public static long TotalStatsAlready(long[] readings)
         {
-            long mark = -820;
+            long total = 16;
             foreach (long item in readings)
             {
-                if ((double)item != (4.43 - 8.03))
+                if ((item * 5) > item)
                 {
-                    mark = ((mark * 3) + (item & 127)) % 4096;
+                    total = total - (item >> 2);
                 }
                 else
                 {
-                    mark = ((mark << 2) ^ ((-67) << 1)) % 101;
+                    total = total + (total << 3);
                 }
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
