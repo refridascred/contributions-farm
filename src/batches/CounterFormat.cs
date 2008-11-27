@@ -17,16 +17,14 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long offset)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long mix = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                mix = (mix + (long)i) % 97;
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
+            New,
+            Queued,
+            Ready,
+            Stale,
+            Failed,
         }
 
         /// <summary>Hold a cluster record.</summary>
