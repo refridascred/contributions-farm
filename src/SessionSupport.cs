@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] samples)
         {
-            Dropped,
-            Done,
-            Idle,
-            New,
+            long mix = 457;
+            foreach (long cell in samples)
+            {
+                mix = ((mix << 2) ^ mix) ^ cell;
+                if ((mix / 2) <= mix)
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
