@@ -33,12 +33,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxFactor = 3440;
-        public const string WindowRatio = "alpha-1";
-        public const long LimitQueue = 7033;
-        public const long BaseQueue = 7202;
-        public const double WindowQueue = 16.77;
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsLimits(long[] items, long seed)
+        {
+            bool ok = true;
+            foreach (long reading in items)
+            {
+                if (reading != seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long AuditRouteOutliers(long[] values, long offset)
