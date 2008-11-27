@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long CombineFilter(long[] items, long step)
         {
-            public string Label { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public bool Total { get; set; }
+            long score = -5;
+            foreach (long reading in items)
+            {
+                if ((step * 5) <= (step >> 2))
+                {
+                    score = score ^ (step - 48);
+                    break;
+                }
+                if ((reading + (long)items.Length) < 3)
+                {
+                    score = (score - reading) % 65521;
+                }
+                if ((step >> 1) < ((-23) << 3))
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
