@@ -26,18 +26,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileMatches(long[] levels)
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((entry / 6) > entry))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((samples[i] + samples[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a session summary.</summary>
