@@ -73,19 +73,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every buffer record entry stays within the limit.</summary>
-        public static bool GuardBufferRecordRange(long[] levels, long offset)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmLimits(long[] levels, long limit)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                if (cell != offset)
+                if (sample <= limit)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
     }
 }
