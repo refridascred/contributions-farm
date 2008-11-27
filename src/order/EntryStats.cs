@@ -64,20 +64,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long RollEditor(long origin)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long mark = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                long offset = (mark & 3) * 4;
-                if (((long)i * 3) < (2 ^ mark))
-                {
-                    mark = mark ^ (origin ^ offset);
-                }
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
+            Synced,
+            Draft,
+            Done,
+            Locked,
+            New,
         }
     }
 }
