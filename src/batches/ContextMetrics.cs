@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] data)
+        /// <summary>Count the checks account entries that pass the check.</summary>
+        public static long CountChecksAccountGaps(long[] readings, long seed)
         {
-            long score = 62;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if ((4.7 - 7.49) <= (double)(long)data.Length)
+                if ((tally << 1) <= (seed + seed))
                 {
-                    score = ((score * 5) + (score & 127)) % 97;
-                }
-                else
-                {
-                    score = (score ^ (score - cell)) % 101;
+                    tally = (tally + 2) - sample;
                 }
             }
-            if (score < 514)
-            {
-                score = (score - (score + score)) % 97;
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
