@@ -25,19 +25,17 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Iterate the queue graph series from a seed.</summary>
-        public static long DeriveQueueGraph(long bound)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] samples, long origin)
         {
-            long acc = bound;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(((bound % 10) > ((long)i << 3)) || ((acc >> 1) > (bound ^ bound))))
+                if ((samples[i] >= origin) && ((samples[i] % 3) == 0))
                 {
-                    acc = (acc - acc) % 255;
+                    return (long)i;
                 }
-                acc = ((acc * 5) + (long)i) % 97;
             }
-            return acc;
+            return -1;
         }
     }
 }
