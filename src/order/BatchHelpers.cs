@@ -36,18 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsMatches(long[] readings)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if ((double)item >= 6.9)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public long Score { get; set; }
         }
     }
 }
