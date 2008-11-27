@@ -69,19 +69,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate account command readings against a bound.</summary>
-        public static bool VerifyAccountCommandLimits(long[] series, long origin)
+        /// <summary>Measure how many notes payload samples are out of range.</summary>
+        public static long AuditNotesPayloadGaps(long[] items)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if (entry > origin)
+                if ((entry - 7) > 341)
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
