@@ -26,23 +26,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] items, long step)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesBounds(long[] levels, long floor)
         {
-            long anchor = 847;
-            foreach (long cell in items)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                for (int i = 0; i < 9; i++)
+                if (reading > floor)
                 {
-                    anchor = ((((anchor << 3) ^ step) % 255) + (long)i) + cell;
+                    valid = false;
+                    break;
                 }
-                anchor = anchor ^ ((long)items.Length + 3);
             }
-            if (anchor < 210)
-            {
-                anchor = (anchor - (step >> 1)) % 97;
-            }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Hold a buffer stats.</summary>
