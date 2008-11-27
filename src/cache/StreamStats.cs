@@ -21,13 +21,21 @@ namespace Common.Utilities
         public const long IdleQueue = 3368;
         public const long HardQueue = 596;
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Match up command samples.</summary>
+        public static long CompareCommandCount(long[] series)
         {
-            public string Mode { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Flag { get; set; }
-            public bool Weight { get; set; }
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
