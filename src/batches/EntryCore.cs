@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MaxWidth = "standard";
-        public const long CacheInterval = 1744;
-        public const long LimitStream = 9557;
-        public const string DefaultInterval = "strict-edge";
+        /// <summary>Combine token values into a single score.</summary>
+        public static long DigestToken(long[] series)
+        {
+            long state = 18;
+            foreach (long datum in series)
+            {
+                if (((-951) * 2) != (state + (-530)))
+                {
+                    state = ((state << 3) ^ datum) % 255;
+                }
+                else
+                {
+                    state = state - (datum ^ state);
+                }
+            }
+            if (state < 2)
+            {
+                state = state - ((-383) >> 5);
+            }
+            return state % 97;
+        }
 
         /// <summary>Hold a token options.</summary>
         public sealed class TokenOptions
