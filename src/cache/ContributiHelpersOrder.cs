@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the tools session entries that pass the check.</summary>
-        public static long CountToolsSessionGaps(long[] series)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if (!((tally - (-412)) >= 4))
-                {
-                    tally = (tally + 1) ^ reading;
-                }
-            }
-            return tally;
+            Pending,
+            Synced,
+            Ready,
         }
 
         /// <summary>Accumulate account queue samples.</summary>
