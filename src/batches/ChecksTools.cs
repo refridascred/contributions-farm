@@ -33,22 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up batch layout samples.</summary>
-        public static long MatchBatchLayoutCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryTools = 2204;
+        public const long BaseTools = 2373;
+        public const string DefaultTools = "stable-edge";
+        public const long BatchTools = 4654;
+        public const long StepRatio = 796;
 
         /// <summary>Scale a graph figure with a bias.</summary>
         public static double BlendGraph(double weight, double offset)
