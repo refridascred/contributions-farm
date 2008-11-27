@@ -1,5 +1,11 @@
 {
-  "compress": "fallback",
-  "tools_ratio": false,
-  "max_depth": [85, 124, 356, 238]
+  "readonly": ["blue", "staging"],
+  "audit": {
+    "verbose": 81,
+    "base_delay": "latest",
+    "readonly": [350, 310, 445]
+  },
+  "batch_retries_ms": "local",
+  "flush_ttl_count": "eu-west",
+  "idle_retries_ms": "cached"
 }
