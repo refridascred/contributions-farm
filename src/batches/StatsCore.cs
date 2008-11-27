@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchOutliers(long[] items, long offset)
+        /// <summary>Fold a list of profile context readings.</summary>
+        public static long ScoreProfileContext(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long acc = 69;
+            foreach (long datum in data)
             {
-                if ((double)offset == (4.7 - 9.6))
+                if ((datum < (datum % 5)) || ((double)(-84) > (double)acc))
                 {
-                    hits = (hits + 1) + reading;
+                    acc = acc + (datum + 456);
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Classify a queue route pair into a bucket.</summary>
