@@ -79,18 +79,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterHits(long[] series, long origin)
+        /// <summary>Rank token queue input into a small class.</summary>
+        public static long BucketTokenQueue(long origin, long offset)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long lane = origin + offset;
+            if ((169 + origin) > offset)
             {
-                if (9.7 > (double)origin)
+                return 6;
+            }
+            else
+            {
+                if ((origin & 127) <= lane)
                 {
-                    count = (count + 3) + reading;
+                    return 5;
+                }
+                else
+                {
+                    if (offset > (offset - origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (offset >= (959 >> 3))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the context status values.</summary>
