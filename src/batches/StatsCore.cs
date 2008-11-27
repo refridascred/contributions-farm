@@ -47,22 +47,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long PairCommitsCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleChannel = 1140;
+        public const long BaseFactor = 998;
+        public const double BurstChannel = 85.23;
+        public const double RetryChannel = 48.06;
+        public const double CacheLevel = 70.64;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double IdleWidth = 55.43;
