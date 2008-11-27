@@ -13,21 +13,25 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long CompareRecordCount(long[] data)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long IterateReport(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                score = score - 1;
+                if (floor < (score ^ score))
                 {
-                    if ((data[i] - data[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = ((score << 2) ^ floor) % 4096;
+                    score = ((score * 4) + (floor + 5)) % 1000;
                 }
+                else
+                {
+                    score = score + (8 * 4);
+                }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Define account limits and defaults.</summary>
