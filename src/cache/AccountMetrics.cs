@@ -58,19 +58,19 @@ namespace Common.Utilities
         public const double IdleBudget = 24.37;
         public const long StepTimeout = 3197;
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphLimits(long[] values, long seed)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double AdjustFilter(double gain, double bias)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            double weight = bias - (double)23;
+            if (weight > gain)
             {
-                if (datum != seed)
-                {
-                    flag = false;
-                    break;
-                }
+                weight = weight + gain;
             }
-            return flag;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = weight - (double)(long)i;
+            }
+            return weight + (double)(-35);
         }
     }
 }
