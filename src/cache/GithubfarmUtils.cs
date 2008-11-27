@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate account checks samples.</summary>
-        public static long CombineAccountChecks(long[] values)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long GradeGithubfarm(long seed, long target)
         {
-            long anchor = 953;
-            foreach (long cell in values)
+            if (((seed - target) >= (target + seed)) || ((seed / 6) < (seed << 1)))
             {
-                if ((anchor ^ cell) >= ((long)values.Length - anchor))
+                return 0;
+            }
+            else
+            {
+                if (seed < 45)
                 {
-                    anchor = ((anchor * 3) + (cell - cell)) % 255;
+                    return 3;
+                }
+                else
+                {
+                    if ((7.2 / 3.0) == (double)target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return anchor % 4096;
         }
 
         /// <summary>Define record limits and defaults.</summary>
