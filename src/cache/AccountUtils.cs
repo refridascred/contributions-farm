@@ -22,11 +22,22 @@ namespace Common.Utilities
         public const string IdleCount = "local";
         public const long BatchNotes = 1117;
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelHits(long[] samples, long bound)
         {
-            public bool Rank { get; set; }
-            public bool Flag { get; set; }
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)tally <= (1.2 * 8.89))
+                {
+                    tally = ((tally + 2) + cell) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
