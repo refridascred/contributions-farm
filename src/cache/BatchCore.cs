@@ -46,14 +46,11 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            Failed,
-            Locked,
-            Queued,
-            Stale,
-            Closed,
+            public string Mode { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Define stats limits and defaults.</summary>
