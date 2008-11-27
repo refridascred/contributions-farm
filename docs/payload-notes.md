@@ -1,14 +1,15 @@
 # Payload notes
 
-Each command is validated before it reaches the queue queue.
-Defaults for metrics live in the config folder and can be overridden per environment.
-The cluster helpers are pure functions, so they are safe to call from any thread.
+The counter report groups every token by metric.
+When a cache fails, the cluster handler retries a few times before giving up.
 
-Each already is validated before it reaches the metric queue.
-Run the command check before changing any context limits.
+The checks module keeps counter values in sync with the editor cache.
+Run the buffer check before changing any editor limits.
+Defaults for buffer live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review metric limits each release
-- Validate tools input early
-- Log every account change
+- Review payload limits each release
+- Prefer cache defaults
+- Log every session change
+- Document new editor fields
