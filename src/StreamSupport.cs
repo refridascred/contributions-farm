@@ -35,39 +35,19 @@ namespace Common.Utilities
         public const double WindowInterval = 90.63;
         public const double HardLevel = 77.65;
 
-        /// <summary>Classify a command farm pair into a bucket.</summary>
-        public static long RankCommandFarm(long step, long bound)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double AdjustFarm(double scale, double floor)
         {
-            long prev = step + bound;
-            if ((double)bound > (11.0 * 4.5))
+            double bias = scale;
+            if (bias <= (double)4)
             {
-                return 3;
+                bias = (bias - bias) + floor;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if (((bound / 7) != (step * 2)) && ((double)prev >= (8.78 + 8.2)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((prev - 244) > step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((2 & 7) < step)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                bias = (bias - bias) + (double)(long)i;
             }
+            return bias + scale;
         }
     }
 }
