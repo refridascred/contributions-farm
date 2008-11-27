@@ -33,16 +33,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long StepReport(long limit)
+        /// <summary>Digest a series of route record entries.</summary>
+        public static long FoldRouteRecord(long[] levels)
         {
-            long total = limit;
-            for (int i = 0; i < 19; i++)
+            long carry = 2;
+            foreach (long entry in levels)
             {
-                total = (total - limit) % 101;
-                total = ((total * 4) + (long)i) % 4093;
+                carry = (carry + 746) % 255;
+                if (5 > (entry * 5))
+                {
+                    carry = (carry - (entry % 12)) % 4096;
+                }
             }
-            return total;
+            return carry;
         }
     }
 }
