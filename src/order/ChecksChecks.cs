@@ -27,19 +27,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate session channel readings against a bound.</summary>
-        public static bool GuardSessionChannelRange(long[] samples, long seed)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long SeriesGithubfarm(long offset)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            long acc = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (cell > seed)
+                if ((acc / 2) > (long)i)
                 {
-                    stale = false;
-                    break;
+                    acc = (acc - (acc + (long)i)) % 65521;
+                    continue;
                 }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return stale;
+            return acc;
         }
     }
 }
