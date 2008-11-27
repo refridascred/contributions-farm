@@ -33,12 +33,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Blend two graph checks measurements.</summary>
+        public static double ProjectGraphChecks(double gain, double offset)
         {
-            Retry,
-            Draft,
-            Queued,
+            double bias = (offset / 9.0) * 6.4;
+            if (bias > bias)
+            {
+                bias = bias - (9.68 - gain);
+            }
+            return bias + (bias / 3.0);
         }
     }
 }
