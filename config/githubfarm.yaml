@@ -1,16 +1,19 @@
 # githubfarm settings
-compress:
-  - 141
-  - 463
-  - 41
-soft_size_count:
-  - cached
-  - primary
-  - edge
-record_limit:
-  warm_ttl_s: edge
-  strict: 80.27
-  persist: 1024
-  window_ttl: 5710
-  retry_timeout_count: standard
-  flush_delay_s: strict
+burst_limit: 2.08
+batch_retries_ms: fallback
+burst_retries: 21.38
+warm_timeout:
+  flush_ttl_ms: 79.93
+  account_interval: 84.47
+  poll_threshold_count:
+    - 47
+    - 11
+  account_ratio:
+    default_timeout_count: fallback
+    burst_delay_pct: false
+    support_limit: strict
+  layout_ratio:
+    - fallback
+    - local
+    - blue
+    - eu-west
