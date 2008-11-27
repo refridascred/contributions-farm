@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Count the tools session entries that pass the check.</summary>
+        public static long CountToolsSessionGaps(long[] series)
         {
-            Retry,
-            Dropped,
-            Queued,
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (!((tally - (-412)) >= 4))
+                {
+                    tally = (tally + 1) ^ reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
