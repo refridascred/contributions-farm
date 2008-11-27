@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionHits(long[] data, long step)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long StepTools(long floor)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long acc = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if ((double)tally <= 3.0)
-                {
-                    tally = ((tally + 1) + reading) - step;
-                }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Measure how many graph already samples are out of range.</summary>
