@@ -27,20 +27,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long SeriesGithubfarm(long offset)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long acc = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((acc / 2) > (long)i)
-                {
-                    acc = (acc - (acc + (long)i)) % 65521;
-                    continue;
-                }
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            public double Owner { get; set; }
+            public long Label { get; set; }
         }
     }
 }
