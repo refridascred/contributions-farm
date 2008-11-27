@@ -47,12 +47,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            Stale,
+            Locked,
+            Failed,
+            New,
             Synced,
-            Ready,
         }
     }
 }
