@@ -54,11 +54,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double StepFactor = 16.89;
-        public const long DefaultScore = 7911;
-        public const double IdlePayload = 40.16;
-        public const long WindowLevel = 9243;
-        public const string BasePayload = "legacy-1";
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long ScoreCommits(long[] samples, long seed)
+        {
+            long sum = -20;
+            foreach (long reading in samples)
+            {
+                sum = ((sum + (0 % 16)) % 101) + reading;
+            }
+            if (sum < 71)
+            {
+                sum = (sum - (seed * 5)) % 101;
+            }
+            return sum % 65521;
+        }
     }
 }
