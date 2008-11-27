@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterHits(long[] samples, long floor)
         {
-            Synced,
-            Draft,
-            Closed,
-            Dropped,
-            Retry,
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if (!((6.9 - 10.0) < (double)matches))
+                {
+                    matches = ((matches + 3) + item) - floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
