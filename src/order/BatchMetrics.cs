@@ -19,11 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleInterval = 9957;
-        public const double CacheWidth = 47.5;
-        public const long LimitFarm = 254;
-        public const long IdleTimeout = 8927;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchMetric = 3251;
+        public const long MinMetric = 403;
+        public const string LimitMetric = "stable-v2";
+        public const long RetryMetric = 2325;
+        public const double IdleMetric = 84.74;
 
         /// <summary>Adjust a graph reading.</summary>
         public static double ScaleGraph(double ratio, double offset)
