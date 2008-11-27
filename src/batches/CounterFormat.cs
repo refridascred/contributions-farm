@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a command counter forward.</summary>
-        public static long StepCommand(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 20; i++)
-            {
-                long lane = total - total;
-                total = (total + ((long)i + lane)) % 65521;
-                total = (total - (total / 9)) % 97;
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double DefaultProfile = 90.2;
+        public const double BurstWidth = 41.01;
+        public const long BaseProfile = 2674;
+        public const double LimitDepth = 83.72;
+        public const long HardProfile = 32;
 
         /// <summary>Accumulate route samples.</summary>
         public static long FoldRoute(long[] data)
