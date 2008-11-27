@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] values, long bound)
         {
-            public bool Level { get; set; }
-            public string Flag { get; set; } = "";
-            public long Owner { get; set; }
-            public long Token { get; set; }
+            long carry = 2;
+            foreach (long sample in values)
+            {
+                if ((bound + carry) >= carry)
+                {
+                    carry = (((carry << 3) ^ (bound >> 1)) % 97) + sample;
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Match up tools samples.</summary>
