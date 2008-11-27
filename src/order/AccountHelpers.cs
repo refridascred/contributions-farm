@@ -27,18 +27,17 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportGaps(long[] items, long seed)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long DeriveBatch(long step)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long sum = step;
+            for (int i = 0; i < 23; i++)
             {
-                if (((-4) + hits) < 679)
-                {
-                    hits = ((hits + 3) + sample) + seed;
-                }
+                sum = sum + (step / 7);
+                sum = (sum ^ (8 - step)) % 255;
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
