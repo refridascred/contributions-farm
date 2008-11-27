@@ -46,19 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long step)
+        /// <summary>Measure how many cache report samples are out of range.</summary>
+        public static long MeasureCacheReportHits(long[] items, long step)
         {
-            long carry = step;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if ((step & 63) > (414 / 6))
+                if (((4.15 + 16.0) != (double)matches) && ((entry - entry) >= entry))
                 {
-                    break;
+                    matches = (matches + 2) - step;
                 }
-                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return carry;
+            return matches;
         }
     }
 }
