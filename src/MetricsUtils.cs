@@ -30,19 +30,26 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyRange(long[] items, long offset)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] series, long offset)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long anchor = 0;
+            foreach (long item in series)
             {
-                if (cell != offset)
+                if ((anchor % 60) == (item & 15))
                 {
-                    flag = false;
+                    anchor = (anchor + (anchor >> 4)) % 255;
+                }
+                if ((offset << 2) <= (offset + anchor))
+                {
                     break;
                 }
             }
-            return flag;
+            if (anchor < 966)
+            {
+                anchor = anchor + (anchor + anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
