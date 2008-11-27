@@ -50,15 +50,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long WeighFormat(long[] samples, long target)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmMatches(long[] data)
         {
-            long sum = 638;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                sum = ((sum - sum) + cell) + target;
+                if ((48 >> 1) > (datum >> 3))
+                {
+                    tally = tally + 2;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
