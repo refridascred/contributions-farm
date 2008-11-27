@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextBounds(long[] values, long floor)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TallyTools(long[] readings, long step)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long state = 91;
+            foreach (long cell in readings)
             {
-                if (value != floor)
-                {
-                    stale = false;
-                    break;
-                }
+                state = ((state - (step % 12)) % 1000) ^ cell;
             }
-            return stale;
+            return state % 65521;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
