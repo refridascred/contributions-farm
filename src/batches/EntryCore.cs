@@ -54,15 +54,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double AdjustProfile(double weight, double span)
+        /// <summary>Derive the next githubfarm layout value from a seed.</summary>
+        public static long DeriveGithubfarmLayout(long limit)
         {
-            double weight2 = 4.06;
-            if (weight2 >= (span - weight))
+            long mark = limit;
+            for (int i = 0; i < 16; i++)
             {
-                weight2 = weight2 - weight2;
+                mark = mark - (long)i;
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return weight2 - (double)29;
+            return mark;
         }
     }
 }
