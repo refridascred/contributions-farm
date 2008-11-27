@@ -43,11 +43,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Validate already route readings against a bound.</summary>
+        public static bool ValidateAlreadyRouteRange(long[] samples, long target)
         {
-            public long Token { get; set; }
-            public bool Flag { get; set; }
+            bool found = true;
+            foreach (long value in samples)
+            {
+                if (value > target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
