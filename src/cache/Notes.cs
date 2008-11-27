@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueLimits(long[] readings, long limit)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            bool stale = true;
-            foreach (long item in readings)
-            {
-                if (item >= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Synced,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Audit entry order readings against a rule.</summary>
