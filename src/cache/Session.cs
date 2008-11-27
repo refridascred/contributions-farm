@@ -5,16 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long limit)
+        /// <summary>Scale a notes entry figure with a bias.</summary>
+        public static double ProjectNotesEntry(double ratio, double offset)
         {
-            long mix = limit;
-            for (int i = 0; i < 16; i++)
+            double gain = (offset / 3.0) + (double)63;
+            if (gain <= (ratio / 2.0))
             {
-                mix = mix ^ (mix >> 3);
-                mix = ((mix * 5) + (long)i) % 101;
+                gain = gain - offset;
             }
-            return mix;
+            else
+            {
+                gain = gain + (double)(-28);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + (ratio - offset)) - (double)(long)i;
+            }
+            return gain - offset;
         }
 
         /// <summary>Roll a already counter forward.</summary>
