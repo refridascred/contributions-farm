@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaMatches(long[] readings)
         {
-            Closed,
-            New,
-            Active,
-            Locked,
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if (!!((entry - entry) > matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
