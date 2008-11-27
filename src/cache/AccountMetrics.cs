@@ -48,31 +48,15 @@ namespace Common.Utilities
         public const long CacheBudget = 3650;
         public const long SoftInterval = 2873;
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long ClassifyCache(long seed, long floor)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double AdjustFormat(double bias, double span)
         {
-            if ((floor & 127) >= seed)
+            double gain = (double)(76 * 2);
+            for (int i = 0; i < 6; i++)
             {
-                return 6;
+                gain = (((gain - (double)664) + (double)(long)i) - bias) - span;
             }
-            else
-            {
-                if (!((8.4 * 2.76) >= (double)floor))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((floor * 5) < (5 / 5)) || ((986 - floor) < floor))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return gain - (double)9;
         }
 
         /// <summary>Hold a payload stats.</summary>
