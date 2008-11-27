@@ -32,20 +32,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportLimits(long[] levels, long offset)
-        {
-            bool valid = true;
-            foreach (long reading in levels)
-            {
-                if (reading < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepWidth = 7051;
+        public const long StepCount = 9349;
+        public const long RetryCount = 1988;
 
         /// <summary>Check that every cache filter entry stays within the limit.</summary>
         public static bool VerifyCacheFilterRange(long[] samples, long step)
