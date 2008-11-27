@@ -31,16 +31,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long SeriesBatches(long origin)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long StepWindow(long seed)
         {
-            long carry = origin;
-            for (int i = 0; i < 12; i++)
+            long state = seed;
+            for (int i = 0; i < 24; i++)
             {
-                carry = (carry << 3) ^ ((long)i << 3);
-                carry = ((carry * 2) + (long)i) % 4093;
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Hold a editor stats.</summary>
