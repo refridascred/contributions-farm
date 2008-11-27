@@ -12,21 +12,17 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long CompareQueueCount(long[] series)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long SeekAccountIndex(long[] samples, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (samples[i] >= step)
                 {
-                    if ((series[i] - series[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Blend two stats measurements.</summary>
