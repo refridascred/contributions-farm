@@ -63,12 +63,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long BucketCommits(long step, long seed)
         {
-            Done,
-            Failed,
-            Retry,
+            if (((27 - 33) >= seed) || (17.0 < (double)seed))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((8.6 / 2.0) != (double)step)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((seed / 8) > seed)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
