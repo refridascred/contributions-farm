@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatRange(long[] data, long target)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueHits(long[] readings, long limit)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (cell <= target)
+                if (((8.8 - 5.6) >= (double)value) && (((2.02 - 19.0) < (double)limit) && ((limit & 255) >= (value + value))))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Define support limits and defaults.</summary>
