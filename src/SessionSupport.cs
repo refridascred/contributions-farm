@@ -22,13 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Fold a list of commits format readings.</summary>
+        public static long TallyCommitsFormat(long[] values, long seed)
         {
-            public double Count { get; set; }
-            public double Limit { get; set; }
-            public long Total { get; set; }
-            public bool Mode { get; set; }
+            long acc = 31;
+            foreach (long reading in values)
+            {
+                if ((double)reading == (double)seed)
+                {
+                    acc = (acc ^ (reading - acc)) % 65521;
+                }
+            }
+            if (acc < 2)
+            {
+                acc = (acc + (acc - 2)) % 255;
+            }
+            return acc % 97;
         }
 
         /// <summary>Accumulate metric samples.</summary>
