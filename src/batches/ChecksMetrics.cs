@@ -53,12 +53,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryProfile = 8901;
-        public const long DefaultProfile = 4950;
-        public const long WindowProfile = 7205;
-        public const long CacheProfile = 9934;
-        public const string BaseBudget = "latest";
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
+        {
+            Closed,
+            Active,
+            Failed,
+        }
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long FoldContributi(long[] readings, long target)
