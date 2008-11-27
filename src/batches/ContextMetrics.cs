@@ -50,10 +50,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double MinChannel = 9.8;
-        public const long BaseBudget = 717;
-        public const long DefaultWidth = 8321;
+        /// <summary>Classify a cluster command pair into a bucket.</summary>
+        public static long ClassifyClusterCommand(long offset, long offset2)
+        {
+            if (56 <= (offset2 % 64))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((3 % 64) != (offset2 + offset)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Describe the window level values.</summary>
         public enum WindowLevel
