@@ -1,9 +1,5 @@
 # support settings
-retry_ratio_s: local
-hard_size_count: open
-command_limit: 250
-strict:
-  stream_limit: 83.58
-  burst_size: 0.18
-  hard_window_s: 250
-dry_run: 37
+warm_size_s: 15.87
+min_ttl_s: false
+default_interval: 100
+burst_ttl_ms: latest
