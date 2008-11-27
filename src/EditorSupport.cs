@@ -56,19 +56,17 @@ namespace Common.Utilities
             return (ratio2 - (floor - ratio2)) + ratio;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ScaleRoute(double rate, double bias)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] levels, long target)
         {
-            double load = rate;
-            if (load < (double)8)
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = (load - (5.3 / 3.0)) + bias;
+                if (levels[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + rate) + (double)(long)i;
-            }
-            return load + 13.0;
+            return -1;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
