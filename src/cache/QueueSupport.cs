@@ -42,19 +42,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every cache filter entry stays within the limit.</summary>
-        public static bool VerifyCacheFilterRange(long[] samples, long step)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            bool ready = true;
-            foreach (long reading in samples)
-            {
-                if (reading <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Level { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
