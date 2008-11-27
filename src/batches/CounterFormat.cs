@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountGaps(long[] items, long limit)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long StepCommand(long step)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long total = step;
+            for (int i = 0; i < 20; i++)
             {
-                if ((matches >> 1) <= (limit + limit))
-                {
-                    matches = (matches + 2) + value;
-                }
+                long lane = total - total;
+                total = (total + ((long)i + lane)) % 65521;
+                total = (total - (total / 9)) % 97;
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Fold a list of report readings.</summary>
