@@ -29,19 +29,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmMatches(long[] samples, long floor)
-        {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if (((count >> 2) < (count / 5)) || ((7.53 * 4.68) == (double)count))
-                {
-                    count = ((count + 2) - item) - floor;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string IdleSchema = "strict-1";
+        public const long BatchSpan = 2481;
+        public const long MaxSchema = 2535;
+        public const long RetryWidth = 6224;
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long ScoreLayout(long[] series, long seed)
