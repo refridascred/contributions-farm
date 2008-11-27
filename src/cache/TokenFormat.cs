@@ -24,20 +24,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long StepChannel(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 17; i++)
-            {
-                if (((double)0 >= (double)anchor) || ((0 & 1) == (anchor ^ target)))
-                {
-                    anchor = (anchor * 4) + ((long)i ^ target);
-                    anchor = (anchor ^ 67) % 4096;
-                }
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BaseSpan = "staging-v2";
+        public const string DefaultWidth = "open-edge";
+        public const string LimitFarm = "strict-1";
     }
 }
