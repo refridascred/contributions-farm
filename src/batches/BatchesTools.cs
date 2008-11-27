@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
-        {
-            public long Total { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseProfile = 6925;
+        public const long BatchSize = 3074;
+        public const long LimitSpan = 2303;
+        public const string SoftProfile = "open-v2";
+        public const long IdleProfile = 5942;
 
         /// <summary>Describe the cache class values.</summary>
         public enum CacheClass
