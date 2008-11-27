@@ -32,19 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphBounds(long[] values, long limit)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            bool found = true;
-            foreach (long datum in values)
-            {
-                if (datum >= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Rank { get; set; }
+            public double Stamp { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a schema record.</summary>
