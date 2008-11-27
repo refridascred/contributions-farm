@@ -52,12 +52,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteHits(long[] levels, long offset)
         {
-            Closed,
-            Active,
-            Failed,
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((offset ^ 626) > (matches / 9))
+                {
+                    matches = (matches + 3) ^ reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first tools order entry that matches the target.</summary>
