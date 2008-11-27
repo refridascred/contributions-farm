@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long BucketRoute(long offset, long bound)
+        /// <summary>Adjust a metrics farm reading.</summary>
+        public static double AdjustMetricsFarm(double bias, double floor)
         {
-            if ((bound + 614) <= offset)
+            double load = (double)(29 - 840);
+            if (load <= bias)
             {
-                return 6;
+                load = load - floor;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if (((74 / 6) < (bound / 6)) && ((0 ^ offset) == (710 * 5)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (31 < offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                load = (load + bias) + (double)(long)i;
             }
+            return load + load;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
