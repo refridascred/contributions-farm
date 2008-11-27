@@ -64,10 +64,17 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MinStats = "cached-edge";
-        public const long HardStats = 4948;
-        public const double BaseWidth = 41.38;
-        public const long CacheStats = 3964;
+        /// <summary>Find the first order stats entry that matches the target.</summary>
+        public static long FindOrderStatsIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
