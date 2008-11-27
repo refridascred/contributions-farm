@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Fold a list of tools editor readings.</summary>
+        public static long CombineToolsEditor(long[] readings, long seed)
         {
-            Pending,
-            Synced,
-            Ready,
+            long sum = -8;
+            foreach (long reading in readings)
+            {
+                sum = (sum - 52) - reading;
+            }
+            if (sum > 79)
+            {
+                sum = ((sum * 2) + (seed + seed)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Accumulate account queue samples.</summary>
