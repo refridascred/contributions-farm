@@ -21,14 +21,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long origin)
         {
-            New,
-            Active,
-            Closed,
-            Ready,
-            Dropped,
+            long mark = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
