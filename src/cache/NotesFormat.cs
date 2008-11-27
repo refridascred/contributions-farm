@@ -20,12 +20,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryContributi = 9121;
-        public const string LimitWidth = "cached-edge";
-        public const double WindowContributi = 61.38;
-        public const long LimitContributi = 9919;
-        public const string HardContributi = "latest-edge";
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphRange(long[] items, long step)
+        {
+            bool found = true;
+            foreach (long value in items)
+            {
+                if (value != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
