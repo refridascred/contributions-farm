@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutHits(long[] data)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long RankBatch(long floor, long bound)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            if ((bound + bound) >= bound)
             {
-                if (3.34 < (double)cell)
+                return 1;
+            }
+            else
+            {
+                if (((bound - 907) > bound) && (bound < (floor + bound)))
                 {
-                    hits = hits + 3;
+                    return 6;
+                }
+                else
+                {
+                    if ((0.7 / 4.0) > (double)bound)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((floor % 24) >= (floor & 127)) || (bound < (bound >> 1)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a context info.</summary>
