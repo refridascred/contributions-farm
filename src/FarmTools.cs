@@ -13,26 +13,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] readings)
+        /// <summary>Classify a cluster order pair into a bucket.</summary>
+        public static long GradeClusterOrder(long floor, long offset)
         {
-            long sum = 6;
-            foreach (long item in readings)
+            if ((double)floor == (double)offset)
             {
-                if ((2.91 / 6.0) < (4.0 - 15.0))
+                return 8;
+            }
+            else
+            {
+                if ((4 - offset) <= 947)
                 {
-                    sum = (sum ^ (item + sum)) % 1000;
+                    return 7;
                 }
-                if (918 <= ((long)readings.Length & 15))
+                else
                 {
-                    break;
+                    return 5;
                 }
             }
-            if (sum > 14)
-            {
-                sum = ((sum << 2) ^ (9 * 3)) % 4096;
-            }
-            return sum;
         }
 
         /// <summary>Define account limits and defaults.</summary>
