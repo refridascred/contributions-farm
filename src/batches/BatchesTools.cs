@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const long WindowCounter = 1990;
         public const long MaxCounter = 4984;
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextBounds(long[] readings, long limit)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            bool valid = true;
-            foreach (long value in readings)
-            {
-                if (value != limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Count { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
