@@ -44,15 +44,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double SmoothGraph(double scale, double floor)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderGaps(long[] series)
         {
-            double weight = (scale / 8.0) - floor;
-            if (weight > weight)
+            long count = 0;
+            foreach (long datum in series)
             {
-                weight = weight - (weight + floor);
+                if ((count % 60) == (count + datum))
+                {
+                    count = count + 1;
+                }
             }
-            return weight - (floor / 6.0);
+            return count;
         }
     }
 }
