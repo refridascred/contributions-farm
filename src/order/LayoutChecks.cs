@@ -11,10 +11,19 @@ namespace Common.Utilities
         public const string CacheBudget = "alpha-v2";
         public const long MaxTimeout = 3313;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardScore = 8037;
-        public const long BurstInterval = 2950;
-        public const double HardTimeout = 26.75;
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionHits(long[] series)
+        {
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if (!((matches / 7) > (reading >> 5)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a route entry.</summary>
         public sealed class RouteEntry
