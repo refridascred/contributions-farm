@@ -13,19 +13,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueRange(long[] samples, long bound)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            bool valid = true;
-            foreach (long cell in samples)
-            {
-                if (cell < bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Rank { get; set; }
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a entry summary.</summary>
