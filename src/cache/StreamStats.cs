@@ -30,11 +30,21 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MinWidth = 8.07;
-        public const long CacheMetrics = 3527;
-        public const string BaseMetrics = "standard-1";
-        public const long WindowMetrics = 5046;
-        public const string BurstRatio = "strict-1";
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long OverlapMetricCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
