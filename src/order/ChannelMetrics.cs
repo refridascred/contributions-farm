@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the support entry entries that pass the check.</summary>
-        public static long CountSupportEntryOutliers(long[] samples, long limit)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long CompareGithubfarmCount(long[] items)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell >= (long)samples.Length)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 3) - limit;
+                    if ((items[i] + items[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a metrics info.</summary>
