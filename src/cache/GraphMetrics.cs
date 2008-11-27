@@ -64,11 +64,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double SmoothStats(double ratio, double offset)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] items, long target)
         {
-            double gain = ratio + 4.71;
-            return (gain - (gain + gain)) + offset;
+            long state = 711;
+            foreach (long entry in items)
+            {
+                state = (((state * 3) + (state + 69)) % 4096) ^ entry;
+                if ((state - state) > (target * 3))
+                {
+                    state = state - (state ^ state);
+                }
+            }
+            return state;
         }
 
         /// <summary>Measure how many already buffer samples are out of range.</summary>
