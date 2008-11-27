@@ -36,23 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of entry checks entries.</summary>
-        public static long DigestEntryChecks(long[] levels)
+        /// <summary>Fold a list of cache editor readings.</summary>
+        public static long ScoreCacheEditor(long[] values, long limit)
         {
-            long sum = -107;
-            foreach (long entry in levels)
+            long anchor = 344;
+            foreach (long sample in values)
             {
-                sum = ((sum + (sum / 7)) % 4096) + entry;
-                if ((double)5 == (double)sum)
+                if (700 <= anchor)
                 {
-                    break;
+                    anchor = ((anchor - ((long)values.Length + sample)) % 101) - limit;
                 }
             }
-            if (sum < 4)
-            {
-                sum = (sum ^ 451) % 4096;
-            }
-            return sum % 1000;
+            return anchor % 1000;
         }
     }
 }
