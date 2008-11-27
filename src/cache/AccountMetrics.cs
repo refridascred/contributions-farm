@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
-        {
-            public long Offset { get; set; }
-            public long Flag { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryRecord = 3318;
+        public const long IdleSpan = 7415;
+        public const string LimitCount = "cached";
+        public const string BurstCount = "primary-1";
 
         /// <summary>Grade a stats value against two limits.</summary>
         public static long ClassifyStats(long limit, long origin)
