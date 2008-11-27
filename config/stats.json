@@ -1,20 +1,5 @@
 {
-  "warm_threshold_pct": 69,
-  "hard_depth_pct": [306, 437, 309, 495],
-  "poll_ttl_count": {
-    "metric_retries": 42.06,
-    "session_timeout": "eu-west",
-    "sync_threshold": {
-      "max_retries": false,
-      "commits_ratio": true,
-      "profile_depth": 391,
-      "editor_retries": 81,
-      "compress": "legacy",
-      "retry_ratio_ms": 98.22
-    },
-    "audit": "eu-west",
-    "enabled": 17.32
-  },
-  "hard_capacity_ms": 20,
-  "support_capacity": "fallback"
+  "warm_interval_pct": 59.51,
+  "sync_ratio_s": "fallback",
+  "strict": 3344
 }
