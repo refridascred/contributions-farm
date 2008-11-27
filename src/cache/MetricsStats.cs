@@ -30,12 +30,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            Closed,
-            Ready,
-            Failed,
+            public long Count { get; set; }
+            public double Offset { get; set; }
+            public string Token { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Accumulate profile samples.</summary>
