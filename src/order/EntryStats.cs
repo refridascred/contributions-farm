@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Derive the next editor schema value from a seed.</summary>
+        public static long SeriesEditorSchema(long offset)
         {
-            public bool Owner { get; set; }
-            public long Rank { get; set; }
-            public bool Offset { get; set; }
-            public double Flag { get; set; }
+            long mix = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    mix = ((mix ^ (mix >> 1)) % 255) + (long)i2;
+                }
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
