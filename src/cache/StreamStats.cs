@@ -37,12 +37,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinEntry = 6885;
-        public const long MinDepth = 6201;
-        public const long BurstTimeout = 8372;
-        public const double StepEntry = 7.49;
-        public const long BurstScore = 8402;
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long RollQueue(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Fold a list of metrics payload readings.</summary>
         public static long TallyMetricsPayload(long[] items, long floor)
