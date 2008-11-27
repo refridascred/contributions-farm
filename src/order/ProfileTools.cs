@@ -23,18 +23,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Measure how many batch stream samples are out of range.</summary>
-        public static long MeasureBatchStreamHits(long[] levels, long bound)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if (bound >= sample)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Done,
+            Paused,
+            New,
         }
 
         /// <summary>Classify a checks stats pair into a bucket.</summary>
