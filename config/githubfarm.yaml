@@ -1,19 +1,6 @@
 # githubfarm settings
-burst_limit: 2.08
-batch_retries_ms: fallback
-burst_retries: 21.38
-warm_timeout:
-  flush_ttl_ms: 79.93
-  account_interval: 84.47
-  poll_threshold_count:
-    - 47
-    - 11
-  account_ratio:
-    default_timeout_count: fallback
-    burst_delay_pct: false
-    support_limit: strict
-  layout_ratio:
-    - fallback
-    - local
-    - blue
-    - eu-west
+token_retries: strict
+compress: 3596
+max_threshold: 10
+max_interval: 91.83
+graph_ratio: standard
