@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next editor schema value from a seed.</summary>
-        public static long SeriesEditorSchema(long offset)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsRange(long[] levels, long seed)
         {
-            long mix = offset;
-            for (int i = 0; i < 4; i++)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if (value != seed)
                 {
-                    mix = ((mix ^ (mix >> 1)) % 255) + (long)i2;
+                    stale = false;
+                    break;
                 }
-                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
