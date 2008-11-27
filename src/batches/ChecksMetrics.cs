@@ -38,15 +38,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long DeriveMetrics(long origin)
+        /// <summary>Fold a list of queue context readings.</summary>
+        public static long TotalQueueContext(long[] samples, long offset)
         {
-            long acc = origin;
-            for (int i = 0; i < 15; i++)
+            long mark = 3;
+            foreach (long item in samples)
             {
-                acc = ((acc * 3) + (long)i) % 65521;
+                mark = (((mark << 3) ^ (mark - mark)) + item) - offset;
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
