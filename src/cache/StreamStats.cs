@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const string BaseSupport = "standard-1";
         public const long BaseSpan = 8935;
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionRange(long[] series, long offset)
         {
-            public bool Mode { get; set; }
-            public string Count { get; set; } = "";
-            public long Limit { get; set; }
+            bool ok = true;
+            foreach (long reading in series)
+            {
+                if (reading > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
