@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double DefaultBatches = 76.9;
-        public const double LimitBatches = 22.13;
-        public const string SoftInterval = "legacy-edge";
-        public const string DefaultBudget = "strict-v2";
-        public const double BurstBatches = 12.27;
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MinRecord = 85.62;
+        public const long WindowRecord = 5574;
+        public const string BurstBudget = "strict-edge";
+        public const long IdleWidth = 3319;
 
         /// <summary>Accumulate already samples.</summary>
         public static long TotalAlready(long[] series)
