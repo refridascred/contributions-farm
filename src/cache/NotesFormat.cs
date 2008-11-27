@@ -51,13 +51,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            Done,
-            Retry,
-            Pending,
-            Queued,
+            Stale,
+            New,
+            Paused,
         }
     }
 }
