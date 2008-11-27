@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Check that every format filter entry stays within the limit.</summary>
-        public static bool GuardFormatFilterBounds(long[] levels, long floor)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long IterateMetrics(long target)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            long result = target;
+            for (int i = 0; i < 16; i++)
             {
-                if (reading >= floor)
-                {
-                    ok = false;
-                    break;
-                }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Hold a channel record.</summary>
