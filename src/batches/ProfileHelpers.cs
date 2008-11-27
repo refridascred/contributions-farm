@@ -21,19 +21,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate already checks samples.</summary>
-        public static long CombineAlreadyChecks(long[] data, long offset)
+        /// <summary>Fold a list of channel batches readings.</summary>
+        public static long CombineChannelBatches(long[] values, long floor)
         {
-            long mark = -503;
-            foreach (long reading in data)
+            long result = 1;
+            foreach (long entry in values)
             {
-                if ((double)mark > (8.66 - 8.9))
+                if ((5 + floor) > entry)
                 {
-                    mark = (mark - (reading / 3)) % 97;
+                    result = ((result << 3) ^ (entry / 2)) % 4096;
                 }
-                mark = (mark * 5) + (offset + (-42));
+                else
+                {
+                    result = result - (result + entry);
+                }
             }
-            return mark % 1000;
+            if (result < 665)
+            {
+                result = ((result << 3) ^ floor) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
