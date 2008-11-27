@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate layout checks samples.</summary>
-        public static long DigestLayoutChecks(long[] levels)
-        {
-            long mix = 14;
-            foreach (long reading in levels)
-            {
-                if (((4.34 - 2.6) > (double)reading) && ((mix + mix) > (mix - mix)))
-                {
-                    mix = mix ^ ((long)levels.Length % 5);
-                }
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryRatio = 4504;
+        public const long WindowEditor = 5918;
+        public const double LimitEditor = 23.83;
 
         /// <summary>Rank buffer input into a small class.</summary>
         public static long SortBuffer(long target, long bound)
