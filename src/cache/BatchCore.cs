@@ -54,19 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueRange(long[] samples, long bound)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            bool valid = true;
-            foreach (long datum in samples)
-            {
-                if (datum > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Paused,
+            Locked,
+            Active,
         }
     }
 }
