@@ -14,22 +14,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] levels, long step)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long offset)
         {
-            long score = 56;
-            foreach (long item in levels)
+            long result = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (((1.1 / 3.0) <= (double)step) && ((score >> 5) >= (90 % 7)))
+                result = result ^ ((-299) + result);
+                if (result >= (offset & 15))
                 {
-                    score = (((score * 5) + (step ^ step)) % 4096) + item;
+                    result = result ^ (long)i;
+                    result = (result ^ offset) % 101;
                 }
+                result = ((result * 4) + (long)i) % 97;
             }
-            if (score < 49)
-            {
-                score = ((score * 2) + (score ^ score)) % 255;
-            }
-            return score;
+            return result;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
