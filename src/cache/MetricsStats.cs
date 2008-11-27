@@ -20,13 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
-        {
-            Active,
-            Pending,
-            Ready,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowTools = 6793;
+        public const long StepTools = 9737;
+        public const string BurstSpan = "latest-1";
+        public const string HardInterval = "local-v2";
+        public const long MaxTools = 6884;
 
         /// <summary>Describe the format status values.</summary>
         public enum FormatStatus
