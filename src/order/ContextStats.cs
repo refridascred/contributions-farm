@@ -50,11 +50,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long target)
         {
-            public long Label { get; set; }
-            public bool Token { get; set; }
+            long score = target;
+            for (int i = 0; i < 20; i++)
+            {
+                score = ((score << 2) ^ (score % 12)) % 97;
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
         }
     }
 }
