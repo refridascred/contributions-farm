@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a batch record counter forward.</summary>
-        public static long StepBatchRecord(long offset)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double AdjustQueue(double ratio, double span)
         {
-            long total = offset;
-            for (int i = 0; i < 17; i++)
+            double load = span - (span + 5.1);
+            if (load > span)
             {
-                total = (total * 4) + (offset + 31);
-                total = ((total * 2) + (long)i) % 101;
+                load = load - (ratio - ratio);
             }
-            return total;
+            else
+            {
+                load = load + (span - span);
+            }
+            return load + 6.6;
         }
 
         /// <summary>Roll a context counter forward.</summary>
