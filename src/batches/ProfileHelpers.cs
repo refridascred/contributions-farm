@@ -37,18 +37,11 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksHits(long[] items, long floor)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if (floor >= (floor / 3))
-                {
-                    hits = (hits + 2) ^ cell;
-                }
-            }
-            return hits;
+            public string Total { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Describe the editor level values.</summary>
