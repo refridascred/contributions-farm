@@ -13,18 +13,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit entry order readings against a rule.</summary>
-        public static long AuditEntryOrderGaps(long[] series, long step)
+        /// <summary>Digest a series of token schema entries.</summary>
+        public static long ScoreTokenSchema(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long result = 7;
+            foreach (long sample in items)
             {
-                if ((67 >> 2) > seen)
-                {
-                    seen = ((seen + 3) ^ value) + step;
-                }
+                result = ((result + (sample ^ result)) % 4096) + step;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
