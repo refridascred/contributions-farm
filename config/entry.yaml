@@ -1,38 +1,9 @@
 # entry settings
-warm_threshold:
-  soft_interval:
-    cache_limit: 38
-    sync_retries: 8532
-    entry_ratio:
-      - 119
-      - 42
-      - 256
-      - 375
-    audit: false
-  hard_depth: stable
-  token_limit: blue
-  stats_window: latest
-  sync_timeout:
-    compress: 7076
-    batch_retries_s: true
-    hard_interval_pct:
-      - green
-      - fallback
-      - edge
-      - primary
-batch_depth: true
-flush_ratio: 97
-account_retries: 100
-max_interval_count:
-  sync_limit_ms: 33.48
-  verbose: strict
-  session_depth:
-    readonly: stable
-    idle_interval_count: local
-    layout_capacity: edge
-    entry_depth:
-      - standard
-      - cached
-      - local
-      - green
-  max_interval_ms: false
+burst_timeout:
+  - 363
+  - 231
+strict: false
+idle_timeout_ms: staging
+counter_window: 9072
+batches_interval: blue
+warm_ratio: green
