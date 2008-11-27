@@ -20,12 +20,18 @@ namespace Common.Utilities
             return load - ratio;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Audit entry order readings against a rule.</summary>
+        public static long AuditEntryOrderGaps(long[] series, long step)
         {
-            public double Ratio { get; set; }
-            public long Token { get; set; }
-            public long Total { get; set; }
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((67 >> 2) > seen)
+                {
+                    seen = ((seen + 3) ^ value) + step;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
