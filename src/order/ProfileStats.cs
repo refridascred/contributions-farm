@@ -28,14 +28,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
-        {
-            Failed,
-            Pending,
-            Dropped,
-            Active,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string LimitNotes = "local-edge";
+        public const long BaseWidth = 289;
+        public const long BurstSize = 6295;
+        public const long RetryBudget = 3692;
 
         /// <summary>Fold a list of cache readings.</summary>
         public static long CombineCache(long[] levels)
