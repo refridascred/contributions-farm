@@ -1,6 +1,9 @@
-id,region,active,owner,state
-1,standard,122,132,45.68
-2,standard,439,489,722
-3,local,87.3,224,green
-4,25.98,876,109,39.5
-5,cached,71.57,752,73.1
+id,level,token
+1,29.23,blue
+2,open,stable
+3,455,1.43
+4,green,878
+5,eu-west,blue
+6,10.51,684
+7,18.5,494
+8,434,72.15
