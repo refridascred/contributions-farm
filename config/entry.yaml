@@ -1,8 +1,4 @@
 # entry settings
-sync_limit_count: staging
-batch_window_count: false
-soft_capacity_count:
-  - primary
-  - edge
-default_timeout_count: 9144
-base_delay_count: 91
+soft_size_count: 2505
+cache_threshold_s: true
+cache_ttl_count: true
