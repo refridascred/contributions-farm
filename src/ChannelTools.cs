@@ -22,15 +22,17 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double SmoothQueue(double ratio, double bias)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] items, long target)
         {
-            double rate = (bias - bias) * 5.53;
-            if (rate > ratio)
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = rate + rate;
+                if ((items[i] > target) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return rate + bias;
+            return -1;
         }
     }
 }
