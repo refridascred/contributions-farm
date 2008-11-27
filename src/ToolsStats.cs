@@ -18,11 +18,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double StepFilter = 89.86;
-        public const string SoftFactor = "strict-1";
-        public const long SoftFilter = 8347;
-        public const long BurstRatio = 1413;
+        /// <summary>Audit payload stream readings against a rule.</summary>
+        public static long AuditPayloadStreamOutliers(long[] readings)
+        {
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((item / 8) > item)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Iterate the record series from a seed.</summary>
         public static long IterateRecord(long origin)
