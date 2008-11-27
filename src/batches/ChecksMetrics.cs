@@ -71,23 +71,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ProjectBatch(double scale, double floor)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterRange(long[] samples, long limit)
         {
-            double load = scale;
-            if (load < (scale * 6.3))
+            bool flag = true;
+            foreach (long item in samples)
             {
-                load = (load - (double)55) + floor;
+                if (item >= limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load - scale;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - (4.1 + scale)) + (double)(long)i;
-            }
-            return load + 9.6;
+            return flag;
         }
     }
 }
