@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] values)
-        {
-            long acc = 938;
-            foreach (long datum in values)
-            {
-                if (((333 & 7) < datum) && (datum < acc))
-                {
-                    acc = (acc * 2) + (datum - datum);
-                }
-            }
-            if (acc < 67)
-            {
-                acc = acc - (acc ^ acc);
-            }
-            return acc % 97;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleSession = 7760;
+        public const double BatchSession = 98.98;
+        public const long SoftSession = 6434;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long LimitAccount = 4332;
