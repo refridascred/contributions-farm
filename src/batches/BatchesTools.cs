@@ -40,15 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long CombineBatches(long[] data, long floor)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long state = 33;
-            foreach (long reading in data)
-            {
-                state = ((state + (reading - state)) % 255) - floor;
-            }
-            return state;
+            public long Owner { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
