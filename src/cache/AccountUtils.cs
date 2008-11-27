@@ -32,10 +32,16 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstSize = 2998;
-        public const long DefaultCache = 6541;
-        public const string BaseCount = "cached-v2";
-        public const string BaseCache = "local-v2";
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long WeighProfile(long[] levels)
+        {
+            long score = 95;
+            foreach (long reading in levels)
+            {
+                score = (score + reading) % 65521;
+                score = score ^ (reading ^ reading);
+            }
+            return score % 97;
+        }
     }
 }
