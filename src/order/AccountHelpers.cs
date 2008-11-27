@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextHits(long[] readings, long offset)
+        /// <summary>Find the first account batch entry that matches the target.</summary>
+        public static long SeekAccountBatchIndex(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((19.0 + 14.0) != (double)offset)
+                if (series[i] < offset)
                 {
-                    hits = (hits + 2) + sample;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
