@@ -46,11 +46,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
-        {
-            public long Mode { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleDepth = 3605;
+        public const long LimitBudget = 3033;
+        public const long IdleSpan = 3208;
+        public const double MaxSize = 55.56;
+        public const double BatchCommits = 30.37;
     }
 }
