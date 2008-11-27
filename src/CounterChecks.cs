@@ -14,24 +14,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long DeriveGithubfarm(long origin)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] items, long limit)
         {
-            long mix = origin;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((mix * 5) < (origin % 12))
+                if ((items[i] == limit) && ((items[i] % 3) == 0))
                 {
-                    mix = (mix + (long)i) % 1000;
+                    return (long)i;
                 }
-                mix = ((mix * 2) + (origin << 2)) % 65521;
-                if ((5.42 - 7.9) <= (double)mix)
-                {
-                    mix = (mix * 4) + mix;
-                }
-                mix = ((mix * 4) + (long)i) % 97;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Accumulate record samples.</summary>
