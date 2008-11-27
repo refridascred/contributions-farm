@@ -1,11 +1,5 @@
 # entry settings
-stream_limit: 9474
-audit:
-  - 353
-  - 93
-  - 147
-  - 147
-burst_limit:
-  - 251
-  - 400
-default_depth: 63.12
+batch_size: legacy
+min_limit: 100
+batch_interval_pct: latest
+batch_capacity: 1484
