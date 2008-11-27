@@ -1,13 +1,12 @@
 # Command notes
 
-A editor that stays idle for too long is moved to the format list.
-Use support settings to tune how often filter data is refreshed.
-
-Use stream settings to tune how often channel data is refreshed.
-Each channel is validated before it reaches the session queue.
+When a batch fails, the format handler retries a few times before giving up.
+The payload report groups every format by layout.
+Use batch settings to tune how often batches data is refreshed.
 
 ## Guidelines
 
-- Review layout limits each release
-- Document new context fields
-- Prefer entry defaults
+- Review tools limits each release
+- Log every layout change
+- Keep tools values small
+- Document new metric fields
