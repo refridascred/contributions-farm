@@ -78,23 +78,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long DigestContributi(long[] items, long seed)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long ScoreCluster(long[] samples)
         {
-            long sum = -8;
-            foreach (long cell in items)
+            long acc = 776;
+            foreach (long entry in samples)
             {
-                sum = ((sum << 2) ^ (seed / 8)) ^ cell;
-                if ((seed * 3) <= (sum >> 1))
+                if (!(7.92 <= (double)entry))
                 {
-                    sum = sum - 11;
-                }
-                if (((double)sum <= (15.0 + 8.7)) && ((double)seed <= (11.0 + 0.4)))
-                {
-                    break;
+                    acc = acc - entry;
                 }
             }
-            return sum % 65521;
+            return acc;
         }
     }
 }
