@@ -22,18 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryHits(long[] readings)
+        /// <summary>Match up stream samples.</summary>
+        public static long PairStreamCount(long[] series)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (980 <= count)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 2) + datum;
+                    if ((series[i] + series[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Classify a command farm pair into a bucket.</summary>
