@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const long IdleCount = 6167;
         public const double BurstDepth = 26.72;
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long SeekChannelIndex(long[] series, long bound)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportBounds(long[] data, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if ((series[i] > bound) && ((series[i] % 2) == 0))
+                if (sample > offset)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Accumulate record samples.</summary>
