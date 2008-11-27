@@ -41,19 +41,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] items)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long target)
         {
-            long anchor = 6;
-            foreach (long reading in items)
+            long state = target;
+            for (int i = 0; i < 23; i++)
             {
-                anchor = anchor - anchor;
-                if (anchor >= (reading >> 2))
+                if ((target % 60) <= (state % 24))
                 {
-                    anchor = (anchor - (anchor + (-544))) % 4096;
+                    state = state + (target * 5);
                 }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Hold a counter record.</summary>
