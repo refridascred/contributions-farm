@@ -46,13 +46,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            public double Offset { get; set; }
-            public double Token { get; set; }
-            public string Level { get; set; } = "";
-            public string Count { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Token { get; set; }
+            public long Total { get; set; }
         }
     }
 }
