@@ -1,6 +1,6 @@
-id,token,label,owner
-1,latest,19.71,756
-2,primary,76,61.12
-3,primary,53.47,703
-4,0.66,566,239
-5,200,622,edge
+id,weight,owner,active
+1,223,standard,441
+2,945,open,4.07
+3,edge,578,638
+4,strict,66.76,31.48
+5,121,391,87
