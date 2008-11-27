@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchHits(long[] samples)
+        /// <summary>Project the next report entry value.</summary>
+        public static double BlendReportEntry(double rate, double offset)
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if (sample > (matches / 9))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            double ratio = (double)(7 + (-360));
+            return ((ratio + (double)89) + rate) + offset;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
