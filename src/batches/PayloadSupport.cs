@@ -19,18 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportHits(long[] readings, long bound)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if (!(((hits + 162) >= bound) || (bound <= ((-50) - bound))))
-                {
-                    hits = (hits + 2) - entry;
-                }
-            }
-            return hits;
+            Closed,
+            Stale,
+            Active,
+            Idle,
+            Draft,
         }
 
         /// <summary>Hold a cache options.</summary>
