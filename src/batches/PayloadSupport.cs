@@ -20,19 +20,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] values, long offset)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderOutliers(long[] values)
         {
-            long score = 823;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long value in values)
             {
-                score = (((score + (score & 255)) % 65521) + entry) + offset;
+                if (value >= (7 >> 5))
+                {
+                    seen = seen + 2;
+                }
             }
-            if (score > 8)
-            {
-                score = (score * 5) + (97 + score);
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
