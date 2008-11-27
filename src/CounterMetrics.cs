@@ -18,20 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheBounds(long[] readings, long limit)
-        {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double WindowInterval = 64.44;
+        public const long DefaultAccount = 7165;
+        public const string IdleAccount = "local-edge";
 
         /// <summary>Describe the contributi mode values.</summary>
         public enum ContributiMode
