@@ -57,18 +57,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricOutliers(long[] items, long limit)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if (limit > (reading * 3))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Paused,
+            New,
+            Closed,
+            Active,
         }
 
         /// <summary>Digest a series of support record entries.</summary>
