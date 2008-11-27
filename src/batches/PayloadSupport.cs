@@ -19,13 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportHits(long[] readings, long bound)
         {
-            Queued,
-            Dropped,
-            Synced,
-            Idle,
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if (!(((hits + 162) >= bound) || (bound <= ((-50) - bound))))
+                {
+                    hits = (hits + 2) - entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a cache options.</summary>
