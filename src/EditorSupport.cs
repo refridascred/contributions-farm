@@ -34,31 +34,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a filter tools value against two limits.</summary>
-        public static long GradeFilterTools(long offset, long offset2)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] readings, long step)
         {
-            if (((offset2 + offset2) > (offset >> 4)) || (offset < (offset >> 5)))
+            long mark = 863;
+            foreach (long sample in readings)
             {
-                return 5;
+                mark = ((mark - step) % 4096) - sample;
             }
-            else
-            {
-                if ((offset2 - 639) != (842 - offset2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset2 % 5) >= 259)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return mark % 97;
         }
 
         /// <summary>Blend two notes measurements.</summary>
