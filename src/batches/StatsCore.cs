@@ -76,11 +76,22 @@ namespace Common.Utilities
         public const double RetryChannel = 48.06;
         public const double CacheLevel = 70.64;
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsHits(long[] samples)
         {
-            public double Mode { get; set; }
-            public long Label { get; set; }
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if (entry < (entry ^ entry))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
