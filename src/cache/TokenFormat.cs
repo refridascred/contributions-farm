@@ -40,19 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiBounds(long[] samples, long seed)
+        /// <summary>Match up token samples.</summary>
+        public static long MatchTokenCount(long[] samples)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value <= seed)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((samples[i] - samples[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
