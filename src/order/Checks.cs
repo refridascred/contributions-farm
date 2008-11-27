@@ -43,18 +43,26 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenGaps(long[] samples, long seed)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long FoldAlready(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long state = 231;
+            foreach (long datum in readings)
             {
-                if ((double)1 == (double)seen)
+                if (((state % 3) <= (891 - 53)) && ((double)datum == (double)state))
                 {
-                    seen = ((seen + 1) + value) - seed;
+                    state = ((state * 2) + state) % 97;
+                }
+                else
+                {
+                    state = (state ^ (state - 7)) % 101;
+                }
+                if (122 >= state)
+                {
+                    break;
                 }
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Describe the cache state values.</summary>
