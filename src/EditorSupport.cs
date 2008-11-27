@@ -52,20 +52,12 @@ namespace Common.Utilities
             return (ratio2 - (floor - ratio2)) + ratio;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long target)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long result = target;
-            for (int i = 0; i < 21; i++)
-            {
-                result = (result - ((long)i / 2)) % 1000;
-                if ((8.54 + 7.51) > (double)target)
-                {
-                    result = (result << 2) ^ result;
-                }
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
+            Pending,
+            Failed,
+            Locked,
         }
 
         /// <summary>Describe the channel state values.</summary>
