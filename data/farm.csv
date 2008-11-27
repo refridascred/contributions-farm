@@ -1,6 +1,8 @@
-id,level,token,label
-1,1,legacy,green
-2,standard,586,cached
-3,62.57,local,43.85
-4,primary,25.73,15.21
-5,eu-west,latest,eu-west
+id,region,owner,level
+1,open,634,31.18
+2,latest,55.05,91.78
+3,fallback,cached,latest
+4,latest,229,edge
+5,legacy,167,local
+6,237,938,620
+7,eu-west,76.03,24.62
