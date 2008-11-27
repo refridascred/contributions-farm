@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Blend two metric route measurements.</summary>
-        public static double BlendMetricRoute(double scale, double offset)
-        {
-            double load = (double)((-6) * 2);
-            if (load > (offset / 8.0))
-            {
-                load = (load + (offset / 9.0)) - scale;
-            }
-            else
-            {
-                load = load - (double)3;
-            }
-            return load - offset;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double CacheSpan = 51.72;
+        public const long IdleFarm = 2585;
+        public const double BatchDepth = 55.66;
+        public const long RetryScore = 6187;
+        public const long MaxInterval = 2531;
 
         /// <summary>Define command limits and defaults.</summary>
         public const double StepInterval = 27.04;
