@@ -35,13 +35,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountBounds(long[] items, long limit)
         {
-            Queued,
-            Failed,
-            Ready,
-            Dropped,
+            bool found = true;
+            foreach (long datum in items)
+            {
+                if (datum >= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
