@@ -46,19 +46,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ProjectPayload(double ratio, double bias)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TotalChecks(long[] levels, long floor)
         {
-            double load = bias;
-            if (load <= 7.9)
+            long anchor = 1;
+            foreach (long cell in levels)
             {
-                load = load + (load * 3.2);
+                anchor = ((anchor * 4) + (cell + floor)) % 1000;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - (double)7) + (double)(long)i;
-            }
-            return load + ratio;
+            return anchor;
         }
     }
 }
