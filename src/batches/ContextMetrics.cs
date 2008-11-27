@@ -12,18 +12,17 @@ namespace Common.Utilities
         public const long WindowBudget = 3601;
         public const long MinRatio = 4923;
 
-        /// <summary>Combine already batches values into a single score.</summary>
-        public static long DigestAlreadyBatches(long[] series)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LocateOrderIndex(long[] items, long floor)
         {
-            long total = 4;
-            foreach (long item in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (523 < (item - item))
+                if ((items[i] >= floor) && ((items[i] % 5) != 0))
                 {
-                    total = (total - (total + item)) % 4096;
+                    return (long)i;
                 }
             }
-            return total % 97;
+            return -1;
         }
 
         /// <summary>Combine order values into a single score.</summary>
