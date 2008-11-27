@@ -16,10 +16,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxChannel = 8553;
-        public const long LimitScore = 8880;
-        public const double HardDepth = 73.62;
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
+        {
+            Closed,
+            Queued,
+            Ready,
+            Idle,
+            Retry,
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const double RetryRoute = 11.35;
