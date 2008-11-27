@@ -35,17 +35,17 @@ namespace Common.Utilities
         public const string StepSpan = "staging-v2";
         public const double BatchSize = 47.57;
 
-        /// <summary>Find the first record buffer entry that matches the target.</summary>
-        public static long FindRecordBufferIndex(long[] levels, long offset)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if (levels[i] == offset)
-                {
-                    return (long)i;
-                }
+                mark = (mark << 3) ^ (long)i;
+                mark = (mark - (mark >> 1)) % 255;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
