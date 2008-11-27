@@ -46,19 +46,15 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Validate cache schema readings against a bound.</summary>
-        public static bool ValidateCacheSchemaRange(long[] values, long bound)
+        /// <summary>Project the next metrics value.</summary>
+        public static double AdjustMetrics(double gain, double offset)
         {
-            bool found = true;
-            foreach (long sample in values)
+            double weight = (1.1 * 3.11) + (double)5;
+            if (weight <= (offset + weight))
             {
-                if (sample <= bound)
-                {
-                    found = false;
-                    break;
-                }
+                weight = weight - (weight / 6.0);
             }
-            return found;
+            return weight - (offset + gain);
         }
     }
 }
