@@ -29,25 +29,13 @@ namespace Common.Utilities
         public const long DefaultSupport = 3032;
         public const long BatchSupport = 3504;
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long floor, long offset)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long gap = floor + offset;
-            if ((double)gap != (double)floor)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((6.31 - 0.7) > (double)offset)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
+            public long Limit { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
