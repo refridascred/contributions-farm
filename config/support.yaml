@@ -1,9 +1,14 @@
 # support settings
-schema_capacity:
-  - legacy
+batch_size_pct: eu-west
+burst_ttl_ms:
+  base_interval: true
+  verbose: 100
+  hard_delay_s: staging
+  hard_threshold_count: 9688
+compress: local
+dry_run:
+  - staging
   - standard
-dry_run: stable
-burst_capacity_count: 30
-enabled: 55
-hard_retries: 35
-burst_delay: true
+  - latest
+  - edge
+warm_window_s: false
