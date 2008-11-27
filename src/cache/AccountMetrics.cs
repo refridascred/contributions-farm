@@ -45,19 +45,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiGaps(long[] values, long seed)
-        {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if (2 < (seed + count))
-                {
-                    count = (count + 1) - sample;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstGithubfarm = 7817;
+        public const string MinFactor = "cached-1";
+        public const long IdleGithubfarm = 7973;
 
         /// <summary>Hold a payload stats.</summary>
         public sealed class PayloadStats
