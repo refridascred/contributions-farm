@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a batches channel counter forward.</summary>
-        public static long RollBatchesChannel(long seed)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long RollContext(long seed)
         {
-            long acc = seed;
-            for (int i = 0; i < 23; i++)
+            long state = seed;
+            for (int i = 0; i < 4; i++)
             {
-                acc = ((acc * 3) + (long)i) % 101;
+                if ((((long)i * 3) != (state * 3)) || (state < ((long)i << 1)))
+                {
+                    continue;
+                }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Scale a payload counter figure with a bias.</summary>
