@@ -25,22 +25,15 @@ namespace Common.Utilities
         public const string IdleCount = "local";
         public const long BatchNotes = 1117;
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelHits(long[] samples, long bound)
+        /// <summary>Project the next order value.</summary>
+        public static double SmoothOrder(double rate, double span)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            double mean = rate - (rate + rate);
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)tally <= (1.2 * 8.89))
-                {
-                    tally = ((tally + 2) + cell) + bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mean = (mean + (double)998) + (double)(long)i;
             }
-            return tally;
+            return mean + (rate - span);
         }
     }
 }
