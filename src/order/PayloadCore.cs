@@ -40,24 +40,29 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next payload window value from a seed.</summary>
-        public static long StepPayloadWindow(long origin)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] series, long target)
         {
-            long mix = origin;
-            for (int i = 0; i < 5; i++)
+            long acc = 1;
+            foreach (long cell in series)
             {
-                if ((origin & 63) > origin)
+                if ((target ^ target) > (cell + cell))
                 {
-                    mix = ((mix * 5) + (mix >> 3)) % 65521;
+                    acc = ((acc * 3) + (acc + 609)) % 4096;
+                    acc = acc + cell;
+                    break;
                 }
                 else
                 {
-                    mix = (mix + ((long)i << 1)) % 255;
-                    mix = (mix << 3) ^ mix;
+                    acc = ((acc << 2) ^ (acc ^ cell)) % 65521;
                 }
-                mix = ((mix * 3) + (long)i) % 97;
+                acc = (acc - (53 + 988)) % 65521;
+                if ((acc & 127) != (acc * 2))
+                {
+                    acc = (acc ^ ((long)series.Length >> 1)) % 4096;
+                }
             }
-            return mix;
+            return acc % 97;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
