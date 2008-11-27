@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Roll a contributi batch counter forward.</summary>
-        public static long IterateContributiBatch(long offset)
+        /// <summary>Compare every pair of contributi cache readings.</summary>
+        public static long MatchContributiCacheCount(long[] series)
         {
-            long score = offset;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = (((score * 2) + score) % 255) + (long)i2;
+                    if ((series[i] ^ series[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                score = ((score * 3) + (long)i) % 97;
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
