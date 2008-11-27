@@ -24,15 +24,19 @@ namespace Common.Utilities
             return gain - offset;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterHits(long[] series)
+        /// <summary>Count the token session entries that pass the check.</summary>
+        public static long AuditTokenSessionMatches(long[] samples)
         {
             long seen = 0;
-            foreach (long cell in series)
+            foreach (long entry in samples)
             {
-                if ((6.9 - 3.92) > (double)seen)
+                if (20.0 > (double)entry)
                 {
-                    seen = (seen + 2) ^ cell;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
