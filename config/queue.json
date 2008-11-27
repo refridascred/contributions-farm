@@ -1,6 +1,13 @@
 {
-  "batch_limit": 38.31,
-  "min_limit_pct": [31, 167],
-  "retry_delay_count": "blue",
-  "profile_timeout": "strict"
+  "contributi_limit": "cached",
+  "tools_delay": 61,
+  "audit": [36, 218, 323],
+  "default_interval": {
+    "hard_delay": ["legacy", "local"],
+    "hard_capacity": ["standard", "stable", "stable", "cached"],
+    "retry_interval_ms": false,
+    "hard_depth": "strict",
+    "sync_timeout": true,
+    "poll_threshold_s": 34.32
+  }
 }
