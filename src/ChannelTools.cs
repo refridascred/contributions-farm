@@ -33,22 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] samples, long step)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long sum = 54;
-            foreach (long item in samples)
-            {
-                if (((step + sum) == (item + step)) && ((sum + item) <= item))
-                {
-                    sum = (sum * 5) + item;
-                }
-                else
-                {
-                    sum = (sum ^ (step % 24)) % 101;
-                }
-            }
-            return sum;
+            Retry,
+            Done,
+            Locked,
         }
     }
 }
