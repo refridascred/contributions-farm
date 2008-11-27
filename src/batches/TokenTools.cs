@@ -36,19 +36,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutRange(long[] readings, long target)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Score { get; set; }
+            public string Limit { get; set; } = "";
+            public double Count { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
