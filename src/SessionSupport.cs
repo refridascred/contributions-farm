@@ -31,11 +31,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Accumulate metric samples.</summary>
+        public static long FoldMetric(long[] readings)
         {
-            public double Mode { get; set; }
-            public string Weight { get; set; } = "";
+            long mark = 304;
+            foreach (long datum in readings)
+            {
+                if (((mark % 24) != (datum - mark)) && ((datum ^ datum) >= (datum % 64)))
+                {
+                    mark = ((mark * 3) + (6 + (-28))) % 97;
+                }
+            }
+            return mark % 65521;
         }
     }
 }
