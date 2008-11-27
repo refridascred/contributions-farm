@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LookupSessionIndex(long[] values, long limit)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < limit) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Limit { get; set; }
+            public long Rank { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
