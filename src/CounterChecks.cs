@@ -57,26 +57,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] samples, long origin)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long SeekFormatIndex(long[] samples, long bound)
         {
-            long anchor = 9;
-            foreach (long datum in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((anchor - anchor) > (origin + anchor))
+                if ((samples[i] >= bound) && ((samples[i] % 5) != 0))
                 {
-                    anchor = anchor - (origin * 4);
-                }
-                else
-                {
-                    anchor = anchor ^ (datum & 15);
+                    return (long)i;
                 }
             }
-            if (anchor < 72)
-            {
-                anchor = (anchor - (anchor & 15)) % 4096;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
