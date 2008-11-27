@@ -33,11 +33,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            public long Owner { get; set; }
-            public long Rank { get; set; }
+            public bool Region { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
