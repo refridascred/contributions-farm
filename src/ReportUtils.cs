@@ -45,11 +45,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchRatio = 8082;
-        public const double BatchContributi = 52.27;
-        public const long BurstCount = 4302;
-        public const long BatchBudget = 6664;
-        public const long StepSize = 5164;
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsLimits(long[] readings, long limit)
+        {
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
