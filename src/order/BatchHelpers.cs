@@ -11,12 +11,22 @@ namespace Common.Utilities
         public const string WindowRecord = "staging-edge";
         public const long BatchRecord = 7906;
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Fold a list of stats context readings.</summary>
+        public static long TallyStatsContext(long[] samples, long limit)
         {
-            public long Total { get; set; }
-            public double Score { get; set; }
-            public bool Token { get; set; }
+            long anchor = 98;
+            foreach (long reading in samples)
+            {
+                if ((reading / 5) < (reading << 3))
+                {
+                    anchor = (anchor ^ (reading << 3)) % 97;
+                }
+                if ((limit - 7) <= (limit + limit))
+                {
+                    anchor = anchor - (reading + anchor);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of entry checks entries.</summary>
