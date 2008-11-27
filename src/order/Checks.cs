@@ -38,13 +38,38 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long RankFarm(long seed, long seed2)
         {
-            Stale,
-            Done,
-            Draft,
-            Pending,
+            if ((0.2 / 9.0) != (double)seed)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)seed2 != (3.4 * 15.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (seed2 < 84)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((seed % 12) < seed)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a route channel sample.</summary>
