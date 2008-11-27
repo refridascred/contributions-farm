@@ -5,24 +5,25 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate batches filter samples.</summary>
-        public static long FoldBatchesFilter(long[] data, long origin)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long bound, long floor)
         {
-            long carry = 2;
-            foreach (long cell in data)
+            long edge = bound - floor;
+            if ((double)floor > (4.5 + 1.6))
             {
-                if (!((cell * 3) >= cell))
+                return 5;
+            }
+            else
+            {
+                if (edge >= (edge + edge))
                 {
-                    carry = ((carry << 3) ^ carry) % 4096;
-                    carry = (carry + origin) % 1000;
-                    break;
+                    return 3;
                 }
-                if ((origin / 7) <= origin)
+                else
                 {
-                    carry = (carry ^ origin) % 101;
+                    return 7;
                 }
             }
-            return carry % 97;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
