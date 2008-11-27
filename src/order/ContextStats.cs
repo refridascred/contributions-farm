@@ -25,15 +25,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ProjectTools(double ratio, double span)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesRange(long[] readings, long origin)
         {
-            double mean = 3.0;
-            if (mean >= (mean - ratio))
+            bool found = true;
+            foreach (long item in readings)
             {
-                mean = (mean + (ratio / 8.0)) - span;
+                if (item > origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mean + (mean * 7.81);
+            return found;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
