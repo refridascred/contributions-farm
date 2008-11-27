@@ -31,11 +31,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinChecks = 5365;
-        public const string WindowChecks = "alpha-1";
-        public const long WindowSize = 1940;
-        public const double CacheBudget = 89.24;
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
+        {
+            Idle,
+            New,
+            Dropped,
+            Retry,
+            Stale,
+        }
 
         /// <summary>Count the window cache entries that pass the check.</summary>
         public static long AuditWindowCacheGaps(long[] samples, long limit)
