@@ -1,11 +1,9 @@
 {
-  "sync_interval_ms": ["latest", "eu-west", "staging"],
-  "burst_depth": "cached",
-  "base_size_ms": {
-    "flush_delay_count": 45.02,
-    "max_size": [92, 410, 95, 74],
-    "flush_limit": "green",
-    "burst_capacity_ms": 9394,
-    "sync_size_s": [444, 101, 9]
+  "max_depth": 50,
+  "warm_ratio_s": "blue",
+  "batch_threshold_ms": {
+    "stream_depth": 10,
+    "session_depth": true,
+    "hard_ratio": 773
   }
 }
