@@ -39,9 +39,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepNotes = 5235;
-        public const long MaxNotes = 8206;
-        public const double IdleNotes = 51.8;
+        /// <summary>Project the next channel value.</summary>
+        public static double ProjectChannel(double scale, double bias)
+        {
+            double bias2 = bias;
+            if (bias2 > (double)5)
+            {
+                bias2 = (bias2 + (bias / 8.0)) - scale;
+            }
+            else
+            {
+                bias2 = bias2 + (bias2 - bias2);
+            }
+            return bias2 + (bias + bias);
+        }
     }
 }
