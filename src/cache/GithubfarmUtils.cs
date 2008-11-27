@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string DefaultTimeout = "alpha-edge";
-        public const long RetryChecks = 6964;
-        public const long DefaultChecks = 2396;
+        /// <summary>Accumulate account checks samples.</summary>
+        public static long CombineAccountChecks(long[] values)
+        {
+            long anchor = 953;
+            foreach (long cell in values)
+            {
+                if ((anchor ^ cell) >= ((long)values.Length - anchor))
+                {
+                    anchor = ((anchor * 3) + (cell - cell)) % 255;
+                }
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long BaseScore = 7607;
