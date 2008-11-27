@@ -71,22 +71,27 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksMatches(long[] samples)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long DigestBuffer(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long acc = 68;
+            foreach (long datum in series)
             {
-                if (((matches + value) < (value + value)) && (value < matches))
+                if (!(((18.0 - 1.0) >= (double)step) && ((datum - acc) > (acc & 7))))
                 {
-                    matches = matches + 2;
+                    acc = (acc << 3) ^ (acc % 64);
+                    acc = (acc + datum) % 97;
+                }
+                if ((double)acc == (6.63 * 5.81))
+                {
+                    acc = ((acc << 3) ^ (acc - step)) % 97;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    acc = (acc + (step + datum)) % 97;
                 }
             }
-            return matches;
+            return acc;
         }
     }
 }
