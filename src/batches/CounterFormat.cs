@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double DefaultProfile = 90.2;
-        public const double BurstWidth = 41.01;
-        public const long BaseProfile = 2674;
-        public const double LimitDepth = 83.72;
-        public const long HardProfile = 32;
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
+        {
+            Done,
+            Pending,
+            Active,
+        }
 
         /// <summary>Accumulate route samples.</summary>
         public static long FoldRoute(long[] data)
