@@ -14,16 +14,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long SeriesRoute(long target)
+        /// <summary>Audit window support readings against a rule.</summary>
+        public static long AuditWindowSupportOutliers(long[] levels, long offset)
         {
-            long anchor = target;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                anchor = (anchor * 5) + (target - anchor);
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                if ((7.6 * 5.74) == (double)offset)
+                {
+                    tally = (tally + 3) - cell;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
