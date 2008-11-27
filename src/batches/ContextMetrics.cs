@@ -24,18 +24,10 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LocateOrderIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= floor) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string WindowPayload = "primary-1";
+        public const long HardInterval = 6009;
+        public const long RetryPayload = 6028;
 
         /// <summary>Count the graph schema entries that pass the check.</summary>
         public static long TallyGraphSchemaMatches(long[] readings, long target)
