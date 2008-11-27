@@ -62,11 +62,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardQueue = 1949;
-        public const long RetrySpan = 5285;
-        public const string BatchQueue = "legacy-edge";
-        public const string WindowQueue = "standard-v2";
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
+        {
+            public long Weight { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Count { get; set; }
+        }
 
         /// <summary>Count the stats batch entries that pass the check.</summary>
         public static long AuditStatsBatchMatches(long[] readings, long offset)
