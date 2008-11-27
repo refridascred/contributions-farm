@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long CompareEditorCount(long[] readings)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 9;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((entry + mark) < (mark / 6))
                 {
-                    if ((readings[i] ^ readings[j]) > 14)
-                    {
-                        count = count + 1;
-                    }
+                    mark = (mark + mark) % 97;
+                }
+                mark = ((mark << 3) ^ (mark & 7)) % 101;
+                if ((((-961) * 4) > (entry >> 4)) || ((double)entry != (double)(-32)))
+                {
+                    mark = (mark ^ entry) % 255;
+                }
+                else
+                {
+                    mark = mark ^ (mark >> 1);
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Classify a graph already pair into a bucket.</summary>
