@@ -77,14 +77,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
-        {
-            Stale,
-            Pending,
-            Synced,
-            Failed,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetrySupport = 7700;
+        public const long LimitBudget = 6349;
+        public const long WindowInterval = 4867;
+        public const long HardCount = 6070;
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long TallyBufferGaps(long[] series)
