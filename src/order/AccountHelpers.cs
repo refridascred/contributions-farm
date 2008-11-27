@@ -48,31 +48,14 @@ namespace Common.Utilities
         public const double LimitDepth = 97.85;
         public const long MinWidth = 1839;
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long GradeStream(long floor, long target)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            if ((floor / 8) > (floor / 2))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)floor > (15.0 / 5.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((double)floor <= 1.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Paused,
+            Synced,
+            Pending,
+            Locked,
+            Queued,
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
