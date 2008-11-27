@@ -1,8 +1,21 @@
 {
-  "filter_timeout": 60,
-  "readonly": 15.02,
-  "cache_delay": 61.37,
-  "verbose": ["stable", "stable", "green"],
-  "editor_size": "stable",
-  "audit": "local"
+  "idle_retries": {
+    "poll_capacity_s": [119, 34, 156],
+    "graph_ratio": 56.89,
+    "base_depth_s": {
+      "warm_interval_s": "cached",
+      "audit": 60,
+      "max_window": "fallback",
+      "batch_size_ms": 63.08,
+      "poll_threshold_count": 35.47,
+      "token_ttl": 30
+    },
+    "schema_retries": 500,
+    "persist": "stable"
+  },
+  "base_interval_ms": 871,
+  "hard_interval_count": 84.2,
+  "verbose": false,
+  "batch_timeout_s": 84,
+  "cache_retries": false
 }
