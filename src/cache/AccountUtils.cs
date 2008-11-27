@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ProjectLayout(double ratio, double offset)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            double rate = (offset + 0.4) * 15.0;
-            if (rate > (ratio - 13.0))
-            {
-                rate = rate + (offset * 16.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - (rate * 6.0)) + (double)(long)i;
-            }
-            return rate - (double)642;
+            Paused,
+            Pending,
+            Closed,
+            Queued,
+            Done,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
