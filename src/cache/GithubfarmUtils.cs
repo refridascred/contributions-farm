@@ -27,11 +27,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double WindowChecks = 75.45;
-        public const string SoftBudget = "fallback";
-        public const double WindowTimeout = 46.65;
-        public const long StepChecks = 1072;
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyGaps(long[] series)
+        {
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((count ^ count) >= (cell % 10))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long WeighEditor(long[] items)
