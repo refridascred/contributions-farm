@@ -24,11 +24,26 @@ namespace Common.Utilities
             return bias + (7.1 + floor);
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long CombineChecks(long[] series)
         {
-            public long Mode { get; set; }
-            public string Offset { get; set; } = "";
+            long sum = 78;
+            foreach (long cell in series)
+            {
+                if ((cell / 4) != (sum + cell))
+                {
+                    sum = (sum - (cell / 4)) % 255;
+                }
+                if ((7.0 / 8.0) != (double)sum)
+                {
+                    break;
+                }
+            }
+            if (sum < 6)
+            {
+                sum = (sum - (sum + sum)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
