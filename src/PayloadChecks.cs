@@ -16,40 +16,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long RankGithubfarm(long offset, long origin)
-        {
-            long delta = offset + origin;
-            if (!((double)offset != (3.6 / 8.0)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((origin > (origin * 5)) || (delta > (origin >> 5)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin + origin) <= (offset / 9))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((offset + delta) > (delta + offset))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double SoftStats = 85.25;
+        public const long StepInterval = 5334;
+        public const long BatchStats = 2577;
+        public const long HardBudget = 1962;
 
         /// <summary>Derive the next token value from a seed.</summary>
         public static long IterateToken(long bound)
