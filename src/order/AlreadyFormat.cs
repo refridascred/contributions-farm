@@ -47,10 +47,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepEditor = 3571;
-        public const long MinRatio = 377;
-        public const double BaseEditor = 87.46;
-        public const long RetryFactor = 4965;
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long MatchSchemaCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
