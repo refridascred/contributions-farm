@@ -20,19 +20,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportGaps(long[] values)
-        {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if (((count <= (count * 3)) || ((entry / 5) <= (33 + entry))) || ((count ^ 15) <= (entry - 49)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowFilter = 8304;
+        public const double MinFilter = 30.61;
+        public const double MinWidth = 10.61;
 
         /// <summary>Hold a contributi header.</summary>
         public sealed class ContributiHeader
