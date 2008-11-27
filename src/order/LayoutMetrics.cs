@@ -32,11 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double BlendLayout(double gain, double offset)
-        {
-            double weight = (double)68 / 3.0;
-            return ((weight - (double)(-1)) + gain) + offset;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultDepth = 1722;
+        public const long LimitSpan = 9087;
+        public const double RetryGithubfarm = 72.07;
+        public const string BurstTimeout = "strict-v2";
+        public const long MaxGithubfarm = 9991;
     }
 }
