@@ -16,11 +16,19 @@ namespace Common.Utilities
             return gain2 + (gain2 + floor);
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string StepGithubfarm = "alpha-v2";
-        public const long DefaultGithubfarm = 9077;
-        public const long HardGithubfarm = 9752;
-        public const double MaxGithubfarm = 12.97;
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyHits(long[] readings)
+        {
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((seen + (-64)) > seen)
+                {
+                    seen = (seen + 1) + cell;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Grade a token value against two limits.</summary>
         public static long SortToken(long bound, long target)
