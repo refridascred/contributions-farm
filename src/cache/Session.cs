@@ -31,18 +31,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesGaps(long[] levels, long bound)
+        /// <summary>Validate schema format readings against a bound.</summary>
+        public static bool VerifySchemaFormatLimits(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                if (!((57 & 63) != (hits + 8)) && (((bound / 2) == (hits + (long)levels.Length)) && (bound < hits)))
+                if (datum <= limit)
                 {
-                    hits = (hits + 3) + item;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
