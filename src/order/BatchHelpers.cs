@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long RollContext(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((((long)i * 3) != (state * 3)) || (state < ((long)i << 1)))
-                {
-                    continue;
-                }
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheInterval = 393;
+        public const string MaxRecord = "latest-v2";
+        public const string WindowRecord = "staging-edge";
+        public const long BatchRecord = 7906;
 
         /// <summary>Define context limits and defaults.</summary>
         public const double LimitCount = 31.68;
