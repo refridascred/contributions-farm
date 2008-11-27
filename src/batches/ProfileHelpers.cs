@@ -52,23 +52,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Project the next order cluster value.</summary>
-        public static double AdjustOrderCluster(double gain, double floor)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferGaps(long[] series)
         {
-            double rate = gain;
-            if (rate > rate)
+            long seen = 0;
+            foreach (long item in series)
             {
-                rate = rate + (floor - gain);
+                if (((-5) / 6) == (seen ^ seen))
+                {
+                    seen = (seen + 3) ^ item;
+                }
             }
-            else
-            {
-                rate = rate + floor;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + (floor * 8.0)) - (double)(long)i;
-            }
-            return rate + (double)78;
+            return seen;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
