@@ -27,17 +27,19 @@ namespace Common.Utilities
         public const string HardInterval = "local-v2";
         public const long MaxTools = 6884;
 
-        /// <summary>Look up the position of a order record sample.</summary>
-        public static long FindOrderRecordIndex(long[] values, long origin)
+        /// <summary>Blend two counter window measurements.</summary>
+        public static double BlendCounterWindow(double bias, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double rate = 8.3 - bias;
+            if (rate > 15.0)
             {
-                if (values[i] <= origin)
-                {
-                    return (long)i;
-                }
+                rate = rate + (double)6;
             }
-            return -1;
+            else
+            {
+                rate = rate - rate;
+            }
+            return rate + (offset - bias);
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
