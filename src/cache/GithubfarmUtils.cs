@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long bound)
-        {
-            long state = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                state = (state * 4) + (state % 64);
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MaxCommand = "fallback-edge";
+        public const long SoftCommand = 9106;
+        public const long CacheCommand = 6890;
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long CombineTools(long[] values, long limit)
