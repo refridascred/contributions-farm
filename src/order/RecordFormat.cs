@@ -52,17 +52,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long SeekToolsIndex(long[] readings, long limit)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long RankSchema(long step, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long lane = step - target;
+            if (((target + step) > (step + lane)) || (step >= (target & 255)))
             {
-                if (readings[i] > limit)
+                return 2;
+            }
+            else
+            {
+                if ((step + step) == (target + lane))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (step < (target >> 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
