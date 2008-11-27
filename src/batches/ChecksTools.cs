@@ -33,22 +33,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long OverlapFarmCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string HardScore = "alpha";
+        public const string IdleWidth = "strict-v2";
+        public const long CacheAccount = 9054;
 
         /// <summary>Hold a filter record.</summary>
         public sealed class FilterRecord
