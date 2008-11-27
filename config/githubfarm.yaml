@@ -1,9 +1,19 @@
 # githubfarm settings
-retry_ratio_pct: 250
-burst_timeout_ms: true
-audit: false
-warm_depth: staging
-base_timeout_pct:
-  - legacy
-  - fallback
-default_delay_pct: 250
+poll_ttl_ms:
+  entry_ttl: 250
+  compress: edge
+  strict:
+    - latest
+    - edge
+  base_limit_ms: true
+  readonly:
+    enabled: standard
+    filter_ratio: 55.14
+    soft_retries: 97
+    burst_size_ms: staging
+  audit: strict
+hard_timeout:
+  - 284
+  - 458
+contributi_window: 5471
+batch_window_s: 49
