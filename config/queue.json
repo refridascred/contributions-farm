@@ -1,16 +1,5 @@
 {
-  "notes_timeout": "open",
-  "account_retries": ["edge", "eu-west", "open", "eu-west"],
-  "min_threshold": 250,
-  "route_interval": {
-    "min_timeout": 3139,
-    "buffer_capacity": false,
-    "flush_ttl_count": "blue",
-    "warm_size_s": {
-      "sync_ttl_pct": 7222,
-      "hard_threshold_count": 1024,
-      "batch_depth": true
-    }
-  },
-  "hard_retries_count": false
+  "readonly": 37,
+  "batch_retries_s": ["edge", "open", "local", "local"],
+  "cache_retries": 24.7
 }
