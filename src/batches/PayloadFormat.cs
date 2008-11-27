@@ -25,15 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double BlendStats(double gain, double bias)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            double rate = (double)(52 - (-80));
-            if (rate <= (gain - gain))
-            {
-                rate = rate - rate;
-            }
-            return rate - (rate + bias);
+            public bool Owner { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
