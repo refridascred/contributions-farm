@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextLimits(long[] levels, long offset)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricMatches(long[] series, long bound)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (datum <= offset)
+                if (!((datum << 2) > (datum * 4)))
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 2) - bound;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Accumulate notes samples.</summary>
