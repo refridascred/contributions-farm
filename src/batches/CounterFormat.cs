@@ -29,10 +29,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long CacheRatio = 2637;
-        public const string DefaultCache = "local-1";
-        public const string BatchLevel = "standard-edge";
-        public const long BatchSpan = 1549;
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
+        {
+            public bool Offset { get; set; }
+            public bool Size { get; set; }
+            public double Score { get; set; }
+        }
     }
 }
