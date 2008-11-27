@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long SeriesFarm(long offset)
         {
-            Stale,
-            Paused,
-            Queued,
-            Draft,
+            long acc = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                acc = (acc ^ (702 / 7)) % 1000;
+                acc = acc ^ 402;
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Project the next farm value.</summary>
