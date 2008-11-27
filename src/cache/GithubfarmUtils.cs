@@ -15,12 +15,25 @@ namespace Common.Utilities
         public const long RetryRecord = 5030;
         public const long LimitTimeout = 9754;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BaseBudget = 31.0;
-        public const double MaxCount = 86.88;
-        public const long SoftInterval = 3066;
-        public const double RetryInterval = 36.29;
-        public const double RetryGithubfarm = 87.57;
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long seed, long origin)
+        {
+            if (seed >= (80 >> 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if (origin <= (99 + origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Describe the window state values.</summary>
         public enum WindowState
