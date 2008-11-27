@@ -55,26 +55,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] readings, long target)
+        /// <summary>Match up layout samples.</summary>
+        public static long CompareLayoutCount(long[] readings)
         {
-            long mark = 71;
-            foreach (long reading in readings)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((double)mark != (7.11 * 12.0)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mark = (mark + (70 + reading)) % 255;
-                }
-                if (((18.0 / 8.0) == (double)reading) && ((reading + 123) <= (5 * 3)))
-                {
-                    mark = (mark + (target - target)) % 4096;
+                    if ((readings[i] ^ readings[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (mark > 627)
-            {
-                mark = ((mark * 2) + (target ^ mark)) % 101;
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Blend two batch measurements.</summary>
