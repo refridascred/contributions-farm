@@ -1,9 +1,6 @@
 # support settings
-retry_limit: 14.06
-enabled:
-  hard_size: stable
-  hard_capacity: 500
-  warm_threshold: blue
-  cache_timeout_s: 78.58
-  flush_delay_count: 6.62
-route_depth: 85.1
+entry_capacity: false
+batch_window: true
+stream_interval: 1024
+cache_timeout_s: fallback
+metric_ratio: legacy
