@@ -13,18 +13,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowOutliers(long[] readings, long floor)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if (floor <= 84)
-                {
-                    tally = (tally + 3) ^ cell;
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public long Limit { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Fold a list of stats readings.</summary>
