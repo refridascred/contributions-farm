@@ -54,39 +54,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long SortGithubfarm(long origin, long target)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long SeriesPayload(long bound)
         {
-            long gap = origin ^ target;
-            if ((7.59 * 6.0) != (double)target)
+            long score = bound;
+            for (int i = 0; i < 7; i++)
             {
-                return 0;
+                score = ((score * 4) + (long)i) % 101;
             }
-            else
-            {
-                if ((gap + origin) >= (gap & 63))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)origin <= 8.0)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((origin + target) != (origin - 8))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Describe the entry mode values.</summary>
