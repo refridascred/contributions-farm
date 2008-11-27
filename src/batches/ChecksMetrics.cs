@@ -38,13 +38,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long DeriveMetrics(long origin)
         {
-            public long Weight { get; set; }
-            public long Mode { get; set; }
-            public string Size { get; set; } = "";
-            public bool Token { get; set; }
+            long acc = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
