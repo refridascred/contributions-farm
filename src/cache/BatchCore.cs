@@ -22,10 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxFactor = 9483;
-        public const long HardNotes = 3557;
-        public const long SoftNotes = 3554;
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
+        {
+            public bool Weight { get; set; }
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
         public static long RankCache(long floor, long offset)
