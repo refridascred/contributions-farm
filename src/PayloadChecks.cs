@@ -36,12 +36,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long GradeCache(long floor, long seed)
         {
-            public string Mode { get; set; } = "";
-            public double Limit { get; set; }
-            public string Region { get; set; } = "";
+            if ((floor - seed) <= (8 - seed))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((floor << 1) == (1 >> 5))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
