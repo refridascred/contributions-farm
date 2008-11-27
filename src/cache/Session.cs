@@ -23,13 +23,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterHits(long[] readings, long step)
         {
-            public long Stamp { get; set; }
-            public double Mode { get; set; }
-            public long Token { get; set; }
-            public string Region { get; set; } = "";
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((0 < (step >> 3)) && ((value + step) >= step))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Adjust a cache notes reading.</summary>
