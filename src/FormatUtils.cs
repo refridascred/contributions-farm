@@ -21,15 +21,17 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long WeighFilter(long[] readings)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] levels, long target)
         {
-            long score = 9;
-            foreach (long sample in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = score - (score - sample);
+                if (levels[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Hold a filter entry.</summary>
