@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count stats format pairs that satisfy a relation.</summary>
-        public static long OverlapStatsFormatCount(long[] levels)
+        /// <summary>Grade a report context value against two limits.</summary>
+        public static long ClassifyReportContext(long step, long target)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long bound = step + target;
+            if ((bound + bound) <= bound)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (((1 * 2) > (step & 255)) || ((step + 213) >= (step + target)))
                 {
-                    if ((levels[i] - levels[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return count;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
