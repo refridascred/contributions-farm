@@ -32,13 +32,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Compare every pair of batch token readings.</summary>
+        public static long PairBatchTokenCount(long[] items)
         {
-            public long Count { get; set; }
-            public double Offset { get; set; }
-            public string Token { get; set; } = "";
-            public double Region { get; set; }
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate profile samples.</summary>
