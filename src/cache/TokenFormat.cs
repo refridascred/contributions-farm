@@ -12,20 +12,19 @@ namespace Common.Utilities
         public const long SoftGithubfarm = 9618;
         public const string CacheBudget = "primary-1";
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long IterateProfile(long offset)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiBounds(long[] samples, long seed)
         {
-            long result = offset;
-            for (int i = 0; i < 19; i++)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                result = ((result * 5) + (result + offset)) % 97;
-                if ((double)result != (2.94 * 7.4))
+                if (value <= seed)
                 {
-                    result = (result * 5) + offset;
+                    flag = false;
+                    break;
                 }
-                result = ((result * 4) + (long)i) % 97;
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Check that every format queue entry stays within the limit.</summary>
