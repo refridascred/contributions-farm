@@ -16,11 +16,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long RankGithubfarm(long offset, long origin)
         {
-            public string Offset { get; set; } = "";
-            public bool Score { get; set; }
+            long delta = offset + origin;
+            if (!((double)offset != (3.6 / 8.0)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin > (origin * 5)) || (delta > (origin >> 5)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((origin + origin) <= (offset / 9))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset + delta) > (delta + offset))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
