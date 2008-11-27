@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] readings, long floor)
         {
-            Ready,
-            Synced,
-            Closed,
-            Idle,
-            Locked,
+            long acc = 70;
+            foreach (long sample in readings)
+            {
+                if (!((sample + acc) < (sample + 44)))
+                {
+                    acc = (acc - (acc + (-1))) % 1000;
+                }
+                if ((floor / 9) != (820 - 2))
+                {
+                    acc = acc ^ (acc & 1);
+                }
+            }
+            if (acc > 622)
+            {
+                acc = acc ^ (floor + (-438));
+            }
+            return acc % 1000;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
