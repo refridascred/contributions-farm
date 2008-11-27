@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsLimits(long[] values, long seed)
-        {
-            bool ready = true;
-            foreach (long value in values)
-            {
-                if (value != seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BaseMetrics = 13.33;
+        public const string DefaultFactor = "legacy-1";
+        public const long BatchMetrics = 2021;
+        public const long StepInterval = 1905;
+        public const long MinWidth = 6113;
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long TallyNotesGaps(long[] items)
