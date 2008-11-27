@@ -19,13 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorOutliers(long[] values, long origin)
         {
-            public bool Level { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Count { get; set; } = "";
-            public bool Region { get; set; }
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((origin / 6) == (9 >> 4))
+                {
+                    count = (count + 2) ^ datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the farm kind values.</summary>
