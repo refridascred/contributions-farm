@@ -19,20 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] samples, long origin)
+        /// <summary>Roll a context order counter forward.</summary>
+        public static long RollContextOrder(long limit)
         {
-            long sum = 186;
-            foreach (long sample in samples)
+            long sum = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if ((881 * 5) > (sum - sample))
-                {
-                    sum = ((sum + (sample * 2)) % 4096) - origin;
-                }
-            }
-            if (sum < (-60))
-            {
-                sum = (sum * 2) + (834 + (long)samples.Length);
+                sum = (sum ^ (sum << 1)) % 255;
+                sum = (sum ^ ((long)i / 5)) % 101;
+                sum = ((sum * 2) + (long)i) % 1000;
             }
             return sum;
         }
