@@ -1,11 +1,8 @@
 {
-  "hard_window_ms": {
-    "base_ttl_pct": "eu-west",
-    "order_depth": "fallback",
-    "dry_run": true,
-    "max_interval": 30,
-    "retry_timeout_ms": 9
-  },
-  "poll_retries": 4738,
-  "poll_interval": false
+  "filter_timeout": 60,
+  "readonly": 15.02,
+  "cache_delay": 61.37,
+  "verbose": ["stable", "stable", "green"],
+  "editor_size": "stable",
+  "audit": "local"
 }
