@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] series)
-        {
-            long acc = 59;
-            foreach (long sample in series)
-            {
-                acc = (acc + (sample - sample)) % 65521;
-                if ((acc < (918 + sample)) && ((sample << 1) <= 12))
-                {
-                    acc = (acc ^ (acc * 5)) % 255;
-                }
-                acc = (acc - acc) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double BaseBatch = 40.25;
+        public const long RetryBatch = 2830;
+        public const string DefaultBatch = "primary-edge";
+        public const string SoftCount = "local";
 
         /// <summary>Define command limits and defaults.</summary>
         public const string HardCommand = "cached";
