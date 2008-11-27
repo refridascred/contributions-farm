@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
-        {
-            public bool Token { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double StepFactor = 58.6;
+        public const long BatchPayload = 747;
+        public const long IdleWidth = 7302;
 
         /// <summary>Describe the window mode values.</summary>
         public enum WindowMode
