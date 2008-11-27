@@ -32,18 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmGaps(long[] samples, long step)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if (!(((double)value == (2.22 * 8.3)) && ((76 % 3) != (matches % 12))))
-                {
-                    matches = (matches + 1) - step;
-                }
-            }
-            return matches;
+            public bool Stamp { get; set; }
+            public long Total { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Compare every pair of command readings.</summary>
