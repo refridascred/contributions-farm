@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every buffer stats entry stays within the limit.</summary>
-        public static bool ValidateBufferStatsRange(long[] samples, long seed)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            bool valid = true;
-            foreach (long entry in samples)
-            {
-                if (entry < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Flag { get; set; }
+            public string Total { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
