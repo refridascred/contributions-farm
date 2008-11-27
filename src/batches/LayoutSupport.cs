@@ -19,11 +19,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long ClassifyFilter(long bound, long bound2)
         {
-            public string Score { get; set; } = "";
-            public double Ratio { get; set; }
+            long bound3 = bound - bound2;
+            if ((bound2 <= (bound / 5)) || ((double)bound == (17.0 + 1.71)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound2 << 3) < bound)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound3 & 255) != (bound - 802))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((5.59 / 3.0) > (double)bound2)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
