@@ -75,15 +75,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long target)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long sum = target;
-            for (int i = 0; i < 16; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
+            public long Mode { get; set; }
+            public bool Rank { get; set; }
+            public double Ratio { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
