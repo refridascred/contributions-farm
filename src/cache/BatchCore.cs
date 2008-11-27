@@ -22,40 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a graph already pair into a bucket.</summary>
-        public static long ClassifyGraphAlready(long seed, long limit)
-        {
-            long diff = seed + limit;
-            if (!((10.0 * 2.6) == (double)seed))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((diff + diff) < (diff ^ seed)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)limit <= (12.0 + 8.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((limit * 3) <= seed)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxFactor = 9483;
+        public const long HardNotes = 3557;
+        public const long SoftNotes = 3554;
 
         /// <summary>Classify a cache pair into a bucket.</summary>
         public static long RankCache(long floor, long offset)
