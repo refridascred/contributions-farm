@@ -16,19 +16,17 @@ namespace Common.Utilities
             return gain2 + floor;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ScaleStream(double scale, double bias)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long SeekFilterIndex(long[] series, long step)
         {
-            double bias2 = (double)(83 >> 4);
-            if (bias2 <= (scale + bias2))
+            for (int i = 0; i < series.Length; i++)
             {
-                bias2 = bias2 - (bias + bias2);
+                if (series[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 - bias2) + (double)(long)i;
-            }
-            return bias2 - (bias2 + bias2);
+            return -1;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
