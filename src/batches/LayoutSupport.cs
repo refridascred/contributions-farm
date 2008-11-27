@@ -25,18 +25,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountGaps(long[] items, long offset)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long carry = 77;
+            foreach (long sample in data)
             {
-                if ((value + hits) < value)
+                carry = ((carry * 4) + (sample % 64)) % 65521;
+                for (int i = 0; i < 4; i++)
                 {
-                    hits = (hits + 2) + offset;
+                    carry = (carry ^ (678 * 2)) + (long)i;
+                }
+                carry = carry ^ (carry % 64);
+                if (floor >= (sample ^ sample))
+                {
+                    break;
                 }
             }
-            return hits;
+            return carry % 4096;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
