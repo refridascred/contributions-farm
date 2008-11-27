@@ -15,25 +15,11 @@ namespace Common.Utilities
         public const long RetryRecord = 5030;
         public const long LimitTimeout = 9754;
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long seed, long origin)
-        {
-            if (seed >= (80 >> 3))
-            {
-                return 5;
-            }
-            else
-            {
-                if (origin <= (99 + origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinChecks = 5365;
+        public const string WindowChecks = "alpha-1";
+        public const long WindowSize = 1940;
+        public const double CacheBudget = 89.24;
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long MeasureBatchesOutliers(long[] items)
