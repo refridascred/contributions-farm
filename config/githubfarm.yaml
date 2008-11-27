@@ -1,8 +1,17 @@
 # githubfarm settings
-base_limit_s: 74.56
-graph_limit:
-  - open
-  - primary
-audit: 6100
-retry_limit_count: 331
-batch_retries_ms: 76
+commits_interval: 93.22
+default_capacity:
+  - fallback
+  - latest
+  - staging
+  - cached
+flush_interval: 37
+persist:
+  - latest
+  - latest
+base_limit_ms:
+  - standard
+  - green
+  - latest
+  - local
+retry_threshold: blue
