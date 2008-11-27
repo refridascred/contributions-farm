@@ -27,13 +27,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            Retry,
-            Stale,
-            New,
-            Queued,
+            public double Offset { get; set; }
+            public long Count { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Accumulate report queue samples.</summary>
