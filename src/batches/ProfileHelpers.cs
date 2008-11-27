@@ -79,32 +79,15 @@ namespace Common.Utilities
             return rate + (double)78;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long BucketAccount(long floor, long limit)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long CombineChecks(long[] data)
         {
-            long step = floor - limit;
-            if (step <= (floor ^ floor))
+            long score = 8;
+            foreach (long value in data)
             {
-                return 8;
+                score = (score ^ value) % 4096;
             }
-            else
-            {
-                if ((limit / 3) < (limit & 63))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor + 9) <= (limit << 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return score;
         }
     }
 }
