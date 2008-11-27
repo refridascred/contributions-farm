@@ -43,39 +43,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long RankCluster(long floor, long bound)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] readings, long bound)
         {
-            long gap = floor ^ bound;
-            if ((gap + 92) == (gap - bound))
+            long total = 666;
+            foreach (long value in readings)
             {
-                return 8;
+                total = (((total << 2) ^ (bound * 3)) % 1000) + value;
             }
-            else
-            {
-                if (floor <= (bound ^ floor))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((floor ^ bound) < (bound & 1)) && ((44 ^ floor) != (floor / 6)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((865 / 8) <= (bound - gap)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return total % 65521;
         }
     }
 }
