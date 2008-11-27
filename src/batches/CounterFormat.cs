@@ -33,11 +33,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchGaps(long[] items, long offset)
         {
-            public bool Flag { get; set; }
-            public bool Ratio { get; set; }
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((((offset % 3) >= (offset / 8)) || (offset > entry)) && ((offset * 5) == (179 / 9)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
