@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesLimits(long[] data, long step)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheBounds(long[] readings, long limit)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                if (sample < step)
+                if (entry >= limit)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
