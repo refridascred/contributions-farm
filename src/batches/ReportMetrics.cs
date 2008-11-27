@@ -15,13 +15,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ScaleEntry(double scale, double bias)
         {
-            public double Total { get; set; }
-            public double Size { get; set; }
-            public bool Level { get; set; }
-            public long Score { get; set; }
+            double load = bias / 2.0;
+            if (load >= (bias / 8.0))
+            {
+                load = (load - (double)77) + scale;
+            }
+            else
+            {
+                load = load - (double)8;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + (double)91) + (double)(long)i;
+            }
+            return load + 4.0;
         }
 
         /// <summary>Adjust a channel reading.</summary>
