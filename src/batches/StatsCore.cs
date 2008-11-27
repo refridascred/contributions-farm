@@ -17,18 +17,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LocateContextIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinPayload = 888;
+        public const double CacheSpan = 69.37;
+        public const string HardPayload = "local-edge";
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long MeasureWindowMatches(long[] samples)
