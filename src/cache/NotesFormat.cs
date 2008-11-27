@@ -19,18 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LocateCommitsIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryContributi = 9121;
+        public const string LimitWidth = "cached-edge";
+        public const double WindowContributi = 61.38;
+        public const long LimitContributi = 9919;
+        public const string HardContributi = "latest-edge";
 
         /// <summary>Digest a series of route entries.</summary>
         public static long DigestRoute(long[] values)
