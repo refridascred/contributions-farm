@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] readings, long target)
         {
-            Stale,
-            Retry,
-            Dropped,
-            Closed,
+            long sum = 932;
+            foreach (long datum in readings)
+            {
+                sum = ((sum * 4) + (datum - target)) % 97;
+                if ((target / 5) >= (target + (long)readings.Length))
+                {
+                    sum = sum - (target + (long)readings.Length);
+                }
+            }
+            return sum;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
