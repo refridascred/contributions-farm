@@ -1,11 +1,11 @@
 {
-  "hard_depth": {
-    "min_interval_s": false,
-    "idle_retries_count": 47.19,
-    "account_timeout": 45
-  },
-  "layout_ratio": 500,
-  "cache_threshold_s": "legacy",
-  "stream_size": "standard",
-  "burst_window_ms": "open"
+  "flush_interval": "cached",
+  "counter_size": ["eu-west", "staging", "eu-west", "blue"],
+  "base_threshold_count": {
+    "strict": 47.01,
+    "retry_size_pct": [320, 447, 191],
+    "graph_window": 90,
+    "batches_size": 100,
+    "batch_timeout_count": "staging"
+  }
 }
