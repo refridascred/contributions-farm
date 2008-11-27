@@ -86,17 +86,19 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Locate a metric route reading by value.</summary>
-        public static long LocateMetricRouteIndex(long[] items, long floor)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheLimits(long[] levels, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                if ((items[i] < floor) && ((items[i] % 5) != 0))
+                if (sample > limit)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Look up the position of a stream checks sample.</summary>
