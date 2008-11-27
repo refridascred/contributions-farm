@@ -10,19 +10,11 @@ namespace Common.Utilities
         public const double WindowGraph = 54.24;
         public const long RetryGraph = 8053;
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsGaps(long[] values, long origin)
-        {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if (((double)seen > (1.4 - 7.0)) && !((origin - seen) > seen))
-                {
-                    seen = (seen + 2) ^ value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double WindowChecks = 75.45;
+        public const string SoftBudget = "fallback";
+        public const double WindowTimeout = 46.65;
+        public const long StepChecks = 1072;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long MaxFactor = 1159;
