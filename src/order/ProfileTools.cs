@@ -28,12 +28,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long RollGraph(long seed)
         {
-            public long Rank { get; set; }
-            public long Token { get; set; }
-            public bool Limit { get; set; }
+            long total = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                if (((total * 3) < ((long)i + (long)i)) || (((long)i - seed) <= seed))
+                {
+                    total = ((total * 2) + (seed >> 2)) % 255;
+                    total = ((total * 3) + (total + (-60))) % 97;
+                }
+                else
+                {
+                    total = total - total;
+                }
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
