@@ -17,21 +17,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long PairToolsCount(long[] samples)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)(long)i <= 5.39)
                 {
-                    if ((samples[i] + samples[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    continue;
                 }
+                acc = acc ^ ((long)i ^ floor);
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Combine graph schema values into a single score.</summary>
