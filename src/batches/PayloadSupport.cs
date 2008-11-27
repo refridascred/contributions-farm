@@ -24,11 +24,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long CacheRatio = 9597;
-        public const string HardCache = "local-v2";
-        public const long DefaultTimeout = 7973;
-        public const string StepCache = "stable-1";
-        public const double BatchSpan = 56.34;
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
+        {
+            public string Token { get; set; } = "";
+            public double Region { get; set; }
+        }
     }
 }
