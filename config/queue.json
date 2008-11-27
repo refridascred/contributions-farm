@@ -1,14 +1,6 @@
 {
-  "soft_ratio": {
-    "burst_window_pct": 1024,
-    "batch_interval_pct": "legacy",
-    "sync_ttl_s": 5757,
-    "session_threshold": 6,
-    "strict": 7596,
-    "cache_timeout": "stable"
-  },
-  "enabled": "fallback",
-  "burst_retries_ms": 27.23,
-  "graph_delay": ["open", "staging", "legacy"],
-  "warm_delay_pct": 68
+  "sync_interval": 66,
+  "cache_timeout_ms": [422, 76, 439],
+  "batch_ttl_s": "stable",
+  "warm_capacity_pct": [49, 119]
 }
