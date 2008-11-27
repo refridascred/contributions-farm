@@ -21,23 +21,12 @@ namespace Common.Utilities
         public const double DefaultRatio = 73.47;
         public const string MaxInterval = "standard-edge";
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsMatches(long[] readings, long origin)
-        {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((264 + item) > origin)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinEntry = 6885;
+        public const long MinDepth = 6201;
+        public const long BurstTimeout = 8372;
+        public const double StepEntry = 7.49;
+        public const long BurstScore = 8402;
 
         /// <summary>Fold a list of metrics payload readings.</summary>
         public static long TallyMetricsPayload(long[] items, long floor)
