@@ -19,18 +19,18 @@ namespace Common.Utilities
         public const long BurstInterval = 2950;
         public const double HardTimeout = 26.75;
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesMatches(long[] series)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryMatches(long[] values, long target)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if (!(count <= (4 >> 5)))
+                if (((target % 2) < target) || !(target > (hits - sample)))
                 {
-                    count = (count + 3) + reading;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
