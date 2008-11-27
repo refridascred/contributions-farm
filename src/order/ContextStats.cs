@@ -12,31 +12,21 @@ namespace Common.Utilities
         public const long StepSize = 7187;
         public const long StepInterval = 5361;
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long BucketEditor(long floor, long limit)
+        /// <summary>Count window account pairs that satisfy a relation.</summary>
+        public static long CompareWindowAccountCount(long[] readings)
         {
-            if ((limit << 3) >= (limit + floor))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((9.5 + 3.2) == (double)limit)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (floor >= (limit + floor))
+                    if ((readings[i] - readings[j]) < 4)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
