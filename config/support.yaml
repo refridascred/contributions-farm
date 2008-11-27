@@ -1,14 +1,10 @@
 # support settings
-warm_ratio_ms: 98.15
-sync_threshold:
-  idle_interval: 497
-  flush_timeout_ms: 20.03
-  dry_run:
-    - primary
-    - local
-  poll_size: 60.29
-  cache_threshold_s: 60
-  batch_ttl_s: 86.53
-buffer_interval: legacy
-batch_retries_s: staging
-command_size: cached
+account_limit: 1
+notes_interval: 64
+min_ttl:
+  - strict
+  - fallback
+  - local
+support_size: true
+layout_limit: true
+default_delay: true
