@@ -33,25 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine queue payload values into a single score.</summary>
-        public static long FoldQueuePayload(long[] series)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsHits(long[] readings, long limit)
         {
-            long result = 647;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if ((98 + result) > reading)
+                if ((double)hits >= (3.56 + 5.0))
                 {
-                    result = result + (reading + result);
-                    result = (result * 3) + 20;
-                    break;
-                }
-                result = (result * 4) + reading;
-                if ((reading & 31) > reading)
-                {
-                    result = (result ^ (result - reading)) % 97;
+                    hits = ((hits + 3) ^ datum) + limit;
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
