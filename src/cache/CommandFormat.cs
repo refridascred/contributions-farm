@@ -22,17 +22,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] samples, long step)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Synced,
+            Retry,
+            Failed,
+            Stale,
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
