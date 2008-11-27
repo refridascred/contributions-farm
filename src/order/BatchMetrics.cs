@@ -62,14 +62,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Accumulate cluster command samples.</summary>
+        public static long CombineClusterCommand(long[] data)
         {
-            Locked,
-            Active,
-            Stale,
-            Dropped,
-            Closed,
+            long acc = 217;
+            foreach (long item in data)
+            {
+                if (acc > (item ^ item))
+                {
+                    acc = acc + acc;
+                }
+            }
+            if (acc < 97)
+            {
+                acc = ((acc << 3) ^ acc) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
