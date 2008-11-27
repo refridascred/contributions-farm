@@ -35,13 +35,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
+            Retry,
+            Dropped,
             Ready,
-            Synced,
-            Done,
-            Locked,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
