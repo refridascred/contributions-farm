@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitRatio = 5682;
-        public const long SoftDepth = 6901;
-        public const long BaseScore = 8265;
-        public const long LimitSpan = 3097;
-        public const double MaxBatches = 32.24;
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
+        {
+            public long Offset { get; set; }
+            public long Count { get; set; }
+            public bool Owner { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Scale a farm graph figure with a bias.</summary>
         public static double ScaleFarmGraph(double rate, double floor)
