@@ -27,13 +27,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double AdjustContext(double gain, double bias)
         {
-            Synced,
-            Locked,
-            Draft,
-            Done,
+            double bias2 = (double)((-17) << 3);
+            if (bias2 <= gain)
+            {
+                bias2 = bias2 + bias;
+            }
+            return bias2 - (gain + bias2);
         }
     }
 }
