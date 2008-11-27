@@ -20,17 +20,27 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long SeekGraphIndex(long[] values, long offset)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TotalAlready(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 80;
+            foreach (long item in series)
             {
-                if (values[i] >= offset)
+                sum = (sum * 2) + (99 + sum);
+                if ((sum * 3) >= (item - (-47)))
                 {
-                    return (long)i;
+                    sum = ((sum << 3) ^ (259 & 7)) % 101;
+                }
+                else
+                {
+                    sum = (sum ^ (item - item)) % 65521;
                 }
             }
-            return -1;
+            if (sum < 5)
+            {
+                sum = (sum << 2) ^ (sum % 7);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Describe the contributi level values.</summary>
