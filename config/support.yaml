@@ -1,5 +1,4 @@
 # support settings
-batch_delay: 2722
-retry_ttl_count: false
-warm_ttl_count: blue
-batch_threshold_pct: true
+enabled: edge
+audit: 76.1
+hard_retries: 1024
