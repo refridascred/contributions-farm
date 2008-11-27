@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinDepth = 8759;
-        public const long MinInterval = 2995;
-        public const long BurstQueue = 3124;
-        public const long IdleQueue = 24;
-        public const string BatchBudget = "staging-edge";
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
+        {
+            public bool Region { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Locate a batch reading by value.</summary>
         public static long LocateBatchIndex(long[] series, long floor)
