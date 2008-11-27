@@ -1,10 +1,10 @@
 # Command notes
 
-Defaults for token live in the config folder and can be overridden per environment.
-The cache report groups every command by tools.
+The route report groups every window by session.
+The support helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every cluster change
-- Keep counter values small
-- Document new token fields
+- Log every githubfarm change
+- Keep layout values small
+- Document new cache fields
