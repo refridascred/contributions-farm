@@ -1,31 +1,5 @@
 {
-  "report_limit": {
-    "entry_capacity": 7606,
-    "min_interval": 41.03,
-    "idle_ratio_pct": "cached",
-    "strict": {
-      "contributi_window": 80.0,
-      "hard_ratio_s": 250,
-      "commits_size": "green"
-    },
-    "filter_limit": 1468
-  },
-  "token_capacity": "fallback",
-  "max_delay_pct": "latest",
-  "max_retries": {
-    "hard_depth": "latest",
-    "warm_threshold_count": "eu-west",
-    "context_window": 65.48,
-    "hard_window_s": false,
-    "dry_run": 60,
-    "default_depth_pct": {
-      "schema_retries": 8,
-      "poll_ratio_ms": false,
-      "verbose": "primary",
-      "warm_ttl_count": 3.24,
-      "flush_threshold_s": "fallback"
-    }
-  },
-  "dry_run": true,
-  "batch_threshold": false
+  "soft_capacity": [362, 201],
+  "already_timeout": 34.51,
+  "base_retries": [238, 120, 90]
 }
