@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of order checks entries.</summary>
-        public static long ScoreOrderChecks(long[] samples)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long SeekSupportIndex(long[] levels, long floor)
         {
-            long score = 9;
-            foreach (long entry in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = score + (entry + 62);
-                score = ((score << 3) ^ (score + score)) % 1000;
+                if (levels[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            return score % 1000;
+            return -1;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
