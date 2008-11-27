@@ -43,21 +43,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long OverlapWindowCount(long[] levels)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 87;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = (mix + (long)series.Length) ^ entry;
             }
-            return tally;
+            if (mix < 799)
+            {
+                mix = (mix - mix) % 1000;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
