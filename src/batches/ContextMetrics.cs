@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] readings, long limit)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long floor, long target)
         {
-            long score = 29;
-            foreach (long cell in readings)
+            if ((2.8 / 5.0) != (double)target)
             {
-                score = ((score * 4) + (cell / 6)) - limit;
+                return 1;
             }
-            return score;
+            else
+            {
+                if ((double)632 >= (double)target)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Combine already batches values into a single score.</summary>
