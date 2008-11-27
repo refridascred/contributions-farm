@@ -31,10 +31,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxRatio = 1634;
-        public const double CacheNotes = 98.96;
-        public const double DefaultInterval = 20.01;
-        public const long DefaultFactor = 5407;
+        /// <summary>Roll a stream stats counter forward.</summary>
+        public static long DeriveStreamStats(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                result = (result + result) % 1000;
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
+        }
     }
 }
