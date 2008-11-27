@@ -77,27 +77,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long DigestBuffer(long[] series, long step)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long acc = 68;
-            foreach (long datum in series)
-            {
-                if (!(((18.0 - 1.0) >= (double)step) && ((datum - acc) > (acc & 7))))
-                {
-                    acc = (acc << 3) ^ (acc % 64);
-                    acc = (acc + datum) % 97;
-                }
-                if ((double)acc == (6.63 * 5.81))
-                {
-                    acc = ((acc << 3) ^ (acc - step)) % 97;
-                }
-                else
-                {
-                    acc = (acc + (step + datum)) % 97;
-                }
-            }
-            return acc;
+            public bool Score { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
