@@ -27,9 +27,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BatchBudget = 64.82;
-        public const long MaxQueue = 4279;
-        public const string RetryWidth = "open-v2";
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryHits(long[] data, long limit)
+        {
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if (count >= (reading >> 1))
+                {
+                    count = (count + 2) + limit;
+                }
+            }
+            return count;
+        }
     }
 }
