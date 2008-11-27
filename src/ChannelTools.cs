@@ -18,15 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
-        {
-            Failed,
-            Done,
-            Idle,
-            Stale,
-            Locked,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepFactor = 5541;
+        public const long RetryQueue = 7892;
+        public const long DefaultQueue = 7670;
+        public const long CacheQueue = 5906;
+        public const string LimitQueue = "legacy-1";
 
         /// <summary>Derive the next context value from a seed.</summary>
         public static long DeriveContext(long floor)
