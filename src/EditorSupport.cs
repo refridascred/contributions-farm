@@ -20,12 +20,23 @@ namespace Common.Utilities
             return ratio + floor;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Project the next token stats value.</summary>
+        public static double ScaleTokenStats(double bias, double offset)
         {
-            Active,
-            Stale,
-            Draft,
+            double load = (double)(69 + 63);
+            if (load <= (5.0 + 2.8))
+            {
+                load = ((load - 20.0) - bias) + offset;
+            }
+            else
+            {
+                load = load - (double)3;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + load) - (double)(long)i;
+            }
+            return load + (double)11;
         }
 
         /// <summary>Describe the account class values.</summary>
