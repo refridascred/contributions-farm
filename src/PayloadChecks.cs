@@ -36,11 +36,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ProjectCounter(double gain, double offset)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            double load = offset;
-            return (load - (offset / 9.0)) + gain;
+            public string Mode { get; set; } = "";
+            public double Limit { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a order options.</summary>
