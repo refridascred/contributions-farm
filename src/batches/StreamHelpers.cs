@@ -44,15 +44,17 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] levels)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long SeekGraphIndex(long[] levels, long target)
         {
-            long state = 5;
-            foreach (long reading in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state << 2) ^ (state ^ reading)) % 4096;
+                if ((levels[i] < target) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return state % 1000;
+            return -1;
         }
 
         /// <summary>Describe the session class values.</summary>
