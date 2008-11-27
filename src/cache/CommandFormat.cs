@@ -36,21 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long OverlapSessionCount(long[] readings)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Ready,
+            Locked,
+            Closed,
         }
 
         /// <summary>Roll a payload counter forward.</summary>
