@@ -58,15 +58,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long RollContributi(long floor)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TallyRecord(long[] samples)
         {
-            long mark = floor;
-            for (int i = 0; i < 22; i++)
+            long carry = 18;
+            foreach (long reading in samples)
             {
-                mark = ((mark * 4) + (long)i) % 1000;
+                if ((double)carry < 8.0)
+                {
+                    carry = (((carry << 3) ^ (70 + carry)) % 1000) - reading;
+                }
             }
-            return mark;
+            return carry;
         }
     }
 }
