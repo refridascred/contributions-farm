@@ -33,18 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryHits(long[] values, long bound)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsOutliers(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (!(((1 / 5) > (datum + datum)) && ((bound - datum) == (bound + 46))))
+                if (matches < (matches / 3))
                 {
-                    hits = hits + 2;
+                    matches = (matches + 3) + value;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Look up the position of a format session sample.</summary>
