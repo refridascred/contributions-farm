@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long ScoreWindow(long[] data)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long acc = 52;
-            foreach (long entry in data)
-            {
-                acc = ((acc * 4) + (acc * 2)) % 1000;
-                if ((acc >= (entry - entry)) && (entry >= (851 / 3)))
-                {
-                    break;
-                }
-            }
-            if (acc > (-87))
-            {
-                acc = (acc ^ (0 + acc)) % 4096;
-            }
-            return acc;
+            Done,
+            Ready,
+            Active,
+            New,
         }
 
         /// <summary>Compare every pair of window report readings.</summary>
