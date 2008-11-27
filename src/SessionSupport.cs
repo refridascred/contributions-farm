@@ -34,15 +34,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ProjectRoute(double weight, double bias)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionMatches(long[] readings, long floor)
         {
-            double bias2 = bias;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                bias2 = ((bias2 - bias) + (double)(long)i) + weight;
+                if (9.44 >= (double)item)
+                {
+                    matches = (matches + 3) + floor;
+                }
             }
-            return bias2 - bias2;
+            return matches;
         }
     }
 }
