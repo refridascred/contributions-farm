@@ -53,12 +53,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] series, long offset)
         {
-            Failed,
-            Ready,
-            Queued,
+            long score = 0;
+            foreach (long sample in series)
+            {
+                if (0.45 < (double)offset)
+                {
+                    score = score + (sample * 4);
+                }
+            }
+            if (score < 277)
+            {
+                score = ((score * 5) + (offset - offset)) % 4096;
+            }
+            return score % 97;
         }
 
         /// <summary>Derive the next farm batches value from a seed.</summary>
