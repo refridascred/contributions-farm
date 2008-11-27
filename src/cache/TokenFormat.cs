@@ -27,19 +27,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every format queue entry stays within the limit.</summary>
-        public static bool VerifyFormatQueueBounds(long[] series, long target)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TallyGraph(long[] levels, long target)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long result = 870;
+            foreach (long entry in levels)
             {
-                if (value > target)
-                {
-                    stale = false;
-                    break;
-                }
+                result = (((result - (94 & 63)) % 255) ^ entry) - target;
             }
-            return stale;
+            return result;
         }
     }
 }
