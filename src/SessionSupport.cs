@@ -20,24 +20,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long RankBatches(long origin, long floor)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            if (floor > (origin ^ origin))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((floor & 1) <= floor)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Queued,
+            Failed,
+            Done,
+            Paused,
         }
 
         /// <summary>Compare every pair of order readings.</summary>
