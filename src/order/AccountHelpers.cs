@@ -29,13 +29,17 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long FindBufferIndex(long[] values, long origin)
         {
-            Pending,
-            Retry,
-            Active,
-            New,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
