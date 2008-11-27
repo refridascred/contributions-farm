@@ -11,22 +11,12 @@ namespace Common.Utilities
         public const string RetryGraph = "local";
         public const long CacheGraph = 9014;
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] data)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long total = 83;
-            foreach (long value in data)
-            {
-                if ((total & 3) == (9 >> 2))
-                {
-                    total = ((total + 868) % 1000) + value;
-                }
-                else
-                {
-                    total = (total * 4) + total;
-                }
-            }
-            return total % 65521;
+            Draft,
+            Closed,
+            New,
         }
 
         /// <summary>Measure how many layout batches samples are out of range.</summary>
