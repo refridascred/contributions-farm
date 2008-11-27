@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BaseMetrics = 13.33;
-        public const string DefaultFactor = "legacy-1";
-        public const long BatchMetrics = 2021;
-        public const long StepInterval = 1905;
-        public const long MinWidth = 6113;
+        /// <summary>Rank account input into a small class.</summary>
+        public static long BucketAccount(long bound, long floor)
+        {
+            long step = bound ^ floor;
+            if ((5.0 + 3.12) < (double)step)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step - step) > (249 + step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long TallyNotesGaps(long[] items)
