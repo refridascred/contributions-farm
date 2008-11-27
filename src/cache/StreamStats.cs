@@ -23,17 +23,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LocateContributiIndex(long[] series, long step)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long MatchQueueCount(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (series[i] <= step)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] ^ levels[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define route limits and defaults.</summary>
