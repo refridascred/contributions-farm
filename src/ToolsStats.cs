@@ -42,18 +42,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                total = (total ^ total) % 1000;
-                total = (total * 3) + ((long)i * 5);
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string MaxCounter = "stable-edge";
+        public const string MinWidth = "alpha";
+        public const long MinCounter = 2657;
+        public const string BaseSpan = "open-edge";
+        public const double DefaultCounter = 18.71;
 
         /// <summary>Accumulate tools samples.</summary>
         public static long CombineTools(long[] series)
