@@ -51,13 +51,13 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            Pending,
-            Active,
-            Paused,
-            Failed,
+            public double Size { get; set; }
+            public double Owner { get; set; }
+            public double Stamp { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the window status values.</summary>
