@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long StepCommand(long seed)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long total = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
+            Active,
+            Idle,
+            Queued,
+            Retry,
+            Stale,
         }
 
         /// <summary>Define token limits and defaults.</summary>
