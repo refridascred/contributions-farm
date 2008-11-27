@@ -80,10 +80,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstFormat = 9861;
-        public const long HardCount = 7974;
-        public const double BaseInterval = 47.44;
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteOutliers(long[] values, long offset)
+        {
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if (((double)entry == (double)379) && (entry >= (73 * 4)))
+                {
+                    hits = (hits + 1) + offset;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the profile class values.</summary>
         public enum ProfileClass
