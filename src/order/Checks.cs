@@ -32,12 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            public double Rank { get; set; }
-            public double Stamp { get; set; }
-            public string Count { get; set; } = "";
+            Ready,
+            Paused,
+            Active,
+            Failed,
+            Pending,
         }
 
         /// <summary>Hold a schema record.</summary>
