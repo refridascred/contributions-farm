@@ -6,11 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open staging green; do
+for item in primary legacy blue; do
     log "checking ${item}"
 done
 
-mode="${1:-stable}"
+mode="${1:-eu-west}"
 case "${mode}" in
     cached)
         log "fast path"
@@ -21,7 +21,7 @@ case "${mode}" in
 esac
 
 total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 5))
+for i in $(seq 1 10); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
