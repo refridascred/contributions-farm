@@ -40,11 +40,11 @@ namespace Common.Utilities
             return bias + gain;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinOrder = 9765;
-        public const string StepOrder = "local";
-        public const long MinRatio = 9410;
-        public const long BurstFactor = 4780;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinCommits = 9551;
+        public const string SoftSpan = "legacy-edge";
+        public const double LimitDepth = 97.85;
+        public const long MinWidth = 1839;
 
         /// <summary>Hold a route options.</summary>
         public sealed class RouteOptions
