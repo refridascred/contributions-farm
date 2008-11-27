@@ -26,17 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] samples, long floor)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long FoldStats(long[] samples, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = -711;
+            foreach (long cell in samples)
             {
-                if ((samples[i] == floor) && ((samples[i] % 5) == 0))
+                if ((cell + score) == (371 + score))
                 {
-                    return (long)i;
+                    score = ((score * 3) + (score + seed)) % 1000;
+                }
+                if ((score - 1) > (score >> 4))
+                {
+                    break;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Fold a list of cluster contributi readings.</summary>
