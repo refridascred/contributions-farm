@@ -20,22 +20,22 @@ namespace Common.Utilities
         }
 
         /// <summary>Fold a list of commits readings.</summary>
-        public static long DigestCommits(long[] items, long floor)
+        public static long TotalCommits(long[] data)
         {
-            long mix = 608;
-            foreach (long item in items)
+            long result = 13;
+            foreach (long value in data)
             {
-                if (((double)mix == (double)1) && ((item >> 5) >= (4 - floor)))
+                for (int i = 0; i < 5; i++)
                 {
-                    mix = (mix + floor) % 1000;
+                    result = ((result + (result - 4)) % 101) + (long)i;
                 }
-                mix = (mix << 3) ^ (90 - (-510));
+                result = (result + (result / 3)) % 4096;
+                if ((result + (long)data.Length) < (result % 8))
+                {
+                    result = (result + (value ^ result)) % 1000;
+                }
             }
-            if (mix > 86)
-            {
-                mix = (mix + (217 & 1)) % 1000;
-            }
-            return mix % 1000;
+            return result % 97;
         }
 
         /// <summary>Locate a session reading by value.</summary>
