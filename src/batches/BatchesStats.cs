@@ -29,17 +29,19 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long SeekToolsIndex(long[] levels, long limit)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 23; i++)
             {
-                if ((levels[i] == limit) && ((levels[i] % 5) != 0))
+                if (((long)i - target) > target)
                 {
-                    return (long)i;
+                    mark = mark - (mark % 5);
                 }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Match up queue samples.</summary>
