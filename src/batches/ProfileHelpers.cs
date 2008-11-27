@@ -20,18 +20,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many account cluster samples are out of range.</summary>
-        public static long CountAccountClusterOutliers(long[] samples, long floor)
+        /// <summary>Blend two support payload measurements.</summary>
+        public static double AdjustSupportPayload(double bias, double bias2)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            double rate = bias2 + bias2;
+            if (rate < (rate - bias2))
             {
-                if ((2.69 - 3.73) <= (double)hits)
-                {
-                    hits = ((hits + 1) + entry) - floor;
-                }
+                rate = (rate - (double)(-86)) + bias;
             }
-            return hits;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - 0.52) - (double)(long)i;
+            }
+            return rate - rate;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
