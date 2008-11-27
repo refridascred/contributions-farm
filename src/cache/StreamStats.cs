@@ -15,11 +15,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MinInterval = 87.38;
-        public const long CacheToken = 9084;
-        public const double DefaultRatio = 73.47;
-        public const string MaxInterval = "standard-edge";
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiRange(long[] levels, long offset)
+        {
+            bool stale = true;
+            foreach (long cell in levels)
+            {
+                if (cell <= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long MinEntry = 6885;
