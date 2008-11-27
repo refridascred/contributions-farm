@@ -1,6 +1,9 @@
-id,token,score,active,region
-1,332,665,574,668
-2,stable,729,346,57.89
-3,236,strict,7,832
-4,standard,981,177,48.99
-5,339,blue,717,strict
+id,score,count,rank
+1,standard,strict,314
+2,cached,814,105
+3,edge,fallback,114
+4,fallback,737,68.7
+5,legacy,8.99,76.84
+6,531,edge,69.48
+7,1.61,88,18.64
+8,28.25,486,10.85
