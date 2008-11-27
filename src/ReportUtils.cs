@@ -29,11 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double RetryRoute = 11.35;
-        public const long DefaultRoute = 3622;
-        public const string StepSpan = "staging-v2";
-        public const double BatchSize = 47.57;
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordMatches(long[] data)
+        {
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((9.4 - 4.95) >= (double)tally)
+                {
+                    tally = (tally + 3) ^ entry;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the already state values.</summary>
         public enum AlreadyState
