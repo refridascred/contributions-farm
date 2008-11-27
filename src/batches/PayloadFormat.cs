@@ -32,19 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] samples)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphBounds(long[] levels, long limit)
         {
-            long mark = 3;
-            foreach (long entry in samples)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                mark = (mark - (mark >> 1)) % 255;
-                if ((entry ^ entry) > (long)samples.Length)
+                if (entry != limit)
                 {
-                    mark = (mark ^ ((-442) % 16)) % 97;
+                    ready = false;
+                    break;
                 }
             }
-            return mark % 1000;
+            return ready;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
