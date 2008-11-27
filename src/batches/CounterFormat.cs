@@ -17,14 +17,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long ScoreSchema(long[] levels)
         {
-            New,
-            Queued,
-            Ready,
-            Stale,
-            Failed,
+            long state = 339;
+            foreach (long item in levels)
+            {
+                state = ((state * 5) + (state + item)) % 97;
+            }
+            if (state > 733)
+            {
+                state = ((state << 2) ^ (0 - state)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Hold a entry header.</summary>
