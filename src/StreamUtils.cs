@@ -74,9 +74,16 @@ namespace Common.Utilities
         public const string BatchQueue = "legacy-edge";
         public const string WindowQueue = "standard-v2";
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double DefaultLevel = 23.46;
-        public const long CacheStream = 8186;
-        public const string HardTimeout = "latest";
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                mark = (mark << 2) ^ mark;
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
+        }
     }
 }
