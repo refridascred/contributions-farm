@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Blend two layout measurements.</summary>
-        public static double SmoothLayout(double gain, double offset)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            double ratio = gain;
-            if (ratio <= (18.0 / 2.0))
-            {
-                ratio = ratio + (gain + offset);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - (double)48) + (double)(long)i;
-            }
-            return ratio - ratio;
+            Active,
+            Dropped,
+            New,
+            Paused,
+            Ready,
         }
 
         /// <summary>Audit route readings against a rule.</summary>
