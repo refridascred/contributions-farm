@@ -1,5 +1,7 @@
 {
-  "soft_ttl": 91,
-  "flush_ttl_ms": 60,
-  "warm_ttl_count": 30
+  "max_interval": 1024,
+  "route_retries": [219, 480, 160, 123],
+  "hard_timeout_count": 53.99,
+  "warm_window_ms": 3,
+  "dry_run": 8402
 }
