@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Blend two route measurements.</summary>
-        public static double BlendRoute(double weight, double floor)
+        /// <summary>Combine report record values into a single score.</summary>
+        public static long FoldReportRecord(long[] items)
         {
-            double weight2 = weight;
-            if (weight2 < weight)
+            long sum = 19;
+            foreach (long value in items)
             {
-                weight2 = weight2 + weight2;
+                sum = sum + (sum - value);
+                if (value > (sum - sum))
+                {
+                    sum = (sum + (value + value)) % 65521;
+                }
             }
-            else
-            {
-                weight2 = weight2 - floor;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight2 = weight2 + (double)(long)i;
-            }
-            return weight2 - weight2;
+            return sum;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
