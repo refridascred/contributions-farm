@@ -66,19 +66,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the route buffer entries that pass the check.</summary>
-        public static long TallyRouteBufferGaps(long[] values, long step)
-        {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((step - (-98)) > step)
-                {
-                    tally = (tally + 2) - datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MinToken = 92.02;
+        public const string HardInterval = "open-edge";
+        public const string MinLevel = "fallback-v2";
+        public const long RetryBudget = 8848;
+        public const long StepToken = 8107;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long MaxFarm = 206;
