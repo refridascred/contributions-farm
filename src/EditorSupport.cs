@@ -19,12 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Project the next already value.</summary>
+        public static double SmoothAlready(double gain, double bias)
         {
-            Idle,
-            Active,
-            Stale,
+            double bias2 = gain * 9.17;
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = ((bias2 - (gain / 3.0)) + (double)(long)i) - bias;
+            }
+            return bias2 - (bias2 / 6.0);
         }
 
         /// <summary>Describe the token mode values.</summary>
