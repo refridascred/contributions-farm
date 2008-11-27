@@ -1,12 +1,11 @@
 # Command notes
 
-When a batch fails, the format handler retries a few times before giving up.
-The payload report groups every format by layout.
-Use batch settings to tune how often batches data is refreshed.
+Run the contributi check before changing any schema limits.
+Use editor settings to tune how often report data is refreshed.
 
 ## Guidelines
 
-- Review tools limits each release
-- Log every layout change
-- Keep tools values small
-- Document new metric fields
+- Document new support fields
+- Review entry limits each release
+- Log every order change
+- Keep checks values small
