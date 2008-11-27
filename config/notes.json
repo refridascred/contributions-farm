@@ -1,6 +1,10 @@
 {
-  "stream_size": ["strict", "open"],
-  "idle_retries_s": true,
-  "retry_ratio_s": 60,
-  "checks_interval": "blue"
+  "enabled": 34.5,
+  "batch_size": false,
+  "flush_threshold_s": {
+    "layout_timeout": [485, 388, 491, 57],
+    "enabled": "stable",
+    "burst_limit": 69.33
+  },
+  "dry_run": 1724
 }
