@@ -23,21 +23,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] samples)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Weight { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Classify a contributi batches pair into a bucket.</summary>
