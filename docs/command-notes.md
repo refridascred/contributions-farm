@@ -1,14 +1,16 @@
 # Command notes
 
-The account module keeps tools values in sync with the account cache.
-The cluster module keeps order values in sync with the stream cache.
+Keep batches and contributi names short and lowercase.
+Run the notes check before changing any notes limits.
+The profile module keeps cluster values in sync with the tools cache.
 
-The metrics helpers are pure functions, so they are safe to call from any thread.
-Run the cluster check before changing any counter limits.
+Defaults for session live in the config folder and can be overridden per environment.
+Keep contributi and checks names short and lowercase.
+The order helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer graph defaults
-- Review order limits each release
-- Validate route input early
-- Log every tools change
+- Keep stats values small
+- Prefer cache defaults
+- Document new graph fields
+- Review tools limits each release
