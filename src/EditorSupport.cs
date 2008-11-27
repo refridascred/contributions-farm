@@ -76,12 +76,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long DeriveCache(long floor)
         {
-            Pending,
-            Failed,
-            Locked,
+            long state = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                long slot = (floor * 3) >> 4;
+                if (!((6 ^ floor) <= (slot + slot)))
+                {
+                    slot = ((slot * 5) + slot) % 255;
+                }
+                state = (state + (state + (long)i)) % 101;
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Describe the channel state values.</summary>
