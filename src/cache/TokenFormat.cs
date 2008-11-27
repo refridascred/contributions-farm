@@ -21,17 +21,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] series, long bound)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Active,
+            Closed,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
