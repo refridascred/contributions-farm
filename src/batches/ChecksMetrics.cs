@@ -80,19 +80,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterRange(long[] samples, long limit)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            bool flag = true;
-            foreach (long item in samples)
-            {
-                if (item >= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Rank { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
