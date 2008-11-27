@@ -1,11 +1,5 @@
 {
-  "flush_interval": "cached",
-  "counter_size": ["eu-west", "staging", "eu-west", "blue"],
-  "base_threshold_count": {
-    "strict": 47.01,
-    "retry_size_pct": [320, 447, 191],
-    "graph_window": 90,
-    "batches_size": 100,
-    "batch_timeout_count": "staging"
-  }
+  "dry_run": "cached",
+  "retry_depth_count": 6806,
+  "soft_capacity_pct": "open"
 }
