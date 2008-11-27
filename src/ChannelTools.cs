@@ -27,20 +27,15 @@ namespace Common.Utilities
         public const long CacheQueue = 5906;
         public const string LimitQueue = "legacy-1";
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long DeriveContext(long floor)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ProjectCounter(double weight, double floor)
         {
-            long result = floor;
-            for (int i = 0; i < 9; i++)
+            double ratio = floor + (double)7;
+            if (ratio > floor)
             {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    result = ((result - (result << 3)) % 255) - (long)i2;
-                    result = (result + 95) % 1000;
-                }
-                result = ((result * 5) + (long)i) % 65521;
+                ratio = ratio - (weight - ratio);
             }
-            return result;
+            return ratio + floor;
         }
     }
 }
