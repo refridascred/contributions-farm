@@ -39,22 +39,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many token contributi samples are out of range.</summary>
-        public static long CountTokenContributiHits(long[] series)
-        {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if (!((10 / 7) == (seen ^ (-9))))
-                {
-                    seen = (seen + 3) - value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BurstReport = "fallback";
+        public const long BurstTimeout = 1648;
+        public const long DefaultSize = 5541;
     }
 }
