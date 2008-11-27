@@ -47,18 +47,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchMatches(long[] data)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long RollNotes(long floor)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long state = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if ((((double)hits == (7.86 * 1.0)) && ((double)cell != (8.4 / 7.0))) || !((hits - hits) <= cell))
+                if ((4.2 - 1.0) < (1.6 - 3.11))
                 {
-                    hits = hits + 1;
+                    state = (state << 2) ^ state;
+                    continue;
                 }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Hold a counter header.</summary>
