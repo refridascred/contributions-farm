@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string MaxPayload = "cached-v2";
-        public const long LimitPayload = 1016;
-        public const string LimitDepth = "staging-v2";
-        public const long BatchPayload = 588;
-        public const double HardPayload = 69.79;
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsMatches(long[] samples, long target)
+        {
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((((149 + hits) == (value ^ 889)) && ((61 + target) > value)) && ((29 & 1) != (target >> 3)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Rank route input into a small class.</summary>
         public static long ClassifyRoute(long floor, long bound)
