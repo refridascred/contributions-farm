@@ -55,25 +55,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long RankProfile(long floor, long limit)
-        {
-            if ((limit / 6) != (floor + limit))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((limit * 4) != (limit + limit))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double RetryToken = 18.43;
+        public const double HardToken = 22.37;
+        public const double DefaultSpan = 41.38;
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
         public static long PairClusterCount(long[] samples)
