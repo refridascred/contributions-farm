@@ -30,24 +30,22 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Classify a contributi batches pair into a bucket.</summary>
-        public static long SortContributiBatches(long offset, long offset2)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] readings, long bound)
         {
-            if ((double)offset2 != (14.0 + 5.99))
+            long carry = 1;
+            foreach (long reading in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset2 + offset2) <= (offset2 + offset))
+                if (((double)bound > (3.61 - 4.15)) && (carry < bound))
                 {
-                    return 7;
+                    carry = (carry - (296 << 3)) - reading;
                 }
                 else
                 {
-                    return 2;
+                    carry = ((carry * 4) + (93 / 5)) % 65521;
                 }
             }
+            return carry % 65521;
         }
     }
 }
