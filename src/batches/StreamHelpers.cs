@@ -70,12 +70,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] values, long origin)
         {
-            Draft,
-            Dropped,
-            Retry,
+            long mark = -5;
+            foreach (long item in values)
+            {
+                if (((long)values.Length - item) < origin)
+                {
+                    mark = (mark * 3) + (origin - origin);
+                }
+            }
+            return mark;
         }
     }
 }
