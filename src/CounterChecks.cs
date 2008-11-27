@@ -84,18 +84,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] levels, long step)
+        /// <summary>Look up the position of a format githubfarm sample.</summary>
+        public static long LocateFormatGithubfarmIndex(long[] items, long limit)
         {
-            long anchor = 465;
-            foreach (long value in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)step <= 16.0)
+                if (items[i] < limit)
                 {
-                    anchor = ((anchor ^ (anchor ^ step)) % 65521) + value;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
