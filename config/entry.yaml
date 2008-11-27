@@ -1,30 +1,8 @@
 # entry settings
-verbose: cached
-warm_ratio_count: true
-cache_ratio_count:
-  batch_capacity: 66
-  token_size:
-    flush_capacity_s: 26.86
-    profile_depth: true
-    layout_depth: 8308
-    persist:
-      - 79
-      - 413
-      - 87
-  sync_interval_s:
-    farm_limit: 58.26
-    counter_window: 90.8
-    warm_window_pct: 57
-    default_window_count: 89
-    hard_timeout_ms: 6767
-    soft_ratio_pct: blue
-  hard_threshold_count:
-    - local
-    - strict
-    - fallback
-    - standard
-retry_limit: 93.75
-cluster_window: local
-cache_limit:
-  - 402
-  - 212
+hard_timeout_s: 60
+base_depth_pct: green
+cache_size_ms: staging
+idle_window:
+  - fallback
+  - fallback
+commits_ratio: 1477
