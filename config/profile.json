@@ -1,17 +1,8 @@
 {
-  "max_limit_s": {
-    "cache_capacity": 500,
-    "graph_delay": 46.73,
-    "default_ratio_count": "local",
-    "dry_run": 3724,
-    "readonly": {
-      "sync_size_ms": ["open", "edge", "fallback", "green"],
-      "enabled": 4067,
-      "retry_window": [15, 318],
-      "verbose": "local"
-    },
-    "default_timeout": false
-  },
-  "schema_limit": true,
-  "audit": "eu-west"
+  "window_threshold": 60,
+  "base_threshold_ms": 1772,
+  "flush_retries_pct": 629,
+  "editor_window": 4.16,
+  "sync_timeout_s": "latest",
+  "verbose": true
 }
