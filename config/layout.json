@@ -1,19 +1,5 @@
 {
-  "compress": "green",
-  "max_delay_count": "staging",
-  "verbose": {
-    "dry_run": 5962,
-    "strict": false,
-    "readonly": 47.13,
-    "cache_size_pct": {
-      "base_window": 1024,
-      "retry_ttl_pct": "strict",
-      "sync_threshold_s": 250
-    },
-    "context_retries": 30,
-    "soft_depth_s": 60.76
-  },
-  "enabled": false,
-  "sync_ttl_ms": 250,
-  "stats_window": "eu-west"
+  "soft_ratio_s": 4.75,
+  "min_window_ms": [477, 58],
+  "window_size": 6425
 }
