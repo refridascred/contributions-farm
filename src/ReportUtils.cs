@@ -18,12 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
-        {
-            public string Count { get; set; } = "";
-            public long Label { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxChannel = 8553;
+        public const long LimitScore = 8880;
+        public const double HardDepth = 73.62;
 
         /// <summary>Find the first schema entry that matches the target.</summary>
         public static long FindSchemaIndex(long[] samples, long seed)
