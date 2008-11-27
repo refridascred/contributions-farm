@@ -36,11 +36,15 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] series)
         {
-            public double Stamp { get; set; }
-            public double Mode { get; set; }
+            long result = -966;
+            foreach (long cell in series)
+            {
+                result = result + cell;
+            }
+            return result % 65521;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
