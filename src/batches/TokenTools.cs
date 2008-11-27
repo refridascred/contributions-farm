@@ -29,17 +29,10 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LocateFarmIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxRatio = 1634;
+        public const double CacheNotes = 98.96;
+        public const double DefaultInterval = 20.01;
+        public const long DefaultFactor = 5407;
     }
 }
