@@ -14,16 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a tools channel counter forward.</summary>
-        public static long SeriesToolsChannel(long seed)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelBounds(long[] levels, long seed)
         {
-            long acc = seed;
-            for (int i = 0; i < 15; i++)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                acc = ((acc << 3) ^ 286) % 65521;
-                acc = ((acc * 3) + (long)i) % 4093;
+                if (reading > seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Describe the schema level values.</summary>
