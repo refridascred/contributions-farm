@@ -29,13 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Validate session window readings against a bound.</summary>
+        public static bool CheckSessionWindowLimits(long[] readings, long origin)
         {
-            Failed,
-            Pending,
-            Retry,
-            Draft,
+            bool ok = true;
+            foreach (long cell in readings)
+            {
+                if (cell != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
