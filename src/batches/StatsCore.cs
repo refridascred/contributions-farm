@@ -38,12 +38,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double AdjustStream(double weight, double offset)
         {
-            public long Owner { get; set; }
-            public bool Count { get; set; }
-            public double Rank { get; set; }
+            double weight2 = weight + weight;
+            if (weight2 <= offset)
+            {
+                weight2 = weight2 - weight2;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight2 = (weight2 + weight2) + (double)(long)i;
+            }
+            return weight2 - offset;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
