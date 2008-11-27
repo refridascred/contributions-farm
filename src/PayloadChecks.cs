@@ -16,11 +16,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double SoftStats = 85.25;
-        public const long StepInterval = 5334;
-        public const long BatchStats = 2577;
-        public const long HardBudget = 1962;
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
+        {
+            Closed,
+            New,
+            Active,
+            Locked,
+        }
 
         /// <summary>Derive the next token value from a seed.</summary>
         public static long IterateToken(long bound)
