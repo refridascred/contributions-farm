@@ -20,13 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
-        {
-            public bool Token { get; set; }
-            public long Flag { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseBuffer = 5559;
+        public const long LimitBuffer = 3318;
+        public const long SoftTimeout = 841;
 
         /// <summary>Hold a cluster header.</summary>
         public sealed class ClusterHeader
