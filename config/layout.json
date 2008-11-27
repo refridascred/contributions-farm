@@ -1,13 +1,31 @@
 {
-  "warm_limit": "edge",
-  "min_threshold_pct": 40.27,
-  "token_limit": {
-    "soft_ttl_pct": 5679,
-    "max_ratio": 500,
-    "warm_depth_s": 17,
-    "max_ratio_ms": "fallback",
-    "account_size": "stable",
-    "batch_interval_pct": [292, 388, 347]
+  "report_limit": {
+    "entry_capacity": 7606,
+    "min_interval": 41.03,
+    "idle_ratio_pct": "cached",
+    "strict": {
+      "contributi_window": 80.0,
+      "hard_ratio_s": 250,
+      "commits_size": "green"
+    },
+    "filter_limit": 1468
   },
-  "strict": ["primary", "edge", "cached"]
+  "token_capacity": "fallback",
+  "max_delay_pct": "latest",
+  "max_retries": {
+    "hard_depth": "latest",
+    "warm_threshold_count": "eu-west",
+    "context_window": 65.48,
+    "hard_window_s": false,
+    "dry_run": 60,
+    "default_depth_pct": {
+      "schema_retries": 8,
+      "poll_ratio_ms": false,
+      "verbose": "primary",
+      "warm_ttl_count": 3.24,
+      "flush_threshold_s": "fallback"
+    }
+  },
+  "dry_run": true,
+  "batch_threshold": false
 }
