@@ -57,12 +57,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Rank record input into a small class.</summary>
+        public static long ClassifyRecord(long target, long step)
         {
-            Retry,
-            Failed,
-            Done,
+            if ((target / 9) == (target + step))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target ^ target) <= (step % 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step << 1) >= (target % 100))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((target + target) >= 99)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
