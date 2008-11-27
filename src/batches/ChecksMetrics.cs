@@ -32,22 +32,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordMatches(long[] data)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenRange(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                if (((reading ^ tally) >= (reading % 10)) || (((reading + reading) >= tally) && ((double)reading > (14.0 * 5.0))))
+                if (sample > floor)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Validate editor farm readings against a bound.</summary>
