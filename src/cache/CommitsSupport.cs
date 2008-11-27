@@ -32,39 +32,15 @@ namespace Common.Utilities
             return bias2 - (double)748;
         }
 
-        /// <summary>Grade a checks commits value against two limits.</summary>
-        public static long ClassifyChecksCommits(long target, long target2)
+        /// <summary>Blend two cluster editor measurements.</summary>
+        public static double SmoothClusterEditor(double weight, double span)
         {
-            long edge = target + target2;
-            if (!((double)target < 3.4))
+            double weight2 = (weight + weight) + weight;
+            for (int i = 0; i < 3; i++)
             {
-                return 6;
+                weight2 = ((weight2 - weight2) + (double)(long)i) - span;
             }
-            else
-            {
-                if (target > 1)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((target2 & 255) < (9 & 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((edge & 1) >= ((-4) >> 3))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return weight2 - weight;
         }
 
         /// <summary>Adjust a window reading.</summary>
