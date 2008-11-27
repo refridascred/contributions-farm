@@ -74,12 +74,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferOutliers(long[] samples, long origin)
         {
-            public double Score { get; set; }
-            public bool Stamp { get; set; }
-            public string Offset { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)origin == (0.19 - 4.46))
+                {
+                    hits = (hits + 3) ^ reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
