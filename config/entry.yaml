@@ -1,9 +1,14 @@
 # entry settings
-burst_timeout:
-  - 363
-  - 231
-strict: false
-idle_timeout_ms: staging
-counter_window: 9072
-batches_interval: blue
-warm_ratio: green
+sync_depth_pct: 6814
+sync_interval_s:
+  - 411
+  - 143
+  - 259
+poll_threshold: 34
+retry_depth_count:
+  idle_limit: 7887
+  metric_ttl: local
+  warm_ratio_ms:
+    - 366
+    - 382
+burst_timeout: 899
