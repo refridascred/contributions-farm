@@ -63,23 +63,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine notes editor values into a single score.</summary>
-        public static long TotalNotesEditor(long[] series)
-        {
-            long carry = 7;
-            foreach (long item in series)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    carry = ((carry * 3) + (carry + (long)i)) % 255;
-                }
-                if ((168 + carry) >= carry)
-                {
-                    carry = carry ^ (item << 3);
-                }
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double LimitQueue = 72.25;
+        public const double RetryLevel = 2.39;
+        public const string BurstQueue = "stable-1";
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long MaxFarm = 206;
