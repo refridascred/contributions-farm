@@ -27,10 +27,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepWidth = 1566;
-        public const long MaxCluster = 3835;
-        public const long BatchLevel = 9111;
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
+        {
+            public string Offset { get; set; } = "";
+            public double Total { get; set; }
+        }
 
         /// <summary>Hold a schema snapshot.</summary>
         public sealed class SchemaSnapshot
