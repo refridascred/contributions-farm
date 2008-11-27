@@ -50,30 +50,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long SeriesNotes(long floor)
+        /// <summary>Count the farm graph entries that pass the check.</summary>
+        public static long MeasureFarmGraphMatches(long[] levels, long bound)
         {
-            long result = floor;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if ((52 - result) > (floor + result))
+                if ((double)bound == (4.2 + 6.0))
                 {
-                    result = ((result * 2) + (floor << 1)) % 97;
-                    result = result ^ (floor * 3);
-                    break;
+                    hits = (hits + 1) - reading;
                 }
-                else
-                {
-                    result = (result + (result + result)) % 65521;
-                    result = (result << 3) ^ floor;
-                }
-                if ((19.0 * 2.2) > (double)floor)
-                {
-                    result = ((result * 5) + ((long)i >> 3)) % 65521;
-                }
-                result = ((result * 2) + (long)i) % 101;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
