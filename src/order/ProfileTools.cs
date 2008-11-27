@@ -32,12 +32,15 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Adjust a cache reading.</summary>
+        public static double BlendCache(double weight, double floor)
         {
-            Closed,
-            Stale,
-            Failed,
+            double mean = weight;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = ((mean + weight) - (double)(long)i) + floor;
+            }
+            return mean - (double)244;
         }
 
         /// <summary>Accumulate token channel samples.</summary>
