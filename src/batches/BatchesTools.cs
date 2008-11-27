@@ -20,17 +20,19 @@ namespace Common.Utilities
             return load - offset;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] samples, long step)
+        /// <summary>Fold a list of session profile readings.</summary>
+        public static long TallySessionProfile(long[] values, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 4;
+            foreach (long value in values)
             {
-                if (samples[i] < step)
-                {
-                    return (long)i;
-                }
+                state = (((state << 3) ^ (state + offset)) % 101) + value;
             }
-            return -1;
+            if (state < 968)
+            {
+                state = (state - state) % 1000;
+            }
+            return state % 65521;
         }
 
         /// <summary>Hold a buffer summary.</summary>
