@@ -13,18 +13,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Accumulate account queue samples.</summary>
-        public static long ScoreAccountQueue(long[] values, long floor)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueRange(long[] samples, long bound)
         {
-            long score = 69;
-            foreach (long cell in values)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                if (((64 ^ score) < floor) || (score >= floor))
+                if (cell < bound)
                 {
-                    score = ((score << 2) ^ (score - score)) - cell;
+                    valid = false;
+                    break;
                 }
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Hold a entry summary.</summary>
