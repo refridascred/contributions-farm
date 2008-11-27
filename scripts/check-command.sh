@@ -6,9 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open stable; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 5))
 done
+log "total ${total}"
 
-COMMAND_LIMIT=164
+COMMAND_LIMIT=28
 log "limit is ${COMMAND_LIMIT}"
