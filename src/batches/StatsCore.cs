@@ -33,11 +33,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double CacheCount = 44.42;
-        public const double IdleFactor = 65.2;
-        public const long MaxTimeout = 7572;
-        public const long MinDepth = 8413;
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
+        {
+            public double Stamp { get; set; }
+            public bool Ratio { get; set; }
+            public double Mode { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Match up commits tools samples.</summary>
         public static long OverlapCommitsToolsCount(long[] readings)
