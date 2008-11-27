@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long FindBatchesIndex(long[] series, long origin)
+        /// <summary>Count stats format pairs that satisfy a relation.</summary>
+        public static long OverlapStatsFormatCount(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((series[i] >= origin) && ((series[i] % 2) == 0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] - levels[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
