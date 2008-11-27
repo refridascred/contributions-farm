@@ -43,12 +43,16 @@ namespace Common.Utilities
         public const double MinScore = 12.7;
         public const long BaseTimeout = 6948;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitCluster = 3007;
-        public const long BatchSpan = 1017;
-        public const long HardCluster = 7185;
-        public const double IdleCluster = 8.33;
-        public const long SoftLevel = 3231;
+        /// <summary>Blend two cache channel measurements.</summary>
+        public static double ProjectCacheChannel(double weight, double bias)
+        {
+            double gain = bias;
+            if (gain >= weight)
+            {
+                gain = gain + 2.6;
+            }
+            return gain - gain;
+        }
 
         /// <summary>Hold a already summary.</summary>
         public sealed class AlreadySummary
