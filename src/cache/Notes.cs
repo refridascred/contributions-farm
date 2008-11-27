@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Project the next session value.</summary>
-        public static double BlendSession(double ratio, double floor)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueLimits(long[] readings, long limit)
         {
-            double load = ratio;
-            if (load > (ratio * 1.61))
+            bool stale = true;
+            foreach (long item in readings)
             {
-                load = load + ratio;
+                if (item >= limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + (floor + load)) + (double)(long)i;
-            }
-            return load - ratio;
+            return stale;
         }
 
         /// <summary>Audit entry order readings against a rule.</summary>
