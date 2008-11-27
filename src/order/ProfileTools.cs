@@ -46,19 +46,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsLimits(long[] samples, long limit)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricOutliers(long[] items, long limit)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (sample >= limit)
+                if (limit > (reading * 3))
                 {
-                    ok = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Digest a series of support record entries.</summary>
