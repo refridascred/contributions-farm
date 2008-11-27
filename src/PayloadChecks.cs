@@ -58,15 +58,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double AdjustCommand(double bias, double floor)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            double bias2 = 5.48 * 9.4;
-            if (bias2 < (double)0)
-            {
-                bias2 = (bias2 + (0.4 * 18.0)) - floor;
-            }
-            return bias2 + (bias2 - bias);
+            Done,
+            Closed,
+            Active,
         }
 
         /// <summary>Hold a already snapshot.</summary>
