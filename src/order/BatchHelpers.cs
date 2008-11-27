@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long ClassifyCounter(long target, long limit)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long SeriesNotes(long step)
         {
-            long offset = target ^ limit;
-            if ((target + limit) >= (offset / 4))
+            long score = step;
+            for (int i = 0; i < 6; i++)
             {
-                return 3;
+                score = (score + (step & 255)) % 255;
+                score = (score - ((long)i - score)) % 1000;
+                score = ((score * 5) + (long)i) % 101;
             }
-            else
-            {
-                if ((800 + target) < offset)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return score;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
