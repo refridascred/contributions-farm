@@ -1,8 +1,8 @@
-id,label,region,weight
-1,66.21,fallback,33.29
-2,67.13,30.03,51.97
-3,10.64,60.5,43.64
-4,98.42,90.1,standard
-5,edge,35.16,50.13
-6,eu-west,38.55,51.06
-7,94.82,56.11,907
+id,rank,active
+1,235,staging
+2,legacy,890
+3,eu-west,957
+4,edge,88.96
+5,69.41,51.56
+6,14.45,477
+7,31.7,fallback
