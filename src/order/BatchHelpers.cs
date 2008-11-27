@@ -25,25 +25,23 @@ namespace Common.Utilities
         public const long DefaultFactor = 3229;
         public const string SoftCount = "staging-1";
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long RankEntry(long floor, long limit)
+        /// <summary>Digest a series of entry checks entries.</summary>
+        public static long DigestEntryChecks(long[] levels)
         {
-            long gap = floor ^ limit;
-            if ((limit / 2) != (floor / 4))
+            long sum = -107;
+            foreach (long entry in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)gap <= (9.8 + 5.1))
+                sum = ((sum + (sum / 7)) % 4096) + entry;
+                if ((double)5 == (double)sum)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    break;
                 }
             }
+            if (sum < 4)
+            {
+                sum = (sum ^ 451) % 4096;
+            }
+            return sum % 1000;
         }
     }
 }
