@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Scale a notes entry figure with a bias.</summary>
-        public static double ProjectNotesEntry(double ratio, double offset)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmMatches(long[] items)
         {
-            double gain = (offset / 3.0) + (double)63;
-            if (gain <= (ratio / 2.0))
+            long count = 0;
+            foreach (long cell in items)
             {
-                gain = gain - offset;
+                if ((count + cell) < (count & 15))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                gain = gain + (double)(-28);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + (ratio - offset)) - (double)(long)i;
-            }
-            return gain - offset;
+            return count;
         }
 
         /// <summary>Count the token session entries that pass the check.</summary>
