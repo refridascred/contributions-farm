@@ -48,14 +48,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
-        {
-            Draft,
-            New,
-            Done,
-            Failed,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchFormat = 9220;
+        public const long BaseFormat = 4586;
+        public const double BurstRatio = 31.25;
+        public const string SoftFormat = "staging";
+        public const long HardFormat = 2904;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long StepInterval = 6027;
