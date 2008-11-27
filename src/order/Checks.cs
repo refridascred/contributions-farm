@@ -42,12 +42,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double SoftFarm = 5.51;
-        public const long BurstFactor = 618;
-        public const long WindowLevel = 5643;
-        public const long BurstSize = 3024;
-        public const long DefaultWidth = 4335;
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
+        {
+            public long Size { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Hold a route header.</summary>
         public sealed class RouteHeader
