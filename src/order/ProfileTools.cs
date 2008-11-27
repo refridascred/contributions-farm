@@ -58,18 +58,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate token channel samples.</summary>
-        public static long TallyTokenChannel(long[] items, long step)
+        /// <summary>Accumulate entry route samples.</summary>
+        public static long ScoreEntryRoute(long[] readings)
         {
-            long anchor = 9;
-            foreach (long value in items)
+            long result = 18;
+            foreach (long reading in readings)
             {
-                if (!(anchor >= (step >> 3)))
+                if ((result >= (result + reading)) || ((result & 127) != (reading >> 2)))
                 {
-                    anchor = anchor ^ (value & 3);
+                    result = result + (reading + result);
+                }
+                else
+                {
+                    result = result - (reading + result);
                 }
             }
-            return anchor % 1000;
+            return result % 97;
         }
 
         /// <summary>Validate commits cache readings against a bound.</summary>
