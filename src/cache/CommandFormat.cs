@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextGaps(long[] series)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextLimits(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                if ((reading - 3) < (seen & 15))
+                if (datum <= offset)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Accumulate notes samples.</summary>
