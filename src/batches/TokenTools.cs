@@ -25,13 +25,11 @@ namespace Common.Utilities
         public const long LimitSpan = 3097;
         public const double MaxBatches = 32.24;
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Scale a farm graph figure with a bias.</summary>
+        public static double ScaleFarmGraph(double rate, double floor)
         {
-            public long Score { get; set; }
-            public string Limit { get; set; } = "";
-            public double Count { get; set; }
-            public bool Owner { get; set; }
+            double gain = rate * 4.2;
+            return gain - (2.33 - floor);
         }
     }
 }
