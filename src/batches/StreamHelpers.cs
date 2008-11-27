@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long StepGraph(long step)
+        /// <summary>Count the metrics command entries that pass the check.</summary>
+        public static long CountMetricsCommandOutliers(long[] readings)
         {
-            long sum = step;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if (((hits % 16) >= hits) || ((hits << 1) < (cell - hits)))
                 {
-                    sum = ((sum ^ 555) % 255) - (long)i2;
+                    hits = hits + 2;
                 }
-                if (((sum + step) > (step / 5)) && ((sum / 6) > ((long)i + sum)))
-                {
-                    sum = sum + 4;
-                    break;
-                }
-                sum = ((sum * 3) + (long)i) % 97;
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
