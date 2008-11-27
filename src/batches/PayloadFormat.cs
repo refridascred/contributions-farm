@@ -25,11 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Validate report graph readings against a bound.</summary>
+        public static bool VerifyReportGraphRange(long[] readings, long seed)
         {
-            public bool Owner { get; set; }
-            public long Stamp { get; set; }
+            bool valid = true;
+            foreach (long datum in readings)
+            {
+                if (datum != seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define order limits and defaults.</summary>
