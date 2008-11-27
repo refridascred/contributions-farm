@@ -72,13 +72,11 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            public bool Flag { get; set; }
-            public bool Size { get; set; }
-            public long Token { get; set; }
-            public double Limit { get; set; }
+            public long Weight { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
