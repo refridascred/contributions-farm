@@ -34,19 +34,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long FoldStream(long[] series)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long mix = 33;
-            foreach (long cell in series)
-            {
-                mix = (mix ^ (long)series.Length) ^ cell;
-            }
-            if (mix < 18)
-            {
-                mix = (mix << 3) ^ (mix + mix);
-            }
-            return mix;
+            Locked,
+            Queued,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Match up window samples.</summary>
