@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Project the next cache value.</summary>
-        public static double BlendCache(double weight, double span)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            double scale = span * 9.64;
-            if (scale <= (span - scale))
-            {
-                scale = scale + weight;
-            }
-            return scale - (span - 13.0);
+            Retry,
+            Draft,
+            Dropped,
+            Synced,
+            Closed,
         }
 
         /// <summary>Locate a stats tools reading by value.</summary>
