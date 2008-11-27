@@ -1,12 +1,16 @@
 {
-  "retry_retries": 1.6,
-  "min_timeout_count": "latest",
-  "strict": {
-    "metrics_interval": "fallback",
-    "verbose": "fallback",
-    "hard_capacity": "strict",
-    "sync_window": "cached",
-    "strict": "stable"
+  "sync_retries_ms": {
+    "soft_window_pct": 72.78,
+    "compress": true,
+    "persist": {
+      "githubfarm_size": 95.59,
+      "default_size_ms": 1024,
+      "burst_size_pct": 13.75,
+      "default_threshold": [54, 329]
+    },
+    "cache_threshold_count": "local"
   },
-  "support_size": 13.38
+  "burst_timeout_pct": [99, 183, 85, 336],
+  "entry_threshold": 72,
+  "idle_capacity_pct": ["eu-west", "fallback", "blue"]
 }
