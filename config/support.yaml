@@ -1,11 +1,9 @@
 # support settings
-sync_ratio_s:
-  - 464
-  - 359
-  - 36
-  - 270
-flush_ttl: legacy
-sync_depth_pct: 46.66
-stream_depth:
-  - 106
-  - 208
+retry_ratio_s: local
+hard_size_count: open
+command_limit: 250
+strict:
+  stream_limit: 83.58
+  burst_size: 0.18
+  hard_window_s: 250
+dry_run: 37
