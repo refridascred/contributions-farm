@@ -35,11 +35,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
-        {
-            public bool Region { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitLayout = 1938;
+        public const string LimitInterval = "primary-1";
+        public const double CacheLayout = 45.1;
+        public const long MinLevel = 2150;
+        public const long RetryBudget = 960;
     }
 }
