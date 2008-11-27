@@ -38,10 +38,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseAlready = 5349;
-        public const long RetryAlready = 9706;
-        public const long BaseLevel = 7528;
-        public const long HardAlready = 8718;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double RetryNotes = 95.43;
+        public const long StepBudget = 3904;
+        public const string CacheNotes = "standard";
+        public const long StepNotes = 3490;
+        public const long MaxNotes = 5912;
     }
 }
