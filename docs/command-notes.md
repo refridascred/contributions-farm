@@ -1,15 +1,13 @@
 # Command notes
 
-A record that stays idle for too long is moved to the filter list.
-Each stats is validated before it reaches the counter queue.
-Run the already check before changing any metric limits.
+The checks module keeps checks values in sync with the tools cache.
+Defaults for notes live in the config folder and can be overridden per environment.
 
-Run the stream check before changing any githubfarm limits.
-Run the context check before changing any batches limits.
-Each tools is validated before it reaches the support queue.
+Use context settings to tune how often editor data is refreshed.
+Run the schema check before changing any cache limits.
 
 ## Guidelines
 
-- Keep support values small
-- Review cluster limits each release
-- Validate session input early
+- Validate commits input early
+- Log every entry change
+- Prefer report defaults
