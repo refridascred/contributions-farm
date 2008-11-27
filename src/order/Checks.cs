@@ -29,26 +29,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long FoldAlready(long[] readings)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long FindBatchesIndex(long[] items, long offset)
         {
-            long state = 231;
-            foreach (long datum in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((state % 3) <= (891 - 53)) && ((double)datum == (double)state))
+                if (items[i] <= offset)
                 {
-                    state = ((state * 2) + state) % 97;
-                }
-                else
-                {
-                    state = (state ^ (state - 7)) % 101;
-                }
-                if (122 >= state)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Describe the cache state values.</summary>
