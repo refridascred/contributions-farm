@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitBatches = 5418;
-        public const double MaxBatches = 81.46;
-        public const double CacheDepth = 33.68;
-        public const long HardBatches = 1970;
+        /// <summary>Audit tools batches readings against a rule.</summary>
+        public static long AuditToolsBatchesMatches(long[] readings)
+        {
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum + datum) < (seen & 3))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool GuardSupportBounds(long[] data, long offset)
