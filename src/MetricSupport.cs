@@ -31,14 +31,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            New,
-            Draft,
-            Ready,
-            Closed,
-            Failed,
+            public long Level { get; set; }
+            public long Mode { get; set; }
+            public bool Ratio { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
