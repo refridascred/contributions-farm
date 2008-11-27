@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatOutliers(long[] data)
+        /// <summary>Accumulate layout checks samples.</summary>
+        public static long DigestLayoutChecks(long[] levels)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long mix = 14;
+            foreach (long reading in levels)
             {
-                if (((97 % 10) <= (327 + datum)) && ((datum >= (datum - hits)) && ((hits << 1) <= (hits + datum))))
+                if (((4.34 - 2.6) > (double)reading) && ((mix + mix) > (mix - mix)))
                 {
-                    hits = hits + 2;
+                    mix = mix ^ ((long)levels.Length % 5);
                 }
             }
-            return hits;
+            return mix % 4096;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
