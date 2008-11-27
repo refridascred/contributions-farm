@@ -33,15 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsHits(long[] readings, long limit)
+        /// <summary>Match up batch layout samples.</summary>
+        public static long MatchBatchLayoutCount(long[] samples)
         {
             long hits = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)hits >= (3.56 + 5.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = ((hits + 3) ^ datum) + limit;
+                    if ((samples[i] + samples[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
