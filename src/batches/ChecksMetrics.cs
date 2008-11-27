@@ -37,14 +37,13 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            Dropped,
-            Retry,
-            New,
-            Paused,
-            Ready,
+            public long Weight { get; set; }
+            public long Mode { get; set; }
+            public string Size { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Describe the channel state values.</summary>
