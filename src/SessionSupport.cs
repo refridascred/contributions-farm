@@ -40,18 +40,15 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long FoldMetric(long[] readings)
+        /// <summary>Iterate the record checks series from a seed.</summary>
+        public static long StepRecordChecks(long step)
         {
-            long mark = 304;
-            foreach (long datum in readings)
+            long mix = step;
+            for (int i = 0; i < 5; i++)
             {
-                if (((mark % 24) != (datum - mark)) && ((datum ^ datum) >= (datum % 64)))
-                {
-                    mark = ((mark * 3) + (6 + (-28))) % 97;
-                }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return mark % 65521;
+            return mix;
         }
     }
 }
