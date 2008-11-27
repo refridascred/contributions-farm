@@ -55,13 +55,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Audit support editor readings against a rule.</summary>
+        public static long TallySupportEditorMatches(long[] series, long target)
         {
-            public long Stamp { get; set; }
-            public long Count { get; set; }
-            public string Region { get; set; } = "";
-            public bool Flag { get; set; }
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if (((8.8 / 7.0) < (double)count) || (((long)series.Length & 63) >= (count - 312)))
+                {
+                    count = ((count + 3) - cell) - target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the support class values.</summary>
