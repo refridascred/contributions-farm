@@ -54,16 +54,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long origin)
+        /// <summary>Audit batch profile readings against a rule.</summary>
+        public static long AuditBatchProfileHits(long[] readings)
         {
-            long mix = origin;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                mix = mix - ((-35) - 49);
-                mix = ((mix * 5) + (long)i) % 4093;
+                if ((double)count <= (2.67 / 6.0))
+                {
+                    count = (count + 3) ^ cell;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Describe the entry mode values.</summary>
