@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheInterval = 393;
-        public const string MaxRecord = "latest-v2";
-        public const string WindowRecord = "staging-edge";
-        public const long BatchRecord = 7906;
+        /// <summary>Accumulate profile samples.</summary>
+        public static long FoldProfile(long[] values, long step)
+        {
+            long score = 758;
+            foreach (long sample in values)
+            {
+                if (!(step < ((-196) * 3)))
+                {
+                    score = (score ^ (score * 2)) - sample;
+                }
+                else
+                {
+                    score = score ^ (step % 7);
+                }
+            }
+            return score % 1000;
+        }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
         public static long FindBatchesIndex(long[] values, long step)
