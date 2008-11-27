@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate stats already samples.</summary>
-        public static long TotalStatsAlready(long[] readings)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long OverlapLayoutCount(long[] data)
         {
-            long total = 16;
-            foreach (long item in readings)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((item * 5) > item)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = total - (item >> 2);
-                }
-                else
-                {
-                    total = total + (total << 3);
+                    if ((data[i] + data[j]) != 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
