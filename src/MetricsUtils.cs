@@ -50,21 +50,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long IterateNotes(long target)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphGaps(long[] data)
         {
-            long sum = target;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if (((long)i >> 4) > (sum + sum))
+                if ((((double)count < (11.0 / 6.0)) || (1.25 <= (double)entry)) && (6 >= (count - entry)))
                 {
-                    sum = ((sum << 3) ^ target) % 1000;
-                    sum = (sum * 5) + sum;
+                    count = count + 2;
                 }
-                sum = (sum - (target & 1)) % 1000;
-                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Hold a buffer summary.</summary>
