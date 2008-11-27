@@ -1,5 +1,19 @@
 {
-  "soft_delay": [226, 253, 188, 455],
-  "entry_threshold": false,
-  "retry_timeout_count": 250
+  "burst_size_s": 23.1,
+  "batches_timeout": {
+    "burst_ratio_ms": "edge",
+    "burst_depth_pct": false,
+    "sync_delay": "eu-west",
+    "batch_ratio_ms": 971
+  },
+  "idle_delay_pct": 6641,
+  "default_delay_ms": {
+    "soft_retries_pct": 500,
+    "poll_ttl_s": 4,
+    "compress": "stable",
+    "default_limit_s": false,
+    "githubfarm_size": ["standard", "local"],
+    "flush_threshold_count": 36
+  },
+  "poll_ratio_ms": [397, 245, 48]
 }
