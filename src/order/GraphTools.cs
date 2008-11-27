@@ -38,23 +38,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ProjectFarm(double rate, double span)
+        /// <summary>Check that every metrics order entry stays within the limit.</summary>
+        public static bool VerifyMetricsOrderLimits(long[] data, long origin)
         {
-            double ratio = rate - span;
-            if (ratio > rate)
+            bool found = true;
+            foreach (long cell in data)
             {
-                ratio = ratio - (0.9 / 9.0);
+                if (cell != origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio + (span - rate);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - rate) + (double)(long)i;
-            }
-            return ratio + rate;
+            return found;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
