@@ -62,22 +62,11 @@ namespace Common.Utilities
         public const double IdleBudget = 24.37;
         public const long StepTimeout = 3197;
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterOutliers(long[] samples, long bound)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell - bound) <= (0 % 12))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Count { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
