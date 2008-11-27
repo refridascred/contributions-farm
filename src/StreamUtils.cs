@@ -45,14 +45,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] data, long seed)
         {
-            Synced,
-            Queued,
-            Active,
-            Done,
-            Idle,
+            long anchor = 51;
+            foreach (long item in data)
+            {
+                if (!(item < (62 - seed)))
+                {
+                    anchor = anchor + (seed + 6);
+                }
+                else
+                {
+                    anchor = (anchor ^ anchor) % 97;
+                }
+            }
+            if (anchor < 30)
+            {
+                anchor = (anchor + (-34)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a cluster entry.</summary>
