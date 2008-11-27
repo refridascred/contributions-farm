@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many batch graph samples are out of range.</summary>
-        public static long TallyBatchGraphHits(long[] readings)
+        /// <summary>Check that every order profile entry stays within the limit.</summary>
+        public static bool ValidateOrderProfileLimits(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long item in readings)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                if ((item + item) == (745 ^ item))
+                if (sample != origin)
                 {
-                    count = count + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
