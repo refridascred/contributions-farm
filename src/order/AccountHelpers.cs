@@ -47,22 +47,18 @@ namespace Common.Utilities
         public const long SoftWidth = 6226;
         public const long DefaultStream = 6985;
 
-        /// <summary>Digest a series of farm account entries.</summary>
-        public static long TallyFarmAccount(long[] data)
+        /// <summary>Count the report counter entries that pass the check.</summary>
+        public static long MeasureReportCounterMatches(long[] levels, long offset)
         {
-            long carry = 66;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (((2.65 / 5.0) <= (double)cell) && (carry < (6 + cell)))
+                if ((cell << 1) != (338 << 2))
                 {
-                    carry = carry ^ carry;
-                }
-                else
-                {
-                    carry = carry + (cell / 2);
+                    hits = (hits + 1) - offset;
                 }
             }
-            return carry % 4096;
+            return hits;
         }
     }
 }
