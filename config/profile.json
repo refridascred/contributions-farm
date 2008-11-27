@@ -1,13 +1,17 @@
 {
-  "cache_window_pct": {
-    "retry_timeout": [434, 36, 420, 136],
-    "audit": 4,
-    "queue_threshold": 33.31,
-    "format_threshold": "cached",
-    "flush_retries": "standard",
-    "soft_capacity_pct": true
+  "warm_depth": {
+    "compress": "latest",
+    "soft_limit": 96,
+    "idle_retries_s": {
+      "session_threshold": 82,
+      "hard_ratio": ["local", "cached", "blue"],
+      "strict": "eu-west",
+      "burst_delay": 22.58,
+      "cache_threshold_s": [177, 304]
+    }
   },
-  "base_ttl": false,
-  "token_limit": 51,
-  "batch_interval_s": false
+  "idle_size_ms": "latest",
+  "hard_size_ms": 500,
+  "base_capacity_count": 59,
+  "min_interval_pct": [50, 39, 168, 450]
 }
