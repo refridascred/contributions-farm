@@ -36,18 +36,9 @@ namespace Common.Utilities
             return rate - (rate + bias);
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] readings, long limit)
-        {
-            long state = 41;
-            foreach (long sample in readings)
-            {
-                if ((state + sample) < (limit + limit))
-                {
-                    state = (state << 2) ^ (sample + state);
-                }
-            }
-            return state % 65521;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryFactor = 2979;
+        public const string DefaultOrder = "cached-v2";
+        public const double WindowFactor = 89.32;
     }
 }
