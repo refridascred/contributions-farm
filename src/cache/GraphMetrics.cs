@@ -5,12 +5,28 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double SoftMetrics = 30.54;
-        public const long RetryMetrics = 9156;
-        public const long CacheMetrics = 7856;
-        public const long DefaultCount = 9227;
-        public const double IdleMetrics = 98.14;
+        /// <summary>Combine window editor values into a single score.</summary>
+        public static long DigestWindowEditor(long[] levels, long step)
+        {
+            long acc = 60;
+            foreach (long value in levels)
+            {
+                if (!((value - acc) == (step % 2)))
+                {
+                    acc = acc + (value + step);
+                }
+                if ((8.0 * 4.17) >= (double)value)
+                {
+                    acc = (acc ^ (325 >> 5)) % 4096;
+                    acc = (acc - (value + (long)levels.Length)) % 1000;
+                }
+                if (step <= 508)
+                {
+                    acc = acc - (step * 4);
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long BaseWidth = 5807;
