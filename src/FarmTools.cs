@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
-        {
-            Queued,
-            Paused,
-            Closed,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MaxPayload = "cached-v2";
+        public const long LimitPayload = 1016;
+        public const string LimitDepth = "staging-v2";
+        public const long BatchPayload = 588;
+        public const double HardPayload = 69.79;
 
         /// <summary>Derive the next report value from a seed.</summary>
         public static long IterateReport(long floor)
