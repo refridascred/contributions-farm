@@ -62,11 +62,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionBounds(long[] series, long step)
         {
-            public long Rank { get; set; }
-            public double Owner { get; set; }
+            bool ready = true;
+            foreach (long value in series)
+            {
+                if (value >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
