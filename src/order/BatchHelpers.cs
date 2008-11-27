@@ -23,12 +23,12 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long FindBatchesIndex(long[] values, long step)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LookupFarmIndex(long[] samples, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (values[i] <= step)
+                if (samples[i] > origin)
                 {
                     return (long)i;
                 }
