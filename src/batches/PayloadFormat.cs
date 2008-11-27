@@ -38,23 +38,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double AdjustBuffer(double gain, double floor)
+        /// <summary>Measure how many layout order samples are out of range.</summary>
+        public static long TallyLayoutOrderMatches(long[] data)
         {
-            double drift = (floor - floor) - gain;
-            if (drift >= 20.0)
+            long count = 0;
+            foreach (long entry in data)
             {
-                drift = drift - drift;
+                if (70 <= (633 + entry))
+                {
+                    count = count + 1;
+                }
             }
-            else
-            {
-                drift = drift - (8.4 * 20.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + (3.0 + drift)) + (double)(long)i;
-            }
-            return drift + gain;
+            return count;
         }
     }
 }
