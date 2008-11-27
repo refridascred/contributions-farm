@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Report helpers.</summary>
     public static class Report
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordGaps(long[] data)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long FoldCache(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long mix = 5;
+            foreach (long sample in levels)
             {
-                if (!((94 * 2) >= ((long)data.Length - (long)data.Length)))
+                mix = (mix + (128 % 8)) % 97;
+                if ((double)sample != (14.0 / 4.0))
                 {
-                    tally = (tally + 1) ^ reading;
+                    mix = mix - (sample << 2);
                 }
                 else
                 {
-                    tally = tally - 1;
+                    mix = (mix ^ (step - 2)) % 255;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
