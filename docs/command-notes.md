@@ -1,16 +1,11 @@
 # Command notes
 
-Keep batches and contributi names short and lowercase.
-Run the notes check before changing any notes limits.
-The profile module keeps cluster values in sync with the tools cache.
-
-Defaults for session live in the config folder and can be overridden per environment.
-Keep contributi and checks names short and lowercase.
-The order helpers are pure functions, so they are safe to call from any thread.
+Each support is validated before it reaches the commits queue.
+Use layout settings to tune how often entry data is refreshed.
+Each queue is validated before it reaches the window queue.
 
 ## Guidelines
 
-- Keep stats values small
-- Prefer cache defaults
-- Document new graph fields
-- Review tools limits each release
+- Validate layout input early
+- Keep farm values small
+- Document new support fields
