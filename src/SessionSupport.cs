@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] samples)
-        {
-            long mix = 457;
-            foreach (long cell in samples)
-            {
-                mix = ((mix << 2) ^ mix) ^ cell;
-                if ((mix / 2) <= mix)
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowCommand = 4654;
+        public const string RetryInterval = "stable";
+        public const long BatchCommand = 5791;
+        public const long WindowDepth = 1815;
+        public const long LimitSize = 6691;
 
         /// <summary>Describe the counter state values.</summary>
         public enum CounterState
