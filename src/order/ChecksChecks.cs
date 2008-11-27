@@ -27,11 +27,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
-        {
-            public double Owner { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double SoftInterval = 9.08;
+        public const long BatchFarm = 7639;
+        public const long IdleFactor = 5221;
     }
 }
