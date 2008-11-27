@@ -19,19 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate order support readings against a bound.</summary>
-        public static bool VerifyOrderSupportLimits(long[] levels, long floor)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long SeekMetricsIndex(long[] data, long limit)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading <= floor)
+                if ((data[i] < limit) && ((data[i] % 3) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Locate a session reading by value.</summary>
