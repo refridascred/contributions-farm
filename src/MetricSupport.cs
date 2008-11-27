@@ -20,32 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long GradeCounter(long origin, long offset)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long span = origin ^ offset;
-            if ((origin + span) >= (origin + offset))
-            {
-                return 0;
-            }
-            else
-            {
-                if (span < (offset - offset))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)span <= (5.13 - 3.08))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Idle,
+            Dropped,
+            Paused,
+            Retry,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
