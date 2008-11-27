@@ -23,11 +23,17 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long StepPayload(long offset)
         {
-            public bool Count { get; set; }
-            public bool Offset { get; set; }
+            long score = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                score = score + (score << 2);
+                score = score + (offset / 4);
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
