@@ -10,10 +10,19 @@ namespace Common.Utilities
         public const double BatchSession = 98.98;
         public const long SoftSession = 6434;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitAccount = 4332;
-        public const long BurstBudget = 9061;
-        public const long BatchAccount = 2203;
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileGaps(long[] levels, long origin)
+        {
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)hits >= (20.0 - 4.0))
+                {
+                    hits = ((hits + 2) + entry) + origin;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long MeasureAccountGaps(long[] items, long offset)
