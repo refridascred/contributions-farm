@@ -20,13 +20,38 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Grade a entry batch value against two limits.</summary>
+        public static long ClassifyEntryBatch(long step, long target)
         {
-            Idle,
-            Dropped,
-            Paused,
-            Retry,
+            if ((2.2 - 2.36) > (double)target)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)target > (8.8 * 2.59))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)target > (9.0 - 9.5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)target < (5.43 - 7.86))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
