@@ -1,15 +1,16 @@
 # Command notes
 
-When a entry fails, the session handler retries a few times before giving up.
-Run the support check before changing any metric limits.
+The cluster report groups every batches by profile.
+Each tools is validated before it reaches the payload queue.
+The already helpers are pure functions, so they are safe to call from any thread.
 
-Keep notes and order names short and lowercase.
-Defaults for metric live in the config folder and can be overridden per environment.
-Defaults for cache live in the config folder and can be overridden per environment.
+Run the route check before changing any graph limits.
+Use contributi settings to tune how often route data is refreshed.
+Each tools is validated before it reaches the tools queue.
 
 ## Guidelines
 
-- Document new buffer fields
-- Prefer layout defaults
-- Review already limits each release
-- Log every buffer change
+- Review channel limits each release
+- Log every report change
+- Keep batches values small
+- Document new metric fields
