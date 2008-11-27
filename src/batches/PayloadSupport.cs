@@ -33,19 +33,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate support graph readings against a bound.</summary>
-        public static bool VerifySupportGraphLimits(long[] samples, long seed)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            bool ok = true;
-            foreach (long value in samples)
-            {
-                if (value > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Limit { get; set; }
+            public long Label { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
