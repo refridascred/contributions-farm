@@ -30,22 +30,23 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] readings, long bound)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ProjectChannel(double ratio, double bias)
         {
-            long carry = 1;
-            foreach (long reading in readings)
+            double scale = (double)((-516) << 3);
+            if (scale >= ratio)
             {
-                if (((double)bound > (3.61 - 4.15)) && (carry < bound))
-                {
-                    carry = (carry - (296 << 3)) - reading;
-                }
-                else
-                {
-                    carry = ((carry * 4) + (93 / 5)) % 65521;
-                }
+                scale = scale - scale;
             }
-            return carry % 65521;
+            else
+            {
+                scale = scale + (scale * 3.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - (scale + 1.7)) - (double)(long)i;
+            }
+            return scale + bias;
         }
     }
 }
