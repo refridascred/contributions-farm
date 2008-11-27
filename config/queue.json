@@ -1,6 +1,8 @@
 {
-  "metrics_threshold": false,
-  "poll_timeout": 84.6,
-  "flush_ttl_count": false,
-  "hard_threshold": [188, 59]
+  "session_size": true,
+  "strict": [439, 42],
+  "cluster_interval": "eu-west",
+  "idle_delay_pct": "green",
+  "report_interval": true,
+  "base_retries_s": [166, 79, 403]
 }
