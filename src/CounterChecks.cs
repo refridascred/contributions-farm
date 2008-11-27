@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
-        {
-            public long Offset { get; set; }
-            public bool Flag { get; set; }
-            public double Ratio { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string IdleBudget = "fallback";
+        public const long LimitCluster = 4071;
+        public const long DefaultCluster = 2361;
+        public const string RetryCluster = "primary-1";
 
         /// <summary>Locate a record reading by value.</summary>
         public static long LocateRecordIndex(long[] items, long limit)
