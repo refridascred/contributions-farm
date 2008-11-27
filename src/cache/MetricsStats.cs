@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate batches schema readings against a bound.</summary>
-        public static bool GuardBatchesSchemaBounds(long[] samples, long offset)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesBounds(long[] samples, long seed)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                if (reading <= offset)
+                if (value <= seed)
                 {
-                    valid = false;
+                    ready = false;
                     break;
                 }
             }
-            return valid;
+            return ready;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
