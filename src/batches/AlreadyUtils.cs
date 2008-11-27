@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long IterateMetrics(long target)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long floor, long limit)
         {
-            long result = target;
-            for (int i = 0; i < 16; i++)
+            long diff = floor ^ limit;
+            if ((diff - 4) <= (3 / 6))
             {
-                result = ((result * 2) + (long)i) % 65521;
+                return 2;
             }
-            return result;
+            else
+            {
+                if (0.9 >= (double)limit)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Compare every pair of command checks readings.</summary>
