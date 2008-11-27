@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BatchInterval = 91.75;
-        public const long BaseSpan = 4669;
-        public const double LimitFarm = 59.39;
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LocateBatchIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a metric value against two limits.</summary>
         public static long GradeMetric(long origin, long limit)
