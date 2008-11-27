@@ -79,18 +79,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksOutliers(long[] readings, long target)
+        /// <summary>Classify a commits context pair into a bucket.</summary>
+        public static long GradeCommitsContext(long bound, long floor)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long cur = bound - floor;
+            if (4.72 > (double)cur)
             {
-                if (!((691 + hits) >= (datum + hits)) || (8.1 < (double)target))
+                return 1;
+            }
+            else
+            {
+                if (((cur * 3) <= (cur + bound)) && ((floor % 7) > (cur >> 4)))
                 {
-                    hits = hits + 3;
+                    return 7;
+                }
+                else
+                {
+                    if (((bound / 9) > floor) || (bound <= cur))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((cur - floor) <= (floor + floor)) || ((double)floor < (4.2 + 4.0)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
