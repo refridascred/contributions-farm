@@ -1,7 +1,8 @@
 {
-  "idle_interval_s": "blue",
-  "flush_ratio_pct": 6604,
-  "hard_ttl": 63.43,
-  "verbose": 500,
-  "dry_run": "strict"
+  "flush_interval_pct": 89.38,
+  "persist": 51.82,
+  "max_limit_s": false,
+  "default_ttl": "staging",
+  "dry_run": 100,
+  "metric_ttl": 250
 }
