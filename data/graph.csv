@@ -1,7 +1,8 @@
-id,score,active
-1,legacy,latest
-2,5,cached
-3,stable,3.33
-4,262,564
-5,open,primary
-6,649,16.71
+id,token,label,region,count
+1,549,782,latest,55.72
+2,staging,12.42,fallback,625
+3,11.26,92.29,897,edge
+4,382,edge,82.37,local
+5,365,568,75.06,595
+6,12.79,189,314,59
+7,staging,3.65,247,5.58
