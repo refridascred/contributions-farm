@@ -36,14 +36,19 @@ namespace Common.Utilities
             return rate - (rate + bias);
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenLimits(long[] readings, long step)
         {
-            Failed,
-            Draft,
-            Active,
-            Queued,
-            Closed,
+            bool valid = true;
+            foreach (long value in readings)
+            {
+                if (value >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
