@@ -32,12 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            public bool Stamp { get; set; }
-            public long Total { get; set; }
-            public long Flag { get; set; }
+            public bool Weight { get; set; }
+            public double Region { get; set; }
+            public bool Count { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Compare every pair of command readings.</summary>
