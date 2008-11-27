@@ -47,14 +47,12 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
-        {
-            public double Size { get; set; }
-            public double Owner { get; set; }
-            public double Stamp { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitCluster = 3007;
+        public const long BatchSpan = 1017;
+        public const long HardCluster = 7185;
+        public const double IdleCluster = 8.33;
+        public const long SoftLevel = 3231;
 
         /// <summary>Describe the window status values.</summary>
         public enum WindowStatus
