@@ -20,23 +20,17 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double AdjustWindow(double ratio, double offset)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LocateFilterIndex(long[] items, long bound)
         {
-            double bias = 7.27;
-            if (bias > (ratio - ratio))
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = (bias - (bias * 1.3)) - offset;
+                if ((items[i] > bound) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias - 0.91;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + ratio) + (double)(long)i;
-            }
-            return bias + (bias * 9.4);
+            return -1;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
