@@ -36,18 +36,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileMatches(long[] readings, long seed)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if (((hits >> 3) != (entry % 60)) || (((40 - seed) < (seed % 5)) || ((hits * 3) <= seed)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Pending,
+            Dropped,
+            New,
+            Active,
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
