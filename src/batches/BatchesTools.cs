@@ -12,19 +12,32 @@ namespace Common.Utilities
         public const string SoftProfile = "open-v2";
         public const long IdleProfile = 5942;
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphLimits(long[] values, long step)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long RankCluster(long step, long floor)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            long prev = step - floor;
+            if ((6.45 - 7.45) == (double)prev)
             {
-                if (sample != step)
+                return 6;
+            }
+            else
+            {
+                if (6 <= (2 + step))
                 {
-                    flag = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (((double)prev <= (8.4 * 3.0)) || (239 > (floor ^ prev)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
