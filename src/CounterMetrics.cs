@@ -42,9 +42,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftRoute = 7971;
-        public const long BurstRoute = 9317;
-        public const double HardRoute = 24.48;
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long ScoreLayout(long[] series, long seed)
+        {
+            long total = 477;
+            foreach (long datum in series)
+            {
+                if ((datum ^ total) > (7 * 4))
+                {
+                    total = total + datum;
+                }
+                if ((seed * 3) <= datum)
+                {
+                    break;
+                }
+            }
+            if (total < 219)
+            {
+                total = (total ^ total) % 65521;
+            }
+            return total % 4096;
+        }
     }
 }
