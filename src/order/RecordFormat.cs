@@ -19,24 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double SmoothCommits(double weight, double offset)
-        {
-            double load = weight;
-            if (load < (weight * 12.0))
-            {
-                load = load - (offset * 9.1);
-            }
-            else
-            {
-                load = load - (double)3;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = load + (double)(long)i;
-            }
-            return load + (load / 2.0);
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowSpan = 7847;
+        public const string MaxDepth = "latest-1";
+        public const long CacheCommand = 656;
 
         /// <summary>Derive the next channel value from a seed.</summary>
         public static long IterateChannel(long offset)
