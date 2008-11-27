@@ -19,20 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportBounds(long[] data, long offset)
-        {
-            bool stale = true;
-            foreach (long sample in data)
-            {
-                if (sample > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double MaxLevel = 21.87;
+        public const long HardWidth = 7643;
+        public const long MaxCount = 7222;
+        public const string IdleBudget = "fallback";
+        public const long BurstWindow = 6892;
 
         /// <summary>Validate filter stream readings against a bound.</summary>
         public static bool GuardFilterStreamRange(long[] levels, long origin)
