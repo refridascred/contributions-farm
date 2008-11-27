@@ -1,5 +1,13 @@
 {
-  "dry_run": "cached",
-  "retry_depth_count": 6806,
-  "soft_capacity_pct": "open"
+  "strict": 59.16,
+  "audit": 67.44,
+  "order_size": 30,
+  "editor_ttl": true,
+  "record_depth": {
+    "sync_interval_count": ["latest", "staging", "edge", "edge"],
+    "batch_capacity_count": 1024,
+    "soft_timeout_pct": 5491,
+    "order_ttl": ["blue", "open", "legacy"],
+    "window_limit": 81.9
+  }
 }
