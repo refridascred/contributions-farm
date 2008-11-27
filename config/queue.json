@@ -1,14 +1,12 @@
 {
-  "default_window_s": false,
-  "enabled": 5.66,
-  "editor_capacity": "fallback",
-  "soft_ratio": true,
-  "cache_size": {
-    "default_ratio": 95.62,
-    "command_threshold": "eu-west",
-    "poll_ratio_pct": "local",
-    "counter_capacity": 42.21,
-    "warm_window_s": 8802,
-    "strict": ["open", "strict", "staging"]
-  }
+  "burst_size": 46,
+  "batch_window_s": {
+    "queue_timeout": ["strict", "fallback", "legacy", "green"],
+    "persist": [489, 218, 142],
+    "warm_capacity_s": [9, 114, 456, 402],
+    "graph_retries": 250,
+    "token_limit": [432, 494, 278],
+    "min_limit_count": [331, 212, 460, 48]
+  },
+  "sync_threshold_count": "open"
 }
