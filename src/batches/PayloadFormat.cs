@@ -42,18 +42,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many layout order samples are out of range.</summary>
-        public static long TallyLayoutOrderMatches(long[] data)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if (70 <= (633 + entry))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Active,
+            Paused,
+            Locked,
+            Pending,
         }
     }
 }
