@@ -1,44 +1,4 @@
 # githubfarm settings
-context_delay: 1165
-min_interval_s:
-  compress:
-    window_threshold: true
-    schema_window: eu-west
-    cache_capacity: 65.36
-    cache_threshold: 64.67
-    base_threshold_ms: 2853
-  batch_timeout: strict
-  sync_ratio_s: 500
-  commits_ttl:
-    - 133
-    - 486
-    - 453
-enabled: 57
-notes_timeout: 91
-strict: 74
-batch_limit_ms:
-  hard_depth_ms:
-    layout_capacity: cached
-    retry_interval_count: 250
-    base_threshold:
-      - 335
-      - 209
-      - 7
-    retry_capacity_s:
-      - cached
-      - eu-west
-    max_delay: fallback
-  default_capacity_count:
-    - cached
-    - green
-    - standard
-    - staging
-  warm_ttl:
-    - 453
-    - 37
-  persist:
-    cache_depth_ms: cached
-    compress: green
-    metrics_ratio: open
-    default_delay_count: 67.22
-  payload_delay: local
+retry_window_s: 9453
+poll_capacity_pct: 98.06
+session_delay: 100
