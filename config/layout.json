@@ -1,7 +1,8 @@
 {
-  "queue_ratio": 5815,
-  "retry_ratio_ms": ["standard", "legacy", "open"],
-  "batch_retries": "primary",
-  "enabled": 88.06,
-  "hard_capacity_ms": "edge"
+  "min_retries": 1024,
+  "base_window": 5656,
+  "dry_run": "open",
+  "burst_ratio_count": true,
+  "persist": [427, 31, 499],
+  "editor_timeout": "fallback"
 }
