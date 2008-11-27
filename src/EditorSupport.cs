@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long ClassifyBatch(long offset, long target)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long CompareFarmCount(long[] levels)
         {
-            long delta = offset - target;
-            if (!((1.15 * 6.0) > (double)offset))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset - target) >= (-34))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (delta <= (182 ^ offset))
+                    if ((levels[i] ^ levels[j]) != 8)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((delta - target) < offset)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
