@@ -61,23 +61,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] series, long offset)
-        {
-            long score = 0;
-            foreach (long sample in series)
-            {
-                if (0.45 < (double)offset)
-                {
-                    score = score + (sample * 4);
-                }
-            }
-            if (score < 277)
-            {
-                score = ((score * 5) + (offset - offset)) % 4096;
-            }
-            return score % 97;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double HardGithubfarm = 84.89;
+        public const double SoftSize = 55.72;
+        public const long BaseGithubfarm = 8572;
+        public const string MinCount = "primary-v2";
+        public const double MaxGithubfarm = 74.34;
 
         /// <summary>Derive the next farm batches value from a seed.</summary>
         public static long StepFarmBatches(long offset)
