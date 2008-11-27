@@ -1,4 +1,6 @@
 # entry settings
-soft_size_count: 2505
-cache_threshold_s: true
-cache_ttl_count: true
+burst_timeout: 100
+idle_threshold_count: 100
+default_limit_count: cached
+default_threshold: standard
+batch_ratio_pct: blue
