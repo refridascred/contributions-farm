@@ -35,19 +35,26 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountBounds(long[] items, long limit)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] values, long origin)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long carry = 6;
+            foreach (long cell in values)
             {
-                if (datum >= limit)
+                if ((origin > cell) || ((origin >> 2) > (carry + carry)))
                 {
-                    found = false;
-                    break;
+                    carry = (carry + cell) % 97;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ cell;
                 }
             }
-            return found;
+            if (carry < 739)
+            {
+                carry = carry + (origin - origin);
+            }
+            return carry;
         }
     }
 }
