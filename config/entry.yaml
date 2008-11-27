@@ -1,15 +1,9 @@
 # entry settings
-max_limit:
-  hard_window_s: cached
-  commits_delay: true
-  min_depth: true
-  metric_window: 1701
-  audit: open
-  strict: false
-base_timeout_s: stable
-stats_capacity:
+sync_capacity_count:
+  - stable
+  - latest
   - legacy
-  - eu-west
-  - staging
-cache_window: false
-base_window_s: 50
+filter_retries: 81.64
+githubfarm_retries: 1024
+profile_limit: latest
+default_threshold_count: 25.55
