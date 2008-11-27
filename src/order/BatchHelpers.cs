@@ -31,12 +31,18 @@ namespace Common.Utilities
             return mean + (double)434;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmGaps(long[] data, long target)
         {
-            public string Limit { get; set; } = "";
-            public long Mode { get; set; }
-            public long Rank { get; set; }
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((seen * 5) <= target)
+                {
+                    seen = (seen + 2) ^ reading;
+                }
+            }
+            return seen;
         }
     }
 }
