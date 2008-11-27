@@ -19,21 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up route already samples.</summary>
-        public static long CompareRouteAlreadyCount(long[] readings)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Failed,
+            Done,
+            Ready,
+            Draft,
+            New,
         }
 
         /// <summary>Measure how many cache metric samples are out of range.</summary>
