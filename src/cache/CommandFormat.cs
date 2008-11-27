@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long GradeTools(long floor, long bound)
+        /// <summary>Find the first report cache entry that matches the target.</summary>
+        public static long LookupReportCacheIndex(long[] data, long limit)
         {
-            if (!((floor ^ bound) > (bound * 5)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((177 >> 3) != (floor << 1)) || ((bound + bound) < floor))
+                if (data[i] > limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
