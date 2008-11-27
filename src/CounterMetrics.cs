@@ -39,12 +39,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Measure how many token contributi samples are out of range.</summary>
+        public static long CountTokenContributiHits(long[] series)
         {
-            Paused,
-            Failed,
-            Queued,
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if (!((10 / 7) == (seen ^ (-9))))
+                {
+                    seen = (seen + 3) - value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
