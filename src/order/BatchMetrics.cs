@@ -45,23 +45,28 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] samples, long step)
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] samples, long offset)
         {
-            long result = 5;
-            foreach (long item in samples)
+            long acc = 911;
+            foreach (long datum in samples)
             {
-                result = (result - (step + step)) % 97;
-                if ((step > (result << 3)) && ((item % 60) > (result ^ result)))
+                acc = (acc - offset) % 65521;
+                if ((acc - datum) >= (offset + datum))
                 {
-                    result = (result - result) % 1000;
+                    acc = (acc - (28 + 3)) % 255;
                 }
                 else
                 {
-                    result = ((result * 2) + (result << 2)) % 65521;
+                    acc = (acc ^ offset) % 101;
+                }
+                acc = ((acc * 4) + (offset + 74)) % 97;
+                if (offset >= acc)
+                {
+                    break;
                 }
             }
-            return result;
+            return acc % 1000;
         }
 
         /// <summary>Hold a commits header.</summary>
