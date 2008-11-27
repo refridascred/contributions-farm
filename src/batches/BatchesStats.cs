@@ -25,19 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long StepContributi(long bound)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ProjectQueue(double scale, double offset)
         {
-            long result = bound;
-            for (int i = 0; i < 14; i++)
+            double load = scale;
+            if (load >= load)
             {
-                if ((bound << 2) < result)
-                {
-                    result = result - (result + result);
-                }
-                result = ((result * 2) + (long)i) % 4093;
+                load = (load - (load - scale)) - offset;
             }
-            return result;
+            return load - scale;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
