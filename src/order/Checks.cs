@@ -78,12 +78,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            Pending,
-            Paused,
-            Retry,
+            public long Score { get; set; }
+            public string Weight { get; set; } = "";
+            public double Mode { get; set; }
         }
     }
 }
