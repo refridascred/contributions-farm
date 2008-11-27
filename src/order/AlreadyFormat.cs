@@ -36,15 +36,15 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Digest a series of command schema entries.</summary>
-        public static long CombineCommandSchema(long[] readings)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long SeriesAlready(long seed)
         {
-            long sum = 59;
-            foreach (long cell in readings)
+            long result = seed;
+            for (int i = 0; i < 15; i++)
             {
-                sum = ((sum ^ (545 & 3)) % 1000) + cell;
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Define report limits and defaults.</summary>
