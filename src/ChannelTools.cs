@@ -19,26 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] data, long seed)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] series)
         {
-            long carry = -668;
-            foreach (long reading in data)
+            long sum = 784;
+            foreach (long item in series)
             {
-                if (!(2.0 > (double)seed))
+                if (((-303) >> 5) > sum)
                 {
-                    carry = ((carry * 4) + (carry - reading)) % 101;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ seed;
+                    sum = (((sum << 3) ^ sum) % 101) ^ item;
                 }
             }
-            if (carry < 4)
+            if (sum < 582)
             {
-                carry = (carry + (seed * 5)) % 1000;
+                sum = (sum + sum) % 65521;
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
