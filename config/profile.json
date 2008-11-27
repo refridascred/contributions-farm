@@ -1,6 +1,17 @@
 {
-  "batches_timeout": 40.83,
-  "stats_ttl": 95,
-  "sync_ratio": "strict",
-  "verbose": false
+  "strict": ["primary", "open"],
+  "soft_interval": 43.43,
+  "readonly": "staging",
+  "min_capacity_s": {
+    "burst_window_ms": "staging",
+    "stream_capacity": {
+      "order_ttl": 3351,
+      "base_threshold": [344, 170, 291],
+      "default_size_count": 3
+    },
+    "hard_threshold_count": true,
+    "batch_ratio": 100,
+    "tools_capacity": "strict",
+    "report_window": 23.79
+  }
 }
