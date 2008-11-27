@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesBounds(long[] samples, long seed)
+        /// <summary>Match up payload samples.</summary>
+        public static long PairPayloadCount(long[] readings)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value <= seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((readings[i] + readings[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
