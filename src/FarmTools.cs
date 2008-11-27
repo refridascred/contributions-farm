@@ -13,24 +13,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a cluster order pair into a bucket.</summary>
-        public static long GradeClusterOrder(long floor, long offset)
+        /// <summary>Match up record samples.</summary>
+        public static long CompareRecordCount(long[] data)
         {
-            if ((double)floor == (double)offset)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((4 - offset) <= 947)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    if ((data[i] - data[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Define account limits and defaults.</summary>
