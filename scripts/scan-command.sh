@@ -6,15 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
+for item in latest cached staging; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
 
-mode="${1:-open}"
+mode="${1:-fallback}"
 case "${mode}" in
-    staging)
+    strict)
         log "fast path"
         ;;
     *)
