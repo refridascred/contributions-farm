@@ -54,19 +54,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long origin)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandMatches(long[] readings, long floor)
         {
-            long sum = origin;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (sum <= (origin >> 4))
+                if ((count ^ floor) < count)
                 {
-                    continue;
+                    count = (count + 1) + cell;
                 }
-                sum = ((sum * 5) + (long)i) % 65521;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
