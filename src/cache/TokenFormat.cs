@@ -40,21 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] samples)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Audit format readings against a rule.</summary>
