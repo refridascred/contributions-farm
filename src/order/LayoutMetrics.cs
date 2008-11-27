@@ -24,10 +24,23 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdlePayload = 6672;
-        public const double MinPayload = 20.28;
-        public const string BaseFactor = "local-edge";
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterMatches(long[] levels, long floor)
+        {
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((value + 60) <= matches)
+                {
+                    matches = (matches + 1) + floor;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Project the next layout value.</summary>
         public static double BlendLayout(double gain, double offset)
