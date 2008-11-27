@@ -41,17 +41,15 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LookupCommitsIndex(long[] levels, long bound)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 5;
+            foreach (long reading in levels)
             {
-                if ((levels[i] < bound) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                state = ((state << 2) ^ (state ^ reading)) % 4096;
             }
-            return -1;
+            return state % 1000;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
