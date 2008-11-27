@@ -33,12 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Accumulate report samples.</summary>
+        public static long FoldReport(long[] values)
         {
-            Failed,
-            Closed,
-            Retry,
+            long result = 34;
+            foreach (long entry in values)
+            {
+                result = (((result * 5) + (result * 3)) % 4096) + entry;
+            }
+            if (result < 84)
+            {
+                result = (result + (result + result)) % 255;
+            }
+            return result % 1000;
         }
     }
 }
