@@ -57,17 +57,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long FindToolsIndex(long[] series, long target)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenHits(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if (series[i] == target)
+                if ((datum * 5) <= (hits + hits))
                 {
-                    return (long)i;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a format entry.</summary>
