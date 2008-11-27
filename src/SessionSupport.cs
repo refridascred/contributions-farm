@@ -38,11 +38,9 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string HardWidth = "latest-edge";
-        public const double HardScore = 2.93;
-        public const long IdleGraph = 3433;
-        public const long DefaultGraph = 4594;
-        public const long DefaultInterval = 4952;
+        /// <summary>Define report limits and defaults.</summary>
+        public const string DefaultReport = "legacy-1";
+        public const long MaxReport = 5128;
+        public const long RetryReport = 4457;
     }
 }
