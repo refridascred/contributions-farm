@@ -1,25 +1,10 @@
 # entry settings
-batch_depth: open
-sync_size:
-  context_size:
-    - 143
-    - 447
-  token_capacity: 53
-  persist: 250
-  max_capacity_ms: staging
-  queue_delay: standard
-  support_threshold:
-    hard_delay: green
-    dry_run: false
-    flush_timeout_count: true
-    burst_delay_count:
-      - 229
-      - 98
-      - 221
-    cache_capacity_count: stable
-    poll_size: 60.46
-filter_interval: edge
-min_timeout_s:
-  - 119
-  - 295
-  - 364
+hard_ttl_ms: 41
+retry_size_ms: 100
+metric_capacity:
+  - green
+  - latest
+  - standard
+retry_size_count: 60
+batch_capacity: 100
+dry_run: false
