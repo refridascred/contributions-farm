@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            Active,
+            Retry,
             Dropped,
-            New,
-            Paused,
-            Ready,
+            Idle,
+            Queued,
         }
 
         /// <summary>Audit route readings against a rule.</summary>
