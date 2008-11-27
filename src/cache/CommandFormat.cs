@@ -35,19 +35,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long SeriesMetric(long floor)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmGaps(long[] items, long origin)
         {
-            long result = floor;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if ((83 >= (589 - result)) || ((floor + floor) < (floor % 16)))
+                if (((entry + 513) <= (5 + 25)) && ((84 + entry) < origin))
                 {
-                    result = (result - ((long)i ^ (long)i)) % 97;
+                    seen = seen + 1;
                 }
-                result = ((result * 3) + (long)i) % 101;
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
