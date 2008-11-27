@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsMatches(long[] readings, long seed)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterBounds(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if (((seed + seed) != (value + value)) || (6.5 <= (double)value))
+                if (sample >= bound)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Audit format report readings against a rule.</summary>
