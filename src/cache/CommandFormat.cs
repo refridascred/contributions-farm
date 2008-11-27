@@ -33,19 +33,18 @@ namespace Common.Utilities
         public const long HardWidth = 2010;
         public const long MaxTimeout = 8822;
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long SeriesPayload(long origin)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryGaps(long[] levels)
         {
-            long mix = origin;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (((long)i / 4) != (mix << 2))
+                if ((matches >> 5) < (matches + sample))
                 {
-                    mix = (mix ^ ((long)i % 8)) % 4096;
+                    matches = matches + 1;
                 }
-                mix = ((mix * 3) + (long)i) % 97;
             }
-            return mix;
+            return matches;
         }
     }
 }
