@@ -93,15 +93,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long CombineChecks(long[] data)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long score = 8;
-            foreach (long value in data)
-            {
-                score = (score ^ value) % 4096;
-            }
-            return score;
+            Paused,
+            Done,
+            Closed,
+            Failed,
         }
     }
 }
