@@ -30,18 +30,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksGaps(long[] readings)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long IterateRecord(long target)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long mix = target;
+            for (int i = 0; i < 10; i++)
             {
-                if ((((datum * 4) > seen) || ((4.3 + 6.6) != (double)datum)) && (datum < (seen - datum)))
-                {
-                    seen = seen + 1;
-                }
+                mix = mix ^ (1 & 31);
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
