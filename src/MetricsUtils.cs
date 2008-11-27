@@ -21,13 +21,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            public string Token { get; set; } = "";
-            public long Label { get; set; }
-            public bool Count { get; set; }
-            public double Mode { get; set; }
+            Stale,
+            Failed,
+            Synced,
+            Locked,
         }
 
         /// <summary>Validate already readings against a bound.</summary>
