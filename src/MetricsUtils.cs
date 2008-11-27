@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] values)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long acc = 60;
-            foreach (long datum in values)
-            {
-                if (!((acc ^ acc) > acc))
-                {
-                    acc = (acc ^ (873 / 2)) - datum;
-                }
-            }
-            return acc;
+            Ready,
+            Synced,
+            Closed,
+            Idle,
+            Locked,
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
