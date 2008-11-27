@@ -20,22 +20,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksHits(long[] data)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long GradeCounter(long origin, long offset)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long span = origin ^ offset;
+            if ((origin + span) >= (origin + offset))
             {
-                if (!((tally << 3) >= 15) && ((datum + datum) >= (tally << 2)))
+                return 0;
+            }
+            else
+            {
+                if (span < (offset - offset))
                 {
-                    tally = tally + 2;
+                    return 4;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((double)span <= (5.13 - 3.08))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
