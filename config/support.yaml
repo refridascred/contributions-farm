@@ -1,14 +1,10 @@
 # support settings
-batch_size_pct: eu-west
-burst_ttl_ms:
-  base_interval: true
-  verbose: 100
-  hard_delay_s: staging
-  hard_threshold_count: 9688
-compress: local
-dry_run:
-  - staging
-  - standard
+flush_threshold_s: true
+farm_window: strict
+support_limit: 100
+soft_size_count: 500
+compress:
   - latest
-  - edge
-warm_window_s: false
+  - legacy
+  - green
+  - strict
