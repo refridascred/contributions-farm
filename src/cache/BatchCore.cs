@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long MatchCommitsCount(long[] items)
+        /// <summary>Validate githubfarm metric readings against a bound.</summary>
+        public static bool CheckGithubfarmMetricLimits(long[] series, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (entry > target)
                 {
-                    if ((items[i] + items[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Hold a stats record.</summary>
