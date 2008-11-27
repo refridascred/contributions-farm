@@ -1,5 +1,5 @@
 {
-  "max_retries_s": [101, 307],
-  "strict": true,
-  "default_retries": 60
+  "cluster_ratio": [305, 136],
+  "metrics_interval": "blue",
+  "farm_delay": false
 }
