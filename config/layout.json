@@ -1,7 +1,5 @@
 {
-  "layout_timeout": 1024,
-  "cache_delay": 4042,
-  "account_capacity": "primary",
-  "min_ratio_ms": false,
-  "flush_threshold_pct": 1548
+  "support_limit": [475, 319, 199],
+  "base_limit_pct": ["eu-west", "stable", "primary"],
+  "min_timeout_ms": 88
 }
