@@ -30,31 +30,18 @@ namespace Common.Utilities
             return rate2 - rate;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long GradeChannel(long origin, long origin2)
+        /// <summary>Fold a list of token metrics readings.</summary>
+        public static long TallyTokenMetrics(long[] data)
         {
-            if ((double)origin2 <= (19.0 + 6.0))
+            long sum = 48;
+            foreach (long cell in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((double)origin2 > (1.7 * 9.3)))
+                if ((5.0 + 9.0) >= (double)sum)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)origin > 9.66)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    sum = ((sum << 2) ^ cell) % 97;
                 }
             }
+            return sum % 65521;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
