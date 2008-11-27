@@ -29,22 +29,21 @@ namespace Common.Utilities
         public const double StepTimeout = 97.69;
         public const long BaseFormat = 2037;
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long CombineCache(long[] samples, long target)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long CompareChannelCount(long[] series)
         {
-            long mark = 663;
-            foreach (long cell in samples)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((1.1 < (double)mark) && ((5 + cell) <= cell))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mark = ((mark + 85) % 65521) - target;
-                }
-                if (2.0 < (double)cell)
-                {
-                    break;
+                    if ((series[i] + series[j]) == 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Fold a list of report readings.</summary>
