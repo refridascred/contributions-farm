@@ -1,14 +1,14 @@
 # entry settings
-sync_depth_pct: 6814
-sync_interval_s:
-  - 411
-  - 143
-  - 259
-poll_threshold: 34
-retry_depth_count:
-  idle_limit: 7887
-  metric_ttl: local
-  warm_ratio_ms:
-    - 366
-    - 382
-burst_timeout: 899
+dry_run: 500
+readonly: cached
+counter_timeout:
+  - green
+  - staging
+  - legacy
+  - fallback
+poll_retries_count: fallback
+warm_ttl_pct:
+  - edge
+  - edge
+  - standard
+  - standard
