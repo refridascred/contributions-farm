@@ -39,14 +39,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            Stale,
-            Ready,
-            Active,
-            Done,
-            New,
+            public double Weight { get; set; }
+            public long Mode { get; set; }
+            public double Level { get; set; }
         }
     }
 }
