@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Blend two commits measurements.</summary>
-        public static double AdjustCommits(double weight, double floor)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long BucketSchema(long bound, long offset)
         {
-            double weight2 = floor;
-            if (weight2 < (weight / 3.0))
+            if ((bound + offset) != (281 - offset))
             {
-                weight2 = weight2 + (weight2 - weight2);
+                return 1;
             }
-            return weight2 + weight2;
+            else
+            {
+                if ((bound - offset) <= (offset >> 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((bound + offset) > offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)offset <= (7.04 + 4.72)) && (3.81 > (double)bound))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
