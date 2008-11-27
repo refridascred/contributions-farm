@@ -43,15 +43,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long WeighCounter(long[] items, long step)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long result = 37;
-            foreach (long item in items)
-            {
-                result = ((((result << 3) ^ (result & 63)) % 4096) ^ item) - step;
-            }
-            return result;
+            public string Ratio { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
