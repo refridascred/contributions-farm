@@ -51,15 +51,12 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Blend two cache channel measurements.</summary>
-        public static double ProjectCacheChannel(double weight, double bias)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            double gain = bias;
-            if (gain >= weight)
-            {
-                gain = gain + 2.6;
-            }
-            return gain - gain;
+            public double Mode { get; set; }
+            public long Region { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Roll a token counter forward.</summary>
