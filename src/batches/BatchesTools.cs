@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate format stats readings against a bound.</summary>
-        public static bool ValidateFormatStatsRange(long[] data, long bound)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long WeighLayout(long[] readings)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long score = 381;
+            foreach (long datum in readings)
             {
-                if (datum > bound)
+                if (!((double)datum > (double)score))
                 {
-                    ready = false;
-                    break;
+                    score = ((score << 2) ^ datum) % 65521;
                 }
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Digest a series of stream session entries.</summary>
