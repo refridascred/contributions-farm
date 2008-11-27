@@ -1,6 +1,20 @@
 # support settings
-idle_depth: 30
-retry_ttl_count: fallback
-base_capacity_ms: 211
-min_delay_s: edge
-command_interval: 1024
+burst_depth_s: 42.3
+poll_window_count: fallback
+poll_retries_count: 62
+soft_interval_ms:
+  poll_threshold:
+    poll_capacity: primary
+    strict: true
+    min_interval_s:
+      - 336
+      - 312
+  filter_ratio: true
+  stream_threshold:
+    - blue
+    - stable
+    - edge
+    - eu-west
+  dry_run: eu-west
+  flush_limit_count: 2636
+  retry_interval_count: 1024
