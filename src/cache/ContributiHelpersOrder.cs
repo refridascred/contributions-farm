@@ -34,24 +34,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long RankNotes(long target, long limit)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            if (((limit + limit) >= (7 % 7)) || ((target >> 3) >= limit))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((1.8 * 2.24) <= (double)target)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public bool Region { get; set; }
+            public bool Limit { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
