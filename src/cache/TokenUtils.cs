@@ -33,11 +33,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            public double Score { get; set; }
-            public string Offset { get; set; } = "";
+            Draft,
+            Locked,
+            Synced,
+            New,
         }
     }
 }
