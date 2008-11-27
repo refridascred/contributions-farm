@@ -1,6 +1,16 @@
 # entry settings
-idle_threshold: fallback
-channel_threshold: eu-west
-verbose: 250
-strict: 7669
-default_ttl_count: standard
+editor_threshold:
+  cache_ttl_s: false
+  stream_limit: 81.93
+  poll_window_ms: edge
+  cache_interval_pct: latest
+  min_retries_s: staging
+  metrics_interval: edge
+sync_retries_s:
+  - open
+  - standard
+  - fallback
+default_threshold: 2
+strict: staging
+audit: 3947
+entry_ratio: false
