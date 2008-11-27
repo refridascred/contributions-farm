@@ -22,12 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
             public long Total { get; set; }
-            public string Size { get; set; } = "";
-            public long Owner { get; set; }
+            public double Region { get; set; }
+            public string Count { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Classify a command farm pair into a bucket.</summary>
