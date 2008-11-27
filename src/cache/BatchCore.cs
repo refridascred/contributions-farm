@@ -54,18 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many farm githubfarm samples are out of range.</summary>
-        public static long AuditFarmGithubfarmGaps(long[] series)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueRange(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long value in series)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                if ((-565) <= (count + 56))
+                if (datum > bound)
                 {
-                    count = (count + 1) + value;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
     }
 }
