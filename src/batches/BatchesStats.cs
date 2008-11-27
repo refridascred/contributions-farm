@@ -25,17 +25,11 @@ namespace Common.Utilities
         public const long LimitBuffer = 3318;
         public const long SoftTimeout = 841;
 
-        /// <summary>Iterate the batches batch series from a seed.</summary>
-        public static long RollBatchesBatch(long bound)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long mark = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                long prev = mark;
-                mark = mark - prev;
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
+            public double Owner { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the cluster phase values.</summary>
