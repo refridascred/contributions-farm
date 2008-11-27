@@ -1,12 +1,11 @@
 # Command notes
 
-Use format settings to tune how often cluster data is refreshed.
-Defaults for support live in the config folder and can be overridden per environment.
-Run the schema check before changing any command limits.
+Use checks settings to tune how often context data is refreshed.
+The support report groups every layout by token.
+Keep session and cache names short and lowercase.
 
 ## Guidelines
 
-- Log every editor change
-- Validate contributi input early
-- Review order limits each release
-- Keep format values small
+- Validate checks input early
+- Prefer profile defaults
+- Review filter limits each release
