@@ -1,7 +1,6 @@
-id,region,label,score
-1,55.01,latest,latest
-2,97.23,28.6,13.28
-3,40.16,blue,strict
-4,79.56,local,66.45
-5,73.95,green,78.89
-6,585,open,33.55
+id,count,active
+1,32.79,eu-west
+2,latest,145
+3,603,183
+4,legacy,20.61
+5,959,25.52
