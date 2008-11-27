@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
-        {
-            public string Mode { get; set; } = "";
-            public bool Offset { get; set; }
-            public string Token { get; set; } = "";
-            public long Owner { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftProfile = 1113;
+        public const string MinProfile = "standard";
+        public const long RetryProfile = 9493;
+        public const string LimitProfile = "strict-1";
+        public const string CacheProfile = "primary-1";
 
         /// <summary>Look up the position of a profile sample.</summary>
         public static long SeekProfileIndex(long[] levels, long seed)
