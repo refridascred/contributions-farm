@@ -27,19 +27,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportRange(long[] values, long bound)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            bool stale = true;
-            foreach (long value in values)
-            {
-                if (value >= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Owner { get; set; } = "";
+            public long Label { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
