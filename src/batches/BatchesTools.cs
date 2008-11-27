@@ -22,16 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long IterateProfile(long bound)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long result = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                result = result ^ (result % 60);
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
+            Synced,
+            Pending,
+            Stale,
+            Done,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
