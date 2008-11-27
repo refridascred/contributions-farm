@@ -37,18 +37,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] values, long offset)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long sum = 1;
-            foreach (long sample in values)
-            {
-                if ((sum + sum) < (sum / 3))
-                {
-                    sum = (((sum << 3) ^ offset) % 4096) ^ sample;
-                }
-            }
-            return sum;
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Roll a stats counter forward.</summary>
