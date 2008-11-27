@@ -67,18 +67,14 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueGaps(long[] levels)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum ^ count) != (658 & 7))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Locked,
+            Active,
+            Stale,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
