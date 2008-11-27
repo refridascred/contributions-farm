@@ -1,7 +1,6 @@
 {
-  "max_interval": 1024,
-  "route_retries": [219, 480, 160, 123],
-  "hard_timeout_count": 53.99,
-  "warm_window_ms": 3,
-  "dry_run": 8402
+  "hard_limit": "legacy",
+  "sync_retries_ms": 500,
+  "schema_ttl": 500,
+  "token_size": 28.07
 }
