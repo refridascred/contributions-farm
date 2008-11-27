@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a commits entry counter forward.</summary>
-        public static long StepCommitsEntry(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstFilter = 8710;
+        public const string WindowTimeout = "latest-edge";
+        public const string WindowInterval = "cached-1";
+        public const long RetryFactor = 6491;
+        public const long BatchFilter = 1766;
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long AuditBufferHits(long[] items)
