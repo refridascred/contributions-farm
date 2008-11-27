@@ -42,22 +42,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsGaps(long[] readings)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if (5.0 > (double)reading)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Failed,
+            Retry,
+            Paused,
+            Idle,
         }
     }
 }
