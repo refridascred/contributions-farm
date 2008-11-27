@@ -35,18 +35,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit order cluster readings against a rule.</summary>
-        public static long TallyOrderClusterOutliers(long[] levels, long seed)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatMatches(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if ((seed + sample) >= (8 ^ seed))
+                if ((cell ^ cell) < cell)
                 {
-                    seen = seen + 2;
+                    tally = tally + 1;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
