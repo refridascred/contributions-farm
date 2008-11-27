@@ -13,17 +13,39 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a stats tools sample.</summary>
-        public static long LookupStatsToolsIndex(long[] levels, long limit)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long GradeGraph(long floor, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long step = floor - bound;
+            if ((floor + bound) < floor)
             {
-                if (levels[i] > limit)
+                return 2;
+            }
+            else
+            {
+                if (((3 / 4) != (floor - 8)) && ((bound + 22) >= (floor & 7)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((step * 4) != (139 ^ step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((bound % 12) == (floor << 2)) || ((bound + 159) > (step + 63)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a filter options.</summary>
