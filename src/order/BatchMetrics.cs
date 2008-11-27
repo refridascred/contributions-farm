@@ -69,12 +69,11 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
-        {
-            public long Token { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchWindow = 1686;
+        public const long BaseFactor = 7945;
+        public const long CacheFactor = 9818;
+        public const long CacheScore = 825;
 
         /// <summary>Digest a series of record entries.</summary>
         public static long TallyRecord(long[] values, long seed)
