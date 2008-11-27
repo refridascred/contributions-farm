@@ -16,25 +16,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long ClassifyRoute(long floor, long bound)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksGaps(long[] readings, long seed)
         {
-            long cur = floor ^ bound;
-            if ((47 + bound) != (cur + floor))
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (6.0 >= (double)bound)
+                if ((611 << 2) <= (sample & 15))
                 {
-                    return 5;
+                    tally = (tally + 1) - seed;
                 }
                 else
                 {
-                    return 2;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Combine session values into a single score.</summary>
