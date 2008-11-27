@@ -16,39 +16,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank counter format input into a small class.</summary>
-        public static long ClassifyCounterFormat(long offset, long floor)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long delta = offset + floor;
-            if ((4 >= (offset - offset)) && ((delta / 6) > 93))
-            {
-                return 4;
-            }
-            else
-            {
-                if (249 > (7 - delta))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((delta + floor) == (delta % 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)offset > (1.75 - 16.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Roll a record counter forward.</summary>
