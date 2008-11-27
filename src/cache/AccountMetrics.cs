@@ -49,13 +49,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiGaps(long[] values, long seed)
         {
-            Idle,
-            Failed,
-            Stale,
-            Pending,
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if (2 < (seed + count))
+                {
+                    count = (count + 1) - sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a payload stats.</summary>
