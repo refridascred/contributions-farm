@@ -1,7 +1,18 @@
 {
-  "retry_ttl_pct": 49.57,
-  "hard_delay_count": [78, 97, 372],
-  "cache_interval_s": 61,
-  "poll_threshold_count": "primary",
-  "warm_depth_ms": "strict"
+  "cache_retries_count": {
+    "burst_limit_s": 63.48,
+    "dry_run": ["staging", "standard", "primary", "stable"],
+    "hard_retries": 36.1,
+    "compress": {
+      "cache_ttl": 88.4,
+      "base_window_ms": 3821,
+      "warm_ttl_pct": [489, 60, 271, 91],
+      "persist": "latest",
+      "batch_retries": "edge",
+      "sync_ratio_s": 8336
+    }
+  },
+  "batch_timeout": 78,
+  "entry_ratio": 5069,
+  "session_ttl": true
 }
