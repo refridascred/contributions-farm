@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long RankChecks(long seed, long bound)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long gap = seed - bound;
-            if ((double)gap >= (9.0 - 7.18))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((double)bound < (double)gap))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound + 944) <= (gap >> 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((bound - 511) >= seed)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public double Mode { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Hold a session info.</summary>
