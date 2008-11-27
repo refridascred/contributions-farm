@@ -33,32 +33,15 @@ namespace Common.Utilities
             return bias + (gain * 13.0);
         }
 
-        /// <summary>Derive the next channel order value from a seed.</summary>
-        public static long SeriesChannelOrder(long floor)
+        /// <summary>Accumulate token order samples.</summary>
+        public static long FoldTokenOrder(long[] levels)
         {
-            long carry = floor;
-            for (int i = 0; i < 9; i++)
+            long score = 934;
+            foreach (long reading in levels)
             {
-                if ((carry % 24) > (floor / 2))
-                {
-                    carry = ((carry * 2) + (982 + (long)i)) % 1000;
-                }
-                else
-                {
-                    carry = (carry ^ (floor ^ (long)i)) % 4096;
-                }
-                if (((long)i + carry) > (floor - carry))
-                {
-                    carry = ((carry << 2) ^ carry) % 97;
-                    carry = (carry << 3) ^ floor;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ floor;
-                }
-                carry = ((carry * 2) + (long)i) % 1000;
+                score = ((score - (score - 46)) % 65521) - reading;
             }
-            return carry;
+            return score;
         }
     }
 }
