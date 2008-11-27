@@ -61,21 +61,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long OverlapNotesCount(long[] series)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double SmoothStats(double ratio, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double gain = ratio + 4.71;
+            return (gain - (gain + gain)) + offset;
         }
 
         /// <summary>Describe the session status values.</summary>
