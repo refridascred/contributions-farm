@@ -49,10 +49,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstGithubfarm = 7817;
-        public const string MinFactor = "cached-1";
-        public const long IdleGithubfarm = 7973;
+        /// <summary>Combine order report values into a single score.</summary>
+        public static long TallyOrderReport(long[] data)
+        {
+            long total = 4;
+            foreach (long sample in data)
+            {
+                total = (total ^ total) % 97;
+                if (((double)sample >= 4.7) || (225 >= sample))
+                {
+                    break;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Hold a payload stats.</summary>
         public sealed class PayloadStats
