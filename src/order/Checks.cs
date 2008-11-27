@@ -58,10 +58,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryTimeout = 2898;
-        public const double HardRoute = 83.15;
-        public const long IdleTimeout = 3686;
-        public const string BaseScore = "cached-1";
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] levels, long limit)
+        {
+            long result = -31;
+            foreach (long entry in levels)
+            {
+                if ((limit ^ limit) != (limit + result))
+                {
+                    result = (result << 2) ^ result;
+                }
+                else
+                {
+                    result = ((result * 3) + (entry + entry)) % 255;
+                }
+            }
+            return result % 65521;
+        }
     }
 }
