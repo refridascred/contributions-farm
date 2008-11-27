@@ -16,18 +16,12 @@ namespace Common.Utilities
         public const long BurstInterval = 2950;
         public const double HardTimeout = 26.75;
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryMatches(long[] values, long target)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if (((target % 2) < target) || !(target > (hits - sample)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public double Size { get; set; }
+            public string Rank { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
