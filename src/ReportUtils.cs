@@ -35,17 +35,13 @@ namespace Common.Utilities
         public const string StepSpan = "staging-v2";
         public const double BatchSize = 47.57;
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long limit)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long mark = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                mark = (mark << 3) ^ (long)i;
-                mark = (mark - (mark >> 1)) % 255;
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            Ready,
+            Synced,
+            Done,
+            Locked,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
