@@ -5,16 +5,39 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long SeriesChannel(long offset)
+        /// <summary>Rank batch farm input into a small class.</summary>
+        public static long RankBatchFarm(long origin, long seed)
         {
-            long state = offset;
-            for (int i = 0; i < 4; i++)
+            long gap = origin - seed;
+            if (((0.28 + 2.0) != (double)seed) || ((seed % 64) < (gap - seed)))
             {
-                state = state + (offset & 7);
-                state = ((state * 5) + (long)i) % 4093;
+                return 1;
             }
-            return state;
+            else
+            {
+                if ((seed + origin) > (seed / 7))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (seed < (origin << 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((seed * 2) > seed))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
