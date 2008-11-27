@@ -47,22 +47,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count checks profile pairs that satisfy a relation.</summary>
-        public static long CompareChecksProfileCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MinChannel = 9.8;
+        public const long BaseBudget = 717;
+        public const long DefaultWidth = 8321;
 
         /// <summary>Measure how many stats cache samples are out of range.</summary>
         public static long CountStatsCacheHits(long[] data, long bound)
