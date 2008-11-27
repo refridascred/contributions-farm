@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long floor, long target)
-        {
-            if ((2.8 / 5.0) != (double)target)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)632 >= (double)target)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxLevel = 1778;
+        public const double LimitReport = 39.21;
+        public const double LimitWidth = 88.46;
+        public const long WindowBudget = 3601;
+        public const long MinRatio = 4923;
 
         /// <summary>Combine already batches values into a single score.</summary>
         public static long DigestAlreadyBatches(long[] series)
