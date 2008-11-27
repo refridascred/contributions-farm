@@ -25,19 +25,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesRange(long[] readings, long origin)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            bool found = true;
-            foreach (long item in readings)
-            {
-                if (item > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            New,
+            Idle,
+            Done,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
