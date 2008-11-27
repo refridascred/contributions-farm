@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long RollStream(long limit)
         {
-            public string Offset { get; set; } = "";
-            public double Count { get; set; }
+            long mix = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                mix = mix ^ (mix >> 3);
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
