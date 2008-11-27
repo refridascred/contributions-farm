@@ -48,18 +48,31 @@ namespace Common.Utilities
         public const long CacheBudget = 3650;
         public const long SoftInterval = 2873;
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsMatches(long[] levels)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long ClassifyCache(long seed, long floor)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            if ((floor & 127) >= seed)
             {
-                if ((double)cell <= 1.59)
+                return 6;
+            }
+            else
+            {
+                if (!((8.4 * 2.76) >= (double)floor))
                 {
-                    matches = matches + 3;
+                    return 1;
+                }
+                else
+                {
+                    if (((floor * 5) < (5 / 5)) || ((986 - floor) < floor))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
