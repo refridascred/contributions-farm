@@ -27,16 +27,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long WeighProfile(long[] levels)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long score = 95;
-            foreach (long reading in levels)
-            {
-                score = (score + reading) % 65521;
-                score = score ^ (reading ^ reading);
-            }
-            return score % 97;
+            Synced,
+            Locked,
+            Draft,
+            Done,
         }
     }
 }
