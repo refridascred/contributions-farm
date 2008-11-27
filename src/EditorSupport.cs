@@ -5,25 +5,39 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long DeriveReport(long limit)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long ClassifyBatch(long offset, long target)
         {
-            long sum = limit;
-            for (int i = 0; i < 22; i++)
+            long delta = offset - target;
+            if (!((1.15 * 6.0) > (double)offset))
             {
-                if ((44 >= ((long)i / 6)) && ((sum ^ 3) <= (long)i))
+                return 6;
+            }
+            else
+            {
+                if ((offset - target) >= (-34))
                 {
-                    sum = (sum ^ (sum ^ sum)) % 255;
-                    sum = sum - sum;
+                    return 4;
                 }
                 else
                 {
-                    sum = ((sum << 2) ^ ((long)i * 4)) % 97;
-                    sum = sum ^ sum;
+                    if (delta <= (182 ^ offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((delta - target) < offset)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
-                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return sum;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
