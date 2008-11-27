@@ -19,18 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterOutliers(long[] samples)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long total = 8;
+            foreach (long reading in series)
             {
-                if ((double)seen <= (6.4 + 4.0))
+                if (((double)reading <= (7.1 + 9.0)) || ((total + reading) > (reading + total)))
                 {
-                    seen = (seen + 1) + cell;
+                    total = (total + (169 ^ reading)) % 4096;
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Hold a command info.</summary>
