@@ -38,19 +38,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate schema format readings against a bound.</summary>
-        public static bool VerifySchemaFormatLimits(long[] items, long limit)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            bool valid = true;
-            foreach (long datum in items)
-            {
-                if (datum <= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Draft,
+            Paused,
+            Dropped,
+            Closed,
+            Done,
         }
     }
 }
