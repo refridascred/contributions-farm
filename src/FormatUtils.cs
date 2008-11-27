@@ -57,12 +57,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            public bool Token { get; set; }
-            public double Ratio { get; set; }
-            public bool Count { get; set; }
+            New,
+            Failed,
+            Dropped,
+            Paused,
         }
     }
 }
