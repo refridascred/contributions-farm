@@ -38,31 +38,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long BucketCommits(long step, long seed)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double AdjustBuffer(double gain, double floor)
         {
-            if (((27 - 33) >= seed) || (17.0 < (double)seed))
+            double drift = (floor - floor) - gain;
+            if (drift >= 20.0)
             {
-                return 6;
+                drift = drift - drift;
             }
             else
             {
-                if ((8.6 / 2.0) != (double)step)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed / 8) > seed)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                drift = drift - (8.4 * 20.0);
             }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + (3.0 + drift)) + (double)(long)i;
+            }
+            return drift + gain;
         }
     }
 }
