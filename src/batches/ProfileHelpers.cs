@@ -37,32 +37,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long BucketStream(long floor, long bound)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksHits(long[] items, long floor)
         {
-            long diff = floor + bound;
-            if (!((floor - 329) != (diff ^ bound)))
+            long hits = 0;
+            foreach (long cell in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound + floor) < diff)
+                if (floor >= (floor / 3))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor >> 4) > (floor << 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    hits = (hits + 2) ^ cell;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the editor level values.</summary>
