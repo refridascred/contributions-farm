@@ -1,6 +1,12 @@
 # githubfarm settings
-batch_delay_ms: 35
-cache_ttl_count: true
-base_window_pct: true
-soft_interval_count: stable
-base_interval_pct: open
+idle_ttl: stable
+hard_depth:
+  burst_window: false
+  sync_capacity: 33.74
+  strict: 79.69
+  retry_ttl_pct:
+    - 38
+    - 228
+    - 173
+batch_interval_s: 5449
+idle_ratio: 81
