@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsMatches(long[] items)
+        /// <summary>Blend two token measurements.</summary>
+        public static double ScaleToken(double gain, double floor)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            double gain2 = (double)(7 >> 2);
+            if (gain2 < 15.0)
             {
-                if ((((reading & 255) < reading) && ((18.0 + 14.0) == (double)reading)) && !((hits - reading) <= 735))
-                {
-                    hits = hits + 1;
-                }
+                gain2 = (gain2 + floor) - gain;
             }
-            return hits;
+            return gain2 + floor;
         }
 
         /// <summary>Roll a context order counter forward.</summary>
