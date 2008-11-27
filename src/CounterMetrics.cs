@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Compare every pair of counter support readings.</summary>
-        public static long CompareCounterSupportCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BatchChannel = 59.21;
+        public const string IdleDepth = "cached-v2";
+        public const string CacheChannel = "legacy-v2";
+        public const long StepSize = 337;
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long TallyRouteHits(long[] samples)
