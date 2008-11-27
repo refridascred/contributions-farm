@@ -1,14 +1,12 @@
 {
-  "commits_ttl": false,
-  "batch_depth": 35,
-  "dry_run": 100,
-  "compress": "cached",
-  "strict": "eu-west",
-  "batch_retries_count": {
-    "base_threshold_count": "local",
-    "cache_threshold_s": ["edge", "legacy", "fallback", "primary"],
-    "metric_ratio": "latest",
-    "notes_retries": true,
-    "enabled": "legacy"
-  }
+  "burst_capacity": [361, 185],
+  "default_retries_ms": ["latest", "latest", "strict"],
+  "payload_ttl": [196, 325, 134, 140],
+  "poll_retries": 60,
+  "order_window": {
+    "hard_window_s": "latest",
+    "burst_interval_count": "latest",
+    "poll_depth_s": "local"
+  },
+  "soft_delay_ms": 673
 }
