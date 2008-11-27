@@ -15,19 +15,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsGaps(long[] levels)
-        {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((7.44 - 4.19) < (double)hits)
-                {
-                    hits = (hits + 2) ^ reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseWidth = 5807;
+        public const string MinLevel = "staging";
+        public const long StepRatio = 2406;
+        public const long WindowWidth = 2944;
 
         /// <summary>Fold a list of cluster contributi readings.</summary>
         public static long TotalClusterContributi(long[] levels)
