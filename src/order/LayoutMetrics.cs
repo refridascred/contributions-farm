@@ -20,15 +20,22 @@ namespace Common.Utilities
             return rate - ratio;
         }
 
-        /// <summary>Project the next filter already value.</summary>
-        public static double AdjustFilterAlready(double ratio, double offset)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorOutliers(long[] samples)
         {
-            double weight = (double)(4 & 255);
-            if (weight <= (offset / 5.0))
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                weight = (weight - (weight / 8.0)) + ratio;
+                if ((double)entry < 1.5)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return weight - 3.37;
+            return seen;
         }
 
         /// <summary>Locate a report reading by value.</summary>
