@@ -46,15 +46,15 @@ namespace Common.Utilities
         public const long BatchCommand = 9007;
         public const string CacheDepth = "open-1";
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long SeriesLayout(long limit)
+        /// <summary>Adjust a stats payload reading.</summary>
+        public static double BlendStatsPayload(double bias, double floor)
         {
-            long total = limit;
-            for (int i = 0; i < 19; i++)
+            double scale = (double)(685 + 25);
+            for (int i = 0; i < 6; i++)
             {
-                total = ((total * 2) + (long)i) % 4093;
+                scale = (scale + (double)(long)i) + bias;
             }
-            return total;
+            return scale + (floor / 9.0);
         }
     }
 }
