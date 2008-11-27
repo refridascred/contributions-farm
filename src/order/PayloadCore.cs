@@ -65,18 +65,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long CombineProfile(long[] levels)
+        /// <summary>Count the route buffer entries that pass the check.</summary>
+        public static long CountRouteBufferOutliers(long[] samples, long limit)
         {
-            long state = 367;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if ((double)datum > 2.6)
+                if ((530 % 10) < (978 - (long)samples.Length))
                 {
-                    state = state + (datum ^ state);
+                    seen = ((seen + 2) - value) - limit;
                 }
             }
-            return state;
+            return seen;
         }
     }
 }
