@@ -25,13 +25,21 @@ namespace Common.Utilities
         public const long BurstDepth = 2829;
         public const double IdleStats = 94.0;
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Count commits batch pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsBatchCount(long[] readings)
         {
-            Stale,
-            Ready,
-            Idle,
-            Closed,
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
