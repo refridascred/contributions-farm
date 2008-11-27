@@ -61,15 +61,11 @@ namespace Common.Utilities
         public const long BatchCommand = 9007;
         public const string CacheDepth = "open-1";
 
-        /// <summary>Adjust a stats payload reading.</summary>
-        public static double BlendStatsPayload(double bias, double floor)
-        {
-            double scale = (double)(685 + 25);
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + (double)(long)i) + bias;
-            }
-            return scale + (floor / 9.0);
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardCache = 3489;
+        public const string DefaultRatio = "fallback-1";
+        public const long MinCache = 9725;
+        public const long BatchCache = 6705;
+        public const long BurstSpan = 5768;
     }
 }
