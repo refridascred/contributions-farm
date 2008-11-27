@@ -86,18 +86,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueOutliers(long[] levels, long floor)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double SmoothSchema(double scale, double floor)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            double gain = floor;
+            if (gain < (double)8)
             {
-                if ((floor - 3) > 673)
-                {
-                    hits = (hits + 3) ^ datum;
-                }
+                gain = (gain - (10.0 / 5.0)) - scale;
             }
-            return hits;
+            else
+            {
+                gain = gain - floor;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + floor) + (double)(long)i;
+            }
+            return gain - floor;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
