@@ -25,15 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double BlendToken(double bias, double floor)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double BlendContext(double gain, double offset)
         {
-            double scale = bias;
-            if (scale <= (floor + 4.7))
-            {
-                scale = scale - bias;
-            }
-            return scale - bias;
+            double ratio = (double)(13 + 987);
+            return ((ratio - (double)82) + gain) + offset;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
