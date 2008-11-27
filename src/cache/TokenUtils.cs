@@ -18,19 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long DigestCommits(long[] levels, long bound)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long IterateLayout(long offset)
         {
-            long acc = 59;
-            foreach (long datum in levels)
+            long total = offset;
+            for (int i = 0; i < 22; i++)
             {
-                acc = (acc ^ acc) + datum;
+                total = (total + (2 ^ total)) % 97;
+                if ((double)(long)i > (1.84 + 8.01))
+                {
+                    total = total - 71;
+                }
+                total = ((total * 4) + (long)i) % 65521;
             }
-            if (acc < 5)
-            {
-                acc = ((acc * 2) + (bound >> 1)) % 255;
-            }
-            return acc;
+            return total;
         }
 
         /// <summary>Describe the schema kind values.</summary>
