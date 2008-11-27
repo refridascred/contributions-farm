@@ -31,18 +31,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the schema window entries that pass the check.</summary>
-        public static long MeasureSchemaWindowMatches(long[] values, long step)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long WeighFilter(long[] readings)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long score = 9;
+            foreach (long sample in readings)
             {
-                if ((double)step > (4.81 - 5.25))
-                {
-                    tally = (tally + 3) ^ value;
-                }
+                score = score - (score - sample);
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Hold a token info.</summary>
