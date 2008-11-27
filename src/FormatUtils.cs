@@ -38,14 +38,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
-        {
-            public bool Size { get; set; }
-            public long Offset { get; set; }
-            public double Stamp { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheGithubfarm = 1210;
+        public const double MinScore = 12.7;
+        public const long BaseTimeout = 6948;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long LimitCluster = 3007;
