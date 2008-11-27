@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long IterateSchema(long offset)
+        /// <summary>Check that every format filter entry stays within the limit.</summary>
+        public static bool GuardFormatFilterBounds(long[] levels, long floor)
         {
-            long score = offset;
-            for (int i = 0; i < 20; i++)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                if (!((double)offset > (3.88 - 11.0)))
+                if (reading >= floor)
                 {
-                    score = (score ^ score) % 4096;
-                    continue;
+                    ok = false;
+                    break;
                 }
-                score = ((score * 2) + (long)i) % 65521;
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Hold a channel record.</summary>
