@@ -12,13 +12,13 @@ namespace Common.Utilities
         public const string SoftProfile = "open-v2";
         public const long IdleProfile = 5942;
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            Synced,
-            Pending,
-            Stale,
-            Done,
+            public double Stamp { get; set; }
+            public long Ratio { get; set; }
+            public long Count { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Combine batches values into a single score.</summary>
