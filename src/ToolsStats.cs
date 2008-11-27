@@ -32,11 +32,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultSchema = 3532;
-        public const long MinWidth = 934;
-        public const long RetrySchema = 198;
-        public const long DefaultSize = 2799;
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LocateSessionIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next stats value from a seed.</summary>
         public static long DeriveStats(long offset)
