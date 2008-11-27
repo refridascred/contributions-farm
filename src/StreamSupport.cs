@@ -12,21 +12,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Match up record context samples.</summary>
-        public static long CompareRecordContextCount(long[] items)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LocateCounterIndex(long[] series, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (series[i] >= target)
                 {
-                    if ((items[i] ^ items[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Scale a route cluster figure with a bias.</summary>
