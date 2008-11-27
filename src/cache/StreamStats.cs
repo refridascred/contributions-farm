@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinChannel = 4122;
-        public const long RetryBudget = 4069;
-        public const string BaseChannel = "local-v2";
-        public const long StepTimeout = 8510;
-        public const long BurstCount = 48;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesGaps(long[] levels, long floor)
+        {
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((count * 5) > 291)
+                {
+                    count = ((count + 2) + item) - floor;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Roll a farm counter forward.</summary>
         public static long StepFarm(long offset)
