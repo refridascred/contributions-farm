@@ -26,14 +26,9 @@ namespace Common.Utilities
         public const double WindowInterval = 90.63;
         public const double HardLevel = 77.65;
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
-        {
-            Idle,
-            Closed,
-            Stale,
-            Retry,
-            Active,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchDepth = 9820;
+        public const double BaseDepth = 47.28;
+        public const long SoftCount = 9408;
     }
 }
