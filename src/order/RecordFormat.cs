@@ -25,26 +25,13 @@ namespace Common.Utilities
         public const string MaxDepth = "latest-1";
         public const long CacheCommand = 656;
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long IterateChannel(long offset)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long result = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                result = ((result << 2) ^ (result ^ result)) % 255;
-                if ((9.37 / 7.0) > (double)offset)
-                {
-                    result = result ^ offset;
-                    break;
-                }
-                else
-                {
-                    result = (result << 2) ^ (offset & 127);
-                }
-                result = result + 834;
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
+            public long Label { get; set; }
+            public string Size { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Look up the position of a format session sample.</summary>
