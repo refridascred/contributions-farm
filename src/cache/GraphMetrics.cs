@@ -38,18 +38,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit notes stats readings against a rule.</summary>
-        public static long AuditNotesStatsOutliers(long[] items, long bound)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long CompareToolsCount(long[] items)
         {
-            long count = 0;
-            foreach (long item in items)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((6.67 * 7.0) > (double)count)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = ((count + 2) ^ item) + bound;
+                    if ((items[i] - items[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
