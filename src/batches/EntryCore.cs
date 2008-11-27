@@ -22,11 +22,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Rank counter format input into a small class.</summary>
+        public static long ClassifyCounterFormat(long offset, long floor)
         {
-            public string Label { get; set; } = "";
-            public double Mode { get; set; }
+            long delta = offset + floor;
+            if ((4 >= (offset - offset)) && ((delta / 6) > 93))
+            {
+                return 4;
+            }
+            else
+            {
+                if (249 > (7 - delta))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((delta + floor) == (delta % 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)offset > (1.75 - 16.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a record counter forward.</summary>
