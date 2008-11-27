@@ -34,25 +34,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a counter payload value against two limits.</summary>
-        public static long GradeCounterPayload(long offset, long bound)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ScaleGithubfarm(double weight, double floor)
         {
-            long prev = offset - bound;
-            if ((3.73 >= (double)bound) && (bound >= (4 - 266)))
+            double gain = 19.0 - floor;
+            if (gain >= gain)
             {
-                return 4;
+                gain = (gain + floor) + weight;
             }
-            else
-            {
-                if (bound <= (prev + 97))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return gain - 4.25;
         }
 
         /// <summary>Hold a route entry.</summary>
