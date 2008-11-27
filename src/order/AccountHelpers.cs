@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long FoldChecks(long[] data)
+        /// <summary>Look up the position of a command notes sample.</summary>
+        public static long FindCommandNotesIndex(long[] samples, long offset)
         {
-            long sum = 526;
-            foreach (long cell in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((cell - sum) >= (cell - cell)) && ((sum & 15) >= (sum + sum)))
+                if (samples[i] >= offset)
                 {
-                    sum = (sum + (28 - sum)) % 97;
-                }
-                else
-                {
-                    sum = ((sum * 4) + cell) % 4096;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
