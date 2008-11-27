@@ -27,18 +27,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LookupLayoutIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < seed) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleBudget = 1394;
+        public const long CacheRoute = 301;
+        public const long BatchRoute = 3799;
+        public const string RetrySize = "alpha-v2";
+        public const long LimitScore = 5932;
 
         /// <summary>Combine metric batch values into a single score.</summary>
         public static long CombineMetricBatch(long[] items, long seed)
