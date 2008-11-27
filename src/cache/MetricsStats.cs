@@ -18,16 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next githubfarm graph value from a seed.</summary>
-        public static long StepGithubfarmGraph(long floor)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsMatches(long[] series, long step)
         {
-            long sum = floor;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                sum = (sum ^ (452 + sum)) % 101;
-                sum = ((sum * 4) + (long)i) % 97;
+                if ((1 + step) > (seen << 2))
+                {
+                    seen = (seen + 1) + cell;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Hold a command header.</summary>
