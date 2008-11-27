@@ -1,7 +1,13 @@
 # support settings
-already_capacity: 7.88
-flush_ttl: fallback
-window_ttl: 10.1
-persist: 30
-account_capacity: 1482
-contributi_limit: local
+enabled:
+  record_delay:
+    - 287
+    - 196
+    - 19
+  poll_retries_s: fallback
+  verbose: legacy
+verbose: 500
+sync_capacity: 88.22
+audit: 3949
+min_size_count: primary
+hard_limit: standard
