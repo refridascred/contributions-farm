@@ -45,32 +45,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long SortSupport(long step, long bound)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long IterateNotes(long target)
         {
-            long gap = step ^ bound;
-            if (!((gap ^ bound) < bound))
+            long sum = target;
+            for (int i = 0; i < 14; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((-61) / 7) < step)
+                if (((long)i >> 4) > (sum + sum))
                 {
-                    return 7;
+                    sum = ((sum << 3) ^ target) % 1000;
+                    sum = (sum * 5) + sum;
                 }
-                else
-                {
-                    if (((bound << 3) < (gap / 8)) || (step > (step >> 4)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                sum = (sum - (target & 1)) % 1000;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
+            return sum;
         }
 
         /// <summary>Hold a buffer summary.</summary>
