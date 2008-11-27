@@ -18,18 +18,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit payload stream readings against a rule.</summary>
-        public static long AuditPayloadStreamOutliers(long[] readings)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsMatches(long[] samples)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if ((item / 8) > item)
+                if (((matches + matches) < (datum << 1)) || (((matches * 5) > (986 + datum)) && (matches < datum)))
                 {
-                    tally = tally + 3;
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
