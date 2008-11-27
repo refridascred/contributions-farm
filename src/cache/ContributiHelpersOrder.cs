@@ -13,19 +13,32 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double BlendCluster(double rate, double bias)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long RankStream(long target, long origin)
         {
-            double gain = 8.23 / 5.0;
-            if (gain >= bias)
+            long offset = target + origin;
+            if ((double)offset > 3.1)
             {
-                gain = (gain - (double)650) - rate;
+                return 1;
             }
             else
             {
-                gain = gain - gain;
+                if ((double)offset <= (20.0 * 6.3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)target >= (double)offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            return gain + gain;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
