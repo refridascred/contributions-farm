@@ -16,38 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long BucketCommand(long seed, long offset)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferHits(long[] items)
         {
-            if ((seed - seed) < seed)
+            long count = 0;
+            foreach (long datum in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)offset != (1.35 + 5.46))
+                if ((((4 << 1) < datum) || ((5.0 + 1.06) >= (double)count)) && ((datum - count) != (datum ^ datum)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed >> 1) > (seed & 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (seed < ((-29) + (-24)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Combine session values into a single score.</summary>
