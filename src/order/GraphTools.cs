@@ -20,16 +20,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long SeriesAccount(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepProfile = 4649;
+        public const long CacheTimeout = 7851;
+        public const long MaxProfile = 4516;
+        public const double LimitProfile = 4.13;
+        public const long RetryProfile = 3112;
 
         /// <summary>Describe the account status values.</summary>
         public enum AccountStatus
