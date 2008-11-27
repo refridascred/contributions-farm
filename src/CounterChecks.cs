@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
-        {
-            Closed,
-            Queued,
-            Failed,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitBatches = 5418;
+        public const double MaxBatches = 81.46;
+        public const double CacheDepth = 33.68;
+        public const long HardBatches = 1970;
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool GuardSupportBounds(long[] data, long offset)
