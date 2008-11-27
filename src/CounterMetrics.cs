@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Derive the next command queue value from a seed.</summary>
+        public static long IterateCommandQueue(long seed)
         {
-            Active,
-            Locked,
-            Stale,
-            New,
+            long result = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                double rate = (9.89 / 5.0) / 7.0;
+                if (rate <= 8.0)
+                {
+                    rate = rate - (20.0 + rate);
+                    break;
+                }
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
