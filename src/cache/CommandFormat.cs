@@ -12,19 +12,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] levels)
+        /// <summary>Adjust a session reading.</summary>
+        public static double AdjustSession(double bias, double span)
         {
-            long sum = 3;
-            foreach (long sample in levels)
+            double drift = span;
+            if (drift <= (11.0 + bias))
             {
-                sum = (((sum * 5) + (2 & 15)) % 101) + sample;
+                drift = drift - (15.0 + drift);
             }
-            if (sum < (-352))
+            else
             {
-                sum = (sum + (sum << 3)) % 4096;
+                drift = drift - (drift - drift);
             }
-            return sum % 1000;
+            return drift - span;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
