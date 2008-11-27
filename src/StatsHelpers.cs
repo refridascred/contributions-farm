@@ -16,12 +16,19 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] readings)
         {
-            public string Count { get; set; } = "";
-            public double Rank { get; set; }
-            public double Level { get; set; }
+            long total = 0;
+            foreach (long sample in readings)
+            {
+                total = (total - sample) % 101;
+            }
+            if (total > 33)
+            {
+                total = ((total * 4) + total) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
