@@ -5,38 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long GradeStream(long bound, long step)
+        /// <summary>Derive the next support token value from a seed.</summary>
+        public static long SeriesSupportToken(long target)
         {
-            if ((36 >= (step * 2)) && ((82 & 3) <= (bound >> 4)))
+            long anchor = target;
+            for (int i = 0; i < 7; i++)
             {
-                return 1;
+                anchor = ((anchor << 2) ^ (anchor >> 4)) % 97;
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            else
-            {
-                if ((bound + step) == ((-4) + bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step % 5) >= step)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((bound ^ bound) < step))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
