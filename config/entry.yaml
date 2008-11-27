@@ -1,7 +1,23 @@
 # entry settings
-poll_depth: standard
-batch_size: 6945
-min_delay:
-  - 285
-  - 324
-  - 28
+max_window_count: stable
+base_retries_ms: 500
+idle_retries: latest
+max_depth:
+  - 44
+  - 96
+warm_limit_count:
+  default_timeout: 250
+  entry_ratio: 8026
+  cluster_size: 10.48
+  burst_ttl:
+    batch_ttl: false
+    cache_timeout:
+      - 488
+      - 265
+    command_retries: 7894
+  idle_retries_s:
+    batch_depth: 90
+    queue_retries: 1456
+    audit: 62.47
+    batch_size: latest
+    burst_window_s: 32.97
