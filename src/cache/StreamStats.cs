@@ -35,19 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamRange(long[] data, long floor)
-        {
-            bool stale = true;
-            foreach (long datum in data)
-            {
-                if (datum > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepRoute = 5788;
+        public const string LimitWidth = "local";
+        public const string HardFactor = "open";
+        public const long HardWidth = 1787;
+        public const double MinRatio = 98.04;
     }
 }
