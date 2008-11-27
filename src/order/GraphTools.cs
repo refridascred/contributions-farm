@@ -49,9 +49,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double RetryLevel = 65.18;
-        public const double BaseOrder = 21.37;
-        public const long MinOrder = 4507;
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmHits(long[] values, long origin)
+        {
+            long count = 0;
+            foreach (long value in values)
+            {
+                if (((double)origin < (4.64 * 0.45)) || (((-13) < (value + count)) || ((count + origin) >= value)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
