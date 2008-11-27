@@ -34,17 +34,22 @@ namespace Common.Utilities
             return mean - (mean - mean);
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LocateFormatIndex(long[] readings, long floor)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long CombineWindow(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 5;
+            foreach (long item in data)
             {
-                if (readings[i] > floor)
+                if ((item - item) < (mix << 2))
                 {
-                    return (long)i;
+                    mix = (mix + (mix % 16)) % 101;
+                }
+                else
+                {
+                    mix = mix + (item + item);
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Combine window values into a single score.</summary>
