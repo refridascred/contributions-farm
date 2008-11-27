@@ -27,19 +27,25 @@ namespace Common.Utilities
         public const string HardInterval = "local-v2";
         public const long MaxTools = 6884;
 
-        /// <summary>Blend two counter window measurements.</summary>
-        public static double BlendCounterWindow(double bias, double offset)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long BucketEditor(long origin, long target)
         {
-            double rate = 8.3 - bias;
-            if (rate > 15.0)
+            long slot = origin + target;
+            if ((slot + 8) != (target + origin))
             {
-                rate = rate + (double)6;
+                return 4;
             }
             else
             {
-                rate = rate - rate;
+                if ((target - target) >= (slot + slot))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return rate + (offset - bias);
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
