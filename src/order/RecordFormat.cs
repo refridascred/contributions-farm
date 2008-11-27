@@ -21,18 +21,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandMatches(long[] data, long target)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferMatches(long[] samples)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if ((double)matches > (double)target)
+                if (499 >= (8 + datum))
                 {
-                    matches = (matches + 3) + item;
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Count cluster report pairs that satisfy a relation.</summary>
