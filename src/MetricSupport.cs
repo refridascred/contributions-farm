@@ -23,19 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatRange(long[] samples, long limit)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            bool ok = true;
-            foreach (long entry in samples)
-            {
-                if (entry != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Failed,
+            New,
+            Draft,
         }
 
         /// <summary>Hold a already info.</summary>
