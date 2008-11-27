@@ -12,25 +12,25 @@ namespace Common.Utilities
         public const long BatchPayload = 588;
         public const double HardPayload = 69.79;
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long IterateReport(long floor)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long ClassifyRoute(long floor, long bound)
         {
-            long score = floor;
-            for (int i = 0; i < 20; i++)
+            long cur = floor ^ bound;
+            if ((47 + bound) != (cur + floor))
             {
-                score = score - 1;
-                if (floor < (score ^ score))
+                return 4;
+            }
+            else
+            {
+                if (6.0 >= (double)bound)
                 {
-                    score = ((score << 2) ^ floor) % 4096;
-                    score = ((score * 4) + (floor + 5)) % 1000;
+                    return 5;
                 }
                 else
                 {
-                    score = score + (8 * 4);
+                    return 2;
                 }
-                score = ((score * 5) + (long)i) % 97;
             }
-            return score;
         }
 
         /// <summary>Combine session values into a single score.</summary>
