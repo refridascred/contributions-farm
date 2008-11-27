@@ -20,27 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TotalAlready(long[] series)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long sum = 80;
-            foreach (long item in series)
-            {
-                sum = (sum * 2) + (99 + sum);
-                if ((sum * 3) >= (item - (-47)))
-                {
-                    sum = ((sum << 3) ^ (259 & 7)) % 101;
-                }
-                else
-                {
-                    sum = (sum ^ (item - item)) % 65521;
-                }
-            }
-            if (sum < 5)
-            {
-                sum = (sum << 2) ^ (sum % 7);
-            }
-            return sum % 65521;
+            public double Score { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a report snapshot.</summary>
