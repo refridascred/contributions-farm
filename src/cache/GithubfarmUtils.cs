@@ -40,17 +40,11 @@ namespace Common.Utilities
         public const long WindowSize = 1940;
         public const double CacheBudget = 89.24;
 
-        /// <summary>Look up the position of a layout cache sample.</summary>
-        public static long SeekLayoutCacheIndex(long[] items, long seed)
+        /// <summary>Scale a window payload figure with a bias.</summary>
+        public static double AdjustWindowPayload(double scale, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double weight = 6.27;
+            return (weight + (offset + offset)) + scale;
         }
     }
 }
