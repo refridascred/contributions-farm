@@ -27,13 +27,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
-        {
-            public bool Offset { get; set; }
-            public long Stamp { get; set; }
-            public double Flag { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepCache = 7355;
+        public const string HardCache = "latest-v2";
+        public const double BaseCache = 42.35;
     }
 }
