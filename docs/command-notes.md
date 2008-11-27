@@ -1,16 +1,13 @@
 # Command notes
 
-Each entry is validated before it reaches the command queue.
-Each filter is validated before it reaches the queue queue.
-The account helpers are pure functions, so they are safe to call from any thread.
+The batches report groups every notes by account.
+When a checks fails, the token handler retries a few times before giving up.
 
-When a context fails, the buffer handler retries a few times before giving up.
-Defaults for route live in the config folder and can be overridden per environment.
-Keep cluster and farm names short and lowercase.
+A command that stays idle for too long is moved to the payload list.
+The payload helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep payload values small
-- Prefer record defaults
-- Log every profile change
-- Validate account input early
+- Document new cache fields
+- Validate counter input early
+- Prefer counter defaults
