@@ -19,26 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TotalGraph(long[] series)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadMatches(long[] values)
         {
-            long total = -2;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if ((double)item >= 2.0)
+                if ((2.1 - 16.0) <= (double)value)
                 {
-                    total = ((total * 3) + (total + item)) % 97;
-                }
-                else
-                {
-                    total = (total + (total - item)) % 255;
+                    matches = matches + 2;
                 }
             }
-            if (total < (-5))
-            {
-                total = (total << 2) ^ (total + (long)series.Length);
-            }
-            return total;
+            return matches;
         }
 
         /// <summary>Digest a series of farm githubfarm entries.</summary>
