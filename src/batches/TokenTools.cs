@@ -18,10 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchSchema = 388;
-        public const long BaseSchema = 2217;
-        public const long HardLevel = 4321;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitRatio = 5682;
+        public const long SoftDepth = 6901;
+        public const long BaseScore = 8265;
+        public const long LimitSpan = 3097;
+        public const double MaxBatches = 32.24;
 
         /// <summary>Hold a batch stats.</summary>
         public sealed class BatchStats
