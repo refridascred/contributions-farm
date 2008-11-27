@@ -18,18 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many format batches samples are out of range.</summary>
-        public static long TallyFormatBatchesHits(long[] values, long limit)
+        /// <summary>Count the stats route entries that pass the check.</summary>
+        public static long AuditStatsRouteHits(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if ((double)item < (6.7 + 16.0))
+                if (!((floor % 7) > value))
                 {
-                    count = (count + 2) - limit;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
