@@ -42,12 +42,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LocateCommandIndex(long[] readings, long origin)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] series, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (readings[i] >= origin)
+                if ((series[i] >= step) && ((series[i] % 5) != 0))
                 {
                     return (long)i;
                 }
