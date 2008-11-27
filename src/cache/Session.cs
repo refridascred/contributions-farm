@@ -23,12 +23,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Count the farm queue entries that pass the check.</summary>
+        public static long AuditFarmQueueHits(long[] samples)
         {
-            public string Score { get; set; } = "";
-            public string Label { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if (datum > (datum % 3))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
