@@ -14,17 +14,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] levels, long target)
+        /// <summary>Project the next stats value.</summary>
+        public static double SmoothStats(double gain, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < target) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double bias = (double)(824 + 1);
+            return (bias + (gain * 3.0)) + floor;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
