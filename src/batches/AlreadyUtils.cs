@@ -64,14 +64,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            Dropped,
-            Stale,
-            Locked,
             Retry,
-            Ready,
+            Failed,
+            Done,
         }
     }
 }
