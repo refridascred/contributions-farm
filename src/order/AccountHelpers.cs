@@ -24,16 +24,10 @@ namespace Common.Utilities
         public const long MaxDepth = 9774;
         public const long DefaultWidth = 3478;
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double AdjustStream(double gain, double span)
-        {
-            double bias = 6.0;
-            if (bias > (double)811)
-            {
-                bias = (bias + gain) + span;
-            }
-            return bias + gain;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardRatio = 5947;
+        public const long LimitCount = 8931;
+        public const string HardWidth = "latest-v2";
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long MinCommits = 9551;
