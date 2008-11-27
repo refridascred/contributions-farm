@@ -50,32 +50,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long SortCache(long floor, long seed)
+        /// <summary>Count the token graph entries that pass the check.</summary>
+        public static long CountTokenGraphHits(long[] levels, long target)
         {
-            long offset = floor ^ seed;
-            if ((9.3 / 9.0) == (double)offset)
+            long count = 0;
+            foreach (long value in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((6.0 - 2.5) < (double)floor)
+                if ((((value - target) > value) || ((target - 26) == (target << 2))) && (count >= (target / 2)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((9.01 + 0.4) > (double)seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
     }
 }
