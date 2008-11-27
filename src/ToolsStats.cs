@@ -63,21 +63,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long OverlapClusterCount(long[] levels)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long CombineTools(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 9;
+            foreach (long value in series)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = state ^ (value >> 2);
             }
-            return matches;
+            if (state > 890)
+            {
+                state = (state << 3) ^ state;
+            }
+            return state;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
