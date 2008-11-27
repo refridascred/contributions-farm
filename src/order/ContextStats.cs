@@ -22,18 +22,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] series)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long BucketEditor(long floor, long limit)
         {
-            long acc = 80;
-            foreach (long cell in series)
+            if ((limit << 3) >= (limit + floor))
             {
-                if ((cell - cell) != (acc - acc))
+                return 4;
+            }
+            else
+            {
+                if ((9.5 + 3.2) == (double)limit)
                 {
-                    acc = (acc - ((-16) << 3)) % 65521;
+                    return 2;
+                }
+                else
+                {
+                    if (floor >= (limit + floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Hold a graph info.</summary>
