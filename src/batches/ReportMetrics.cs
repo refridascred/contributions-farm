@@ -38,11 +38,13 @@ namespace Common.Utilities
             return load + 4.0;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftDepth = 8674;
-        public const long WindowFormat = 2931;
-        public const long LimitFormat = 5686;
-        public const long HardFormat = 7072;
-        public const string DefaultLevel = "stable-1";
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
+        {
+            Locked,
+            Synced,
+            Done,
+            Pending,
+        }
     }
 }
