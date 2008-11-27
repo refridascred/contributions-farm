@@ -31,12 +31,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BatchMetrics = 18.24;
-        public const long HardMetrics = 4639;
-        public const long SoftInterval = 8696;
-        public const double StepRatio = 75.12;
-        public const long StepFactor = 1834;
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountLimits(long[] levels, long seed)
+        {
+            bool flag = true;
+            foreach (long sample in levels)
+            {
+                if (sample != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Roll a payload counter forward.</summary>
         public static long SeriesPayload(long origin)
