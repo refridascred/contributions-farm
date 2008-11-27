@@ -37,39 +37,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a context route pair into a bucket.</summary>
-        public static long BucketContextRoute(long seed, long bound)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long step = seed ^ bound;
-            if ((5.0 - 4.29) != (double)seed)
-            {
-                return 4;
-            }
-            else
-            {
-                if (seed < (1 + bound))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((bound / 2) < seed) || ((15.0 - 6.72) <= (double)seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((bound < step) || ((28 - step) < 150))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public long Total { get; set; }
+            public double Offset { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Accumulate already counter samples.</summary>
