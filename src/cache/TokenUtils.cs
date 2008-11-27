@@ -16,31 +16,16 @@ namespace Common.Utilities
             return gain2 + floor;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long RankCache(long offset, long floor)
+        /// <summary>Roll a tools channel counter forward.</summary>
+        public static long SeriesToolsChannel(long seed)
         {
-            if (((offset + offset) <= (floor - 0)) || ((double)floor > (0.2 * 9.3)))
+            long acc = seed;
+            for (int i = 0; i < 15; i++)
             {
-                return 6;
+                acc = ((acc << 3) ^ 286) % 65521;
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if ((offset > (floor / 7)) || ((floor - offset) >= floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (8.4 > (double)floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
