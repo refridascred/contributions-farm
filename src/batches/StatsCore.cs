@@ -19,10 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinPayload = 888;
-        public const double CacheSpan = 69.37;
-        public const string HardPayload = "local-edge";
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitBuffer = 8381;
+        public const string StepDepth = "alpha";
+        public const long WindowFactor = 6458;
+        public const long DefaultBuffer = 1595;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double CacheCount = 44.42;
