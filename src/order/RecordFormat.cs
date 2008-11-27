@@ -64,12 +64,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double HardGithubfarm = 84.89;
-        public const double SoftSize = 55.72;
-        public const long BaseGithubfarm = 8572;
-        public const string MinCount = "primary-v2";
-        public const double MaxGithubfarm = 74.34;
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long CompareSchemaCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Derive the next farm batches value from a seed.</summary>
         public static long StepFarmBatches(long offset)
