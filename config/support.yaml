@@ -1,6 +1,11 @@
 # support settings
-idle_window: staging
-sync_delay_s: 16.52
-default_window_pct: 100
-min_interval_s: 50.59
-poll_interval_s: 33
+sync_ratio_s:
+  - 464
+  - 359
+  - 36
+  - 270
+flush_ttl: legacy
+sync_depth_pct: 46.66
+stream_depth:
+  - 106
+  - 208
