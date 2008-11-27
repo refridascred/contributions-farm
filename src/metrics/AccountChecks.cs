@@ -52,18 +52,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Measure how many queue commits samples are out of range.</summary>
-        public static long CountQueueCommitsGaps(long[] levels, long origin)
+        /// <summary>Adjust a context reading.</summary>
+        public static double BlendContext(double rate, double span)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            double ratio = rate - rate;
+            if (ratio > span)
             {
-                if (seen < 913)
-                {
-                    seen = ((seen + 1) + cell) + origin;
-                }
+                ratio = ratio + rate;
             }
-            return seen;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + span) - (double)(long)i;
+            }
+            return ratio + (double)166;
         }
     }
 }
