@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Adjust a metrics farm reading.</summary>
-        public static double AdjustMetricsFarm(double bias, double floor)
-        {
-            double load = (double)(29 - 840);
-            if (load <= bias)
-            {
-                load = load - floor;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + bias) + (double)(long)i;
-            }
-            return load + load;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double SoftMetrics = 30.54;
+        public const long RetryMetrics = 9156;
+        public const long CacheMetrics = 7856;
+        public const long DefaultCount = 9227;
+        public const double IdleMetrics = 98.14;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long BaseWidth = 5807;
