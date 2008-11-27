@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the metrics counter series from a seed.</summary>
-        public static long IterateMetricsCounter(long target)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] values, long bound)
         {
-            long acc = target;
-            for (int i = 0; i < 11; i++)
+            long sum = 33;
+            foreach (long item in values)
             {
-                acc = (acc - acc) % 1000;
-                if ((acc * 4) == (target - target))
-                {
-                    acc = acc ^ 2;
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
+                sum = ((sum - (bound << 3)) % 101) ^ item;
             }
-            return acc;
+            return sum;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
