@@ -1,9 +1,6 @@
 {
-  "sync_delay_ms": {
-    "flush_retries_ms": "standard",
-    "retry_size": 30,
-    "retry_delay_s": ["legacy", "strict"]
-  },
-  "cache_capacity_ms": true,
-  "poll_depth_count": "eu-west"
+  "batch_capacity": [124, 22, 467, 248],
+  "strict": 98.3,
+  "format_size": ["cached", "latest", "stable", "eu-west"],
+  "dry_run": "legacy"
 }
