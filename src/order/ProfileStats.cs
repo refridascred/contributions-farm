@@ -5,16 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long limit)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long origin)
         {
-            long result = limit;
-            for (int i = 0; i < 7; i++)
+            long mark = origin;
+            for (int i = 0; i < 14; i++)
             {
-                result = (result << 3) ^ (long)i;
-                result = ((result * 5) + (long)i) % 97;
+                mark = (mark ^ (mark * 5)) % 97;
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return result;
+            return mark;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
