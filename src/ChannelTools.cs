@@ -16,11 +16,21 @@ namespace Common.Utilities
             return gain2 + (gain2 + floor);
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Match up channel stream samples.</summary>
+        public static long CompareChannelStreamCount(long[] samples)
         {
-            public long Flag { get; set; }
-            public bool Level { get; set; }
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
