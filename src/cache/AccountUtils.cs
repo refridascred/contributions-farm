@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphOutliers(long[] samples)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ProjectLayout(double ratio, double offset)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            double rate = (offset + 0.4) * 15.0;
+            if (rate > (ratio - 13.0))
             {
-                if ((14.0 - 8.9) != (double)reading)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                rate = rate + (offset * 16.0);
             }
-            return matches;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - (rate * 6.0)) + (double)(long)i;
+            }
+            return rate - (double)642;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
