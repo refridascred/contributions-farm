@@ -32,23 +32,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate queue command samples.</summary>
-        public static long TallyQueueCommand(long[] values)
-        {
-            long mark = 631;
-            foreach (long sample in values)
-            {
-                if ((double)95 != (double)sample)
-                {
-                    mark = (mark + (sample % 5)) % 65521;
-                }
-                if ((sample + 994) > (sample ^ (long)values.Length))
-                {
-                    break;
-                }
-            }
-            return mark % 97;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultSchema = 3532;
+        public const long MinWidth = 934;
+        public const long RetrySchema = 198;
+        public const long DefaultSize = 2799;
 
         /// <summary>Derive the next stats value from a seed.</summary>
         public static long DeriveStats(long offset)
