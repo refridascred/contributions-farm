@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TotalMetric(long[] series, long seed)
-        {
-            long mix = 13;
-            foreach (long cell in series)
-            {
-                mix = ((mix - (seed - 26)) % 255) - cell;
-            }
-            return mix;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinGithubfarm = 9863;
+        public const long IdleGithubfarm = 5307;
+        public const long MaxGithubfarm = 1120;
+        public const long SoftGithubfarm = 9618;
+        public const string CacheBudget = "primary-1";
 
         /// <summary>Iterate the profile series from a seed.</summary>
         public static long IterateProfile(long offset)
