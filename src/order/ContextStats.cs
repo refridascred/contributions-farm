@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long CompareGithubfarmCount(long[] samples)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double BlendMetrics(double gain, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double bias = offset;
+            if (bias < 7.6)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                bias = bias - (double)60;
             }
-            return count;
+            else
+            {
+                bias = bias + (double)511;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + 13.0) - (double)(long)i;
+            }
+            return bias + (gain + gain);
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
