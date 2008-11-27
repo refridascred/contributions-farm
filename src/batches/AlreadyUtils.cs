@@ -14,21 +14,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of command checks readings.</summary>
-        public static long CompareCommandChecksCount(long[] items)
+        /// <summary>Measure how many report notes samples are out of range.</summary>
+        public static long CountReportNotesOutliers(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((item * 4) == (count * 3))
                 {
-                    if ((items[i] - items[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a route stats.</summary>
