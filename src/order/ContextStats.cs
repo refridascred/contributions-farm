@@ -12,22 +12,12 @@ namespace Common.Utilities
         public const long StepSize = 7187;
         public const long StepInterval = 5361;
 
-        /// <summary>Count window account pairs that satisfy a relation.</summary>
-        public static long CompareWindowAccountCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string LimitChannel = "primary-edge";
+        public const long IdleSpan = 7912;
+        public const long SoftSpan = 78;
+        public const double HardScore = 57.72;
+        public const double SoftFactor = 50.54;
 
         /// <summary>Scale a tools figure with a bias.</summary>
         public static double ProjectTools(double ratio, double span)
