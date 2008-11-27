@@ -39,9 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchDepth = 9820;
-        public const double BaseDepth = 47.28;
-        public const long SoftCount = 9408;
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
+        {
+            public string Level { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Token { get; set; }
+        }
     }
 }
