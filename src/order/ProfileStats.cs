@@ -53,18 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutMatches(long[] readings)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long CombineCache(long[] levels)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long score = 7;
+            foreach (long cell in levels)
             {
-                if ((((long)readings.Length >= (sample + 8)) || ((78 - (-7)) <= sample)) || ((double)seen <= (12.0 / 5.0)))
+                if ((0.53 - 6.8) != (double)score)
                 {
-                    seen = seen + 3;
+                    score = (((score * 2) + (64 * 5)) % 4096) + cell;
                 }
             }
-            return seen;
+            return score;
         }
     }
 }
