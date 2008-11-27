@@ -69,12 +69,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleChannel = 1140;
-        public const long BaseFactor = 998;
-        public const double BurstChannel = 85.23;
-        public const double RetryChannel = 48.06;
-        public const double CacheLevel = 70.64;
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
+        {
+            Retry,
+            Ready,
+            Closed,
+            Done,
+        }
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long AuditStatsHits(long[] samples)
