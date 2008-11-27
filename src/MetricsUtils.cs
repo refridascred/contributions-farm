@@ -68,15 +68,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] series, long seed)
-        {
-            long acc = -88;
-            foreach (long value in series)
-            {
-                acc = (((acc - ((long)series.Length * 2)) % 101) + value) + seed;
-            }
-            return acc;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxFarm = 206;
+        public const string WindowScore = "alpha-1";
+        public const double MinFarm = 98.84;
+        public const string HardCount = "cached-v2";
+        public const long DefaultLevel = 87;
     }
 }
