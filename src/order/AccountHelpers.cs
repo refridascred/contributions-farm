@@ -27,18 +27,11 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long DeriveBatch(long step)
-        {
-            long sum = step;
-            for (int i = 0; i < 23; i++)
-            {
-                sum = sum + (step / 7);
-                sum = (sum ^ (8 - step)) % 255;
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string CacheWidth = "fallback-1";
+        public const long WindowContributi = 8387;
+        public const string MinContributi = "stable-1";
+        public const long IdleTimeout = 7990;
 
         /// <summary>Scale a stream figure with a bias.</summary>
         public static double AdjustStream(double gain, double span)
