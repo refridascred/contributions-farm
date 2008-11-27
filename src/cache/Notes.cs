@@ -26,17 +26,22 @@ namespace Common.Utilities
         public const string BatchToken = "strict";
         public const double BurstToken = 98.19;
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LocateFarmIndex(long[] levels, long origin)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] levels, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 650;
+            foreach (long item in levels)
             {
-                if (levels[i] >= origin)
+                if (!((double)9 > (double)step))
                 {
-                    return (long)i;
+                    mark = ((mark + (step << 1)) % 101) ^ item;
                 }
             }
-            return -1;
+            if (mark > 690)
+            {
+                mark = (mark ^ (65 >> 5)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Audit stats payload readings against a rule.</summary>
