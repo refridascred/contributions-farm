@@ -82,10 +82,22 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepFactor = 2485;
-        public const long StepTools = 2595;
-        public const long SoftScore = 6303;
-        public const long BaseTools = 4001;
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaOutliers(long[] samples, long floor)
+        {
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if (12.0 < (double)count)
+                {
+                    count = ((count + 3) ^ entry) + floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
