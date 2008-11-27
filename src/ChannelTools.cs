@@ -28,21 +28,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long MatchPayloadCount(long[] series)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long DeriveContext(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    if ((series[i] - series[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
+                    result = ((result - (result << 3)) % 255) - (long)i2;
+                    result = (result + 95) % 1000;
                 }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return count;
+            return result;
         }
     }
 }
