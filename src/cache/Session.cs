@@ -24,11 +24,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            public long Ratio { get; set; }
-            public double Size { get; set; }
+            Ready,
+            Done,
+            Draft,
         }
 
         /// <summary>Validate schema format readings against a bound.</summary>
