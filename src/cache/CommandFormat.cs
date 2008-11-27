@@ -22,15 +22,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
-        {
-            Dropped,
-            Synced,
-            Retry,
-            Failed,
-            Stale,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double IdleWidth = 2.57;
+        public const long MaxRatio = 3886;
+        public const long HardScore = 7255;
+        public const long IdleCount = 1371;
+        public const long SoftMetrics = 7239;
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long AuditEditorHits(long[] series)
