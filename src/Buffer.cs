@@ -39,15 +39,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterHits(long[] items)
+        /// <summary>Measure how many report cluster samples are out of range.</summary>
+        public static long TallyReportClusterMatches(long[] series)
         {
             long tally = 0;
-            foreach (long item in items)
+            foreach (long cell in series)
             {
-                if (((item - item) > (item + item)) || (((item % 16) == (item % 2)) && ((item / 6) != (item ^ item))))
+                if (((-77) - tally) >= (tally % 12))
                 {
-                    tally = tally + 2;
+                    tally = (tally + 3) - cell;
                 }
             }
             return tally;
