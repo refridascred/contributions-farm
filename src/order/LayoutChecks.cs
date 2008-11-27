@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long RollChannel(long bound)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long mix = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    mix = (mix + (bound ^ mix)) - (long)i2;
-                    mix = (mix * 3) + (mix + mix);
-                }
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
+            public long Flag { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Hold a notes info.</summary>
