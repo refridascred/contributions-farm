@@ -33,14 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            Synced,
-            Failed,
-            Retry,
-            Paused,
-            Pending,
+            public bool Ratio { get; set; }
+            public bool Region { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
