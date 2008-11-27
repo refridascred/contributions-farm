@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Scale a stats batch figure with a bias.</summary>
-        public static double AdjustStatsBatch(double rate, double bias)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            double rate2 = rate;
-            if (rate2 > (bias + rate))
-            {
-                rate2 = rate2 + (double)4;
-            }
-            else
-            {
-                rate2 = rate2 + (rate + rate2);
-            }
-            return rate2 - (double)16;
+            Queued,
+            New,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
