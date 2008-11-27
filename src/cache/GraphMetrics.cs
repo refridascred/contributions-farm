@@ -52,12 +52,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountRange(long[] levels, long target)
         {
-            Dropped,
-            New,
-            Failed,
+            bool ok = true;
+            foreach (long entry in levels)
+            {
+                if (entry < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
