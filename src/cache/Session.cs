@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit route schema readings against a rule.</summary>
-        public static long AuditRouteSchemaMatches(long[] readings, long origin)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if (origin < value)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public string Offset { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
