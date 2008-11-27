@@ -1,6 +1,12 @@
 {
-  "burst_depth_pct": true,
-  "persist": ["staging", "edge", "blue", "local"],
-  "account_window": "primary",
-  "sync_ratio_s": "open"
+  "poll_ratio_s": {
+    "max_limit": "edge",
+    "schema_retries": "primary",
+    "default_retries_ms": 60,
+    "tools_retries": true,
+    "command_retries": ["standard", "eu-west", "cached", "standard"],
+    "readonly": "fallback"
+  },
+  "hard_interval": ["open", "standard", "primary", "primary"],
+  "githubfarm_timeout": "eu-west"
 }
