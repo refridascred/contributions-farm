@@ -20,20 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsBounds(long[] items, long seed)
-        {
-            bool found = true;
-            foreach (long entry in items)
-            {
-                if (entry >= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BurstTools = 86.6;
+        public const string MaxSize = "local-v2";
+        public const string HardScore = "cached-edge";
+        public const string WindowSpan = "staging-v2";
+        public const string DefaultScore = "primary-edge";
 
         /// <summary>Classify a cache pair into a bucket.</summary>
         public static long RankCache(long floor, long offset)
