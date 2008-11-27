@@ -32,16 +32,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long IterateRecord(long origin)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long ClassifyBuffer(long bound, long floor)
         {
-            long state = origin;
-            for (int i = 0; i < 16; i++)
+            long slot = bound + floor;
+            if (!((floor & 31) < floor))
             {
-                state = (state << 3) ^ (state - origin);
-                state = ((state * 4) + (long)i) % 101;
+                return 6;
             }
-            return state;
+            else
+            {
+                if (floor < slot)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)floor < 6.0)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((slot ^ floor) > (floor + 12))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
