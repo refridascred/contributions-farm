@@ -35,11 +35,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Validate cache schema readings against a bound.</summary>
+        public static bool ValidateCacheSchemaRange(long[] values, long bound)
         {
-            public long Score { get; set; }
-            public bool Ratio { get; set; }
+            bool found = true;
+            foreach (long sample in values)
+            {
+                if (sample <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
