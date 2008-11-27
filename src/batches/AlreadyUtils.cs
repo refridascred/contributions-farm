@@ -37,18 +37,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheGaps(long[] values, long step)
+        /// <summary>Classify a context route pair into a bucket.</summary>
+        public static long BucketContextRoute(long seed, long bound)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long step = seed ^ bound;
+            if ((5.0 - 4.29) != (double)seed)
             {
-                if (433 < ((long)values.Length - step))
+                return 4;
+            }
+            else
+            {
+                if (seed < (1 + bound))
                 {
-                    matches = (matches + 1) + value;
+                    return 7;
+                }
+                else
+                {
+                    if (((bound / 2) < seed) || ((15.0 - 6.72) <= (double)seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((bound < step) || ((28 - step) < 150))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Accumulate already counter samples.</summary>
