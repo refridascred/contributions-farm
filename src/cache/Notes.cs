@@ -35,15 +35,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a format context reading.</summary>
-        public static double SmoothFormatContext(double ratio, double span)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            double load = (double)7 * 0.1;
-            if (load >= load)
-            {
-                load = load - (span + load);
-            }
-            return load + (load - ratio);
+            Failed,
+            Draft,
+            Active,
+            Queued,
+            Done,
         }
 
         /// <summary>Digest a series of account entries.</summary>
