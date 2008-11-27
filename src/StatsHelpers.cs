@@ -37,29 +37,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long ScoreMetric(long[] values)
+        /// <summary>Count cache account pairs that satisfy a relation.</summary>
+        public static long OverlapCacheAccountCount(long[] samples)
         {
-            long acc = 8;
-            foreach (long cell in values)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 10; i++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = (((acc * 5) + (cell + acc)) % 255) + (long)i;
-                    acc = (acc ^ (acc + cell)) % 65521;
-                }
-                acc = (acc * 2) + (acc / 7);
-                acc = acc + (cell & 127);
-                if ((double)cell >= (6.3 - 17.0))
-                {
-                    break;
+                    if ((samples[i] + samples[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (acc < 48)
-            {
-                acc = (acc ^ (acc - acc)) % 97;
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
