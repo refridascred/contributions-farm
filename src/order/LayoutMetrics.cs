@@ -19,22 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterMatches(long[] levels, long floor)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long SeekMetricIndex(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((value + 60) <= matches)
+                if (readings[i] <= offset)
                 {
-                    matches = (matches + 1) + floor;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Project the next layout value.</summary>
