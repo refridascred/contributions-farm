@@ -59,11 +59,19 @@ namespace Common.Utilities
         public const double IdleBudget = 24.37;
         public const long StepTimeout = 3197;
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphLimits(long[] values, long seed)
         {
-            public bool Count { get; set; }
-            public string Token { get; set; } = "";
+            bool flag = true;
+            foreach (long datum in values)
+            {
+                if (datum != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
