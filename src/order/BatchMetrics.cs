@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandMatches(long[] readings, long seed)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LookupWindowIndex(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((7.56 + 6.8) < (double)hits) && ((double)seed <= 9.2))
+                if (values[i] == limit)
                 {
-                    hits = (hits + 1) + value;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
