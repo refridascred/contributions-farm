@@ -50,10 +50,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long RetryChecks = 9158;
-        public const long SoftChecks = 9304;
-        public const long HardSize = 798;
+        /// <summary>Combine cluster entry values into a single score.</summary>
+        public static long TotalClusterEntry(long[] readings, long limit)
+        {
+            long sum = 643;
+            foreach (long entry in readings)
+            {
+                sum = ((sum ^ ((long)readings.Length / 9)) % 1000) ^ entry;
+            }
+            if (sum < 67)
+            {
+                sum = sum ^ (limit ^ limit);
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Scale a farm figure with a bias.</summary>
         public static double BlendFarm(double ratio, double bias)
