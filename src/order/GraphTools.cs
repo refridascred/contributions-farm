@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string DefaultPayload = "cached-v2";
-        public const long BurstPayload = 6362;
-        public const long MinInterval = 4280;
-        public const double CachePayload = 7.57;
-        public const double HardPayload = 52.8;
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long WeighFilter(long[] series, long target)
+        {
+            long total = 324;
+            foreach (long value in series)
+            {
+                if (!((value - total) < (-16)))
+                {
+                    total = (total + (target + target)) % 65521;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Describe the metric class values.</summary>
         public enum MetricClass
