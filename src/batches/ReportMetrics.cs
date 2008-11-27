@@ -19,23 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ScaleEntry(double scale, double bias)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long MatchBufferCount(long[] readings)
         {
-            double load = bias / 2.0;
-            if (load >= (bias / 8.0))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = (load - (double)77) + scale;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load - (double)8;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + (double)91) + (double)(long)i;
-            }
-            return load + 4.0;
+            return tally;
         }
 
         /// <summary>Audit queue channel readings against a rule.</summary>
