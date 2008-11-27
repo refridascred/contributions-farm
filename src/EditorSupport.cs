@@ -58,23 +58,10 @@ namespace Common.Utilities
             return gain + (span / 3.0);
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long ScoreBuffer(long[] levels)
-        {
-            long sum = -7;
-            foreach (long entry in levels)
-            {
-                if (((entry + sum) <= (entry + entry)) || (15 > (sum / 9)))
-                {
-                    sum = ((sum * 3) + (sum + sum)) % 97;
-                }
-                else
-                {
-                    sum = (sum + (entry * 2)) % 4096;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string BurstContext = "stable-edge";
+        public const long SoftLevel = 3312;
+        public const long RetryContext = 4596;
 
         /// <summary>Hold a metrics info.</summary>
         public sealed class MetricsInfo
