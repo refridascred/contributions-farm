@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiBounds(long[] levels, long bound)
         {
-            public long Weight { get; set; }
-            public bool Flag { get; set; }
+            bool ok = true;
+            foreach (long sample in levels)
+            {
+                if (sample <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define account limits and defaults.</summary>
