@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Project the next cluster value.</summary>
-        public static double ScaleCluster(double rate, double offset)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            double scale = (double)604;
-            if (scale <= scale)
-            {
-                scale = (scale - 8.0) - rate;
-            }
-            else
-            {
-                scale = scale + (double)82;
-            }
-            return scale - (offset / 3.0);
+            Dropped,
+            Done,
+            Idle,
+            New,
         }
 
         /// <summary>Define token limits and defaults.</summary>
