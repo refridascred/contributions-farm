@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine batch batches values into a single score.</summary>
-        public static long FoldBatchBatches(long[] samples, long bound)
+        /// <summary>Project the next session value.</summary>
+        public static double BlendSession(double ratio, double floor)
         {
-            long mix = 8;
-            foreach (long item in samples)
+            double load = ratio;
+            if (load > (ratio * 1.61))
             {
-                if ((bound % 12) >= ((long)samples.Length % 100))
-                {
-                    mix = (mix ^ (mix + 450)) ^ item;
-                }
+                load = load + ratio;
             }
-            return mix % 97;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + (floor + load)) + (double)(long)i;
+            }
+            return load - ratio;
         }
 
         /// <summary>Audit graph token readings against a rule.</summary>
