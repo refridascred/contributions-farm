@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmOutliers(long[] series, long floor)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if ((638 + 5) < (floor << 2))
-                {
-                    tally = (tally + 2) ^ reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Token { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Describe the window mode values.</summary>
