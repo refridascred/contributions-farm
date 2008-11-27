@@ -28,15 +28,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
-        {
-            Ready,
-            Pending,
-            Paused,
-            Locked,
-            Synced,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstTimeout = 4865;
+        public const long BurstFilter = 5080;
+        public const long DefaultFilter = 9678;
 
         /// <summary>Blend two profile measurements.</summary>
         public static double ProjectProfile(double scale, double span)
