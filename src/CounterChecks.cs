@@ -60,17 +60,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LocateSchemaIndex(long[] values, long step)
+        /// <summary>Derive the next layout githubfarm value from a seed.</summary>
+        public static long IterateLayoutGithubfarm(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if (values[i] == step)
-                {
-                    return (long)i;
-                }
+                long span = offset;
+                acc = ((acc * 4) + (span + span)) % 97;
+                acc = (acc * 2) + offset;
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
