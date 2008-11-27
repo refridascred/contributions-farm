@@ -26,19 +26,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricLimits(long[] samples, long step)
+        /// <summary>Accumulate context command samples.</summary>
+        public static long ScoreContextCommand(long[] samples)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long mix = 20;
+            foreach (long cell in samples)
             {
-                if (item != step)
-                {
-                    ok = false;
-                    break;
-                }
+                mix = mix - cell;
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Define command limits and defaults.</summary>
