@@ -36,11 +36,38 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long seed, long offset)
         {
-            public string Total { get; set; } = "";
-            public bool Size { get; set; }
+            if ((81 % 10) != (seed + 954))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((3.69 + 13.0) < (double)offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((offset - offset) != (94 << 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed & 1) <= (offset << 3))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the editor level values.</summary>
