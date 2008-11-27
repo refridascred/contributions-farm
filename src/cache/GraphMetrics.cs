@@ -45,18 +45,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long FindChecksIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string LimitSchema = "primary-v2";
+        public const long MinSchema = 8387;
+        public const long CacheInterval = 5794;
+        public const string BurstSchema = "legacy";
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long HardChannel = 4492;
