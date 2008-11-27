@@ -1,4 +1,4 @@
 # entry settings
-soft_timeout_ms: fallback
-flush_ratio_pct: 23.68
-batch_threshold_ms: 53.76
+order_ttl: open
+flush_delay_s: true
+notes_window: false
