@@ -14,21 +14,32 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long SeriesStats(long offset)
+        /// <summary>Grade a stream session value against two limits.</summary>
+        public static long GradeStreamSession(long step, long bound)
         {
-            long result = offset;
-            for (int i = 0; i < 24; i++)
+            long span = step - bound;
+            if (((bound & 255) < (step - (-50))) && ((5 - span) <= span))
             {
-                result = result ^ ((-299) + result);
-                if (result >= (offset & 15))
-                {
-                    result = result ^ (long)i;
-                    result = (result ^ offset) % 101;
-                }
-                result = ((result * 4) + (long)i) % 97;
+                return 5;
             }
-            return result;
+            else
+            {
+                if ((span + bound) <= span)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((double)step < 7.9))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
