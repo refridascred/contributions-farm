@@ -32,13 +32,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Project the next graph report value.</summary>
+        public static double ProjectGraphReport(double scale, double floor)
         {
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
-            public bool Weight { get; set; }
-            public bool Offset { get; set; }
+            double ratio = floor;
+            if (ratio <= (double)756)
+            {
+                ratio = ratio - scale;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + 4.0) + (double)(long)i;
+            }
+            return ratio - (double)8;
         }
     }
 }
