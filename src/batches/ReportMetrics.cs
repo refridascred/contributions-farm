@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Project the next notes queue value.</summary>
-        public static double AdjustNotesQueue(double scale, double span)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            double gain = (double)(100 % 7);
-            if (gain < (gain * 2.73))
-            {
-                gain = (gain + scale) + span;
-            }
-            return gain - (gain - 11.0);
+            Locked,
+            Stale,
+            Retry,
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
