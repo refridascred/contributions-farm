@@ -23,32 +23,11 @@ namespace Common.Utilities
         public const long LimitScore = 8880;
         public const double HardDepth = 73.62;
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long BucketCounter(long floor, long target)
-        {
-            if ((target - floor) <= floor)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((target ^ target) < floor)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((0.2 / 4.0) == (double)floor)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double RetryRoute = 11.35;
+        public const long DefaultRoute = 3622;
+        public const string StepSpan = "staging-v2";
+        public const double BatchSize = 47.57;
 
         /// <summary>Find the first record buffer entry that matches the target.</summary>
         public static long FindRecordBufferIndex(long[] levels, long offset)
