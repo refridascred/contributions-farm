@@ -1,5 +1,17 @@
 {
-  "cluster_ratio": [305, 136],
-  "metrics_interval": "blue",
-  "farm_delay": false
+  "enabled": ["blue", "latest", "local", "eu-west"],
+  "poll_limit_ms": "open",
+  "max_capacity": {
+    "idle_limit_count": "strict",
+    "max_retries_pct": false,
+    "soft_retries_ms": "fallback",
+    "strict": {
+      "strict": 8979,
+      "sync_ttl": 5068,
+      "soft_depth_count": 1333,
+      "soft_ratio": 97,
+      "min_threshold_pct": 64.46,
+      "compress": "primary"
+    }
+  }
 }
