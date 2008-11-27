@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long GradeGithubfarm(long seed, long target)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaBounds(long[] values, long bound)
         {
-            if (((seed - target) >= (target + seed)) || ((seed / 6) < (seed << 1)))
+            bool valid = true;
+            foreach (long sample in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (seed < 45)
+                if (sample != bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((7.2 / 3.0) == (double)target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Define record limits and defaults.</summary>
