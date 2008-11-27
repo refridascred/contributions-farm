@@ -51,12 +51,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            public double Flag { get; set; }
-            public bool Offset { get; set; }
-            public string Total { get; set; } = "";
+            public bool Flag { get; set; }
+            public bool Size { get; set; }
+            public long Token { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
