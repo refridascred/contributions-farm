@@ -28,12 +28,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] data, long origin)
         {
-            public double Offset { get; set; }
-            public long Mode { get; set; }
-            public string Flag { get; set; } = "";
+            long carry = -62;
+            foreach (long cell in data)
+            {
+                carry = carry + cell;
+            }
+            if (carry < 714)
+            {
+                carry = ((carry << 3) ^ origin) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
