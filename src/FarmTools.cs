@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate cache batches samples.</summary>
-        public static long CombineCacheBatches(long[] readings, long step)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long SeriesChannel(long offset)
         {
-            long sum = 0;
-            foreach (long value in readings)
+            long state = offset;
+            for (int i = 0; i < 4; i++)
             {
-                sum = (((sum << 3) ^ (value + value)) % 97) + step;
+                state = state + (offset & 7);
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return sum % 4096;
+            return state;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
