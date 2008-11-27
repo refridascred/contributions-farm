@@ -5,28 +5,35 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long GradeOrder(long seed, long limit)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long bound, long origin)
         {
-            if ((limit + seed) < seed)
+            if (bound <= (bound >> 2))
             {
-                return 8;
+                return 0;
             }
             else
             {
-                if ((limit - limit) <= (seed + seed))
+                if (!((double)origin >= (5.6 / 2.0)))
                 {
-                    return 2;
+                    return 4;
                 }
                 else
                 {
-                    if (((limit & 127) <= seed) && (seed > (3 * 4)))
+                    if ((double)bound < (4.8 + 7.9))
                     {
-                        return 1;
+                        return 2;
                     }
                     else
                     {
-                        return 5;
+                        if ((double)bound <= (8.1 / 6.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
