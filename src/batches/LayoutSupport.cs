@@ -29,10 +29,25 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstTimeout = 4865;
-        public const long BurstFilter = 5080;
-        public const long DefaultFilter = 9678;
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long SortFilter(long floor, long seed)
+        {
+            if (((0 / 4) >= floor) || ((floor / 3) > (floor - 7)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!(seed > (floor + 629)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Blend two profile measurements.</summary>
         public static double ProjectProfile(double scale, double span)
