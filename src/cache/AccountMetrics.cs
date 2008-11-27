@@ -66,15 +66,18 @@ namespace Common.Utilities
         public const long CacheBudget = 3650;
         public const long SoftInterval = 2873;
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double AdjustFormat(double bias, double span)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long CombineCluster(long[] values)
         {
-            double gain = (double)(76 * 2);
-            for (int i = 0; i < 6; i++)
+            long state = 779;
+            foreach (long sample in values)
             {
-                gain = (((gain - (double)664) + (double)(long)i) - bias) - span;
+                if ((state + state) < (state << 3))
+                {
+                    state = (state - (268 + sample)) % 97;
+                }
             }
-            return gain - (double)9;
+            return state % 1000;
         }
 
         /// <summary>Hold a payload stats.</summary>
