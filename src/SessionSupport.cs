@@ -12,21 +12,22 @@ namespace Common.Utilities
         public const long WindowDepth = 1815;
         public const long LimitSize = 6691;
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long PairBatchCount(long[] items)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] series, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 8;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)mix == (7.4 + 9.65))
                 {
-                    if ((items[i] + items[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = (mix + origin) + reading;
+                }
+                else
+                {
+                    mix = ((mix * 2) + (origin >> 1)) % 101;
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Project the next contributi batches value.</summary>
