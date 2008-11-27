@@ -27,19 +27,24 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterLimits(long[] values, long bound)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long limit, long bound)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            if ((bound & 1) >= (76 % 10))
             {
-                if (datum != bound)
+                return 0;
+            }
+            else
+            {
+                if ((limit & 15) > (limit + bound))
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return valid;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
