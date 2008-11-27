@@ -1,9 +1,12 @@
 # githubfarm settings
-cache_delay: 500
-base_timeout_ms:
-  batch_capacity_ms: 622
-  dry_run: 18.83
-  idle_timeout_count: 87.98
-support_limit: open
-buffer_limit: true
-batch_ratio_ms: primary
+metrics_capacity:
+  - 423
+  - 176
+  - 378
+sync_depth_count: false
+enabled:
+  - 470
+  - 18
+  - 120
+flush_capacity: 3.35
+format_interval: 52.36
