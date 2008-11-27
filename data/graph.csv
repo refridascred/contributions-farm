@@ -1,9 +1,7 @@
-id,score,region
-1,stable,eu-west
-2,45.84,primary
-3,636,31.91
-4,90.65,97.41
-5,strict,strict
-6,27,8.09
-7,legacy,61.07
-8,13.83,94
+id,score,active
+1,legacy,latest
+2,5,cached
+3,stable,3.33
+4,262,564
+5,open,primary
+6,649,16.71
