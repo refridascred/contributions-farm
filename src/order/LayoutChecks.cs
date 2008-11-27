@@ -21,13 +21,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            Failed,
-            Draft,
-            Pending,
-            Dropped,
+            public long Label { get; set; }
+            public string Rank { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a route entry.</summary>
