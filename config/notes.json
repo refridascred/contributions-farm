@@ -1,13 +1,8 @@
 {
-  "poll_delay_ms": {
-    "githubfarm_timeout": false,
-    "warm_threshold_ms": "staging",
-    "soft_timeout_ms": 58.66,
-    "max_ratio": "primary",
-    "cache_threshold_s": "staging"
-  },
-  "audit": "green",
-  "readonly": 5455,
-  "min_limit_s": "local",
-  "flush_threshold_count": 86.69
+  "idle_threshold": 30,
+  "farm_ttl": 22.5,
+  "cache_window_pct": true,
+  "notes_threshold": false,
+  "compress": 74.63,
+  "batch_timeout": 8227
 }
