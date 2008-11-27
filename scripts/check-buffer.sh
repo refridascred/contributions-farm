@@ -6,22 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
+BUFFER_LIMIT=286
+log "limit is ${BUFFER_LIMIT}"
 
-for item in open eu-west fallback primary; do
+for item in legacy standard; do
     log "checking ${item}"
 done
-
-mode="${1:-edge}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
