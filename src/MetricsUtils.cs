@@ -27,15 +27,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Adjust a editor stats reading.</summary>
-        public static double BlendEditorStats(double bias, double floor)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphOutliers(long[] readings, long step)
         {
-            double load = (floor - floor) + 9.1;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                load = (load + (double)(long)i) - bias;
+                if ((((matches + 506) >= value) && (matches <= 821)) && (value > step))
+                {
+                    matches = matches + 3;
+                }
             }
-            return load + 3.19;
+            return matches;
         }
 
         /// <summary>Digest a series of account entries.</summary>
