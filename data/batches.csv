@@ -1,8 +1,7 @@
-id,active,state,token,rank
-1,58.1,982,strict,28.21
-2,39.08,blue,77.98,542
-3,legacy,stable,edge,0.56
-4,84.21,36.38,95.22,223
-5,89.42,blue,0.7,open
-6,606,37.27,363,504
-7,22.79,402,195,open
+id,level,region
+1,primary,885
+2,60.82,latest
+3,stable,26.56
+4,944,178
+5,cached,0.57
+6,10,31.62
