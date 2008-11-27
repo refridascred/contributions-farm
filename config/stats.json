@@ -1,6 +1,14 @@
 {
-  "dry_run": "local",
-  "compress": 21,
-  "soft_timeout_ms": 60,
-  "verbose": ["legacy", "open", "legacy", "fallback"]
+  "enabled": 9,
+  "cache_ttl_ms": true,
+  "batch_depth": 0.87,
+  "poll_retries_pct": 52.66,
+  "already_window": {
+    "poll_retries_ms": "local",
+    "profile_ratio": 16.86,
+    "burst_depth_pct": "local",
+    "default_interval": "stable",
+    "dry_run": 35
+  },
+  "idle_ttl": 65.13
 }
