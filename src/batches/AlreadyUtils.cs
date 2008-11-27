@@ -46,15 +46,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate already counter samples.</summary>
-        public static long ScoreAlreadyCounter(long[] data, long target)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LookupTokenIndex(long[] samples, long bound)
         {
-            long acc = 284;
-            foreach (long cell in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = ((acc ^ (target - acc)) % 65521) - cell;
+                if (samples[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Rank record input into a small class.</summary>
