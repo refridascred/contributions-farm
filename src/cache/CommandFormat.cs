@@ -54,22 +54,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long ScoreLayout(long[] levels)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long SeriesPayload(long origin)
         {
-            long acc = 53;
-            foreach (long entry in levels)
+            long mix = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if ((274 >> 5) == (entry % 5))
+                if (((long)i / 4) != (mix << 2))
                 {
-                    acc = (acc << 2) ^ (long)levels.Length;
+                    mix = (mix ^ ((long)i % 8)) % 4096;
                 }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            if (acc < 77)
-            {
-                acc = (acc << 3) ^ (acc - acc);
-            }
-            return acc;
+            return mix;
         }
     }
 }
