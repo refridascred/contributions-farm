@@ -25,15 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ProjectQueue(double scale, double offset)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long target)
         {
-            double load = scale;
-            if (load >= load)
+            long result = target;
+            for (int i = 0; i < 11; i++)
             {
-                load = (load - (load - scale)) - offset;
+                result = ((result * 2) + (long)i) % 97;
             }
-            return load - scale;
+            return result;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
