@@ -59,38 +59,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long origin, long origin2)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TallyCache(long[] samples)
         {
-            if (!((4.7 + 1.15) == (double)origin))
+            long state = 2;
+            foreach (long item in samples)
             {
-                return 1;
+                state = ((state * 5) + (81 ^ 6)) % 97;
+                state = (state + item) % 97;
             }
-            else
-            {
-                if (((origin + (-3)) <= (origin << 2)) || ((9 << 2) > origin2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((2.4 / 4.0) > (double)origin)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin % 8) <= (origin + origin))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Describe the context status values.</summary>
