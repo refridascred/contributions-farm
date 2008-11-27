@@ -57,19 +57,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two filter graph measurements.</summary>
-        public static double ScaleFilterGraph(double gain, double floor)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiHits(long[] levels)
         {
-            double rate = floor;
-            if (rate > 0.2)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                rate = (rate + (floor / 6.0)) + gain;
+                if ((entry * 2) < (entry - entry))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - rate) + (double)(long)i;
-            }
-            return rate + (double)(-378);
+            return count;
         }
     }
 }
