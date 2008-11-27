@@ -1,8 +1,6 @@
-id,owner,score,rank,label
-1,738,edge,1.83,961
-2,528,0,525,25.33
-3,79,green,stable,open
-4,817,79.81,684,67.89
-5,139,35.99,507,fallback
-6,778,702,41.39,latest
-7,open,36.74,124,green
+id,token,label,ratio
+1,local,193,fallback
+2,primary,234,blue
+3,2.69,strict,724
+4,staging,edge,91.95
+5,82.21,23.91,72.84
