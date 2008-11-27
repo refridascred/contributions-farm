@@ -12,12 +12,31 @@ namespace Common.Utilities
         public const long RetryFactor = 6491;
         public const long BatchFilter = 1766;
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Classify a entry metric pair into a bucket.</summary>
+        public static long GradeEntryMetric(long floor, long offset)
         {
-            public long Mode { get; set; }
-            public bool Total { get; set; }
-            public bool Token { get; set; }
+            if (!((offset ^ offset) <= floor))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset - 591) != (offset + 148))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((floor - floor) >= (floor ^ 743))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine session values into a single score.</summary>
