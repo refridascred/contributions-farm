@@ -37,11 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            public long Stamp { get; set; }
-            public long Count { get; set; }
+            Stale,
+            Synced,
+            Ready,
         }
     }
 }
