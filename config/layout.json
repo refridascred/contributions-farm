@@ -1,6 +1,18 @@
 {
-  "cache_limit": false,
-  "min_interval_ms": 1024,
-  "max_ratio": "fallback",
-  "persist": 8111
+  "soft_timeout": 30,
+  "batches_retries": 40.56,
+  "filter_ttl": {
+    "batch_size": 30,
+    "idle_capacity_ms": "staging",
+    "commits_capacity": {
+      "batch_ttl_s": 21.73,
+      "burst_ratio": ["latest", "green", "staging", "cached"],
+      "stats_interval": 87.13,
+      "farm_delay": 30,
+      "cache_threshold_s": ["open", "green", "eu-west"]
+    },
+    "metric_capacity": "primary"
+  },
+  "checks_threshold": 500,
+  "report_timeout": "open"
 }
