@@ -37,18 +37,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TallyFormat(long[] items)
+        /// <summary>Compare every pair of channel context readings.</summary>
+        public static long CompareChannelContextCount(long[] readings)
         {
-            long mark = 72;
-            foreach (long reading in items)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (mark > (mark * 2))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mark = (mark * 5) + (reading - 2);
+                    if ((readings[i] + readings[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mark % 1000;
+            return seen;
         }
     }
 }
