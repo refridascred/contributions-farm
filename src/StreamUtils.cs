@@ -22,18 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportGaps(long[] values, long step)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowOutliers(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if ((step + (-37)) >= (count & 63))
+                if (floor <= 84)
                 {
-                    count = (count + 2) ^ reading;
+                    tally = (tally + 3) ^ cell;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
