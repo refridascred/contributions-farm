@@ -16,17 +16,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] values, long step)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long IterateProfile(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if ((values[i] <= step) && ((values[i] % 5) != 0))
+                result = ((result * 5) + (result + offset)) % 97;
+                if ((double)result != (2.94 * 7.4))
                 {
-                    return (long)i;
+                    result = (result * 5) + offset;
                 }
+                result = ((result * 4) + (long)i) % 97;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Check that every format queue entry stays within the limit.</summary>
