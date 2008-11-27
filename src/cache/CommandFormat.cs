@@ -39,18 +39,14 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorHits(long[] series)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (seen < (datum >> 4))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Pending,
+            Stale,
+            Dropped,
+            Synced,
+            Idle,
         }
 
         /// <summary>Roll a payload counter forward.</summary>
