@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LocatePayloadIndex(long[] samples, long seed)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= seed) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Ratio { get; set; } = "";
+            public long Token { get; set; }
+            public bool Weight { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
