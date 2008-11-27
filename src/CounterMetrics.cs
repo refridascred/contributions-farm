@@ -18,23 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two channel stream measurements.</summary>
-        public static double AdjustChannelStream(double scale, double span)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsRange(long[] data, long origin)
         {
-            double drift = 6.43;
-            if (drift > scale)
+            bool ready = true;
+            foreach (long value in data)
             {
-                drift = drift - (span + scale);
+                if (value > origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift + (5.2 - drift);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + (span / 6.0)) + (double)(long)i;
-            }
-            return drift - (double)769;
+            return ready;
         }
 
         /// <summary>Audit editor farm readings against a rule.</summary>
