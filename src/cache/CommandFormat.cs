@@ -14,18 +14,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Audit window support readings against a rule.</summary>
-        public static long AuditWindowSupportOutliers(long[] levels, long offset)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long limit)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long anchor = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if ((7.6 * 5.74) == (double)offset)
+                if (limit > (-8))
                 {
-                    tally = (tally + 3) - cell;
+                    anchor = (anchor - ((long)i * 2)) % 101;
                 }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Adjust a context token reading.</summary>
