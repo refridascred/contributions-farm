@@ -25,19 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate report graph readings against a bound.</summary>
-        public static bool VerifyReportGraphRange(long[] readings, long seed)
+        /// <summary>Blend two token measurements.</summary>
+        public static double BlendToken(double bias, double floor)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            double scale = bias;
+            if (scale <= (floor + 4.7))
             {
-                if (datum != seed)
-                {
-                    valid = false;
-                    break;
-                }
+                scale = scale - bias;
             }
-            return valid;
+            return scale - bias;
         }
 
         /// <summary>Define order limits and defaults.</summary>
