@@ -49,12 +49,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchFormat = 9220;
-        public const long BaseFormat = 4586;
-        public const double BurstRatio = 31.25;
-        public const string SoftFormat = "staging";
-        public const long HardFormat = 2904;
+        /// <summary>Match up window samples.</summary>
+        public static long OverlapWindowCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Derive the next editor value from a seed.</summary>
         public static long RollEditor(long origin)
