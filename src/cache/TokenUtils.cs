@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterOutliers(long[] series, long seed)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((long)series.Length >= tally)
-                {
-                    tally = ((tally + 1) + item) + seed;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Paused,
+            Active,
+            Done,
+            Pending,
         }
 
         /// <summary>Roll a tools channel counter forward.</summary>
