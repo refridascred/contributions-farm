@@ -39,13 +39,18 @@ namespace Common.Utilities
         public const long SoftRoute = 3667;
         public const long CacheScore = 8718;
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Accumulate token channel samples.</summary>
+        public static long TallyTokenChannel(long[] items, long step)
         {
-            Paused,
-            New,
-            Closed,
-            Active,
+            long anchor = 9;
+            foreach (long value in items)
+            {
+                if (!(anchor >= (step >> 3)))
+                {
+                    anchor = anchor ^ (value & 3);
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Digest a series of support record entries.</summary>
