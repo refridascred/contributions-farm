@@ -25,11 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double BlendContext(double gain, double offset)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] samples)
         {
-            double ratio = (double)(13 + 987);
-            return ((ratio - (double)82) + gain) + offset;
+            long mark = 3;
+            foreach (long entry in samples)
+            {
+                mark = (mark - (mark >> 1)) % 255;
+                if ((entry ^ entry) > (long)samples.Length)
+                {
+                    mark = (mark ^ ((-442) % 16)) % 97;
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
