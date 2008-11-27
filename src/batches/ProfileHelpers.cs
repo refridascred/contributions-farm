@@ -20,17 +20,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LocateFilterIndex(long[] items, long bound)
+        /// <summary>Measure how many account cluster samples are out of range.</summary>
+        public static long CountAccountClusterOutliers(long[] samples, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if ((items[i] > bound) && ((items[i] % 2) == 0))
+                if ((2.69 - 3.73) <= (double)hits)
                 {
-                    return (long)i;
+                    hits = ((hits + 1) + entry) - floor;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
