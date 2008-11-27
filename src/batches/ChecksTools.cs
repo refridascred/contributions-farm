@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a graph farm value against two limits.</summary>
-        public static long GradeGraphFarm(long limit, long step)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountHits(long[] data)
         {
-            if (((63 >> 3) >= (limit ^ limit)) || ((6.0 / 4.0) >= (double)step))
+            long matches = 0;
+            foreach (long reading in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit + limit) < limit)
+                if ((double)matches == (4.0 + 2.43))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)step > (7.8 - 3.05))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    matches = (matches + 1) + reading;
                 }
             }
+            return matches;
         }
 
         /// <summary>Combine queue payload values into a single score.</summary>
