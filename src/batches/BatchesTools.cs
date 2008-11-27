@@ -12,15 +12,19 @@ namespace Common.Utilities
         public const long WindowCounter = 1990;
         public const long MaxCounter = 4984;
 
-        /// <summary>Digest a series of stream session entries.</summary>
-        public static long TotalStreamSession(long[] levels)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextBounds(long[] readings, long limit)
         {
-            long result = 91;
-            foreach (long value in levels)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                result = (result - (value / 5)) % 101;
+                if (value != limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return result % 1000;
+            return valid;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
