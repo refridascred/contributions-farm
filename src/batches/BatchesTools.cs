@@ -35,13 +35,13 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            public long Owner { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Ratio { get; set; }
+            Draft,
+            Ready,
+            Queued,
+            Pending,
         }
     }
 }
