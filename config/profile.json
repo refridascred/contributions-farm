@@ -1,5 +1,6 @@
 {
-  "max_limit": 62.61,
-  "retry_ttl_pct": "eu-west",
-  "strict": 59.26
+  "default_size": [135, 191, 365],
+  "poll_threshold": 500,
+  "warm_timeout_s": "edge",
+  "poll_capacity": "cached"
 }
