@@ -1,21 +1,6 @@
 {
-  "base_threshold_ms": 60,
-  "cache_capacity": 250,
-  "sync_limit_count": {
-    "max_threshold": "staging",
-    "base_retries": {
-      "soft_ttl": "strict",
-      "idle_delay_s": "edge",
-      "record_ratio": true,
-      "batch_retries": "strict",
-      "retry_limit_pct": [157, 120, 451]
-    },
-    "warm_retries_count": 88,
-    "soft_size_pct": true,
-    "base_threshold_count": 72,
-    "token_size": 11
-  },
-  "base_ttl": 38,
-  "soft_window_s": "open",
-  "batch_ratio": true
+  "cache_interval": "legacy",
+  "stream_capacity": ["primary", "standard"],
+  "verbose": "green",
+  "max_interval_count": false
 }
