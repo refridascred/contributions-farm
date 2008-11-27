@@ -55,19 +55,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long ScoreCommits(long[] samples, long seed)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long CompareProfileCount(long[] items)
         {
-            long sum = -20;
-            foreach (long reading in samples)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = ((sum + (0 % 16)) % 101) + reading;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (sum < 71)
-            {
-                sum = (sum - (seed * 5)) % 101;
-            }
-            return sum % 65521;
+            return count;
         }
     }
 }
