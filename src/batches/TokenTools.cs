@@ -18,13 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] levels)
         {
-            public long Offset { get; set; }
-            public long Count { get; set; }
-            public bool Owner { get; set; }
-            public long Region { get; set; }
+            long mix = 78;
+            foreach (long datum in levels)
+            {
+                if ((mix + mix) < datum)
+                {
+                    mix = (mix << 2) ^ mix;
+                }
+                else
+                {
+                    mix = (mix ^ 667) % 4096;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Scale a farm graph figure with a bias.</summary>
