@@ -25,13 +25,18 @@ namespace Common.Utilities
         public const string MaxDepth = "latest-1";
         public const long CacheCommand = 656;
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryHits(long[] values, long bound)
         {
-            public long Label { get; set; }
-            public string Size { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if (!(((1 / 5) > (datum + datum)) && ((bound - datum) == (bound + 46))))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a format session sample.</summary>
