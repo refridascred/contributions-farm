@@ -41,17 +41,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] items, long target)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ProjectMetrics(double bias, double bias2)
         {
-            for (int i = 0; i < items.Length; i++)
+            double ratio = bias + (bias2 * 17.0);
+            if (ratio >= (bias + bias))
             {
-                if ((items[i] > target) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                ratio = ratio + bias2;
             }
-            return -1;
+            else
+            {
+                ratio = ratio + ratio;
+            }
+            return ratio - bias;
         }
     }
 }
