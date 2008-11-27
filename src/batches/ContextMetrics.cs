@@ -55,18 +55,13 @@ namespace Common.Utilities
         public const long BaseBudget = 717;
         public const long DefaultWidth = 8321;
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyMatches(long[] items, long step)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((double)76 <= (double)reading)
-                {
-                    seen = (seen + 3) + step;
-                }
-            }
-            return seen;
+            Retry,
+            Failed,
+            Done,
+            Active,
         }
     }
 }
