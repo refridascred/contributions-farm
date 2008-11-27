@@ -1,6 +1,8 @@
 # entry settings
-readonly: 43.35
-idle_capacity_pct: true
-hard_retries: standard
-cache_ratio_count: latest
-token_timeout: cached
+compress: 6322
+audit: 6.11
+default_delay_ms: 250
+batch_retries_ms:
+  - 346
+  - 245
+  - 293
