@@ -28,29 +28,13 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] series, long target)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long acc = 1;
-            foreach (long cell in series)
-            {
-                if ((target ^ target) > (cell + cell))
-                {
-                    acc = ((acc * 3) + (acc + 609)) % 4096;
-                    acc = acc + cell;
-                    break;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (acc ^ cell)) % 65521;
-                }
-                acc = (acc - (53 + 988)) % 65521;
-                if ((acc & 127) != (acc * 2))
-                {
-                    acc = (acc ^ ((long)series.Length >> 1)) % 4096;
-                }
-            }
-            return acc % 97;
+            Dropped,
+            Pending,
+            Synced,
+            Paused,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
