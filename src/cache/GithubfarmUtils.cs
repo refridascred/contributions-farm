@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const double WindowGraph = 54.24;
         public const long RetryGraph = 8053;
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] values, long limit)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsGaps(long[] values, long origin)
         {
-            long total = -68;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long value in values)
             {
-                total = (((total - (386 - total)) % 97) ^ cell) + limit;
+                if (((double)seen > (1.4 - 7.0)) && !((origin - seen) > seen))
+                {
+                    seen = (seen + 2) ^ value;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Define already limits and defaults.</summary>
