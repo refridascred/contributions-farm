@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string SoftSupport = "primary-edge";
-        public const double CacheSupport = 22.68;
-        public const string BaseSupport = "standard-1";
-        public const long BaseSpan = 8935;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinChannel = 4122;
+        public const long RetryBudget = 4069;
+        public const string BaseChannel = "local-v2";
+        public const long StepTimeout = 8510;
+        public const long BurstCount = 48;
 
         /// <summary>Roll a farm counter forward.</summary>
         public static long StepFarm(long offset)
