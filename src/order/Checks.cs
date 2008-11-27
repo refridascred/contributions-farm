@@ -29,17 +29,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long FindBatchesIndex(long[] items, long offset)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Flag { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Describe the cache state values.</summary>
