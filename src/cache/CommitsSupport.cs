@@ -49,23 +49,18 @@ namespace Common.Utilities
             return weight2 - weight;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double SmoothWindow(double rate, double floor)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsOutliers(long[] samples)
         {
-            double ratio = (double)((-2) ^ 89);
-            if (ratio > 6.56)
+            long count = 0;
+            foreach (long value in samples)
             {
-                ratio = ((ratio + (ratio * 11.0)) - rate) - floor;
+                if ((658 - count) < (value >> 1))
+                {
+                    count = count + 2;
+                }
             }
-            else
-            {
-                ratio = ratio - ratio;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + (double)(-373)) + (double)(long)i;
-            }
-            return ratio + ratio;
+            return count;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
