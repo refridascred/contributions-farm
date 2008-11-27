@@ -52,22 +52,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandMatches(long[] readings, long floor)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((count ^ floor) < count)
-                {
-                    count = (count + 1) + cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            New,
+            Done,
+            Failed,
         }
 
         /// <summary>Fold a list of schema readings.</summary>
