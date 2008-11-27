@@ -1,10 +1,14 @@
 # githubfarm settings
-flush_threshold: 42
-retry_size_count:
-  - green
-  - edge
-  - cached
-  - staging
-flush_ttl: 36
-poll_window_pct: true
-warm_interval_pct: false
+batch_retries: 500
+poll_size: staging
+burst_size_ms:
+  max_capacity_pct:
+    - strict
+    - stable
+    - open
+  support_capacity:
+    - 500
+    - 404
+  counter_depth: false
+context_ttl: 502
+cluster_threshold: 26.4
