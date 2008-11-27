@@ -1,19 +1,5 @@
 {
-  "poll_window_ms": 5439,
-  "retry_delay_ms": {
-    "cache_depth": "fallback",
-    "max_delay_s": "latest",
-    "warm_ratio": [189, 65],
-    "commits_window": 4545,
-    "burst_window": {
-      "default_timeout": "stable",
-      "checks_retries": "fallback",
-      "poll_capacity_ms": "primary",
-      "cache_interval_s": "open",
-      "burst_capacity": "primary",
-      "flush_limit_s": "primary"
-    },
-    "window_capacity": 60
-  },
-  "warm_size_s": "local"
+  "max_retries_s": [101, 307],
+  "strict": true,
+  "default_retries": 60
 }
