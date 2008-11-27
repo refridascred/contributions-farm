@@ -29,19 +29,11 @@ namespace Common.Utilities
         public const double MinPayload = 20.28;
         public const string BaseFactor = "local-edge";
 
-        /// <summary>Check that every githubfarm support entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmSupportLimits(long[] data, long bound)
+        /// <summary>Project the next layout value.</summary>
+        public static double BlendLayout(double gain, double offset)
         {
-            bool found = true;
-            foreach (long cell in data)
-            {
-                if (cell < bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double weight = (double)68 / 3.0;
+            return ((weight - (double)(-1)) + gain) + offset;
         }
     }
 }
