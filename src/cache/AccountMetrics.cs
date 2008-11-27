@@ -37,18 +37,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyHits(long[] values, long floor)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long offset)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long mark = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if ((matches * 3) <= (422 + (-1)))
-                {
-                    matches = ((matches + 1) + value) + floor;
-                }
+                mark = ((mark << 2) ^ (offset >> 5)) % 65521;
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
