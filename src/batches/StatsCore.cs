@@ -47,23 +47,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ProjectFarm(double gain, double bias)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long PairCommitsCount(long[] series)
         {
-            double scale = 5.0;
-            if (scale > bias)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = scale - (gain + scale);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale - (8.31 - gain);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + (double)7) + (double)(long)i;
-            }
-            return scale - gain;
+            return count;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
