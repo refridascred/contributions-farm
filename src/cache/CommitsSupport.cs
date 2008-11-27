@@ -62,19 +62,11 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheLimits(long[] levels, long limit)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            bool ready = true;
-            foreach (long sample in levels)
-            {
-                if (sample > limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Ratio { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Look up the position of a stream checks sample.</summary>
