@@ -28,24 +28,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long RollGraph(long seed)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryLimits(long[] items, long origin)
         {
-            long total = seed;
-            for (int i = 0; i < 13; i++)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if (((total * 3) < ((long)i + (long)i)) || (((long)i - seed) <= seed))
+                if (entry >= origin)
                 {
-                    total = ((total * 2) + (seed >> 2)) % 255;
-                    total = ((total * 3) + (total + (-60))) % 97;
+                    ok = false;
+                    break;
                 }
-                else
-                {
-                    total = total - total;
-                }
-                total = ((total * 5) + (long)i) % 101;
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
