@@ -54,9 +54,11 @@ namespace Common.Utilities
             return (ratio - (double)39) + weight;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string IdleCounter = "cached-1";
-        public const long LimitCounter = 9288;
-        public const long CacheWidth = 5312;
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
+        {
+            public long Score { get; set; }
+            public bool Ratio { get; set; }
+        }
     }
 }
