@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LocateRecordIndex(long[] samples, long limit)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long ClassifyProfile(long bound, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long lane = bound + step;
+            if (lane <= (bound + step))
             {
-                if ((samples[i] > limit) && ((samples[i] % 3) == 0))
+                return 8;
+            }
+            else
+            {
+                if ((step * 3) <= (6 + step))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (((bound + lane) >= step) && ((lane % 10) == (lane + step)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
