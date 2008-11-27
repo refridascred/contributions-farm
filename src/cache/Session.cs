@@ -29,12 +29,23 @@ namespace Common.Utilities
         public const string BaseGithubfarm = "legacy";
         public const long MaxGithubfarm = 7735;
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Adjust a cache notes reading.</summary>
+        public static double AdjustCacheNotes(double scale, double span)
         {
-            public string Total { get; set; } = "";
-            public bool Count { get; set; }
-            public long Score { get; set; }
+            double weight = span;
+            if (weight < span)
+            {
+                weight = weight - scale;
+            }
+            else
+            {
+                weight = weight - span;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - (span / 9.0)) + (double)(long)i;
+            }
+            return weight - span;
         }
 
         /// <summary>Compare every pair of channel context readings.</summary>
