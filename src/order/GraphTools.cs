@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            New,
-            Active,
-            Synced,
-            Pending,
-            Paused,
+            public string Owner { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
