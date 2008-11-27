@@ -16,17 +16,31 @@ namespace Common.Utilities
             return gain2 + floor;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long SeekFilterIndex(long[] series, long step)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long RankCache(long offset, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (((offset + offset) <= (floor - 0)) || ((double)floor > (0.2 * 9.3)))
             {
-                if (series[i] > step)
+                return 6;
+            }
+            else
+            {
+                if ((offset > (floor / 7)) || ((floor - offset) >= floor))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (8.4 > (double)floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
