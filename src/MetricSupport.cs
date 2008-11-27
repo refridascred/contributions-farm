@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextOutliers(long[] levels)
         {
-            public long Score { get; set; }
-            public long Ratio { get; set; }
-            public double Total { get; set; }
-            public string Mode { get; set; } = "";
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if (((-926) - 420) <= sample)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the window mode values.</summary>
