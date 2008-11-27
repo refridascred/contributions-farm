@@ -22,24 +22,15 @@ namespace Common.Utilities
         public const long HardGithubfarm = 9752;
         public const double MaxGithubfarm = 12.97;
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] samples)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long IterateQueue(long limit)
         {
-            long anchor = 9;
-            foreach (long datum in samples)
+            long state = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if ((anchor & 63) < (datum + 81))
-                {
-                    anchor = (anchor - (datum ^ 90)) % 101;
-                    anchor = (anchor + (datum + datum)) % 97;
-                }
-                else
-                {
-                    anchor = anchor ^ (anchor % 24);
-                }
-                anchor = (anchor + 6) % 255;
+                state = ((state * 4) + (long)i) % 101;
             }
-            return anchor;
+            return state;
         }
     }
 }
