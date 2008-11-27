@@ -12,15 +12,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
-        {
-            Queued,
-            Failed,
-            Closed,
-            Pending,
-            Dropped,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchEditor = 9868;
+        public const long MaxEditor = 6762;
+        public const long DefaultEditor = 4601;
+        public const long MinEditor = 4109;
 
         /// <summary>Digest a series of route record entries.</summary>
         public static long FoldRouteRecord(long[] levels)
