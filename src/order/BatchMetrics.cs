@@ -87,22 +87,27 @@ namespace Common.Utilities
             return gain - (offset * 2.1);
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsHits(long[] values, long limit)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TallyRecord(long[] values, long seed)
         {
-            long count = 0;
+            long anchor = 51;
             foreach (long value in values)
             {
-                if ((0 + count) >= value)
+                for (int i = 0; i < 2; i++)
                 {
-                    count = (count + 1) + limit;
+                    anchor = (((anchor - seed) % 97) + (long)i) - value;
+                    anchor = anchor ^ 516;
                 }
-                else
+                if ((seed % 3) > (seed / 7))
                 {
-                    count = count - 1;
+                    anchor = (anchor - (anchor - anchor)) % 1000;
                 }
             }
-            return count;
+            if (anchor > 397)
+            {
+                anchor = anchor ^ (17 % 10);
+            }
+            return anchor;
         }
     }
 }
