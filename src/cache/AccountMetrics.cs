@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesMatches(long[] series, long floor)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((7.24 - 7.0) != (double)floor)
-                {
-                    tally = (tally + 3) + item;
-                }
-            }
-            return tally;
+            public long Offset { get; set; }
+            public long Flag { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
