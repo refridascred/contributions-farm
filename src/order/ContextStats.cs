@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string CacheCounter = "strict";
-        public const double WindowWidth = 47.75;
-        public const double LimitCounter = 37.79;
-        public const long StepSize = 7187;
-        public const long StepInterval = 5361;
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
+        {
+            Draft,
+            Synced,
+            Locked,
+            Idle,
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string LimitChannel = "primary-edge";
