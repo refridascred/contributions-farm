@@ -27,19 +27,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double AdjustFormat(double ratio, double offset)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long ScoreStats(long[] items)
         {
-            double gain = offset;
-            if (gain < (2.9 / 4.0))
+            long carry = 505;
+            foreach (long reading in items)
             {
-                gain = (gain + (double)17) + ratio;
+                if ((double)reading == (7.3 / 4.0))
+                {
+                    carry = ((carry << 2) ^ (carry + carry)) % 65521;
+                }
             }
-            else
-            {
-                gain = gain + offset;
-            }
-            return gain - (offset * 3.35);
+            return carry;
         }
 
         /// <summary>Match up queue metric samples.</summary>
