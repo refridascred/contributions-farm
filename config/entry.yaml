@@ -1,14 +1,7 @@
 # entry settings
-dry_run: 500
-readonly: cached
-counter_timeout:
-  - green
-  - staging
-  - legacy
-  - fallback
-poll_retries_count: fallback
-warm_ttl_pct:
-  - edge
-  - edge
-  - standard
-  - standard
+warm_depth_ms: 51
+default_depth_s: 500
+idle_ttl_ms: 2199
+strict: 68
+enabled: 500
+soft_depth_count: false
