@@ -11,15 +11,18 @@ namespace Common.Utilities
         public const long BaseFarm = 5932;
         public const double WindowSize = 35.96;
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileGaps(long[] levels, long origin)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long MatchClusterCount(long[] samples)
         {
             long hits = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)hits >= (20.0 - 4.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = ((hits + 2) + entry) + origin;
+                    if ((samples[i] + samples[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
