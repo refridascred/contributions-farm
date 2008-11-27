@@ -13,17 +13,26 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long SeekNotesIndex(long[] samples, long limit)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 6;
+            foreach (long item in readings)
             {
-                if ((samples[i] < limit) && ((samples[i] % 2) != 0))
+                if ((2.91 / 6.0) < (4.0 - 15.0))
                 {
-                    return (long)i;
+                    sum = (sum ^ (item + sum)) % 1000;
+                }
+                if (918 <= ((long)readings.Length & 15))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (sum > 14)
+            {
+                sum = ((sum << 2) ^ (9 * 3)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Define account limits and defaults.</summary>
