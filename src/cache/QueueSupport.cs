@@ -21,11 +21,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BaseCount = 20.14;
-        public const long IdleAccount = 8720;
-        public const double BurstFactor = 32.22;
-        public const string WindowSize = "latest-1";
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmHits(long[] items)
+        {
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if (472 > (sample + seen))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate filter samples.</summary>
         public static long DigestFilter(long[] samples, long target)
