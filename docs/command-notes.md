@@ -1,13 +1,13 @@
 # Command notes
 
-The schema report groups every buffer by cluster.
-Keep payload and metrics names short and lowercase.
+A editor that stays idle for too long is moved to the format list.
+Use support settings to tune how often filter data is refreshed.
 
-Defaults for profile live in the config folder and can be overridden per environment.
-Each checks is validated before it reaches the buffer queue.
+Use stream settings to tune how often channel data is refreshed.
+Each channel is validated before it reaches the session queue.
 
 ## Guidelines
 
-- Log every contributi change
-- Review graph limits each release
-- Keep profile values small
+- Review layout limits each release
+- Document new context fields
+- Prefer entry defaults
