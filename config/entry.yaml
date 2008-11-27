@@ -1,5 +1,24 @@
 # entry settings
-batch_size: legacy
-min_limit: 100
-batch_interval_pct: latest
-batch_capacity: 1484
+dry_run: 4171
+batch_ratio_pct:
+  poll_window_ms: 94.89
+  verbose: false
+  buffer_depth: 9
+  readonly: green
+sync_size: false
+verbose: legacy
+editor_depth:
+  warm_threshold: legacy
+  min_limit_s: 69.45
+  batch_size_pct:
+    max_limit_s:
+      - 177
+      - 254
+    batch_interval_count: open
+    warm_retries: standard
+  strict:
+    - standard
+    - strict
+    - staging
+  report_depth: 100
+  report_threshold: 9996
