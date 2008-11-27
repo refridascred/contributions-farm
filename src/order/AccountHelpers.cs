@@ -97,39 +97,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a counter order value against two limits.</summary>
-        public static long BucketCounterOrder(long step, long origin)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferMatches(long[] samples)
         {
-            long offset = step + origin;
-            if ((double)origin != (double)offset)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((8.0 <= (double)step) && ((double)origin >= 2.77))
+                if (((hits < (5 * 2)) || ((hits + hits) > (hits * 5))) && (((hits ^ sample) != (hits / 6)) && ((sample / 2) < (sample % 100))))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin ^ origin) == (5 + 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((80 + step) == (offset << 2)) || ((step + offset) >= (step + 270)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
     }
 }
