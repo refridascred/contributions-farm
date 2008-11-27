@@ -1,13 +1,26 @@
 # githubfarm settings
-stream_interval:
-  context_delay: true
-  readonly:
-    - primary
-    - primary
-  max_delay: 2738
-  hard_capacity: 2298
-  payload_threshold: 82
-idle_depth_s: 54
-warm_delay_s: 53
-retry_window_ms: local
-burst_timeout: 8499
+base_timeout_pct:
+  sync_ratio_s: true
+  enabled:
+    - 219
+    - 45
+    - 418
+    - 29
+  sync_depth: strict
+  route_ratio:
+    - 181
+    - 165
+    - 356
+    - 278
+soft_size: primary
+sync_limit_count: 19
+compress:
+  soft_delay_s: local
+  order_threshold: 30
+  strict: standard
+  hard_capacity_count:
+    - 303
+    - 282
+    - 402
+  dry_run: legacy
+  retry_depth: 1024
