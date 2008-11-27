@@ -28,11 +28,21 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Match up support samples.</summary>
+        public static long OverlapSupportCount(long[] data)
         {
-            public bool Offset { get; set; }
-            public string Flag { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the farm state values.</summary>
