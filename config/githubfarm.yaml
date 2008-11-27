@@ -1,10 +1,13 @@
 # githubfarm settings
-sync_timeout_ms:
-  - cached
-  - stable
-hard_ttl: 47.65
-farm_retries: 40
-min_ratio_pct:
-  - primary
-  - cached
-compress: 1024
+stream_interval:
+  context_delay: true
+  readonly:
+    - primary
+    - primary
+  max_delay: 2738
+  hard_capacity: 2298
+  payload_threshold: 82
+idle_depth_s: 54
+warm_delay_s: 53
+retry_window_ms: local
+burst_timeout: 8499
