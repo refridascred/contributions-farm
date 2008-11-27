@@ -1,22 +1,13 @@
 # support settings
-batch_ratio: blue
-batch_threshold:
-  default_ratio_pct: true
-  batch_delay_s: 6998
-  filter_threshold: edge
-  persist: true
-  default_delay_ms:
-    base_ratio: 250
-    poll_timeout_pct:
-      - strict
-      - cached
-    min_depth_pct: true
-    notes_depth: 2927
-    compress:
-      - 338
-      - 19
-  sync_window_ms:
-    - 405
-    - 284
-flush_timeout: 11.65
-graph_window: 41
+batch_delay_pct:
+  - staging
+  - primary
+record_ttl: true
+notes_ratio:
+  sync_window: standard
+  poll_interval_ms: local
+  token_capacity:
+    - primary
+    - cached
+  idle_ttl_count: fallback
+  payload_depth: 28.74
