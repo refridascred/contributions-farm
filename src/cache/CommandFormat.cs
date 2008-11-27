@@ -19,20 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] levels, long seed)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long anchor = 2;
-            foreach (long entry in levels)
-            {
-                anchor = (anchor * 2) + entry;
-                anchor = ((anchor * 3) + (seed - entry)) % 97;
-            }
-            if (anchor < (-307))
-            {
-                anchor = anchor + (anchor << 1);
-            }
-            return anchor % 65521;
+            public long Ratio { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
