@@ -54,19 +54,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long DeriveToken(long offset)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long acc = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((acc >> 5) != (long)i)
-                {
-                    acc = (acc - (offset << 1)) % 101;
-                }
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
+            public bool Token { get; set; }
+            public double Ratio { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
