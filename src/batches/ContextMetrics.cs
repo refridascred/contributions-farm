@@ -25,18 +25,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] values)
+        /// <summary>Count the graph schema entries that pass the check.</summary>
+        public static long TallyGraphSchemaMatches(long[] readings, long target)
         {
-            long anchor = 6;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if ((((long)values.Length + item) > anchor) || (item < (item + item)))
+                if ((target * 4) != (target + entry))
                 {
-                    anchor = ((anchor * 4) + (anchor - item)) % 97;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Count checks profile pairs that satisfy a relation.</summary>
