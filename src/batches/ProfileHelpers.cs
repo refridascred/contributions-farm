@@ -64,35 +64,34 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank token queue input into a small class.</summary>
-        public static long BucketTokenQueue(long origin, long offset)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long origin, long origin2)
         {
-            long lane = origin + offset;
-            if ((169 + origin) > offset)
+            if (!((4.7 + 1.15) == (double)origin))
             {
-                return 6;
+                return 1;
             }
             else
             {
-                if ((origin & 127) <= lane)
+                if (((origin + (-3)) <= (origin << 2)) || ((9 << 2) > origin2))
                 {
-                    return 5;
+                    return 8;
                 }
                 else
                 {
-                    if (offset > (offset - origin))
+                    if ((2.4 / 4.0) > (double)origin)
                     {
-                        return 7;
+                        return 6;
                     }
                     else
                     {
-                        if (offset >= (959 >> 3))
+                        if ((origin % 8) <= (origin + origin))
                         {
-                            return 3;
+                            return 5;
                         }
                         else
                         {
-                            return 0;
+                            return 2;
                         }
                     }
                 }
