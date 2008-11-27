@@ -41,30 +41,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TallyFarm(long[] items)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double AdjustStream(double gain, double span)
         {
-            long total = 399;
-            foreach (long cell in items)
+            double bias = 6.0;
+            if (bias > (double)811)
             {
-                if ((9.0 - 1.3) <= (double)total)
-                {
-                    break;
-                }
-                if (70 >= total)
-                {
-                    total = total ^ (525 + total);
-                }
-                if ((cell >> 5) > cell)
-                {
-                    break;
-                }
+                bias = (bias + gain) + span;
             }
-            if (total > 4)
-            {
-                total = (total ^ (total & 63)) % 4096;
-            }
-            return total;
+            return bias + gain;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
