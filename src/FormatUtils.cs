@@ -12,12 +12,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportBounds(long[] series, long offset)
         {
-            Retry,
-            Draft,
-            Ready,
+            bool stale = true;
+            foreach (long value in series)
+            {
+                if (value < offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
