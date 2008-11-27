@@ -56,9 +56,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double HardToken = 26.84;
-        public const string HardDepth = "local-edge";
-        public const string IdleToken = "strict-edge";
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
+        {
+            public double Offset { get; set; }
+            public long Level { get; set; }
+            public long Rank { get; set; }
+            public string Token { get; set; } = "";
+        }
     }
 }
