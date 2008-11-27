@@ -14,16 +14,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepTimeout = 6297;
+        public const long LimitTimeout = 4946;
+        public const double DefaultAccount = 29.98;
+        public const double IdleAccount = 13.83;
 
         /// <summary>Describe the counter phase values.</summary>
         public enum CounterPhase
