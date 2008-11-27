@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long SeriesFarm(long offset)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] samples, long bound)
         {
-            long acc = offset;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = (acc ^ (702 / 7)) % 1000;
-                acc = acc ^ 402;
-                acc = ((acc * 4) + (long)i) % 4093;
+                if (samples[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
