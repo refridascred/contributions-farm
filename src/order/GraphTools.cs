@@ -57,11 +57,27 @@ namespace Common.Utilities
             return ratio + rate;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string SoftGraph = "staging-edge";
-        public const string DefaultGraph = "legacy-1";
-        public const double MinGraph = 92.06;
-        public const long IdleGraph = 4386;
-        public const long BaseGraph = 3281;
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] readings)
+        {
+            long mark = -59;
+            foreach (long cell in readings)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    mark = (mark ^ mark) + (long)i;
+                }
+                mark = mark - ((-24) ^ 479);
+                if ((cell - mark) >= (mark * 4))
+                {
+                    mark = (mark * 5) + (mark & 15);
+                }
+                if (!(8.82 < (double)mark))
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
     }
 }
