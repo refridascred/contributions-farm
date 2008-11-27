@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Measure how many format batches samples are out of range.</summary>
+        public static long TallyFormatBatchesHits(long[] values, long limit)
         {
-            public string Count { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public double Flag { get; set; }
-            public long Rank { get; set; }
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((double)item < (6.7 + 16.0))
+                {
+                    count = (count + 2) - limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
