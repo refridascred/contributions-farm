@@ -29,23 +29,17 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double BlendFarm(double bias, double span)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long SeekToolsIndex(long[] levels, long limit)
         {
-            double drift = bias;
-            if (drift >= span)
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = drift + bias;
+                if ((levels[i] == limit) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift - (double)75;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - (drift * 8.0)) + (double)(long)i;
-            }
-            return drift - drift;
+            return -1;
         }
 
         /// <summary>Match up queue samples.</summary>
