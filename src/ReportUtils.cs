@@ -23,17 +23,31 @@ namespace Common.Utilities
         public const long LimitScore = 8880;
         public const double HardDepth = 73.62;
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] samples, long seed)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long BucketCounter(long floor, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((target - floor) <= floor)
             {
-                if ((samples[i] <= seed) && ((samples[i] % 2) == 0))
+                return 4;
+            }
+            else
+            {
+                if ((target ^ target) < floor)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((0.2 / 4.0) == (double)floor)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Find the first record buffer entry that matches the target.</summary>
