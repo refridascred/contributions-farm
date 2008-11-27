@@ -27,15 +27,13 @@ namespace Common.Utilities
         public const long IdleQueue = 3368;
         public const long HardQueue = 596;
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long RollQueue(long floor)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long total = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
+            public string Mode { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Flag { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
