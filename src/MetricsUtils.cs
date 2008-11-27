@@ -36,14 +36,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
-        {
-            Pending,
-            Dropped,
-            New,
-            Active,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double MinEntry = 31.57;
+        public const string WindowEntry = "fallback";
+        public const string IdleEntry = "stable-v2";
+        public const long IdleWidth = 4683;
+        public const long RetryDepth = 7796;
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long CountGraphGaps(long[] data)
