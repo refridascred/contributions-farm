@@ -1,11 +1,14 @@
 # Command notes
 
-The batch module keeps commits values in sync with the batch cache.
-Use editor settings to tune how often buffer data is refreshed.
-Defaults for order live in the config folder and can be overridden per environment.
+The account module keeps tools values in sync with the account cache.
+The cluster module keeps order values in sync with the stream cache.
+
+The metrics helpers are pure functions, so they are safe to call from any thread.
+Run the cluster check before changing any counter limits.
 
 ## Guidelines
 
-- Keep profile values small
-- Document new token fields
-- Prefer counter defaults
+- Prefer graph defaults
+- Review order limits each release
+- Validate route input early
+- Log every tools change
