@@ -1,17 +1,14 @@
 # support settings
-graph_window:
-  burst_window_ms: 88
-  audit: 17
-  token_capacity: false
-  burst_capacity_s: 5349
-  max_size_count: false
-  account_limit: 500
-default_limit: 100
-sync_timeout_pct: true
-batch_size_ms: 9
-report_size: 2
-retry_interval:
-  - legacy
-  - fallback
-  - fallback
-  - standard
+idle_limit: true
+cache_timeout: 7458
+graph_timeout:
+  window_interval: blue
+  poll_capacity_s:
+    - local
+    - cached
+    - strict
+  window_retries: 88.25
+  compress: 70.91
+  contributi_interval: false
+sync_limit_pct: fallback
+order_ratio: standard
