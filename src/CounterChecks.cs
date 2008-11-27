@@ -68,18 +68,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileMatches(long[] items)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LocateSchemaIndex(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((((double)cell > (20.0 / 6.0)) || ((1.7 * 8.55) <= (double)matches)) || ((cell ^ cell) <= (cell & 1)))
+                if (values[i] == step)
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
