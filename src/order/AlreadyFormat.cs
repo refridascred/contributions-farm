@@ -29,11 +29,13 @@ namespace Common.Utilities
         public const long BatchBuffer = 4459;
         public const long SoftBuffer = 2792;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double SoftBudget = 49.15;
-        public const long BurstSize = 7910;
-        public const long RetryWidth = 7350;
-        public const long CacheInterval = 1691;
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
+        {
+            Stale,
+            Active,
+            Done,
+        }
 
         /// <summary>Grade a metric value against two limits.</summary>
         public static long ClassifyMetric(long seed, long target)
