@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmBounds(long[] values, long step)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long OverlapContextCount(long[] series)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample != step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((series[i] ^ series[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Hold a cluster info.</summary>
