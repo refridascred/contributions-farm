@@ -32,12 +32,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long offset, long offset2)
         {
-            Queued,
-            Active,
-            Done,
+            if ((8.0 - 5.71) == (double)offset)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)offset2 != (18.0 + 11.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((780 >> 1) < (offset2 % 10))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
