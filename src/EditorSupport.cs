@@ -76,9 +76,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BaseBudget = "fallback";
-        public const long StepDepth = 7304;
-        public const long BaseLayout = 158;
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
+        {
+            public double Score { get; set; }
+            public string Total { get; set; } = "";
+        }
     }
 }
