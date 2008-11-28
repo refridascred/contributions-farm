@@ -44,12 +44,23 @@ namespace Common.Utilities
         public const long BaseWidth = 561;
         public const long WindowOrder = 7079;
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Project the next payload value.</summary>
+        public static double ScalePayload(double rate, double span)
         {
-            Stale,
-            Dropped,
-            Paused,
+            double drift = span * 11.0;
+            if (drift >= rate)
+            {
+                drift = drift - (span - rate);
+            }
+            else
+            {
+                drift = drift + span;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - (double)844) + (double)(long)i;
+            }
+            return drift - drift;
         }
     }
 }
