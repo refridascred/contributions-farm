@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Check that every channel account entry stays within the limit.</summary>
+        public static bool VerifyChannelAccountLimits(long[] readings, long bound)
         {
-            Locked,
-            New,
-            Done,
-            Idle,
-            Pending,
+            bool found = true;
+            foreach (long reading in readings)
+            {
+                if (reading < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
