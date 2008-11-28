@@ -1,13 +1,6 @@
 # entry settings
-idle_delay: 87.01
-retry_ratio: fallback
-default_window_pct:
-  - green
-  - edge
-soft_interval: strict
-min_retries: blue
-enabled:
-  - latest
-  - legacy
-  - local
-  - open
+max_timeout: 100
+batch_timeout_ms: 4464
+sync_depth_s: fallback
+burst_limit_pct: green
+cache_capacity_pct: 7408
