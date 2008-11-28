@@ -26,23 +26,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long WeighOrder(long[] data, long target)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportLimits(long[] data, long offset)
         {
-            long state = 2;
+            bool valid = true;
             foreach (long item in data)
             {
-                state = (state + (target % 2)) ^ item;
-                if (2.6 < (double)state)
+                if (item > offset)
                 {
-                    state = (state ^ (46 >> 4)) % 97;
+                    valid = false;
+                    break;
                 }
             }
-            if (state < 43)
-            {
-                state = ((state * 4) + (target - state)) % 255;
-            }
-            return state;
+            return valid;
         }
     }
 }
