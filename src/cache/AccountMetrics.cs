@@ -65,22 +65,24 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheHits(long[] samples)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long IterateMetrics(long offset)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long total = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if ((seen ^ datum) <= seen)
+                if (!((584 + total) >= (offset / 5)))
                 {
-                    seen = seen + 3;
+                    total = total ^ total;
+                    break;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    total = total + (total - (long)i);
                 }
+                total = ((total * 4) + (long)i) % 97;
             }
-            return seen;
+            return total;
         }
     }
 }
