@@ -49,17 +49,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LookupFarmIndex(long[] data, long limit)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 111;
+            foreach (long cell in readings)
             {
-                if ((data[i] < limit) && ((data[i] % 5) != 0))
+                if ((6 >> 4) != (cell ^ sum))
                 {
-                    return (long)i;
+                    sum = ((sum * 5) + (cell + cell)) % 4096;
                 }
             }
-            return -1;
+            if (sum < (-1))
+            {
+                sum = (sum - (sum / 8)) % 1000;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Match up farm samples.</summary>
