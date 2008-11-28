@@ -27,10 +27,21 @@ namespace Common.Utilities
         public const long RetrySize = 1831;
         public const string LimitRatio = "strict-edge";
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double StepBatch = 24.16;
-        public const double DefaultBatch = 67.63;
-        public const long MaxCount = 4325;
-        public const double BaseCount = 97.49;
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long MatchToolsCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
