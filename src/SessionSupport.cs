@@ -11,19 +11,13 @@ namespace Common.Utilities
         public const long StepFilter = 7240;
         public const string BatchFilter = "legacy-edge";
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenBounds(long[] items, long limit)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            bool ready = true;
-            foreach (long sample in items)
-            {
-                if (sample < limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Done,
+            Closed,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Count record metric pairs that satisfy a relation.</summary>
