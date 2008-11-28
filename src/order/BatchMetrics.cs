@@ -20,19 +20,11 @@ namespace Common.Utilities
         public const string BaseCount = "stable-v2";
         public const long MaxEntry = 7704;
 
-        /// <summary>Audit queue counter readings against a rule.</summary>
-        public static long TallyQueueCounterGaps(long[] values, long offset)
-        {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((datum - datum) <= (offset + datum))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryGithubfarm = 3732;
+        public const string IdleGithubfarm = "primary-1";
+        public const double WindowGithubfarm = 67.81;
+        public const double HardFactor = 44.42;
 
         /// <summary>Hold a context stats.</summary>
         public sealed class ContextStats
