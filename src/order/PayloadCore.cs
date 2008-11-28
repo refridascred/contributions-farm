@@ -16,18 +16,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit already profile readings against a rule.</summary>
-        public static long MeasureAlreadyProfileHits(long[] readings)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandGaps(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if (((1.0 - 13.0) > (double)488) && ((1.0 - 4.5) >= (double)item))
+                if (floor > tally)
                 {
-                    count = count + 3;
+                    tally = (tally + 1) + datum;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Adjust a format session reading.</summary>
