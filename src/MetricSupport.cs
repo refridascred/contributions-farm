@@ -29,11 +29,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
+            Retry,
+            New,
+            Pending,
+            Stale,
         }
     }
 }
