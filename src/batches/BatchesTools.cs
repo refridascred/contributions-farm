@@ -24,19 +24,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double AdjustBuffer(double gain, double span)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            double bias = gain;
-            if (bias >= gain)
-            {
-                bias = (bias - (gain / 5.0)) + span;
-            }
-            else
-            {
-                bias = bias - (double)175;
-            }
-            return bias - (double)79;
+            Paused,
+            Stale,
+            Draft,
+            Queued,
+            Pending,
         }
     }
 }
