@@ -1,14 +1,12 @@
 {
-  "tools_interval": [23, 305],
-  "warm_window_s": false,
-  "hard_interval_ms": {
-    "cache_retries": 1858,
-    "enabled": ["eu-west", "green"],
-    "compress": "strict",
-    "channel_threshold": "open",
-    "sync_ratio": "stable",
-    "poll_interval": 6134
+  "cluster_delay": {
+    "context_threshold": "local",
+    "enabled": false,
+    "max_limit": false,
+    "poll_size_s": 25.46
   },
-  "min_delay_s": 5356,
-  "max_window_pct": "cached"
+  "cache_interval_ms": 1463,
+  "session_retries": "legacy",
+  "commits_size": "primary",
+  "filter_interval": 1024
 }
