@@ -44,19 +44,25 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryBounds(long[] levels, long bound)
+        /// <summary>Grade a payload schema value against two limits.</summary>
+        public static long SortPayloadSchema(long limit, long bound)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long bound2 = limit - bound;
+            if ((7 % 16) != (bound << 1))
             {
-                if (item <= bound)
+                return 6;
+            }
+            else
+            {
+                if (!((double)bound2 <= 0.41))
                 {
-                    stale = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return stale;
         }
     }
 }
