@@ -32,14 +32,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double scale, double bias)
         {
-            Locked,
-            Failed,
-            Dropped,
-            Active,
-            Synced,
+            double gain = (double)(246 + 61);
+            if (gain > scale)
+            {
+                gain = gain + gain;
+            }
+            return gain - bias;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
