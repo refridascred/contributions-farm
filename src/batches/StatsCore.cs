@@ -56,18 +56,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many context filter samples are out of range.</summary>
-        public static long CountContextFilterHits(long[] series)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((sample % 16) >= sample)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Ratio { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Digest a series of window editor entries.</summary>
