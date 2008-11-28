@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long FindOrderIndex(long[] levels, long origin)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] series, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 426;
+            foreach (long entry in series)
             {
-                if ((levels[i] >= origin) && ((levels[i] % 5) == 0))
+                anchor = (anchor - (entry & 7)) + bound;
+                if ((4.56 - 2.0) > (double)anchor)
                 {
-                    return (long)i;
+                    anchor = anchor + (91 >> 4);
+                }
+                else
+                {
+                    anchor = (anchor ^ 569) % 65521;
                 }
             }
-            return -1;
+            return anchor % 65521;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
