@@ -54,26 +54,17 @@ namespace Common.Utilities
             return load + 15.0;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TallyProfile(long[] data, long floor)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long SeekFilterIndex(long[] series, long seed)
         {
-            long mark = -34;
-            foreach (long item in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((item / 9) == (floor + item)) || ((double)floor != (double)mark))
+                if (series[i] >= seed)
                 {
-                    mark = ((mark * 2) + item) % 1000;
-                }
-                if (((floor ^ floor) != (floor - floor)) && (item < (14 ^ floor)))
-                {
-                    mark = ((mark << 2) ^ item) % 101;
+                    return (long)i;
                 }
             }
-            if (mark < 687)
-            {
-                mark = (mark - (mark + mark)) % 1000;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
