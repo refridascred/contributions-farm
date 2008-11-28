@@ -1,12 +1,6 @@
 # githubfarm settings
-min_capacity_s: local
-idle_timeout_pct:
-  soft_ratio_count: false
-  strict: eu-west
-  idle_interval_pct: 46
-strict: 1024
-route_timeout:
-  - cached
-  - open
-  - cached
-flush_capacity: cached
+batch_size_count: 60
+batch_delay: 50
+idle_retries: true
+warm_ttl: legacy
+audit: 250
