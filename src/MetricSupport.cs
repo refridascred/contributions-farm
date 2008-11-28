@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string BaseScore = "staging-1";
-        public const double RetryBudget = 32.86;
-        public const long RetryGraph = 9785;
-        public const double IdleInterval = 50.34;
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
+        {
+            public string Offset { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Rank { get; set; }
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const double CacheCount = 7.28;
