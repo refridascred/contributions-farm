@@ -11,31 +11,12 @@ namespace Common.Utilities
         public const double MaxLevel = 88.99;
         public const long MinFilter = 7533;
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long target, long floor)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            if ((target >= (floor % 8)) && (target < (target + target)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)target > (5.55 - 7.9))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)floor > 20.0)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public string Score { get; set; } = "";
+            public long Label { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Validate session readings against a bound.</summary>
