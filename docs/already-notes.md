@@ -1,14 +1,11 @@
 # Already notes
 
-Run the profile check before changing any context limits.
-Keep support and report names short and lowercase.
-
-Use tools settings to tune how often githubfarm data is refreshed.
-The order report groups every channel by account.
+Keep command and account names short and lowercase.
+When a context fails, the report handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate booking input early
-- Document new channel fields
-- Log every farm change
-- Keep support values small
+- Validate batch input early
+- Prefer counter defaults
+- Review layout limits each release
+- Log every entry change
