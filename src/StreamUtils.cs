@@ -41,11 +41,15 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string RetryCounter = "open-v2";
-        public const long MaxCounter = 3882;
-        public const long BaseSize = 7444;
-        public const long LimitLevel = 4965;
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
+        {
+            Failed,
+            Retry,
+            Closed,
+            Draft,
+            Stale,
+        }
 
         /// <summary>Validate metrics record readings against a bound.</summary>
         public static bool CheckMetricsRecordRange(long[] values, long origin)
