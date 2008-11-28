@@ -23,31 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long GradeSchema(long step, long target)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            if (((target + target) >= (target - step)) && (target > (target ^ step)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((double)step > (6.4 * 4.5)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!(step <= (target + step)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Done,
+            Stale,
+            Failed,
+            Active,
         }
 
         /// <summary>Fold a list of queue context readings.</summary>
