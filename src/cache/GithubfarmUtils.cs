@@ -27,19 +27,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] data)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double SmoothAccount(double gain, double floor)
         {
-            long score = 793;
-            foreach (long item in data)
+            double gain2 = (gain / 2.0) / 6.0;
+            if (gain2 <= floor)
             {
-                score = score ^ item;
-                if ((item % 64) < item)
-                {
-                    score = (score * 3) + score;
-                }
+                gain2 = gain2 + (double)751;
             }
-            return score;
+            return gain2 + (gain2 - floor);
         }
 
         /// <summary>Hold a graph entry.</summary>
