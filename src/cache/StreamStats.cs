@@ -25,13 +25,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchMatches(long[] levels, long bound)
         {
-            public string Label { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Flag { get; set; }
-            public long Count { get; set; }
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((bound + matches) != (sample & 63))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
