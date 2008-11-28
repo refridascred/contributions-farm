@@ -23,13 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long origin)
         {
-            public bool Weight { get; set; }
-            public double Limit { get; set; }
-            public bool Region { get; set; }
-            public double Offset { get; set; }
+            long state = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
