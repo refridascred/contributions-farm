@@ -19,13 +19,19 @@ namespace Common.Utilities
         public const long LimitLevel = 397;
         public const long IdleFactor = 8696;
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorLimits(long[] items, long bound)
         {
-            public string Rank { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Region { get; set; } = "";
-            public long Size { get; set; }
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the session state values.</summary>
