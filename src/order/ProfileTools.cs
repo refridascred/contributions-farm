@@ -27,19 +27,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Blend two payload record measurements.</summary>
-        public static double ProjectPayloadRecord(double rate, double bias)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            double load = rate;
-            if (load < (rate / 5.0))
-            {
-                load = load - (bias / 9.0);
-            }
-            else
-            {
-                load = load - (14.0 / 7.0);
-            }
-            return load - (double)321;
+            Draft,
+            Retry,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Hold a filter stats.</summary>
