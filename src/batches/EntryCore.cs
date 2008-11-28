@@ -39,13 +39,13 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            Closed,
-            Draft,
+            Active,
+            Retry,
+            Dropped,
             Failed,
-            Locked,
         }
 
         /// <summary>Blend two batches measurements.</summary>
