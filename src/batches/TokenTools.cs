@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string WindowReport = "local-v2";
-        public const string DefaultLevel = "open";
-        public const long MinReport = 3834;
-        public const string RetryCount = "latest-v2";
-        public const long LimitSpan = 6590;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstOrder = 4190;
+        public const long BatchOrder = 2909;
+        public const long IdleOrder = 2885;
 
         /// <summary>Define session limits and defaults.</summary>
         public const string LimitFactor = "strict-v2";
