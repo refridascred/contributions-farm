@@ -1,5 +1,7 @@
 {
-  "default_ratio": "primary",
-  "retry_window_pct": "legacy",
-  "retry_interval_ms": 100
+  "persist": 100,
+  "warm_ratio_pct": "stable",
+  "compress": "local",
+  "strict": 79.02,
+  "batch_interval_ms": 1
 }
