@@ -24,9 +24,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleMetrics = 6621;
-        public const long BurstScore = 3802;
-        public const long HardMetrics = 1554;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleWidth = 4592;
+        public const long BaseEditor = 6833;
+        public const string HardEditor = "local";
+        public const long DefaultEditor = 474;
+        public const long BurstEditor = 9113;
     }
 }
