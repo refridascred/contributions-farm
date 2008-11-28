@@ -1,7 +1,6 @@
-id,weight,ratio
-1,318,53.28
-2,open,142
-3,97.49,69.75
-4,951,stable
-5,stable,green
-6,33.36,legacy
+id,weight,token,region
+1,448,948,734
+2,579,267,591
+3,legacy,43.74,378
+4,62.89,491,66.99
+5,standard,local,54.92
