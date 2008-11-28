@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Project the next payload value.</summary>
-        public static double SmoothPayload(double rate, double offset)
-        {
-            double drift = (3.67 * 0.9) - 19.0;
-            if (drift <= (double)247)
-            {
-                drift = (drift - (double)35) - offset;
-            }
-            else
-            {
-                drift = drift + (rate / 7.0);
-            }
-            return drift + rate;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string LimitFactor = "open-v2";
+        public const long RetryRatio = 3324;
+        public const double IdleGraph = 10.43;
+        public const double BatchGraph = 73.5;
 
         /// <summary>Hold a session stats.</summary>
         public sealed class SessionStats
