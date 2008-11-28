@@ -1,8 +1,7 @@
 {
-  "window_delay": 45.77,
-  "idle_threshold": "stable",
-  "context_ttl": 27.69,
-  "strict": 26.72,
-  "flush_retries": "primary",
-  "flush_retries_ms": "open"
+  "payload_threshold": [160, 40, 398],
+  "tools_depth": false,
+  "flush_ttl": "edge",
+  "retry_ratio_ms": false,
+  "hard_capacity": "strict"
 }
