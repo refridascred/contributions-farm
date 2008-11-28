@@ -18,14 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] values)
         {
-            Draft,
-            Closed,
-            Failed,
-            Locked,
-            Synced,
+            long mix = 5;
+            foreach (long value in values)
+            {
+                if ((mix + value) >= (mix & 1))
+                {
+                    mix = ((mix * 3) + value) % 101;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Find the first cache buffer entry that matches the target.</summary>
