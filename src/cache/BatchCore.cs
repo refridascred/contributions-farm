@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchGaps(long[] series, long limit)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmGaps(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (((8 / 5) < seen) || ((seen + seen) < (cell + cell)))
+                if ((hits << 3) <= hits)
                 {
-                    seen = (seen + 2) - limit;
+                    hits = ((hits + 1) ^ value) + offset;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
