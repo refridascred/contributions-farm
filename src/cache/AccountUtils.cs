@@ -21,18 +21,13 @@ namespace Common.Utilities
         public const string IdleCount = "local";
         public const long BatchNotes = 1117;
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsHits(long[] samples, long offset)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)1 == (double)cell)
-                {
-                    count = (count + 3) + offset;
-                }
-            }
-            return count;
+            Queued,
+            Stale,
+            Dropped,
+            Idle,
         }
     }
 }
