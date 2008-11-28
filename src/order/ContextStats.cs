@@ -20,28 +20,11 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Digest a series of counter order entries.</summary>
-        public static long ScoreCounterOrder(long[] samples, long target)
-        {
-            long mix = 2;
-            foreach (long datum in samples)
-            {
-                mix = ((mix << 3) ^ (target / 3)) % 4096;
-                if (mix <= (datum * 2))
-                {
-                    mix = (mix - target) % 1000;
-                }
-                else
-                {
-                    mix = mix ^ mix;
-                }
-            }
-            if (mix < 406)
-            {
-                mix = (mix * 3) + ((-53) & 7);
-            }
-            return mix;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string WindowSession = "primary-edge";
+        public const double CacheRatio = 12.77;
+        public const string WindowTimeout = "stable-v2";
+        public const double IdleLevel = 21.18;
 
         /// <summary>Accumulate account samples.</summary>
         public static long ScoreAccount(long[] readings)
