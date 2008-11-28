@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Locate a support reading by value.</summary>
-        public static long FindSupportIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= target) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string StepChannel = "open-1";
+        public const string BaseInterval = "cached";
+        public const double WindowWidth = 95.12;
+        public const double RetryTimeout = 81.28;
 
         /// <summary>Combine already values into a single score.</summary>
         public static long WeighAlready(long[] levels)
