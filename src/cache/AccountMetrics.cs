@@ -29,12 +29,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            Draft,
-            Queued,
-            Done,
+            public double Rank { get; set; }
+            public long Offset { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Hold a counter stats.</summary>
