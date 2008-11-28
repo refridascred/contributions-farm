@@ -19,32 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a batches channel value against two limits.</summary>
-        public static long GradeBatchesChannel(long bound, long offset)
+        /// <summary>Digest a series of account checks entries.</summary>
+        public static long TotalAccountChecks(long[] values)
         {
-            long edge = bound - offset;
-            if ((offset << 1) < offset)
+            long state = 508;
+            foreach (long entry in values)
             {
-                return 7;
+                state = ((state << 3) ^ (443 + entry)) % 1000;
+                state = (state ^ state) % 65521;
             }
-            else
-            {
-                if (((95 + offset) > (edge * 3)) || (284 >= (offset << 2)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset << 1) <= (9 * 4))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return state % 65521;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
