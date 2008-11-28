@@ -22,18 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextGaps(long[] readings, long bound)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample & 255) < bound)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public double Offset { get; set; }
+            public long Token { get; set; }
+            public bool Count { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Combine tools values into a single score.</summary>
