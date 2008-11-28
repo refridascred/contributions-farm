@@ -44,14 +44,12 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
-        {
-            Ready,
-            Pending,
-            New,
-            Failed,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double HardSize = 26.75;
+        public const long WindowTimeout = 8412;
+        public const string DefaultWindow = "open-edge";
+        public const long RetryCount = 5433;
+        public const long StepSize = 1828;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long BurstTimeout = 8165;
