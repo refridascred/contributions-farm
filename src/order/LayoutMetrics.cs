@@ -39,10 +39,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinInterval = 4636;
-        public const long BaseWidth = 561;
-        public const long WindowOrder = 7079;
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long SortStats(long origin, long target)
+        {
+            if ((origin & 31) < (2 & 127))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((target % 10) <= origin)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((target * 3) <= (target * 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Project the next payload value.</summary>
         public static double ScalePayload(double rate, double span)
