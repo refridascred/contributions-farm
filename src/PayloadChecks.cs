@@ -51,22 +51,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long PairFormatCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftAccount = 9568;
+        public const string RetryInterval = "primary-edge";
+        public const long IdleAccount = 9803;
 
         /// <summary>Iterate the counter series from a seed.</summary>
         public static long DeriveCounter(long step)
