@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long PairBatchesCount(long[] values)
+        /// <summary>Audit schema report readings against a rule.</summary>
+        public static long TallySchemaReportOutliers(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((hits - item) >= item)
                 {
-                    if ((values[i] + values[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a notes info.</summary>
