@@ -28,25 +28,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank layout metric input into a small class.</summary>
-        public static long BucketLayoutMetric(long floor, long step)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LookupCounterIndex(long[] levels, long seed)
         {
-            long lane = floor ^ step;
-            if ((lane % 3) <= floor)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (2.3 > (double)step)
+                if (levels[i] > seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a window stats.</summary>
