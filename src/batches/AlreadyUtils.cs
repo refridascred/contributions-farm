@@ -13,19 +13,12 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordMatches(long[] items)
-        {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((sample - sample) <= (sample % 5))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstSpan = 6085;
+        public const long HardFilter = 3739;
+        public const string IdleFilter = "fallback";
+        public const long BaseFilter = 2865;
+        public const long BurstFilter = 859;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long LimitCount = 6589;
