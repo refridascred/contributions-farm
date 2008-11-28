@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Scale a graph tools figure with a bias.</summary>
+        public static double AdjustGraphTools(double gain, double floor)
         {
-            public double Label { get; set; }
-            public double Score { get; set; }
-            public bool Count { get; set; }
-            public bool Weight { get; set; }
+            double rate = (4.85 * 19.0) - (floor / 2.0);
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + (rate - gain)) - (double)(long)i;
+            }
+            return rate + gain;
         }
 
         /// <summary>Hold a token summary.</summary>
