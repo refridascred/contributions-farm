@@ -33,18 +33,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextHits(long[] readings)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LookupEntryIndex(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)seen != (double)value)
+                if (values[i] == offset)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
