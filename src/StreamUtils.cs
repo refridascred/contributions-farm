@@ -39,10 +39,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinGithubfarm = 4973;
-        public const long LimitGithubfarm = 3284;
-        public const double DefaultGithubfarm = 53.88;
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksGaps(long[] samples)
+        {
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if (5.9 <= (double)seen)
+                {
+                    seen = (seen + 2) ^ item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a layout options.</summary>
         public sealed class LayoutOptions
