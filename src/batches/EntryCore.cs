@@ -39,12 +39,32 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Rank account input into a small class.</summary>
+        public static long BucketAccount(long bound, long origin)
         {
-            Paused,
-            Active,
-            Ready,
+            long lane = bound - origin;
+            if ((origin * 5) <= ((-5) ^ origin))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((89 + lane) >= (bound >> 4))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((lane & 3) > (lane + lane)) || ((double)bound >= (double)151))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two batches measurements.</summary>
