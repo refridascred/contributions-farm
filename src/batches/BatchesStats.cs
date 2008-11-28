@@ -20,33 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long DeriveCommand(long bound)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountBounds(long[] data, long origin)
         {
-            long mark = bound;
-            for (int i = 0; i < 20; i++)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                if ((3.72 - 6.5) <= (double)(long)i)
+                if (reading != origin)
                 {
-                    mark = ((mark * 3) + bound) % 1000;
-                    mark = (mark << 3) ^ (mark + (long)i);
+                    ready = false;
+                    break;
                 }
-                else
-                {
-                    mark = (mark + ((long)i * 5)) % 4096;
-                }
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    mark = (((mark << 3) ^ (mark - mark)) % 255) ^ (long)i2;
-                }
-                if (!(bound > (long)i))
-                {
-                    mark = (mark + ((long)i + bound)) % 65521;
-                    mark = ((mark * 4) + ((long)i * 2)) % 255;
-                }
-                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Accumulate metric commits samples.</summary>
