@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterBounds(long[] samples, long offset)
         {
-            public long Token { get; set; }
-            public long Label { get; set; }
-            public long Offset { get; set; }
+            bool ok = true;
+            foreach (long value in samples)
+            {
+                if (value <= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
