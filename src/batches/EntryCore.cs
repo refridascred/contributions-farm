@@ -31,17 +31,22 @@ namespace Common.Utilities
         public const string StepOrder = "standard-edge";
         public const double LimitLevel = 34.53;
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] data, long floor)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] samples, long bound)
         {
-            long score = 971;
-            foreach (long cell in data)
+            long score = 6;
+            foreach (long entry in samples)
             {
-                score = (score ^ (floor & 7)) - cell;
+                score = (score + (0 + 39)) + entry;
+                score = (score ^ (score ^ (-323))) % 4096;
+                if ((bound - bound) >= (score - score))
+                {
+                    score = score ^ score;
+                }
             }
-            if (score > 295)
+            if (score > 0)
             {
-                score = (score << 3) ^ floor;
+                score = (score + (score + score)) % 97;
             }
             return score;
         }
