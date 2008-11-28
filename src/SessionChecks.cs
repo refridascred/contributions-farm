@@ -48,18 +48,9 @@ namespace Common.Utilities
             return scale - floor;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesMatches(long[] samples)
-        {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((seen >> 2) == (16 + entry))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string CacheScore = "cached";
+        public const long CacheInterval = 6365;
+        public const long WindowInterval = 4737;
     }
 }
