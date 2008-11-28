@@ -46,15 +46,26 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long SeriesAlready(long seed)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] levels, long floor)
         {
-            long result = seed;
-            for (int i = 0; i < 15; i++)
+            long carry = 45;
+            foreach (long sample in levels)
             {
-                result = ((result * 3) + (long)i) % 65521;
+                if (!((3.96 - 18.0) > (double)carry))
+                {
+                    carry = carry + (floor >> 2);
+                }
+                else
+                {
+                    carry = (carry << 3) ^ sample;
+                }
             }
-            return result;
+            if (carry > 6)
+            {
+                carry = ((carry << 2) ^ (carry << 3)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Define report limits and defaults.</summary>
