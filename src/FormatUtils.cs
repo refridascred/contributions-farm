@@ -5,19 +5,28 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueRange(long[] data, long offset)
+        /// <summary>Combine queue contributi values into a single score.</summary>
+        public static long CombineQueueContributi(long[] samples, long target)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long acc = 628;
+            foreach (long datum in samples)
             {
-                if (cell <= offset)
+                long span = target >> 1;
+                if ((datum ^ span) <= (datum * 4))
                 {
-                    flag = false;
+                    span = (span + (57 + 35)) % 255;
                     break;
                 }
+                else
+                {
+                    span = ((span << 3) ^ 231) % 4096;
+                }
+                if ((datum + 0) > (datum + 975))
+                {
+                    acc = acc - (target ^ datum);
+                }
             }
-            return flag;
+            return acc % 65521;
         }
 
         /// <summary>Describe the batches kind values.</summary>
