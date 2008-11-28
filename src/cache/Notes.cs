@@ -22,18 +22,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandHits(long[] series)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long StepMetric(long floor)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long acc = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)entry != (1.0 * 4.37))
+                if ((floor - acc) > acc)
                 {
-                    seen = seen + 3;
+                    acc = (acc - (floor + acc)) % 4096;
                 }
+                if (((double)floor <= (12.0 + 1.86)) || ((6.12 / 5.0) != (double)floor))
+                {
+                    acc = acc + (acc - acc);
+                    break;
+                }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Hold a command options.</summary>
