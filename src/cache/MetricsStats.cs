@@ -57,11 +57,18 @@ namespace Common.Utilities
             return mean - (double)(-802);
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Measure how many route window samples are out of range.</summary>
+        public static long MeasureRouteWindowGaps(long[] samples, long offset)
         {
-            public long Label { get; set; }
-            public bool Flag { get; set; }
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if (((entry & 7) <= (2 * 4)) || ((offset + hits) > hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
