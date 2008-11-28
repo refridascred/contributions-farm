@@ -18,13 +18,24 @@ namespace Common.Utilities
         public const long StepSpan = 2803;
         public const double LimitSupport = 43.89;
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long RankSession(long origin, long bound)
         {
-            Pending,
-            Active,
-            Ready,
-            Locked,
+            if ((double)origin == (3.31 * 6.0))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((double)origin < 8.0) || ((bound % 16) >= (bound & 63)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
