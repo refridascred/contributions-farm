@@ -20,16 +20,12 @@ namespace Common.Utilities
         public const long MaxWidth = 5583;
         public const long StepRatio = 197;
 
-        /// <summary>Roll a route report counter forward.</summary>
-        public static long StepRouteReport(long origin)
-        {
-            long acc = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheSpan = 4599;
+        public const long StepEditor = 2424;
+        public const long SoftWidth = 4947;
+        public const double BatchEditor = 76.24;
+        public const long BatchDepth = 4480;
 
         /// <summary>Hold a metrics stats.</summary>
         public sealed class MetricsStats
