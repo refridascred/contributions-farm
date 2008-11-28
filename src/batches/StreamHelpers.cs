@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            Stale,
-            Closed,
-            Pending,
-            Done,
+            public string Limit { get; set; } = "";
+            public long Score { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Roll a token counter forward.</summary>
