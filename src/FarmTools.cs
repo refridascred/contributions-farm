@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaHits(long[] readings)
-        {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((((9.5 - 9.74) >= (double)item) || ((hits + hits) < 78)) && !((double)hits <= 3.0))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitQueue = 134;
+        public const long MinWidth = 8606;
+        public const long MaxQueue = 7138;
+        public const long IdleQueue = 9930;
 
         /// <summary>Hold a metrics info.</summary>
         public sealed class MetricsInfo
