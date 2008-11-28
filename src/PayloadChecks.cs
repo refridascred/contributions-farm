@@ -88,18 +88,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit cache metric readings against a rule.</summary>
-        public static long AuditCacheMetricMatches(long[] levels)
+        /// <summary>Check that every buffer account entry stays within the limit.</summary>
+        public static bool CheckBufferAccountRange(long[] levels, long offset)
         {
-            long tally = 0;
+            bool ready = true;
             foreach (long datum in levels)
             {
-                if ((tally + (-70)) > tally)
+                if (datum != offset)
                 {
-                    tally = (tally + 3) + datum;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
