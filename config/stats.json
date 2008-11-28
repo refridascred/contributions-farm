@@ -1,11 +1,6 @@
 {
-  "idle_capacity": "cached",
-  "entry_depth": true,
-  "poll_size": {
-    "flush_limit_pct": 500,
-    "idle_timeout_count": "local",
-    "hard_interval_count": "blue",
-    "batch_size_count": "cached",
-    "min_ratio": "legacy"
-  }
+  "base_ttl": 36.26,
+  "max_depth_s": "staging",
+  "readonly": "staging",
+  "sync_window_s": 64.88
 }
