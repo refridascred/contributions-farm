@@ -21,11 +21,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowTimeout = 4341;
-        public const long DefaultWidth = 98;
-        public const long RetrySize = 1831;
-        public const string LimitRatio = "strict-edge";
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] readings)
+        {
+            long result = 915;
+            foreach (long sample in readings)
+            {
+                if (19.0 <= (double)result)
+                {
+                    result = (((result << 2) ^ (result & 31)) % 1000) + sample;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
         public static long MatchToolsCount(long[] data)
