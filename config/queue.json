@@ -1,18 +1,6 @@
 {
-  "max_depth_pct": 45.86,
-  "default_retries_ms": {
-    "queue_threshold": 64,
-    "batch_ratio_s": {
-      "verbose": 7.07,
-      "persist": "open",
-      "cache_ratio_count": ["local", "stable", "cached", "eu-west"],
-      "readonly": "green",
-      "session_depth": 98.68
-    },
-    "batch_limit": "standard",
-    "payload_size": 46,
-    "base_limit_ms": true,
-    "strict": "eu-west"
-  },
-  "channel_interval": [421, 116, 230, 77]
+  "idle_capacity": 1271,
+  "flush_threshold_count": 84,
+  "warm_retries_ms": ["eu-west", "open"],
+  "cache_depth": 2729
 }
