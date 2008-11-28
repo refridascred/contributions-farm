@@ -39,19 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long DeriveAlready(long step)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long state = step;
-            for (int i = 0; i < 19; i++)
-            {
-                if (7.6 > (double)state)
-                {
-                    continue;
-                }
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
+            public string Score { get; set; } = "";
+            public long Offset { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a notes options.</summary>
