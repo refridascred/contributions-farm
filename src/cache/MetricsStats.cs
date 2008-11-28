@@ -38,21 +38,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long PairAlreadyCount(long[] items)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long IterateRoute(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!(67 >= result))
                 {
-                    if ((items[i] + items[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = (result - (floor << 3)) % 101;
                 }
+                result = (result * 5) + ((long)i / 2);
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Combine cluster metrics values into a single score.</summary>
