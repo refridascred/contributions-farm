@@ -24,21 +24,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long PairBufferCount(long[] items)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 3;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = total - (cell * 4);
             }
-            return count;
+            if (total < 952)
+            {
+                total = (total + (total ^ total)) % 255;
+            }
+            return total % 97;
         }
 
         /// <summary>Hold a notes options.</summary>
