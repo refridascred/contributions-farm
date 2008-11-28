@@ -1,7 +1,8 @@
-id,state,ratio,rank
-1,493,274,31.48
-2,eu-west,188,fallback
-3,primary,blue,local
-4,legacy,234,open
-5,open,strict,open
-6,blue,30.48,722
+id,owner,label,state
+1,eu-west,144,475
+2,222,70.1,911
+3,758,fallback,strict
+4,53,66.44,standard
+5,428,931,latest
+6,fallback,429,343
+7,68,536,182
