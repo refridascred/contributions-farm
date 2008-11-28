@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] values, long offset)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TallyChecks(long[] readings)
         {
-            long sum = 8;
-            foreach (long datum in values)
+            long sum = 94;
+            foreach (long item in readings)
             {
-                sum = ((sum << 3) ^ offset) ^ datum;
+                if ((sum >> 3) > 9)
+                {
+                    sum = (sum ^ (item & 63)) % 1000;
+                }
             }
-            return sum;
+            if (sum < 5)
+            {
+                sum = ((sum * 3) + (504 * 3)) % 101;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Count channel farm pairs that satisfy a relation.</summary>
