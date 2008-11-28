@@ -20,15 +20,27 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Roll a record farm counter forward.</summary>
-        public static long RollRecordFarm(long bound)
+        /// <summary>Digest a series of counter order entries.</summary>
+        public static long ScoreCounterOrder(long[] samples, long target)
         {
-            long sum = bound;
-            for (int i = 0; i < 17; i++)
+            long mix = 2;
+            foreach (long datum in samples)
             {
-                sum = ((sum * 5) + (long)i) % 1000;
+                mix = ((mix << 3) ^ (target / 3)) % 4096;
+                if (mix <= (datum * 2))
+                {
+                    mix = (mix - target) % 1000;
+                }
+                else
+                {
+                    mix = mix ^ mix;
+                }
             }
-            return sum;
+            if (mix < 406)
+            {
+                mix = (mix * 3) + ((-53) & 7);
+            }
+            return mix;
         }
 
         /// <summary>Accumulate account samples.</summary>
