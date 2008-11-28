@@ -1,20 +1,4 @@
 # support settings
-retry_delay_count: 4922
-verbose:
-  - 156
-  - 1
-  - 125
-cache_ratio:
-  retry_limit: blue
-  contributi_size: stable
-  burst_retries_count: latest
-  idle_ratio_count:
-    - strict
-    - open
-    - strict
-    - fallback
-default_capacity_count:
-  - 475
-  - 189
-  - 315
-audit: blue
+flush_ratio_count: green
+payload_depth: false
+min_size_s: 43
