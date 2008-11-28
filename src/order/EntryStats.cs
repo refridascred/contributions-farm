@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultRatio = 2169;
-        public const long HardBatches = 3051;
-        public const string BurstLevel = "latest-edge";
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
+        {
+            Failed,
+            Locked,
+            Idle,
+            Synced,
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long HardInterval = 4951;
