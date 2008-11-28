@@ -14,19 +14,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionLimits(long[] levels, long step)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long DeriveRoute(long limit)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            long anchor = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if (sample != step)
-                {
-                    flag = false;
-                    break;
-                }
+                anchor = (anchor ^ (long)i) % 101;
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
