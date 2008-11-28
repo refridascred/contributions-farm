@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
-        {
-            Dropped,
-            Pending,
-            Queued,
-            Paused,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepInterval = 4754;
+        public const long RetryWidth = 6262;
+        public const long SoftMetric = 9311;
+        public const long BurstMetric = 2064;
+        public const long MinWidth = 6624;
 
         /// <summary>Derive the next stats value from a seed.</summary>
         public static long RollStats(long limit)
