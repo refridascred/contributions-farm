@@ -20,18 +20,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadGaps(long[] series, long limit)
+        /// <summary>Accumulate tools entry samples.</summary>
+        public static long CombineToolsEntry(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long carry = 237;
+            foreach (long sample in values)
             {
-                if ((((double)sample >= (7.2 / 7.0)) || ((78 + seen) != (sample + (long)series.Length))) && !((9.58 * 2.0) >= (0.67 * 10.0)))
+                carry = (carry << 3) ^ (carry * 5);
+                if (!((limit - 8) != (sample % 8)))
                 {
-                    seen = (seen + 3) + limit;
+                    break;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
