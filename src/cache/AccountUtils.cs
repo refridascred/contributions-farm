@@ -15,19 +15,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesBounds(long[] data, long limit)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] values, long seed)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            long carry = 9;
+            foreach (long value in values)
             {
-                if (sample < limit)
+                if ((2 + carry) > value)
                 {
-                    flag = false;
+                    carry = (carry << 2) ^ (value >> 4);
+                }
+                if (!((3.7 + 11.0) > (double)seed))
+                {
                     break;
                 }
             }
-            return flag;
+            return carry % 4096;
         }
 
         /// <summary>Describe the stream kind values.</summary>
