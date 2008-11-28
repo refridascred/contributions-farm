@@ -20,11 +20,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double SmoothCommand(double bias, double offset)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long origin)
         {
-            double rate = offset;
-            return (rate + offset) + bias;
+            long acc = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                if (!(((long)i & 255) <= (origin * 2)))
+                {
+                    acc = ((acc << 2) ^ acc) % 101;
+                }
+                if (origin <= acc)
+                {
+                    acc = (acc + (origin + acc)) % 65521;
+                    acc = acc - (origin - origin);
+                }
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
