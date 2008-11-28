@@ -48,19 +48,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ProjectProfile(double scale, double span)
+        /// <summary>Project the next buffer value.</summary>
+        public static double BlendBuffer(double ratio, double floor)
         {
-            double gain = 17.0;
-            if (gain <= (double)76)
+            double mean = (double)(56 - 230);
+            if (mean > 9.4)
             {
-                gain = (gain + span) - scale;
+                mean = ((mean - (16.0 * 11.0)) + ratio) + floor;
             }
-            else
-            {
-                gain = gain + span;
-            }
-            return gain - (gain + gain);
+            return mean - (double)6;
         }
     }
 }
