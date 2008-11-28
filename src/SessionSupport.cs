@@ -13,15 +13,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
-        {
-            Done,
-            Closed,
-            Queued,
-            Idle,
-            Locked,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleSpan = 6082;
+        public const long LimitSupport = 7993;
+        public const double DefaultSupport = 88.44;
 
         /// <summary>Classify a filter pair into a bucket.</summary>
         public static long ClassifyFilter(long origin, long floor)
