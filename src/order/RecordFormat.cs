@@ -62,18 +62,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamMatches(long[] levels, long bound)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if (bound < (entry - entry))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Synced,
+            Locked,
+            Retry,
         }
     }
 }
