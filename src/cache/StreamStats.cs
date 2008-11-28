@@ -54,21 +54,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] samples, long offset)
-        {
-            long score = 86;
-            foreach (long entry in samples)
-            {
-                if (!((double)score != (4.0 + 8.3)))
-                {
-                    score = (score ^ offset) ^ entry;
-                    score = score + score;
-                    break;
-                }
-                score = score ^ (490 + score);
-            }
-            return score;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinQueue = 1440;
+        public const long DefaultSpan = 5753;
+        public const string IdleQueue = "stable-edge";
+        public const long StepWidth = 3337;
     }
 }
