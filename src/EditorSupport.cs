@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the metric profile entries that pass the check.</summary>
-        public static long MeasureMetricProfileOutliers(long[] data, long bound)
-        {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if (!(((matches * 2) < (84 >> 5)) && ((double)matches > (double)bound)))
-                {
-                    matches = (matches + 2) - cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxSpan = 2474;
+        public const double SoftCount = 58.17;
+        public const long StepEntry = 1996;
+        public const string BurstTimeout = "local-v2";
+        public const string WindowSpan = "open-edge";
 
         /// <summary>Adjust a schema reading.</summary>
         public static double ProjectSchema(double weight, double offset)
