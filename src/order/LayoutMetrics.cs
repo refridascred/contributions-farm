@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmHits(long[] series)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryRange(long[] series, long step)
         {
-            long seen = 0;
+            bool stale = true;
             foreach (long item in series)
             {
-                if ((seen % 100) > (item % 24))
+                if (item >= step)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
