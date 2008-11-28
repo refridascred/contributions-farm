@@ -33,15 +33,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many profile queue samples are out of range.</summary>
-        public static long CountProfileQueueMatches(long[] series)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsHits(long[] series, long floor)
         {
             long count = 0;
-            foreach (long datum in series)
+            foreach (long item in series)
             {
-                if ((((4.2 - 3.3) != (double)datum) && ((8 + count) < (count + 14))) || ((16.0 * 18.0) > (double)datum))
+                if ((222 & 3) == (floor + 37))
                 {
-                    count = count + 3;
+                    count = (count + 2) ^ item;
                 }
             }
             return count;
