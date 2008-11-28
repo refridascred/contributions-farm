@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long ClassifyGraph(long offset, long offset2)
+        /// <summary>Combine metric layout values into a single score.</summary>
+        public static long FoldMetricLayout(long[] data)
         {
-            if ((offset + offset) >= offset2)
+            long sum = 756;
+            foreach (long sample in data)
             {
-                return 4;
+                sum = (sum + sample) % 65521;
             }
-            else
+            if (sum > 847)
             {
-                if ((double)offset == (2.9 + 1.48))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)offset2 == (0.71 * 7.36))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                sum = ((sum * 5) + (sum * 5)) % 255;
             }
+            return sum % 1000;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
