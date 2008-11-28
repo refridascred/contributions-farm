@@ -34,11 +34,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Project the next editor farm value.</summary>
-        public static double AdjustEditorFarm(double ratio, double span)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheBounds(long[] items, long seed)
         {
-            double load = (6.0 + ratio) - (ratio * 1.44);
-            return load + (span / 7.0);
+            bool stale = true;
+            foreach (long reading in items)
+            {
+                if (reading < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
