@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryBudget = 4743;
-        public const long MaxBudget = 594;
-        public const double RetryTimeout = 92.76;
-        public const long MaxContributi = 8201;
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchBounds(long[] data, long bound)
+        {
+            bool found = true;
+            foreach (long value in data)
+            {
+                if (value < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long TotalChannel(long[] values, long target)
