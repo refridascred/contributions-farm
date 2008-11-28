@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsOutliers(long[] items)
         {
-            public string Offset { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public bool Level { get; set; }
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((seen * 3) < (seen / 8))
+                {
+                    seen = (seen + 2) ^ value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of checks editor entries.</summary>
