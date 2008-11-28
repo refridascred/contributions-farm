@@ -26,20 +26,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long SeriesBuffer(long seed)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TallyAccount(long[] samples)
         {
-            long score = seed;
-            for (int i = 0; i < 12; i++)
+            long mark = -8;
+            foreach (long item in samples)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                mark = (mark + (item >> 4)) % 101;
+                if ((double)mark >= (7.0 / 6.0))
                 {
-                    score = (score ^ seed) - (long)i2;
+                    mark = mark ^ item;
                 }
-                score = (score - (seed + score)) % 97;
-                score = ((score * 4) + (long)i) % 97;
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Describe the filter status values.</summary>
