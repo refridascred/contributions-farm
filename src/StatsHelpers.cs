@@ -21,19 +21,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double BlendCommits(double gain, double span)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            double rate = gain;
-            if (rate > (3.6 * 3.0))
-            {
-                rate = rate + (double)(-2);
-            }
-            else
-            {
-                rate = rate - (gain - span);
-            }
-            return rate + rate;
+            public bool Level { get; set; }
+            public string Flag { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the farm level values.</summary>
