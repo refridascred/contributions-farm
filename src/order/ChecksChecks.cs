@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterHits(long[] items, long offset)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if (677 <= (cell % 100))
-                {
-                    count = (count + 1) - offset;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Retry,
+            Ready,
+            New,
+            Locked,
+            Done,
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
