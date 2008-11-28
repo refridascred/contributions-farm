@@ -53,23 +53,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long RollFormat(long seed)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportBounds(long[] values, long seed)
         {
-            long result = seed;
-            for (int i = 0; i < 19; i++)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                if ((double)result < (7.64 - 4.77))
+                if (cell > seed)
                 {
-                    result = (result + (seed * 5)) % 101;
+                    stale = false;
+                    break;
                 }
-                for (int i3 = 0; i3 < 8; i3++)
-                {
-                    result = ((result - (7 + seed)) % 97) - (long)i3;
-                }
-                result = ((result * 5) + (long)i) % 1000;
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
