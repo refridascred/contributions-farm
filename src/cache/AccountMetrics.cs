@@ -19,15 +19,38 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long StepWindow(long seed)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long RankSession(long origin, long bound)
         {
-            long state = seed;
-            for (int i = 0; i < 24; i++)
+            if (origin >= 424)
             {
-                state = ((state * 5) + (long)i) % 65521;
+                return 5;
             }
-            return state;
+            else
+            {
+                if ((0 >> 4) < bound)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((origin + bound) <= 6) || ((origin / 7) < (origin % 24)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((origin - bound) < (origin << 1)) || ((double)bound < 0.96))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the schema level values.</summary>
