@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the report account entries that pass the check.</summary>
-        public static long AuditReportAccountOutliers(long[] data)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long GradeContributi(long target, long seed)
         {
-            long count = 0;
-            foreach (long item in data)
+            if (((2 * 4) <= (seed % 24)) && (seed < (target + seed)))
             {
-                if (item < (9 - item))
+                return 3;
+            }
+            else
+            {
+                if (seed <= (target >> 2))
                 {
-                    count = count + 3;
+                    return 8;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (74 <= (seed % 97))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)target > (1.3 + 1.75))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
