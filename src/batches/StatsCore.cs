@@ -36,24 +36,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long SortMetrics(long offset, long target)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenOutliers(long[] data, long target)
         {
-            if ((99 ^ target) <= target)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset > ((-42) ^ offset)) || ((target << 1) < (offset >> 5)))
+                if ((9.81 + 9.97) <= (double)target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    hits = (hits + 3) + datum;
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many context filter samples are out of range.</summary>
