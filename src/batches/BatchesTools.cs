@@ -30,11 +30,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            public double Owner { get; set; }
-            public bool Region { get; set; }
+            public long Owner { get; set; }
+            public long Token { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
