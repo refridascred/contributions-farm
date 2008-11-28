@@ -1,7 +1,18 @@
 {
-  "burst_delay_ms": "fallback",
-  "default_window": [426, 299, 292, 153],
-  "compress": 32,
-  "base_window": true,
-  "default_timeout_count": 87.65
+  "token_ttl": 81.75,
+  "persist": [199, 207, 411, 280],
+  "sync_threshold_ms": {
+    "tools_limit": 81.33,
+    "batch_interval_pct": [142, 317, 111],
+    "retry_depth_ms": 53.89,
+    "idle_timeout": {
+      "soft_delay_ms": "fallback",
+      "burst_ttl": 53.94,
+      "batch_ratio": "local",
+      "min_size_ms": 30,
+      "soft_timeout_pct": "local"
+    },
+    "warm_delay_pct": "edge"
+  },
+  "base_retries_count": 420
 }
