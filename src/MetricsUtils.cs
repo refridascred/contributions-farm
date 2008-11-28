@@ -41,26 +41,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] series, long offset)
+        /// <summary>Digest a series of account profile entries.</summary>
+        public static long ScoreAccountProfile(long[] items)
         {
-            long anchor = 0;
-            foreach (long item in series)
+            long carry = -95;
+            foreach (long entry in items)
             {
-                if ((anchor % 60) == (item & 15))
+                if ((double)entry == (double)carry)
                 {
-                    anchor = (anchor + (anchor >> 4)) % 255;
+                    carry = carry + (entry << 2);
                 }
-                if ((offset << 2) <= (offset + anchor))
+                else
                 {
-                    break;
+                    carry = (carry - carry) % 4096;
                 }
             }
-            if (anchor < 966)
-            {
-                anchor = anchor + (anchor + anchor);
-            }
-            return anchor;
+            return carry % 4096;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
