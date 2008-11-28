@@ -21,18 +21,15 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryHits(long[] series)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] values)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long score = 733;
+            foreach (long sample in values)
             {
-                if (((matches + 879) <= 37) || ((matches + matches) >= (value + (long)series.Length)))
-                {
-                    matches = matches + 2;
-                }
+                score = (score + ((-51) + score)) ^ sample;
             }
-            return matches;
+            return score;
         }
     }
 }
