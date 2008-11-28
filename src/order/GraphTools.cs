@@ -21,15 +21,31 @@ namespace Common.Utilities
         public const string SoftDepth = "legacy-1";
         public const long RetryLevel = 8585;
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long bound)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long RankBuffer(long seed, long limit)
         {
-            long carry = bound;
-            for (int i = 0; i < 13; i++)
+            if (!(15 < (seed % 5)))
             {
-                carry = ((carry * 3) + (long)i) % 65521;
+                return 3;
             }
-            return carry;
+            else
+            {
+                if (((8.0 + 8.77) <= 3.0) && ((limit - seed) == (seed << 3)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((seed >> 5) > (limit >> 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
