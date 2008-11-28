@@ -38,18 +38,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueHits(long[] items, long step)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatHits(long[] levels)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (!((matches > (step - matches)) || ((matches - (long)items.Length) > (long)items.Length)))
+                if ((double)seen <= 8.9)
                 {
-                    matches = (matches + 1) + reading;
+                    seen = (seen + 3) ^ cell;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
