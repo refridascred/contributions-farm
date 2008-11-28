@@ -20,21 +20,15 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long PairBatchCount(long[] data)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TotalRoute(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 8;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = (state + (value + value)) % 1000;
             }
-            return tally;
+            return state % 4096;
         }
 
         /// <summary>Count account context pairs that satisfy a relation.</summary>
