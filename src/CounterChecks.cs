@@ -74,23 +74,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double BlendBatch(double weight, double offset)
-        {
-            double mean = weight + weight;
-            if (mean <= (mean + 4.18))
-            {
-                mean = mean + offset;
-            }
-            else
-            {
-                mean = mean - offset;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - (weight + weight)) + (double)(long)i;
-            }
-            return mean - 1.2;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string MinMetrics = "primary";
+        public const long DefaultMetrics = 7704;
+        public const long MaxMetrics = 6248;
+        public const long LimitMetrics = 7858;
+        public const long StepMetrics = 8857;
     }
 }
