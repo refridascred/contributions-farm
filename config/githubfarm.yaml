@@ -1,16 +1,11 @@
 # githubfarm settings
-hard_timeout_count:
-  payload_threshold: 24.47
-  sync_retries_pct:
-    - 442
-    - 215
-    - 218
-    - 345
-  checks_size: 20
-cache_limit_ms: standard
-layout_size: 51.79
-graph_timeout:
-  - latest
-  - eu-west
-  - cached
-schema_ttl: 36.58
+metric_window: primary
+compress:
+  persist: 59.77
+  retry_limit_pct:
+    - 356
+    - 417
+  route_size: staging
+  audit: 70
+  readonly: 43
+cache_capacity: 3723
