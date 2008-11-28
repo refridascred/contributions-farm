@@ -14,17 +14,32 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long DeriveAlready(long origin)
+        /// <summary>Grade a support record value against two limits.</summary>
+        public static long BucketSupportRecord(long limit, long offset)
         {
-            long mix = origin;
-            for (int i = 0; i < 15; i++)
+            long diff = limit ^ offset;
+            if ((3.0 * 3.3) != (double)limit)
             {
-                mix = (mix ^ ((-3) * 4)) % 255;
-                mix = ((mix * 2) + (origin / 6)) % 4096;
-                mix = ((mix * 4) + (long)i) % 97;
+                return 5;
             }
-            return mix;
+            else
+            {
+                if ((diff % 64) != (limit + limit))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((33 >= offset) && ((limit - 4) < offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
