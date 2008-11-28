@@ -36,19 +36,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] data, long bound)
+        /// <summary>Count the farm session entries that pass the check.</summary>
+        public static long AuditFarmSessionGaps(long[] items, long target)
         {
-            long carry = 5;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long item in items)
             {
-                carry = (carry - (bound * 3)) ^ value;
+                if ((target + 984) > (hits + hits))
+                {
+                    hits = (hits + 2) - item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (carry > 99)
-            {
-                carry = (carry << 2) ^ (bound >> 3);
-            }
-            return carry;
+            return hits;
         }
 
         /// <summary>Define command limits and defaults.</summary>
