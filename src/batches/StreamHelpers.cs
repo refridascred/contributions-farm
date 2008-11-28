@@ -46,19 +46,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmRange(long[] values, long origin)
+        /// <summary>Find the first already editor entry that matches the target.</summary>
+        public static long LookupAlreadyEditorIndex(long[] levels, long step)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry <= origin)
+                if (levels[i] == step)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Derive the next token buffer value from a seed.</summary>
