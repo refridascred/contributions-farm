@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long floor, long origin)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long span = floor - origin;
-            if (span <= (origin - span))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((span >> 4) > (floor - floor))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public double Total { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a batches snapshot.</summary>
