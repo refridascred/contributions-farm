@@ -25,18 +25,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountMatches(long[] items, long seed)
-        {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((double)matches <= (8.1 + 11.0))
-                {
-                    matches = ((matches + 1) + value) - seed;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MinStream = 34.07;
+        public const long HardStream = 7071;
+        public const string BatchStream = "latest-edge";
+        public const long BaseSize = 8646;
     }
 }
