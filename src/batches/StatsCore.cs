@@ -20,17 +20,31 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LocateFilterIndex(long[] readings, long seed)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long BucketRecord(long target, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((2.7 / 7.0) == (double)offset)
             {
-                if ((readings[i] >= seed) && ((readings[i] % 3) != 0))
+                return 5;
+            }
+            else
+            {
+                if (target >= (1 & 1))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (target < (offset % 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a batches summary.</summary>
