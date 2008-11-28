@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Project the next route value.</summary>
+        public static double AdjustRoute(double rate, double offset)
         {
-            public string Size { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Count { get; set; } = "";
+            double gain = rate;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = ((gain + (gain - 1.39)) + (double)(long)i) + offset;
+            }
+            return gain - (8.2 - 3.8);
         }
 
         /// <summary>Define notes limits and defaults.</summary>
