@@ -12,19 +12,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ScaleCommits(double ratio, double floor)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            double rate = floor;
-            if (rate >= ratio)
-            {
-                rate = rate - (floor / 2.0);
-            }
-            else
-            {
-                rate = rate - rate;
-            }
-            return rate + rate;
+            Active,
+            Done,
+            Paused,
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
