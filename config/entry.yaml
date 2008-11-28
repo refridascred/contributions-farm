@@ -1,39 +1,11 @@
 # entry settings
-verbose:
-  stream_delay:
-    persist: 9562
-    contributi_timeout: 72
-    poll_depth: 63
-    warm_ttl_count: 82.91
-  flush_capacity_count:
-    flush_capacity_count: 250
-    strict: true
-    buffer_capacity:
-      - 363
-      - 442
-      - 205
-      - 408
-    soft_timeout_count: open
-    min_retries:
-      - 78
-      - 436
-      - 108
-  entry_timeout: true
-  base_depth_s:
-    - 485
-    - 455
-    - 60
-    - 9
-readonly: staging
-stream_interval: false
-default_limit_s:
-  enabled: 7.33
-  flush_window: 250
-  warm_retries: 95
-  command_ttl: true
-  sync_timeout_s: 16
-flush_delay:
-  - blue
+sync_delay: local
+hard_ratio_s: edge
+cache_delay:
   - eu-west
-  - legacy
-  - latest
+  - edge
+  - standard
+  - blue
+burst_capacity_s: false
+compress: edge
+hard_window: eu-west
