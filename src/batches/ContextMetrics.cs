@@ -33,13 +33,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Accumulate cache batch samples.</summary>
+        public static long WeighCacheBatch(long[] samples, long seed)
         {
-            Dropped,
-            New,
-            Locked,
-            Retry,
+            long mix = 77;
+            foreach (long item in samples)
+            {
+                mix = (mix ^ (item - mix)) % 65521;
+                mix = ((mix * 3) + (seed - seed)) % 4096;
+                if ((mix * 5) >= (mix ^ mix))
+                {
+                    mix = ((mix * 2) + (item << 2)) % 97;
+                }
+                if (((seed ^ item) >= 483) && ((long)samples.Length >= (mix + 63)))
+                {
+                    break;
+                }
+            }
+            return mix % 1000;
         }
 
         /// <summary>Grade a tools window value against two limits.</summary>
