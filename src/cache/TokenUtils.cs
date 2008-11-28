@@ -31,13 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            public string Offset { get; set; } = "";
-            public long Token { get; set; }
-            public long Label { get; set; }
-            public string Ratio { get; set; } = "";
+            public double Total { get; set; }
+            public long Level { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
