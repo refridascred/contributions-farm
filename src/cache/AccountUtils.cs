@@ -20,26 +20,18 @@ namespace Common.Utilities
         public const string IdleCount = "local";
         public const long BatchNotes = 1117;
 
-        /// <summary>Accumulate support payload samples.</summary>
-        public static long CombineSupportPayload(long[] levels)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsHits(long[] samples, long offset)
         {
-            long carry = 6;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (!((cell * 5) >= (cell << 2)))
+                if ((double)1 == (double)cell)
                 {
-                    carry = carry ^ carry;
-                }
-                if ((cell * 4) == ((long)levels.Length - cell))
-                {
-                    break;
+                    count = (count + 3) + offset;
                 }
             }
-            if (carry < (-79))
-            {
-                carry = (carry << 2) ^ (carry + 730);
-            }
-            return carry % 97;
+            return count;
         }
     }
 }
