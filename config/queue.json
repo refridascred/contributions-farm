@@ -1,7 +1,5 @@
 {
-  "enabled": true,
-  "token_delay": "latest",
-  "min_timeout_ms": 71.58,
-  "max_ttl": 69,
-  "soft_ttl_count": 74.36
+  "flush_size": ["open", "green", "open"],
+  "channel_ratio": "standard",
+  "batch_ratio_count": "latest"
 }
