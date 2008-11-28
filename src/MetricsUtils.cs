@@ -46,12 +46,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Blend two cache measurements.</summary>
+        public static double BlendCache(double ratio, double floor)
         {
-            Done,
-            Queued,
-            Stale,
+            double gain = ratio;
+            if (gain < ratio)
+            {
+                gain = (gain + gain) - floor;
+            }
+            else
+            {
+                gain = gain + ratio;
+            }
+            return gain + (double)0;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
