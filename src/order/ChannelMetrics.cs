@@ -48,18 +48,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count the context session entries that pass the check.</summary>
-        public static long MeasureContextSessionOutliers(long[] series)
+        /// <summary>Validate profile commits readings against a bound.</summary>
+        public static bool ValidateProfileCommitsRange(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long item in series)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                if ((item + item) == (seen - seen))
+                if (datum >= seed)
                 {
-                    seen = seen + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
     }
 }
