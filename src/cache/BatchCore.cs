@@ -33,18 +33,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmHits(long[] data, long limit)
-        {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((sample << 3) > (hits - hits))
-                {
-                    hits = (hits + 3) - limit;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string StepPayload = "primary-edge";
+        public const long CachePayload = 3826;
+        public const long BatchPayload = 172;
+        public const long RetryPayload = 2055;
+        public const long MinPayload = 6889;
     }
 }
