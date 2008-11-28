@@ -27,18 +27,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the format queue entries that pass the check.</summary>
-        public static long CountFormatQueueGaps(long[] values)
+        /// <summary>Fold a list of record channel readings.</summary>
+        public static long TotalRecordChannel(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long mark = -50;
+            foreach (long value in samples)
             {
-                if (seen <= (sample + sample))
-                {
-                    seen = seen + 3;
-                }
+                mark = (((mark << 3) ^ (value ^ value)) % 255) - origin;
             }
-            return seen;
+            return mark % 4096;
         }
 
         /// <summary>Define command limits and defaults.</summary>
