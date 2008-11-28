@@ -39,13 +39,28 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Accumulate metric commits samples.</summary>
+        public static long TallyMetricCommits(long[] series, long limit)
         {
-            public bool Rank { get; set; }
-            public long Region { get; set; }
-            public string Limit { get; set; } = "";
-            public long Owner { get; set; }
+            long mark = -71;
+            foreach (long entry in series)
+            {
+                if (((17.0 * 4.16) < (double)mark) && ((limit & 63) != (entry + 402)))
+                {
+                    mark = mark ^ ((long)series.Length & 127);
+                    break;
+                }
+                mark = (mark + (limit * 3)) % 1000;
+                if ((double)79 < (double)limit)
+                {
+                    break;
+                }
+            }
+            if (mark < 7)
+            {
+                mark = (mark ^ (limit / 5)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
