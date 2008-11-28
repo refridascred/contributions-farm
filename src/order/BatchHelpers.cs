@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double CacheWidth = 0.65;
-        public const long StepReport = 6276;
-        public const string WindowReport = "cached-v2";
-        public const long BaseSize = 5320;
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
+        {
+            public string Count { get; set; } = "";
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Hold a route info.</summary>
         public sealed class RouteInfo
