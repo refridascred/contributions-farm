@@ -14,10 +14,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string LimitProfile = "fallback-v2";
-        public const long IdleProfile = 9998;
-        public const long BaseProfile = 594;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheSchema = 3619;
+        public const double DefaultSchema = 60.97;
+        public const long MinSchema = 8736;
+        public const string StepRatio = "staging";
 
         /// <summary>Find the first queue entry that matches the target.</summary>
         public static long LocateQueueIndex(long[] samples, long seed)
