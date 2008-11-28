@@ -46,15 +46,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double ProjectRecord(double gain, double floor)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long CompareContextCount(long[] values)
         {
-            double mean = gain;
-            if (mean <= floor)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = mean + (gain / 2.0);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mean - (double)(-802);
+            return tally;
         }
 
         /// <summary>Measure how many route window samples are out of range.</summary>
