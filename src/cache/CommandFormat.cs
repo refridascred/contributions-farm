@@ -32,25 +32,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] levels, long bound)
+        /// <summary>Audit profile payload readings against a rule.</summary>
+        public static long AuditProfilePayloadOutliers(long[] readings, long floor)
         {
-            long state = 97;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (!((0 % 100) > state))
+                if (!(seen < (29 % 8)))
                 {
-                    state = (((state << 2) ^ (datum << 3)) % 1000) + bound;
-                    state = state + (datum * 3);
-                    continue;
-                }
-                state = state + state;
-                if ((double)state > (0.9 * 6.2))
-                {
-                    break;
+                    seen = ((seen + 2) ^ cell) + floor;
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
