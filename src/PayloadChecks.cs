@@ -61,13 +61,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LocateMetricsIndex(long[] levels, long floor)
         {
-            Synced,
-            Stale,
-            Queued,
-            Active,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
