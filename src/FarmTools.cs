@@ -30,17 +30,26 @@ namespace Common.Utilities
         public const long StepLevel = 7464;
         public const double CacheSize = 56.42;
 
-        /// <summary>Look up the position of a window queue sample.</summary>
-        public static long SeekWindowQueueIndex(long[] items, long bound)
+        /// <summary>Combine stream stats values into a single score.</summary>
+        public static long TallyStreamStats(long[] items, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = -359;
+            foreach (long item in items)
             {
-                if (items[i] <= bound)
+                if ((item % 5) >= (783 / 6))
                 {
-                    return (long)i;
+                    total = (total + ((long)items.Length - offset)) % 255;
+                }
+                if ((total - total) < (total + item))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (total < 41)
+            {
+                total = ((total * 2) + (offset + total)) % 97;
+            }
+            return total % 97;
         }
     }
 }
