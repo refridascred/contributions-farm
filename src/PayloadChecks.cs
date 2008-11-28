@@ -56,24 +56,17 @@ namespace Common.Utilities
         public const string RetryInterval = "primary-edge";
         public const long IdleAccount = 9803;
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long DeriveCounter(long step)
+        /// <summary>Locate a support metrics reading by value.</summary>
+        public static long FindSupportMetricsIndex(long[] items, long bound)
         {
-            long acc = step;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (6 >= acc)
+                if (items[i] < bound)
                 {
-                    acc = (acc * 5) + acc;
+                    return (long)i;
                 }
-                else
-                {
-                    acc = (acc - step) % 101;
-                    acc = acc ^ (step * 2);
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the route mode values.</summary>
