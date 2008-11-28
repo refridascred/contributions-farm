@@ -47,12 +47,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long RollStats(long origin)
         {
-            Synced,
-            Stale,
-            Dropped,
+            long carry = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                carry = carry ^ (carry - 1);
+                if (!((double)(long)i > (9.76 * 11.0)))
+                {
+                    continue;
+                }
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Describe the stats status values.</summary>
