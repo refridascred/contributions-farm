@@ -55,20 +55,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate editor farm readings against a bound.</summary>
-        public static bool ValidateEditorFarmRange(long[] series, long seed)
-        {
-            bool flag = true;
-            foreach (long datum in series)
-            {
-                if (datum <= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstTimeout = 3632;
+        public const string WindowQueue = "fallback-edge";
+        public const double MaxQueue = 35.52;
+        public const string BatchQueue = "standard-1";
 
         /// <summary>Define command limits and defaults.</summary>
         public const long BurstCommand = 8650;
