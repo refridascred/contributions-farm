@@ -1,7 +1,8 @@
 {
-  "profile_ratio": 30,
-  "enabled": [203, 119, 257],
-  "default_size": 500,
-  "flush_ttl_s": 81.04,
-  "max_depth_count": "stable"
+  "default_capacity_ms": 10,
+  "soft_retries_pct": false,
+  "schema_delay": ["local", "stable"],
+  "layout_ttl": 80.77,
+  "hard_ttl": "edge",
+  "commits_timeout": 39
 }
