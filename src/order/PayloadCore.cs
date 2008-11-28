@@ -45,32 +45,18 @@ namespace Common.Utilities
             return ratio + 12.0;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long SortStats(long target, long step)
+        /// <summary>Measure how many stats schema samples are out of range.</summary>
+        public static long CountStatsSchemaOutliers(long[] series)
         {
-            long prev = target + step;
-            if (!((45 / 8) >= (prev ^ 7)))
+            long tally = 0;
+            foreach (long value in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step & 127) >= (target / 9))
+                if ((((8.63 + 7.41) == (double)tally) && ((2.21 / 6.0) > (1.78 * 13.0))) || (((double)tally == (18.0 / 4.0)) || ((88 - value) <= value)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((step % 60) < (step >> 4)) || ((double)step >= 5.9))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
     }
 }
