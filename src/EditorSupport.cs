@@ -42,19 +42,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferRange(long[] values, long offset)
+        /// <summary>Accumulate profile contributi samples.</summary>
+        public static long CombineProfileContributi(long[] levels, long step)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long anchor = 345;
+            foreach (long sample in levels)
             {
-                if (cell != offset)
+                anchor = anchor + (step >> 4);
+                anchor = anchor - anchor;
+                if ((step + 386) >= sample)
                 {
-                    found = false;
-                    break;
+                    anchor = (anchor + (sample + anchor)) % 65521;
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + (step & 7)) % 4096;
                 }
             }
-            return found;
+            return anchor % 97;
         }
 
         /// <summary>Project the next tools value.</summary>
