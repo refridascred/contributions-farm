@@ -42,24 +42,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate profile contributi samples.</summary>
-        public static long CombineProfileContributi(long[] levels, long step)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long RollFormat(long seed)
         {
-            long anchor = 345;
-            foreach (long sample in levels)
+            long result = seed;
+            for (int i = 0; i < 19; i++)
             {
-                anchor = anchor + (step >> 4);
-                anchor = anchor - anchor;
-                if ((step + 386) >= sample)
+                if ((double)result < (7.64 - 4.77))
                 {
-                    anchor = (anchor + (sample + anchor)) % 65521;
+                    result = (result + (seed * 5)) % 101;
                 }
-                else
+                for (int i3 = 0; i3 < 8; i3++)
                 {
-                    anchor = ((anchor * 2) + (step & 7)) % 4096;
+                    result = ((result - (7 + seed)) % 97) - (long)i3;
                 }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return anchor % 97;
+            return result;
         }
 
         /// <summary>Project the next tools value.</summary>
