@@ -70,21 +70,15 @@ namespace Common.Utilities
             return scale + rate;
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long MatchClusterCount(long[] values)
+        /// <summary>Adjust a format session reading.</summary>
+        public static double AdjustFormatSession(double gain, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double rate = gain * 5.09;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate = ((rate - (double)3) + (double)(long)i) + bias;
             }
-            return matches;
+            return rate - (double)(-198);
         }
     }
 }
