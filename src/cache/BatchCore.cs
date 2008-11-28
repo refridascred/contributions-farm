@@ -19,11 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepGraph = 4160;
-        public const long BaseGraph = 949;
-        public const long SoftGraph = 3140;
-        public const string SoftScore = "standard";
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
+        {
+            Retry,
+            Draft,
+            Dropped,
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long SoftDepth = 7181;
