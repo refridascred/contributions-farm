@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            Idle,
-            Draft,
-            Done,
-            Stale,
+            public long Flag { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
