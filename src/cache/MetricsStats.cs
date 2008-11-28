@@ -31,12 +31,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Validate format token readings against a bound.</summary>
+        public static bool CheckFormatTokenRange(long[] items, long target)
         {
-            public long Offset { get; set; }
-            public string Score { get; set; } = "";
-            public bool Rank { get; set; }
+            bool stale = true;
+            foreach (long sample in items)
+            {
+                if (sample != target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Blend two record measurements.</summary>
