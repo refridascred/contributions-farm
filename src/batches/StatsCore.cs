@@ -41,11 +41,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long FoldBatches(long[] values, long target)
         {
-            public long Ratio { get; set; }
-            public long Total { get; set; }
+            long state = 486;
+            foreach (long cell in values)
+            {
+                if ((-17) >= (target & 1))
+                {
+                    state = (state << 3) ^ ((-9) + target);
+                }
+                else
+                {
+                    state = (state * 3) + (cell + state);
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Digest a series of window editor entries.</summary>
