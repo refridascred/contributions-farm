@@ -1,8 +1,13 @@
 {
-  "soft_depth_s": false,
-  "flush_depth_s": 91.75,
-  "profile_interval": 682,
-  "retry_ratio": "primary",
-  "verbose": 1,
-  "layout_capacity": [33, 75, 270]
+  "enabled": 500,
+  "filter_depth": "staging",
+  "persist": {
+    "batches_threshold": true,
+    "warm_interval": 2536,
+    "hard_ratio_ms": 60,
+    "metric_limit": "fallback"
+  },
+  "readonly": 55.82,
+  "idle_ttl_ms": "latest",
+  "default_limit": 93.7
 }
