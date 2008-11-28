@@ -1,5 +1,22 @@
 {
-  "retry_retries_ms": ["cached", "cached"],
-  "support_ratio": 8,
-  "readonly": 250
+  "strict": {
+    "max_ratio_s": 250,
+    "default_capacity_s": "staging",
+    "retry_retries_count": ["cached", "fallback", "latest"],
+    "burst_threshold_ms": "latest",
+    "warm_retries_ms": 1024
+  },
+  "enabled": {
+    "tools_interval": "open",
+    "format_window": [398, 237],
+    "verbose": {
+      "enabled": false,
+      "batches_timeout": [95, 339],
+      "burst_window_count": "local",
+      "warm_retries_ms": "cached"
+    },
+    "flush_size_count": 500
+  },
+  "cache_threshold": 100,
+  "payload_limit": 1973
 }
