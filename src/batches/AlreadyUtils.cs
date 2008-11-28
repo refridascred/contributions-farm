@@ -40,20 +40,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next already command value from a seed.</summary>
-        public static long SeriesAlreadyCommand(long limit)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long CompareCommandCount(long[] items)
         {
-            long mix = limit;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = ((mix << 3) ^ (mix / 8)) % 97;
-                if (mix >= (63 * 4))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = (mix + (limit % 10)) % 65521;
+                    if ((items[i] + items[j]) != 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
