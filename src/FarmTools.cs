@@ -19,31 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a entry metric pair into a bucket.</summary>
-        public static long GradeEntryMetric(long floor, long offset)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LocateProfileIndex(long[] samples, long origin)
         {
-            if (!((offset ^ offset) <= floor))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset - 591) != (offset + 148))
+                if (samples[i] == origin)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor - floor) >= (floor ^ 743))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of order entries.</summary>
