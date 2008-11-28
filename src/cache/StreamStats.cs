@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultWidth = 1049;
-        public const double BatchGraph = 31.69;
-        public const long HardInterval = 5996;
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmLimits(long[] values, long floor)
+        {
+            bool flag = true;
+            foreach (long value in values)
+            {
+                if (value != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long CountBatchMatches(long[] levels, long bound)
