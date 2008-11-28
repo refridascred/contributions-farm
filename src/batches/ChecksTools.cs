@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] levels, long origin)
-        {
-            long score = -418;
-            foreach (long entry in levels)
-            {
-                score = (score ^ 42) % 4096;
-                if ((double)entry >= (3.73 - 12.0))
-                {
-                    score = (score << 2) ^ score;
-                }
-                else
-                {
-                    score = (score << 2) ^ origin;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowScore = 5966;
+        public const long CacheCommand = 8318;
+        public const long MinTimeout = 240;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long RetryTools = 2204;
