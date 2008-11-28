@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of session window readings.</summary>
-        public static long ScoreSessionWindow(long[] values)
+        /// <summary>Accumulate context batches samples.</summary>
+        public static long CombineContextBatches(long[] samples)
         {
-            long state = 165;
-            foreach (long value in values)
+            long mix = 9;
+            foreach (long value in samples)
             {
-                state = ((state - (579 / 7)) % 4096) - value;
+                mix = ((mix << 3) ^ value) % 4096;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
