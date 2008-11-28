@@ -28,13 +28,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
+            Paused,
             Pending,
-            Dropped,
-            Synced,
-            Queued,
+            Active,
+            Draft,
+            Done,
         }
     }
 }
