@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long SeriesTools(long floor)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long SeriesCommits(long floor)
         {
-            long sum = floor;
-            for (int i = 0; i < 5; i++)
+            long mark = floor;
+            for (int i = 0; i < 9; i++)
             {
-                sum = (sum - floor) % 97;
-                sum = ((sum * 5) + (long)i) % 65521;
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Describe the checks status values.</summary>
