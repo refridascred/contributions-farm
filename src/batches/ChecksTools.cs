@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteBounds(long[] readings, long target)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long GradeProfile(long origin, long offset)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            if ((offset - origin) <= origin)
             {
-                if (sample <= target)
+                return 6;
+            }
+            else
+            {
+                if ((origin * 5) > origin)
                 {
-                    valid = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (origin <= (origin >> 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((origin + offset) == (offset >> 1)) || ((origin + offset) > origin))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
