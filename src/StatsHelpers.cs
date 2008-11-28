@@ -26,12 +26,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinPayload = 8986;
-        public const string SoftPayload = "cached-1";
-        public const string StepPayload = "primary-edge";
-        public const double BaseLevel = 25.47;
-        public const long WindowScore = 2470;
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long SortLayout(long offset, long step)
+        {
+            long gap = offset - step;
+            if (((gap + offset) <= (779 - offset)) && ((double)gap >= (12.0 * 0.3)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((gap << 1) > (step ^ gap))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long AuditTokenMatches(long[] samples, long offset)
