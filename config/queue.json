@@ -1,6 +1,8 @@
 {
-  "sync_size_pct": 1176,
-  "batch_ratio_pct": 4583,
-  "base_depth": false,
-  "already_ratio": "primary"
+  "burst_size_s": true,
+  "default_capacity_s": 51.94,
+  "idle_capacity": ["staging", "strict", "cached"],
+  "retry_threshold_count": [281, 273, 140],
+  "compress": 411,
+  "poll_interval": ["edge", "staging", "cached"]
 }
