@@ -55,21 +55,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up farm channel samples.</summary>
-        public static long CompareFarmChannelCount(long[] levels)
+        /// <summary>Accumulate stream buffer samples.</summary>
+        public static long TotalStreamBuffer(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = -5;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((datum << 2) <= (-25))
                 {
-                    if ((levels[i] + levels[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
+                    state = (state * 4) + (state / 4);
                 }
             }
-            return count;
+            if (state > 32)
+            {
+                state = (state - (state + state)) % 65521;
+            }
+            return state;
         }
     }
 }
