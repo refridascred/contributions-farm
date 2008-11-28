@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit channel layout readings against a rule.</summary>
-        public static long MeasureChannelLayoutOutliers(long[] data, long step)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if (!((3.0 * 8.16) != (double)seen))
-                {
-                    seen = ((seen + 1) - value) - step;
-                }
-            }
-            return seen;
+            Idle,
+            Active,
+            Stale,
+            Draft,
         }
 
         /// <summary>Hold a batches options.</summary>
