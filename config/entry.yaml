@@ -1,4 +1,5 @@
 # entry settings
-warm_depth_pct: 81.57
-strict: 31
-soft_timeout: 500
+warm_capacity: 28.57
+farm_retries: true
+batch_depth: false
+audit: false
