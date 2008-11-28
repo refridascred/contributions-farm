@@ -14,18 +14,17 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadOutliers(long[] values, long step)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long FindBatchesIndex(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(((double)datum >= (double)(-6)) && ((double)seen == (9.04 + 3.2))))
+                if (readings[i] == seed)
                 {
-                    seen = (seen + 3) + step;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
