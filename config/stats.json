@@ -1,6 +1,13 @@
 {
-  "compress": 1024,
-  "base_interval_s": "blue",
-  "idle_window_s": 61.27,
-  "payload_delay": 50.23
+  "account_threshold": {
+    "persist": "edge",
+    "min_retries": ["eu-west", "staging"],
+    "retry_limit": 9.84,
+    "dry_run": 60,
+    "max_interval": "stable",
+    "flush_ttl": "strict"
+  },
+  "cache_ratio_count": [45, 273],
+  "base_threshold_count": 8651,
+  "retry_threshold_s": 6381
 }
