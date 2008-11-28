@@ -19,12 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Combine cache support values into a single score.</summary>
+        public static long CombineCacheSupport(long[] data)
         {
-            public string Score { get; set; } = "";
-            public long Count { get; set; }
-            public bool Label { get; set; }
+            long result = 243;
+            foreach (long value in data)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    result = ((result << 3) ^ (long)i) % 4096;
+                }
+                result = ((result << 2) ^ (value - 818)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Compare every pair of batches profile readings.</summary>
