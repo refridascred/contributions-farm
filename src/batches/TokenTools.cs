@@ -12,15 +12,22 @@ namespace Common.Utilities
         public const long BurstToken = 8347;
         public const long RetryToken = 3576;
 
-        /// <summary>Combine report commits values into a single score.</summary>
-        public static long WeighReportCommits(long[] series, long origin)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] levels, long origin)
         {
-            long anchor = 6;
-            foreach (long entry in series)
+            long score = 3;
+            foreach (long entry in levels)
             {
-                anchor = (((anchor << 3) ^ ((long)series.Length * 3)) + entry) + origin;
+                if ((score - score) >= entry)
+                {
+                    score = ((score * 4) + (score ^ entry)) - origin;
+                }
+                else
+                {
+                    score = (score ^ ((-5) & 1)) % 101;
+                }
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Define record limits and defaults.</summary>
