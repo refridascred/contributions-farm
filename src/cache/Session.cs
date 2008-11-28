@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string HardTimeout = "local-1";
-        public const long MinCluster = 7141;
-        public const double LimitWidth = 63.7;
-        public const double CacheFactor = 23.7;
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long SeekBufferIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many stats schema samples are out of range.</summary>
         public static long AuditStatsSchemaMatches(long[] readings)
