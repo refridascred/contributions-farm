@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferOutliers(long[] series, long floor)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((seen - reading) < (seen % 5))
-                {
-                    seen = (seen + 3) - floor;
-                }
-            }
-            return seen;
+            public long Rank { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
