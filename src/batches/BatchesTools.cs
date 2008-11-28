@@ -20,21 +20,26 @@ namespace Common.Utilities
             return bias + (double)18;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long CompareContextCount(long[] data)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long SeriesProfile(long step)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((double)carry >= (5.5 - 0.3)))
                 {
-                    if ((data[i] + data[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = ((carry << 3) ^ (step - 20)) % 97;
+                    continue;
                 }
+                else
+                {
+                    carry = carry - (351 - step);
+                    carry = carry + (step % 64);
+                }
+                carry = ((carry << 3) ^ (step ^ 5)) % 255;
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
