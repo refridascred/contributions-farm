@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardCommand = 3792;
-        public const long DefaultCommand = 6076;
-        public const long HardFactor = 650;
-        public const long DefaultBudget = 5056;
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
+        {
+            public string Limit { get; set; } = "";
+            public double Total { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Describe the schema phase values.</summary>
         public enum SchemaPhase
