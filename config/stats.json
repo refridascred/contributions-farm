@@ -1,5 +1,6 @@
 {
-  "compress": "cached",
-  "session_interval": false,
-  "cluster_ratio": 71
+  "metrics_delay": ["local", "strict"],
+  "commits_depth": 22.06,
+  "persist": false,
+  "readonly": 30
 }
