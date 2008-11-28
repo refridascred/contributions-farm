@@ -38,15 +38,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] data)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long total = 521;
-            foreach (long datum in data)
-            {
-                total = (total ^ datum) % 97;
-            }
-            return total;
+            Stale,
+            Dropped,
+            Paused,
         }
     }
 }
