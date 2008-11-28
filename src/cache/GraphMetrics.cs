@@ -35,18 +35,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandHits(long[] samples)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphOutliers(long[] data)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if ((double)tally <= (9.77 + 7.5))
+                if ((value ^ seen) < (value + value))
                 {
-                    tally = (tally + 2) + reading;
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Roll a farm account counter forward.</summary>
