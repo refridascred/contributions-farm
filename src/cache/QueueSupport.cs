@@ -12,14 +12,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            Synced,
-            Closed,
-            Draft,
-            New,
-            Paused,
+            public long Stamp { get; set; }
+            public string Label { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Describe the counter state values.</summary>
