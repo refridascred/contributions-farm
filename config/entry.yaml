@@ -1,4 +1,5 @@
 # entry settings
-dry_run: 86.73
-cache_window_s: blue
-persist: edge
+compress: 77.89
+enabled: 100
+sync_ttl: standard
+persist: 64
