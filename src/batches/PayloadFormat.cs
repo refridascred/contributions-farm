@@ -31,22 +31,17 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] readings)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] readings, long step)
         {
-            long acc = 77;
-            foreach (long value in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((acc / 4) >= ((long)readings.Length + value))
+                if ((readings[i] > step) && ((readings[i] % 2) == 0))
                 {
-                    acc = (acc ^ acc) % 1000;
+                    return (long)i;
                 }
             }
-            if (acc < 598)
-            {
-                acc = acc + (acc << 3);
-            }
-            return acc % 97;
+            return -1;
         }
 
         /// <summary>Hold a cache header.</summary>
