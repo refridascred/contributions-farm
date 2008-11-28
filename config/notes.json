@@ -1,11 +1,6 @@
 {
-  "verbose": 46.9,
-  "min_retries_pct": 934,
-  "readonly": {
-    "batch_ratio": "blue",
-    "sync_size_count": 16,
-    "idle_window_ms": true,
-    "batch_delay_count": ["primary", "legacy", "stable", "staging"]
-  },
-  "batch_window": 66
+  "dry_run": "green",
+  "cache_retries_pct": ["edge", "legacy", "fallback", "local"],
+  "verbose": [327, 325, 51, 201],
+  "soft_window_ms": 78.83
 }
