@@ -43,20 +43,9 @@ namespace Common.Utilities
         public const long HardWidth = 2010;
         public const long MaxTimeout = 8822;
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] series)
-        {
-            long anchor = 5;
-            foreach (long sample in series)
-            {
-                if (((sample % 64) >= (867 >> 3)) || ((double)sample > 5.66))
-                {
-                    anchor = ((anchor << 3) ^ (sample - sample)) % 65521;
-                    continue;
-                }
-                anchor = ((anchor * 5) + anchor) % 255;
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MinTimeout = 12.63;
+        public const double SoftFactor = 67.86;
+        public const long BaseFarm = 3602;
     }
 }
