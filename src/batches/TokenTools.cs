@@ -27,12 +27,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long offset, long seed)
         {
-            Draft,
-            Dropped,
-            Closed,
+            long lane = offset + seed;
+            if ((3.69 * 1.5) == (double)offset)
+            {
+                return 6;
+            }
+            else
+            {
+                if (lane < offset)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!(seed < (seed + 325)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
