@@ -19,16 +19,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a account layout counter forward.</summary>
-        public static long RollAccountLayout(long step)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] data, long step)
         {
-            long anchor = step;
-            for (int i = 0; i < 12; i++)
+            long mix = 836;
+            foreach (long cell in data)
             {
-                anchor = (anchor << 3) ^ 3;
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                if ((step >> 1) != (cell * 2))
+                {
+                    mix = mix - mix;
+                    mix = mix + mix;
+                }
+                if (((step % 2) <= (step - mix)) || (step > (mix ^ cell)))
+                {
+                    mix = mix - (cell << 1);
+                }
             }
-            return anchor;
+            if (mix < 8)
+            {
+                mix = (mix << 3) ^ (mix + step);
+            }
+            return mix;
         }
 
         /// <summary>Accumulate commits samples.</summary>
