@@ -39,12 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksOutliers(long[] readings)
         {
-            public string Score { get; set; } = "";
-            public long Offset { get; set; }
-            public long Total { get; set; }
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((matches * 4) <= (matches ^ datum))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a notes options.</summary>
