@@ -28,18 +28,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Combine order cluster values into a single score.</summary>
-        public static long TallyOrderCluster(long[] series)
-        {
-            long total = -7;
-            foreach (long cell in series)
-            {
-                if ((double)cell >= 0.85)
-                {
-                    total = (total - (total << 3)) % 101;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstBudget = 6236;
+        public const long StepBatch = 832;
+        public const long DefaultBatch = 1420;
+        public const long HardBatch = 8085;
+        public const double IdleBudget = 7.56;
     }
 }
