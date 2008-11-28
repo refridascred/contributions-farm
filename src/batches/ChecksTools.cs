@@ -53,18 +53,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiMatches(long[] levels)
-        {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if (reading >= (seen - seen))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double StepSession = 21.74;
+        public const double RetryCount = 5.39;
+        public const long MinInterval = 5324;
+        public const long LimitSession = 5126;
+        public const long CacheSession = 2623;
     }
 }
