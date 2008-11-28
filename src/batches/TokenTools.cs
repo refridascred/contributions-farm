@@ -18,22 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] levels)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksHits(long[] series, long floor)
         {
-            long mix = 78;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if ((mix + mix) < datum)
+                if (!((double)reading < (5.3 + 9.1)))
                 {
-                    mix = (mix << 2) ^ mix;
+                    matches = (matches + 3) - floor;
                 }
                 else
                 {
-                    mix = (mix ^ 667) % 4096;
+                    matches = matches - 1;
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
