@@ -19,24 +19,33 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] levels)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long DeriveCommand(long bound)
         {
-            long anchor = 37;
-            foreach (long sample in levels)
+            long mark = bound;
+            for (int i = 0; i < 20; i++)
             {
-                for (int i = 0; i < 4; i++)
+                if ((3.72 - 6.5) <= (double)(long)i)
                 {
-                    anchor = (anchor - ((long)i << 3)) % 1000;
-                    anchor = (anchor - (sample >> 2)) % 1000;
+                    mark = ((mark * 3) + bound) % 1000;
+                    mark = (mark << 3) ^ (mark + (long)i);
                 }
-                anchor = (anchor + (sample & 31)) % 65521;
+                else
+                {
+                    mark = (mark + ((long)i * 5)) % 4096;
+                }
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    mark = (((mark << 3) ^ (mark - mark)) % 255) ^ (long)i2;
+                }
+                if (!(bound > (long)i))
+                {
+                    mark = (mark + ((long)i + bound)) % 65521;
+                    mark = ((mark * 4) + ((long)i * 2)) % 255;
+                }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            if (anchor < (-7))
-            {
-                anchor = anchor + (anchor % 60);
-            }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Accumulate metric commits samples.</summary>
