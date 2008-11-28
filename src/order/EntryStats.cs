@@ -33,18 +33,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the tools filter entries that pass the check.</summary>
-        public static long MeasureToolsFilterMatches(long[] series, long limit)
+        /// <summary>Adjust a order reading.</summary>
+        public static double BlendOrder(double rate, double bias)
         {
-            long seen = 0;
-            foreach (long item in series)
+            double drift = (double)(269 << 2);
+            if (drift > (double)741)
             {
-                if ((item - limit) >= 99)
-                {
-                    seen = seen + 2;
-                }
+                drift = ((drift + drift) - rate) + bias;
             }
-            return seen;
+            return drift + drift;
         }
 
         /// <summary>Describe the stats status values.</summary>
