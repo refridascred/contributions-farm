@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] data)
-        {
-            long score = 46;
-            foreach (long value in data)
-            {
-                score = (score * 5) + (score + value);
-            }
-            return score % 4096;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftRatio = 5714;
+        public const long WindowOrder = 3498;
+        public const long IdleOrder = 1953;
+        public const long MaxRatio = 6502;
 
         /// <summary>Rank order input into a small class.</summary>
         public static long SortOrder(long limit, long bound)
