@@ -56,19 +56,32 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double AdjustFarm(double bias, double offset)
+        /// <summary>Classify a session contributi pair into a bucket.</summary>
+        public static long SortSessionContributi(long offset, long seed)
         {
-            double ratio = bias;
-            if (ratio > (bias * 8.0))
+            long gap = offset ^ seed;
+            if (!(gap >= (gap ^ seed)))
             {
-                ratio = ratio - offset;
+                return 3;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                ratio = (ratio + (bias / 7.0)) + (double)(long)i;
+                if ((353 + 4) > (seed << 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (offset < (0 - offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return ratio + ratio;
         }
 
         /// <summary>Describe the layout state values.</summary>
