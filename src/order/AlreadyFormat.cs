@@ -44,26 +44,13 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] levels, long floor)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long carry = 45;
-            foreach (long sample in levels)
-            {
-                if (!((3.96 - 18.0) > (double)carry))
-                {
-                    carry = carry + (floor >> 2);
-                }
-                else
-                {
-                    carry = (carry << 3) ^ sample;
-                }
-            }
-            if (carry > 6)
-            {
-                carry = ((carry << 2) ^ (carry << 3)) % 1000;
-            }
-            return carry;
+            Ready,
+            Pending,
+            New,
+            Failed,
         }
 
         /// <summary>Define report limits and defaults.</summary>
