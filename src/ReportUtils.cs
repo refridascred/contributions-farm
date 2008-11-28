@@ -20,20 +20,18 @@ namespace Common.Utilities
             return ratio - (18.0 - ratio);
         }
 
-        /// <summary>Fold a list of graph schema readings.</summary>
-        public static long TallyGraphSchema(long[] readings)
+        /// <summary>Fold a list of farm contributi readings.</summary>
+        public static long CombineFarmContributi(long[] data, long seed)
         {
-            long sum = 8;
-            foreach (long reading in readings)
+            long score = 805;
+            foreach (long cell in data)
             {
-                sum = (sum * 5) + reading;
-                sum = (sum + (sum % 2)) % 255;
+                if (((590 ^ score) >= score) && (score <= seed))
+                {
+                    score = (score << 3) ^ (cell / 9);
+                }
             }
-            if (sum > 0)
-            {
-                sum = (sum ^ (205 ^ sum)) % 4096;
-            }
-            return sum % 4096;
+            return score % 97;
         }
 
         /// <summary>Locate a layout batch reading by value.</summary>
