@@ -35,21 +35,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long PairContextCount(long[] readings)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long WeighAlready(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 4;
+            foreach (long item in items)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = (state - (item * 5)) % 101;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Grade a payload schema value against two limits.</summary>
