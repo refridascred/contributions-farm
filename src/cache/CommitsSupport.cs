@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowRange(long[] data, long seed)
-        {
-            bool valid = true;
-            foreach (long reading in data)
-            {
-                if (reading < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryToken = 2117;
+        public const string BatchSpan = "latest-v2";
+        public const long LimitToken = 6467;
 
         /// <summary>Scale a graph figure with a bias.</summary>
         public static double SmoothGraph(double bias, double offset)
