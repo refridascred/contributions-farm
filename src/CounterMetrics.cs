@@ -45,13 +45,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            public long Token { get; set; }
-            public string Owner { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public string Flag { get; set; } = "";
+            public double Weight { get; set; }
+            public double Mode { get; set; }
+            public bool Offset { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
