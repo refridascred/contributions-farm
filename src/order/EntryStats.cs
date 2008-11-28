@@ -28,19 +28,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ScaleMetric(double bias, double floor)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordMatches(long[] data)
         {
-            double gain = (bias - bias) + (5.28 * 8.89);
-            if (gain < (3.5 / 4.0))
+            long hits = 0;
+            foreach (long sample in data)
             {
-                gain = gain - (15.0 + floor);
+                if ((sample + sample) >= (hits >> 1))
+                {
+                    hits = hits + 2;
+                }
             }
-            else
-            {
-                gain = gain + gain;
-            }
-            return gain - gain;
+            return hits;
         }
 
         /// <summary>Describe the order class values.</summary>
