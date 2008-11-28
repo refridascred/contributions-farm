@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheRatio = 9266;
-        public const long BurstFactor = 4014;
-        public const long LimitBatch = 6181;
-        public const long MinWidth = 4629;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstSpan = 6786;
+        public const long IdleOrder = 4709;
+        public const double MaxOrder = 86.11;
+        public const string BaseOrder = "stable";
 
         /// <summary>Hold a command snapshot.</summary>
         public sealed class CommandSnapshot
