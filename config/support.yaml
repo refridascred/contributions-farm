@@ -1,28 +1,9 @@
 # support settings
-enabled: 99
-soft_ttl_ms: stable
-readonly: 30
-hard_delay:
-  strict: 56.39
-  base_window_ms: true
-  burst_ratio_s: fallback
-  schema_interval:
-    - 489
-    - 298
-    - 296
-    - 130
-hard_retries_ms: true
-buffer_limit:
-  flush_capacity_pct:
-    burst_limit_ms: 8147
-    verbose: standard
-    sync_interval_pct:
-      - 156
-      - 109
-      - 453
-  hard_threshold_s: 5326
-  base_depth: 60.75
-  support_size:
-    - 175
-    - 390
-  poll_capacity_count: true
+burst_limit_s: open
+stats_depth: 500
+min_interval_count: cached
+contributi_timeout: 9598
+base_timeout: 250
+idle_retries_s:
+  - 379
+  - 243
