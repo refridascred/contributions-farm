@@ -45,17 +45,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a editor cluster reading by value.</summary>
-        public static long LocateEditorClusterIndex(long[] levels, long step)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Count { get; set; }
+            public double Label { get; set; }
+            public bool Total { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Describe the profile mode values.</summary>
