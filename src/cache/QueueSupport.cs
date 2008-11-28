@@ -57,12 +57,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            public long Level { get; set; }
-            public double Total { get; set; }
-            public bool Owner { get; set; }
+            Active,
+            Queued,
+            Draft,
         }
     }
 }
