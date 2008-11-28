@@ -33,31 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a notes graph value against two limits.</summary>
-        public static long BucketNotesGraph(long seed, long seed2)
+        /// <summary>Measure how many profile queue samples are out of range.</summary>
+        public static long CountProfileQueueMatches(long[] series)
         {
-            if (seed2 >= seed)
+            long count = 0;
+            foreach (long datum in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((788 + seed) != (seed2 + seed))
+                if ((((4.2 - 3.3) != (double)datum) && ((8 + count) < (count + 14))) || ((16.0 * 18.0) > (double)datum))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((2.0 * 5.0) == (double)seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
     }
 }
