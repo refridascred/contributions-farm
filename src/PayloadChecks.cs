@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Grade a layout context value against two limits.</summary>
+        public static long SortLayoutContext(long target, long floor)
         {
-            public long Score { get; set; }
-            public bool Token { get; set; }
-            public long Region { get; set; }
-            public string Label { get; set; } = "";
+            if (floor >= (target * 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target / 4) < floor)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)target >= (14.0 - 4.3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)floor != (double)target)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
