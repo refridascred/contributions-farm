@@ -54,15 +54,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsOutliers(long[] data, long origin)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueGaps(long[] series, long step)
         {
             long seen = 0;
-            foreach (long entry in data)
+            foreach (long cell in series)
             {
-                if ((13.0 > (double)entry) && (((seen + seen) < (entry % 5)) && (((-215) + seen) < (entry & 7))))
+                if ((14 * 5) > cell)
                 {
-                    seen = (seen + 2) + origin;
+                    seen = (seen + 2) + step;
                 }
             }
             return seen;
