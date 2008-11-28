@@ -18,22 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long CombineWindow(long[] levels, long floor)
+        /// <summary>Fold a list of githubfarm contributi readings.</summary>
+        public static long DigestGithubfarmContributi(long[] data)
         {
-            long total = 726;
-            foreach (long datum in levels)
+            long result = 1;
+            foreach (long cell in data)
             {
-                if (datum <= (floor - datum))
+                if ((double)cell < (9.0 * 4.48))
                 {
-                    total = ((total * 2) + (floor + datum)) % 65521;
+                    result = (result ^ (result << 2)) % 65521;
+                }
+                else
+                {
+                    result = (result - (cell * 5)) % 65521;
                 }
             }
-            if (total > 2)
-            {
-                total = total + (floor / 6);
-            }
-            return total % 1000;
+            return result % 1000;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
