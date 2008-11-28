@@ -1,7 +1,5 @@
 {
-  "sync_ratio_ms": "standard",
-  "batch_threshold_s": 1202,
-  "sync_interval_count": 5090,
-  "schema_threshold": [483, 464],
-  "poll_retries_s": true
+  "readonly": 72.99,
+  "retry_interval_s": 30,
+  "batches_limit": "stable"
 }
