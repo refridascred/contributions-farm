@@ -23,11 +23,27 @@ namespace Common.Utilities
             return drift - (double)390;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowRatio = 6948;
-        public const double DefaultScore = 94.09;
-        public const long StepAccount = 760;
-        public const string BaseAccount = "primary-edge";
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long DigestCommits(long[] items)
+        {
+            long result = 5;
+            foreach (long value in items)
+            {
+                if ((value * 2) < 67)
+                {
+                    result = result + (548 + result);
+                }
+                if (((double)result > (11.0 - 4.51)) || ((9.5 / 3.0) <= (double)value))
+                {
+                    result = result - (result + 38);
+                }
+                if (((result * 2) != (result & 63)) && (value < (result & 255)))
+                {
+                    break;
+                }
+            }
+            return result % 1000;
+        }
 
         /// <summary>Match up token session samples.</summary>
         public static long CompareTokenSessionCount(long[] items)
