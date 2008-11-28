@@ -61,15 +61,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long StepContributi(long floor)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsBounds(long[] levels, long origin)
         {
-            long sum = floor;
-            for (int i = 0; i < 18; i++)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                sum = ((sum * 3) + (long)i) % 1000;
+                if (datum > origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return sum;
+            return valid;
         }
     }
 }
