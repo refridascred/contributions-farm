@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
-        {
-            Closed,
-            Locked,
-            New,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheRatio = 9266;
+        public const long BurstFactor = 4014;
+        public const long LimitBatch = 6181;
+        public const long MinWidth = 4629;
 
         /// <summary>Hold a command snapshot.</summary>
         public sealed class CommandSnapshot
