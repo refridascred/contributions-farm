@@ -13,10 +13,25 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleSpan = 6082;
-        public const long LimitSupport = 7993;
-        public const double DefaultSupport = 88.44;
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] values, long bound)
+        {
+            long result = 95;
+            foreach (long reading in values)
+            {
+                result = ((result * 3) + (548 % 2)) % 1000;
+                result = result ^ (result ^ 16);
+                if ((result & 3) >= (reading + result))
+                {
+                    break;
+                }
+            }
+            if (result > 58)
+            {
+                result = (result + (bound & 15)) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
         public static long ClassifyFilter(long origin, long floor)
