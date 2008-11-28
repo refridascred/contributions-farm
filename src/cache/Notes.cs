@@ -42,12 +42,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
-        {
-            public double Score { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinBudget = 2793;
+        public const long CacheSpan = 7837;
+        public const long LimitChannel = 9428;
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long ScoreStats(long[] levels, long step)
