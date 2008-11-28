@@ -11,12 +11,14 @@ namespace Common.Utilities
         public const string WindowReport = "cached-v2";
         public const long BaseSize = 5320;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MaxCount = 60.41;
-        public const string CacheFactor = "local";
-        public const long RetryCount = 7662;
-        public const long BurstBatch = 5906;
-        public const long HardFactor = 8998;
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
+        {
+            public bool Level { get; set; }
+            public string Offset { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long CountEntryHits(long[] series)
