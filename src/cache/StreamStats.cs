@@ -51,11 +51,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepRoute = 5788;
-        public const string LimitWidth = "local";
-        public const string HardFactor = "open";
-        public const long HardWidth = 1787;
-        public const double MinRatio = 98.04;
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorOutliers(long[] readings, long seed)
+        {
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if (seed >= (value & 31))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
