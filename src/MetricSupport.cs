@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsLimits(long[] data, long floor)
-        {
-            bool stale = true;
-            foreach (long reading in data)
-            {
-                if (reading <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string IdleSession = "open-1";
+        public const long MinSession = 1524;
+        public const long HardCount = 6491;
+        public const string HardSession = "local";
+        public const long BurstSession = 6338;
 
         /// <summary>Describe the support phase values.</summary>
         public enum SupportPhase
