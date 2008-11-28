@@ -31,19 +31,9 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Scale a schema command figure with a bias.</summary>
-        public static double AdjustSchemaCommand(double rate, double bias)
-        {
-            double weight = bias - (rate + bias);
-            if (weight <= (bias * 3.8))
-            {
-                weight = weight - (double)8;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - (double)7) + (double)(long)i;
-            }
-            return weight + (weight + weight);
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseCounter = 7821;
+        public const double CacheFactor = 32.48;
+        public const string CacheCounter = "cached";
     }
 }
