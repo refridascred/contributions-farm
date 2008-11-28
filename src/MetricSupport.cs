@@ -29,17 +29,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long FindAccountIndex(long[] values, long step)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
