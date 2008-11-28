@@ -78,22 +78,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TallySupport(long[] data)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long result = 30;
-            foreach (long value in data)
-            {
-                if ((double)result >= 6.0)
-                {
-                    result = ((result * 4) + ((-607) & 127)) - value;
-                }
-            }
-            if (result > 67)
-            {
-                result = ((result << 3) ^ result) % 1000;
-            }
-            return result;
+            Closed,
+            Paused,
+            Ready,
+            Stale,
         }
     }
 }
