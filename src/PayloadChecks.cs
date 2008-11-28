@@ -33,10 +33,33 @@ namespace Common.Utilities
             return rate2 + (rate + bias);
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowAccount = 648;
-        public const long BurstSpan = 55;
-        public const string BaseAccount = "stable-1";
+        /// <summary>Derive the next account route value from a seed.</summary>
+        public static long StepAccountRoute(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((origin * 2) < (origin + (long)i))
+                {
+                    mark = (mark * 5) + (mark + 89);
+                }
+                else
+                {
+                    mark = (mark ^ ((long)i + mark)) % 255;
+                }
+                if ((1 + origin) > origin)
+                {
+                    mark = mark - ((long)i ^ origin);
+                    mark = (mark ^ origin) % 4096;
+                }
+                else
+                {
+                    mark = (mark << 2) ^ mark;
+                }
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
         public static long PairFormatCount(long[] readings)
