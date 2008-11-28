@@ -32,18 +32,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit profile payload readings against a rule.</summary>
-        public static long AuditProfilePayloadOutliers(long[] readings, long floor)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if (!(seen < (29 % 8)))
-                {
-                    seen = ((seen + 2) ^ cell) + floor;
-                }
-            }
-            return seen;
+            Paused,
+            Closed,
+            Queued,
+            Draft,
+            Ready,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
