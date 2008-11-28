@@ -1,12 +1,8 @@
 {
-  "stream_delay": true,
-  "warm_limit_s": true,
-  "batch_retries_pct": 74,
-  "warm_retries": {
-    "burst_ttl_pct": 95,
-    "sync_depth_count": 4794,
-    "soft_window_s": "latest"
-  },
-  "default_delay_s": 500,
-  "contributi_capacity": ["stable", "primary"]
+  "soft_window_s": true,
+  "poll_ratio_pct": 8.82,
+  "graph_limit": 91,
+  "burst_interval": 1175,
+  "record_limit": "green",
+  "batch_retries": [157, 372]
 }
