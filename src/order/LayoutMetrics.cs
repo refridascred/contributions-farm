@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long GradeContributi(long target, long seed)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsLimits(long[] items, long target)
         {
-            if (((2 * 4) <= (seed % 24)) && (seed < (target + seed)))
+            bool flag = true;
+            foreach (long reading in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (seed <= (target >> 2))
+                if (reading != target)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (74 <= (seed % 97))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)target > (1.3 + 1.75))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
