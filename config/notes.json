@@ -1,7 +1,7 @@
 {
-  "commits_ratio": 75,
-  "flush_delay": 250,
-  "base_threshold_s": [411, 449, 439],
-  "editor_window": 8344,
-  "hard_ratio": ["local", "legacy"]
+  "farm_timeout": true,
+  "batch_limit": 14,
+  "format_delay": ["green", "legacy"],
+  "soft_size_ms": false,
+  "soft_ratio_s": 15.8
 }
