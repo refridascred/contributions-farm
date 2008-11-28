@@ -36,12 +36,24 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Rank record input into a small class.</summary>
+        public static long BucketRecord(long origin, long bound)
         {
-            Queued,
-            Active,
-            Done,
+            if ((1.3 * 7.9) < (double)origin)
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((bound & 255) < (18 - bound)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Describe the token state values.</summary>
