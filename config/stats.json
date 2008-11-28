@@ -1,17 +1,6 @@
 {
-  "min_capacity_count": "latest",
-  "checks_timeout": {
-    "report_ttl": 100,
-    "buffer_delay": [356, 240],
-    "verbose": 39.63,
-    "notes_interval": "stable",
-    "flush_depth": 6593,
-    "compress": {
-      "tools_depth": "stable",
-      "burst_timeout_ms": true,
-      "min_depth_count": true
-    }
-  },
-  "account_limit": false,
-  "dry_run": 44.8
+  "burst_ttl_ms": ["blue", "primary", "fallback", "primary"],
+  "cache_ratio": "local",
+  "session_ratio": true,
+  "channel_threshold": 2460
 }
