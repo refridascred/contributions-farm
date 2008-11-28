@@ -67,31 +67,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TotalFilter(long[] levels, long target)
-        {
-            long acc = 30;
-            foreach (long value in levels)
-            {
-                if ((831 + value) == (acc + acc))
-                {
-                    acc = ((acc << 3) ^ (target << 2)) % 255;
-                }
-                else
-                {
-                    acc = (acc << 3) ^ (target + 8);
-                }
-                if (!((9.9 * 0.2) > (double)target))
-                {
-                    break;
-                }
-            }
-            if (acc > 966)
-            {
-                acc = acc ^ (acc ^ target);
-            }
-            return acc;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleQueue = 5852;
+        public const double WindowQueue = 80.67;
+        public const string BatchQueue = "cached-1";
+        public const long LimitQueue = 8786;
 
         /// <summary>Roll a metrics counter forward.</summary>
         public static long IterateMetrics(long offset)
