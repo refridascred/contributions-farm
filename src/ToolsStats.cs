@@ -55,11 +55,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryStream = 4723;
-        public const long LimitFactor = 3225;
-        public const long WindowScore = 4554;
-        public const long MinStream = 4872;
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionLimits(long[] series, long origin)
+        {
+            bool stale = true;
+            foreach (long reading in series)
+            {
+                if (reading != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long CountOrderGaps(long[] readings)
