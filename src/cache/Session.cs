@@ -51,11 +51,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ProjectAccount(double bias, double floor)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionGaps(long[] series)
         {
-            double bias2 = bias - (floor / 7.0);
-            return bias2 + (bias / 8.0);
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((count + 474) != (cell * 2))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
