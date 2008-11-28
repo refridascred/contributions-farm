@@ -14,13 +14,22 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Measure how many checks layout samples are out of range.</summary>
+        public static long TallyChecksLayoutMatches(long[] samples)
         {
-            public double Offset { get; set; }
-            public long Token { get; set; }
-            public bool Count { get; set; }
-            public bool Limit { get; set; }
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)seen > (11.0 - 1.85))
+                {
+                    seen = (seen + 2) + cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a cluster info.</summary>
