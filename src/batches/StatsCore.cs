@@ -76,19 +76,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmLimits(long[] levels, long limit)
+        /// <summary>Digest a series of window editor entries.</summary>
+        public static long CombineWindowEditor(long[] series, long target)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long mark = 11;
+            foreach (long sample in series)
             {
-                if (sample <= limit)
+                if (((2.7 + 6.49) < (double)mark) && (mark >= (sample + mark)))
                 {
-                    found = false;
-                    break;
+                    mark = ((mark * 4) + (sample + mark)) - target;
                 }
             }
-            return found;
+            return mark;
         }
     }
 }
