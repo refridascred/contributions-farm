@@ -13,15 +13,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long RollToken(long step)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long carry = step;
-            for (int i = 0; i < 5; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
+            Done,
+            Closed,
+            Queued,
+            Idle,
+            Locked,
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
