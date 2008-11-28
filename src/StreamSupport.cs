@@ -5,36 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] levels, long target)
-        {
-            long result = 22;
-            foreach (long cell in levels)
-            {
-                if ((((-18) ^ result) > target) && ((13.0 / 9.0) < (double)target))
-                {
-                    result = result ^ cell;
-                    continue;
-                }
-                if (((8 - target) != (result + target)) || (656 <= (result % 8)))
-                {
-                    result = (result + (target % 24)) % 101;
-                }
-                else
-                {
-                    result = ((result * 3) + cell) % 1000;
-                }
-                if ((result * 5) != (858 - result))
-                {
-                    break;
-                }
-            }
-            if (result < 464)
-            {
-                result = (result ^ target) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstMetric = 792;
+        public const double MaxMetric = 47.76;
+        public const long BaseMetric = 2169;
+        public const long LimitTimeout = 3625;
+        public const string SoftMetric = "alpha-edge";
 
         /// <summary>Count the farm session entries that pass the check.</summary>
         public static long AuditFarmSessionGaps(long[] items, long target)
