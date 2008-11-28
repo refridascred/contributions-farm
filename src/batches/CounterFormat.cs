@@ -23,12 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmHits(long[] levels)
         {
-            Locked,
-            Dropped,
-            Stale,
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)(long)levels.Length > (double)cell)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
