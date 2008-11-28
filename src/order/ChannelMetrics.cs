@@ -13,12 +13,25 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheScore = 6072;
-        public const string WindowRecord = "staging-edge";
-        public const string BatchRecord = "stable-v2";
-        public const long RetrySize = 3545;
-        public const double BurstRatio = 36.59;
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long BucketWindow(long step, long floor)
+        {
+            if (step >= (floor >> 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((12.0 * 4.26) < (double)floor)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Locate a command reading by value.</summary>
         public static long LocateCommandIndex(long[] series, long bound)
