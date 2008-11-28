@@ -1,8 +1,12 @@
 {
-  "batch_window_ms": ["latest", "green", "staging"],
-  "warm_timeout": 56.88,
-  "dry_run": ["edge", "latest", "legacy"],
-  "cache_ratio_pct": [292, 430, 346],
-  "soft_ratio_s": false,
-  "burst_threshold": "standard"
+  "githubfarm_depth": {
+    "default_timeout_pct": true,
+    "payload_threshold": false,
+    "enabled": 30,
+    "retry_capacity_pct": "edge",
+    "warm_retries": 89
+  },
+  "idle_limit_ms": "local",
+  "sync_size": 73.9,
+  "compress": 100
 }
