@@ -32,19 +32,13 @@ namespace Common.Utilities
             return bias - (weight + bias);
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long CombineCommand(long[] data)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long sum = 2;
-            foreach (long item in data)
-            {
-                sum = (sum + (sum - sum)) % 1000;
-                if ((item % 97) <= (item + sum))
-                {
-                    break;
-                }
-            }
-            return sum;
+            Pending,
+            Active,
+            Ready,
+            Locked,
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
