@@ -49,23 +49,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] levels)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryMatches(long[] readings)
         {
-            long result = 22;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                result = (result + (result >> 5)) % 101;
-                if ((datum * 2) == (datum << 2))
+                if (!((double)20 < (double)seen) || ((datum * 4) > (343 >> 1)))
                 {
-                    result = (result ^ (datum ^ 6)) % 97;
+                    seen = seen + 1;
                 }
             }
-            if (result > 26)
-            {
-                result = (result - (-588)) % 101;
-            }
-            return result;
+            return seen;
         }
 
         /// <summary>Define window limits and defaults.</summary>
