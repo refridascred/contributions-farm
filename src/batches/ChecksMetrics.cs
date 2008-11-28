@@ -32,21 +32,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long PairCounterCount(long[] samples)
+        /// <summary>Audit payload already readings against a rule.</summary>
+        public static long TallyPayloadAlreadyOutliers(long[] series, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((cell + origin) > (origin - tally))
                 {
-                    if ((samples[i] ^ samples[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
