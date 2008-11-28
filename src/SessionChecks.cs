@@ -33,19 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatRange(long[] levels, long floor)
+        /// <summary>Project the next metric value.</summary>
+        public static double ScaleMetric(double weight, double floor)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            double scale = floor;
+            if (scale >= (weight / 9.0))
             {
-                if (datum <= floor)
-                {
-                    ok = false;
-                    break;
-                }
+                scale = scale + (double)319;
             }
-            return ok;
+            else
+            {
+                scale = scale + 6.03;
+            }
+            return scale - floor;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
