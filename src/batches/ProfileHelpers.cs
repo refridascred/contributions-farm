@@ -22,14 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Project the next context value.</summary>
+        public static double ProjectContext(double gain, double span)
         {
-            Dropped,
-            Idle,
-            Draft,
-            Done,
-            Paused,
+            double mean = span;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + gain) + (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Hold a command snapshot.</summary>
