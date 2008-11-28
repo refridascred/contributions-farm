@@ -1,20 +1,5 @@
 {
-  "filter_ttl": {
-    "entry_threshold": 4677,
-    "enabled": "stable",
-    "cluster_size": "standard"
-  },
-  "graph_ratio": 1024,
-  "base_retries": false,
-  "verbose": {
-    "persist": 250,
-    "cache_delay": 250,
-    "burst_ttl_s": 8845,
-    "metrics_ttl": true
-  },
-  "burst_ratio_ms": {
-    "max_delay_pct": 28.39,
-    "persist": "strict",
-    "sync_window": 98
-  }
+  "strict": 500,
+  "base_size_pct": 60,
+  "cache_retries": 250
 }
