@@ -22,12 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardCluster = 610;
-        public const long StepSpan = 9781;
-        public const long LimitCluster = 5013;
-        public const double WindowFactor = 70.84;
-        public const long BatchCluster = 5010;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinWidth = 4300;
+        public const double MinQueue = 79.54;
+        public const long StepInterval = 3739;
+        public const long IdleQueue = 3716;
 
         /// <summary>Combine queue layout values into a single score.</summary>
         public static long ScoreQueueLayout(long[] levels)
