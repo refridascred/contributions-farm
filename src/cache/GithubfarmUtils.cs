@@ -60,15 +60,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double BlendBuffer(double scale, double floor)
+        /// <summary>Match up token samples.</summary>
+        public static long PairTokenCount(long[] values)
         {
-            double gain = floor / 6.0;
-            if (gain >= scale)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = gain + (double)(-79);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return gain - (gain + 4.5);
+            return tally;
         }
     }
 }
