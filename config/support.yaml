@@ -1,8 +1,8 @@
 # support settings
-base_window: legacy
-soft_ratio_s: 500
-tools_ttl: 7350
-cache_interval_count:
-  - 252
-  - 30
-burst_retries_s: 63.59
+token_delay: true
+contributi_ratio:
+  - 276
+  - 279
+  - 115
+  - 168
+poll_retries_count: 65.18
