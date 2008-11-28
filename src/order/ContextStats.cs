@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string LimitFactor = "open-v2";
-        public const long RetryRatio = 3324;
-        public const double IdleGraph = 10.43;
-        public const double BatchGraph = 73.5;
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long DeriveSession(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                carry = (carry * 2) + ((long)i ^ bound);
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a session stats.</summary>
         public sealed class SessionStats
