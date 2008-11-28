@@ -31,13 +31,13 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            Idle,
-            Dropped,
             New,
-            Ready,
+            Done,
+            Dropped,
+            Stale,
         }
     }
 }
