@@ -1,7 +1,11 @@
 # githubfarm settings
-profile_timeout: 1278
-verbose: true
-retry_size_ms:
-  session_limit: 39.81
-  cache_retries_ms: legacy
-  cache_delay_s: 59
+min_retries_s: 58
+account_retries: 53.86
+poll_depth_count:
+  - stable
+  - primary
+  - legacy
+  - edge
+min_retries: 27
+base_delay: fallback
+max_depth_ms: 30
