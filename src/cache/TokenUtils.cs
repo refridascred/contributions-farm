@@ -36,19 +36,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double SmoothBatches(double bias, double bias2)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long offset, long bound)
         {
-            double bias3 = (double)(704 * 2);
-            if (bias3 > (bias3 / 6.0))
+            if (4.55 > (double)offset)
             {
-                bias3 = (bias3 - (double)45) - bias;
+                return 0;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                bias3 = (bias3 + bias2) + (double)(long)i;
+                if ((173 >> 1) >= offset)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (bound <= (offset ^ bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (offset >= ((-599) >> 2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return bias3 - (double)79;
         }
     }
 }
