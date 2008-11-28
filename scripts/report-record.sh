@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=277
-log "limit is ${RECORD_LIMIT}"
-
-mode="${1:-stable}"
+mode="${1:-open}"
 case "${mode}" in
-    edge)
+    strict)
         log "fast path"
         ;;
     *)
@@ -19,6 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-for item in standard staging edge; do
+for item in staging eu-west; do
     log "checking ${item}"
 done
