@@ -39,13 +39,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            public long Offset { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Label { get; set; }
-            public double Total { get; set; }
+            public string Rank { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
     }
 }
