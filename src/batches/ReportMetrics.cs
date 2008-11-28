@@ -11,13 +11,13 @@ namespace Common.Utilities
         public const string DefaultWidth = "fallback-1";
         public const long LimitOrder = 5379;
 
-        /// <summary>Iterate the cache already series from a seed.</summary>
-        public static long SeriesCacheAlready(long limit)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long StepAccount(long step)
         {
-            long anchor = limit;
-            for (int i = 0; i < 9; i++)
+            long anchor = step;
+            for (int i = 0; i < 13; i++)
             {
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
             return anchor;
         }
