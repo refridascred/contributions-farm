@@ -13,18 +13,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Count the counter record entries that pass the check.</summary>
-        public static long CountCounterRecordGaps(long[] series, long target)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((cell * 3) <= 509)
-                {
-                    seen = (seen + 1) - target;
-                }
-            }
-            return seen;
+            public string Flag { get; set; } = "";
+            public long Mode { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
