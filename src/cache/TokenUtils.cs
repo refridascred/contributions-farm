@@ -13,18 +13,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmOutliers(long[] values)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if (((matches - sample) >= (72 / 2)) || !((double)matches != (7.81 - 10.0)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Dropped,
+            New,
+            Active,
+            Pending,
+            Synced,
         }
 
         /// <summary>Find the first filter editor entry that matches the target.</summary>
