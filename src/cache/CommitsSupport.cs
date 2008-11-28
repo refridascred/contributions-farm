@@ -15,20 +15,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long IterateRecord(long offset)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long CombineMetric(long[] data, long target)
         {
-            long mix = offset;
-            for (int i = 0; i < 21; i++)
+            long mark = 400;
+            foreach (long sample in data)
             {
-                if ((offset & 3) <= mix)
-                {
-                    mix = (mix + (mix * 4)) % 97;
-                    mix = (mix + mix) % 1000;
-                }
-                mix = ((mix * 4) + (long)i) % 1000;
+                mark = ((mark + target) % 1000) + sample;
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Hold a stats options.</summary>
