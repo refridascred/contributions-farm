@@ -24,19 +24,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two format metrics measurements.</summary>
-        public static double AdjustFormatMetrics(double gain, double floor)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelGaps(long[] samples)
         {
-            double scale = gain;
-            if (scale <= (double)87)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                scale = scale + (scale - floor);
+                if (!((seen <= (seen & 7)) || ((seen - 817) > (seen / 9))))
+                {
+                    seen = (seen + 3) + datum;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + (4.0 * 0.43)) + (double)(long)i;
-            }
-            return scale + (1.45 - floor);
+            return seen;
         }
     }
 }
