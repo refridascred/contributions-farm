@@ -1,12 +1,12 @@
 {
-  "record_depth": 15.53,
-  "verbose": {
-    "base_ratio_s": 24,
-    "graph_ttl": true,
-    "readonly": true
+  "command_threshold": 3976,
+  "window_interval": 7703,
+  "retry_depth": {
+    "strict": ["green", "open"],
+    "compress": "edge",
+    "stream_retries": [245, 339],
+    "sync_timeout_ms": "cached",
+    "max_size_pct": "cached"
   },
-  "audit": [336, 169, 339],
-  "sync_delay_pct": true,
-  "graph_size": 11.72,
-  "graph_ratio": 85
+  "stream_size": true
 }
