@@ -61,12 +61,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            Stale,
-            Idle,
-            Synced,
+            Done,
+            Dropped,
+            Ready,
         }
     }
 }
