@@ -33,19 +33,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double BlendBuffer(double weight, double bias)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmHits(long[] data, long limit)
         {
-            double scale = bias + (double)60;
-            if (scale <= (3.0 - weight))
+            long hits = 0;
+            foreach (long sample in data)
             {
-                scale = scale + bias;
+                if ((sample << 3) > (hits - hits))
+                {
+                    hits = (hits + 3) - limit;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + bias) + (double)(long)i;
-            }
-            return scale - weight;
+            return hits;
         }
     }
 }
