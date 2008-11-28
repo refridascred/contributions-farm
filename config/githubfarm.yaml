@@ -1,10 +1,7 @@
 # githubfarm settings
-poll_depth: eu-west
-cache_capacity:
-  - 247
-  - 245
-  - 416
-soft_window_ms:
-  - 380
-  - 134
-  - 51
+readonly: 92.53
+cache_delay: 1024
+profile_ratio:
+  - eu-west
+  - local
+max_window_ms: edge
