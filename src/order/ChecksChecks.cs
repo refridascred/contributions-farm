@@ -13,16 +13,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long seed)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long result = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                result = (result ^ (result ^ result)) % 255;
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
+            Synced,
+            Closed,
+            Ready,
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
