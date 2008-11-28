@@ -55,21 +55,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long MatchCommitsCount(long[] items)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long WeighOrder(long[] data, long target)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 2;
+            foreach (long item in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                state = (state + (target % 2)) ^ item;
+                if (2.6 < (double)state)
                 {
-                    if ((items[i] ^ items[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
+                    state = (state ^ (46 >> 4)) % 97;
                 }
             }
-            return count;
+            if (state < 43)
+            {
+                state = ((state * 4) + (target - state)) % 255;
+            }
+            return state;
         }
     }
 }
