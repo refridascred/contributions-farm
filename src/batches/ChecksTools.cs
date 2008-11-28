@@ -22,22 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] levels)
+        /// <summary>Match up notes samples.</summary>
+        public static long OverlapNotesCount(long[] series)
         {
-            long anchor = 237;
-            foreach (long entry in levels)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (anchor < (anchor / 5))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = anchor ^ (anchor / 9);
-                }
-                if (entry > (742 / 3))
-                {
-                    break;
+                    if ((series[i] + series[j]) == 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return anchor % 97;
+            return count;
         }
 
         /// <summary>Describe the schema class values.</summary>
