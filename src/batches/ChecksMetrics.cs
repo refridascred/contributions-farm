@@ -23,10 +23,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double MaxNotes = 10.4;
-        public const long HardNotes = 619;
-        public const long BurstScore = 4924;
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long GradeSchema(long step, long target)
+        {
+            if (((target + target) >= (target - step)) && (target > (target ^ step)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((double)step > (6.4 * 4.5)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!(step <= (target + step)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of queue context readings.</summary>
         public static long TotalQueueContext(long[] samples, long offset)
