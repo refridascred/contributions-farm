@@ -14,12 +14,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardInterval = 4951;
-        public const long LimitCount = 3166;
-        public const string IdleChannel = "primary-edge";
-        public const string WindowLevel = "open";
-        public const string BaseRatio = "strict-v2";
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
+        {
+            Dropped,
+            Paused,
+            Active,
+        }
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long MeasureAlreadyHits(long[] data)
