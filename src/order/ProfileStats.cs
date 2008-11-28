@@ -18,38 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long ClassifyCache(long offset, long floor)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long limit)
         {
-            if ((floor - floor) == (95 + floor))
+            long mark = limit;
+            for (int i = 0; i < 9; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((double)offset == (9.1 * 4.86)))
+                if (((double)mark <= (4.9 * 9.0)) && ((729 >> 1) <= (mark - limit)))
                 {
-                    return 8;
+                    mark = (mark << 3) ^ (mark * 5);
                 }
-                else
-                {
-                    if ((offset ^ floor) >= (floor - (-2)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((offset - floor) >= (offset ^ floor))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
+            return mark;
         }
 
         /// <summary>Count the format queue entries that pass the check.</summary>
