@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double AdjustMetric(double ratio, double span)
-        {
-            double ratio2 = span * 9.45;
-            if (ratio2 < (span * 6.5))
-            {
-                ratio2 = ratio2 - ratio2;
-            }
-            else
-            {
-                ratio2 = ratio2 - ratio;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio2 = (ratio2 - ratio) + (double)(long)i;
-            }
-            return ratio2 + (double)(-2);
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 7797;
+        public const long BurstContext = 7406;
+        public const double BaseContext = 97.5;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long DefaultSpan = 5526;
