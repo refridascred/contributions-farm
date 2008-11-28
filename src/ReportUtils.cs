@@ -19,32 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank commits already input into a small class.</summary>
-        public static long SortCommitsAlready(long limit, long seed)
+        /// <summary>Fold a list of graph schema readings.</summary>
+        public static long TallyGraphSchema(long[] readings)
         {
-            long bound = limit - seed;
-            if ((1.0 + 6.23) > (double)limit)
+            long sum = 8;
+            foreach (long reading in readings)
             {
-                return 6;
+                sum = (sum * 5) + reading;
+                sum = (sum + (sum % 2)) % 255;
             }
-            else
+            if (sum > 0)
             {
-                if ((1.0 * 5.3) >= (double)bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (seed < bound)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                sum = (sum ^ (205 ^ sum)) % 4096;
             }
+            return sum % 4096;
         }
 
         /// <summary>Hold a token info.</summary>
