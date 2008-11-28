@@ -53,20 +53,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ScaleBatches(double weight, double bias)
-        {
-            double drift = weight;
-            if (drift <= drift)
-            {
-                drift = (drift + (double)856) - bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + (double)42) + (double)(long)i;
-            }
-            return drift + (drift + weight);
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double RetryFarm = 98.99;
+        public const long HardFarm = 7604;
+        public const long BurstFarm = 5767;
+        public const long HardSpan = 551;
 
         /// <summary>Count filter stats pairs that satisfy a relation.</summary>
         public static long MatchFilterStatsCount(long[] levels)
