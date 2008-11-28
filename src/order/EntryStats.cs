@@ -10,21 +10,14 @@ namespace Common.Utilities
         public const long HardBatches = 3051;
         public const string BurstLevel = "latest-edge";
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long DeriveRecord(long limit)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long score = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                if (((long)i + (long)i) >= (65 & 3))
-                {
-                    score = ((score << 2) ^ 89) % 255;
-                    score = (score + (limit * 5)) % 65521;
-                }
-                score = (score * 2) + (long)i;
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            Paused,
+            Locked,
+            Retry,
+            Draft,
+            New,
         }
 
         /// <summary>Derive the next counter stats value from a seed.</summary>
