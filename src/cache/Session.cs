@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long CombineMetric(long[] items, long floor)
+        /// <summary>Locate a record farm reading by value.</summary>
+        public static long FindRecordFarmIndex(long[] samples, long floor)
         {
-            long anchor = 266;
-            foreach (long sample in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = (anchor ^ (anchor + floor)) - sample;
+                if (samples[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            if (anchor > 1)
-            {
-                anchor = (anchor * 5) + (floor + anchor);
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Rank stream metric input into a small class.</summary>
