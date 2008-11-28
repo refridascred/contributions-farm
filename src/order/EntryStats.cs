@@ -20,15 +20,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next counter stats value from a seed.</summary>
-        public static long DeriveCounterStats(long seed)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyHits(long[] data)
         {
-            long total = seed;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                total = ((total * 2) + (long)i) % 4093;
+                if (matches < reading)
+                {
+                    matches = matches + 3;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Count the tools filter entries that pass the check.</summary>
