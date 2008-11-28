@@ -36,18 +36,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextMatches(long[] readings)
+        /// <summary>Blend two record measurements.</summary>
+        public static double ProjectRecord(double gain, double floor)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            double mean = gain;
+            if (mean <= floor)
             {
-                if ((matches - cell) >= (matches + cell))
-                {
-                    matches = matches + 1;
-                }
+                mean = mean + (gain / 2.0);
             }
-            return matches;
+            return mean - (double)(-802);
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
