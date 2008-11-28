@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long BucketEntry(long seed, long step)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long offset = seed - step;
-            if (offset > (seed - (-41)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (step > seed)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Draft,
+            Locked,
+            Retry,
+            Idle,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
