@@ -1,19 +1,13 @@
 # githubfarm settings
-max_limit: true
-min_interval_ms:
-  default_delay:
-    - strict
-    - green
-    - local
-    - cached
-  batch_size_s:
-    - 72
-    - 49
-    - 89
-    - 356
-  min_ttl:
-    - 475
-    - 233
-    - 224
-queue_depth: 60
-record_depth: 9533
+batches_timeout:
+  - 243
+  - 83
+  - 125
+  - 392
+warm_delay_ms: eu-west
+enabled: cached
+max_window_count:
+  retry_window_count: edge
+  poll_window_s: 9856
+  burst_retries: legacy
+  filter_ratio: open
