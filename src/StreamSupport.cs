@@ -13,19 +13,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterBounds(long[] levels, long origin)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long SeriesCommits(long bound)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            long mix = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if (datum <= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                mix = (mix * 4) + (bound << 2);
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return flag;
+            return mix;
         }
 
         /// <summary>Define session limits and defaults.</summary>
