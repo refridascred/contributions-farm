@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-staging}"
+mode="${1:-latest}"
 case "${mode}" in
-    green)
+    staging)
         log "fast path"
         ;;
     *)
@@ -17,10 +17,10 @@ case "${mode}" in
 esac
 
 count=0
-while [ "${count}" -lt 5 ]; do
+while [ "${count}" -lt 6 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-BUFFER_LIMIT=6
+BUFFER_LIMIT=76
 log "limit is ${BUFFER_LIMIT}"
