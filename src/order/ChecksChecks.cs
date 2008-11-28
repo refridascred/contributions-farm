@@ -13,19 +13,16 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TallyAccount(long[] samples)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long seed)
         {
-            long mark = -8;
-            foreach (long item in samples)
+            long result = seed;
+            for (int i = 0; i < 7; i++)
             {
-                mark = (mark + (item >> 4)) % 101;
-                if ((double)mark >= (7.0 / 6.0))
-                {
-                    mark = mark ^ item;
-                }
+                result = (result ^ (result ^ result)) % 255;
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
