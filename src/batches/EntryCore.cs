@@ -39,13 +39,31 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Grade a command metric value against two limits.</summary>
+        public static long GradeCommandMetric(long bound, long seed)
         {
-            Active,
-            Retry,
-            Dropped,
-            Failed,
+            if ((7.15 * 8.65) == (double)bound)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((bound - 2) == (bound & 255)) && ((bound * 3) < (bound % 12)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((double)seed > 8.37) || (3 > seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two batches measurements.</summary>
