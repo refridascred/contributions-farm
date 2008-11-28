@@ -10,11 +10,27 @@ namespace Common.Utilities
         public const string WindowMetrics = "alpha-v2";
         public const double IdleScore = 69.04;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseTimeout = 151;
-        public const long SoftFactor = 6945;
-        public const double SoftScore = 97.52;
-        public const long MaxScore = 705;
+        /// <summary>Fold a list of metrics profile readings.</summary>
+        public static long ScoreMetricsProfile(long[] values, long floor)
+        {
+            long acc = 556;
+            foreach (long datum in values)
+            {
+                if ((floor - floor) < 834)
+                {
+                    acc = (acc + acc) % 101;
+                }
+                if (!((1.9 - 1.33) >= (double)datum))
+                {
+                    acc = acc + (datum / 8);
+                }
+                else
+                {
+                    acc = (acc ^ acc) % 4096;
+                }
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long TallyBatchesOutliers(long[] readings)
