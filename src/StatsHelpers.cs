@@ -38,16 +38,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next already metric value.</summary>
-        public static double SmoothAlreadyMetric(double weight, double floor)
-        {
-            double bias = weight;
-            if (bias < bias)
-            {
-                bias = bias + (7.33 - weight);
-            }
-            return bias - (floor - weight);
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string MaxNotes = "open-1";
+        public const double RetryNotes = 49.58;
+        public const long WindowFactor = 689;
 
         /// <summary>Rank counter input into a small class.</summary>
         public static long ClassifyCounter(long limit, long floor)
