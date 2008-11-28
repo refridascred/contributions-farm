@@ -1,23 +1,18 @@
 # support settings
-warm_retries: 6935
-readonly: 45.41
-persist: 4688
-batch_threshold: green
-base_depth_ms: eu-west
-layout_threshold:
-  token_threshold:
-    hard_window: 19.18
-    idle_delay_count:
-      - fallback
-      - open
-      - open
-      - standard
-    base_depth_count: edge
-  token_ttl:
-    - primary
-    - staging
-    - edge
-    - strict
-  default_capacity: open
-  min_timeout_s: blue
-  retry_interval_ms: 60
+base_ratio:
+  contributi_delay: true
+  warm_size_ms: legacy
+  min_timeout_ms:
+    - 274
+    - 221
+    - 388
+    - 44
+hard_interval_pct: 43.86
+hard_threshold_pct:
+  - latest
+  - legacy
+  - blue
+  - fallback
+default_threshold_s: 9764
+soft_threshold_ms: true
+soft_interval_pct: 10.37
