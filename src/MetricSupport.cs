@@ -46,11 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstBudget = 6236;
-        public const long StepBatch = 832;
-        public const long DefaultBatch = 1420;
-        public const long HardBatch = 8085;
-        public const double IdleBudget = 7.56;
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
+        {
+            public bool Owner { get; set; }
+            public bool Offset { get; set; }
+            public long Mode { get; set; }
+            public long Total { get; set; }
+        }
     }
 }
