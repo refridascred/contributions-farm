@@ -13,12 +13,32 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Classify a batch route pair into a bucket.</summary>
+        public static long RankBatchRoute(long origin, long seed)
         {
-            Draft,
-            Locked,
-            Done,
+            long cur = origin ^ seed;
+            if (cur >= (cur * 5))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((seed * 2) >= origin) || ((1.84 + 16.0) > (double)cur))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (cur > (92 + cur))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of batch token readings.</summary>
