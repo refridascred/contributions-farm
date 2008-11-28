@@ -53,24 +53,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long FoldChannel(long[] samples)
-        {
-            long acc = 4;
-            foreach (long entry in samples)
-            {
-                acc = (acc + (6 % 60)) % 4096;
-                for (int i = 0; i < 3; i++)
-                {
-                    acc = (acc << 3) ^ ((long)i + acc);
-                    acc = acc - ((long)i - entry);
-                }
-                if (entry < (acc * 2))
-                {
-                    acc = ((acc << 3) ^ entry) % 65521;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinGithubfarm = 2080;
+        public const double BatchGithubfarm = 11.58;
+        public const double MinBudget = 93.57;
     }
 }
