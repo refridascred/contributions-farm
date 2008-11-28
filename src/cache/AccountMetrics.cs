@@ -11,11 +11,13 @@ namespace Common.Utilities
         public const string LimitCount = "cached";
         public const string BurstCount = "primary-1";
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetrySize = 1387;
-        public const string StepCount = "local-edge";
-        public const long MaxBatch = 2496;
-        public const long LimitBatch = 8641;
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
+        {
+            public long Score { get; set; }
+            public string Mode { get; set; } = "";
+            public long Size { get; set; }
+        }
 
         /// <summary>Iterate the window series from a seed.</summary>
         public static long StepWindow(long seed)
