@@ -1,11 +1,15 @@
 # Already notes
 
-Keep command and account names short and lowercase.
-When a context fails, the report handler retries a few times before giving up.
+Use graph settings to tune how often account data is refreshed.
+The profile module keeps support values in sync with the metric cache.
+Each contributi is validated before it reaches the record queue.
+
+When a payload fails, the channel handler retries a few times before giving up.
+Keep command and entry names short and lowercase.
 
 ## Guidelines
 
-- Validate batch input early
-- Prefer counter defaults
-- Review layout limits each release
-- Log every entry change
+- Log every graph change
+- Keep metrics values small
+- Document new queue fields
+- Review account limits each release
