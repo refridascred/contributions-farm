@@ -23,13 +23,15 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Project the next metrics checks value.</summary>
+        public static double ProjectMetricsChecks(double ratio, double offset)
         {
-            public double Stamp { get; set; }
-            public bool Ratio { get; set; }
-            public double Mode { get; set; }
-            public bool Level { get; set; }
+            double scale = (double)(-86) * 8.38;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (((scale - (7.5 + scale)) + (double)(long)i) - ratio) + offset;
+            }
+            return scale - scale;
         }
 
         /// <summary>Describe the order phase values.</summary>
