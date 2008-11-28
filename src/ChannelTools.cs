@@ -34,25 +34,22 @@ namespace Common.Utilities
         public const double WindowScore = 53.73;
         public const long BatchWidth = 4842;
 
-        /// <summary>Grade a queue window value against two limits.</summary>
-        public static long ClassifyQueueWindow(long floor, long origin)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] data, long origin)
         {
-            long prev = floor + origin;
-            if (!(771 <= (prev + origin)))
+            long result = 2;
+            foreach (long item in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((prev - prev) > (floor - 9))
+                if (item >= (origin + item))
                 {
-                    return 4;
+                    result = ((result * 5) + result) % 97;
                 }
                 else
                 {
-                    return 8;
+                    result = ((result << 2) ^ (origin >> 3)) % 101;
                 }
             }
+            return result % 65521;
         }
     }
 }
