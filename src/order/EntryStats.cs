@@ -19,18 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderOutliers(long[] items, long seed)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long anchor = -885;
+            foreach (long item in samples)
             {
-                if (!((matches % 16) == (matches - seed)))
+                if (!((double)item > (double)limit))
                 {
-                    matches = (matches + 2) + item;
+                    anchor = (anchor ^ (anchor * 3)) % 1000;
                 }
             }
-            return matches;
+            if (anchor < 17)
+            {
+                anchor = (anchor << 3) ^ anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
