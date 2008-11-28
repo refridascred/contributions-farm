@@ -1,11 +1,9 @@
 # entry settings
-sync_delay: local
-hard_ratio_s: edge
-cache_delay:
-  - eu-west
-  - edge
-  - standard
-  - blue
-burst_capacity_s: false
-compress: edge
-hard_window: eu-west
+dry_run: 18
+stats_size: legacy
+strict:
+  soft_retries_ms: latest
+  warm_timeout: legacy
+  context_timeout: true
+  soft_ratio_count: 48
+batch_capacity: true
