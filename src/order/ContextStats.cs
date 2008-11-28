@@ -14,14 +14,10 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
-        {
-            public string Token { get; set; } = "";
-            public long Level { get; set; }
-            public bool Stamp { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string LimitProfile = "fallback-v2";
+        public const long IdleProfile = 9998;
+        public const long BaseProfile = 594;
 
         /// <summary>Define session limits and defaults.</summary>
         public const string WindowSession = "primary-edge";
