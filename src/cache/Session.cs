@@ -38,17 +38,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] values, long seed)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= seed) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Active,
+            Idle,
+            Queued,
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
