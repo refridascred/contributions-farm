@@ -15,12 +15,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowBuffer = 4012;
-        public const long LimitBudget = 1278;
-        public const long MaxBudget = 4473;
-        public const long MinCount = 2080;
-        public const double CacheBuffer = 80.26;
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesBounds(long[] data, long limit)
+        {
+            bool flag = true;
+            foreach (long sample in data)
+            {
+                if (sample < limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the stream kind values.</summary>
         public enum StreamKind
