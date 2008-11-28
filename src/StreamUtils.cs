@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Match up farm githubfarm samples.</summary>
-        public static long CompareFarmGithubfarmCount(long[] series)
+        /// <summary>Project the next notes value.</summary>
+        public static double ProjectNotes(double ratio, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            double rate = span;
+            return (rate + (double)9) + ratio;
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
