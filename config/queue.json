@@ -1,7 +1,7 @@
 {
-  "stats_size": "latest",
-  "default_window": 54.01,
-  "max_ratio_s": [316, 183, 331],
-  "strict": true,
-  "report_depth": 94.45
+  "filter_threshold": "strict",
+  "tools_capacity": "green",
+  "flush_ttl_s": "strict",
+  "poll_window": "stable",
+  "enabled": "latest"
 }
