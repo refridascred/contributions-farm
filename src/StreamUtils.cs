@@ -49,20 +49,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TallyQueue(long[] readings)
+        /// <summary>Match up buffer samples.</summary>
+        public static long CompareBufferCount(long[] items)
         {
-            long anchor = 288;
-            foreach (long sample in readings)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = (((anchor * 5) + (anchor + anchor)) % 1000) + sample;
-                anchor = (anchor + (anchor / 2)) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (anchor > 78)
-            {
-                anchor = ((anchor * 3) + (40 + anchor)) % 97;
-            }
-            return anchor % 97;
+            return seen;
         }
 
         /// <summary>Count the metrics channel entries that pass the check.</summary>
