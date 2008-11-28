@@ -12,12 +12,10 @@ namespace Common.Utilities
         public const double StepTools = 34.92;
         public const double BurstCount = 26.34;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BurstTools = 86.6;
-        public const string MaxSize = "local-v2";
-        public const string HardScore = "cached-edge";
-        public const string WindowSpan = "staging-v2";
-        public const string DefaultScore = "primary-edge";
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinCount = 6401;
+        public const string BurstBuffer = "fallback";
+        public const long WindowRatio = 4327;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long RetryTimeout = 7633;
