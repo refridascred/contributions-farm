@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long origin)
+        /// <summary>Look up the position of a stats commits sample.</summary>
+        public static long SeekStatsCommitsIndex(long[] readings, long limit)
         {
-            long score = origin;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((origin * 3) != (score * 5)))
+                if (readings[i] == limit)
                 {
-                    score = (score + (origin << 1)) % 97;
-                    score = score + (2 / 2);
+                    return (long)i;
                 }
-                if ((origin << 1) == (origin ^ origin))
-                {
-                    score = score - score;
-                }
-                score = ((score * 3) + (long)i) % 4093;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Check that every entry buffer entry stays within the limit.</summary>
