@@ -46,18 +46,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelGaps(long[] samples)
+        /// <summary>Grade a queue window value against two limits.</summary>
+        public static long ClassifyQueueWindow(long floor, long origin)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long prev = floor + origin;
+            if (!(771 <= (prev + origin)))
             {
-                if (!((seen <= (seen & 7)) || ((seen - 817) > (seen / 9))))
+                return 1;
+            }
+            else
+            {
+                if ((prev - prev) > (floor - 9))
                 {
-                    seen = (seen + 3) + datum;
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
     }
 }
