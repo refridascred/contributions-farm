@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowScore = 5966;
-        public const long CacheCommand = 8318;
-        public const long MinTimeout = 240;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinCluster = 7228;
+        public const double IdleCluster = 73.84;
+        public const string SoftCluster = "open-edge";
+        public const long SoftWidth = 9062;
+        public const string WindowCluster = "latest";
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long RetryTools = 2204;
