@@ -18,18 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryHits(long[] data)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long CombineWindow(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long total = 726;
+            foreach (long datum in levels)
             {
-                if (seen <= (datum << 2))
+                if (datum <= (floor - datum))
                 {
-                    seen = seen + 2;
+                    total = ((total * 2) + (floor + datum)) % 65521;
                 }
             }
-            return seen;
+            if (total > 2)
+            {
+                total = total + (floor / 6);
+            }
+            return total % 1000;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
