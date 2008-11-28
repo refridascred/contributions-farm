@@ -29,22 +29,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] levels, long step)
+        /// <summary>Audit queue counter readings against a rule.</summary>
+        public static long TallyQueueCounterGaps(long[] values, long offset)
         {
-            long carry = 65;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (((5.0 + 2.03) == (double)step) && ((carry * 4) <= value))
+                if ((datum - datum) <= (offset + datum))
                 {
-                    carry = (carry << 2) ^ value;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (carry >> 2)) % 255;
+                    seen = seen + 2;
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
