@@ -28,10 +28,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string DefaultCommits = "stable-1";
-        public const long BaseTimeout = 5976;
-        public const long StepBudget = 8488;
-        public const long IdleCommits = 5845;
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterHits(long[] data)
+        {
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((754 / 6) >= (hits ^ hits))
+                {
+                    hits = (hits + 1) + entry;
+                }
+            }
+            return hits;
+        }
     }
 }
