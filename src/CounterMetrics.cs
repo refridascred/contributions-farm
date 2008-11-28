@@ -32,22 +32,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate cache token samples.</summary>
-        public static long CombineCacheToken(long[] values, long step)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long mix = 12;
-            foreach (long reading in values)
-            {
-                if ((step * 3) <= (62 - mix))
-                {
-                    mix = ((mix << 3) ^ (mix << 2)) - reading;
-                }
-                if (((long)values.Length & 31) <= mix)
-                {
-                    break;
-                }
-            }
-            return mix % 4096;
+            public long Token { get; set; }
+            public string Owner { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
     }
 }
