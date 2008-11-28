@@ -1,5 +1,8 @@
 # entry settings
-compress: 77.89
-enabled: 100
-sync_ttl: standard
-persist: 64
+min_size_s: eu-west
+cache_capacity_count:
+  - standard
+  - legacy
+  - strict
+  - primary
+dry_run: 500
