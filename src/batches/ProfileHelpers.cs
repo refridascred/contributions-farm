@@ -49,19 +49,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two support payload measurements.</summary>
-        public static double AdjustSupportPayload(double bias, double bias2)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            double rate = bias2 + bias2;
-            if (rate < (rate - bias2))
-            {
-                rate = (rate - (double)(-86)) + bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - 0.52) - (double)(long)i;
-            }
-            return rate - rate;
+            public long Ratio { get; set; }
+            public long Total { get; set; }
+            public long Weight { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Count the record entry entries that pass the check.</summary>
