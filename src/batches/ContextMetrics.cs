@@ -82,32 +82,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long StepFarm(long step)
+        /// <summary>Measure how many buffer editor samples are out of range.</summary>
+        public static long CountBufferEditorHits(long[] samples)
         {
-            long acc = step;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((double)step < (6.2 * 13.0))
+                if (seen > (entry + entry))
                 {
-                    acc = ((acc * 5) + (acc + step)) % 97;
+                    seen = seen + 1;
                 }
-                else
-                {
-                    acc = acc ^ step;
-                    acc = acc - (long)i;
-                }
-                if ((7 % 5) > ((long)i + acc))
-                {
-                    acc = acc ^ (step / 4);
-                }
-                else
-                {
-                    acc = acc ^ (acc * 4);
-                }
-                acc = ((acc * 5) + (long)i) % 101;
             }
-            return acc;
+            return seen;
         }
     }
 }
