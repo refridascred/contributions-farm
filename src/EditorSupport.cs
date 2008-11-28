@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            public long Mode { get; set; }
-            public string Size { get; set; } = "";
+            Done,
+            Synced,
+            Draft,
         }
 
         /// <summary>Adjust a schema reading.</summary>
