@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Digest a series of cluster channel entries.</summary>
-        public static long WeighClusterChannel(long[] levels)
+        /// <summary>Blend two payload layout measurements.</summary>
+        public static double AdjustPayloadLayout(double weight, double floor)
         {
-            long state = 84;
-            foreach (long value in levels)
-            {
-                if ((value / 5) < (value + state))
-                {
-                    state = (state + (value % 5)) % 101;
-                }
-                if ((value ^ state) == (value + 77))
-                {
-                    break;
-                }
-            }
-            if (state > 5)
-            {
-                state = state - (state % 100);
-            }
-            return state;
+            double load = floor;
+            return (load - floor) + weight;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
