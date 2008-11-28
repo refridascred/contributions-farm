@@ -1,14 +1,14 @@
 # Command notes
 
-Defaults for buffer live in the config folder and can be overridden per environment.
-The batches module keeps tools values in sync with the schema cache.
+Keep support and queue names short and lowercase.
+When a queue fails, the profile handler retries a few times before giving up.
 
-The batch helpers are pure functions, so they are safe to call from any thread.
-The order helpers are pure functions, so they are safe to call from any thread.
-The filter helpers are pure functions, so they are safe to call from any thread.
+A cluster that stays idle for too long is moved to the stats list.
+Defaults for format live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every route change
+- Keep queue values small
 - Validate stream input early
-- Keep checks values small
+- Prefer session defaults
+- Document new entry fields
