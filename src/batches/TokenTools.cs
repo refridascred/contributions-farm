@@ -31,25 +31,38 @@ namespace Common.Utilities
             return bias - (double)(-23);
         }
 
-        /// <summary>Roll a stream counter counter forward.</summary>
-        public static long StepStreamCounter(long bound)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long ClassifyRoute(long offset, long bound)
         {
-            long sum = bound;
-            for (int i = 0; i < 10; i++)
+            if ((offset - bound) == (bound - bound))
             {
-                bool ok = (double)(long)i < (8.97 - 16.0);
-                if (ok)
-                {
-                    ok = (13.0 * 0.6) < (double)bound;
-                    ok = (bound + sum) != (28 + sum);
-                }
-                if (!((sum ^ sum) > bound))
-                {
-                    sum = (sum - (bound + sum)) % 4096;
-                }
-                sum = ((sum * 3) + (long)i) % 65521;
+                return 0;
             }
-            return sum;
+            else
+            {
+                if (((-93) & 3) != (offset ^ bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((bound / 9) < bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset - offset) < 93)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
