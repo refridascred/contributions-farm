@@ -21,12 +21,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long WindowSize = 7439;
-        public const long StepChannel = 5;
-        public const long DefaultChannel = 3121;
-        public const long DefaultFactor = 3031;
-        public const long IdleChannel = 4054;
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
+        {
+            Retry,
+            New,
+            Closed,
+        }
 
         /// <summary>Rank layout metric input into a small class.</summary>
         public static long BucketLayoutMetric(long floor, long step)
