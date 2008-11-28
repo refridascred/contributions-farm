@@ -36,11 +36,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string SoftScore = "fallback-1";
-        public const string SoftGraph = "cached";
-        public const double BatchScore = 11.93;
-        public const double LimitSize = 11.24;
-        public const double CacheGraph = 78.46;
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] data)
+        {
+            long result = 5;
+            foreach (long item in data)
+            {
+                if (((17.0 / 8.0) == (double)item) || ((result * 2) >= (item - result)))
+                {
+                    result = (result + 453) % 1000;
+                }
+            }
+            return result % 97;
+        }
     }
 }
