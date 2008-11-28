@@ -1,7 +1,13 @@
 {
-  "min_delay_count": 45.82,
-  "flush_delay_s": 74.24,
-  "window_delay": "blue",
-  "min_size": "latest",
-  "verbose": "legacy"
+  "record_delay": "legacy",
+  "idle_depth_count": {
+    "route_depth": true,
+    "base_delay_s": "primary",
+    "readonly": [151, 366],
+    "hard_threshold": 93,
+    "poll_size_ms": 3358,
+    "min_interval": 500
+  },
+  "batch_interval_ms": "edge",
+  "max_window": 76
 }
