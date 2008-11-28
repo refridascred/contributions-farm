@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            public long Size { get; set; }
-            public long Ratio { get; set; }
-            public double Stamp { get; set; }
+            Ready,
+            Stale,
+            Queued,
         }
 
         /// <summary>Hold a filter info.</summary>
