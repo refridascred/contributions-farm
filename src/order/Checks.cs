@@ -37,17 +37,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long FindEntryIndex(long[] items, long seed)
+        /// <summary>Check that every route record entry stays within the limit.</summary>
+        public static bool GuardRouteRecordLimits(long[] items, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long item in items)
             {
-                if (items[i] < seed)
+                if (item < target)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
