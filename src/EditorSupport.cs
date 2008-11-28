@@ -57,24 +57,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long ClassifyBatches(long offset, long bound)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenHits(long[] levels)
         {
-            if (!((9.0 / 7.0) == (double)bound))
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((12.0 - 8.4) <= (double)offset)
+                if (matches < (matches + 6))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    matches = (matches + 2) ^ cell;
                 }
             }
+            return matches;
         }
     }
 }
