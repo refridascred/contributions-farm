@@ -1,7 +1,7 @@
 {
-  "session_limit": 30,
-  "retry_capacity_ms": false,
-  "max_ratio": "edge",
-  "warm_depth": 57.06,
-  "hard_capacity": "local"
+  "profile_ratio": 30,
+  "enabled": [203, 119, 257],
+  "default_size": 500,
+  "flush_ttl_s": 81.04,
+  "max_depth_count": "stable"
 }
