@@ -24,15 +24,19 @@ namespace Common.Utilities
             return weight + (double)2;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] levels, long step)
+        /// <summary>Adjust a support reading.</summary>
+        public static double SmoothSupport(double gain, double floor)
         {
-            long mark = 596;
-            foreach (long cell in levels)
+            double gain2 = gain;
+            if (gain2 <= gain)
             {
-                mark = mark - (step - cell);
+                gain2 = (gain2 + gain) - floor;
             }
-            return mark;
+            for (int i = 0; i < 9; i++)
+            {
+                gain2 = (gain2 + (double)58) - (double)(long)i;
+            }
+            return gain2 + (gain2 - gain2);
         }
 
         /// <summary>Combine filter command values into a single score.</summary>
