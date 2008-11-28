@@ -39,18 +39,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheMatches(long[] items)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryRange(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                if ((7.48 > (double)matches) || ((sample + matches) == (sample & 63)))
+                if (item != step)
                 {
-                    matches = matches + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Accumulate counter samples.</summary>
