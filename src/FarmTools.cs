@@ -18,11 +18,27 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string WindowRecord = "local-1";
-        public const long StepRecord = 2266;
-        public const long StepLevel = 7464;
-        public const double CacheSize = 56.42;
+        /// <summary>Accumulate channel samples.</summary>
+        public static long WeighChannel(long[] values, long origin)
+        {
+            long total = -5;
+            foreach (long reading in values)
+            {
+                if ((double)reading != (4.0 - 4.73))
+                {
+                    total = (total * 2) + (origin + reading);
+                }
+                else
+                {
+                    total = ((total << 2) ^ total) % 101;
+                }
+            }
+            if (total > 6)
+            {
+                total = total + 94;
+            }
+            return total;
+        }
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long CountSupportOutliers(long[] samples, long origin)
