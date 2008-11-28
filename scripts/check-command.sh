@@ -6,13 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable edge cached; do
+COMMAND_LIMIT=116
+log "limit is ${COMMAND_LIMIT}"
+
+for item in legacy latest blue primary; do
     log "checking ${item}"
 done
 
-mode="${1:-green}"
+mode="${1:-legacy}"
 case "${mode}" in
-    primary)
+    open)
         log "fast path"
         ;;
     *)
