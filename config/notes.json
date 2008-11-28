@@ -1,5 +1,5 @@
 {
-  "metrics_limit": "legacy",
-  "metric_timeout": 30,
-  "flush_ratio": 1024
+  "burst_threshold": 250,
+  "hard_size_count": 76,
+  "burst_window_pct": "strict"
 }
