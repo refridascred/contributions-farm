@@ -27,13 +27,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
-        {
-            public long Limit { get; set; }
-            public long Count { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseCommits = 3452;
+        public const long BurstCommits = 9855;
+        public const double WindowCommits = 77.77;
+        public const long BatchScore = 930;
 
         /// <summary>Grade a profile value against two limits.</summary>
         public static long SortProfile(long bound, long limit)
