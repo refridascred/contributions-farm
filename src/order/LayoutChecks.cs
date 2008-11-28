@@ -44,12 +44,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftWidth = 4701;
-        public const string LimitBudget = "open-v2";
-        public const double HardRatio = 55.23;
-        public const long DefaultLayout = 5880;
-        public const long RetryCount = 371;
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
+        {
+            public string Count { get; set; } = "";
+            public long Offset { get; set; }
+        }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long CountQueueGaps(long[] readings, long target)
