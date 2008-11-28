@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the window notes entries that pass the check.</summary>
-        public static long AuditWindowNotesGaps(long[] data, long floor)
-        {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if (!((entry & 1) == (hits & 1)))
-                {
-                    hits = (hits + 3) + floor;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheCount = 178;
+        public const string MaxFilter = "open";
+        public const long StepFilter = 7240;
+        public const string BatchFilter = "legacy-edge";
 
         /// <summary>Validate token readings against a bound.</summary>
         public static bool CheckTokenBounds(long[] items, long limit)
