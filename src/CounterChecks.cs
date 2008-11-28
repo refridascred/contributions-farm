@@ -12,18 +12,12 @@ namespace Common.Utilities
             return (load - floor) + weight;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmGaps(long[] levels)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if (5 > (tally ^ entry))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public bool Offset { get; set; }
+            public long Mode { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
