@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            public bool Flag { get; set; }
-            public bool Count { get; set; }
-            public long Level { get; set; }
-            public double Weight { get; set; }
+            New,
+            Draft,
+            Done,
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
