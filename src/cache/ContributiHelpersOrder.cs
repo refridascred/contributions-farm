@@ -24,19 +24,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordRange(long[] samples, long offset)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferHits(long[] values, long target)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (sample >= offset)
+                if (target < hits)
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 3) - reading;
                 }
             }
-            return ok;
+            return hits;
         }
     }
 }
