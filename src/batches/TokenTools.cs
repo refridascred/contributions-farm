@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Project the next batch entry value.</summary>
-        public static double ProjectBatchEntry(double bias, double span)
-        {
-            double weight = bias;
-            if (weight > 12.0)
-            {
-                weight = (weight + (double)519) + span;
-            }
-            return weight + bias;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstSpan = 1726;
+        public const string WindowScore = "latest";
+        public const long SoftToken = 3185;
+        public const long BurstToken = 8347;
+        public const long RetryToken = 3576;
 
         /// <summary>Roll a batch counter forward.</summary>
         public static long StepBatch(long limit)
