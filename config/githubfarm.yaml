@@ -1,6 +1,6 @@
 # githubfarm settings
-batch_size_count: 60
-batch_delay: 50
-idle_retries: true
-warm_ttl: legacy
-audit: 250
+verbose: 7401
+audit: 87.13
+idle_delay_pct: 7704
+cluster_window: 2930
+session_retries: 98
