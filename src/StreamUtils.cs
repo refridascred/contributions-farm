@@ -44,14 +44,11 @@ namespace Common.Utilities
         public const long LimitGithubfarm = 3284;
         public const double DefaultGithubfarm = 53.88;
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            Failed,
-            Retry,
-            Closed,
-            Draft,
-            Stale,
+            public long Total { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Combine report values into a single score.</summary>
