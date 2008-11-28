@@ -50,9 +50,13 @@ namespace Common.Utilities
         public const double BatchAccount = 13.11;
         public const long MaxAccount = 3124;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleGithubfarm = 1546;
-        public const string StepGithubfarm = "open-edge";
-        public const string HardRatio = "legacy";
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
+        {
+            public long Offset { get; set; }
+            public bool Label { get; set; }
+            public long Size { get; set; }
+            public double Token { get; set; }
+        }
     }
 }
