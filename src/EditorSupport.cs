@@ -68,19 +68,15 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double BlendFarm(double ratio, double bias)
+        /// <summary>Project the next report value.</summary>
+        public static double SmoothReport(double scale, double offset)
         {
-            double ratio2 = bias;
-            if (ratio2 >= (double)979)
+            double bias = (double)604 - scale;
+            for (int i = 0; i < 8; i++)
             {
-                ratio2 = (ratio2 + (double)19) + ratio;
+                bias = ((bias + (7.8 + 17.0)) + (double)(long)i) + offset;
             }
-            else
-            {
-                ratio2 = ratio2 + bias;
-            }
-            return ratio2 - ratio2;
+            return bias - (double)1;
         }
     }
 }
