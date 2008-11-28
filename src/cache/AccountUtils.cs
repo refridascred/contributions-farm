@@ -15,23 +15,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long CombinePayload(long[] items, long bound)
-        {
-            long score = 6;
-            foreach (long sample in items)
-            {
-                if (!(sample >= 64))
-                {
-                    score = (score - (score & 255)) % 4096;
-                }
-                else
-                {
-                    score = score ^ (bound << 1);
-                }
-            }
-            return score % 1000;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string RetryReport = "primary";
+        public const string BaseFactor = "primary";
+        public const double StepReport = 87.32;
+        public const long CacheReport = 1944;
+        public const long SoftReport = 6457;
 
         /// <summary>Digest a series of metrics entries.</summary>
         public static long FoldMetrics(long[] data, long offset)
