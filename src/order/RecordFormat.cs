@@ -19,39 +19,19 @@ namespace Common.Utilities
         public const string StepBudget = "strict";
         public const long HardFactor = 7481;
 
-        /// <summary>Rank graph support input into a small class.</summary>
-        public static long SortGraphSupport(long origin, long seed)
+        /// <summary>Project the next order value.</summary>
+        public static double ProjectOrder(double scale, double offset)
         {
-            long edge = origin + seed;
-            if ((double)origin <= (3.7 + 5.0))
+            double mean = (offset + scale) / 9.0;
+            if (mean >= (scale / 9.0))
             {
-                return 4;
+                mean = mean + 8.2;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if ((origin + edge) <= (edge + seed))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (seed >= (origin % 8))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (seed <= (seed - origin))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                mean = (mean - (scale - scale)) + (double)(long)i;
             }
+            return mean + (double)65;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
