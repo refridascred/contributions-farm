@@ -1,10 +1,8 @@
 {
-  "metric_size": ["latest", "open"],
-  "audit": 1024,
-  "sync_capacity_s": {
-    "graph_limit": "standard",
-    "dry_run": 45,
-    "batch_size_ms": [461, 63, 348, 493],
-    "default_retries": 500
-  }
+  "dry_run": "fallback",
+  "stats_size": false,
+  "compress": "local",
+  "support_limit": true,
+  "max_capacity": 100,
+  "hard_ratio": "stable"
 }
