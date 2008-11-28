@@ -23,11 +23,11 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            public long Region { get; set; }
-            public string Total { get; set; } = "";
+            public double Owner { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the window phase values.</summary>
