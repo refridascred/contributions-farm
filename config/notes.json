@@ -1,6 +1,7 @@
 {
-  "min_depth_ms": 53.82,
-  "default_retries_pct": true,
-  "soft_depth": [333, 27],
-  "base_ttl": 47.53
+  "sync_depth_count": 2226,
+  "min_window_ms": 60,
+  "hard_retries_s": 100,
+  "soft_ratio_s": "strict",
+  "enabled": 6905
 }
