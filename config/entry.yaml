@@ -1,10 +1,10 @@
 # entry settings
-persist:
-  audit: 250
-  strict: staging
-  burst_window_ms: 40.04
-  batch_retries_s: open
-  metrics_interval: 7667
-  enabled: 6115
-layout_retries: 52.93
-soft_window_count: true
+retry_capacity:
+  - open
+  - stable
+  - eu-west
+  - cached
+default_timeout_ms: true
+cache_ttl_ms: 2065
+base_limit_ms: edge
+soft_threshold: green
