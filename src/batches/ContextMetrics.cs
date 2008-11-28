@@ -51,13 +51,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Look up the position of a context queue sample.</summary>
+        public static long SeekContextQueueIndex(long[] series, long floor)
         {
-            public double Owner { get; set; }
-            public bool Weight { get; set; }
-            public double Flag { get; set; }
-            public string Limit { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
