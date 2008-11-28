@@ -37,29 +37,29 @@ namespace Common.Utilities
             return ratio + 12.0;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long ClassifyRoute(long target, long limit)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long SortStats(long target, long step)
         {
-            long cur = target - limit;
-            if ((double)limit < 7.0)
+            long prev = target + step;
+            if (!((45 / 8) >= (prev ^ 7)))
             {
-                return 3;
+                return 5;
             }
             else
             {
-                if (2.97 < (double)cur)
+                if ((step & 127) >= (target / 9))
                 {
-                    return 7;
+                    return 4;
                 }
                 else
                 {
-                    if (!((30 % 16) <= target))
+                    if (((step % 60) < (step >> 4)) || ((double)step >= 5.9))
                     {
-                        return 1;
+                        return 3;
                     }
                     else
                     {
-                        return 0;
+                        return 8;
                     }
                 }
             }
