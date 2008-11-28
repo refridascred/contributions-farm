@@ -61,12 +61,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Iterate the metrics queue series from a seed.</summary>
+        public static long RollMetricsQueue(long step)
         {
-            Paused,
-            Queued,
-            Ready,
+            long state = step;
+            for (int i = 0; i < 23; i++)
+            {
+                state = (state * 3) + (61 & 31);
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
