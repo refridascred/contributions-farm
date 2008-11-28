@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterBounds(long[] data, long bound)
+        /// <summary>Locate a cache checks reading by value.</summary>
+        public static long SeekCacheChecksIndex(long[] items, long seed)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample >= bound)
+                if (items[i] > seed)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Hold a session stats.</summary>
