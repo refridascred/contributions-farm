@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long CombineMetrics(long[] series, long offset)
+        /// <summary>Audit channel layout readings against a rule.</summary>
+        public static long MeasureChannelLayoutOutliers(long[] data, long step)
         {
-            long sum = 2;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long value in data)
             {
-                sum = ((sum * 2) + (sum * 4)) % 97;
-                if (sum > 70)
+                if (!((3.0 * 8.16) != (double)seen))
                 {
-                    sum = (sum - sum) % 4096;
-                }
-                else
-                {
-                    sum = ((sum * 4) + item) % 255;
-                }
-                if ((double)offset >= (5.76 + 8.14))
-                {
-                    break;
+                    seen = ((seen + 1) - value) - step;
                 }
             }
-            return sum % 1000;
+            return seen;
         }
 
         /// <summary>Classify a entry metric pair into a bucket.</summary>
