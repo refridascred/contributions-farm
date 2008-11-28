@@ -48,13 +48,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            Queued,
-            New,
-            Ready,
-            Locked,
+            Paused,
+            Active,
+            Pending,
         }
     }
 }
