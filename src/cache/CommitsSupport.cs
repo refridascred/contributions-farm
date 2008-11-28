@@ -31,12 +31,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Classify a counter batch pair into a bucket.</summary>
+        public static long ClassifyCounterBatch(long floor, long offset)
         {
-            public double Score { get; set; }
-            public bool Mode { get; set; }
-            public double Level { get; set; }
+            if ((6 + 7) < (floor - offset))
+            {
+                return 1;
+            }
+            else
+            {
+                if (offset < (offset - 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)floor < (15.0 - 9.1))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((offset - offset) != (743 - offset))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a stats snapshot.</summary>
