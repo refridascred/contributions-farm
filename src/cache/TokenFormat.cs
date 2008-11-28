@@ -36,19 +36,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long DigestPayload(long[] data, long origin)
+        /// <summary>Project the next editor farm value.</summary>
+        public static double AdjustEditorFarm(double ratio, double span)
         {
-            long acc = 35;
-            foreach (long item in data)
-            {
-                acc = ((acc << 2) ^ item) % 255;
-            }
-            if (acc > 97)
-            {
-                acc = ((acc << 2) ^ (origin + 7)) % 4096;
-            }
-            return acc % 97;
+            double load = (6.0 + ratio) - (ratio * 1.44);
+            return load + (span / 7.0);
         }
     }
 }
