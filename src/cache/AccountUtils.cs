@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the token filter series from a seed.</summary>
-        public static long IterateTokenFilter(long bound)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterOutliers(long[] data, long step)
         {
-            long total = bound;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if (((total + bound) != (long)i) && ((double)bound == (5.0 * 0.1)))
+                if ((9.58 - 6.5) > (6.02 * 14.0))
                 {
-                    continue;
+                    tally = ((tally + 1) + value) + step;
                 }
-                total = total ^ (bound % 60);
-                total = (total ^ (bound + bound)) % 255;
-                total = ((total * 2) + (long)i) % 65521;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
