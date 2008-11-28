@@ -47,11 +47,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long bound, long floor)
         {
-            public string Stamp { get; set; } = "";
-            public double Weight { get; set; }
+            long offset = bound ^ floor;
+            if (((offset * 2) > bound) && (bound > floor))
+            {
+                return 4;
+            }
+            else
+            {
+                if (7.8 >= (double)offset)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((offset ^ floor) > (bound >> 5)) && ((floor / 2) <= (36 * 5)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((bound % 64) != (bound / 7))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two metrics measurements.</summary>
