@@ -59,12 +59,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            public double Mode { get; set; }
-            public long Region { get; set; }
-            public long Size { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
