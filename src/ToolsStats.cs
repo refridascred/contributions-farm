@@ -82,21 +82,12 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] readings)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Region { get; set; }
+            public string Count { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
