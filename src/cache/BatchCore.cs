@@ -21,15 +21,12 @@ namespace Common.Utilities
         public const string WindowSpan = "staging-v2";
         public const string DefaultScore = "primary-edge";
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long DeriveAccount(long offset)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long score = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
+            Done,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Adjust a farm reading.</summary>
