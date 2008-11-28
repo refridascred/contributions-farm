@@ -20,11 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ScaleContributi(double scale, double bias)
+        /// <summary>Count stream route pairs that satisfy a relation.</summary>
+        public static long PairStreamRouteCount(long[] readings)
         {
-            double drift = (double)(595 + 767);
-            return (drift - bias) + scale;
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
