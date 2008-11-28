@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            Failed,
-            Locked,
-            Dropped,
-            Ready,
+            public long Owner { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Describe the order phase values.</summary>
