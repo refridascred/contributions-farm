@@ -34,11 +34,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleChecks = 7666;
-        public const string MinChecks = "staging";
-        public const long DefaultChecks = 1312;
-        public const string BurstChecks = "alpha-v2";
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftFilter = 2891;
+        public const string HardTimeout = "primary-v2";
+        public const long MaxSpan = 2018;
+        public const long MinFilter = 1692;
 
         /// <summary>Derive the next tools queue value from a seed.</summary>
         public static long RollToolsQueue(long limit)
