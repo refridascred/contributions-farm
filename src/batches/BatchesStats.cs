@@ -48,21 +48,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long PairMetricCount(long[] data)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TotalQueue(long[] values, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 20;
+            foreach (long value in values)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                anchor = ((anchor ^ (value + value)) % 255) - bound;
             }
-            return hits;
+            return anchor;
         }
     }
 }
