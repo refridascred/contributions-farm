@@ -24,20 +24,10 @@ namespace Common.Utilities
         public const string BurstBuffer = "fallback";
         public const long WindowRatio = 4327;
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long StepCounter(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((anchor - 52) > (long)i)
-                {
-                    anchor = anchor ^ ((long)i & 31);
-                }
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftDepth = 7181;
+        public const double CacheDepth = 85.44;
+        public const string DefaultFilter = "standard-1";
 
         /// <summary>Match up route samples.</summary>
         public static long PairRouteCount(long[] data)
