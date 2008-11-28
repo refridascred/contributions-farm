@@ -1,7 +1,20 @@
 # support settings
-batch_delay_s: 30.32
-base_delay_pct: 3709
-githubfarm_timeout: 74.58
-flush_ttl_s:
-  - 228
-  - 167
+retry_delay_count: 4922
+verbose:
+  - 156
+  - 1
+  - 125
+cache_ratio:
+  retry_limit: blue
+  contributi_size: stable
+  burst_retries_count: latest
+  idle_ratio_count:
+    - strict
+    - open
+    - strict
+    - fallback
+default_capacity_count:
+  - 475
+  - 189
+  - 315
+audit: blue
