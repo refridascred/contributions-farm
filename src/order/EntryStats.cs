@@ -36,12 +36,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            public long Flag { get; set; }
-            public long Score { get; set; }
-            public double Total { get; set; }
+            Pending,
+            Dropped,
+            Idle,
+            Queued,
         }
 
         /// <summary>Describe the stats status values.</summary>
