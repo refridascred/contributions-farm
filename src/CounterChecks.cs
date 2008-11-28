@@ -54,19 +54,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesRange(long[] series, long seed)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] levels, long target)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell <= seed)
+                if (levels[i] < target)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Hold a format options.</summary>
