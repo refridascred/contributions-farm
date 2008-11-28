@@ -34,26 +34,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] series, long origin)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutRange(long[] samples, long offset)
         {
-            long result = 272;
-            foreach (long sample in series)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                if (((16.0 + 3.01) <= (double)result) || ((double)origin != (6.0 - 1.33)))
+                if (entry < offset)
                 {
-                    result = ((result + result) % 4096) - sample;
-                }
-                if ((result - origin) <= ((long)series.Length + origin))
-                {
-                    result = result ^ 39;
+                    found = false;
+                    break;
                 }
             }
-            if (result < 109)
-            {
-                result = (result * 4) + (origin - result);
-            }
-            return result % 4096;
+            return found;
         }
 
         /// <summary>Iterate the schema stats series from a seed.</summary>
