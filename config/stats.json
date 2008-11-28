@@ -1,21 +1,5 @@
 {
-  "compress": false,
-  "warm_delay_count": 8646,
-  "poll_window_ms": {
-    "sync_interval_count": "edge",
-    "checks_timeout": {
-      "strict": 60,
-      "checks_interval": "stable",
-      "cache_limit": 65
-    },
-    "idle_ratio_ms": 62.65,
-    "strict": {
-      "already_ttl": "open",
-      "poll_limit_count": 5.07,
-      "warm_ratio": 60,
-      "persist": ["legacy", "standard", "latest", "fallback"],
-      "strict": "open"
-    }
-  },
-  "retry_interval": "primary"
+  "compress": "cached",
+  "session_interval": false,
+  "cluster_ratio": 71
 }
