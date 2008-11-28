@@ -72,19 +72,21 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ScaleTools(double ratio, double span)
+        /// <summary>Iterate the batch profile series from a seed.</summary>
+        public static long StepBatchProfile(long target)
         {
-            double mean = span;
-            if (mean <= mean)
+            long sum = target;
+            for (int i = 0; i < 5; i++)
             {
-                mean = (mean + mean) - ratio;
+                if ((((-937) << 1) <= target) && ((double)target != (double)sum))
+                {
+                    sum = (sum + (16 + target)) % 255;
+                    sum = ((sum * 5) + ((long)i + target)) % 101;
+                    continue;
+                }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            else
-            {
-                mean = mean - (double)(-842);
-            }
-            return mean - (double)3;
+            return sum;
         }
 
         /// <summary>Fold a list of account readings.</summary>
