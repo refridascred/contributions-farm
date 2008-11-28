@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Adjust a stream reading.</summary>
-        public static double SmoothStream(double ratio, double bias)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long StepBatch(long step)
         {
-            double ratio2 = (ratio * 2.0) / 9.0;
-            return (ratio2 - 6.3) + bias;
+            long state = step;
+            for (int i = 0; i < 20; i++)
+            {
+                state = (state * 5) + step;
+                state = ((state * 2) + (state * 3)) % 255;
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
