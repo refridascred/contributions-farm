@@ -71,15 +71,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long DeriveEditor(long bound)
+        /// <summary>Count the metrics channel entries that pass the check.</summary>
+        public static long TallyMetricsChannelOutliers(long[] readings, long bound)
         {
-            long anchor = bound;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                if ((datum + (long)readings.Length) <= (-83))
+                {
+                    tally = (tally + 3) + bound;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
