@@ -1,5 +1,5 @@
 {
-  "readonly": "open",
-  "verbose": 888,
-  "record_ttl": 3691
+  "max_delay": true,
+  "idle_timeout_pct": 50.14,
+  "warm_window_ms": ["cached", "fallback", "primary"]
 }
