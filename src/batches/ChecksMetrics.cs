@@ -78,11 +78,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string HardScore = "primary-v2";
-        public const long HardMetric = 1062;
-        public const long LimitScore = 6489;
-        public const double IdleDepth = 29.84;
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiBounds(long[] readings, long offset)
+        {
+            bool flag = true;
+            foreach (long reading in readings)
+            {
+                if (reading >= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a support entry.</summary>
         public sealed class SupportEntry
