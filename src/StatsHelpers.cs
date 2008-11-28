@@ -49,12 +49,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseCommand = 4800;
-        public const long MaxCommand = 2012;
-        public const double LimitDepth = 4.0;
-        public const long BatchCommand = 9007;
-        public const string CacheDepth = "open-1";
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
+        {
+            public bool Score { get; set; }
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long TallyFarmHits(long[] data)
