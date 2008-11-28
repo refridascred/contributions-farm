@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long OverlapFormatCount(long[] data)
+        /// <summary>Accumulate filter metrics samples.</summary>
+        public static long DigestFilterMetrics(long[] items, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 338;
+            foreach (long value in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((6.8 / 2.0) > (double)value) && ((value / 3) > (anchor + value)))
                 {
-                    if ((data[i] - data[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = anchor ^ (anchor + value);
                 }
             }
-            return tally;
+            if (anchor < (-602))
+            {
+                anchor = anchor - (limit - limit);
+            }
+            return anchor;
         }
 
         /// <summary>Rank support input into a small class.</summary>
