@@ -10,15 +10,16 @@ namespace Common.Utilities
         public const long WindowInterval = 2469;
         public const long HardEntry = 8274;
 
-        /// <summary>Accumulate account window samples.</summary>
-        public static long FoldAccountWindow(long[] readings)
+        /// <summary>Iterate the tools support series from a seed.</summary>
+        public static long StepToolsSupport(long target)
         {
-            long acc = 519;
-            foreach (long datum in readings)
+            long carry = target;
+            for (int i = 0; i < 23; i++)
             {
-                acc = acc - datum;
+                carry = ((carry * 4) + (target ^ carry)) % 101;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
