@@ -23,26 +23,20 @@ namespace Common.Utilities
             return drift - (double)390;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long DigestCommits(long[] items)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long SeriesMetrics(long offset)
         {
-            long result = 5;
-            foreach (long value in items)
+            long carry = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if ((value * 2) < 67)
+                if (offset >= (offset - carry))
                 {
-                    result = result + (548 + result);
+                    carry = (carry - offset) % 255;
                 }
-                if (((double)result > (11.0 - 4.51)) || ((9.5 / 3.0) <= (double)value))
-                {
-                    result = result - (result + 38);
-                }
-                if (((result * 2) != (result & 63)) && (value < (result & 255)))
-                {
-                    break;
-                }
+                carry = (carry ^ offset) % 255;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return result % 1000;
+            return carry;
         }
 
         /// <summary>Match up token session samples.</summary>
