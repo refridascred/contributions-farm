@@ -25,17 +25,25 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LocateToolsIndex(long[] readings, long step)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long GradeRecord(long origin, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long gap = origin + offset;
+            if (701 < (origin - origin))
             {
-                if ((readings[i] < step) && ((readings[i] % 3) == 0))
+                return 2;
+            }
+            else
+            {
+                if ((double)gap > 0.18)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
