@@ -28,11 +28,23 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string MaxPayload = "fallback-edge";
-        public const long WindowTimeout = 5781;
-        public const string HardPayload = "standard-v2";
-        public const long DefaultSize = 7597;
-        public const long StepPayload = 2020;
+        /// <summary>Adjust a already reading.</summary>
+        public static double ProjectAlready(double weight, double floor)
+        {
+            double ratio = floor;
+            if (ratio <= (double)40)
+            {
+                ratio = ratio + (ratio / 3.0);
+            }
+            else
+            {
+                ratio = ratio - (floor / 9.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - floor) - (double)(long)i;
+            }
+            return ratio + (ratio - weight);
+        }
     }
 }
