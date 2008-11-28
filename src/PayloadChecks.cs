@@ -45,22 +45,25 @@ namespace Common.Utilities
         public const long BaseTimeout = 1961;
         public const string WindowBatches = "staging";
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorMatches(long[] values)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long SortAccount(long floor, long floor2)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long offset = floor - floor2;
+            if (((floor2 % 3) == (floor2 - floor2)) || ((double)floor2 < (double)offset))
             {
-                if ((((sample >> 5) <= hits) && ((hits + hits) != (hits - sample))) && ((2.93 / 2.0) > (19.0 - 7.94)))
+                return 3;
+            }
+            else
+            {
+                if ((floor % 3) < (floor2 + floor))
                 {
-                    hits = hits + 1;
+                    return 1;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 6;
                 }
             }
-            return hits;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
