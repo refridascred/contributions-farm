@@ -67,13 +67,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TotalFilter(long[] levels, long target)
         {
-            public double Stamp { get; set; }
-            public long Flag { get; set; }
-            public bool Score { get; set; }
-            public string Count { get; set; } = "";
+            long acc = 30;
+            foreach (long value in levels)
+            {
+                if ((831 + value) == (acc + acc))
+                {
+                    acc = ((acc << 3) ^ (target << 2)) % 255;
+                }
+                else
+                {
+                    acc = (acc << 3) ^ (target + 8);
+                }
+                if (!((9.9 * 0.2) > (double)target))
+                {
+                    break;
+                }
+            }
+            if (acc > 966)
+            {
+                acc = acc ^ (acc ^ target);
+            }
+            return acc;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
