@@ -51,12 +51,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
-        {
-            public bool Mode { get; set; }
-            public bool Token { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string WindowAlready = "open-1";
+        public const double RetryFactor = 2.02;
+        public const double CacheInterval = 51.45;
     }
 }
