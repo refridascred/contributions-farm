@@ -57,12 +57,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ProjectStream(double rate, double floor)
         {
-            public long Token { get; set; }
-            public long Mode { get; set; }
-            public long Size { get; set; }
+            double scale = (double)(197 >> 4);
+            if (scale <= (floor / 4.0))
+            {
+                scale = scale + scale;
+            }
+            return scale + rate;
         }
 
         /// <summary>Count buffer batch pairs that satisfy a relation.</summary>
