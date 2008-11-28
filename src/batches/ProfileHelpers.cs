@@ -22,19 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueRange(long[] data, long limit)
+        /// <summary>Find the first session account entry that matches the target.</summary>
+        public static long LookupSessionAccountIndex(long[] values, long floor)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell >= limit)
+                if ((values[i] > floor) && ((values[i] % 3) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Hold a command snapshot.</summary>
