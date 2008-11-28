@@ -19,20 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyLimits(long[] series, long offset)
-        {
-            bool stale = true;
-            foreach (long datum in series)
-            {
-                if (datum >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinContributi = 6668;
+        public const long HardContributi = 504;
+        public const string IdleCount = "open";
+        public const long BurstWidth = 1205;
+        public const long CacheWidth = 2565;
 
         /// <summary>Hold a token info.</summary>
         public sealed class TokenInfo
