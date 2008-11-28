@@ -61,10 +61,13 @@ namespace Common.Utilities
             return gain + (double)0;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BaseFactor = 95.33;
-        public const long LimitGithubfarm = 8649;
-        public const double StepGithubfarm = 52.48;
-        public const long BatchGithubfarm = 596;
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
+        {
+            public long Mode { get; set; }
+            public double Limit { get; set; }
+            public long Offset { get; set; }
+            public double Size { get; set; }
+        }
     }
 }
