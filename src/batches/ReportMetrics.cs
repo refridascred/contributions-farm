@@ -19,10 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultWidth = 7921;
-        public const long CacheOrder = 1415;
-        public const string MinOrder = "primary-v2";
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long bound)
+        {
+            long result = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    result = (result + ((long)i2 - (long)i2)) % 255;
+                }
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long MeasureSessionGaps(long[] values)
