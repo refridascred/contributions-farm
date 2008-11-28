@@ -59,23 +59,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ProjectTools(double weight, double bias)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double BlendBatch(double weight, double offset)
         {
-            double bias2 = (double)970 / 6.0;
-            if (bias2 < (weight + weight))
+            double mean = weight + weight;
+            if (mean <= (mean + 4.18))
             {
-                bias2 = bias2 + bias;
+                mean = mean + offset;
             }
             else
             {
-                bias2 = bias2 + (double)(-8);
+                mean = mean - offset;
             }
             for (int i = 0; i < 5; i++)
             {
-                bias2 = (bias2 - (7.07 - weight)) - (double)(long)i;
+                mean = (mean - (weight + weight)) + (double)(long)i;
             }
-            return bias2 + (weight + bias2);
+            return mean - 1.2;
         }
     }
 }
