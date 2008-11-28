@@ -25,25 +25,13 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long GradeRecord(long origin, long offset)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long gap = origin + offset;
-            if (701 < (origin - origin))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)gap > 0.18)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public string Label { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Flag { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
