@@ -23,19 +23,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate tools entry samples.</summary>
-        public static long CombineToolsEntry(long[] values, long limit)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyOutliers(long[] data)
         {
-            long carry = 237;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                carry = (carry << 3) ^ (carry * 5);
-                if (!((limit - 8) != (sample % 8)))
+                if (hits <= (585 * 5))
                 {
-                    break;
+                    hits = (hits + 1) + datum;
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Combine route values into a single score.</summary>
