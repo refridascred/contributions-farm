@@ -63,15 +63,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TotalQueue(long[] values, long bound)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long anchor = 20;
-            foreach (long value in values)
-            {
-                anchor = ((anchor ^ (value + value)) % 255) - bound;
-            }
-            return anchor;
+            Dropped,
+            Stale,
+            Failed,
+            Synced,
+            Queued,
         }
     }
 }
