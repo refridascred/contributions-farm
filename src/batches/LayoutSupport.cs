@@ -42,24 +42,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long SortFilter(long floor, long seed)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            if (((0 / 4) >= floor) || ((floor / 3) > (floor - 7)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!(seed > (floor + 629)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Closed,
+            Locked,
+            Stale,
+            Pending,
+            Ready,
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
