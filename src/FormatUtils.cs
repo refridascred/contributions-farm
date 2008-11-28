@@ -63,13 +63,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            New,
-            Failed,
-            Dropped,
-            Paused,
+            public string Level { get; set; } = "";
+            public double Stamp { get; set; }
+            public bool Flag { get; set; }
+            public double Region { get; set; }
         }
     }
 }
