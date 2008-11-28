@@ -27,10 +27,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultWidth = 6755;
-        public const long SoftTools = 4073;
-        public const long WindowTools = 8229;
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
+        {
+            Active,
+            Stale,
+            Synced,
+            Dropped,
+        }
 
         /// <summary>Validate filter stream readings against a bound.</summary>
         public static bool GuardFilterStreamRange(long[] levels, long origin)
