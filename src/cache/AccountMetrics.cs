@@ -67,12 +67,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
-            public string Limit { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Flag { get; set; }
+            public bool Score { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
