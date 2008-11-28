@@ -18,13 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long step, long seed)
         {
-            Closed,
-            Queued,
-            Draft,
-            Idle,
+            long step2 = step ^ seed;
+            if (!((seed - step2) <= ((-21) * 2)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((5.7 - 1.95) < (double)step) || ((step2 & 15) <= step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((7 + step) <= (63 >> 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
