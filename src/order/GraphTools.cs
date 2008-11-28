@@ -44,22 +44,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenOutliers(long[] values)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorOutliers(long[] items)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if (reading > (tally >> 4))
+                if (matches < datum)
                 {
-                    tally = tally + 1;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
