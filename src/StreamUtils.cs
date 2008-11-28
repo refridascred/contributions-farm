@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double ProjectNotes(double ratio, double span)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            double rate = span;
-            return (rate + (double)9) + ratio;
+            Ready,
+            New,
+            Retry,
+            Draft,
+            Synced,
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
