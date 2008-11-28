@@ -24,21 +24,15 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long MatchCacheCount(long[] readings)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TallyReport(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 21;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = (score ^ (datum ^ score)) % 1000;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
