@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] values, long target)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowHits(long[] values, long step)
         {
-            long anchor = 98;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                anchor = (anchor + ((-90) + 3)) % 65521;
-                if ((target - reading) != (target * 3))
+                if ((double)matches > 4.52)
                 {
-                    anchor = ((anchor << 3) ^ anchor) % 65521;
+                    matches = ((matches + 3) ^ datum) - step;
                 }
                 else
                 {
-                    anchor = (anchor << 2) ^ (anchor + 77);
+                    matches = matches - 1;
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
