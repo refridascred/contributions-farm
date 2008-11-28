@@ -31,12 +31,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            Pending,
-            Failed,
-            Done,
+            public string Offset { get; set; } = "";
+            public long Token { get; set; }
+            public long Label { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
