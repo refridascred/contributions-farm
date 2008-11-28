@@ -13,11 +13,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double CacheCount = 7.28;
-        public const long IdleLevel = 7224;
-        public const long DefaultSupport = 3032;
-        public const long BatchSupport = 3504;
+        /// <summary>Find the first payload cache entry that matches the target.</summary>
+        public static long LocatePayloadCacheIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > origin) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank tools input into a small class.</summary>
         public static long SortTools(long limit, long bound)
