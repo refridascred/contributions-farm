@@ -26,19 +26,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterBounds(long[] samples, long step)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandHits(long[] samples)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (entry <= step)
+                if ((double)tally <= (9.77 + 7.5))
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 2) + reading;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Roll a farm account counter forward.</summary>
