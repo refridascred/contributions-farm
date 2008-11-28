@@ -36,12 +36,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            Ready,
-            Draft,
-            New,
+            public string Mode { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Describe the contributi phase values.</summary>
