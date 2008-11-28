@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine cache support values into a single score.</summary>
-        public static long TotalCacheSupport(long[] series)
+        /// <summary>Project the next entry editor value.</summary>
+        public static double ScaleEntryEditor(double bias, double span)
         {
-            long total = 6;
-            foreach (long value in series)
+            double drift = span + (span * 6.0);
+            if (drift > (drift - drift))
             {
-                if (((double)total == (7.7 + 10.0)) && ((value - 6) != (total & 31)))
-                {
-                    total = (total - (total & 255)) % 101;
-                }
+                drift = drift - bias;
             }
-            return total % 65521;
+            return drift + (drift * 5.97);
         }
 
         /// <summary>Blend two farm measurements.</summary>
