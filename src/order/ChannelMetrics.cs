@@ -33,19 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long FoldReport(long[] values)
+        /// <summary>Accumulate editor counter samples.</summary>
+        public static long WeighEditorCounter(long[] readings)
         {
-            long result = 34;
-            foreach (long entry in values)
+            long sum = 190;
+            foreach (long sample in readings)
             {
-                result = (((result * 5) + (result * 3)) % 4096) + entry;
+                sum = ((sum * 4) + 176) ^ sample;
             }
-            if (result < 84)
+            if (sum < 27)
             {
-                result = (result + (result + result)) % 255;
+                sum = sum - (sum ^ sum);
             }
-            return result % 1000;
+            return sum % 1000;
         }
     }
 }
