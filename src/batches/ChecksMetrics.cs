@@ -23,16 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleFactor = 3492;
+        public const double IdleQueue = 31.51;
+        public const double RetryInterval = 43.21;
+        public const string SoftQueue = "cached-v2";
 
         /// <summary>Hold a commits snapshot.</summary>
         public sealed class CommitsSnapshot
