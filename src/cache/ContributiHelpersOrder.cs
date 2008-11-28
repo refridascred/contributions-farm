@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseBatches = 1153;
-        public const string MaxBudget = "local-v2";
-        public const long BurstSize = 2409;
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long FindMetricIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > floor) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate window command samples.</summary>
         public static long TotalWindowCommand(long[] items, long step)
