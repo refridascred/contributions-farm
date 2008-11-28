@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate route payload samples.</summary>
-        public static long FoldRoutePayload(long[] readings)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorGaps(long[] readings, long bound)
         {
-            long mark = 9;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if ((mark >= 684) && ((double)entry > 6.1))
+                if ((double)seen <= (4.75 * 20.0))
                 {
-                    mark = (mark - mark) % 97;
+                    seen = ((seen + 3) - item) - bound;
                 }
             }
-            return mark % 1000;
+            return seen;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
