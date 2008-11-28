@@ -42,15 +42,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long SeriesPayload(long bound)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueGaps(long[] readings, long target)
         {
-            long score = bound;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                score = ((score * 4) + (long)i) % 101;
+                if ((double)item <= 8.0)
+                {
+                    tally = (tally + 3) + target;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Describe the context class values.</summary>
