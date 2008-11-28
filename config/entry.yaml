@@ -1,33 +1,13 @@
 # entry settings
-warm_threshold_s:
-  hard_ttl: stable
-  metric_limit:
-    - open
-    - eu-west
-  batch_limit: primary
-  poll_ttl_pct: 84
-  idle_threshold_pct: 32.37
-  readonly:
-    - local
-    - blue
-sync_depth_pct:
-  readonly: 0.04
-  strict:
-    audit:
-      - cached
-      - blue
-    soft_capacity: 90.84
-    stream_ttl: legacy
-    batches_ratio: 32.0
-    profile_ratio: edge
-    order_window: false
-  sync_timeout_count:
-    - 492
-    - 392
-    - 166
-    - 273
-  audit: stable
-window_interval: false
-retry_limit_ms: 38
-readonly: legacy
-queue_timeout: primary
+default_capacity_pct:
+  min_retries_count: 70.39
+  base_ttl_pct: 500
+  readonly: 2.12
+  flush_delay_s:
+    - green
+    - edge
+    - legacy
+    - primary
+  default_threshold: 88.76
+stream_retries: local
+hard_timeout_ms: 2813
