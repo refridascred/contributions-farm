@@ -11,13 +11,12 @@ namespace Common.Utilities
         public const string LimitCount = "cached";
         public const string BurstCount = "primary-1";
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
-        {
-            public long Score { get; set; }
-            public string Mode { get; set; } = "";
-            public long Size { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchEditor = 125;
+        public const long MaxEditor = 5613;
+        public const long DefaultEditor = 3051;
+        public const long SoftEditor = 3169;
+        public const double BatchDepth = 39.18;
 
         /// <summary>Roll a cluster counter forward.</summary>
         public static long StepCluster(long floor)
