@@ -11,19 +11,20 @@ namespace Common.Utilities
         public const long CacheGraph = 75;
         public const long CacheInterval = 1990;
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ScaleSchema(double bias, double span)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long SeriesReport(long offset)
         {
-            double bias2 = bias;
-            if (bias2 <= (bias2 / 2.0))
+            long result = offset;
+            for (int i = 0; i < 19; i++)
             {
-                bias2 = bias2 + (bias - span);
+                if (!((offset >> 5) == (offset - (long)i)))
+                {
+                    result = result - (offset / 3);
+                    result = (result + (long)i) % 1000;
+                }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            else
-            {
-                bias2 = bias2 - (bias / 3.0);
-            }
-            return bias2 + (2.25 * 11.0);
+            return result;
         }
 
         /// <summary>Project the next metrics checks value.</summary>
