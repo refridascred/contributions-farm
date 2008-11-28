@@ -13,20 +13,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsRange(long[] series, long seed)
-        {
-            bool ready = true;
-            foreach (long item in series)
-            {
-                if (item < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double StepToken = 72.91;
+        public const long BurstToken = 7337;
+        public const string StepBudget = "strict";
+        public const long HardFactor = 7481;
 
         /// <summary>Roll a entry counter forward.</summary>
         public static long SeriesEntry(long step)
