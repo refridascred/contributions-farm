@@ -49,11 +49,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultQueue = 226;
-        public const long BurstCount = 8993;
-        public const string MinQueue = "local-v2";
-        public const long StepQueue = 5272;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftBudget = 7026;
+        public const long RetryAlready = 2369;
+        public const string MaxBudget = "cached-edge";
+        public const long LimitBudget = 7520;
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long AuditMetricsHits(long[] samples)
