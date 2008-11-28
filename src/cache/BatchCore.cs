@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
-        {
-            public long Total { get; set; }
-            public bool Region { get; set; }
-            public bool Label { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowTools = 1995;
+        public const long IdleTools = 8336;
+        public const double HardTools = 44.98;
+        public const double StepTools = 34.92;
+        public const double BurstCount = 26.34;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const double BurstTools = 86.6;
