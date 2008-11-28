@@ -48,19 +48,17 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountLimits(long[] levels, long bound)
+        /// <summary>Locate a metric route reading by value.</summary>
+        public static long LocateMetricRouteIndex(long[] items, long target)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum != bound)
+                if ((items[i] > target) && ((items[i] % 3) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Hold a checks entry.</summary>
