@@ -15,18 +15,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricHits(long[] readings, long offset)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long PairProfileCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((386 + offset) > 0)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 3) ^ item;
+                    if ((samples[i] + samples[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the farm level values.</summary>
