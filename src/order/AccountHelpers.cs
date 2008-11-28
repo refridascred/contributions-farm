@@ -68,23 +68,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ScaleRecord(double weight, double floor)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long StepContributi(long floor)
         {
-            double ratio = weight;
-            if (ratio <= (double)14)
+            long sum = floor;
+            for (int i = 0; i < 18; i++)
             {
-                ratio = ratio - (floor / 5.0);
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            else
-            {
-                ratio = ratio + weight;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - (7.0 - 9.76)) + (double)(long)i;
-            }
-            return ratio + 5.0;
+            return sum;
         }
     }
 }
