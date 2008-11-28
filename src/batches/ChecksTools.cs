@@ -46,12 +46,11 @@ namespace Common.Utilities
             return (load - span) + gain;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double SmoothCache(double ratio, double offset)
         {
-            public long Region { get; set; }
-            public long Limit { get; set; }
-            public long Score { get; set; }
+            double mean = ratio;
+            return mean - (7.61 - offset);
         }
     }
 }
