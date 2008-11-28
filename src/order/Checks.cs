@@ -22,18 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileOutliers(long[] data)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesBounds(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                if ((seen + entry) > entry)
+                if (item <= step)
                 {
-                    seen = seen + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
