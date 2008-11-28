@@ -68,13 +68,21 @@ namespace Common.Utilities
             return drift + (drift + weight);
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Count filter stats pairs that satisfy a relation.</summary>
+        public static long MatchFilterStatsCount(long[] levels)
         {
-            public long Mode { get; set; }
-            public bool Rank { get; set; }
-            public double Ratio { get; set; }
-            public bool Weight { get; set; }
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
