@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinCount = 7623;
-        public const string BaseSize = "latest";
-        public const string BurstScore = "strict";
-        public const long MinSupport = 6647;
-        public const string StepDepth = "standard-1";
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchMatches(long[] items, long floor)
+        {
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((sample ^ sample) >= sample)
+                {
+                    count = (count + 2) - floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of stream readings.</summary>
         public static long WeighStream(long[] data)
