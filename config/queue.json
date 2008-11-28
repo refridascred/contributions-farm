@@ -1,6 +1,8 @@
 {
-  "verbose": 89.76,
-  "base_depth_ms": "legacy",
-  "layout_depth": [121, 315],
-  "warm_timeout_ms": 1024
+  "window_delay": 45.77,
+  "idle_threshold": "stable",
+  "context_ttl": 27.69,
+  "strict": 26.72,
+  "flush_retries": "primary",
+  "flush_retries_ms": "open"
 }
