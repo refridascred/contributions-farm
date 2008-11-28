@@ -55,20 +55,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long ScoreSession(long[] readings)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long MatchCommitsCount(long[] items)
         {
-            long acc = 3;
-            foreach (long cell in readings)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((cell - acc) > acc)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = acc + 7;
-                    acc = acc ^ acc;
+                    if ((items[i] ^ items[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
                 }
-                acc = ((acc << 2) ^ (cell - acc)) % 1000;
             }
-            return acc;
+            return count;
         }
     }
 }
