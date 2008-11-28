@@ -29,18 +29,21 @@ namespace Common.Utilities
         public const string WindowTimeout = "stable-v2";
         public const double IdleLevel = 21.18;
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountHits(long[] values)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long PairLayoutCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((double)datum <= (18.0 + 4.0)) || (((tally << 3) >= (tally + datum)) && (491 < (tally ^ 65))))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((samples[i] - samples[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
