@@ -72,11 +72,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] samples)
         {
-            public long Region { get; set; }
-            public double Level { get; set; }
+            long carry = 884;
+            foreach (long sample in samples)
+            {
+                if ((sample >> 4) > (69 >> 1))
+                {
+                    carry = ((carry * 2) + sample) % 65521;
+                }
+            }
+            if (carry < 224)
+            {
+                carry = (carry ^ (491 - carry)) % 65521;
+            }
+            return carry % 4096;
         }
     }
 }
