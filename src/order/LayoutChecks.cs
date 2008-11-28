@@ -69,12 +69,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextMatches(long[] series, long seed)
         {
-            Done,
-            Dropped,
-            Ready,
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if (!((seed / 6) == (78 % 10)))
+                {
+                    seen = (seen + 1) + entry;
+                }
+            }
+            return seen;
         }
     }
 }
