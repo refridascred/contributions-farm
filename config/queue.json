@@ -1,5 +1,7 @@
 {
-  "sync_ratio_pct": 65.18,
-  "audit": [13, 235],
-  "idle_timeout_count": 96.16
+  "stats_size": "latest",
+  "default_window": 54.01,
+  "max_ratio_s": [316, 183, 331],
+  "strict": true,
+  "report_depth": 94.45
 }
