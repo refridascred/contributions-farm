@@ -1,22 +1,4 @@
 # entry settings
-base_limit_s: legacy
-audit: 17
-soft_size: 1258
-burst_delay_s: 6.91
-poll_interval:
-  default_depth: 46.68
-  order_threshold: false
-  order_capacity: 6444
-  idle_depth_ms:
-    - primary
-    - latest
-  cache_interval_count:
-    dry_run: edge
-    order_capacity: cached
-    soft_ratio_ms: 46
-    commits_retries:
-      - fallback
-      - open
-      - staging
-    min_ttl: false
-compress: primary
+min_delay: 1.8
+batch_ttl_count: open
+sync_threshold_ms: 500
