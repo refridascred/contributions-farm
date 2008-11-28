@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryCluster = 9490;
-        public const long MinLevel = 3787;
-        public const double BurstInterval = 68.72;
-        public const double DefaultCluster = 98.91;
+        /// <summary>Audit order session readings against a rule.</summary>
+        public static long CountOrderSessionHits(long[] samples, long offset)
+        {
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)cell <= (8.2 * 1.0))
+                {
+                    count = (count + 2) - offset;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate profile samples.</summary>
         public static long TallyProfile(long[] items)
