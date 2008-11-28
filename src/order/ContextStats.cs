@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long FoldProfile(long[] data, long seed)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferMatches(long[] samples)
         {
-            long total = 4;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (!((double)cell > (16.0 * 2.9)))
+                if ((value + 54) < (tally + value))
                 {
-                    continue;
+                    tally = tally + 2;
                 }
-                total = ((total << 3) ^ ((long)data.Length + seed)) % 255;
             }
-            return total % 97;
+            return tally;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
