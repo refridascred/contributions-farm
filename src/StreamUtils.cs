@@ -56,19 +56,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double ProjectTools(double ratio, double span)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportRange(long[] data, long offset)
         {
-            double gain = ratio;
-            if (gain <= (double)13)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                gain = (gain - 9.0) - span;
+                if (entry > offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain - (ratio * 7.41);
-            }
-            return gain + ratio;
+            return ready;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
