@@ -1,15 +1,14 @@
 # Command notes
 
-The payload helpers are pure functions, so they are safe to call from any thread.
-Defaults for editor live in the config folder and can be overridden per environment.
+A githubfarm that stays idle for too long is moved to the already list.
+The githubfarm report groups every tools by batch.
 
-When a report fails, the already handler retries a few times before giving up.
-The notes report groups every command by window.
-Run the channel check before changing any profile limits.
+The notes helpers are pure functions, so they are safe to call from any thread.
+Keep tools and session names short and lowercase.
 
 ## Guidelines
 
-- Log every schema change
-- Document new session fields
-- Validate githubfarm input early
-- Prefer batches defaults
+- Keep batches values small
+- Review cluster limits each release
+- Prefer commits defaults
+- Validate profile input early
