@@ -21,17 +21,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Look up the position of a metrics tools sample.</summary>
-        public static long SeekMetricsToolsIndex(long[] levels, long step)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double BlendCommits(double gain, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double rate = gain;
+            if (rate > (3.6 * 3.0))
             {
-                if (levels[i] >= step)
-                {
-                    return (long)i;
-                }
+                rate = rate + (double)(-2);
             }
-            return -1;
+            else
+            {
+                rate = rate - (gain - span);
+            }
+            return rate + rate;
         }
 
         /// <summary>Describe the farm level values.</summary>
