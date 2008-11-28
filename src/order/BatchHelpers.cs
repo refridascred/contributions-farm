@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextHits(long[] levels)
         {
-            public string Count { get; set; } = "";
-            public bool Flag { get; set; }
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if (hits < (88 - hits))
+                {
+                    hits = (hits + 1) + value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a route info.</summary>
