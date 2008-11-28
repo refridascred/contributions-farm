@@ -1,8 +1,6 @@
-id,label,token,owner,weight
-1,eu-west,fallback,426,918
-2,980,514,505,101
-3,955,577,staging,edge
-4,primary,fallback,637,edge
-5,76.15,340,891,77.82
-6,80.91,standard,853,523
-7,69.67,green,25.28,blue
+id,rank,state
+1,local,6
+2,851,74.86
+3,staging,88.11
+4,778,335
+5,blue,fallback
