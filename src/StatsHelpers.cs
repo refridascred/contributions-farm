@@ -23,18 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutHits(long[] samples, long step)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (step <= ((-36) + (-33)))
-                {
-                    hits = (hits + 1) - value;
-                }
-            }
-            return hits;
+            public bool Size { get; set; }
+            public double Owner { get; set; }
+            public double Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Match up channel samples.</summary>
