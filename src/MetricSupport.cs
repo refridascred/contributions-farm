@@ -26,31 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long SortTools(long limit, long bound)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            if ((limit / 2) != (bound - 952))
-            {
-                return 4;
-            }
-            else
-            {
-                if (limit >= (bound + bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (bound <= limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public bool Label { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
