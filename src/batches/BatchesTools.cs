@@ -27,13 +27,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double AdjustBuffer(double gain, double span)
         {
-            public double Mode { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Offset { get; set; }
-            public long Count { get; set; }
+            double bias = gain;
+            if (bias >= gain)
+            {
+                bias = (bias - (gain / 5.0)) + span;
+            }
+            else
+            {
+                bias = bias - (double)175;
+            }
+            return bias - (double)79;
         }
     }
 }
