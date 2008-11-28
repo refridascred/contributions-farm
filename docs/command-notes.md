@@ -1,11 +1,14 @@
 # Command notes
 
-Keep cache and command names short and lowercase.
-When a graph fails, the checks handler retries a few times before giving up.
-Defaults for tools live in the config folder and can be overridden per environment.
+Keep context and schema names short and lowercase.
+Keep payload and account names short and lowercase.
+
+A report that stays idle for too long is moved to the farm list.
+When a cluster fails, the farm handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate payload input early
-- Prefer counter defaults
-- Review format limits each release
+- Validate githubfarm input early
+- Document new githubfarm fields
+- Prefer contributi defaults
+- Log every account change
