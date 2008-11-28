@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate commits contributi samples.</summary>
-        public static long DigestCommitsContributi(long[] readings, long floor)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] data)
         {
-            long anchor = 980;
-            foreach (long cell in readings)
+            long state = 62;
+            foreach (long item in data)
             {
-                if ((3.0 - 10.0) > 4.1)
+                if ((state - 95) == (78 + 92))
                 {
-                    anchor = (((anchor << 2) ^ (cell - (long)readings.Length)) % 4096) + floor;
+                    state = (state + (item + item)) % 1000;
+                    continue;
                 }
+                state = state - (state + 7);
             }
-            return anchor % 97;
+            return state;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
