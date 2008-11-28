@@ -28,23 +28,10 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double ProjectAlready(double weight, double floor)
-        {
-            double ratio = floor;
-            if (ratio <= (double)40)
-            {
-                ratio = ratio + (ratio / 3.0);
-            }
-            else
-            {
-                ratio = ratio - (floor / 9.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - floor) - (double)(long)i;
-            }
-            return ratio + (ratio - weight);
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseSpan = 1125;
+        public const string IdleAccount = "local-1";
+        public const double LimitRatio = 40.25;
+        public const double BaseAccount = 85.65;
     }
 }
