@@ -28,18 +28,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesGaps(long[] data, long bound)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((count + bound) < (count >> 1))
-                {
-                    count = (count + 3) + item;
-                }
-            }
-            return count;
+            Failed,
+            Done,
+            Draft,
+            Closed,
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
