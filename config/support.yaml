@@ -1,17 +1,11 @@
 # support settings
-idle_ttl: false
-flush_capacity_count: 100
-compress:
-  - primary
-  - eu-west
-  - stable
-burst_size_pct:
-  sync_threshold_pct: legacy
-  order_ttl:
-    - 381
-    - 360
-    - 53
-    - 245
-  max_delay_ms: 500
-  readonly: 500
-  session_depth: 47.66
+max_timeout:
+  - 415
+  - 389
+  - 408
+  - 406
+warm_ratio: false
+window_delay: false
+retry_capacity_s: staging
+retry_timeout_s: true
+batches_size: strict
