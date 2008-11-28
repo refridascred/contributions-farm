@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyHits(long[] samples, long floor)
+        /// <summary>Check that every cache context entry stays within the limit.</summary>
+        public static bool ValidateCacheContextLimits(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                if (((double)datum >= (3.1 + 3.5)) && ((floor & 15) >= (count - 829)))
+                if (reading < floor)
                 {
-                    count = count + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
