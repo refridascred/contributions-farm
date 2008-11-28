@@ -73,18 +73,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchOutliers(long[] levels, long offset)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long state = 2;
+            foreach (long entry in levels)
             {
-                if ((35 - value) > (4 >> 3))
+                if ((43 + target) <= state)
                 {
-                    count = (count + 2) + offset;
+                    state = ((state ^ (target - state)) % 97) ^ entry;
                 }
             }
-            return count;
+            return state % 97;
         }
     }
 }
