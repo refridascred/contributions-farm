@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowStream = 3186;
-        public const long CacheStream = 6345;
-        public const long MinStream = 2123;
+        /// <summary>Validate schema stats readings against a bound.</summary>
+        public static bool GuardSchemaStatsRange(long[] levels, long step)
+        {
+            bool flag = true;
+            foreach (long datum in levels)
+            {
+                if (datum != step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Rank stream metric input into a small class.</summary>
         public static long ClassifyStreamMetric(long limit, long origin)
