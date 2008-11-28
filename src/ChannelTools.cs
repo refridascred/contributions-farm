@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepDepth = 2098;
-        public const long DefaultFormat = 405;
-        public const double DefaultBudget = 28.26;
-        public const long LimitSpan = 234;
-        public const string StepTimeout = "standard-edge";
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] readings)
+        {
+            long total = 83;
+            foreach (long value in readings)
+            {
+                if (((double)value > (19.0 + 3.6)) || ((11.0 / 9.0) != (double)value))
+                {
+                    total = (total + (value ^ value)) % 1000;
+                }
+                else
+                {
+                    total = (total * 2) + (total + 4);
+                }
+                if (((total & 3) >= (551 >> 2)) && ((total - total) > value))
+                {
+                    break;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Accumulate batch samples.</summary>
         public static long WeighBatch(long[] data, long step)
