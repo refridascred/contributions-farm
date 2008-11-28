@@ -40,12 +40,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsOutliers(long[] readings)
         {
-            public long Label { get; set; }
-            public string Owner { get; set; } = "";
-            public long Ratio { get; set; }
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((6.0 * 7.14) <= (double)seen)
+                {
+                    seen = (seen + 1) + value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a contributi summary.</summary>
