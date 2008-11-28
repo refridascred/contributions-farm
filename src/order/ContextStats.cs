@@ -27,12 +27,15 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Roll a record farm counter forward.</summary>
+        public static long RollRecordFarm(long bound)
         {
-            Dropped,
-            Synced,
-            Draft,
+            long sum = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
