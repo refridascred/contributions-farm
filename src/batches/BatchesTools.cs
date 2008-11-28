@@ -20,12 +20,19 @@ namespace Common.Utilities
             return bias + (double)18;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaLimits(long[] items, long step)
         {
-            New,
-            Failed,
-            Idle,
+            bool valid = true;
+            foreach (long item in items)
+            {
+                if (item < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
