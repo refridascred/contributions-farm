@@ -39,14 +39,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double AdjustSchema(double scale, double bias)
         {
-            Dropped,
-            Closed,
-            Ready,
-            Retry,
-            New,
+            double gain = bias + bias;
+            return (gain - 6.5) + scale;
         }
     }
 }
