@@ -29,39 +29,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long GradeBatch(long target, long offset)
+        /// <summary>Accumulate schema already samples.</summary>
+        public static long TotalSchemaAlready(long[] levels, long offset)
         {
-            long next = target + offset;
-            if (!((offset / 6) >= (243 - target)))
+            long sum = 7;
+            foreach (long sample in levels)
             {
-                return 3;
+                sum = (sum + (sample >> 1)) % 1000;
             }
-            else
+            if (sum > (-426))
             {
-                if ((next / 4) < (next & 15))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((offset * 4) <= (927 << 1)) || ((next + 71) == (next % 8)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((target + target) != (offset + 13)) || ((target + next) >= (266 - target)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                sum = sum + (offset * 2);
             }
+            return sum;
         }
     }
 }
