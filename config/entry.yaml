@@ -1,14 +1,4 @@
 # entry settings
-notes_window: 37
-cache_size: 50.76
-window_ttl:
-  batch_ttl: 706
-  support_threshold:
-    - 383
-    - 447
-    - 311
-    - 330
-  persist: 6619
-  warm_depth: false
-  batch_depth_count: 250
-contributi_depth: true
+default_interval_pct: 86
+compress: true
+flush_retries: 14
