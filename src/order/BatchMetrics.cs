@@ -31,13 +31,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] levels, long step)
         {
-            Pending,
-            Done,
-            Paused,
-            Failed,
+            long carry = 65;
+            foreach (long value in levels)
+            {
+                if (((5.0 + 2.03) == (double)step) && ((carry * 4) <= value))
+                {
+                    carry = (carry << 2) ^ value;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (carry >> 2)) % 255;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
