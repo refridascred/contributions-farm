@@ -32,13 +32,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphRange(long[] data, long offset)
         {
-            Closed,
-            Synced,
-            Failed,
-            Idle,
+            bool flag = true;
+            foreach (long item in data)
+            {
+                if (item >= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
