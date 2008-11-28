@@ -17,12 +17,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseSpan = 5568;
-        public const long DefaultLevel = 3079;
-        public const long StepCount = 5489;
-        public const long MinTimeout = 2124;
-        public const double MaxProfile = 18.19;
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
+        {
+            Queued,
+            Stale,
+            Synced,
+            Locked,
+            New,
+        }
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long DeriveQueue(long limit)
