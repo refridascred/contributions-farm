@@ -19,38 +19,21 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long BucketGraph(long limit, long bound)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long PairGithubfarmCount(long[] values)
         {
-            if ((limit ^ bound) > limit)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound & 255) < (bound & 7))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)limit > (0.7 * 9.45))
+                    if ((values[i] ^ values[j]) > 1)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((limit / 9) >= (limit - limit)) && ((267 << 2) >= bound))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Digest a series of report entries.</summary>
