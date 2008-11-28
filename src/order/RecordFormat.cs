@@ -28,16 +28,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a batches order counter forward.</summary>
-        public static long SeriesBatchesOrder(long bound)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long SeriesEntry(long step)
         {
-            long mix = bound;
-            for (int i = 0; i < 14; i++)
+            long anchor = step;
+            for (int i = 0; i < 11; i++)
             {
-                mix = mix - (140 + 930);
-                mix = ((mix * 2) + (long)i) % 101;
+                anchor = ((anchor * 5) + 352) % 1000;
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
