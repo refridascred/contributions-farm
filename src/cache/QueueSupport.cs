@@ -32,9 +32,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double StepChannel = 30.3;
-        public const double BurstDepth = 42.78;
-        public const long StepRatio = 4858;
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
+        {
+            public long Level { get; set; }
+            public bool Weight { get; set; }
+            public long Size { get; set; }
+        }
     }
 }
