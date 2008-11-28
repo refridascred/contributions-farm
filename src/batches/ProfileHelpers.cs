@@ -22,15 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ProjectContext(double gain, double span)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueRange(long[] data, long limit)
         {
-            double mean = span;
-            for (int i = 0; i < 9; i++)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                mean = (mean + gain) + (double)(long)i;
+                if (cell >= limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mean - mean;
+            return ready;
         }
 
         /// <summary>Hold a command snapshot.</summary>
