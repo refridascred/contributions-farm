@@ -60,18 +60,16 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsOutliers(long[] readings, long seed)
+        /// <summary>Iterate the schema stats series from a seed.</summary>
+        public static long SeriesSchemaStats(long limit)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long result = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if ((seed >= (4 * 4)) && ((seed > (sample + seed)) || ((seed - seed) < (count * 3))))
-                {
-                    count = count + 2;
-                }
+                result = (result + (result - result)) % 1000;
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
