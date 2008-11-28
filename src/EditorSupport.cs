@@ -72,15 +72,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double BlendTools(double weight, double floor)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutLimits(long[] levels, long origin)
         {
-            double scale = floor;
-            if (scale < floor)
+            bool found = true;
+            foreach (long value in levels)
             {
-                scale = scale + floor;
+                if (value <= origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return scale + (floor + weight);
+            return found;
         }
     }
 }
