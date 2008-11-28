@@ -29,12 +29,12 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            Dropped,
-            Paused,
-            Locked,
+            public string Count { get; set; } = "";
+            public double Label { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
