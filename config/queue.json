@@ -1,25 +1,6 @@
 {
-  "batch_window_ms": "latest",
-  "min_delay": "primary",
-  "cache_depth": 1523,
-  "enabled": 8243,
-  "cache_retries_ms": "primary",
-  "min_delay_ms": {
-    "schema_retries": "cached",
-    "hard_capacity": {
-      "dry_run": [74, 42, 416, 477],
-      "payload_interval": 50.75,
-      "compress": "edge",
-      "cache_retries_ms": false,
-      "strict": false,
-      "hard_ttl_pct": 42
-    },
-    "soft_ttl_s": {
-      "persist": 60,
-      "account_capacity": ["latest", "latest", "green", "fallback"],
-      "cluster_ratio": 70.84,
-      "stats_interval": 2263,
-      "min_threshold": 5917
-    }
-  }
+  "sync_size_pct": 1176,
+  "batch_ratio_pct": 4583,
+  "base_depth": false,
+  "already_ratio": "primary"
 }
