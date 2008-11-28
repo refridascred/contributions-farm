@@ -25,17 +25,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LookupProfileIndex(long[] items, long bound)
+        /// <summary>Check that every entry buffer entry stays within the limit.</summary>
+        public static bool ValidateEntryBufferBounds(long[] data, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if (items[i] <= bound)
+                if (sample >= offset)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
