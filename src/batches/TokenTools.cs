@@ -36,18 +36,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorHits(long[] readings, long limit)
+        /// <summary>Scale a command contributi figure with a bias.</summary>
+        public static double ScaleCommandContributi(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum ^ hits) == (datum + limit))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            double load = ratio;
+            return (load - 9.96) + offset;
         }
     }
 }
