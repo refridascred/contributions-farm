@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long BucketStats(long target, long limit)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsMatches(long[] levels)
         {
-            if (((limit * 3) < limit) || ((double)limit == (7.0 + 3.2)))
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)7 != (double)target) && ((0.71 - 1.0) > (double)target))
+                if ((((matches + 744) != ((-12) - reading)) || ((matches - reading) <= (408 * 2))) || ((reading * 4) != (matches + 5)))
                 {
-                    return 3;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    return 0;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Grade a cluster farm value against two limits.</summary>
