@@ -44,20 +44,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double BlendEditor(double gain, double bias)
-        {
-            double gain2 = (double)259 / 7.0;
-            if (gain2 >= (gain + gain2))
-            {
-                gain2 = gain2 - (bias * 3.3);
-            }
-            else
-            {
-                gain2 = gain2 - (8.3 + bias);
-            }
-            return gain2 - (bias / 8.0);
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxFactor = 2574;
+        public const double HardSize = 20.84;
+        public const long DefaultBatch = 6051;
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long CountQueueGaps(long[] readings, long target)
