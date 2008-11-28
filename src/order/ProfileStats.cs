@@ -32,15 +32,18 @@ namespace Common.Utilities
         public const string BatchTimeout = "standard";
         public const string CacheCount = "legacy-1";
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryHits(long[] data)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long CompareWindowCount(long[] series)
         {
             long seen = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((3.4 - 7.6) >= (double)entry)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((series[i] - series[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
