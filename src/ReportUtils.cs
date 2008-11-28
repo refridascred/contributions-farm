@@ -36,12 +36,17 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Locate a layout batch reading by value.</summary>
+        public static long SeekLayoutBatchIndex(long[] readings, long step)
         {
-            public long Mode { get; set; }
-            public bool Size { get; set; }
-            public double Count { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
