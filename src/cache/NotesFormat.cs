@@ -19,15 +19,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TallyGithubfarm(long[] levels, long bound)
+        /// <summary>Audit format window readings against a rule.</summary>
+        public static long TallyFormatWindowHits(long[] levels, long origin)
         {
-            long mix = 45;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                mix = (mix ^ (cell % 24)) - bound;
+                if ((origin >> 1) < origin)
+                {
+                    count = (count + 1) ^ reading;
+                }
             }
-            return mix % 65521;
+            return count;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
