@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] values, long bound)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long IterateNotes(long origin)
         {
-            long sum = 4;
-            foreach (long sample in values)
+            long mix = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (((double)bound != (4.79 * 9.44)) || (sample <= (97 & 1)))
+                if ((20.0 * 4.9) < (double)origin)
                 {
-                    sum = (sum - (sample & 31)) % 97;
+                    mix = (mix * 4) + ((long)i & 31);
                 }
                 else
                 {
-                    sum = sum + (bound - sample);
+                    mix = ((mix * 5) + (mix + mix)) % 255;
                 }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return sum % 97;
+            return mix;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
