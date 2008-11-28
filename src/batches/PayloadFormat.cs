@@ -19,17 +19,22 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long SeekAccountIndex(long[] samples, long step)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = -1;
+            foreach (long datum in data)
             {
-                if (samples[i] >= step)
+                if (((result - datum) < 668) && ((6 / 9) >= (datum - result)))
                 {
-                    return (long)i;
+                    result = ((result * 3) + (result & 31)) % 255;
                 }
             }
-            return -1;
+            if (result > 88)
+            {
+                result = (result ^ (result - result)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
