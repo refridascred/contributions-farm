@@ -16,17 +16,38 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LookupContributiIndex(long[] series, long floor)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long SortOrder(long limit, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((bound - bound) < (18 + limit))
             {
-                if (series[i] < floor)
+                return 5;
+            }
+            else
+            {
+                if ((3.93 + 9.4) != (double)limit)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)bound < (7.0 / 6.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((bound ^ limit) < (-376))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate schema already samples.</summary>
