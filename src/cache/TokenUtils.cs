@@ -31,19 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsBounds(long[] series, long limit)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            bool flag = true;
-            foreach (long entry in series)
-            {
-                if (entry != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Pending,
+            Failed,
+            Done,
         }
     }
 }
