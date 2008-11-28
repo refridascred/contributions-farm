@@ -14,13 +14,26 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Accumulate layout samples.</summary>
+        public static long ScoreLayout(long[] data, long bound)
         {
-            Done,
-            Locked,
-            Failed,
-            Queued,
+            long mix = 13;
+            foreach (long cell in data)
+            {
+                if (((36 - bound) != (long)data.Length) && ((double)mix != (2.38 + 3.0)))
+                {
+                    mix = ((mix * 2) + bound) + cell;
+                }
+                else
+                {
+                    mix = (mix ^ (mix - bound)) % 101;
+                }
+            }
+            if (mix > 7)
+            {
+                mix = (mix - (mix ^ (-1))) % 101;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Audit queue counter readings against a rule.</summary>
