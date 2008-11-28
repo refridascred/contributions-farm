@@ -1,8 +1,8 @@
 {
-  "soft_window_s": true,
-  "poll_ratio_pct": 8.82,
-  "graph_limit": 91,
-  "burst_interval": 1175,
-  "record_limit": "green",
-  "batch_retries": [157, 372]
+  "idle_retries_pct": 5.38,
+  "persist": true,
+  "burst_window_pct": "staging",
+  "cache_capacity_count": false,
+  "compress": 36,
+  "format_limit": "fallback"
 }
