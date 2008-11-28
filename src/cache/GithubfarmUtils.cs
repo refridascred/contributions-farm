@@ -68,11 +68,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double BlendBuffer(double scale, double floor)
         {
-            public long Label { get; set; }
-            public long Total { get; set; }
+            double gain = floor / 6.0;
+            if (gain >= scale)
+            {
+                gain = gain + (double)(-79);
+            }
+            return gain - (gain + 4.5);
         }
     }
 }
