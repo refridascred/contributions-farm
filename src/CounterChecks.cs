@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Blend two payload layout measurements.</summary>
-        public static double AdjustPayloadLayout(double weight, double floor)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            double load = floor;
-            return (load - floor) + weight;
+            public long Flag { get; set; }
+            public long Size { get; set; }
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Fold a list of token readings.</summary>
