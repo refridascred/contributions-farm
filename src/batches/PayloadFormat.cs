@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] items, long bound)
-        {
-            long result = 7;
-            foreach (long cell in items)
-            {
-                if ((result / 2) != (cell + bound))
-                {
-                    result = result + 8;
-                }
-            }
-            return result % 65521;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinCount = 7623;
+        public const string BaseSize = "latest";
+        public const string BurstScore = "strict";
+        public const long MinSupport = 6647;
+        public const string StepDepth = "standard-1";
 
         /// <summary>Fold a list of stream readings.</summary>
         public static long WeighStream(long[] data)
