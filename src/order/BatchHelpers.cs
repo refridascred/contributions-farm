@@ -13,19 +13,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Fold a list of editor contributi readings.</summary>
-        public static long CombineEditorContributi(long[] values)
+        /// <summary>Blend two notes queue measurements.</summary>
+        public static double SmoothNotesQueue(double ratio, double span)
         {
-            long carry = -7;
-            foreach (long cell in values)
+            double ratio2 = (double)(2 + 518);
+            for (int i = 0; i < 4; i++)
             {
-                if (carry <= (carry - cell))
-                {
-                    carry = carry + (cell % 60);
-                }
-                carry = (carry + ((-251) - carry)) % 101;
+                ratio2 = ((ratio2 + ratio) - (double)(long)i) - span;
             }
-            return carry;
+            return ratio2 - ratio2;
         }
 
         /// <summary>Accumulate channel samples.</summary>
