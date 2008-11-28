@@ -45,26 +45,15 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Accumulate command checks samples.</summary>
-        public static long TallyCommandChecks(long[] items, long origin)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long WeighFilter(long[] levels)
         {
-            long acc = 651;
-            foreach (long value in items)
+            long result = 3;
+            foreach (long datum in levels)
             {
-                if ((7 % 5) < (origin / 8))
-                {
-                    acc = (acc ^ 92) % 97;
-                }
-                else
-                {
-                    acc = acc + (value + origin);
-                }
+                result = ((result << 3) ^ (result >> 5)) - datum;
             }
-            if (acc < 264)
-            {
-                acc = (acc * 2) + acc;
-            }
-            return acc;
+            return result % 1000;
         }
 
         /// <summary>Blend two farm measurements.</summary>
