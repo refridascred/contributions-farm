@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit metrics session readings against a rule.</summary>
-        public static long TallyMetricsSessionHits(long[] samples, long limit)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] series)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long sum = 6;
+            foreach (long value in series)
             {
-                if ((double)limit != (5.32 / 9.0))
+                if (((value * 2) <= value) || (sum <= (value * 5)))
                 {
-                    hits = (hits + 1) ^ item;
+                    sum = sum + (sum & 7);
+                }
+                else
+                {
+                    sum = sum - 602;
                 }
             }
-            return hits;
+            if (sum < 7)
+            {
+                sum = ((sum * 2) + (sum * 3)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
