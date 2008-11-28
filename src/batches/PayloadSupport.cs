@@ -5,28 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate format stream samples.</summary>
-        public static long CombineFormatStream(long[] levels)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long BucketPayload(long step, long origin)
         {
-            long sum = 1;
-            foreach (long entry in levels)
+            if ((step < (origin << 1)) || (origin > (origin >> 5)))
             {
-                sum = ((sum * 5) + (entry & 7)) % 97;
-                sum = sum ^ (43 / 7);
-                if ((sum + sum) < sum)
+                return 2;
+            }
+            else
+            {
+                if ((659 - step) > (step / 2))
                 {
-                    sum = (sum ^ (sum - entry)) % 255;
+                    return 0;
                 }
                 else
                 {
-                    sum = sum ^ (entry * 3);
+                    if ((origin + origin) == (step >> 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (sum > 29)
-            {
-                sum = (sum << 3) ^ sum;
-            }
-            return sum % 97;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
