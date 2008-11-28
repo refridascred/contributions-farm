@@ -14,18 +14,19 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaMatches(long[] readings)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long mix = 990;
+            foreach (long item in samples)
             {
-                if (!!((entry - entry) > matches))
+                if ((item + item) > target)
                 {
-                    matches = matches + 2;
+                    continue;
                 }
+                mix = (mix ^ (item + mix)) % 65521;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
