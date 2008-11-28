@@ -18,11 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmHits(long[] series)
         {
-            public string Owner { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((seen % 100) > (item % 24))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
