@@ -67,26 +67,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long WeighReport(long[] levels)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenMatches(long[] data)
         {
-            long mark = 353;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if ((mark + mark) < (reading + 371))
+                if ((cell & 31) > cell)
                 {
-                    mark = (mark + (mark & 31)) % 255;
-                }
-                if ((mark - reading) > (273 + reading))
-                {
-                    mark = (mark ^ 35) % 4096;
-                }
-                if (((mark + mark) > reading) || ((double)reading < (3.4 * 6.4)))
-                {
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return mark % 4096;
+            return hits;
         }
     }
 }
