@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const long RetryChannel = 3656;
         public const long CacheFactor = 380;
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterBounds(long[] items, long origin)
         {
-            public long Token { get; set; }
-            public bool Size { get; set; }
-            public long Count { get; set; }
+            bool found = true;
+            foreach (long entry in items)
+            {
+                if (entry <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a command options.</summary>
