@@ -1,10 +1,6 @@
 {
-  "idle_capacity_s": "strict",
-  "flush_limit": "open",
-  "poll_interval_count": ["strict", "latest", "fallback", "cached"],
-  "audit": {
-    "poll_ttl": "green",
-    "strict": "blue",
-    "persist": ["cached", "strict"]
-  }
+  "persist": 23.59,
+  "strict": "primary",
+  "poll_retries_count": 60,
+  "enabled": ["blue", "staging", "latest"]
 }
