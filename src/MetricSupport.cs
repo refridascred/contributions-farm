@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] readings)
+        /// <summary>Iterate the entry format series from a seed.</summary>
+        public static long RollEntryFormat(long limit)
         {
-            long acc = 2;
-            foreach (long reading in readings)
+            long mix = limit;
+            for (int i = 0; i < 22; i++)
             {
-                acc = ((acc - ((long)readings.Length + acc)) % 97) - reading;
+                if (limit < (2 + 43))
+                {
+                    break;
+                }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            if (acc > 4)
-            {
-                acc = ((acc << 3) ^ (acc + acc)) % 4096;
-            }
-            return acc;
+            return mix;
         }
 
         /// <summary>Hold a counter entry.</summary>
