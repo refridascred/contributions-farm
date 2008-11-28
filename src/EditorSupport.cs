@@ -19,15 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double SmoothAlready(double gain, double bias)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ProjectSchema(double weight, double offset)
         {
-            double bias2 = gain * 9.17;
-            for (int i = 0; i < 8; i++)
+            double bias = (double)16 * 8.9;
+            if (bias > (double)262)
             {
-                bias2 = ((bias2 - (gain / 3.0)) + (double)(long)i) - bias;
+                bias = (bias + bias) - offset;
             }
-            return bias2 - (bias2 / 6.0);
+            else
+            {
+                bias = bias - bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - (9.4 / 2.0)) + (double)(long)i;
+            }
+            return bias - (weight + bias);
         }
 
         /// <summary>Describe the token mode values.</summary>
