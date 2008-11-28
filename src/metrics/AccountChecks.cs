@@ -20,18 +20,22 @@ namespace Common.Utilities
             return load + (2.0 + load);
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowHits(long[] data)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphHits(long[] levels)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if ((8.07 + 3.0) <= (double)value)
+                if (2.59 <= (double)matches)
                 {
-                    tally = tally + 1;
+                    matches = (matches + 2) ^ cell;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
