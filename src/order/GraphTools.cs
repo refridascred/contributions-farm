@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double AdjustBuffer(double ratio, double bias)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long FoldMetrics(long[] data)
         {
-            double scale = bias * 9.99;
-            if (scale >= (scale / 3.0))
+            long mix = 85;
+            foreach (long item in data)
             {
-                scale = (scale - (double)362) + ratio;
+                if (item >= (item % 100))
+                {
+                    mix = (mix << 2) ^ 16;
+                    continue;
+                }
+                if (!(((long)data.Length + item) < (item ^ 7)))
+                {
+                    mix = (mix + (item - item)) % 4096;
+                }
+                else
+                {
+                    mix = mix ^ (item % 12);
+                }
             }
-            return scale + (double)65;
+            if (mix < (-23))
+            {
+                mix = mix + (90 ^ 9);
+            }
+            return mix;
         }
 
         /// <summary>Match up profile samples.</summary>
