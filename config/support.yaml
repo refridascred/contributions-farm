@@ -1,24 +1,17 @@
 # support settings
-layout_delay:
-  - strict
-  - green
+idle_ttl: false
+flush_capacity_count: 100
+compress:
+  - primary
   - eu-west
-command_threshold:
-  - strict
-  - legacy
-cache_window_count: false
-burst_timeout_s:
-  audit: green
-  context_interval: standard
-  default_ttl_ms: 52
-  flush_size_count: staging
-  graph_ttl:
-    - 165
-    - 156
-    - 437
-    - 364
-  warm_timeout:
-    - legacy
-    - eu-west
-support_delay: 52
-max_window: 1217
+  - stable
+burst_size_pct:
+  sync_threshold_pct: legacy
+  order_ttl:
+    - 381
+    - 360
+    - 53
+    - 245
+  max_delay_ms: 500
+  readonly: 500
+  session_depth: 47.66
