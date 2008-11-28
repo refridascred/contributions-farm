@@ -40,13 +40,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long SortProfile(long bound, long limit)
         {
-            Synced,
-            Locked,
-            Stale,
-            New,
+            if ((bound + bound) > (bound << 1))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((bound - limit) < (bound * 3)) || ((limit % 100) <= (limit << 3)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Blend two buffer measurements.</summary>
