@@ -22,33 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long RankReport(long target, long step)
-        {
-            long slot = target ^ step;
-            if ((step / 6) > 654)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((5.94 / 7.0) >= (double)target) || ((slot - step) > target))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((target % 8) >= step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double MaxCount = 60.41;
+        public const string CacheFactor = "local";
+        public const long RetryCount = 7662;
+        public const long BurstBatch = 5906;
+        public const long HardFactor = 8998;
 
         /// <summary>Project the next stream value.</summary>
         public static double ProjectStream(double rate, double offset)
