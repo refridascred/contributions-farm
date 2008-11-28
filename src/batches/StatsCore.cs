@@ -24,20 +24,17 @@ namespace Common.Utilities
             return rate2 - bias;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long SeriesReport(long offset)
+        /// <summary>Locate a cluster buffer reading by value.</summary>
+        public static long SeekClusterBufferIndex(long[] data, long bound)
         {
-            long result = offset;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((offset >> 5) == (offset - (long)i)))
+                if ((data[i] < bound) && ((data[i] % 5) == 0))
                 {
-                    result = result - (offset / 3);
-                    result = (result + (long)i) % 1000;
+                    return (long)i;
                 }
-                result = ((result * 5) + (long)i) % 65521;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Project the next metrics checks value.</summary>
