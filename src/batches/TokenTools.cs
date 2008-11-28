@@ -36,11 +36,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a command contributi figure with a bias.</summary>
-        public static double ScaleCommandContributi(double ratio, double offset)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            double load = ratio;
-            return (load - 9.96) + offset;
+            Stale,
+            Dropped,
+            Pending,
         }
     }
 }
