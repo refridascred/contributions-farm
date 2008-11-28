@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelHits(long[] items)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double AdjustGithubfarm(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            double gain2 = (double)((-5) % 97);
+            if (gain2 >= gain2)
             {
-                if ((matches ^ matches) < (matches << 2))
-                {
-                    matches = (matches + 3) + entry;
-                }
+                gain2 = (gain2 - (double)532) - gain;
             }
-            return matches;
+            for (int i = 0; i < 7; i++)
+            {
+                gain2 = (gain2 + (gain2 + offset)) + (double)(long)i;
+            }
+            return gain2 + 3.3;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
