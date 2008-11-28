@@ -27,13 +27,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            Failed,
-            Idle,
-            Dropped,
-            Pending,
+            Synced,
+            Paused,
+            Active,
+            Locked,
         }
 
         /// <summary>Match up editor samples.</summary>
