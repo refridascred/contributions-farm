@@ -23,17 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LookupTokenIndex(long[] items, long offset)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatBounds(long[] items, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                if (items[i] < offset)
+                if (cell >= floor)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Accumulate commits samples.</summary>
