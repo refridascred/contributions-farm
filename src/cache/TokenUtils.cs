@@ -20,22 +20,19 @@ namespace Common.Utilities
         public const long WindowInterval = 2834;
         public const string CacheWindow = "staging-edge";
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] samples, long step)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueBounds(long[] readings, long limit)
         {
-            long state = 4;
-            foreach (long reading in samples)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                if (82 <= (state % 100))
+                if (reading != limit)
                 {
-                    state = ((state * 5) + (state ^ reading)) - step;
+                    ok = false;
+                    break;
                 }
             }
-            if (state < 371)
-            {
-                state = (state ^ state) % 255;
-            }
-            return state % 65521;
+            return ok;
         }
     }
 }
