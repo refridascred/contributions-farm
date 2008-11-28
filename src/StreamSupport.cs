@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            Draft,
-            Stale,
             New,
+            Pending,
+            Active,
+            Stale,
         }
 
         /// <summary>Hold a order info.</summary>
