@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Count the report account entries that pass the check.</summary>
+        public static long AuditReportAccountOutliers(long[] data)
         {
-            Synced,
-            Stale,
-            Ready,
+            long count = 0;
+            foreach (long item in data)
+            {
+                if (item < (9 - item))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
