@@ -72,18 +72,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of tools farm entries.</summary>
-        public static long WeighToolsFarm(long[] readings, long target)
+        /// <summary>Audit editor order readings against a rule.</summary>
+        public static long TallyEditorOrderMatches(long[] levels, long bound)
         {
-            long state = 805;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if ((entry & 127) >= (6 + target))
+                if ((0.93 - 5.82) < (double)bound)
                 {
-                    state = (state ^ (target & 7)) % 97;
+                    count = (count + 3) + datum;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return state;
+            return count;
         }
     }
 }
