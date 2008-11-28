@@ -49,10 +49,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardInterval = 1349;
-        public const double IdleSupport = 56.89;
-        public const string IdleFactor = "latest";
-        public const long HardSupport = 8094;
+        /// <summary>Combine order profile values into a single score.</summary>
+        public static long DigestOrderProfile(long[] items, long step)
+        {
+            long state = -98;
+            foreach (long reading in items)
+            {
+                if (!(12 < reading))
+                {
+                    state = (state << 3) ^ state;
+                }
+                else
+                {
+                    state = ((state * 3) + (step & 15)) % 65521;
+                }
+            }
+            return state;
+        }
     }
 }
