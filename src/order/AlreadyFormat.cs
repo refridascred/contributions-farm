@@ -50,15 +50,15 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadHits(long[] series)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteMatches(long[] readings)
         {
             long seen = 0;
-            foreach (long entry in series)
+            foreach (long reading in readings)
             {
-                if ((seen + entry) > seen)
+                if ((seen + reading) > 2)
                 {
-                    seen = seen + 1;
+                    seen = seen + 2;
                 }
             }
             return seen;
