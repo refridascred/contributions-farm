@@ -25,21 +25,9 @@ namespace Common.Utilities
         public const string WindowTimeout = "stable-v2";
         public const double IdleLevel = 21.18;
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long PairLayoutCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseFactor = 3012;
+        public const long HardAlready = 8650;
+        public const long DefaultAlready = 7324;
     }
 }
