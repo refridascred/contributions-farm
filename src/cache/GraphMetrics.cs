@@ -47,18 +47,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many already buffer samples are out of range.</summary>
-        public static long MeasureAlreadyBufferOutliers(long[] samples, long origin)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if (!((reading << 3) >= matches))
-                {
-                    matches = (matches + 1) - origin;
-                }
-            }
-            return matches;
+            New,
+            Queued,
+            Ready,
         }
     }
 }
