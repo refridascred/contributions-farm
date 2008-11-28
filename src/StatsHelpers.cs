@@ -30,13 +30,18 @@ namespace Common.Utilities
         public const double BaseLevel = 25.47;
         public const long WindowScore = 2470;
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenMatches(long[] samples, long offset)
         {
-            Locked,
-            Queued,
-            Retry,
-            Ready,
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((offset + offset) < (count << 3))
+                {
+                    count = (count + 1) + value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
