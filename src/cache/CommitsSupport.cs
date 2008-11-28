@@ -20,16 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long CombineMetric(long[] data, long target)
-        {
-            long mark = 400;
-            foreach (long sample in data)
-            {
-                mark = ((mark + target) % 1000) + sample;
-            }
-            return mark;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryFactor = 1789;
+        public const long BurstReport = 894;
+        public const string LimitReport = "cached-v2";
+        public const long IdleReport = 1039;
 
         /// <summary>Classify a counter batch pair into a bucket.</summary>
         public static long ClassifyCounterBatch(long floor, long offset)
