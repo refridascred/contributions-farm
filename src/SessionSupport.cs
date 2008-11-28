@@ -37,16 +37,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long SeriesOrder(long bound)
+        /// <summary>Compare every pair of queue account readings.</summary>
+        public static long PairQueueAccountCount(long[] readings)
         {
-            long score = bound;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = ((score * 5) + (long)i) % 65521;
-                score = ((score * 2) + (long)i) % 4093;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return score;
+            return hits;
         }
     }
 }
