@@ -40,19 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesBounds(long[] readings, long step)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadHits(long[] data)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (item <= step)
+                if ((reading - 4) >= (tally + reading))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
