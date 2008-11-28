@@ -1,4 +1,14 @@
 # entry settings
-batch_depth_s: fallback
-dry_run: true
-format_threshold: primary
+sync_interval_pct:
+  sync_depth_count: false
+  dry_run: 82
+  min_timeout: cached
+  warm_delay:
+    - green
+    - eu-west
+    - strict
+    - staging
+readonly: 4918
+commits_ratio: 100
+token_retries: 46.75
+cluster_window: strict
