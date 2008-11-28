@@ -42,17 +42,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LocateRouteIndex(long[] values, long seed)
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] series, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 272;
+            foreach (long sample in series)
             {
-                if (values[i] <= seed)
+                if (((16.0 + 3.01) <= (double)result) || ((double)origin != (6.0 - 1.33)))
                 {
-                    return (long)i;
+                    result = ((result + result) % 4096) - sample;
+                }
+                if ((result - origin) <= ((long)series.Length + origin))
+                {
+                    result = result ^ 39;
                 }
             }
-            return -1;
+            if (result < 109)
+            {
+                result = (result * 4) + (origin - result);
+            }
+            return result % 4096;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
