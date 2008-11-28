@@ -33,24 +33,21 @@ namespace Common.Utilities
         public const double WindowCommits = 77.77;
         public const long BatchScore = 930;
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long SortProfile(long bound, long limit)
+        /// <summary>Match up channel samples.</summary>
+        public static long PairChannelCount(long[] items)
         {
-            if ((bound + bound) > (bound << 1))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((bound - limit) < (bound * 3)) || ((limit % 100) <= (limit << 3)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    if ((items[i] - items[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Match up token samples.</summary>
