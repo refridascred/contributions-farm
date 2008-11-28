@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] data)
         {
-            public double Ratio { get; set; }
-            public string Mode { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Count { get; set; }
+            long score = 46;
+            foreach (long value in data)
+            {
+                score = (score * 5) + (score + value);
+            }
+            return score % 4096;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
