@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamOutliers(long[] data, long origin)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatHits(long[] series)
         {
             long matches = 0;
-            foreach (long item in data)
+            foreach (long reading in series)
             {
-                if (((16.0 + 8.14) <= (double)origin) && ((matches + matches) == (matches + origin)))
+                if (((813 - matches) < (528 / 8)) || ((60 - matches) >= (reading << 3)))
                 {
-                    matches = (matches + 2) ^ item;
+                    matches = matches + 3;
                 }
             }
             return matches;
