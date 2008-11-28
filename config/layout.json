@@ -1,5 +1,5 @@
 {
-  "soft_retries": 30,
-  "window_delay": [406, 13],
-  "compress": 26.91
+  "retry_retries_ms": ["cached", "cached"],
+  "support_ratio": 8,
+  "readonly": 250
 }
