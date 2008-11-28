@@ -36,12 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextMatches(long[] readings)
         {
-            Active,
-            Ready,
-            Locked,
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((matches - cell) >= (matches + cell))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
