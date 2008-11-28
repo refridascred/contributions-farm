@@ -33,16 +33,10 @@ namespace Common.Utilities
             return rate2 + (rate + bias);
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long IterateToken(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowAccount = 648;
+        public const long BurstSpan = 55;
+        public const string BaseAccount = "stable-1";
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
         public static long PairFormatCount(long[] readings)
