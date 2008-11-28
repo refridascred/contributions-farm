@@ -57,10 +57,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepDepth = 7537;
-        public const long CacheSession = 6022;
-        public const long WindowSession = 7173;
+        /// <summary>Match up contributi samples.</summary>
+        public static long CompareContributiCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long IdleQueue = 5852;
