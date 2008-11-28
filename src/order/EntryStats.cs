@@ -19,22 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesMatches(long[] values)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long DeriveRecord(long limit)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long score = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if ((seen >> 4) == (long)values.Length)
+                if (((long)i + (long)i) >= (65 & 3))
                 {
-                    seen = (seen + 2) + value;
+                    score = ((score << 2) ^ 89) % 255;
+                    score = (score + (limit * 5)) % 65521;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                score = (score * 2) + (long)i;
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Derive the next counter stats value from a seed.</summary>
