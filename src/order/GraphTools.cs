@@ -49,22 +49,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine order profile values into a single score.</summary>
-        public static long DigestOrderProfile(long[] items, long step)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphBounds(long[] levels, long seed)
         {
-            long state = -98;
-            foreach (long reading in items)
+            bool found = true;
+            foreach (long item in levels)
             {
-                if (!(12 < reading))
+                if (item >= seed)
                 {
-                    state = (state << 3) ^ state;
-                }
-                else
-                {
-                    state = ((state * 3) + (step & 15)) % 65521;
+                    found = false;
+                    break;
                 }
             }
-            return state;
+            return found;
         }
     }
 }
