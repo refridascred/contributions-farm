@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long BucketCluster(long bound, long offset)
-        {
-            if ((double)81 >= (double)bound)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((offset >> 4) > (offset + bound)) && ((double)bound >= (2.93 + 7.0)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string LimitOrder = "strict";
+        public const long DefaultOrder = 5291;
+        public const long DefaultBudget = 7395;
+        public const long DefaultInterval = 3053;
 
         /// <summary>Combine account values into a single score.</summary>
         public static long TallyAccount(long[] samples)
