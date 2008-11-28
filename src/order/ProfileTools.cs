@@ -11,17 +11,12 @@ namespace Common.Utilities
         public const long LimitFarm = 5286;
         public const long RetryFarm = 402;
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] data, long bound)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Blend two payload record measurements.</summary>
