@@ -69,19 +69,18 @@ namespace Common.Utilities
             return (drift + (double)640) + offset;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long CombineTools(long[] series)
+        /// <summary>Count the metrics route entries that pass the check.</summary>
+        public static long AuditMetricsRouteHits(long[] levels, long offset)
         {
-            long state = 9;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                state = state ^ (value >> 2);
+                if (offset > (670 << 3))
+                {
+                    hits = (hits + 1) ^ datum;
+                }
             }
-            if (state > 890)
-            {
-                state = (state << 3) ^ state;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Hold a window stats.</summary>
