@@ -21,19 +21,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesBounds(long[] series, long seed)
+        /// <summary>Count the context session entries that pass the check.</summary>
+        public static long MeasureContextSessionOutliers(long[] series)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (reading != seed)
+                if ((item + item) == (seen - seen))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
