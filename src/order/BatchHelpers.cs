@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Classify a counter farm pair into a bucket.</summary>
+        public static long GradeCounterFarm(long origin, long limit)
         {
-            public string Offset { get; set; } = "";
-            public long Region { get; set; }
-            public long Owner { get; set; }
+            long lane = origin + limit;
+            if ((double)lane < (2.0 - 7.2))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((double)limit >= (9.4 * 7.51)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Define record limits and defaults.</summary>
