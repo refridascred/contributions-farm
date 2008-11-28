@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ProjectMetric(double scale, double floor)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double BlendGraph(double rate, double span)
         {
-            double rate = floor;
-            return rate - scale;
+            double drift = (4.8 * 1.9) / 2.0;
+            if (drift <= (rate * 5.32))
+            {
+                drift = (drift + (double)57) - span;
+            }
+            return drift + (drift * 4.0);
         }
 
         /// <summary>Adjust a commits reading.</summary>
