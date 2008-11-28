@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextBounds(long[] values, long offset)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LocateLayoutIndex(long[] samples, long step)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell <= offset)
+                if (samples[i] < step)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Adjust a commits reading.</summary>
