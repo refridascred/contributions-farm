@@ -27,12 +27,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitCount = 6589;
-        public const double MaxWidth = 43.78;
-        public const long MaxFarm = 4238;
-        public const long HardWidth = 8662;
-        public const string MinCount = "alpha-v2";
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long SeekChecksIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count metrics cluster pairs that satisfy a relation.</summary>
         public static long MatchMetricsClusterCount(long[] samples)
