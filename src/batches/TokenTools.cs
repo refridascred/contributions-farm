@@ -23,11 +23,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string LimitFactor = "strict-v2";
-        public const string HardSession = "legacy";
-        public const long CacheDepth = 1465;
-        public const double WindowSession = 50.5;
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long StepBatch(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the editor class values.</summary>
         public enum EditorClass
