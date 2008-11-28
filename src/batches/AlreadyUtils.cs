@@ -41,12 +41,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Match up token session samples.</summary>
+        public static long CompareTokenSessionCount(long[] items)
         {
-            Ready,
-            Dropped,
-            Paused,
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 5)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
