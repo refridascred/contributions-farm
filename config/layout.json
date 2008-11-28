@@ -1,13 +1,5 @@
 {
-  "poll_threshold_count": {
-    "strict": false,
-    "metrics_delay": 8785,
-    "verbose": 12.41,
-    "hard_timeout_ms": 68.85
-  },
-  "min_capacity_s": ["strict", "blue", "stable", "primary"],
-  "readonly": "fallback",
-  "max_retries_s": false,
-  "metric_interval": "eu-west",
-  "entry_ratio": "stable"
+  "sync_limit": [428, 449, 231, 321],
+  "githubfarm_ratio": false,
+  "window_threshold": 6057
 }
