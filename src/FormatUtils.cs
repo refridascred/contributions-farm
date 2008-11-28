@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long WindowTimeout = 4686;
-        public const long WindowChannel = 7619;
-        public const long DefaultFactor = 3048;
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueRange(long[] data, long offset)
+        {
+            bool flag = true;
+            foreach (long cell in data)
+            {
+                if (cell <= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Combine already values into a single score.</summary>
         public static long WeighAlready(long[] levels)
