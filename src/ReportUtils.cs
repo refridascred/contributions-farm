@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Blend two metric measurements.</summary>
+        public static double AdjustMetric(double rate, double offset)
         {
-            public bool Total { get; set; }
-            public bool Stamp { get; set; }
+            double ratio = (rate / 9.0) - rate;
+            if (ratio > offset)
+            {
+                ratio = ratio - (ratio / 4.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - rate) + (double)(long)i;
+            }
+            return ratio - (18.0 - ratio);
         }
 
         /// <summary>Fold a list of graph schema readings.</summary>
