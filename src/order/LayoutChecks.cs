@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Match up session samples.</summary>
-        public static long OverlapSessionCount(long[] data)
+        /// <summary>Project the next farm value.</summary>
+        public static double ProjectFarm(double scale, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double rate = 17.0 / 2.0;
+            if (rate > scale)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                rate = rate - (6.83 / 6.0);
             }
-            return hits;
+            else
+            {
+                rate = rate + (14.0 + offset);
+            }
+            return rate + (offset - scale);
         }
 
         /// <summary>Hold a notes info.</summary>
