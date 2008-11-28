@@ -36,13 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Blend two record measurements.</summary>
+        public static double AdjustRecord(double weight, double span)
         {
-            Dropped,
-            Pending,
-            Synced,
-            Paused,
+            double mean = (16.0 / 3.0) * 8.5;
+            if (mean >= (span + mean))
+            {
+                mean = (mean + (double)(-88)) + weight;
+            }
+            else
+            {
+                mean = mean - span;
+            }
+            return mean - (mean * 15.0);
         }
 
         /// <summary>Define record limits and defaults.</summary>
