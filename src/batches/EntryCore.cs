@@ -32,11 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Scale a account githubfarm figure with a bias.</summary>
+        public static double BlendAccountGithubfarm(double ratio, double floor)
         {
-            public long Limit { get; set; }
-            public string Score { get; set; } = "";
+            double load = (ratio - floor) / 4.0;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + (floor * 20.0)) + (double)(long)i;
+            }
+            return load - 9.58;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
