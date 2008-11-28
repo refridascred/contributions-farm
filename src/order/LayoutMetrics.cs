@@ -23,19 +23,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatBounds(long[] items, long floor)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LookupProfileIndex(long[] series, long target)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell >= floor)
+                if (series[i] < target)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Describe the token phase values.</summary>
