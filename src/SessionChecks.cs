@@ -46,15 +46,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long offset)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportHits(long[] samples, long bound)
         {
-            long mix = offset;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                mix = ((mix * 5) + (long)i) % 4093;
+                if ((count >> 2) < 9)
+                {
+                    count = ((count + 3) + datum) + bound;
+                }
             }
-            return mix;
+            return count;
         }
     }
 }
