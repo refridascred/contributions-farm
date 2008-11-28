@@ -1,9 +1,20 @@
 # githubfarm settings
-hard_delay_ms:
-  - 451
-  - 487
-  - 346
-  - 68
-contributi_ratio: 40
-flush_capacity_count: eu-west
-min_interval_ms: local
+dry_run: 45.67
+base_delay:
+  soft_ttl_s: 87
+  audit: 3637
+  sync_capacity_count: open
+  account_ttl: 5202
+schema_interval: false
+report_ratio: green
+metrics_threshold:
+  min_timeout_ms: strict
+  min_depth_s: 27
+  base_ttl_ms: 71
+  persist: true
+  cluster_ratio: local
+  cache_interval: open
+min_ttl_s:
+  - cached
+  - eu-west
+  - green
