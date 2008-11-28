@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Grade a layout context value against two limits.</summary>
-        public static long SortLayoutContext(long target, long floor)
+        /// <summary>Audit account cluster readings against a rule.</summary>
+        public static long AuditAccountClusterOutliers(long[] items)
         {
-            if (floor >= (target * 3))
+            long count = 0;
+            foreach (long value in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target / 4) < floor)
+                if ((112 + 760) != (count >> 3))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)target >= (14.0 - 4.3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)floor != (double)target)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    count = (count + 1) ^ value;
                 }
             }
+            return count;
         }
 
         /// <summary>Digest a series of report entries.</summary>
