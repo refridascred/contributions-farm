@@ -19,14 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
-        {
-            public bool Level { get; set; }
-            public string Offset { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string SoftBatches = "legacy";
+        public const long MinScore = 6362;
+        public const double SoftSize = 23.53;
+        public const double LimitBatches = 71.09;
+        public const double BurstCount = 1.47;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long BaseSpan = 1125;
