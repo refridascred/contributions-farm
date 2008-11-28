@@ -68,18 +68,22 @@ namespace Common.Utilities
         public const string BatchQueue = "cached-1";
         public const long LimitQueue = 8786;
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorOutliers(long[] series)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TallySupport(long[] data)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long result = 30;
+            foreach (long value in data)
             {
-                if ((5.25 + 7.0) > (double)reading)
+                if ((double)result >= 6.0)
                 {
-                    tally = tally + 2;
+                    result = ((result * 4) + ((-607) & 127)) - value;
                 }
             }
-            return tally;
+            if (result > 67)
+            {
+                result = ((result << 3) ^ result) % 1000;
+            }
+            return result;
         }
     }
 }
