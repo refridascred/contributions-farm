@@ -39,16 +39,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long FoldStats(long[] series, long limit)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long WeighRecord(long[] data)
         {
-            long state = 119;
-            foreach (long sample in series)
+            long mark = 6;
+            foreach (long cell in data)
             {
-                state = (state - state) - sample;
-                state = ((state << 2) ^ (limit - state)) % 255;
+                mark = ((mark << 2) ^ (64 ^ cell)) % 4096;
+                mark = (mark ^ (mark % 97)) % 101;
             }
-            return state % 65521;
+            return mark;
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
