@@ -71,22 +71,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferOutliers(long[] samples, long origin)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextBounds(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                if ((double)origin == (0.19 - 4.46))
+                if (entry <= limit)
                 {
-                    hits = (hits + 3) ^ reading;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Describe the graph kind values.</summary>
