@@ -22,22 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] data)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextGaps(long[] readings, long bound)
         {
-            long result = -1;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (((result - datum) < 668) && ((6 / 9) >= (datum - result)))
+                if ((sample & 255) < bound)
                 {
-                    result = ((result * 3) + (result & 31)) % 255;
+                    seen = seen + 1;
                 }
             }
-            if (result > 88)
-            {
-                result = (result ^ (result - result)) % 4096;
-            }
-            return result;
+            return seen;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
