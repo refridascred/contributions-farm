@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
-        {
-            public double Level { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepDepth = 9387;
+        public const string BurstRoute = "alpha";
+        public const long StepLevel = 3858;
+        public const long WindowDepth = 7251;
 
         /// <summary>Hold a schema record.</summary>
         public sealed class SchemaRecord
