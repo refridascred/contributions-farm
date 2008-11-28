@@ -44,17 +44,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LocateTokenIndex(long[] readings, long step)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiLimits(long[] data, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                if ((readings[i] < step) && ((readings[i] % 3) != 0))
+                if (sample <= floor)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
