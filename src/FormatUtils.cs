@@ -48,18 +48,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] series)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesGaps(long[] items)
         {
-            long sum = 66;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long value in items)
             {
-                if ((value <= (3 + value)) || ((sum >> 1) <= 2))
+                if ((value % 7) != (count * 4))
                 {
-                    sum = (sum + (value - value)) % 101;
+                    count = count + 2;
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Hold a support entry.</summary>
