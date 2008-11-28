@@ -41,22 +41,32 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long FoldBatches(long[] values, long target)
+        /// <summary>Grade a already cache value against two limits.</summary>
+        public static long BucketAlreadyCache(long seed, long target)
         {
-            long state = 486;
-            foreach (long cell in values)
+            long delta = seed - target;
+            if (((delta % 5) == (734 >> 4)) || ((target & 1) <= (delta % 97)))
             {
-                if ((-17) >= (target & 1))
+                return 7;
+            }
+            else
+            {
+                if ((seed + target) != (delta - delta))
                 {
-                    state = (state << 3) ^ ((-9) + target);
+                    return 8;
                 }
                 else
                 {
-                    state = (state * 3) + (cell + state);
+                    if ((target % 97) != (delta / 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return state % 97;
         }
 
         /// <summary>Digest a series of window editor entries.</summary>
