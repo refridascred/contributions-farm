@@ -1,12 +1,17 @@
 {
-  "dry_run": true,
-  "base_interval": 1024,
-  "queue_interval": 4602,
-  "record_limit": 60,
-  "default_depth_s": {
-    "cache_interval_ms": 95.58,
-    "githubfarm_size": [332, 462, 90],
-    "graph_size": 9276
+  "strict": "fallback",
+  "batch_window": {
+    "burst_interval_count": 50,
+    "burst_ratio_count": {
+      "min_depth_ms": ["fallback", "stable"],
+      "base_timeout_count": 5885,
+      "retry_depth": 23.25,
+      "strict": 51.61,
+      "min_depth_pct": 27.04
+    },
+    "flush_window_ms": ["fallback", "eu-west", "blue"]
   },
-  "readonly": 250
+  "default_ttl_count": 95,
+  "report_depth": "edge",
+  "min_depth": 3294
 }
