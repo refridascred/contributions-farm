@@ -5,25 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine payload support values into a single score.</summary>
-        public static long CombinePayloadSupport(long[] values, long step)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long BucketCluster(long bound, long offset)
         {
-            long anchor = 431;
-            foreach (long reading in values)
+            if ((double)81 >= (double)bound)
             {
-                anchor = anchor + (reading + reading);
-                if (!((reading & 255) != ((long)values.Length / 2)))
+                return 1;
+            }
+            else
+            {
+                if (((offset >> 4) > (offset + bound)) && ((double)bound >= (2.93 + 7.0)))
                 {
-                    anchor = (anchor << 2) ^ anchor;
-                    anchor = (anchor ^ (step + 6)) % 255;
+                    return 4;
                 }
-                anchor = ((anchor << 2) ^ (reading & 31)) % 65521;
-                if ((reading + step) >= (step + reading))
+                else
                 {
-                    break;
+                    return 8;
                 }
             }
-            return anchor;
         }
 
         /// <summary>Combine account values into a single score.</summary>
