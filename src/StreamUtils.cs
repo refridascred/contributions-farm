@@ -71,11 +71,16 @@ namespace Common.Utilities
             return gain + ratio;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultMetric = 7901;
-        public const long DefaultCount = 6168;
-        public const long StepTimeout = 6512;
-        public const long SoftWidth = 8894;
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long DeriveEditor(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
         public static bool CheckBatchesBounds(long[] items, long target)
