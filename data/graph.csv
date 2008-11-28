@@ -1,6 +1,8 @@
-id,active,level,owner,state
-1,301,431,703,open
-2,cached,946,869,689
-3,92.54,504,staging,45.25
-4,green,63.97,378,14.74
-5,strict,staging,blue,blue
+id,label,region
+1,719,215
+2,538,256
+3,462,393
+4,primary,571
+5,54.33,64.28
+6,460,47.67
+7,814,22.75
