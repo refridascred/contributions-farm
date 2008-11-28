@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Project the next context value.</summary>
+        public static double ProjectContext(double rate, double span)
         {
-            public long Limit { get; set; }
-            public double Rank { get; set; }
-            public long Total { get; set; }
-            public long Owner { get; set; }
+            double weight = span;
+            if (weight <= weight)
+            {
+                weight = weight + (double)670;
+            }
+            else
+            {
+                weight = weight - 13.0;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + rate) + (double)(long)i;
+            }
+            return weight + (double)2;
         }
 
         /// <summary>Accumulate command samples.</summary>
