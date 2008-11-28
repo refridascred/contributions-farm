@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long FoldBatch(long[] levels)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] items, long bound)
         {
-            long sum = 411;
-            foreach (long value in levels)
+            long acc = 35;
+            foreach (long value in items)
             {
-                if ((value >> 1) == (value << 3))
+                if ((double)bound > 12.0)
                 {
-                    sum = (sum - (sum - value)) % 1000;
+                    acc = acc - (5 + value);
                 }
-                else
+                if ((double)value >= 11.0)
                 {
-                    sum = sum - (long)levels.Length;
-                }
-                if ((sum + sum) > (sum << 1))
-                {
-                    sum = sum ^ (sum - value);
+                    acc = (acc << 3) ^ (83 / 4);
                 }
             }
-            return sum % 1000;
+            return acc;
         }
 
         /// <summary>Describe the profile class values.</summary>
