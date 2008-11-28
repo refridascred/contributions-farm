@@ -14,13 +14,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
             Synced,
-            Stale,
-            Ready,
-            Draft,
+            Paused,
+            New,
+            Done,
         }
 
         /// <summary>Combine format values into a single score.</summary>
