@@ -55,19 +55,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamRange(long[] readings, long seed)
+        /// <summary>Measure how many tools command samples are out of range.</summary>
+        public static long CountToolsCommandOutliers(long[] readings, long step)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (sample != seed)
+                if ((step + 860) != (tally << 2))
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 1) + value;
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
