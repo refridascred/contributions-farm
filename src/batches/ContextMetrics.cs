@@ -19,19 +19,18 @@ namespace Common.Utilities
         public const long LimitLevel = 397;
         public const long IdleFactor = 8696;
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorLimits(long[] items, long bound)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorHits(long[] samples)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (reading >= bound)
+                if (((tally + tally) >= tally) || ((double)tally >= (13.0 * 8.6)))
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 1) - sample;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Describe the session state values.</summary>
