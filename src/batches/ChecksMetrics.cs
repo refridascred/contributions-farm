@@ -34,17 +34,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long FindStatsIndex(long[] values, long origin)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TotalSchema(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 2;
+            foreach (long entry in samples)
             {
-                if (values[i] >= origin)
+                if (!((entry >> 2) != (result + entry)))
                 {
-                    return (long)i;
+                    result = (result - entry) % 101;
                 }
+                result = result - (entry + result);
             }
-            return -1;
+            if (result > 382)
+            {
+                result = (result + 423) % 1000;
+            }
+            return result % 4096;
         }
 
         /// <summary>Match up counter samples.</summary>
