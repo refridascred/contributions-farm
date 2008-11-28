@@ -19,38 +19,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long RankSession(long origin, long bound)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long floor)
         {
-            if (origin >= 424)
+            long state = floor;
+            for (int i = 0; i < 7; i++)
             {
-                return 5;
+                state = ((state * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if ((0 >> 4) < bound)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((origin + bound) <= 6) || ((origin / 7) < (origin % 24)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((origin - bound) < (origin << 1)) || ((double)bound < 0.96))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Describe the schema level values.</summary>
