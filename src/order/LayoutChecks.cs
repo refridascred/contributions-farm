@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ProjectProfile(double rate, double offset)
         {
-            public double Label { get; set; }
-            public long Ratio { get; set; }
-            public double Stamp { get; set; }
-            public long Count { get; set; }
+            double gain = (double)632 / 5.0;
+            return ((gain + (double)398) + rate) + offset;
         }
 
         /// <summary>Hold a notes info.</summary>
