@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double ProjectEntry(double ratio, double offset)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double AdjustMetric(double ratio, double span)
         {
-            double weight = (double)7 + ratio;
-            if (weight <= ratio)
+            double ratio2 = span * 9.45;
+            if (ratio2 < (span * 6.5))
             {
-                weight = weight + ratio;
+                ratio2 = ratio2 - ratio2;
             }
             else
             {
-                weight = weight - (weight / 5.0);
+                ratio2 = ratio2 - ratio;
             }
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 2; i++)
             {
-                weight = (weight - (offset / 5.0)) + (double)(long)i;
+                ratio2 = (ratio2 - ratio) + (double)(long)i;
             }
-            return weight + offset;
+            return ratio2 + (double)(-2);
         }
 
         /// <summary>Define profile limits and defaults.</summary>
