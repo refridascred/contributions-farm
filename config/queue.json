@@ -1,6 +1,6 @@
 {
-  "idle_capacity": 1271,
-  "flush_threshold_count": 84,
-  "warm_retries_ms": ["eu-west", "open"],
-  "cache_depth": 2729
+  "retry_ratio": true,
+  "burst_interval": [148, 84, 32],
+  "poll_threshold_count": true,
+  "batches_timeout": ["stable", "strict"]
 }
