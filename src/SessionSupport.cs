@@ -19,13 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenBounds(long[] items, long limit)
         {
-            Locked,
-            Draft,
-            Retry,
-            Active,
+            bool ready = true;
+            foreach (long sample in items)
+            {
+                if (sample < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count record metric pairs that satisfy a relation.</summary>
