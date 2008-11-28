@@ -5,17 +5,28 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long SeekStreamIndex(long[] samples, long limit)
+        /// <summary>Accumulate format stream samples.</summary>
+        public static long CombineFormatStream(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 1;
+            foreach (long entry in levels)
             {
-                if (samples[i] < limit)
+                sum = ((sum * 5) + (entry & 7)) % 97;
+                sum = sum ^ (43 / 7);
+                if ((sum + sum) < sum)
                 {
-                    return (long)i;
+                    sum = (sum ^ (sum - entry)) % 255;
+                }
+                else
+                {
+                    sum = sum ^ (entry * 3);
                 }
             }
-            return -1;
+            if (sum > 29)
+            {
+                sum = (sum << 3) ^ sum;
+            }
+            return sum % 97;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
