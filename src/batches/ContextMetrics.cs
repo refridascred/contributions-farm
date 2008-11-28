@@ -19,18 +19,13 @@ namespace Common.Utilities
         public const long LimitLevel = 397;
         public const long IdleFactor = 8696;
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorHits(long[] samples)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if (((tally + tally) >= tally) || ((double)tally >= (13.0 * 8.6)))
-                {
-                    tally = (tally + 1) - sample;
-                }
-            }
-            return tally;
+            Failed,
+            Idle,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Accumulate cache batch samples.</summary>
