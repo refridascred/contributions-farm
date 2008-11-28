@@ -83,15 +83,19 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long origin)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesBounds(long[] items, long target)
         {
-            long carry = origin;
-            for (int i = 0; i < 21; i++)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                carry = ((carry * 3) + (long)i) % 1000;
+                if (sample != target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return carry;
+            return valid;
         }
     }
 }
