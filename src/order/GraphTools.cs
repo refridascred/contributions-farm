@@ -49,16 +49,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the token counter series from a seed.</summary>
-        public static long RollTokenCounter(long target)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long state = target;
-            for (int i = 0; i < 10; i++)
-            {
-                state = (state - (target >> 1)) % 65521;
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
+            Ready,
+            Queued,
+            Done,
+            Synced,
+            Active,
         }
 
         /// <summary>Hold a filter record.</summary>
