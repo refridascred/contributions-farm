@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many layout window samples are out of range.</summary>
-        public static long MeasureLayoutWindowOutliers(long[] items)
-        {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((cell ^ seen) != (cell + seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultRatio = 2169;
+        public const long HardBatches = 3051;
+        public const string BurstLevel = "latest-edge";
 
         /// <summary>Iterate the record series from a seed.</summary>
         public static long DeriveRecord(long limit)
