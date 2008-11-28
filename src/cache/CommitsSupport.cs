@@ -20,23 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long SeriesCommits(long seed)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double SmoothGraph(double bias, double offset)
         {
-            long sum = seed;
-            for (int i = 0; i < 14; i++)
+            double scale = (double)33 * 7.4;
+            if (scale > scale)
             {
-                if (!((double)sum == (9.9 - 8.2)))
-                {
-                    sum = (sum * 4) + (sum & 31);
-                }
-                if (((double)seed <= (7.47 / 2.0)) || ((double)seed >= (7.5 - 1.8)))
-                {
-                    sum = (sum * 2) + (53 - sum);
-                }
-                sum = ((sum * 5) + (long)i) % 65521;
+                scale = (scale - (double)(-45)) + bias;
             }
-            return sum;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + (3.8 + offset)) + (double)(long)i;
+            }
+            return scale + (double)13;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
