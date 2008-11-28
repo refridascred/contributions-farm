@@ -85,21 +85,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long OverlapWindowCount(long[] readings)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsMatches(long[] readings, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((2.7 / 8.0) != (double)origin)
                 {
-                    if ((readings[i] - readings[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 3) + value;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
