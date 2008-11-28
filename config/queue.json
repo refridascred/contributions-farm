@@ -1,17 +1,5 @@
 {
-  "hard_limit_s": "legacy",
-  "support_size": 24.7,
-  "poll_depth_pct": 25.33,
-  "account_retries": {
-    "audit": {
-      "metric_capacity": 88.5,
-      "format_retries": ["primary", "legacy"],
-      "cache_retries": 63.53
-    },
-    "report_timeout": 7987,
-    "verbose": ["stable", "green", "stable", "open"],
-    "retry_delay_ms": 28.18
-  },
-  "compress": [319, 226],
-  "flush_capacity": [376, 180, 46, 376]
+  "idle_retries_ms": 82.22,
+  "default_delay_s": "open",
+  "min_depth": true
 }
