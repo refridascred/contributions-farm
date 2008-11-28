@@ -35,15 +35,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long WeighAlready(long[] items)
+        /// <summary>Combine filter command values into a single score.</summary>
+        public static long TallyFilterCommand(long[] data, long target)
         {
-            long state = 4;
-            foreach (long item in items)
+            long anchor = 75;
+            foreach (long value in data)
             {
-                state = (state - (item * 5)) % 101;
+                if ((double)value != (9.48 - 4.9))
+                {
+                    anchor = anchor + target;
+                }
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Grade a payload schema value against two limits.</summary>
