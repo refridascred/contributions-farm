@@ -49,12 +49,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double SoftCommand = 62.48;
-        public const long WindowWidth = 7397;
-        public const long IdleCommand = 4389;
-        public const double StepCommand = 78.56;
-        public const string BurstCommand = "standard-edge";
+        /// <summary>Iterate the token counter series from a seed.</summary>
+        public static long RollTokenCounter(long target)
+        {
+            long state = target;
+            for (int i = 0; i < 10; i++)
+            {
+                state = (state - (target >> 1)) % 65521;
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Hold a filter record.</summary>
         public sealed class FilterRecord
