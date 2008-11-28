@@ -53,19 +53,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate metrics record readings against a bound.</summary>
-        public static bool CheckMetricsRecordRange(long[] values, long origin)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] values, long bound)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            long result = 42;
+            foreach (long entry in values)
             {
-                if (reading >= origin)
+                if (((result / 9) < bound) && ((double)result > (7.86 + 11.0)))
                 {
-                    ready = false;
-                    break;
+                    result = (result - (result >> 4)) - entry;
+                }
+                else
+                {
+                    result = (result + bound) % 65521;
                 }
             }
-            return ready;
+            return result % 1000;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
