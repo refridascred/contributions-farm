@@ -13,12 +13,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Count the counter record entries that pass the check.</summary>
+        public static long CountCounterRecordGaps(long[] series, long target)
         {
-            public string Size { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Owner { get; set; }
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((cell * 3) <= 509)
+                {
+                    seen = (seen + 1) - target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
