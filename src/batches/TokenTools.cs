@@ -40,13 +40,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaGaps(long[] samples, long offset)
         {
-            Synced,
-            Pending,
-            Ready,
-            Active,
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if (tally > (reading / 3))
+                {
+                    tally = (tally + 1) - offset;
+                }
+            }
+            return tally;
         }
     }
 }
