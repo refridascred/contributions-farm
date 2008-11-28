@@ -1,5 +1,5 @@
 {
-  "default_window_s": "staging",
-  "context_size": true,
-  "context_ttl": ["staging", "staging", "strict"]
+  "base_depth_pct": true,
+  "retry_retries_pct": false,
+  "sync_window": false
 }
