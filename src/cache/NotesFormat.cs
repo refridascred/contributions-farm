@@ -33,22 +33,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long seed)
+        /// <summary>Grade a notes graph value against two limits.</summary>
+        public static long BucketNotesGraph(long seed, long seed2)
         {
-            long acc = seed;
-            for (int i = 0; i < 13; i++)
+            if (seed2 >= seed)
             {
-                acc = (acc << 3) ^ seed;
-                acc = (acc + 646) % 1000;
-                if ((double)acc > (19.0 + 18.0))
-                {
-                    acc = (acc ^ (acc << 3)) % 65521;
-                    acc = acc + (acc ^ acc);
-                }
-                acc = ((acc * 4) + (long)i) % 4093;
+                return 7;
             }
-            return acc;
+            else
+            {
+                if ((788 + seed) != (seed2 + seed))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((2.0 * 5.0) == (double)seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
