@@ -19,21 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long PairOrderCount(long[] series)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextHits(long[] samples, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((bound + bound) < (matches & 127))
                 {
-                    if ((series[i] + series[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 1) + sample;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Adjust a format session reading.</summary>
