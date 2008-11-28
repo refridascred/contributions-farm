@@ -28,18 +28,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportOutliers(long[] samples)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (!((seen ^ reading) > 5))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Dropped,
+            New,
+            Locked,
+            Retry,
         }
 
         /// <summary>Roll a payload already counter forward.</summary>
