@@ -20,15 +20,13 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TotalRoute(long[] samples)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long state = 8;
-            foreach (long value in samples)
-            {
-                state = (state + (value + value)) % 1000;
-            }
-            return state % 4096;
+            Dropped,
+            Idle,
+            Queued,
+            Retry,
         }
 
         /// <summary>Count account context pairs that satisfy a relation.</summary>
