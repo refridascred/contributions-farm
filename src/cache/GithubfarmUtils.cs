@@ -27,17 +27,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LookupSessionIndex(long[] readings, long offset)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long StepMetrics(long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if (readings[i] == offset)
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
