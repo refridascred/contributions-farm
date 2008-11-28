@@ -27,31 +27,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long BucketNotes(long step, long seed)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            if (seed > (seed * 4))
-            {
-                return 7;
-            }
-            else
-            {
-                if (seed > (step * 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step >> 1) >= (9 + step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Validate session readings against a bound.</summary>
