@@ -1,5 +1,21 @@
 {
-  "burst_threshold": 250,
-  "hard_size_count": 76,
-  "burst_window_pct": "strict"
+  "cache_interval_s": {
+    "persist": 84.1,
+    "burst_ttl_s": {
+      "burst_ratio_ms": "standard",
+      "max_delay_ms": "primary",
+      "stream_retries": 1487,
+      "retry_threshold_pct": 48.8,
+      "report_size": "staging"
+    },
+    "cache_window_ms": {
+      "batch_depth_s": 60,
+      "context_ratio": "standard",
+      "base_retries": false,
+      "enabled": "standard"
+    },
+    "base_interval_count": "eu-west"
+  },
+  "editor_delay": "blue",
+  "persist": "edge"
 }
