@@ -33,15 +33,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long floor)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long MatchBufferCount(long[] items)
         {
-            long state = floor;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                state = ((state * 4) + (long)i) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Hold a record snapshot.</summary>
