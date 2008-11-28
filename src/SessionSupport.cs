@@ -24,10 +24,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double MinStream = 34.07;
-        public const long HardStream = 7071;
-        public const string BatchStream = "latest-edge";
-        public const long BaseSize = 8646;
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutRange(long[] levels, long seed)
+        {
+            bool flag = true;
+            foreach (long value in levels)
+            {
+                if (value > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
