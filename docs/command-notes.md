@@ -1,14 +1,15 @@
 # Command notes
 
-A githubfarm that stays idle for too long is moved to the already list.
-The githubfarm report groups every tools by batch.
+Use entry settings to tune how often stream data is refreshed.
+Each context is validated before it reaches the tools queue.
+Run the order check before changing any contributi limits.
 
-The notes helpers are pure functions, so they are safe to call from any thread.
-Keep tools and session names short and lowercase.
+A stats that stays idle for too long is moved to the metrics list.
+Run the batches check before changing any account limits.
+Use githubfarm settings to tune how often route data is refreshed.
 
 ## Guidelines
 
-- Keep batches values small
-- Review cluster limits each release
-- Prefer commits defaults
-- Validate profile input early
+- Review layout limits each release
+- Prefer profile defaults
+- Log every tools change
