@@ -26,19 +26,9 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportLimits(long[] data, long offset)
-        {
-            bool valid = true;
-            foreach (long item in data)
-            {
-                if (item > offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double StepDepth = 81.57;
+        public const long MinChecks = 2017;
+        public const long StepSpan = 6418;
     }
 }
