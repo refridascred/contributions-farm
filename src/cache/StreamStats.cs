@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Classify a metric checks pair into a bucket.</summary>
-        public static long GradeMetricChecks(long limit, long origin)
-        {
-            if ((origin + (-9)) > origin)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((limit + 80) < (2 % 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)origin > (6.72 + 3.0)) || (origin <= limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (limit > origin)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultFilter = 4549;
+        public const long BaseFilter = 8428;
+        public const long WindowFilter = 7804;
+        public const long LimitWidth = 5897;
 
         /// <summary>Find the first tools entry that matches the target.</summary>
         public static long LocateToolsIndex(long[] readings, long step)
