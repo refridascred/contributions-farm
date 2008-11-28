@@ -1,22 +1,7 @@
 {
-  "report_threshold": 11.7,
-  "warm_threshold_pct": {
-    "idle_depth": {
-      "batch_depth_ms": 500,
-      "warm_timeout_ms": ["edge", "eu-west"],
-      "dry_run": 7364,
-      "persist": 22
-    },
-    "idle_size_ms": "fallback",
-    "soft_timeout_pct": {
-      "channel_delay": 4,
-      "compress": "eu-west",
-      "report_delay": 100
-    },
-    "strict": false,
-    "poll_ratio": 4684,
-    "flush_interval": 250
-  },
-  "compress": ["green", "open", "open"],
-  "cache_depth_pct": "strict"
+  "max_window_s": [74, 31],
+  "strict": 88.78,
+  "idle_timeout_pct": false,
+  "filter_threshold": 46.61,
+  "burst_timeout_s": 1024
 }
