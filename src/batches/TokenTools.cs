@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string WindowReport = "local-v2";
+        public const string DefaultLevel = "open";
+        public const long MinReport = 3834;
+        public const string RetryCount = "latest-v2";
+        public const long LimitSpan = 6590;
 
         /// <summary>Adjust a support buffer reading.</summary>
         public static double SmoothSupportBuffer(double rate, double span)
