@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] series)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long MatchFilterCount(long[] series)
         {
-            long sum = 6;
-            foreach (long value in series)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((value * 2) <= value) || (sum <= (value * 5)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = sum + (sum & 7);
-                }
-                else
-                {
-                    sum = sum - 602;
+                    if ((series[i] + series[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (sum < 7)
-            {
-                sum = ((sum * 2) + (sum * 3)) % 255;
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
