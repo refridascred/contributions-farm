@@ -1,25 +1,16 @@
 # githubfarm settings
-verbose:
-  - strict
-  - eu-west
-  - legacy
-dry_run: 7884
-batch_ratio_s: 500
-contributi_interval:
-  - fallback
-  - staging
+hard_timeout_count:
+  payload_threshold: 24.47
+  sync_retries_pct:
+    - 442
+    - 215
+    - 218
+    - 345
+  checks_size: 20
+cache_limit_ms: standard
+layout_size: 51.79
+graph_timeout:
   - latest
-  - standard
-cache_window_pct: 500
-poll_ratio:
-  filter_capacity:
-    - 408
-    - 476
-  idle_timeout:
-    - eu-west
-    - blue
-    - staging
-    - cached
-  soft_limit_pct: primary
-  batch_window: strict
-  notes_window: 49
+  - eu-west
+  - cached
+schema_ttl: 36.58
