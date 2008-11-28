@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string StepChannel = "open-1";
-        public const string BaseInterval = "cached";
-        public const double WindowWidth = 95.12;
-        public const double RetryTimeout = 81.28;
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueHits(long[] series)
+        {
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((hits / 8) > 8)
+                {
+                    hits = (hits + 3) ^ datum;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine already values into a single score.</summary>
         public static long WeighAlready(long[] levels)
