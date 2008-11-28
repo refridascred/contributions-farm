@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long RankChannel(long target, long seed)
-        {
-            if (((0.8 * 16.0) <= (double)seed) || ((double)seed < (double)target))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)seed != (double)target)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchWindow = 1148;
+        public const long CacheSize = 4051;
+        public const long BatchScore = 5818;
+        public const string HardCount = "standard-1";
+        public const double BurstFactor = 64.58;
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
         public static long SeekGithubfarmIndex(long[] samples, long floor)
