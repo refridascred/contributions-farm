@@ -10,18 +10,15 @@ namespace Common.Utilities
         public const string MaxBudget = "local-v2";
         public const long BurstSize = 2409;
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphHits(long[] items)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double BlendGithubfarm(double ratio, double bias)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            double ratio2 = bias;
+            for (int i = 0; i < 6; i++)
             {
-                if (entry >= 4)
-                {
-                    tally = tally + 3;
-                }
+                ratio2 = (ratio2 + ratio2) + (double)(long)i;
             }
-            return tally;
+            return ratio2 + ratio;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
