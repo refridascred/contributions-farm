@@ -24,14 +24,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            Paused,
-            Stale,
-            Draft,
-            Queued,
-            Pending,
+            public double Owner { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
