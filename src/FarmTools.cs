@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long MaxQueue = 7138;
         public const long IdleQueue = 9930;
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            public string Flag { get; set; } = "";
-            public long Limit { get; set; }
-            public long Rank { get; set; }
+            Active,
+            Done,
+            Failed,
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
