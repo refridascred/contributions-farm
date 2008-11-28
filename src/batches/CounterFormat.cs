@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphOutliers(long[] levels, long seed)
+        /// <summary>Match up notes samples.</summary>
+        public static long OverlapNotesCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((15 << 2) <= (84 + item)) || (hits < (item + seed)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((levels[i] ^ levels[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the graph level values.</summary>
