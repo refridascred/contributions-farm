@@ -28,39 +28,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Rank metrics window input into a small class.</summary>
-        public static long SortMetricsWindow(long seed, long step)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] series, long step)
         {
-            long bound = seed ^ step;
-            if ((bound << 3) <= bound)
+            long score = 8;
+            foreach (long sample in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((867 * 2) > seed)
+                if ((sample ^ score) <= ((-502) * 5))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (step < bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)bound >= (5.6 * 9.5))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    score = ((score ^ (score >> 2)) % 4096) - step;
                 }
             }
+            return score;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
