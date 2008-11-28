@@ -31,19 +31,13 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionLimits(long[] levels, long bound)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            bool found = true;
-            foreach (long reading in levels)
-            {
-                if (reading > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Locked,
+            Failed,
+            Pending,
+            Retry,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
