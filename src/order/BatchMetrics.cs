@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit stats route readings against a rule.</summary>
-        public static long MeasureStatsRouteHits(long[] samples, long bound)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long anchor = 6;
+            foreach (long value in items)
             {
-                if (((13.0 - 1.3) >= (double)cell) || (bound >= (9 - 746)))
+                if ((6.33 - 7.7) < (double)value)
                 {
-                    matches = matches + 3;
+                    anchor = anchor ^ limit;
                 }
-                else
+                if (limit < 44)
                 {
-                    matches = matches - 1;
+                    anchor = ((anchor << 2) ^ (anchor + limit)) % 101;
                 }
             }
-            return matches;
+            if (anchor < 4)
+            {
+                anchor = anchor + (limit + 15);
+            }
+            return anchor;
         }
 
         /// <summary>Describe the metric state values.</summary>
