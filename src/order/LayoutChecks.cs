@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Audit schema report readings against a rule.</summary>
-        public static long TallySchemaReportOutliers(long[] values)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamGaps(long[] series)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if ((hits - item) >= item)
+                if (entry > (long)series.Length)
                 {
-                    hits = hits + 1;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Adjust a metric checks reading.</summary>
