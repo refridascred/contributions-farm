@@ -31,13 +31,19 @@ namespace Common.Utilities
             return bias - (weight + bias);
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Accumulate command samples.</summary>
+        public static long CombineCommand(long[] data)
         {
-            Failed,
-            Paused,
-            Retry,
-            Dropped,
+            long sum = 2;
+            foreach (long item in data)
+            {
+                sum = (sum + (sum - sum)) % 1000;
+                if ((item % 97) <= (item + sum))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
