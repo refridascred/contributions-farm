@@ -23,32 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long origin, long limit)
+        /// <summary>Match up farm account samples.</summary>
+        public static long CompareFarmAccountCount(long[] levels)
         {
-            long edge = origin - limit;
-            if (((3.38 - 7.1) > (double)limit) && ((edge & 63) <= limit))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((edge >> 2) >= 1) && ((3.8 * 4.34) >= (double)limit))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((5.13 / 6.0) < (double)limit)
+                    if ((levels[i] ^ levels[j]) > 0)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
