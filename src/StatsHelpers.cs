@@ -37,19 +37,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportRange(long[] samples, long floor)
+        /// <summary>Count the session githubfarm entries that pass the check.</summary>
+        public static long AuditSessionGithubfarmOutliers(long[] values)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (reading <= floor)
+                if (((hits & 255) >= (hits ^ cell)) || (((double)hits > (8.11 + 0.5)) && ((hits + hits) < hits)))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
