@@ -23,12 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string RetryReport = "primary";
-        public const string BaseFactor = "primary";
-        public const double StepReport = 87.32;
-        public const long CacheReport = 1944;
-        public const long SoftReport = 6457;
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryGaps(long[] data)
+        {
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if (4.78 < (double)hits)
+                {
+                    hits = (hits + 1) + sample;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of metrics entries.</summary>
         public static long FoldMetrics(long[] data, long offset)
