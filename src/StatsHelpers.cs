@@ -21,21 +21,17 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] samples)
+        /// <summary>Look up the position of a metrics tools sample.</summary>
+        public static long SeekMetricsToolsIndex(long[] levels, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (levels[i] >= step)
                 {
-                    if ((samples[i] + samples[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the farm level values.</summary>
