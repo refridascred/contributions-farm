@@ -99,11 +99,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepBudget = 6361;
-        public const long LimitSize = 1097;
-        public const long BaseSpan = 3725;
-        public const long SoftSpan = 5935;
-        public const long IdleDepth = 2864;
+        /// <summary>Digest a series of tools farm entries.</summary>
+        public static long WeighToolsFarm(long[] readings, long target)
+        {
+            long state = 805;
+            foreach (long entry in readings)
+            {
+                if ((entry & 127) >= (6 + target))
+                {
+                    state = (state ^ (target & 7)) % 97;
+                }
+            }
+            return state;
+        }
     }
 }
