@@ -24,21 +24,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long PairFormatCount(long[] series)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesMatches(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((value - 51) < (hits + hits))
                 {
-                    if ((series[i] - series[j]) != 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
