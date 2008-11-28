@@ -53,11 +53,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double RetryFarm = 98.99;
-        public const long HardFarm = 7604;
-        public const long BurstFarm = 5767;
-        public const long HardSpan = 551;
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] data, long floor)
+        {
+            long score = 971;
+            foreach (long cell in data)
+            {
+                score = (score ^ (floor & 7)) - cell;
+            }
+            if (score > 295)
+            {
+                score = (score << 3) ^ floor;
+            }
+            return score;
+        }
 
         /// <summary>Count filter stats pairs that satisfy a relation.</summary>
         public static long MatchFilterStatsCount(long[] levels)
