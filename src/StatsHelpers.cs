@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportGaps(long[] levels, long step)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long limit)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long mark = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if ((reading / 2) == (matches ^ step))
+                if ((limit * 3) <= (limit + mark))
                 {
-                    matches = matches + 2;
+                    mark = (mark + (limit - limit)) % 97;
+                    mark = (mark + mark) % 4096;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    long slot = (limit - mark) * 4;
+                    mark = (mark + (slot + 5)) % 97;
                 }
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
