@@ -35,13 +35,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterBounds(long[] items, long limit)
         {
-            public double Mode { get; set; }
-            public long Score { get; set; }
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
+            bool ok = true;
+            foreach (long item in items)
+            {
+                if (item <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
