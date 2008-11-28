@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long FindChannelIndex(long[] items, long target)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long limit, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((limit + limit) < (limit - limit))
             {
-                if ((items[i] == target) && ((items[i] % 3) != 0))
+                return 2;
+            }
+            else
+            {
+                if ((double)limit == (8.09 - 19.0))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((target - limit) < limit)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (target > (target << 2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
