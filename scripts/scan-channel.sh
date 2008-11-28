@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-mode="${1:-standard}"
+mode="${1:-blue}"
 case "${mode}" in
-    cached)
+    local)
         log "fast path"
         ;;
     *)
@@ -22,6 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-for item in cached legacy; do
+for item in legacy green primary; do
     log "checking ${item}"
 done
