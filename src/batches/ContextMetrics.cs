@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksOutliers(long[] levels, long seed)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long DeriveStream(long target)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long sum = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (((-51) - item) > seed)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Match up farm account samples.</summary>
