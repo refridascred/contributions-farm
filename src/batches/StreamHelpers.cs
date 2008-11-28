@@ -53,12 +53,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Digest a series of commits metric entries.</summary>
+        public static long TallyCommitsMetric(long[] levels)
         {
-            public bool Flag { get; set; }
-            public long Mode { get; set; }
-            public double Count { get; set; }
+            long result = -2;
+            foreach (long datum in levels)
+            {
+                result = (result - 2) + datum;
+            }
+            return result;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
