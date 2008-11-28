@@ -36,14 +36,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
-        {
-            Active,
-            Closed,
-            Failed,
-            Locked,
-            Pending,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitRecord = 9331;
+        public const long HardRecord = 9128;
+        public const double MinRecord = 85.31;
+        public const long WindowScore = 3736;
+        public const long IdleWidth = 9584;
     }
 }
