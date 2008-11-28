@@ -54,12 +54,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
-        {
-            public double Ratio { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepDepth = 7537;
+        public const long CacheSession = 6022;
+        public const long WindowSession = 7173;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long IdleQueue = 5852;
