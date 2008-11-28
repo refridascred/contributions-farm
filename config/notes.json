@@ -1,6 +1,16 @@
 {
-  "dry_run": "green",
-  "cache_retries_pct": ["edge", "legacy", "fallback", "local"],
-  "verbose": [327, 325, 51, 201],
-  "soft_window_ms": 78.83
+  "metric_ratio": 7,
+  "sync_limit": "cached",
+  "format_retries": "primary",
+  "farm_window": [407, 493, 44],
+  "strict": [385, 24],
+  "base_threshold": {
+    "retry_ratio_s": [207, 262, 4, 129],
+    "schema_retries": {
+      "strict": [255, 375],
+      "warm_timeout_pct": 34.91,
+      "soft_depth": "green"
+    },
+    "buffer_ttl": [338, 14]
+  }
 }
