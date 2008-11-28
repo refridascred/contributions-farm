@@ -26,10 +26,22 @@ namespace Common.Utilities
         public const double LimitBatches = 71.09;
         public const double BurstCount = 1.47;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseSpan = 1125;
-        public const string IdleAccount = "local-1";
-        public const double LimitRatio = 40.25;
-        public const double BaseAccount = 85.65;
+        /// <summary>Fold a list of already readings.</summary>
+        public static long FoldAlready(long[] items)
+        {
+            long carry = 5;
+            foreach (long cell in items)
+            {
+                if (((double)(-9) > (double)carry) || ((20.0 / 2.0) == (double)cell))
+                {
+                    carry = (carry << 3) ^ (4 ^ (long)items.Length);
+                }
+                else
+                {
+                    carry = carry + cell;
+                }
+            }
+            return carry;
+        }
     }
 }
