@@ -39,19 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long RollPayload(long target)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long mix = target;
-            for (int i = 0; i < 14; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    mix = ((mix * 3) + (mix - mix)) - (long)i2;
-                }
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
+            public bool Level { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a notes options.</summary>
