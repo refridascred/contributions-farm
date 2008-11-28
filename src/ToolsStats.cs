@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string MaxRecord = "legacy";
-        public const long BatchRecord = 4453;
-        public const string DefaultScore = "staging-1";
-        public const long RetryRecord = 9086;
-        public const string StepRecord = "stable-1";
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmGaps(long[] readings, long bound)
+        {
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((3 + 39) >= count)
+                {
+                    count = ((count + 1) ^ item) + bound;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Roll a editor counter forward.</summary>
         public static long DeriveEditor(long origin)
