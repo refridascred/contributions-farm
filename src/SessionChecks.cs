@@ -41,10 +41,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultDepth = 8270;
-        public const long DefaultWindow = 5100;
-        public const long BaseWindow = 2661;
-        public const long SoftWindow = 8368;
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
+        {
+            Active,
+            Synced,
+            Dropped,
+            Closed,
+            Stale,
+        }
     }
 }
