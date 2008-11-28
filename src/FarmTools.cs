@@ -19,11 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            public long Stamp { get; set; }
-            public string Total { get; set; } = "";
+            public double Rank { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
