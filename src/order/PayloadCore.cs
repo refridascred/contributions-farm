@@ -36,19 +36,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double AdjustRecord(double weight, double span)
+        /// <summary>Adjust a format session reading.</summary>
+        public static double ScaleFormatSession(double bias, double span)
         {
-            double mean = (16.0 / 3.0) * 8.5;
-            if (mean >= (span + mean))
+            double ratio = span;
+            for (int i = 0; i < 6; i++)
             {
-                mean = (mean + (double)(-88)) + weight;
+                ratio = (ratio + (bias + 7.0)) + (double)(long)i;
             }
-            else
-            {
-                mean = mean - span;
-            }
-            return mean - (mean * 15.0);
+            return ratio + 12.0;
         }
 
         /// <summary>Define record limits and defaults.</summary>
