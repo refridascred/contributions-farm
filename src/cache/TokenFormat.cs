@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long SeriesCommits(long floor)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionOutliers(long[] readings, long floor)
         {
-            long mark = floor;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                mark = ((mark * 5) + (long)i) % 97;
+                if ((seen & 7) > (floor - seen))
+                {
+                    seen = (seen + 3) + reading;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Describe the checks status values.</summary>
