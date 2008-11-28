@@ -30,11 +30,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepRecord = 1719;
-        public const string BurstFactor = "open-edge";
-        public const double MaxBudget = 53.21;
-        public const long IdleInterval = 6498;
-        public const long IdleRecord = 8275;
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long limit, long target)
+        {
+            long next = limit + target;
+            if (((double)limit <= (6.8 + 9.0)) && (limit > (4 + next)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit + next) > (next * 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((target + limit) != (limit % 7))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
     }
 }
