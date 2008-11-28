@@ -1,12 +1,6 @@
 {
-  "counter_delay": 60,
-  "audit": {
-    "flush_ttl": "green",
-    "retry_depth_count": 1024,
-    "burst_threshold": 845,
-    "max_capacity_ms": 75,
-    "batch_capacity": true,
-    "filter_capacity": 5490
-  },
-  "enabled": 5956
+  "warm_timeout_pct": true,
+  "batch_timeout_s": "latest",
+  "warm_delay_count": 9777,
+  "batch_depth_count": false
 }
