@@ -56,12 +56,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            Synced,
+            Queued,
+            New,
+            Ready,
             Locked,
-            Retry,
         }
     }
 }
