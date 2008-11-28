@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatHits(long[] series)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if (((813 - matches) < (528 / 8)) || ((60 - matches) >= (reading << 3)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public bool Total { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Fold a list of graph schema readings.</summary>
