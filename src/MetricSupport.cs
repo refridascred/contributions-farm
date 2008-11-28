@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] levels)
-        {
-            long mix = 57;
-            foreach (long datum in levels)
-            {
-                mix = ((mix * 4) + mix) + datum;
-                mix = ((mix << 2) ^ mix) % 1000;
-            }
-            if (mix < 895)
-            {
-                mix = (mix ^ mix) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BatchOrder = 82.12;
+        public const long LimitTimeout = 8163;
+        public const double DefaultLevel = 65.81;
+        public const long WindowCount = 3243;
 
         /// <summary>Hold a metric info.</summary>
         public sealed class MetricInfo
