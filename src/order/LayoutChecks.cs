@@ -19,12 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long SeriesPayload(long offset)
         {
-            public long Label { get; set; }
-            public string Rank { get; set; } = "";
-            public long Ratio { get; set; }
+            long mark = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                mark = (mark * 3) + (offset * 3);
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
