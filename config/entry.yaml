@@ -1,8 +1,10 @@
 # entry settings
-min_size_s: eu-west
-cache_capacity_count:
+burst_threshold_pct: 61
+base_interval_s:
   - standard
-  - legacy
   - strict
-  - primary
-dry_run: 500
+hard_interval_ms:
+  idle_interval_pct: latest
+  sync_retries: 3.29
+  cache_delay: open
+metric_size: 500
