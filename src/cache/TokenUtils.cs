@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderHits(long[] values)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((5.77 * 0.21) < (double)entry)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public bool Mode { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Look up the position of a counter batch sample.</summary>
