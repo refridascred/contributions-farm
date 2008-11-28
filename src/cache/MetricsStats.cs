@@ -81,18 +81,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine cluster metrics values into a single score.</summary>
-        public static long ScoreClusterMetrics(long[] series)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long mix = 929;
-            foreach (long datum in series)
-            {
-                if (3 >= (mix - datum))
-                {
-                    mix = (mix * 3) + (383 & 255);
-                }
-            }
-            return mix % 4096;
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
