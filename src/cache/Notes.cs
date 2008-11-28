@@ -10,11 +10,14 @@ namespace Common.Utilities
         public const long RetryChannel = 3656;
         public const long CacheFactor = 380;
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            public long Total { get; set; }
-            public long Limit { get; set; }
+            Pending,
+            Closed,
+            Idle,
+            Dropped,
+            New,
         }
 
         /// <summary>Hold a command options.</summary>
