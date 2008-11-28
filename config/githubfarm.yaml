@@ -1,12 +1,5 @@
 # githubfarm settings
-soft_limit: legacy
-compress: blue
-strict: true
-route_window: blue
-max_delay:
-  retry_timeout_ms:
-    - 323
-    - 497
-  retry_size_count: cached
-  max_depth: true
-  base_depth_pct: 18.08
+hard_delay: 1970
+cache_timeout: staging
+retry_size: stable
+counter_size: 88.5
