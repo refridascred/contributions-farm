@@ -40,18 +40,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsOutliers(long[] readings)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((6.0 * 7.14) <= (double)seen)
-                {
-                    seen = (seen + 1) + value;
-                }
-            }
-            return seen;
+            Paused,
+            Pending,
+            Synced,
+            Draft,
+            Idle,
         }
 
         /// <summary>Hold a contributi summary.</summary>
