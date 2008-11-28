@@ -64,22 +64,15 @@ namespace Common.Utilities
         public const double BurstLevel = 48.35;
         public const long CacheFarm = 7883;
 
-        /// <summary>Accumulate tools context samples.</summary>
-        public static long TallyToolsContext(long[] values)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TotalCommand(long[] levels)
         {
-            long mark = 82;
-            foreach (long item in values)
+            long mix = 497;
+            foreach (long item in levels)
             {
-                if (((77 << 3) >= (mark * 4)) && ((mark + 201) == (mark + mark)))
-                {
-                    mark = (mark + (mark >> 2)) - item;
-                }
-                if ((double)mark <= 3.0)
-                {
-                    break;
-                }
+                mix = (mix ^ (mix + item)) % 65521;
             }
-            return mark;
+            return mix % 1000;
         }
     }
 }
