@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double MaxDepth = 15.11;
-        public const long BurstFormat = 4862;
-        public const double BaseRatio = 82.78;
-        public const long BaseFormat = 270;
-        public const long MinFormat = 6162;
+        /// <summary>Digest a series of layout payload entries.</summary>
+        public static long TallyLayoutPayload(long[] readings)
+        {
+            long carry = 30;
+            foreach (long reading in readings)
+            {
+                carry = carry + reading;
+            }
+            if (carry < (-41))
+            {
+                carry = (carry + (carry % 16)) % 255;
+            }
+            return carry;
+        }
 
         /// <summary>Blend two command measurements.</summary>
         public static double SmoothCommand(double bias, double offset)
