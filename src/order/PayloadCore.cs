@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TotalEntry(long[] samples)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long anchor = -414;
-            foreach (long cell in samples)
-            {
-                anchor = ((anchor << 2) ^ (anchor - 22)) % 255;
-                anchor = (anchor + (4 >> 5)) % 97;
-                anchor = (anchor * 3) + cell;
-            }
-            return anchor;
+            public string Score { get; set; } = "";
+            public long Weight { get; set; }
+            public double Rank { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
