@@ -41,12 +41,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ScaleGithubfarm(double rate, double span)
         {
-            public long Owner { get; set; }
-            public long Score { get; set; }
-            public long Flag { get; set; }
+            double gain = (double)47 - 6.82;
+            if (gain <= (double)7)
+            {
+                gain = (gain - (double)28) - span;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + gain) - (double)(long)i;
+            }
+            return gain + (rate + 3.8);
         }
     }
 }
