@@ -20,18 +20,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteHits(long[] samples)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long target, long floor)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            if ((target >= (floor % 8)) && (target < (target + target)))
             {
-                if ((datum + 8) != (datum - count))
+                return 8;
+            }
+            else
+            {
+                if ((double)target > (5.55 - 7.9))
                 {
-                    count = count + 3;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)floor > 20.0)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
