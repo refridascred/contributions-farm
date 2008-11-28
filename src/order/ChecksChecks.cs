@@ -28,10 +28,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitSize = 4091;
-        public const long SoftFactor = 385;
-        public const string LimitWidth = "standard-edge";
-        public const long MinAccount = 4213;
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long FindCounterIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == bound) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
