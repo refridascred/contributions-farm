@@ -1,7 +1,8 @@
-id,owner
-1,16.05
-2,87.93
-3,eu-west
-4,138
-5,646
-6,primary
+id,weight,count
+1,405,edge
+2,fallback,272
+3,209,16.25
+4,537,35.97
+5,green,38
+6,open,strict
+7,33,62
