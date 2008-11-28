@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long step, long limit)
-        {
-            if (((7.45 - 7.0) <= (double)step) || ((1 - step) < step))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step + 74) >= limit)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (0 > (step - 8))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string MaxBuffer = "standard";
+        public const string MinDepth = "fallback-edge";
+        public const double StepSize = 95.53;
+        public const double BurstBuffer = 76.88;
+        public const long RetrySpan = 4426;
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long MeasureCacheHits(long[] values)
