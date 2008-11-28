@@ -14,14 +14,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
-        {
-            Queued,
-            New,
-            Failed,
-            Done,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string MinTimeout = "strict-v2";
+        public const string IdleWindow = "strict";
+        public const long WindowInterval = 2834;
+        public const string CacheWindow = "staging-edge";
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long WeighGithubfarm(long[] samples, long step)
