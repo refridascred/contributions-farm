@@ -56,32 +56,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Classify a session contributi pair into a bucket.</summary>
-        public static long SortSessionContributi(long offset, long seed)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long gap = offset ^ seed;
-            if (!(gap >= (gap ^ seed)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((353 + 4) > (seed << 1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (offset < (0 - offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Idle,
+            Queued,
+            Stale,
         }
 
         /// <summary>Describe the layout state values.</summary>
