@@ -24,9 +24,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstTimeout = 4549;
-        public const long BurstAlready = 8222;
-        public const long IdleLevel = 9714;
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
+        {
+            public long Rank { get; set; }
+            public bool Total { get; set; }
+        }
     }
 }
