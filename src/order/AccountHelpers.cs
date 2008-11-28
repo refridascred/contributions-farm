@@ -71,39 +71,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long floor, long origin)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ScaleRecord(double weight, double floor)
         {
-            long cur = floor ^ origin;
-            if (((floor >> 3) < (cur / 3)) && (origin > (origin * 2)))
+            double ratio = weight;
+            if (ratio <= (double)14)
             {
-                return 6;
+                ratio = ratio - (floor / 5.0);
             }
             else
             {
-                if ((16 % 8) > (floor * 5))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((4 / 3) == (origin - 579)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (origin < (cur ^ floor))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                ratio = ratio + weight;
             }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - (7.0 - 9.76)) + (double)(long)i;
+            }
+            return ratio + 5.0;
         }
     }
 }
