@@ -39,21 +39,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count account context pairs that satisfy a relation.</summary>
-        public static long CompareAccountContextCount(long[] data)
+        /// <summary>Derive the next buffer contributi value from a seed.</summary>
+        public static long RollBufferContributi(long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mix = (mix + (129 >> 5)) % 101;
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return seen;
+            return mix;
         }
     }
 }
