@@ -1,9 +1,7 @@
 # githubfarm settings
-idle_retries_pct: true
-session_window: 281
-githubfarm_window: 31.75
-cache_size: 35.96
-default_ratio_count: fallback
-max_depth_ms:
-  - 83
-  - 99
+hard_ratio_count: 7292
+metrics_retries: 0.28
+farm_ratio:
+  max_threshold_pct: 90
+  soft_ratio_s: 60
+  warm_size: false
