@@ -47,12 +47,15 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Combine schema route values into a single score.</summary>
+        public static long CombineSchemaRoute(long[] series)
         {
-            Idle,
-            Queued,
-            Stale,
+            long total = 43;
+            foreach (long reading in series)
+            {
+                total = (total * 5) + (reading % 12);
+            }
+            return total % 97;
         }
 
         /// <summary>Describe the layout state values.</summary>
