@@ -18,20 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long IterateLayout(long offset)
+        /// <summary>Look up the position of a counter batch sample.</summary>
+        public static long SeekCounterBatchIndex(long[] series, long limit)
         {
-            long total = offset;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = (total + (2 ^ total)) % 97;
-                if ((double)(long)i > (1.84 + 8.01))
+                if (series[i] <= limit)
                 {
-                    total = total - 71;
+                    return (long)i;
                 }
-                total = ((total * 4) + (long)i) % 65521;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
