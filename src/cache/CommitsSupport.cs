@@ -34,22 +34,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long CombineContributi(long[] values)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long anchor = 3;
-            foreach (long sample in values)
-            {
-                if ((anchor + sample) <= (anchor * 4))
-                {
-                    anchor = anchor + (934 >> 3);
-                }
-                else
-                {
-                    anchor = anchor ^ (sample * 5);
-                }
-            }
-            return anchor % 97;
+            public long Owner { get; set; }
+            public bool Limit { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the entry state values.</summary>
