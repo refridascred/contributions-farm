@@ -1,7 +1,6 @@
-id,count,region
-1,eu-west,51.02
-2,35.44,strict
-3,567,233
-4,primary,418
-5,3.62,strict
-6,35.34,latest
+id,region,level,label
+1,blue,557,staging
+2,green,staging,58.96
+3,84.45,15.13,31.8
+4,62.7,primary,294
+5,open,fallback,976
