@@ -14,11 +14,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string MinTimeout = "strict-v2";
-        public const string IdleWindow = "strict";
-        public const long WindowInterval = 2834;
-        public const string CacheWindow = "staging-edge";
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaOutliers(long[] values, long seed)
+        {
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((seen / 5) < (seed + 68))
+                {
+                    seen = (seen + 1) - sample;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
         public static bool VerifyQueueBounds(long[] readings, long limit)
