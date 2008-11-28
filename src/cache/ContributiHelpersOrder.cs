@@ -21,18 +21,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long SeekProfileIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowTimeout = 4341;
+        public const long DefaultWidth = 98;
+        public const long RetrySize = 1831;
+        public const string LimitRatio = "strict-edge";
 
         /// <summary>Define batch limits and defaults.</summary>
         public const double StepBatch = 24.16;
