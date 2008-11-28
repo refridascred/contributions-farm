@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheSchema = 130;
-        public const string DefaultSpan = "stable-edge";
-        public const string HardSchema = "latest-1";
-        public const string MinInterval = "stable";
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
+        {
+            public string Owner { get; set; } = "";
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Compare every pair of metric readings.</summary>
         public static long PairMetricCount(long[] data)
