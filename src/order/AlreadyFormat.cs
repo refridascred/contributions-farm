@@ -35,32 +35,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long limit, long target)
+        /// <summary>Blend two window githubfarm measurements.</summary>
+        public static double AdjustWindowGithubfarm(double bias, double span)
         {
-            long span = limit ^ target;
-            if ((span - target) == (limit - target))
+            double load = span;
+            if (load >= span)
             {
-                return 4;
+                load = (load + (double)9) - bias;
             }
-            else
-            {
-                if (12.0 > (double)limit)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((double)limit < (4.1 + 7.49)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return load + 15.0;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
