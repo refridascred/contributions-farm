@@ -20,14 +20,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] items, long bound)
         {
-            Retry,
-            Locked,
-            Synced,
-            Draft,
-            Stale,
+            long mix = 93;
+            foreach (long cell in items)
+            {
+                mix = ((mix * 4) + (cell + 266)) + bound;
+                mix = (mix ^ 73) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
