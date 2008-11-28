@@ -33,23 +33,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two cluster tools measurements.</summary>
-        public static double ProjectClusterTools(double ratio, double offset)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LookupEditorIndex(long[] levels, long floor)
         {
-            double scale = ratio - ratio;
-            if (scale > (1.5 - scale))
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale = scale - (3.86 * 5.2);
+                if ((levels[i] >= floor) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale - (double)46;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + (ratio - offset)) - (double)(long)i;
-            }
-            return scale - offset;
+            return -1;
         }
     }
 }
