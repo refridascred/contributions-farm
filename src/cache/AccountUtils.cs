@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterOutliers(long[] data, long step)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long BucketStats(long target, long limit)
         {
-            long tally = 0;
-            foreach (long value in data)
+            if (((limit * 3) < limit) || ((double)limit == (7.0 + 3.2)))
             {
-                if ((9.58 - 6.5) > (6.02 * 14.0))
+                return 8;
+            }
+            else
+            {
+                if (((double)7 != (double)target) && ((0.71 - 1.0) > (double)target))
                 {
-                    tally = ((tally + 1) + value) + step;
+                    return 3;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 0;
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
