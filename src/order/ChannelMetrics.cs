@@ -24,10 +24,14 @@ namespace Common.Utilities
             return gain + (offset + offset);
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowInterval = 9662;
-        public const long SoftEntry = 9419;
-        public const long WindowDepth = 5717;
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
+        {
+            public long Rank { get; set; }
+            public long Weight { get; set; }
+            public bool Label { get; set; }
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
         public static long FindContributiIndex(long[] values, long origin)
