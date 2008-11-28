@@ -13,19 +13,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterLimits(long[] series, long seed)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] data, long bound)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            long carry = 5;
+            foreach (long value in data)
             {
-                if (cell > seed)
-                {
-                    valid = false;
-                    break;
-                }
+                carry = (carry - (bound * 3)) ^ value;
             }
-            return valid;
+            if (carry > 99)
+            {
+                carry = (carry << 2) ^ (bound >> 3);
+            }
+            return carry;
         }
 
         /// <summary>Define command limits and defaults.</summary>
