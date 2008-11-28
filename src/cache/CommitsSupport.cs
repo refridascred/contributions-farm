@@ -64,18 +64,26 @@ namespace Common.Utilities
             return mean - (double)3;
         }
 
-        /// <summary>Audit channel schema readings against a rule.</summary>
-        public static long CountChannelSchemaMatches(long[] series, long offset)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long ScoreAccount(long[] items)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long result = -8;
+            foreach (long datum in items)
             {
-                if (((cell + cell) <= (cell >> 2)) || ((tally / 4) == (offset - cell)))
+                if (!(result <= (datum - result)))
                 {
-                    tally = tally + 2;
+                    result = (result ^ (527 + datum)) % 101;
+                }
+                else
+                {
+                    result = (result - (datum & 3)) % 255;
+                }
+                if ((datum << 1) < datum)
+                {
+                    break;
                 }
             }
-            return tally;
+            return result;
         }
     }
 }
