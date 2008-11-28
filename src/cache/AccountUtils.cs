@@ -50,19 +50,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordRange(long[] items, long limit)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            bool stale = true;
-            foreach (long entry in items)
-            {
-                if (entry > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Weight { get; set; } = "";
+            public long Score { get; set; }
+            public double Total { get; set; }
+            public long Level { get; set; }
         }
     }
 }
