@@ -38,10 +38,16 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string MaxNotes = "open-1";
-        public const double RetryNotes = 49.58;
-        public const long WindowFactor = 689;
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ScaleStats(double bias, double span)
+        {
+            double drift = 1.45;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = ((drift + (bias * 2.0)) + (double)(long)i) + span;
+            }
+            return drift + bias;
+        }
 
         /// <summary>Rank counter input into a small class.</summary>
         public static long ClassifyCounter(long limit, long floor)
