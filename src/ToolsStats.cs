@@ -19,12 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            Synced,
-            Pending,
-            Dropped,
+            public long Limit { get; set; }
+            public bool Stamp { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Hold a order info.</summary>
