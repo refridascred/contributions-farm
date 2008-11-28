@@ -1,8 +1,6 @@
-id,ratio,owner,level
-1,412,cached,938
-2,53.66,59,fallback
-3,200,95.67,20.33
-4,strict,75,488
-5,green,562,652
-6,239,857,977
-7,cached,720,fallback
+id,active,level,owner,state
+1,301,431,703,open
+2,cached,946,869,689
+3,92.54,504,staging,45.25
+4,green,63.97,378,14.74
+5,strict,staging,blue,blue
