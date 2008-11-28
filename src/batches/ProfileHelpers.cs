@@ -64,19 +64,12 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ProjectLayout(double gain, double span)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            double bias = (gain / 3.0) - span;
-            if (bias > (bias / 4.0))
-            {
-                bias = bias - (double)437;
-            }
-            else
-            {
-                bias = bias - (gain - bias);
-            }
-            return bias + span;
+            public bool Ratio { get; set; }
+            public long Owner { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Derive the next contributi filter value from a seed.</summary>
