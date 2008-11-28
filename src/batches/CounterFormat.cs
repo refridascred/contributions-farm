@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string RetryScore = "strict-1";
-        public const long IdleStats = 9218;
-        public const double BaseSpan = 52.75;
-        public const long RetryStats = 7394;
-        public const string DefaultStats = "alpha-v2";
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelGaps(long[] readings, long target)
+        {
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry + target) > entry)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Compare every pair of account readings.</summary>
         public static long MatchAccountCount(long[] values)
