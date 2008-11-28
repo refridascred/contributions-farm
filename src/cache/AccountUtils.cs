@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            Queued,
-            Pending,
-            Ready,
+            public double Level { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
