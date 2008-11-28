@@ -11,17 +11,39 @@ namespace Common.Utilities
         public const string StepSpan = "strict";
         public const long SoftRatio = 8795;
 
-        /// <summary>Look up the position of a profile command sample.</summary>
-        public static long FindProfileCommandIndex(long[] samples, long origin)
+        /// <summary>Grade a support checks value against two limits.</summary>
+        public static long ClassifySupportChecks(long bound, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long edge = bound ^ seed;
+            if ((bound / 7) > (edge ^ seed))
             {
-                if ((samples[i] >= origin) && ((samples[i] % 2) == 0))
+                return 6;
+            }
+            else
+            {
+                if ((double)seed != (15.0 * 18.0))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((edge & 31) <= (seed - seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((3 >> 2) <= (edge + edge))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
