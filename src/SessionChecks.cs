@@ -24,19 +24,12 @@ namespace Common.Utilities
             return weight + (double)2;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double SmoothSupport(double gain, double floor)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            double gain2 = gain;
-            if (gain2 <= gain)
-            {
-                gain2 = (gain2 + gain) - floor;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain2 = (gain2 + (double)58) - (double)(long)i;
-            }
-            return gain2 + (gain2 - gain2);
+            New,
+            Pending,
+            Failed,
         }
 
         /// <summary>Combine filter command values into a single score.</summary>
