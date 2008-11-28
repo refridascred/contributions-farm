@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Roll a layout githubfarm counter forward.</summary>
+        public static long StepLayoutGithubfarm(long target)
         {
-            Retry,
-            Ready,
-            New,
-            Locked,
-            Done,
+            long mix = target;
+            for (int i = 0; i < 14; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
