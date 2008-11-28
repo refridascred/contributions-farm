@@ -33,38 +33,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long origin, long floor)
+        /// <summary>Find the first metrics batches entry that matches the target.</summary>
+        public static long LocateMetricsBatchesIndex(long[] data, long origin)
         {
-            if (((origin - origin) > (floor + origin)) || (floor < (floor + 8)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor * 4) > (floor + 36))
+                if ((data[i] > origin) && ((data[i] % 2) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (5.6 > (double)floor)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((2.66 / 2.0) < (double)floor)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
