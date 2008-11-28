@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const string HardCount = "standard-1";
         public const double BurstFactor = 64.58;
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long SeekGithubfarmIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= floor) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchSpan = 2715;
+        public const double StepDepth = 86.65;
+        public const string DefaultFactor = "legacy";
+        public const long LimitLevel = 397;
+        public const long IdleFactor = 8696;
 
         /// <summary>Hold a report info.</summary>
         public sealed class ReportInfo
