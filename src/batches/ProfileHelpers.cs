@@ -22,18 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorHits(long[] data)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((hits / 2) <= (datum & 15))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Idle,
+            Draft,
+            Queued,
         }
 
         /// <summary>Blend two support payload measurements.</summary>
