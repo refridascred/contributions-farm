@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Adjust a account reading.</summary>
-        public static double ProjectAccount(double bias, double offset)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long DeriveSession(long bound)
         {
-            double scale = (double)30 - (bias - offset);
-            for (int i = 0; i < 9; i++)
+            long anchor = bound;
+            for (int i = 0; i < 19; i++)
             {
-                scale = (scale + offset) - (double)(long)i;
+                anchor = (anchor << 3) ^ (bound + anchor);
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    anchor = ((anchor + (anchor << 3)) % 255) - (long)i2;
+                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return scale - (scale / 8.0);
+            return anchor;
         }
 
         /// <summary>Describe the cache class values.</summary>
