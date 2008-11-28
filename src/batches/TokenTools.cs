@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Project the next commits value.</summary>
-        public static double ScaleCommits(double scale, double span)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            double load = scale;
-            return load + (scale + span);
+            public string Limit { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Adjust a support buffer reading.</summary>
