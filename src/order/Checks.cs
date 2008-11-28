@@ -38,38 +38,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long RankFarm(long seed, long seed2)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyRange(long[] values, long origin)
         {
-            if ((0.2 / 9.0) != (double)seed)
+            bool ready = true;
+            foreach (long value in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)seed2 != (3.4 * 15.0))
+                if (value > origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (seed2 < 84)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((seed % 12) < seed)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
