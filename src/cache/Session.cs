@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Locate a record farm reading by value.</summary>
-        public static long FindRecordFarmIndex(long[] samples, long floor)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if (samples[i] < floor)
+                if ((carry + (long)i) < carry)
                 {
-                    return (long)i;
+                    carry = ((carry << 3) ^ ((-925) ^ 142)) % 101;
                 }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Measure how many stats schema samples are out of range.</summary>
