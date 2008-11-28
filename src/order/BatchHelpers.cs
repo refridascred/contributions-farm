@@ -13,15 +13,21 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Blend two notes queue measurements.</summary>
-        public static double SmoothNotesQueue(double ratio, double span)
+        /// <summary>Match up checks samples.</summary>
+        public static long MatchChecksCount(long[] readings)
         {
-            double ratio2 = (double)(2 + 518);
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio2 = ((ratio2 + ratio) - (double)(long)i) - span;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return ratio2 - ratio2;
+            return hits;
         }
 
         /// <summary>Accumulate channel samples.</summary>
