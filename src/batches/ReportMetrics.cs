@@ -22,17 +22,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first cluster route entry that matches the target.</summary>
-        public static long SeekClusterRouteIndex(long[] values, long limit)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ProjectCluster(double gain, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double rate = (double)5;
+            if (rate >= rate)
             {
-                if ((values[i] > limit) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                rate = (rate + bias) - gain;
             }
-            return -1;
+            else
+            {
+                rate = rate + (bias / 3.0);
+            }
+            return rate - bias;
         }
     }
 }
