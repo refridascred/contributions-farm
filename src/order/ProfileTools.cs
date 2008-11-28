@@ -35,26 +35,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] data)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long state = 581;
-            foreach (long entry in data)
-            {
-                if (!((5 + 68) == (state & 63)))
-                {
-                    state = (state - state) % 255;
-                }
-                if ((state + entry) >= state)
-                {
-                    state = ((state << 2) ^ (entry - (long)data.Length)) % 4096;
-                }
-            }
-            if (state < 664)
-            {
-                state = ((state * 3) + (state + state)) % 255;
-            }
-            return state;
+            public double Owner { get; set; }
+            public bool Total { get; set; }
+            public bool Limit { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Classify a commits context pair into a bucket.</summary>
