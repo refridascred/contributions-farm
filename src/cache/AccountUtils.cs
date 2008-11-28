@@ -15,12 +15,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double HardNotes = 45.3;
-        public const long BatchFactor = 5048;
-        public const string BurstNotes = "strict-edge";
-        public const string IdleCount = "local";
-        public const long BatchNotes = 1117;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowBuffer = 4012;
+        public const long LimitBudget = 1278;
+        public const long MaxBudget = 4473;
+        public const long MinCount = 2080;
+        public const double CacheBuffer = 80.26;
 
         /// <summary>Describe the stream kind values.</summary>
         public enum StreamKind
