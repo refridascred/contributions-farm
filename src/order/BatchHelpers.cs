@@ -13,17 +13,31 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long SeekFilterIndex(long[] items, long origin)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long RollChannel(long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if (items[i] >= origin)
+                if ((limit * 2) >= ((long)i >> 1))
                 {
-                    return (long)i;
+                    break;
                 }
+                else
+                {
+                    carry = (carry + (70 >> 2)) % 4096;
+                }
+                if (!((double)carry < (7.8 * 16.0)))
+                {
+                    carry = (carry + (limit >> 2)) % 4096;
+                }
+                if ((double)carry > (double)limit)
+                {
+                    carry = carry - limit;
+                }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Accumulate channel samples.</summary>
