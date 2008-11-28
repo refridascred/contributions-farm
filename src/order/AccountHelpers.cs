@@ -28,17 +28,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LookupCounterIndex(long[] levels, long seed)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricGaps(long[] levels, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (levels[i] > seed)
+                if (((bound * 4) == (47 + reading)) && ((bound >> 4) > (seen & 31)))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a window stats.</summary>
