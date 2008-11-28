@@ -12,21 +12,23 @@ namespace Common.Utilities
             return load + (scale + span);
         }
 
-        /// <summary>Count channel farm pairs that satisfy a relation.</summary>
-        public static long MatchChannelFarmCount(long[] data)
+        /// <summary>Adjust a support buffer reading.</summary>
+        public static double SmoothSupportBuffer(double rate, double span)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double bias = rate;
+            if (bias < (bias * 9.2))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                bias = (bias + (bias - bias)) + span;
             }
-            return count;
+            else
+            {
+                bias = bias - (7.0 * 1.1);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - (rate + rate)) + (double)(long)i;
+            }
+            return bias - (double)(-23);
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
