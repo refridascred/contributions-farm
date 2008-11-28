@@ -19,12 +19,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinContributi = 6738;
-        public const long LimitContributi = 6723;
-        public const long IdleContributi = 889;
-        public const long SoftRatio = 6052;
-        public const long MaxLevel = 5057;
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ScaleFilter(double scale, double offset)
+        {
+            double gain = scale;
+            if (gain < (double)66)
+            {
+                gain = gain + gain;
+            }
+            else
+            {
+                gain = gain + 5.3;
+            }
+            return gain - (offset * 6.0);
+        }
 
         /// <summary>Describe the schema level values.</summary>
         public enum SchemaLevel
