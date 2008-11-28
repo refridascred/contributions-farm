@@ -10,20 +10,13 @@ namespace Common.Utilities
         public const string BatchSpan = "latest-v2";
         public const long LimitToken = 6467;
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long StepMetrics(long bound)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long mark = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                bool found = (long)i <= 41;
-                if (found)
-                {
-                    continue;
-                }
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
+            New,
+            Locked,
+            Draft,
+            Retry,
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
