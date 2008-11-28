@@ -18,24 +18,18 @@ namespace Common.Utilities
         public const long StepSpan = 2803;
         public const double LimitSupport = 43.89;
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long BucketEditor(long target, long limit)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadOutliers(long[] levels)
         {
-            if ((288 + 9) >= (target << 2))
+            long hits = 0;
+            foreach (long value in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit << 2) != (target / 5))
+                if ((double)781 < (double)hits)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    hits = (hits + 3) + value;
                 }
             }
+            return hits;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
