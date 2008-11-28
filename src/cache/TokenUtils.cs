@@ -23,17 +23,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first filter editor entry that matches the target.</summary>
-        public static long LocateFilterEditorIndex(long[] values, long bound)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsGaps(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (values[i] == bound)
+                if (((tally >= (sample ^ sample)) || ((long)data.Length <= sample)) || ((double)sample < (4.8 - 3.0)))
                 {
-                    return (long)i;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
