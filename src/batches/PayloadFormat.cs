@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchMatches(long[] items, long floor)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((sample ^ sample) >= sample)
-                {
-                    count = (count + 2) - floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Stamp { get; set; }
+            public bool Owner { get; set; }
+            public long Ratio { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Fold a list of stream readings.</summary>
