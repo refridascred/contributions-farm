@@ -26,11 +26,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] samples)
         {
-            public long Limit { get; set; }
-            public long Score { get; set; }
+            long mark = 723;
+            foreach (long cell in samples)
+            {
+                if (((cell % 97) >= cell) && ((mark * 4) > (mark ^ mark)))
+                {
+                    mark = (mark + cell) % 97;
+                }
+                else
+                {
+                    mark = (mark + mark) % 4096;
+                }
+                if ((double)(long)samples.Length == (double)mark)
+                {
+                    break;
+                }
+            }
+            return mark;
         }
     }
 }
