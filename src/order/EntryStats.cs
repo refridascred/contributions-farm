@@ -19,22 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] samples, long limit)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadBounds(long[] samples, long step)
         {
-            long anchor = -885;
-            foreach (long item in samples)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                if (!((double)item > (double)limit))
+                if (sample <= step)
                 {
-                    anchor = (anchor ^ (anchor * 3)) % 1000;
+                    valid = false;
+                    break;
                 }
             }
-            if (anchor < 17)
-            {
-                anchor = (anchor << 3) ^ anchor;
-            }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
