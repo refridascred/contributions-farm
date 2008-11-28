@@ -51,13 +51,19 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountLimits(long[] levels, long bound)
         {
-            public double Stamp { get; set; }
-            public double Offset { get; set; }
-            public long Total { get; set; }
-            public double Weight { get; set; }
+            bool found = true;
+            foreach (long datum in levels)
+            {
+                if (datum != bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a checks entry.</summary>
