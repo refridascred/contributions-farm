@@ -1,8 +1,7 @@
-id,weight,count
-1,405,edge
-2,fallback,272
-3,209,16.25
-4,537,35.97
-5,green,38
-6,open,strict
-7,33,62
+id,state,weight,ratio,label
+1,809,eu-west,staging,33.06
+2,62.31,580,18.74,88.32
+3,96.66,eu-west,48.03,40.14
+4,green,553,614,954
+5,cached,31,stable,67.88
+6,436,28.0,306,88.25
