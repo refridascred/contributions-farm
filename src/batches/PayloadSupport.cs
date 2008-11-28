@@ -12,19 +12,16 @@ namespace Common.Utilities
             return (drift + (drift + span)) + rate;
         }
 
-        /// <summary>Check that every metrics tools entry stays within the limit.</summary>
-        public static bool ValidateMetricsToolsRange(long[] items, long offset)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long RollSession(long limit)
         {
-            bool found = true;
-            foreach (long entry in items)
+            long mix = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if (entry < offset)
-                {
-                    found = false;
-                    break;
-                }
+                mix = ((mix << 3) ^ (limit - (-457))) % 4096;
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return found;
+            return mix;
         }
 
         /// <summary>Count account context pairs that satisfy a relation.</summary>
