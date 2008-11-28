@@ -39,16 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] data)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long mark = 6;
-            foreach (long cell in data)
-            {
-                mark = ((mark << 2) ^ (64 ^ cell)) % 4096;
-                mark = (mark ^ (mark % 97)) % 101;
-            }
-            return mark;
+            public bool Rank { get; set; }
+            public long Region { get; set; }
+            public string Limit { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
