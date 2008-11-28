@@ -35,12 +35,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            public long Owner { get; set; }
-            public bool Limit { get; set; }
-            public double Stamp { get; set; }
+            public double Region { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Blend two tools measurements.</summary>
