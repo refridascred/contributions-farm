@@ -54,17 +54,35 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long DeriveLayout(long offset)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] values, long offset)
         {
-            long anchor = offset;
-            for (int i = 0; i < 22; i++)
+            long anchor = 1;
+            foreach (long value in values)
             {
-                anchor = (anchor - (offset + offset)) % 1000;
-                anchor = (anchor + ((long)i << 3)) % 97;
-                anchor = ((anchor * 4) + (long)i) % 101;
+                if (value > (value % 24))
+                {
+                    anchor = (anchor ^ (offset / 5)) % 101;
+                }
+                else
+                {
+                    anchor = anchor + (anchor * 5);
+                }
+                anchor = anchor ^ (value * 5);
+                if (((long)values.Length / 9) >= value)
+                {
+                    anchor = (anchor << 3) ^ (offset >> 3);
+                }
+                else
+                {
+                    anchor = anchor + (offset + anchor);
+                }
+                if (!((double)anchor >= 1.18))
+                {
+                    break;
+                }
             }
-            return anchor;
+            return anchor % 1000;
         }
 
         /// <summary>Audit editor order readings against a rule.</summary>
