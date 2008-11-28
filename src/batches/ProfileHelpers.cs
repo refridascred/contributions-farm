@@ -22,17 +22,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first session account entry that matches the target.</summary>
-        public static long LookupSessionAccountIndex(long[] values, long floor)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long DeriveCache(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if ((values[i] > floor) && ((values[i] % 3) != 0))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    return (long)i;
+                    acc = ((acc - (770 >> 5)) % 4096) ^ (long)i2;
+                    acc = acc ^ acc;
                 }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Hold a command snapshot.</summary>
