@@ -33,11 +33,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseGithubfarm = 9389;
-        public const double RetryGithubfarm = 15.51;
-        public const long SoftFactor = 5978;
-        public const double HardBudget = 75.57;
-        public const long BurstGithubfarm = 8619;
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long FoldMetrics(long[] data, long offset)
+        {
+            long score = 645;
+            foreach (long datum in data)
+            {
+                if ((score + datum) > offset)
+                {
+                    score = (score * 5) + (offset + score);
+                }
+            }
+            return score;
+        }
     }
 }
