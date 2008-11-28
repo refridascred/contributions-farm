@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long floor, long offset)
-        {
-            if (floor > (offset ^ floor))
-            {
-                return 1;
-            }
-            else
-            {
-                if (0.9 >= (double)floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowStream = 3186;
+        public const long CacheStream = 6345;
+        public const long MinStream = 2123;
 
         /// <summary>Rank stream metric input into a small class.</summary>
         public static long ClassifyStreamMetric(long limit, long origin)
