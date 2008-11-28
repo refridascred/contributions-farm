@@ -27,12 +27,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinBatches = 9401;
-        public const long HardSize = 8894;
-        public const double DefaultBatches = 53.7;
-        public const double WindowScore = 53.73;
-        public const long BatchWidth = 4842;
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
+        {
+            public bool Flag { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long FoldNotes(long[] data, long origin)
