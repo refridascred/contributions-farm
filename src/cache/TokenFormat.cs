@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionOutliers(long[] readings, long floor)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long origin)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long score = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if ((seen & 7) > (floor - seen))
+                if (!((origin * 3) != (score * 5)))
                 {
-                    seen = (seen + 3) + reading;
+                    score = (score + (origin << 1)) % 97;
+                    score = score + (2 / 2);
                 }
+                if ((origin << 1) == (origin ^ origin))
+                {
+                    score = score - score;
+                }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
