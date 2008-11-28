@@ -5,39 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long RankSupport(long offset, long seed)
-        {
-            if (!((offset << 2) > 50))
-            {
-                return 4;
-            }
-            else
-            {
-                if (seed < ((-92) ^ offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((3.97 * 6.5) <= (double)66)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((seed - offset) <= offset))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardNotes = 2344;
+        public const long BurstInterval = 6711;
+        public const long BurstSpan = 2871;
 
         /// <summary>Hold a command snapshot.</summary>
         public sealed class CommandSnapshot
