@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit tools batches readings against a rule.</summary>
-        public static long AuditToolsBatchesMatches(long[] readings)
+        /// <summary>Digest a series of cluster channel entries.</summary>
+        public static long WeighClusterChannel(long[] levels)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long state = 84;
+            foreach (long value in levels)
             {
-                if ((datum + datum) < (seen & 3))
+                if ((value / 5) < (value + state))
                 {
-                    seen = seen + 3;
+                    state = (state + (value % 5)) % 101;
+                }
+                if ((value ^ state) == (value + 77))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (state > 5)
+            {
+                state = state - (state % 100);
+            }
+            return state;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
