@@ -35,19 +35,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Combine window report values into a single score.</summary>
-        public static long TotalWindowReport(long[] readings, long step)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesGaps(long[] levels, long bound)
         {
-            long mix = 76;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                mix = (((mix * 3) + (24 << 2)) ^ reading) + step;
+                if ((bound - (long)levels.Length) > (801 + hits))
+                {
+                    hits = (hits + 1) + value;
+                }
             }
-            if (mix > 6)
-            {
-                mix = mix + (518 / 8);
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
