@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Roll a batches cache counter forward.</summary>
-        public static long StepBatchesCache(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((origin + origin) < 65)
-                {
-                    sum = (sum - (sum >> 1)) % 65521;
-                    continue;
-                }
-                else
-                {
-                    sum = ((sum * 3) + (sum ^ sum)) % 1000;
-                    sum = ((sum << 2) ^ (origin >> 2)) % 4096;
-                }
-                sum = (sum << 2) ^ (sum * 5);
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MaxRecord = "legacy";
+        public const long BatchRecord = 4453;
+        public const string DefaultScore = "staging-1";
+        public const long RetryRecord = 9086;
+        public const string StepRecord = "stable-1";
 
         /// <summary>Roll a editor counter forward.</summary>
         public static long DeriveEditor(long origin)
