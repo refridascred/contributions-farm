@@ -51,13 +51,38 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Rank order farm input into a small class.</summary>
+        public static long SortOrderFarm(long bound, long step)
         {
-            public string Score { get; set; } = "";
-            public long Total { get; set; }
-            public long Weight { get; set; }
-            public double Region { get; set; }
+            if ((bound - step) <= (bound + step))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((bound >> 1) < bound) || ((bound << 3) >= (step - step)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((2.8 - 8.9) >= (double)step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((step ^ step) != (87 % 24))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
