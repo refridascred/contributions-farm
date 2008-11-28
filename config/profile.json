@@ -1,7 +1,16 @@
 {
-  "audit": 77.68,
-  "retry_size": 2524,
-  "support_interval": false,
-  "dry_run": 500,
-  "soft_ratio": 100
+  "hard_interval_ms": ["green", "standard", "latest", "staging"],
+  "dry_run": [233, 251, 418],
+  "compress": "green",
+  "audit": {
+    "readonly": 500,
+    "hard_threshold": 520,
+    "idle_depth_pct": 4254
+  },
+  "commits_ttl": {
+    "retry_limit": "cached",
+    "warm_retries_pct": true,
+    "flush_delay_s": true,
+    "batch_interval_s": 16
+  }
 }
