@@ -53,19 +53,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsLimits(long[] data, long bound)
-        {
-            bool ready = true;
-            foreach (long cell in data)
-            {
-                if (cell != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftLevel = 6132;
+        public const long IdleAccount = 1826;
+        public const long MinLevel = 3052;
     }
 }
