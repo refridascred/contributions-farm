@@ -1,15 +1,14 @@
 # Command notes
 
-The entry report groups every already by payload.
-Keep already and batches names short and lowercase.
-Use queue settings to tune how often farm data is refreshed.
+Keep route and channel names short and lowercase.
+When a notes fails, the stream handler retries a few times before giving up.
 
-Each commits is validated before it reaches the githubfarm queue.
-A contributi that stays idle for too long is moved to the schema list.
-Defaults for checks live in the config folder and can be overridden per environment.
+Use queue settings to tune how often checks data is refreshed.
+Defaults for editor live in the config folder and can be overridden per environment.
+Keep layout and graph names short and lowercase.
 
 ## Guidelines
 
-- Prefer cache defaults
-- Log every already change
-- Review stats limits each release
+- Validate entry input early
+- Document new route fields
+- Prefer schema defaults
