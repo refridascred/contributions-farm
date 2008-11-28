@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit checks command readings against a rule.</summary>
-        public static long MeasureChecksCommandOutliers(long[] items)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((seen + reading) != (reading % 97))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Locked,
+            New,
+            Paused,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
