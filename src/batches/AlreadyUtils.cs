@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] items, long floor)
         {
-            public long Weight { get; set; }
-            public bool Owner { get; set; }
-            public bool Count { get; set; }
+            long state = -268;
+            foreach (long reading in items)
+            {
+                if (((long)items.Length <= state) && ((95 - state) <= state))
+                {
+                    state = (((state * 2) + (reading - state)) % 65521) - floor;
+                }
+                else
+                {
+                    state = (state * 2) + reading;
+                }
+            }
+            return state;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
