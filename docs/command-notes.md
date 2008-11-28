@@ -1,16 +1,15 @@
 # Command notes
 
-Use notes settings to tune how often window data is refreshed.
-A stats that stays idle for too long is moved to the session list.
+Each context is validated before it reaches the context queue.
 Defaults for counter live in the config folder and can be overridden per environment.
+Run the filter check before changing any farm limits.
 
-The layout report groups every cluster by tools.
-Use profile settings to tune how often batch data is refreshed.
-The editor helpers are pure functions, so they are safe to call from any thread.
+Each checks is validated before it reaches the report queue.
+The schema report groups every counter by contributi.
+The report helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer queue defaults
-- Document new payload fields
-- Log every filter change
-- Review command limits each release
+- Keep channel values small
+- Log every token change
+- Validate report input early
