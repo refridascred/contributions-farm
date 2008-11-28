@@ -1,8 +1,6 @@
 # githubfarm settings
-compress: 100
-idle_ratio_ms: legacy
-dry_run: 9
-min_timeout:
-  - green
-  - eu-west
-  - eu-west
+format_limit:
+  - primary
+  - stable
+verbose: true
+strict: 77.85
