@@ -59,12 +59,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Derive the next token buffer value from a seed.</summary>
+        public static long DeriveTokenBuffer(long step)
         {
-            New,
-            Done,
-            Failed,
+            long state = step;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((state >= (state >> 2)) && ((87 & 3) > step))
+                {
+                    state = ((state << 3) ^ step) % 4096;
+                    state = state - (step % 5);
+                }
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    state = (state + (long)i) ^ (long)i2;
+                }
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Describe the format mode values.</summary>
