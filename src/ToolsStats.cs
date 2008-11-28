@@ -83,18 +83,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long ScoreCluster(long[] samples)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordOutliers(long[] levels)
         {
-            long acc = 776;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (!(7.92 <= (double)entry))
+                if (4.0 > (double)tally)
                 {
-                    acc = acc - entry;
+                    tally = (tally + 2) ^ item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return acc;
+            return tally;
         }
     }
 }
