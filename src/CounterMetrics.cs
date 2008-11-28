@@ -52,13 +52,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long FoldChannel(long[] samples)
         {
-            public long Offset { get; set; }
-            public bool Label { get; set; }
-            public long Size { get; set; }
-            public double Token { get; set; }
+            long acc = 4;
+            foreach (long entry in samples)
+            {
+                acc = (acc + (6 % 60)) % 4096;
+                for (int i = 0; i < 3; i++)
+                {
+                    acc = (acc << 3) ^ ((long)i + acc);
+                    acc = acc - ((long)i - entry);
+                }
+                if (entry < (acc * 2))
+                {
+                    acc = ((acc << 3) ^ entry) % 65521;
+                }
+            }
+            return acc;
         }
     }
 }
