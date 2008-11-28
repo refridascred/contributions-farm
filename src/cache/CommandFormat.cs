@@ -32,19 +32,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphRange(long[] data, long offset)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ProjectOrder(double rate, double floor)
         {
-            bool flag = true;
-            foreach (long item in data)
+            double bias = rate;
+            if (bias > floor)
             {
-                if (item >= offset)
-                {
-                    flag = false;
-                    break;
-                }
+                bias = bias + 7.6;
             }
-            return flag;
+            return bias + bias;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
