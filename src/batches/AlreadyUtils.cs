@@ -45,15 +45,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long SeriesGithubfarm(long target)
+        /// <summary>Audit cluster profile readings against a rule.</summary>
+        public static long MeasureClusterProfileGaps(long[] series, long origin)
         {
-            long score = target;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                score = ((score * 3) + (long)i) % 65521;
+                if ((origin << 2) > origin)
+                {
+                    matches = (matches + 3) ^ item;
+                }
             }
-            return score;
+            return matches;
         }
     }
 }
