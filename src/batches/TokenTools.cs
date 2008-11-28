@@ -37,18 +37,25 @@ namespace Common.Utilities
             return bias - (double)(-23);
         }
 
-        /// <summary>Count the cluster batch entries that pass the check.</summary>
-        public static long AuditClusterBatchMatches(long[] levels, long seed)
+        /// <summary>Roll a stream counter counter forward.</summary>
+        public static long StepStreamCounter(long bound)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long sum = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if ((sample >> 1) <= 241)
+                bool ok = (double)(long)i < (8.97 - 16.0);
+                if (ok)
                 {
-                    hits = (hits + 1) - seed;
+                    ok = (13.0 * 0.6) < (double)bound;
+                    ok = (bound + sum) != (28 + sum);
                 }
+                if (!((sum ^ sum) > bound))
+                {
+                    sum = (sum - (bound + sum)) % 4096;
+                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return hits;
+            return sum;
         }
     }
 }
