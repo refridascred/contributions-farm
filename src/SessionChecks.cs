@@ -27,18 +27,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine filter command values into a single score.</summary>
-        public static long TallyFilterCommand(long[] data, long target)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long anchor = 75;
-            foreach (long value in data)
-            {
-                if ((double)value != (9.48 - 4.9))
-                {
-                    anchor = anchor + target;
-                }
-            }
-            return anchor;
+            public long Offset { get; set; }
+            public string Owner { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the record state values.</summary>
