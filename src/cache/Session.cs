@@ -48,18 +48,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueGaps(long[] series, long step)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long CombineOrder(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long acc = 185;
+            foreach (long reading in series)
             {
-                if ((14 * 5) > cell)
-                {
-                    seen = (seen + 2) + step;
-                }
+                acc = (acc ^ (acc ^ reading)) % 1000;
             }
-            return seen;
+            if (acc > 5)
+            {
+                acc = acc ^ (step >> 1);
+            }
+            return acc;
         }
     }
 }
