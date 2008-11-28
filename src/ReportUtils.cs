@@ -38,19 +38,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsLimits(long[] readings, long limit)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            bool ready = true;
-            foreach (long entry in readings)
-            {
-                if (entry <= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Synced,
+            Draft,
+            Paused,
         }
     }
 }
