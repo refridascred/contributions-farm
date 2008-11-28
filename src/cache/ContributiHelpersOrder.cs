@@ -45,12 +45,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Accumulate channel already samples.</summary>
+        public static long CombineChannelAlready(long[] data, long seed)
         {
-            public bool Region { get; set; }
-            public bool Limit { get; set; }
-            public long Weight { get; set; }
+            long anchor = -598;
+            foreach (long value in data)
+            {
+                anchor = (((anchor * 2) + (seed << 3)) % 101) - value;
+            }
+            if (anchor > 0)
+            {
+                anchor = anchor + anchor;
+            }
+            return anchor;
         }
     }
 }
