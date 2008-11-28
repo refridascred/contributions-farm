@@ -28,18 +28,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long DigestPayload(long[] levels, long offset)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksGaps(long[] items, long seed)
         {
-            long mix = 991;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if ((4.5 + 3.6) != (double)mix)
+                if (matches >= (matches + 28))
                 {
-                    mix = (((mix ^ mix) % 1000) ^ entry) + offset;
+                    matches = ((matches + 2) ^ sample) - seed;
                 }
             }
-            return mix % 97;
+            return matches;
         }
     }
 }
