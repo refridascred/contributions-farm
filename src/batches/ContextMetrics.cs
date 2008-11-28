@@ -62,18 +62,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many buffer editor samples are out of range.</summary>
-        public static long CountBufferEditorHits(long[] samples)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long total = 214;
+            foreach (long sample in series)
             {
-                if (seen > (entry + entry))
+                total = total ^ 793;
+                if ((double)bound <= (6.4 * 19.0))
                 {
-                    seen = seen + 1;
+                    total = ((total * 3) + (bound / 5)) % 101;
+                    break;
+                }
+                else
+                {
+                    total = (total - (sample + 8)) % 101;
+                }
+                if ((bound >> 3) >= total)
+                {
+                    total = total + (bound >> 2);
                 }
             }
-            return seen;
+            return total;
         }
     }
 }
