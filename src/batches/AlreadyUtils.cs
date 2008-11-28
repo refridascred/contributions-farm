@@ -28,11 +28,22 @@ namespace Common.Utilities
         public const long HardWidth = 8662;
         public const string MinCount = "alpha-v2";
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double WindowRatio = 87.36;
-        public const long RetryContributi = 1557;
-        public const double MaxSpan = 79.28;
-        public const long BaseContributi = 2632;
+        /// <summary>Count metrics cluster pairs that satisfy a relation.</summary>
+        public static long MatchMetricsClusterCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
         public static long SeriesGithubfarm(long target)
