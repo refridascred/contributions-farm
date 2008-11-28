@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksLimits(long[] data, long origin)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LookupStreamIndex(long[] samples, long bound)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading < origin)
+                if (samples[i] <= bound)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
