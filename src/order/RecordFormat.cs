@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Roll a stats context counter forward.</summary>
+        public static long IterateStatsContext(long bound)
         {
-            Ready,
-            Stale,
-            Queued,
+            long mark = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                long span = mark + 108;
+                mark = (mark + (84 - span)) % 4096;
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Grade a account contributi value against two limits.</summary>
