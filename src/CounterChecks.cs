@@ -12,12 +12,15 @@ namespace Common.Utilities
             return (load - floor) + weight;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] readings)
         {
-            public bool Offset { get; set; }
-            public long Mode { get; set; }
-            public string Stamp { get; set; } = "";
+            long anchor = 35;
+            foreach (long datum in readings)
+            {
+                anchor = (anchor ^ anchor) + datum;
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate tools entry samples.</summary>
