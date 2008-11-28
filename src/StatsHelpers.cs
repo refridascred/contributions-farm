@@ -39,11 +39,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportRange(long[] samples, long floor)
         {
-            public bool Score { get; set; }
-            public double Stamp { get; set; }
+            bool stale = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
