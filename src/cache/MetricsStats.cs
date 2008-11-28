@@ -78,23 +78,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long WeighReport(long[] levels)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiRange(long[] items, long limit)
         {
-            long total = 663;
-            foreach (long cell in levels)
+            bool ready = true;
+            foreach (long item in items)
             {
-                if ((cell < (cell - total)) || ((double)cell <= 4.7))
+                if (item > limit)
                 {
-                    total = (total - (cell % 24)) % 65521;
+                    ready = false;
+                    break;
                 }
-                total = (total ^ cell) % 97;
             }
-            if (total < 1)
-            {
-                total = total - (total + total);
-            }
-            return total;
+            return ready;
         }
     }
 }
