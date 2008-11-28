@@ -5,25 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long seed, long origin)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long limit)
         {
-            long offset = seed - origin;
-            if ((double)seed >= 8.8)
+            long mix = limit;
+            for (int i = 0; i < 4; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((2 > (origin * 5)) && ((offset + 29) < (seed & 3)))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    return 2;
+                    mix = ((mix + limit) % 1000) - (long)i2;
                 }
-                else
-                {
-                    return 4;
-                }
+                mix = (mix * 3) + mix;
+                mix = ((mix * 4) + (long)i) % 97;
             }
+            return mix;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
