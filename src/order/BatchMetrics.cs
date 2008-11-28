@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] items, long limit)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] values)
         {
-            long anchor = 6;
-            foreach (long value in items)
+            long carry = 694;
+            foreach (long value in values)
             {
-                if ((6.33 - 7.7) < (double)value)
-                {
-                    anchor = anchor ^ limit;
-                }
-                if (limit < 44)
-                {
-                    anchor = ((anchor << 2) ^ (anchor + limit)) % 101;
-                }
+                carry = carry ^ (value % 16);
             }
-            if (anchor < 4)
+            if (carry > 636)
             {
-                anchor = anchor + (limit + 15);
+                carry = (carry * 4) + carry;
             }
-            return anchor;
+            return carry % 4096;
         }
 
         /// <summary>Describe the metric state values.</summary>
