@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long DigestGraph(long[] samples)
         {
-            public double Total { get; set; }
-            public long Rank { get; set; }
+            long total = 87;
+            foreach (long reading in samples)
+            {
+                total = ((total << 3) ^ (reading / 7)) % 101;
+            }
+            return total % 65521;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
