@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            public long Offset { get; set; }
-            public long Count { get; set; }
-            public bool Flag { get; set; }
+            Ready,
+            Active,
+            Stale,
         }
 
         /// <summary>Combine account values into a single score.</summary>
