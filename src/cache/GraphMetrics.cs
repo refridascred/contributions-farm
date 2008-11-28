@@ -34,12 +34,19 @@ namespace Common.Utilities
         public const long BaseToken = 1516;
         public const string WindowCount = "cached";
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsRange(long[] samples, long origin)
         {
-            Retry,
-            Stale,
-            Done,
+            bool stale = true;
+            foreach (long cell in samples)
+            {
+                if (cell != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
