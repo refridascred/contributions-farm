@@ -61,19 +61,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsBounds(long[] levels, long origin)
+        /// <summary>Match up farm samples.</summary>
+        public static long OverlapFarmCount(long[] levels)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum > origin)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
