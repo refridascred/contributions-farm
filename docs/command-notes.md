@@ -1,14 +1,15 @@
 # Command notes
 
-Defaults for counter live in the config folder and can be overridden per environment.
-Defaults for window live in the config folder and can be overridden per environment.
+The contributi module keeps graph values in sync with the filter cache.
+Keep metrics and route names short and lowercase.
+Each schema is validated before it reaches the batches queue.
 
-The buffer helpers are pure functions, so they are safe to call from any thread.
-Keep schema and context names short and lowercase.
-Defaults for stream live in the config folder and can be overridden per environment.
+The channel report groups every session by token.
+A cache that stays idle for too long is moved to the channel list.
+When a session fails, the graph handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every batches change
-- Validate token input early
-- Review graph limits each release
+- Keep support values small
+- Prefer stats defaults
+- Document new order fields
