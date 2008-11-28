@@ -20,13 +20,31 @@ namespace Common.Utilities
         public const long DefaultSupport = 3032;
         public const long BatchSupport = 3504;
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long SortTools(long limit, long bound)
         {
-            public string Count { get; set; } = "";
-            public double Weight { get; set; }
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
+            if ((limit / 2) != (bound - 952))
+            {
+                return 4;
+            }
+            else
+            {
+                if (limit >= (bound + bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (bound <= limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
