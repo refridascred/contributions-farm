@@ -1,13 +1,7 @@
 {
-  "enabled": 500,
-  "filter_depth": "staging",
-  "persist": {
-    "batches_threshold": true,
-    "warm_interval": 2536,
-    "hard_ratio_ms": 60,
-    "metric_limit": "fallback"
-  },
-  "readonly": 55.82,
-  "idle_ttl_ms": "latest",
-  "default_limit": 93.7
+  "audit": 77.68,
+  "retry_size": 2524,
+  "support_interval": false,
+  "dry_run": 500,
+  "soft_ratio": 100
 }
