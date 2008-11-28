@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
-        {
-            Closed,
-            Retry,
-            Pending,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double LimitDepth = 94.14;
+        public const long MaxMetrics = 6754;
+        public const long DefaultMetrics = 8268;
+        public const long BaseMetrics = 361;
+        public const long BaseScore = 8612;
 
         /// <summary>Classify a report editor pair into a bucket.</summary>
         public static long RankReportEditor(long floor, long bound)
