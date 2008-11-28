@@ -25,18 +25,27 @@ namespace Common.Utilities
         public const string IdleCount = "local";
         public const long BatchNotes = 1117;
 
-        /// <summary>Count the already layout entries that pass the check.</summary>
-        public static long MeasureAlreadyLayoutGaps(long[] readings, long step)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long sum = 0;
+            foreach (long cell in values)
             {
-                if (284 > step)
+                if ((73 + sum) >= (268 << 2))
                 {
-                    seen = (seen + 3) - sample;
+                    sum = ((sum << 3) ^ sum) % 1000;
+                    continue;
+                }
+                if (!((sum + sum) < sum))
+                {
+                    sum = (sum * 2) + (bound >> 4);
+                }
+                if ((cell <= (sum >> 3)) || ((bound - bound) >= (sum * 4)))
+                {
+                    break;
                 }
             }
-            return seen;
+            return sum;
         }
     }
 }
