@@ -1,13 +1,7 @@
 {
-  "counter_window": ["primary", "green"],
-  "buffer_interval": {
-    "flush_size": true,
-    "persist": 43,
-    "verbose": "eu-west",
-    "base_delay_ms": "strict",
-    "poll_depth": 8416,
-    "editor_size": false
-  },
-  "audit": true,
-  "soft_ratio_s": true
+  "sync_limit": false,
+  "batch_delay": "local",
+  "burst_delay_s": true,
+  "checks_size": 57.64,
+  "flush_depth_s": 86
 }
