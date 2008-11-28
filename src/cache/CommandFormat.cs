@@ -32,15 +32,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit context session readings against a rule.</summary>
-        public static long CountContextSessionGaps(long[] samples, long origin)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsOutliers(long[] values, long offset)
         {
             long matches = 0;
-            foreach (long sample in samples)
+            foreach (long datum in values)
             {
-                if ((origin % 100) < ((-2) - 800))
+                if (!((matches % 2) == ((long)values.Length ^ datum)))
                 {
-                    matches = (matches + 3) ^ sample;
+                    matches = (matches + 3) - offset;
                 }
                 else
                 {
