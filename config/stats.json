@@ -1,5 +1,8 @@
 {
-  "readonly": 72.99,
-  "retry_interval_s": 30,
-  "batches_limit": "stable"
+  "retry_size": 7524,
+  "audit": false,
+  "warm_delay_pct": 37.51,
+  "soft_interval_s": 24,
+  "editor_window": ["open", "open", "legacy"],
+  "hard_window": 1024
 }
