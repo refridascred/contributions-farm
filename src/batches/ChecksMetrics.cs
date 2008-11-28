@@ -40,15 +40,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double BlendRoute(double scale, double bias)
+        /// <summary>Match up counter samples.</summary>
+        public static long PairCounterCount(long[] samples)
         {
-            double ratio = scale;
-            if (ratio < (double)625)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = ratio - bias;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return ratio - (scale - bias);
+            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
