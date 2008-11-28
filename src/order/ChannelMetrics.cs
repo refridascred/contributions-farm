@@ -32,17 +32,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LocateCommandIndex(long[] series, long bound)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesBounds(long[] series, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                if (series[i] > bound)
+                if (reading != seed)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
