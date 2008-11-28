@@ -1,8 +1,8 @@
 {
-  "flush_interval_pct": false,
-  "soft_ratio": 60,
-  "idle_limit_pct": "local",
-  "report_limit": 30,
-  "strict": 70,
-  "cache_timeout_count": 9
+  "idle_depth_pct": "fallback",
+  "idle_limit_count": 1923,
+  "soft_depth": "standard",
+  "batch_capacity_s": false,
+  "flush_timeout_pct": true,
+  "cache_retries_s": 6014
 }
