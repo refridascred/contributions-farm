@@ -31,16 +31,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long target)
+        /// <summary>Accumulate account samples.</summary>
+        public static long ScoreAccount(long[] readings)
         {
-            long score = target;
-            for (int i = 0; i < 20; i++)
+            long result = 1;
+            foreach (long reading in readings)
             {
-                score = ((score << 2) ^ (score % 12)) % 97;
-                score = ((score * 3) + (long)i) % 65521;
+                result = result + (result << 3);
+                result = result - reading;
+                if ((result + reading) <= (result - result))
+                {
+                    result = result - (reading + 6);
+                }
             }
-            return score;
+            return result;
         }
     }
 }
