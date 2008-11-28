@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferHits(long[] readings)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionRange(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                if ((double)tally >= (3.95 * 2.6))
+                if (reading != origin)
                 {
-                    tally = (tally + 1) ^ sample;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Describe the commits level values.</summary>
