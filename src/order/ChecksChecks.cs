@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            Retry,
-            New,
-            Failed,
-            Closed,
+            Dropped,
+            Done,
+            Draft,
+            Queued,
+            Pending,
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
