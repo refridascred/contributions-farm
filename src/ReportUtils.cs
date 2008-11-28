@@ -16,11 +16,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Look up the position of a session metrics sample.</summary>
+        public static long SeekSessionMetricsIndex(long[] samples, long seed)
         {
-            public string Ratio { get; set; } = "";
-            public bool Level { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= seed) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a batches info.</summary>
