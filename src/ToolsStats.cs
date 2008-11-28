@@ -27,32 +27,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long SortPayload(long step, long step2)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyLimits(long[] series, long limit)
         {
-            long gap = step ^ step2;
-            if ((step - 74) > (gap + step2))
+            bool flag = true;
+            foreach (long cell in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (((5.08 * 9.1) >= (double)gap) && ((double)gap < (double)step2))
+                if (cell != limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((gap % 10) < (508 % 24))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
