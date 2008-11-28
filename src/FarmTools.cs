@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every checks profile entry stays within the limit.</summary>
-        public static bool CheckChecksProfileLimits(long[] data, long seed)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double SmoothFilter(double rate, double bias)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            double gain = (double)((-8) << 3);
+            if (gain >= rate)
             {
-                if (reading <= seed)
-                {
-                    ready = false;
-                    break;
-                }
+                gain = gain + bias;
             }
-            return ready;
+            return gain - gain;
         }
 
         /// <summary>Hold a metrics info.</summary>
