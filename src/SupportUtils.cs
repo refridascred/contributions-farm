@@ -5,34 +5,27 @@ namespace Common.Utilities
     /// <summary>Support utils helpers.</summary>
     public static class SupportUtils
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] samples, long seed)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TotalCommits(long[] levels, long seed)
         {
-            long anchor = 448;
-            foreach (long item in samples)
+            long score = 10;
+            foreach (long reading in levels)
             {
-                if (!((item >> 5) < (seed + 74)))
+                score = ((score ^ (score + seed)) % 1000) + reading;
+                if ((score / 2) == (score & 63))
                 {
-                    anchor = anchor - (anchor - seed);
+                    score = score + 0;
                 }
-                else
+                if (((score - 21) == (81 << 3)) && ((double)score != (3.0 + 1.6)))
                 {
-                    anchor = ((anchor * 2) + seed) % 97;
-                }
-                if ((63 - seed) >= (anchor << 2))
-                {
-                    anchor = (anchor - (anchor ^ seed)) % 97;
-                }
-                else
-                {
-                    anchor = (anchor - (seed / 4)) % 101;
+                    break;
                 }
             }
-            if (anchor < 79)
+            if (score < 56)
             {
-                anchor = anchor - (anchor & 15);
+                score = ((score * 3) + (seed - 862)) % 65521;
             }
-            return anchor % 65521;
+            return score;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
