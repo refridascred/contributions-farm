@@ -36,12 +36,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            Stale,
-            Dropped,
-            Pending,
+            public bool Token { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
