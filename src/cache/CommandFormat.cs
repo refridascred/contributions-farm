@@ -32,22 +32,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsOutliers(long[] values, long offset)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamGaps(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if (!((matches % 2) == ((long)values.Length ^ datum)))
+                if ((double)seen < (8.08 - 2.4))
                 {
-                    matches = (matches + 3) - offset;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = ((seen + 1) ^ item) + offset;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
