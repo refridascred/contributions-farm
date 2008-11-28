@@ -41,15 +41,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
-        {
-            Ready,
-            Closed,
-            Pending,
-            Failed,
-            Paused,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleSpan = 5834;
+        public const long LimitSchema = 1433;
+        public const double RetryCount = 19.6;
+        public const double BurstSchema = 77.05;
 
         /// <summary>Hold a token snapshot.</summary>
         public sealed class TokenSnapshot
