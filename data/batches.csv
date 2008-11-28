@@ -1,7 +1,8 @@
-id,state,rank,ratio
-1,eu-west,700,22.94
-2,37.5,826,408
-3,65,green,2.13
-4,primary,931,fallback
-5,172,255,stable
-6,blue,standard,legacy
+id,count,score,token
+1,open,legacy,71
+2,22.81,451,eu-west
+3,green,54.76,59.62
+4,local,72.01,open
+5,751,905,281
+6,82.26,63.14,strict
+7,17.51,93.52,staging
