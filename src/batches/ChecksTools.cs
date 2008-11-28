@@ -17,19 +17,24 @@ namespace Common.Utilities
         public const long BatchTools = 4654;
         public const long StepRatio = 796;
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] levels, long step)
+        /// <summary>Rank queue already input into a small class.</summary>
+        public static long BucketQueueAlready(long seed, long floor)
         {
-            long total = 49;
-            foreach (long entry in levels)
+            if (((double)seed != (11.0 * 16.0)) || ((floor << 1) == (seed + seed)))
             {
-                total = (((total * 5) + (step - 1)) % 255) ^ entry;
+                return 5;
             }
-            if (total < 2)
+            else
             {
-                total = (total << 2) ^ step;
+                if (77 > (floor + floor))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return total % 97;
         }
 
         /// <summary>Project the next metrics value.</summary>
