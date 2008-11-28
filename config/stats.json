@@ -1,9 +1,19 @@
 {
-  "max_depth": 50,
-  "warm_ratio_s": "blue",
-  "batch_threshold_ms": {
-    "stream_depth": 10,
-    "session_depth": true,
-    "hard_ratio": 773
+  "batch_interval": 6,
+  "stats_limit": 1466,
+  "poll_depth": ["fallback", "open", "latest"],
+  "warm_delay_pct": 2157,
+  "hard_retries_s": "open",
+  "warm_size": {
+    "cluster_ttl": 85,
+    "base_limit": false,
+    "stats_interval": 30,
+    "max_depth": {
+      "hard_ratio": false,
+      "audit": "blue",
+      "enabled": "green",
+      "readonly": 1024,
+      "retry_ratio_s": 26.95
+    }
   }
 }
