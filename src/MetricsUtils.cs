@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] readings, long floor)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesBounds(long[] readings, long step)
         {
-            long acc = 70;
-            foreach (long sample in readings)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                if (!((sample + acc) < (sample + 44)))
+                if (value < step)
                 {
-                    acc = (acc - (acc + (-1))) % 1000;
-                }
-                if ((floor / 9) != (820 - 2))
-                {
-                    acc = acc ^ (acc & 1);
+                    stale = false;
+                    break;
                 }
             }
-            if (acc > 622)
-            {
-                acc = acc ^ (floor + (-438));
-            }
-            return acc % 1000;
+            return stale;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
