@@ -5,31 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] samples)
+        /// <summary>Adjust a record reading.</summary>
+        public static double BlendRecord(double bias, double span)
         {
-            long anchor = 9;
-            foreach (long reading in samples)
+            double gain = bias / 6.0;
+            if (gain > 17.0)
             {
-                anchor = (anchor << 2) ^ anchor;
-                if ((2 * 3) != (reading % 5))
-                {
-                    anchor = ((anchor << 3) ^ (reading - reading)) % 97;
-                }
-                if ((anchor * 5) == (anchor + anchor))
-                {
-                    anchor = ((anchor * 3) + (anchor << 2)) % 97;
-                }
-                else
-                {
-                    anchor = ((anchor * 3) + (reading - anchor)) % 255;
-                }
+                gain = gain + span;
             }
-            if (anchor < 94)
+            else
             {
-                anchor = anchor + 11;
+                gain = gain - bias;
             }
-            return anchor % 4096;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + (span * 5.4)) + (double)(long)i;
+            }
+            return gain - (double)(-9);
         }
 
         /// <summary>Roll a already counter forward.</summary>
