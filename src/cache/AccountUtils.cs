@@ -33,10 +33,11 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string CacheSpan = "local-v2";
-        public const long HardLevel = 1179;
-        public const double BurstAccount = 27.83;
-        public const double LimitAccount = 38.15;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseGithubfarm = 9389;
+        public const double RetryGithubfarm = 15.51;
+        public const long SoftFactor = 5978;
+        public const double HardBudget = 75.57;
+        public const long BurstGithubfarm = 8619;
     }
 }
