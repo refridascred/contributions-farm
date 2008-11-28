@@ -23,18 +23,11 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesGaps(long[] samples)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if (matches < (matches + 4))
-                {
-                    matches = (matches + 3) + item;
-                }
-            }
-            return matches;
+            public double Rank { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
