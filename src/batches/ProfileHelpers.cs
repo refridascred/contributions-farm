@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorHits(long[] data)
         {
-            public bool Region { get; set; }
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((hits / 2) <= (datum & 15))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two support payload measurements.</summary>
