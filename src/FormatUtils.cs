@@ -87,11 +87,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long IterateSession(long step)
         {
-            public string Stamp { get; set; } = "";
-            public long Level { get; set; }
+            long state = step;
+            for (int i = 0; i < 18; i++)
+            {
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
