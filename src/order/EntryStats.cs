@@ -38,22 +38,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordMatches(long[] data)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamRange(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                if (3.06 >= (double)sample)
+                if (sample != seed)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
     }
 }
