@@ -19,24 +19,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long floor, long step)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            if ((9.61 + 7.82) >= (double)floor)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)floor > (9.0 + 1.6))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public string Mode { get; set; } = "";
+            public bool Total { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Blend two format metrics measurements.</summary>
