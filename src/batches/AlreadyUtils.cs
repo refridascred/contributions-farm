@@ -65,13 +65,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryOutliers(long[] levels)
         {
-            public long Limit { get; set; }
-            public bool Token { get; set; }
-            public bool Rank { get; set; }
-            public double Region { get; set; }
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((hits ^ hits) >= (sample + hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
