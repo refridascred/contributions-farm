@@ -46,9 +46,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MinTimeout = 12.63;
-        public const double SoftFactor = 67.86;
-        public const long BaseFarm = 3602;
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
+        {
+            Closed,
+            Stale,
+            New,
+            Active,
+            Retry,
+        }
     }
 }
