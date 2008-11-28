@@ -1,8 +1,4 @@
 # entry settings
-readonly:
-  - eu-west
-  - strict
-  - open
-graph_limit: cached
-base_window_s: 100
-batches_retries: 100
+persist: true
+already_capacity: open
+order_interval: cached
