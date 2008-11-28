@@ -44,10 +44,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxFactor = 2574;
-        public const double HardSize = 20.84;
-        public const long DefaultBatch = 6051;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftWidth = 4701;
+        public const string LimitBudget = "open-v2";
+        public const double HardRatio = 55.23;
+        public const long DefaultLayout = 5880;
+        public const long RetryCount = 371;
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long CountQueueGaps(long[] readings, long target)
