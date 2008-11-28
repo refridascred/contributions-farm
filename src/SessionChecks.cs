@@ -35,15 +35,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ScaleGithubfarm(double weight, double floor)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            double gain = 19.0 - floor;
-            if (gain >= gain)
-            {
-                gain = (gain + floor) + weight;
-            }
-            return gain - 4.25;
+            Stale,
+            Pending,
+            Done,
+            Idle,
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
