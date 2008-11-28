@@ -1,15 +1,17 @@
 {
-  "sync_depth_pct": "primary",
-  "flush_ratio_pct": {
-    "verbose": {
-      "warm_threshold_count": 26.97,
-      "max_depth": 1024,
-      "hard_delay": 26.45
+  "min_size_pct": 0.46,
+  "warm_depth_count": 60,
+  "readonly": {
+    "report_depth": false,
+    "session_size": {
+      "default_capacity": "staging",
+      "command_interval": "eu-west",
+      "sync_ratio": 37.59
     },
-    "retry_retries_pct": 78,
-    "min_threshold_s": true
+    "warm_window": true,
+    "commits_ratio": [133, 168],
+    "batch_delay_pct": ["strict", "strict", "staging", "fallback"]
   },
-  "support_timeout": "eu-west",
-  "retry_window_s": false,
-  "poll_size_count": false
+  "default_capacity_s": "blue",
+  "warm_depth_s": 92
 }
