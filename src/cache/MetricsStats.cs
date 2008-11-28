@@ -54,18 +54,15 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Measure how many route window samples are out of range.</summary>
-        public static long MeasureRouteWindowGaps(long[] samples, long offset)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ScaleMetrics(double gain, double span)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            double scale = span + span;
+            if (scale < (gain / 2.0))
             {
-                if (((entry & 7) <= (2 * 4)) || ((offset + hits) > hits))
-                {
-                    hits = hits + 3;
-                }
+                scale = scale - (6.0 * 12.0);
             }
-            return hits;
+            return scale + (8.94 + gain);
         }
     }
 }
