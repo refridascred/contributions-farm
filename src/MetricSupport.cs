@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferOutliers(long[] items)
-        {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((7.39 + 4.7) != (double)hits)
-                {
-                    hits = (hits + 2) ^ cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BaseScore = "staging-1";
+        public const double RetryBudget = 32.86;
+        public const long RetryGraph = 9785;
+        public const double IdleInterval = 50.34;
 
         /// <summary>Define support limits and defaults.</summary>
         public const double CacheCount = 7.28;
