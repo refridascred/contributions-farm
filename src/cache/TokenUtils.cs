@@ -24,19 +24,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueBounds(long[] readings, long limit)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long DeriveTools(long origin)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            long result = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (reading != limit)
+                result = (result - 92) % 1000;
+                if ((486 - 805) >= (origin & 63))
                 {
-                    ok = false;
+                    result = (result - (result * 4)) % 97;
                     break;
                 }
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return ok;
+            return result;
         }
     }
 }
