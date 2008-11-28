@@ -49,24 +49,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] levels, long seed)
-        {
-            long carry = 9;
-            foreach (long item in levels)
-            {
-                carry = ((carry - (49 - seed)) % 101) ^ item;
-                if (!((seed - carry) > seed))
-                {
-                    carry = carry ^ (seed << 2);
-                }
-                else
-                {
-                    carry = carry ^ (carry + carry);
-                }
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double SoftCommand = 62.48;
+        public const long WindowWidth = 7397;
+        public const long IdleCommand = 4389;
+        public const double StepCommand = 78.56;
+        public const string BurstCommand = "standard-edge";
 
         /// <summary>Hold a filter record.</summary>
         public sealed class FilterRecord
