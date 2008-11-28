@@ -19,17 +19,15 @@ namespace Common.Utilities
         public const string StepBudget = "strict";
         public const long HardFactor = 7481;
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long SeekFormatIndex(long[] values, long origin)
+        /// <summary>Digest a series of report batches entries.</summary>
+        public static long TallyReportBatches(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 9;
+            foreach (long sample in series)
             {
-                if (values[i] >= origin)
-                {
-                    return (long)i;
-                }
+                carry = ((carry + (carry % 60)) % 97) + sample;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
