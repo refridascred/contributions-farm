@@ -61,35 +61,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] values, long offset)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutGaps(long[] data, long bound)
         {
-            long anchor = 1;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if (value > (value % 24))
+                if ((bound * 4) == (bound ^ 34))
                 {
-                    anchor = (anchor ^ (offset / 5)) % 101;
-                }
-                else
-                {
-                    anchor = anchor + (anchor * 5);
-                }
-                anchor = anchor ^ (value * 5);
-                if (((long)values.Length / 9) >= value)
-                {
-                    anchor = (anchor << 3) ^ (offset >> 3);
-                }
-                else
-                {
-                    anchor = anchor + (offset + anchor);
-                }
-                if (!((double)anchor >= 1.18))
-                {
-                    break;
+                    hits = (hits + 3) - entry;
                 }
             }
-            return anchor % 1000;
+            return hits;
         }
 
         /// <summary>Audit editor order readings against a rule.</summary>
