@@ -34,38 +34,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long limit, long target)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            if ((limit & 31) != (3 + target))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((double)limit != (8.02 + 1.15)) && ((1.8 + 7.0) == (double)target))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)limit >= (16.0 + 4.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!(limit < 48))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public double Flag { get; set; }
+            public string Count { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
