@@ -60,18 +60,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsHits(long[] samples)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long result = 9;
+            foreach (long datum in series)
             {
-                if (2.0 <= (2.1 + 9.4))
+                if ((datum + datum) != (result & 31))
                 {
-                    seen = (seen + 2) + entry;
+                    result = result ^ (datum % 12);
+                }
+                else
+                {
+                    result = (result + offset) % 65521;
                 }
             }
-            return seen;
+            return result;
         }
     }
 }
