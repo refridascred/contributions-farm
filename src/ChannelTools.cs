@@ -23,12 +23,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            Dropped,
-            Paused,
-            Ready,
+            public bool Mode { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
