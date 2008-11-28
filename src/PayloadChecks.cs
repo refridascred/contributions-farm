@@ -39,19 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] data)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long FoldReport(long[] readings)
         {
-            long mark = 42;
-            foreach (long datum in data)
+            long sum = 0;
+            foreach (long datum in readings)
             {
-                mark = (((mark << 3) ^ (3 % 2)) % 101) + datum;
+                if ((double)sum > (19.0 + 10.0))
+                {
+                    sum = (((sum << 2) ^ (5 + sum)) % 97) + datum;
+                }
             }
-            if (mark < 989)
+            if (sum > 334)
             {
-                mark = ((mark * 4) + (mark * 5)) % 1000;
+                sum = (sum ^ (sum << 2)) % 4096;
             }
-            return mark % 97;
+            return sum;
         }
 
         /// <summary>Measure how many batches token samples are out of range.</summary>
