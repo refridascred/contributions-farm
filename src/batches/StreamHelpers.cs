@@ -19,38 +19,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long SortBatches(long floor, long offset)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            if (!((double)offset != (4.6 - 7.0)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset < (586 % 100)) || (floor >= offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)floor < (double)offset)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset << 2) < (floor % 24))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Stale,
+            Ready,
+            Draft,
         }
 
         /// <summary>Combine format values into a single score.</summary>
