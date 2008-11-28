@@ -1,12 +1,15 @@
 {
-  "audit": [347, 447],
-  "compress": 21.54,
-  "min_ttl": ["cached", "cached"],
-  "strict": {
-    "persist": 7692,
-    "poll_timeout_pct": 100,
-    "compress": "local",
-    "strict": 9843,
-    "filter_size": 69
-  }
+  "max_capacity_s": {
+    "flush_retries_ms": {
+      "stats_threshold": ["blue", "stable", "stable", "standard"],
+      "cache_capacity": 500,
+      "min_depth": 30,
+      "counter_ttl": ["blue", "latest"],
+      "strict": "blue"
+    },
+    "min_limit": 25.71,
+    "default_timeout_s": "green"
+  },
+  "support_timeout": "staging",
+  "batch_ratio": "fallback"
 }
