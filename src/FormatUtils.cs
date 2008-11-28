@@ -43,11 +43,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleSpan = 5834;
-        public const long LimitSchema = 1433;
-        public const double RetryCount = 19.6;
-        public const double BurstSchema = 77.05;
+        /// <summary>Find the first layout record entry that matches the target.</summary>
+        public static long SeekLayoutRecordIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == target) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a token snapshot.</summary>
         public sealed class TokenSnapshot
