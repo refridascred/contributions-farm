@@ -20,31 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long GradeSchema(long seed, long origin)
+        /// <summary>Blend two command measurements.</summary>
+        public static double SmoothCommand(double bias, double offset)
         {
-            if (origin > (seed << 3))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)seed >= (14.0 * 7.3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin <= (seed - origin)) || (seed <= (origin - seed)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            double rate = offset;
+            return (rate + offset) + bias;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
