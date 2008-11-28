@@ -22,15 +22,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ScaleReport(double rate, double floor)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long RankReport(long target, long step)
         {
-            double weight = (double)(42 >> 2);
-            if (weight > rate)
+            long slot = target ^ step;
+            if ((step / 6) > 654)
             {
-                weight = weight + floor;
+                return 0;
             }
-            return weight - (floor / 4.0);
+            else
+            {
+                if (((5.94 / 7.0) >= (double)target) || ((slot - step) > target))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((target % 8) >= step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a entry reading by value.</summary>
