@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long DeriveSession(long bound)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long carry = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                carry = (carry * 2) + ((long)i ^ bound);
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
+            public string Weight { get; set; } = "";
+            public double Size { get; set; }
+            public double Label { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a session stats.</summary>
