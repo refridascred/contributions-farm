@@ -21,12 +21,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowCount = 852;
-        public const long CacheScore = 8345;
-        public const long IdleContext = 302;
-        public const long BaseCount = 8123;
-        public const double DefaultContext = 63.07;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowSize = 7439;
+        public const long StepChannel = 5;
+        public const long DefaultChannel = 3121;
+        public const long DefaultFactor = 3031;
+        public const long IdleChannel = 4054;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const string LimitCache = "strict";
