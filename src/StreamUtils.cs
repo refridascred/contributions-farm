@@ -47,12 +47,19 @@ namespace Common.Utilities
         public const long BaseSize = 7444;
         public const long LimitLevel = 4965;
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Validate metrics record readings against a bound.</summary>
+        public static bool CheckMetricsRecordRange(long[] values, long origin)
         {
-            public long Weight { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Count { get; set; }
+            bool ready = true;
+            foreach (long reading in values)
+            {
+                if (reading >= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
