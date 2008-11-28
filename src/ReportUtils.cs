@@ -30,12 +30,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            Retry,
-            Dropped,
             Ready,
+            Retry,
+            Pending,
         }
 
         /// <summary>Describe the commits level values.</summary>
