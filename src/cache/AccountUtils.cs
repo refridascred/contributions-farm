@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Project the next route value.</summary>
-        public static double AdjustRoute(double rate, double offset)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            double gain = rate;
-            for (int i = 0; i < 7; i++)
-            {
-                gain = ((gain + (gain - 1.39)) + (double)(long)i) + offset;
-            }
-            return gain - (8.2 - 3.8);
+            Active,
+            Queued,
+            Done,
+            Retry,
+            Ready,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
