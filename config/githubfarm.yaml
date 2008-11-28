@@ -1,18 +1,17 @@
 # githubfarm settings
-batch_threshold:
-  burst_depth_count:
-    - cached
-    - strict
-  soft_timeout_count: 75.98
-  base_delay_pct: stable
-batches_size: 3309
-flush_delay: 89.97
-batch_ratio_ms:
-  poll_depth_s: 9376
-  batch_ttl_s: eu-west
-  strict: open
-  verbose:
-    - 328
-    - 297
-  min_threshold: 76
-  checks_delay: 62
+min_retries_s:
+  readonly: blue
+  warm_window: 8.79
+  cache_timeout_count:
+    dry_run: 82.13
+    min_ratio_ms:
+      - fallback
+      - legacy
+      - cached
+      - blue
+    warm_ttl: 5974
+    cache_window_ms: false
+  max_window_pct: 250
+  verbose: 56
+default_capacity_pct: 1024
+checks_retries: 46.31
