@@ -82,19 +82,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesBounds(long[] items, long target)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long OverlapWindowCount(long[] readings)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample != target)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((readings[i] - readings[j]) == 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
