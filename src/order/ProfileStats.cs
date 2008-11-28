@@ -19,12 +19,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ScaleBatch(double gain, double span)
         {
-            public long Count { get; set; }
-            public double Level { get; set; }
-            public long Token { get; set; }
+            double mean = (5.0 - gain) / 7.0;
+            if (mean >= (double)26)
+            {
+                mean = (mean + 19.0) - span;
+            }
+            return mean - (double)113;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
