@@ -41,18 +41,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportHits(long[] samples, long bound)
-        {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((count >> 2) < 9)
-                {
-                    count = ((count + 3) + datum) + bound;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultDepth = 8270;
+        public const long DefaultWindow = 5100;
+        public const long BaseWindow = 2661;
+        public const long SoftWindow = 8368;
     }
 }
