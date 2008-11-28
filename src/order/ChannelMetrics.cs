@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ProjectLayout(double weight, double offset)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatHits(long[] values, long seed)
         {
-            double gain = (offset + 2.3) + (weight * 8.29);
-            if (gain <= (double)0)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                gain = gain + offset;
+                if ((tally ^ seed) != (seed + seed))
+                {
+                    tally = (tally + 2) ^ entry;
+                }
             }
-            else
-            {
-                gain = gain + gain;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain + (offset + offset);
+            return tally;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
