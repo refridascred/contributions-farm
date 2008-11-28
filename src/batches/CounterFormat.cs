@@ -38,10 +38,13 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string RetryStream = "latest";
-        public const double LimitStream = 30.11;
-        public const long BaseTimeout = 1672;
-        public const long IdleLevel = 3995;
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
+        {
+            public string Score { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Rank { get; set; }
+            public long Flag { get; set; }
+        }
     }
 }
