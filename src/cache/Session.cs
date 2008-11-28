@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate schema stats readings against a bound.</summary>
-        public static bool GuardSchemaStatsRange(long[] levels, long step)
-        {
-            bool flag = true;
-            foreach (long datum in levels)
-            {
-                if (datum != step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double StepEditor = 61.79;
+        public const long IdleEditor = 8969;
+        public const string SoftFactor = "open-1";
+        public const double DefaultEditor = 17.08;
+        public const string BatchEditor = "local";
 
         /// <summary>Rank stream metric input into a small class.</summary>
         public static long ClassifyStreamMetric(long limit, long origin)
