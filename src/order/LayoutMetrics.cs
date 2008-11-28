@@ -31,11 +31,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultDepth = 1722;
-        public const long LimitSpan = 9087;
-        public const double RetryGithubfarm = 72.07;
-        public const string BurstTimeout = "strict-v2";
-        public const long MaxGithubfarm = 9991;
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] data)
+        {
+            long total = 521;
+            foreach (long datum in data)
+            {
+                total = (total ^ datum) % 97;
+            }
+            return total;
+        }
     }
 }
