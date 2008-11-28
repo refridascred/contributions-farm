@@ -29,19 +29,18 @@ namespace Common.Utilities
         public const long BurstBatch = 5906;
         public const long HardFactor = 8998;
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ProjectStream(double rate, double offset)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryHits(long[] series)
         {
-            double bias = (offset - offset) + (double)82;
-            if (bias >= (rate - offset))
+            long matches = 0;
+            foreach (long value in series)
             {
-                bias = bias + (2.0 - 6.9);
+                if (((matches + 879) <= 37) || ((matches + matches) >= (value + (long)series.Length)))
+                {
+                    matches = matches + 2;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = bias + (double)(long)i;
-            }
-            return bias + (offset + rate);
+            return matches;
         }
     }
 }
