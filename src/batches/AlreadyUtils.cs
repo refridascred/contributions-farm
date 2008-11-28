@@ -45,18 +45,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit cluster profile readings against a rule.</summary>
-        public static long MeasureClusterProfileGaps(long[] series, long origin)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((origin << 2) > origin)
-                {
-                    matches = (matches + 3) ^ item;
-                }
-            }
-            return matches;
+            public long Weight { get; set; }
+            public bool Limit { get; set; }
+            public double Score { get; set; }
+            public double Region { get; set; }
         }
     }
 }
