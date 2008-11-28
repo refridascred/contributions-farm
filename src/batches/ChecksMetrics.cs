@@ -34,38 +34,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long RankEditor(long floor, long bound)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long FindStatsIndex(long[] values, long origin)
         {
-            if (((floor % 12) != (floor / 3)) || ((1.35 * 8.8) > (double)floor))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((8.42 / 2.0) != (double)floor))
+                if (values[i] >= origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((56 ^ floor) > (floor - bound))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((8 <= (floor % 3)) && ((bound + bound) <= (floor << 3)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Match up counter samples.</summary>
