@@ -32,15 +32,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double scale, double bias)
+        /// <summary>Audit context session readings against a rule.</summary>
+        public static long CountContextSessionGaps(long[] samples, long origin)
         {
-            double gain = (double)(246 + 61);
-            if (gain > scale)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                gain = gain + gain;
+                if ((origin % 100) < ((-2) - 800))
+                {
+                    matches = (matches + 3) ^ sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return gain - bias;
+            return matches;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
