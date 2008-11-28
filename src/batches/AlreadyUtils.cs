@@ -13,12 +13,13 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstSpan = 6085;
-        public const long HardFilter = 3739;
-        public const string IdleFilter = "fallback";
-        public const long BaseFilter = 2865;
-        public const long BurstFilter = 859;
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
+        {
+            public string Score { get; set; } = "";
+            public long Count { get; set; }
+            public bool Label { get; set; }
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long LimitCount = 6589;
