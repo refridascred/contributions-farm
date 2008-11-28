@@ -1,22 +1,12 @@
 # entry settings
-dry_run: 49
-burst_ratio: 14
-sync_threshold_pct:
-  - 411
-  - 57
-  - 498
-  - 48
-max_ratio_pct: 74
-payload_limit:
-  already_ttl:
-    soft_window_count:
-      - fallback
-      - legacy
-    retry_depth_s:
-      - 56
-      - 495
-    readonly: staging
-    batch_limit: staging
-    audit: 18
-  soft_threshold: 797
-  idle_window_count: cached
+record_window: strict
+counter_ratio: 30
+min_retries_s:
+  audit: green
+  counter_window: 51
+  poll_size: 22.57
+  base_ratio: true
+  flush_window_ms: 59.17
+record_interval: open
+warm_depth_count: 5
+window_threshold: true
