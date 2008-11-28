@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitSize = 2172;
-        public const long CacheContext = 830;
-        public const double BatchWidth = 49.52;
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiGaps(long[] readings)
+        {
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if (!((matches + sample) > (matches ^ matches)) && ((double)475 >= (double)sample))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the channel class values.</summary>
         public enum ChannelClass
