@@ -1,10 +1,23 @@
 {
-  "flush_capacity_ms": [391, 444, 309, 322],
-  "hard_limit_count": 60,
-  "batch_ttl_count": {
-    "poll_retries_s": 100,
-    "audit": "open",
-    "enabled": "standard"
+  "max_threshold": true,
+  "verbose": {
+    "retry_delay": "open",
+    "hard_threshold_ms": "open",
+    "format_capacity": 82.34,
+    "max_capacity_s": ["local", "primary", "staging"],
+    "command_ratio": [191, 177, 229, 296],
+    "idle_interval_count": "stable"
   },
-  "soft_ratio_count": "staging"
+  "audit": {
+    "retry_retries": 8.66,
+    "idle_ratio_ms": 77.07,
+    "cache_ttl": {
+      "flush_depth_pct": 67.34,
+      "farm_ratio": "primary",
+      "min_delay_ms": "edge",
+      "batch_ttl_s": 9652,
+      "enabled": 92
+    }
+  },
+  "batch_limit_pct": 9
 }
