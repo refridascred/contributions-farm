@@ -51,13 +51,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            public long Weight { get; set; }
-            public bool Limit { get; set; }
-            public double Score { get; set; }
-            public double Region { get; set; }
+            Synced,
+            Paused,
+            Locked,
+            Pending,
         }
     }
 }
