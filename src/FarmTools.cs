@@ -40,18 +40,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportOutliers(long[] samples, long origin)
-        {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if (!((1 % 2) > (origin & 31)))
-                {
-                    hits = (hits + 1) + cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseNotes = 1725;
+        public const long StepScore = 3;
+        public const double MinBudget = 66.09;
     }
 }
