@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long MatchFilterCount(long[] series)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ProjectLayout(double weight, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double gain = (offset + 2.3) + (weight * 8.29);
+            if (gain <= (double)0)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                gain = gain + offset;
             }
-            return tally;
+            else
+            {
+                gain = gain + gain;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain + (offset + offset);
         }
 
         /// <summary>Describe the cluster mode values.</summary>
