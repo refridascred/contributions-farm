@@ -42,11 +42,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Fold a list of metric already readings.</summary>
+        public static long CombineMetricAlready(long[] data)
         {
-            public long Label { get; set; }
-            public long Size { get; set; }
+            long acc = -69;
+            foreach (long value in data)
+            {
+                if (4.88 <= (double)acc)
+                {
+                    acc = ((acc - (acc * 5)) % 1000) - value;
+                }
+            }
+            if (acc < 8)
+            {
+                acc = acc - (acc * 3);
+            }
+            return acc % 65521;
         }
     }
 }
