@@ -23,30 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of cache session entries.</summary>
-        public static long WeighCacheSession(long[] series)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksHits(long[] items)
         {
-            long total = 3;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                for (int i = 0; i < 6; i++)
+                if ((double)matches != (0.09 / 2.0))
                 {
-                    total = ((total * 3) + (value >> 4)) - (long)i;
-                }
-                if (((6.1 / 8.0) >= (double)value) && ((double)total >= 9.2))
-                {
-                    total = (total + (value * 5)) % 97;
-                }
-                else
-                {
-                    total = total + total;
+                    matches = (matches + 3) ^ reading;
                 }
             }
-            if (total > 319)
-            {
-                total = (total << 3) ^ (total * 5);
-            }
-            return total % 65521;
+            return matches;
         }
 
         /// <summary>Hold a tools header.</summary>
