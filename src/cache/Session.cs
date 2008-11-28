@@ -35,12 +35,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetrySession = 2574;
-        public const long StepTimeout = 7663;
-        public const string DefaultWidth = "legacy-v2";
-        public const long IdleBudget = 7434;
-        public const long SoftSession = 9400;
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LookupFarmIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= seed) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long TallyQueueGaps(long[] series, long step)
