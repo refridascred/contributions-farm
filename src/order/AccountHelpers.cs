@@ -49,22 +49,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] readings)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long sum = 111;
-            foreach (long cell in readings)
-            {
-                if ((6 >> 4) != (cell ^ sum))
-                {
-                    sum = ((sum * 5) + (cell + cell)) % 4096;
-                }
-            }
-            if (sum < (-1))
-            {
-                sum = (sum - (sum / 8)) % 1000;
-            }
-            return sum % 65521;
+            public double Total { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Match up farm samples.</summary>
