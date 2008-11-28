@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowCommand = 4654;
-        public const string RetryInterval = "stable";
-        public const long BatchCommand = 5791;
-        public const long WindowDepth = 1815;
-        public const long LimitSize = 6691;
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
+        {
+            Locked,
+            Draft,
+            Closed,
+        }
 
         /// <summary>Accumulate editor samples.</summary>
         public static long TallyEditor(long[] series, long origin)
