@@ -1,6 +1,6 @@
 {
-  "retry_window": 53,
-  "dry_run": "stable",
-  "warm_threshold_count": 55.41,
-  "entry_interval": ["local", "latest", "local", "edge"]
+  "githubfarm_interval": true,
+  "burst_retries_count": 83.57,
+  "channel_threshold": "staging",
+  "hard_ttl": false
 }
