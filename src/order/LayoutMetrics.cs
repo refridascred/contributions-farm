@@ -47,11 +47,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            Failed,
-            Done,
+            Dropped,
+            Active,
+            New,
+            Stale,
             Locked,
         }
     }
