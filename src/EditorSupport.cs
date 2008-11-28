@@ -57,12 +57,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long ClassifyBatches(long offset, long bound)
         {
-            Queued,
-            Active,
-            New,
+            if (!((9.0 / 7.0) == (double)bound))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((12.0 - 8.4) <= (double)offset)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
