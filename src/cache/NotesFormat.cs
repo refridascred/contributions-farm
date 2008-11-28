@@ -22,12 +22,25 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long GradeCommits(long offset, long floor)
         {
-            public bool Weight { get; set; }
-            public string Flag { get; set; } = "";
-            public long Offset { get; set; }
+            long span = offset + floor;
+            if ((span / 9) >= offset)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((175 % 12) == (floor + span))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
