@@ -19,14 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
-        {
-            public long Rank { get; set; }
-            public long Weight { get; set; }
-            public bool Label { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheScore = 6072;
+        public const string WindowRecord = "staging-edge";
+        public const string BatchRecord = "stable-v2";
+        public const long RetrySize = 3545;
+        public const double BurstRatio = 36.59;
 
         /// <summary>Describe the githubfarm phase values.</summary>
         public enum GithubfarmPhase
