@@ -25,19 +25,18 @@ namespace Common.Utilities
         public const double SoftScore = 97.52;
         public const long MaxScore = 705;
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksBounds(long[] readings, long limit)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsGaps(long[] samples, long origin)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (item <= limit)
+                if ((seen >> 2) >= ((long)samples.Length % 97))
                 {
-                    ok = false;
-                    break;
+                    seen = ((seen + 3) ^ datum) + origin;
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
