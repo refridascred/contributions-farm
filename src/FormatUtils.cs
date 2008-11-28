@@ -40,18 +40,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesGaps(long[] items)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((value % 7) != (count * 4))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Ready,
+            Closed,
+            Pending,
+            Failed,
+            Paused,
         }
 
         /// <summary>Hold a support entry.</summary>
