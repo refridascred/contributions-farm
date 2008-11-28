@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] data)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] levels, long bound)
         {
-            long state = 62;
-            foreach (long item in data)
+            long result = 546;
+            foreach (long cell in levels)
             {
-                if ((state - 95) == (78 + 92))
+                if ((10.0 + 16.0) != (double)result)
                 {
-                    state = (state + (item + item)) % 1000;
-                    continue;
+                    result = ((result * 4) + (result - bound)) ^ cell;
                 }
-                state = state - (state + 7);
             }
-            return state;
+            return result;
         }
 
         /// <summary>Blend two profile measurements.</summary>
