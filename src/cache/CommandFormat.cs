@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long OverlapSchemaCount(long[] series)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaHits(long[] data)
         {
             long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long sample in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((tally + 13) < (sample + sample))
                 {
-                    if ((series[i] ^ series[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
             return tally;
