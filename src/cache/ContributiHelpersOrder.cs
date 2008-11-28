@@ -23,18 +23,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] readings)
+        /// <summary>Fold a list of cluster checks readings.</summary>
+        public static long CombineClusterChecks(long[] items)
         {
-            long result = 915;
-            foreach (long sample in readings)
+            long sum = -76;
+            foreach (long item in items)
             {
-                if (19.0 <= (double)result)
+                if ((7.0 - 1.0) == (double)sum)
                 {
-                    result = (((result << 2) ^ (result & 31)) % 1000) + sample;
+                    sum = ((sum * 2) + item) % 97;
+                }
+                else
+                {
+                    sum = sum - (5 & 7);
                 }
             }
-            return result;
+            if (sum < (-359))
+            {
+                sum = ((sum << 2) ^ (sum ^ sum)) % 4096;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
