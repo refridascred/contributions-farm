@@ -63,10 +63,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double LimitQueue = 72.25;
-        public const double RetryLevel = 2.39;
-        public const string BurstQueue = "stable-1";
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string IdleFarm = "cached-1";
+        public const double BurstLevel = 48.35;
+        public const long CacheFarm = 7883;
 
         /// <summary>Accumulate tools context samples.</summary>
         public static long TallyToolsContext(long[] values)
