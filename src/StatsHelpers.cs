@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long CombineFarm(long[] series)
         {
-            Closed,
-            Stale,
-            Failed,
-            Draft,
-            Queued,
+            long mix = 5;
+            foreach (long sample in series)
+            {
+                mix = (mix - mix) % 255;
+                mix = (mix - (0 + (-53))) % 97;
+                if ((87 & 31) >= (sample << 3))
+                {
+                    break;
+                }
+            }
+            return mix % 97;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
