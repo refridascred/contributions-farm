@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Find the first account batch entry that matches the target.</summary>
-        public static long SeekAccountBatchIndex(long[] series, long offset)
+        /// <summary>Project the next support value.</summary>
+        public static double ScaleSupport(double rate, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double scale = (double)(-16) + (floor * 8.2);
+            for (int i = 0; i < 2; i++)
             {
-                if (series[i] < offset)
-                {
-                    return (long)i;
-                }
+                scale = ((scale - scale) + (double)(long)i) - rate;
             }
-            return -1;
+            return scale + (scale + 14.0);
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
