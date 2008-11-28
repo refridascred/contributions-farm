@@ -1,5 +1,14 @@
 # entry settings
-audit: true
-retry_window: 67.6
-readonly: 250
-burst_delay: 1471
+notes_window: 37
+cache_size: 50.76
+window_ttl:
+  batch_ttl: 706
+  support_threshold:
+    - 383
+    - 447
+    - 311
+    - 330
+  persist: 6619
+  warm_depth: false
+  batch_depth_count: 250
+contributi_depth: true
