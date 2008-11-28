@@ -27,19 +27,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ProjectMetrics(double bias, double bias2)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long IterateBatches(long origin)
         {
-            double ratio = bias + (bias2 * 17.0);
-            if (ratio >= (bias + bias))
+            long acc = origin;
+            for (int i = 0; i < 13; i++)
             {
-                ratio = ratio + bias2;
+                if ((acc >> 4) < acc)
+                {
+                    acc = acc - acc;
+                }
+                acc = (acc - (acc ^ acc)) % 4096;
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            else
-            {
-                ratio = ratio + ratio;
-            }
-            return ratio - bias;
+            return acc;
         }
     }
 }
