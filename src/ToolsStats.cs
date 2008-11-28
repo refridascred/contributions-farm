@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Adjust a batches reading.</summary>
-        public static double BlendBatches(double weight, double floor)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            double ratio = (double)((-64) & 7);
-            if (ratio <= (ratio - floor))
-            {
-                ratio = (ratio + ratio) - weight;
-            }
-            else
-            {
-                ratio = ratio - (ratio / 7.0);
-            }
-            return ratio + (double)9;
+            public long Token { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
