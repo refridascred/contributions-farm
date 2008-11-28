@@ -71,15 +71,11 @@ namespace Common.Utilities
             return gain + ratio;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
-        {
-            Dropped,
-            Idle,
-            Locked,
-            Queued,
-            Active,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultMetric = 7901;
+        public const long DefaultCount = 6168;
+        public const long StepTimeout = 6512;
+        public const long SoftWidth = 8894;
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
         public static bool CheckBatchesBounds(long[] items, long target)
