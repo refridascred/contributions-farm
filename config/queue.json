@@ -1,8 +1,6 @@
 {
-  "default_size_ms": false,
-  "poll_ttl": 100,
-  "audit": 1698,
-  "buffer_threshold": [110, 450, 398, 413],
-  "sync_ttl": "edge",
-  "max_limit": [109, 193, 180, 383]
+  "retry_window": 53,
+  "dry_run": "stable",
+  "warm_threshold_count": 55.41,
+  "entry_interval": ["local", "latest", "local", "edge"]
 }
