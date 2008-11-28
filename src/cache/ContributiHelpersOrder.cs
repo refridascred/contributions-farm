@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
-        {
-            public long Score { get; set; }
-            public string Limit { get; set; } = "";
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryCluster = 9490;
+        public const long MinLevel = 3787;
+        public const double BurstInterval = 68.72;
+        public const double DefaultCluster = 98.91;
 
         /// <summary>Hold a githubfarm record.</summary>
         public sealed class GithubfarmRecord
