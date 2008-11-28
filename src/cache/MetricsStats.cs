@@ -36,19 +36,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate format token readings against a bound.</summary>
-        public static bool CheckFormatTokenRange(long[] items, long target)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long StepRoute(long target)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long mark = target;
+            for (int i = 0; i < 6; i++)
             {
-                if (sample != target)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
