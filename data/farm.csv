@@ -1,7 +1,7 @@
-id,ratio,rank,count
-1,155,54.76,stable
-2,standard,946,128
-3,399,448,80.37
-4,767,809,119
-5,75.63,standard,228
-6,strict,40.14,60.13
+id,count,level
+1,local,green
+2,standard,222
+3,64.65,strict
+4,416,22.58
+5,standard,153
+6,28.5,standard
