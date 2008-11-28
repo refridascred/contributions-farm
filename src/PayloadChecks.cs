@@ -64,18 +64,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many graph counter samples are out of range.</summary>
-        public static long TallyGraphCounterGaps(long[] levels, long target)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchOutliers(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if (((tally + (long)levels.Length) <= (tally + 210)) || ((tally + item) == (tally + 420)))
+                if ((35 - value) > (4 >> 3))
                 {
-                    tally = (tally + 2) + target;
+                    count = (count + 2) + offset;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
