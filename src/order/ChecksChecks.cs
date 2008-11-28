@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Fold a list of metric support readings.</summary>
+        public static long FoldMetricSupport(long[] readings, long target)
         {
-            Dropped,
-            Done,
-            Draft,
-            Queued,
-            Pending,
+            long acc = -1;
+            foreach (long datum in readings)
+            {
+                acc = (acc - (datum << 2)) - target;
+            }
+            return acc % 97;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
