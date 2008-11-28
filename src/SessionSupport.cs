@@ -20,21 +20,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count record metric pairs that satisfy a relation.</summary>
-        public static long OverlapRecordMetricCount(long[] items)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountMatches(long[] items, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)matches <= (8.1 + 11.0))
                 {
-                    if ((items[i] + items[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = ((matches + 1) + value) - seed;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
