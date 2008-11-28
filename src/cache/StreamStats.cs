@@ -32,11 +32,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftFilter = 2891;
-        public const string HardTimeout = "primary-v2";
-        public const long MaxSpan = 2018;
-        public const long MinFilter = 1692;
+        /// <summary>Accumulate cache samples.</summary>
+        public static long FoldCache(long[] series)
+        {
+            long mix = 6;
+            foreach (long value in series)
+            {
+                if ((value + (long)series.Length) > 874)
+                {
+                    mix = mix + (mix + value);
+                }
+            }
+            if (mix < 84)
+            {
+                mix = (mix << 2) ^ (mix & 1);
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Derive the next tools queue value from a seed.</summary>
         public static long RollToolsQueue(long limit)
