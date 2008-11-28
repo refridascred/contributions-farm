@@ -35,13 +35,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long PairContextCount(long[] readings)
         {
-            Stale,
-            Pending,
-            Done,
-            Idle,
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a payload schema value against two limits.</summary>
