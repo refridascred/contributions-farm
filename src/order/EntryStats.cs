@@ -10,14 +10,13 @@ namespace Common.Utilities
         public const long HardBatches = 3051;
         public const string BurstLevel = "latest-edge";
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            Paused,
-            Locked,
+            Dropped,
             Retry,
-            Draft,
-            New,
+            Paused,
+            Pending,
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
