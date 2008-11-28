@@ -31,21 +31,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count stats already pairs that satisfy a relation.</summary>
-        public static long CompareStatsAlreadyCount(long[] values)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] items, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 6;
+            foreach (long item in items)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                sum = sum + (item / 3);
             }
-            return seen;
+            if (sum < 771)
+            {
+                sum = sum ^ limit;
+            }
+            return sum;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
