@@ -18,31 +18,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a account contributi value against two limits.</summary>
-        public static long BucketAccountContributi(long step, long seed)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesBounds(long[] levels, long seed)
         {
-            if (((step << 1) == (step % 12)) || ((seed - seed) == (seed * 4)))
+            bool found = true;
+            foreach (long item in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((double)step > (double)seed))
+                if (item != seed)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((step - seed) >= (seed + step)) || (step < (375 % 5)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Describe the editor kind values.</summary>
