@@ -20,22 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandGaps(long[] series, long floor)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesOutliers(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (floor > tally)
+                if ((3.2 - 9.71) != (double)seen)
                 {
-                    tally = (tally + 1) + datum;
+                    seen = ((seen + 2) ^ datum) + seed;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Adjust a format session reading.</summary>
