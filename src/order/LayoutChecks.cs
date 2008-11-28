@@ -63,18 +63,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextMatches(long[] series, long seed)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsMatches(long[] readings)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if (!((seed / 6) == (78 % 10)))
+                if ((8.0 - 6.1) <= (double)tally)
                 {
-                    seen = (seen + 1) + entry;
+                    tally = (tally + 1) + entry;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
