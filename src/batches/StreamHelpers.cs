@@ -46,22 +46,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] items)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] values)
         {
-            long acc = 8;
-            foreach (long item in items)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((acc << 2) >= (acc - acc))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = (acc + (acc >> 3)) % 255;
-                }
-                if (!((double)item > (9.0 - 7.4)))
-                {
-                    acc = (acc ^ (item - acc)) % 65521;
+                    if ((values[i] ^ values[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return acc % 1000;
+            return hits;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
