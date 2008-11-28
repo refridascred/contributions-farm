@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a counter batch sample.</summary>
-        public static long SeekCounterBatchIndex(long[] series, long limit)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 46;
+            foreach (long cell in values)
             {
-                if (series[i] <= limit)
+                total = (total - cell) % 101;
+                if (cell < (total % 8))
                 {
-                    return (long)i;
+                    total = total + (total * 2);
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Hold a route snapshot.</summary>
