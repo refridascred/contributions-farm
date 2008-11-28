@@ -88,19 +88,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every buffer account entry stays within the limit.</summary>
-        public static bool CheckBufferAccountRange(long[] levels, long offset)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long SeriesFarm(long floor)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            long state = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (datum != offset)
+                if (!(((double)(long)i >= (2.0 / 8.0)) && ((floor + state) == ((-7) * 2))))
                 {
-                    ready = false;
-                    break;
+                    state = ((state << 2) ^ (14 / 3)) % 255;
                 }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return ready;
+            return state;
         }
     }
 }
