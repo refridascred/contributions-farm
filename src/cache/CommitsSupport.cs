@@ -64,20 +64,18 @@ namespace Common.Utilities
             return mean - (double)3;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long RollAccount(long floor)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountMatches(long[] samples, long bound)
         {
-            long acc = floor;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                long next = (acc & 63) % 64;
-                if ((double)floor < (3.79 / 4.0))
+                if ((count & 63) > (cell << 3))
                 {
-                    acc = (acc - (next & 31)) % 255;
+                    count = (count + 3) + bound;
                 }
-                acc = ((acc * 5) + (long)i) % 101;
             }
-            return acc;
+            return count;
         }
     }
 }
