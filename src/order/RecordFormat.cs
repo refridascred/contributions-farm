@@ -69,22 +69,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long CombineSchema(long[] readings)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long result = 596;
-            foreach (long value in readings)
-            {
-                if (217 <= value)
-                {
-                    result = (result ^ (27 + value)) % 65521;
-                }
-                else
-                {
-                    result = ((result * 2) + value) % 1000;
-                }
-            }
-            return result % 65521;
+            Pending,
+            Paused,
+            Active,
+            Queued,
+            Stale,
         }
     }
 }
