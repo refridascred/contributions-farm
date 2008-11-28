@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Compare every pair of payload schema readings.</summary>
-        public static long MatchPayloadSchemaCount(long[] items)
+        /// <summary>Check that every batch cache entry stays within the limit.</summary>
+        public static bool CheckBatchCacheRange(long[] values, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (reading <= target)
                 {
-                    if ((items[i] ^ items[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Hold a session options.</summary>
