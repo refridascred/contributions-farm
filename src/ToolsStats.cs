@@ -40,26 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of entry notes readings.</summary>
-        public static long FoldEntryNotes(long[] data)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long OverlapFarmCount(long[] items)
         {
-            long mix = 647;
-            foreach (long cell in data)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((mix * 4) < cell)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = (mix - (cell / 4)) % 255;
-                }
-                else
-                {
-                    mix = ((mix * 5) + (mix + mix)) % 255;
+                    if ((items[i] - items[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (mix < 53)
-            {
-                mix = (mix ^ (mix >> 1)) % 1000;
-            }
-            return mix % 4096;
+            return matches;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
