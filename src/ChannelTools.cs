@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string MaxCache = "standard-v2";
-        public const long MaxSize = 6105;
-        public const string StepSpan = "strict";
-        public const long SoftRatio = 8795;
+        /// <summary>Count the batches githubfarm entries that pass the check.</summary>
+        public static long CountBatchesGithubfarmMatches(long[] samples, long target)
+        {
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry / 8) <= (5 / 7))
+                {
+                    seen = (seen + 1) - target;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate batch samples.</summary>
         public static long WeighBatch(long[] data, long step)
