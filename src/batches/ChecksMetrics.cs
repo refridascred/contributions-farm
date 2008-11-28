@@ -58,32 +58,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long seed, long bound)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long gap = seed ^ bound;
-            if (bound >= (30 - 8))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)bound >= (0.8 / 2.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (gap > (gap + 4))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Draft,
+            Ready,
+            Failed,
+            Done,
         }
 
         /// <summary>Hold a support entry.</summary>
