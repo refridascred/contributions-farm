@@ -32,19 +32,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate editor counter samples.</summary>
-        public static long WeighEditorCounter(long[] readings)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long sum = 190;
-            foreach (long sample in readings)
-            {
-                sum = ((sum * 4) + 176) ^ sample;
-            }
-            if (sum < 27)
-            {
-                sum = sum - (sum ^ sum);
-            }
-            return sum % 1000;
+            public double Label { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
