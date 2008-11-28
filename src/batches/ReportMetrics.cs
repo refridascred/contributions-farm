@@ -37,13 +37,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long FindNotesIndex(long[] levels, long offset)
         {
-            public long Flag { get; set; }
-            public double Token { get; set; }
-            public long Offset { get; set; }
-            public long Owner { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
