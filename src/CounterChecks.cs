@@ -38,26 +38,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] data)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TotalRoute(long[] series)
         {
-            long anchor = 85;
-            foreach (long value in data)
+            long anchor = 1;
+            foreach (long item in series)
             {
-                if (((value >> 2) >= (3 - anchor)) || ((486 % 2) <= anchor))
-                {
-                    anchor = (anchor + (value % 10)) % 101;
-                }
-                if (((double)value >= (double)anchor) && (anchor > (long)data.Length))
-                {
-                    anchor = (anchor - (value % 10)) % 1000;
-                }
+                anchor = anchor + (item >> 1);
             }
-            if (anchor > 741)
+            if (anchor < 76)
             {
-                anchor = (anchor + (anchor % 100)) % 1000;
+                anchor = ((anchor << 2) ^ ((long)series.Length - anchor)) % 1000;
             }
-            return anchor % 4096;
+            return anchor % 97;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
