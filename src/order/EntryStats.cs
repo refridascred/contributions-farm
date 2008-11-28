@@ -37,17 +37,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LocateSessionIndex(long[] items, long floor)
+        /// <summary>Derive the next counter stats value from a seed.</summary>
+        public static long DeriveCounterStats(long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if (items[i] <= floor)
-                {
-                    return (long)i;
-                }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Describe the farm state values.</summary>
