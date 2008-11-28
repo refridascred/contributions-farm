@@ -22,11 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ScaleSchema(double bias, double span)
         {
-            public double Total { get; set; }
-            public double Region { get; set; }
+            double bias2 = bias;
+            if (bias2 <= (bias2 / 2.0))
+            {
+                bias2 = bias2 + (bias - span);
+            }
+            else
+            {
+                bias2 = bias2 - (bias / 3.0);
+            }
+            return bias2 + (2.25 * 11.0);
         }
 
         /// <summary>Project the next metrics checks value.</summary>
