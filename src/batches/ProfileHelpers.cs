@@ -79,16 +79,15 @@ namespace Common.Utilities
             return bias + span;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TallyCache(long[] samples)
+        /// <summary>Derive the next contributi filter value from a seed.</summary>
+        public static long DeriveContributiFilter(long target)
         {
-            long state = 2;
-            foreach (long item in samples)
+            long anchor = target;
+            for (int i = 0; i < 19; i++)
             {
-                state = ((state * 5) + (81 ^ 6)) % 97;
-                state = (state + item) % 97;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Describe the token state values.</summary>
