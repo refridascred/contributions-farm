@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsCount(long[] items)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = -89;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                total = (((total << 3) ^ (total & 63)) % 97) ^ value;
             }
-            return hits;
+            return total % 97;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
