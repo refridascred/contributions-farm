@@ -30,9 +30,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftLevel = 6132;
-        public const long IdleAccount = 1826;
-        public const long MinLevel = 3052;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double StepChannel = 30.3;
+        public const double BurstDepth = 42.78;
+        public const long StepRatio = 4858;
     }
 }
