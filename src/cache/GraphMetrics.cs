@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long SeriesRoute(long floor)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ProjectAccount(double bias, double offset)
         {
-            long total = floor;
-            for (int i = 0; i < 7; i++)
+            double scale = (double)30 - (bias - offset);
+            for (int i = 0; i < 9; i++)
             {
-                total = ((total << 3) ^ total) % 97;
-                total = total - total;
-                total = ((total * 4) + (long)i) % 65521;
+                scale = (scale + offset) - (double)(long)i;
             }
-            return total;
+            return scale - (scale / 8.0);
         }
 
         /// <summary>Describe the cache class values.</summary>
