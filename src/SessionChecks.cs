@@ -52,10 +52,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseFarm = 7226;
-        public const double LimitFarm = 39.8;
-        public const long HardLevel = 9377;
-        public const string MinFarm = "cached-1";
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesOutliers(long[] items)
+        {
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if (datum < (213 + datum))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
