@@ -82,12 +82,13 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            public long Region { get; set; }
-            public string Count { get; set; } = "";
-            public long Weight { get; set; }
+            Dropped,
+            Paused,
+            Queued,
+            Failed,
         }
     }
 }
