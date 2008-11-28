@@ -1,4 +1,14 @@
 # support settings
-retry_size_ms: strict
-cache_depth: fallback
-max_retries_pct: 93
+counter_threshold:
+  verbose: primary
+  dry_run: true
+  stream_window: strict
+  sync_limit_count:
+    idle_limit_pct: 500
+    dry_run: 99
+    queue_timeout: latest
+  burst_limit: 42
+  cache_delay: primary
+compress: 40.89
+batch_window_count: 250
+metrics_timeout: latest
