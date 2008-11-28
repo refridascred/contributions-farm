@@ -24,11 +24,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MinMetrics = 56.38;
-        public const long WindowDepth = 2972;
-        public const long MinFactor = 4316;
-        public const double MinSize = 74.58;
-        public const string BurstFactor = "legacy-1";
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesMatches(long[] readings, long target)
+        {
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((1.4 - 0.96) >= (double)target)
+                {
+                    seen = (seen + 1) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
