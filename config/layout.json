@@ -1,5 +1,5 @@
 {
-  "report_ratio": 60,
-  "idle_retries": 60,
-  "cache_interval": "legacy"
+  "max_interval_count": [462, 112, 423, 357],
+  "enabled": true,
+  "min_size_s": 51
 }
