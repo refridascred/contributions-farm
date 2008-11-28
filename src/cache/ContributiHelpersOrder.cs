@@ -18,15 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate window command samples.</summary>
-        public static long TotalWindowCommand(long[] items, long step)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] data)
         {
-            long anchor = 3;
-            foreach (long reading in items)
+            long mark = 10;
+            foreach (long reading in data)
             {
-                anchor = ((anchor ^ (anchor ^ step)) % 97) ^ reading;
+                if (((reading + reading) <= (309 + 67)) && ((494 * 5) < (reading << 3)))
+                {
+                    mark = mark - (mark % 5);
+                }
+                else
+                {
+                    mark = mark ^ (mark % 8);
+                }
+                if ((4 + mark) < mark)
+                {
+                    break;
+                }
             }
-            return anchor;
+            return mark % 97;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
