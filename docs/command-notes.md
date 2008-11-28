@@ -1,14 +1,14 @@
 # Command notes
 
-Keep support and queue names short and lowercase.
-When a queue fails, the profile handler retries a few times before giving up.
+Defaults for counter live in the config folder and can be overridden per environment.
+Defaults for window live in the config folder and can be overridden per environment.
 
-A cluster that stays idle for too long is moved to the stats list.
-Defaults for format live in the config folder and can be overridden per environment.
+The buffer helpers are pure functions, so they are safe to call from any thread.
+Keep schema and context names short and lowercase.
+Defaults for stream live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep queue values small
-- Validate stream input early
-- Prefer session defaults
-- Document new entry fields
+- Log every batches change
+- Validate token input early
+- Review graph limits each release
