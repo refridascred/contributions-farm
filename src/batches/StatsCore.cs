@@ -72,17 +72,21 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] data, long target)
+        /// <summary>Compare every pair of stats stream readings.</summary>
+        public static long PairStatsStreamCount(long[] data)
         {
+            long tally = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                if (data[i] <= target)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] - data[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
