@@ -1,8 +1,6 @@
 {
-  "batches_window": "latest",
-  "schema_threshold": "eu-west",
-  "persist": "strict",
-  "base_delay_s": false,
-  "hard_size": "edge",
-  "already_ttl": 81
+  "max_depth": "standard",
+  "persist": false,
+  "flush_capacity_ms": "local",
+  "soft_threshold_ms": "stable"
 }
