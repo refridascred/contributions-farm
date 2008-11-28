@@ -1,11 +1,5 @@
 # support settings
-max_timeout:
-  - 415
-  - 389
-  - 408
-  - 406
-warm_ratio: false
-window_delay: false
-retry_capacity_s: staging
-retry_timeout_s: true
-batches_size: strict
+support_capacity: 76.97
+min_ratio_pct: latest
+retry_retries_pct: stable
+batches_interval: strict
