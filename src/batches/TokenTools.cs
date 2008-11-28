@@ -30,32 +30,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long limit, long target)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long limit)
         {
-            long next = limit + target;
-            if (((double)limit <= (6.8 + 9.0)) && (limit > (4 + next)))
+            long anchor = limit;
+            for (int i = 0; i < 20; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit + next) > (next * 2))
+                if (!((10 ^ limit) < (3 - anchor)))
                 {
-                    return 8;
+                    anchor = (anchor - ((long)i + anchor)) % 1000;
                 }
-                else
-                {
-                    if ((target + limit) != (limit % 7))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
+            return anchor;
         }
     }
 }
