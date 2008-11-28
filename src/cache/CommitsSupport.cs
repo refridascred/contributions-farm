@@ -57,19 +57,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextBounds(long[] values, long limit)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            bool flag = true;
-            foreach (long entry in values)
-            {
-                if (entry <= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Pending,
+            Idle,
+            Draft,
         }
 
         /// <summary>Describe the graph kind values.</summary>
