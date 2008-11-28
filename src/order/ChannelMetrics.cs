@@ -24,13 +24,10 @@ namespace Common.Utilities
             return gain + (offset + offset);
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
-        {
-            Paused,
-            Failed,
-            Retry,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowInterval = 9662;
+        public const long SoftEntry = 9419;
+        public const long WindowDepth = 5717;
 
         /// <summary>Look up the position of a profile sample.</summary>
         public static long FindProfileIndex(long[] items, long target)
