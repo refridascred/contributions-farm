@@ -61,19 +61,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double BlendBuffer(double gain, double span)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            double mean = gain;
-            if (mean > mean)
-            {
-                mean = mean + (gain + span);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + (9.9 - gain)) + (double)(long)i;
-            }
-            return mean + span;
+            public double Offset { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Project the next report value.</summary>
