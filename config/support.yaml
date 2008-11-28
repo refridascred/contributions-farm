@@ -1,21 +1,8 @@
 # support settings
-warm_window_pct:
-  - latest
-  - green
-record_interval: 87
-stats_interval:
-  - blue
-  - latest
-  - cached
-strict:
-  audit: 56
-  context_limit: fallback
-  verbose:
-    - stable
-    - green
-  support_size: true
-  max_depth_pct: 22.14
-  idle_timeout_ms:
-    - 122
-    - 335
-readonly: 5191
+base_window: legacy
+soft_ratio_s: 500
+tools_ttl: 7350
+cache_interval_count:
+  - 252
+  - 30
+burst_retries_s: 63.59
