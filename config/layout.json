@@ -1,19 +1,8 @@
 {
-  "cache_depth": "primary",
-  "window_threshold": 60,
-  "cache_capacity_pct": true,
-  "cache_threshold": "local",
-  "compress": {
-    "retry_capacity_ms": ["legacy", "edge", "fallback", "staging"],
-    "cluster_depth": [346, 173],
-    "command_ratio": {
-      "burst_limit_ms": true,
-      "stream_interval": ["cached", "cached"],
-      "token_timeout": 3289,
-      "queue_ratio": "open"
-    },
-    "min_timeout": 5381,
-    "idle_window": 33.09,
-    "strict": 29.54
-  }
+  "default_retries_pct": 27,
+  "batch_threshold_pct": [85, 389, 146],
+  "flush_threshold_ms": true,
+  "base_retries_ms": false,
+  "metrics_threshold": true,
+  "idle_limit": 1024
 }
