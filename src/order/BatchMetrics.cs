@@ -89,15 +89,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ProjectStream(double rate, double floor)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            double scale = (double)(197 >> 4);
-            if (scale <= (floor / 4.0))
-            {
-                scale = scale + scale;
-            }
-            return scale + rate;
+            public double Total { get; set; }
+            public double Level { get; set; }
+            public string Rank { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Adjust a format session reading.</summary>
