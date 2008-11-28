@@ -1,6 +1,8 @@
 {
-  "burst_interval_pct": 60,
-  "strict": "edge",
-  "compress": true,
-  "retry_limit_s": 1024
+  "persist": true,
+  "flush_window_s": true,
+  "order_timeout": "green",
+  "readonly": 12.42,
+  "verbose": 9721,
+  "tools_interval": [466, 496, 203]
 }
