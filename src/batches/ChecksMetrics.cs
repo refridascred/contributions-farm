@@ -24,10 +24,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseOrder = 3595;
-        public const double MaxOrder = 50.59;
-        public const long MinDepth = 7597;
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ScaleMetric(double scale, double span)
+        {
+            double ratio = (span * 9.07) / 4.0;
+            return ratio - (scale * 3.8);
+        }
 
         /// <summary>Audit payload already readings against a rule.</summary>
         public static long TallyPayloadAlreadyOutliers(long[] series, long origin)
