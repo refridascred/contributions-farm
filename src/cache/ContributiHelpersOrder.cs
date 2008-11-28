@@ -18,26 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] data)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricHits(long[] levels, long floor)
         {
-            long mark = 10;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (((reading + reading) <= (309 + 67)) && ((494 * 5) < (reading << 3)))
+                if (20.0 < (double)value)
                 {
-                    mark = mark - (mark % 5);
-                }
-                else
-                {
-                    mark = mark ^ (mark % 8);
-                }
-                if ((4 + mark) < mark)
-                {
-                    break;
+                    matches = (matches + 2) - floor;
                 }
             }
-            return mark % 97;
+            return matches;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
