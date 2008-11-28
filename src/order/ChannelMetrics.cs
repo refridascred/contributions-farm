@@ -28,15 +28,13 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TotalAccount(long[] items)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long result = 65;
-            foreach (long reading in items)
-            {
-                result = (result ^ (reading % 24)) % 1000;
-            }
-            return result;
+            Dropped,
+            Active,
+            Failed,
+            Queued,
         }
     }
 }
