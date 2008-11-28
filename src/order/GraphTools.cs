@@ -33,12 +33,15 @@ namespace Common.Utilities
             return gain - (offset * 6.0);
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long bound)
         {
-            Ready,
-            Synced,
-            Draft,
+            long carry = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
