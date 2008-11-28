@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Find the first layout command entry that matches the target.</summary>
-        public static long FindLayoutCommandIndex(long[] levels, long offset)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public bool Token { get; set; }
+            public long Region { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
