@@ -24,19 +24,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutRange(long[] levels, long seed)
+        /// <summary>Rank batches stream input into a small class.</summary>
+        public static long BucketBatchesStream(long bound, long step)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long cur = bound - step;
+            if ((5 < bound) || ((double)bound < (double)cur))
             {
-                if (value > seed)
+                return 5;
+            }
+            else
+            {
+                if (!(step < (cur - cur)))
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((step ^ 0) <= (step + step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return flag;
         }
     }
 }
