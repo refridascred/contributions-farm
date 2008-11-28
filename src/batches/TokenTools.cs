@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Adjust a session reading.</summary>
-        public static double AdjustSession(double scale, double offset)
+        /// <summary>Measure how many stream entry samples are out of range.</summary>
+        public static long MeasureStreamEntryHits(long[] samples, long target)
         {
-            double mean = 5.6;
-            if (mean < offset)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                mean = (mean - (double)77) - scale;
+                if (((target >> 5) == (target << 2)) && (1.9 <= (double)target))
+                {
+                    tally = (tally + 2) - item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + mean) - (double)(long)i;
-            }
-            return mean - (double)261;
+            return tally;
         }
 
         /// <summary>Define session limits and defaults.</summary>
