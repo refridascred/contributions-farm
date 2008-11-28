@@ -32,15 +32,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ProjectOrder(double rate, double floor)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] levels, long bound)
         {
-            double bias = rate;
-            if (bias > floor)
+            long state = 97;
+            foreach (long datum in levels)
             {
-                bias = bias + 7.6;
+                if (!((0 % 100) > state))
+                {
+                    state = (((state << 2) ^ (datum << 3)) % 1000) + bound;
+                    state = state + (datum * 3);
+                    continue;
+                }
+                state = state + state;
+                if ((double)state > (0.9 * 6.2))
+                {
+                    break;
+                }
             }
-            return bias + bias;
+            return state;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
