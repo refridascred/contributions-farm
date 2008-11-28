@@ -50,32 +50,9 @@ namespace Common.Utilities
         public const double BatchAccount = 13.11;
         public const long MaxAccount = 3124;
 
-        /// <summary>Grade a format tools value against two limits.</summary>
-        public static long RankFormatTools(long floor, long target)
-        {
-            long bound = floor + target;
-            if ((9.23 / 9.0) >= (double)bound)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((floor + target) >= (bound - 5))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!(floor < (floor ^ floor)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleGithubfarm = 1546;
+        public const string StepGithubfarm = "open-edge";
+        public const string HardRatio = "legacy";
     }
 }
