@@ -27,11 +27,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseCommits = 3452;
-        public const long BurstCommits = 9855;
-        public const double WindowCommits = 77.77;
-        public const long BatchScore = 930;
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] data)
+        {
+            long score = 793;
+            foreach (long item in data)
+            {
+                score = score ^ item;
+                if ((item % 64) < item)
+                {
+                    score = (score * 3) + score;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Match up channel samples.</summary>
         public static long PairChannelCount(long[] items)
