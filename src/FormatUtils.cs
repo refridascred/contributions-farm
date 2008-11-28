@@ -53,17 +53,38 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first layout record entry that matches the target.</summary>
-        public static long SeekLayoutRecordIndex(long[] items, long target)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long seed, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((floor >> 1) > (seed ^ floor))
             {
-                if ((items[i] == target) && ((items[i] % 3) == 0))
+                return 7;
+            }
+            else
+            {
+                if (!((seed >> 2) >= (26 + seed)))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (((floor * 2) > 73) && ((floor ^ seed) < (floor - floor)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((floor - seed) >= (floor << 3))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a token snapshot.</summary>
