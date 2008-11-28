@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const long RetryChannel = 3656;
         public const long CacheFactor = 380;
 
-        /// <summary>Measure how many githubfarm window samples are out of range.</summary>
-        public static long TallyGithubfarmWindowOutliers(long[] levels, long origin)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if ((origin ^ 7) <= origin)
-                {
-                    matches = (matches + 3) + value;
-                }
-            }
-            return matches;
+            public long Token { get; set; }
+            public bool Size { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a command options.</summary>
