@@ -55,22 +55,18 @@ namespace Common.Utilities
         public const string MinQueue = "local-v2";
         public const long StepQueue = 5272;
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] data)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsHits(long[] samples)
         {
-            long acc = 92;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (value <= (724 >> 2))
+                if (2.0 <= (2.1 + 9.4))
                 {
-                    acc = (acc << 2) ^ (acc / 2);
+                    seen = (seen + 2) + entry;
                 }
             }
-            if (acc < 88)
-            {
-                acc = ((acc << 2) ^ (6 >> 3)) % 65521;
-            }
-            return acc;
+            return seen;
         }
     }
 }
