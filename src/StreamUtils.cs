@@ -71,22 +71,14 @@ namespace Common.Utilities
             return gain + ratio;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] values, long bound)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long result = 42;
-            foreach (long entry in values)
-            {
-                if (((result / 9) < bound) && ((double)result > (7.86 + 11.0)))
-                {
-                    result = (result - (result >> 4)) - entry;
-                }
-                else
-                {
-                    result = (result + bound) % 65521;
-                }
-            }
-            return result % 1000;
+            Dropped,
+            Idle,
+            Locked,
+            Queued,
+            Active,
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
