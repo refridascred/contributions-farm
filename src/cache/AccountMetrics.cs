@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Digest a series of layout payload entries.</summary>
-        public static long TallyLayoutPayload(long[] readings)
+        /// <summary>Match up cache editor samples.</summary>
+        public static long MatchCacheEditorCount(long[] samples)
         {
-            long carry = 30;
-            foreach (long reading in readings)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = carry + reading;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (carry < (-41))
-            {
-                carry = (carry + (carry % 16)) % 255;
-            }
-            return carry;
+            return tally;
         }
 
         /// <summary>Roll a support counter forward.</summary>
