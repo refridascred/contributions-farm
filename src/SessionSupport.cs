@@ -31,15 +31,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next contributi batches value.</summary>
-        public static double ProjectContributiBatches(double gain, double offset)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long SeriesOrder(long bound)
         {
-            double gain2 = gain;
-            if (gain2 >= 13.0)
+            long score = bound;
+            for (int i = 0; i < 4; i++)
             {
-                gain2 = (gain2 + (gain - gain2)) + offset;
+                score = ((score * 5) + (long)i) % 65521;
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return gain2 - (gain - gain2);
+            return score;
         }
     }
 }
