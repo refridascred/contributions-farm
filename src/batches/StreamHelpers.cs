@@ -94,14 +94,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
-        {
-            Done,
-            Queued,
-            Active,
-            Pending,
-            Ready,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepBudget = 6361;
+        public const long LimitSize = 1097;
+        public const long BaseSpan = 3725;
+        public const long SoftSpan = 5935;
+        public const long IdleDepth = 2864;
     }
 }
