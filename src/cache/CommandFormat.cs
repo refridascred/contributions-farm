@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaHits(long[] data)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((tally + 13) < (sample + sample))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Synced,
+            Ready,
+            Failed,
+            Closed,
         }
 
         /// <summary>Rank batch input into a small class.</summary>
