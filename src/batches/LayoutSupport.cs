@@ -48,15 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double BlendBuffer(double ratio, double floor)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsBounds(long[] values, long target)
         {
-            double mean = (double)(56 - 230);
-            if (mean > 9.4)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                mean = ((mean - (16.0 * 11.0)) + ratio) + floor;
+                if (sample > target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mean - (double)6;
+            return valid;
         }
     }
 }
