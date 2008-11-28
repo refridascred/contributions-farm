@@ -1,10 +1,10 @@
 # support settings
-default_retries_count:
-  - 296
-  - 11
-  - 12
-dry_run: stable
-route_threshold:
-  - latest
-  - latest
-  - legacy
+idle_ttl:
+  - 395
+  - 389
+  - 403
+hard_window_pct: legacy
+payload_capacity: 30
+enabled: green
+poll_delay: primary
+readonly: 2720
