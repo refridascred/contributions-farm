@@ -60,19 +60,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long DeriveBuffer(long target)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long result = target;
-            for (int i = 0; i < 12; i++)
-            {
-                if (!((5 + result) > (result << 2)))
-                {
-                    result = (result << 3) ^ (result / 3);
-                }
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
+            public long Score { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Match up support samples.</summary>
