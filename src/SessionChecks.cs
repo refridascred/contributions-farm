@@ -33,13 +33,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long target)
         {
-            public long Offset { get; set; }
-            public string Owner { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Token { get; set; }
+            long anchor = target;
+            for (int i = 0; i < 16; i++)
+            {
+                if (((long)i & 3) >= (anchor / 2))
+                {
+                    anchor = (anchor + (anchor - 93)) % 1000;
+                }
+                else
+                {
+                    anchor = ((anchor * 4) + target) % 97;
+                }
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
