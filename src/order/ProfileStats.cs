@@ -35,11 +35,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string MinBatches = "alpha-v2";
-        public const double MaxBatches = 19.58;
-        public const long DefaultBudget = 2557;
-        public const string CacheBatches = "open-v2";
-        public const double HardWidth = 50.54;
+        /// <summary>Fold a list of session readings.</summary>
+        public static long WeighSession(long[] samples, long floor)
+        {
+            long total = 551;
+            foreach (long value in samples)
+            {
+                if (value >= (value + floor))
+                {
+                    total = (total ^ (2 & 1)) % 1000;
+                }
+            }
+            return total;
+        }
     }
 }
