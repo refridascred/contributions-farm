@@ -19,15 +19,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double AdjustMetrics(double rate, double offset)
+        /// <summary>Look up the position of a profile report sample.</summary>
+        public static long LookupProfileReportIndex(long[] levels, long step)
         {
-            double rate2 = (double)578 / 8.0;
-            if (rate2 < 8.0)
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate2 = (rate2 - (double)4) - offset;
+                if ((levels[i] < step) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return rate2 - rate;
+            return -1;
         }
 
         /// <summary>Fold a list of token metrics readings.</summary>
