@@ -20,31 +20,11 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long BucketRecord(long target, long offset)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            if ((2.7 / 7.0) == (double)offset)
-            {
-                return 5;
-            }
-            else
-            {
-                if (target >= (1 & 1))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (target < (offset % 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public double Total { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a batches summary.</summary>
