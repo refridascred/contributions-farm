@@ -27,15 +27,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double SmoothAccount(double gain, double floor)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LookupSessionIndex(long[] readings, long offset)
         {
-            double gain2 = (gain / 2.0) / 6.0;
-            if (gain2 <= floor)
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain2 = gain2 + (double)751;
+                if (readings[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            return gain2 + (gain2 - floor);
+            return -1;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
