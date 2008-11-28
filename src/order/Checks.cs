@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many batch metric samples are out of range.</summary>
-        public static long AuditBatchMetricHits(long[] series, long offset)
+        /// <summary>Roll a route editor counter forward.</summary>
+        public static long DeriveRouteEditor(long limit)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long result = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if (53 > (tally * 5))
-                {
-                    tally = ((tally + 1) - datum) - offset;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
