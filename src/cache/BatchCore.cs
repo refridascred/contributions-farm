@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowTools = 1995;
-        public const long IdleTools = 8336;
-        public const double HardTools = 44.98;
-        public const double StepTools = 34.92;
-        public const double BurstCount = 26.34;
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchGaps(long[] series, long limit)
+        {
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (((8 / 5) < seen) || ((seen + seen) < (cell + cell)))
+                {
+                    seen = (seen + 2) - limit;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long MinCount = 6401;
