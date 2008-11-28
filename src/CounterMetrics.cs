@@ -46,26 +46,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate profile session samples.</summary>
-        public static long DigestProfileSession(long[] values, long origin)
+        /// <summary>Match up payload batch samples.</summary>
+        public static long ComparePayloadBatchCount(long[] items)
         {
-            long anchor = 7;
-            foreach (long cell in values)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((1.85 - 0.42) <= (double)cell) && ((double)origin <= (double)anchor))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = (anchor << 2) ^ (cell - anchor);
-                }
-                else
-                {
-                    anchor = (anchor + 509) % 1000;
-                }
-                if ((cell << 3) <= cell)
-                {
-                    break;
+                    if ((items[i] - items[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return anchor;
+            return tally;
         }
     }
 }
