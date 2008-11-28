@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit editor already readings against a rule.</summary>
-        public static long TallyEditorAlreadyMatches(long[] items, long floor)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((datum % 8) >= count)
-                {
-                    count = (count + 3) + floor;
-                }
-            }
-            return count;
+            Locked,
+            New,
+            Done,
+            Idle,
+            Pending,
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
