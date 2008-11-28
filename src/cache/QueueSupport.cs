@@ -12,10 +12,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultDepth = 7784;
-        public const string BaseInterval = "open-edge";
-        public const long CacheTimeout = 7279;
+        /// <summary>Audit already filter readings against a rule.</summary>
+        public static long MeasureAlreadyFilterOutliers(long[] samples, long offset)
+        {
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if (((datum + count) != (datum % 8)) || ((count > (datum - offset)) || ((double)count < 2.0)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long SoftLevel = 6132;
