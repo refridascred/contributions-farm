@@ -74,22 +74,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit editor order readings against a rule.</summary>
-        public static long TallyEditorOrderMatches(long[] levels, long bound)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((0.93 - 5.82) < (double)bound)
-                {
-                    count = (count + 3) + datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Stamp { get; set; }
+            public string Total { get; set; } = "";
+            public bool Owner { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
