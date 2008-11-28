@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Digest a series of commits format entries.</summary>
+        public static long WeighCommitsFormat(long[] data, long origin)
         {
-            public long Rank { get; set; }
-            public bool Count { get; set; }
+            long mix = 6;
+            foreach (long sample in data)
+            {
+                mix = ((((mix * 5) + (-10)) % 1000) + sample) + origin;
+            }
+            return mix;
         }
 
         /// <summary>Audit already filter readings against a rule.</summary>
