@@ -47,9 +47,32 @@ namespace Common.Utilities
             return ratio + 12.0;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleRecord = 9243;
-        public const long BatchRecord = 5726;
-        public const long BatchWidth = 2538;
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long ClassifyRoute(long target, long limit)
+        {
+            long cur = target - limit;
+            if ((double)limit < 7.0)
+            {
+                return 3;
+            }
+            else
+            {
+                if (2.97 < (double)cur)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((30 % 16) <= target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }
