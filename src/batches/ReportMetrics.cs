@@ -22,19 +22,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ProjectCluster(double gain, double bias)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            double rate = (double)5;
-            if (rate >= rate)
-            {
-                rate = (rate + bias) - gain;
-            }
-            else
-            {
-                rate = rate + (bias / 3.0);
-            }
-            return rate - bias;
+            public long Flag { get; set; }
+            public double Token { get; set; }
+            public long Offset { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
