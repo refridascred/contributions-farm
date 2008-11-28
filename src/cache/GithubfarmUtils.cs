@@ -38,11 +38,23 @@ namespace Common.Utilities
             return gain2 + (gain2 - floor);
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstBuffer = 5468;
-        public const long StepLevel = 7050;
-        public const long MinBuffer = 9532;
-        public const string StepInterval = "open-1";
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsMatches(long[] values, long step)
+        {
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if (step >= (count & 255))
+                {
+                    count = (count + 3) + datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a batches entry.</summary>
         public sealed class BatchesEntry
