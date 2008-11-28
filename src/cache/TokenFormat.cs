@@ -34,23 +34,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a format channel reading.</summary>
-        public static double AdjustFormatChannel(double rate, double span)
+        /// <summary>Digest a series of session farm entries.</summary>
+        public static long FoldSessionFarm(long[] readings, long floor)
         {
-            double gain = span;
-            if (gain > (gain - gain))
+            long total = 3;
+            foreach (long sample in readings)
             {
-                gain = gain + (rate - gain);
+                if ((double)total <= (4.05 + 5.4))
+                {
+                    total = ((total + (total - total)) + sample) + floor;
+                }
             }
-            else
-            {
-                gain = gain - gain;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain + gain;
+            return total;
         }
     }
 }
