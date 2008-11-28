@@ -30,19 +30,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] items, long limit)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long sum = 6;
-            foreach (long item in items)
-            {
-                sum = sum + (item / 3);
-            }
-            if (sum < 771)
-            {
-                sum = sum ^ limit;
-            }
-            return sum;
+            public double Count { get; set; }
+            public long Token { get; set; }
+            public long Total { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Match up token session samples.</summary>
