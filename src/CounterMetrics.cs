@@ -32,15 +32,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double SmoothStats(double ratio, double bias)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            double drift = (double)(2 + 302);
-            if (drift <= (2.6 - ratio))
-            {
-                drift = drift - bias;
-            }
-            return drift - bias;
+            Active,
+            Pending,
+            Done,
+            Synced,
         }
     }
 }
