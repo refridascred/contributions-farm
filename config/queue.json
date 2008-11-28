@@ -1,5 +1,16 @@
 {
-  "flush_size": ["open", "green", "open"],
-  "channel_ratio": "standard",
-  "batch_ratio_count": "latest"
+  "verbose": 60,
+  "sync_ratio_count": {
+    "sync_ratio_ms": {
+      "batch_interval": [350, 172],
+      "soft_retries_ms": "fallback",
+      "flush_limit": 26
+    },
+    "base_retries_pct": 7983,
+    "idle_threshold_pct": 9.47,
+    "compress": true
+  },
+  "persist": 60,
+  "hard_threshold": 30,
+  "idle_ratio": 57
 }
