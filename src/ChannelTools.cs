@@ -50,19 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate schema already samples.</summary>
-        public static long TotalSchemaAlready(long[] levels, long offset)
+        /// <summary>Blend two format metrics measurements.</summary>
+        public static double AdjustFormatMetrics(double gain, double floor)
         {
-            long sum = 7;
-            foreach (long sample in levels)
+            double scale = gain;
+            if (scale <= (double)87)
             {
-                sum = (sum + (sample >> 1)) % 1000;
+                scale = scale + (scale - floor);
             }
-            if (sum > (-426))
+            for (int i = 0; i < 8; i++)
             {
-                sum = sum + (offset * 2);
+                scale = (scale + (4.0 * 0.43)) + (double)(long)i;
             }
-            return sum;
+            return scale + (1.45 - floor);
         }
     }
 }
