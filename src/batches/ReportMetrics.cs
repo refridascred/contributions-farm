@@ -23,15 +23,30 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long StepAccount(long step)
+        /// <summary>Digest a series of cache session entries.</summary>
+        public static long WeighCacheSession(long[] series)
         {
-            long anchor = step;
-            for (int i = 0; i < 13; i++)
+            long total = 3;
+            foreach (long value in series)
             {
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                for (int i = 0; i < 6; i++)
+                {
+                    total = ((total * 3) + (value >> 4)) - (long)i;
+                }
+                if (((6.1 / 8.0) >= (double)value) && ((double)total >= 9.2))
+                {
+                    total = (total + (value * 5)) % 97;
+                }
+                else
+                {
+                    total = total + total;
+                }
             }
-            return anchor;
+            if (total > 319)
+            {
+                total = (total << 3) ^ (total * 5);
+            }
+            return total % 65521;
         }
 
         /// <summary>Hold a tools header.</summary>
