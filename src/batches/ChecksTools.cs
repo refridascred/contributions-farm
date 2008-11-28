@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            Draft,
-            Locked,
-            Retry,
-            Idle,
+            public long Score { get; set; }
+            public long Owner { get; set; }
+            public double Flag { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
