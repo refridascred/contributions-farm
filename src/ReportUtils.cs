@@ -36,38 +36,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Grade a format account value against two limits.</summary>
-        public static long SortFormatAccount(long offset, long limit)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            if ((offset * 3) == (offset >> 5))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)limit <= 6.2)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((limit + offset) >= (offset + offset)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (offset > (offset << 1))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public bool Size { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Validate route readings against a bound.</summary>
