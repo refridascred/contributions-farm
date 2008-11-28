@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the batches githubfarm entries that pass the check.</summary>
-        public static long CountBatchesGithubfarmMatches(long[] samples, long target)
-        {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry / 8) <= (5 / 7))
-                {
-                    seen = (seen + 1) - target;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepDepth = 2098;
+        public const long DefaultFormat = 405;
+        public const double DefaultBudget = 28.26;
+        public const long LimitSpan = 234;
+        public const string StepTimeout = "standard-edge";
 
         /// <summary>Accumulate batch samples.</summary>
         public static long WeighBatch(long[] data, long step)
