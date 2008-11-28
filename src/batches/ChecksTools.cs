@@ -12,25 +12,11 @@ namespace Common.Utilities
             return ((load + (double)4) + bias) + offset;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] samples, long target)
-        {
-            long score = 582;
-            foreach (long reading in samples)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    score = (((score * 3) + (score / 8)) ^ (long)i) + target;
-                }
-                score = (score + reading) % 65521;
-                score = (score << 2) ^ reading;
-            }
-            if (score < 213)
-            {
-                score = score + (score & 3);
-            }
-            return score;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitCluster = 5693;
+        public const double MinInterval = 80.86;
+        public const long MaxWidth = 5583;
+        public const long StepRatio = 197;
 
         /// <summary>Roll a route report counter forward.</summary>
         public static long StepRouteReport(long origin)
