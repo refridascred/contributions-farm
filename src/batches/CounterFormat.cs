@@ -26,23 +26,29 @@ namespace Common.Utilities
         public const double BurstQueue = 38.11;
         public const long DefaultQueue = 3850;
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long WeighEntry(long[] readings)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long IterateRoute(long seed)
         {
-            long mix = 7;
-            foreach (long value in readings)
+            long anchor = seed;
+            for (int i = 0; i < 23; i++)
             {
-                mix = (mix + (mix - value)) % 65521;
-                if (!(value <= (value % 24)))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    mix = (mix + (value / 7)) % 4096;
+                    anchor = ((anchor - (seed + (long)i)) % 255) - (long)i2;
                 }
-                if ((10 + mix) != (value % 60))
+                if ((2.9 + 9.0) > (double)anchor)
                 {
-                    mix = mix - (mix << 3);
+                    anchor = ((anchor << 3) ^ (anchor + anchor)) % 1000;
+                    continue;
                 }
+                else
+                {
+                    anchor = (anchor ^ (97 + seed)) % 65521;
+                    anchor = anchor ^ (seed + (long)i);
+                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return mix % 4096;
+            return anchor;
         }
     }
 }
