@@ -82,11 +82,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ProjectTools(double weight, double bias)
         {
-            public bool Score { get; set; }
-            public string Token { get; set; } = "";
+            double bias2 = (double)970 / 6.0;
+            if (bias2 < (weight + weight))
+            {
+                bias2 = bias2 + bias;
+            }
+            else
+            {
+                bias2 = bias2 + (double)(-8);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = (bias2 - (7.07 - weight)) - (double)(long)i;
+            }
+            return bias2 + (weight + bias2);
         }
     }
 }
