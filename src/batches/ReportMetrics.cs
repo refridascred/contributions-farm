@@ -37,17 +37,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long FindNotesIndex(long[] levels, long offset)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if (levels[i] == offset)
+                state = state + limit;
+                if (!((long)i < (limit >> 3)))
                 {
-                    return (long)i;
+                    state = ((state << 2) ^ (state / 2)) % 97;
                 }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
     }
 }
