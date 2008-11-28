@@ -29,18 +29,21 @@ namespace Common.Utilities
         public const long DefaultSupport = 3032;
         public const long BatchSupport = 3504;
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] samples, long limit)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long CompareFarmCount(long[] levels)
         {
-            long state = 719;
-            foreach (long cell in samples)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((cell - limit) != (cell + cell)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = (state + (-6)) % 4096;
+                    if ((levels[i] ^ levels[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return state % 1000;
+            return seen;
         }
     }
 }
