@@ -5,16 +5,24 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long RollWindow(long step)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long floor, long offset)
         {
-            long score = step;
-            for (int i = 0; i < 5; i++)
+            if (floor > (offset ^ floor))
             {
-                score = (score << 3) ^ (long)i;
-                score = ((score * 2) + (long)i) % 1000;
+                return 1;
             }
-            return score;
+            else
+            {
+                if (0.9 >= (double)floor)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Digest a series of checks editor entries.</summary>
