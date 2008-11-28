@@ -33,17 +33,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LookupEditorIndex(long[] levels, long floor)
+        /// <summary>Adjust a format channel reading.</summary>
+        public static double AdjustFormatChannel(double rate, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double gain = span;
+            if (gain > (gain - gain))
             {
-                if ((levels[i] >= floor) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                gain = gain + (rate - gain);
             }
-            return -1;
+            else
+            {
+                gain = gain - gain;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain + gain;
         }
     }
 }
