@@ -19,13 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            public long Flag { get; set; }
-            public bool Token { get; set; }
-            public long Stamp { get; set; }
-            public string Weight { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Stamp { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Measure how many window profile samples are out of range.</summary>
