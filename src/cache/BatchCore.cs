@@ -19,18 +19,15 @@ namespace Common.Utilities
         public const string WindowSpan = "staging-v2";
         public const string DefaultScore = "primary-edge";
 
-        /// <summary>Measure how many filter farm samples are out of range.</summary>
-        public static long TallyFilterFarmHits(long[] samples, long limit)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long DeriveAccount(long offset)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long score = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if ((count + count) >= 32)
-                {
-                    count = ((count + 1) + reading) - limit;
-                }
+                score = ((score * 4) + (long)i) % 101;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
