@@ -51,17 +51,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a context queue sample.</summary>
-        public static long SeekContextQueueIndex(long[] series, long floor)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Owner { get; set; }
+            public long Level { get; set; }
+            public bool Score { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
