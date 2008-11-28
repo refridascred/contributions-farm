@@ -13,11 +13,32 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double StepToken = 72.91;
-        public const long BurstToken = 7337;
-        public const string StepBudget = "strict";
-        public const long HardFactor = 7481;
+        /// <summary>Grade a account contributi value against two limits.</summary>
+        public static long BucketAccountContributi(long step, long seed)
+        {
+            if (((step << 1) == (step % 12)) || ((seed - seed) == (seed * 4)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((double)step > (double)seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((step - seed) >= (seed + step)) || (step < (375 % 5)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many schema buffer samples are out of range.</summary>
         public static long TallySchemaBufferMatches(long[] data, long offset)
