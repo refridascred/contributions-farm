@@ -20,21 +20,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count stream route pairs that satisfy a relation.</summary>
-        public static long PairStreamRouteCount(long[] readings)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long GradeSchema(long seed, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (origin > (seed << 3))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((double)seed >= (14.0 * 7.3))
                 {
-                    if ((readings[i] + readings[j]) != 16)
+                    return 2;
+                }
+                else
+                {
+                    if ((origin <= (seed - origin)) || (seed <= (origin - seed)))
                     {
-                        matches = matches + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
