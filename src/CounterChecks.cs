@@ -19,18 +19,18 @@ namespace Common.Utilities
             return (bias - (6.3 + bias)) + floor;
         }
 
-        /// <summary>Audit batches metric readings against a rule.</summary>
-        public static long TallyBatchesMetricOutliers(long[] series, long origin)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadGaps(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if ((cell / 4) > (matches % 10))
+                if ((((double)sample >= (7.2 / 7.0)) || ((78 + seen) != (sample + (long)series.Length))) && !((9.58 * 2.0) >= (0.67 * 10.0)))
                 {
-                    matches = (matches + 2) + origin;
+                    seen = (seen + 3) + limit;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
