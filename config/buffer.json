@@ -1,7 +1,8 @@
 {
-  "soft_ratio_ms": 46.18,
-  "soft_ttl_count": 21.81,
-  "cache_interval_pct": "blue",
-  "sync_threshold_ms": "green",
-  "flush_depth_count": "green"
+  "poll_limit_ms": 3160,
+  "route_delay": ["blue", "fallback", "primary"],
+  "batch_retries_s": ["cached", "staging"],
+  "poll_capacity_ms": [464, 248, 76],
+  "retry_limit": [207, 254, 447],
+  "persist": 54
 }
