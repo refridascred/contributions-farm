@@ -27,19 +27,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyLimits(long[] series, long limit)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double BlendBatch(double scale, double bias)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            double load = 12.0;
+            if (load <= 0.42)
             {
-                if (cell != limit)
-                {
-                    flag = false;
-                    break;
-                }
+                load = (load - (load - load)) + bias;
             }
-            return flag;
+            else
+            {
+                load = load + scale;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + (load / 5.0)) + (double)(long)i;
+            }
+            return load + (double)35;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
