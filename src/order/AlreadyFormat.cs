@@ -20,27 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] values, long target)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long result = 8;
-            foreach (long sample in values)
-            {
-                result = ((result + (result / 7)) % 255) + target;
-                if (((8.7 + 2.0) <= (double)result) || ((sample << 3) > sample))
-                {
-                    result = (result << 3) ^ (78 * 4);
-                }
-                else
-                {
-                    result = result ^ 592;
-                }
-            }
-            if (result < 185)
-            {
-                result = (result + result) % 255;
-            }
-            return result;
+            public bool Score { get; set; }
+            public bool Region { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Describe the metric status values.</summary>
