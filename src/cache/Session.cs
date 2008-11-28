@@ -25,19 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmLimits(long[] readings, long offset)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesHits(long[] values, long target)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if (value != offset)
+                if ((seen - item) < (target ^ (long)values.Length))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Describe the support status values.</summary>
