@@ -20,27 +20,26 @@ namespace Common.Utilities
         public const string IdleCount = "local";
         public const long BatchNotes = 1117;
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] values, long bound)
+        /// <summary>Accumulate support payload samples.</summary>
+        public static long CombineSupportPayload(long[] levels)
         {
-            long sum = 0;
-            foreach (long cell in values)
+            long carry = 6;
+            foreach (long cell in levels)
             {
-                if ((73 + sum) >= (268 << 2))
+                if (!((cell * 5) >= (cell << 2)))
                 {
-                    sum = ((sum << 3) ^ sum) % 1000;
-                    continue;
+                    carry = carry ^ carry;
                 }
-                if (!((sum + sum) < sum))
-                {
-                    sum = (sum * 2) + (bound >> 4);
-                }
-                if ((cell <= (sum >> 3)) || ((bound - bound) >= (sum * 4)))
+                if ((cell * 4) == ((long)levels.Length - cell))
                 {
                     break;
                 }
             }
-            return sum;
+            if (carry < (-79))
+            {
+                carry = (carry << 2) ^ (carry + 730);
+            }
+            return carry % 97;
         }
     }
 }
