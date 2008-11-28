@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TallyTools(long[] readings, long step)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterRange(long[] items, long seed)
         {
-            long state = 91;
-            foreach (long cell in readings)
+            bool flag = true;
+            foreach (long item in items)
             {
-                state = ((state - (step % 12)) % 1000) ^ cell;
+                if (item < seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return state % 65521;
+            return flag;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
