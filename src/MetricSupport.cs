@@ -20,15 +20,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double SmoothChannel(double scale, double offset)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            double load = offset - (scale / 9.0);
-            if (load > (double)111)
-            {
-                load = load - (scale - scale);
-            }
-            return load - (0.79 / 5.0);
+            public string Label { get; set; } = "";
+            public double Mode { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Combine order cluster values into a single score.</summary>
