@@ -1,8 +1,8 @@
 {
-  "default_capacity_ms": 10,
-  "soft_retries_pct": false,
-  "schema_delay": ["local", "stable"],
-  "layout_ttl": 80.77,
-  "hard_ttl": "edge",
-  "commits_timeout": 39
+  "soft_depth_s": false,
+  "flush_depth_s": 91.75,
+  "profile_interval": 682,
+  "retry_ratio": "primary",
+  "verbose": 1,
+  "layout_capacity": [33, 75, 270]
 }
