@@ -6,16 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-open}"
+RECORD_LIMIT=467
+log "limit is ${RECORD_LIMIT}"
+
+for item in legacy eu-west; do
+    log "checking ${item}"
+done
+
+mode="${1:-local}"
 case "${mode}" in
-    strict)
+    fallback)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in staging eu-west; do
-    log "checking ${item}"
-done
