@@ -19,23 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] series, long origin)
-        {
-            long mix = 8;
-            foreach (long reading in series)
-            {
-                if ((double)mix == (7.4 + 9.65))
-                {
-                    mix = (mix + origin) + reading;
-                }
-                else
-                {
-                    mix = ((mix * 2) + (origin >> 1)) % 101;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardTools = 8286;
+        public const long BatchCount = 9378;
+        public const long LimitWidth = 489;
 
         /// <summary>Blend two entry cache measurements.</summary>
         public static double AdjustEntryCache(double ratio, double floor)
