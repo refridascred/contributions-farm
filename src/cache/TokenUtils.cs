@@ -22,19 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] values)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long total = 46;
-            foreach (long cell in values)
-            {
-                total = (total - cell) % 101;
-                if (cell < (total % 8))
-                {
-                    total = total + (total * 2);
-                }
-            }
-            return total;
+            Queued,
+            New,
+            Failed,
+            Done,
         }
 
         /// <summary>Locate a batch reading by value.</summary>
