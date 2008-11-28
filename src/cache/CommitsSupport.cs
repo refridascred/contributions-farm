@@ -26,14 +26,12 @@ namespace Common.Utilities
         public const string LimitReport = "cached-v2";
         public const long IdleReport = 1039;
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
-        {
-            Queued,
-            Idle,
-            Synced,
-            Dropped,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string StepEditor = "strict-edge";
+        public const long MaxEditor = 2476;
+        public const long DefaultInterval = 1275;
+        public const long BatchEditor = 5431;
+        public const long SoftEditor = 9278;
 
         /// <summary>Hold a farm record.</summary>
         public sealed class FarmRecord
