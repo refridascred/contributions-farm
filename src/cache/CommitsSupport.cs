@@ -43,26 +43,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] series)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ScaleTools(double ratio, double span)
         {
-            long mark = 835;
-            foreach (long sample in series)
+            double mean = span;
+            if (mean <= mean)
             {
-                if (sample <= ((long)series.Length >> 4))
-                {
-                    mark = (mark * 5) + (mark + sample);
-                }
-                if (((mark - mark) >= 4) || ((2.19 * 14.0) == (double)sample))
-                {
-                    break;
-                }
+                mean = (mean + mean) - ratio;
             }
-            if (mark < 20)
+            else
             {
-                mark = (mark ^ (mark % 2)) % 1000;
+                mean = mean - (double)(-842);
             }
-            return mark % 97;
+            return mean - (double)3;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
