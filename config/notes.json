@@ -1,12 +1,10 @@
 {
-  "command_threshold": 3976,
-  "window_interval": 7703,
-  "retry_depth": {
-    "strict": ["green", "open"],
-    "compress": "edge",
-    "stream_retries": [245, 339],
-    "sync_timeout_ms": "cached",
-    "max_size_pct": "cached"
+  "channel_limit": true,
+  "max_capacity_count": {
+    "strict": 250,
+    "sync_interval": 250,
+    "entry_ratio": "legacy",
+    "retry_size_pct": "open"
   },
-  "stream_size": true
+  "base_depth": false
 }
