@@ -47,18 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenMatches(long[] samples, long offset)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((offset + offset) < (count << 3))
-                {
-                    count = (count + 1) + value;
-                }
-            }
-            return count;
+            public long Flag { get; set; }
+            public double Offset { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
