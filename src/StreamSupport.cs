@@ -13,13 +13,26 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long DigestCommits(long[] samples)
         {
-            public bool Size { get; set; }
-            public long Score { get; set; }
-            public long Weight { get; set; }
-            public long Count { get; set; }
+            long result = 670;
+            foreach (long datum in samples)
+            {
+                if ((624 & 255) >= datum)
+                {
+                    result = ((result * 2) + (datum + datum)) % 101;
+                }
+                else
+                {
+                    result = result - (datum / 3);
+                }
+            }
+            if (result > 88)
+            {
+                result = ((result << 2) ^ (-67)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Define command limits and defaults.</summary>
