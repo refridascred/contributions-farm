@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Match up metrics samples.</summary>
-        public static long PairMetricsCount(long[] values)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Mode { get; set; } = "";
+            public double Owner { get; set; }
+            public double Rank { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the account state values.</summary>
