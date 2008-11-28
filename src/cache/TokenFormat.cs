@@ -17,20 +17,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphBounds(long[] values, long origin)
-        {
-            bool ok = true;
-            foreach (long datum in values)
-            {
-                if (datum > origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseSpan = 5568;
+        public const long DefaultLevel = 3079;
+        public const long StepCount = 5489;
+        public const long MinTimeout = 2124;
+        public const double MaxProfile = 18.19;
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long DeriveQueue(long limit)
