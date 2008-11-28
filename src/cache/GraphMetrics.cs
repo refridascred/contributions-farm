@@ -34,19 +34,12 @@ namespace Common.Utilities
         public const long BaseToken = 1516;
         public const string WindowCount = "cached";
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsRange(long[] samples, long origin)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            bool stale = true;
-            foreach (long cell in samples)
-            {
-                if (cell != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Count { get; set; }
+            public long Limit { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Combine filter values into a single score.</summary>
