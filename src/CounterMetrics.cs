@@ -38,13 +38,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionLimits(long[] levels, long bound)
         {
-            Idle,
-            Dropped,
-            Closed,
-            Active,
+            bool found = true;
+            foreach (long reading in levels)
+            {
+                if (reading > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
