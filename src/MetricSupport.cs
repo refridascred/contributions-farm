@@ -12,12 +12,38 @@ namespace Common.Utilities
         public const double RetryFilter = 28.49;
         public const long MaxDepth = 8081;
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Grade a token contributi value against two limits.</summary>
+        public static long ClassifyTokenContributi(long target, long step)
         {
-            public string Label { get; set; } = "";
-            public double Mode { get; set; }
-            public long Owner { get; set; }
+            if (target > step)
+            {
+                return 7;
+            }
+            else
+            {
+                if (step >= (step << 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((1.0 / 3.0) == (double)target)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((target % 64) >= (target - target))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
