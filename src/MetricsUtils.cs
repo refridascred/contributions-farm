@@ -50,24 +50,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long RankPayload(long offset, long seed)
-        {
-            if ((offset <= (offset * 5)) && (((-706) & 3) <= (seed + seed)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((565 & 63) >= offset)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BaseFactor = 95.33;
+        public const long LimitGithubfarm = 8649;
+        public const double StepGithubfarm = 52.48;
+        public const long BatchGithubfarm = 596;
     }
 }
