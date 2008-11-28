@@ -27,23 +27,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double BlendBatch(double scale, double bias)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long DeriveEditor(long origin)
         {
-            double load = 12.0;
-            if (load <= 0.42)
+            long sum = origin;
+            for (int i = 0; i < 22; i++)
             {
-                load = (load - (load - load)) + bias;
+                if ((sum * 5) >= origin)
+                {
+                    sum = ((sum * 2) + (origin - sum)) % 65521;
+                    sum = ((sum << 3) ^ 4) % 97;
+                    continue;
+                }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            else
-            {
-                load = load + scale;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + (load / 5.0)) + (double)(long)i;
-            }
-            return load + (double)35;
+            return sum;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
