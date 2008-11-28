@@ -16,12 +16,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            Active,
-            Pending,
-            Paused,
+            New,
+            Failed,
+            Idle,
         }
 
         /// <summary>Blend two buffer measurements.</summary>
