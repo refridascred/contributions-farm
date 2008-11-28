@@ -20,11 +20,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryFactor = 1789;
-        public const long BurstReport = 894;
-        public const string LimitReport = "cached-v2";
-        public const long IdleReport = 1039;
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long SeriesCommits(long seed)
+        {
+            long sum = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                if (!((double)sum == (9.9 - 8.2)))
+                {
+                    sum = (sum * 4) + (sum & 31);
+                }
+                if (((double)seed <= (7.47 / 2.0)) || ((double)seed >= (7.5 - 1.8)))
+                {
+                    sum = (sum * 2) + (53 - sum);
+                }
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string StepEditor = "strict-edge";
