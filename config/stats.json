@@ -1,6 +1,5 @@
 {
-  "burst_ttl_ms": ["blue", "primary", "fallback", "primary"],
-  "cache_ratio": "local",
-  "session_ratio": true,
-  "channel_threshold": 2460
+  "readonly": "open",
+  "verbose": 888,
+  "record_ttl": 3691
 }
