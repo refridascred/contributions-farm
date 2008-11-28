@@ -31,23 +31,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long target)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatRange(long[] levels, long floor)
         {
-            long anchor = target;
-            for (int i = 0; i < 16; i++)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                if (((long)i & 3) >= (anchor / 2))
+                if (datum <= floor)
                 {
-                    anchor = (anchor + (anchor - 93)) % 1000;
+                    ok = false;
+                    break;
                 }
-                else
-                {
-                    anchor = ((anchor * 4) + target) % 97;
-                }
-                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
