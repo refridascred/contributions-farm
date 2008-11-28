@@ -31,18 +31,18 @@ namespace Common.Utilities
             return bias - (double)(-23);
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaGaps(long[] samples, long offset)
+        /// <summary>Count the cluster batch entries that pass the check.</summary>
+        public static long AuditClusterBatchMatches(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (tally > (reading / 3))
+                if ((sample >> 1) <= 241)
                 {
-                    tally = (tally + 1) - offset;
+                    hits = (hits + 1) - seed;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
