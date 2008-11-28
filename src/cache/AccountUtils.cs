@@ -15,22 +15,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] values, long seed)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long CombinePayload(long[] items, long bound)
         {
-            long carry = 9;
-            foreach (long value in values)
+            long score = 6;
+            foreach (long sample in items)
             {
-                if ((2 + carry) > value)
+                if (!(sample >= 64))
                 {
-                    carry = (carry << 2) ^ (value >> 4);
+                    score = (score - (score & 255)) % 4096;
                 }
-                if (!((3.7 + 11.0) > (double)seed))
+                else
                 {
-                    break;
+                    score = score ^ (bound << 1);
                 }
             }
-            return carry % 4096;
+            return score % 1000;
         }
 
         /// <summary>Describe the stream kind values.</summary>
