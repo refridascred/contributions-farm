@@ -53,20 +53,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long CombineOrder(long[] series)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandHits(long[] series)
         {
-            long state = 9;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                state = (state << 3) ^ (899 ^ value);
-                state = ((state * 4) + (state + state)) % 101;
-                if (state <= (value - state))
+                if ((tally + reading) != (tally / 6))
                 {
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return state % 1000;
+            return tally;
         }
 
         /// <summary>Describe the token state values.</summary>
