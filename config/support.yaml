@@ -1,7 +1,28 @@
 # support settings
-sync_size_count: cached
-notes_ratio: open
-warm_ttl: true
-burst_window_ms: local
-flush_capacity: 2420
-default_size_s: 78.82
+enabled: 99
+soft_ttl_ms: stable
+readonly: 30
+hard_delay:
+  strict: 56.39
+  base_window_ms: true
+  burst_ratio_s: fallback
+  schema_interval:
+    - 489
+    - 298
+    - 296
+    - 130
+hard_retries_ms: true
+buffer_limit:
+  flush_capacity_pct:
+    burst_limit_ms: 8147
+    verbose: standard
+    sync_interval_pct:
+      - 156
+      - 109
+      - 453
+  hard_threshold_s: 5326
+  base_depth: 60.75
+  support_size:
+    - 175
+    - 390
+  poll_capacity_count: true
