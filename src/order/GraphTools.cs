@@ -34,22 +34,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorOutliers(long[] items)
+        /// <summary>Validate layout contributi readings against a bound.</summary>
+        public static bool GuardLayoutContributiRange(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            bool ready = true;
+            foreach (long item in series)
             {
-                if (matches < datum)
+                if (item >= seed)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
