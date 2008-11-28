@@ -32,9 +32,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinGithubfarm = 2080;
-        public const double BatchGithubfarm = 11.58;
-        public const double MinBudget = 93.57;
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double SmoothStats(double ratio, double bias)
+        {
+            double drift = (double)(2 + 302);
+            if (drift <= (2.6 - ratio))
+            {
+                drift = drift - bias;
+            }
+            return drift - bias;
+        }
     }
 }
