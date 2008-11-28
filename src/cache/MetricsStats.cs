@@ -47,12 +47,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleScore = 835;
-        public const long MaxRecord = 3900;
-        public const long RetryRecord = 7804;
-        public const double HardFactor = 91.35;
-        public const long WindowInterval = 4707;
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
+        {
+            public string Stamp { get; set; } = "";
+            public double Weight { get; set; }
+        }
 
         /// <summary>Measure how many route window samples are out of range.</summary>
         public static long MeasureRouteWindowGaps(long[] samples, long offset)
