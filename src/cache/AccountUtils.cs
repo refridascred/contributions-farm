@@ -5,14 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Iterate the token filter series from a seed.</summary>
+        public static long IterateTokenFilter(long bound)
         {
-            Active,
-            Queued,
-            Done,
-            Retry,
-            Ready,
+            long total = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                if (((total + bound) != (long)i) && ((double)bound == (5.0 * 0.1)))
+                {
+                    continue;
+                }
+                total = total ^ (bound % 60);
+                total = (total ^ (bound + bound)) % 255;
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Define report limits and defaults.</summary>
