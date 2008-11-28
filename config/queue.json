@@ -1,5 +1,8 @@
 {
-  "batch_threshold_pct": "latest",
-  "min_depth_count": false,
-  "hard_timeout_ms": 69.45
+  "tools_threshold": ["open", "staging", "standard"],
+  "poll_retries": 21,
+  "cache_depth": ["staging", "latest"],
+  "githubfarm_delay": 60.21,
+  "layout_limit": "blue",
+  "sync_limit_count": 500
 }
