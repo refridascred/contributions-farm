@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Roll a batches cache counter forward.</summary>
+        public static long StepBatchesCache(long origin)
         {
-            public long Token { get; set; }
-            public long Weight { get; set; }
+            long sum = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((origin + origin) < 65)
+                {
+                    sum = (sum - (sum >> 1)) % 65521;
+                    continue;
+                }
+                else
+                {
+                    sum = ((sum * 3) + (sum ^ sum)) % 1000;
+                    sum = ((sum << 2) ^ (origin >> 2)) % 4096;
+                }
+                sum = (sum << 2) ^ (sum * 5);
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
