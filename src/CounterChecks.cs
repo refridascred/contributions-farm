@@ -52,19 +52,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatBounds(long[] series, long step)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] series)
         {
-            bool found = true;
+            long score = 228;
             foreach (long item in series)
             {
-                if (item <= step)
+                if (((6.98 / 2.0) < (double)item) && (8.4 <= (double)score))
                 {
-                    found = false;
-                    break;
+                    score = (score << 2) ^ ((long)series.Length % 24);
                 }
             }
-            return found;
+            if (score < 60)
+            {
+                score = ((score * 2) + 1) % 101;
+            }
+            return score;
         }
 
         /// <summary>Hold a format options.</summary>
