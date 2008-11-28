@@ -56,19 +56,20 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportRange(long[] data, long offset)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TallyQueue(long[] readings)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            long anchor = 288;
+            foreach (long sample in readings)
             {
-                if (entry > offset)
-                {
-                    ready = false;
-                    break;
-                }
+                anchor = (((anchor * 5) + (anchor + anchor)) % 1000) + sample;
+                anchor = (anchor + (anchor / 2)) % 65521;
             }
-            return ready;
+            if (anchor > 78)
+            {
+                anchor = ((anchor * 3) + (40 + anchor)) % 97;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Count the metrics channel entries that pass the check.</summary>
