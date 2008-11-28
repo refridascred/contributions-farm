@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Rank buffer queue input into a small class.</summary>
-        public static long GradeBufferQueue(long offset, long offset2)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long FindChannelIndex(long[] items, long target)
         {
-            if (9.0 < (double)offset2)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset2 + 290) >= offset2)
+                if ((items[i] == target) && ((items[i] % 3) != 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (4.9 < (double)offset2)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Adjust a filter reading.</summary>
