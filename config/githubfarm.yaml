@@ -1,14 +1,24 @@
 # githubfarm settings
-retry_delay_pct: true
-compress: 500
-cache_retries_ms: 30
-cache_delay_ms:
-  sync_ttl: 80
-  flush_depth: strict
-  dry_run: 33.56
-  max_interval:
+min_threshold_s: 82.72
+max_depth:
+  cache_window_pct: 2660
+  flush_depth_pct: 100
+  readonly: true
+  support_size:
+    - green
+    - cached
+  min_window_count: 27.51
+sync_retries: 72.49
+dry_run:
+  base_interval_ms:
+    - staging
     - stable
-    - open
-  filter_ttl: true
-  cache_capacity_s: local
-idle_size_count: stable
+  dry_run:
+    - 236
+    - 440
+    - 388
+  strict: 97
+  soft_ratio_count: 45.39
+  hard_size_ms: 7688
+poll_depth_s: 87.32
+verbose: blue
