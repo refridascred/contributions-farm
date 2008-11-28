@@ -41,13 +41,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
-        {
-            Failed,
-            Retry,
-            Paused,
-            Idle,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstSize = 1554;
+        public const long BaseCommand = 4819;
+        public const long WindowSize = 6405;
+        public const string StepCommand = "latest-v2";
+        public const long MaxCommand = 2853;
     }
 }
