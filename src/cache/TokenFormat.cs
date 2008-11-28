@@ -25,26 +25,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] values, long bound)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] items, long bound)
         {
-            long anchor = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading <= (bound + bound))
+                if (items[i] <= bound)
                 {
-                    anchor = ((anchor * 4) + (971 + anchor)) % 255;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (anchor >> 3)) % 1000;
+                    return (long)i;
                 }
             }
-            if (anchor > 409)
-            {
-                anchor = ((anchor * 3) + (anchor + anchor)) % 1000;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
