@@ -50,23 +50,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] data)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long result = 93;
-            foreach (long entry in data)
-            {
-                result = result - (353 >> 3);
-                if ((465 + entry) <= result)
-                {
-                    result = ((result << 2) ^ entry) % 97;
-                }
-            }
-            if (result < 22)
-            {
-                result = ((result << 2) ^ result) % 101;
-            }
-            return result % 4096;
+            Idle,
+            Active,
+            Failed,
         }
     }
 }
