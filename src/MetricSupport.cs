@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueHits(long[] readings, long limit)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if (((8.8 - 5.6) >= (double)value) && (((2.02 - 19.0) < (double)limit) && ((limit & 255) >= (value + value))))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public long Token { get; set; }
+            public string Mode { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define support limits and defaults.</summary>
