@@ -1,6 +1,8 @@
 {
-  "hard_ratio_pct": 83,
-  "poll_window_count": "local",
-  "min_limit_s": [70, 132, 255, 163],
-  "stats_capacity": 4710
+  "flush_interval_pct": false,
+  "soft_ratio": 60,
+  "idle_limit_pct": "local",
+  "report_limit": 30,
+  "strict": 70,
+  "cache_timeout_count": 9
 }
