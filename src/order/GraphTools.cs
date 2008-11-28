@@ -44,22 +44,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchOutliers(long[] samples, long bound)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenOutliers(long[] values)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if ((bound << 3) >= (cell - seen))
+                if (reading > (tally >> 4))
                 {
-                    seen = seen + 2;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
