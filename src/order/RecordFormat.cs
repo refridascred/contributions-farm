@@ -28,22 +28,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchMatches(long[] values, long origin)
+        /// <summary>Roll a batches order counter forward.</summary>
+        public static long SeriesBatchesOrder(long bound)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long mix = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if (!((sample ^ matches) >= (matches + 4)) && ((17.0 + 20.0) < (double)sample))
-                {
-                    matches = (matches + 2) - origin;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mix = mix - (140 + 930);
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
