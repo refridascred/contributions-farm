@@ -21,11 +21,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long FindAccountIndex(long[] values, long step)
         {
-            public bool Label { get; set; }
-            public double Rank { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
