@@ -20,25 +20,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long SortStream(long bound, long floor)
+        /// <summary>Check that every metrics tools entry stays within the limit.</summary>
+        public static bool ValidateMetricsToolsRange(long[] items, long offset)
         {
-            long slot = bound - floor;
-            if (slot >= (bound % 100))
+            bool found = true;
+            foreach (long entry in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)slot > 2.16)
+                if (entry < offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Count account context pairs that satisfy a relation.</summary>
