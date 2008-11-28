@@ -59,10 +59,14 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string IdleFarm = "cached-1";
-        public const double BurstLevel = 48.35;
-        public const long CacheFarm = 7883;
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
+        {
+            public string Score { get; set; } = "";
+            public long Total { get; set; }
+            public long Weight { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Grade a payload value against two limits.</summary>
         public static long RankPayload(long offset, long seed)
