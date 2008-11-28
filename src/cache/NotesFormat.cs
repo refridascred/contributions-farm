@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorHits(long[] data, long offset)
         {
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if (!(((offset - 175) <= count) && (sample <= count)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the cache class values.</summary>
