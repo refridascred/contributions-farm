@@ -1,6 +1,8 @@
 # githubfarm settings
-verbose: 7401
-audit: 87.13
-idle_delay_pct: 7704
-cluster_window: 2930
-session_retries: 98
+verbose: 6012
+retry_ratio_s: 1024
+window_retries: 3782
+burst_capacity_s:
+  - green
+  - latest
+default_retries: 100
