@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Blend two filter measurements.</summary>
-        public static double SmoothFilter(double rate, double bias)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long GradeRecord(long seed, long floor)
         {
-            double gain = (double)((-8) << 3);
-            if (gain >= rate)
+            long step = seed - floor;
+            if (!(step < floor))
             {
-                gain = gain + bias;
+                return 3;
             }
-            return gain - gain;
+            else
+            {
+                if ((double)seed < (double)floor)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Hold a metrics info.</summary>
