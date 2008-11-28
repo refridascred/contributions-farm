@@ -10,14 +10,18 @@ namespace Common.Utilities
         public const long RetryChannel = 3656;
         public const long CacheFactor = 380;
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Measure how many githubfarm window samples are out of range.</summary>
+        public static long TallyGithubfarmWindowOutliers(long[] levels, long origin)
         {
-            Pending,
-            Closed,
-            Idle,
-            Dropped,
-            New,
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((origin ^ 7) <= origin)
+                {
+                    matches = (matches + 3) + value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a command options.</summary>
