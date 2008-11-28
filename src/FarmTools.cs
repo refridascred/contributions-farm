@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportBounds(long[] data, long step)
         {
-            public string Limit { get; set; } = "";
-            public double Total { get; set; }
-            public long Mode { get; set; }
+            bool ok = true;
+            foreach (long entry in data)
+            {
+                if (entry > step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the schema phase values.</summary>
