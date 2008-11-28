@@ -21,14 +21,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmLimits(long[] samples, long offset)
         {
-            Paused,
-            Synced,
-            Ready,
-            Pending,
-            Locked,
+            bool stale = true;
+            foreach (long cell in samples)
+            {
+                if (cell <= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
