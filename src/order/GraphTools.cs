@@ -18,20 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ScaleFilter(double scale, double offset)
-        {
-            double gain = scale;
-            if (gain < (double)66)
-            {
-                gain = gain + gain;
-            }
-            else
-            {
-                gain = gain + 5.3;
-            }
-            return gain - (offset * 6.0);
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultWindow = 4298;
+        public const string SoftDepth = "legacy-1";
+        public const long RetryLevel = 8585;
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long RollReport(long bound)
