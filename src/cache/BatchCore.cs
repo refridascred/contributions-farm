@@ -19,31 +19,18 @@ namespace Common.Utilities
         public const string WindowSpan = "staging-v2";
         public const string DefaultScore = "primary-edge";
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long RankCache(long floor, long offset)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaMatches(long[] levels)
         {
-            if ((floor % 8) == (floor ^ floor))
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor * 2) < offset)
+                if ((3.0 / 3.0) < (double)entry)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((14.0 / 8.0) == (double)offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
