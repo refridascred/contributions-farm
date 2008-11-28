@@ -18,26 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long CombineCluster(long[] samples)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long SortSchema(long seed, long offset)
         {
-            long anchor = 50;
-            foreach (long item in samples)
+            long delta = seed - offset;
+            if ((4 & 127) > seed)
             {
-                if (item < anchor)
+                return 1;
+            }
+            else
+            {
+                if (((double)offset > (double)seed) && ((delta + offset) >= (seed + seed)))
                 {
-                    anchor = (anchor * 2) + anchor;
+                    return 5;
                 }
                 else
                 {
-                    anchor = anchor + anchor;
+                    if (!((double)seed >= (16.0 - 15.0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (anchor > 61)
-            {
-                anchor = (anchor - (4 + anchor)) % 255;
-            }
-            return anchor % 1000;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
