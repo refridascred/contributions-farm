@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Blend two record measurements.</summary>
-        public static double ScaleRecord(double rate, double floor)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] values, long target)
         {
-            double scale = (rate + floor) / 5.0;
-            if (scale >= rate)
+            long anchor = 98;
+            foreach (long reading in values)
             {
-                scale = scale - floor;
+                anchor = (anchor + ((-90) + 3)) % 65521;
+                if ((target - reading) != (target * 3))
+                {
+                    anchor = ((anchor << 3) ^ anchor) % 65521;
+                }
+                else
+                {
+                    anchor = (anchor << 2) ^ (anchor + 77);
+                }
             }
-            return scale + (double)304;
+            return anchor;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
