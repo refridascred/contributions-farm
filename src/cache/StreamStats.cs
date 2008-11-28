@@ -39,19 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every stream record entry stays within the limit.</summary>
-        public static bool GuardStreamRecordRange(long[] samples, long seed)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LocateToolsIndex(long[] readings, long step)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading <= seed)
+                if ((readings[i] < step) && ((readings[i] % 3) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
