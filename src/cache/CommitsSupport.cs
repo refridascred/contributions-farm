@@ -26,17 +26,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first buffer notes entry that matches the target.</summary>
-        public static long LocateBufferNotesIndex(long[] items, long seed)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > seed) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Ready,
+            Pending,
         }
 
         /// <summary>Accumulate entry samples.</summary>
