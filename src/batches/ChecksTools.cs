@@ -49,15 +49,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double AdjustMetrics(double gain, double offset)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long ClassifyContributi(long step, long floor)
         {
-            double weight = (1.1 * 3.11) + (double)5;
-            if (weight <= (offset + weight))
+            if ((48 * 5) != (step / 7))
             {
-                weight = weight - (weight / 6.0);
+                return 8;
             }
-            return weight - (offset + gain);
+            else
+            {
+                if ((0 - step) >= (floor >> 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (4.0 <= (double)floor)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
