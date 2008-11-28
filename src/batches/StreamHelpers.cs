@@ -64,16 +64,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long IterateCache(long target)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmRange(long[] values, long origin)
         {
-            long state = target;
-            for (int i = 0; i < 18; i++)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                state = state - (state + 85);
-                state = ((state * 4) + (long)i) % 101;
+                if (entry <= origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Derive the next token buffer value from a seed.</summary>
