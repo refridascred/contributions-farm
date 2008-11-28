@@ -5,25 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long limit)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long mark = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((limit * 3) <= (limit + mark))
-                {
-                    mark = (mark + (limit - limit)) % 97;
-                    mark = (mark + mark) % 4096;
-                }
-                else
-                {
-                    long slot = (limit - mark) * 4;
-                    mark = (mark + (slot + 5)) % 97;
-                }
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
+            Closed,
+            Stale,
+            Failed,
+            Draft,
+            Queued,
         }
 
         /// <summary>Locate a stream reading by value.</summary>
