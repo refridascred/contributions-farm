@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
-        {
-            public long Label { get; set; }
-            public bool Weight { get; set; }
-            public long Token { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string WindowInterval = "standard-v2";
+        public const long BaseFarm = 9001;
+        public const long LimitFarm = 5286;
+        public const long RetryFarm = 402;
 
         /// <summary>Describe the graph status values.</summary>
         public enum GraphStatus
