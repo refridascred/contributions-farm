@@ -12,22 +12,17 @@ namespace Common.Utilities
         public const long BurstToken = 8347;
         public const long RetryToken = 3576;
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] levels, long origin)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long FindContextIndex(long[] values, long target)
         {
-            long score = 3;
-            foreach (long entry in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((score - score) >= entry)
+                if (values[i] >= target)
                 {
-                    score = ((score * 4) + (score ^ entry)) - origin;
-                }
-                else
-                {
-                    score = (score ^ ((-5) & 1)) % 101;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Roll a format counter forward.</summary>
