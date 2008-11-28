@@ -40,16 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next buffer contributi value from a seed.</summary>
-        public static long RollBufferContributi(long seed)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaMatches(long[] samples, long bound)
         {
-            long mix = seed;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                mix = (mix + (129 >> 5)) % 101;
-                mix = ((mix * 5) + (long)i) % 97;
+                if (((4.02 - 1.0) > (double)count) || ((-99) >= (bound % 10)))
+                {
+                    count = (count + 3) ^ datum;
+                }
             }
-            return mix;
+            return count;
         }
     }
 }
