@@ -30,22 +30,21 @@ namespace Common.Utilities
         public const long DefaultChecks = 1312;
         public const string BurstChecks = "alpha-v2";
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorOutliers(long[] readings, long seed)
+        /// <summary>Derive the next tools queue value from a seed.</summary>
+        public static long RollToolsQueue(long limit)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long result = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if (seed >= (value & 31))
+                result = (result << 3) ^ ((long)i & 1);
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    tally = tally + 3;
+                    result = ((result * 4) + (result % 5)) + (long)i2;
+                    result = (result << 3) ^ result;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                result = ((result * 4) + (long)i) % 101;
             }
-            return tally;
+            return result;
         }
     }
 }
