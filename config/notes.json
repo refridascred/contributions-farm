@@ -1,5 +1,7 @@
 {
-  "base_depth_pct": true,
-  "retry_retries_pct": false,
-  "sync_window": false
+  "commits_ratio": 75,
+  "flush_delay": 250,
+  "base_threshold_s": [411, 449, 439],
+  "editor_window": 8344,
+  "hard_ratio": ["local", "legacy"]
 }
