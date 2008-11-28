@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            public long Score { get; set; }
-            public long Owner { get; set; }
-            public double Flag { get; set; }
-            public long Total { get; set; }
+            Paused,
+            Stale,
+            Closed,
+            Queued,
+            Locked,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
