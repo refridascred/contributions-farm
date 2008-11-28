@@ -1,6 +1,8 @@
 # entry settings
-max_timeout: 100
-batch_timeout_ms: 4464
-sync_depth_s: fallback
-burst_limit_pct: green
-cache_capacity_pct: 7408
+poll_timeout_s:
+  - latest
+  - stable
+commits_delay: 30
+metric_interval: 15.63
+retry_ratio_count: eu-west
+cache_interval_count: stable
