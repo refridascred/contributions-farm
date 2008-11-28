@@ -1,14 +1,4 @@
 # entry settings
-cache_ratio_count: 500
-cache_threshold: green
-compress:
-  - cached
-  - cached
-sync_interval_pct:
-  schema_limit:
-    - 115
-    - 88
-  token_ratio: 41.79
-  burst_ttl_s: true
-sync_size_pct: open
-hard_retries_pct: 97
+warm_depth_pct: 81.57
+strict: 31
+soft_timeout: 500
