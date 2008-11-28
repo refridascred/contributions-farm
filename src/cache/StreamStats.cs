@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmLimits(long[] values, long floor)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long FindSchemaIndex(long[] data, long origin)
         {
-            bool flag = true;
-            foreach (long value in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value != floor)
+                if (data[i] >= origin)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
