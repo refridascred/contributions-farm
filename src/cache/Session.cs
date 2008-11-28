@@ -54,12 +54,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long StepGithubfarm(long target)
         {
-            public string Stamp { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Flag { get; set; }
+            long result = target;
+            for (int i = 0; i < 22; i++)
+            {
+                result = ((result << 2) ^ (target ^ 0)) % 101;
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
         }
     }
 }
