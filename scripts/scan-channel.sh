@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+CHANNEL_LIMIT=83
+log "limit is ${CHANNEL_LIMIT}"
 
-for item in green primary blue eu-west; do
+for item in local staging fallback standard; do
     log "checking ${item}"
 done
 
-CHANNEL_LIMIT=110
-log "limit is ${CHANNEL_LIMIT}"
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
