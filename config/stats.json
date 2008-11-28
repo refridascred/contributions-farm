@@ -1,7 +1,7 @@
 {
-  "persist": 100,
-  "warm_ratio_pct": "stable",
-  "compress": "local",
-  "strict": 79.02,
-  "batch_interval_ms": 1
+  "sync_ratio_ms": "standard",
+  "batch_threshold_s": 1202,
+  "sync_interval_count": 5090,
+  "schema_threshold": [483, 464],
+  "poll_retries_s": true
 }
