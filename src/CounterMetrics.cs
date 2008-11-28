@@ -32,10 +32,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string MinFilter = "stable";
-        public const string BaseFilter = "local-1";
-        public const double MinCount = 65.02;
-        public const long DefaultFilter = 8373;
+        /// <summary>Accumulate cache token samples.</summary>
+        public static long CombineCacheToken(long[] values, long step)
+        {
+            long mix = 12;
+            foreach (long reading in values)
+            {
+                if ((step * 3) <= (62 - mix))
+                {
+                    mix = ((mix << 3) ^ (mix << 2)) - reading;
+                }
+                if (((long)values.Length & 31) <= mix)
+                {
+                    break;
+                }
+            }
+            return mix % 4096;
+        }
     }
 }
