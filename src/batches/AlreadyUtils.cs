@@ -56,18 +56,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryOutliers(long[] levels)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long RankAccount(long bound, long target)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            if ((target + 8) < target)
             {
-                if ((hits ^ hits) >= (sample + hits))
+                return 4;
+            }
+            else
+            {
+                if ((bound / 2) >= (bound + bound))
                 {
-                    hits = hits + 1;
+                    return 8;
+                }
+                else
+                {
+                    if ((target >> 1) <= target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
