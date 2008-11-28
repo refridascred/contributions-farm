@@ -1,7 +1,10 @@
-id,count,level
-1,local,green
-2,standard,222
-3,64.65,strict
-4,416,22.58
-5,standard,153
-6,28.5,standard
+id,state,active,score
+1,824,strict,edge
+2,56.86,576,52
+3,866,fallback,18.26
+4,216,13.93,85
+5,161,388,982
+6,6.49,264,291
+7,642,258,822
+8,56.82,349,cached
+9,68.06,open,407
