@@ -74,11 +74,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleQueue = 5852;
-        public const double WindowQueue = 80.67;
-        public const string BatchQueue = "cached-1";
-        public const long LimitQueue = 8786;
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelMatches(long[] samples)
+        {
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if (((datum % 5) <= (datum + hits)) || ((hits - hits) > (datum * 2)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate support samples.</summary>
         public static long TallySupport(long[] data)
