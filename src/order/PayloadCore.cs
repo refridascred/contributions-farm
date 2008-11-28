@@ -19,22 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long CompareCommandCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string CacheCommits = "alpha-1";
+        public const long DefaultCommits = 3567;
+        public const long BurstTimeout = 326;
+        public const long BatchCommits = 8370;
+        public const double SoftCommits = 98.46;
 
         /// <summary>Adjust a format session reading.</summary>
         public static double ScaleFormatSession(double bias, double span)
