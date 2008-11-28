@@ -20,13 +20,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutHits(long[] series, long offset)
         {
-            Dropped,
-            Idle,
-            Queued,
-            Retry,
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((cell / 2) >= (cell - offset))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count account context pairs that satisfy a relation.</summary>
