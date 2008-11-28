@@ -13,18 +13,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferGaps(long[] series)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterBounds(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long item in series)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                if (24 >= (item >> 2))
+                if (datum <= origin)
                 {
-                    seen = seen + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Define session limits and defaults.</summary>
