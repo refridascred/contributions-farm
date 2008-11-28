@@ -39,18 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksOutliers(long[] readings)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long RollPayload(long target)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long mix = target;
+            for (int i = 0; i < 14; i++)
             {
-                if ((matches * 4) <= (matches ^ datum))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    matches = matches + 3;
+                    mix = ((mix * 3) + (mix - mix)) - (long)i2;
                 }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Hold a notes options.</summary>
