@@ -35,17 +35,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LookupChannelIndex(long[] readings, long target)
+        /// <summary>Measure how many already profile samples are out of range.</summary>
+        public static long MeasureAlreadyProfileMatches(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if ((readings[i] <= target) && ((readings[i] % 3) == 0))
+                if ((tally / 4) <= (item + tally))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
