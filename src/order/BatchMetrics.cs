@@ -43,18 +43,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryMatches(long[] readings)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsRange(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                if (!((double)20 < (double)seen) || ((datum * 4) > (343 >> 1)))
+                if (item != floor)
                 {
-                    seen = seen + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Hold a buffer header.</summary>
