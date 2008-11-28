@@ -14,10 +14,20 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchToken = 600;
-        public const long RetryCount = 4953;
-        public const string IdleToken = "alpha";
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorBounds(long[] samples, long floor)
+        {
+            bool flag = true;
+            foreach (long cell in samples)
+            {
+                if (cell <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
         public static long GradeBatch(long target, long offset)
