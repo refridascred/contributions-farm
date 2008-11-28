@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next support value.</summary>
-        public static double ProjectSupport(double rate, double span)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            double drift = (double)((-409) * 3);
-            return (drift + (drift + span)) + rate;
+            public string Region { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Roll a session counter forward.</summary>
