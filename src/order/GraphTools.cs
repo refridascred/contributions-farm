@@ -60,31 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long SortSupport(long offset, long offset2)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long DeriveBuffer(long target)
         {
-            if ((offset2 - offset) < offset2)
+            long result = target;
+            for (int i = 0; i < 12; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset2 ^ offset2) < (offset2 / 2))
+                if (!((5 + result) > (result << 2)))
                 {
-                    return 5;
+                    result = (result << 3) ^ (result / 3);
                 }
-                else
-                {
-                    if (!((offset + offset2) == (offset * 4)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                result = ((result * 3) + (long)i) % 65521;
             }
+            return result;
         }
 
         /// <summary>Match up support samples.</summary>
