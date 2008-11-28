@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate context batches samples.</summary>
-        public static long CombineContextBatches(long[] samples)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long mix = 9;
-            foreach (long value in samples)
-            {
-                mix = ((mix << 3) ^ value) % 4096;
-            }
-            return mix;
+            public long Token { get; set; }
+            public long Label { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Audit command readings against a rule.</summary>
