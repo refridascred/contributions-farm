@@ -36,27 +36,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] samples)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long score = 16;
-            foreach (long reading in samples)
-            {
-                score = (score ^ 81) % 101;
-                if ((1 * 2) == (reading - score))
-                {
-                    score = (score ^ (score - reading)) % 101;
-                }
-                else
-                {
-                    score = (score + (reading % 7)) % 65521;
-                }
-            }
-            if (score < 514)
-            {
-                score = (score + (39 - score)) % 255;
-            }
-            return score % 65521;
+            public long Flag { get; set; }
+            public long Score { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Describe the stats status values.</summary>
