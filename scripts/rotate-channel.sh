@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-fallback}"
+mode="${1:-strict}"
 case "${mode}" in
-    eu-west)
+    stable)
         log "fast path"
         ;;
     *)
@@ -16,9 +16,5 @@ case "${mode}" in
         ;;
 esac
 
-for item in fallback local latest; do
-    log "checking ${item}"
-done
-
-CHANNEL_LIMIT=336
+CHANNEL_LIMIT=309
 log "limit is ${CHANNEL_LIMIT}"
