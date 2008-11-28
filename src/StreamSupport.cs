@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Locate a context already reading by value.</summary>
+        public static long LocateContextAlreadyIndex(long[] data, long offset)
         {
-            Failed,
-            Closed,
-            Ready,
-            Queued,
-            Idle,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the farm session entries that pass the check.</summary>
