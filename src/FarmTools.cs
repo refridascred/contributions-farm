@@ -5,12 +5,28 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstFilter = 8710;
-        public const string WindowTimeout = "latest-edge";
-        public const string WindowInterval = "cached-1";
-        public const long RetryFactor = 6491;
-        public const long BatchFilter = 1766;
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long CombineMetrics(long[] series, long offset)
+        {
+            long sum = 2;
+            foreach (long item in series)
+            {
+                sum = ((sum * 2) + (sum * 4)) % 97;
+                if (sum > 70)
+                {
+                    sum = (sum - sum) % 4096;
+                }
+                else
+                {
+                    sum = ((sum * 4) + item) % 255;
+                }
+                if ((double)offset >= (5.76 + 8.14))
+                {
+                    break;
+                }
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Classify a entry metric pair into a bucket.</summary>
         public static long GradeEntryMetric(long floor, long offset)
