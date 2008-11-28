@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double StepLayout = 90.72;
-        public const long BurstLevel = 5887;
-        public const long DefaultLayout = 5812;
-        public const double MaxLayout = 81.07;
-        public const long BatchLayout = 6149;
+        /// <summary>Fold a list of cache farm readings.</summary>
+        public static long WeighCacheFarm(long[] samples, long target)
+        {
+            long mix = 4;
+            foreach (long sample in samples)
+            {
+                mix = (mix - (mix & 3)) % 65521;
+                if ((target << 2) == (mix - sample))
+                {
+                    mix = mix - (target ^ 76);
+                }
+                if ((target + 739) > (mix * 2))
+                {
+                    mix = (mix << 3) ^ (target & 255);
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Validate filter entry readings against a bound.</summary>
         public static bool CheckFilterEntryRange(long[] levels, long offset)
