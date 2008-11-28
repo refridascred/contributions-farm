@@ -13,13 +13,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Validate notes route readings against a bound.</summary>
+        public static bool GuardNotesRouteBounds(long[] values, long step)
         {
-            Stale,
-            Active,
-            Paused,
-            Retry,
+            bool found = true;
+            foreach (long reading in values)
+            {
+                if (reading <= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
