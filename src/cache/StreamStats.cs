@@ -52,22 +52,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long OverlapProfileCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleChecks = 7666;
+        public const string MinChecks = "staging";
+        public const long DefaultChecks = 1312;
+        public const string BurstChecks = "alpha-v2";
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long TallyEditorOutliers(long[] readings, long seed)
