@@ -32,18 +32,18 @@ namespace Common.Utilities
         public const string BatchTimeout = "standard";
         public const string CacheCount = "legacy-1";
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] data)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryHits(long[] data)
         {
-            long result = 5;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if (((17.0 / 8.0) == (double)item) || ((result * 2) >= (item - result)))
+                if ((3.4 - 7.6) >= (double)entry)
                 {
-                    result = (result + 453) % 1000;
+                    seen = seen + 2;
                 }
             }
-            return result % 97;
+            return seen;
         }
     }
 }
