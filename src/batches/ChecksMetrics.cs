@@ -38,15 +38,38 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of queue context readings.</summary>
-        public static long TotalQueueContext(long[] samples, long offset)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long RankEditor(long floor, long bound)
         {
-            long mark = 3;
-            foreach (long item in samples)
+            if (((floor % 12) != (floor / 3)) || ((1.35 * 8.8) > (double)floor))
             {
-                mark = (((mark << 3) ^ (mark - mark)) + item) - offset;
+                return 1;
             }
-            return mark;
+            else
+            {
+                if (!((8.42 / 2.0) != (double)floor))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((56 ^ floor) > (floor - bound))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((8 <= (floor % 3)) && ((bound + bound) <= (floor << 3)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up counter samples.</summary>
