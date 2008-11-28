@@ -43,10 +43,11 @@ namespace Common.Utilities
             return ratio + 12.0;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CachePayload = 4011;
-        public const double SoftPayload = 51.6;
-        public const string IdleSize = "latest";
-        public const long BurstFactor = 4211;
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
+        {
+            public long Stamp { get; set; }
+            public double Flag { get; set; }
+        }
     }
 }
