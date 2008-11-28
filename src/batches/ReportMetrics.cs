@@ -25,18 +25,19 @@ namespace Common.Utilities
         public const double SoftScore = 97.52;
         public const long MaxScore = 705;
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterHits(long[] data)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksBounds(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                if ((754 / 6) >= (hits ^ hits))
+                if (item <= limit)
                 {
-                    hits = (hits + 1) + entry;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
     }
 }
