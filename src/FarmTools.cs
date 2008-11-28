@@ -24,20 +24,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate filter entry readings against a bound.</summary>
-        public static bool CheckFilterEntryRange(long[] levels, long offset)
-        {
-            bool found = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string WindowRecord = "local-1";
+        public const long StepRecord = 2266;
+        public const long StepLevel = 7464;
+        public const double CacheSize = 56.42;
 
         /// <summary>Look up the position of a window queue sample.</summary>
         public static long SeekWindowQueueIndex(long[] items, long bound)
