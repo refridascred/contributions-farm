@@ -36,13 +36,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesRange(long[] levels, long step)
         {
-            Pending,
-            Closed,
-            Active,
-            Draft,
+            bool ok = true;
+            foreach (long datum in levels)
+            {
+                if (datum >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the commits status values.</summary>
