@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportLimits(long[] levels, long floor)
-        {
-            bool ok = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double MaxDepth = 15.11;
+        public const long BurstFormat = 4862;
+        public const double BaseRatio = 82.78;
+        public const long BaseFormat = 270;
+        public const long MinFormat = 6162;
 
         /// <summary>Blend two command measurements.</summary>
         public static double SmoothCommand(double bias, double offset)
