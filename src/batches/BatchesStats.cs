@@ -61,21 +61,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long PairCounterCount(long[] samples)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long BucketAccount(long step, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (((6.73 / 2.0) != (double)step) && ((step + origin) == (origin + origin)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((origin * 4) < origin)
                 {
-                    if ((samples[i] + samples[j]) < 14)
+                    return 7;
+                }
+                else
+                {
+                    if ((double)origin <= 8.2)
                     {
-                        tally = tally + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((origin * 2) >= origin)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return tally;
         }
     }
 }
