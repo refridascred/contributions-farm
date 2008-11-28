@@ -44,11 +44,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Roll a session counter forward.</summary>
+        public static long IterateSession(long step)
         {
-            public long Rank { get; set; }
-            public long Flag { get; set; }
+            long acc = step;
+            for (int i = 0; i < 17; i++)
+            {
+                acc = ((acc << 2) ^ (acc * 5)) % 65521;
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
         }
     }
 }
