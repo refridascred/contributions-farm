@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of metric support readings.</summary>
-        public static long FoldMetricSupport(long[] readings, long target)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterHits(long[] items, long offset)
         {
-            long acc = -1;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long cell in items)
             {
-                acc = (acc - (datum << 2)) - target;
+                if (677 <= (cell % 100))
+                {
+                    count = (count + 1) - offset;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return acc % 97;
+            return count;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
