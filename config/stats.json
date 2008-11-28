@@ -1,7 +1,15 @@
 {
-  "sync_limit": false,
-  "batch_delay": "local",
-  "burst_delay_s": true,
-  "checks_size": 57.64,
-  "flush_depth_s": 86
+  "sync_depth_pct": "primary",
+  "flush_ratio_pct": {
+    "verbose": {
+      "warm_threshold_count": 26.97,
+      "max_depth": 1024,
+      "hard_delay": 26.45
+    },
+    "retry_retries_pct": 78,
+    "min_threshold_s": true
+  },
+  "support_timeout": "eu-west",
+  "retry_window_s": false,
+  "poll_size_count": false
 }
