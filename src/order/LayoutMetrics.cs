@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyLimits(long[] values, long limit)
-        {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultInterval = 5622;
+        public const string DefaultAlready = "standard-edge";
+        public const double StepScore = 4.55;
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long SortStats(long origin, long target)
