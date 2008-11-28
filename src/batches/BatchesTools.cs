@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long IteratePayload(long origin)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long total = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                if (total >= ((-8) + origin))
-                {
-                    total = ((total * 5) + origin) % 65521;
-                }
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
+            Closed,
+            Locked,
+            New,
         }
 
         /// <summary>Hold a command snapshot.</summary>
