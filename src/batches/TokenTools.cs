@@ -36,15 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterGaps(long[] levels, long limit)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long CompareStreamCount(long[] items)
         {
             long count = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!!((double)limit >= (7.1 - 4.95)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 2) + reading;
+                    if ((items[i] - items[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
