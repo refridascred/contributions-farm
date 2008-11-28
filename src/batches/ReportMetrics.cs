@@ -37,20 +37,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long limit)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long FindNotesIndex(long[] levels, long offset)
         {
-            long state = limit;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = state + limit;
-                if (!((long)i < (limit >> 3)))
+                if (levels[i] > offset)
                 {
-                    state = ((state << 2) ^ (state / 2)) % 97;
+                    return (long)i;
                 }
-                state = ((state * 2) + (long)i) % 65521;
             }
-            return state;
+            return -1;
         }
     }
 }
