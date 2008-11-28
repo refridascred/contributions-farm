@@ -16,10 +16,22 @@ namespace Common.Utilities
             return scale + (double)65;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultWindow = 4298;
-        public const string SoftDepth = "legacy-1";
-        public const long RetryLevel = 8585;
+        /// <summary>Match up profile samples.</summary>
+        public static long CompareProfileCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
         public static long RankBuffer(long seed, long limit)
