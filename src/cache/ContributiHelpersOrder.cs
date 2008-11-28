@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long limit)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long CombineOrder(long[] readings, long limit)
         {
-            long mix = limit;
-            for (int i = 0; i < 4; i++)
+            long sum = 54;
+            foreach (long cell in readings)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if ((sum >> 5) <= cell)
                 {
-                    mix = ((mix + limit) % 1000) - (long)i2;
+                    sum = ((sum * 5) + limit) % 1000;
                 }
-                mix = (mix * 3) + mix;
-                mix = ((mix * 4) + (long)i) % 97;
+                else
+                {
+                    sum = (sum + (sum * 3)) % 4096;
+                }
             }
-            return mix;
+            return sum;
         }
 
         /// <summary>Accumulate farm samples.</summary>
