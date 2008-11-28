@@ -49,12 +49,15 @@ namespace Common.Utilities
         public const string MinQueue = "local-v2";
         public const long StepQueue = 5272;
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long RollBuffer(long offset)
         {
-            Synced,
-            Draft,
-            Paused,
+            long total = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
         }
     }
 }
