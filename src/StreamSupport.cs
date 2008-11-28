@@ -36,17 +36,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LookupEntryIndex(long[] values, long offset)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long BucketCommits(long offset, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (((offset / 5) >= (limit % 7)) || (offset >= (limit * 5)))
             {
-                if (values[i] == offset)
+                return 6;
+            }
+            else
+            {
+                if ((limit - 65) < offset)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((offset < (offset ^ offset)) || ((limit << 3) > (limit << 2)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
