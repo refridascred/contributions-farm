@@ -20,12 +20,13 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            Retry,
-            Dropped,
             Done,
+            Locked,
+            Failed,
+            Queued,
         }
 
         /// <summary>Fold a list of route readings.</summary>
