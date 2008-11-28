@@ -20,19 +20,21 @@ namespace Common.Utilities
             return bias + (double)18;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaLimits(long[] items, long step)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long CompareContextCount(long[] data)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item < step)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((data[i] + data[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
