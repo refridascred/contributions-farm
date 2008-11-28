@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Adjust a editor counter reading.</summary>
-        public static double ScaleEditorCounter(double bias, double offset)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long BucketEntry(long seed, long step)
         {
-            double load = (double)((-187) + 17);
-            return ((load + (double)4) + bias) + offset;
+            long offset = seed - step;
+            if (offset > (seed - (-41)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (step > seed)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
