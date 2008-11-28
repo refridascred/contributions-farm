@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
+            Done,
+            Paused,
             Ready,
-            Active,
-            Stale,
-            Retry,
         }
 
         /// <summary>Iterate the tools support series from a seed.</summary>
