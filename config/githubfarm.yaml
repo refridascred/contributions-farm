@@ -1,8 +1,4 @@
 # githubfarm settings
-verbose: 21
-counter_retries:
-  - 418
-  - 294
-  - 176
-  - 399
-default_limit: 75.03
+order_size: 36.56
+retry_interval_count: 79
+min_capacity_ms: 500
