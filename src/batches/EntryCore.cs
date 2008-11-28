@@ -23,31 +23,30 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long RankProfile(long seed, long limit)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long FoldMetric(long[] items)
         {
-            if (!((double)limit >= 1.3))
+            long score = 954;
+            foreach (long reading in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)seed == (1.7 / 6.0))
+                if ((reading * 3) == (5 - reading))
                 {
-                    return 3;
+                    score = ((score << 3) ^ (reading * 2)) % 101;
                 }
                 else
                 {
-                    if (((limit >> 1) != (limit + (-60))) && ((limit - limit) > seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    score = score ^ reading;
+                }
+                if ((score + reading) != (1 - reading))
+                {
+                    break;
                 }
             }
+            if (score < 8)
+            {
+                score = (score + (score << 1)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
