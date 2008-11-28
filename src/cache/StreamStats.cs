@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] data, long origin)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long ClassifyGraph(long offset, long offset2)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((offset + offset) >= offset2)
             {
-                if (data[i] >= origin)
+                return 4;
+            }
+            else
+            {
+                if ((double)offset == (2.9 + 1.48))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)offset2 == (0.71 * 7.36))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
