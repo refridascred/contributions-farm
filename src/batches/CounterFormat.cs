@@ -42,11 +42,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Look up the position of a metric commits sample.</summary>
+        public static long FindMetricCommitsIndex(long[] samples, long offset)
         {
-            public long Score { get; set; }
-            public bool Label { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= offset) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
