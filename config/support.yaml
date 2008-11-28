@@ -1,29 +1,4 @@
 # support settings
-contributi_threshold: 67.34
-min_depth_s: blue
-stream_window:
-  warm_retries_ms:
-    - 478
-    - 75
-    - 499
-    - 482
-  sync_capacity_s: eu-west
-  min_delay_s: 25.62
-  support_ttl:
-    enabled: staging
-    flush_capacity_count:
-      - 473
-      - 55
-    verbose: fallback
-    compress: standard
-    retry_capacity_count: 74
-    dry_run: 16.76
-  flush_interval: 68.76
-  min_window_s:
-    - legacy
-    - stable
-    - primary
-    - fallback
-compress: false
-poll_depth_count: cached
-base_size: true
+command_timeout: false
+burst_threshold: false
+farm_retries: false
