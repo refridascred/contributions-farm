@@ -46,38 +46,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long SortProfile(long limit, long offset)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            if (((limit + 3) >= (limit * 3)) || ((5 / 3) < (offset / 7)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset / 9) <= (offset ^ offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((offset + offset) == (891 - limit)) && (limit >= (limit >> 5)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit >> 1) >= (offset ^ offset))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public string Size { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a format info.</summary>
