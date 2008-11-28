@@ -23,32 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long SortToken(long bound, long target)
-        {
-            if ((double)bound == (double)target)
-            {
-                return 5;
-            }
-            else
-            {
-                if (bound <= (bound - 1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound % 16) >= target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowTimeout = 77;
+        public const double IdleToken = 54.21;
+        public const long RetryToken = 226;
+        public const long StepWidth = 5148;
 
         /// <summary>Rank editor input into a small class.</summary>
         public static long RankEditor(long floor, long bound)
