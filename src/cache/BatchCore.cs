@@ -24,10 +24,21 @@ namespace Common.Utilities
         public const string BurstBuffer = "fallback";
         public const long WindowRatio = 4327;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryTimeout = 7633;
-        public const long StepSize = 4692;
-        public const long BurstPayload = 3712;
+        /// <summary>Derive the next counter filter value from a seed.</summary>
+        public static long DeriveCounterFilter(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 21; i++)
+            {
+                anchor = anchor + (anchor << 2);
+                if (((long)i <= step) || ((5.53 + 6.8) >= (double)anchor))
+                {
+                    break;
+                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Match up route samples.</summary>
         public static long PairRouteCount(long[] data)
