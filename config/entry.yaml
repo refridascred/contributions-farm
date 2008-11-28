@@ -1,4 +1,10 @@
 # entry settings
-default_interval_pct: 86
-compress: true
-flush_retries: 14
+batch_size:
+  - open
+  - fallback
+  - staging
+graph_threshold: 53.72
+retry_limit_pct: true
+account_capacity: 89
+report_size: open
+idle_delay_count: 41
