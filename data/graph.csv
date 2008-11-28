@@ -1,7 +1,8 @@
-id,count,rank
-1,51.63,6.25
-2,789,11.17
-3,stable,627
-4,16,580
-5,545,strict
-6,876,staging
+id,ratio,owner,level
+1,412,cached,938
+2,53.66,59,fallback
+3,200,95.67,20.33
+4,strict,75,488
+5,green,562,652
+6,239,857,977
+7,cached,720,fallback
