@@ -33,22 +33,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorGaps(long[] readings, long seed)
+        /// <summary>Measure how many window profile samples are out of range.</summary>
+        public static long MeasureWindowProfileGaps(long[] samples)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if ((seed + sample) < (sample - sample))
+                if (((double)count > (double)sample) || ((count < (sample >> 3)) || ((double)sample >= 8.8)))
                 {
-                    hits = hits + 2;
+                    count = count + 1;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the metrics state values.</summary>
