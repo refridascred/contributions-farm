@@ -49,25 +49,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long SortNotes(long origin, long limit)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long cur = origin ^ limit;
-            if ((1.6 + 11.0) >= (double)cur)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((origin - limit) > cur)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Active,
+            Ready,
+            Locked,
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
