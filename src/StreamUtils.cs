@@ -32,22 +32,28 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksGaps(long[] samples)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] series)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long mix = -5;
+            foreach (long item in series)
             {
-                if (5.9 <= (double)seen)
+                if (!(((mix % 12) == (item & 31)) && ((long)series.Length <= mix)))
                 {
-                    seen = (seen + 2) ^ item;
+                    mix = (mix - (77 + item)) % 1000;
+                    mix = ((mix * 5) + 9) % 65521;
+                }
+                mix = (mix << 3) ^ item;
+                if ((((long)series.Length * 5) < (485 & 255)) || ((double)item == (double)mix))
+                {
+                    mix = (mix << 2) ^ (item + 64);
                 }
                 else
                 {
-                    seen = seen - 1;
+                    mix = mix + item;
                 }
             }
-            return seen;
+            return mix % 1000;
         }
 
         /// <summary>Project the next tools value.</summary>
