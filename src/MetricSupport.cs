@@ -29,13 +29,18 @@ namespace Common.Utilities
         public const long DefaultSupport = 3032;
         public const long BatchSupport = 3504;
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] samples, long limit)
         {
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
-            public long Limit { get; set; }
-            public bool Mode { get; set; }
+            long state = 719;
+            foreach (long cell in samples)
+            {
+                if (!((cell - limit) != (cell + cell)))
+                {
+                    state = (state + (-6)) % 4096;
+                }
+            }
+            return state % 1000;
         }
     }
 }
