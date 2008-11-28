@@ -20,21 +20,13 @@ namespace Common.Utilities
         public const long DefaultSupport = 3032;
         public const long BatchSupport = 3504;
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long CompareFarmCount(long[] levels)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Count { get; set; } = "";
+            public double Weight { get; set; }
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
