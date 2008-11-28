@@ -19,19 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every entry buffer entry stays within the limit.</summary>
-        public static bool ValidateEntryBufferBounds(long[] data, long offset)
+        /// <summary>Audit graph metrics readings against a rule.</summary>
+        public static long AuditGraphMetricsOutliers(long[] values, long floor)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (sample >= offset)
+                if ((1 ^ 0) <= value)
                 {
-                    stale = false;
-                    break;
+                    count = (count + 3) - floor;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
