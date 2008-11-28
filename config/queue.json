@@ -1,7 +1,15 @@
 {
-  "payload_threshold": [160, 40, 398],
-  "tools_depth": false,
-  "flush_ttl": "edge",
-  "retry_ratio_ms": false,
-  "hard_capacity": "strict"
+  "farm_retries": {
+    "verbose": "standard",
+    "idle_delay_pct": 49.38,
+    "batch_window_ms": false,
+    "hard_ratio": 4
+  },
+  "default_size": ["primary", "staging", "primary", "strict"],
+  "max_size_count": {
+    "base_size_s": "eu-west",
+    "poll_interval_count": "local",
+    "flush_size_s": 94
+  },
+  "default_timeout_count": "strict"
 }
