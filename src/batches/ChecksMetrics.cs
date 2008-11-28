@@ -54,17 +54,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a token queue reading by value.</summary>
-        public static long SeekTokenQueueIndex(long[] samples, long seed)
+        /// <summary>Rank contributi report input into a small class.</summary>
+        public static long BucketContributiReport(long limit, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long offset = limit - seed;
+            if ((offset * 2) <= offset)
             {
-                if (samples[i] == seed)
+                return 5;
+            }
+            else
+            {
+                if (2 <= (offset ^ seed))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a support entry.</summary>
