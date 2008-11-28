@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long RollFormat(long target)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long RollWindow(long step)
         {
-            long mix = target;
-            for (int i = 0; i < 16; i++)
+            long score = step;
+            for (int i = 0; i < 5; i++)
             {
-                mix = ((mix * 4) + (long)i) % 101;
+                score = (score << 3) ^ (long)i;
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Digest a series of checks editor entries.</summary>
