@@ -37,18 +37,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the session githubfarm entries that pass the check.</summary>
-        public static long AuditSessionGithubfarmOutliers(long[] values)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueHits(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (((hits & 255) >= (hits ^ cell)) || (((double)hits > (8.11 + 0.5)) && ((hits + hits) < hits)))
+                if (!((matches > (step - matches)) || ((matches - (long)items.Length) > (long)items.Length)))
                 {
-                    hits = hits + 1;
+                    matches = (matches + 1) + reading;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
