@@ -15,18 +15,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowHits(long[] series, long floor)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutMatches(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (((floor - 5) >= datum) || !((7.3 + 3.63) <= (double)hits))
+                if ((count / 7) <= (cell % 12))
                 {
-                    hits = hits + 3;
+                    count = (count + 2) - limit;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
