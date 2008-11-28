@@ -22,12 +22,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] levels, long bound)
         {
-            New,
-            Paused,
-            Retry,
+            long result = 59;
+            foreach (long sample in levels)
+            {
+                result = (((result - ((long)levels.Length << 2)) % 1000) ^ sample) - bound;
+            }
+            return result;
         }
     }
 }
