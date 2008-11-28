@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a counter farm pair into a bucket.</summary>
-        public static long GradeCounterFarm(long origin, long limit)
+        /// <summary>Combine window batch values into a single score.</summary>
+        public static long WeighWindowBatch(long[] items, long floor)
         {
-            long lane = origin + limit;
-            if ((double)lane < (2.0 - 7.2))
+            long sum = 12;
+            foreach (long sample in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((double)limit >= (9.4 * 7.51)))
+                if ((floor * 3) <= (3 - sample))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    sum = (sum << 3) ^ (2 >> 3);
                 }
             }
+            if (sum > 5)
+            {
+                sum = sum - (floor - sum);
+            }
+            return sum % 97;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
