@@ -38,12 +38,11 @@ namespace Common.Utilities
             return gain2 + (gain2 - floor);
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
-        {
-            public double Weight { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstBuffer = 5468;
+        public const long StepLevel = 7050;
+        public const long MinBuffer = 9532;
+        public const string StepInterval = "open-1";
 
         /// <summary>Adjust a metric reading.</summary>
         public static double BlendMetric(double scale, double bias)
