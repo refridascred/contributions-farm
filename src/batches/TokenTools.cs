@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LookupBatchIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double MinQueue = 29.8;
+        public const double MinInterval = 30.21;
+        public const double IdleRatio = 44.63;
+        public const double BaseSpan = 72.1;
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long CountChecksHits(long[] series, long floor)
