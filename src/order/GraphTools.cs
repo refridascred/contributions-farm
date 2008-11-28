@@ -60,11 +60,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            public long Score { get; set; }
-            public double Total { get; set; }
+            public bool Total { get; set; }
+            public long Rank { get; set; }
+            public long Mode { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Match up support samples.</summary>
