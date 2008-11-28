@@ -42,21 +42,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long MatchBufferCount(long[] items)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Size { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Match up contributi samples.</summary>
