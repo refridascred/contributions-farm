@@ -36,11 +36,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenGaps(long[] items)
         {
-            public long Total { get; set; }
-            public long Weight { get; set; }
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (((9.08 >= (double)matches) && ((matches + matches) <= reading)) && (matches > (66 % 16)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the graph state values.</summary>
