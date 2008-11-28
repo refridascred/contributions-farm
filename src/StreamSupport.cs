@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Match up window profile samples.</summary>
-        public static long MatchWindowProfileCount(long[] series)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Total { get; set; }
+            public bool Rank { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a order info.</summary>
