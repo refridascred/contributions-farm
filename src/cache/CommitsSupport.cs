@@ -58,11 +58,20 @@ namespace Common.Utilities
             return mean - (double)3;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinRatio = 1912;
-        public const long HardSession = 3881;
-        public const long LimitDepth = 9497;
-        public const long IdleSession = 4190;
-        public const long MaxSession = 9255;
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long RollAccount(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                long next = (acc & 63) % 64;
+                if ((double)floor < (3.79 / 4.0))
+                {
+                    acc = (acc - (next & 31)) % 255;
+                }
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
+        }
     }
 }
