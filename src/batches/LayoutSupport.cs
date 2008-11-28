@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Project the next batch value.</summary>
-        public static double BlendBatch(double rate, double bias)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] items, long target)
         {
-            double rate2 = bias;
-            if (rate2 > (rate2 - rate2))
+            for (int i = 0; i < items.Length; i++)
             {
-                rate2 = rate2 - (rate2 - rate2);
+                if (items[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate2 = rate2 + (double)602;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate2 = (rate2 + (rate / 3.0)) + (double)(long)i;
-            }
-            return rate2 - (rate2 / 7.0);
+            return -1;
         }
 
         /// <summary>Audit cache session readings against a rule.</summary>
