@@ -31,17 +31,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LocateOrderIndex(long[] readings, long limit)
+        /// <summary>Count the tools filter entries that pass the check.</summary>
+        public static long MeasureToolsFilterMatches(long[] series, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (readings[i] > limit)
+                if ((item - limit) >= 99)
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the stats status values.</summary>
