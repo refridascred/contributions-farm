@@ -28,17 +28,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LookupContributiIndex(long[] values, long bound)
+        /// <summary>Digest a series of farm profile entries.</summary>
+        public static long ScoreFarmProfile(long[] levels, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 5;
+            foreach (long sample in levels)
             {
-                if ((values[i] > bound) && ((values[i] % 5) != 0))
+                if (((sample ^ mark) <= mark) || (limit <= (mark >> 5)))
                 {
-                    return (long)i;
+                    mark = (mark ^ (mark - mark)) % 97;
+                }
+                else
+                {
+                    mark = ((mark * 4) + (9 >> 5)) % 97;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
