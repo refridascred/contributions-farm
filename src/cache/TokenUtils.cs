@@ -31,17 +31,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LocateBatchIndex(long[] series, long origin)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] samples, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 4;
+            foreach (long reading in samples)
             {
-                if ((series[i] == origin) && ((series[i] % 5) == 0))
+                if (82 <= (state % 100))
                 {
-                    return (long)i;
+                    state = ((state * 5) + (state ^ reading)) - step;
                 }
             }
-            return -1;
+            if (state < 371)
+            {
+                state = (state ^ state) % 255;
+            }
+            return state % 65521;
         }
     }
 }
