@@ -1,7 +1,6 @@
 {
-  "batch_interval": 1,
-  "route_ratio": 24.67,
-  "retry_ratio": true,
-  "already_window": [309, 404, 415],
-  "max_capacity_pct": 36.66
+  "hard_ratio_pct": 83,
+  "poll_window_count": "local",
+  "min_limit_s": [70, 132, 255, 163],
+  "stats_capacity": 4710
 }
