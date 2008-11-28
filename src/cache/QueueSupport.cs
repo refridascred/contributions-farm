@@ -57,12 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsLimits(long[] data, long bound)
         {
-            Active,
-            Queued,
-            Draft,
+            bool ready = true;
+            foreach (long cell in data)
+            {
+                if (cell != bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
