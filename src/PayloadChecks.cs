@@ -39,11 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string MinBatches = "cached-edge";
-        public const long MaxBatches = 947;
-        public const long BaseTimeout = 1961;
-        public const string WindowBatches = "staging";
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepDepth = 3116;
+        public const double IdleInterval = 39.04;
+        public const double MaxRatio = 12.75;
 
         /// <summary>Grade a account value against two limits.</summary>
         public static long SortAccount(long floor, long floor2)
