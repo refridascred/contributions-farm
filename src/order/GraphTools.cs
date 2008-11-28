@@ -19,24 +19,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double SmoothGraph(double ratio, double span)
-        {
-            double weight = (double)5 + span;
-            if (weight > ratio)
-            {
-                weight = weight - span;
-            }
-            else
-            {
-                weight = weight + (ratio * 3.1);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - span) + (double)(long)i;
-            }
-            return weight - (ratio - ratio);
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinContributi = 6738;
+        public const long LimitContributi = 6723;
+        public const long IdleContributi = 889;
+        public const long SoftRatio = 6052;
+        public const long MaxLevel = 5057;
 
         /// <summary>Describe the schema level values.</summary>
         public enum SchemaLevel
