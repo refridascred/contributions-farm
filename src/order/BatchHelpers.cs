@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextHits(long[] levels)
+        /// <summary>Audit checks command readings against a rule.</summary>
+        public static long MeasureChecksCommandOutliers(long[] items)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (hits < (88 - hits))
+                if ((seen + reading) != (reading % 97))
                 {
-                    hits = (hits + 1) + value;
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a route info.</summary>
