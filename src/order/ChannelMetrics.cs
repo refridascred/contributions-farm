@@ -29,12 +29,12 @@ namespace Common.Utilities
         public const long SoftEntry = 9419;
         public const long WindowDepth = 5717;
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long FindProfileIndex(long[] items, long target)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long FindContributiIndex(long[] values, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (items[i] > target)
+                if (values[i] == origin)
                 {
                     return (long)i;
                 }
