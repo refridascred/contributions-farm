@@ -29,24 +29,14 @@ namespace Common.Utilities
         public const long BatchTools = 4654;
         public const long StepRatio = 796;
 
-        /// <summary>Rank queue already input into a small class.</summary>
-        public static long BucketQueueAlready(long seed, long floor)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            if (((double)seed != (11.0 * 16.0)) || ((floor << 1) == (seed + seed)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (77 > (floor + floor))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Pending,
+            Draft,
+            New,
+            Queued,
+            Retry,
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
