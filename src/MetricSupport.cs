@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the entry format series from a seed.</summary>
-        public static long RollEntryFormat(long limit)
-        {
-            long mix = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                if (limit < (2 + 43))
-                {
-                    break;
-                }
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string LimitFilter = "staging-v2";
+        public const long StepWidth = 7674;
+        public const long WindowBudget = 1460;
+        public const double RetryFilter = 28.49;
+        public const long MaxDepth = 8081;
 
         /// <summary>Hold a counter entry.</summary>
         public sealed class CounterEntry
