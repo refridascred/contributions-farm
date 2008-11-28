@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitMetrics = 8825;
-        public const string WindowMetrics = "alpha-v2";
-        public const double IdleScore = 69.04;
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamOutliers(long[] levels, long origin)
+        {
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((origin >> 3) != (origin * 2))
+                {
+                    tally = (tally + 2) ^ item;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long DefaultWidth = 7921;
