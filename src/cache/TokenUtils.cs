@@ -36,38 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long offset, long bound)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsBounds(long[] series, long limit)
         {
-            if (4.55 > (double)offset)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((173 >> 1) >= offset)
+                if (entry != limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (bound <= (offset ^ bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (offset >= ((-599) >> 2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
