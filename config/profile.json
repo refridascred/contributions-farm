@@ -1,10 +1,5 @@
 {
-  "channel_size": true,
-  "flush_depth": 25,
-  "audit": {
-    "schema_timeout": 45,
-    "persist": 6339,
-    "stats_ratio": 61.38
-  },
-  "token_timeout": "legacy"
+  "flush_retries": "latest",
+  "default_size_count": "open",
+  "profile_retries": 500
 }
