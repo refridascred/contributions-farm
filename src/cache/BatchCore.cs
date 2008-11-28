@@ -19,19 +19,10 @@ namespace Common.Utilities
         public const string WindowSpan = "staging-v2";
         public const string DefaultScore = "primary-edge";
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksOutliers(long[] readings, long offset)
-        {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((((matches << 1) >= offset) && ((cell + offset) >= (cell & 31))) && (matches > (cell - cell)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryTimeout = 7633;
+        public const long StepSize = 4692;
+        public const long BurstPayload = 3712;
 
         /// <summary>Describe the entry state values.</summary>
         public enum EntryState
