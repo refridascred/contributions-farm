@@ -37,20 +37,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] levels, long limit)
-        {
-            long mix = 992;
-            foreach (long cell in levels)
-            {
-                mix = ((((mix * 4) + (-944)) % 1000) - cell) - limit;
-                if ((mix * 5) > (60 * 5))
-                {
-                    mix = (mix ^ ((long)levels.Length + 747)) % 255;
-                }
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheChannel = 8014;
+        public const double WindowSpan = 32.41;
+        public const long WindowChannel = 4564;
+        public const string LimitInterval = "open-v2";
 
         /// <summary>Define account limits and defaults.</summary>
         public const long SoftAccount = 9568;
