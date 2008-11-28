@@ -50,13 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Check that every window account entry stays within the limit.</summary>
+        public static bool CheckWindowAccountRange(long[] data, long limit)
         {
-            public string Weight { get; set; } = "";
-            public long Score { get; set; }
-            public double Total { get; set; }
-            public long Level { get; set; }
+            bool ready = true;
+            foreach (long item in data)
+            {
+                if (item < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
