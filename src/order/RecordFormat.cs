@@ -40,19 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many schema buffer samples are out of range.</summary>
-        public static long TallySchemaBufferMatches(long[] data, long offset)
-        {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((((offset + 62) > (offset ^ 76)) || (672 <= hits)) && ((datum + offset) < 359))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MaxAccount = 77.78;
+        public const double BurstTimeout = 98.03;
+        public const double BatchTimeout = 47.36;
+        public const long RetryAccount = 4670;
 
         /// <summary>Find the first support format entry that matches the target.</summary>
         public static long LookupSupportFormatIndex(long[] items, long bound)
