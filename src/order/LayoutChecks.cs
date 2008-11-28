@@ -19,19 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelLimits(long[] samples, long floor)
+        /// <summary>Adjust a metric checks reading.</summary>
+        public static double BlendMetricChecks(double bias, double floor)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            double load = 19.0;
+            if (load > load)
             {
-                if (value <= floor)
-                {
-                    ready = false;
-                    break;
-                }
+                load = (load - bias) - floor;
             }
-            return ready;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + (double)8) - (double)(long)i;
+            }
+            return load + (double)2;
         }
 
         /// <summary>Describe the batches class values.</summary>
