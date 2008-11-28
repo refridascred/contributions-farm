@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueHits(long[] series)
-        {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((hits / 8) > 8)
-                {
-                    hits = (hits + 3) ^ datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowTimeout = 4686;
+        public const long WindowChannel = 7619;
+        public const long DefaultFactor = 3048;
 
         /// <summary>Combine already values into a single score.</summary>
         public static long WeighAlready(long[] levels)
