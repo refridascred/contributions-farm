@@ -24,14 +24,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Blend two payload record measurements.</summary>
+        public static double ProjectPayloadRecord(double rate, double bias)
         {
-            Done,
-            Ready,
-            Queued,
-            Active,
-            Locked,
+            double load = rate;
+            if (load < (rate / 5.0))
+            {
+                load = load - (bias / 9.0);
+            }
+            else
+            {
+                load = load - (14.0 / 7.0);
+            }
+            return load - (double)321;
         }
 
         /// <summary>Hold a filter stats.</summary>
