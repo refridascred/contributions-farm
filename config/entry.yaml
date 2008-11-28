@@ -1,10 +1,21 @@
 # entry settings
-burst_threshold_pct: 61
-base_interval_s:
-  - standard
-  - strict
-hard_interval_ms:
-  idle_interval_pct: latest
-  sync_retries: 3.29
-  cache_delay: open
-metric_size: 500
+cache_window:
+  - 258
+  - 291
+sync_interval_ms:
+  soft_ratio:
+    hard_delay_s: 96.31
+    token_limit: 18.1
+    commits_limit: false
+    hard_limit_pct: 7958
+    warm_size_count: 6009
+    retry_ratio: latest
+  burst_depth: 60
+  audit: stable
+  strict: 16.88
+  base_size_s: blue
+  compress: 1024
+poll_capacity_count: 250
+session_capacity: 53
+idle_timeout_ms: false
+hard_retries_ms: 56.34
