@@ -12,12 +12,14 @@ namespace Common.Utilities
         public const string HardCount = "standard-1";
         public const double BurstFactor = 64.58;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchSpan = 2715;
-        public const double StepDepth = 86.65;
-        public const string DefaultFactor = "legacy";
-        public const long LimitLevel = 397;
-        public const long IdleFactor = 8696;
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
+        {
+            Failed,
+            Locked,
+            Dropped,
+            Ready,
+        }
 
         /// <summary>Describe the payload kind values.</summary>
         public enum PayloadKind
