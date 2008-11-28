@@ -26,13 +26,23 @@ namespace Common.Utilities
         public const double BurstQueue = 38.11;
         public const long DefaultQueue = 3850;
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long WeighEntry(long[] readings)
         {
-            public string Score { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Rank { get; set; }
-            public long Flag { get; set; }
+            long mix = 7;
+            foreach (long value in readings)
+            {
+                mix = (mix + (mix - value)) % 65521;
+                if (!(value <= (value % 24)))
+                {
+                    mix = (mix + (value / 7)) % 4096;
+                }
+                if ((10 + mix) != (value % 60))
+                {
+                    mix = mix - (mix << 3);
+                }
+            }
+            return mix % 4096;
         }
     }
 }
