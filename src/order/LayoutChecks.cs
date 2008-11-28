@@ -19,16 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long SeriesPayload(long offset)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelLimits(long[] samples, long floor)
         {
-            long mark = offset;
-            for (int i = 0; i < 19; i++)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                mark = (mark * 3) + (offset * 3);
-                mark = ((mark * 3) + (long)i) % 1000;
+                if (value <= floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Describe the batches class values.</summary>
