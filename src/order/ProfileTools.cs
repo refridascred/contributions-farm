@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            Stale,
+            Draft,
             Pending,
-            Locked,
+            Failed,
         }
 
         /// <summary>Describe the graph status values.</summary>
