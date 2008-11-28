@@ -34,19 +34,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsBounds(long[] values, long offset)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample >= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Flag { get; set; }
+            public long Total { get; set; }
+            public bool Stamp { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Define already limits and defaults.</summary>
