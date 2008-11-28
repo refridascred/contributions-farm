@@ -27,17 +27,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LookupMetricIndex(long[] values, long bound)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Limit { get; set; }
+            public long Count { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
