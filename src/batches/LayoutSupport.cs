@@ -32,17 +32,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first cache buffer entry that matches the target.</summary>
-        public static long LocateCacheBufferIndex(long[] levels, long offset)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Label { get; set; }
+            public long Level { get; set; }
+            public string Rank { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
