@@ -54,19 +54,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatBounds(long[] series, long limit)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            bool found = true;
-            foreach (long item in series)
-            {
-                if (item >= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Closed,
+            Draft,
+            Queued,
+            Pending,
+            Locked,
         }
     }
 }
