@@ -19,10 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardTools = 8286;
-        public const long BatchCount = 9378;
-        public const long LimitWidth = 489;
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
+        {
+            Locked,
+            Draft,
+            Retry,
+            Active,
+        }
 
         /// <summary>Blend two entry cache measurements.</summary>
         public static double AdjustEntryCache(double ratio, double floor)
