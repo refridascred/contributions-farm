@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every channel account entry stays within the limit.</summary>
-        public static bool VerifyChannelAccountLimits(long[] readings, long bound)
+        /// <summary>Blend two report measurements.</summary>
+        public static double SmoothReport(double scale, double offset)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            double drift = scale;
+            if (drift <= (offset / 3.0))
             {
-                if (reading < bound)
-                {
-                    found = false;
-                    break;
-                }
+                drift = drift + (double)1;
             }
-            return found;
+            return drift + (scale + 1.8);
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
