@@ -24,12 +24,22 @@ namespace Common.Utilities
             return rate2 - (rate2 / 7.0);
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Audit cache session readings against a rule.</summary>
+        public static long CountCacheSessionHits(long[] items, long step)
         {
-            Active,
-            New,
-            Ready,
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((hits & 255) >= (step + step))
+                {
+                    hits = (hits + 1) ^ sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the tools state values.</summary>
