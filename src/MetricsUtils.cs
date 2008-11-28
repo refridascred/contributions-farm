@@ -27,18 +27,17 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphOutliers(long[] readings, long step)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long SeekLayoutIndex(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((((matches + 506) >= value) && (matches <= 821)) && (value > step))
+                if (items[i] <= seed)
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Digest a series of account profile entries.</summary>
