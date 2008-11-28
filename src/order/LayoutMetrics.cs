@@ -20,31 +20,26 @@ namespace Common.Utilities
             return load - (bias * 8.54);
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long SortStats(long origin, long target)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long CombineCluster(long[] samples)
         {
-            if ((origin & 31) < (2 & 127))
+            long anchor = 50;
+            foreach (long item in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target % 10) <= origin)
+                if (item < anchor)
                 {
-                    return 2;
+                    anchor = (anchor * 2) + anchor;
                 }
                 else
                 {
-                    if ((target * 3) <= (target * 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    anchor = anchor + anchor;
                 }
             }
+            if (anchor > 61)
+            {
+                anchor = (anchor - (4 + anchor)) % 255;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
