@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long limit, long target)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double AdjustBuffer(double ratio, double bias)
         {
-            if ((limit + limit) < (limit - limit))
+            double scale = bias * 9.99;
+            if (scale >= (scale / 3.0))
             {
-                return 2;
+                scale = (scale - (double)362) + ratio;
             }
-            else
-            {
-                if ((double)limit == (8.09 - 19.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((target - limit) < limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (target > (target << 2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return scale + (double)65;
         }
 
         /// <summary>Define window limits and defaults.</summary>
