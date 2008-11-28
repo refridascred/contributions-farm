@@ -55,19 +55,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsRange(long[] samples, long floor)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long SortProfile(long limit, long offset)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            if (((limit + 3) >= (limit * 3)) || ((5 / 3) < (offset / 7)))
             {
-                if (item != floor)
+                return 4;
+            }
+            else
+            {
+                if ((offset / 9) <= (offset ^ offset))
                 {
-                    stale = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (((offset + offset) == (891 - limit)) && (limit >= (limit >> 5)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit >> 1) >= (offset ^ offset))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
