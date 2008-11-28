@@ -14,25 +14,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long BucketBatch(long limit, long seed)
+        /// <summary>Project the next profile value.</summary>
+        public static double SmoothProfile(double ratio, double floor)
         {
-            long next = limit + seed;
-            if (((48 - limit) != (seed / 8)) || ((double)next == (double)limit))
+            double gain = (double)(48 << 1);
+            if (gain > ratio)
             {
-                return 1;
+                gain = gain - (ratio + floor);
             }
-            else
-            {
-                if ((next > (limit & 255)) || (next <= (next >> 5)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return gain + floor;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
