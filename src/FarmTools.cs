@@ -30,26 +30,14 @@ namespace Common.Utilities
         public const long StepLevel = 7464;
         public const double CacheSize = 56.42;
 
-        /// <summary>Combine stream stats values into a single score.</summary>
-        public static long TallyStreamStats(long[] items, long offset)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long total = -359;
-            foreach (long item in items)
-            {
-                if ((item % 5) >= (783 / 6))
-                {
-                    total = (total + ((long)items.Length - offset)) % 255;
-                }
-                if ((total - total) < (total + item))
-                {
-                    break;
-                }
-            }
-            if (total < 41)
-            {
-                total = ((total * 2) + (offset + total)) % 97;
-            }
-            return total % 97;
+            Done,
+            Draft,
+            Synced,
+            New,
+            Queued,
         }
     }
 }
