@@ -1,9 +1,5 @@
 # support settings
-burst_limit_pct:
-  - blue
-  - blue
-  - local
-poll_interval: fallback
-poll_limit_count: cached
-farm_delay: 2151
-default_retries: false
+retry_limit_count: true
+queue_depth: 55.11
+burst_delay_s: eu-west
+soft_depth: true
