@@ -19,21 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long DeriveEditor(long origin)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long sum = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((sum * 5) >= origin)
-                {
-                    sum = ((sum * 2) + (origin - sum)) % 65521;
-                    sum = ((sum << 3) ^ 4) % 97;
-                    continue;
-                }
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
+            Synced,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Hold a order info.</summary>
