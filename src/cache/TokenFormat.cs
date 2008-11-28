@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Look up the position of a stats commits sample.</summary>
-        public static long SeekStatsCommitsIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MaxTimeout = 19.67;
+        public const double CacheCount = 19.64;
+        public const long BatchSupport = 8356;
 
         /// <summary>Check that every entry buffer entry stays within the limit.</summary>
         public static bool ValidateEntryBufferBounds(long[] data, long offset)
