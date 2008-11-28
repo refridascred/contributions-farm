@@ -23,15 +23,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] levels, long bound)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandRange(long[] data, long limit)
         {
-            long result = 59;
-            foreach (long sample in levels)
+            bool valid = true;
+            foreach (long item in data)
             {
-                result = (((result - ((long)levels.Length << 2)) % 1000) ^ sample) - bound;
+                if (item >= limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return result;
+            return valid;
         }
     }
 }
