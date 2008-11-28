@@ -1,6 +1,8 @@
 {
-  "cache_interval": "legacy",
-  "stream_capacity": ["primary", "standard"],
-  "verbose": "green",
-  "max_interval_count": false
+  "default_size_ms": false,
+  "poll_ttl": 100,
+  "audit": 1698,
+  "buffer_threshold": [110, 450, 398, 413],
+  "sync_ttl": "edge",
+  "max_limit": [109, 193, 180, 383]
 }
