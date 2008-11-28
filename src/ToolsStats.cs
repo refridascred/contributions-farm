@@ -67,18 +67,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the metrics route entries that pass the check.</summary>
-        public static long AuditMetricsRouteHits(long[] levels, long offset)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double AdjustFarm(double bias, double offset)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            double ratio = bias;
+            if (ratio > (bias * 8.0))
             {
-                if (offset > (670 << 3))
-                {
-                    hits = (hits + 1) ^ datum;
-                }
+                ratio = ratio - offset;
             }
-            return hits;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + (bias / 7.0)) + (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Match up commits samples.</summary>
