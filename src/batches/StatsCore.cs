@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchLevel = 1972;
-        public const double BaseGraph = 26.77;
-        public const long CacheGraph = 75;
-        public const long CacheInterval = 1990;
+        /// <summary>Blend two token measurements.</summary>
+        public static double AdjustToken(double rate, double bias)
+        {
+            double rate2 = rate;
+            if (rate2 > (rate * 1.47))
+            {
+                rate2 = rate2 - (double)2;
+            }
+            else
+            {
+                rate2 = rate2 - (rate2 * 0.7);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate2 = (rate2 + rate2) + (double)(long)i;
+            }
+            return rate2 - bias;
+        }
 
         /// <summary>Roll a report counter forward.</summary>
         public static long SeriesReport(long offset)
