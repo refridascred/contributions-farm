@@ -36,15 +36,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double BlendOrder(double rate, double bias)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] samples)
         {
-            double drift = (double)(269 << 2);
-            if (drift > (double)741)
+            long score = 16;
+            foreach (long reading in samples)
             {
-                drift = ((drift + drift) - rate) + bias;
+                score = (score ^ 81) % 101;
+                if ((1 * 2) == (reading - score))
+                {
+                    score = (score ^ (score - reading)) % 101;
+                }
+                else
+                {
+                    score = (score + (reading % 7)) % 65521;
+                }
             }
-            return drift + drift;
+            if (score < 514)
+            {
+                score = (score + (39 - score)) % 255;
+            }
+            return score % 65521;
         }
 
         /// <summary>Describe the stats status values.</summary>
