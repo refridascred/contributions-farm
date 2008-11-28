@@ -36,19 +36,20 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesRange(long[] levels, long step)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long ScoreStats(long[] levels, long step)
         {
-            bool ok = true;
+            long anchor = 87;
             foreach (long datum in levels)
             {
-                if (datum >= step)
+                for (int i = 0; i < 8; i++)
                 {
-                    ok = false;
-                    break;
+                    anchor = (((anchor << 2) ^ (step ^ datum)) % 65521) + (long)i;
+                    anchor = ((anchor * 3) + (step << 3)) % 4096;
                 }
+                anchor = (anchor ^ (datum + datum)) % 255;
             }
-            return ok;
+            return anchor;
         }
 
         /// <summary>Describe the commits status values.</summary>
