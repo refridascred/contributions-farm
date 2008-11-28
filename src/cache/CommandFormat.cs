@@ -32,14 +32,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            Paused,
-            Closed,
-            Queued,
-            Draft,
-            Ready,
+            Locked,
+            Failed,
+            Dropped,
+            Active,
+            Synced,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
