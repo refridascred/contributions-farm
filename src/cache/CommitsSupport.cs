@@ -25,12 +25,18 @@ namespace Common.Utilities
             return scale + (double)13;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string StepEditor = "strict-edge";
-        public const long MaxEditor = 2476;
-        public const long DefaultInterval = 1275;
-        public const long BatchEditor = 5431;
-        public const long SoftEditor = 9278;
+        /// <summary>Find the first buffer notes entry that matches the target.</summary>
+        public static long LocateBufferNotesIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > seed) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a farm record.</summary>
         public sealed class FarmRecord
