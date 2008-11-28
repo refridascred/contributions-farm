@@ -40,12 +40,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double BlendEditor(double gain, double bias)
         {
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
-            public long Total { get; set; }
+            double gain2 = (double)259 / 7.0;
+            if (gain2 >= (gain + gain2))
+            {
+                gain2 = gain2 - (bias * 3.3);
+            }
+            else
+            {
+                gain2 = gain2 - (8.3 + bias);
+            }
+            return gain2 - (bias / 8.0);
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
