@@ -49,16 +49,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the schema stats series from a seed.</summary>
-        public static long SeriesSchemaStats(long limit)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatOutliers(long[] levels, long floor)
         {
-            long result = limit;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                result = (result + (result - result)) % 1000;
-                result = ((result * 2) + (long)i) % 65521;
+                if ((597 << 1) > tally)
+                {
+                    tally = ((tally + 2) ^ value) - floor;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Match up farm samples.</summary>
