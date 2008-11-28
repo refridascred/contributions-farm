@@ -26,25 +26,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long SortLayout(long offset, long step)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long SeekStreamIndex(long[] readings, long origin)
         {
-            long gap = offset - step;
-            if (((gap + offset) <= (779 - offset)) && ((double)gap >= (12.0 * 0.3)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((gap << 1) > (step ^ gap))
+                if ((readings[i] <= origin) && ((readings[i] % 2) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a already record.</summary>
