@@ -19,12 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string SoftBatches = "legacy";
-        public const long MinScore = 6362;
-        public const double SoftSize = 23.53;
-        public const double LimitBatches = 71.09;
-        public const double BurstCount = 1.47;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftMetrics = 6092;
+        public const long LimitRatio = 7444;
+        public const long SoftCount = 3563;
+        public const long MinTimeout = 1381;
+        public const long RetryMetrics = 1419;
 
         /// <summary>Rank context payload input into a small class.</summary>
         public static long SortContextPayload(long floor, long offset)
