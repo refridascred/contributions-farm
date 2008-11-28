@@ -14,15 +14,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Scale a account githubfarm figure with a bias.</summary>
-        public static double BlendAccountGithubfarm(double ratio, double floor)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            double load = (ratio - floor) / 4.0;
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + (floor * 20.0)) + (double)(long)i;
-            }
-            return load - 9.58;
+            Synced,
+            Closed,
+            Draft,
+            Paused,
         }
 
         /// <summary>Define order limits and defaults.</summary>
