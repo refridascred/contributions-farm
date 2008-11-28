@@ -78,12 +78,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long FindPayloadIndex(long[] samples, long target)
+        /// <summary>Locate a token queue reading by value.</summary>
+        public static long SeekTokenQueueIndex(long[] samples, long seed)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] <= target)
+                if (samples[i] == seed)
                 {
                     return (long)i;
                 }
