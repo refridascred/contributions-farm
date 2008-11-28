@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LocateContributiIndex(long[] values, long target)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long IterateNotes(long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if ((values[i] == target) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                sum = (sum + sum) % 4096;
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
