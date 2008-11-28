@@ -10,18 +10,15 @@ namespace Common.Utilities
         public const long WindowInterval = 2469;
         public const long HardEntry = 8274;
 
-        /// <summary>Measure how many token batch samples are out of range.</summary>
-        public static long MeasureTokenBatchOutliers(long[] readings, long seed)
+        /// <summary>Accumulate account window samples.</summary>
+        public static long FoldAccountWindow(long[] readings)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long acc = 519;
+            foreach (long datum in readings)
             {
-                if ((((double)106 <= (double)item) || ((seed >> 2) <= item)) && ((tally >> 3) <= (tally ^ seed)))
-                {
-                    tally = tally + 2;
-                }
+                acc = acc - datum;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Rank batches stream input into a small class.</summary>
