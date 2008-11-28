@@ -16,22 +16,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up farm account samples.</summary>
-        public static long CompareFarmAccountCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitWidth = 9384;
+        public const string HardSpan = "staging-v2";
+        public const double LimitSpan = 18.8;
+        public const string StepWidth = "strict-v2";
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long DigestSchema(long[] samples)
