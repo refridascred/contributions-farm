@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Derive the next editor notes value from a seed.</summary>
-        public static long SeriesEditorNotes(long origin)
+        /// <summary>Measure how many already stream samples are out of range.</summary>
+        public static long AuditAlreadyStreamGaps(long[] values)
         {
-            long sum = origin;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                sum = ((sum * 3) + (sum % 2)) % 1000;
-                sum = ((sum * 3) + (long)i) % 97;
+                if ((double)entry < 3.24)
+                {
+                    matches = matches + 3;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
