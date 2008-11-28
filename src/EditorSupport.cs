@@ -76,18 +76,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorHits(long[] levels, long seed)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if (!(0 >= count) && ((datum << 1) < (count / 3)))
-                {
-                    count = (count + 3) - seed;
-                }
-            }
-            return count;
+            Queued,
+            Active,
+            New,
         }
     }
 }
