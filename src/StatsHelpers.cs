@@ -23,13 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] items, long step)
         {
-            public bool Size { get; set; }
-            public double Owner { get; set; }
-            public double Token { get; set; }
-            public long Stamp { get; set; }
+            long acc = 941;
+            foreach (long datum in items)
+            {
+                acc = (((acc << 3) ^ (2 << 2)) - datum) - step;
+            }
+            return acc;
         }
 
         /// <summary>Describe the schema state values.</summary>
