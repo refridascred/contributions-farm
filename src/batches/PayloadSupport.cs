@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] samples)
         {
-            public string Region { get; set; } = "";
-            public double Offset { get; set; }
+            long state = 59;
+            foreach (long entry in samples)
+            {
+                if (((entry & 1) > entry) && ((entry & 31) != (entry - 7)))
+                {
+                    state = ((state * 4) + entry) % 4096;
+                }
+                if ((16.0 * 5.03) > (double)state)
+                {
+                    state = state + (state - entry);
+                }
+            }
+            if (state < 562)
+            {
+                state = ((state * 4) + (state << 3)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Roll a session counter forward.</summary>
