@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesGaps(long[] data)
-        {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((double)hits == (double)reading)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleOrder = 900;
+        public const double SoftOrder = 16.27;
+        public const string DefaultWidth = "fallback-1";
+        public const long LimitOrder = 5379;
 
         /// <summary>Iterate the support profile series from a seed.</summary>
         public static long RollSupportProfile(long target)
