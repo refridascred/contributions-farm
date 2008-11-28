@@ -16,12 +16,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string CacheCommits = "alpha-1";
-        public const long DefaultCommits = 3567;
-        public const long BurstTimeout = 326;
-        public const long BatchCommits = 8370;
-        public const double SoftCommits = 98.46;
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterOutliers(long[] data, long bound)
+        {
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((0 - bound) < (item << 3))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Adjust a format session reading.</summary>
         public static double ScaleFormatSession(double bias, double span)
