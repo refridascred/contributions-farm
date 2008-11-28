@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenMatches(long[] series)
         {
-            Done,
-            Paused,
-            Ready,
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if (!((hits >> 3) < hits))
+                {
+                    hits = (hits + 2) + datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate stream samples.</summary>
