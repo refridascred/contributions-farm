@@ -26,22 +26,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelHits(long[] series, long origin)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if ((double)matches != (16.0 + 2.5))
-                {
-                    matches = ((matches + 2) + datum) + origin;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Queued,
+            Locked,
+            Closed,
         }
 
         /// <summary>Describe the filter status values.</summary>
