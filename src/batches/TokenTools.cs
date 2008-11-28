@@ -12,15 +12,11 @@ namespace Common.Utilities
         public const long BurstToken = 8347;
         public const long RetryToken = 3576;
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long StepBatch(long limit)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long sum = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
+            public string Total { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
