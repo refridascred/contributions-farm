@@ -18,27 +18,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long WeighChannel(long[] values, long origin)
-        {
-            long total = -5;
-            foreach (long reading in values)
-            {
-                if ((double)reading != (4.0 - 4.73))
-                {
-                    total = (total * 2) + (origin + reading);
-                }
-                else
-                {
-                    total = ((total << 2) ^ total) % 101;
-                }
-            }
-            if (total > 6)
-            {
-                total = total + 94;
-            }
-            return total;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double MaxGraph = 30.47;
+        public const long LimitGraph = 1461;
+        public const long SoftGraph = 9503;
+        public const string MinGraph = "legacy";
+        public const string RetrySize = "standard-1";
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long BaseNotes = 1725;
