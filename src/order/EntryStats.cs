@@ -28,21 +28,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long MatchToolsCount(long[] data)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LocateSessionIndex(long[] items, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (items[i] <= floor)
                 {
-                    if ((data[i] ^ data[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the farm state values.</summary>
