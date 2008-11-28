@@ -59,11 +59,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Roll a route report counter forward.</summary>
+        public static long StepRouteReport(long origin)
         {
-            public bool Offset { get; set; }
-            public long Count { get; set; }
+            long acc = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
