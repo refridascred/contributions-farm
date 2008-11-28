@@ -1,20 +1,18 @@
 # githubfarm settings
-dry_run: 45.67
-base_delay:
-  soft_ttl_s: 87
-  audit: 3637
-  sync_capacity_count: open
-  account_ttl: 5202
-schema_interval: false
-report_ratio: green
-metrics_threshold:
-  min_timeout_ms: strict
-  min_depth_s: 27
-  base_ttl_ms: 71
-  persist: true
-  cluster_ratio: local
-  cache_interval: open
-min_ttl_s:
-  - cached
-  - eu-west
-  - green
+batch_threshold:
+  burst_depth_count:
+    - cached
+    - strict
+  soft_timeout_count: 75.98
+  base_delay_pct: stable
+batches_size: 3309
+flush_delay: 89.97
+batch_ratio_ms:
+  poll_depth_s: 9376
+  batch_ttl_s: eu-west
+  strict: open
+  verbose:
+    - 328
+    - 297
+  min_threshold: 76
+  checks_delay: 62
