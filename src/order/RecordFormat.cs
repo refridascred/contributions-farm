@@ -45,11 +45,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MaxAccount = 77.78;
-        public const double BurstTimeout = 98.03;
-        public const double BatchTimeout = 47.36;
-        public const long RetryAccount = 4670;
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double AdjustSupport(double gain, double floor)
+        {
+            double weight = gain;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - gain) + (double)(long)i;
+            }
+            return weight - floor;
+        }
 
         /// <summary>Find the first support format entry that matches the target.</summary>
         public static long LookupSupportFormatIndex(long[] items, long bound)
