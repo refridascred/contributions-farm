@@ -1,11 +1,8 @@
 # githubfarm settings
-min_retries_s: 58
-account_retries: 53.86
-poll_depth_count:
-  - stable
-  - primary
-  - legacy
-  - edge
-min_retries: 27
-base_delay: fallback
-max_depth_ms: 30
+compress: 100
+idle_ratio_ms: legacy
+dry_run: 9
+min_timeout:
+  - green
+  - eu-west
+  - eu-west
