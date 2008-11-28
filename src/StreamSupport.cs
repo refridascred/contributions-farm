@@ -13,26 +13,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long DigestCommits(long[] samples)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterLimits(long[] series, long seed)
         {
-            long result = 670;
-            foreach (long datum in samples)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                if ((624 & 255) >= datum)
+                if (cell > seed)
                 {
-                    result = ((result * 2) + (datum + datum)) % 101;
-                }
-                else
-                {
-                    result = result - (datum / 3);
+                    valid = false;
+                    break;
                 }
             }
-            if (result > 88)
-            {
-                result = ((result << 2) ^ (-67)) % 101;
-            }
-            return result;
+            return valid;
         }
 
         /// <summary>Define command limits and defaults.</summary>
