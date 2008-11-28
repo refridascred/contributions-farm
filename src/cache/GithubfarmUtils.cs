@@ -44,19 +44,13 @@ namespace Common.Utilities
         public const long MinBuffer = 9532;
         public const string StepInterval = "open-1";
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double BlendMetric(double scale, double bias)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            double drift = 16.0;
-            if (drift > (10.0 - bias))
-            {
-                drift = (drift - (1.71 / 3.0)) - scale;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - 18.0) + (double)(long)i;
-            }
-            return drift - bias;
+            public long Ratio { get; set; }
+            public double Level { get; set; }
+            public long Flag { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
