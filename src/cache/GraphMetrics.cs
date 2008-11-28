@@ -33,13 +33,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            New,
-            Dropped,
-            Pending,
-            Active,
+            public long Ratio { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Describe the context phase values.</summary>
