@@ -20,13 +20,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
-        {
-            public long Size { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Level { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryBuffer = 3293;
+        public const long BurstTimeout = 771;
+        public const long WindowBuffer = 3070;
+        public const double MaxBuffer = 6.63;
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long MeasureChecksGaps(long[] items, long seed)
