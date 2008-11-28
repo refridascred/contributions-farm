@@ -61,15 +61,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long bound)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long total = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
+            public long Limit { get; set; }
+            public bool Token { get; set; }
+            public bool Rank { get; set; }
+            public double Region { get; set; }
         }
     }
 }
