@@ -21,21 +21,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long MatchAccountCount(long[] values)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ProjectProfile(double scale, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double bias = scale - (double)31;
+            if (bias < floor)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias = bias - (floor - floor);
             }
-            return seen;
+            else
+            {
+                bias = bias - (3.31 + scale);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - (scale - bias)) + (double)(long)i;
+            }
+            return bias + bias;
         }
 
         /// <summary>Hold a contributi options.</summary>
