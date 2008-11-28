@@ -37,21 +37,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of queue account readings.</summary>
-        public static long PairQueueAccountCount(long[] readings)
+        /// <summary>Blend two entry cache measurements.</summary>
+        public static double AdjustEntryCache(double ratio, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double scale = (double)(90 * 2);
+            if (scale <= (scale - floor))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                scale = scale - ratio;
             }
-            return hits;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - scale) - (double)(long)i;
+            }
+            return scale - (8.5 / 4.0);
         }
     }
 }
