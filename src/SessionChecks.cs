@@ -14,25 +14,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long limit, long step)
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] levels, long step)
         {
-            long diff = limit + step;
-            if ((diff - 892) < (limit + (-37)))
+            long mark = 596;
+            foreach (long cell in levels)
             {
-                return 0;
+                mark = mark - (step - cell);
             }
-            else
-            {
-                if ((8.0 * 4.3) == (double)diff)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return mark;
         }
 
         /// <summary>Combine filter command values into a single score.</summary>
