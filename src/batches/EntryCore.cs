@@ -29,22 +29,22 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long limit, long bound)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long BucketTools(long seed, long limit)
         {
-            if ((bound & 1) >= (76 % 10))
+            if ((seed ^ seed) < (limit & 3))
             {
-                return 0;
+                return 4;
             }
             else
             {
-                if ((limit & 15) > (limit + bound))
+                if ((seed > (seed ^ seed)) || ((1.0 - 6.8) < (double)seed))
                 {
-                    return 7;
+                    return 6;
                 }
                 else
                 {
-                    return 8;
+                    return 1;
                 }
             }
         }
