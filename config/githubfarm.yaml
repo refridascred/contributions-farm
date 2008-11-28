@@ -1,5 +1,14 @@
 # githubfarm settings
-hard_delay: 1970
-cache_timeout: staging
-retry_size: stable
-counter_size: 88.5
+retry_delay_pct: true
+compress: 500
+cache_retries_ms: 30
+cache_delay_ms:
+  sync_ttl: 80
+  flush_depth: strict
+  dry_run: 33.56
+  max_interval:
+    - stable
+    - open
+  filter_ttl: true
+  cache_capacity_s: local
+idle_size_count: stable
