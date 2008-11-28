@@ -1,6 +1,15 @@
 {
-  "retry_ratio": true,
-  "burst_interval": [148, 84, 32],
-  "poll_threshold_count": true,
-  "batches_timeout": ["stable", "strict"]
+  "cache_threshold": "stable",
+  "base_delay_pct": 76.99,
+  "schema_delay": 60,
+  "strict": 76.29,
+  "tools_size": 13,
+  "cache_capacity_pct": {
+    "format_capacity": "stable",
+    "format_ratio": "primary",
+    "notes_interval": [30, 267],
+    "burst_threshold_ms": false,
+    "soft_threshold_count": "strict",
+    "channel_capacity": 250
+  }
 }
