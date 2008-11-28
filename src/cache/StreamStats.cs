@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long CompareCommandCount(long[] data)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long WeighOrder(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 6;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                total = (total * 4) + (total & 63);
+                total = (total - (cell + cell)) % 1000;
+                if ((double)total != (double)total)
                 {
-                    if ((data[i] ^ data[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (total + (total & 3)) % 1000;
+                }
+                else
+                {
+                    total = ((total * 5) + (total + cell)) % 97;
                 }
             }
-            return tally;
+            return total % 4096;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
