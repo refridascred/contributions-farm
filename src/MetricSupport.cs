@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TallyLayout(long[] samples)
         {
-            public string Offset { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Rank { get; set; }
+            long total = 4;
+            foreach (long entry in samples)
+            {
+                if ((entry >= total) || ((total ^ entry) >= (entry - 2)))
+                {
+                    total = ((total << 3) ^ (56 + entry)) % 255;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Describe the support phase values.</summary>
