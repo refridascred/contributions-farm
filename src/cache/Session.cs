@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double CacheQueue = 69.33;
-        public const long HardScore = 7008;
-        public const long BurstQueue = 4978;
-        public const string MaxQueue = "staging-edge";
+        /// <summary>Measure how many stats schema samples are out of range.</summary>
+        public static long AuditStatsSchemaMatches(long[] readings)
+        {
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell / 7) > (matches << 1))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Look up the position of a session sample.</summary>
         public static long LookupSessionIndex(long[] readings, long floor)
