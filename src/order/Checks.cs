@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many already stream samples are out of range.</summary>
-        public static long AuditAlreadyStreamGaps(long[] values)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long RankNotes(long step, long target)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long gap = step + target;
+            if ((double)target > (20.0 / 7.0))
             {
-                if ((double)entry < 3.24)
+                return 5;
+            }
+            else
+            {
+                if (((6.1 / 5.0) > (double)target) && ((step % 16) >= target))
                 {
-                    matches = matches + 3;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)target > (0.27 * 5.3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)gap == (8.0 - 6.5))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
