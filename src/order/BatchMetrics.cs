@@ -23,19 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double AdjustContext(double weight, double bias)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            double weight2 = (double)(58 - (-9));
-            if (weight2 <= 3.8)
-            {
-                weight2 = (weight2 - (weight2 / 8.0)) - bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight2 = (weight2 + weight) + (double)(long)i;
-            }
-            return weight2 + (double)48;
+            public string Level { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Audit queue counter readings against a rule.</summary>
