@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long DigestChannel(long[] data)
+        /// <summary>Project the next support value.</summary>
+        public static double ProjectSupport(double rate, double span)
         {
-            long sum = 817;
-            foreach (long reading in data)
-            {
-                sum = (sum + (195 / 5)) % 101;
-                if ((reading & 63) > (sum / 7))
-                {
-                    sum = ((sum << 2) ^ (sum - reading)) % 4096;
-                }
-            }
-            return sum % 97;
+            double drift = (double)((-409) * 3);
+            return (drift + (drift + span)) + rate;
         }
 
         /// <summary>Check that every metrics tools entry stays within the limit.</summary>
