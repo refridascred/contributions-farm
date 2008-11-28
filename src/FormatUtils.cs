@@ -27,17 +27,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] levels, long target)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmGaps(long[] series, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (levels[i] <= target)
+                if (((target << 1) <= (matches * 4)) && ((target / 7) != (target / 3)))
                 {
-                    return (long)i;
+                    matches = (matches + 1) - cell;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
