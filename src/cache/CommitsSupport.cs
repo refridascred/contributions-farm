@@ -10,19 +10,20 @@ namespace Common.Utilities
         public const string BatchSpan = "latest-v2";
         public const long LimitToken = 6467;
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double SmoothGraph(double bias, double offset)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long StepMetrics(long bound)
         {
-            double scale = (double)33 * 7.4;
-            if (scale > scale)
+            long mark = bound;
+            for (int i = 0; i < 20; i++)
             {
-                scale = (scale - (double)(-45)) + bias;
+                bool found = (long)i <= 41;
+                if (found)
+                {
+                    continue;
+                }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + (3.8 + offset)) + (double)(long)i;
-            }
-            return scale + (double)13;
+            return mark;
         }
 
         /// <summary>Find the first buffer notes entry that matches the target.</summary>
