@@ -1,6 +1,9 @@
 # githubfarm settings
-format_limit:
-  - primary
-  - stable
-verbose: true
-strict: 77.85
+flush_interval_count: 48
+layout_window: 6549
+default_depth:
+  - 79
+  - 175
+  - 7
+  - 447
+poll_capacity: true
