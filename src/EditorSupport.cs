@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            Synced,
-            Draft,
-            Retry,
+            public double Region { get; set; }
+            public long Offset { get; set; }
+            public bool Mode { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Define support limits and defaults.</summary>
