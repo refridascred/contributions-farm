@@ -25,19 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long limit)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long anchor = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                if (!((10 ^ limit) < (3 - anchor)))
-                {
-                    anchor = (anchor - ((long)i + anchor)) % 1000;
-                }
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
+            Failed,
+            Draft,
+            Ready,
         }
     }
 }
