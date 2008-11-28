@@ -5,27 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Combine window editor values into a single score.</summary>
-        public static long DigestWindowEditor(long[] levels, long step)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long SeriesRoute(long floor)
         {
-            long acc = 60;
-            foreach (long value in levels)
+            long total = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (!((value - acc) == (step % 2)))
-                {
-                    acc = acc + (value + step);
-                }
-                if ((8.0 * 4.17) >= (double)value)
-                {
-                    acc = (acc ^ (325 >> 5)) % 4096;
-                    acc = (acc - (value + (long)levels.Length)) % 1000;
-                }
-                if (step <= 508)
-                {
-                    acc = acc - (step * 4);
-                }
+                total = ((total << 3) ^ total) % 97;
+                total = total - total;
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Describe the cache class values.</summary>
