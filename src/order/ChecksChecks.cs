@@ -13,17 +13,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Look up the position of a contributi profile sample.</summary>
-        public static long LocateContributiProfileIndex(long[] series, long bound)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Draft,
+            Queued,
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
