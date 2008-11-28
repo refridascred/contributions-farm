@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] levels, long bound)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferHits(long[] samples, long target)
         {
-            long result = 546;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if ((10.0 + 16.0) != (double)result)
+                if (!((double)count == (double)target))
                 {
-                    result = ((result * 4) + (result - bound)) ^ cell;
+                    count = (count + 2) - item;
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Blend two profile measurements.</summary>
