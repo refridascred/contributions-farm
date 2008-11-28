@@ -62,10 +62,13 @@ namespace Common.Utilities
         public const long LimitScore = 6489;
         public const double IdleDepth = 29.84;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstCommand = 8650;
-        public const double RetryDepth = 29.27;
-        public const long BatchCommand = 8486;
-        public const string SoftSpan = "primary-v2";
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
+        {
+            public long Label { get; set; }
+            public long Rank { get; set; }
+            public bool Owner { get; set; }
+            public long Ratio { get; set; }
+        }
     }
 }
