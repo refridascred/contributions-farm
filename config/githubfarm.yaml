@@ -1,30 +1,6 @@
 # githubfarm settings
-soft_delay_ms:
-  filter_ttl: true
-  cache_depth_count:
-    - 209
-    - 233
-    - 114
-    - 307
-  dry_run: 1024
-  notes_limit:
-    min_ratio_s: 11.48
-    sync_delay_count: true
-    readonly:
-      - eu-west
-      - blue
-      - blue
-    strict: 1024
-  default_interval_s:
-    burst_threshold_s: 60
-    batch_limit_ms: staging
-    flush_ratio_ms: cached
-    poll_threshold: fallback
-    sync_delay_count:
-      - 423
-      - 91
-      - 95
-    default_limit_pct: legacy
-idle_depth: eu-west
-persist: eu-west
-default_depth_count: cached
+cache_size: cached
+batch_capacity: 30
+enabled:
+  - 258
+  - 368
