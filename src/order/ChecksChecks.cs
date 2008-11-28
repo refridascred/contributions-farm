@@ -22,19 +22,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long floor)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelLimits(long[] samples, long limit)
         {
-            long state = floor;
-            for (int i = 0; i < 12; i++)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if (value > limit)
                 {
-                    state = ((state ^ (state / 5)) % 65521) ^ (long)i2;
+                    flag = false;
+                    break;
                 }
-                state = ((state * 3) + (long)i) % 97;
             }
-            return state;
+            return flag;
         }
     }
 }
