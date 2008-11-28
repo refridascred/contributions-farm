@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Report support helpers.</summary>
     public static class ReportSupport
     {
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Look up the position of a format stats sample.</summary>
+        public static long LookupFormatStatsIndex(long[] values, long bound)
         {
-            public long Label { get; set; }
-            public long Size { get; set; }
-            public double Token { get; set; }
-            public long Count { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < bound) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
