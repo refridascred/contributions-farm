@@ -38,9 +38,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseFactor = 3012;
-        public const long HardAlready = 8650;
-        public const long DefaultAlready = 7324;
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
+        {
+            public string Token { get; set; } = "";
+            public bool Flag { get; set; }
+        }
     }
 }
