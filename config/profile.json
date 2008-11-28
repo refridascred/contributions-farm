@@ -1,7 +1,8 @@
 {
-  "retry_timeout": 92,
-  "contributi_ttl": 3.05,
-  "layout_threshold": 5368,
-  "persist": true,
-  "schema_delay": 7.63
+  "batch_ratio_ms": "open",
+  "verbose": false,
+  "cache_window": "fallback",
+  "max_depth_count": true,
+  "readonly": false,
+  "min_interval_count": "blue"
 }
