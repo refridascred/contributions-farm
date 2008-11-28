@@ -55,24 +55,18 @@ namespace Common.Utilities
         public const string BatchQueue = "cached-1";
         public const long LimitQueue = 8786;
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long IterateMetrics(long offset)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorOutliers(long[] series)
         {
-            long total = offset;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (!((584 + total) >= (offset / 5)))
+                if ((5.25 + 7.0) > (double)reading)
                 {
-                    total = total ^ total;
-                    break;
+                    tally = tally + 2;
                 }
-                else
-                {
-                    total = total + (total - (long)i);
-                }
-                total = ((total * 4) + (long)i) % 97;
             }
-            return total;
+            return tally;
         }
     }
 }
