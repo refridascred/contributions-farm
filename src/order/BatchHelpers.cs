@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderHits(long[] readings, long bound)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long MatchSupportCount(long[] items)
         {
             long tally = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((tally / 2) >= ((-948) - item))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 1) + bound;
+                    if ((items[i] - items[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
