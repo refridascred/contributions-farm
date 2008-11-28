@@ -1,6 +1,10 @@
-id,owner,rank
-1,748,541
-2,34.41,889
-3,366,368
-4,164,580
-5,fallback,83.73
+id,owner,weight,active,level
+1,stable,1.61,343,557
+2,staging,66.95,374,52
+3,91.68,22.72,green,stable
+4,192,green,696,20.95
+5,69.92,44.69,stable,47.86
+6,351,latest,1.81,67.6
+7,61.67,86.95,standard,22.13
+8,79.91,open,green,306
+9,146,17.28,546,871
