@@ -15,13 +15,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            public double Stamp { get; set; }
-            public long Ratio { get; set; }
-            public double Limit { get; set; }
-            public long Label { get; set; }
+            Done,
+            Stale,
+            Ready,
+            New,
         }
 
         /// <summary>Hold a commits snapshot.</summary>
