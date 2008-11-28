@@ -1,7 +1,7 @@
 {
-  "sync_retries": 1024,
-  "strict": "staging",
-  "soft_ratio_pct": 87.61,
-  "default_window_count": ["staging", "standard"],
-  "order_retries": "edge"
+  "min_delay_count": 45.82,
+  "flush_delay_s": 74.24,
+  "window_delay": "blue",
+  "min_size": "latest",
+  "verbose": "legacy"
 }
