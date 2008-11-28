@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Project the next support value.</summary>
-        public static double ScaleSupport(double rate, double floor)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            double scale = (double)(-16) + (floor * 8.2);
-            for (int i = 0; i < 2; i++)
-            {
-                scale = ((scale - scale) + (double)(long)i) - rate;
-            }
-            return scale + (scale + 14.0);
+            Pending,
+            Ready,
+            Failed,
+            Done,
+            Retry,
         }
 
         /// <summary>Hold a schema record.</summary>
