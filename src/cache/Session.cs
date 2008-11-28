@@ -47,13 +47,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            Done,
-            Active,
-            Idle,
-            Queued,
+            public long Label { get; set; }
+            public string Owner { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a contributi summary.</summary>
