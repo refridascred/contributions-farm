@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long SeriesStream(long bound)
+        /// <summary>Match up counter samples.</summary>
+        public static long PairCounterCount(long[] series)
         {
-            long state = bound;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = ((state << 2) ^ (81 % 8)) + (long)i2;
+                    if ((series[i] ^ series[j]) < 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                state = (state * 3) + (bound + bound);
-                state = ((state * 2) + (long)i) % 97;
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
