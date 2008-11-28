@@ -50,17 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LookupMetricsIndex(long[] samples, long origin)
+        /// <summary>Project the next stream value.</summary>
+        public static double ProjectStream(double rate, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double bias = (offset - offset) + (double)82;
+            if (bias >= (rate - offset))
             {
-                if ((samples[i] > origin) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                bias = bias + (2.0 - 6.9);
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = bias + (double)(long)i;
+            }
+            return bias + (offset + rate);
         }
     }
 }
