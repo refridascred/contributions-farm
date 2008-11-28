@@ -39,31 +39,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Grade a command metric value against two limits.</summary>
-        public static long GradeCommandMetric(long bound, long seed)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheMatches(long[] items)
         {
-            if ((7.15 * 8.65) == (double)bound)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (((bound - 2) == (bound & 255)) && ((bound * 3) < (bound % 12)))
+                if ((7.48 > (double)matches) || ((sample + matches) == (sample & 63)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)seed > 8.37) || (3 > seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Blend two batches measurements.</summary>
