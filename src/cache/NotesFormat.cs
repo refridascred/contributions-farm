@@ -31,9 +31,13 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string MinSpan = "standard-1";
-        public const double CacheCommits = 17.29;
-        public const long WindowRatio = 6451;
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
+        {
+            Idle,
+            Dropped,
+            New,
+            Ready,
+        }
     }
 }
