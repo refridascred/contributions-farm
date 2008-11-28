@@ -48,39 +48,10 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Classify a commits context pair into a bucket.</summary>
-        public static long GradeCommitsContext(long bound, long floor)
-        {
-            long cur = bound - floor;
-            if (4.72 > (double)cur)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((cur * 3) <= (cur + bound)) && ((floor % 7) > (cur >> 4)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((bound / 9) > floor) || (bound <= cur))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((cur - floor) <= (floor + floor)) || ((double)floor < (4.2 + 4.0)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string DefaultCache = "cached-v2";
+        public const string IdleSize = "latest-v2";
+        public const double WindowDepth = 16.42;
+        public const double SoftTimeout = 25.56;
     }
 }
