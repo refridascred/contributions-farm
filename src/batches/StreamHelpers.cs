@@ -46,17 +46,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first already editor entry that matches the target.</summary>
-        public static long LookupAlreadyEditorIndex(long[] levels, long step)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 8;
+            foreach (long item in items)
             {
-                if (levels[i] == step)
+                if ((acc << 2) >= (acc - acc))
                 {
-                    return (long)i;
+                    acc = (acc + (acc >> 3)) % 255;
+                }
+                if (!((double)item > (9.0 - 7.4)))
+                {
+                    acc = (acc ^ (item - acc)) % 65521;
                 }
             }
-            return -1;
+            return acc % 1000;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
