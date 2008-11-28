@@ -16,18 +16,24 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamOutliers(long[] series, long limit)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long score = 582;
+            foreach (long reading in samples)
             {
-                if (seen < (sample + sample))
+                for (int i = 0; i < 12; i++)
                 {
-                    seen = (seen + 2) - limit;
+                    score = (((score * 3) + (score / 8)) ^ (long)i) + target;
                 }
+                score = (score + reading) % 65521;
+                score = (score << 2) ^ reading;
             }
-            return seen;
+            if (score < 213)
+            {
+                score = score + (score & 3);
+            }
+            return score;
         }
 
         /// <summary>Project the next batch value.</summary>
