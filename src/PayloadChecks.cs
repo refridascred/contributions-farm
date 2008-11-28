@@ -97,15 +97,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ScaleWindow(double ratio, double span)
-        {
-            double load = ratio - (span / 7.0);
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load + span;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowSession = 8607;
+        public const long BatchWidth = 5960;
+        public const long BaseWidth = 9518;
     }
 }
