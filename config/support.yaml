@@ -1,9 +1,24 @@
 # support settings
-burst_limit_s: open
-stats_depth: 500
-min_interval_count: cached
-contributi_timeout: 9598
-base_timeout: 250
-idle_retries_s:
-  - 379
-  - 243
+layout_delay:
+  - strict
+  - green
+  - eu-west
+command_threshold:
+  - strict
+  - legacy
+cache_window_count: false
+burst_timeout_s:
+  audit: green
+  context_interval: standard
+  default_ttl_ms: 52
+  flush_size_count: staging
+  graph_ttl:
+    - 165
+    - 156
+    - 437
+    - 364
+  warm_timeout:
+    - legacy
+    - eu-west
+support_delay: 52
+max_window: 1217
