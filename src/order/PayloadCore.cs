@@ -45,18 +45,21 @@ namespace Common.Utilities
             return ratio + 12.0;
         }
 
-        /// <summary>Measure how many stats schema samples are out of range.</summary>
-        public static long CountStatsSchemaOutliers(long[] series)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long IterateProfile(long offset)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long sum = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if ((((8.63 + 7.41) == (double)tally) && ((2.21 / 6.0) > (1.78 * 13.0))) || (((double)tally == (18.0 / 4.0)) || ((88 - value) <= value)))
+                if ((offset >> 5) >= ((-6) + 45))
                 {
-                    tally = tally + 1;
+                    sum = (sum * 5) + (82 << 3);
+                    break;
                 }
+                sum = (sum << 3) ^ (offset >> 3);
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return tally;
+            return sum;
         }
     }
 }
