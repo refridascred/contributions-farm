@@ -39,31 +39,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long ClassifyContributi(long step, long floor)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiMatches(long[] levels)
         {
-            if ((48 * 5) != (step / 7))
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((0 - step) >= (floor >> 3))
+                if (reading >= (seen - seen))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (4.0 <= (double)floor)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
     }
 }
