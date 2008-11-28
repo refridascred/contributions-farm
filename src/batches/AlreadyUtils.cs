@@ -27,12 +27,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
-        {
-            public bool Region { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitCount = 6589;
+        public const double MaxWidth = 43.78;
+        public const long MaxFarm = 4238;
+        public const long HardWidth = 8662;
+        public const string MinCount = "alpha-v2";
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double WindowRatio = 87.36;
