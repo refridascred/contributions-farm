@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many stream entry samples are out of range.</summary>
-        public static long MeasureStreamEntryHits(long[] samples, long target)
+        /// <summary>Project the next batch entry value.</summary>
+        public static double ProjectBatchEntry(double bias, double span)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            double weight = bias;
+            if (weight > 12.0)
             {
-                if (((target >> 5) == (target << 2)) && (1.9 <= (double)target))
-                {
-                    tally = (tally + 2) - item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                weight = (weight + (double)519) + span;
             }
-            return tally;
+            return weight + bias;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
