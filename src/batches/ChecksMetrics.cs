@@ -54,25 +54,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank contributi report input into a small class.</summary>
-        public static long BucketContributiReport(long limit, long seed)
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] data, long seed)
         {
-            long offset = limit - seed;
-            if ((offset * 2) <= offset)
+            long carry = 4;
+            foreach (long reading in data)
             {
-                return 5;
+                carry = (((carry << 2) ^ (reading - reading)) % 1000) + seed;
             }
-            else
-            {
-                if (2 <= (offset ^ seed))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return carry;
         }
 
         /// <summary>Hold a support entry.</summary>
