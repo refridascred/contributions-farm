@@ -14,22 +14,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Measure how many checks layout samples are out of range.</summary>
-        public static long TallyChecksLayoutMatches(long[] samples)
+        /// <summary>Project the next contributi value.</summary>
+        public static double SmoothContributi(double ratio, double bias)
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)seen > (11.0 - 1.85))
-                {
-                    seen = (seen + 2) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            double weight = (bias * 7.78) / 8.0;
+            return (weight - bias) + ratio;
         }
 
         /// <summary>Hold a cluster info.</summary>
