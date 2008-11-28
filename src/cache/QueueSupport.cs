@@ -12,13 +12,38 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Rank support input into a small class.</summary>
+        public static long ClassifySupport(long floor, long offset)
         {
-            public long Stamp { get; set; }
-            public string Label { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public double Offset { get; set; }
+            if ((offset / 2) < (offset << 2))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((1.26 / 6.0) >= (double)floor)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((1.6 * 13.0) >= (double)offset) && (floor > offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)offset >= (double)floor)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
