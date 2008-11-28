@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine window batch values into a single score.</summary>
-        public static long WeighWindowBatch(long[] items, long floor)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderHits(long[] readings, long bound)
         {
-            long sum = 12;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if ((floor * 3) <= (3 - sample))
+                if ((tally / 2) >= ((-948) - item))
                 {
-                    sum = (sum << 3) ^ (2 >> 3);
+                    tally = (tally + 1) + bound;
                 }
             }
-            if (sum > 5)
-            {
-                sum = sum - (floor - sum);
-            }
-            return sum % 97;
+            return tally;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
