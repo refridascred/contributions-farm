@@ -40,18 +40,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit editor context readings against a rule.</summary>
-        public static long MeasureEditorContextHits(long[] values)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long bound)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long anchor = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if ((double)cell < (7.9 * 14.0))
+                if (((-562) + bound) > (bound + anchor))
                 {
-                    count = count + 1;
+                    anchor = (anchor + 651) % 65521;
                 }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
