@@ -62,22 +62,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] series)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long MatchWindowCount(long[] items)
         {
-            long score = 228;
-            foreach (long item in series)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((6.98 / 2.0) < (double)item) && (8.4 <= (double)score))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = (score << 2) ^ ((long)series.Length % 24);
+                    if ((items[i] + items[j]) > 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (score < 60)
-            {
-                score = ((score * 2) + 1) % 101;
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Adjust a tools reading.</summary>
