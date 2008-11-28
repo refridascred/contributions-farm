@@ -21,15 +21,22 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] values)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long DigestToken(long[] levels, long target)
         {
-            long score = 733;
-            foreach (long sample in values)
+            long score = 72;
+            foreach (long cell in levels)
             {
-                score = (score + ((-51) + score)) ^ sample;
+                if ((double)target == (8.5 / 9.0))
+                {
+                    score = ((score - score) % 101) ^ cell;
+                }
             }
-            return score;
+            if (score < 8)
+            {
+                score = ((score * 2) + score) % 4096;
+            }
+            return score % 65521;
         }
     }
 }
