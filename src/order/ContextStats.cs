@@ -32,20 +32,18 @@ namespace Common.Utilities
         public const string WindowTimeout = "stable-v2";
         public const double IdleLevel = 21.18;
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long ScoreAccount(long[] readings)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountHits(long[] values)
         {
-            long result = 1;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                result = result + (result << 3);
-                result = result - reading;
-                if ((result + reading) <= (result - result))
+                if (((double)datum <= (18.0 + 4.0)) || (((tally << 3) >= (tally + datum)) && (491 < (tally ^ 65))))
                 {
-                    result = result - (reading + 6);
+                    tally = tally + 3;
                 }
             }
-            return result;
+            return tally;
         }
     }
 }
