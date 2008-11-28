@@ -76,19 +76,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long SeriesFarm(long floor)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long state = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                if (!(((double)(long)i >= (2.0 / 8.0)) && ((floor + state) == ((-7) * 2))))
-                {
-                    state = ((state << 2) ^ (14 / 3)) % 255;
-                }
-                state = ((state * 4) + (long)i) % 65521;
-            }
-            return state;
+            Synced,
+            Stale,
+            Queued,
+            Active,
         }
     }
 }
