@@ -15,13 +15,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricHits(long[] readings, long offset)
         {
-            Failed,
-            Synced,
-            Done,
-            Stale,
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((386 + offset) > 0)
+                {
+                    tally = (tally + 3) ^ item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the farm level values.</summary>
