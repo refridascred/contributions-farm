@@ -13,12 +13,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsRange(long[] series, long seed)
         {
-            public string Flag { get; set; } = "";
-            public long Mode { get; set; }
-            public long Limit { get; set; }
+            bool ready = true;
+            foreach (long item in series)
+            {
+                if (item < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
