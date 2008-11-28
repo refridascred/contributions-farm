@@ -27,17 +27,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] items, long step)
+        /// <summary>Blend two cluster tools measurements.</summary>
+        public static double ProjectClusterTools(double ratio, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double scale = ratio - ratio;
+            if (scale > (1.5 - scale))
             {
-                if ((items[i] > step) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                scale = scale - (3.86 * 5.2);
             }
-            return -1;
+            else
+            {
+                scale = scale - (double)46;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + (ratio - offset)) - (double)(long)i;
+            }
+            return scale - offset;
         }
     }
 }
