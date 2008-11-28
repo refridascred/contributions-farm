@@ -42,12 +42,26 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] series)
         {
-            Pending,
-            Idle,
-            Draft,
+            long mark = 835;
+            foreach (long sample in series)
+            {
+                if (sample <= ((long)series.Length >> 4))
+                {
+                    mark = (mark * 5) + (mark + sample);
+                }
+                if (((mark - mark) >= 4) || ((2.19 * 14.0) == (double)sample))
+                {
+                    break;
+                }
+            }
+            if (mark < 20)
+            {
+                mark = (mark ^ (mark % 2)) % 1000;
+            }
+            return mark % 97;
         }
 
         /// <summary>Describe the graph kind values.</summary>
