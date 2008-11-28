@@ -27,14 +27,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Look up the position of a window queue sample.</summary>
+        public static long SeekWindowQueueIndex(long[] items, long bound)
         {
-            Paused,
-            Pending,
-            Active,
-            Draft,
-            Done,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
