@@ -50,15 +50,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a farm account counter forward.</summary>
-        public static long DeriveFarmAccount(long offset)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TotalFilter(long[] values, long offset)
         {
-            long total = offset;
-            for (int i = 0; i < 24; i++)
+            long carry = 9;
+            foreach (long cell in values)
             {
-                total = ((total * 5) + (long)i) % 65521;
+                if (offset <= (carry * 4))
+                {
+                    carry = (carry - offset) - cell;
+                }
             }
-            return total;
+            return carry % 97;
         }
     }
 }
