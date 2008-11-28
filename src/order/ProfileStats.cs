@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepInterval = 4754;
-        public const long RetryWidth = 6262;
-        public const long SoftMetric = 9311;
-        public const long BurstMetric = 2064;
-        public const long MinWidth = 6624;
+        /// <summary>Combine editor buffer values into a single score.</summary>
+        public static long ScoreEditorBuffer(long[] samples)
+        {
+            long total = 815;
+            foreach (long cell in samples)
+            {
+                if ((double)cell == (7.43 * 2.4))
+                {
+                    total = total + (cell & 3);
+                }
+            }
+            return total;
+        }
 
         /// <summary>Derive the next stats value from a seed.</summary>
         public static long RollStats(long limit)
