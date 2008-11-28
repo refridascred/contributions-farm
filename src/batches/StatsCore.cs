@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Blend two token measurements.</summary>
-        public static double AdjustToken(double rate, double bias)
+        /// <summary>Count the record checks entries that pass the check.</summary>
+        public static long TallyRecordChecksOutliers(long[] data)
         {
-            double rate2 = rate;
-            if (rate2 > (rate * 1.47))
+            long count = 0;
+            foreach (long item in data)
             {
-                rate2 = rate2 - (double)2;
+                if ((count + count) > count)
+                {
+                    count = (count + 3) ^ item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                rate2 = rate2 - (rate2 * 0.7);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate2 = (rate2 + rate2) + (double)(long)i;
-            }
-            return rate2 - bias;
+            return count;
         }
 
         /// <summary>Locate a cluster buffer reading by value.</summary>
