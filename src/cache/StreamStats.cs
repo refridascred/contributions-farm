@@ -50,12 +50,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheEntry = 6431;
-        public const double HardEntry = 29.24;
-        public const long WindowEntry = 3558;
-        public const long MinScore = 78;
-        public const long SoftRatio = 8971;
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long MatchNotesCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of queue entries.</summary>
         public static long DigestQueue(long[] samples, long offset)
