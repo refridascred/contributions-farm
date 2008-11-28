@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long OverlapAlreadyCount(long[] values)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long ClassifyToken(long step, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long delta = step ^ origin;
+            if (((-2) % 100) >= delta)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((double)delta <= (7.17 + 11.0))
                 {
-                    if ((values[i] ^ values[j]) != 9)
+                    return 8;
+                }
+                else
+                {
+                    if ((delta + 885) == (6 - step))
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step + 9) <= (delta >> 1))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
