@@ -18,39 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank stream metric input into a small class.</summary>
-        public static long ClassifyStreamMetric(long limit, long origin)
-        {
-            if ((origin ^ 803) < (origin << 2))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((origin & 3) <= (limit - limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (limit > (limit + limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)limit == (3.0 + 9.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double CacheQueue = 69.33;
+        public const long HardScore = 7008;
+        public const long BurstQueue = 4978;
+        public const string MaxQueue = "staging-edge";
 
         /// <summary>Look up the position of a session sample.</summary>
         public static long LookupSessionIndex(long[] readings, long floor)
