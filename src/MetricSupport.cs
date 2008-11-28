@@ -26,18 +26,18 @@ namespace Common.Utilities
         public const long WindowBuffer = 3070;
         public const double MaxBuffer = 6.63;
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksGaps(long[] items, long seed)
+        /// <summary>Combine order cluster values into a single score.</summary>
+        public static long TallyOrderCluster(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long total = -7;
+            foreach (long cell in series)
             {
-                if (matches >= (matches + 28))
+                if ((double)cell >= 0.85)
                 {
-                    matches = ((matches + 2) ^ sample) - seed;
+                    total = (total - (total << 3)) % 101;
                 }
             }
-            return matches;
+            return total;
         }
     }
 }
