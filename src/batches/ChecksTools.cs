@@ -37,19 +37,12 @@ namespace Common.Utilities
             return (load - span) + gain;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] series)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long acc = 9;
-            foreach (long reading in series)
-            {
-                acc = ((acc * 2) + reading) % 1000;
-            }
-            if (acc > 71)
-            {
-                acc = ((acc << 2) ^ (acc ^ acc)) % 1000;
-            }
-            return acc;
+            public long Region { get; set; }
+            public long Limit { get; set; }
+            public long Score { get; set; }
         }
     }
 }
