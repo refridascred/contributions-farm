@@ -34,26 +34,31 @@ namespace Common.Utilities
             return weight - (floor / 4.0);
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] samples)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long ClassifyProfile(long origin, long seed)
         {
-            long mark = 723;
-            foreach (long cell in samples)
+            if ((seed >> 1) != (seed + 47))
             {
-                if (((cell % 97) >= cell) && ((mark * 4) > (mark ^ mark)))
+                return 6;
+            }
+            else
+            {
+                if ((double)seed == (3.13 - 5.1))
                 {
-                    mark = (mark + cell) % 97;
+                    return 0;
                 }
                 else
                 {
-                    mark = (mark + mark) % 4096;
-                }
-                if ((double)(long)samples.Length == (double)mark)
-                {
-                    break;
+                    if (seed >= (seed ^ seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return mark;
         }
     }
 }
