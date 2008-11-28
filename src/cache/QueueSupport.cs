@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate filter metrics samples.</summary>
-        public static long DigestFilterMetrics(long[] items, long limit)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferOutliers(long[] series, long floor)
         {
-            long anchor = 338;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if (((6.8 / 2.0) > (double)value) && ((value / 3) > (anchor + value)))
+                if ((seen - reading) < (seen % 5))
                 {
-                    anchor = anchor ^ (anchor + value);
+                    seen = (seen + 3) - floor;
                 }
             }
-            if (anchor < (-602))
-            {
-                anchor = anchor - (limit - limit);
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Rank support input into a small class.</summary>
