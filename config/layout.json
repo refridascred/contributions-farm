@@ -1,6 +1,18 @@
 {
-  "verbose": true,
-  "queue_timeout": false,
-  "max_window_count": 94,
-  "hard_window_ms": 30
+  "audit": 73.5,
+  "verbose": {
+    "min_retries_pct": false,
+    "readonly": [313, 232, 115],
+    "stats_size": 46.91,
+    "idle_size": 5907,
+    "sync_limit": {
+      "burst_ratio_ms": 5315,
+      "hard_timeout_pct": [477, 246, 451],
+      "warm_ttl_ms": 1024
+    },
+    "verbose": "standard"
+  },
+  "sync_capacity": "fallback",
+  "format_timeout": false,
+  "window_window": false
 }
