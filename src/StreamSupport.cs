@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            New,
-            Pending,
-            Active,
-            Stale,
+            public string Rank { get; set; } = "";
+            public long Level { get; set; }
+            public bool Score { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Hold a order info.</summary>
