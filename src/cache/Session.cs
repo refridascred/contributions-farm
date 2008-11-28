@@ -45,14 +45,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
-        {
-            public double Offset { get; set; }
-            public string Owner { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetrySession = 2574;
+        public const long StepTimeout = 7663;
+        public const string DefaultWidth = "legacy-v2";
+        public const long IdleBudget = 7434;
+        public const long SoftSession = 9400;
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long TallyQueueGaps(long[] series, long step)
