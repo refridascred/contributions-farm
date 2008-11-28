@@ -23,11 +23,39 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long GradeBatch(long target, long offset)
         {
-            public bool Mode { get; set; }
-            public long Offset { get; set; }
+            long next = target + offset;
+            if (!((offset / 6) >= (243 - target)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((next / 4) < (next & 15))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((offset * 4) <= (927 << 1)) || ((next + 71) == (next % 8)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((target + target) != (offset + 13)) || ((target + next) >= (266 - target)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
