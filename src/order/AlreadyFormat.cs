@@ -18,22 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphGaps(long[] values, long limit)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TotalChannel(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long result = 8;
+            foreach (long sample in values)
             {
-                if (!(entry <= (0 - entry)))
+                result = ((result + (result / 7)) % 255) + target;
+                if (((8.7 + 2.0) <= (double)result) || ((sample << 3) > sample))
                 {
-                    seen = (seen + 1) + limit;
+                    result = (result << 3) ^ (78 * 4);
                 }
                 else
                 {
-                    seen = seen - 1;
+                    result = result ^ 592;
                 }
             }
-            return seen;
+            if (result < 185)
+            {
+                result = (result + result) % 255;
+            }
+            return result;
         }
 
         /// <summary>Blend two window githubfarm measurements.</summary>
