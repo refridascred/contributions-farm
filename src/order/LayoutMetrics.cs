@@ -18,33 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long SortSchema(long seed, long offset)
-        {
-            long delta = seed - offset;
-            if ((4 & 127) > seed)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((double)offset > (double)seed) && ((delta + offset) >= (seed + seed)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((double)seed >= (16.0 - 15.0)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheSchema = 130;
+        public const string DefaultSpan = "stable-edge";
+        public const string HardSchema = "latest-1";
+        public const string MinInterval = "stable";
 
         /// <summary>Compare every pair of metric readings.</summary>
         public static long PairMetricCount(long[] data)
