@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long DeriveStream(long target)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long RankChannel(long target, long seed)
         {
-            long sum = target;
-            for (int i = 0; i < 5; i++)
+            if (((0.8 * 16.0) <= (double)seed) || ((double)seed < (double)target))
             {
-                sum = ((sum * 5) + (long)i) % 4093;
+                return 5;
             }
-            return sum;
+            else
+            {
+                if ((double)seed != (double)target)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
