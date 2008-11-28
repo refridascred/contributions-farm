@@ -42,19 +42,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionBounds(long[] levels, long bound)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value < bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Queued,
+            Active,
+            Done,
         }
 
         /// <summary>Describe the token state values.</summary>
