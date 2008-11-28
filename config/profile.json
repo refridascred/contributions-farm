@@ -1,5 +1,7 @@
 {
-  "max_delay_s": 95.23,
-  "support_threshold": 30,
-  "command_threshold": true
+  "session_limit": 30,
+  "retry_capacity_ms": false,
+  "max_ratio": "edge",
+  "warm_depth": 57.06,
+  "hard_capacity": "local"
 }
