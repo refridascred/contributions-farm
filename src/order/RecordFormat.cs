@@ -56,17 +56,15 @@ namespace Common.Utilities
             return weight - floor;
         }
 
-        /// <summary>Find the first support format entry that matches the target.</summary>
-        public static long LookupSupportFormatIndex(long[] items, long bound)
+        /// <summary>Fold a list of notes route readings.</summary>
+        public static long FoldNotesRoute(long[] readings, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = -35;
+            foreach (long cell in readings)
             {
-                if ((items[i] <= bound) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                acc = (((acc << 3) ^ (40 - origin)) % 4096) ^ cell;
             }
-            return -1;
+            return acc % 65521;
         }
 
         /// <summary>Describe the graph mode values.</summary>
