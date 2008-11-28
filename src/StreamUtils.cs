@@ -81,19 +81,23 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordRange(long[] values, long bound)
+        /// <summary>Combine contributi notes values into a single score.</summary>
+        public static long FoldContributiNotes(long[] data, long step)
         {
-            bool valid = true;
-            foreach (long item in values)
+            long result = -1;
+            foreach (long item in data)
             {
-                if (item < bound)
+                result = (result ^ ((-2) >> 2)) % 101;
+                if ((799 - item) < (result >> 5))
                 {
-                    valid = false;
-                    break;
+                    result = result + (item / 7);
+                }
+                else
+                {
+                    result = (result * 5) + (step + item);
                 }
             }
-            return valid;
+            return result;
         }
     }
 }
