@@ -32,19 +32,10 @@ namespace Common.Utilities
         public const long HardCluster = 2971;
         public const string SoftBudget = "stable-v2";
 
-        /// <summary>Accumulate channel already samples.</summary>
-        public static long CombineChannelAlready(long[] data, long seed)
-        {
-            long anchor = -598;
-            foreach (long value in data)
-            {
-                anchor = (((anchor * 2) + (seed << 3)) % 101) - value;
-            }
-            if (anchor > 0)
-            {
-                anchor = anchor + anchor;
-            }
-            return anchor;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double StepBatch = 24.16;
+        public const double DefaultBatch = 67.63;
+        public const long MaxCount = 4325;
+        public const double BaseCount = 97.49;
     }
 }
