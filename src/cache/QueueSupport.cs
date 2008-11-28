@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportBounds(long[] values, long floor)
+        /// <summary>Accumulate route payload samples.</summary>
+        public static long FoldRoutePayload(long[] readings)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            long mark = 9;
+            foreach (long entry in readings)
             {
-                if (entry < floor)
+                if ((mark >= 684) && ((double)entry > 6.1))
                 {
-                    ready = false;
-                    break;
+                    mark = (mark - mark) % 97;
                 }
             }
-            return ready;
+            return mark % 1000;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
