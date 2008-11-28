@@ -50,21 +50,32 @@ namespace Common.Utilities
         public const double BatchAccount = 13.11;
         public const long MaxAccount = 3124;
 
-        /// <summary>Match up payload batch samples.</summary>
-        public static long ComparePayloadBatchCount(long[] items)
+        /// <summary>Grade a format tools value against two limits.</summary>
+        public static long RankFormatTools(long floor, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long bound = floor + target;
+            if ((9.23 / 9.0) >= (double)bound)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((floor + target) >= (bound - 5))
                 {
-                    if ((items[i] - items[j]) > 18)
+                    return 5;
+                }
+                else
+                {
+                    if (!(floor < (floor ^ floor)))
                     {
-                        tally = tally + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return tally;
         }
     }
 }
