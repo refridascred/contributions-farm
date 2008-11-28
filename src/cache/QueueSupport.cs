@@ -19,38 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long ClassifySupport(long floor, long offset)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long DigestLayout(long[] values)
         {
-            if ((offset / 2) < (offset << 2))
+            long carry = 2;
+            foreach (long item in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((1.26 / 6.0) >= (double)floor)
+                carry = carry ^ 0;
+                if ((4.5 + 3.96) == (double)carry)
                 {
-                    return 6;
+                    carry = carry - (item / 7);
                 }
-                else
+                if (((carry / 7) < (carry % 16)) && ((item % 3) < (carry - item)))
                 {
-                    if (((1.6 * 13.0) >= (double)offset) && (floor > offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)offset >= (double)floor)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    break;
                 }
             }
+            return carry;
         }
 
         /// <summary>Define account limits and defaults.</summary>
