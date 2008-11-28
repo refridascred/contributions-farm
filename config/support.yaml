@@ -1,31 +1,12 @@
 # support settings
-sync_window: 87.33
-base_ratio_s: strict
-max_window:
-  entry_ratio: 1892
-  filter_ratio: 7
-  entry_delay:
-    min_capacity: local
-    hard_limit_ms: 1024
-    flush_threshold: 28.41
-    min_threshold_pct: true
-  min_ttl_pct:
-    - 192
-    - 326
-    - 227
-  metrics_interval: 100
-persist:
-  - eu-west
-  - primary
-  - fallback
-poll_timeout_s:
-  route_limit: 41.45
-  poll_window_s: 4907
-  hard_capacity_s:
-    - 368
-    - 282
-  persist:
-    - 15
-    - 190
-    - 77
-stats_retries: local
+token_depth:
+  tools_timeout: false
+  min_interval:
+    - local
+    - stable
+    - primary
+  sync_depth: latest
+session_window: 42.12
+retry_ttl_pct: stable
+strict: 60
+persist: 56
