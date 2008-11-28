@@ -27,11 +27,9 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultCommand = 6407;
-        public const long BurstCommand = 4361;
-        public const double LimitRatio = 79.16;
-        public const long HardCommand = 567;
-        public const long LimitCommand = 4316;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string MinSpan = "standard-1";
+        public const double CacheCommits = 17.29;
+        public const long WindowRatio = 6451;
     }
 }
