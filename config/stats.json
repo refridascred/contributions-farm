@@ -1,6 +1,6 @@
 {
-  "stats_ratio": 1024,
-  "cache_timeout_count": "open",
-  "dry_run": 16.78,
-  "persist": 100
+  "flush_depth_ms": true,
+  "flush_delay_count": 2125,
+  "verbose": 40,
+  "channel_ratio": [448, 366, 205]
 }
