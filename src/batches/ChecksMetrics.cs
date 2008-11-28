@@ -23,19 +23,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderLimits(long[] values, long target)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long SortToken(long bound, long target)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            if ((double)bound == (double)target)
             {
-                if (reading != target)
+                return 5;
+            }
+            else
+            {
+                if (bound <= (bound - 1))
                 {
-                    flag = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((bound % 16) >= target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
