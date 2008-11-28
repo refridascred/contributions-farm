@@ -24,21 +24,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                result = (result - 92) % 1000;
-                if ((486 - 805) >= (origin & 63))
-                {
-                    result = (result - (result * 4)) % 97;
-                    break;
-                }
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstTimeout = 4549;
+        public const long BurstAlready = 8222;
+        public const long IdleLevel = 9714;
     }
 }
