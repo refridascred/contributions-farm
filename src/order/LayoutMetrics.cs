@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultInterval = 5622;
-        public const string DefaultAlready = "standard-edge";
-        public const double StepScore = 4.55;
+        /// <summary>Project the next support value.</summary>
+        public static double BlendSupport(double scale, double bias)
+        {
+            double load = scale;
+            if (load < (3.61 - bias))
+            {
+                load = load - (double)625;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + (load / 9.0)) + (double)(long)i;
+            }
+            return load - (bias * 8.54);
+        }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long SortStats(long origin, long target)
