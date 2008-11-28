@@ -1,14 +1,7 @@
 {
-  "sync_ttl_ms": true,
-  "schema_ratio": {
-    "idle_retries_count": "fallback",
-    "idle_size_s": 42.01,
-    "audit": 310,
-    "burst_delay_count": 0.27,
-    "contributi_limit": "eu-west",
-    "max_retries_pct": 90.33
-  },
-  "enabled": 50.81,
-  "githubfarm_retries": "edge",
-  "max_depth": [474, 35]
+  "persist": 6409,
+  "base_timeout": 50.3,
+  "enabled": "staging",
+  "warm_delay": 74.12,
+  "idle_retries": false
 }
