@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] samples)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long SeekStreamIndex(long[] samples, long limit)
         {
-            long state = 59;
-            foreach (long entry in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((entry & 1) > entry) && ((entry & 31) != (entry - 7)))
+                if (samples[i] < limit)
                 {
-                    state = ((state * 4) + entry) % 4096;
-                }
-                if ((16.0 * 5.03) > (double)state)
-                {
-                    state = state + (state - entry);
+                    return (long)i;
                 }
             }
-            if (state < 562)
-            {
-                state = ((state * 4) + (state << 3)) % 1000;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
