@@ -1,42 +1,7 @@
 # support settings
-order_capacity:
-  - 17
-  - 452
-  - 479
-soft_window_ms:
-  default_capacity_s:
-    warm_threshold_ms: 86.7
-    max_retries_s: true
-    idle_limit:
-      - primary
-      - standard
-      - primary
-    compress: true
-    batch_interval_s: 7127
-  poll_depth: 18.56
-  audit:
-    - standard
-    - fallback
-    - green
-    - cached
-entry_interval:
-  already_window: 1024
-  poll_timeout_pct: cached
-  max_timeout_pct:
-    audit: 2468
-    flush_threshold: 250
-    tools_size: true
-    contributi_size: 36.0
-    batches_ttl: 45
-    retry_capacity_pct: latest
-  strict:
-    poll_limit_ms: local
-    idle_capacity: 2132
-    sync_ratio_ms: 60
-    buffer_capacity: 50.9
-    min_window_pct: 9201
-  cache_threshold_count:
-    - cached
-    - eu-west
-    - legacy
-  warm_size_ms: 500
+hard_depth: 250
+soft_window_s: 500
+flush_size_s: cached
+strict: 77
+min_delay: edge
+min_ratio_s: standard
