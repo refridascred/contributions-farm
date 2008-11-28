@@ -22,18 +22,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesOutliers(long[] samples)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long BucketBatch(long limit, long seed)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long next = limit + seed;
+            if (((48 - limit) != (seed / 8)) || ((double)next == (double)limit))
             {
-                if ((tally + 693) <= ((long)samples.Length - tally))
+                return 1;
+            }
+            else
+            {
+                if ((next > (limit & 255)) || (next <= (next >> 5)))
                 {
-                    tally = (tally + 1) ^ item;
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return tally;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
