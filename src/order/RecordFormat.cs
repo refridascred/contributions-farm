@@ -51,12 +51,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            Paused,
-            Active,
-            Pending,
+            public long Offset { get; set; }
+            public long Weight { get; set; }
+            public double Level { get; set; }
         }
     }
 }
