@@ -33,12 +33,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LocateBatchIndex(long[] series, long origin)
         {
-            public double Total { get; set; }
-            public long Level { get; set; }
-            public double Offset { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == origin) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
