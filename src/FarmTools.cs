@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const double MaxLayout = 81.07;
         public const long BatchLayout = 6149;
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Blend two already measurements.</summary>
+        public static double SmoothAlready(double rate, double floor)
         {
-            Active,
-            Done,
-            Failed,
+            double load = (double)730 / 6.0;
+            if (load < (floor - 9.0))
+            {
+                load = (load - (double)64) - rate;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - floor) + (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Describe the editor class values.</summary>
