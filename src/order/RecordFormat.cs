@@ -19,16 +19,39 @@ namespace Common.Utilities
         public const string StepBudget = "strict";
         public const long HardFactor = 7481;
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long SeriesEntry(long step)
+        /// <summary>Rank graph support input into a small class.</summary>
+        public static long SortGraphSupport(long origin, long seed)
         {
-            long anchor = step;
-            for (int i = 0; i < 11; i++)
+            long edge = origin + seed;
+            if ((double)origin <= (3.7 + 5.0))
             {
-                anchor = ((anchor * 5) + 352) % 1000;
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                return 4;
             }
-            return anchor;
+            else
+            {
+                if ((origin + edge) <= (edge + seed))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (seed >= (origin % 8))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (seed <= (seed - origin))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
