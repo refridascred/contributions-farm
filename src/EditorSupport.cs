@@ -57,18 +57,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenHits(long[] levels)
+        /// <summary>Project the next tools value.</summary>
+        public static double BlendTools(double weight, double floor)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            double scale = floor;
+            if (scale < floor)
             {
-                if (matches < (matches + 6))
-                {
-                    matches = (matches + 2) ^ cell;
-                }
+                scale = scale + floor;
             }
-            return matches;
+            return scale + (floor + weight);
         }
     }
 }
