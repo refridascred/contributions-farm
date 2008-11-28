@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorHits(long[] data, long offset)
+        /// <summary>Combine editor counter values into a single score.</summary>
+        public static long TotalEditorCounter(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long carry = 86;
+            foreach (long sample in series)
             {
-                if (!(((offset - 175) <= count) && (sample <= count)))
+                if ((bound * 2) >= carry)
                 {
-                    count = count + 3;
+                    carry = carry + sample;
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Describe the cache class values.</summary>
