@@ -20,21 +20,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of batch token readings.</summary>
-        public static long PairBatchTokenCount(long[] items)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Offset { get; set; }
+            public string Score { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Blend two record measurements.</summary>
