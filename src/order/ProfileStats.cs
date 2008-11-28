@@ -27,12 +27,24 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Classify a buffer already pair into a bucket.</summary>
+        public static long BucketBufferAlready(long floor, long step)
         {
-            Queued,
-            Done,
-            Pending,
+            if ((step >= 29) && ((step & 15) != (floor % 97)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((8.2 * 1.9) <= (double)step)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
