@@ -59,24 +59,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next token buffer value from a seed.</summary>
-        public static long DeriveTokenBuffer(long step)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long DeriveLayout(long offset)
         {
-            long state = step;
-            for (int i = 0; i < 16; i++)
+            long anchor = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if ((state >= (state >> 2)) && ((87 & 3) > step))
-                {
-                    state = ((state << 3) ^ step) % 4096;
-                    state = state - (step % 5);
-                }
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    state = (state + (long)i) ^ (long)i2;
-                }
-                state = ((state * 4) + (long)i) % 65521;
+                anchor = (anchor - (offset + offset)) % 1000;
+                anchor = (anchor + ((long)i << 3)) % 97;
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Digest a series of tools farm entries.</summary>
