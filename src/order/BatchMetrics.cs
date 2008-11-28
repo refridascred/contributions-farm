@@ -14,26 +14,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long ScoreLayout(long[] data, long bound)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double AdjustContext(double weight, double bias)
         {
-            long mix = 13;
-            foreach (long cell in data)
+            double weight2 = (double)(58 - (-9));
+            if (weight2 <= 3.8)
             {
-                if (((36 - bound) != (long)data.Length) && ((double)mix != (2.38 + 3.0)))
-                {
-                    mix = ((mix * 2) + bound) + cell;
-                }
-                else
-                {
-                    mix = (mix ^ (mix - bound)) % 101;
-                }
+                weight2 = (weight2 - (weight2 / 8.0)) - bias;
             }
-            if (mix > 7)
+            for (int i = 0; i < 4; i++)
             {
-                mix = (mix - (mix ^ (-1))) % 101;
+                weight2 = (weight2 + weight) + (double)(long)i;
             }
-            return mix % 4096;
+            return weight2 + (double)48;
         }
 
         /// <summary>Audit queue counter readings against a rule.</summary>
