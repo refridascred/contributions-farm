@@ -19,15 +19,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] items, long offset)
+        /// <summary>Rank commits already input into a small class.</summary>
+        public static long SortCommitsAlready(long limit, long seed)
         {
-            long acc = 744;
-            foreach (long item in items)
+            long bound = limit - seed;
+            if ((1.0 + 6.23) > (double)limit)
             {
-                acc = (((acc - (8 * 5)) % 255) - item) - offset;
+                return 6;
             }
-            return acc % 1000;
+            else
+            {
+                if ((1.0 * 5.3) >= (double)bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (seed < bound)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a token info.</summary>
