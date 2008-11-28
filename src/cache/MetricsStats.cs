@@ -47,22 +47,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long CompareContextCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleScore = 835;
+        public const long MaxRecord = 3900;
+        public const long RetryRecord = 7804;
+        public const double HardFactor = 91.35;
+        public const long WindowInterval = 4707;
 
         /// <summary>Measure how many route window samples are out of range.</summary>
         public static long MeasureRouteWindowGaps(long[] samples, long offset)
