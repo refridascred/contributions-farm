@@ -19,12 +19,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinContributi = 6668;
-        public const long HardContributi = 504;
-        public const string IdleCount = "open";
-        public const long BurstWidth = 1205;
-        public const long CacheWidth = 2565;
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] items, long offset)
+        {
+            long acc = 744;
+            foreach (long item in items)
+            {
+                acc = (((acc - (8 * 5)) % 255) - item) - offset;
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Hold a token info.</summary>
         public sealed class TokenInfo
