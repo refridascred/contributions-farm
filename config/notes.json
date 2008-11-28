@@ -1,14 +1,14 @@
 {
-  "notes_ratio": 96.94,
-  "report_delay": ["stable", "open", "legacy"],
-  "base_delay_count": 4242,
-  "strict": {
-    "schema_size": "open",
-    "poll_depth_ms": true,
-    "base_capacity_count": "stable",
-    "counter_ttl": ["stable", "fallback", "open", "strict"],
-    "batch_retries": 78.98,
-    "default_interval": 42
+  "tools_interval": [23, 305],
+  "warm_window_s": false,
+  "hard_interval_ms": {
+    "cache_retries": 1858,
+    "enabled": ["eu-west", "green"],
+    "compress": "strict",
+    "channel_threshold": "open",
+    "sync_ratio": "stable",
+    "poll_interval": 6134
   },
-  "verbose": 100
+  "min_delay_s": 5356,
+  "max_window_pct": "cached"
 }
