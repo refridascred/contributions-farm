@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorOutliers(long[] readings, long offset)
-        {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)count == (8.3 * 2.7))
-                {
-                    count = ((count + 1) ^ datum) - offset;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitMetrics = 8825;
+        public const string WindowMetrics = "alpha-v2";
+        public const double IdleScore = 69.04;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long BaseTimeout = 151;
