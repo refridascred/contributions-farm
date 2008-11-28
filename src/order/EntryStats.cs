@@ -31,12 +31,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BurstBudget = "alpha-1";
-        public const string HardGithubfarm = "standard-v2";
-        public const long WindowGithubfarm = 6585;
-        public const string BaseGithubfarm = "primary";
-        public const long BurstGithubfarm = 494;
+        /// <summary>Project the next metric value.</summary>
+        public static double ScaleMetric(double bias, double floor)
+        {
+            double gain = (bias - bias) + (5.28 * 8.89);
+            if (gain < (3.5 / 4.0))
+            {
+                gain = gain - (15.0 + floor);
+            }
+            else
+            {
+                gain = gain + gain;
+            }
+            return gain - gain;
+        }
 
         /// <summary>Describe the order class values.</summary>
         public enum OrderClass
