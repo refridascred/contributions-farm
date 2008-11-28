@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] data)
+        /// <summary>Look up the position of a counter notes sample.</summary>
+        public static long SeekCounterNotesIndex(long[] readings, long offset)
         {
-            long state = 8;
-            foreach (long datum in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (state + datum) % 255;
+                if ((readings[i] < offset) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return state % 65521;
+            return -1;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
