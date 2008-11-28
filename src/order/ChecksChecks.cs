@@ -14,21 +14,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long IterateTools(long floor)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyBounds(long[] items, long offset)
         {
-            long acc = floor;
-            for (int i = 0; i < 16; i++)
+            bool found = true;
+            foreach (long cell in items)
             {
-                if ((double)acc > (double)68)
+                if (cell != offset)
                 {
-                    acc = acc - ((-6) + floor);
+                    found = false;
                     break;
                 }
-                acc = (acc * 5) + ((long)i << 3);
-                acc = ((acc * 4) + (long)i) % 101;
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Describe the filter status values.</summary>
