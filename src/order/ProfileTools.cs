@@ -32,12 +32,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double StepWidth = 60.91;
-        public const double HardGraph = 78.94;
-        public const string BaseLevel = "cached-1";
-        public const long BurstGraph = 759;
-        public const long HardSize = 314;
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
+        {
+            public long Total { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Hold a order header.</summary>
         public sealed class OrderHeader
