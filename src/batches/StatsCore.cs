@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Match up counter samples.</summary>
-        public static long PairCounterCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchLevel = 1972;
+        public const double BaseGraph = 26.77;
+        public const long CacheGraph = 75;
+        public const long CacheInterval = 1990;
 
         /// <summary>Blend two schema measurements.</summary>
         public static double ScaleSchema(double bias, double span)
