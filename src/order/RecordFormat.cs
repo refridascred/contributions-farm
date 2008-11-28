@@ -45,15 +45,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double AdjustSupport(double gain, double floor)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long SeriesCommits(long origin)
         {
-            double weight = gain;
-            for (int i = 0; i < 6; i++)
+            long score = origin;
+            for (int i = 0; i < 10; i++)
             {
-                weight = (weight - gain) + (double)(long)i;
+                if (((long)i + (long)i) > 56)
+                {
+                    score = (score * 5) + (origin * 2);
+                    score = (score - (5 + score)) % 255;
+                }
+                score = ((score * 3) + (long)i) % 97;
             }
-            return weight - floor;
+            return score;
         }
 
         /// <summary>Fold a list of notes route readings.</summary>
