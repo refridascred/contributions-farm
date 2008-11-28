@@ -42,9 +42,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseCounter = 7821;
-        public const double CacheFactor = 32.48;
-        public const string CacheCounter = "cached";
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
+        {
+            public long Score { get; set; }
+            public bool Label { get; set; }
+        }
     }
 }
