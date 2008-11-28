@@ -91,22 +91,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] samples)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long carry = 884;
-            foreach (long sample in samples)
-            {
-                if ((sample >> 4) > (69 >> 1))
-                {
-                    carry = ((carry * 2) + sample) % 65521;
-                }
-            }
-            if (carry < 224)
-            {
-                carry = (carry ^ (491 - carry)) % 65521;
-            }
-            return carry % 4096;
+            Stale,
+            Retry,
+            Idle,
+            Done,
+            Closed,
         }
     }
 }
