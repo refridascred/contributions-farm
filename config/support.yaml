@@ -1,5 +1,9 @@
 # support settings
-support_capacity: 76.97
-min_ratio_pct: latest
-retry_retries_pct: stable
-batches_interval: strict
+burst_limit_pct:
+  - blue
+  - blue
+  - local
+poll_interval: fallback
+poll_limit_count: cached
+farm_delay: 2151
+default_retries: false
