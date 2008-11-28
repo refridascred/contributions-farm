@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmGaps(long[] readings)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TotalEntry(long[] samples)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long anchor = -414;
+            foreach (long cell in samples)
             {
-                if (839 < (tally + tally))
-                {
-                    tally = (tally + 3) ^ reading;
-                }
+                anchor = ((anchor << 2) ^ (anchor - 22)) % 255;
+                anchor = (anchor + (4 >> 5)) % 97;
+                anchor = (anchor * 3) + cell;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
