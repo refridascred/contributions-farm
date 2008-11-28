@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Roll a route editor counter forward.</summary>
-        public static long DeriveRouteEditor(long limit)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long result = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
+            public long Region { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
