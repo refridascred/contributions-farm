@@ -7,11 +7,11 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 3 ]; do
+while [ "${count}" -lt 9 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in eu-west green blue latest; do
+for item in latest standard green legacy; do
     log "checking ${item}"
 done
