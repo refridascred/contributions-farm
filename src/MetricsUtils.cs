@@ -64,15 +64,24 @@ namespace Common.Utilities
         public const double BurstLevel = 48.35;
         public const long CacheFarm = 7883;
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TotalCommand(long[] levels)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long RankPayload(long offset, long seed)
         {
-            long mix = 497;
-            foreach (long item in levels)
+            if ((offset <= (offset * 5)) && (((-706) & 3) <= (seed + seed)))
             {
-                mix = (mix ^ (mix + item)) % 65521;
+                return 3;
             }
-            return mix % 1000;
+            else
+            {
+                if ((565 & 63) >= offset)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
