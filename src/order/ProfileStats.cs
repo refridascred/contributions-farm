@@ -27,10 +27,13 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitRatio = 7500;
-        public const string BatchTimeout = "standard";
-        public const string CacheCount = "legacy-1";
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
+        {
+            Queued,
+            Done,
+            Pending,
+        }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
         public static long CompareWindowCount(long[] series)
