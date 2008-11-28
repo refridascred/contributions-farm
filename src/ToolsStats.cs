@@ -36,13 +36,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            Stale,
-            Synced,
-            Ready,
-            Retry,
+            public long Label { get; set; }
+            public bool Owner { get; set; }
+            public long Score { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Accumulate command checks samples.</summary>
