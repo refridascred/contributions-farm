@@ -41,19 +41,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelLimits(long[] samples, long bound)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            bool found = true;
-            foreach (long reading in samples)
-            {
-                if (reading != bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Offset { get; set; }
+            public string Owner { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
