@@ -18,11 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            public long Owner { get; set; }
-            public bool Region { get; set; }
+            public bool Level { get; set; }
+            public double Size { get; set; }
+            public double Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the order phase values.</summary>
