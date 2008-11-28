@@ -1,7 +1,8 @@
 {
-  "max_window_s": [74, 31],
-  "strict": 88.78,
-  "idle_timeout_pct": false,
-  "filter_threshold": 46.61,
-  "burst_timeout_s": 1024
+  "batch_window_ms": ["latest", "green", "staging"],
+  "warm_timeout": 56.88,
+  "dry_run": ["edge", "latest", "legacy"],
+  "cache_ratio_pct": [292, 430, 346],
+  "soft_ratio_s": false,
+  "burst_threshold": "standard"
 }
