@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long GradeRecord(long seed, long floor)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaHits(long[] readings)
         {
-            long step = seed - floor;
-            if (!(step < floor))
+            long hits = 0;
+            foreach (long item in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)seed < (double)floor)
+                if ((((9.5 - 9.74) >= (double)item) || ((hits + hits) < 78)) && !((double)hits <= 3.0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a metrics info.</summary>
