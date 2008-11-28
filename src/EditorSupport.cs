@@ -13,24 +13,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ProjectSchema(double weight, double offset)
-        {
-            double bias = (double)16 * 8.9;
-            if (bias > (double)262)
-            {
-                bias = (bias + bias) - offset;
-            }
-            else
-            {
-                bias = bias - bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - (9.4 / 2.0)) + (double)(long)i;
-            }
-            return bias - (weight + bias);
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseSupport = 76;
+        public const long StepSpan = 2803;
+        public const double LimitSupport = 43.89;
 
         /// <summary>Describe the window level values.</summary>
         public enum WindowLevel
