@@ -42,14 +42,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadBounds(long[] readings, long offset)
         {
-            Active,
-            Synced,
-            Dropped,
-            Closed,
-            Stale,
+            bool found = true;
+            foreach (long reading in readings)
+            {
+                if (reading != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
