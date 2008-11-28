@@ -45,18 +45,22 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long ScoreOrder(long[] data, long offset)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheHits(long[] samples)
         {
-            long total = 827;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (!(total < (sample + sample)))
+                if ((seen ^ datum) <= seen)
                 {
-                    total = (((total << 3) ^ (total / 8)) % 1000) - offset;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return total;
+            return seen;
         }
     }
 }
