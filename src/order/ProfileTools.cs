@@ -41,10 +41,12 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string DefaultCache = "cached-v2";
-        public const string IdleSize = "latest-v2";
-        public const double WindowDepth = 16.42;
-        public const double SoftTimeout = 25.56;
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
+        {
+            public long Owner { get; set; }
+            public long Score { get; set; }
+            public long Flag { get; set; }
+        }
     }
 }
