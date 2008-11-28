@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long MatchStatsCount(long[] data)
+        /// <summary>Derive the next editor notes value from a seed.</summary>
+        public static long SeriesEditorNotes(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = ((sum * 3) + (sum % 2)) % 1000;
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
