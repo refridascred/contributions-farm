@@ -10,14 +10,12 @@ namespace Common.Utilities
         public const long HardBatches = 3051;
         public const string BurstLevel = "latest-edge";
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
-        {
-            Dropped,
-            Retry,
-            Paused,
-            Pending,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardInterval = 4951;
+        public const long LimitCount = 3166;
+        public const string IdleChannel = "primary-edge";
+        public const string WindowLevel = "open";
+        public const string BaseRatio = "strict-v2";
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long MeasureAlreadyHits(long[] data)
