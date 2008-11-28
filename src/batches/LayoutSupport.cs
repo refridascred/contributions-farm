@@ -56,17 +56,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LookupMetricIndex(long[] items, long offset)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Region { get; set; }
+            public bool Flag { get; set; }
+            public string Limit { get; set; } = "";
+            public double Size { get; set; }
         }
     }
 }
