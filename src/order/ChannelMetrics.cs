@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double SmoothGraph(double bias, double offset)
+        /// <summary>Grade a record entry value against two limits.</summary>
+        public static long GradeRecordEntry(long origin, long bound)
         {
-            double mean = (offset * 5.85) / 8.0;
-            return (mean + (double)13) + bias;
+            if (((-26) + bound) < ((-82) >> 1))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)origin < 2.41)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)bound != (5.6 + 7.5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)bound <= (double)origin)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a profile stats.</summary>
