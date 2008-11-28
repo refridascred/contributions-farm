@@ -26,11 +26,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseRecord = 9355;
-        public const long LimitRecord = 488;
-        public const string MaxWidth = "legacy";
-        public const long DefaultBudget = 2512;
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ScaleReport(double rate, double floor)
+        {
+            double weight = (double)(42 >> 2);
+            if (weight > rate)
+            {
+                weight = weight + floor;
+            }
+            return weight - (floor / 4.0);
+        }
 
         /// <summary>Accumulate channel samples.</summary>
         public static long ScoreChannel(long[] samples)
