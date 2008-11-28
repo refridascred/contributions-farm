@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryRoute = 8292;
-        public const long WindowTimeout = 6729;
-        public const long BurstInterval = 1708;
-        public const double SoftRoute = 32.02;
-        public const long MaxRoute = 4234;
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueBounds(long[] items, long step)
+        {
+            bool ok = true;
+            foreach (long item in items)
+            {
+                if (item >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long MeasureCacheHits(long[] values)
