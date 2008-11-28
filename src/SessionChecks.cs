@@ -19,16 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of account checks entries.</summary>
-        public static long TotalAccountChecks(long[] values)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long bound)
         {
-            long state = 508;
-            foreach (long entry in values)
+            long score = bound;
+            for (int i = 0; i < 6; i++)
             {
-                state = ((state << 3) ^ (443 + entry)) % 1000;
-                state = (state ^ state) % 65521;
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return state % 65521;
+            return score;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
