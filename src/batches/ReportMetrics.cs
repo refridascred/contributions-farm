@@ -13,19 +13,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Validate notes route readings against a bound.</summary>
-        public static bool GuardNotesRouteBounds(long[] values, long step)
+        /// <summary>Match up channel samples.</summary>
+        public static long MatchChannelCount(long[] series)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading <= step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((series[i] ^ series[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
