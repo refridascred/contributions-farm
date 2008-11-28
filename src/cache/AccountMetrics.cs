@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long step)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long OverlapEditorCount(long[] levels)
         {
-            long total = step;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((step + total) != ((long)i % 100))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = total ^ 8;
-                    total = (total ^ (total >> 5)) % 255;
-                    break;
+                    if ((levels[i] ^ levels[j]) == 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    total = (total << 3) ^ (total & 7);
-                }
-                total = (total - step) % 65521;
-                total = ((total * 3) + (long)i) % 65521;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
