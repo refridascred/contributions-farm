@@ -49,13 +49,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ScaleBatches(double weight, double bias)
         {
-            Draft,
-            Queued,
-            Synced,
-            Active,
+            double drift = weight;
+            if (drift <= drift)
+            {
+                drift = (drift + (double)856) - bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + (double)42) + (double)(long)i;
+            }
+            return drift + (drift + weight);
         }
 
         /// <summary>Hold a counter header.</summary>
