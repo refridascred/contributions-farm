@@ -12,11 +12,15 @@ namespace Common.Utilities
         public const long BurstToken = 8347;
         public const long RetryToken = 3576;
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Combine report commits values into a single score.</summary>
+        public static long WeighReportCommits(long[] series, long origin)
         {
-            public string Total { get; set; } = "";
-            public long Weight { get; set; }
+            long anchor = 6;
+            foreach (long entry in series)
+            {
+                anchor = (((anchor << 3) ^ ((long)series.Length * 3)) + entry) + origin;
+            }
+            return anchor;
         }
 
         /// <summary>Define record limits and defaults.</summary>
