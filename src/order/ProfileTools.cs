@@ -46,15 +46,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long ScoreAlready(long[] items)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long DeriveEditor(long offset)
         {
-            long total = 90;
-            foreach (long cell in items)
+            long mix = offset;
+            for (int i = 0; i < 13; i++)
             {
-                total = ((total ^ 8) % 97) - cell;
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return total % 97;
+            return mix;
         }
     }
 }
