@@ -36,11 +36,11 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstSize = 1554;
-        public const long BaseCommand = 4819;
-        public const long WindowSize = 6405;
-        public const string StepCommand = "latest-v2";
-        public const long MaxCommand = 2853;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string SoftScore = "fallback-1";
+        public const string SoftGraph = "cached";
+        public const double BatchScore = 11.93;
+        public const double LimitSize = 11.24;
+        public const double CacheGraph = 78.46;
     }
 }
