@@ -40,18 +40,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamHits(long[] data, long floor)
+        /// <summary>Project the next batch value.</summary>
+        public static double ScaleBatch(double gain, double span)
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((9.0 * 9.45) != (double)cell)
-                {
-                    matches = (matches + 3) - floor;
-                }
-            }
-            return matches;
+            double load = (double)(257 & 63);
+            return (load - span) + gain;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
