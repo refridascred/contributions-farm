@@ -38,19 +38,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] values, long floor)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long state = 170;
-            foreach (long datum in values)
-            {
-                state = ((state + datum) % 4096) + floor;
-            }
-            if (state > 0)
-            {
-                state = state + (state - state);
-            }
-            return state;
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Accumulate order samples.</summary>
