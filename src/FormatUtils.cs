@@ -24,22 +24,12 @@ namespace Common.Utilities
         public const long BurstSize = 2267;
         public const double IdleSpan = 54.32;
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmGaps(long[] series, long target)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if (((target << 1) <= (matches * 4)) && ((target / 7) != (target / 3)))
-                {
-                    matches = (matches + 1) - cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Ready,
+            Draft,
+            New,
         }
 
         /// <summary>Describe the contributi phase values.</summary>
