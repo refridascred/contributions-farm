@@ -13,18 +13,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsMatches(long[] series, long step)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((1 + step) > (seen << 2))
-                {
-                    seen = (seen + 1) + cell;
-                }
-            }
-            return seen;
+            Draft,
+            Locked,
+            Done,
         }
 
         /// <summary>Compare every pair of batch token readings.</summary>
