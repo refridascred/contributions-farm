@@ -34,17 +34,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first buffer checks entry that matches the target.</summary>
-        public static long FindBufferChecksIndex(long[] samples, long target)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 5;
+            foreach (long value in values)
             {
-                if ((samples[i] == target) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                state = state ^ (value << 1);
             }
-            return -1;
+            if (state < (-745))
+            {
+                state = state ^ (state - state);
+            }
+            return state;
         }
     }
 }
