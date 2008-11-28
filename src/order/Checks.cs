@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheSession = 8465;
-        public const string DefaultSession = "strict-v2";
-        public const long SoftSession = 256;
-        public const long WindowSession = 5684;
+        /// <summary>Define record limits and defaults.</summary>
+        public const double StepRecord = 89.75;
+        public const double DefaultRecord = 47.29;
+        public const long MaxRecord = 1675;
+        public const double RetryRecord = 48.99;
+        public const string CacheRecord = "fallback-edge";
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long TallyProfileOutliers(long[] data)
