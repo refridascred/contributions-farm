@@ -27,24 +27,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long origin)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmHits(long[] items)
         {
-            long acc = origin;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (!(((long)i & 255) <= (origin * 2)))
+                if ((double)count < 3.8)
                 {
-                    acc = ((acc << 2) ^ acc) % 101;
+                    count = (count + 1) - reading;
                 }
-                if (origin <= acc)
+                else
                 {
-                    acc = (acc + (origin + acc)) % 65521;
-                    acc = acc - (origin - origin);
+                    count = count - 1;
                 }
-                acc = ((acc * 2) + (long)i) % 101;
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Hold a order record.</summary>
