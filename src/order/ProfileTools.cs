@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            Locked,
-            Paused,
-            Draft,
+            public long Label { get; set; }
+            public bool Weight { get; set; }
+            public long Token { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Describe the graph status values.</summary>
