@@ -20,26 +20,22 @@ namespace Common.Utilities
             return bias + (double)18;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long SeriesProfile(long step)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheHits(long[] values)
         {
-            long carry = step;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (!((double)carry >= (5.5 - 0.3)))
+                if (((4.0 / 5.0) >= (double)entry) && ((double)entry < (6.29 - 7.02)))
                 {
-                    carry = ((carry << 3) ^ (step - 20)) % 97;
-                    continue;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    carry = carry - (351 - step);
-                    carry = carry + (step % 64);
+                    matches = matches - 1;
                 }
-                carry = ((carry << 3) ^ (step ^ 5)) % 255;
-                carry = ((carry * 5) + (long)i) % 97;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
