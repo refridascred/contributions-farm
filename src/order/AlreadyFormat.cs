@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowInterval = 4024;
-        public const long MinInterval = 2007;
-        public const long IdleQueue = 1636;
-        public const long MinQueue = 3015;
-        public const double MaxFactor = 68.49;
+        /// <summary>Compare every pair of order filter readings.</summary>
+        public static long CompareOrderFilterCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Compare every pair of window githubfarm readings.</summary>
         public static long PairWindowGithubfarmCount(long[] levels)
