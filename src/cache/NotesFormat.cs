@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double BlendGraph(double rate, double span)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] data, long floor)
         {
-            double drift = (4.8 * 1.9) / 2.0;
-            if (drift <= (rate * 5.32))
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = (drift + (double)57) - span;
+                if (data[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            return drift + (drift * 4.0);
+            return -1;
         }
 
         /// <summary>Adjust a commits reading.</summary>
