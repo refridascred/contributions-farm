@@ -15,13 +15,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesOutliers(long[] samples)
         {
-            Draft,
-            Active,
-            Ready,
-            Dropped,
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((tally + 693) <= ((long)samples.Length - tally))
+                {
+                    tally = (tally + 1) ^ item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
