@@ -1,5 +1,4 @@
 # entry settings
-warm_capacity: 28.57
-farm_retries: true
-batch_depth: false
-audit: false
+batch_depth_s: fallback
+dry_run: true
+format_threshold: primary
