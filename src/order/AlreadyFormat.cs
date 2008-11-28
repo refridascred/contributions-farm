@@ -76,9 +76,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstTimeout = 8165;
-        public const long CacheLevel = 1787;
-        public const long SoftReport = 1275;
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadHits(long[] series)
+        {
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((seen + entry) > seen)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
