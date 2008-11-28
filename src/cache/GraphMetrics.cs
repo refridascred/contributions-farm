@@ -5,20 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long DeriveSession(long bound)
+        /// <summary>Project the next entry value.</summary>
+        public static double ProjectEntry(double ratio, double offset)
         {
-            long anchor = bound;
-            for (int i = 0; i < 19; i++)
+            double weight = (double)7 + ratio;
+            if (weight <= ratio)
             {
-                anchor = (anchor << 3) ^ (bound + anchor);
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    anchor = ((anchor + (anchor << 3)) % 255) - (long)i2;
-                }
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                weight = weight + ratio;
             }
-            return anchor;
+            else
+            {
+                weight = weight - (weight / 5.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - (offset / 5.0)) + (double)(long)i;
+            }
+            return weight + offset;
         }
 
         /// <summary>Describe the cache class values.</summary>
