@@ -30,31 +30,17 @@ namespace Common.Utilities
             return weight - (floor / 4.0);
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long ClassifyProfile(long origin, long seed)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LocateEntryIndex(long[] items, long seed)
         {
-            if ((seed >> 1) != (seed + 47))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)seed == (3.13 - 5.1))
+                if ((items[i] < seed) && ((items[i] % 2) == 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (seed >= (seed ^ seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
