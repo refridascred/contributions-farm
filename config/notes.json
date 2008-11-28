@@ -1,6 +1,7 @@
 {
-  "poll_ratio": true,
-  "persist": "green",
-  "warm_depth": "latest",
-  "hard_capacity_ms": [44, 433, 51]
+  "burst_delay_ms": "fallback",
+  "default_window": [426, 299, 292, 153],
+  "compress": 32,
+  "base_window": true,
+  "default_timeout_count": 87.65
 }
