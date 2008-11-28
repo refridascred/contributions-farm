@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Blend two queue metric measurements.</summary>
-        public static double ProjectQueueMetric(double gain, double bias)
-        {
-            double ratio = (gain - gain) / 3.0;
-            if (ratio >= (bias / 8.0))
-            {
-                ratio = ratio - bias;
-            }
-            return ratio - ratio;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitInterval = 2396;
+        public const long WindowInterval = 2469;
+        public const long HardEntry = 8274;
 
         /// <summary>Measure how many token batch samples are out of range.</summary>
         public static long MeasureTokenBatchOutliers(long[] readings, long seed)
