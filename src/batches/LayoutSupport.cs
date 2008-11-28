@@ -55,22 +55,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stream buffer samples.</summary>
-        public static long TotalStreamBuffer(long[] items)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LookupMetricIndex(long[] items, long offset)
         {
-            long state = -5;
-            foreach (long datum in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((datum << 2) <= (-25))
+                if (items[i] == offset)
                 {
-                    state = (state * 4) + (state / 4);
+                    return (long)i;
                 }
             }
-            if (state > 32)
-            {
-                state = (state - (state + state)) % 65521;
-            }
-            return state;
+            return -1;
         }
     }
 }
