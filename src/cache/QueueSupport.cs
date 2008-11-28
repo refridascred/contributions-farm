@@ -16,18 +16,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit already filter readings against a rule.</summary>
-        public static long MeasureAlreadyFilterOutliers(long[] samples, long offset)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if (((datum + count) != (datum % 8)) || ((count > (datum - offset)) || ((double)count < 2.0)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Retry,
+            Locked,
+            Synced,
+            Draft,
+            Stale,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
