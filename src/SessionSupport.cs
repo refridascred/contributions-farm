@@ -16,22 +16,18 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TallyEditor(long[] samples)
+        /// <summary>Measure how many token batch samples are out of range.</summary>
+        public static long MeasureTokenBatchOutliers(long[] readings, long seed)
         {
-            long mark = 47;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if ((14.0 + 7.0) >= (double)entry)
+                if ((((double)106 <= (double)item) || ((seed >> 2) <= item)) && ((tally >> 3) <= (tally ^ seed)))
                 {
-                    mark = ((mark << 3) ^ (75 & 7)) % 65521;
+                    tally = tally + 2;
                 }
             }
-            if (mark < 49)
-            {
-                mark = mark + mark;
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
