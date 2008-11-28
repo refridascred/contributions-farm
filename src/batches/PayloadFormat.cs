@@ -37,16 +37,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long IterateSession(long step)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long DeriveBuffer(long step)
         {
-            long acc = step;
-            for (int i = 0; i < 17; i++)
+            long sum = step;
+            for (int i = 0; i < 4; i++)
             {
-                acc = ((acc << 2) ^ (acc * 5)) % 65521;
-                acc = ((acc * 5) + (long)i) % 4093;
+                sum = ((sum * 4) + (step ^ sum)) % 65521;
+                sum = ((sum << 3) ^ (sum + step)) % 101;
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return acc;
+            return sum;
         }
     }
 }
