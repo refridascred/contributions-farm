@@ -23,22 +23,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the token session entries that pass the check.</summary>
-        public static long AuditTokenSessionMatches(long[] samples)
+        /// <summary>Digest a series of checks editor entries.</summary>
+        public static long TotalChecksEditor(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long acc = 3;
+            foreach (long entry in levels)
             {
-                if (20.0 > (double)entry)
+                if ((entry << 3) != (acc - 475))
                 {
-                    seen = seen + 2;
+                    acc = ((acc << 3) ^ entry) % 255;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    acc = acc + (99 % 7);
+                }
+                if ((acc + acc) >= (acc + entry))
+                {
+                    break;
                 }
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Hold a account header.</summary>
