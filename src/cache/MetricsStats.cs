@@ -12,12 +12,13 @@ namespace Common.Utilities
         public const long BaseMetrics = 361;
         public const long BaseScore = 8612;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string CacheFactor = "fallback-1";
-        public const long LimitTimeout = 680;
-        public const long MaxPayload = 1;
-        public const double StepPayload = 18.24;
-        public const long MinPayload = 4866;
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
+        {
+            Synced,
+            Active,
+            Pending,
+        }
 
         /// <summary>Compare every pair of batch token readings.</summary>
         public static long PairBatchTokenCount(long[] items)
