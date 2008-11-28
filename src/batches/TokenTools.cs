@@ -11,22 +11,21 @@ namespace Common.Utilities
         public const double IdleRatio = 44.63;
         public const double BaseSpan = 72.1;
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksHits(long[] series, long floor)
+        /// <summary>Count channel farm pairs that satisfy a relation.</summary>
+        public static long MatchChannelFarmCount(long[] data)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((double)reading < (5.3 + 9.1)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = (matches + 3) - floor;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((data[i] ^ data[j]) < 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a record summary.</summary>
