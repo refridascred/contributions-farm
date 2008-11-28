@@ -33,13 +33,10 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
-        {
-            Queued,
-            Stale,
-            Dropped,
-            Idle,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string CacheSpan = "local-v2";
+        public const long HardLevel = 1179;
+        public const double BurstAccount = 27.83;
+        public const double LimitAccount = 38.15;
     }
 }
