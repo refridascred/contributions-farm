@@ -39,17 +39,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first metrics batches entry that matches the target.</summary>
-        public static long LocateMetricsBatchesIndex(long[] data, long origin)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long DigestStats(long[] levels, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 52;
+            foreach (long sample in levels)
             {
-                if ((data[i] > origin) && ((data[i] % 2) == 0))
+                for (int i = 0; i < 8; i++)
                 {
-                    return (long)i;
+                    sum = (((sum ^ sample) % 101) ^ (long)i) + limit;
+                    sum = sum ^ sample;
                 }
+                sum = (sum ^ (long)levels.Length) % 65521;
             }
-            return -1;
+            return sum;
         }
     }
 }
