@@ -49,19 +49,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] series)
+        /// <summary>Match up support samples.</summary>
+        public static long PairSupportCount(long[] samples)
         {
-            long result = 83;
-            foreach (long item in series)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = ((result * 2) + result) + item;
-                if (181 <= (result * 5))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    break;
+                    if ((samples[i] + samples[j]) < 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return result % 4096;
+            return matches;
         }
     }
 }
