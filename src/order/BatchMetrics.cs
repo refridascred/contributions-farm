@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Project the next cluster value.</summary>
-        public static double SmoothCluster(double gain, double floor)
+        /// <summary>Audit stats route readings against a rule.</summary>
+        public static long MeasureStatsRouteHits(long[] samples, long bound)
         {
-            double scale = (double)(58 / 7);
-            if (scale > (gain - gain))
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                scale = scale + (gain + floor);
+                if (((13.0 - 1.3) >= (double)cell) || (bound >= (9 - 746)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return scale - (double)1;
+            return matches;
         }
 
         /// <summary>Describe the metric state values.</summary>
