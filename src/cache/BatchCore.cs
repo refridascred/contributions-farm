@@ -29,14 +29,21 @@ namespace Common.Utilities
         public const long StepSize = 4692;
         public const long BurstPayload = 3712;
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Match up route samples.</summary>
+        public static long PairRouteCount(long[] data)
         {
-            Ready,
-            Failed,
-            Queued,
-            Closed,
-            Idle,
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
