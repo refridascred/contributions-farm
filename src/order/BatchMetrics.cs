@@ -14,23 +14,11 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricOutliers(long[] data)
-        {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((tally * 3) == (60 - 869))
-                {
-                    tally = (tally + 1) - cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string StepEntry = "stable-1";
+        public const long BurstRatio = 4947;
+        public const string BaseCount = "stable-v2";
+        public const long MaxEntry = 7704;
 
         /// <summary>Audit queue counter readings against a rule.</summary>
         public static long TallyQueueCounterGaps(long[] values, long offset)
