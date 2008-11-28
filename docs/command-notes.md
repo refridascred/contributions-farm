@@ -1,15 +1,15 @@
 # Command notes
 
-The contributi module keeps graph values in sync with the filter cache.
-Keep metrics and route names short and lowercase.
-Each schema is validated before it reaches the batches queue.
+Keep contributi and report names short and lowercase.
+A payload that stays idle for too long is moved to the support list.
+A checks that stays idle for too long is moved to the tools list.
 
-The channel report groups every session by token.
-A cache that stays idle for too long is moved to the channel list.
-When a session fails, the graph handler retries a few times before giving up.
+Keep githubfarm and notes names short and lowercase.
+A farm that stays idle for too long is moved to the layout list.
+Run the order check before changing any metric limits.
 
 ## Guidelines
 
-- Keep support values small
-- Prefer stats defaults
-- Document new order fields
+- Document new batches fields
+- Review filter limits each release
+- Keep context values small
