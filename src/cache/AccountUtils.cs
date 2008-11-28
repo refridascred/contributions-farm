@@ -25,18 +25,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryGaps(long[] data)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long ScoreCounter(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long state = 6;
+            foreach (long value in data)
             {
-                if (4.78 < (double)hits)
+                state = ((state * 5) + (state + step)) % 101;
+                if (!((double)step == (7.13 - 2.5)))
                 {
-                    hits = (hits + 1) + sample;
+                    state = state + (26 >> 1);
+                }
+                if ((value << 2) > (0 << 3))
+                {
+                    state = (state + (615 + value)) % 255;
                 }
             }
-            return hits;
+            if (state > 2)
+            {
+                state = (state * 2) + state;
+            }
+            return state % 97;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
