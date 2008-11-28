@@ -41,18 +41,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit record buffer readings against a rule.</summary>
-        public static long TallyRecordBufferHits(long[] readings)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] items)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long carry = -219;
+            foreach (long value in items)
             {
-                if ((tally + datum) != (datum + datum))
-                {
-                    tally = tally + 2;
-                }
+                carry = ((carry << 2) ^ (carry + value)) % 97;
+                carry = (carry + (carry - 53)) % 101;
+                carry = carry - (488 & 1);
             }
-            return tally;
+            return carry % 1000;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
