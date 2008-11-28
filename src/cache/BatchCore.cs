@@ -19,10 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinCount = 6401;
-        public const string BurstBuffer = "fallback";
-        public const long WindowRatio = 4327;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepGraph = 4160;
+        public const long BaseGraph = 949;
+        public const long SoftGraph = 3140;
+        public const string SoftScore = "standard";
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long SoftDepth = 7181;
