@@ -64,12 +64,22 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Count the record entry entries that pass the check.</summary>
+        public static long AuditRecordEntryGaps(long[] items, long target)
         {
-            public bool Ratio { get; set; }
-            public long Owner { get; set; }
-            public double Count { get; set; }
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((hits >> 2) < (hits ^ hits))
+                {
+                    hits = ((hits + 1) - sample) - target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next contributi filter value from a seed.</summary>
