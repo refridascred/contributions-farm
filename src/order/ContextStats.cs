@@ -20,22 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesOutliers(long[] values, long floor)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if (floor < ((-955) << 1))
-                {
-                    tally = (tally + 2) ^ sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Token { get; set; } = "";
+            public long Level { get; set; }
+            public bool Stamp { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the report kind values.</summary>
