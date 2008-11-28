@@ -20,23 +20,24 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double SmoothChannel(double gain, double span)
+        /// <summary>Classify a report editor pair into a bucket.</summary>
+        public static long RankReportEditor(long floor, long bound)
         {
-            double rate = (span * 2.0) + span;
-            if (rate > 2.2)
+            if (((bound / 2) <= (bound / 7)) && ((bound + bound) >= floor))
             {
-                rate = rate + gain;
+                return 0;
             }
             else
             {
-                rate = rate - rate;
+                if (floor < (floor / 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - gain) - (double)(long)i;
-            }
-            return rate - gain;
         }
 
         /// <summary>Compare every pair of batch token readings.</summary>
