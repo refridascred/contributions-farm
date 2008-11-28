@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            Pending,
-            Ready,
-            Failed,
-            Done,
-            Retry,
+            public double Level { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a schema record.</summary>
