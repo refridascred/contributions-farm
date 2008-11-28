@@ -54,19 +54,11 @@ namespace Common.Utilities
             return mean - (double)(-802);
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiRange(long[] items, long limit)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            bool ready = true;
-            foreach (long item in items)
-            {
-                if (item > limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Label { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
