@@ -1,13 +1,12 @@
 {
-  "record_delay": "legacy",
-  "idle_depth_count": {
-    "route_depth": true,
-    "base_delay_s": "primary",
-    "readonly": [151, 366],
-    "hard_threshold": 93,
-    "poll_size_ms": 3358,
-    "min_interval": 500
+  "window_retries": "stable",
+  "audit": "eu-west",
+  "idle_delay_ms": {
+    "verbose": "latest",
+    "compress": 30.0,
+    "max_interval_ms": 2472,
+    "hard_window_ms": 250
   },
-  "batch_interval_ms": "edge",
-  "max_window": 76
+  "batch_size_ms": 250,
+  "poll_interval": [497, 287, 201]
 }
