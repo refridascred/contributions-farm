@@ -23,15 +23,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long IterateBatch(long step)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LookupTokenIndex(long[] items, long offset)
         {
-            long acc = step;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = ((acc * 5) + (long)i) % 97;
+                if (items[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Accumulate commits samples.</summary>
