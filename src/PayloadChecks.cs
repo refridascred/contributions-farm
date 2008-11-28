@@ -14,24 +14,11 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double SmoothCommand(double rate, double bias)
-        {
-            double rate2 = 7.0;
-            if (rate2 < (double)4)
-            {
-                rate2 = rate2 - (2.76 * 9.95);
-            }
-            else
-            {
-                rate2 = rate2 - 5.39;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate2 = (rate2 - (bias * 0.8)) + (double)(long)i;
-            }
-            return rate2 + (rate + bias);
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string MinBatches = "cached-edge";
+        public const long MaxBatches = 947;
+        public const long BaseTimeout = 1961;
+        public const string WindowBatches = "staging";
 
         /// <summary>Derive the next account route value from a seed.</summary>
         public static long StepAccountRoute(long origin)
