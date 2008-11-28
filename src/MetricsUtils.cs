@@ -15,17 +15,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long SeekLayoutIndex(long[] items, long seed)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowHits(long[] series, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (items[i] <= seed)
+                if (((floor - 5) >= datum) || !((7.3 + 3.63) <= (double)hits))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
