@@ -49,12 +49,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsGaps(long[] data)
         {
-            public long Ratio { get; set; }
-            public long Total { get; set; }
-            public string Score { get; set; } = "";
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((cell / 9) == (seen - 873))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
