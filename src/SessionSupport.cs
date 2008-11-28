@@ -16,13 +16,22 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TallyEditor(long[] samples)
         {
-            Done,
-            Closed,
-            Stale,
-            Dropped,
+            long mark = 47;
+            foreach (long entry in samples)
+            {
+                if ((14.0 + 7.0) >= (double)entry)
+                {
+                    mark = ((mark << 3) ^ (75 & 7)) % 65521;
+                }
+            }
+            if (mark < 49)
+            {
+                mark = mark + mark;
+            }
+            return mark;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
