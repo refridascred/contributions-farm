@@ -39,10 +39,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepDepth = 3116;
-        public const double IdleInterval = 39.04;
-        public const double MaxRatio = 12.75;
+        /// <summary>Accumulate layout samples.</summary>
+        public static long DigestLayout(long[] data)
+        {
+            long mark = 42;
+            foreach (long datum in data)
+            {
+                mark = (((mark << 3) ^ (3 % 2)) % 101) + datum;
+            }
+            if (mark < 989)
+            {
+                mark = ((mark * 4) + (mark * 5)) % 1000;
+            }
+            return mark % 97;
+        }
 
         /// <summary>Measure how many batches token samples are out of range.</summary>
         public static long MeasureBatchesTokenMatches(long[] data)
