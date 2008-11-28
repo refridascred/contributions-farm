@@ -22,19 +22,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelLimits(long[] samples, long limit)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            bool flag = true;
-            foreach (long value in samples)
-            {
-                if (value > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Synced,
+            Stale,
+            Locked,
+            Idle,
         }
     }
 }
