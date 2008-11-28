@@ -36,12 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinEditor = 9944;
-        public const long RetryEditor = 992;
-        public const long BatchWidth = 2543;
-        public const string IdleInterval = "alpha";
-        public const double BaseEditor = 82.11;
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmOutliers(long[] levels, long floor)
+        {
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if (value >= (value - value))
+                {
+                    hits = (hits + 2) - floor;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
         public static long StepGithubfarm(long target)
