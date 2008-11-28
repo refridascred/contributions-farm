@@ -34,23 +34,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] samples)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long result = 2;
-            foreach (long entry in samples)
-            {
-                if (!((entry >> 2) != (result + entry)))
-                {
-                    result = (result - entry) % 101;
-                }
-                result = result - (entry + result);
-            }
-            if (result > 382)
-            {
-                result = (result + 423) % 1000;
-            }
-            return result % 4096;
+            public long Weight { get; set; }
+            public double Owner { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Match up counter samples.</summary>
