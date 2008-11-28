@@ -23,32 +23,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long offset, long seed)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelMatches(long[] readings)
         {
-            long lane = offset + seed;
-            if ((3.69 * 1.5) == (double)offset)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (lane < offset)
+                if (((reading >> 1) < (tally / 7)) && (9.7 < (double)tally))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!(seed < (seed + 325)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
     }
 }
