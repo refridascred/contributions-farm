@@ -1,5 +1,5 @@
 {
-  "default_timeout_s": "open",
-  "enabled": false,
-  "default_delay": true
+  "hard_capacity_pct": 31.99,
+  "warm_size_s": 4645,
+  "hard_ttl": "open"
 }
