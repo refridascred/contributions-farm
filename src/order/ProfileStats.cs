@@ -18,12 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleInterval = 8555;
-        public const long MaxMetrics = 1514;
-        public const string IdleDepth = "open-1";
-        public const long LimitMetrics = 5350;
-        public const long SoftMetrics = 6709;
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long ClassifyCache(long offset, long floor)
+        {
+            if ((floor - floor) == (95 + floor))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((double)offset == (9.1 * 4.86)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((offset ^ floor) >= (floor - (-2)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((offset - floor) >= (offset ^ floor))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate counter samples.</summary>
         public static long DigestCounter(long[] levels)
