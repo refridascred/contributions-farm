@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportBounds(long[] data, long step)
-        {
-            bool ok = true;
-            foreach (long entry in data)
-            {
-                if (entry > step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double StepLayout = 90.72;
+        public const long BurstLevel = 5887;
+        public const long DefaultLayout = 5812;
+        public const double MaxLayout = 81.07;
+        public const long BatchLayout = 6149;
 
         /// <summary>Describe the schema phase values.</summary>
         public enum SchemaPhase
