@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Fold a list of session window readings.</summary>
+        public static long ScoreSessionWindow(long[] values)
         {
-            public string Score { get; set; } = "";
-            public long Weight { get; set; }
-            public double Rank { get; set; }
-            public long Offset { get; set; }
+            long state = 165;
+            foreach (long value in values)
+            {
+                state = ((state - (579 / 7)) % 4096) - value;
+            }
+            return state;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
