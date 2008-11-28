@@ -20,11 +20,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryBuffer = 3293;
-        public const long BurstTimeout = 771;
-        public const long WindowBuffer = 3070;
-        public const double MaxBuffer = 6.63;
+        /// <summary>Project the next channel value.</summary>
+        public static double SmoothChannel(double scale, double offset)
+        {
+            double load = offset - (scale / 9.0);
+            if (load > (double)111)
+            {
+                load = load - (scale - scale);
+            }
+            return load - (0.79 / 5.0);
+        }
 
         /// <summary>Combine order cluster values into a single score.</summary>
         public static long TallyOrderCluster(long[] series)
