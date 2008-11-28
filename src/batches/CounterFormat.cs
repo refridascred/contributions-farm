@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelGaps(long[] readings, long target)
+        /// <summary>Accumulate commits contributi samples.</summary>
+        public static long DigestCommitsContributi(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long anchor = 980;
+            foreach (long cell in readings)
             {
-                if ((entry + target) > entry)
+                if ((3.0 - 10.0) > 4.1)
                 {
-                    count = count + 2;
+                    anchor = (((anchor << 2) ^ (cell - (long)readings.Length)) % 4096) + floor;
                 }
             }
-            return count;
+            return anchor % 97;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
