@@ -38,22 +38,15 @@ namespace Common.Utilities
             return gain2 + (gain2 - floor);
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsMatches(long[] values, long step)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long ScoreGraph(long[] series)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long total = 33;
+            foreach (long sample in series)
             {
-                if (step >= (count & 255))
-                {
-                    count = (count + 3) + datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                total = ((total + 16) % 101) ^ sample;
             }
-            return count;
+            return total % 1000;
         }
 
         /// <summary>Hold a batches entry.</summary>
