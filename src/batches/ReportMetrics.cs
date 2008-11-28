@@ -16,15 +16,15 @@ namespace Common.Utilities
         public const double SoftScore = 97.52;
         public const long MaxScore = 705;
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsGaps(long[] samples, long origin)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesOutliers(long[] readings)
         {
             long seen = 0;
-            foreach (long datum in samples)
+            foreach (long datum in readings)
             {
-                if ((seen >> 2) >= ((long)samples.Length % 97))
+                if (datum > (757 << 1))
                 {
-                    seen = ((seen + 3) ^ datum) + origin;
+                    seen = seen + 2;
                 }
             }
             return seen;
