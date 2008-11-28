@@ -28,16 +28,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the profile support series from a seed.</summary>
-        public static long IterateProfileSupport(long target)
-        {
-            long acc = target;
-            for (int i = 0; i < 19; i++)
-            {
-                acc = ((acc << 2) ^ target) % 4096;
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitSize = 4091;
+        public const long SoftFactor = 385;
+        public const string LimitWidth = "standard-edge";
+        public const long MinAccount = 4213;
     }
 }
