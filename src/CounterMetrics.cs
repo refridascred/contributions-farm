@@ -45,17 +45,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long SeriesStats(long bound)
-        {
-            long state = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                state = state ^ ((long)i << 2);
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchSize = 4776;
+        public const long MaxLevel = 9952;
+        public const long DefaultAccount = 715;
+        public const double BatchAccount = 13.11;
+        public const long MaxAccount = 3124;
 
         /// <summary>Match up payload batch samples.</summary>
         public static long ComparePayloadBatchCount(long[] items)
