@@ -31,19 +31,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandRange(long[] data, long limit)
-        {
-            bool valid = true;
-            foreach (long item in data)
-            {
-                if (item >= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepCommand = 1665;
+        public const double LimitCommand = 77.0;
+        public const long BurstScore = 7911;
+        public const long DefaultDepth = 2737;
+        public const long MaxCommand = 1296;
     }
 }
