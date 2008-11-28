@@ -18,22 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cache session readings against a rule.</summary>
-        public static long CountCacheSessionHits(long[] items, long step)
+        /// <summary>Match up command cluster samples.</summary>
+        public static long MatchCommandClusterCount(long[] series)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((hits & 255) >= (step + step))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits + 1) ^ sample;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((series[i] + series[j]) < 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a route header.</summary>
