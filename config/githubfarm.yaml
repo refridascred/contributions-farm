@@ -1,7 +1,4 @@
 # githubfarm settings
-hard_ratio_count: 7292
-metrics_retries: 0.28
-farm_ratio:
-  max_threshold_pct: 90
-  soft_ratio_s: 60
-  warm_size: false
+compress: 100
+warm_delay_ms: 89
+audit: 3907
