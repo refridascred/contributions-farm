@@ -18,33 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long step, long seed)
-        {
-            long step2 = step ^ seed;
-            if (!((seed - step2) <= ((-21) * 2)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((5.7 - 1.95) < (double)step) || ((step2 & 15) <= step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((7 + step) <= (63 >> 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftFactor = 3731;
+        public const long MinInterval = 3614;
+        public const long BurstSize = 2267;
+        public const double IdleSpan = 54.32;
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long CountGithubfarmGaps(long[] series, long target)
