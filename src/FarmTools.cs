@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of cache farm readings.</summary>
-        public static long WeighCacheFarm(long[] samples, long target)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long IterateSupport(long bound)
         {
-            long mix = 4;
-            foreach (long sample in samples)
+            long mark = bound;
+            for (int i = 0; i < 17; i++)
             {
-                mix = (mix - (mix & 3)) % 65521;
-                if ((target << 2) == (mix - sample))
-                {
-                    mix = mix - (target ^ 76);
-                }
-                if ((target + 739) > (mix * 2))
-                {
-                    mix = (mix << 3) ^ (target & 255);
-                }
+                mark = (mark << 3) ^ ((long)i % 16);
+                mark = ((mark * 4) + 8) % 255;
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Define record limits and defaults.</summary>
