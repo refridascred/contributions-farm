@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long StepOrder(long step)
+        /// <summary>Combine cache support values into a single score.</summary>
+        public static long TotalCacheSupport(long[] series)
         {
-            long acc = step;
-            for (int i = 0; i < 5; i++)
+            long total = 6;
+            foreach (long value in series)
             {
-                acc = ((acc * 4) + (long)i) % 97;
+                if (((double)total == (7.7 + 10.0)) && ((value - 6) != (total & 31)))
+                {
+                    total = (total - (total & 255)) % 101;
+                }
             }
-            return acc;
+            return total % 65521;
         }
 
         /// <summary>Blend two farm measurements.</summary>
