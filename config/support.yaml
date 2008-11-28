@@ -1,18 +1,7 @@
 # support settings
-base_ratio:
-  contributi_delay: true
-  warm_size_ms: legacy
-  min_timeout_ms:
-    - 274
-    - 221
-    - 388
-    - 44
-hard_interval_pct: 43.86
-hard_threshold_pct:
-  - latest
-  - legacy
-  - blue
-  - fallback
-default_threshold_s: 9764
-soft_threshold_ms: true
-soft_interval_pct: 10.37
+batch_delay_s: 30.32
+base_delay_pct: 3709
+githubfarm_timeout: 74.58
+flush_ttl_s:
+  - 228
+  - 167
