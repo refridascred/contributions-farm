@@ -1,14 +1,14 @@
 # Command notes
 
-The filter module keeps format values in sync with the notes cache.
-The contributi report groups every tools by report.
+Defaults for buffer live in the config folder and can be overridden per environment.
+The batches module keeps tools values in sync with the schema cache.
 
-Each order is validated before it reaches the route queue.
-Defaults for tools live in the config folder and can be overridden per environment.
+The batch helpers are pure functions, so they are safe to call from any thread.
+The order helpers are pure functions, so they are safe to call from any thread.
+The filter helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate account input early
-- Prefer notes defaults
-- Document new command fields
-- Review account limits each release
+- Log every route change
+- Validate stream input early
+- Keep checks values small
