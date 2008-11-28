@@ -28,12 +28,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesGaps(long[] data, long bound)
         {
-            public long Flag { get; set; }
-            public double Offset { get; set; }
-            public long Rank { get; set; }
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((count + bound) < (count >> 1))
+                {
+                    count = (count + 3) + item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
