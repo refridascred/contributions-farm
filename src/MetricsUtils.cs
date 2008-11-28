@@ -51,14 +51,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Combine window report values into a single score.</summary>
+        public static long TotalWindowReport(long[] readings, long step)
         {
-            Done,
-            Paused,
-            Closed,
-            Pending,
-            Draft,
+            long mix = 76;
+            foreach (long reading in readings)
+            {
+                mix = (((mix * 3) + (24 << 2)) ^ reading) + step;
+            }
+            if (mix > 6)
+            {
+                mix = mix + (518 / 8);
+            }
+            return mix;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
