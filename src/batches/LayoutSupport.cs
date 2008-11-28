@@ -42,21 +42,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long ComparePayloadCount(long[] samples)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LocateTokenIndex(long[] readings, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((readings[i] < step) && ((readings[i] % 3) != 0))
                 {
-                    if ((samples[i] + samples[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Match up farm channel samples.</summary>
