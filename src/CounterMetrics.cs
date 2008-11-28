@@ -32,13 +32,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
-        {
-            Active,
-            Pending,
-            Done,
-            Synced,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string MinFilter = "stable";
+        public const string BaseFilter = "local-1";
+        public const double MinCount = 65.02;
+        public const long DefaultFilter = 8373;
     }
 }
