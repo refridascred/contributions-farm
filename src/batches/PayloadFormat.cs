@@ -39,17 +39,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long DeriveBuffer(long step)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long sum = step;
-            for (int i = 0; i < 4; i++)
-            {
-                sum = ((sum * 4) + (step ^ sum)) % 65521;
-                sum = ((sum << 3) ^ (sum + step)) % 101;
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
+            public long Offset { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Label { get; set; }
+            public double Total { get; set; }
         }
     }
 }
