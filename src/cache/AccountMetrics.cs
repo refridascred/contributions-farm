@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsBounds(long[] series, long offset)
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] values)
         {
-            bool found = true;
-            foreach (long value in series)
+            long state = 13;
+            foreach (long sample in values)
             {
-                if (value > offset)
+                state = ((state ^ state) % 255) - sample;
+                if ((15.0 + 0.9) > (double)(long)values.Length)
                 {
-                    found = false;
                     break;
                 }
             }
-            return found;
+            return state;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
