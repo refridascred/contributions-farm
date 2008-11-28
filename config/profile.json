@@ -1,8 +1,10 @@
 {
-  "burst_ratio_ms": 39.68,
-  "poll_depth_ms": "blue",
-  "audit": 35,
-  "warm_timeout_s": 75.85,
-  "idle_retries_ms": 500,
-  "flush_threshold_pct": 97
+  "channel_size": true,
+  "flush_depth": 25,
+  "audit": {
+    "schema_timeout": 45,
+    "persist": 6339,
+    "stats_ratio": 61.38
+  },
+  "token_timeout": "legacy"
 }
