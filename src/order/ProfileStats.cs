@@ -52,18 +52,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long DigestCounter(long[] levels)
+        /// <summary>Count the format queue entries that pass the check.</summary>
+        public static long CountFormatQueueGaps(long[] values)
         {
-            long total = -27;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if ((137 + total) <= (total * 3))
+                if (seen <= (sample + sample))
                 {
-                    total = (total - (total + total)) - reading;
+                    seen = seen + 3;
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Describe the session state values.</summary>
