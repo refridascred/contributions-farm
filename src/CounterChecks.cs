@@ -36,19 +36,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate filter stream readings against a bound.</summary>
-        public static bool GuardFilterStreamRange(long[] levels, long origin)
+        /// <summary>Validate schema support readings against a bound.</summary>
+        public static bool VerifySchemaSupportLimits(long[] readings, long origin)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                if (sample != origin)
+                if (entry != origin)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
