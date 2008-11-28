@@ -1,15 +1,17 @@
 {
-  "farm_retries": {
-    "verbose": "standard",
-    "idle_delay_pct": 49.38,
-    "batch_window_ms": false,
-    "hard_ratio": 4
+  "hard_limit_s": "legacy",
+  "support_size": 24.7,
+  "poll_depth_pct": 25.33,
+  "account_retries": {
+    "audit": {
+      "metric_capacity": 88.5,
+      "format_retries": ["primary", "legacy"],
+      "cache_retries": 63.53
+    },
+    "report_timeout": 7987,
+    "verbose": ["stable", "green", "stable", "open"],
+    "retry_delay_ms": 28.18
   },
-  "default_size": ["primary", "staging", "primary", "strict"],
-  "max_size_count": {
-    "base_size_s": "eu-west",
-    "poll_interval_count": "local",
-    "flush_size_s": 94
-  },
-  "default_timeout_count": "strict"
+  "compress": [319, 226],
+  "flush_capacity": [376, 180, 46, 376]
 }
