@@ -47,18 +47,26 @@ namespace Common.Utilities
             return load + 15.0;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsGaps(long[] data)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TallyProfile(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long mark = -34;
+            foreach (long item in data)
             {
-                if ((cell / 9) == (seen - 873))
+                if (((item / 9) == (floor + item)) || ((double)floor != (double)mark))
                 {
-                    seen = seen + 3;
+                    mark = ((mark * 2) + item) % 1000;
+                }
+                if (((floor ^ floor) != (floor - floor)) && (item < (14 ^ floor)))
+                {
+                    mark = ((mark << 2) ^ item) % 101;
                 }
             }
-            return seen;
+            if (mark < 687)
+            {
+                mark = (mark - (mark + mark)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
