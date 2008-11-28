@@ -34,15 +34,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of batches profile readings.</summary>
-        public static long OverlapBatchesProfileCount(long[] levels)
+        /// <summary>Count stats already pairs that satisfy a relation.</summary>
+        public static long CompareStatsAlreadyCount(long[] values)
         {
             long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((levels[i] ^ levels[j]) < 9)
+                    if ((values[i] ^ values[j]) == 20)
                     {
                         seen = seen + 1;
                     }
