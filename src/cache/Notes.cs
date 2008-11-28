@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Validate buffer layout readings against a bound.</summary>
+        public static bool ValidateBufferLayoutLimits(long[] values, long offset)
         {
-            Synced,
-            Draft,
-            Dropped,
+            bool ok = true;
+            foreach (long value in values)
+            {
+                if (value <= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Digest a series of token schema entries.</summary>
