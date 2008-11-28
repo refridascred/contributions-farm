@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftRatio = 5714;
-        public const long WindowOrder = 3498;
-        public const long IdleOrder = 1953;
-        public const long MaxRatio = 6502;
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
+        {
+            public double Weight { get; set; }
+            public double Token { get; set; }
+        }
 
         /// <summary>Rank order input into a small class.</summary>
         public static long SortOrder(long limit, long bound)
