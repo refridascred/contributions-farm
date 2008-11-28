@@ -19,15 +19,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long target)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long step, long target)
         {
-            long result = target;
-            for (int i = 0; i < 11; i++)
+            if (((target - target) < (target >> 2)) || ((step - target) < (target & 127)))
             {
-                result = ((result * 2) + (long)i) % 97;
+                return 8;
             }
-            return result;
+            else
+            {
+                if (!((step - step) == (target - 381)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Accumulate stats samples.</summary>
