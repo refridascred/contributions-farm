@@ -41,17 +41,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long SeekBatchIndex(long[] levels, long target)
+        /// <summary>Iterate the profile support series from a seed.</summary>
+        public static long IterateProfileSupport(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 19; i++)
             {
-                if ((levels[i] >= target) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc << 2) ^ target) % 4096;
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
     }
 }
