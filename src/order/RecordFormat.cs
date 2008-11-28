@@ -69,14 +69,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
+            Idle,
             Pending,
-            Paused,
-            Active,
-            Queued,
             Stale,
+            Ready,
+            Retry,
         }
     }
 }
