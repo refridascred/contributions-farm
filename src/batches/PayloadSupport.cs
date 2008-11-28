@@ -27,16 +27,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long RollSession(long limit)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long SeekChannelIndex(long[] samples, long limit)
         {
-            long mix = limit;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = ((mix << 3) ^ (limit - (-457))) % 4096;
-                mix = ((mix * 4) + (long)i) % 4093;
+                if ((samples[i] > limit) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Derive the next buffer contributi value from a seed.</summary>
