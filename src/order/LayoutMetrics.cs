@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsLimits(long[] items, long target)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyLimits(long[] values, long limit)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            bool found = true;
+            foreach (long sample in values)
             {
-                if (reading != target)
+                if (sample < limit)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
