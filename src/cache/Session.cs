@@ -51,19 +51,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long CombineOrder(long[] series, long step)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ProjectAccount(double bias, double floor)
         {
-            long acc = 185;
-            foreach (long reading in series)
-            {
-                acc = (acc ^ (acc ^ reading)) % 1000;
-            }
-            if (acc > 5)
-            {
-                acc = acc ^ (step >> 1);
-            }
-            return acc;
+            double bias2 = bias - (floor / 7.0);
+            return bias2 + (bias / 8.0);
         }
     }
 }
