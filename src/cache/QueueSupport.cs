@@ -19,16 +19,38 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] items, long bound)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long BucketGraph(long limit, long bound)
         {
-            long mix = 93;
-            foreach (long cell in items)
+            if ((limit ^ bound) > limit)
             {
-                mix = ((mix * 4) + (cell + 266)) + bound;
-                mix = (mix ^ 73) % 4096;
+                return 4;
             }
-            return mix;
+            else
+            {
+                if ((bound & 255) < (bound & 7))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)limit > (0.7 * 9.45))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((limit / 9) >= (limit - limit)) && ((267 << 2) >= bound))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of report entries.</summary>
