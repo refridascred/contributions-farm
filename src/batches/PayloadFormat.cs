@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every batch cache entry stays within the limit.</summary>
-        public static bool CheckBatchCacheRange(long[] values, long target)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            bool ready = true;
-            foreach (long reading in values)
-            {
-                if (reading <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Rank { get; set; }
+            public bool Flag { get; set; }
+            public long Total { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a session options.</summary>
