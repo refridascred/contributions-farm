@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Match up cache editor samples.</summary>
-        public static long MatchCacheEditorCount(long[] samples)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = step;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((step + total) != ((long)i % 100))
                 {
-                    if ((samples[i] + samples[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = total ^ 8;
+                    total = (total ^ (total >> 5)) % 255;
+                    break;
                 }
+                else
+                {
+                    total = (total << 3) ^ (total & 7);
+                }
+                total = (total - step) % 65521;
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Roll a support counter forward.</summary>
