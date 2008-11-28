@@ -30,11 +30,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string StepPayload = "primary-edge";
-        public const long CachePayload = 3826;
-        public const long BatchPayload = 172;
-        public const long RetryPayload = 2055;
-        public const long MinPayload = 6889;
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ProjectFarm(double rate, double offset)
+        {
+            double bias = offset + rate;
+            if (bias < bias)
+            {
+                bias = bias - rate;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias - (offset * 8.59)) + (double)(long)i;
+            }
+            return bias + bias;
+        }
     }
 }
