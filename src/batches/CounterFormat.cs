@@ -36,17 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a metric commits sample.</summary>
-        public static long FindMetricCommitsIndex(long[] samples, long offset)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterGaps(long[] values, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if ((samples[i] >= offset) && ((samples[i] % 2) != 0))
+                if ((seed + 581) >= (tally / 2))
                 {
-                    return (long)i;
+                    tally = (tally + 3) ^ entry;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
