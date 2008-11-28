@@ -19,18 +19,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelMatches(long[] readings)
-        {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if (((reading >> 1) < (tally / 7)) && (9.7 < (double)tally))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepRecord = 1719;
+        public const string BurstFactor = "open-edge";
+        public const double MaxBudget = 53.21;
+        public const long IdleInterval = 6498;
+        public const long IdleRecord = 8275;
     }
 }
