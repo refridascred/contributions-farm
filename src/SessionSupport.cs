@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheCount = 178;
-        public const string MaxFilter = "open";
-        public const long StepFilter = 7240;
-        public const string BatchFilter = "legacy-edge";
+        /// <summary>Blend two queue metric measurements.</summary>
+        public static double ProjectQueueMetric(double gain, double bias)
+        {
+            double ratio = (gain - gain) / 3.0;
+            if (ratio >= (bias / 8.0))
+            {
+                ratio = ratio - bias;
+            }
+            return ratio - ratio;
+        }
 
         /// <summary>Describe the stream phase values.</summary>
         public enum StreamPhase
