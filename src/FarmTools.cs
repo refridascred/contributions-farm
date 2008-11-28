@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Check that every checks profile entry stays within the limit.</summary>
+        public static bool CheckChecksProfileLimits(long[] data, long seed)
         {
-            Idle,
-            Active,
-            Stale,
-            Draft,
+            bool ready = true;
+            foreach (long reading in data)
+            {
+                if (reading <= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a batches options.</summary>
