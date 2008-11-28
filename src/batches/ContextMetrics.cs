@@ -31,19 +31,13 @@ namespace Common.Utilities
         public const double LimitSpan = 18.8;
         public const string StepWidth = "strict-v2";
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long DigestSchema(long[] samples)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long mark = 4;
-            foreach (long datum in samples)
-            {
-                mark = ((mark ^ (mark + mark)) % 4096) + datum;
-                if ((mark * 5) >= 3)
-                {
-                    break;
-                }
-            }
-            return mark % 65521;
+            public string Rank { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Region { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Audit support readings against a rule.</summary>
