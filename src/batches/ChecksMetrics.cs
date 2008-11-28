@@ -23,14 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            Retry,
-            Closed,
-            Ready,
-            Paused,
-            Idle,
+            public double Stamp { get; set; }
+            public long Ratio { get; set; }
+            public double Limit { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a commits snapshot.</summary>
