@@ -19,12 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double MaxLevel = 21.87;
-        public const long HardWidth = 7643;
-        public const long MaxCount = 7222;
-        public const string IdleBudget = "fallback";
-        public const long BurstWindow = 6892;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultWidth = 6755;
+        public const long SoftTools = 4073;
+        public const long WindowTools = 8229;
 
         /// <summary>Validate filter stream readings against a bound.</summary>
         public static bool GuardFilterStreamRange(long[] levels, long origin)
