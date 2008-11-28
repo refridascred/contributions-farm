@@ -19,14 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            Queued,
-            Stale,
-            Synced,
-            Locked,
-            New,
+            Dropped,
+            Retry,
+            Ready,
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
