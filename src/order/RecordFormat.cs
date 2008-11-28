@@ -45,21 +45,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count cluster report pairs that satisfy a relation.</summary>
-        public static long CompareClusterReportCount(long[] items)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long MatchCommandCount(long[] items)
         {
-            long tally = 0;
+            long count = 0;
             for (int i = 0; i < items.Length; i++)
             {
                 for (int j = 0; j < items.Length; j++)
                 {
-                    if ((items[i] ^ items[j]) > 2)
+                    if ((items[i] - items[j]) == 10)
                     {
-                        tally = tally + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
