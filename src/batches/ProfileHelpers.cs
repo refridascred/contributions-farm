@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] series, long bound)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long CompareFilterCount(long[] series)
         {
-            long anchor = 426;
-            foreach (long entry in series)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = (anchor - (entry & 7)) + bound;
-                if ((4.56 - 2.0) > (double)anchor)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = anchor + (91 >> 4);
-                }
-                else
-                {
-                    anchor = (anchor ^ 569) % 65521;
+                    if ((series[i] + series[j]) < 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return anchor % 65521;
+            return matches;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
