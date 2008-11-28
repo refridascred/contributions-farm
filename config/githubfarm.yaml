@@ -1,8 +1,8 @@
 # githubfarm settings
-verbose: 6012
-retry_ratio_s: 1024
-window_retries: 3782
-burst_capacity_s:
-  - green
-  - latest
-default_retries: 100
+verbose: 21
+counter_retries:
+  - 418
+  - 294
+  - 176
+  - 399
+default_limit: 75.03
