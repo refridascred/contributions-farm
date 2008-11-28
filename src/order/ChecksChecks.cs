@@ -14,21 +14,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long CompareFarmCount(long[] series)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long IterateTools(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)acc > (double)68)
                 {
-                    if ((series[i] - series[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
+                    acc = acc - ((-6) + floor);
+                    break;
                 }
+                acc = (acc * 5) + ((long)i << 3);
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Describe the filter status values.</summary>
