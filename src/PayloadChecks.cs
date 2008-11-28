@@ -44,25 +44,18 @@ namespace Common.Utilities
         public const double IdleInterval = 39.04;
         public const double MaxRatio = 12.75;
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long SortAccount(long floor, long floor2)
+        /// <summary>Measure how many batches token samples are out of range.</summary>
+        public static long MeasureBatchesTokenMatches(long[] data)
         {
-            long offset = floor - floor2;
-            if (((floor2 % 3) == (floor2 - floor2)) || ((double)floor2 < (double)offset))
+            long hits = 0;
+            foreach (long entry in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor % 3) < (floor2 + floor))
+                if ((entry - entry) != (entry / 7))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
