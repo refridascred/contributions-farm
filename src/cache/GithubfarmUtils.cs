@@ -34,19 +34,32 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long target)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long GradeCommits(long target, long limit)
         {
-            long state = target;
-            for (int i = 0; i < 23; i++)
+            long prev = target - limit;
+            if ((target + prev) <= prev)
             {
-                if ((target % 60) <= (state % 24))
-                {
-                    state = state + (target * 5);
-                }
-                state = ((state * 4) + (long)i) % 65521;
+                return 0;
             }
-            return state;
+            else
+            {
+                if ((prev + 14) <= (prev & 255))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (55 >= prev)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a counter record.</summary>
