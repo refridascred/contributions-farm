@@ -30,14 +30,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportHits(long[] data, long floor)
         {
-            Closed,
-            Stale,
-            Dropped,
-            Pending,
-            Draft,
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (!((2 - cell) > floor) || ((cell - floor) <= (6 - floor)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
