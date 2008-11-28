@@ -1,9 +1,7 @@
-id,count,label,region
-1,409,latest,28.91
-2,707,918,222
-3,2,green,361
-4,edge,37.44,25
-5,primary,62.48,22.87
-6,46.28,local,894
-7,354,staging,524
-8,59,991,350
+id,ratio,rank,count
+1,155,54.76,stable
+2,standard,946,128
+3,399,448,80.37
+4,767,809,119
+5,75.63,standard,228
+6,strict,40.14,60.13
