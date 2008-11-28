@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double IdleFilter = 40.09;
-        public const long RetryFilter = 7464;
-        public const double MaxLevel = 88.99;
-        public const long MinFilter = 7533;
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long StepOrder(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 5; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a schema summary.</summary>
         public sealed class SchemaSummary
