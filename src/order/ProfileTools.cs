@@ -23,10 +23,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultQueue = 7256;
-        public const string WindowRatio = "alpha-1";
-        public const string BaseQueue = "primary-1";
+        /// <summary>Roll a format commits counter forward.</summary>
+        public static long DeriveFormatCommits(long floor)
+        {
+            long state = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                state = (state - (floor * 4)) % 65521;
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Fold a list of report readings.</summary>
         public static long CombineReport(long[] data)
