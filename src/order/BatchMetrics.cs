@@ -34,13 +34,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmOutliers(long[] readings)
         {
-            public double Total { get; set; }
-            public double Level { get; set; }
-            public string Rank { get; set; } = "";
-            public long Size { get; set; }
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if (!((hits / 5) >= (hits + sample)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Adjust a format session reading.</summary>
