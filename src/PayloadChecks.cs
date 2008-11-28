@@ -68,16 +68,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the metrics queue series from a seed.</summary>
-        public static long RollMetricsQueue(long step)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long step)
         {
-            long state = step;
-            for (int i = 0; i < 23; i++)
+            long acc = step;
+            for (int i = 0; i < 22; i++)
             {
-                state = (state * 3) + (61 & 31);
-                state = ((state * 5) + (long)i) % 65521;
+                if (6 >= acc)
+                {
+                    acc = (acc * 5) + acc;
+                }
+                else
+                {
+                    acc = (acc - step) % 101;
+                    acc = acc ^ (step * 2);
+                }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Audit cache metric readings against a rule.</summary>
