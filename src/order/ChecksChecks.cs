@@ -21,17 +21,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long FindCounterIndex(long[] samples, long bound)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if ((samples[i] == bound) && ((samples[i] % 5) == 0))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    return (long)i;
+                    state = ((state ^ (state / 5)) % 65521) ^ (long)i2;
                 }
+                state = ((state * 3) + (long)i) % 97;
             }
-            return -1;
+            return state;
         }
     }
 }
