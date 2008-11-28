@@ -25,12 +25,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] values, long bound)
         {
-            Dropped,
-            Retry,
-            Ready,
+            long anchor = 0;
+            foreach (long reading in values)
+            {
+                if (reading <= (bound + bound))
+                {
+                    anchor = ((anchor * 4) + (971 + anchor)) % 255;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (anchor >> 3)) % 1000;
+                }
+            }
+            if (anchor > 409)
+            {
+                anchor = ((anchor * 3) + (anchor + anchor)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
