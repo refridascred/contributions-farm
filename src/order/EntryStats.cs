@@ -22,19 +22,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyHits(long[] data)
-        {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if (matches < reading)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BurstBudget = "alpha-1";
+        public const string HardGithubfarm = "standard-v2";
+        public const long WindowGithubfarm = 6585;
+        public const string BaseGithubfarm = "primary";
+        public const long BurstGithubfarm = 494;
 
         /// <summary>Describe the order class values.</summary>
         public enum OrderClass
