@@ -43,12 +43,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchSize = 4776;
-        public const long MaxLevel = 9952;
-        public const long DefaultAccount = 715;
-        public const double BatchAccount = 13.11;
-        public const long MaxAccount = 3124;
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
+        {
+            Idle,
+            Dropped,
+            Closed,
+            Active,
+        }
 
         /// <summary>Hold a context snapshot.</summary>
         public sealed class ContextSnapshot
