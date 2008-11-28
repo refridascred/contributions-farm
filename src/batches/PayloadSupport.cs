@@ -34,19 +34,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterBounds(long[] items, long limit)
+        /// <summary>Count account context pairs that satisfy a relation.</summary>
+        public static long CompareAccountContextCount(long[] data)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item <= limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((data[i] - data[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
