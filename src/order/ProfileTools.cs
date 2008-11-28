@@ -24,15 +24,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long DeriveReport(long floor)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long score = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
+            Done,
+            Ready,
+            Queued,
+            Active,
+            Locked,
         }
 
         /// <summary>Hold a filter stats.</summary>
