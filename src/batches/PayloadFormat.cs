@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Compare every pair of payload schema readings.</summary>
+        public static long MatchPayloadSchemaCount(long[] items)
         {
-            public long Stamp { get; set; }
-            public bool Owner { get; set; }
-            public long Ratio { get; set; }
-            public bool Token { get; set; }
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
