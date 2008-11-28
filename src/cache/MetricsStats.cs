@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double LimitDepth = 94.14;
-        public const long MaxMetrics = 6754;
-        public const long DefaultMetrics = 8268;
-        public const long BaseMetrics = 361;
-        public const long BaseScore = 8612;
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] levels)
+        {
+            long sum = 411;
+            foreach (long value in levels)
+            {
+                if ((value >> 1) == (value << 3))
+                {
+                    sum = (sum - (sum - value)) % 1000;
+                }
+                else
+                {
+                    sum = sum - (long)levels.Length;
+                }
+                if ((sum + sum) > (sum << 1))
+                {
+                    sum = sum ^ (sum - value);
+                }
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Describe the profile class values.</summary>
         public enum ProfileClass
