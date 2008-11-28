@@ -1,5 +1,12 @@
 {
-  "max_delay": true,
-  "idle_timeout_pct": 50.14,
-  "warm_window_ms": ["cached", "fallback", "primary"]
+  "dry_run": true,
+  "base_interval": 1024,
+  "queue_interval": 4602,
+  "record_limit": 60,
+  "default_depth_s": {
+    "cache_interval_ms": 95.58,
+    "githubfarm_size": [332, 462, 90],
+    "graph_size": 9276
+  },
+  "readonly": 250
 }
