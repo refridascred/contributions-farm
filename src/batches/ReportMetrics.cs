@@ -34,22 +34,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionGaps(long[] values)
+        /// <summary>Find the first cluster route entry that matches the target.</summary>
+        public static long SeekClusterRouteIndex(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((seen & 63) >= ((-9) >> 2)) || ((seen >= (seen / 3)) && ((cell - 274) == (seen >> 2))))
+                if ((values[i] > limit) && ((values[i] % 3) == 0))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
