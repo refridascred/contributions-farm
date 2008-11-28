@@ -28,18 +28,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordOutliers(long[] series)
-        {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if (((tally - entry) <= tally) || (((long)series.Length + entry) <= entry))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleMetrics = 6621;
+        public const long BurstScore = 3802;
+        public const long HardMetrics = 1554;
     }
 }
