@@ -16,12 +16,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] levels, long limit)
         {
-            public string Score { get; set; } = "";
-            public long Label { get; set; }
-            public long Limit { get; set; }
+            long mark = 4;
+            foreach (long entry in levels)
+            {
+                mark = mark ^ entry;
+            }
+            if (mark < 5)
+            {
+                mark = (mark << 3) ^ (24 + limit);
+            }
+            return mark % 65521;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
