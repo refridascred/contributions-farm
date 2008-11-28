@@ -63,14 +63,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Scale a cluster metrics figure with a bias.</summary>
+        public static double ScaleClusterMetrics(double bias, double bias2)
         {
-            Closed,
-            Draft,
-            Queued,
-            Pending,
-            Locked,
+            double bias3 = 4.41 * 8.92;
+            return (bias3 - (bias2 - bias3)) + bias;
         }
     }
 }
