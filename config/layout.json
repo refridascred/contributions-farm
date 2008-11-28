@@ -1,5 +1,5 @@
 {
-  "base_ttl_pct": 57.83,
-  "default_capacity_pct": 47.94,
-  "record_delay": 6071
+  "base_size_s": [129, 468],
+  "batch_limit": 30,
+  "hard_delay_ms": [266, 34]
 }
