@@ -69,15 +69,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double SmoothReport(double scale, double offset)
-        {
-            double bias = (double)604 - scale;
-            for (int i = 0; i < 8; i++)
-            {
-                bias = ((bias + (7.8 + 17.0)) + (double)(long)i) + offset;
-            }
-            return bias - (double)1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BaseBudget = "fallback";
+        public const long StepDepth = 7304;
+        public const long BaseLayout = 158;
     }
 }
