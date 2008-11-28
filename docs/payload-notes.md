@@ -1,15 +1,12 @@
 # Payload notes
 
-The counter report groups every token by metric.
-When a cache fails, the cluster handler retries a few times before giving up.
-
-The checks module keeps counter values in sync with the editor cache.
-Run the buffer check before changing any editor limits.
-Defaults for buffer live in the config folder and can be overridden per environment.
+Run the token check before changing any schema limits.
+Use route settings to tune how often channel data is refreshed.
+Keep graph and commits names short and lowercase.
 
 ## Guidelines
 
-- Review payload limits each release
-- Prefer cache defaults
-- Log every session change
-- Document new editor fields
+- Log every layout change
+- Prefer stats defaults
+- Review batches limits each release
+- Keep route values small
