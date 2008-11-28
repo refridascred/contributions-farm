@@ -19,15 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenOutliers(long[] samples)
+        /// <summary>Match up order samples.</summary>
+        public static long PairOrderCount(long[] series)
         {
             long seen = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((seen ^ cell) >= (cell + cell))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((series[i] + series[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
