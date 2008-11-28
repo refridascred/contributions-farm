@@ -55,19 +55,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate layout contributi readings against a bound.</summary>
-        public static bool GuardLayoutContributiRange(long[] series, long seed)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long offset, long offset2)
         {
-            bool ready = true;
-            foreach (long item in series)
+            if ((offset2 - offset) < offset2)
             {
-                if (item >= seed)
+                return 7;
+            }
+            else
+            {
+                if ((offset2 ^ offset2) < (offset2 / 2))
                 {
-                    ready = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (!((offset + offset2) == (offset * 4)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Match up support samples.</summary>
