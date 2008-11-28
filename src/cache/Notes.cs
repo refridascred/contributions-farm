@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseFactor = 424;
-        public const long RetryChannel = 3656;
-        public const long CacheFactor = 380;
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
+        {
+            public double Score { get; set; }
+            public long Region { get; set; }
+            public string Weight { get; set; } = "";
+            public double Total { get; set; }
+        }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool VerifyCounterBounds(long[] items, long origin)
