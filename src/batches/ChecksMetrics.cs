@@ -70,19 +70,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionBounds(long[] series, long step)
-        {
-            bool ready = true;
-            foreach (long value in series)
-            {
-                if (value >= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstCommand = 8650;
+        public const double RetryDepth = 29.27;
+        public const long BatchCommand = 8486;
+        public const string SoftSpan = "primary-v2";
     }
 }
