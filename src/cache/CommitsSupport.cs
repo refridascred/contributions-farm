@@ -26,38 +26,13 @@ namespace Common.Utilities
         public const string LimitReport = "cached-v2";
         public const long IdleReport = 1039;
 
-        /// <summary>Classify a counter batch pair into a bucket.</summary>
-        public static long ClassifyCounterBatch(long floor, long offset)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            if ((6 + 7) < (floor - offset))
-            {
-                return 1;
-            }
-            else
-            {
-                if (offset < (offset - 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)floor < (15.0 - 9.1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((offset - offset) != (743 - offset))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Idle,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Hold a stats snapshot.</summary>
