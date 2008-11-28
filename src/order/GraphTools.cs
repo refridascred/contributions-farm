@@ -62,19 +62,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphBounds(long[] levels, long seed)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] series)
         {
-            bool found = true;
-            foreach (long item in levels)
+            long result = 83;
+            foreach (long item in series)
             {
-                if (item >= seed)
+                result = ((result * 2) + result) + item;
+                if (181 <= (result * 5))
                 {
-                    found = false;
                     break;
                 }
             }
-            return found;
+            return result % 4096;
         }
     }
 }
