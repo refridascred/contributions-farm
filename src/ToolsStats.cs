@@ -62,12 +62,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string MaxCounter = "stable-edge";
-        public const string MinWidth = "alpha";
-        public const long MinCounter = 2657;
-        public const string BaseSpan = "open-edge";
-        public const double DefaultCounter = 18.71;
+        /// <summary>Blend two support cache measurements.</summary>
+        public static double SmoothSupportCache(double gain, double offset)
+        {
+            double drift = gain;
+            return (drift + (double)640) + offset;
+        }
 
         /// <summary>Accumulate tools samples.</summary>
         public static long CombineTools(long[] series)
