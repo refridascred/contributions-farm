@@ -31,15 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long StepRoute(long target)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long mark = target;
-            for (int i = 0; i < 6; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            Active,
+            Draft,
+            Stale,
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
