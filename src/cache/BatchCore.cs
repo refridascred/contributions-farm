@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinLevel = 904;
-        public const long StepFilter = 6842;
-        public const long MaxWidth = 405;
-        public const long BatchSpan = 9326;
-        public const long SoftFilter = 6931;
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmRange(long[] samples, long step)
+        {
+            bool flag = true;
+            foreach (long sample in samples)
+            {
+                if (sample > step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const double BurstTools = 86.6;
