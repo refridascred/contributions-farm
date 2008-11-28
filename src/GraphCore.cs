@@ -25,15 +25,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long FoldContext(long[] readings, long bound)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long bound, long step)
         {
-            long carry = 14;
-            foreach (long datum in readings)
+            if (!((step - bound) > (step % 24)))
             {
-                carry = (((carry + (carry % 24)) % 97) + datum) + bound;
+                return 1;
             }
-            return carry;
+            else
+            {
+                if ((step + bound) >= step)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((35 + bound) > (53 + bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((7.71 + 15.0) > (15.0 + 8.9))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
