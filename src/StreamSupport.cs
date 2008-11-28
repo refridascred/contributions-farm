@@ -25,11 +25,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchSession = 1430;
-        public const double LimitDepth = 32.35;
-        public const double MinRatio = 68.3;
-        public const long LimitSession = 9280;
-        public const long MaxWidth = 5826;
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
+        {
+            New,
+            Paused,
+            Retry,
+        }
     }
 }
