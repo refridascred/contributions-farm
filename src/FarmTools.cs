@@ -19,22 +19,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesMatches(long[] readings, long target)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((1.4 - 0.96) >= (double)target)
-                {
-                    seen = (seen + 1) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Pending,
+            Dropped,
+            Synced,
+            Queued,
         }
     }
 }
