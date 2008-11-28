@@ -6,21 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=236
-log "limit is ${CHANNEL_LIMIT}"
-
-mode="${1:-edge}"
-case "${mode}" in
-    blue)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 1))
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
+
+for item in eu-west legacy stable local; do
+    log "checking ${item}"
+done
+
+CHANNEL_LIMIT=434
+log "limit is ${CHANNEL_LIMIT}"
