@@ -37,19 +37,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every route record entry stays within the limit.</summary>
-        public static bool GuardRouteRecordLimits(long[] items, long target)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            bool ready = true;
-            foreach (long item in items)
-            {
-                if (item < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Dropped,
+            Draft,
+            Locked,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
