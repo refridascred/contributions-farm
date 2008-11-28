@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            public bool Region { get; set; }
-            public double Token { get; set; }
+            public double Ratio { get; set; }
+            public string Mode { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
