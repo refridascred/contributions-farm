@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long IterateNotes(long origin)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamMatches(long[] series, long seed)
         {
-            long sum = origin;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                sum = (sum + sum) % 4096;
-                sum = ((sum * 5) + (long)i) % 65521;
+                if ((111 + seed) == (8 + 9))
+                {
+                    tally = (tally + 1) ^ datum;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
