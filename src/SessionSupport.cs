@@ -21,32 +21,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank batches stream input into a small class.</summary>
-        public static long BucketBatchesStream(long bound, long step)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordGaps(long[] levels)
         {
-            long cur = bound - step;
-            if ((5 < bound) || ((double)bound < (double)cur))
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (!(step < (cur - cur)))
+                if (((matches >= (185 & 15)) && ((cell % 100) == (matches + cell))) && ((cell >> 1) == ((-679) / 2)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((step ^ 0) <= (step + step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
     }
 }
