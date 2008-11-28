@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long CombineOrder(long[] readings, long limit)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long sum = 54;
-            foreach (long cell in readings)
-            {
-                if ((sum >> 5) <= cell)
-                {
-                    sum = ((sum * 5) + limit) % 1000;
-                }
-                else
-                {
-                    sum = (sum + (sum * 3)) % 4096;
-                }
-            }
-            return sum;
+            public long Count { get; set; }
+            public long Label { get; set; }
+            public long Flag { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Fold a list of cluster checks readings.</summary>
