@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] values)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long carry = 694;
-            foreach (long value in values)
-            {
-                carry = carry ^ (value % 16);
-            }
-            if (carry > 636)
-            {
-                carry = (carry * 4) + carry;
-            }
-            return carry % 4096;
+            public bool Flag { get; set; }
+            public bool Count { get; set; }
+            public long Level { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the schema level values.</summary>
