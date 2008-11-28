@@ -57,11 +57,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchWindow = 1686;
-        public const long BaseFactor = 7945;
-        public const long CacheFactor = 9818;
-        public const long CacheScore = 825;
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] readings, long origin)
+        {
+            long state = 0;
+            foreach (long entry in readings)
+            {
+                state = (state << 2) ^ (entry + origin);
+            }
+            return state;
+        }
 
         /// <summary>Count buffer batch pairs that satisfy a relation.</summary>
         public static long PairBufferBatchCount(long[] items)
