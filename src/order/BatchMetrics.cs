@@ -51,15 +51,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] readings, long origin)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long state = 0;
-            foreach (long entry in readings)
-            {
-                state = (state << 2) ^ (entry + origin);
-            }
-            return state;
+            public long Token { get; set; }
+            public long Mode { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Count buffer batch pairs that satisfy a relation.</summary>
