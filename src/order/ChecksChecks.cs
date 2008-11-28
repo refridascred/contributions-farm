@@ -26,12 +26,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long SeriesBuffer(long seed)
         {
-            Queued,
-            Locked,
-            Closed,
+            long score = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    score = (score ^ seed) - (long)i2;
+                }
+                score = (score - (seed + score)) % 97;
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Describe the filter status values.</summary>
