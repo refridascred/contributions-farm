@@ -48,18 +48,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionGaps(long[] series)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((count + 474) != (cell * 2))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public string Stamp { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
