@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string WindowInterval = "standard-v2";
-        public const long BaseFarm = 9001;
-        public const long LimitFarm = 5286;
-        public const long RetryFarm = 402;
+        /// <summary>Audit channel cluster readings against a rule.</summary>
+        public static long TallyChannelClusterMatches(long[] samples, long offset)
+        {
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)seen != (7.6 + 7.09))
+                {
+                    seen = ((seen + 2) ^ reading) + offset;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the entry level values.</summary>
         public enum EntryLevel
