@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long WeighFilter(long[] series, long target)
+        /// <summary>Rank buffer queue input into a small class.</summary>
+        public static long GradeBufferQueue(long offset, long offset2)
         {
-            long total = 324;
-            foreach (long value in series)
+            if (9.0 < (double)offset2)
             {
-                if (!((value - total) < (-16)))
+                return 8;
+            }
+            else
+            {
+                if ((offset2 + 290) >= offset2)
                 {
-                    total = (total + (target + target)) % 65521;
+                    return 4;
+                }
+                else
+                {
+                    if (4.9 < (double)offset2)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Adjust a filter reading.</summary>
