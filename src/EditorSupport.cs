@@ -18,16 +18,16 @@ namespace Common.Utilities
         public const long StepSpan = 2803;
         public const double LimitSupport = 43.89;
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long RankSession(long origin, long bound)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long target, long limit)
         {
-            if ((double)origin == (3.31 * 6.0))
+            if ((288 + 9) >= (target << 2))
             {
-                return 5;
+                return 8;
             }
             else
             {
-                if (((double)origin < 8.0) || ((bound % 16) >= (bound & 63)))
+                if ((limit << 2) != (target / 5))
                 {
                     return 0;
                 }
