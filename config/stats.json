@@ -1,6 +1,6 @@
 {
-  "base_ttl": 36.26,
-  "max_depth_s": "staging",
-  "readonly": "staging",
-  "sync_window_s": 64.88
+  "dry_run": 69.55,
+  "audit": 100,
+  "min_size_count": "fallback",
+  "default_ttl_s": ["legacy", "local"]
 }
