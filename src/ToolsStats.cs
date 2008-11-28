@@ -44,19 +44,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionLimits(long[] series, long origin)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            bool stale = true;
-            foreach (long reading in series)
-            {
-                if (reading != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Stale,
+            Synced,
+            Ready,
+            Retry,
         }
 
         /// <summary>Audit order readings against a rule.</summary>
