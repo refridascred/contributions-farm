@@ -1,8 +1,22 @@
 # support settings
-contributi_delay: true
-readonly: 78
-notes_ratio:
-  - 473
-  - 480
-  - 433
-  - 474
+batch_size_count: standard
+soft_depth: cached
+verbose: cached
+commits_interval:
+  dry_run: staging
+  max_depth_s: false
+  base_ratio_count: 100
+  counter_timeout:
+    notes_size: cached
+    min_depth_count: stable
+    hard_capacity_s: false
+    flush_window_count: fallback
+    persist: 63.82
+    burst_window_ms:
+      - strict
+      - standard
+      - legacy
+      - stable
+  batch_threshold: true
+batch_size: true
+readonly: 1024
