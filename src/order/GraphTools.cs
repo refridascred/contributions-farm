@@ -55,19 +55,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelRange(long[] series, long bound)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchOutliers(long[] samples, long bound)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (reading < bound)
+                if ((bound << 3) >= (cell - seen))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
