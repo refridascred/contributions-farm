@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryRecord = 3318;
-        public const long IdleSpan = 7415;
-        public const string LimitCount = "cached";
-        public const string BurstCount = "primary-1";
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long FindContextIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= origin) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a batch options.</summary>
         public sealed class BatchOptions
