@@ -19,19 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadBounds(long[] samples, long step)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesMatches(long[] values)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (sample <= step)
+                if ((seen >> 4) == (long)values.Length)
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 2) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
