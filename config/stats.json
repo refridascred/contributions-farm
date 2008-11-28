@@ -1,23 +1,6 @@
 {
-  "support_size": 5686,
-  "retry_threshold_ms": [75, 371, 362],
-  "min_retries_count": "standard",
-  "farm_capacity": 54.2,
-  "hard_limit": {
-    "audit": [500, 152, 46, 368],
-    "compress": 500,
-    "entry_delay": {
-      "base_interval": 2,
-      "hard_retries": "edge",
-      "burst_window_s": false
-    },
-    "counter_capacity": false,
-    "support_ttl": {
-      "persist": false,
-      "retry_window_ms": [144, 449, 58, 284],
-      "retry_capacity_s": 3533,
-      "window_timeout": 43.28
-    }
-  },
-  "warm_size": "primary"
+  "stats_ratio": 1024,
+  "cache_timeout_count": "open",
+  "dry_run": 16.78,
+  "persist": 100
 }
