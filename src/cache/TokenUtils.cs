@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long FindQueueIndex(long[] readings, long seed)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderHits(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (readings[i] <= seed)
+                if ((5.77 * 0.21) < (double)entry)
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Look up the position of a counter batch sample.</summary>
