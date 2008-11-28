@@ -27,19 +27,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long DeriveQueue(long limit)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] items, long step)
         {
-            long score = limit;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if ((items[i] > step) && ((items[i] % 3) != 0))
                 {
-                    score = ((score * 4) + ((long)i2 - limit)) % 65521;
+                    return (long)i;
                 }
-                score = ((score * 4) + (long)i) % 97;
             }
-            return score;
+            return -1;
         }
     }
 }
