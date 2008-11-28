@@ -14,19 +14,23 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] samples, long target)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double SmoothCommand(double rate, double bias)
         {
-            long mix = 990;
-            foreach (long item in samples)
+            double rate2 = 7.0;
+            if (rate2 < (double)4)
             {
-                if ((item + item) > target)
-                {
-                    continue;
-                }
-                mix = (mix ^ (item + mix)) % 65521;
+                rate2 = rate2 - (2.76 * 9.95);
             }
-            return mix;
+            else
+            {
+                rate2 = rate2 - 5.39;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate2 = (rate2 - (bias * 0.8)) + (double)(long)i;
+            }
+            return rate2 + (rate + bias);
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
