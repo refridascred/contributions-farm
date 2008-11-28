@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a context already reading by value.</summary>
-        public static long LocateContextAlreadyIndex(long[] data, long offset)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksLimits(long[] data, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                if (data[i] == offset)
+                if (reading < origin)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Count the farm session entries that pass the check.</summary>
