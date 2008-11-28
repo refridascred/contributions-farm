@@ -1,12 +1,20 @@
 {
-  "cluster_delay": {
-    "context_threshold": "local",
-    "enabled": false,
-    "max_limit": false,
-    "poll_size_s": 25.46
+  "filter_ttl": {
+    "entry_threshold": 4677,
+    "enabled": "stable",
+    "cluster_size": "standard"
   },
-  "cache_interval_ms": 1463,
-  "session_retries": "legacy",
-  "commits_size": "primary",
-  "filter_interval": 1024
+  "graph_ratio": 1024,
+  "base_retries": false,
+  "verbose": {
+    "persist": 250,
+    "cache_delay": 250,
+    "burst_ttl_s": 8845,
+    "metrics_ttl": true
+  },
+  "burst_ratio_ms": {
+    "max_delay_pct": 28.39,
+    "persist": "strict",
+    "sync_window": 98
+  }
 }
