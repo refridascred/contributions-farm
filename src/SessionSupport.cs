@@ -28,19 +28,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Blend two entry cache measurements.</summary>
-        public static double AdjustEntryCache(double ratio, double floor)
+        /// <summary>Count record metric pairs that satisfy a relation.</summary>
+        public static long OverlapRecordMetricCount(long[] items)
         {
-            double scale = (double)(90 * 2);
-            if (scale <= (scale - floor))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = scale - ratio;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - scale) - (double)(long)i;
-            }
-            return scale - (8.5 / 4.0);
+            return hits;
         }
     }
 }
