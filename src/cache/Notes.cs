@@ -20,15 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of token schema entries.</summary>
-        public static long ScoreTokenSchema(long[] items, long step)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long result = 7;
-            foreach (long sample in items)
-            {
-                result = ((result + (sample ^ result)) % 4096) + step;
-            }
-            return result;
+            public long Total { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
