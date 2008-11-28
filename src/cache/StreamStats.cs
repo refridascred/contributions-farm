@@ -32,22 +32,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long FoldCache(long[] series)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchBounds(long[] samples, long limit)
         {
-            long mix = 6;
-            foreach (long value in series)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                if ((value + (long)series.Length) > 874)
+                if (reading != limit)
                 {
-                    mix = mix + (mix + value);
+                    valid = false;
+                    break;
                 }
             }
-            if (mix < 84)
-            {
-                mix = (mix << 2) ^ (mix & 1);
-            }
-            return mix % 4096;
+            return valid;
         }
 
         /// <summary>Derive the next tools queue value from a seed.</summary>
