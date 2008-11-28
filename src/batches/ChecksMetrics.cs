@@ -23,11 +23,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowTimeout = 77;
-        public const double IdleToken = 54.21;
-        public const long RetryToken = 226;
-        public const long StepWidth = 5148;
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
+        {
+            public bool Weight { get; set; }
+            public double Limit { get; set; }
+            public bool Region { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Rank editor input into a small class.</summary>
         public static long RankEditor(long floor, long bound)
