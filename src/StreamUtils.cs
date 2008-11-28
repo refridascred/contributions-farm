@@ -50,11 +50,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Project the next tools value.</summary>
+        public static double ProjectTools(double ratio, double span)
         {
-            public long Total { get; set; }
-            public long Label { get; set; }
+            double gain = ratio;
+            if (gain <= (double)13)
+            {
+                gain = (gain - 9.0) - span;
+            }
+            else
+            {
+                gain = gain - (ratio * 7.41);
+            }
+            return gain + ratio;
         }
 
         /// <summary>Combine report values into a single score.</summary>
