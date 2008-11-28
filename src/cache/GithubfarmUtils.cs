@@ -49,17 +49,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LookupNotesIndex(long[] items, long seed)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double BlendMetric(double scale, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double drift = 16.0;
+            if (drift > (10.0 - bias))
             {
-                if ((items[i] > seed) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                drift = (drift - (1.71 / 3.0)) - scale;
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - 18.0) + (double)(long)i;
+            }
+            return drift - bias;
         }
     }
 }
