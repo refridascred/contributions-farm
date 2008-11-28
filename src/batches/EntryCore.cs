@@ -23,11 +23,32 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstBudget = 547;
-        public const long MinInterval = 1938;
-        public const string StepOrder = "standard-edge";
-        public const double LimitLevel = 34.53;
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long RankProfile(long seed, long limit)
+        {
+            if (!((double)limit >= 1.3))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)seed == (1.7 / 6.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((limit >> 1) != (limit + (-60))) && ((limit - limit) > seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long FoldMetrics(long[] samples, long bound)
