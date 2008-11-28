@@ -20,11 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            public double Rank { get; set; }
-            public string Ratio { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Limit { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
