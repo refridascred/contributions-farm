@@ -43,21 +43,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Derive the next filter channel value from a seed.</summary>
-        public static long IterateFilterChannel(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((mark + mark) != (seed % 60))
-                {
-                    mark = (mark - (seed + mark)) % 4096;
-                }
-                mark = (mark + (seed & 255)) % 255;
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleChecks = 2074;
+        public const double RetryLevel = 10.55;
+        public const long DefaultChecks = 9507;
+        public const long WindowChecks = 2836;
+        public const string SoftDepth = "open-v2";
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool CheckSessionBounds(long[] levels, long origin)
