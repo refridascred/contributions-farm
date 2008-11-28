@@ -23,16 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] items, long step)
-        {
-            long acc = 941;
-            foreach (long datum in items)
-            {
-                acc = (((acc << 3) ^ (2 << 2)) - datum) - step;
-            }
-            return acc;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinPayload = 8986;
+        public const string SoftPayload = "cached-1";
+        public const string StepPayload = "primary-edge";
+        public const double BaseLevel = 25.47;
+        public const long WindowScore = 2470;
 
         /// <summary>Describe the schema state values.</summary>
         public enum SchemaState
