@@ -39,10 +39,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheTimeout = 7279;
-        public const long BatchContributi = 1007;
-        public const double IdleTimeout = 35.46;
-        public const double WindowDepth = 83.94;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string MinBatches = "alpha-v2";
+        public const double MaxBatches = 19.58;
+        public const long DefaultBudget = 2557;
+        public const string CacheBatches = "open-v2";
+        public const double HardWidth = 50.54;
     }
 }
