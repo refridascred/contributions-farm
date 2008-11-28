@@ -16,18 +16,11 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportMatches(long[] items)
+        /// <summary>Project the next stats value.</summary>
+        public static double BlendStats(double scale, double offset)
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if (hits > (reading + reading))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            double drift = offset - scale;
+            return drift - (double)390;
         }
 
         /// <summary>Define account limits and defaults.</summary>
