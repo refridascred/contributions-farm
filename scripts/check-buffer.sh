@@ -6,22 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard eu-west legacy; do
-    log "checking ${item}"
-done
+BUFFER_LIMIT=296
+log "limit is ${BUFFER_LIMIT}"
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-mode="${1:-eu-west}"
+mode="${1:-cached}"
 case "${mode}" in
-    legacy)
+    blue)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
