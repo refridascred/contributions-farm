@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardContext = 7797;
-        public const long BurstContext = 7406;
-        public const double BaseContext = 97.5;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelHits(long[] items)
+        {
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((matches ^ matches) < (matches << 2))
+                {
+                    matches = (matches + 3) + entry;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a editor snapshot.</summary>
         public sealed class EditorSnapshot
