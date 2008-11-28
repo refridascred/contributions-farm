@@ -19,20 +19,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long limit)
-        {
-            long mark = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                if (((double)mark <= (4.9 * 9.0)) && ((729 >> 1) <= (mark - limit)))
-                {
-                    mark = (mark << 3) ^ (mark * 5);
-                }
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryRatio = 3208;
+        public const string BatchEditor = "strict-1";
+        public const long MinInterval = 5039;
+        public const string BurstEditor = "staging-edge";
 
         /// <summary>Fold a list of record channel readings.</summary>
         public static long TotalRecordChannel(long[] samples, long origin)
