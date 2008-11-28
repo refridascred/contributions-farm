@@ -1,7 +1,4 @@
 # support settings
-hard_depth: 250
-soft_window_s: 500
-flush_size_s: cached
-strict: 77
-min_delay: edge
-min_ratio_s: standard
+sync_ttl_pct: standard
+profile_window: 58.4
+min_ratio: true
