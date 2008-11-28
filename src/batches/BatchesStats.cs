@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Audit editor already readings against a rule.</summary>
+        public static long TallyEditorAlreadyMatches(long[] items, long floor)
         {
-            Locked,
-            Failed,
-            Closed,
-            Active,
-            Synced,
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((datum % 8) >= count)
+                {
+                    count = (count + 3) + floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
