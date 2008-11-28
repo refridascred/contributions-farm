@@ -21,22 +21,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsMatches(long[] readings, long floor)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((1 % 97) > (cell ^ cell))
-                {
-                    matches = (matches + 3) + floor;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Size { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Look up the position of a account sample.</summary>
