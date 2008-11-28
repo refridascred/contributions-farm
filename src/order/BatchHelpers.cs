@@ -50,12 +50,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LocateEntryIndex(long[] items, long seed)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LookupMetricsIndex(long[] samples, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((items[i] < seed) && ((items[i] % 2) == 0))
+                if ((samples[i] > origin) && ((samples[i] % 3) != 0))
                 {
                     return (long)i;
                 }
