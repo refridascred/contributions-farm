@@ -1,10 +1,7 @@
-id,token,weight,region
-1,blue,18.69,edge
-2,0.74,eu-west,standard
-3,607,0.65,68.87
-4,31.07,strict,stable
-5,blue,7.23,staging
-6,fallback,fallback,legacy
-7,27.39,blue,13.66
-8,cached,open,32
-9,506,211,15.73
+id,token,label
+1,446,64.47
+2,edge,776
+3,31.46,4.0
+4,18.68,128
+5,9.23,standard
+6,52,624
