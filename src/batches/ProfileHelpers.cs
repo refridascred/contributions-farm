@@ -44,10 +44,14 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheEditor = 1506;
-        public const long SoftEditor = 7682;
-        public const double MaxEditor = 1.76;
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
+        {
+            Ready,
+            Synced,
+            Done,
+            Closed,
+        }
 
         /// <summary>Derive the next contributi filter value from a seed.</summary>
         public static long DeriveContributiFilter(long target)
