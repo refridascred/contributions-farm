@@ -47,18 +47,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryHits(long[] items, long offset)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long ClassifyCounter(long limit, long floor)
         {
-            long count = 0;
-            foreach (long value in items)
+            if ((1.91 * 7.16) > (double)limit)
             {
-                if ((value + value) != (offset ^ count))
+                return 2;
+            }
+            else
+            {
+                if (((double)limit < (double)floor) || ((floor & 15) < (floor + limit)))
                 {
-                    count = count + 3;
+                    return 7;
+                }
+                else
+                {
+                    if (((limit + limit) > limit) && (floor < limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((limit <= (floor + floor)) || ((floor ^ limit) < (floor % 24)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
