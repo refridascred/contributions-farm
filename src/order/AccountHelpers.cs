@@ -28,20 +28,12 @@ namespace Common.Utilities
         public const long BaseCount = 8123;
         public const double DefaultContext = 63.07;
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutRange(long[] samples, long offset)
-        {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry < offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string LimitCache = "strict";
+        public const string SoftLevel = "alpha-v2";
+        public const string BaseCache = "stable-v2";
+        public const long RetryScore = 3441;
+        public const long RetryCache = 4084;
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long LookupFarmIndex(long[] data, long limit)
