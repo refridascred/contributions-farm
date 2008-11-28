@@ -50,21 +50,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long PairTokenCount(long[] data)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 93;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                result = result - (353 >> 3);
+                if ((465 + entry) <= result)
                 {
-                    if ((data[i] ^ data[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = ((result << 2) ^ entry) % 97;
                 }
             }
-            return tally;
+            if (result < 22)
+            {
+                result = ((result << 2) ^ result) % 101;
+            }
+            return result % 4096;
         }
     }
 }
