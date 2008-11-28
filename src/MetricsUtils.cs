@@ -35,18 +35,12 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesGaps(long[] levels, long bound)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((bound - (long)levels.Length) > (801 + hits))
-                {
-                    hits = (hits + 1) + value;
-                }
-            }
-            return hits;
+            Done,
+            Queued,
+            Stale,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
