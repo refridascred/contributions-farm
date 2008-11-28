@@ -16,17 +16,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a session metrics sample.</summary>
-        public static long SeekSessionMetricsIndex(long[] samples, long seed)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= seed) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Flag { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Hold a batches info.</summary>
