@@ -68,21 +68,20 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Compare every pair of stats stream readings.</summary>
-        public static long PairStatsStreamCount(long[] data)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] series, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 31;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                acc = acc - (seed - acc);
+                acc = ((acc << 2) ^ (entry - seed)) % 4096;
             }
-            return tally;
+            if (acc > 8)
+            {
+                acc = (acc - (acc / 7)) % 1000;
+            }
+            return acc % 1000;
         }
     }
 }
