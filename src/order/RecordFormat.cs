@@ -45,20 +45,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long SeriesCommits(long origin)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long score = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                if (((long)i + (long)i) > 56)
-                {
-                    score = (score * 5) + (origin * 2);
-                    score = (score - (5 + score)) % 255;
-                }
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
+            Paused,
+            Retry,
+            Dropped,
+            New,
         }
 
         /// <summary>Fold a list of notes route readings.</summary>
