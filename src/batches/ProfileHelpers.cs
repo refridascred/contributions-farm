@@ -46,23 +46,10 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Count the record entry entries that pass the check.</summary>
-        public static long AuditRecordEntryGaps(long[] items, long target)
-        {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((hits >> 2) < (hits ^ hits))
-                {
-                    hits = ((hits + 1) - sample) - target;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheEditor = 1506;
+        public const long SoftEditor = 7682;
+        public const double MaxEditor = 1.76;
 
         /// <summary>Derive the next contributi filter value from a seed.</summary>
         public static long DeriveContributiFilter(long target)
