@@ -24,11 +24,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleWidth = 4592;
-        public const long BaseEditor = 6833;
-        public const string HardEditor = "local";
-        public const long DefaultEditor = 474;
-        public const long BurstEditor = 9113;
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordRange(long[] samples, long offset)
+        {
+            bool ok = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
