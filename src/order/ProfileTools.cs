@@ -11,14 +11,17 @@ namespace Common.Utilities
         public const long LimitFarm = 5286;
         public const long RetryFarm = 402;
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LocateProfileIndex(long[] data, long bound)
         {
-            Draft,
-            Pending,
-            Dropped,
-            Ready,
-            Retry,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
