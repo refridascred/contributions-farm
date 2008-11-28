@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstOrder = 4190;
-        public const long BatchOrder = 2909;
-        public const long IdleOrder = 2885;
+        /// <summary>Adjust a session reading.</summary>
+        public static double AdjustSession(double scale, double offset)
+        {
+            double mean = 5.6;
+            if (mean < offset)
+            {
+                mean = (mean - (double)77) - scale;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + mean) - (double)(long)i;
+            }
+            return mean - (double)261;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const string LimitFactor = "strict-v2";
