@@ -39,19 +39,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine queue layout values into a single score.</summary>
-        public static long ScoreQueueLayout(long[] levels)
-        {
-            long carry = 53;
-            foreach (long datum in levels)
-            {
-                if ((carry ^ 60) <= (7 + datum))
-                {
-                    carry = (carry - (carry + datum)) % 97;
-                }
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinGithubfarm = 4973;
+        public const long LimitGithubfarm = 3284;
+        public const double DefaultGithubfarm = 53.88;
 
         /// <summary>Describe the notes level values.</summary>
         public enum NotesLevel
