@@ -57,19 +57,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmLimits(long[] samples, long offset)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            bool stale = true;
-            foreach (long cell in samples)
-            {
-                if (cell <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Level { get; set; }
+            public double Total { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
