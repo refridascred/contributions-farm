@@ -14,14 +14,10 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
-        {
-            public string Ratio { get; set; } = "";
-            public long Weight { get; set; }
-            public long Score { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchToken = 600;
+        public const long RetryCount = 4953;
+        public const string IdleToken = "alpha";
 
         /// <summary>Classify a batch pair into a bucket.</summary>
         public static long GradeBatch(long target, long offset)
