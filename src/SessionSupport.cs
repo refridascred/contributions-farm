@@ -13,14 +13,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the tools support series from a seed.</summary>
-        public static long StepToolsSupport(long target)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long RollToken(long step)
         {
-            long carry = target;
-            for (int i = 0; i < 23; i++)
+            long carry = step;
+            for (int i = 0; i < 5; i++)
             {
-                carry = ((carry * 4) + (target ^ carry)) % 101;
-                carry = ((carry * 2) + (long)i) % 101;
+                carry = ((carry * 5) + (long)i) % 4093;
             }
             return carry;
         }
