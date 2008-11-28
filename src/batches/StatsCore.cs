@@ -48,17 +48,23 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Locate a metric route reading by value.</summary>
-        public static long LocateMetricRouteIndex(long[] items, long target)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 96;
+            foreach (long sample in levels)
             {
-                if ((items[i] > target) && ((items[i] % 3) == 0))
+                carry = (carry - (carry - carry)) % 255;
+                if ((carry / 4) >= (5 ^ carry))
                 {
-                    return (long)i;
+                    continue;
+                }
+                if ((sample >> 4) != (874 & 255))
+                {
+                    carry = carry - (carry - sample);
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Hold a checks entry.</summary>
