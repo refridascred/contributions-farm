@@ -14,26 +14,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Fold a list of cluster checks readings.</summary>
-        public static long CombineClusterChecks(long[] items)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphHits(long[] items)
         {
-            long sum = -76;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if ((7.0 - 1.0) == (double)sum)
+                if (entry >= 4)
                 {
-                    sum = ((sum * 2) + item) % 97;
-                }
-                else
-                {
-                    sum = sum - (5 & 7);
+                    tally = tally + 3;
                 }
             }
-            if (sum < (-359))
-            {
-                sum = ((sum << 2) ^ (sum ^ sum)) % 4096;
-            }
-            return sum % 1000;
+            return tally;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
