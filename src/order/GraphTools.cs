@@ -49,31 +49,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long RankBuffer(long seed, long limit)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] levels, long seed)
         {
-            if (!(15 < (seed % 5)))
+            long carry = 9;
+            foreach (long item in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (((8.0 + 8.77) <= 3.0) && ((limit - seed) == (seed << 3)))
+                carry = ((carry - (49 - seed)) % 101) ^ item;
+                if (!((seed - carry) > seed))
                 {
-                    return 4;
+                    carry = carry ^ (seed << 2);
                 }
                 else
                 {
-                    if ((seed >> 5) > (limit >> 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    carry = carry ^ (carry + carry);
                 }
             }
+            return carry % 1000;
         }
 
         /// <summary>Hold a filter record.</summary>
