@@ -52,18 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long FoldMetrics(long[] data, long offset)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordRange(long[] items, long limit)
         {
-            long score = 645;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                if ((score + datum) > offset)
+                if (entry > limit)
                 {
-                    score = (score * 5) + (offset + score);
+                    stale = false;
+                    break;
                 }
             }
-            return score;
+            return stale;
         }
     }
 }
