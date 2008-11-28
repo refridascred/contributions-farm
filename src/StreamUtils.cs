@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every cache context entry stays within the limit.</summary>
-        public static bool ValidateCacheContextLimits(long[] readings, long floor)
+        /// <summary>Match up farm githubfarm samples.</summary>
+        public static long CompareFarmGithubfarmCount(long[] series)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading < floor)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((series[i] - series[j]) == 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
