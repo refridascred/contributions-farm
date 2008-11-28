@@ -47,18 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsHits(long[] samples, long seed)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if ((seed << 1) != (seed + seed))
-                {
-                    tally = (tally + 2) ^ cell;
-                }
-            }
-            return tally;
+            Failed,
+            Done,
+            Locked,
         }
     }
 }
