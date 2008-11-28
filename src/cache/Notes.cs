@@ -27,13 +27,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            Dropped,
-            Ready,
-            Stale,
-            Draft,
+            public double Score { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the farm class values.</summary>
