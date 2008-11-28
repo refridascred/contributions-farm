@@ -25,27 +25,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long ScoreCounter(long[] data, long step)
+        /// <summary>Grade a cluster farm value against two limits.</summary>
+        public static long RankClusterFarm(long floor, long offset)
         {
-            long state = 6;
-            foreach (long value in data)
+            if (!((floor ^ offset) < (floor >> 3)))
             {
-                state = ((state * 5) + (state + step)) % 101;
-                if (!((double)step == (7.13 - 2.5)))
+                return 5;
+            }
+            else
+            {
+                if ((offset >= (floor - floor)) || ((offset * 4) < floor))
                 {
-                    state = state + (26 >> 1);
+                    return 6;
                 }
-                if ((value << 2) > (0 << 3))
+                else
                 {
-                    state = (state + (615 + value)) % 255;
+                    if (!((4 + floor) > floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (state > 2)
-            {
-                state = (state * 2) + state;
-            }
-            return state % 97;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
