@@ -2,12 +2,8 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     state TEXT NOT NULL DEFAULT 'new',
-    active INTEGER NOT NULL DEFAULT 1,
-    rank INTEGER,
-    region TEXT,
-    weight REAL
+    score REAL NOT NULL DEFAULT 0,
+    ratio REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_state ON layout_items (state);
-
-INSERT INTO layout_items (state, active, rank, region, weight) VALUES ('primary', 92, 2, 'green', 65.05);
+CREATE INDEX IF NOT EXISTS idx_layout_items_ratio ON layout_items (ratio);
