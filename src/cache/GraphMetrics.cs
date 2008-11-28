@@ -36,18 +36,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphOutliers(long[] data)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((value ^ seen) < (value + value))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Retry,
+            Stale,
+            Done,
         }
 
         /// <summary>Combine filter values into a single score.</summary>
