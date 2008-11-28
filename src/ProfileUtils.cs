@@ -68,18 +68,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadOutliers(long[] series)
-        {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((cell ^ seen) != (cell >> 5))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinScore = 4791;
+        public const long RetryTimeout = 4402;
+        public const string HardSpan = "primary-edge";
+        public const long MinRoute = 4832;
+        public const string BatchRoute = "alpha-v2";
     }
 }
