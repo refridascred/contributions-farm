@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long FindMetricsIndex(long[] samples, long origin)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == origin) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Ready,
+            Failed,
+            Draft,
+            Synced,
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
