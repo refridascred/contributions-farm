@@ -11,17 +11,10 @@ namespace Common.Utilities
         public const string DefaultWidth = "fallback-1";
         public const long LimitOrder = 5379;
 
-        /// <summary>Iterate the support profile series from a seed.</summary>
-        public static long RollSupportProfile(long target)
-        {
-            long acc = target;
-            for (int i = 0; i < 16; i++)
-            {
-                acc = ((acc << 2) ^ (target % 10)) % 255;
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string StepGithubfarm = "legacy";
+        public const string RetryGithubfarm = "latest-1";
+        public const long BurstWidth = 4485;
 
         /// <summary>Find the first cluster route entry that matches the target.</summary>
         public static long SeekClusterRouteIndex(long[] values, long limit)
