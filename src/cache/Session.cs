@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double StepEditor = 61.79;
-        public const long IdleEditor = 8969;
-        public const string SoftFactor = "open-1";
-        public const double DefaultEditor = 17.08;
-        public const string BatchEditor = "local";
+        /// <summary>Rank queue channel input into a small class.</summary>
+        public static long BucketQueueChannel(long target, long limit)
+        {
+            long step = target ^ limit;
+            if ((2.5 - 0.7) <= (double)step)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((3.0 / 4.0) == (double)target)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((4.0 + 14.0) < (double)limit) && ((double)step < (12.0 * 6.8)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Rank stream metric input into a small class.</summary>
         public static long ClassifyStreamMetric(long limit, long origin)
