@@ -1,18 +1,7 @@
 # githubfarm settings
-verbose: blue
-soft_delay: 100
-soft_capacity_pct:
-  sync_retries_pct: 70
-  account_ratio:
-    notes_depth: false
-    retry_limit: false
-    order_depth: 250
-    sync_delay_count:
-      - 316
-      - 30
-    default_window_count: 1024
-    min_limit_count: standard
-  dry_run: blue
-compress: 66
-farm_depth: 60
-metrics_retries: 79.91
+profile_timeout: 1278
+verbose: true
+retry_size_ms:
+  session_limit: 39.81
+  cache_retries_ms: legacy
+  cache_delay_s: 59
