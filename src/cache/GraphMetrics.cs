@@ -27,14 +27,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
-        {
-            Draft,
-            Closed,
-            Dropped,
-            Synced,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double DefaultToken = 28.94;
+        public const double WindowToken = 87.45;
+        public const string BurstToken = "cached-1";
+        public const long BaseToken = 1516;
+        public const string WindowCount = "cached";
 
         /// <summary>Describe the contributi phase values.</summary>
         public enum ContributiPhase
