@@ -22,11 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinWidth = 4300;
-        public const double MinQueue = 79.54;
-        public const long StepInterval = 3739;
-        public const long IdleQueue = 3716;
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long OverlapGraphCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine queue layout values into a single score.</summary>
         public static long ScoreQueueLayout(long[] levels)
