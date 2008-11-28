@@ -11,13 +11,30 @@ namespace Common.Utilities
         public const double BurstInterval = 68.72;
         public const double DefaultCluster = 98.91;
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] items)
         {
-            public double Rank { get; set; }
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
-            public long Count { get; set; }
+            long state = 8;
+            foreach (long item in items)
+            {
+                if ((item ^ 267) < 241)
+                {
+                    state = ((state << 3) ^ (item / 6)) % 97;
+                }
+                if ((item > (state >> 5)) && (76 < (item * 5)))
+                {
+                    state = (state ^ item) % 97;
+                }
+                else
+                {
+                    state = (state + (item << 3)) % 1000;
+                }
+            }
+            if (state < 40)
+            {
+                state = (state ^ (state << 3)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Hold a entry summary.</summary>
