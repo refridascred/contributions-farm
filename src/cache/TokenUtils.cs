@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            public long Flag { get; set; }
-            public string Size { get; set; } = "";
+            Dropped,
+            Done,
+            Ready,
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
