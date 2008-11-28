@@ -48,21 +48,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count filter stats pairs that satisfy a relation.</summary>
-        public static long MatchFilterStatsCount(long[] levels)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Mode { get; set; }
+            public bool Token { get; set; }
+            public long Label { get; set; }
         }
     }
 }
