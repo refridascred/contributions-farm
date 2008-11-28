@@ -1,12 +1,15 @@
 # Command notes
 
-Defaults for entry live in the config folder and can be overridden per environment.
-Run the payload check before changing any tools limits.
-Keep channel and context names short and lowercase.
+The payload helpers are pure functions, so they are safe to call from any thread.
+Defaults for editor live in the config folder and can be overridden per environment.
+
+When a report fails, the already handler retries a few times before giving up.
+The notes report groups every command by window.
+Run the channel check before changing any profile limits.
 
 ## Guidelines
 
-- Document new layout fields
-- Prefer stats defaults
-- Log every support change
-- Keep report values small
+- Log every schema change
+- Document new session fields
+- Validate githubfarm input early
+- Prefer batches defaults
