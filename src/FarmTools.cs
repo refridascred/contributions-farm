@@ -24,21 +24,18 @@ namespace Common.Utilities
         public const long StepLevel = 7464;
         public const double CacheSize = 56.42;
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long PairNotesCount(long[] samples)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportOutliers(long[] samples, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((1 % 2) > (origin & 31)))
                 {
-                    if ((samples[i] + samples[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 1) + cell;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
