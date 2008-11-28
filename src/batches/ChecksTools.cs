@@ -43,11 +43,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdleInterval = 736;
-        public const long SoftScore = 453;
-        public const string BatchCount = "local";
-        public const long BatchTimeout = 5864;
-        public const long DefaultPayload = 6007;
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
+        {
+            public bool Level { get; set; }
+            public double Region { get; set; }
+            public long Rank { get; set; }
+            public long Weight { get; set; }
+        }
     }
 }
