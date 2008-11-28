@@ -39,32 +39,13 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long BucketAccount(long bound, long origin)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long lane = bound - origin;
-            if ((origin * 5) <= ((-5) ^ origin))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((89 + lane) >= (bound >> 4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((lane & 3) > (lane + lane)) || ((double)bound >= (double)151))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Closed,
+            Draft,
+            Failed,
+            Locked,
         }
 
         /// <summary>Blend two batches measurements.</summary>
