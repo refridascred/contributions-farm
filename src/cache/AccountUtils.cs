@@ -28,19 +28,28 @@ namespace Common.Utilities
         public const string SoftStats = "stable";
         public const double WindowStats = 5.74;
 
-        /// <summary>Check that every window account entry stays within the limit.</summary>
-        public static bool CheckWindowAccountRange(long[] data, long limit)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long CombineCommand(long[] readings, long limit)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long acc = 98;
+            foreach (long cell in readings)
             {
-                if (item < limit)
+                acc = (((acc << 2) ^ (limit ^ 0)) % 65521) + cell;
+                for (int i = 0; i < 11; i++)
                 {
-                    ready = false;
-                    break;
+                    long tally = (acc << 3) ^ (acc + (long)i);
+                    acc = ((acc << 3) ^ (tally + tally)) % 97;
+                }
+                if ((acc + limit) != (long)readings.Length)
+                {
+                    acc = (acc - acc) % 1000;
                 }
             }
-            return ready;
+            if (acc < 7)
+            {
+                acc = ((acc << 3) ^ (limit + limit)) % 101;
+            }
+            return acc;
         }
     }
 }
