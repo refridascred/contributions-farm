@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxSpan = 2474;
-        public const double SoftCount = 58.17;
-        public const long StepEntry = 1996;
-        public const string BurstTimeout = "local-v2";
-        public const string WindowSpan = "open-edge";
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
+        {
+            public long Mode { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Adjust a schema reading.</summary>
         public static double ProjectSchema(double weight, double offset)
