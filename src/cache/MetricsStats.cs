@@ -56,20 +56,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long IterateRoute(long floor)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long SortNotes(long origin, long limit)
         {
-            long result = floor;
-            for (int i = 0; i < 13; i++)
+            long cur = origin ^ limit;
+            if ((1.6 + 11.0) >= (double)cur)
             {
-                if (!(67 >= result))
-                {
-                    result = (result - (floor << 3)) % 101;
-                }
-                result = (result * 5) + ((long)i / 2);
-                result = ((result * 5) + (long)i) % 65521;
+                return 8;
             }
-            return result;
+            else
+            {
+                if ((origin - limit) > cur)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Hold a record options.</summary>
