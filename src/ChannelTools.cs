@@ -16,19 +16,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorBounds(long[] samples, long floor)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long FoldAccount(long[] items)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long acc = 92;
+            foreach (long cell in items)
             {
-                if (cell <= floor)
+                acc = ((acc << 3) ^ cell) % 97;
+                if (cell < acc)
                 {
-                    flag = false;
                     break;
                 }
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Accumulate schema already samples.</summary>
