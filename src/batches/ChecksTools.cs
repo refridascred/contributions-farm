@@ -39,14 +39,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamHits(long[] data, long floor)
         {
-            Pending,
-            Draft,
-            New,
-            Queued,
-            Retry,
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((9.0 * 9.45) != (double)cell)
+                {
+                    matches = (matches + 3) - floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
