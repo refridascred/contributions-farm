@@ -19,15 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long bound)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextMatches(long[] readings)
         {
-            long score = bound;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                score = ((score * 2) + (long)i) % 65521;
+                if ((6 & 63) > (entry >> 4))
+                {
+                    seen = seen + 3;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
