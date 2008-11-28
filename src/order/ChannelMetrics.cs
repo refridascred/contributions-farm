@@ -32,13 +32,17 @@ namespace Common.Utilities
         public const long RetrySize = 3545;
         public const double BurstRatio = 36.59;
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LocateCommandIndex(long[] series, long bound)
         {
-            Dropped,
-            Active,
-            Failed,
-            Queued,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
