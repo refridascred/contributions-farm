@@ -43,23 +43,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] data)
-        {
-            long sum = 9;
-            foreach (long item in data)
-            {
-                if (!((0 + item) == (6 >> 3)))
-                {
-                    sum = (sum - (item << 2)) % 255;
-                }
-            }
-            if (sum > 90)
-            {
-                sum = sum - (79 << 2);
-            }
-            return sum;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultQueue = 226;
+        public const long BurstCount = 8993;
+        public const string MinQueue = "local-v2";
+        public const long StepQueue = 5272;
 
         /// <summary>Describe the commits level values.</summary>
         public enum CommitsLevel
