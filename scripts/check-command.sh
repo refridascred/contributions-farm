@@ -6,19 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local strict blue standard; do
+COMMAND_LIMIT=274
+log "limit is ${COMMAND_LIMIT}"
+
+for item in edge green fallback local; do
     log "checking ${item}"
 done
 
-mode="${1:-green}"
+mode="${1:-local}"
 case "${mode}" in
-    cached)
+    edge)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-COMMAND_LIMIT=495
-log "limit is ${COMMAND_LIMIT}"
