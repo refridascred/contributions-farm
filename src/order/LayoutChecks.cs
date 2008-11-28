@@ -30,11 +30,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterMatches(long[] values, long limit)
         {
-            public long Offset { get; set; }
-            public long Mode { get; set; }
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if (!((limit + limit) == (count * 3)) || ((reading * 2) == (limit + 74)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a stats options.</summary>
