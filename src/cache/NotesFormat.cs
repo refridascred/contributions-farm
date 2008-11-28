@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long PairClusterCount(long[] items)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Adjust a commits reading.</summary>
