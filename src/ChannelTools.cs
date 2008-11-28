@@ -27,16 +27,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long WeighBatch(long[] data, long step)
-        {
-            long mark = 682;
-            foreach (long cell in data)
-            {
-                mark = (mark + (cell + (long)data.Length)) - step;
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinBatches = 9401;
+        public const long HardSize = 8894;
+        public const double DefaultBatches = 53.7;
+        public const double WindowScore = 53.73;
+        public const long BatchWidth = 4842;
 
         /// <summary>Grade a queue window value against two limits.</summary>
         public static long ClassifyQueueWindow(long floor, long origin)
