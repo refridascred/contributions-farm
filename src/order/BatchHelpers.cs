@@ -26,22 +26,38 @@ namespace Common.Utilities
         public const double LimitBatches = 71.09;
         public const double BurstCount = 1.47;
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long FoldAlready(long[] items)
+        /// <summary>Rank context payload input into a small class.</summary>
+        public static long SortContextPayload(long floor, long offset)
         {
-            long carry = 5;
-            foreach (long cell in items)
+            if (((double)offset != (0.3 + 0.33)) || ((17.0 + 18.0) >= (double)offset))
             {
-                if (((double)(-9) > (double)carry) || ((20.0 / 2.0) == (double)cell))
+                return 6;
+            }
+            else
+            {
+                if (((floor + offset) > offset) && (7.35 <= (double)floor))
                 {
-                    carry = (carry << 3) ^ (4 ^ (long)items.Length);
+                    return 8;
                 }
                 else
                 {
-                    carry = carry + cell;
+                    if ((floor - floor) != (floor - offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)offset > 18.0)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return carry;
         }
     }
 }
