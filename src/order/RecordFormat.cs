@@ -27,18 +27,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferMatches(long[] samples)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchMatches(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (499 >= (8 + datum))
+                if (!((sample ^ matches) >= (matches + 4)) && ((17.0 + 20.0) < (double)sample))
                 {
-                    tally = tally + 3;
+                    matches = (matches + 2) - origin;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Count cluster report pairs that satisfy a relation.</summary>
