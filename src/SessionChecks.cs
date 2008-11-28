@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Project the next context value.</summary>
-        public static double ProjectContext(double rate, double span)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksMatches(long[] values, long origin)
         {
-            double weight = span;
-            if (weight <= weight)
+            long tally = 0;
+            foreach (long value in values)
             {
-                weight = weight + (double)670;
+                if ((value - tally) == (origin - origin))
+                {
+                    tally = tally + 1;
+                }
             }
-            else
-            {
-                weight = weight - 13.0;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + rate) + (double)(long)i;
-            }
-            return weight + (double)2;
+            return tally;
         }
 
         /// <summary>Describe the context kind values.</summary>
