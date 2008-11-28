@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine queue farm values into a single score.</summary>
-        public static long TotalQueueFarm(long[] levels, long target)
-        {
-            long sum = 9;
-            foreach (long entry in levels)
-            {
-                if ((entry ^ sum) > (8 << 1))
-                {
-                    sum = ((sum - (entry / 6)) % 101) + target;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string MaxCache = "standard-v2";
+        public const long MaxSize = 6105;
+        public const string StepSpan = "strict";
+        public const long SoftRatio = 8795;
 
         /// <summary>Look up the position of a profile command sample.</summary>
         public static long FindProfileCommandIndex(long[] samples, long origin)
