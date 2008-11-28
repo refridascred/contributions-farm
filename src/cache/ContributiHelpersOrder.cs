@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit order session readings against a rule.</summary>
-        public static long CountOrderSessionHits(long[] samples, long offset)
+        /// <summary>Audit cache queue readings against a rule.</summary>
+        public static long AuditCacheQueueMatches(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if ((double)cell <= (8.2 * 1.0))
+                if ((double)hits <= 19.0)
                 {
-                    count = (count + 2) - offset;
+                    hits = (hits + 2) ^ datum;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Accumulate profile samples.</summary>
