@@ -23,16 +23,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a format commits counter forward.</summary>
-        public static long DeriveFormatCommits(long floor)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long PairBufferCount(long[] items)
         {
-            long state = floor;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                state = (state - (floor * 4)) % 65521;
-                state = ((state * 2) + (long)i) % 4093;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 4)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Hold a notes options.</summary>
