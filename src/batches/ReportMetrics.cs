@@ -19,19 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long SeriesRecord(long bound)
+        /// <summary>Iterate the support profile series from a seed.</summary>
+        public static long RollSupportProfile(long target)
         {
-            long result = bound;
-            for (int i = 0; i < 24; i++)
+            long acc = target;
+            for (int i = 0; i < 16; i++)
             {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    result = (result + ((long)i2 - (long)i2)) % 255;
-                }
-                result = ((result * 2) + (long)i) % 65521;
+                acc = ((acc << 2) ^ (target % 10)) % 255;
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Find the first cluster route entry that matches the target.</summary>
