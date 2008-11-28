@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit cache queue readings against a rule.</summary>
-        public static long AuditCacheQueueMatches(long[] readings)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long seed, long origin)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long offset = seed - origin;
+            if ((double)seed >= 8.8)
             {
-                if ((double)hits <= 19.0)
+                return 3;
+            }
+            else
+            {
+                if ((2 > (origin * 5)) && ((offset + 29) < (seed & 3)))
                 {
-                    hits = (hits + 2) ^ datum;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return hits;
         }
 
         /// <summary>Accumulate profile samples.</summary>
