@@ -33,11 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepCommand = 1665;
-        public const double LimitCommand = 77.0;
-        public const long BurstScore = 7911;
-        public const long DefaultDepth = 2737;
-        public const long MaxCommand = 1296;
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextHits(long[] readings)
+        {
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((double)seen != (double)value)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
