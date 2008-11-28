@@ -1,5 +1,4 @@
 # githubfarm settings
-base_interval_pct: 5.07
-session_size: true
-persist: 47.62
-hard_retries_ms: open
+retry_threshold_ms: 5469
+cache_timeout_ms: true
+warm_window_count: 2196
