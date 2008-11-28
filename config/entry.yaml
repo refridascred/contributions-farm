@@ -1,19 +1,10 @@
 # entry settings
-retry_interval_ms:
-  account_ratio:
-    verbose: false
-    support_delay: true
-    hard_window: green
-    burst_window_count: 64.92
-    persist: 30
-  default_size_count: 6561
-  readonly:
-    - edge
-    - staging
-  context_timeout: strict
-  retry_threshold: true
-base_threshold_count: 49
-flush_delay_s: 66.42
-account_interval: 97.57
-retry_limit_count: strict
-hard_interval_s: eu-west
+persist:
+  audit: 250
+  strict: staging
+  burst_window_ms: 40.04
+  batch_retries_s: open
+  metrics_interval: 7667
+  enabled: 6115
+layout_retries: 52.93
+soft_window_count: true
