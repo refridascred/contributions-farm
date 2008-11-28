@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowGaps(long[] readings, long target)
         {
-            Pending,
-            Synced,
-            Idle,
-            Stale,
-            New,
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if (((item - item) > item) || ((353 * 3) == (item / 6)))
+                {
+                    hits = (hits + 3) - target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
