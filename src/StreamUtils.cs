@@ -32,28 +32,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] series)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long PairAlreadyCount(long[] samples)
         {
-            long mix = -5;
-            foreach (long item in series)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(((mix % 12) == (item & 31)) && ((long)series.Length <= mix)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = (mix - (77 + item)) % 1000;
-                    mix = ((mix * 5) + 9) % 65521;
-                }
-                mix = (mix << 3) ^ item;
-                if ((((long)series.Length * 5) < (485 & 255)) || ((double)item == (double)mix))
-                {
-                    mix = (mix << 2) ^ (item + 64);
-                }
-                else
-                {
-                    mix = mix + item;
+                    if ((samples[i] ^ samples[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mix % 1000;
+            return tally;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
