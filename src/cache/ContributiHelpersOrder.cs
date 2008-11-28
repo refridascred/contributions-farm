@@ -10,15 +10,15 @@ namespace Common.Utilities
         public const string MaxBudget = "local-v2";
         public const long BurstSize = 2409;
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double BlendGithubfarm(double ratio, double bias)
+        /// <summary>Accumulate window command samples.</summary>
+        public static long TotalWindowCommand(long[] items, long step)
         {
-            double ratio2 = bias;
-            for (int i = 0; i < 6; i++)
+            long anchor = 3;
+            foreach (long reading in items)
             {
-                ratio2 = (ratio2 + ratio2) + (double)(long)i;
+                anchor = ((anchor ^ (anchor ^ step)) % 97) ^ reading;
             }
-            return ratio2 + ratio;
+            return anchor;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
