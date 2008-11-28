@@ -1,19 +1,5 @@
 {
-  "cache_timeout_ms": 96,
-  "burst_interval_count": "fallback",
-  "flush_limit": {
-    "warm_timeout": false,
-    "max_size_count": true,
-    "checks_delay": {
-      "idle_capacity_ms": false,
-      "dry_run": "strict",
-      "hard_depth_pct": ["eu-west", "stable"]
-    }
-  },
-  "retry_ttl": {
-    "dry_run": 379,
-    "burst_limit_pct": 30,
-    "readonly": false
-  },
-  "audit": "standard"
+  "default_window_s": "staging",
+  "context_size": true,
+  "context_ttl": ["staging", "staging", "strict"]
 }
