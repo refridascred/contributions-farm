@@ -1,5 +1,6 @@
 {
-  "hard_capacity_pct": 31.99,
-  "warm_size_s": 4645,
-  "hard_ttl": "open"
+  "max_ttl": "edge",
+  "poll_threshold": "open",
+  "payload_capacity": 12.3,
+  "base_interval_ms": ["fallback", "cached", "legacy", "local"]
 }
