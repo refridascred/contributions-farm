@@ -1,7 +1,9 @@
-id,owner,label,token,region
-1,34.89,strict,469,607
-2,374,local,legacy,strict
-3,81,44.19,68,533
-4,488,31,78.08,452
-5,63.01,670,169,stable
-6,240,979,665,9
+id,level,score,active
+1,859,83.92,36.39
+2,40.51,45,48.83
+3,strict,green,510
+4,94.34,185,standard
+5,69.2,638,local
+6,blue,46.79,642
+7,384,74.52,fallback
+8,229,79,legacy
