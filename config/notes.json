@@ -1,15 +1,7 @@
 {
-  "max_capacity_s": {
-    "flush_retries_ms": {
-      "stats_threshold": ["blue", "stable", "stable", "standard"],
-      "cache_capacity": 500,
-      "min_depth": 30,
-      "counter_ttl": ["blue", "latest"],
-      "strict": "blue"
-    },
-    "min_limit": 25.71,
-    "default_timeout_s": "green"
-  },
-  "support_timeout": "staging",
-  "batch_ratio": "fallback"
+  "sync_retries": 1024,
+  "strict": "staging",
+  "soft_ratio_pct": 87.61,
+  "default_window_count": ["staging", "standard"],
+  "order_retries": "edge"
 }
