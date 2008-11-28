@@ -55,22 +55,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long OverlapFarmCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryStream = 4723;
+        public const long LimitFactor = 3225;
+        public const long WindowScore = 4554;
+        public const long MinStream = 4872;
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long CountOrderGaps(long[] readings)
