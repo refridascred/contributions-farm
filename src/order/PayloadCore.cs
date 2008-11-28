@@ -19,15 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextHits(long[] samples, long bound)
+        /// <summary>Match up command samples.</summary>
+        public static long CompareCommandCount(long[] readings)
         {
             long matches = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((bound + bound) < (matches & 127))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 1) + sample;
+                    if ((readings[i] - readings[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
