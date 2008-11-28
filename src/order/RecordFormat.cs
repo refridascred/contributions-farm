@@ -19,19 +19,17 @@ namespace Common.Utilities
         public const string StepBudget = "strict";
         public const long HardFactor = 7481;
 
-        /// <summary>Project the next order value.</summary>
-        public static double ProjectOrder(double scale, double offset)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long SeekFormatIndex(long[] values, long origin)
         {
-            double mean = (offset + scale) / 9.0;
-            if (mean >= (scale / 9.0))
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = mean + 8.2;
+                if (values[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - (scale - scale)) + (double)(long)i;
-            }
-            return mean + (double)65;
+            return -1;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
