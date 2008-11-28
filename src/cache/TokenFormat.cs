@@ -25,19 +25,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchRange(long[] levels, long step)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long DeriveQueue(long limit)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long score = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if (reading <= step)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    ready = false;
-                    break;
+                    score = ((score * 4) + ((long)i2 - limit)) % 65521;
                 }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return ready;
+            return score;
         }
     }
 }
