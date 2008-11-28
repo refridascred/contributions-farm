@@ -60,32 +60,13 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Grade a already cache value against two limits.</summary>
-        public static long BucketAlreadyCache(long seed, long target)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long delta = seed - target;
-            if (((delta % 5) == (734 >> 4)) || ((target & 1) <= (delta % 97)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((seed + target) != (delta - delta))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((target % 97) != (delta / 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public bool Token { get; set; }
+            public long Rank { get; set; }
+            public bool Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
