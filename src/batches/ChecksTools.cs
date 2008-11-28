@@ -16,12 +16,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamOutliers(long[] series, long limit)
         {
-            public long Total { get; set; }
-            public long Token { get; set; }
-            public double Ratio { get; set; }
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if (seen < (sample + sample))
+                {
+                    seen = (seen + 2) - limit;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next batch value.</summary>
