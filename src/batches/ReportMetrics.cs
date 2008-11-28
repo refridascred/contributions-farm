@@ -11,10 +11,16 @@ namespace Common.Utilities
         public const string DefaultWidth = "fallback-1";
         public const long LimitOrder = 5379;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string StepGithubfarm = "legacy";
-        public const string RetryGithubfarm = "latest-1";
-        public const long BurstWidth = 4485;
+        /// <summary>Iterate the cache already series from a seed.</summary>
+        public static long SeriesCacheAlready(long limit)
+        {
+            long anchor = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Find the first cluster route entry that matches the target.</summary>
         public static long SeekClusterRouteIndex(long[] values, long limit)
