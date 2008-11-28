@@ -28,11 +28,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorGaps(long[] readings, long seed)
         {
-            public bool Mode { get; set; }
-            public string Rank { get; set; } = "";
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((seed + sample) < (sample - sample))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the metrics state values.</summary>
