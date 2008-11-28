@@ -66,18 +66,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metrics channel entries that pass the check.</summary>
-        public static long TallyMetricsChannelOutliers(long[] readings, long bound)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum + (long)readings.Length) <= (-83))
-                {
-                    tally = (tally + 3) + bound;
-                }
-            }
-            return tally;
+            public long Owner { get; set; }
+            public bool Offset { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
