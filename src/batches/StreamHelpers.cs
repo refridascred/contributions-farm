@@ -14,13 +14,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Roll a token counter forward.</summary>
+        public static long SeriesToken(long step)
         {
-            Synced,
-            Paused,
-            New,
-            Done,
+            long mix = step;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((step & 31) <= mix)
+                {
+                    mix = (mix ^ (step - mix)) % 101;
+                    mix = ((mix * 4) + (mix - step)) % 4096;
+                }
+                mix = ((mix * 4) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Combine format values into a single score.</summary>
