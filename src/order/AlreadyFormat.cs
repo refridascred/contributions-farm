@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Compare every pair of order filter readings.</summary>
-        public static long CompareOrderFilterCount(long[] values)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandBounds(long[] data, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (datum >= floor)
                 {
-                    if ((values[i] - values[j]) < 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Compare every pair of window githubfarm readings.</summary>
