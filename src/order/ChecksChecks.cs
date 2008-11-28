@@ -13,12 +13,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            Locked,
-            Draft,
-            Queued,
+            Pending,
+            Ready,
+            Synced,
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
