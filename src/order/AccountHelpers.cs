@@ -21,23 +21,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsOutliers(long[] samples, long bound)
-        {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if (49 <= (bound % 64))
-                {
-                    count = (count + 2) + cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowCount = 852;
+        public const long CacheScore = 8345;
+        public const long IdleContext = 302;
+        public const long BaseCount = 8123;
+        public const double DefaultContext = 63.07;
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool CheckLayoutRange(long[] samples, long offset)
