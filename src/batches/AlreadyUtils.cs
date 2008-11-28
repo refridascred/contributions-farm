@@ -40,21 +40,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count metrics cluster pairs that satisfy a relation.</summary>
-        public static long MatchMetricsClusterCount(long[] samples)
+        /// <summary>Derive the next already command value from a seed.</summary>
+        public static long SeriesAlreadyCommand(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                mix = ((mix << 3) ^ (mix / 8)) % 97;
+                if (mix >= (63 * 4))
                 {
-                    if ((samples[i] - samples[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = (mix + (limit % 10)) % 65521;
                 }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
