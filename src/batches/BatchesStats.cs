@@ -48,15 +48,21 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ProjectRecord(double gain, double bias)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long PairMetricCount(long[] data)
         {
-            double mean = gain;
-            if (mean > gain)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = mean - bias;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mean - gain;
+            return hits;
         }
     }
 }
