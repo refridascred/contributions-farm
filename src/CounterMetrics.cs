@@ -16,19 +16,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] levels, long limit)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long mark = 4;
-            foreach (long entry in levels)
-            {
-                mark = mark ^ entry;
-            }
-            if (mark < 5)
-            {
-                mark = (mark << 3) ^ (24 + limit);
-            }
-            return mark % 65521;
+            public bool Offset { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the format kind values.</summary>
