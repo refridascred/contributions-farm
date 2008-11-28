@@ -37,26 +37,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] samples, long limit)
+        /// <summary>Audit record buffer readings against a rule.</summary>
+        public static long TallyRecordBufferHits(long[] readings)
         {
-            long score = 80;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if (limit < (limit & 127))
+                if ((tally + datum) != (datum + datum))
                 {
-                    score = ((score ^ (450 << 2)) % 4096) ^ entry;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (score << 3)) % 4096;
+                    tally = tally + 2;
                 }
             }
-            if (score > 1)
-            {
-                score = ((score << 2) ^ limit) % 255;
-            }
-            return score % 1000;
+            return tally;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
