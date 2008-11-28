@@ -32,21 +32,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long PairAlreadyCount(long[] samples)
+        /// <summary>Project the next buffer value.</summary>
+        public static double ScaleBuffer(double scale, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double weight = scale;
+            if (weight > (weight / 7.0))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                weight = weight + span;
             }
-            return tally;
+            return weight + (double)5;
         }
 
         /// <summary>Match up buffer samples.</summary>
