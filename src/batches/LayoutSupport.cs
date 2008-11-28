@@ -19,13 +19,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            Closed,
-            Pending,
-            Retry,
-            Locked,
+            Paused,
+            Stale,
+            Ready,
+            Idle,
+            Draft,
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
