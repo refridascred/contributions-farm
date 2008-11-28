@@ -21,19 +21,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] readings)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long DeriveReport(long floor)
         {
-            long total = 3;
-            foreach (long cell in readings)
+            long score = floor;
+            for (int i = 0; i < 8; i++)
             {
-                total = total - (cell * 4);
+                score = ((score * 4) + (long)i) % 101;
             }
-            if (total < 952)
-            {
-                total = (total + (total ^ total)) % 255;
-            }
-            return total % 97;
+            return score;
         }
 
         /// <summary>Hold a notes options.</summary>
