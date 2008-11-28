@@ -36,24 +36,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate cache batch samples.</summary>
-        public static long WeighCacheBatch(long[] samples, long seed)
+        /// <summary>Match up editor samples.</summary>
+        public static long CompareEditorCount(long[] series)
         {
-            long mix = 77;
-            foreach (long item in samples)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = (mix ^ (item - mix)) % 65521;
-                mix = ((mix * 3) + (seed - seed)) % 4096;
-                if ((mix * 5) >= (mix ^ mix))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = ((mix * 2) + (item << 2)) % 97;
-                }
-                if (((seed ^ item) >= 483) && ((long)samples.Length >= (mix + 63)))
-                {
-                    break;
+                    if ((series[i] - series[j]) == 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mix % 1000;
+            return seen;
         }
 
         /// <summary>Hold a batches entry.</summary>
