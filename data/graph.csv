@@ -1,11 +1,6 @@
-id,weight,ratio
-1,76.31,27.08
-2,308,eu-west
-3,945,537
-4,58,64.39
-5,eu-west,legacy
-6,70.58,718
-7,50.64,636
-8,364,40.34
-9,22.05,legacy
-10,30.2,local
+id,ratio,count,level,state
+1,strict,564,edge,legacy
+2,standard,89.58,606,122
+3,835,fallback,blue,standard
+4,77.18,3.15,484,blue
+5,142,edge,latest,latest
