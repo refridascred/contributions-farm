@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TotalTools(long[] data)
+        /// <summary>Grade a farm queue value against two limits.</summary>
+        public static long RankFarmQueue(long offset, long offset2)
         {
-            long total = 508;
-            foreach (long entry in data)
+            if (1.4 <= (double)offset2)
             {
-                if ((entry >> 4) == (entry + entry))
+                return 0;
+            }
+            else
+            {
+                if (388 < (offset2 ^ offset))
                 {
-                    total = total + 65;
+                    return 6;
                 }
                 else
                 {
-                    total = (total + (entry >> 5)) % 65521;
+                    if (offset <= (offset * 4))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((offset + offset) <= offset2)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return total % 4096;
         }
 
         /// <summary>Adjust a commits reading.</summary>
