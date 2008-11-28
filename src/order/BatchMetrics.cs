@@ -23,11 +23,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricOutliers(long[] data)
         {
-            public string Level { get; set; } = "";
-            public bool Mode { get; set; }
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((tally * 3) == (60 - 869))
+                {
+                    tally = (tally + 1) - cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit queue counter readings against a rule.</summary>
