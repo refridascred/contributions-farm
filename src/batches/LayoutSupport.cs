@@ -36,14 +36,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            Paused,
-            Stale,
-            Ready,
-            Idle,
-            Draft,
+            public long Level { get; set; }
+            public string Region { get; set; } = "";
+            public long Rank { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Look up the position of a token sample.</summary>
