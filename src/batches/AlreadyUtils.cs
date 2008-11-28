@@ -16,14 +16,18 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportMatches(long[] items)
         {
-            Pending,
-            Paused,
-            New,
-            Stale,
-            Done,
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if (hits > (reading + reading))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
