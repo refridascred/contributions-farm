@@ -97,9 +97,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowSession = 8607;
-        public const long BatchWidth = 5960;
-        public const long BaseWidth = 9518;
+        /// <summary>Audit cache metric readings against a rule.</summary>
+        public static long AuditCacheMetricMatches(long[] levels)
+        {
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((tally + (-70)) > tally)
+                {
+                    tally = (tally + 3) + datum;
+                }
+            }
+            return tally;
+        }
     }
 }
