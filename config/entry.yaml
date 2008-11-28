@@ -1,9 +1,8 @@
 # entry settings
-dry_run: 18
-stats_size: legacy
 strict:
-  soft_retries_ms: latest
-  warm_timeout: legacy
-  context_timeout: true
-  soft_ratio_count: 48
-batch_capacity: true
+  - legacy
+  - blue
+  - staging
+  - green
+batch_threshold_s: standard
+compress: legacy
