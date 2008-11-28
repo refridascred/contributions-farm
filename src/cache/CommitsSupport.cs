@@ -58,22 +58,11 @@ namespace Common.Utilities
             return mean - (double)3;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportGaps(long[] values, long limit)
-        {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((9 * 4) == (limit & 31))
-                {
-                    tally = (tally + 1) - entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinRatio = 1912;
+        public const long HardSession = 3881;
+        public const long LimitDepth = 9497;
+        public const long IdleSession = 4190;
+        public const long MaxSession = 9255;
     }
 }
