@@ -27,22 +27,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesMatches(long[] items)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((value - 51) < (hits + hits))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Dropped,
+            Ready,
+            Stale,
+            Draft,
         }
 
         /// <summary>Describe the farm class values.</summary>
