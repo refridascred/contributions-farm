@@ -56,11 +56,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstTimeout = 3632;
-        public const string WindowQueue = "fallback-edge";
-        public const double MaxQueue = 35.52;
-        public const string BatchQueue = "standard-1";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string HardScore = "primary-v2";
+        public const long HardMetric = 1062;
+        public const long LimitScore = 6489;
+        public const double IdleDepth = 29.84;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long BurstCommand = 8650;
