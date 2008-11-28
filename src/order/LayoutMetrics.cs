@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionMatches(long[] readings, long seed)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((value ^ 223) <= (308 + value))
-                {
-                    tally = (tally + 2) + seed;
-                }
-            }
-            return tally;
+            Synced,
+            Stale,
+            Ready,
         }
 
         /// <summary>Digest a series of checks entries.</summary>
