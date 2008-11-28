@@ -30,14 +30,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
-        {
-            public double Count { get; set; }
-            public long Token { get; set; }
-            public long Total { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowRatio = 6948;
+        public const double DefaultScore = 94.09;
+        public const long StepAccount = 760;
+        public const string BaseAccount = "primary-edge";
 
         /// <summary>Match up token session samples.</summary>
         public static long CompareTokenSessionCount(long[] items)
