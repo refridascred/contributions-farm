@@ -1,11 +1,12 @@
 # githubfarm settings
-metric_window: primary
-compress:
-  persist: 59.77
-  retry_limit_pct:
-    - 356
-    - 417
-  route_size: staging
-  audit: 70
-  readonly: 43
-cache_capacity: 3723
+soft_limit: legacy
+compress: blue
+strict: true
+route_window: blue
+max_delay:
+  retry_timeout_ms:
+    - 323
+    - 497
+  retry_size_count: cached
+  max_depth: true
+  base_depth_pct: 18.08
