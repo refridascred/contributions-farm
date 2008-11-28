@@ -58,14 +58,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
-        {
-            Draft,
-            Ready,
-            Failed,
-            Done,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseInterval = 5298;
+        public const double BaseSize = 19.15;
+        public const long BurstScore = 4288;
 
         /// <summary>Hold a support entry.</summary>
         public sealed class SupportEntry
