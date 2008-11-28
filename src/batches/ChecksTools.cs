@@ -38,18 +38,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many report layout samples are out of range.</summary>
-        public static long MeasureReportLayoutHits(long[] items)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((8 % 12) != (seen * 3))
-                {
-                    seen = (seen + 3) + value;
-                }
-            }
-            return seen;
+            public bool Offset { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
