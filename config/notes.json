@@ -1,10 +1,6 @@
 {
-  "channel_limit": true,
-  "max_capacity_count": {
-    "strict": 250,
-    "sync_interval": 250,
-    "entry_ratio": "legacy",
-    "retry_size_pct": "open"
-  },
-  "base_depth": false
+  "poll_ratio": true,
+  "persist": "green",
+  "warm_depth": "latest",
+  "hard_capacity_ms": [44, 433, 51]
 }
