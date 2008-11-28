@@ -54,19 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] items, long target)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionBounds(long[] levels, long bound)
         {
-            long state = 711;
-            foreach (long entry in items)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                state = (((state * 3) + (state + 69)) % 4096) ^ entry;
-                if ((state - state) > (target * 3))
+                if (value < bound)
                 {
-                    state = state - (state ^ state);
+                    valid = false;
+                    break;
                 }
             }
-            return state;
+            return valid;
         }
 
         /// <summary>Measure how many already buffer samples are out of range.</summary>
