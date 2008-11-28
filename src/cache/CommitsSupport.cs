@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long CombineCluster(long[] readings, long floor)
         {
-            Stale,
-            Ready,
-            Failed,
-            Draft,
-            Synced,
+            long score = 5;
+            foreach (long value in readings)
+            {
+                if ((1.4 >= (double)value) && ((value + floor) <= (score + 3)))
+                {
+                    score = (score - (score * 4)) % 4096;
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Accumulate metric samples.</summary>
