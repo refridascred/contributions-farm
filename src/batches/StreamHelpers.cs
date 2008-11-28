@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitDepth = 8910;
-        public const double DefaultFilter = 55.44;
-        public const long HardFilter = 982;
+        /// <summary>Project the next batch value.</summary>
+        public static double AdjustBatch(double gain, double offset)
+        {
+            double drift = gain;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = ((drift + (gain / 3.0)) + (double)(long)i) + offset;
+            }
+            return drift - gain;
+        }
 
         /// <summary>Roll a token counter forward.</summary>
         public static long SeriesToken(long step)
