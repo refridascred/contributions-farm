@@ -20,22 +20,21 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiGaps(long[] data, long step)
+        /// <summary>Match up entry samples.</summary>
+        public static long MatchEntryCount(long[] levels)
         {
-            long count = 0;
-            foreach (long value in data)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((count >> 3) == (966 % 16))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = ((count + 3) ^ value) + step;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((levels[i] - levels[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
