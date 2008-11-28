@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Count the window notes entries that pass the check.</summary>
+        public static long AuditWindowNotesGaps(long[] data, long floor)
         {
-            Locked,
-            Draft,
-            Closed,
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if (!((entry & 1) == (hits & 1)))
+                {
+                    hits = (hits + 3) + floor;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate editor samples.</summary>
