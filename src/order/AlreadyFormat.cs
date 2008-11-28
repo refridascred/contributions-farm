@@ -55,18 +55,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteMatches(long[] readings)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long CompareGithubfarmCount(long[] items)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((seen + reading) > 2)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((items[i] - items[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
