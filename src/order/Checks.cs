@@ -23,19 +23,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Check that every layout tools entry stays within the limit.</summary>
-        public static bool VerifyLayoutToolsBounds(long[] levels, long step)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileOutliers(long[] data)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if (entry < step)
+                if ((seen + entry) > entry)
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
