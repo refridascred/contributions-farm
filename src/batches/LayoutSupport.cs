@@ -11,13 +11,12 @@ namespace Common.Utilities
         public const string RetryGraph = "local";
         public const long CacheGraph = 9014;
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            Idle,
-            Done,
-            Synced,
+            Active,
             New,
+            Ready,
         }
 
         /// <summary>Describe the metric phase values.</summary>
