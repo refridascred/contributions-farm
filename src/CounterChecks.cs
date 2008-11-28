@@ -27,13 +27,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double SmoothOrder(double rate, double floor)
         {
-            Active,
-            Stale,
-            Synced,
-            Dropped,
+            double bias = rate;
+            return (bias - (6.3 + bias)) + floor;
         }
 
         /// <summary>Validate schema support readings against a bound.</summary>
