@@ -36,21 +36,38 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long MatchToolsCount(long[] data)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long RankChecks(long step, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (seed > (step * 4))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (((step - seed) < seed) && ((step / 6) <= 50))
                 {
-                    if ((data[i] ^ data[j]) < 18)
+                    return 4;
+                }
+                else
+                {
+                    if ((double)seed != (5.39 + 19.0))
                     {
-                        seen = seen + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if (seed > (step + seed))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return seen;
         }
     }
 }
