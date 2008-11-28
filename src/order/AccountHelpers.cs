@@ -28,12 +28,26 @@ namespace Common.Utilities
         public const long DefaultFactor = 3031;
         public const long IdleChannel = 4054;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string LimitCache = "strict";
-        public const string SoftLevel = "alpha-v2";
-        public const string BaseCache = "stable-v2";
-        public const long RetryScore = 3441;
-        public const long RetryCache = 4084;
+        /// <summary>Rank layout metric input into a small class.</summary>
+        public static long BucketLayoutMetric(long floor, long step)
+        {
+            long lane = floor ^ step;
+            if ((lane % 3) <= floor)
+            {
+                return 6;
+            }
+            else
+            {
+                if (2.3 > (double)step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long LookupFarmIndex(long[] data, long limit)
