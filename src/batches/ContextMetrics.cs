@@ -62,18 +62,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenHits(long[] levels, long target)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportOutliers(long[] samples)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (matches < cell)
+                if (!((seen ^ reading) > 5))
                 {
-                    matches = (matches + 1) - target;
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Measure how many buffer editor samples are out of range.</summary>
