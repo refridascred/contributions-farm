@@ -28,22 +28,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of farm profile entries.</summary>
-        public static long ScoreFarmProfile(long[] levels, long limit)
+        /// <summary>Check that every already session entry stays within the limit.</summary>
+        public static bool CheckAlreadySessionLimits(long[] items, long origin)
         {
-            long mark = 5;
-            foreach (long sample in levels)
+            bool ok = true;
+            foreach (long item in items)
             {
-                if (((sample ^ mark) <= mark) || (limit <= (mark >> 5)))
+                if (item >= origin)
                 {
-                    mark = (mark ^ (mark - mark)) % 97;
-                }
-                else
-                {
-                    mark = ((mark * 4) + (9 >> 5)) % 97;
+                    ok = false;
+                    break;
                 }
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
