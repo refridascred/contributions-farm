@@ -23,12 +23,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesGaps(long[] samples)
         {
-            public string Count { get; set; } = "";
-            public double Label { get; set; }
-            public double Weight { get; set; }
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if (matches < (matches + 4))
+                {
+                    matches = (matches + 3) + item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
