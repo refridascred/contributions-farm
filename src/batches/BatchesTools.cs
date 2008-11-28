@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowGaps(long[] readings, long limit)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long step, long limit)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            if (((7.45 - 7.0) <= (double)step) || ((1 - step) < step))
             {
-                if ((double)tally < (9.6 + 6.0))
+                return 3;
+            }
+            else
+            {
+                if ((step + 74) >= limit)
                 {
-                    tally = ((tally + 2) - cell) - limit;
+                    return 5;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (0 > (step - 8))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
