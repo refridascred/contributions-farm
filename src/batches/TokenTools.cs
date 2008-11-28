@@ -28,11 +28,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            public bool Token { get; set; }
-            public long Flag { get; set; }
+            Draft,
+            Synced,
+            Locked,
         }
     }
 }
