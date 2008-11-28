@@ -42,15 +42,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of notes route readings.</summary>
-        public static long FoldNotesRoute(long[] readings, long origin)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long OverlapTokenCount(long[] levels)
         {
-            long acc = -35;
-            foreach (long cell in readings)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = (((acc << 3) ^ (40 - origin)) % 4096) ^ cell;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return acc % 65521;
+            return matches;
         }
 
         /// <summary>Describe the graph mode values.</summary>
