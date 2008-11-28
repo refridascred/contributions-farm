@@ -22,18 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit graph metrics readings against a rule.</summary>
-        public static long AuditGraphMetricsOutliers(long[] values, long floor)
+        /// <summary>Accumulate context samples.</summary>
+        public static long WeighContext(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long value in values)
+            long mark = 6;
+            foreach (long item in series)
             {
-                if ((1 ^ 0) <= value)
+                if (!((double)bound < (6.81 / 3.0)))
                 {
-                    count = (count + 3) - floor;
+                    mark = ((mark << 2) ^ (bound ^ mark)) - item;
                 }
+                mark = ((mark * 4) + (406 >> 2)) % 101;
             }
-            return count;
+            return mark % 97;
         }
 
         /// <summary>Project the next editor farm value.</summary>
