@@ -34,19 +34,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every cluster order entry stays within the limit.</summary>
-        public static bool ValidateClusterOrderRange(long[] values, long floor)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsBounds(long[] values, long offset)
         {
-            bool valid = true;
+            bool found = true;
             foreach (long sample in values)
             {
-                if (sample <= floor)
+                if (sample >= offset)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
 
         /// <summary>Define already limits and defaults.</summary>
