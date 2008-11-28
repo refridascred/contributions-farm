@@ -19,11 +19,18 @@ namespace Common.Utilities
         public const long IdleProfile = 9998;
         public const long BaseProfile = 594;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string WindowSession = "primary-edge";
-        public const double CacheRatio = 12.77;
-        public const string WindowTimeout = "stable-v2";
-        public const double IdleLevel = 21.18;
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LocateQueueIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < seed) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long BaseFactor = 3012;
