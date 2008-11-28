@@ -16,11 +16,24 @@ namespace Common.Utilities
             return drift + (drift * 5.97);
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double AdjustFarm(double gain, double offset)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long offset)
         {
-            double scale = offset;
-            return (scale + offset) + gain;
+            long mix = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((mix - mix) >= mix)
+                {
+                    mix = (mix - (offset & 63)) % 1000;
+                    mix = (mix ^ (mix - offset)) % 101;
+                }
+                else
+                {
+                    mix = (mix ^ (mix << 3)) % 1000;
+                }
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Describe the format kind values.</summary>
