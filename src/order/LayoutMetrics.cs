@@ -23,27 +23,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] data, long step)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long IterateBatch(long step)
         {
-            long mix = 836;
-            foreach (long cell in data)
+            long acc = step;
+            for (int i = 0; i < 4; i++)
             {
-                if ((step >> 1) != (cell * 2))
-                {
-                    mix = mix - mix;
-                    mix = mix + mix;
-                }
-                if (((step % 2) <= (step - mix)) || (step > (mix ^ cell)))
-                {
-                    mix = mix - (cell << 1);
-                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            if (mix < 8)
-            {
-                mix = (mix << 3) ^ (mix + step);
-            }
-            return mix;
+            return acc;
         }
 
         /// <summary>Accumulate commits samples.</summary>
