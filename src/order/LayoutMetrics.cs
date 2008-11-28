@@ -38,14 +38,21 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long PairMetricCount(long[] data)
         {
-            Dropped,
-            Active,
-            New,
-            Stale,
-            Locked,
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
