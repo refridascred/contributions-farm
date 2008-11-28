@@ -26,10 +26,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double WindowAlready = 96.79;
-        public const long HardAlready = 9696;
-        public const long CacheAlready = 339;
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterBounds(long[] samples, long step)
+        {
+            bool valid = true;
+            foreach (long entry in samples)
+            {
+                if (entry <= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Roll a farm account counter forward.</summary>
         public static long DeriveFarmAccount(long offset)
