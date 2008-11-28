@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandBounds(long[] data, long floor)
+        /// <summary>Find the first session batches entry that matches the target.</summary>
+        public static long LookupSessionBatchesIndex(long[] items, long target)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum >= floor)
+                if ((items[i] > target) && ((items[i] % 5) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Compare every pair of window githubfarm readings.</summary>
