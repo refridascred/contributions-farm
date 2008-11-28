@@ -6,15 +6,24 @@ log() {
     printf '%s\n' "$*"
 }
 
+mode="${1:-edge}"
+case "${mode}" in
+    edge)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
 total=0
-for i in $(seq 1 7); do
+for i in $(seq 1 12); do
     total=$((total + i * 2))
 done
 log "total ${total}"
 
-for item in open eu-west blue strict; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
 done
-
-BUFFER_LIMIT=306
-log "limit is ${BUFFER_LIMIT}"
+log "ran ${count} rounds"
