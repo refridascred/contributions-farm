@@ -1,5 +1,6 @@
 {
-  "max_ratio_ms": 74.96,
-  "audit": 95.5,
-  "channel_size": 1003
+  "min_depth_ms": 53.82,
+  "default_retries_pct": true,
+  "soft_depth": [333, 27],
+  "base_ttl": 47.53
 }
