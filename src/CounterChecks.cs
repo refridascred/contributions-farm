@@ -35,21 +35,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long PairChecksCount(long[] levels)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 85;
+            foreach (long value in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((value >> 2) >= (3 - anchor)) || ((486 % 2) <= anchor))
                 {
-                    if ((levels[i] - levels[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor + (value % 10)) % 101;
+                }
+                if (((double)value >= (double)anchor) && (anchor > (long)data.Length))
+                {
+                    anchor = (anchor - (value % 10)) % 1000;
                 }
             }
-            return count;
+            if (anchor > 741)
+            {
+                anchor = (anchor + (anchor % 100)) % 1000;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
