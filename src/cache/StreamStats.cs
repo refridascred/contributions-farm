@@ -45,13 +45,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            public bool Flag { get; set; }
-            public long Offset { get; set; }
-            public string Size { get; set; } = "";
-            public long Token { get; set; }
+            Stale,
+            Idle,
+            Pending,
         }
     }
 }
