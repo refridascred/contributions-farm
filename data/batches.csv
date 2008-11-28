@@ -1,6 +1,6 @@
-id,score,level
-1,33.43,301
-2,63.91,legacy
-3,500,887
-4,507,533
-5,11.73,584
+id,owner,state,count,level
+1,657,legacy,edge,green
+2,eu-west,72.84,415,55.26
+3,edge,64.21,33.78,35
+4,43.52,618,primary,blue
+5,825,55.55,39.72,blue
