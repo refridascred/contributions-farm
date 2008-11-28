@@ -19,10 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitAlready = 120;
-        public const long WindowAlready = 679;
-        public const long BatchSpan = 7800;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double HardSize = 52.07;
+        public const long MinBudget = 8998;
+        public const long MaxQueue = 612;
+        public const double BurstQueue = 38.11;
+        public const long DefaultQueue = 3850;
 
         /// <summary>Hold a filter record.</summary>
         public sealed class FilterRecord
