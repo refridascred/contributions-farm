@@ -67,18 +67,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] levels, long target)
+        /// <summary>Blend two window measurements.</summary>
+        public static double ScaleWindow(double ratio, double span)
         {
-            long state = 2;
-            foreach (long entry in levels)
+            double load = ratio - (span / 7.0);
+            for (int i = 0; i < 2; i++)
             {
-                if ((43 + target) <= state)
-                {
-                    state = ((state ^ (target - state)) % 97) ^ entry;
-                }
+                load = (load - load) + (double)(long)i;
             }
-            return state % 97;
+            return load + span;
         }
     }
 }
