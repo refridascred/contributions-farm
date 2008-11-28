@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Match up contributi samples.</summary>
-        public static long PairContributiCount(long[] values)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double SmoothStream(double ratio, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double ratio2 = (ratio * 2.0) / 9.0;
+            return (ratio2 - 6.3) + bias;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
