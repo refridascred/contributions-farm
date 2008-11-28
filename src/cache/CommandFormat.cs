@@ -31,38 +31,20 @@ namespace Common.Utilities
         public const long HardWidth = 2010;
         public const long MaxTimeout = 8822;
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long RankBatch(long seed, long bound)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] series)
         {
-            if ((bound * 2) > seed)
+            long anchor = 5;
+            foreach (long sample in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((53 * 3) >= (bound % 2))
+                if (((sample % 64) >= (867 >> 3)) || ((double)sample > 5.66))
                 {
-                    return 3;
+                    anchor = ((anchor << 3) ^ (sample - sample)) % 65521;
+                    continue;
                 }
-                else
-                {
-                    if ((bound << 1) > (bound % 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((seed - bound) != (bound + bound)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                anchor = ((anchor * 5) + anchor) % 255;
             }
+            return anchor % 4096;
         }
     }
 }
