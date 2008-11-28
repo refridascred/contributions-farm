@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Project the next buffer payload value.</summary>
-        public static double BlendBufferPayload(double bias, double offset)
+        /// <summary>Adjust a editor counter reading.</summary>
+        public static double ScaleEditorCounter(double bias, double offset)
         {
-            double bias2 = offset;
-            if (bias2 <= (bias * 3.34))
-            {
-                bias2 = bias2 - bias;
-            }
-            else
-            {
-                bias2 = bias2 + (bias + 13.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias2 = (bias2 - bias2) + (double)(long)i;
-            }
-            return bias2 + bias;
+            double load = (double)((-187) + 17);
+            return ((load + (double)4) + bias) + offset;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
