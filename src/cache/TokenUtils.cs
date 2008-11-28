@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LocateStreamIndex(long[] values, long floor)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 71;
+            foreach (long value in levels)
             {
-                if (values[i] > floor)
+                if ((double)mark == (1.2 + 1.0))
                 {
-                    return (long)i;
+                    mark = (mark - (value + mark)) % 97;
+                }
+                else
+                {
+                    mark = (mark * 3) + (mark << 1);
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
