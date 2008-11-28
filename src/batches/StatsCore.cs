@@ -40,13 +40,13 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            Locked,
-            Pending,
-            Synced,
-            Draft,
+            public double Stamp { get; set; }
+            public double Offset { get; set; }
+            public long Total { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Grade a already cache value against two limits.</summary>
