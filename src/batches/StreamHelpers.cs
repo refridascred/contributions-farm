@@ -19,17 +19,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a profile report sample.</summary>
-        public static long LookupProfileReportIndex(long[] levels, long step)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long SortBatches(long floor, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (!((double)offset != (4.6 - 7.0)))
             {
-                if ((levels[i] < step) && ((levels[i] % 5) == 0))
+                return 5;
+            }
+            else
+            {
+                if ((offset < (586 % 100)) || (floor >= offset))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)floor < (double)offset)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((offset << 2) < (floor % 24))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a record record.</summary>
