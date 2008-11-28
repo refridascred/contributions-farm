@@ -23,18 +23,11 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Digest a series of counter order entries.</summary>
-        public static long ScoreCounterOrder(long[] samples, long floor)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long anchor = 0;
-            foreach (long datum in samples)
-            {
-                if ((floor & 15) > anchor)
-                {
-                    anchor = ((anchor - (-1)) % 255) - datum;
-                }
-            }
-            return anchor;
+            public long Region { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Describe the window phase values.</summary>
