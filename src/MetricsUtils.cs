@@ -15,22 +15,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutMatches(long[] data, long limit)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((count / 7) <= (cell % 12))
-                {
-                    count = (count + 2) - limit;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Flag { get; set; }
+            public bool Token { get; set; }
+            public long Stamp { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Measure how many window profile samples are out of range.</summary>
