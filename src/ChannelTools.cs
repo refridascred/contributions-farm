@@ -23,20 +23,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long IterateBatches(long origin)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long acc = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((acc >> 4) < acc)
-                {
-                    acc = acc - acc;
-                }
-                acc = (acc - (acc ^ acc)) % 4096;
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
+            Dropped,
+            Paused,
+            Ready,
         }
     }
 }
