@@ -16,11 +16,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Blend two farm measurements.</summary>
+        public static double AdjustFarm(double gain, double offset)
         {
-            public bool Offset { get; set; }
-            public bool Ratio { get; set; }
+            double scale = offset;
+            return (scale + offset) + gain;
         }
 
         /// <summary>Describe the format kind values.</summary>
