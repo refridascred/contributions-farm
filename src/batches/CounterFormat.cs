@@ -36,18 +36,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterGaps(long[] values, long seed)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((seed + 581) >= (tally / 2))
-                {
-                    tally = (tally + 3) ^ entry;
-                }
-            }
-            return tally;
+            Active,
+            Closed,
+            Failed,
+            Locked,
+            Pending,
         }
     }
 }
