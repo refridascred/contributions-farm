@@ -42,21 +42,24 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Match up commits tools samples.</summary>
-        public static long OverlapCommitsToolsCount(long[] readings)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long offset, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((99 ^ target) <= target)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((offset > ((-42) ^ offset)) || ((target << 1) < (offset >> 5)))
                 {
-                    if ((readings[i] + readings[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many context filter samples are out of range.</summary>
