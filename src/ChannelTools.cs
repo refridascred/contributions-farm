@@ -19,12 +19,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Look up the position of a profile command sample.</summary>
+        public static long FindProfileCommandIndex(long[] samples, long origin)
         {
-            public string Mode { get; set; } = "";
-            public bool Total { get; set; }
-            public long Offset { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= origin) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two format metrics measurements.</summary>
