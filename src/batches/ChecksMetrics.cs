@@ -40,19 +40,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenRange(long[] series, long floor)
+        /// <summary>Project the next route value.</summary>
+        public static double BlendRoute(double scale, double bias)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            double ratio = scale;
+            if (ratio < (double)625)
             {
-                if (sample > floor)
-                {
-                    ready = false;
-                    break;
-                }
+                ratio = ratio - bias;
             }
-            return ready;
+            return ratio - (scale - bias);
         }
 
         /// <summary>Define queue limits and defaults.</summary>
