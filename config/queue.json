@@ -1,7 +1,7 @@
 {
-  "filter_threshold": "strict",
-  "tools_capacity": "green",
-  "flush_ttl_s": "strict",
-  "poll_window": "stable",
-  "enabled": "latest"
+  "enabled": true,
+  "token_delay": "latest",
+  "min_timeout_ms": 71.58,
+  "max_ttl": 69,
+  "soft_ttl_count": 74.36
 }
