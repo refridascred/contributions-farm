@@ -1,24 +1,8 @@
 # entry settings
-hard_depth_s: 4486
-burst_ratio:
-  cache_ratio: cached
-  filter_retries: blue
-  hard_retries_ms: 50.07
-  batch_ratio_ms:
-    min_limit_ms: true
-    audit:
-      - local
-      - primary
-      - local
-      - standard
-    queue_delay: green
-    hard_retries_ms: 2.29
-  farm_threshold: staging
-  soft_capacity: 8
-hard_threshold_count:
-  audit: true
-  cache_ratio_count: edge
-  poll_window_count: 8077
-  verbose: 42.75
-  poll_retries: 5981
-  min_limit: local
+flush_delay_count:
+  base_size_s: green
+  soft_ttl: false
+  max_threshold_pct: 18.88
+  burst_delay_count: 60
+burst_retries_s: 96
+enabled: 43.68
