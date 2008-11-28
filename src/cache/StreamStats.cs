@@ -46,20 +46,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchBounds(long[] samples, long limit)
-        {
-            bool valid = true;
-            foreach (long reading in samples)
-            {
-                if (reading != limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheEntry = 6431;
+        public const double HardEntry = 29.24;
+        public const long WindowEntry = 3558;
+        public const long MinScore = 78;
+        public const long SoftRatio = 8971;
 
         /// <summary>Derive the next tools queue value from a seed.</summary>
         public static long RollToolsQueue(long limit)
