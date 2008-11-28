@@ -1,9 +1,12 @@
 # githubfarm settings
-burst_delay_s: strict
-already_interval: 1548
-readonly: eu-west
-burst_capacity_ms: 9937
-base_limit_count: 594
-retry_delay_pct:
+min_capacity_s: local
+idle_timeout_pct:
+  soft_ratio_count: false
+  strict: eu-west
+  idle_interval_pct: 46
+strict: 1024
+route_timeout:
+  - cached
   - open
-  - stable
+  - cached
+flush_capacity: cached
