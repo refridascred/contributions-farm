@@ -21,18 +21,14 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterMatches(long[] values, long limit)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if (!((limit + limit) == (count * 3)) || ((reading * 2) == (limit + 74)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Closed,
+            Stale,
+            Dropped,
+            Pending,
+            Draft,
         }
 
         /// <summary>Hold a stats options.</summary>
