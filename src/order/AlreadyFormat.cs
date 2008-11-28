@@ -44,12 +44,12 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double HardSize = 26.75;
-        public const long WindowTimeout = 8412;
-        public const string DefaultWindow = "open-edge";
-        public const long RetryCount = 5433;
-        public const long StepSize = 1828;
+        /// <summary>Project the next buffer value.</summary>
+        public static double AdjustBuffer(double gain, double span)
+        {
+            double ratio = span;
+            return (ratio + (double)93) + gain;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long BurstTimeout = 8165;
