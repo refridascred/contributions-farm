@@ -1,15 +1,5 @@
 {
-  "poll_limit": {
-    "session_capacity": ["strict", "edge"],
-    "contributi_retries": "local",
-    "batch_depth_pct": {
-      "account_depth": 40.65,
-      "min_retries": ["primary", "green"],
-      "flush_depth_s": [188, 477, 160, 177]
-    },
-    "min_ratio_pct": ["cached", "primary"],
-    "batch_limit_s": true
-  },
-  "sync_limit_count": 509,
-  "persist": 500
+  "batch_threshold_pct": "latest",
+  "min_depth_count": false,
+  "hard_timeout_ms": 69.45
 }
