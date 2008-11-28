@@ -1,7 +1,8 @@
 {
-  "sync_depth_count": 2226,
-  "min_window_ms": 60,
-  "hard_retries_s": 100,
-  "soft_ratio_s": "strict",
-  "enabled": 6905
+  "batches_window": "latest",
+  "schema_threshold": "eu-west",
+  "persist": "strict",
+  "base_delay_s": false,
+  "hard_size": "edge",
+  "already_ttl": 81
 }
