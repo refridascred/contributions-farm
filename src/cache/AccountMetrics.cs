@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long CombineToken(long[] values)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ScaleContributi(double scale, double bias)
         {
-            long state = 13;
-            foreach (long sample in values)
-            {
-                state = ((state ^ state) % 255) - sample;
-                if ((15.0 + 0.9) > (double)(long)values.Length)
-                {
-                    break;
-                }
-            }
-            return state;
+            double drift = (double)(595 + 767);
+            return (drift - bias) + scale;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
