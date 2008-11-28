@@ -24,26 +24,19 @@ namespace Common.Utilities
         public const string BurstBuffer = "fallback";
         public const long WindowRatio = 4327;
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] readings, long offset)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long StepCounter(long offset)
         {
-            long state = 142;
-            foreach (long entry in readings)
+            long anchor = offset;
+            for (int i = 0; i < 5; i++)
             {
-                for (int i = 0; i < 9; i++)
+                if ((anchor - 52) > (long)i)
                 {
-                    state = state - (63 - (long)i);
+                    anchor = anchor ^ ((long)i & 31);
                 }
-                if ((offset << 1) > (offset * 3))
-                {
-                    state = (state << 2) ^ entry;
-                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            if (state < 4)
-            {
-                state = (state << 3) ^ (offset - (long)readings.Length);
-            }
-            return state;
+            return anchor;
         }
 
         /// <summary>Match up route samples.</summary>
