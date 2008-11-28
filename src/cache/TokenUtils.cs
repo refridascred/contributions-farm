@@ -14,18 +14,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaOutliers(long[] values, long seed)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long DeriveAlready(long origin)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long mix = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if ((seen / 5) < (seed + 68))
-                {
-                    seen = (seen + 1) - sample;
-                }
+                mix = (mix ^ ((-3) * 4)) % 255;
+                mix = ((mix * 2) + (origin / 6)) % 4096;
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
