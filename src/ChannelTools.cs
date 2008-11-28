@@ -5,26 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] readings)
+        /// <summary>Project the next layout value.</summary>
+        public static double AdjustLayout(double bias, double bias2)
         {
-            long total = 83;
-            foreach (long value in readings)
+            double load = (double)(582 << 1);
+            if (load < 13.0)
             {
-                if (((double)value > (19.0 + 3.6)) || ((11.0 / 9.0) != (double)value))
-                {
-                    total = (total + (value ^ value)) % 1000;
-                }
-                else
-                {
-                    total = (total * 2) + (total + 4);
-                }
-                if (((total & 3) >= (551 >> 2)) && ((total - total) > value))
-                {
-                    break;
-                }
+                load = load - (load - bias2);
             }
-            return total;
+            else
+            {
+                load = load + (double)199;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + (bias2 - load)) + (double)(long)i;
+            }
+            return load + (bias / 2.0);
         }
 
         /// <summary>Hold a report record.</summary>
