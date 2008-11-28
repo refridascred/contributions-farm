@@ -12,25 +12,12 @@ namespace Common.Utilities
         public const long BaseMetrics = 361;
         public const long BaseScore = 8612;
 
-        /// <summary>Classify a report editor pair into a bucket.</summary>
-        public static long RankReportEditor(long floor, long bound)
-        {
-            if (((bound / 2) <= (bound / 7)) && ((bound + bound) >= floor))
-            {
-                return 0;
-            }
-            else
-            {
-                if (floor < (floor / 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string CacheFactor = "fallback-1";
+        public const long LimitTimeout = 680;
+        public const long MaxPayload = 1;
+        public const double StepPayload = 18.24;
+        public const long MinPayload = 4866;
 
         /// <summary>Compare every pair of batch token readings.</summary>
         public static long PairBatchTokenCount(long[] items)
