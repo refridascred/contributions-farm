@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a farm queue value against two limits.</summary>
-        public static long RankFarmQueue(long offset, long offset2)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ProjectMetric(double scale, double floor)
         {
-            if (1.4 <= (double)offset2)
-            {
-                return 0;
-            }
-            else
-            {
-                if (388 < (offset2 ^ offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (offset <= (offset * 4))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((offset + offset) <= offset2)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            double rate = floor;
+            return rate - scale;
         }
 
         /// <summary>Adjust a commits reading.</summary>
