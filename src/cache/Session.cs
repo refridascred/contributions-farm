@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string MaxBudget = "cached-1";
-        public const double MinDepth = 38.74;
-        public const string CacheLevel = "local";
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string HardTimeout = "local-1";
+        public const long MinCluster = 7141;
+        public const double LimitWidth = 63.7;
+        public const double CacheFactor = 23.7;
 
         /// <summary>Measure how many stats schema samples are out of range.</summary>
         public static long AuditStatsSchemaMatches(long[] readings)
