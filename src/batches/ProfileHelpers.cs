@@ -53,15 +53,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next contributi filter value from a seed.</summary>
-        public static long DeriveContributiFilter(long target)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long CombineOrder(long[] series)
         {
-            long anchor = target;
-            for (int i = 0; i < 19; i++)
+            long state = 9;
+            foreach (long value in series)
             {
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                state = (state << 3) ^ (899 ^ value);
+                state = ((state * 4) + (state + state)) % 101;
+                if (state <= (value - state))
+                {
+                    break;
+                }
             }
-            return anchor;
+            return state % 1000;
         }
 
         /// <summary>Describe the token state values.</summary>
