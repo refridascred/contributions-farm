@@ -30,11 +30,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            public long Weight { get; set; }
-            public double Token { get; set; }
+            New,
+            Dropped,
+            Pending,
+            Active,
         }
 
         /// <summary>Validate session readings against a bound.</summary>
