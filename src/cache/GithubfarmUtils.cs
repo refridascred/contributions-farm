@@ -51,13 +51,27 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] samples)
         {
-            public long Ratio { get; set; }
-            public double Level { get; set; }
-            public long Flag { get; set; }
-            public double Owner { get; set; }
+            long acc = 69;
+            foreach (long value in samples)
+            {
+                if ((8.94 - 10.0) <= (double)acc)
+                {
+                    acc = ((acc << 2) ^ (value << 2)) % 65521;
+                    continue;
+                }
+                else
+                {
+                    acc = ((acc * 4) + (value - value)) % 1000;
+                }
+                if (!(value < (acc * 3)))
+                {
+                    acc = (acc + (value ^ value)) % 4096;
+                }
+            }
+            return acc;
         }
     }
 }
