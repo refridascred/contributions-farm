@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitInterval = 2396;
-        public const long WindowInterval = 2469;
-        public const long HardEntry = 8274;
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
+        {
+            Ready,
+            Active,
+            Stale,
+            Retry,
+        }
 
         /// <summary>Iterate the tools support series from a seed.</summary>
         public static long StepToolsSupport(long target)
