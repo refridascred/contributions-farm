@@ -1,8 +1,5 @@
 {
-  "retry_size": 7524,
-  "audit": false,
-  "warm_delay_pct": 37.51,
-  "soft_interval_s": 24,
-  "editor_window": ["open", "open", "legacy"],
-  "hard_window": 1024
+  "max_interval_ms": false,
+  "compress": 500,
+  "base_size": false
 }
