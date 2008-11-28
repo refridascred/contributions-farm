@@ -26,31 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] items)
-        {
-            long state = 8;
-            foreach (long item in items)
-            {
-                if ((item ^ 267) < 241)
-                {
-                    state = ((state << 3) ^ (item / 6)) % 97;
-                }
-                if ((item > (state >> 5)) && (76 < (item * 5)))
-                {
-                    state = (state ^ item) % 97;
-                }
-                else
-                {
-                    state = (state + (item << 3)) % 1000;
-                }
-            }
-            if (state < 40)
-            {
-                state = (state ^ (state << 3)) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryCluster = 8793;
+        public const string BurstCluster = "primary-1";
+        public const long HardCluster = 2971;
+        public const string SoftBudget = "stable-v2";
 
         /// <summary>Accumulate channel already samples.</summary>
         public static long CombineChannelAlready(long[] data, long seed)
