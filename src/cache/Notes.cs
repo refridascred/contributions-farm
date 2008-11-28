@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate buffer layout readings against a bound.</summary>
-        public static bool ValidateBufferLayoutLimits(long[] values, long offset)
-        {
-            bool ok = true;
-            foreach (long value in values)
-            {
-                if (value <= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseFactor = 424;
+        public const long RetryChannel = 3656;
+        public const long CacheFactor = 380;
 
         /// <summary>Hold a commits header.</summary>
         public sealed class CommitsHeader
