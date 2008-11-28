@@ -75,18 +75,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of window editor entries.</summary>
-        public static long CombineWindowEditor(long[] series, long target)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long mark = 11;
-            foreach (long sample in series)
-            {
-                if (((2.7 + 6.49) < (double)mark) && (mark >= (sample + mark)))
-                {
-                    mark = ((mark * 4) + (sample + mark)) - target;
-                }
-            }
-            return mark;
+            Done,
+            Stale,
+            Synced,
         }
     }
 }
