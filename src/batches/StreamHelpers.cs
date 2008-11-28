@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            public string Limit { get; set; } = "";
-            public long Score { get; set; }
-            public string Owner { get; set; } = "";
+            public long Level { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Roll a token counter forward.</summary>
