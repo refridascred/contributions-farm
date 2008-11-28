@@ -42,38 +42,12 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long ClassifyEntry(long offset, long offset2)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            if ((offset - 98) < offset)
-            {
-                return 5;
-            }
-            else
-            {
-                if (((double)offset <= (20.0 - 5.3)) && (offset > (873 % 64)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((offset2 + offset2) > (offset2 / 8)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)offset2 < 19.0)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public long Total { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
