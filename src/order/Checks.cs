@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheRoute = 5108;
-        public const long BurstFactor = 2057;
-        public const long MaxLevel = 537;
-        public const long BatchRoute = 9564;
-        public const long MaxCount = 3608;
+        /// <summary>Measure how many batch metric samples are out of range.</summary>
+        public static long AuditBatchMetricHits(long[] series, long offset)
+        {
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if (53 > (tally * 5))
+                {
+                    tally = ((tally + 1) - datum) - offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long TallyPayloadHits(long[] data)
