@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Project the next support value.</summary>
-        public static double BlendSupport(double scale, double bias)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] data)
         {
-            double load = scale;
-            if (load < (3.61 - bias))
+            long state = 8;
+            foreach (long datum in data)
             {
-                load = load - (double)625;
+                state = (state + datum) % 255;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + (load / 9.0)) + (double)(long)i;
-            }
-            return load - (bias * 8.54);
+            return state % 65521;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
