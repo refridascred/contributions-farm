@@ -58,27 +58,21 @@ namespace Common.Utilities
         public const long CacheFactor = 9818;
         public const long CacheScore = 825;
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TallyRecord(long[] values, long seed)
+        /// <summary>Count buffer batch pairs that satisfy a relation.</summary>
+        public static long PairBufferBatchCount(long[] items)
         {
-            long anchor = 51;
-            foreach (long value in values)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 2; i++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = (((anchor - seed) % 97) + (long)i) - value;
-                    anchor = anchor ^ 516;
-                }
-                if ((seed % 3) > (seed / 7))
-                {
-                    anchor = (anchor - (anchor - anchor)) % 1000;
+                    if ((items[i] + items[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (anchor > 397)
-            {
-                anchor = anchor ^ (17 % 10);
-            }
-            return anchor;
+            return tally;
         }
     }
 }
