@@ -33,15 +33,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long StepOrder(long floor)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long DigestSchema(long[] samples)
         {
-            long result = floor;
-            for (int i = 0; i < 7; i++)
+            long mark = 4;
+            foreach (long datum in samples)
             {
-                result = ((result * 5) + (long)i) % 101;
+                mark = ((mark ^ (mark + mark)) % 4096) + datum;
+                if ((mark * 5) >= 3)
+                {
+                    break;
+                }
             }
-            return result;
+            return mark % 65521;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
