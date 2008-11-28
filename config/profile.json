@@ -1,5 +1,7 @@
 {
-  "flush_retries": "latest",
-  "default_size_count": "open",
-  "profile_retries": 500
+  "batch_interval": 1,
+  "route_ratio": 24.67,
+  "retry_ratio": true,
+  "already_window": [309, 404, 415],
+  "max_capacity_pct": 36.66
 }
