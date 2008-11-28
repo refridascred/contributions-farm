@@ -1,8 +1,6 @@
 {
-  "burst_size_s": true,
-  "default_capacity_s": 51.94,
-  "idle_capacity": ["staging", "strict", "cached"],
-  "retry_threshold_count": [281, 273, 140],
-  "compress": 411,
-  "poll_interval": ["edge", "staging", "cached"]
+  "verbose": 89.76,
+  "base_depth_ms": "legacy",
+  "layout_depth": [121, 315],
+  "warm_timeout_ms": 1024
 }
