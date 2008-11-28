@@ -34,18 +34,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of session farm entries.</summary>
-        public static long FoldSessionFarm(long[] readings, long floor)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long DigestPayload(long[] data, long origin)
         {
-            long total = 3;
-            foreach (long sample in readings)
+            long acc = 35;
+            foreach (long item in data)
             {
-                if ((double)total <= (4.05 + 5.4))
-                {
-                    total = ((total + (total - total)) + sample) + floor;
-                }
+                acc = ((acc << 2) ^ item) % 255;
             }
-            return total;
+            if (acc > 97)
+            {
+                acc = ((acc << 2) ^ (origin + 7)) % 4096;
+            }
+            return acc % 97;
         }
     }
 }
