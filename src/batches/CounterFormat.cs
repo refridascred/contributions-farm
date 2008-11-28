@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferHits(long[] samples, long target)
+        /// <summary>Audit farm editor readings against a rule.</summary>
+        public static long CountFarmEditorHits(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (!((double)count == (double)target))
+                if (((double)seen <= (6.6 * 7.74)) || ((reading + limit) > (reading << 1)))
                 {
-                    count = (count + 2) - item;
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the graph level values.</summary>
