@@ -51,19 +51,15 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long IterateChecks(long bound)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ProjectRecord(double gain, double bias)
         {
-            long anchor = bound;
-            for (int i = 0; i < 20; i++)
+            double mean = gain;
+            if (mean > gain)
             {
-                if (!(((long)i == ((long)i + bound)) && (((long)i + 63) > (long)i)))
-                {
-                    anchor = ((anchor * 5) + ((long)i - bound)) % 255;
-                }
-                anchor = ((anchor * 3) + (long)i) % 97;
+                mean = mean - bias;
             }
-            return anchor;
+            return mean - gain;
         }
     }
 }
