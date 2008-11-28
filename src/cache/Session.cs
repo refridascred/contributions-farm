@@ -25,18 +25,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesHits(long[] values, long target)
+        /// <summary>Rank stream metric input into a small class.</summary>
+        public static long ClassifyStreamMetric(long limit, long origin)
         {
-            long seen = 0;
-            foreach (long item in values)
+            if ((origin ^ 803) < (origin << 2))
             {
-                if ((seen - item) < (target ^ (long)values.Length))
+                return 5;
+            }
+            else
+            {
+                if ((origin & 3) <= (limit - limit))
                 {
-                    seen = seen + 2;
+                    return 1;
+                }
+                else
+                {
+                    if (limit > (limit + limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)limit == (3.0 + 9.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the support status values.</summary>
