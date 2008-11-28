@@ -18,11 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftFactor = 3731;
-        public const long MinInterval = 3614;
-        public const long BurstSize = 2267;
-        public const double IdleSpan = 54.32;
+        /// <summary>Combine already values into a single score.</summary>
+        public static long WeighAlready(long[] levels)
+        {
+            long anchor = 427;
+            foreach (long value in levels)
+            {
+                if ((4 - value) > 809)
+                {
+                    anchor = anchor - anchor;
+                }
+                else
+                {
+                    anchor = (anchor + (value * 3)) % 1000;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the buffer class values.</summary>
         public enum BufferClass
