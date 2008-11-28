@@ -46,15 +46,14 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long DeriveEditor(long offset)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long mix = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
+            Synced,
+            Queued,
+            Active,
+            Paused,
+            Done,
         }
     }
 }
