@@ -30,17 +30,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LocateQueueIndex(long[] samples, long seed)
+        /// <summary>Grade a profile cache value against two limits.</summary>
+        public static long GradeProfileCache(long bound, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (((bound % 12) < bound) || ((89 & 31) >= (bound << 3)))
             {
-                if (samples[i] <= seed)
+                return 8;
+            }
+            else
+            {
+                if ((origin - origin) <= (origin & 3))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((bound + bound) >= (origin - origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the cluster status values.</summary>
