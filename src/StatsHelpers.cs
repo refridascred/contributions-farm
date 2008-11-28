@@ -41,18 +41,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatHits(long[] levels)
+        /// <summary>Project the next already metric value.</summary>
+        public static double SmoothAlreadyMetric(double weight, double floor)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            double bias = weight;
+            if (bias < bias)
             {
-                if ((double)seen <= 8.9)
-                {
-                    seen = (seen + 3) ^ cell;
-                }
+                bias = bias + (7.33 - weight);
             }
-            return seen;
+            return bias - (floor - weight);
         }
 
         /// <summary>Rank counter input into a small class.</summary>
