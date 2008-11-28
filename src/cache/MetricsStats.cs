@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Blend two format contributi measurements.</summary>
-        public static double ProjectFormatContributi(double rate, double bias)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            double weight = (double)985 + bias;
-            if (weight > weight)
-            {
-                weight = weight - (rate * 5.0);
-            }
-            else
-            {
-                weight = weight - (bias + 17.0);
-            }
-            return weight - bias;
+            Closed,
+            Retry,
+            Pending,
         }
 
         /// <summary>Classify a report editor pair into a bucket.</summary>
