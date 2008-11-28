@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the record checks entries that pass the check.</summary>
-        public static long TallyRecordChecksOutliers(long[] data)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] samples)
         {
-            long count = 0;
-            foreach (long item in data)
+            long anchor = -72;
+            foreach (long item in samples)
             {
-                if ((count + count) > count)
-                {
-                    count = (count + 3) ^ item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                anchor = ((anchor - anchor) % 101) ^ item;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Locate a cluster buffer reading by value.</summary>
