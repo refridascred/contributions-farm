@@ -61,11 +61,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferRange(long[] values, long offset)
         {
-            public double Offset { get; set; }
-            public long Rank { get; set; }
+            bool found = true;
+            foreach (long cell in values)
+            {
+                if (cell != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Project the next report value.</summary>
