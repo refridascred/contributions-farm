@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
-        {
-            public string Weight { get; set; } = "";
-            public double Size { get; set; }
-            public double Label { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryBatches = 2180;
+        public const long MaxWidth = 3014;
+        public const long WindowBudget = 8329;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long CacheSchema = 3619;
