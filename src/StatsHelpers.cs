@@ -29,13 +29,31 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long ClassifyPayload(long target, long floor)
         {
-            Failed,
-            Done,
-            Draft,
-            Closed,
+            if (4.0 >= (double)target)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor < (3 & 15)) && (target >= ((-280) - target)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (17 <= (target * 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
