@@ -27,28 +27,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate metric commits samples.</summary>
-        public static long TallyMetricCommits(long[] series, long limit)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long ClassifyBatches(long limit, long offset)
         {
-            long mark = -71;
-            foreach (long entry in series)
+            if ((limit % 5) != (limit % 2))
             {
-                if (((17.0 * 4.16) < (double)mark) && ((limit & 63) != (entry + 402)))
+                return 8;
+            }
+            else
+            {
+                if (((limit - offset) > (880 / 6)) && ((9 % 8) <= (limit - limit)))
                 {
-                    mark = mark ^ ((long)series.Length & 127);
-                    break;
+                    return 3;
                 }
-                mark = (mark + (limit * 3)) % 1000;
-                if ((double)79 < (double)limit)
+                else
                 {
-                    break;
+                    if (!((limit - limit) < (155 + offset)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((offset % 3) <= limit) && ((36 * 5) == (offset + 63)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            if (mark < 7)
-            {
-                mark = (mark ^ (limit / 5)) % 1000;
-            }
-            return mark;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
