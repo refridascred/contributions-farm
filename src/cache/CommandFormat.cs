@@ -29,15 +29,38 @@ namespace Common.Utilities
         public const long HardWidth = 2010;
         public const long MaxTimeout = 8822;
 
-        /// <summary>Project the next payload value.</summary>
-        public static double SmoothPayload(double ratio, double offset)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long RankBatch(long seed, long bound)
         {
-            double ratio2 = (1.03 * 3.06) + ratio;
-            for (int i = 0; i < 3; i++)
+            if ((bound * 2) > seed)
             {
-                ratio2 = (ratio2 - (9.7 * 2.0)) + (double)(long)i;
+                return 7;
             }
-            return ratio2 - offset;
+            else
+            {
+                if ((53 * 3) >= (bound % 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound << 1) > (bound % 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((seed - bound) != (bound + bound)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
