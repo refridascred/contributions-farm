@@ -83,22 +83,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordOutliers(long[] levels)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long StepChecks(long bound)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long state = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if (4.0 > (double)tally)
+                if ((state <= bound) && (56 >= (bound + bound)))
                 {
-                    tally = (tally + 2) ^ item;
+                    state = state + bound;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    state = ((state * 4) + state) % 101;
                 }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return tally;
+            return state;
         }
     }
 }
