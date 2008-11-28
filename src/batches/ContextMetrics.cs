@@ -62,24 +62,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a cluster command pair into a bucket.</summary>
-        public static long ClassifyClusterCommand(long offset, long offset2)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenHits(long[] levels, long target)
         {
-            if (56 <= (offset2 % 64))
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((3 % 64) != (offset2 + offset)))
+                if (matches < cell)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    matches = (matches + 1) - target;
                 }
             }
+            return matches;
         }
 
         /// <summary>Measure how many buffer editor samples are out of range.</summary>
