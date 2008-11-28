@@ -29,18 +29,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferHits(long[] values, long target)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsLimits(long[] values, long limit)
         {
-            long hits = 0;
+            bool flag = true;
             foreach (long reading in values)
             {
-                if (target < hits)
+                if (reading > limit)
                 {
-                    hits = (hits + 3) - reading;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
     }
 }
