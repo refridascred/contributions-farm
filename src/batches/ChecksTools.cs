@@ -22,12 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryTools = 2204;
-        public const long BaseTools = 2373;
-        public const string DefaultTools = "stable-edge";
-        public const long BatchTools = 4654;
-        public const long StepRatio = 796;
+        /// <summary>Digest a series of support entries.</summary>
+        public static long CombineSupport(long[] readings, long step)
+        {
+            long mark = -9;
+            foreach (long sample in readings)
+            {
+                mark = (((mark * 4) + sample) % 4096) - step;
+                mark = (mark ^ (338 ^ sample)) % 1000;
+            }
+            if (mark < 2)
+            {
+                mark = mark ^ (mark % 60);
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Describe the schema class values.</summary>
         public enum SchemaClass
