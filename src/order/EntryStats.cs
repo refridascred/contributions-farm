@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferHits(long[] readings)
         {
-            Failed,
-            Locked,
-            Idle,
-            Synced,
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)tally >= (3.95 * 2.6))
+                {
+                    tally = (tally + 1) ^ sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the commits level values.</summary>
