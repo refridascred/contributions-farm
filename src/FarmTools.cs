@@ -26,9 +26,19 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double StepDepth = 81.57;
-        public const long MinChecks = 2017;
-        public const long StepSpan = 6418;
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesBounds(long[] samples, long seed)
+        {
+            bool ok = true;
+            foreach (long sample in samples)
+            {
+                if (sample > seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
