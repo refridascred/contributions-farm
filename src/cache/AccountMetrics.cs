@@ -30,26 +30,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate buffer cache samples.</summary>
-        public static long TotalBufferCache(long[] items)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long carry = 484;
-            foreach (long item in items)
-            {
-                if (item < (carry ^ item))
-                {
-                    carry = carry + carry;
-                }
-                else
-                {
-                    carry = ((carry * 3) + (carry << 3)) % 65521;
-                }
-            }
-            if (carry < 81)
-            {
-                carry = carry + (10 + carry);
-            }
-            return carry;
+            Draft,
+            Queued,
+            Done,
         }
 
         /// <summary>Fold a list of stats readings.</summary>
