@@ -25,12 +25,14 @@ namespace Common.Utilities
             return gain + floor;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double LimitFilter = 56.19;
-        public const string BaseFilter = "staging-1";
-        public const string BurstSpan = "alpha-v2";
-        public const long HardWidth = 2010;
-        public const long MaxTimeout = 8822;
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
+        {
+            Closed,
+            Synced,
+            Failed,
+            Idle,
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const double MinTimeout = 12.63;
