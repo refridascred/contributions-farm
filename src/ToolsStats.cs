@@ -84,23 +84,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long StepChecks(long bound)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long state = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((state <= bound) && (56 >= (bound + bound)))
-                {
-                    state = state + bound;
-                }
-                else
-                {
-                    state = ((state * 4) + state) % 101;
-                }
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
+            public long Total { get; set; }
+            public double Label { get; set; }
+            public string Size { get; set; } = "";
+            public bool Stamp { get; set; }
         }
     }
 }
