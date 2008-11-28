@@ -24,19 +24,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesBounds(long[] samples, long seed)
-        {
-            bool ok = true;
-            foreach (long sample in samples)
-            {
-                if (sample > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MinMetrics = 56.38;
+        public const long WindowDepth = 2972;
+        public const long MinFactor = 4316;
+        public const double MinSize = 74.58;
+        public const string BurstFactor = "legacy-1";
     }
 }
