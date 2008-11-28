@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Find the first session batches entry that matches the target.</summary>
-        public static long LookupSessionBatchesIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > target) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryBudget = 4743;
+        public const long MaxBudget = 594;
+        public const double RetryTimeout = 92.76;
+        public const long MaxContributi = 8201;
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long TotalChannel(long[] values, long target)
