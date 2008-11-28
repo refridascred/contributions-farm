@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of commits format entries.</summary>
-        public static long WeighCommitsFormat(long[] data, long origin)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportBounds(long[] values, long floor)
         {
-            long mix = 6;
-            foreach (long sample in data)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                mix = ((((mix * 5) + (-10)) % 1000) + sample) + origin;
+                if (entry < floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mix;
+            return ready;
         }
 
         /// <summary>Describe the format kind values.</summary>
