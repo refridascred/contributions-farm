@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiGaps(long[] readings)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long IterateCluster(long bound)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long mix = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if (!((matches + sample) > (matches ^ matches)) && ((double)475 >= (double)sample))
-                {
-                    matches = matches + 2;
-                }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Describe the channel class values.</summary>
