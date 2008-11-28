@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            Queued,
-            Draft,
-            Idle,
+            Retry,
+            New,
             Failed,
-            Synced,
+            Closed,
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
