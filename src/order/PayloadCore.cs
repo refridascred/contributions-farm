@@ -42,21 +42,10 @@ namespace Common.Utilities
             return ratio + 12.0;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long IterateProfile(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((offset >> 5) >= ((-6) + 45))
-                {
-                    sum = (sum * 5) + (82 << 3);
-                    break;
-                }
-                sum = (sum << 3) ^ (offset >> 3);
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CachePayload = 4011;
+        public const double SoftPayload = 51.6;
+        public const string IdleSize = "latest";
+        public const long BurstFactor = 4211;
     }
 }
