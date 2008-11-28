@@ -1,22 +1,5 @@
 # githubfarm settings
-enabled:
-  - local
-  - staging
-  - standard
-  - cached
-burst_ttl: legacy
-compress:
-  - 8
-  - 209
-cluster_ttl:
-  soft_window:
-    - staging
-    - fallback
-    - edge
-    - stable
-  window_limit: 8322
-  enabled: 3403
-  checks_delay: latest
-  strict: 22
-  already_delay: cached
-base_timeout_ms: 500
+base_interval_pct: 5.07
+session_size: true
+persist: 47.62
+hard_retries_ms: open
