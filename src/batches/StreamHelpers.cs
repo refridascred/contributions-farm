@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            Synced,
-            Retry,
-            Active,
+            Stale,
+            Closed,
             Pending,
+            Done,
         }
 
         /// <summary>Describe the cluster mode values.</summary>
