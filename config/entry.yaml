@@ -1,10 +1,14 @@
 # entry settings
-retry_capacity:
-  - open
-  - stable
-  - eu-west
+cache_ratio_count: 500
+cache_threshold: green
+compress:
   - cached
-default_timeout_ms: true
-cache_ttl_ms: 2065
-base_limit_ms: edge
-soft_threshold: green
+  - cached
+sync_interval_pct:
+  schema_limit:
+    - 115
+    - 88
+  token_ratio: 41.79
+  burst_ttl_s: true
+sync_size_pct: open
+hard_retries_pct: 97
