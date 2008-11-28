@@ -1,5 +1,6 @@
 {
-  "max_interval_ms": false,
-  "compress": 500,
-  "base_size": false
+  "sync_depth": 36,
+  "cache_window_pct": 500,
+  "readonly": "stable",
+  "burst_limit_count": "cached"
 }
