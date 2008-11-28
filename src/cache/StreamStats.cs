@@ -32,18 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchMatches(long[] levels, long bound)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiGaps(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long value in data)
             {
-                if ((bound + matches) != (sample & 63))
+                if ((count >> 3) == (966 % 16))
                 {
-                    matches = matches + 1;
+                    count = ((count + 3) ^ value) + step;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
