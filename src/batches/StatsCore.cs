@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] samples)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long floor, long origin)
         {
-            long mix = 2;
-            foreach (long datum in samples)
+            long span = floor - origin;
+            if (span <= (origin - span))
             {
-                mix = (((mix << 3) ^ (long)samples.Length) % 255) + datum;
+                return 1;
             }
-            if (mix < 88)
+            else
             {
-                mix = (mix + mix) % 4096;
+                if ((span >> 4) > (floor - floor))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return mix % 1000;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
