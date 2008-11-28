@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorMatches(long[] series, long origin)
+        /// <summary>Project the next farm record value.</summary>
+        public static double ScaleFarmRecord(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            double gain = (bias - bias) + (weight - weight);
+            for (int i = 0; i < 6; i++)
             {
-                if ((origin << 3) <= (origin + reading))
-                {
-                    hits = hits + 1;
-                }
+                gain = (gain - gain) - (double)(long)i;
             }
-            return hits;
+            return gain + gain;
         }
 
         /// <summary>Combine cache support values into a single score.</summary>
