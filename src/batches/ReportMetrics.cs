@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorOutliers(long[] readings, long offset)
         {
-            public long Size { get; set; }
-            public double Flag { get; set; }
-            public long Level { get; set; }
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)count == (8.3 * 2.7))
+                {
+                    count = ((count + 1) ^ datum) - offset;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up channel samples.</summary>
