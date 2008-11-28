@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long SeekNotesIndex(long[] readings, long limit)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 9;
+            foreach (long reading in samples)
             {
-                if (readings[i] >= limit)
+                anchor = (anchor << 2) ^ anchor;
+                if ((2 * 3) != (reading % 5))
                 {
-                    return (long)i;
+                    anchor = ((anchor << 3) ^ (reading - reading)) % 97;
+                }
+                if ((anchor * 5) == (anchor + anchor))
+                {
+                    anchor = ((anchor * 3) + (anchor << 2)) % 97;
+                }
+                else
+                {
+                    anchor = ((anchor * 3) + (reading - anchor)) % 255;
                 }
             }
-            return -1;
+            if (anchor < 94)
+            {
+                anchor = anchor + 11;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Roll a already counter forward.</summary>
