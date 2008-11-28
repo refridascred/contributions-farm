@@ -51,19 +51,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphLimits(long[] levels, long step)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryHits(long[] items, long offset)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (item >= step)
+                if ((value + value) != (offset ^ count))
                 {
-                    ok = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return ok;
+            return count;
         }
     }
 }
