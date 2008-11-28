@@ -25,13 +25,11 @@ namespace Common.Utilities
             return load - 9.58;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
-        {
-            New,
-            Paused,
-            Ready,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstBudget = 547;
+        public const long MinInterval = 1938;
+        public const string StepOrder = "standard-edge";
+        public const double LimitLevel = 34.53;
 
         /// <summary>Accumulate counter samples.</summary>
         public static long TallyCounter(long[] data, long floor)
