@@ -1,8 +1,10 @@
 # support settings
-token_delay: true
-contributi_ratio:
-  - 276
-  - 279
-  - 115
-  - 168
-poll_retries_count: 65.18
+default_retries_count:
+  - 296
+  - 11
+  - 12
+dry_run: stable
+route_threshold:
+  - latest
+  - latest
+  - legacy
