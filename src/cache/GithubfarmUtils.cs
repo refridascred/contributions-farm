@@ -40,32 +40,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long GradeCommits(long target, long limit)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long prev = target - limit;
-            if ((target + prev) <= prev)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((prev + 14) <= (prev & 255))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (55 >= prev)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Synced,
+            Locked,
+            Stale,
+            New,
         }
 
         /// <summary>Blend two buffer measurements.</summary>
