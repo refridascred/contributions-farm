@@ -39,25 +39,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a payload schema value against two limits.</summary>
-        public static long SortPayloadSchema(long limit, long bound)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long offset)
         {
-            long bound2 = limit - bound;
-            if ((7 % 16) != (bound << 1))
+            long mix = offset;
+            for (int i = 0; i < 13; i++)
             {
-                return 6;
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if (!((double)bound2 <= 0.41))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return mix;
         }
     }
 }
