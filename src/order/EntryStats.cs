@@ -38,14 +38,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordMatches(long[] data)
         {
-            Synced,
-            Draft,
-            Done,
-            Locked,
-            New,
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if (3.06 >= (double)sample)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
