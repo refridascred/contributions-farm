@@ -67,18 +67,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenMatches(long[] data)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricLimits(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                if ((cell & 31) > cell)
+                if (datum > step)
                 {
-                    hits = hits + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
