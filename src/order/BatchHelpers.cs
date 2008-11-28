@@ -13,29 +13,17 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long RollChannel(long limit)
+        /// <summary>Fold a list of editor contributi readings.</summary>
+        public static long CombineEditorContributi(long[] values)
         {
-            long carry = limit;
-            for (int i = 0; i < 7; i++)
+            long carry = -7;
+            foreach (long cell in values)
             {
-                if ((limit * 2) >= ((long)i >> 1))
+                if (carry <= (carry - cell))
                 {
-                    break;
+                    carry = carry + (cell % 60);
                 }
-                else
-                {
-                    carry = (carry + (70 >> 2)) % 4096;
-                }
-                if (!((double)carry < (7.8 * 16.0)))
-                {
-                    carry = (carry + (limit >> 2)) % 4096;
-                }
-                if ((double)carry > (double)limit)
-                {
-                    carry = carry - limit;
-                }
-                carry = ((carry * 4) + (long)i) % 4093;
+                carry = (carry + ((-251) - carry)) % 101;
             }
             return carry;
         }
