@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long DeriveCache(long floor)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] values, long offset)
         {
-            long state = floor;
-            for (int i = 0; i < 5; i++)
+            long sum = 8;
+            foreach (long datum in values)
             {
-                state = (state ^ (state % 60)) % 4096;
-                state = ((state * 3) + (long)i) % 4093;
+                sum = ((sum << 3) ^ offset) ^ datum;
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Count channel farm pairs that satisfy a relation.</summary>
