@@ -65,21 +65,15 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Iterate the batch profile series from a seed.</summary>
-        public static long StepBatchProfile(long target)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TotalCommits(long[] series, long bound)
         {
-            long sum = target;
-            for (int i = 0; i < 5; i++)
+            long mix = -2;
+            foreach (long reading in series)
             {
-                if ((((-937) << 1) <= target) && ((double)target != (double)sum))
-                {
-                    sum = (sum + (16 + target)) % 255;
-                    sum = ((sum * 5) + ((long)i + target)) % 101;
-                    continue;
-                }
-                sum = ((sum * 2) + (long)i) % 1000;
+                mix = ((((mix << 3) ^ (15 >> 1)) % 255) ^ reading) - bound;
             }
-            return sum;
+            return mix;
         }
 
         /// <summary>Fold a list of account readings.</summary>
