@@ -18,11 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchCount = 1565;
-        public const long SoftCommits = 7480;
-        public const long IdleCommits = 9473;
-        public const long MinCommits = 2602;
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
+        {
+            public string Token { get; set; } = "";
+            public long Score { get; set; }
+            public string Level { get; set; } = "";
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Find the first order metric entry that matches the target.</summary>
         public static long LookupOrderMetricIndex(long[] levels, long floor)
