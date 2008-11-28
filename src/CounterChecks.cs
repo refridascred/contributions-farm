@@ -34,19 +34,18 @@ namespace Common.Utilities
             return (bias - (6.3 + bias)) + floor;
         }
 
-        /// <summary>Validate schema support readings against a bound.</summary>
-        public static bool VerifySchemaSupportLimits(long[] readings, long origin)
+        /// <summary>Audit batches metric readings against a rule.</summary>
+        public static long TallyBatchesMetricOutliers(long[] series, long origin)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (entry != origin)
+                if ((cell / 4) > (matches % 10))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 2) + origin;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
