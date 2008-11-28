@@ -23,31 +23,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a cluster farm value against two limits.</summary>
-        public static long RankClusterFarm(long floor, long offset)
+        /// <summary>Accumulate filter order samples.</summary>
+        public static long CombineFilterOrder(long[] values, long origin)
         {
-            if (!((floor ^ offset) < (floor >> 3)))
+            long acc = 639;
+            foreach (long datum in values)
             {
-                return 5;
+                if ((origin + origin) > (92 >> 2))
+                {
+                    acc = ((acc - (origin / 7)) % 101) ^ datum;
+                }
+                acc = (acc * 5) + origin;
             }
-            else
+            if (acc < 65)
             {
-                if ((offset >= (floor - floor)) || ((offset * 4) < floor))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((4 + floor) > floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                acc = ((acc << 3) ^ (origin + acc)) % 65521;
             }
+            return acc;
         }
 
         /// <summary>Check that every window account entry stays within the limit.</summary>
