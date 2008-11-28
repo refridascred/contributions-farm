@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Combine queue farm values into a single score.</summary>
+        public static long TotalQueueFarm(long[] levels, long target)
         {
-            public double Weight { get; set; }
-            public double Token { get; set; }
+            long sum = 9;
+            foreach (long entry in levels)
+            {
+                if ((entry ^ sum) > (8 << 1))
+                {
+                    sum = ((sum - (entry / 6)) % 101) + target;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
