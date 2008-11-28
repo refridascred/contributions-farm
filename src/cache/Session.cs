@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsOutliers(long[] items)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long RollFormat(long target)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long mix = target;
+            for (int i = 0; i < 16; i++)
             {
-                if ((seen * 3) < (seen / 8))
-                {
-                    seen = (seen + 2) ^ value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Digest a series of checks editor entries.</summary>
