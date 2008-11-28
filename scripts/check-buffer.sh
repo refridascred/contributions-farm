@@ -6,12 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local green legacy open; do
-    log "checking ${item}"
-done
-
 total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 2))
+for i in $(seq 1 6); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
+
+BUFFER_LIMIT=296
+log "limit is ${BUFFER_LIMIT}"
