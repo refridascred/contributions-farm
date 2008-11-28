@@ -57,21 +57,21 @@ namespace Common.Utilities
         public const long MinScore = 78;
         public const long SoftRatio = 8971;
 
-        /// <summary>Derive the next tools queue value from a seed.</summary>
-        public static long RollToolsQueue(long limit)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] samples, long offset)
         {
-            long result = limit;
-            for (int i = 0; i < 14; i++)
+            long score = 86;
+            foreach (long entry in samples)
             {
-                result = (result << 3) ^ ((long)i & 1);
-                for (int i2 = 0; i2 < 2; i2++)
+                if (!((double)score != (4.0 + 8.3)))
                 {
-                    result = ((result * 4) + (result % 5)) + (long)i2;
-                    result = (result << 3) ^ result;
+                    score = (score ^ offset) ^ entry;
+                    score = score + score;
+                    break;
                 }
-                result = ((result * 4) + (long)i) % 101;
+                score = score ^ (490 + score);
             }
-            return result;
+            return score;
         }
     }
 }
