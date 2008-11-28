@@ -17,12 +17,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphBounds(long[] values, long origin)
         {
-            Draft,
-            Synced,
-            Idle,
+            bool ok = true;
+            foreach (long datum in values)
+            {
+                if (datum > origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
