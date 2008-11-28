@@ -34,18 +34,38 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmOutliers(long[] readings)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long ClassifyRoute(long target, long origin)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            if ((origin % 2) != (542 + target))
             {
-                if (!((hits / 5) >= (hits + sample)))
+                return 1;
+            }
+            else
+            {
+                if (((62 - target) <= (target - origin)) && ((double)target < (2.18 - 17.0)))
                 {
-                    hits = hits + 3;
+                    return 7;
+                }
+                else
+                {
+                    if ((origin + target) == (origin - origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)target < (double)22)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Adjust a format session reading.</summary>
