@@ -19,11 +19,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryRatio = 3208;
-        public const string BatchEditor = "strict-1";
-        public const long MinInterval = 5039;
-        public const string BurstEditor = "staging-edge";
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
+        {
+            public long Count { get; set; }
+            public double Level { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long LimitRatio = 7500;
