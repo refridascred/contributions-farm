@@ -53,15 +53,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of commits metric entries.</summary>
-        public static long TallyCommitsMetric(long[] levels)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long WeighFormat(long[] data, long bound)
         {
-            long result = -2;
-            foreach (long datum in levels)
+            long anchor = 1;
+            foreach (long datum in data)
             {
-                result = (result - 2) + datum;
+                if (((2.6 * 2.0) >= (double)anchor) || ((anchor << 3) < anchor))
+                {
+                    anchor = ((anchor << 3) ^ bound) - datum;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (anchor & 15)) % 97;
+                }
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
