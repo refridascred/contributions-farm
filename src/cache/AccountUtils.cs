@@ -25,15 +25,18 @@ namespace Common.Utilities
         public const string IdleCount = "local";
         public const long BatchNotes = 1117;
 
-        /// <summary>Project the next order value.</summary>
-        public static double SmoothOrder(double rate, double span)
+        /// <summary>Count the already layout entries that pass the check.</summary>
+        public static long MeasureAlreadyLayoutGaps(long[] readings, long step)
         {
-            double mean = rate - (rate + rate);
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                mean = (mean + (double)998) + (double)(long)i;
+                if (284 > step)
+                {
+                    seen = (seen + 3) - sample;
+                }
             }
-            return mean + (rate - span);
+            return seen;
         }
     }
 }
