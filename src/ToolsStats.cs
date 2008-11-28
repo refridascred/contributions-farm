@@ -48,17 +48,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LocateSessionIndex(long[] items, long limit)
+        /// <summary>Fold a list of entry notes readings.</summary>
+        public static long FoldEntryNotes(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 647;
+            foreach (long cell in data)
             {
-                if (items[i] <= limit)
+                if ((mix * 4) < cell)
                 {
-                    return (long)i;
+                    mix = (mix - (cell / 4)) % 255;
+                }
+                else
+                {
+                    mix = ((mix * 5) + (mix + mix)) % 255;
                 }
             }
-            return -1;
+            if (mix < 53)
+            {
+                mix = (mix ^ (mix >> 1)) % 1000;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
