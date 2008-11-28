@@ -1,6 +1,18 @@
 {
-  "dry_run": "cached",
-  "flush_capacity": ["latest", "legacy", "fallback"],
-  "sync_capacity_count": 5.21,
-  "batch_window_ms": 500
+  "batch_limit": false,
+  "cluster_ratio": true,
+  "warm_ratio_count": 32,
+  "verbose": {
+    "retry_size_count": {
+      "base_depth_s": "fallback",
+      "retry_size_count": "local",
+      "batch_timeout": "local",
+      "contributi_size": 31
+    },
+    "max_timeout": 13.46,
+    "notes_size": false,
+    "stream_retries": ["stable", "eu-west", "fallback"]
+  },
+  "strict": ["green", "strict"],
+  "session_retries": 8.68
 }
