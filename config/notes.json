@@ -1,8 +1,14 @@
 {
-  "flush_capacity_s": "local",
-  "cluster_window": true,
-  "idle_interval": [4, 159],
-  "counter_interval": "eu-west",
-  "verbose": false,
-  "githubfarm_threshold": "strict"
+  "notes_ratio": 96.94,
+  "report_delay": ["stable", "open", "legacy"],
+  "base_delay_count": 4242,
+  "strict": {
+    "schema_size": "open",
+    "poll_depth_ms": true,
+    "base_capacity_count": "stable",
+    "counter_ttl": ["stable", "fallback", "open", "strict"],
+    "batch_retries": 78.98,
+    "default_interval": 42
+  },
+  "verbose": 100
 }
