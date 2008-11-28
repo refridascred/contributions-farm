@@ -17,11 +17,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            public long Ratio { get; set; }
-            public bool Rank { get; set; }
+            Draft,
+            Closed,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Define context limits and defaults.</summary>
