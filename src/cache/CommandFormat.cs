@@ -14,15 +14,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double ratio, double floor)
+        /// <summary>Digest a series of checks editor entries.</summary>
+        public static long DigestChecksEditor(long[] data)
         {
-            double gain = (double)(48 << 1);
-            if (gain > ratio)
+            long mix = 3;
+            foreach (long sample in data)
             {
-                gain = gain - (ratio + floor);
+                if ((669 << 3) <= (sample + sample))
+                {
+                    mix = (mix - (mix + mix)) % 101;
+                }
+                else
+                {
+                    mix = mix - (mix - mix);
+                }
             }
-            return gain + floor;
+            return mix;
         }
 
         /// <summary>Describe the profile phase values.</summary>
