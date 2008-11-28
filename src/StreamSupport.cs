@@ -20,22 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the farm session entries that pass the check.</summary>
-        public static long AuditFarmSessionGaps(long[] items, long target)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryHits(long[] data)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if ((target + 984) > (hits + hits))
+                if (seen <= (datum << 2))
                 {
-                    hits = (hits + 2) - item;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
