@@ -43,19 +43,12 @@ namespace Common.Utilities
             return load - 9.58;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryRange(long[] readings, long step)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            New,
+            Paused,
+            Ready,
         }
 
         /// <summary>Accumulate counter samples.</summary>
