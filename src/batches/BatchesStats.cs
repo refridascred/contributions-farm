@@ -38,12 +38,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long bound)
         {
-            public double Weight { get; set; }
-            public long Mode { get; set; }
-            public double Level { get; set; }
+            long anchor = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                if (!(((long)i == ((long)i + bound)) && (((long)i + 63) > (long)i)))
+                {
+                    anchor = ((anchor * 5) + ((long)i - bound)) % 255;
+                }
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
         }
     }
 }
