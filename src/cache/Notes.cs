@@ -14,19 +14,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterBounds(long[] items, long origin)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandHits(long[] series)
         {
-            bool found = true;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (entry <= origin)
+                if ((double)entry != (1.0 * 4.37))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Hold a command options.</summary>
