@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long DigestGraph(long[] samples)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long SeriesStream(long bound)
         {
-            long total = 87;
-            foreach (long reading in samples)
+            long state = bound;
+            for (int i = 0; i < 7; i++)
             {
-                total = ((total << 3) ^ (reading / 7)) % 101;
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    state = ((state << 2) ^ (81 % 8)) + (long)i2;
+                }
+                state = (state * 3) + (bound + bound);
+                state = ((state * 2) + (long)i) % 97;
             }
-            return total % 65521;
+            return state;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
