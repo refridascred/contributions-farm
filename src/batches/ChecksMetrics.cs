@@ -23,13 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderLimits(long[] values, long target)
         {
-            Done,
-            Stale,
-            Failed,
-            Active,
+            bool flag = true;
+            foreach (long reading in values)
+            {
+                if (reading != target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Fold a list of queue context readings.</summary>
