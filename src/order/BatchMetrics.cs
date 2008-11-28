@@ -70,21 +70,21 @@ namespace Common.Utilities
             return scale + rate;
         }
 
-        /// <summary>Count buffer batch pairs that satisfy a relation.</summary>
-        public static long PairBufferBatchCount(long[] items)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long MatchClusterCount(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((items[i] + items[j]) < 16)
+                    if ((values[i] + values[j]) > 5)
                     {
-                        tally = tally + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
