@@ -31,20 +31,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long RollStats(long origin)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LocateOrderIndex(long[] readings, long limit)
         {
-            long carry = origin;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = carry ^ (carry - 1);
-                if (!((double)(long)i > (9.76 * 11.0)))
+                if (readings[i] > limit)
                 {
-                    continue;
+                    return (long)i;
                 }
-                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Describe the stats status values.</summary>
