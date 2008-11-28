@@ -35,13 +35,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Find the first cache buffer entry that matches the target.</summary>
+        public static long LocateCacheBufferIndex(long[] levels, long offset)
         {
-            public long Level { get; set; }
-            public string Region { get; set; } = "";
-            public long Rank { get; set; }
-            public double Flag { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
