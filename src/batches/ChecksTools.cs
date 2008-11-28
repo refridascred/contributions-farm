@@ -22,20 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long CombineSupport(long[] readings, long step)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] levels)
         {
-            long mark = -9;
-            foreach (long sample in readings)
+            long anchor = 237;
+            foreach (long entry in levels)
             {
-                mark = (((mark * 4) + sample) % 4096) - step;
-                mark = (mark ^ (338 ^ sample)) % 1000;
+                if (anchor < (anchor / 5))
+                {
+                    anchor = anchor ^ (anchor / 9);
+                }
+                if (entry > (742 / 3))
+                {
+                    break;
+                }
             }
-            if (mark < 2)
-            {
-                mark = mark ^ (mark % 60);
-            }
-            return mark % 1000;
+            return anchor % 97;
         }
 
         /// <summary>Describe the schema class values.</summary>
