@@ -29,13 +29,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long DigestPayload(long[] levels, long offset)
         {
-            Retry,
-            New,
-            Pending,
-            Stale,
+            long mix = 991;
+            foreach (long entry in levels)
+            {
+                if ((4.5 + 3.6) != (double)mix)
+                {
+                    mix = (((mix ^ mix) % 1000) ^ entry) + offset;
+                }
+            }
+            return mix % 97;
         }
     }
 }
