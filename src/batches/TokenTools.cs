@@ -31,38 +31,16 @@ namespace Common.Utilities
             return bias - (double)(-23);
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long ClassifyRoute(long offset, long bound)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long step)
         {
-            if ((offset - bound) == (bound - bound))
+            long mark = step;
+            for (int i = 0; i < 12; i++)
             {
-                return 0;
+                mark = (mark ^ (-89)) % 255;
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if (((-93) & 3) != (offset ^ bound))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound / 9) < bound)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((offset - offset) < 93)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
     }
 }
