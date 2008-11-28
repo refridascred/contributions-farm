@@ -13,16 +13,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long SeriesCommits(long bound)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long mix = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                mix = (mix * 4) + (bound << 2);
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
+            public bool Size { get; set; }
+            public long Score { get; set; }
+            public long Weight { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the metric kind values.</summary>
