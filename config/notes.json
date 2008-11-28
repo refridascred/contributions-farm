@@ -1,16 +1,10 @@
 {
-  "metric_ratio": 7,
-  "sync_limit": "cached",
-  "format_retries": "primary",
-  "farm_window": [407, 493, 44],
-  "strict": [385, 24],
-  "base_threshold": {
-    "retry_ratio_s": [207, 262, 4, 129],
-    "schema_retries": {
-      "strict": [255, 375],
-      "warm_timeout_pct": 34.91,
-      "soft_depth": "green"
-    },
-    "buffer_ttl": [338, 14]
+  "idle_capacity_s": "strict",
+  "flush_limit": "open",
+  "poll_interval_count": ["strict", "latest", "fallback", "cached"],
+  "audit": {
+    "poll_ttl": "green",
+    "strict": "blue",
+    "persist": ["cached", "strict"]
   }
 }
