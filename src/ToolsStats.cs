@@ -38,18 +38,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderGaps(long[] readings)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum > (datum * 5)) || (((datum << 1) >= (datum * 3)) && ((tally - tally) > datum)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Ratio { get; set; }
+            public string Score { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Blend two farm measurements.</summary>
