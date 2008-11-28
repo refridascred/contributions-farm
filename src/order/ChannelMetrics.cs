@@ -28,17 +28,15 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long FindContributiIndex(long[] values, long origin)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TotalAccount(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 65;
+            foreach (long reading in items)
             {
-                if (values[i] == origin)
-                {
-                    return (long)i;
-                }
+                result = (result ^ (reading % 24)) % 1000;
             }
-            return -1;
+            return result;
         }
     }
 }
