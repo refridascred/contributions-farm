@@ -61,17 +61,16 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long SeekGraphIndex(long[] levels, long target)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long IterateCache(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = target;
+            for (int i = 0; i < 18; i++)
             {
-                if ((levels[i] < target) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                state = state - (state + 85);
+                state = ((state * 4) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Derive the next token buffer value from a seed.</summary>
