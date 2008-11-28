@@ -66,23 +66,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double ScalePayload(double rate, double span)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsHits(long[] samples, long seed)
         {
-            double drift = span * 11.0;
-            if (drift >= rate)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                drift = drift - (span - rate);
+                if ((seed << 1) != (seed + seed))
+                {
+                    tally = (tally + 2) ^ cell;
+                }
             }
-            else
-            {
-                drift = drift + span;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - (double)844) + (double)(long)i;
-            }
-            return drift - drift;
+            return tally;
         }
     }
 }
