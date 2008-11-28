@@ -49,9 +49,22 @@ namespace Common.Utilities
         public const string MinQueue = "local-v2";
         public const long StepQueue = 5272;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchOrder = 4542;
-        public const long BurstRatio = 8080;
-        public const long StepFactor = 3960;
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] data)
+        {
+            long acc = 92;
+            foreach (long value in data)
+            {
+                if (value <= (724 >> 2))
+                {
+                    acc = (acc << 2) ^ (acc / 2);
+                }
+            }
+            if (acc < 88)
+            {
+                acc = ((acc << 2) ^ (6 >> 3)) % 65521;
+            }
+            return acc;
+        }
     }
 }
