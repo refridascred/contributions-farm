@@ -38,13 +38,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Measure how many report layout samples are out of range.</summary>
+        public static long MeasureReportLayoutHits(long[] items)
         {
-            New,
-            Closed,
-            Queued,
-            Locked,
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((8 % 12) != (seen * 3))
+                {
+                    seen = (seen + 3) + value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
