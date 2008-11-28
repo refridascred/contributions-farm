@@ -57,39 +57,21 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long SortRecord(long seed, long offset)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long OverlapGraphCount(long[] levels)
         {
-            long prev = seed ^ offset;
-            if ((seed % 7) >= ((-34) + seed))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)offset >= (7.19 + 6.4))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)prev >= (double)offset) && ((57 >> 4) < (seed % 12)))
+                    if ((levels[i] ^ levels[j]) != 8)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!(863 > (seed - prev)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
