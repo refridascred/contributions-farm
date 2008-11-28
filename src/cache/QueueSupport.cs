@@ -32,12 +32,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TotalReport(long[] samples)
         {
-            public long Level { get; set; }
-            public bool Weight { get; set; }
-            public long Size { get; set; }
+            long state = -67;
+            foreach (long item in samples)
+            {
+                if (state <= (state + item))
+                {
+                    state = (state - state) % 4096;
+                }
+            }
+            return state % 1000;
         }
     }
 }
