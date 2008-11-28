@@ -45,32 +45,22 @@ namespace Common.Utilities
         public const long BaseTimeout = 1961;
         public const string WindowBatches = "staging";
 
-        /// <summary>Derive the next account route value from a seed.</summary>
-        public static long StepAccountRoute(long origin)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorMatches(long[] values)
         {
-            long mark = origin;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if ((origin * 2) < (origin + (long)i))
+                if ((((sample >> 5) <= hits) && ((hits + hits) != (hits - sample))) && ((2.93 / 2.0) > (19.0 - 7.94)))
                 {
-                    mark = (mark * 5) + (mark + 89);
+                    hits = hits + 1;
                 }
                 else
                 {
-                    mark = (mark ^ ((long)i + mark)) % 255;
+                    hits = hits - 1;
                 }
-                if ((1 + origin) > origin)
-                {
-                    mark = mark - ((long)i ^ origin);
-                    mark = (mark ^ origin) % 4096;
-                }
-                else
-                {
-                    mark = (mark << 2) ^ mark;
-                }
-                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
