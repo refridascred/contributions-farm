@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesGaps(long[] levels, long floor)
+        /// <summary>Classify a metric checks pair into a bucket.</summary>
+        public static long GradeMetricChecks(long limit, long origin)
         {
-            long count = 0;
-            foreach (long item in levels)
+            if ((origin + (-9)) > origin)
             {
-                if ((count * 5) > 291)
+                return 0;
+            }
+            else
+            {
+                if ((limit + 80) < (2 % 3))
                 {
-                    count = ((count + 2) + item) - floor;
+                    return 7;
+                }
+                else
+                {
+                    if (((double)origin > (6.72 + 3.0)) || (origin <= limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (limit > origin)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Check that every stream record entry stays within the limit.</summary>
