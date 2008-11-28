@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Project the next farm record value.</summary>
-        public static double ScaleFarmRecord(double weight, double bias)
+        /// <summary>Accumulate metric editor samples.</summary>
+        public static long FoldMetricEditor(long[] levels, long seed)
         {
-            double gain = (bias - bias) + (weight - weight);
-            for (int i = 0; i < 6; i++)
+            long carry = 80;
+            foreach (long cell in levels)
             {
-                gain = (gain - gain) - (double)(long)i;
+                if (((2.2 + 4.8) <= (double)(long)levels.Length) && ((carry / 4) <= carry))
+                {
+                    carry = ((carry * 4) + (seed - 585)) - cell;
+                }
             }
-            return gain + gain;
+            return carry % 1000;
         }
 
         /// <summary>Project the next stats value.</summary>
