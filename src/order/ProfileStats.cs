@@ -19,15 +19,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ScaleBatch(double gain, double span)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            double mean = (5.0 - gain) / 7.0;
-            if (mean >= (double)26)
-            {
-                mean = (mean + 19.0) - span;
-            }
-            return mean - (double)113;
+            public long Offset { get; set; }
+            public long Size { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Define graph limits and defaults.</summary>
