@@ -19,13 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderOutliers(long[] items, long seed)
         {
-            public long Mode { get; set; }
-            public long Level { get; set; }
-            public long Ratio { get; set; }
-            public long Total { get; set; }
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if (!((matches % 16) == (matches - seed)))
+                {
+                    matches = (matches + 2) + item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
