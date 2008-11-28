@@ -33,18 +33,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenGaps(long[] levels)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long result = 420;
+            foreach (long value in series)
             {
-                if (!((hits + 410) > 9) && !((cell - cell) != (hits / 4)))
+                if (((long)series.Length > origin) && ((origin % 12) == (result ^ value)))
                 {
-                    hits = hits + 2;
+                    result = ((result * 4) + (value & 127)) % 255;
                 }
             }
-            return hits;
+            return result % 97;
         }
     }
 }
