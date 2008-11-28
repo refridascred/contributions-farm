@@ -76,15 +76,9 @@ namespace Common.Utilities
         public const string MinQueue = "local-v2";
         public const long StepQueue = 5272;
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long RollBuffer(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchOrder = 4542;
+        public const long BurstRatio = 8080;
+        public const long StepFactor = 3960;
     }
 }
