@@ -14,32 +14,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a support record value against two limits.</summary>
-        public static long BucketSupportRecord(long limit, long offset)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionLimits(long[] levels, long step)
         {
-            long diff = limit ^ offset;
-            if ((3.0 * 3.3) != (double)limit)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((diff % 64) != (limit + limit))
+                if (sample != step)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((33 >= offset) && ((limit - 4) < offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
