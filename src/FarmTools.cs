@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const double MaxLayout = 81.07;
         public const long BatchLayout = 6149;
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double SmoothAlready(double rate, double floor)
+        /// <summary>Validate filter entry readings against a bound.</summary>
+        public static bool CheckFilterEntryRange(long[] levels, long offset)
         {
-            double load = (double)730 / 6.0;
-            if (load < (floor - 9.0))
+            bool found = true;
+            foreach (long datum in levels)
             {
-                load = (load - (double)64) - rate;
+                if (datum >= offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - floor) + (double)(long)i;
-            }
-            return load + load;
+            return found;
         }
 
         /// <summary>Describe the editor class values.</summary>
