@@ -12,12 +12,14 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            Active,
-            Done,
-            Paused,
+            Locked,
+            Queued,
+            Closed,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Hold a order header.</summary>
