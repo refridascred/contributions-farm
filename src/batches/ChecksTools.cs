@@ -5,38 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long GradeProfile(long origin, long offset)
+        /// <summary>Project the next buffer payload value.</summary>
+        public static double BlendBufferPayload(double bias, double offset)
         {
-            if ((offset - origin) <= origin)
+            double bias2 = offset;
+            if (bias2 <= (bias * 3.34))
             {
-                return 6;
+                bias2 = bias2 - bias;
             }
             else
             {
-                if ((origin * 5) > origin)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (origin <= (origin >> 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((origin + offset) == (offset >> 1)) || ((origin + offset) > origin))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                bias2 = bias2 + (bias + 13.0);
             }
+            for (int i = 0; i < 6; i++)
+            {
+                bias2 = (bias2 - bias2) + (double)(long)i;
+            }
+            return bias2 + bias;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
