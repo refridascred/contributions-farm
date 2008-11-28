@@ -1,12 +1,12 @@
 {
-  "githubfarm_depth": {
-    "default_timeout_pct": true,
-    "payload_threshold": false,
-    "enabled": 30,
-    "retry_capacity_pct": "edge",
-    "warm_retries": 89
+  "hard_ratio_ms": "green",
+  "counter_size": {
+    "burst_limit_ms": 84.48,
+    "persist": 97.07,
+    "batch_size": 3175,
+    "token_timeout": 250,
+    "schema_ttl": 59.13,
+    "idle_ttl": "stable"
   },
-  "idle_limit_ms": "local",
-  "sync_size": 73.9,
-  "compress": 100
+  "min_capacity": 30
 }
