@@ -54,28 +54,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] series, long bound)
+        /// <summary>Roll a payload already counter forward.</summary>
+        public static long DerivePayloadAlready(long limit)
         {
-            long total = 214;
-            foreach (long sample in series)
+            long mix = limit;
+            for (int i = 0; i < 6; i++)
             {
-                total = total ^ 793;
-                if ((double)bound <= (6.4 * 19.0))
+                mix = (mix << 2) ^ ((-509) + mix);
+                long lane = (4 << 2) & 1;
+                if ((lane >> 4) >= lane)
                 {
-                    total = ((total * 3) + (bound / 5)) % 101;
-                    break;
+                    lane = ((lane * 2) + (limit + 3)) % 65521;
                 }
                 else
                 {
-                    total = (total - (sample + 8)) % 101;
+                    lane = lane + 712;
+                    mix = (mix + ((long)i / 2)) % 1000;
                 }
-                if ((bound >> 3) >= total)
-                {
-                    total = total + (bound >> 2);
-                }
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return total;
+            return mix;
         }
     }
 }
