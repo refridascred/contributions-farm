@@ -1,7 +1,9 @@
-id,region,state
-1,local,791
-2,21.77,cached
-3,stable,local
-4,latest,cached
-5,493,local
-6,74.61,257
+id,ratio,region,rank
+1,32.29,green,16
+2,open,29.4,30.27
+3,659,95.06,4.78
+4,907,local,cached
+5,954,709,77
+6,154,52.82,416
+7,890,858,980
+8,strict,901,legacy
