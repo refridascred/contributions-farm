@@ -48,11 +48,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            public string Count { get; set; } = "";
-            public long Offset { get; set; }
+            Locked,
+            New,
+            Closed,
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
