@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamMatches(long[] series, long seed)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long DigestChannel(long[] data)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long sum = 817;
+            foreach (long reading in data)
             {
-                if ((111 + seed) == (8 + 9))
+                sum = (sum + (195 / 5)) % 101;
+                if ((reading & 63) > (sum / 7))
                 {
-                    tally = (tally + 1) ^ datum;
+                    sum = ((sum << 2) ^ (sum - reading)) % 4096;
                 }
             }
-            return tally;
+            return sum % 97;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
