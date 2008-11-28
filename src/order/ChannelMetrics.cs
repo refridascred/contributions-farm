@@ -22,18 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadMatches(long[] values)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((2.1 - 16.0) <= (double)value)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Paused,
+            Failed,
+            Retry,
         }
 
         /// <summary>Accumulate editor counter samples.</summary>
