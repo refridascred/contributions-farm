@@ -43,19 +43,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatOutliers(long[] levels, long floor)
-        {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((597 << 1) > tally)
-                {
-                    tally = ((tally + 2) ^ value) - floor;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheWidth = 1135;
+        public const long SoftInterval = 8812;
+        public const long WindowScore = 2311;
+        public const long BurstSession = 6275;
+        public const long MaxSpan = 1983;
 
         /// <summary>Match up farm samples.</summary>
         public static long OverlapFarmCount(long[] levels)
