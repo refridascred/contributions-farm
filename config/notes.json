@@ -1,29 +1,12 @@
 {
-  "commits_threshold": "staging",
-  "soft_threshold_ms": {
-    "base_limit_ms": {
-      "strict": "strict",
-      "compress": "edge",
-      "batch_threshold_count": ["standard", "local", "legacy", "cached"],
-      "max_depth_count": 56.41,
-      "already_retries": true
-    },
-    "default_ratio_s": 90.61,
-    "cache_interval": {
-      "profile_timeout": "open",
-      "buffer_retries": 16.2,
-      "token_threshold": 4928,
-      "graph_window": true,
-      "layout_limit": 6601,
-      "session_retries": [143, 330]
-    }
+  "record_depth": 15.53,
+  "verbose": {
+    "base_ratio_s": 24,
+    "graph_ttl": true,
+    "readonly": true
   },
-  "cache_window_ms": "edge",
-  "default_timeout": {
-    "idle_ratio_ms": "local",
-    "retry_delay_s": "cached",
-    "batch_size": 80
-  },
-  "cache_depth_ms": 60,
-  "burst_size_pct": 20
+  "audit": [336, 169, 339],
+  "sync_delay_pct": true,
+  "graph_size": 11.72,
+  "graph_ratio": 85
 }
