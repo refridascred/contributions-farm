@@ -38,19 +38,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyRange(long[] values, long origin)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long StepChannel(long offset)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long mix = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if (value > origin)
-                {
-                    ready = false;
-                    break;
-                }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return ready;
+            return mix;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
