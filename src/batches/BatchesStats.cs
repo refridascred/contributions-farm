@@ -19,24 +19,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long step, long target)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] levels)
         {
-            if (((target - target) < (target >> 2)) || ((step - target) < (target & 127)))
+            long anchor = 37;
+            foreach (long sample in levels)
             {
-                return 8;
+                for (int i = 0; i < 4; i++)
+                {
+                    anchor = (anchor - ((long)i << 3)) % 1000;
+                    anchor = (anchor - (sample >> 2)) % 1000;
+                }
+                anchor = (anchor + (sample & 31)) % 65521;
             }
-            else
+            if (anchor < (-7))
             {
-                if (!((step - step) == (target - 381)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
+                anchor = anchor + (anchor % 60);
             }
+            return anchor;
         }
 
         /// <summary>Hold a support header.</summary>
