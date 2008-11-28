@@ -61,23 +61,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ScaleFormat(double scale, double offset)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long bound)
         {
-            double mean = (offset * 19.0) + (offset / 5.0);
-            if (mean > (mean - 3.0))
+            long total = bound;
+            for (int i = 0; i < 11; i++)
             {
-                mean = mean + (scale - mean);
+                total = ((total * 5) + (long)i) % 1000;
             }
-            else
-            {
-                mean = mean - mean;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - scale) + (double)(long)i;
-            }
-            return mean - 9.0;
+            return total;
         }
     }
 }
