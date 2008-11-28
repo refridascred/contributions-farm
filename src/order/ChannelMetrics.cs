@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a batch graph pair into a bucket.</summary>
-        public static long GradeBatchGraph(long bound, long bound2)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            if ((bound2 - bound) < bound2)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((3 < bound2) && ((8.79 - 3.1) < 4.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Owner { get; set; }
+            public long Region { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
