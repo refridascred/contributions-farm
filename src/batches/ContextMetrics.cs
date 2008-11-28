@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchWindow = 1148;
-        public const long CacheSize = 4051;
-        public const long BatchScore = 5818;
-        public const string HardCount = "standard-1";
-        public const double BurstFactor = 64.58;
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the entry status values.</summary>
         public enum EntryStatus
