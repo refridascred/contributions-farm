@@ -39,11 +39,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ScaleBatch(double gain, double span)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            double load = (double)(257 & 63);
-            return (load - span) + gain;
+            New,
+            Closed,
+            Queued,
+            Locked,
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
