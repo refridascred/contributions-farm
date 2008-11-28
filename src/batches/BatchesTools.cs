@@ -5,23 +5,38 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a record reading.</summary>
-        public static double BlendRecord(double bias, double span)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long offset, long seed)
         {
-            double gain = bias / 6.0;
-            if (gain > 17.0)
+            if (!((offset << 2) > 50))
             {
-                gain = gain + span;
+                return 4;
             }
             else
             {
-                gain = gain - bias;
+                if (seed < ((-92) ^ offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((3.97 * 6.5) <= (double)66)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((seed - offset) <= offset))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + (span * 5.4)) + (double)(long)i;
-            }
-            return gain - (double)(-9);
         }
 
         /// <summary>Roll a already counter forward.</summary>
