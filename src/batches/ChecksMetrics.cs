@@ -58,15 +58,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] data, long seed)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long seed, long bound)
         {
-            long carry = 4;
-            foreach (long reading in data)
+            long gap = seed ^ bound;
+            if (bound >= (30 - 8))
             {
-                carry = (((carry << 2) ^ (reading - reading)) % 1000) + seed;
+                return 0;
             }
-            return carry;
+            else
+            {
+                if ((double)bound >= (0.8 / 2.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (gap > (gap + 4))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a support entry.</summary>
