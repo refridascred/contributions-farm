@@ -20,18 +20,25 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutHits(long[] series, long offset)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long SortStream(long bound, long floor)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long slot = bound - floor;
+            if (slot >= (bound % 100))
             {
-                if ((cell / 2) >= (cell - offset))
+                return 2;
+            }
+            else
+            {
+                if ((double)slot > 2.16)
                 {
-                    matches = matches + 2;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
 
         /// <summary>Count account context pairs that satisfy a relation.</summary>
