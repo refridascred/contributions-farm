@@ -25,11 +25,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Find the first filter editor entry that matches the target.</summary>
+        public static long LocateFilterEditorIndex(long[] values, long bound)
         {
-            public long Rank { get; set; }
-            public bool Total { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
