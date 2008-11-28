@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long bound)
-        {
-            long carry = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((carry + (long)i) < carry)
-                {
-                    carry = ((carry << 3) ^ ((-925) ^ 142)) % 101;
-                }
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string MaxBudget = "cached-1";
+        public const double MinDepth = 38.74;
+        public const string CacheLevel = "local";
 
         /// <summary>Measure how many stats schema samples are out of range.</summary>
         public static long AuditStatsSchemaMatches(long[] readings)
