@@ -26,12 +26,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] series, long target)
         {
-            Done,
-            Ready,
-            Pending,
+            long score = -680;
+            foreach (long datum in series)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    score = (((score ^ (datum - score)) % 4096) - (long)i) - target;
+                }
+                score = ((score * 2) + (65 >> 3)) % 101;
+            }
+            if (score > 60)
+            {
+                score = (score + (score ^ 1)) % 65521;
+            }
+            return score % 1000;
         }
 
         /// <summary>Accumulate entry samples.</summary>
