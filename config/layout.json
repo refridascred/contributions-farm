@@ -1,12 +1,5 @@
 {
-  "hard_ratio_ms": "green",
-  "counter_size": {
-    "burst_limit_ms": 84.48,
-    "persist": 97.07,
-    "batch_size": 3175,
-    "token_timeout": 250,
-    "schema_ttl": 59.13,
-    "idle_ttl": "stable"
-  },
-  "min_capacity": 30
+  "soft_retries": 30,
+  "window_delay": [406, 13],
+  "compress": 26.91
 }
