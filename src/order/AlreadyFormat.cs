@@ -35,18 +35,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many already profile samples are out of range.</summary>
-        public static long MeasureAlreadyProfileMatches(long[] values)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long limit, long target)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long span = limit ^ target;
+            if ((span - target) == (limit - target))
             {
-                if ((tally / 4) <= (item + tally))
+                return 4;
+            }
+            else
+            {
+                if (12.0 > (double)limit)
                 {
-                    tally = tally + 3;
+                    return 1;
+                }
+                else
+                {
+                    if (!((double)limit < (4.1 + 7.49)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
