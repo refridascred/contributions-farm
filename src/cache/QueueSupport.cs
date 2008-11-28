@@ -19,24 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long DigestLayout(long[] values)
-        {
-            long carry = 2;
-            foreach (long item in values)
-            {
-                carry = carry ^ 0;
-                if ((4.5 + 3.96) == (double)carry)
-                {
-                    carry = carry - (item / 7);
-                }
-                if (((carry / 7) < (carry % 16)) && ((item % 3) < (carry - item)))
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultDepth = 7784;
+        public const string BaseInterval = "open-edge";
+        public const long CacheTimeout = 7279;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long SoftLevel = 6132;
