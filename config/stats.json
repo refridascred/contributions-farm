@@ -1,6 +1,17 @@
 {
-  "token_depth": "staging",
-  "entry_ratio": 8388,
-  "burst_window": [378, 227, 188, 24],
-  "farm_delay": 82.38
+  "min_capacity_count": "latest",
+  "checks_timeout": {
+    "report_ttl": 100,
+    "buffer_delay": [356, 240],
+    "verbose": 39.63,
+    "notes_interval": "stable",
+    "flush_depth": 6593,
+    "compress": {
+      "tools_depth": "stable",
+      "burst_timeout_ms": true,
+      "min_depth_count": true
+    }
+  },
+  "account_limit": false,
+  "dry_run": 44.8
 }
