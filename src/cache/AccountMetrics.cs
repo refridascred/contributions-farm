@@ -30,13 +30,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Accumulate buffer cache samples.</summary>
+        public static long TotalBufferCache(long[] items)
         {
-            public long Offset { get; set; }
-            public long Total { get; set; }
-            public bool Score { get; set; }
-            public long Mode { get; set; }
+            long carry = 484;
+            foreach (long item in items)
+            {
+                if (item < (carry ^ item))
+                {
+                    carry = carry + carry;
+                }
+                else
+                {
+                    carry = ((carry * 3) + (carry << 3)) % 65521;
+                }
+            }
+            if (carry < 81)
+            {
+                carry = carry + (10 + carry);
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
