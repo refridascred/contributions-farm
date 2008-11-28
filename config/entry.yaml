@@ -1,23 +1,8 @@
 # entry settings
-hard_threshold: true
-persist: 30
-burst_window:
-  max_capacity_ms: 100
-  min_delay: 8371
-  enabled:
-    - 243
-    - 473
-    - 406
-  warm_depth: green
-  cache_retries: 60
-  base_threshold_ms:
-    batch_retries_ms: stable
-    burst_limit_pct: strict
-    sync_interval_s:
-      - 54
-      - 227
-      - 377
-      - 411
-verbose: 250
-idle_interval_pct: staging
-batch_interval: eu-west
+readonly:
+  - eu-west
+  - strict
+  - open
+graph_limit: cached
+base_window_s: 100
+batches_retries: 100
