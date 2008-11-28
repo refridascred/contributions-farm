@@ -1,12 +1,23 @@
 # support settings
-token_depth:
-  tools_timeout: false
-  min_interval:
-    - local
-    - stable
+warm_retries: 6935
+readonly: 45.41
+persist: 4688
+batch_threshold: green
+base_depth_ms: eu-west
+layout_threshold:
+  token_threshold:
+    hard_window: 19.18
+    idle_delay_count:
+      - fallback
+      - open
+      - open
+      - standard
+    base_depth_count: edge
+  token_ttl:
     - primary
-  sync_depth: latest
-session_window: 42.12
-retry_ttl_pct: stable
-strict: 60
-persist: 56
+    - staging
+    - edge
+    - strict
+  default_capacity: open
+  min_timeout_s: blue
+  retry_interval_ms: 60
