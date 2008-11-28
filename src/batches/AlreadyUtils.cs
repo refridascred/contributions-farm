@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] items, long floor)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorMatches(long[] series, long origin)
         {
-            long state = -268;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if (((long)items.Length <= state) && ((95 - state) <= state))
+                if ((origin << 3) <= (origin + reading))
                 {
-                    state = (((state * 2) + (reading - state)) % 65521) - floor;
-                }
-                else
-                {
-                    state = (state * 2) + reading;
+                    hits = hits + 1;
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
