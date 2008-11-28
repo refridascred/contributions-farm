@@ -16,19 +16,15 @@ namespace Common.Utilities
             return drift + (scale + 1.8);
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountBounds(long[] data, long origin)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long IterateRoute(long bound)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            long mark = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if (reading != origin)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Accumulate metric commits samples.</summary>
