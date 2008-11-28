@@ -36,25 +36,10 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long BucketRecord(long origin, long bound)
-        {
-            if ((1.3 * 7.9) < (double)origin)
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((bound & 255) < (18 - bound)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryContext = 8718;
+        public const long CacheContext = 1315;
+        public const string BatchInterval = "open";
 
         /// <summary>Describe the token state values.</summary>
         public enum TokenState
