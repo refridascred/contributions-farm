@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] levels)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long CompareMetricCount(long[] levels)
         {
-            long mark = 71;
-            foreach (long value in levels)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)mark == (1.2 + 1.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = (mark - (value + mark)) % 97;
-                }
-                else
-                {
-                    mark = (mark * 3) + (mark << 1);
+                    if ((levels[i] - levels[j]) > 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
