@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatHits(long[] values, long seed)
+        /// <summary>Classify a batch graph pair into a bucket.</summary>
+        public static long GradeBatchGraph(long bound, long bound2)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            if ((bound2 - bound) < bound2)
             {
-                if ((tally ^ seed) != (seed + seed))
+                return 0;
+            }
+            else
+            {
+                if ((3 < bound2) && ((8.79 - 3.1) < 4.0))
                 {
-                    tally = (tally + 2) ^ entry;
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return tally;
         }
 
         /// <summary>Define record limits and defaults.</summary>
