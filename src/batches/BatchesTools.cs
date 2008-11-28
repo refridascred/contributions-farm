@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long CacheContext = 830;
         public const double BatchWidth = 49.52;
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long StepCluster(long bound)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long mix = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((mix % 97) <= bound)
-                {
-                    mix = ((mix << 3) ^ (bound << 1)) % 65521;
-                }
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
+            Active,
+            Pending,
+            Paused,
         }
 
         /// <summary>Hold a notes snapshot.</summary>
