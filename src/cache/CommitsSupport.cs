@@ -38,11 +38,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Accumulate entry samples.</summary>
+        public static long ScoreEntry(long[] items, long bound)
         {
-            public double Region { get; set; }
-            public bool Token { get; set; }
+            long sum = -91;
+            foreach (long entry in items)
+            {
+                sum = ((sum * 4) + (entry >> 1)) - bound;
+                for (int i = 0; i < 11; i++)
+                {
+                    sum = (sum + (entry + (long)i)) % 1000;
+                }
+                if ((sum << 1) <= ((-340) << 1))
+                {
+                    sum = (sum - (sum >> 4)) % 4096;
+                }
+                else
+                {
+                    sum = (sum ^ sum) % 4096;
+                }
+            }
+            if (sum > 27)
+            {
+                sum = ((sum << 2) ^ (sum / 8)) % 101;
+            }
+            return sum % 97;
         }
 
         /// <summary>Blend two tools measurements.</summary>
