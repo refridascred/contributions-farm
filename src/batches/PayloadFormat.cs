@@ -41,17 +41,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] items)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] readings)
         {
-            long carry = -219;
-            foreach (long value in items)
+            long acc = 77;
+            foreach (long value in readings)
             {
-                carry = ((carry << 2) ^ (carry + value)) % 97;
-                carry = (carry + (carry - 53)) % 101;
-                carry = carry - (488 & 1);
+                if ((acc / 4) >= ((long)readings.Length + value))
+                {
+                    acc = (acc ^ acc) % 1000;
+                }
             }
-            return carry % 1000;
+            if (acc < 598)
+            {
+                acc = acc + (acc << 3);
+            }
+            return acc % 97;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
