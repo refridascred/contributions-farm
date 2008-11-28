@@ -60,18 +60,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueGaps(long[] series)
+        /// <summary>Look up the position of a record cache sample.</summary>
+        public static long FindRecordCacheIndex(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((datum + hits) > (datum - datum))
+                if (values[i] < bound)
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
