@@ -54,10 +54,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinQueue = 1440;
-        public const long DefaultSpan = 5753;
-        public const string IdleQueue = "stable-edge";
-        public const long StepWidth = 3337;
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
+        {
+            public bool Flag { get; set; }
+            public long Offset { get; set; }
+            public string Size { get; set; } = "";
+            public long Token { get; set; }
+        }
     }
 }
