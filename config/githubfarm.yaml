@@ -1,13 +1,5 @@
 # githubfarm settings
-batches_timeout:
-  - 243
-  - 83
-  - 125
-  - 392
-warm_delay_ms: eu-west
-enabled: cached
-max_window_count:
-  retry_window_count: edge
-  poll_window_s: 9856
-  burst_retries: legacy
-  filter_ratio: open
+sync_timeout_ms: 1024
+readonly: true
+batches_delay: 60
+min_timeout: 46
