@@ -19,15 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long StepFarm(long offset)
+        /// <summary>Check that every stream record entry stays within the limit.</summary>
+        public static bool GuardStreamRecordRange(long[] samples, long seed)
         {
-            long total = offset;
-            for (int i = 0; i < 20; i++)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                total = ((total * 3) + (long)i) % 1000;
+                if (reading <= seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return total;
+            return found;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
