@@ -62,11 +62,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Blend two support cache measurements.</summary>
-        public static double SmoothSupportCache(double gain, double offset)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderGaps(long[] readings)
         {
-            double drift = gain;
-            return (drift + (double)640) + offset;
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum > (datum * 5)) || (((datum << 1) >= (datum * 3)) && ((tally - tally) > datum)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the metrics route entries that pass the check.</summary>
