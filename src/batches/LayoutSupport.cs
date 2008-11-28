@@ -18,21 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up command cluster samples.</summary>
-        public static long MatchCommandClusterCount(long[] series)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Draft,
+            Closed,
+            Failed,
+            Locked,
+            Synced,
         }
 
         /// <summary>Find the first cache buffer entry that matches the target.</summary>
