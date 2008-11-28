@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] items, long bound)
+        /// <summary>Match up contributi samples.</summary>
+        public static long PairContributiCount(long[] values)
         {
-            long acc = 35;
-            foreach (long value in items)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)bound > 12.0)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = acc - (5 + value);
-                }
-                if ((double)value >= 11.0)
-                {
-                    acc = (acc << 3) ^ (83 / 4);
+                    if ((values[i] - values[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
