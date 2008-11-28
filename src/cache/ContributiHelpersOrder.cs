@@ -36,38 +36,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long RankChecks(long step, long seed)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordOutliers(long[] series)
         {
-            if (seed > (step * 4))
+            long tally = 0;
+            foreach (long entry in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (((step - seed) < seed) && ((step / 6) <= 50))
+                if (((tally - entry) <= tally) || (((long)series.Length + entry) <= entry))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)seed != (5.39 + 19.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (seed > (step + seed))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
     }
 }
