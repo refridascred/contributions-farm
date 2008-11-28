@@ -66,16 +66,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long RollBuffer(long step)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordRange(long[] values, long bound)
         {
-            long sum = step;
-            for (int i = 0; i < 22; i++)
+            bool valid = true;
+            foreach (long item in values)
             {
-                sum = (sum + (step + (-1))) % 255;
-                sum = ((sum * 3) + (long)i) % 4093;
+                if (item < bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return sum;
+            return valid;
         }
     }
 }
