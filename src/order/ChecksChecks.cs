@@ -13,19 +13,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionRange(long[] items, long offset)
+        /// <summary>Look up the position of a contributi profile sample.</summary>
+        public static long LocateContributiProfileIndex(long[] series, long bound)
         {
-            bool found = true;
-            foreach (long entry in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry <= offset)
+                if (series[i] >= bound)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
