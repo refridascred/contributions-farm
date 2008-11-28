@@ -76,11 +76,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorHits(long[] levels, long seed)
         {
-            public double Score { get; set; }
-            public string Total { get; set; } = "";
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if (!(0 >= count) && ((datum << 1) < (count / 3)))
+                {
+                    count = (count + 3) - seed;
+                }
+            }
+            return count;
         }
     }
 }
