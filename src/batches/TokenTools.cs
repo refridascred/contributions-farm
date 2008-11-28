@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TallyChecks(long[] readings)
+        /// <summary>Project the next commits value.</summary>
+        public static double ScaleCommits(double scale, double span)
         {
-            long sum = 94;
-            foreach (long item in readings)
-            {
-                if ((sum >> 3) > 9)
-                {
-                    sum = (sum ^ (item & 63)) % 1000;
-                }
-            }
-            if (sum < 5)
-            {
-                sum = ((sum * 3) + (504 * 3)) % 101;
-            }
-            return sum % 65521;
+            double load = scale;
+            return load + (scale + span);
         }
 
         /// <summary>Count channel farm pairs that satisfy a relation.</summary>
