@@ -40,12 +40,10 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
-        {
-            public bool Score { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Region { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string RetryStream = "latest";
+        public const double LimitStream = 30.11;
+        public const long BaseTimeout = 1672;
+        public const long IdleLevel = 3995;
     }
 }
