@@ -23,24 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long BucketWindow(long step, long floor)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            if (step >= (floor >> 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((12.0 * 4.26) < (double)floor)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public string Stamp { get; set; } = "";
+            public string Label { get; set; } = "";
+            public double Weight { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Locate a command reading by value.</summary>
