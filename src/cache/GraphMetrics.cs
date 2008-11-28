@@ -10,10 +10,12 @@ namespace Common.Utilities
         public const long BurstContext = 7406;
         public const double BaseContext = 97.5;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultSpan = 5526;
-        public const long BurstProfile = 5245;
-        public const long BatchProfile = 5212;
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
+        {
+            public double Limit { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Hold a command header.</summary>
         public sealed class CommandHeader
