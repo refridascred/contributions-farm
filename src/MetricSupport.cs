@@ -46,13 +46,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            public bool Owner { get; set; }
-            public bool Offset { get; set; }
-            public long Mode { get; set; }
-            public long Total { get; set; }
+            Draft,
+            New,
+            Dropped,
+            Retry,
+            Stale,
         }
     }
 }
