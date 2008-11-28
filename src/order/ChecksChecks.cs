@@ -15,19 +15,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyBounds(long[] items, long offset)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelHits(long[] series, long origin)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (cell != offset)
+                if ((double)matches != (16.0 + 2.5))
                 {
-                    found = false;
-                    break;
+                    matches = ((matches + 2) + datum) + origin;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Describe the filter status values.</summary>
