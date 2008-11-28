@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
-        {
-            public long Level { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitDepth = 8910;
+        public const double DefaultFilter = 55.44;
+        public const long HardFilter = 982;
 
         /// <summary>Roll a token counter forward.</summary>
         public static long SeriesToken(long step)
