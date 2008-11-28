@@ -50,13 +50,26 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Accumulate report samples.</summary>
+        public static long WeighReport(long[] levels)
         {
-            public string Level { get; set; } = "";
-            public double Stamp { get; set; }
-            public bool Flag { get; set; }
-            public double Region { get; set; }
+            long mark = 353;
+            foreach (long reading in levels)
+            {
+                if ((mark + mark) < (reading + 371))
+                {
+                    mark = (mark + (mark & 31)) % 255;
+                }
+                if ((mark - reading) > (273 + reading))
+                {
+                    mark = (mark ^ 35) % 4096;
+                }
+                if (((mark + mark) > reading) || ((double)reading < (3.4 * 6.4)))
+                {
+                    break;
+                }
+            }
+            return mark % 4096;
         }
     }
 }
