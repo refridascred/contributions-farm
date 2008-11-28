@@ -43,26 +43,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a payload already counter forward.</summary>
-        public static long DerivePayloadAlready(long limit)
+        /// <summary>Grade a tools window value against two limits.</summary>
+        public static long GradeToolsWindow(long origin, long limit)
         {
-            long mix = limit;
-            for (int i = 0; i < 6; i++)
+            if ((48 * 2) > origin)
             {
-                mix = (mix << 2) ^ ((-509) + mix);
-                long lane = (4 << 2) & 1;
-                if ((lane >> 4) >= lane)
+                return 0;
+            }
+            else
+            {
+                if (origin < (limit * 5))
                 {
-                    lane = ((lane * 2) + (limit + 3)) % 65521;
+                    return 1;
                 }
                 else
                 {
-                    lane = lane + 712;
-                    mix = (mix + ((long)i / 2)) % 1000;
+                    return 4;
                 }
-                mix = ((mix * 3) + (long)i) % 101;
             }
-            return mix;
         }
     }
 }
