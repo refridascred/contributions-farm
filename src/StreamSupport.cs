@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstMetric = 792;
-        public const double MaxMetric = 47.76;
-        public const long BaseMetric = 2169;
-        public const long LimitTimeout = 3625;
-        public const string SoftMetric = "alpha-edge";
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
+        {
+            Failed,
+            Closed,
+            Ready,
+            Queued,
+            Idle,
+        }
 
         /// <summary>Count the farm session entries that pass the check.</summary>
         public static long AuditFarmSessionGaps(long[] items, long target)
