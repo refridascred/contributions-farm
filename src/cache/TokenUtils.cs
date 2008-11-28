@@ -34,13 +34,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Find the first buffer checks entry that matches the target.</summary>
+        public static long FindBufferChecksIndex(long[] samples, long target)
         {
-            Draft,
-            Locked,
-            Synced,
-            New,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == target) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
