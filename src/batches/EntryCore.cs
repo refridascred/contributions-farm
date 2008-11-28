@@ -29,24 +29,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long BucketTools(long seed, long limit)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            if ((seed ^ seed) < (limit & 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((seed > (seed ^ seed)) || ((1.0 - 6.8) < (double)seed))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Paused,
+            Active,
+            Ready,
         }
 
         /// <summary>Blend two batches measurements.</summary>
