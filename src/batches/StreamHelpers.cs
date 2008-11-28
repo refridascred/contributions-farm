@@ -32,18 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of token metrics readings.</summary>
-        public static long TallyTokenMetrics(long[] data)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long sum = 48;
-            foreach (long cell in data)
-            {
-                if ((5.0 + 9.0) >= (double)sum)
-                {
-                    sum = ((sum << 2) ^ cell) % 97;
-                }
-            }
-            return sum % 65521;
+            public bool Flag { get; set; }
+            public long Mode { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
