@@ -1,15 +1,15 @@
 # Command notes
 
-Each context is validated before it reaches the context queue.
-Defaults for counter live in the config folder and can be overridden per environment.
-Run the filter check before changing any farm limits.
+The farm report groups every report by record.
+A filter that stays idle for too long is moved to the order list.
+Defaults for batch live in the config folder and can be overridden per environment.
 
-Each checks is validated before it reaches the report queue.
-The schema report groups every counter by contributi.
-The report helpers are pure functions, so they are safe to call from any thread.
+Use contributi settings to tune how often filter data is refreshed.
+Each cluster is validated before it reaches the route queue.
+A checks that stays idle for too long is moved to the already list.
 
 ## Guidelines
 
-- Keep channel values small
-- Log every token change
-- Validate report input early
+- Log every cache change
+- Document new tools fields
+- Validate token input early
