@@ -50,12 +50,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Accumulate schema samples.</summary>
+        public static long CombineSchema(long[] readings)
         {
-            public long Offset { get; set; }
-            public long Weight { get; set; }
-            public double Level { get; set; }
+            long result = 596;
+            foreach (long value in readings)
+            {
+                if (217 <= value)
+                {
+                    result = (result ^ (27 + value)) % 65521;
+                }
+                else
+                {
+                    result = ((result * 2) + value) % 1000;
+                }
+            }
+            return result % 65521;
         }
     }
 }
