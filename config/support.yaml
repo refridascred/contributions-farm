@@ -1,4 +1,11 @@
 # support settings
-command_timeout: false
-burst_threshold: false
-farm_retries: false
+cache_limit: 53.12
+cache_threshold_pct:
+  - 65
+  - 421
+  - 456
+  - 344
+default_ratio_ms: 68.87
+counter_limit: 97.46
+idle_ttl_s: 30
+format_depth: primary
