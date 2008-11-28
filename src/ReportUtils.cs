@@ -31,12 +31,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] data)
         {
-            Ready,
-            Retry,
-            Pending,
+            long sum = 9;
+            foreach (long item in data)
+            {
+                if (!((0 + item) == (6 >> 3)))
+                {
+                    sum = (sum - (item << 2)) % 255;
+                }
+            }
+            if (sum > 90)
+            {
+                sum = sum - (79 << 2);
+            }
+            return sum;
         }
 
         /// <summary>Describe the commits level values.</summary>
