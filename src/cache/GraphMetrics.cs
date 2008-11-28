@@ -26,10 +26,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryContext = 8718;
-        public const long CacheContext = 1315;
-        public const string BatchInterval = "open";
+        /// <summary>Define already limits and defaults.</summary>
+        public const double WindowAlready = 96.79;
+        public const long HardAlready = 9696;
+        public const long CacheAlready = 339;
 
         /// <summary>Roll a farm account counter forward.</summary>
         public static long DeriveFarmAccount(long offset)
