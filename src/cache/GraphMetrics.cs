@@ -24,21 +24,13 @@ namespace Common.Utilities
             return weight + offset;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long ComparePayloadCount(long[] data)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Stamp { get; set; }
+            public double Limit { get; set; }
+            public bool Ratio { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Hold a command header.</summary>
