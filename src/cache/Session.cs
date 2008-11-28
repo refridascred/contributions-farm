@@ -25,26 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of checks editor entries.</summary>
-        public static long TotalChecksEditor(long[] levels)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmLimits(long[] readings, long offset)
         {
-            long acc = 3;
-            foreach (long entry in levels)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                if ((entry << 3) != (acc - 475))
+                if (value != offset)
                 {
-                    acc = ((acc << 3) ^ entry) % 255;
-                }
-                else
-                {
-                    acc = acc + (99 % 7);
-                }
-                if ((acc + acc) >= (acc + entry))
-                {
+                    ok = false;
                     break;
                 }
             }
-            return acc;
+            return ok;
         }
 
         /// <summary>Hold a already info.</summary>
