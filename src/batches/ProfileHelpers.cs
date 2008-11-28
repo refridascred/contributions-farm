@@ -22,12 +22,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Classify a filter window pair into a bucket.</summary>
+        public static long BucketFilterWindow(long target, long floor)
         {
-            Idle,
-            Draft,
-            Queued,
+            if ((target ^ floor) < (97 + target))
+            {
+                return 7;
+            }
+            else
+            {
+                if (target < (target + (-633)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (target < (target ^ 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two support payload measurements.</summary>
