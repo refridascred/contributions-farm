@@ -42,19 +42,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadBounds(long[] readings, long offset)
-        {
-            bool found = true;
-            foreach (long reading in readings)
-            {
-                if (reading != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseFarm = 7226;
+        public const double LimitFarm = 39.8;
+        public const long HardLevel = 9377;
+        public const string MinFarm = "cached-1";
     }
 }
