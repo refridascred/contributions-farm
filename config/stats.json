@@ -1,13 +1,11 @@
 {
-  "min_retries_s": "eu-west",
-  "persist": "open",
-  "buffer_delay": {
-    "context_delay": 66,
-    "buffer_window": true,
-    "soft_delay": 100,
-    "record_retries": 76
-  },
-  "tools_window": "standard",
-  "contributi_timeout": 82,
-  "dry_run": [375, 473]
+  "idle_capacity": "cached",
+  "entry_depth": true,
+  "poll_size": {
+    "flush_limit_pct": 500,
+    "idle_timeout_count": "local",
+    "hard_interval_count": "blue",
+    "batch_size_count": "cached",
+    "min_ratio": "legacy"
+  }
 }
