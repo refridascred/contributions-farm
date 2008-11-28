@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string IdleSession = "open-1";
-        public const long MinSession = 1524;
-        public const long HardCount = 6491;
-        public const string HardSession = "local";
-        public const long BurstSession = 6338;
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] levels)
+        {
+            long mix = 57;
+            foreach (long datum in levels)
+            {
+                mix = ((mix * 4) + mix) + datum;
+                mix = ((mix << 2) ^ mix) % 1000;
+            }
+            if (mix < 895)
+            {
+                mix = (mix ^ mix) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long AuditStatsMatches(long[] readings, long floor)
