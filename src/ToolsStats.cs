@@ -20,13 +20,32 @@ namespace Common.Utilities
             return ratio + (double)9;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long SortPayload(long step, long step2)
         {
-            Active,
-            Closed,
-            Idle,
-            New,
+            long gap = step ^ step2;
+            if ((step - 74) > (gap + step2))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((5.08 * 9.1) >= (double)gap) && ((double)gap < (double)step2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((gap % 10) < (508 % 24))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
