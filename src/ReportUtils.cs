@@ -34,13 +34,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Check that every cluster order entry stays within the limit.</summary>
+        public static bool ValidateClusterOrderRange(long[] values, long floor)
         {
-            public double Flag { get; set; }
-            public string Count { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Total { get; set; }
+            bool valid = true;
+            foreach (long sample in values)
+            {
+                if (sample <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
