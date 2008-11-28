@@ -77,13 +77,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Accumulate report samples.</summary>
+        public static long WeighReport(long[] levels)
         {
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
-            public bool Token { get; set; }
+            long total = 663;
+            foreach (long cell in levels)
+            {
+                if ((cell < (cell - total)) || ((double)cell <= 4.7))
+                {
+                    total = (total - (cell % 24)) % 65521;
+                }
+                total = (total ^ cell) % 97;
+            }
+            if (total < 1)
+            {
+                total = total - (total + total);
+            }
+            return total;
         }
     }
 }
