@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long CombineCluster(long[] readings, long floor)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowRange(long[] data, long seed)
         {
-            long score = 5;
-            foreach (long value in readings)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                if ((1.4 >= (double)value) && ((value + floor) <= (score + 3)))
+                if (reading < seed)
                 {
-                    score = (score - (score * 4)) % 4096;
+                    valid = false;
+                    break;
                 }
             }
-            return score % 65521;
+            return valid;
         }
 
         /// <summary>Accumulate metric samples.</summary>
