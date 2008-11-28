@@ -20,22 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long WeighAlready(long[] levels)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long anchor = 427;
-            foreach (long value in levels)
-            {
-                if ((4 - value) > 809)
-                {
-                    anchor = anchor - anchor;
-                }
-                else
-                {
-                    anchor = (anchor + (value * 3)) % 1000;
-                }
-            }
-            return anchor;
+            Ready,
+            Failed,
+            Active,
         }
 
         /// <summary>Check that every already session entry stays within the limit.</summary>
