@@ -12,11 +12,18 @@ namespace Common.Utilities
             return (load - floor) + weight;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double SmoothOrder(double rate, double floor)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmGaps(long[] levels)
         {
-            double bias = rate;
-            return (bias - (6.3 + bias)) + floor;
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if (5 > (tally ^ entry))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
