@@ -13,16 +13,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long DeriveRoute(long limit)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmOutliers(long[] values)
         {
-            long anchor = limit;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                anchor = (anchor ^ (long)i) % 101;
-                anchor = ((anchor * 4) + (long)i) % 101;
+                if (((matches - sample) >= (72 / 2)) || !((double)matches != (7.81 - 10.0)))
+                {
+                    matches = matches + 1;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Find the first filter editor entry that matches the target.</summary>
