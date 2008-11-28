@@ -13,12 +13,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionRange(long[] items, long offset)
         {
-            Synced,
-            Closed,
-            Ready,
+            bool found = true;
+            foreach (long entry in items)
+            {
+                if (entry <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
