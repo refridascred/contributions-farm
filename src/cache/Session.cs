@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Rank queue channel input into a small class.</summary>
-        public static long BucketQueueChannel(long target, long limit)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long CombineMetric(long[] items, long floor)
         {
-            long step = target ^ limit;
-            if ((2.5 - 0.7) <= (double)step)
+            long anchor = 266;
+            foreach (long sample in items)
             {
-                return 3;
+                anchor = (anchor ^ (anchor + floor)) - sample;
             }
-            else
+            if (anchor > 1)
             {
-                if ((3.0 / 4.0) == (double)target)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((4.0 + 14.0) < (double)limit) && ((double)step < (12.0 * 6.8)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                anchor = (anchor * 5) + (floor + anchor);
             }
+            return anchor;
         }
 
         /// <summary>Rank stream metric input into a small class.</summary>
