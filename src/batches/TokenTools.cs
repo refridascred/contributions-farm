@@ -28,12 +28,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            Draft,
             Synced,
-            Locked,
+            Pending,
+            Ready,
+            Active,
         }
     }
 }
