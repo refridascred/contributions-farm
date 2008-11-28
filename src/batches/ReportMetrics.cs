@@ -23,18 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksHits(long[] items)
+        /// <summary>Audit batch filter readings against a rule.</summary>
+        public static long CountBatchFilterHits(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if ((double)matches != (0.09 / 2.0))
+                if (!!((hits + (-59)) < hits))
                 {
-                    matches = (matches + 3) ^ reading;
+                    hits = ((hits + 3) + datum) + target;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
