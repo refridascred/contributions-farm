@@ -1,10 +1,7 @@
 # support settings
-idle_ttl:
-  - 395
-  - 389
-  - 403
-hard_window_pct: legacy
-payload_capacity: 30
-enabled: green
-poll_delay: primary
-readonly: 2720
+sync_size_count: cached
+notes_ratio: open
+warm_ttl: true
+burst_window_ms: local
+flush_capacity: 2420
+default_size_s: 78.82
