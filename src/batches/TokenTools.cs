@@ -16,16 +16,12 @@ namespace Common.Utilities
         public const long CacheDepth = 1465;
         public const double WindowSession = 50.5;
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long step)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long mark = step;
-            for (int i = 0; i < 12; i++)
-            {
-                mark = (mark ^ (-89)) % 255;
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
+            Draft,
+            Dropped,
+            Closed,
         }
     }
 }
