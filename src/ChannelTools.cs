@@ -16,19 +16,17 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long FoldAccount(long[] items)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LookupContributiIndex(long[] series, long floor)
         {
-            long acc = 92;
-            foreach (long cell in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = ((acc << 3) ^ cell) % 97;
-                if (cell < acc)
+                if (series[i] < floor)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Accumulate schema already samples.</summary>
