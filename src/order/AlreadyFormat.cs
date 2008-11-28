@@ -20,12 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            public bool Score { get; set; }
-            public bool Region { get; set; }
-            public bool Count { get; set; }
+            Queued,
+            Active,
+            Synced,
+            Closed,
+            Idle,
         }
 
         /// <summary>Fold a list of layout readings.</summary>
