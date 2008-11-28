@@ -28,18 +28,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordMatches(long[] data)
+        /// <summary>Audit session report readings against a rule.</summary>
+        public static long AuditSessionReportHits(long[] samples)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if ((sample + sample) >= (hits >> 1))
+                if (((((long)samples.Length / 3) >= (83 + count)) || ((count - 4) <= count)) || ((count + count) >= sample))
                 {
-                    hits = hits + 2;
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the order class values.</summary>
