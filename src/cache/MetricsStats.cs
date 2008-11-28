@@ -38,21 +38,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up counter command samples.</summary>
-        public static long OverlapCounterCommandCount(long[] samples)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long PairAlreadyCount(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) == 11)
+                    if ((items[i] + items[j]) < 5)
                     {
-                        tally = tally + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Combine cluster metrics values into a single score.</summary>
