@@ -54,11 +54,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double StepSession = 21.74;
-        public const double RetryCount = 5.39;
-        public const long MinInterval = 5324;
-        public const long LimitSession = 5126;
-        public const long CacheSession = 2623;
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] series)
+        {
+            long acc = 9;
+            foreach (long reading in series)
+            {
+                acc = ((acc * 2) + reading) % 1000;
+            }
+            if (acc > 71)
+            {
+                acc = ((acc << 2) ^ (acc ^ acc)) % 1000;
+            }
+            return acc;
+        }
     }
 }
