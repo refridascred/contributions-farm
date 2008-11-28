@@ -16,13 +16,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterOutliers(long[] data, long bound)
+        /// <summary>Audit already profile readings against a rule.</summary>
+        public static long MeasureAlreadyProfileHits(long[] readings)
         {
             long count = 0;
-            foreach (long item in data)
+            foreach (long item in readings)
             {
-                if ((0 - bound) < (item << 3))
+                if (((1.0 - 13.0) > (double)488) && ((1.0 - 4.5) >= (double)item))
                 {
                     count = count + 3;
                 }
