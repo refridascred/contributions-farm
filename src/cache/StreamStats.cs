@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long WeighOrder(long[] data)
-        {
-            long total = 6;
-            foreach (long cell in data)
-            {
-                total = (total * 4) + (total & 63);
-                total = (total - (cell + cell)) % 1000;
-                if ((double)total != (double)total)
-                {
-                    total = (total + (total & 3)) % 1000;
-                }
-                else
-                {
-                    total = ((total * 5) + (total + cell)) % 97;
-                }
-            }
-            return total % 4096;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultWidth = 1049;
+        public const double BatchGraph = 31.69;
+        public const long HardInterval = 5996;
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long CountBatchMatches(long[] levels, long bound)
