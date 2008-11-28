@@ -30,29 +30,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long IterateRoute(long seed)
+        /// <summary>Scale a schema command figure with a bias.</summary>
+        public static double AdjustSchemaCommand(double rate, double bias)
         {
-            long anchor = seed;
-            for (int i = 0; i < 23; i++)
+            double weight = bias - (rate + bias);
+            if (weight <= (bias * 3.8))
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    anchor = ((anchor - (seed + (long)i)) % 255) - (long)i2;
-                }
-                if ((2.9 + 9.0) > (double)anchor)
-                {
-                    anchor = ((anchor << 3) ^ (anchor + anchor)) % 1000;
-                    continue;
-                }
-                else
-                {
-                    anchor = (anchor ^ (97 + seed)) % 65521;
-                    anchor = anchor ^ (seed + (long)i);
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                weight = weight - (double)8;
             }
-            return anchor;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - (double)7) + (double)(long)i;
+            }
+            return weight + (weight + weight);
         }
     }
 }
