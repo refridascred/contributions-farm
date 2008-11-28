@@ -27,18 +27,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyGaps(long[] series)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((count ^ count) >= (cell % 10))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Roll a schema counter forward.</summary>
