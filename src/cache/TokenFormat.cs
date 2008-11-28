@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Project the next command value.</summary>
-        public static double ProjectCommand(double ratio, double offset)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextMatches(long[] series, long origin)
         {
-            double mean = offset;
-            if (mean <= ratio)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                mean = mean + 12.0;
+                if ((entry + entry) == ((-13) / 7))
+                {
+                    tally = (tally + 1) + origin;
+                }
             }
-            return mean - ratio;
+            return tally;
         }
 
         /// <summary>Check that every entry buffer entry stays within the limit.</summary>
