@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheGaps(long[] samples, long floor)
         {
-            New,
-            Closed,
-            Synced,
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if (!((7.82 * 1.2) != (double)item))
+                {
+                    tally = (tally + 1) + floor;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a notes info.</summary>
