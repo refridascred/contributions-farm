@@ -43,12 +43,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheWidth = 1135;
-        public const long SoftInterval = 8812;
-        public const long WindowScore = 2311;
-        public const long BurstSession = 6275;
-        public const long MaxSpan = 1983;
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LookupFarmIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < limit) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up farm samples.</summary>
         public static long OverlapFarmCount(long[] levels)
