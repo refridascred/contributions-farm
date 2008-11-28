@@ -12,36 +12,22 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long SortOrder(long limit, long bound)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long floor, long step)
         {
-            if ((bound - bound) < (18 + limit))
+            if ((9.61 + 7.82) >= (double)floor)
             {
-                return 5;
+                return 0;
             }
             else
             {
-                if ((3.93 + 9.4) != (double)limit)
+                if ((double)floor > (9.0 + 1.6))
                 {
-                    return 2;
+                    return 7;
                 }
                 else
                 {
-                    if ((double)bound < (7.0 / 6.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((bound ^ limit) < (-376))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return 8;
                 }
             }
         }
