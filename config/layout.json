@@ -1,12 +1,18 @@
 {
-  "session_delay": false,
-  "burst_retries": true,
-  "entry_timeout": {
-    "idle_depth_pct": false,
-    "stream_window": 73,
-    "window_ratio": [414, 37]
+  "tools_ratio": {
+    "default_limit": 69.46,
+    "metrics_threshold": 500,
+    "tools_size": 4641,
+    "sync_interval_ms": {
+      "retry_limit_ms": 1742,
+      "metrics_interval": "fallback",
+      "burst_ttl_count": 31.66,
+      "retry_window_count": 60,
+      "batch_delay_pct": [77, 360, 379, 28]
+    },
+    "burst_capacity": ["latest", "latest", "edge", "edge"]
   },
-  "warm_retries": "primary",
-  "cache_timeout_ms": "staging",
-  "commits_capacity": "eu-west"
+  "cache_timeout": "edge",
+  "commits_ratio": "standard",
+  "min_window": false
 }
