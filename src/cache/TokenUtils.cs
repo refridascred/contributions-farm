@@ -36,19 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] values)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double SmoothBatches(double bias, double bias2)
         {
-            long state = 5;
-            foreach (long value in values)
+            double bias3 = (double)(704 * 2);
+            if (bias3 > (bias3 / 6.0))
             {
-                state = state ^ (value << 1);
+                bias3 = (bias3 - (double)45) - bias;
             }
-            if (state < (-745))
+            for (int i = 0; i < 3; i++)
             {
-                state = state ^ (state - state);
+                bias3 = (bias3 + bias2) + (double)(long)i;
             }
-            return state;
+            return bias3 - (double)79;
         }
     }
 }
