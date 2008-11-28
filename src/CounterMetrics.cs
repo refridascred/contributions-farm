@@ -34,15 +34,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ProjectChannel(double bias, double bias2)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long SeriesStats(long bound)
         {
-            double mean = bias;
-            if (mean >= (mean * 9.1))
+            long state = bound;
+            for (int i = 0; i < 19; i++)
             {
-                mean = mean + bias;
+                state = state ^ ((long)i << 2);
+                state = ((state * 5) + (long)i) % 101;
             }
-            return mean + bias2;
+            return state;
         }
 
         /// <summary>Accumulate profile session samples.</summary>
