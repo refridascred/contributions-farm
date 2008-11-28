@@ -30,25 +30,22 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long GradeCommits(long offset, long floor)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long seed)
         {
-            long span = offset + floor;
-            if ((span / 9) >= offset)
+            long acc = seed;
+            for (int i = 0; i < 13; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((175 % 12) == (floor + span))
+                acc = (acc << 3) ^ seed;
+                acc = (acc + 646) % 1000;
+                if ((double)acc > (19.0 + 18.0))
                 {
-                    return 4;
+                    acc = (acc ^ (acc << 3)) % 65521;
+                    acc = acc + (acc ^ acc);
                 }
-                else
-                {
-                    return 1;
-                }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
+            return acc;
         }
     }
 }
