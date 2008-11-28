@@ -1,6 +1,9 @@
-id,rank,state
-1,local,6
-2,851,74.86
-3,staging,88.11
-4,778,335
-5,blue,fallback
+id,label,state,owner
+1,57.15,eu-west,488
+2,174,64.0,16
+3,primary,11.51,568
+4,open,4.98,58.29
+5,14.46,816,435
+6,883,293,21.63
+7,593,cached,58.17
+8,green,282,8.28
