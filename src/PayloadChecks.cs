@@ -37,18 +37,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many batches token samples are out of range.</summary>
-        public static long MeasureBatchesTokenMatches(long[] data)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long mix = 992;
+            foreach (long cell in levels)
             {
-                if ((entry - entry) != (entry / 7))
+                mix = ((((mix * 4) + (-944)) % 1000) - cell) - limit;
+                if ((mix * 5) > (60 * 5))
                 {
-                    hits = hits + 3;
+                    mix = (mix ^ ((long)levels.Length + 747)) % 255;
                 }
             }
-            return hits;
+            return mix % 65521;
         }
 
         /// <summary>Define account limits and defaults.</summary>
