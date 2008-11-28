@@ -19,18 +19,18 @@ namespace Common.Utilities
         public const string WindowSpan = "staging-v2";
         public const string DefaultScore = "primary-edge";
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaMatches(long[] levels)
+        /// <summary>Measure how many filter farm samples are out of range.</summary>
+        public static long TallyFilterFarmHits(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if ((3.0 / 3.0) < (double)entry)
+                if ((count + count) >= 32)
                 {
-                    matches = matches + 3;
+                    count = ((count + 1) + reading) - limit;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
