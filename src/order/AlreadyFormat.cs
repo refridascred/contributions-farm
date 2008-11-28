@@ -43,15 +43,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two window githubfarm measurements.</summary>
-        public static double AdjustWindowGithubfarm(double bias, double span)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            double load = span;
-            if (load >= span)
-            {
-                load = (load + (double)9) - bias;
-            }
-            return load + 15.0;
+            Idle,
+            Queued,
+            Ready,
+            Pending,
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
