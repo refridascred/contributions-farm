@@ -53,24 +53,13 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Grade a tools window value against two limits.</summary>
-        public static long GradeToolsWindow(long origin, long limit)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            if ((48 * 2) > origin)
-            {
-                return 0;
-            }
-            else
-            {
-                if (origin < (limit * 5))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public double Owner { get; set; }
+            public bool Weight { get; set; }
+            public double Flag { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
