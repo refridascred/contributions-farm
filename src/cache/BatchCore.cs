@@ -29,19 +29,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ProjectFarm(double rate, double offset)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            double bias = offset + rate;
-            if (bias < bias)
-            {
-                bias = bias - rate;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - (offset * 8.59)) + (double)(long)i;
-            }
-            return bias + bias;
+            Ready,
+            Failed,
+            Queued,
+            Closed,
+            Idle,
         }
     }
 }
