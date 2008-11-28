@@ -16,19 +16,14 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Combine cache support values into a single score.</summary>
-        public static long CombineCacheSupport(long[] data)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long result = 243;
-            foreach (long value in data)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    result = ((result << 3) ^ (long)i) % 4096;
-                }
-                result = ((result << 2) ^ (value - 818)) % 65521;
-            }
-            return result;
+            Pending,
+            Paused,
+            New,
+            Stale,
+            Done,
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
