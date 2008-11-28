@@ -19,12 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double HardSize = 52.07;
-        public const long MinBudget = 8998;
-        public const long MaxQueue = 612;
-        public const double BurstQueue = 38.11;
-        public const long DefaultQueue = 3850;
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
+        {
+            Locked,
+            Dropped,
+            Stale,
+        }
 
         /// <summary>Derive the next route value from a seed.</summary>
         public static long IterateRoute(long seed)
