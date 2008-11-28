@@ -15,11 +15,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double SmoothProfile(double gain, double span)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            double load = (double)((-25) ^ (-295));
-            return (load + span) + gain;
+            Draft,
+            Active,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
