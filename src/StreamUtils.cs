@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyHits(long[] samples, long floor)
         {
-            public bool Flag { get; set; }
-            public long Level { get; set; }
-            public long Weight { get; set; }
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if (((double)datum >= (3.1 + 3.5)) && ((floor & 15) >= (count - 829)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
