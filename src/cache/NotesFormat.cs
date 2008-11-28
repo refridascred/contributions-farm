@@ -19,14 +19,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] levels, long bound)
         {
-            Locked,
-            Queued,
-            Closed,
-            Dropped,
-            Failed,
+            long mix = 45;
+            foreach (long cell in levels)
+            {
+                mix = (mix ^ (cell % 24)) - bound;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
