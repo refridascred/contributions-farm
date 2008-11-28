@@ -27,12 +27,15 @@ namespace Common.Utilities
         public const long CacheContext = 1315;
         public const string BatchInterval = "open";
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Roll a farm account counter forward.</summary>
+        public static long DeriveFarmAccount(long offset)
         {
-            New,
-            Queued,
-            Ready,
+            long total = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
         }
     }
 }
