@@ -1,5 +1,25 @@
 # githubfarm settings
-sync_timeout_ms: 1024
-readonly: true
-batches_delay: 60
-min_timeout: 46
+verbose:
+  - strict
+  - eu-west
+  - legacy
+dry_run: 7884
+batch_ratio_s: 500
+contributi_interval:
+  - fallback
+  - staging
+  - latest
+  - standard
+cache_window_pct: 500
+poll_ratio:
+  filter_capacity:
+    - 408
+    - 476
+  idle_timeout:
+    - eu-west
+    - blue
+    - staging
+    - cached
+  soft_limit_pct: primary
+  batch_window: strict
+  notes_window: 49
