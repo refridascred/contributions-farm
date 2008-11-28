@@ -1,8 +1,5 @@
 {
-  "audit": "cached",
-  "default_threshold_ms": 28.34,
-  "base_timeout": 32,
-  "retry_ttl_ms": [256, 153],
-  "warm_delay_s": 15,
-  "enabled": false
+  "metrics_limit": "legacy",
+  "metric_timeout": 30,
+  "flush_ratio": 1024
 }
