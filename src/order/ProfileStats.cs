@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine editor buffer values into a single score.</summary>
-        public static long ScoreEditorBuffer(long[] samples)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long total = 815;
-            foreach (long cell in samples)
-            {
-                if ((double)cell == (7.43 * 2.4))
-                {
-                    total = total + (cell & 3);
-                }
-            }
-            return total;
+            public double Label { get; set; }
+            public double Score { get; set; }
+            public bool Count { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Hold a token summary.</summary>
