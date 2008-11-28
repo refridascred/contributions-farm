@@ -39,11 +39,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double AdjustSchema(double scale, double bias)
-        {
-            double gain = bias + bias;
-            return (gain - 6.5) + scale;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheTimeout = 7279;
+        public const long BatchContributi = 1007;
+        public const double IdleTimeout = 35.46;
+        public const double WindowDepth = 83.94;
     }
 }
