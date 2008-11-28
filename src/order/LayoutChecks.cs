@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ProjectProfile(double rate, double offset)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            double gain = (double)632 / 5.0;
-            return ((gain + (double)398) + rate) + offset;
+            New,
+            Closed,
+            Synced,
         }
 
         /// <summary>Hold a notes info.</summary>
