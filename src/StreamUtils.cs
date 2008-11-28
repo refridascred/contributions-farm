@@ -72,23 +72,15 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Combine contributi notes values into a single score.</summary>
-        public static long FoldContributiNotes(long[] data, long step)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long StepBatches(long origin)
         {
-            long result = -1;
-            foreach (long item in data)
+            long carry = origin;
+            for (int i = 0; i < 21; i++)
             {
-                result = (result ^ ((-2) >> 2)) % 101;
-                if ((799 - item) < (result >> 5))
-                {
-                    result = result + (item / 7);
-                }
-                else
-                {
-                    result = (result * 5) + (step + item);
-                }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return result;
+            return carry;
         }
     }
 }
