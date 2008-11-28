@@ -34,23 +34,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double ScaleContext(double rate, double floor)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            double drift = 9.5 - rate;
-            if (drift <= drift)
-            {
-                drift = drift + 8.3;
-            }
-            else
-            {
-                drift = drift - (double)98;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + drift) - (double)(long)i;
-            }
-            return drift - (floor * 3.6);
+            public double Score { get; set; }
+            public bool Mode { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Accumulate contributi samples.</summary>
