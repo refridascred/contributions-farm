@@ -33,22 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of account profile entries.</summary>
-        public static long ScoreAccountProfile(long[] items)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long carry = -95;
-            foreach (long entry in items)
-            {
-                if ((double)entry == (double)carry)
-                {
-                    carry = carry + (entry << 2);
-                }
-                else
-                {
-                    carry = (carry - carry) % 4096;
-                }
-            }
-            return carry % 4096;
+            public bool Mode { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Combine window report values into a single score.</summary>
