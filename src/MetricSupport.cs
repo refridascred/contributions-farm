@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string LimitFilter = "staging-v2";
-        public const long StepWidth = 7674;
-        public const long WindowBudget = 1460;
-        public const double RetryFilter = 28.49;
-        public const long MaxDepth = 8081;
+        /// <summary>Count the window report entries that pass the check.</summary>
+        public static long TallyWindowReportOutliers(long[] items)
+        {
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((entry - entry) > entry)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the counter status values.</summary>
         public enum CounterStatus
