@@ -1,17 +1,9 @@
 # githubfarm settings
-min_retries_s:
-  readonly: blue
-  warm_window: 8.79
-  cache_timeout_count:
-    dry_run: 82.13
-    min_ratio_ms:
-      - fallback
-      - legacy
-      - cached
-      - blue
-    warm_ttl: 5974
-    cache_window_ms: false
-  max_window_pct: 250
-  verbose: 56
-default_capacity_pct: 1024
-checks_retries: 46.31
+idle_retries_pct: true
+session_window: 281
+githubfarm_window: 31.75
+cache_size: 35.96
+default_ratio_count: fallback
+max_depth_ms:
+  - 83
+  - 99
