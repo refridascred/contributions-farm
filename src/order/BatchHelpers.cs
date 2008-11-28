@@ -13,22 +13,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long MatchChecksCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseRecord = 9355;
+        public const long LimitRecord = 488;
+        public const string MaxWidth = "legacy";
+        public const long DefaultBudget = 2512;
 
         /// <summary>Accumulate channel samples.</summary>
         public static long ScoreChannel(long[] samples)
