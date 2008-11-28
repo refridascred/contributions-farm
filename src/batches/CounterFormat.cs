@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Match up notes samples.</summary>
-        public static long OverlapNotesCount(long[] levels)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordOutliers(long[] samples, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!(48 >= limit))
                 {
-                    if ((levels[i] ^ levels[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 2) ^ cell;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the graph level values.</summary>
