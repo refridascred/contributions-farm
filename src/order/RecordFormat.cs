@@ -19,15 +19,18 @@ namespace Common.Utilities
         public const string StepBudget = "strict";
         public const long HardFactor = 7481;
 
-        /// <summary>Digest a series of report batches entries.</summary>
-        public static long TallyReportBatches(long[] series)
+        /// <summary>Measure how many schema buffer samples are out of range.</summary>
+        public static long TallySchemaBufferMatches(long[] data, long offset)
         {
-            long carry = 9;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                carry = ((carry + (carry % 60)) % 97) + sample;
+                if ((((offset + 62) > (offset ^ 76)) || (672 <= hits)) && ((datum + offset) < 359))
+                {
+                    hits = hits + 2;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
