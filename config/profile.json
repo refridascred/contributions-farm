@@ -1,6 +1,5 @@
 {
-  "max_ttl": "edge",
-  "poll_threshold": "open",
-  "payload_capacity": 12.3,
-  "base_interval_ms": ["fallback", "cached", "legacy", "local"]
+  "max_delay_s": 95.23,
+  "support_threshold": 30,
+  "command_threshold": true
 }
