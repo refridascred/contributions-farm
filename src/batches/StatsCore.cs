@@ -28,18 +28,13 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenOutliers(long[] data, long target)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((9.81 + 9.97) <= (double)target)
-                {
-                    hits = (hits + 3) + datum;
-                }
-            }
-            return hits;
+            Locked,
+            Pending,
+            Synced,
+            Draft,
         }
 
         /// <summary>Hold a metric header.</summary>
