@@ -1,6 +1,6 @@
 {
-  "warm_limit_count": 31.86,
-  "base_interval_pct": 1024,
-  "soft_capacity_pct": "legacy",
-  "graph_capacity": 1024
+  "token_depth": "staging",
+  "entry_ratio": 8388,
+  "burst_window": [378, 227, 188, 24],
+  "farm_delay": 82.38
 }
