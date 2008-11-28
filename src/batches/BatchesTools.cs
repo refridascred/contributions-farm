@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ScaleCache(double rate, double offset)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowGaps(long[] readings, long limit)
         {
-            double bias = (double)61 + (2.47 - offset);
-            if (bias > rate)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                bias = bias + bias;
+                if ((double)tally < (9.6 + 6.0))
+                {
+                    tally = ((tally + 2) - cell) - limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - (double)8) + (double)(long)i;
-            }
-            return bias + (double)18;
+            return tally;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
