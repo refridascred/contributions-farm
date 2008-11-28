@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] samples)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteOutliers(long[] values)
         {
-            long total = -89;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                total = (((total << 3) ^ (total & 63)) % 97) ^ value;
+                if (!((matches & 31) == (matches >> 5)))
+                {
+                    matches = (matches + 2) ^ entry;
+                }
             }
-            return total % 97;
+            return matches;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
