@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            public double Token { get; set; }
+            public long Size { get; set; }
+            public double Flag { get; set; }
             public long Level { get; set; }
-            public double Region { get; set; }
         }
 
         /// <summary>Validate notes route readings against a bound.</summary>
