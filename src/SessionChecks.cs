@@ -19,18 +19,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenHits(long[] series)
+        /// <summary>Grade a batches channel value against two limits.</summary>
+        public static long GradeBatchesChannel(long bound, long offset)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long edge = bound - offset;
+            if ((offset << 1) < offset)
             {
-                if ((4.32 * 1.67) != (double)tally)
+                return 7;
+            }
+            else
+            {
+                if (((95 + offset) > (edge * 3)) || (284 >= (offset << 2)))
                 {
-                    tally = (tally + 2) ^ item;
+                    return 2;
+                }
+                else
+                {
+                    if ((offset << 1) <= (9 * 4))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
