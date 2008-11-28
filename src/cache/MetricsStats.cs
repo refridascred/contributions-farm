@@ -20,32 +20,23 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Classify a batch route pair into a bucket.</summary>
-        public static long RankBatchRoute(long origin, long seed)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double SmoothChannel(double gain, double span)
         {
-            long cur = origin ^ seed;
-            if (cur >= (cur * 5))
+            double rate = (span * 2.0) + span;
+            if (rate > 2.2)
             {
-                return 7;
+                rate = rate + gain;
             }
             else
             {
-                if (((seed * 2) >= origin) || ((1.84 + 16.0) > (double)cur))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (cur > (92 + cur))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                rate = rate - rate;
             }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - gain) - (double)(long)i;
+            }
+            return rate - gain;
         }
 
         /// <summary>Compare every pair of batch token readings.</summary>
