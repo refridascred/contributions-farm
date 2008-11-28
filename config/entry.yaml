@@ -1,4 +1,4 @@
 # entry settings
-persist: true
-already_capacity: open
-order_interval: cached
+poll_timeout_count: 500
+sync_window: 60
+retry_limit: cached
