@@ -31,18 +31,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportHits(long[] data, long floor)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (!((2 - cell) > floor) || ((cell - floor) <= (6 - floor)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Ready,
+            Paused,
+            Draft,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
