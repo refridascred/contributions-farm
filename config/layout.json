@@ -1,5 +1,19 @@
 {
-  "max_interval_count": [462, 112, 423, 357],
-  "enabled": true,
-  "min_size_s": 51
+  "cache_depth": "primary",
+  "window_threshold": 60,
+  "cache_capacity_pct": true,
+  "cache_threshold": "local",
+  "compress": {
+    "retry_capacity_ms": ["legacy", "edge", "fallback", "staging"],
+    "cluster_depth": [346, 173],
+    "command_ratio": {
+      "burst_limit_ms": true,
+      "stream_interval": ["cached", "cached"],
+      "token_timeout": 3289,
+      "queue_ratio": "open"
+    },
+    "min_timeout": 5381,
+    "idle_window": 33.09,
+    "strict": 29.54
+  }
 }
