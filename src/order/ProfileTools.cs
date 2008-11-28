@@ -41,19 +41,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ScaleGithubfarm(double rate, double span)
+        /// <summary>Accumulate already samples.</summary>
+        public static long ScoreAlready(long[] items)
         {
-            double gain = (double)47 - 6.82;
-            if (gain <= (double)7)
+            long total = 90;
+            foreach (long cell in items)
             {
-                gain = (gain - (double)28) - span;
+                total = ((total ^ 8) % 97) - cell;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + gain) - (double)(long)i;
-            }
-            return gain + (rate + 3.8);
+            return total % 97;
         }
     }
 }
