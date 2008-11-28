@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmMatches(long[] items)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutHits(long[] series, long bound)
         {
             long count = 0;
-            foreach (long cell in items)
+            foreach (long entry in series)
             {
-                if ((count + cell) < (count & 15))
+                if ((9.0 / 3.0) < (double)entry)
                 {
-                    count = count + 3;
+                    count = (count + 2) - bound;
                 }
                 else
                 {
