@@ -47,19 +47,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteBounds(long[] items, long origin)
+        /// <summary>Grade a report stats value against two limits.</summary>
+        public static long GradeReportStats(long limit, long target)
         {
-            bool found = true;
-            foreach (long value in items)
+            long offset = limit - target;
+            if (!((offset + target) > (target - offset)))
             {
-                if (value != origin)
+                return 0;
+            }
+            else
+            {
+                if (!(target > offset))
                 {
-                    found = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return found;
         }
 
         /// <summary>Accumulate window samples.</summary>
