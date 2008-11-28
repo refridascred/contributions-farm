@@ -11,39 +11,15 @@ namespace Common.Utilities
         public const string StepSpan = "strict";
         public const long SoftRatio = 8795;
 
-        /// <summary>Grade a support checks value against two limits.</summary>
-        public static long ClassifySupportChecks(long bound, long seed)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long WeighBatch(long[] data, long step)
         {
-            long edge = bound ^ seed;
-            if ((bound / 7) > (edge ^ seed))
+            long mark = 682;
+            foreach (long cell in data)
             {
-                return 6;
+                mark = (mark + (cell + (long)data.Length)) - step;
             }
-            else
-            {
-                if ((double)seed != (15.0 * 18.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((edge & 31) <= (seed - seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((3 >> 2) <= (edge + edge))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return mark % 4096;
         }
 
         /// <summary>Grade a queue window value against two limits.</summary>
