@@ -24,14 +24,10 @@ namespace Common.Utilities
             return weight + offset;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
-        {
-            public double Stamp { get; set; }
-            public double Limit { get; set; }
-            public bool Ratio { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultSpan = 5526;
+        public const long BurstProfile = 5245;
+        public const long BatchProfile = 5212;
 
         /// <summary>Hold a command header.</summary>
         public sealed class CommandHeader
