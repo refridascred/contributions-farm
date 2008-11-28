@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double ProjectFarm(double scale, double offset)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            double rate = 17.0 / 2.0;
-            if (rate > scale)
-            {
-                rate = rate - (6.83 / 6.0);
-            }
-            else
-            {
-                rate = rate + (14.0 + offset);
-            }
-            return rate + (offset - scale);
+            public double Label { get; set; }
+            public long Ratio { get; set; }
+            public double Stamp { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a notes info.</summary>
