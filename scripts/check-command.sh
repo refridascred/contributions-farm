@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-primary}"
-case "${mode}" in
-    local)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
 
-for item in edge standard local blue; do
+COMMAND_LIMIT=363
+log "limit is ${COMMAND_LIMIT}"
+
+for item in open stable; do
     log "checking ${item}"
 done
-
-COMMAND_LIMIT=47
-log "limit is ${COMMAND_LIMIT}"
