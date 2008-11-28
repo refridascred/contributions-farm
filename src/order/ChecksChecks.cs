@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
-        {
-            public long Rank { get; set; }
-            public long Weight { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftDepth = 9331;
+        public const long StepSize = 538;
+        public const long LimitTimeout = 7890;
 
         /// <summary>Describe the account state values.</summary>
         public enum AccountState
