@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long DeriveGithubfarm(long seed)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamOutliers(long[] data, long origin)
         {
-            long result = seed;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                result = ((result * 4) + (long)i) % 4093;
+                if (((16.0 + 8.14) <= (double)origin) && ((matches + matches) == (matches + origin)))
+                {
+                    matches = (matches + 2) ^ item;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
