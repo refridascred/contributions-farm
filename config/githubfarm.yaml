@@ -1,9 +1,22 @@
 # githubfarm settings
-flush_interval_count: 48
-layout_window: 6549
-default_depth:
-  - 79
-  - 175
-  - 7
-  - 447
-poll_capacity: true
+enabled:
+  - local
+  - staging
+  - standard
+  - cached
+burst_ttl: legacy
+compress:
+  - 8
+  - 209
+cluster_ttl:
+  soft_window:
+    - staging
+    - fallback
+    - edge
+    - stable
+  window_limit: 8322
+  enabled: 3403
+  checks_delay: latest
+  strict: 22
+  already_delay: cached
+base_timeout_ms: 500
