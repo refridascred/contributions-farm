@@ -40,19 +40,13 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Validate window checks readings against a bound.</summary>
-        public static bool ValidateWindowChecksBounds(long[] levels, long target)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            bool ready = true;
-            foreach (long reading in levels)
-            {
-                if (reading < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Dropped,
+            Closed,
+            Paused,
+            Done,
         }
 
         /// <summary>Accumulate counter samples.</summary>
