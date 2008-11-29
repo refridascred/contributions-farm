@@ -27,12 +27,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            public bool Level { get; set; }
-            public string Flag { get; set; } = "";
-            public long Ratio { get; set; }
+            public double Weight { get; set; }
+            public long Level { get; set; }
+            public long Rank { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Fold a list of notes commits readings.</summary>
