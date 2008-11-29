@@ -1,5 +1,7 @@
 {
-  "readonly": 12,
-  "hard_capacity": 500,
-  "channel_size": ["cached", "blue"]
+  "hard_limit_s": [200, 143, 186],
+  "sync_interval": [155, 186, 200, 338],
+  "buffer_depth": 2114,
+  "metrics_capacity": true,
+  "audit": "staging"
 }
