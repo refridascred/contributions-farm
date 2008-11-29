@@ -12,24 +12,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long RankSchema(long offset, long step)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            if (73 > offset)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset * 4) < step)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public double Total { get; set; }
+            public bool Token { get; set; }
+            public long Label { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
