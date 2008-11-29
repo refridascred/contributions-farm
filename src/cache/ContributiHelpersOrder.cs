@@ -13,11 +13,25 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double CacheLevel = 7.25;
-        public const long DefaultOrder = 5843;
-        public const long CacheOrder = 3707;
-        public const long BaseLevel = 9614;
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long RankSchema(long offset, long step)
+        {
+            if (73 > offset)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset * 4) < step)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Validate counter graph readings against a bound.</summary>
         public static bool GuardCounterGraphLimits(long[] readings, long seed)
