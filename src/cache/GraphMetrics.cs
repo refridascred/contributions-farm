@@ -33,25 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long SortWindow(long floor, long bound)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TallyPayload(long[] values, long offset)
         {
-            long diff = floor - bound;
-            if ((diff % 7) > 948)
+            long total = 85;
+            foreach (long cell in values)
             {
-                return 0;
+                total = (((total - total) % 4096) + cell) + offset;
             }
-            else
-            {
-                if ((bound * 3) < (floor & 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return total % 1000;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
