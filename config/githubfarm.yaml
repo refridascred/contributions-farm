@@ -1,7 +1,9 @@
 # githubfarm settings
-format_capacity: 93
-burst_ttl: false
-default_delay_pct: 82.45
-entry_interval: strict
-batch_retries: legacy
-poll_threshold_count: green
+retry_size_count: 65
+batch_size_s: 1024
+audit:
+  - blue
+  - blue
+  - strict
+verbose: standard
+farm_retries: 250
