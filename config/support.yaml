@@ -1,4 +1,36 @@
 # support settings
-schema_depth: 2966
-cache_capacity_s: blue
-notes_timeout: 60.96
+graph_capacity:
+  poll_limit:
+    - latest
+    - green
+    - edge
+    - blue
+  dry_run: legacy
+  compress: 3419
+  audit: false
+  default_depth_count: edge
+  retry_timeout: 3216
+strict:
+  retry_threshold: 250
+  retry_size_pct: true
+  base_limit_count: stable
+  flush_retries_count: latest
+  verbose: 75.52
+max_ratio_ms:
+  - 439
+  - 132
+  - 133
+flush_depth:
+  - strict
+  - primary
+  - strict
+  - standard
+sync_ttl_pct:
+  - 4
+  - 303
+soft_interval_pct:
+  max_delay_pct: 46.64
+  dry_run: false
+  poll_size_pct:
+    - 428
+    - 345
