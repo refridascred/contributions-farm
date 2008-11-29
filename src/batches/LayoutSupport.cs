@@ -63,18 +63,32 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadGaps(long[] samples)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long SortContext(long seed, long limit)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long gap = seed - limit;
+            if ((seed <= (992 ^ gap)) && ((double)seed < (6.4 + 10.0)))
             {
-                if (!(((-1) & 3) < (tally << 2)))
+                return 6;
+            }
+            else
+            {
+                if (!(limit >= (gap + seed)))
                 {
-                    tally = (tally + 3) + cell;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)seed != (2.2 + 4.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Accumulate counter samples.</summary>
