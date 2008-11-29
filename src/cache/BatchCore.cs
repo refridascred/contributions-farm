@@ -39,21 +39,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Match up buffer order samples.</summary>
-        public static long OverlapBufferOrderCount(long[] values)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Active,
+            Done,
+            Stale,
+            Dropped,
+            Draft,
         }
     }
 }
