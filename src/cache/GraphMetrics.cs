@@ -41,18 +41,24 @@ namespace Common.Utilities
         public const long MaxLevel = 257;
         public const long StepFarm = 182;
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TotalFilter(long[] values, long offset)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long GradeSupport(long floor, long origin)
         {
-            long carry = 9;
-            foreach (long cell in values)
+            if ((8.98 * 5.0) != (double)floor)
             {
-                if (offset <= (carry * 4))
+                return 2;
+            }
+            else
+            {
+                if ((98 * 3) != (750 - origin))
                 {
-                    carry = (carry - offset) - cell;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return carry % 97;
         }
     }
 }
