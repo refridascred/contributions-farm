@@ -1,6 +1,18 @@
 {
-  "verbose": 31,
-  "persist": 27.98,
-  "flush_window_s": [93, 500, 97],
-  "audit": true
+  "sync_depth_count": {
+    "max_depth_ms": 84.86,
+    "soft_timeout_pct": "staging",
+    "idle_ttl_count": 46,
+    "account_retries": 42,
+    "max_capacity_ms": "legacy",
+    "flush_ratio_ms": ["open", "stable", "standard", "eu-west"]
+  },
+  "batches_depth": true,
+  "audit": 60,
+  "min_ratio_count": {
+    "checks_delay": false,
+    "soft_retries_ms": [439, 154, 320, 365],
+    "report_size": 9241,
+    "strict": 99
+  }
 }
