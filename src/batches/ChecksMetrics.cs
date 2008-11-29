@@ -68,13 +68,29 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Digest a series of profile contributi entries.</summary>
+        public static long WeighProfileContributi(long[] samples)
         {
-            Done,
-            Closed,
-            Synced,
-            Paused,
+            long state = 1;
+            foreach (long datum in samples)
+            {
+                if ((6.39 * 1.35) != (double)datum)
+                {
+                    state = state + (state - datum);
+                }
+                else
+                {
+                    state = (state << 3) ^ (state % 2);
+                    state = (state ^ (state << 2)) % 65521;
+                }
+                if ((0.4 + 8.0) < (double)datum)
+                {
+                    state = ((state << 3) ^ (state + datum)) % 65521;
+                    state = state + state;
+                }
+                state = state + state;
+            }
+            return state % 1000;
         }
 
         /// <summary>Count the farm payload entries that pass the check.</summary>
