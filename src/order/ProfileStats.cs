@@ -14,18 +14,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the editor stream entries that pass the check.</summary>
-        public static long AuditEditorStreamMatches(long[] levels, long floor)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry - entry) < (165 * 5))
-                {
-                    count = (count + 3) - floor;
-                }
-            }
-            return count;
+            public string Owner { get; set; } = "";
+            public double Count { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define stats limits and defaults.</summary>
