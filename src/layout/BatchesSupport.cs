@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches support helpers.</summary>
     public static class BatchesSupport
     {
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long StepProfile(long bound)
         {
-            public long Level { get; set; }
-            public double Offset { get; set; }
-            public string Limit { get; set; } = "";
-            public long Count { get; set; }
+            long state = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Project the next tools order value.</summary>
