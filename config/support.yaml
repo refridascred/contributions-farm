@@ -1,24 +1,5 @@
 # support settings
-persist: green
-queue_window:
-  cluster_threshold: 67.69
-  batch_size_pct:
-    format_window: 30
-    default_interval: green
-    sync_window: 39.35
-    strict: latest
-  cache_limit_ms: 21
-  default_threshold: 8.75
-  sync_depth:
-    - 352
-    - 367
-    - 61
-    - 367
-  idle_ratio:
-    base_ratio: 500
-    flush_window_count: edge
-    poll_size_pct: false
-    entry_delay: green
-    entry_size: local
-    command_retries: false
-idle_threshold_pct: 20.99
+format_ttl: false
+soft_depth: 95.08
+verbose: edge
+min_limit: blue
