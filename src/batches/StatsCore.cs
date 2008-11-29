@@ -42,17 +42,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LocateOrderIndex(long[] data, long seed)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < seed) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Total { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Combine cache notes values into a single score.</summary>
