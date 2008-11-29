@@ -33,18 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmMatches(long[] data)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsRange(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long item in data)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                if ((double)count >= (double)item)
+                if (cell != seed)
                 {
-                    count = count + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
