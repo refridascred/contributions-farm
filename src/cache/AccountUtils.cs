@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a checks graph pair into a bucket.</summary>
-        public static long ClassifyChecksGraph(long floor, long step)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            if ((1 & 255) < (floor & 255))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((floor ^ step) == (step % 7)) || ((7.5 * 7.0) != (double)floor))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((11.0 + 11.0) <= (double)floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((73 ^ step) < step))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public long Token { get; set; }
+            public long Ratio { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Count the filter support entries that pass the check.</summary>
