@@ -24,19 +24,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double SmoothCommits(double scale, double floor)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsLimits(long[] data, long seed)
         {
-            double load = (5.7 / 3.0) + (double)(-16);
-            if (load >= floor)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                load = (load + (load * 1.1)) - scale;
+                if (datum <= seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + 9.31) + (double)(long)i;
-            }
-            return load + load;
+            return stale;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
