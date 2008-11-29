@@ -14,23 +14,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long DigestWindow(long[] readings)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ScaleStats(double rate, double floor)
         {
-            long mark = 9;
-            foreach (long sample in readings)
+            double rate2 = rate;
+            if (rate2 < floor)
             {
-                mark = mark + (63 - sample);
-                if (((sample * 4) < mark) && ((double)sample < (15.0 / 6.0)))
-                {
-                    mark = (mark ^ (62 + mark)) % 255;
-                }
+                rate2 = rate2 - (floor * 9.14);
             }
-            if (mark > 352)
-            {
-                mark = (mark << 2) ^ (mark & 15);
-            }
-            return mark;
+            return rate2 - floor;
         }
 
         /// <summary>Hold a tools summary.</summary>
