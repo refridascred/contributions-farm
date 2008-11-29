@@ -32,12 +32,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Accumulate githubfarm session samples.</summary>
+        public static long TallyGithubfarmSession(long[] data)
         {
-            Pending,
-            Ready,
-            Dropped,
+            long sum = -31;
+            foreach (long sample in data)
+            {
+                if ((sum >> 5) == (5 * 4))
+                {
+                    sum = sum ^ (sum ^ sample);
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
