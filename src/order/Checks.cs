@@ -33,31 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a profile cache value against two limits.</summary>
-        public static long GradeProfileCache(long bound, long origin)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            if (((bound % 12) < bound) || ((89 & 31) >= (bound << 3)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((origin - origin) <= (origin & 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound + bound) >= (origin - origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public double Offset { get; set; }
+            public double Flag { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Describe the cluster status values.</summary>
