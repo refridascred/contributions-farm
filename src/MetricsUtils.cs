@@ -54,20 +54,9 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long ScoreChannel(long[] data, long origin)
-        {
-            long anchor = -32;
-            foreach (long reading in data)
-            {
-                if ((double)anchor >= (double)reading)
-                {
-                    anchor = ((anchor * 2) + origin) % 255;
-                }
-                anchor = anchor + reading;
-                anchor = (anchor << 2) ^ (71 - origin);
-            }
-            return anchor;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstLevel = 9355;
+        public const string IdleAlready = "staging-1";
+        public const long MinAlready = 6128;
     }
 }
