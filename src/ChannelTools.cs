@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate metrics buffer samples.</summary>
-        public static long TallyMetricsBuffer(long[] values, long floor)
+        /// <summary>Combine token counter values into a single score.</summary>
+        public static long ScoreTokenCounter(long[] items, long origin)
         {
-            long carry = 18;
-            foreach (long item in values)
+            long mark = 2;
+            foreach (long entry in items)
             {
-                carry = (((carry + carry) % 65521) ^ item) - floor;
-                carry = ((carry * 5) + (621 & 127)) % 255;
-                carry = (carry + (carry % 100)) % 4096;
+                if ((mark >= (entry / 6)) || (((long)items.Length + mark) == (mark + origin)))
+                {
+                    mark = mark ^ (996 << 1);
+                }
+                if ((entry << 1) <= (mark - origin))
+                {
+                    mark = (mark + (origin - entry)) % 4096;
+                }
+                else
+                {
+                    mark = (mark + (origin + origin)) % 255;
+                }
             }
-            if (carry > 918)
-            {
-                carry = (carry + (carry * 2)) % 101;
-            }
-            return carry;
+            return mark;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
