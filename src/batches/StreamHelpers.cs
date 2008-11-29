@@ -55,13 +55,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long offset)
         {
-            public long Score { get; set; }
-            public long Ratio { get; set; }
-            public bool Mode { get; set; }
-            public bool Owner { get; set; }
+            long result = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                result = result ^ (result << 3);
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of counter tools readings.</summary>
