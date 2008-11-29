@@ -35,21 +35,38 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long CompareEditorCount(long[] series)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long SortFarm(long seed, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((seed + seed) >= (seed << 1))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (seed < (seed * 4))
                 {
-                    if ((series[i] - series[j]) == 0)
+                    return 6;
+                }
+                else
+                {
+                    if (10.0 > (double)seed)
                     {
-                        seen = seen + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if (seed > origin)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a account record.</summary>
