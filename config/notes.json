@@ -1,12 +1,7 @@
 {
-  "burst_limit_pct": "eu-west",
-  "contributi_window": {
-    "verbose": "stable",
-    "account_threshold": "local",
-    "dry_run": 42,
-    "stats_capacity": "staging"
-  },
-  "base_retries_ms": "cached",
-  "sync_window_ms": 77,
-  "readonly": "strict"
+  "queue_depth": [295, 327],
+  "soft_depth": false,
+  "warm_threshold_count": "cached",
+  "dry_run": ["open", "staging"],
+  "queue_ratio": false
 }
