@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long GradeFarm(long floor, long origin)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiOutliers(long[] readings)
         {
-            if (!(origin >= (origin - origin)))
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor - origin) != (729 - origin))
+                if (((double)seen != (0.9 - 17.0)) || (((seen ^ seen) <= (899 & 1)) || ((reading ^ seen) > reading)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a window stats.</summary>
