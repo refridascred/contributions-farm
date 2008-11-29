@@ -53,19 +53,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long SeriesCounter(long limit)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long IterateGithubfarm(long seed)
         {
-            long carry = limit;
-            for (int i = 0; i < 19; i++)
+            long mark = seed;
+            for (int i = 0; i < 10; i++)
             {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    carry = (carry ^ (limit & 15)) ^ (long)i2;
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
+                mark = mark - (seed + seed);
+                mark = (mark << 2) ^ (seed >> 2);
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return carry;
+            return mark;
         }
     }
 }
