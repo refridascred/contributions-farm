@@ -13,14 +13,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            Dropped,
-            Done,
-            Retry,
-            Draft,
-            Closed,
+            public bool Stamp { get; set; }
+            public bool Label { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
