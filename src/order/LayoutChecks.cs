@@ -54,10 +54,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double StepScore = 53.82;
-        public const long BatchScore = 1971;
-        public const string DefaultInterval = "local";
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
+        {
+            public long Rank { get; set; }
+            public bool Weight { get; set; }
+            public double Label { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Adjust a token reading.</summary>
         public static double SmoothToken(double bias, double bias2)
