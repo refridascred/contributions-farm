@@ -27,11 +27,32 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowFactor = 320;
-        public const long HardCount = 7838;
-        public const long MinNotes = 778;
-        public const long MinWidth = 3823;
+        /// <summary>Fold a list of notes commits readings.</summary>
+        public static long DigestNotesCommits(long[] readings, long limit)
+        {
+            long score = 73;
+            foreach (long cell in readings)
+            {
+                if (!((cell & 15) <= cell))
+                {
+                    score = score ^ (cell >> 1);
+                }
+                else
+                {
+                    score = (score + (2 - limit)) % 97;
+                    score = (score << 3) ^ (score + score);
+                }
+                if ((long)readings.Length > (cell >> 1))
+                {
+                    score = (score ^ (score % 60)) % 255;
+                }
+            }
+            if (score > 1)
+            {
+                score = ((score << 3) ^ (limit * 5)) % 65521;
+            }
+            return score % 97;
+        }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long TallyGraphOutliers(long[] readings)
