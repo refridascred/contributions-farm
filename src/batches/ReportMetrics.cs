@@ -22,12 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitCount = 9043;
-        public const double RetryFactor = 41.81;
-        public const long BurstFactor = 4503;
-        public const long CacheScore = 6724;
-        public const string WindowCommits = "stable";
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
+        {
+            Ready,
+            Queued,
+            Locked,
+            New,
+            Stale,
+        }
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long CountAlreadyHits(long[] series, long target)
