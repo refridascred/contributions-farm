@@ -41,12 +41,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            Pending,
-            Idle,
-            New,
+            public long Total { get; set; }
+            public double Level { get; set; }
+            public long Size { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
