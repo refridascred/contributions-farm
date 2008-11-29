@@ -73,11 +73,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseTimeout = 1956;
-        public const string LimitScore = "standard-edge";
-        public const long BatchEntry = 1445;
-        public const long SoftEntry = 5841;
-        public const long HardEntry = 858;
+        /// <summary>Match up schema samples.</summary>
+        public static long MatchSchemaCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
