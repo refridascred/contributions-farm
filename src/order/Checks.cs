@@ -38,12 +38,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long StepSchema(long floor)
         {
-            Done,
-            Pending,
-            New,
+            long total = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                total = (total + ((long)i << 2)) % 255;
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Define record limits and defaults.</summary>
