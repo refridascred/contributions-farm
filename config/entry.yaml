@@ -1,4 +1,4 @@
 # entry settings
-cache_window_pct: true
-verbose: 24
-persist: 30
+burst_limit_count: 24.22
+burst_ratio: true
+min_size_ms: true
