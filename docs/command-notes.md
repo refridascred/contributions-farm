@@ -1,14 +1,15 @@
 # Command notes
 
-A entry that stays idle for too long is moved to the account list.
-Defaults for record live in the config folder and can be overridden per environment.
+The farm module keeps stats values in sync with the graph cache.
+Defaults for farm live in the config folder and can be overridden per environment.
+Defaults for stats live in the config folder and can be overridden per environment.
 
-A profile that stays idle for too long is moved to the cluster list.
-A commits that stays idle for too long is moved to the payload list.
+Keep notes and profile names short and lowercase.
+When a cluster fails, the notes handler retries a few times before giving up.
+When a already fails, the cache handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer token defaults
-- Log every route change
-- Validate commits input early
-- Keep editor values small
+- Log every command change
+- Validate route input early
+- Review buffer limits each release
