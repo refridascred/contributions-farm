@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountGaps(long[] readings)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell + cell) >= (tally + cell))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public double Offset { get; set; }
+            public string Total { get; set; } = "";
+            public string Size { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
