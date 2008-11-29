@@ -31,22 +31,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] data)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterMatches(long[] samples)
         {
-            long total = 76;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if ((item << 2) != (item - item))
+                if (reading <= (matches % 2))
                 {
-                    total = total - (item - item);
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (total > 3)
-            {
-                total = (total ^ (33 + total)) % 1000;
-            }
-            return total % 4096;
+            return matches;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
