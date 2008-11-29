@@ -14,11 +14,23 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] items)
         {
-            public long Rank { get; set; }
-            public bool Label { get; set; }
+            long mark = 8;
+            foreach (long entry in items)
+            {
+                mark = (mark * 4) + (mark ^ mark);
+                if (!((double)entry < (13.0 - 7.68)))
+                {
+                    mark = (mark ^ ((long)items.Length ^ 1)) % 255;
+                }
+            }
+            if (mark < 408)
+            {
+                mark = ((mark << 2) ^ (mark % 5)) % 101;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
