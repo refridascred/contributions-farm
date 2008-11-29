@@ -1,9 +1,7 @@
 # entry settings
-githubfarm_delay: stable
-audit: 97.65
-warm_capacity_s:
-  min_ttl: edge
-  stream_interval: 27.61
-  verbose: 8645
-  flush_delay_count: stable
-flush_window_ms: 8402
+default_size: true
+dry_run:
+  - green
+  - strict
+  - staging
+already_limit: 93.99
