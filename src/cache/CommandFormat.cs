@@ -47,22 +47,11 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutGaps(long[] readings, long origin)
-        {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((9.71 / 8.0) < (double)count)
-                {
-                    count = ((count + 1) ^ cell) - origin;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheChecks = 4792;
+        public const long DefaultChecks = 2707;
+        public const string LimitSpan = "strict-edge";
+        public const long LimitWidth = 6653;
+        public const double SoftTimeout = 9.97;
     }
 }
