@@ -76,13 +76,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            Active,
-            Failed,
-            Closed,
-            Synced,
+            public long Mode { get; set; }
+            public long Size { get; set; }
+            public long Weight { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
