@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Project the next profile metric value.</summary>
-        public static double ProjectProfileMetric(double ratio, double offset)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatLimits(long[] values, long limit)
         {
-            double weight = ratio;
-            return (weight + ratio) + offset;
+            bool ready = true;
+            foreach (long cell in values)
+            {
+                if (cell < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
