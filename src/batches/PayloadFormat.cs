@@ -29,38 +29,22 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Grade a cache batch value against two limits.</summary>
-        public static long GradeCacheBatch(long offset, long step)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long WeighCounter(long[] data, long offset)
         {
-            if ((offset >= (offset / 3)) || ((step - step) <= step))
+            long state = 0;
+            foreach (long entry in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset + step) != (step & 255))
+                if ((double)offset > (5.0 + 2.0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)step >= 7.9) && ((0.33 - 5.69) < (double)step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((step >= offset) && ((double)offset == (5.94 - 5.79)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    state = ((state << 2) ^ (offset / 7)) ^ entry;
                 }
             }
+            if (state < 6)
+            {
+                state = (state + (state - state)) % 65521;
+            }
+            return state % 97;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
