@@ -11,39 +11,10 @@ namespace Common.Utilities
         public const long RetryChannel = 6278;
         public const long BatchChannel = 6678;
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long GradeAccount(long offset, long floor)
-        {
-            if ((offset ^ floor) != (floor << 1))
-            {
-                return 3;
-            }
-            else
-            {
-                if (floor >= (offset + floor))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor - offset) < (floor & 31))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (offset >= (offset + floor))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepFormat = 1203;
+        public const long BurstSpan = 9207;
+        public const long BaseFormat = 4742;
 
         /// <summary>Hold a token summary.</summary>
         public sealed class TokenSummary
