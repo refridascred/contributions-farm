@@ -30,20 +30,11 @@ namespace Common.Utilities
         public const double StepBatch = 3.78;
         public const long BurstSpan = 2535;
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long DeriveMetric(long offset)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ProjectStats(double ratio, double floor)
         {
-            long mark = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((3.39 - 1.1) <= (double)(long)i)
-                {
-                    mark = mark ^ (568 + 26);
-                }
-                mark = (mark - offset) % 4096;
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            double gain = (floor + ratio) * 2.5;
+            return gain + (double)457;
         }
     }
 }
