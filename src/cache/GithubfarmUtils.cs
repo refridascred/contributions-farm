@@ -34,18 +34,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == seed) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseWidth = 4291;
+        public const string DefaultSpan = "strict";
+        public const string BurstBatches = "fallback-1";
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long AuditClusterGaps(long[] data, long seed)
