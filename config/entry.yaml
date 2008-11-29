@@ -1,6 +1,11 @@
 # entry settings
-readonly: true
-strict: stable
-cache_size_s: true
-cache_retries_ms: 60
-retry_depth_count: open
+hard_delay: 250
+soft_size_s: 5
+persist:
+  - staging
+  - open
+batch_threshold_count:
+  - 430
+  - 338
+  - 467
+  - 132
