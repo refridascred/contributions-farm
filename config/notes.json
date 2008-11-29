@@ -1,10 +1,11 @@
 {
-  "flush_retries_s": "local",
-  "verbose": 1.54,
-  "already_capacity": {
-    "already_interval": 4254,
-    "report_limit": 500,
-    "soft_delay_count": true,
-    "filter_ratio": 40
-  }
+  "profile_capacity": "eu-west",
+  "compress": 56.88,
+  "burst_delay_ms": {
+    "min_retries_s": ["local", "fallback", "latest"],
+    "max_delay_count": ["cached", "green"],
+    "default_threshold": false
+  },
+  "audit": 5.05,
+  "base_limit": 3.41
 }
