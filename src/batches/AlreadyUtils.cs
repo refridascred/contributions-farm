@@ -38,22 +38,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterMatches(long[] samples, long offset)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long DigestMetric(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long sum = 70;
+            foreach (long sample in levels)
             {
-                if (!(((double)entry == (0.8 - 3.0)) || ((double)offset <= 7.1)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                sum = ((sum ^ (sum >> 1)) - sample) - step;
             }
-            return count;
+            return sum % 4096;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
