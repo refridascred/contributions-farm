@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Scale a graph tools figure with a bias.</summary>
-        public static double AdjustGraphTools(double gain, double floor)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            double rate = (4.85 * 19.0) - (floor / 2.0);
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + (rate - gain)) - (double)(long)i;
-            }
-            return rate + gain;
+            Idle,
+            Retry,
+            Locked,
+            Closed,
         }
 
         /// <summary>Hold a cluster info.</summary>
