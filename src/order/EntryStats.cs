@@ -61,11 +61,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchChecks = 316;
-        public const long LimitRatio = 9667;
-        public const long IdleTimeout = 9392;
-        public const string HardWidth = "cached-1";
+        /// <summary>Validate batch buffer readings against a bound.</summary>
+        public static bool ValidateBatchBufferRange(long[] samples, long target)
+        {
+            bool valid = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Count the already cluster entries that pass the check.</summary>
         public static long AuditAlreadyClusterHits(long[] data, long bound)
