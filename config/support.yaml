@@ -1,7 +1,18 @@
 # support settings
-dry_run: 50
-cache_limit_ms: false
-audit:
-  - primary
-  - local
-default_ratio_s: 1954
+cache_threshold_s: green
+base_limit_ms: true
+batch_threshold_s:
+  - 275
+  - 292
+  - 287
+hard_limit_pct: 20.52
+idle_threshold_count:
+  - 167
+  - 355
+  - 230
+  - 498
+warm_ttl_ms:
+  - 120
+  - 231
+  - 338
+  - 396
