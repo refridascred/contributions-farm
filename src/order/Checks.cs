@@ -48,14 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterRange(long[] samples, long offset)
         {
-            Retry,
-            Dropped,
-            Locked,
-            Pending,
-            Active,
+            bool valid = true;
+            foreach (long sample in samples)
+            {
+                if (sample != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
