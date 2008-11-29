@@ -1,6 +1,6 @@
-id,weight,token,region
-1,16.97,460,904
-2,primary,66.56,local
-3,77.76,open,13.09
-4,464,22.22,24
-5,eu-west,760,75.21
+id,score,ratio,count
+1,74.56,68.26,fallback
+2,830,15,7.51
+3,167,open,staging
+4,225,fallback,58.06
+5,596,91,42.77
