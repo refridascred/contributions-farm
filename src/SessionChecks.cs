@@ -23,10 +23,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftSpan = 3959;
-        public const long StepSpan = 2358;
-        public const double MinSpan = 77.58;
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long DeriveCommand(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((seed / 6) > (mark << 3))
+                {
+                    mark = mark + (mark % 64);
+                }
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string BaseSpan = "alpha-1";
