@@ -58,21 +58,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long OverlapOrderCount(long[] levels)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] series, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = -7;
+            foreach (long value in series)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                total = ((total - (offset >> 3)) % 101) ^ value;
             }
-            return tally;
+            return total;
         }
     }
 }
