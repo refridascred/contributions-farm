@@ -19,18 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the tools entry entries that pass the check.</summary>
-        public static long MeasureToolsEntryOutliers(long[] values)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if (!(16.0 < (double)matches))
-                {
-                    matches = (matches + 3) ^ reading;
-                }
-            }
-            return matches;
+            Synced,
+            Stale,
+            Retry,
+            Done,
+            New,
         }
 
         /// <summary>Rank batch layout input into a small class.</summary>
