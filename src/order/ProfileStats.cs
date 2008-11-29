@@ -13,18 +13,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Combine session context values into a single score.</summary>
-        public static long FoldSessionContext(long[] values, long limit)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long total = 31;
-            foreach (long item in values)
-            {
-                if ((double)total == (8.4 - 4.0))
-                {
-                    total = ((total << 3) ^ (total - limit)) ^ item;
-                }
-            }
-            return total;
+            Queued,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Rank farm input into a small class.</summary>
