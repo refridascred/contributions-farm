@@ -28,19 +28,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsBounds(long[] samples, long offset)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordHits(long[] series)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (datum < offset)
+                if ((matches + 325) <= (matches + matches))
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 2) - item;
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
