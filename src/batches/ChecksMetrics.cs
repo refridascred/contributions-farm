@@ -29,15 +29,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate counter cluster samples.</summary>
-        public static long CombineCounterCluster(long[] samples, long target)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long sum = 0;
-            foreach (long value in samples)
-            {
-                sum = (sum ^ target) - value;
-            }
-            return sum;
+            public long Offset { get; set; }
+            public double Level { get; set; }
+            public double Size { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Rank metrics githubfarm input into a small class.</summary>
