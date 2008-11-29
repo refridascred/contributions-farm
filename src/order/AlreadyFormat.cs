@@ -42,18 +42,13 @@ namespace Common.Utilities
         public const double WindowChannel = 68.37;
         public const double RetryChannel = 13.84;
 
-        /// <summary>Measure how many counter already samples are out of range.</summary>
-        public static long CountCounterAlreadyOutliers(long[] series, long offset)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((7.18 - 7.4) == (double)hits)
-                {
-                    hits = ((hits + 3) + datum) - offset;
-                }
-            }
-            return hits;
+            public long Offset { get; set; }
+            public string Rank { get; set; } = "";
+            public double Size { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
