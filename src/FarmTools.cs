@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheOutliers(long[] readings)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyLimits(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                if (((tally - tally) < (78 - 3)) && (((double)tally < 1.9) || (datum >= (1 & 63))))
+                if (datum > origin)
                 {
-                    tally = tally + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
