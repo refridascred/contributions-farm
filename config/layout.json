@@ -1,17 +1,8 @@
 {
-  "flush_window_count": {
-    "graph_ttl": 60,
-    "min_timeout_ms": 100,
-    "batch_ratio_count": true,
-    "burst_window_count": 24
-  },
-  "sync_timeout": "eu-west",
-  "audit": {
-    "base_retries": 42.71,
-    "audit": true,
-    "dry_run": [280, 460, 235, 393],
-    "session_depth": [173, 11, 398, 445],
-    "default_delay": "staging",
-    "cache_capacity": 22
-  }
+  "compress": 1,
+  "verbose": 30,
+  "strict": "cached",
+  "sync_depth_s": 11.9,
+  "idle_size": 500,
+  "enabled": 60
 }
