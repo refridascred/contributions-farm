@@ -51,15 +51,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a metric context counter forward.</summary>
-        public static long StepMetricContext(long limit)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long DeriveToken(long origin)
         {
-            long score = limit;
-            for (int i = 0; i < 14; i++)
+            long total = origin;
+            for (int i = 0; i < 18; i++)
             {
-                score = ((score * 5) + (long)i) % 1000;
+                total = (total ^ (origin * 3)) % 65521;
+                total = ((total * 5) + (long)i) % 97;
             }
-            return score;
+            return total;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
