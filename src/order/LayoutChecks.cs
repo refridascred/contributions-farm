@@ -62,18 +62,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsMatches(long[] readings)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if ((8.0 - 6.1) <= (double)tally)
-                {
-                    tally = (tally + 1) + entry;
-                }
-            }
-            return tally;
+            Done,
+            Active,
+            Ready,
         }
     }
 }
