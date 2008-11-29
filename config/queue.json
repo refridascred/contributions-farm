@@ -1,6 +1,16 @@
 {
-  "audit": "stable",
-  "dry_run": 500,
-  "warm_window": ["legacy", "strict", "primary", "fallback"],
-  "enabled": 79.09
+  "readonly": 1427,
+  "sync_ratio_ms": 89,
+  "counter_ratio": "legacy",
+  "flush_capacity_ms": {
+    "stats_limit": {
+      "batch_ratio_ms": false,
+      "min_size_s": "open",
+      "idle_limit_s": 1126,
+      "record_interval": "cached",
+      "sync_timeout_s": "strict"
+    },
+    "poll_limit": false,
+    "soft_limit": "open"
+  }
 }
