@@ -31,15 +31,22 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long IterateSchema(long limit)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowHits(long[] data, long limit)
         {
-            long acc = limit;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                acc = ((acc * 5) + (long)i) % 97;
+                if ((((829 ^ limit) != (sample + limit)) || ((limit >> 5) >= (sample >> 4))) && ((double)limit > (double)hits))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
