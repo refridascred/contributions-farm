@@ -60,22 +60,12 @@ namespace Common.Utilities
             return gain + (double)0;
         }
 
-        /// <summary>Audit window checks readings against a rule.</summary>
-        public static long TallyWindowChecksGaps(long[] items, long floor)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((7.4 * 0.41) >= (double)floor)
-                {
-                    count = (count + 1) ^ item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Queued,
+            Stale,
+            Pending,
         }
     }
 }
