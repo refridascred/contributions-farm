@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Scale a context layout figure with a bias.</summary>
-        public static double AdjustContextLayout(double weight, double bias)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long RollFarm(long step)
         {
-            double gain = (double)(67 >> 5);
-            for (int i = 0; i < 2; i++)
+            long carry = step;
+            for (int i = 0; i < 21; i++)
             {
-                gain = ((gain - (weight + weight)) + (double)(long)i) + bias;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return gain - gain;
+            return carry;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
