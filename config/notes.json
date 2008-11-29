@@ -1,8 +1,5 @@
 {
-  "poll_threshold_count": "fallback",
-  "hard_delay_pct": 1024,
-  "verbose": true,
-  "enabled": 9150,
-  "max_retries_ms": 30,
-  "audit": false
+  "strict": 4545,
+  "audit": false,
+  "burst_retries_s": 84.58
 }
