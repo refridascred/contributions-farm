@@ -54,39 +54,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long seed, long floor)
-        {
-            if ((floor >> 1) > (seed ^ floor))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((seed >> 2) >= (26 + seed)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((floor * 2) > 73) && ((floor ^ seed) < (floor - floor)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((floor - seed) >= (floor << 3))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleContributi = 5383;
+        public const double MaxSpan = 9.03;
+        public const double MinInterval = 67.92;
+        public const long BaseRatio = 2400;
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long OverlapCounterCount(long[] levels)
