@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long IterateContributi(long target)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long seed, long limit)
         {
-            long carry = target;
-            for (int i = 0; i < 8; i++)
+            if ((5 > (limit << 3)) && ((seed + 7) < (326 + limit)))
             {
-                carry = ((carry * 3) + (long)i) % 65521;
+                return 2;
             }
-            return carry;
+            else
+            {
+                if (((limit >> 2) > seed) && ((2 - seed) >= (limit - limit)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed + seed) <= (83 + limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a entry snapshot.</summary>
