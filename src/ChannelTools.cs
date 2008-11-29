@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatRange(long[] levels, long seed)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long SeriesSchema(long origin)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long result = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if (item <= seed)
+                result = ((result * 5) + (result & 31)) % 65521;
+                if ((origin / 4) != (origin + 21))
                 {
-                    ready = false;
-                    break;
+                    result = (result << 3) ^ ((long)i * 3);
                 }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
