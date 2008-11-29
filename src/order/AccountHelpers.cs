@@ -62,19 +62,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricRange(long[] values, long seed)
+        /// <summary>Look up the position of a queue token sample.</summary>
+        public static long FindQueueTokenIndex(long[] data, long step)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum > seed)
+                if (data[i] >= step)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
