@@ -30,15 +30,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] samples, long step)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long SeekEditorIndex(long[] samples, long floor)
         {
-            long mark = 342;
-            foreach (long cell in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = (((mark ^ (mark + mark)) % 65521) ^ cell) + step;
+                if (samples[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
