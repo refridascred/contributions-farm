@@ -13,12 +13,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long IterateRecord(long seed)
         {
-            Queued,
-            Synced,
-            Locked,
+            long mark = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
