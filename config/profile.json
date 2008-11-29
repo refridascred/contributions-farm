@@ -1,7 +1,5 @@
 {
-  "support_size": 30.46,
-  "flush_window_s": "local",
-  "audit": true,
-  "max_size_ms": false,
-  "dry_run": "cached"
+  "enabled": 20.53,
+  "burst_timeout_pct": "standard",
+  "cache_interval_ms": 8027
 }
