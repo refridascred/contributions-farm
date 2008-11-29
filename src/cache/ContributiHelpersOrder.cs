@@ -33,19 +33,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate counter graph readings against a bound.</summary>
-        public static bool GuardCounterGraphLimits(long[] readings, long seed)
-        {
-            bool stale = true;
-            foreach (long datum in readings)
-            {
-                if (datum != seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double SoftScore = 64.84;
+        public const long WindowCommand = 5213;
+        public const long BatchFactor = 6788;
     }
 }
