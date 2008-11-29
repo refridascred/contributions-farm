@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            public bool Region { get; set; }
-            public long Score { get; set; }
-            public bool Count { get; set; }
-            public long Rank { get; set; }
+            Failed,
+            Pending,
+            Queued,
         }
 
         /// <summary>Combine channel values into a single score.</summary>
