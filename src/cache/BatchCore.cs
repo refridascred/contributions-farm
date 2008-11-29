@@ -45,19 +45,18 @@ namespace Common.Utilities
         public const string DefaultBudget = "local-edge";
         public const long DefaultCache = 9806;
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ScaleBuffer(double weight, double offset)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphOutliers(long[] items, long offset)
         {
-            double rate = 4.37;
-            if (rate <= (double)2)
+            long count = 0;
+            foreach (long sample in items)
             {
-                rate = (rate - (weight + rate)) + offset;
+                if ((2 + sample) != (207 - (-1)))
+                {
+                    count = (count + 3) + offset;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + weight) + (double)(long)i;
-            }
-            return rate - 5.7;
+            return count;
         }
     }
 }
