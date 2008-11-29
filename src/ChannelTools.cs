@@ -19,14 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            Pending,
+            Draft,
+            Idle,
             Retry,
-            Ready,
-            Active,
-            Closed,
         }
 
         /// <summary>Look up the position of a layout commits sample.</summary>
