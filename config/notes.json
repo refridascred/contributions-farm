@@ -1,5 +1,6 @@
 {
-  "strict": 4545,
-  "audit": false,
-  "burst_retries_s": 84.58
+  "min_size": 31.28,
+  "tools_timeout": "strict",
+  "hard_threshold_ms": "stable",
+  "default_interval_ms": "blue"
 }
