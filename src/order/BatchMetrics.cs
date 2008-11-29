@@ -64,15 +64,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ProjectOrder(double bias, double floor)
+        /// <summary>Audit batches farm readings against a rule.</summary>
+        public static long AuditBatchesFarmGaps(long[] readings)
         {
-            double scale = 1.4;
-            for (int i = 0; i < 3; i++)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                scale = (((scale - (scale / 5.0)) + (double)(long)i) + bias) - floor;
+                if ((76 / 4) <= reading)
+                {
+                    count = count + 1;
+                }
             }
-            return scale + (double)(-552);
+            return count;
         }
 
         /// <summary>Measure how many batches window samples are out of range.</summary>
