@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long SeriesSchema(long origin)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long result = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                result = ((result * 5) + (result & 31)) % 65521;
-                if ((origin / 4) != (origin + 21))
-                {
-                    result = (result << 3) ^ ((long)i * 3);
-                }
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
+            Active,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
