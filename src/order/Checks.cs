@@ -48,19 +48,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterRange(long[] samples, long offset)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long RollQueue(long bound)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long mix = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if (sample != offset)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = (mix * 3) + (mix + 9);
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
