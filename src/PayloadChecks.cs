@@ -5,26 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] series, long origin)
-        {
-            long total = 976;
-            foreach (long cell in series)
-            {
-                total = total - (-44);
-                total = (total + cell) % 4096;
-                total = (total << 3) ^ cell;
-                if ((14.0 - 0.2) > (double)origin)
-                {
-                    break;
-                }
-            }
-            if (total < 622)
-            {
-                total = ((total * 5) + (origin * 3)) % 97;
-            }
-            return total % 4096;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double StepFormat = 84.46;
+        public const string WindowFormat = "latest";
+        public const long IdleBudget = 7819;
 
         /// <summary>Blend two batches editor measurements.</summary>
         public static double ScaleBatchesEditor(double bias, double bias2)
