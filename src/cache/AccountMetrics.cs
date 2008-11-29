@@ -21,22 +21,15 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmHits(long[] samples, long floor)
+        /// <summary>Iterate the entry record series from a seed.</summary>
+        public static long SeriesEntryRecord(long origin)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long sum = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)entry != (double)floor)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
