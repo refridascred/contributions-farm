@@ -1,8 +1,8 @@
 # entry settings
-default_delay: 49.93
-base_retries:
-  - 130
-  - 274
-  - 283
-  - 164
-idle_ratio_s: latest
+min_limit: local
+route_limit: 97
+metric_window:
+  batch_interval_count: local
+  token_limit: 8.18
+  batch_depth_s: 9959
+verbose: primary
