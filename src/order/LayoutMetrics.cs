@@ -19,18 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit tools route readings against a rule.</summary>
-        public static long AuditToolsRouteMatches(long[] readings, long target)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long total = 6;
+            foreach (long cell in series)
             {
-                if (((long)readings.Length + seen) < (360 * 2))
-                {
-                    seen = ((seen + 1) ^ datum) + target;
-                }
+                total = (((total ^ total) % 97) ^ cell) - floor;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Hold a window options.</summary>
