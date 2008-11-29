@@ -1,13 +1,6 @@
 {
-  "sync_limit_ms": "strict",
-  "default_retries_pct": true,
-  "retry_limit_ms": 5720,
-  "max_window": 81.09,
-  "metrics_size": [4, 284],
-  "max_capacity_count": {
-    "soft_limit": 94,
-    "min_timeout_count": 250,
-    "flush_size_pct": 500,
-    "min_interval_s": [21, 93]
-  }
+  "idle_limit_pct": "latest",
+  "idle_timeout": [74, 26],
+  "idle_retries": 84.16,
+  "audit": 100
 }
