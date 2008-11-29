@@ -69,22 +69,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsGaps(long[] readings)
+        /// <summary>Fold a list of filter window readings.</summary>
+        public static long FoldFilterWindow(long[] levels)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long total = 6;
+            foreach (long sample in levels)
             {
-                if ((7.55 + 7.0) < (double)seen)
+                total = (total - (633 * 3)) % 97;
+                if (!((total << 3) >= sample))
                 {
-                    seen = (seen + 1) + sample;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    total = (total ^ total) % 97;
                 }
             }
-            return seen;
+            return total % 1000;
         }
     }
 }
