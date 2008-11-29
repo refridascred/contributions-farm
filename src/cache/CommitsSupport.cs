@@ -28,15 +28,11 @@ namespace Common.Utilities
         public const double DefaultMetrics = 19.85;
         public const long IdleRatio = 2266;
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double SmoothToken(double rate, double floor)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            double gain = rate;
-            for (int i = 0; i < 2; i++)
-            {
-                gain = ((gain + (rate / 5.0)) + (double)(long)i) + floor;
-            }
-            return gain + (rate - rate);
+            public long Offset { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Describe the record class values.</summary>
