@@ -22,19 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two batches editor measurements.</summary>
-        public static double ScaleBatchesEditor(double bias, double bias2)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterOutliers(long[] samples)
         {
-            double mean = bias2;
-            if (mean > mean)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                mean = mean + bias;
+                if (value > (value + seen))
+                {
+                    seen = seen + 2;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - (double)8) + (double)(long)i;
-            }
-            return mean + (mean - bias);
+            return seen;
         }
 
         /// <summary>Project the next metrics value.</summary>
