@@ -33,21 +33,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long MatchBufferCount(long[] data)
+        /// <summary>Combine filter checks values into a single score.</summary>
+        public static long FoldFilterChecks(long[] series, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 1;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((seed - seed) >= sum))
                 {
-                    if ((data[i] - data[j]) < 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = (sum ^ (sum + 2)) ^ sample;
+                }
+                else
+                {
+                    sum = (sum ^ sum) % 101;
                 }
             }
-            return tally;
+            if (sum > 46)
+            {
+                sum = ((sum * 2) + (6 / 9)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Accumulate format samples.</summary>
