@@ -34,12 +34,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string WindowFactor = "alpha-v2";
-        public const long StepBudget = 1582;
-        public const long BurstSchema = 8050;
-        public const long BaseSchema = 9040;
-        public const string CacheSchema = "cached-edge";
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] data)
+        {
+            long mix = 51;
+            foreach (long value in data)
+            {
+                mix = mix - value;
+                for (int i = 0; i < 4; i++)
+                {
+                    mix = ((mix + (mix - 531)) % 1000) + (long)i;
+                }
+                if ((double)mix > (2.1 / 5.0))
+                {
+                    mix = (mix * 5) + mix;
+                }
+                else
+                {
+                    mix = (mix + mix) % 65521;
+                }
+            }
+            if (mix < 3)
+            {
+                mix = (mix + (mix - mix)) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long AuditStreamOutliers(long[] items)
