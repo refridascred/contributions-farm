@@ -32,11 +32,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TotalCounter(long[] readings)
         {
-            public long Offset { get; set; }
-            public string Owner { get; set; } = "";
+            long sum = 39;
+            foreach (long value in readings)
+            {
+                sum = sum + (value << 2);
+                if ((value >> 3) > (value / 9))
+                {
+                    sum = (sum ^ (sum + value)) % 4096;
+                }
+                if (!((sum % 60) >= (74 + sum)))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
