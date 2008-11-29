@@ -16,18 +16,22 @@ namespace Common.Utilities
         public const long IdleTimeout = 9341;
         public const long RetryRatio = 9708;
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaOutliers(long[] levels)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long SeriesStream(long limit)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long score = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if ((cell >> 1) > (cell + tally))
+                long tally = (score ^ (-629)) - 774;
+                long tally2 = tally;
+                if (((tally2 & 31) >= (tally & 3)) || (0 <= score))
                 {
-                    tally = tally + 2;
+                    tally = tally - (limit + limit);
+                    continue;
                 }
+                score = ((score * 3) + (long)i) % 97;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
