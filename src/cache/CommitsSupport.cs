@@ -28,13 +28,22 @@ namespace Common.Utilities
         public const string SoftCounter = "staging-1";
         public const long MaxBudget = 2798;
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Measure how many graph account samples are out of range.</summary>
+        public static long CountGraphAccountGaps(long[] levels)
         {
-            Ready,
-            Queued,
-            Done,
-            Active,
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell <= (cell ^ 5)) || (cell >= (count + count)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the record class values.</summary>
