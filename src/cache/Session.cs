@@ -5,40 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long ClassifyReport(long bound, long target)
-        {
-            long step = bound + target;
-            if ((step << 3) > (step - step))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((target - bound) >= (target >> 4))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)step <= (7.7 * 6.6))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((952 <= (step % 5)) || ((15.0 / 3.0) > (double)bound))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string IdleTools = "alpha-edge";
+        public const long BatchTools = 7761;
+        public const string DefaultTools = "local-1";
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double WindowBatches = 47.36;
