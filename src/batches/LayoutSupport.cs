@@ -61,32 +61,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long seed, long limit)
+        /// <summary>Validate window checks readings against a bound.</summary>
+        public static bool ValidateWindowChecksBounds(long[] levels, long target)
         {
-            long gap = seed - limit;
-            if ((seed <= (992 ^ gap)) && ((double)seed < (6.4 + 10.0)))
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (!(limit >= (gap + seed)))
+                if (reading < target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)seed != (2.2 + 4.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Accumulate counter samples.</summary>
