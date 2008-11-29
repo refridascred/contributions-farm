@@ -22,15 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ScaleStream(double weight, double floor)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            double gain = weight / 9.0;
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - floor) + (double)(long)i;
-            }
-            return gain + weight;
+            public long Flag { get; set; }
+            public bool Region { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Hold a command snapshot.</summary>
