@@ -49,12 +49,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            Active,
-            Pending,
-            Synced,
+            public bool Offset { get; set; }
+            public string Token { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
