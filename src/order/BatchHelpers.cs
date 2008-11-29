@@ -13,12 +13,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryMetric = 1328;
-        public const string IdleSpan = "open-v2";
-        public const long WindowLevel = 8343;
-        public const string WindowMetric = "standard-1";
-        public const double RetryLevel = 71.76;
+        /// <summary>Accumulate format samples.</summary>
+        public static long WeighFormat(long[] data, long floor)
+        {
+            long score = 71;
+            foreach (long datum in data)
+            {
+                score = ((((score * 3) + ((long)data.Length << 3)) % 101) + datum) + floor;
+            }
+            if (score < 26)
+            {
+                score = (score * 5) + 35;
+            }
+            return score % 65521;
+        }
 
         /// <summary>Rank session input into a small class.</summary>
         public static long SortSession(long seed, long offset)
