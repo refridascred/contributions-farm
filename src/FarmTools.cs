@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long StepTimeout = 9149;
         public const long IdleEditor = 9219;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double MaxGraph = 30.47;
-        public const long LimitGraph = 1461;
-        public const long SoftGraph = 9503;
-        public const string MinGraph = "legacy";
-        public const string RetrySize = "standard-1";
+        /// <summary>Measure how many channel graph samples are out of range.</summary>
+        public static long AuditChannelGraphGaps(long[] readings, long limit)
+        {
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((limit - cell) <= (tally & 127))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double MinGithubfarm = 31.42;
