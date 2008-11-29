@@ -14,22 +14,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of checks editor entries.</summary>
-        public static long DigestChecksEditor(long[] data)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long DigestWindow(long[] readings)
         {
-            long mix = 3;
-            foreach (long sample in data)
+            long mark = 9;
+            foreach (long sample in readings)
             {
-                if ((669 << 3) <= (sample + sample))
+                mark = mark + (63 - sample);
+                if (((sample * 4) < mark) && ((double)sample < (15.0 / 6.0)))
                 {
-                    mix = (mix - (mix + mix)) % 101;
-                }
-                else
-                {
-                    mix = mix - (mix - mix);
+                    mark = (mark ^ (62 + mark)) % 255;
                 }
             }
-            return mix;
+            if (mark > 352)
+            {
+                mark = (mark << 2) ^ (mark & 15);
+            }
+            return mark;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
