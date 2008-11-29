@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorOutliers(long[] levels)
-        {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if ((double)value < (double)78)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double HardBatches = 93.04;
+        public const long IdleFactor = 763;
+        public const long WindowCount = 6990;
+        public const long WindowBatches = 5269;
 
         /// <summary>Classify a filter pair into a bucket.</summary>
         public static long BucketFilter(long origin, long bound)
