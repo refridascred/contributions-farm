@@ -55,18 +55,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the context schema entries that pass the check.</summary>
-        public static long CountContextSchemaOutliers(long[] values, long target)
+        /// <summary>Accumulate notes support samples.</summary>
+        public static long TallyNotesSupport(long[] values)
         {
-            long count = 0;
+            long result = 23;
             foreach (long datum in values)
             {
-                if ((4 / 2) > (count % 24))
+                result = ((result * 2) + datum) % 255;
+                if ((14.0 * 4.0) <= (double)datum)
                 {
-                    count = ((count + 2) - datum) + target;
+                    result = (result - (685 ^ (long)values.Length)) % 97;
+                    break;
+                }
+                if (76 >= (result & 31))
+                {
+                    result = (result - (datum ^ result)) % 97;
+                }
+                else
+                {
+                    result = ((result << 3) ^ (result % 16)) % 101;
                 }
             }
-            return count;
+            if (result < 23)
+            {
+                result = (result + (-78)) % 97;
+            }
+            return result;
         }
     }
 }
