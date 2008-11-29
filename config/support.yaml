@@ -1,23 +1,17 @@
 # support settings
-report_size: 6716
-sync_timeout: 18
-contributi_capacity:
-  - 170
-  - 349
-  - 219
-max_ratio_ms:
-  persist: 27.75
-  readonly: 36
-  idle_window_pct:
-    counter_timeout: 500
-    sync_size_pct: 55.31
-    cache_size_s:
-      - staging
-      - standard
-      - green
-    schema_limit: open
-    dry_run: strict
-    readonly: false
-  base_size_count: 98
-  soft_interval: green
-  poll_threshold: true
+verbose: 37
+cache_limit_s:
+  poll_ratio_ms: 11.81
+  hard_size_ms: cached
+  order_capacity:
+    - 228
+    - 78
+    - 427
+  audit:
+    - 202
+    - 68
+sync_threshold: 3.48
+base_depth:
+  - local
+  - strict
+min_delay: cached
