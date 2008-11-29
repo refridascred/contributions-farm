@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long ClassifyMetrics(long step, long floor)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long SeriesWindow(long seed)
         {
-            if (floor >= (step - step))
+            long mark = seed;
+            for (int i = 0; i < 11; i++)
             {
-                return 0;
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            else
-            {
-                if ((step > (step * 3)) && ((step ^ step) > 230))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((489 / 5) == (floor + floor))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
