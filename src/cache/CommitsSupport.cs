@@ -54,39 +54,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a stream cache pair into a bucket.</summary>
-        public static long BucketStreamCache(long limit, long origin)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmGaps(long[] data, long bound)
         {
-            long lane = limit + origin;
-            if ((lane + limit) >= 7)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)lane == (1.24 + 20.0))
+                if (bound > (matches + cell))
                 {
-                    return 3;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    if ((lane + lane) >= lane)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((375 - lane) > (44 ^ origin))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Fold a list of account readings.</summary>
