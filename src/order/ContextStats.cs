@@ -53,9 +53,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxWidth = 5779;
-        public const long StepWidth = 7299;
-        public const string StepRatio = "fallback";
+        /// <summary>Match up session samples.</summary>
+        public static long OverlapSessionCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
