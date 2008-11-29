@@ -1,32 +1,27 @@
 # entry settings
-soft_ttl_ms: staging
-batch_ratio_s:
-  max_ttl_s:
-    compress: 250
-    default_ratio_ms: strict
-    poll_window_count: primary
-    idle_ratio_ms: strict
-    dry_run: false
-  hard_size_s: 7802
-  warm_delay_s:
-    flush_delay_ms:
-      - 496
-      - 496
-      - 111
-      - 471
-    min_size_ms: standard
-    retry_retries_s:
-      - 100
-      - 189
-    farm_depth:
-      - standard
-      - green
-      - strict
-    persist: 60
-  dry_run: 3021
-  warm_interval_ms: green
-  cache_capacity_count: 250
-burst_interval_pct: primary
-idle_limit: blue
-metric_threshold: 2094
-token_window: 6278
+verbose:
+  base_capacity_count: 28
+  editor_ttl: 29.42
+  window_size:
+    - 491
+    - 84
+  warm_interval_s:
+    - green
+    - blue
+    - edge
+    - blue
+  soft_window_pct:
+    min_ratio_ms: true
+    editor_timeout:
+      - eu-west
+      - latest
+      - stable
+      - legacy
+    filter_limit: false
+    command_limit: 2.5
+flush_window_pct:
+  - open
+  - blue
+stats_ratio: standard
+idle_delay_s: 10
+default_retries_pct: local
