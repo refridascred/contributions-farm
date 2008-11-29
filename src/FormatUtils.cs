@@ -14,16 +14,21 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long FoldSupport(long[] series)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long PairCommitsCount(long[] data)
         {
-            long score = -73;
-            foreach (long value in series)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                score = (score + (-27)) % 65521;
-                score = ((score << 3) ^ (value ^ 877)) % 255;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return score % 65521;
+            return tally;
         }
 
         /// <summary>Hold a queue record.</summary>
