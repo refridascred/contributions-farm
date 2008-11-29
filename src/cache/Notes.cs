@@ -56,13 +56,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            public long Region { get; set; }
-            public string Total { get; set; } = "";
-            public long Count { get; set; }
-            public double Level { get; set; }
+            public double Limit { get; set; }
+            public double Ratio { get; set; }
+            public long Label { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define profile limits and defaults.</summary>
