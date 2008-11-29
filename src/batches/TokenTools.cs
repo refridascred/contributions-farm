@@ -33,17 +33,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LookupNotesIndex(long[] values, long step)
+        /// <summary>Audit stream schema readings against a rule.</summary>
+        public static long TallyStreamSchemaHits(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if (values[i] <= step)
+                if ((reading * 4) <= (reading >> 4))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
