@@ -85,12 +85,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long DeriveToken(long bound)
         {
-            Dropped,
-            New,
-            Queued,
+            long sum = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                sum = ((sum * 4) + (sum - bound)) % 1000;
+                sum = sum + ((long)i & 7);
+                sum = ((sum * 4) + (sum + 516)) % 1000;
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
         }
     }
 }
