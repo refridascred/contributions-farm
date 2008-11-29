@@ -1,7 +1,16 @@
 {
-  "base_size": "eu-west",
-  "max_threshold_ms": [451, 192],
-  "min_depth": "eu-west",
-  "report_capacity": 22.29,
-  "audit": [455, 312, 425, 342]
+  "batch_retries_ms": {
+    "burst_threshold": false,
+    "max_threshold_pct": false,
+    "strict": "standard"
+  },
+  "warm_window_pct": 213,
+  "strict": {
+    "githubfarm_delay": "staging",
+    "retry_window": 26.09,
+    "sync_ratio_ms": "local",
+    "compress": "latest",
+    "filter_size": 2342
+  },
+  "window_depth": ["local", "open", "latest"]
 }
