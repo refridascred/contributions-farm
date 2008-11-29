@@ -64,18 +64,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryHits(long[] readings)
+        /// <summary>Accumulate record support samples.</summary>
+        public static long TotalRecordSupport(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long anchor = 10;
+            foreach (long reading in items)
             {
-                if (hits <= (hits - datum))
-                {
-                    hits = hits + 3;
-                }
+                anchor = ((anchor << 2) ^ (anchor >> 4)) ^ reading;
             }
-            return hits;
+            if (anchor > (-81))
+            {
+                anchor = ((anchor << 3) ^ anchor) % 1000;
+            }
+            return anchor % 1000;
         }
     }
 }
