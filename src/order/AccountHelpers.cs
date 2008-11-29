@@ -41,18 +41,25 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricGaps(long[] levels, long bound)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long limit, long step)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long diff = limit ^ step;
+            if (!(limit <= (2 + diff)))
             {
-                if (((bound * 4) == (47 + reading)) && ((bound >> 4) > (seen & 31)))
+                return 2;
+            }
+            else
+            {
+                if ((step >= (diff & 255)) || ((5.3 / 2.0) >= (double)diff))
                 {
-                    seen = seen + 1;
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return seen;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
