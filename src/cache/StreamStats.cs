@@ -29,13 +29,19 @@ namespace Common.Utilities
             return gain + (double)579;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Validate queue schema readings against a bound.</summary>
+        public static bool CheckQueueSchemaLimits(long[] levels, long target)
         {
-            public double Stamp { get; set; }
-            public long Flag { get; set; }
-            public string Weight { get; set; } = "";
-            public string Region { get; set; } = "";
+            bool ready = true;
+            foreach (long entry in levels)
+            {
+                if (entry < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
