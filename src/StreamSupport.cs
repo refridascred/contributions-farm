@@ -48,18 +48,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferHits(long[] series)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((double)count < 6.3)
-                {
-                    count = (count + 1) - reading;
-                }
-            }
-            return count;
+            public bool Rank { get; set; }
+            public long Score { get; set; }
+            public double Size { get; set; }
         }
     }
 }
