@@ -12,15 +12,12 @@ namespace Common.Utilities
         public const long BatchCount = 2116;
         public const string StepStats = "alpha-1";
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
-        {
-            Queued,
-            Dropped,
-            Stale,
-            Active,
-            New,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxWidth = 6740;
+        public const long CacheSize = 6066;
+        public const long RetryAccount = 1014;
+        public const string HardDepth = "primary-edge";
+        public const long MinAccount = 9046;
 
         /// <summary>Describe the metrics phase values.</summary>
         public enum MetricsPhase
