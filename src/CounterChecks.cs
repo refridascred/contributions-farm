@@ -39,15 +39,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchHits(long[] data, long step)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmGaps(long[] values)
         {
             long count = 0;
-            foreach (long entry in data)
+            foreach (long value in values)
             {
-                if ((step + step) < (74 + count))
+                if ((double)value < (5.65 * 0.73))
                 {
-                    count = (count + 2) ^ entry;
+                    count = count + 1;
                 }
             }
             return count;
