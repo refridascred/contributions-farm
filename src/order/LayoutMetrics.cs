@@ -30,18 +30,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryMatches(long[] samples)
-        {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((double)item >= 20.0)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BurstCache = 57.64;
+        public const long CacheSpan = 8075;
+        public const long HardRatio = 8772;
+        public const long MaxDepth = 979;
     }
 }
