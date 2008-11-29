@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricOutliers(long[] levels, long target)
         {
-            public long Region { get; set; }
-            public long Total { get; set; }
-            public bool Ratio { get; set; }
-            public long Token { get; set; }
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((((double)matches >= (6.6 / 4.0)) && (value >= (value / 8))) && (matches < target))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
