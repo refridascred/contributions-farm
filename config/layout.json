@@ -1,7 +1,5 @@
 {
-  "sync_depth_pct": "fallback",
-  "context_depth": 8695,
-  "readonly": 96.34,
-  "burst_ratio_ms": "open",
-  "poll_capacity": 726
+  "min_interval_pct": 24,
+  "sync_depth_count": [413, 346, 112, 272],
+  "flush_interval": 94
 }
