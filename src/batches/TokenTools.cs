@@ -24,11 +24,11 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string IdleInterval = "primary-v2";
-        public const long IdleLevel = 1907;
-        public const long SoftAccount = 8851;
-        public const double MaxRatio = 3.08;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepCount = 5504;
+        public const long BurstScore = 2966;
+        public const long WindowDepth = 6651;
+        public const long LimitMetric = 95;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string MinChannel = "open-edge";
