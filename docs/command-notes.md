@@ -1,13 +1,14 @@
 # Command notes
 
-Defaults for layout live in the config folder and can be overridden per environment.
-A context that stays idle for too long is moved to the batches list.
+When a cluster fails, the format handler retries a few times before giving up.
+The commits module keeps record values in sync with the counter cache.
 
-Keep commits and record names short and lowercase.
-When a token fails, the support handler retries a few times before giving up.
+The stream helpers are pure functions, so they are safe to call from any thread.
+When a tools fails, the notes handler retries a few times before giving up.
+Each queue is validated before it reaches the context queue.
 
 ## Guidelines
 
-- Log every editor change
-- Keep session values small
-- Review order limits each release
+- Validate entry input early
+- Log every already change
+- Review notes limits each release
