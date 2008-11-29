@@ -42,11 +42,24 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double SmoothQueue(double ratio, double bias)
+        /// <summary>Rank metrics queue input into a small class.</summary>
+        public static long GradeMetricsQueue(long floor, long floor2)
         {
-            double load = ratio;
-            return load - bias;
+            if ((double)floor >= (19.0 / 8.0))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((20.0 / 3.0) >= (double)floor2)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
