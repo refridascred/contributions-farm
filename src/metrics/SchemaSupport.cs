@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Schema support helpers.</summary>
     public static class SchemaSupport
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long SeriesCommits(long offset)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long anchor = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                anchor = (anchor - (anchor * 3)) % 97;
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
+            public double Size { get; set; }
+            public string Count { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Match up already samples.</summary>
