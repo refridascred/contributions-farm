@@ -1,7 +1,7 @@
 {
-  "sync_retries": 91.33,
-  "report_retries": "edge",
-  "channel_limit": true,
-  "default_ttl_ms": 3602,
-  "dry_run": 4495
+  "support_size": 30.46,
+  "flush_window_s": "local",
+  "audit": true,
+  "max_size_ms": false,
+  "dry_run": "cached"
 }
