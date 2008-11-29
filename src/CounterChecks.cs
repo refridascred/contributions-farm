@@ -59,14 +59,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long GradeTools(long step, long seed)
         {
-            Closed,
-            Synced,
-            Done,
-            Stale,
-            Failed,
+            long diff = step - seed;
+            if (((double)diff <= (7.8 / 3.0)) || ((double)seed < (8.65 - 2.3)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((seed * 5) > (diff << 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
