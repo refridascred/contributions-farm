@@ -83,13 +83,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
-        {
-            public long Mode { get; set; }
-            public long Size { get; set; }
-            public long Weight { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BurstSupport = 43.15;
+        public const long WindowBudget = 7076;
+        public const long BaseDepth = 4913;
     }
 }
