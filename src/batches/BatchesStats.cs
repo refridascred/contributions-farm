@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BatchLevel = "strict";
-        public const long BaseStream = 9476;
-        public const long DefaultStream = 4072;
-        public const string StepBudget = "staging-v2";
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorOutliers(long[] levels)
+        {
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((double)value < (double)78)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
         public static long BucketFilter(long origin, long bound)
