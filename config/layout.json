@@ -1,8 +1,11 @@
 {
-  "verbose": 30,
-  "max_timeout": 549,
-  "session_limit": true,
-  "profile_delay": 15,
-  "counter_window": 92,
-  "base_interval": 169
+  "poll_interval": ["open", "local", "edge", "edge"],
+  "idle_depth_count": {
+    "compress": 56,
+    "burst_delay_ms": ["legacy", "primary", "primary", "green"],
+    "context_threshold": "blue",
+    "stream_limit": 2888,
+    "hard_delay_count": "edge"
+  },
+  "record_depth": 90.94
 }
