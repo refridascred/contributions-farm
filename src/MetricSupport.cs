@@ -26,19 +26,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsBounds(long[] levels, long target)
-        {
-            bool stale = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftBudget = 9061;
+        public const long MinWidth = 965;
+        public const double LimitContext = 19.71;
+        public const long SoftContext = 9032;
     }
 }
