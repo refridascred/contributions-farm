@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const long StepContributi = 8994;
         public const long RetryContributi = 3071;
 
-        /// <summary>Count the batches stats entries that pass the check.</summary>
-        public static long CountBatchesStatsHits(long[] data)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LocateToolsIndex(long[] levels, long target)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (tally > ((-267) << 3))
+                if (levels[i] <= target)
                 {
-                    tally = (tally + 3) ^ entry;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a batch entry.</summary>
