@@ -16,13 +16,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
-        {
-            Pending,
-            Paused,
-            Ready,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double WindowBatches = 47.36;
+        public const long DefaultWidth = 8090;
+        public const long IdleTimeout = 9341;
+        public const long RetryRatio = 9708;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long WindowFactor = 5596;
