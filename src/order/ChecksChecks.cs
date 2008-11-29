@@ -12,14 +12,26 @@ namespace Common.Utilities
             return (gain2 + offset) + gain;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Fold a list of layout buffer readings.</summary>
+        public static long TallyLayoutBuffer(long[] levels)
         {
-            Done,
-            Locked,
-            Stale,
-            Closed,
-            Idle,
+            long total = 4;
+            foreach (long item in levels)
+            {
+                if ((item + item) >= (total - total))
+                {
+                    break;
+                }
+                if ((483 >> 3) <= (total + item))
+                {
+                    total = (total + (item - total)) % 4096;
+                }
+            }
+            if (total < 207)
+            {
+                total = (total + (total - total)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Locate a command reading by value.</summary>
