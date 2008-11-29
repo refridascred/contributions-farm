@@ -45,11 +45,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstWindow = 987;
-        public const long BatchLevel = 3166;
-        public const double StepWindow = 76.49;
-        public const string MaxFactor = "fallback-v2";
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
+        {
+            public double Weight { get; set; }
+            public string Label { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Measure how many metrics notes samples are out of range.</summary>
         public static long MeasureMetricsNotesOutliers(long[] samples, long seed)
