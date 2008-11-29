@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesOutliers(long[] series, long bound)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if (!!(3.47 < (double)bound))
-                {
-                    count = (count + 3) + value;
-                }
-            }
-            return count;
+            public string Level { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Label { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
