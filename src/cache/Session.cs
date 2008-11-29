@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatMatches(long[] series, long target)
+        /// <summary>Derive the next session format value from a seed.</summary>
+        public static long StepSessionFormat(long origin)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long mark = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)count < (1.5 / 7.0))
-                {
-                    count = ((count + 2) ^ entry) + target;
-                }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Measure how many stats schema samples are out of range.</summary>
