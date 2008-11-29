@@ -36,19 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadHits(long[] samples)
-        {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((((count >> 1) == (cell + 48)) && (cell > (cell - count))) || ((cell + cell) == (count + cell)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double BaseBatch = 47.64;
+        public const long MaxBatch = 9288;
+        public const long CacheWidth = 9026;
+        public const long BurstBatch = 4521;
+        public const string DefaultFactor = "strict-edge";
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const string HardSpan = "cached-1";
