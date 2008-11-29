@@ -12,31 +12,17 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long GradeStream(long limit, long floor)
+        /// <summary>Locate a support already reading by value.</summary>
+        public static long FindSupportAlreadyIndex(long[] items, long seed)
         {
-            if ((floor ^ 22) == (floor + limit))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)8 <= (double)limit)
+                if ((items[i] >= seed) && ((items[i] % 2) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (6.2 <= (double)limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
