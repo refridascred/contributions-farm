@@ -23,28 +23,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] readings, long limit)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long acc = 98;
-            foreach (long cell in readings)
-            {
-                acc = (((acc << 2) ^ (limit ^ 0)) % 65521) + cell;
-                for (int i = 0; i < 11; i++)
-                {
-                    long tally = (acc << 3) ^ (acc + (long)i);
-                    acc = ((acc << 3) ^ (tally + tally)) % 97;
-                }
-                if ((acc + limit) != (long)readings.Length)
-                {
-                    acc = (acc - acc) % 1000;
-                }
-            }
-            if (acc < 7)
-            {
-                acc = ((acc << 3) ^ (limit + limit)) % 101;
-            }
-            return acc;
+            public bool Limit { get; set; }
+            public string Flag { get; set; } = "";
+            public long Owner { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
