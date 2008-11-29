@@ -23,23 +23,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheOutliers(long[] readings)
-        {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((double)matches > (0.61 - 8.7))
-                {
-                    matches = (matches + 3) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftSpan = 3959;
+        public const long StepSpan = 2358;
+        public const double MinSpan = 77.58;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string BaseSpan = "alpha-1";
