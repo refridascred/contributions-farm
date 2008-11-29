@@ -1,8 +1,7 @@
-id,weight,owner,score
-1,green,469,stable
-2,633,strict,32.93
-3,primary,484,157
-4,86.16,42.21,edge
-5,cached,33.01,698
-6,428,fallback,81.92
-7,edge,49.87,722
+id,score,token,count
+1,871,52.65,blue
+2,93.66,951,381
+3,edge,5.56,34.46
+4,staging,31.93,62.73
+5,strict,18.36,stable
+6,93.53,302,82.86
