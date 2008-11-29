@@ -1,11 +1,11 @@
 # Command notes
 
-Keep layout and route names short and lowercase.
-Use support settings to tune how often support data is refreshed.
-When a window fails, the tools handler retries a few times before giving up.
+The contributi module keeps context values in sync with the entry cache.
+A profile that stays idle for too long is moved to the editor list.
 
 ## Guidelines
 
-- Validate format input early
-- Review stats limits each release
-- Document new entry fields
+- Keep record values small
+- Document new schema fields
+- Log every notes change
+- Review graph limits each release
