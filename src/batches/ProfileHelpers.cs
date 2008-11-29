@@ -42,13 +42,10 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
-        {
-            Idle,
-            Closed,
-            Retry,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string RetryTimeout = "standard-edge";
+        public const long LimitStream = 714;
+        public const string CacheStream = "local";
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long AuditCommandHits(long[] series)
