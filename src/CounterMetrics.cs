@@ -30,15 +30,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long IterateBatches(long step)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long IterateSchema(long limit)
         {
-            long mark = step;
-            for (int i = 0; i < 4; i++)
+            long acc = limit;
+            for (int i = 0; i < 21; i++)
             {
-                mark = ((mark * 3) + (long)i) % 4093;
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
