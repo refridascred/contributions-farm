@@ -29,24 +29,22 @@ namespace Common.Utilities
         public const long CacheScore = 6724;
         public const string WindowCommits = "stable";
 
-        /// <summary>Rank account order input into a small class.</summary>
-        public static long SortAccountOrder(long target, long step)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyHits(long[] series, long target)
         {
-            if ((double)target <= (6.51 / 5.0))
+            long hits = 0;
+            foreach (long item in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (target >= (target << 2))
+                if (((11.0 <= (double)target) || ((hits - hits) < target)) || (target > item))
                 {
-                    return 8;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    return 1;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
