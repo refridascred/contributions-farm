@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Check that every payload account entry stays within the limit.</summary>
+        public static bool CheckPayloadAccountLimits(long[] readings, long step)
         {
-            Retry,
-            Draft,
-            Locked,
-            Queued,
-            Paused,
+            bool valid = true;
+            foreach (long entry in readings)
+            {
+                if (entry != step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
