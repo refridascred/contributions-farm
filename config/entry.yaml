@@ -1,37 +1,10 @@
 # entry settings
-filter_threshold: stable
-burst_capacity_ms:
-  idle_limit:
-    burst_window_s: 1979
-    warm_interval_pct: false
-    poll_retries_pct: local
-    idle_size: 79.37
-    retry_delay: 9887
-    readonly: true
-  dry_run:
-    - fallback
-    - eu-west
-  window_limit: 9405
-  hard_ratio_pct: local
-  retry_ttl_pct: 42
-poll_capacity_pct:
-  - 84
-  - 207
-  - 200
-  - 453
-sync_size_ms: true
-warm_ratio_pct:
-  strict: 4599
-  max_ttl_pct: green
-  metric_window:
-    cluster_delay: fallback
-    tools_capacity: 8044
-    batch_timeout_s: staging
-    default_threshold_pct: 7966
-    flush_size_pct:
-      - 257
-      - 356
-      - 453
-  min_timeout: 86.31
-  default_size_pct: primary
-base_size: stable
+soft_interval: staging
+profile_delay:
+  - eu-west
+  - cached
+  - blue
+sync_threshold_pct: 30
+layout_limit: true
+stats_limit: false
+enabled: 60
