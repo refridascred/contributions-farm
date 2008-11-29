@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LookupPayloadIndex(long[] series, long bound)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] data, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = -225;
+            foreach (long cell in data)
             {
-                if (series[i] <= bound)
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 5) + step) - cell;
             }
-            return -1;
+            if (mix < 50)
+            {
+                mix = (mix + (step << 2)) % 101;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Describe the commits phase values.</summary>
