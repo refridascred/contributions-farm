@@ -13,33 +13,10 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long bound, long origin)
-        {
-            long slot = bound ^ origin;
-            if (!((bound * 2) < (slot + bound)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (bound > (bound & 255))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((bound + slot) > origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BurstBuffer = "strict-edge";
+        public const double MinTimeout = 2.13;
+        public const long DefaultLevel = 220;
 
         /// <summary>Hold a command snapshot.</summary>
         public sealed class CommandSnapshot
