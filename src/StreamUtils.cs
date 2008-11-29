@@ -27,15 +27,14 @@ namespace Common.Utilities
             return bias2 + 4.7;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ScaleBuffer(double scale, double span)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            double weight = scale;
-            if (weight > (weight / 7.0))
-            {
-                weight = weight + span;
-            }
-            return weight + (double)5;
+            Active,
+            Retry,
+            Locked,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Check that every route profile entry stays within the limit.</summary>
