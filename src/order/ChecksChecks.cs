@@ -21,13 +21,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
-        {
-            Failed,
-            Closed,
-            Pending,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxGithubfarm = 1190;
+        public const long SoftFactor = 4952;
+        public const long IdleGithubfarm = 5223;
+        public const long HardSpan = 9011;
+        public const long DefaultGithubfarm = 9676;
 
         /// <summary>Hold a graph info.</summary>
         public sealed class GraphInfo
