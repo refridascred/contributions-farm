@@ -29,12 +29,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long FindFarmIndex(long[] levels, long seed)
+        /// <summary>Look up the position of a layout commits sample.</summary>
+        public static long SeekLayoutCommitsIndex(long[] samples, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (levels[i] < seed)
+                if (samples[i] == origin)
                 {
                     return (long)i;
                 }
