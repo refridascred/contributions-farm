@@ -27,21 +27,18 @@ namespace Common.Utilities
         public const string DefaultBatches = "stable";
         public const long RetryBatches = 359;
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long CompareContributiCount(long[] readings)
+        /// <summary>Count the already order entries that pass the check.</summary>
+        public static long MeasureAlreadyOrderMatches(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)hits > (8.0 / 3.0))
                 {
-                    if ((readings[i] ^ readings[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 2) ^ reading;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Scale a account stats figure with a bias.</summary>
