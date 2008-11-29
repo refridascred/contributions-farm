@@ -61,16 +61,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batches buffer samples.</summary>
-        public static long CombineBatchesBuffer(long[] values, long limit)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] levels)
         {
-            long carry = 541;
-            foreach (long reading in values)
+            long total = -9;
+            foreach (long item in levels)
             {
-                carry = (carry ^ 13) - limit;
-                carry = (carry * 3) + reading;
+                if ((item / 3) != (item - total))
+                {
+                    total = ((total << 3) ^ (total >> 5)) % 97;
+                    total = (total ^ (total % 7)) % 65521;
+                }
+                total = (total * 3) + total;
             }
-            return carry;
+            return total % 97;
         }
     }
 }
