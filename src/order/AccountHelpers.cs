@@ -44,11 +44,32 @@ namespace Common.Utilities
         public const long SoftProfile = 4616;
         public const long WindowProfile = 6301;
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Rank record input into a small class.</summary>
+        public static long BucketRecord(long offset, long target)
         {
-            public long Offset { get; set; }
-            public long Limit { get; set; }
+            long prev = offset - target;
+            if (((1.3 - 4.7) < (3.5 / 3.0)) || ((offset + target) < offset))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!(2.0 >= 2.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset % 64) < (prev % 16))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next format value.</summary>
