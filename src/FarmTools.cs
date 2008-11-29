@@ -19,11 +19,21 @@ namespace Common.Utilities
         public const long BatchCache = 5924;
         public const double MaxCache = 10.29;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double MinGithubfarm = 31.42;
-        public const long SoftFactor = 6281;
-        public const long IdleSpan = 1221;
-        public const long LimitGithubfarm = 9860;
-        public const long BaseGithubfarm = 2785;
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long MatchStatsCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
