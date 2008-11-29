@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long seed)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long sum = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                if (4.0 <= (double)sum)
-                {
-                    sum = ((sum * 2) + (sum - (-1))) % 4096;
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            public string Mode { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the payload phase values.</summary>
