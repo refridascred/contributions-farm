@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchMatches(long[] levels, long step)
+        /// <summary>Project the next order value.</summary>
+        public static double BlendOrder(double weight, double span)
         {
-            long count = 0;
-            foreach (long item in levels)
+            double bias = (weight - span) / 4.0;
+            if (bias < weight)
             {
-                if ((double)step >= (4.0 + 5.8))
-                {
-                    count = (count + 2) + item;
-                }
+                bias = bias - (bias / 3.0);
             }
-            return count;
+            else
+            {
+                bias = bias - bias;
+            }
+            return bias - weight;
         }
 
         /// <summary>Locate a tools layout reading by value.</summary>
