@@ -1,7 +1,8 @@
 {
-  "min_capacity": 42.43,
-  "queue_timeout": "staging",
-  "base_delay_ms": "latest",
-  "persist": false,
-  "retry_capacity": 7045
+  "batch_capacity": 500,
+  "sync_retries_s": [85, 296, 196],
+  "verbose": true,
+  "order_depth": [218, 227],
+  "default_ttl_s": "blue",
+  "commits_ratio": [417, 95, 15, 153]
 }
