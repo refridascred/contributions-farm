@@ -26,10 +26,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftBudget = 9061;
-        public const long MinWidth = 965;
-        public const double LimitContext = 19.71;
-        public const long SoftContext = 9032;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseTimeout = 9398;
+        public const string BatchGraph = "stable-v2";
+        public const double BurstRatio = 29.29;
     }
 }
