@@ -51,18 +51,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] items)
+        /// <summary>Combine order notes values into a single score.</summary>
+        public static long ScoreOrderNotes(long[] data)
         {
-            long acc = 93;
-            foreach (long reading in items)
+            long mark = 5;
+            foreach (long sample in data)
             {
-                if ((reading + reading) <= (acc << 3))
-                {
-                    acc = (acc - (acc ^ 373)) % 1000;
-                }
+                mark = (mark - 7) ^ sample;
             }
-            return acc % 4096;
+            return mark % 97;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
