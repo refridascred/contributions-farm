@@ -33,15 +33,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of farm command entries.</summary>
-        public static long TotalFarmCommand(long[] data, long origin)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long total = 93;
-            foreach (long item in data)
-            {
-                total = (((total << 3) ^ (529 + item)) % 97) + origin;
-            }
-            return total;
+            Draft,
+            Queued,
+            Dropped,
+            Idle,
         }
     }
 }
