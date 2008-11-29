@@ -26,19 +26,16 @@ namespace Common.Utilities
         public const long RetryStats = 452;
         public const string RetryInterval = "legacy-edge";
 
-        /// <summary>Fold a list of record route readings.</summary>
-        public static long TotalRecordRoute(long[] values)
+        /// <summary>Iterate the context counter series from a seed.</summary>
+        public static long SeriesContextCounter(long step)
         {
-            long result = 6;
-            foreach (long reading in values)
+            long total = step;
+            for (int i = 0; i < 6; i++)
             {
-                result = result - (result ^ reading);
-                if (((double)result < 6.0) && (((long)values.Length + (long)values.Length) < reading))
-                {
-                    result = ((result << 2) ^ (result << 3)) % 97;
-                }
+                total = ((total * 3) + (step ^ total)) % 1000;
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return result;
+            return total;
         }
     }
 }
