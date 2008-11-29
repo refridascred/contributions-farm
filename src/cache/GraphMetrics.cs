@@ -20,12 +20,21 @@ namespace Common.Utilities
             return gain2 + 3.3;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] series, long offset)
         {
-            public string Region { get; set; } = "";
-            public long Limit { get; set; }
-            public long Score { get; set; }
+            long mix = -18;
+            foreach (long sample in series)
+            {
+                mix = (((mix << 3) ^ (offset & 3)) % 65521) - sample;
+                mix = ((mix << 3) ^ (mix - (-769))) % 65521;
+                mix = ((mix << 3) ^ mix) % 65521;
+            }
+            if (mix < 53)
+            {
+                mix = (mix - 973) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Rank window input into a small class.</summary>
