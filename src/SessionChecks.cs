@@ -44,18 +44,12 @@ namespace Common.Utilities
         public const long DefaultLayout = 465;
         public const long CacheBudget = 2480;
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsMatches(long[] items)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if (!((3.21 / 4.0) >= (double)count))
-                {
-                    count = (count + 2) + value;
-                }
-            }
-            return count;
+            New,
+            Retry,
+            Pending,
         }
     }
 }
