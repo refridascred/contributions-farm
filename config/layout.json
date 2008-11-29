@@ -1,19 +1,7 @@
 {
-  "poll_limit_s": 250,
-  "stats_capacity": 67.37,
-  "metrics_depth": "blue",
-  "graph_limit": 26.58,
-  "context_threshold": {
-    "account_limit": 15.8,
-    "hard_timeout_s": 7749,
-    "hard_threshold_count": {
-      "warm_capacity_pct": "blue",
-      "idle_retries": ["legacy", "staging", "standard", "stable"],
-      "persist": "fallback",
-      "verbose": 100
-    },
-    "min_ttl_pct": [59, 151, 463, 470],
-    "batch_threshold": "primary",
-    "max_threshold": 49.08
-  }
+  "base_interval_s": 74.61,
+  "payload_ttl": 6256,
+  "default_depth_pct": "blue",
+  "cache_ratio": 100,
+  "graph_timeout": 89.48
 }
