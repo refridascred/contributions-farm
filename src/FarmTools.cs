@@ -16,12 +16,18 @@ namespace Common.Utilities
             return weight2 - span;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Count the support channel entries that pass the check.</summary>
+        public static long AuditSupportChannelOutliers(long[] series)
         {
-            Idle,
-            Synced,
-            Draft,
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if (((double)reading > (11.0 * 9.8)) || ((reading + reading) <= reading))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine session values into a single score.</summary>
