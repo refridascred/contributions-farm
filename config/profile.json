@@ -1,8 +1,22 @@
 {
-  "dry_run": "fallback",
-  "stats_size": false,
-  "compress": "local",
-  "support_limit": true,
-  "max_capacity": 100,
-  "hard_ratio": "stable"
+  "default_delay": {
+    "checks_delay": 1444,
+    "enabled": "legacy",
+    "checks_retries": {
+      "base_ratio": 30,
+      "readonly": "edge",
+      "idle_delay_ms": 250
+    },
+    "persist": {
+      "hard_ratio": 60,
+      "editor_size": 100,
+      "min_window_count": true,
+      "persist": true,
+      "tools_size": 95,
+      "dry_run": 11
+    },
+    "max_depth_count": 4651
+  },
+  "cluster_delay": 2832,
+  "support_window": "legacy"
 }
