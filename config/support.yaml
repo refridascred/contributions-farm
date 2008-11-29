@@ -1,18 +1,24 @@
 # support settings
-idle_retries: false
-enabled: 30
-max_threshold_s:
-  farm_capacity: 23
-  dry_run: true
-  readonly:
-    soft_timeout_ms: 250
-    command_depth: standard
-    context_retries:
-      - 46
-      - 241
-      - 15
-    poll_delay: 6046
-  retry_window: 6634
-stream_retries: false
-persist: strict
-warm_depth: 45.68
+persist: green
+queue_window:
+  cluster_threshold: 67.69
+  batch_size_pct:
+    format_window: 30
+    default_interval: green
+    sync_window: 39.35
+    strict: latest
+  cache_limit_ms: 21
+  default_threshold: 8.75
+  sync_depth:
+    - 352
+    - 367
+    - 61
+    - 367
+  idle_ratio:
+    base_ratio: 500
+    flush_window_count: edge
+    poll_size_pct: false
+    entry_delay: green
+    entry_size: local
+    command_retries: false
+idle_threshold_pct: 20.99
