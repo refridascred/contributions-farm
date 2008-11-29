@@ -75,12 +75,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxSpan = 7606;
-        public const double RetryScore = 63.5;
-        public const string BaseMetrics = "legacy-v2";
-        public const string MaxFactor = "stable-1";
-        public const long LimitMetrics = 3179;
+        /// <summary>Count the farm payload entries that pass the check.</summary>
+        public static long TallyFarmPayloadHits(long[] readings)
+        {
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if (tally <= (tally / 6))
+                {
+                    tally = (tally + 2) - reading;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a support entry.</summary>
         public sealed class SupportEntry
