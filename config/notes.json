@@ -1,13 +1,8 @@
 {
-  "retry_window_ms": "standard",
-  "batch_threshold": true,
-  "poll_depth_s": {
-    "idle_size_ms": 42,
-    "batch_ttl": 27.83,
-    "compress": "standard",
-    "stats_size": "open",
-    "idle_capacity": 26.94,
-    "min_timeout_pct": 250
-  },
-  "verbose": "legacy"
+  "base_limit": [482, 121, 293, 276],
+  "session_ttl": 95,
+  "readonly": true,
+  "poll_ttl_pct": true,
+  "flush_ttl_ms": 60,
+  "cache_retries_s": ["stable", "staging", "local", "primary"]
 }
