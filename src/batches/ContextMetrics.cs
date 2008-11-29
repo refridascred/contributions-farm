@@ -17,23 +17,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TotalLayout(long[] readings, long target)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesOutliers(long[] readings)
         {
-            long score = 3;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                score = (score << 2) ^ (entry ^ 37);
-                if (((entry - target) >= score) && ((double)score > 12.0))
+                if ((seen ^ seen) >= seen)
                 {
-                    score = score + (367 / 2);
+                    seen = (seen + 1) + sample;
                 }
             }
-            if (score < 79)
-            {
-                score = ((score * 3) + target) % 4096;
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Describe the order phase values.</summary>
