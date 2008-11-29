@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
             Active,
-            Synced,
-            Done,
-            Ready,
-            Queued,
+            Stale,
+            Paused,
+            Pending,
         }
 
         /// <summary>Describe the batch phase values.</summary>
