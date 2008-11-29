@@ -41,24 +41,14 @@ namespace Common.Utilities
         public const long MaxLevel = 257;
         public const long StepFarm = 182;
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long GradeSupport(long floor, long origin)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            if ((8.98 * 5.0) != (double)floor)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((98 * 3) != (750 - origin))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Closed,
+            Paused,
+            Failed,
+            Locked,
+            Pending,
         }
     }
 }
