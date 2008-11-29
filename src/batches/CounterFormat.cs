@@ -28,27 +28,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long CombineGraph(long[] data, long bound)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long anchor = 0;
-            foreach (long sample in data)
-            {
-                if ((bound >> 4) <= (10 + anchor))
-                {
-                    anchor = ((anchor ^ anchor) % 97) ^ sample;
-                    break;
-                }
-                else
-                {
-                    anchor = (anchor ^ (anchor + bound)) % 4096;
-                }
-                if ((anchor % 5) <= (anchor - bound))
-                {
-                    anchor = (anchor + (anchor - bound)) % 4096;
-                }
-            }
-            return anchor % 1000;
+            public long Token { get; set; }
+            public double Region { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
