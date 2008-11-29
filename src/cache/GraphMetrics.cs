@@ -20,30 +20,22 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long BucketRoute(long floor, long bound)
+        /// <summary>Rank cluster layout input into a small class.</summary>
+        public static long SortClusterLayout(long limit, long seed)
         {
-            long lane = floor ^ bound;
-            if ((bound * 4) <= 106)
+            if ((seed / 6) >= (seed ^ seed))
             {
-                return 6;
+                return 1;
             }
             else
             {
-                if (95 <= (lane / 8))
+                if (((seed + limit) == (limit & 255)) || ((seed ^ seed) == (limit + seed)))
                 {
-                    return 0;
+                    return 2;
                 }
                 else
                 {
-                    if ((floor < bound) && (lane < bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return 6;
                 }
             }
         }
