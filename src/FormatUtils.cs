@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Look up the position of a token schema sample.</summary>
-        public static long LocateTokenSchemaIndex(long[] readings, long target)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ProjectSession(double bias, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double weight = (double)(-668) + (span + bias);
+            if (weight >= bias)
             {
-                if ((readings[i] >= target) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                weight = weight - span;
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + (2.43 + weight)) + (double)(long)i;
+            }
+            return weight + (double)710;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
