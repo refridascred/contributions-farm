@@ -45,21 +45,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of farm format readings.</summary>
-        public static long OverlapFarmFormatCount(long[] data)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long WeighWindow(long[] items, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 17;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                sum = ((sum + (sum + target)) % 1000) ^ reading;
+                if (((7.6 - 6.9) >= (double)target) && ((sum + sum) == (target >> 5)))
                 {
-                    if ((data[i] ^ data[j]) > 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
             }
-            return matches;
+            if (sum < (-3))
+            {
+                sum = sum + (8 + target);
+            }
+            return sum % 1000;
         }
     }
 }
