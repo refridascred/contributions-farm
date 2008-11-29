@@ -15,21 +15,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long OverlapGraphCount(long[] items)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double AdjustEntry(double ratio, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double bias2 = bias;
+            if (bias2 < bias)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                bias2 = (bias2 + 2.65) - ratio;
             }
-            return matches;
+            return bias2 + 4.7;
         }
 
         /// <summary>Project the next buffer value.</summary>
