@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count session cluster pairs that satisfy a relation.</summary>
-        public static long CompareSessionClusterCount(long[] values)
+        /// <summary>Audit contributi entry readings against a rule.</summary>
+        public static long CountContributiEntryHits(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((long)values.Length + 6) < (hits ^ (long)values.Length))
                 {
-                    if ((values[i] + values[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 3) - value;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
