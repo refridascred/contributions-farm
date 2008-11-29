@@ -51,15 +51,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine order notes values into a single score.</summary>
-        public static long ScoreOrderNotes(long[] data)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long CompareWindowCount(long[] items)
         {
-            long mark = 5;
-            foreach (long sample in data)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = (mark - 7) ^ sample;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mark % 97;
+            return hits;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
