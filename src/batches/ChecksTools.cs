@@ -13,31 +13,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long bound, long step)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmLimits(long[] data, long offset)
         {
-            if ((4.09 * 9.54) == (double)step)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)bound < (double)step)
+                if (reading > offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((step ^ step) > (step ^ 0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Audit already window readings against a rule.</summary>
