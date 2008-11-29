@@ -1,8 +1,5 @@
 {
-  "cache_capacity": 890,
-  "queue_delay": true,
-  "soft_threshold": ["open", "blue", "open", "edge"],
-  "flush_capacity": "fallback",
-  "default_size_count": "standard",
-  "dry_run": "primary"
+  "poll_threshold": "open",
+  "command_limit": 46,
+  "verbose": "standard"
 }
