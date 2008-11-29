@@ -20,11 +20,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardStats = 6561;
-        public const long WindowInterval = 2372;
-        public const long RetryStats = 452;
-        public const string RetryInterval = "legacy-edge";
+        /// <summary>Project the next counter value.</summary>
+        public static double ProjectCounter(double rate, double floor)
+        {
+            double mean = floor - (floor / 7.0);
+            if (mean < mean)
+            {
+                mean = (mean - (mean - 8.28)) - rate;
+            }
+            return mean + (floor * 1.4);
+        }
 
         /// <summary>Iterate the context counter series from a seed.</summary>
         public static long SeriesContextCounter(long step)
