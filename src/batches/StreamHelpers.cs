@@ -58,12 +58,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Classify a queue cache pair into a bucket.</summary>
+        public static long SortQueueCache(long target, long bound)
         {
-            Done,
-            New,
-            Paused,
+            if ((target + target) != (target - target))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((bound + target) > target)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)target > (double)bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up schema samples.</summary>
