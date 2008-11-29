@@ -24,11 +24,11 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            Queued,
-            Failed,
+            Retry,
+            Draft,
             Dropped,
         }
 
