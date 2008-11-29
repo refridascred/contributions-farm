@@ -18,37 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long offset, long limit)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long bound, long target)
         {
-            long step = offset + limit;
-            if ((limit >> 5) != (step + offset))
+            long step = bound - target;
+            if (((step & 15) <= (target << 1)) && ((2.8 / 3.0) >= (double)step))
             {
-                return 2;
+                return 0;
             }
             else
             {
-                if ((9.9 + 2.72) >= (double)limit)
+                if (!((bound + target) > (step - bound)))
                 {
-                    return 3;
+                    return 4;
                 }
                 else
                 {
-                    if ((double)offset >= (5.24 - 7.84))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (limit <= (step ^ step))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return 2;
                 }
             }
         }
