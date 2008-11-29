@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long RankRoute(long seed, long floor)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long gap = seed + floor;
-            if (!((gap - gap) <= gap))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((seed & 63) != (seed << 1))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public bool Owner { get; set; }
+            public long Region { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
