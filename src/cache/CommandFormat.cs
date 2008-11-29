@@ -39,13 +39,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
-        {
-            public bool Weight { get; set; }
-            public bool Mode { get; set; }
-            public bool Count { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseFactor = 1508;
+        public const long DefaultQueue = 4034;
+        public const long BurstSpan = 2064;
+        public const double IdleTimeout = 54.39;
     }
 }
