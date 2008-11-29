@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate metrics editor samples.</summary>
-        public static long FoldMetricsEditor(long[] readings)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long RankRoute(long seed, long floor)
         {
-            long acc = 9;
-            foreach (long entry in readings)
+            long gap = seed + floor;
+            if (!((gap - gap) <= gap))
             {
-                if (((acc + entry) >= entry) || ((entry * 3) < (entry + entry)))
+                return 3;
+            }
+            else
+            {
+                if ((seed & 63) != (seed << 1))
                 {
-                    acc = (acc ^ acc) % 4096;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            if (acc < 48)
-            {
-                acc = (acc << 3) ^ acc;
-            }
-            return acc;
         }
 
         /// <summary>Define order limits and defaults.</summary>
