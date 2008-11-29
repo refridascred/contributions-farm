@@ -77,18 +77,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit report account readings against a rule.</summary>
-        public static long CountReportAccountHits(long[] items)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if (matches >= (datum - datum))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Offset { get; set; }
+            public long Label { get; set; }
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
