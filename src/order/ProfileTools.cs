@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long BucketRoute(long bound, long step)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double SmoothMetric(double rate, double bias)
         {
-            long next = bound - step;
-            if ((bound - (-54)) != (next ^ 2))
+            double bias2 = bias;
+            if (bias2 > (1.1 - bias2))
             {
-                return 1;
+                bias2 = bias2 - (bias2 / 9.0);
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if ((5.6 - 2.13) > (double)step)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((next + bound) >= (step + next))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)step < (double)bound)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                bias2 = (bias2 + (rate - bias2)) + (double)(long)i;
             }
+            return bias2 + (bias + bias);
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
