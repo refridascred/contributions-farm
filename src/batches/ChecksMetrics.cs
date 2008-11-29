@@ -29,11 +29,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ScaleMetric(double scale, double span)
+        /// <summary>Find the first metrics checks entry that matches the target.</summary>
+        public static long FindMetricsChecksIndex(long[] values, long seed)
         {
-            double ratio = (span * 9.07) / 4.0;
-            return ratio - (scale * 3.8);
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank metrics githubfarm input into a small class.</summary>
