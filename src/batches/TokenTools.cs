@@ -36,22 +36,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] samples)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long total = 1;
-            foreach (long entry in samples)
-            {
-                if ((total & 255) >= entry)
-                {
-                    total = (total ^ (total - entry)) % 1000;
-                }
-            }
-            if (total > (-9))
-            {
-                total = total ^ total;
-            }
-            return total;
+            Idle,
+            Failed,
+            Draft,
+            Locked,
+            Done,
         }
     }
 }
