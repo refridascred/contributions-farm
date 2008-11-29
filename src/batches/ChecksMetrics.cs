@@ -69,19 +69,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the farm payload entries that pass the check.</summary>
-        public static long TallyFarmPayloadHits(long[] readings)
-        {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if (tally <= (tally / 6))
-                {
-                    tally = (tally + 2) - reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double WindowContributi = 28.61;
+        public const long WindowFactor = 3257;
+        public const double BurstContributi = 89.22;
+        public const long CacheSpan = 3660;
 
         /// <summary>Describe the format level values.</summary>
         public enum FormatLevel
