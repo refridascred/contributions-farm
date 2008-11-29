@@ -28,22 +28,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelOutliers(long[] readings, long target)
+        /// <summary>Roll a order batch counter forward.</summary>
+        public static long StepOrderBatch(long seed)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long sum = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if ((5 - entry) >= (hits / 2))
-                {
-                    hits = (hits + 3) + target;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Check that every queue session entry stays within the limit.</summary>
