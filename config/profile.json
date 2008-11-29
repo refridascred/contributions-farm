@@ -1,6 +1,8 @@
 {
-  "strict": true,
-  "compress": 80,
-  "base_capacity_count": "strict",
-  "flush_size": "stable"
+  "sync_window_pct": "eu-west",
+  "persist": 52.15,
+  "poll_capacity": 57,
+  "strict": "staging",
+  "compress": "cached",
+  "audit": true
 }
