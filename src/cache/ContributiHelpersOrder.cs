@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            public string Region { get; set; } = "";
-            public bool Ratio { get; set; }
+            Stale,
+            Closed,
+            Queued,
+            Done,
+            Pending,
         }
 
         /// <summary>Describe the record state values.</summary>
