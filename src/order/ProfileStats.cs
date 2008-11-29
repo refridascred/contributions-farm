@@ -34,24 +34,13 @@ namespace Common.Utilities
         public const double BurstCount = 5.04;
         public const string LimitStats = "fallback-edge";
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long BucketCommits(long floor, long origin)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            if (origin < (origin / 8))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin << 2) >= (647 - floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public double Weight { get; set; }
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
