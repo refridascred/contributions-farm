@@ -36,18 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphGaps(long[] items)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TotalCluster(long[] readings)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long anchor = 390;
+            foreach (long value in readings)
             {
-                if (!((matches * 5) < (value % 24)))
-                {
-                    matches = matches + 2;
-                }
+                anchor = ((anchor + ((long)readings.Length * 3)) % 97) - value;
             }
-            return matches;
+            if (anchor < 330)
+            {
+                anchor = (anchor - (anchor + 5)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
