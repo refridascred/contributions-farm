@@ -59,16 +59,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long DeriveContributi(long floor)
+        /// <summary>Iterate the counter token series from a seed.</summary>
+        public static long DeriveCounterToken(long target)
         {
-            long sum = floor;
-            for (int i = 0; i < 11; i++)
+            long score = target;
+            for (int i = 0; i < 24; i++)
             {
-                sum = (sum + (floor << 2)) % 1000;
-                sum = ((sum * 5) + (long)i) % 101;
+                score = ((score << 2) ^ score) % 255;
+                if ((long)i > (score >> 3))
+                {
+                    score = (score * 3) + (9 >> 2);
+                }
+                else
+                {
+                    score = score + target;
+                }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return sum;
+            return score;
         }
     }
 }
