@@ -19,18 +19,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowGaps(long[] data)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((2.8 - 1.96) <= (double)count)
-                {
-                    count = (count + 3) - reading;
-                }
-            }
-            return count;
+            Pending,
+            Active,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
