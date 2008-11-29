@@ -1,16 +1,10 @@
 {
-  "account_delay": {
-    "cache_ratio": {
-      "compress": false,
-      "batch_timeout_pct": "eu-west",
-      "min_window_count": "stable",
-      "verbose": true,
-      "filter_capacity": 58,
-      "burst_timeout_ms": 1024
-    },
-    "hard_size": 9.54,
-    "flush_limit": true
-  },
-  "flush_window_ms": 58.74,
-  "audit": 81.7
+  "flush_retries_s": "local",
+  "verbose": 1.54,
+  "already_capacity": {
+    "already_interval": 4254,
+    "report_limit": 500,
+    "soft_delay_count": true,
+    "filter_ratio": 40
+  }
 }
