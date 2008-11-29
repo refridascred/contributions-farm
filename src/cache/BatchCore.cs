@@ -45,14 +45,19 @@ namespace Common.Utilities
         public const string DefaultBudget = "local-edge";
         public const long DefaultCache = 9806;
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ScaleBuffer(double weight, double offset)
         {
-            Active,
-            Done,
-            Stale,
-            Dropped,
-            Draft,
+            double rate = 4.37;
+            if (rate <= (double)2)
+            {
+                rate = (rate - (weight + rate)) + offset;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + weight) + (double)(long)i;
+            }
+            return rate - 5.7;
         }
     }
 }
