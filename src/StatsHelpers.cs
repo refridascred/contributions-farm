@@ -99,13 +99,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            Stale,
-            Ready,
-            Synced,
-            Done,
+            Idle,
+            Dropped,
+            Retry,
         }
     }
 }
