@@ -1,8 +1,20 @@
 {
-  "poll_timeout_ms": 1024,
-  "idle_threshold_ms": 63.54,
-  "burst_window_count": "local",
-  "profile_timeout": 77.92,
-  "cache_size": "staging",
-  "sync_ratio_pct": 24
+  "filter_delay": true,
+  "counter_ttl": {
+    "sync_timeout": "edge",
+    "enabled": 13.61,
+    "base_interval_pct": {
+      "persist": ["eu-west", "green", "open"],
+      "verbose": "standard",
+      "base_depth": false,
+      "burst_timeout_s": 86.24
+    },
+    "min_capacity": false,
+    "max_threshold": 250,
+    "burst_ttl_count": false
+  },
+  "batch_ttl": "stable",
+  "default_size_ms": false,
+  "hard_timeout_s": 1024,
+  "soft_size_s": "blue"
 }
