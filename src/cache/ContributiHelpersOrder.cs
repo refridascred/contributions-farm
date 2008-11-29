@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long target, long target2)
-        {
-            long gap = target - target2;
-            if ((19.0 / 9.0) > (4.12 + 4.6))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((gap % 10) > gap) && ((target2 + gap) < ((-97) + gap)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (target >= 123)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheFactor = 6682;
+        public const double SoftBatch = 32.36;
+        public const string HardSize = "stable-v2";
+        public const string DefaultBatch = "alpha-1";
+        public const long LimitBatch = 3068;
 
         /// <summary>Describe the record state values.</summary>
         public enum RecordState
