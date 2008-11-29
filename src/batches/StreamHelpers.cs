@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            Failed,
-            Paused,
-            Draft,
+            Retry,
+            Locked,
+            Idle,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
