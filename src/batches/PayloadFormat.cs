@@ -10,31 +10,13 @@ namespace Common.Utilities
         public const string RetryFactor = "local-edge";
         public const long IdleOrder = 6478;
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long RankCounter(long floor, long offset)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            if (((floor ^ offset) > (offset + 6)) || (19 > (offset + offset)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((floor ^ offset) > offset) && ((offset + offset) >= (7 + 99)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((floor ^ offset) >= (9 + offset)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Closed,
+            Failed,
+            Active,
+            Pending,
         }
 
         /// <summary>Grade a cache batch value against two limits.</summary>
