@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine editor checks values into a single score.</summary>
-        public static long TotalEditorChecks(long[] data, long bound)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long acc = 9;
-            foreach (long reading in data)
-            {
-                if (!((reading / 8) <= (acc ^ bound)))
-                {
-                    acc = ((acc * 5) + ((long)data.Length & 7)) % 65521;
-                }
-                if (((56 / 5) > (bound / 2)) && ((double)reading == (11.0 - 8.0)))
-                {
-                    acc = ((acc << 2) ^ acc) % 101;
-                }
-            }
-            if (acc < 685)
-            {
-                acc = (acc << 2) ^ acc;
-            }
-            return acc % 97;
+            Ready,
+            Closed,
+            Locked,
         }
 
         /// <summary>Combine commits values into a single score.</summary>
