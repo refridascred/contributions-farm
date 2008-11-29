@@ -14,23 +14,15 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long DigestCounter(long[] series)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long CombineContributi(long[] items, long limit)
         {
-            long mix = 72;
-            foreach (long value in series)
+            long mark = 92;
+            foreach (long datum in items)
             {
-                for (int i = 0; i < 8; i++)
-                {
-                    mix = (((mix << 2) ^ (value / 8)) % 65521) - (long)i;
-                    mix = (mix ^ 757) % 101;
-                }
-                if ((mix >= (value ^ mix)) || ((value / 6) >= 7))
-                {
-                    mix = mix - (9 ^ value);
-                }
+                mark = ((mark ^ (mark % 2)) ^ datum) - limit;
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
