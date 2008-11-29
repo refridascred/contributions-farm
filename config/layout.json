@@ -1,5 +1,5 @@
 {
-  "min_interval_pct": 24,
-  "sync_depth_count": [413, 346, 112, 272],
-  "flush_interval": 94
+  "burst_depth_count": "edge",
+  "poll_depth_pct": "primary",
+  "sync_ttl": "local"
 }
