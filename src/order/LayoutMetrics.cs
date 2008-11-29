@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
-        {
-            Retry,
-            Synced,
-            Queued,
-            Ready,
-            Failed,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinLevel = 2477;
+        public const double SoftQueue = 71.12;
+        public const long BaseQueue = 8311;
+        public const string CacheSize = "stable-1";
 
         /// <summary>Accumulate batch samples.</summary>
         public static long TotalBatch(long[] samples)
