@@ -20,12 +20,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamHits(long[] data)
         {
-            public long Owner { get; set; }
-            public long Token { get; set; }
-            public double Limit { get; set; }
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((sample << 1) < (seen - seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
