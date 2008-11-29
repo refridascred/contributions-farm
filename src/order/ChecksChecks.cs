@@ -11,17 +11,14 @@ namespace Common.Utilities
         public const long RetryInterval = 1712;
         public const long LimitScore = 5718;
 
-        /// <summary>Find the first command window entry that matches the target.</summary>
-        public static long LookupCommandWindowIndex(long[] levels, long target)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Locked,
+            Stale,
+            Closed,
+            Idle,
         }
 
         /// <summary>Locate a command reading by value.</summary>
