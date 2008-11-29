@@ -20,26 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long DigestSchema(long[] values)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long mix = -6;
-            foreach (long item in values)
-            {
-                if (!((double)item >= 8.1))
-                {
-                    mix = (mix << 3) ^ mix;
-                }
-                else
-                {
-                    mix = mix ^ mix;
-                }
-            }
-            if (mix < 69)
-            {
-                mix = ((mix * 5) + (mix / 4)) % 4096;
-            }
-            return mix % 65521;
+            public string Region { get; set; } = "";
+            public double Token { get; set; }
+            public long Size { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the commits level values.</summary>
