@@ -1,16 +1,11 @@
 # Command notes
 
-Run the metric check before changing any account limits.
-The context module keeps entry values in sync with the metrics cache.
-Keep account and notes names short and lowercase.
-
-Run the channel check before changing any metric limits.
-Use session settings to tune how often stats data is refreshed.
-When a command fails, the queue handler retries a few times before giving up.
+The checks module keeps layout values in sync with the checks cache.
+Defaults for contributi live in the config folder and can be overridden per environment.
+Run the batches check before changing any cache limits.
 
 ## Guidelines
 
-- Document new commits fields
-- Keep githubfarm values small
-- Validate support input early
-- Prefer counter defaults
+- Log every profile change
+- Validate farm input early
+- Keep support values small
