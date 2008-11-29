@@ -29,14 +29,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] data, long seed)
         {
-            Failed,
-            Draft,
-            Dropped,
-            Done,
-            Ready,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == seed) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
