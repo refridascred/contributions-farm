@@ -1,6 +1,14 @@
 {
-  "contributi_ratio": 42.71,
-  "token_limit": [340, 97, 429],
-  "max_window_count": 20.61,
-  "compress": 219
+  "compress": 75.95,
+  "verbose": {
+    "sync_capacity_count": 30,
+    "hard_timeout_pct": [449, 256, 377, 198],
+    "flush_capacity": 30,
+    "batch_ratio_ms": 57,
+    "cache_retries_ms": false
+  },
+  "token_retries": 250,
+  "idle_ttl_pct": "eu-west",
+  "retry_window": "fallback",
+  "farm_capacity": [29, 262, 497]
 }
