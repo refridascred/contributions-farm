@@ -91,39 +91,21 @@ namespace Common.Utilities
         public const long IdleEntry = 542;
         public const long MinEntry = 7962;
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long RankMetric(long target, long step)
+        /// <summary>Match up buffer contributi samples.</summary>
+        public static long OverlapBufferContributiCount(long[] data)
         {
-            long next = target - step;
-            if ((step + 6) != (step >> 3))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (next <= (step + 257))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((next - target) <= (next / 4)) || (target <= (target >> 4)))
+                    if ((data[i] - data[j]) > 18)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((next % 60) > (9 ^ target))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
