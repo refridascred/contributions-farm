@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const long HardReport = 4050;
         public const long BaseReport = 9054;
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutGaps(long[] readings, long floor)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutLimits(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                if ((double)count >= 6.97)
+                if (cell < offset)
                 {
-                    count = ((count + 3) ^ datum) - floor;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Match up metric samples.</summary>
