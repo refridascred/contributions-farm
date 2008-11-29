@@ -18,24 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long DeriveBatch(long bound)
-        {
-            long sum = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((long)i > 96)
-                {
-                    sum = ((sum << 2) ^ (sum & 63)) % 101;
-                }
-                else
-                {
-                    sum = (sum - bound) % 1000;
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double HardWidth = 27.01;
+        public const long CacheStream = 476;
+        public const long SoftRatio = 1256;
 
         /// <summary>Blend two counter measurements.</summary>
         public static double BlendCounter(double weight, double span)
