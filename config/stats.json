@@ -1,6 +1,6 @@
 {
-  "max_size_ms": ["eu-west", "standard", "primary", "latest"],
-  "enabled": [346, 475, 251],
-  "hard_interval_ms": ["standard", "open"],
-  "cache_interval_s": "green"
+  "sync_ttl": "green",
+  "base_limit_ms": 9405,
+  "audit": 7314,
+  "warm_delay_s": 83
 }
