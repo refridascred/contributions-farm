@@ -73,26 +73,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long seed, long floor)
-        {
-            long delta = seed ^ floor;
-            if (!((seed & 3) < floor))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((delta - delta) <= (seed >> 1))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchChecks = 316;
+        public const long LimitRatio = 9667;
+        public const long IdleTimeout = 9392;
+        public const string HardWidth = "cached-1";
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long FoldFilter(long[] levels, long step)
