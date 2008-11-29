@@ -1,11 +1,6 @@
 # githubfarm settings
-burst_threshold: 8016
-cache_retries: 79.02
-githubfarm_window: 62.51
-tools_interval:
-  - 362
-  - 344
-  - 44
-  - 452
-sync_ttl: edge
-sync_size_pct: 500
+idle_threshold_count: stable
+strict: 100
+persist:
+  - 52
+  - 69
