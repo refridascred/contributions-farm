@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a context profile value against two limits.</summary>
-        public static long SortContextProfile(long offset, long limit)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LocateBatchesIndex(long[] readings, long limit)
         {
-            long delta = offset ^ limit;
-            if ((limit << 2) <= (delta - 29))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((delta << 3) >= (delta + offset))
+                if ((readings[i] == limit) && ((readings[i] % 3) == 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
