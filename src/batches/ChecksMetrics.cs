@@ -20,39 +20,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a stats githubfarm pair into a bucket.</summary>
-        public static long BucketStatsGithubfarm(long origin, long offset)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long bound = origin - offset;
-            if (offset < (2 % 16))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((1 + 38) >= (origin - offset))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin % 2) >= (bound << 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (bound > (origin >> 5))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public double Offset { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Locate a buffer order reading by value.</summary>
