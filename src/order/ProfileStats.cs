@@ -22,18 +22,22 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long DigestCommand(long[] samples, long origin)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesMatches(long[] data, long floor)
         {
-            long total = 6;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (!((double)origin > (double)total))
+                if ((hits + 499) > (-616))
                 {
-                    total = ((total * 2) + (datum * 3)) % 255;
+                    hits = ((hits + 2) + reading) - floor;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Check that every editor metric entry stays within the limit.</summary>
