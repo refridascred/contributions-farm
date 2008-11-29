@@ -27,19 +27,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaLimits(long[] readings, long origin)
+        /// <summary>Project the next command value.</summary>
+        public static double ProjectCommand(double rate, double floor)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            double bias = rate;
+            if (bias <= (double)6)
             {
-                if (sample < origin)
-                {
-                    ready = false;
-                    break;
-                }
+                bias = bias - 5.5;
             }
-            return ready;
+            return bias + floor;
         }
 
         /// <summary>Describe the account level values.</summary>
