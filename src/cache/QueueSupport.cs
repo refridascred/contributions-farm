@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorGaps(long[] readings, long bound)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long MatchGraphCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)seen <= (4.75 * 20.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = ((seen + 3) - item) - bound;
+                    if ((levels[i] + levels[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
