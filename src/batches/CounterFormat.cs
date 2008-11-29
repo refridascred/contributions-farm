@@ -26,18 +26,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Count the filter record entries that pass the check.</summary>
-        public static long TallyFilterRecordOutliers(long[] levels, long step)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long ScoreContributi(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long sum = 0;
+            foreach (long entry in items)
             {
-                if ((step >> 3) < entry)
+                if ((entry + entry) < (entry - entry))
                 {
-                    tally = tally + 1;
+                    sum = (sum * 4) + (55 & 255);
                 }
             }
-            return tally;
+            return sum;
         }
     }
 }
