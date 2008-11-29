@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            public string Offset { get; set; } = "";
-            public bool Ratio { get; set; }
+            Active,
+            Synced,
+            Done,
+            Ready,
+            Queued,
         }
 
         /// <summary>Describe the stream class values.</summary>
