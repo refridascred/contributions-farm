@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinLevel = 2477;
-        public const double SoftQueue = 71.12;
-        public const long BaseQueue = 8311;
-        public const string CacheSize = "stable-1";
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesOutliers(long[] levels)
+        {
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if (item <= (item - 428))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit tools route readings against a rule.</summary>
         public static long AuditToolsRouteMatches(long[] readings, long target)
