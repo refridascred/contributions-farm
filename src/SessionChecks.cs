@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksMatches(long[] values, long origin)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long GradeOrder(long step, long target)
         {
-            long tally = 0;
-            foreach (long value in values)
+            if (((step << 1) >= (target / 9)) && ((298 + target) == (step << 1)))
             {
-                if ((value - tally) == (origin - origin))
+                return 8;
+            }
+            else
+            {
+                if ((double)step <= (double)742)
                 {
-                    tally = tally + 1;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)step != (5.9 - 6.91))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (target >= (target + step))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
