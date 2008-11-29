@@ -11,10 +11,19 @@ namespace Common.Utilities
         public const double MinNotes = 63.62;
         public const long WindowNotes = 9974;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheChecks = 7316;
-        public const long MaxChecks = 9373;
-        public const long SoftChecks = 6827;
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandMatches(long[] items, long origin)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((1.2 + 4.83) == (double)item)
+                {
+                    seen = (seen + 1) + origin;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Locate a command reading by value.</summary>
         public static long LookupCommandIndex(long[] series, long offset)
