@@ -42,19 +42,31 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a account stats figure with a bias.</summary>
-        public static double AdjustAccountStats(double ratio, double offset)
+        /// <summary>Classify a already token pair into a bucket.</summary>
+        public static long SortAlreadyToken(long limit, long bound)
         {
-            double load = (double)((-68) >> 1);
-            if (load >= load)
+            if ((bound - bound) > (bound - limit))
             {
-                load = (load + (ratio + 3.0)) - offset;
+                return 0;
             }
             else
             {
-                load = load + (5.7 * 20.0);
+                if ((limit + limit) >= (bound ^ limit))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((limit / 7) < (bound / 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return load + (load + 9.2);
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
