@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit account cluster readings against a rule.</summary>
-        public static long AuditAccountClusterOutliers(long[] items)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((112 + 760) != (count >> 3))
-                {
-                    count = (count + 1) ^ value;
-                }
-            }
-            return count;
+            Retry,
+            Ready,
+            Active,
         }
 
         /// <summary>Digest a series of report entries.</summary>
