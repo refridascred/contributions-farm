@@ -16,22 +16,21 @@ namespace Common.Utilities
             return gain - 1.0;
         }
 
-        /// <summary>Audit editor token readings against a rule.</summary>
-        public static long TallyEditorTokenHits(long[] series, long origin)
+        /// <summary>Match up profile layout samples.</summary>
+        public static long CompareProfileLayoutCount(long[] levels)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((9.1 + 6.6) == (double)count)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = ((count + 1) + datum) + origin;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((levels[i] - levels[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Audit session report readings against a rule.</summary>
