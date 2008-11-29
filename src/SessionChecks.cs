@@ -33,19 +33,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ScaleMetric(double weight, double floor)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long PairGraphCount(long[] levels)
         {
-            double scale = floor;
-            if (scale >= (weight / 9.0))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale = scale + (double)319;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale + 6.03;
-            }
-            return scale - floor;
+            return matches;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
