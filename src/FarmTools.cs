@@ -18,17 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LocateChannelIndex(long[] values, long floor)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long SortFarm(long limit, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long gap = limit ^ floor;
+            if ((floor / 6) > gap)
             {
-                if (values[i] > floor)
+                return 1;
+            }
+            else
+            {
+                if (((limit + limit) < 237) || ((gap % 3) > limit))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)limit >= (double)floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((gap + limit) > gap)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine session values into a single score.</summary>
