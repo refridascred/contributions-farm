@@ -18,24 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long SortBuffer(long limit, long floor)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            if ((double)floor < (10.0 - 6.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((limit + limit) < (floor >> 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public string Total { get; set; } = "";
+            public double Token { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Hold a graph stats.</summary>
