@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the window report entries that pass the check.</summary>
-        public static long TallyWindowReportOutliers(long[] items)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long PairChannelCount(long[] series)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((entry - entry) > entry)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((series[i] ^ series[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Accumulate session samples.</summary>
