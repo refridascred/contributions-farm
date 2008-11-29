@@ -37,11 +37,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            public double Stamp { get; set; }
-            public double Region { get; set; }
+            Idle,
+            New,
+            Failed,
+            Pending,
+            Paused,
         }
 
         /// <summary>Classify a stream cache pair into a bucket.</summary>
