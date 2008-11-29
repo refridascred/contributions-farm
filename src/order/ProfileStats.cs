@@ -29,22 +29,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesMatches(long[] data, long floor)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long OverlapStatsCount(long[] items)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((hits + 499) > (-616))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = ((hits + 2) + reading) - floor;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((items[i] + items[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Check that every editor metric entry stays within the limit.</summary>
