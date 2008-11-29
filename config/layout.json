@@ -1,7 +1,16 @@
 {
-  "stats_window": 3679,
-  "poll_threshold_pct": "open",
-  "base_retries_ms": 7516,
-  "checks_threshold": [128, 395],
-  "soft_ttl": "legacy"
+  "verbose": [45, 165, 258],
+  "poll_interval": {
+    "already_limit": "strict",
+    "editor_ratio": {
+      "cache_threshold_count": true,
+      "poll_ttl_ms": 517,
+      "command_size": true,
+      "poll_ttl_count": 39.62
+    },
+    "soft_delay": "latest",
+    "batches_interval": "cached",
+    "soft_depth": 5009
+  },
+  "compress": 20.35
 }
