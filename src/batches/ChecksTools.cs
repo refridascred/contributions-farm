@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long RollCounter(long floor)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long acc = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                acc = ((acc * 4) + (acc & 3)) % 101;
-                acc = acc - (3 << 2);
-                if (5.0 <= (double)acc)
-                {
-                    acc = ((acc * 4) + floor) % 97;
-                    break;
-                }
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
+            Failed,
+            Pending,
+            New,
         }
 
         /// <summary>Grade a context value against two limits.</summary>
