@@ -56,13 +56,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            public long Region { get; set; }
-            public bool Flag { get; set; }
-            public string Limit { get; set; } = "";
-            public double Size { get; set; }
+            public double Ratio { get; set; }
+            public long Size { get; set; }
+            public long Count { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
