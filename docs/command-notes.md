@@ -1,15 +1,15 @@
 # Command notes
 
-The graph helpers are pure functions, so they are safe to call from any thread.
-Run the payload check before changing any checks limits.
-Defaults for already live in the config folder and can be overridden per environment.
+Each notes is validated before it reaches the filter queue.
+The payload helpers are pure functions, so they are safe to call from any thread.
+Keep token and format names short and lowercase.
 
-Run the githubfarm check before changing any session limits.
-Each batch is validated before it reaches the profile queue.
+Use checks settings to tune how often notes data is refreshed.
+Run the entry check before changing any format limits.
 
 ## Guidelines
 
-- Document new window fields
-- Prefer graph defaults
-- Keep channel values small
-- Review queue limits each release
+- Keep format values small
+- Prefer cache defaults
+- Document new route fields
+- Validate payload input early
