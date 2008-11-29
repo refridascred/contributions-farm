@@ -48,18 +48,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the editor record entries that pass the check.</summary>
-        public static long MeasureEditorRecordOutliers(long[] data)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionGaps(long[] data)
         {
-            long hits = 0;
+            long seen = 0;
             foreach (long reading in data)
             {
-                if (29 <= reading)
+                if ((seen << 2) <= seen)
                 {
-                    hits = hits + 2;
+                    seen = (seen + 1) + reading;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
