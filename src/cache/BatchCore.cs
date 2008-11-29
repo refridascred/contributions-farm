@@ -12,21 +12,26 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long OverlapRecordCount(long[] readings)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] readings, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = -980;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((datum << 1) == (floor + 74))
                 {
-                    if ((readings[i] - readings[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
+                    mix = (mix << 2) ^ (mix % 24);
+                }
+                if (!((double)mix < 5.4))
+                {
+                    mix = (mix + (mix & 7)) % 4096;
                 }
             }
-            return count;
+            if (mix > 818)
+            {
+                mix = mix + (149 + floor);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Describe the commits status values.</summary>
