@@ -55,16 +55,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long SeriesSupport(long offset)
+        /// <summary>Validate support farm readings against a bound.</summary>
+        public static bool ValidateSupportFarmBounds(long[] series, long floor)
         {
-            long result = offset;
-            for (int i = 0; i < 4; i++)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                result = result ^ (result << 3);
-                result = ((result * 4) + (long)i) % 101;
+                if (cell < floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
