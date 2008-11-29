@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long FoldMetric(long[] levels, long target)
         {
-            public double Offset { get; set; }
-            public string Total { get; set; } = "";
-            public string Size { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long anchor = 964;
+            foreach (long item in levels)
+            {
+                long prev = item;
+                anchor = ((anchor * 3) + (prev / 8)) + target;
+                anchor = ((anchor * 3) + (635 + anchor)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
