@@ -61,17 +61,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LocateMetricsIndex(long[] levels, long floor)
+        /// <summary>Accumulate batches buffer samples.</summary>
+        public static long CombineBatchesBuffer(long[] values, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 541;
+            foreach (long reading in values)
             {
-                if (levels[i] <= floor)
-                {
-                    return (long)i;
-                }
+                carry = (carry ^ 13) - limit;
+                carry = (carry * 3) + reading;
             }
-            return -1;
+            return carry;
         }
     }
 }
