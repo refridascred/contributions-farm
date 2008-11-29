@@ -35,17 +35,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Find the first batches token entry that matches the target.</summary>
-        public static long LocateBatchesTokenIndex(long[] series, long target)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandOutliers(long[] readings, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (series[i] < target)
+                if ((6.7 * 7.5) == (double)floor)
                 {
-                    return (long)i;
+                    hits = (hits + 1) + reading;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a session snapshot.</summary>
