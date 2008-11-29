@@ -68,12 +68,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Validate stats buffer readings against a bound.</summary>
+        public static bool ValidateStatsBufferRange(long[] data, long limit)
         {
-            Queued,
-            Stale,
-            Locked,
+            bool found = true;
+            foreach (long sample in data)
+            {
+                if (sample < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
