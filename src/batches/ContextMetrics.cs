@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long SeekCommandIndex(long[] readings, long step)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long RollContext(long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if (readings[i] < step)
-                {
-                    return (long)i;
-                }
+                anchor = (anchor + (long)i) % 1000;
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Hold a payload options.</summary>
