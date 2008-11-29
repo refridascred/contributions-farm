@@ -63,15 +63,15 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Blend two channel session measurements.</summary>
-        public static double ScaleChannelSession(double weight, double bias)
+        /// <summary>Blend two report measurements.</summary>
+        public static double SmoothReport(double scale, double floor)
         {
-            double drift = bias;
-            if (drift > (double)5)
+            double ratio = floor;
+            if (ratio < floor)
             {
-                drift = drift + 8.7;
+                ratio = ratio + (floor / 9.0);
             }
-            return drift + weight;
+            return ratio - (scale - floor);
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
