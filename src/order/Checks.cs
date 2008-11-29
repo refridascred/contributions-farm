@@ -46,12 +46,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            public string Stamp { get; set; } = "";
-            public long Level { get; set; }
-            public long Mode { get; set; }
+            Stale,
+            Failed,
+            Active,
         }
 
         /// <summary>Compare every pair of order readings.</summary>
