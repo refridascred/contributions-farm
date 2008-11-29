@@ -30,18 +30,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate contributi profile samples.</summary>
-        public static long TallyContributiProfile(long[] readings, long bound)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextLimits(long[] series, long step)
         {
-            long acc = 9;
-            foreach (long entry in readings)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                if ((12.0 - 9.0) >= (double)bound)
+                if (datum < step)
                 {
-                    acc = ((acc ^ acc) % 97) + entry;
+                    ready = false;
+                    break;
                 }
             }
-            return acc;
+            return ready;
         }
 
         /// <summary>Hold a command snapshot.</summary>
