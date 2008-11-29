@@ -47,18 +47,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the notes batch entries that pass the check.</summary>
-        public static long TallyNotesBatchGaps(long[] levels)
+        /// <summary>Measure how many order payload samples are out of range.</summary>
+        public static long TallyOrderPayloadOutliers(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if (!((double)seen >= (double)49))
+                if (hits < (hits % 100))
                 {
-                    seen = (seen + 3) ^ entry;
+                    hits = (hits + 3) + item;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
