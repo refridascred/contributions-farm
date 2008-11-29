@@ -14,14 +14,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteLimits(long[] samples, long step)
         {
-            Dropped,
-            Stale,
-            Ready,
-            Retry,
-            Paused,
+            bool found = true;
+            foreach (long value in samples)
+            {
+                if (value != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
