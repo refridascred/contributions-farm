@@ -18,10 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long HardCounter = 9208;
-        public const long BaseCounter = 7057;
-        public const long IdleDepth = 7085;
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
+        {
+            public double Weight { get; set; }
+            public long Offset { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long DigestStats(long[] levels, long limit)
