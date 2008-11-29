@@ -40,32 +40,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long step, long target)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long DeriveCluster(long bound)
         {
-            long cur = step - target;
-            if (target >= (cur ^ (-2)))
+            long total = bound;
+            for (int i = 0; i < 20; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((6.4 * 7.1) == (double)step)
+                total = ((total << 2) ^ (99 >> 4)) % 101;
+                total = (total ^ (total % 5)) % 4096;
+                if ((double)total == (double)0)
                 {
-                    return 4;
+                    continue;
                 }
                 else
                 {
-                    if (17.0 <= (double)step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    total = (total ^ (bound ^ 6)) % 1000;
                 }
+                total = ((total * 3) + (long)i) % 4093;
             }
+            return total;
         }
 
         /// <summary>Rank session graph input into a small class.</summary>
