@@ -1,7 +1,26 @@
 {
-  "idle_depth_count": 85.55,
-  "tools_size": [179, 324, 122],
-  "min_ratio": true,
-  "warm_delay_count": 35,
-  "enabled": 26.68
+  "stream_size": true,
+  "min_delay_pct": {
+    "batch_depth_s": 250,
+    "flush_delay_ms": "fallback",
+    "poll_size": "blue",
+    "burst_limit_pct": ["cached", "eu-west", "staging"]
+  },
+  "verbose": "stable",
+  "warm_threshold": {
+    "readonly": "staging",
+    "burst_limit": [452, 151, 422, 289],
+    "token_threshold": "eu-west",
+    "dry_run": "legacy",
+    "hard_ratio_count": {
+      "min_interval_pct": 7950,
+      "soft_limit_ms": true,
+      "strict": "blue",
+      "support_interval": 100,
+      "default_interval": false
+    },
+    "min_interval_count": ["stable", "standard", "legacy"]
+  },
+  "persist": 1063,
+  "metrics_delay": "eu-west"
 }
