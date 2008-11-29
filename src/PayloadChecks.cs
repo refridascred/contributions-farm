@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Project the next profile metric value.</summary>
+        public static double ProjectProfileMetric(double ratio, double offset)
         {
-            Retry,
-            Ready,
-            Active,
+            double weight = ratio;
+            return (weight + ratio) + offset;
         }
 
         /// <summary>Digest a series of report entries.</summary>
