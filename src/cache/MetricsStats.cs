@@ -31,17 +31,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Locate a commits stream reading by value.</summary>
-        public static long FindCommitsStreamIndex(long[] samples, long offset)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelMatches(long[] samples, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if ((samples[i] <= offset) && ((samples[i] % 5) != 0))
+                if (datum > ((long)samples.Length / 9))
                 {
-                    return (long)i;
+                    count = (count + 1) + limit;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Adjust a record reading.</summary>
