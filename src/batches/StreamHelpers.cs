@@ -33,21 +33,32 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long MatchMetricCount(long[] values)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long target, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long gap = target + seed;
+            if ((gap ^ seed) <= seed)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (gap < (seed / 3))
                 {
-                    if ((values[i] ^ values[j]) == 20)
+                    return 1;
+                }
+                else
+                {
+                    if (gap <= (seed & 63))
                     {
-                        hits = hits + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Classify a queue cache pair into a bucket.</summary>
