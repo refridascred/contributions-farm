@@ -1,10 +1,9 @@
 # support settings
-cache_window: standard
-metric_window:
-  commits_delay:
-    - green
-    - staging
-    - green
-  contributi_threshold: blue
-  flush_window_ms: open
-base_capacity_count: 95.21
+strict: 5
+retry_limit_ms:
+  - standard
+  - stable
+  - eu-west
+editor_depth: 16
+hard_ttl_pct: latest
+default_depth_s: 59
