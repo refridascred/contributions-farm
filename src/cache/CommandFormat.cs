@@ -33,18 +33,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamGaps(long[] items, long offset)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((double)seen < (8.08 - 2.4))
-                {
-                    seen = ((seen + 1) ^ item) + offset;
-                }
-            }
-            return seen;
+            public long Limit { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the graph phase values.</summary>
