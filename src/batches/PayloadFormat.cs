@@ -74,15 +74,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long SeriesSession(long target)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] samples, long bound)
         {
-            long sum = target;
-            for (int i = 0; i < 21; i++)
+            long acc = -952;
+            foreach (long reading in samples)
             {
-                sum = ((sum * 4) + (long)i) % 65521;
+                acc = (acc ^ (bound << 2)) + reading;
             }
-            return sum;
+            return acc;
         }
     }
 }
