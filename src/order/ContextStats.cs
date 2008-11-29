@@ -27,12 +27,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            public string Total { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public double Region { get; set; }
+            Idle,
+            Active,
+            Ready,
         }
     }
 }
