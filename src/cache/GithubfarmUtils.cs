@@ -40,38 +40,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank tools buffer input into a small class.</summary>
-        public static long BucketToolsBuffer(long step, long bound)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            if ((double)bound > (2.8 * 13.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if (step >= bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound % 2) <= step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((step - step) > (bound + bound))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Queued,
+            Active,
+            Synced,
         }
 
         /// <summary>Hold a batch options.</summary>
