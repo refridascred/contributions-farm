@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] series)
         {
-            Paused,
-            Dropped,
-            Retry,
+            long acc = 9;
+            foreach (long value in series)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    acc = (((acc * 4) + acc) % 255) ^ (long)i;
+                }
+                if (acc <= (57 % 97))
+                {
+                    acc = (acc ^ (value & 255)) % 4096;
+                }
+            }
+            return acc % 97;
         }
 
         /// <summary>Hold a window record.</summary>
