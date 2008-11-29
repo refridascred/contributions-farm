@@ -1,8 +1,12 @@
 {
-  "warm_ttl_ms": ["fallback", "cached", "latest"],
-  "hard_ttl_s": [441, 182, 147],
-  "base_timeout_pct": ["standard", "green", "stable", "primary"],
-  "poll_threshold_s": "legacy",
-  "readonly": false,
-  "soft_delay_pct": 95.49
+  "min_retries": "primary",
+  "base_interval_pct": {
+    "cache_interval_s": "local",
+    "poll_size_pct": 2426,
+    "strict": false,
+    "batch_ratio_ms": 75,
+    "cache_limit_count": "legacy",
+    "verbose": true
+  },
+  "max_window": ["cached", "primary", "local"]
 }
