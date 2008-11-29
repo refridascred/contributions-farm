@@ -14,22 +14,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of githubfarm contributi readings.</summary>
-        public static long DigestGithubfarmContributi(long[] data)
+        /// <summary>Count the session command entries that pass the check.</summary>
+        public static long TallySessionCommandGaps(long[] levels, long bound)
         {
-            long result = 1;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if ((double)cell < (9.0 * 4.48))
+                if (((6.0 * 2.3) < (double)item) || (((10.0 * 7.07) <= (double)bound) && ((bound + item) == (item + 539))))
                 {
-                    result = (result ^ (result << 2)) % 65521;
-                }
-                else
-                {
-                    result = (result - (cell * 5)) % 65521;
+                    matches = matches + 3;
                 }
             }
-            return result % 1000;
+            return matches;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
