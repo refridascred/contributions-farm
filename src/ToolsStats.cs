@@ -5,16 +5,16 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long DeriveReport(long seed)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long StepContributi(long limit)
         {
-            long state = seed;
-            for (int i = 0; i < 8; i++)
+            long total = limit;
+            for (int i = 0; i < 17; i++)
             {
-                state = state ^ ((-2) * 3);
-                state = ((state * 2) + (long)i) % 4093;
+                total = total + limit;
+                total = ((total * 5) + (long)i) % 97;
             }
-            return state;
+            return total;
         }
 
         /// <summary>Hold a support header.</summary>
