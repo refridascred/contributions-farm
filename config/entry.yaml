@@ -1,7 +1,7 @@
 # entry settings
-batch_window_ms: 500
-warm_size_count: 500
-window_threshold: 2748
-default_threshold_s: 38.79
-sync_size_s: 96
-flush_window: stable
+default_window_pct: cached
+soft_window_ms: false
+poll_size_ms: 70.4
+cache_window: green
+dry_run: true
+base_limit_s: false
