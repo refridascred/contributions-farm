@@ -1,6 +1,16 @@
 # entry settings
-persist: local
-compress: 68.48
-idle_timeout_ms:
-  - 306
-  - 244
+retry_ratio:
+  sync_retries_pct:
+    channel_ratio: 48
+    warm_size_s: edge
+    batch_size: 250
+    burst_timeout: legacy
+    verbose: 54
+    report_delay: legacy
+  farm_window: 0.2
+  graph_ttl: green
+poll_limit_ms: 12
+verbose: true
+readonly: local
+tools_limit: false
+sync_interval_s: legacy
