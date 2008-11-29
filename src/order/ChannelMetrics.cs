@@ -39,39 +39,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a stats layout value against two limits.</summary>
-        public static long RankStatsLayout(long floor, long origin)
+        /// <summary>Count editor session pairs that satisfy a relation.</summary>
+        public static long PairEditorSessionCount(long[] items)
         {
-            long delta = floor - origin;
-            if ((double)delta > (9.0 / 7.0))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)origin <= (4.98 * 3.1)) && ((origin - delta) <= (delta + delta)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((0.4 * 13.0) >= (double)delta)
+                    if ((items[i] - items[j]) != 19)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((floor - floor) > (origin << 3))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
