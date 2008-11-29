@@ -26,22 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaHits(long[] values, long offset)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((56 + value) == (value * 2))
-                {
-                    tally = (tally + 1) - offset;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public string Owner { get; set; } = "";
+            public long Count { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
