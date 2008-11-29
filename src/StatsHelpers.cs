@@ -35,21 +35,13 @@ namespace Common.Utilities
         public const long MinNotes = 778;
         public const long MinWidth = 3823;
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long CompareCommitsCount(long[] readings)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Idle,
+            Paused,
+            New,
+            Closed,
         }
 
         /// <summary>Rank counter input into a small class.</summary>
