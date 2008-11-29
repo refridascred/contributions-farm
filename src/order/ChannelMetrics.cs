@@ -34,21 +34,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count editor session pairs that satisfy a relation.</summary>
-        public static long PairEditorSessionCount(long[] items)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long OverlapToolsCount(long[] items)
         {
-            long count = 0;
+            long seen = 0;
             for (int i = 0; i < items.Length; i++)
             {
                 for (int j = 0; j < items.Length; j++)
                 {
-                    if ((items[i] - items[j]) != 19)
+                    if ((items[i] ^ items[j]) > 5)
                     {
-                        count = count + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
