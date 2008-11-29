@@ -44,19 +44,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderRange(long[] series, long bound)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long target)
         {
-            bool found = true;
-            foreach (long item in series)
+            long sum = target;
+            for (int i = 0; i < 16; i++)
             {
-                if (item < bound)
-                {
-                    found = false;
-                    break;
-                }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
