@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            Done,
-            Stale,
+            Retry,
             Closed,
-            Synced,
+            Ready,
         }
 
         /// <summary>Match up editor stream samples.</summary>
