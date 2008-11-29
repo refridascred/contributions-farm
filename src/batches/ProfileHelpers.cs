@@ -56,14 +56,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
-        {
-            Ready,
-            Synced,
-            Done,
-            Closed,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleStream = 8659;
+        public const long RetryStream = 4751;
+        public const long MaxTimeout = 1741;
+        public const double MaxStream = 30.38;
+        public const double BaseBudget = 0.83;
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long AuditCommandHits(long[] series)
