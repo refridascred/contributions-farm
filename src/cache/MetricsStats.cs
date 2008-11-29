@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long StepBatch(long step)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] series)
         {
-            long state = step;
-            for (int i = 0; i < 20; i++)
+            long state = 1;
+            foreach (long value in series)
             {
-                state = (state * 5) + step;
-                state = ((state * 2) + (state * 3)) % 255;
-                state = ((state * 5) + (long)i) % 97;
+                state = state + (value & 7);
+                if (!((double)state != (double)value))
+                {
+                    state = (state ^ 429) % 4096;
+                }
             }
             return state;
         }
