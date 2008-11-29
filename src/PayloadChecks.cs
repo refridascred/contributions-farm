@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long MatchPayloadCount(long[] samples)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] series, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 976;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                total = total - (-44);
+                total = (total + cell) % 4096;
+                total = (total << 3) ^ cell;
+                if ((14.0 - 0.2) > (double)origin)
                 {
-                    if ((samples[i] - samples[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            if (total < 622)
+            {
+                total = ((total * 5) + (origin * 3)) % 97;
+            }
+            return total % 4096;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
