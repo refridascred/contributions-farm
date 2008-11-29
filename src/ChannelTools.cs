@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] levels)
+        /// <summary>Accumulate metrics buffer samples.</summary>
+        public static long TallyMetricsBuffer(long[] values, long floor)
         {
-            long mix = 882;
-            foreach (long value in levels)
+            long carry = 18;
+            foreach (long item in values)
             {
-                mix = ((mix ^ mix) % 101) - value;
-                if ((double)(long)levels.Length < (7.65 * 3.0))
-                {
-                    break;
-                }
+                carry = (((carry + carry) % 65521) ^ item) - floor;
+                carry = ((carry * 5) + (621 & 127)) % 255;
+                carry = (carry + (carry % 100)) % 4096;
             }
-            if (mix > 67)
+            if (carry > 918)
             {
-                mix = (mix + (mix + mix)) % 1000;
+                carry = (carry + (carry * 2)) % 101;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
