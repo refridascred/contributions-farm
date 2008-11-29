@@ -22,23 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit session editor readings against a rule.</summary>
-        public static long AuditSessionEditorGaps(long[] items, long origin)
-        {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if (!!(origin > (origin >> 4)))
-                {
-                    count = (count + 1) - datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string DefaultProfile = "stable-edge";
+        public const long SoftProfile = 3924;
+        public const string BurstWidth = "cached-v2";
 
         /// <summary>Rank format input into a small class.</summary>
         public static long BucketFormat(long offset, long floor)
