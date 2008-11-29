@@ -1,5 +1,10 @@
 {
-  "entry_size": false,
-  "cache_size": 97,
-  "stream_ttl": 100
+  "idle_window": "green",
+  "metric_depth": {
+    "warm_ratio": "eu-west",
+    "min_ratio_pct": "green",
+    "enabled": "primary"
+  },
+  "compress": "latest",
+  "base_limit": 12
 }
