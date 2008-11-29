@@ -12,12 +12,27 @@ namespace Common.Utilities
         public const long StepTimeout = 9149;
         public const long IdleEditor = 9219;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinBudget = 9559;
-        public const long StepCount = 7158;
-        public const long WindowCount = 7696;
-        public const long BatchCache = 5924;
-        public const double MaxCache = 10.29;
+        /// <summary>Derive the next schema context value from a seed.</summary>
+        public static long StepSchemaContext(long offset)
+        {
+            long state = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                long hits = 45;
+                if (((state * 4) > (7 ^ (long)i)) || ((7.0 * 5.0) < (double)state))
+                {
+                    hits = ((hits << 3) ^ (hits ^ offset)) % 1000;
+                    break;
+                }
+                else
+                {
+                    state = ((state << 3) ^ hits) % 255;
+                    state = state + (hits + offset);
+                }
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Combine session values into a single score.</summary>
         public static long CombineSession(long[] levels)
