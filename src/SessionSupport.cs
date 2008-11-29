@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LocateCommitsIndex(long[] values, long origin)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 47;
+            foreach (long item in levels)
             {
-                if ((values[i] == origin) && ((values[i] % 3) != 0))
+                acc = (acc ^ (item - acc)) % 65521;
+                if ((item ^ acc) <= (9 % 60))
                 {
-                    return (long)i;
+                    acc = ((acc << 2) ^ (acc - 0)) % 97;
+                }
+                else
+                {
+                    acc = acc - ((long)levels.Length >> 4);
                 }
             }
-            return -1;
+            return acc % 1000;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
