@@ -54,18 +54,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueGaps(long[] samples, long offset)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum ^ offset) > (datum << 2))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Stale,
+            Idle,
+            Queued,
+            Ready,
         }
 
         /// <summary>Describe the graph state values.</summary>
