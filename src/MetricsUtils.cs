@@ -45,14 +45,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
-        {
-            public long Total { get; set; }
-            public double Label { get; set; }
-            public long Stamp { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string IdleChannel = "legacy-v2";
+        public const double RetryLevel = 89.96;
+        public const string IdleCount = "standard";
+        public const string BaseCount = "standard";
 
         /// <summary>Rank stream queue input into a small class.</summary>
         public static long BucketStreamQueue(long origin, long step)
