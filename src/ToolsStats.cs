@@ -18,28 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] items, long step)
+        /// <summary>Digest a series of filter metric entries.</summary>
+        public static long ScoreFilterMetric(long[] items)
         {
-            long acc = 7;
-            foreach (long sample in items)
+            long mix = 6;
+            foreach (long value in items)
             {
-                if (acc < (acc + 42))
+                if (!((mix + 83) == (value >> 2)))
                 {
-                    acc = ((acc * 2) + sample) % 1000;
-                    break;
+                    mix = mix ^ (3 << 2);
                 }
                 else
                 {
-                    acc = ((acc << 2) ^ (step + acc)) % 65521;
-                    acc = (acc + (sample / 7)) % 4096;
-                }
-                if ((sample ^ sample) == (step ^ 7))
-                {
-                    acc = acc - (acc + acc);
+                    mix = mix - (mix - mix);
                 }
             }
-            return acc % 65521;
+            return mix % 65521;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
