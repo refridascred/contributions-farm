@@ -20,22 +20,13 @@ namespace Common.Utilities
         public const long IdleTimeout = 9341;
         public const long RetryRatio = 9708;
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long SeriesStream(long limit)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long score = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                long tally = (score ^ (-629)) - 774;
-                long tally2 = tally;
-                if (((tally2 & 31) >= (tally & 3)) || (0 <= score))
-                {
-                    tally = tally - (limit + limit);
-                    continue;
-                }
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
+            Closed,
+            Dropped,
+            Done,
+            New,
         }
 
         /// <summary>Grade a cluster buffer value against two limits.</summary>
