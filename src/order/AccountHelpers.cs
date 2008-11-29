@@ -13,26 +13,31 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long WeighMetric(long[] series)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long BucketStream(long origin, long floor)
         {
-            long mix = 78;
-            foreach (long cell in series)
+            if ((14 ^ origin) < (floor ^ floor))
             {
-                if ((mix * 5) > cell)
+                return 5;
+            }
+            else
+            {
+                if (((origin / 6) == (origin ^ 9)) && ((origin >> 3) == (40 - floor)))
                 {
-                    mix = ((mix << 2) ^ (mix - mix)) % 4096;
+                    return 4;
                 }
-                if ((mix < (96 << 3)) || ((cell + (-318)) > 7))
+                else
                 {
-                    break;
+                    if ((20.0 + 5.19) != (double)origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            if (mix > 30)
-            {
-                mix = mix + mix;
-            }
-            return mix;
         }
 
         /// <summary>Match up editor samples.</summary>
