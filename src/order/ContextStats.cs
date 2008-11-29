@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiLimits(long[] data, long offset)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutMatches(long[] series)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (sample < offset)
+                if ((4 >> 1) < (value & 127))
                 {
-                    flag = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
