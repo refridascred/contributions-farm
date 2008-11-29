@@ -5,13 +5,30 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long WeighMetrics(long[] levels)
         {
-            public string Level { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Label { get; set; }
-            public long Limit { get; set; }
+            long total = 2;
+            foreach (long entry in levels)
+            {
+                if ((10 << 2) != (entry + entry))
+                {
+                    total = (total * 2) + (entry / 7);
+                }
+                else
+                {
+                    total = total ^ (total + total);
+                }
+                if (((-521) + total) == (entry >> 1))
+                {
+                    break;
+                }
+            }
+            if (total < 12)
+            {
+                total = (total + ((long)levels.Length ^ total)) % 255;
+            }
+            return total % 97;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
