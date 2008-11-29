@@ -29,15 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next metrics checks value.</summary>
-        public static double ProjectMetricsChecks(double ratio, double offset)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesRange(long[] readings, long seed)
         {
-            double scale = (double)(-86) * 8.38;
-            for (int i = 0; i < 8; i++)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                scale = (((scale - (7.5 + scale)) + (double)(long)i) - ratio) + offset;
+                if (datum > seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return scale - scale;
+            return flag;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
