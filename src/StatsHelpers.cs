@@ -102,14 +102,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorLimits(long[] data, long origin)
         {
-            Stale,
-            Draft,
-            New,
-            Idle,
-            Locked,
+            bool ok = true;
+            foreach (long value in data)
+            {
+                if (value <= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
