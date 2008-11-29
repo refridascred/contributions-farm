@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamMatches(long[] series)
+        /// <summary>Locate a cache entry reading by value.</summary>
+        public static long SeekCacheEntryIndex(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((matches * 5) > (matches << 2))
+                if ((values[i] <= floor) && ((values[i] % 3) != 0))
                 {
-                    matches = (matches + 1) ^ cell;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
