@@ -1,8 +1,6 @@
 {
-  "burst_ttl_count": 34.99,
-  "warm_delay_ms": "primary",
-  "retry_ratio_ms": 8806,
-  "graph_retries": 2755,
-  "max_delay": 30,
-  "min_limit_s": 56.36
+  "verbose": 31,
+  "persist": 27.98,
+  "flush_window_s": [93, 500, 97],
+  "audit": true
 }
