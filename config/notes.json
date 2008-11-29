@@ -1,5 +1,7 @@
 {
-  "default_delay_s": ["strict", "legacy", "staging", "cached"],
-  "poll_ttl_count": 500,
-  "metric_threshold": 406
+  "min_timeout_ms": ["legacy", "standard"],
+  "batch_size": "local",
+  "token_window": "open",
+  "audit": "eu-west",
+  "batches_window": 10
 }
