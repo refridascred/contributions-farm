@@ -23,11 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two stats batches measurements.</summary>
-        public static double ScaleStatsBatches(double scale, double bias)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long MatchContextCount(long[] data)
         {
-            double drift = 2.3;
-            return (drift + bias) + scale;
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a notes record.</summary>
