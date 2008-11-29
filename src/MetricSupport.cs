@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            Failed,
-            Pending,
-            Retry,
-            Stale,
+            public bool Label { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
