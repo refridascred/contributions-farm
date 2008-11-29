@@ -45,24 +45,16 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long IterateTools(long step)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long SeriesWindow(long offset)
         {
-            long acc = step;
-            for (int i = 0; i < 24; i++)
+            long anchor = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if (!((long)i > ((long)i + 0)))
-                {
-                    acc = (acc - 738) % 255;
-                }
-                else
-                {
-                    acc = (acc + (step % 2)) % 1000;
-                }
-                acc = (acc - (step - (long)i)) % 97;
-                acc = ((acc * 4) + (long)i) % 65521;
+                anchor = (anchor ^ (anchor >> 5)) % 65521;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Define support limits and defaults.</summary>
