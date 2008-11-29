@@ -1,8 +1,5 @@
 {
-  "base_limit": [482, 121, 293, 276],
-  "session_ttl": 95,
-  "readonly": true,
-  "poll_ttl_pct": true,
-  "flush_ttl_ms": 60,
-  "cache_retries_s": ["stable", "staging", "local", "primary"]
+  "flush_threshold": 780,
+  "min_ratio_pct": 0.79,
+  "max_ratio_count": false
 }
