@@ -49,10 +49,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryInterval = 9503;
-        public const long SoftSpan = 4752;
-        public const long WindowAlready = 3045;
+        /// <summary>Roll a token counter forward.</summary>
+        public static long SeriesToken(long bound)
+        {
+            long result = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                result = (result - (long)i) % 65521;
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Roll a graph counter forward.</summary>
         public static long RollGraph(long origin)
