@@ -19,22 +19,29 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank filter channel input into a small class.</summary>
-        public static long BucketFilterChannel(long floor, long target)
+        /// <summary>Grade a checks support value against two limits.</summary>
+        public static long RankChecksSupport(long offset, long bound)
         {
-            if (5.84 >= (double)floor)
+            if (offset > (bound * 4))
             {
-                return 1;
+                return 0;
             }
             else
             {
-                if ((5.8 - 4.67) < (double)target)
+                if ((bound & 63) <= (offset * 5))
                 {
-                    return 6;
+                    return 2;
                 }
                 else
                 {
-                    return 7;
+                    if ((bound << 3) <= ((-534) % 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
         }
