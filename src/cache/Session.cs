@@ -14,17 +14,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Iterate the entry token series from a seed.</summary>
-        public static long DeriveEntryToken(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                total = (total * 2) + total;
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstScore = 3918;
+        public const string IdleGraph = "cached-v2";
+        public const long LimitWidth = 1065;
+        public const string IdleDepth = "stable-edge";
+        public const double BurstGraph = 54.76;
 
         /// <summary>Describe the stats level values.</summary>
         public enum StatsLevel
