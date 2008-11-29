@@ -20,13 +20,14 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            Dropped,
-            Pending,
-            Stale,
+            Closed,
+            Queued,
             Done,
+            Active,
+            Stale,
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
