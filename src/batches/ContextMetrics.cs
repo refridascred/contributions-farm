@@ -61,12 +61,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdleSpan = 8474;
-        public const long RetryScore = 4753;
-        public const long IdlePayload = 1060;
-        public const long BurstPayload = 3331;
-        public const long HardCount = 7729;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstWindow = 987;
+        public const long BatchLevel = 3166;
+        public const double StepWindow = 76.49;
+        public const string MaxFactor = "fallback-v2";
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool ValidateCommandBounds(long[] data, long seed)
