@@ -26,19 +26,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate stats context readings against a bound.</summary>
-        public static bool CheckStatsContextLimits(long[] values, long target)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            bool stale = true;
-            foreach (long item in values)
-            {
-                if (item <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Count { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
