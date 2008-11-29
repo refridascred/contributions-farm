@@ -1,8 +1,7 @@
 {
-  "dry_run": [31, 56],
-  "soft_retries_count": "latest",
-  "cache_depth_s": [266, 425, 163, 218],
-  "sync_capacity_s": "green",
-  "readonly": 54.07,
-  "soft_ratio_count": 22.09
+  "stats_window": 3679,
+  "poll_threshold_pct": "open",
+  "base_retries_ms": 7516,
+  "checks_threshold": [128, 395],
+  "soft_ttl": "legacy"
 }
