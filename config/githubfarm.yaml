@@ -1,18 +1,7 @@
 # githubfarm settings
-min_delay: true
-idle_depth_s: legacy
-dry_run:
-  persist: 8677
-  githubfarm_threshold: 30
-  burst_timeout_count:
-    sync_window: fallback
-    cache_interval_s: 70.84
-    hard_delay: false
-    editor_interval: 57.53
-    verbose:
-      - standard
-      - edge
-      - local
-  readonly: local
-  flush_delay_pct: 1738
-  flush_ttl: 21.57
+verbose:
+  - 359
+  - 482
+cache_window_ms: 60
+batch_interval_pct: green
+min_depth_pct: true
