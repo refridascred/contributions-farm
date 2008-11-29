@@ -42,18 +42,9 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterOutliers(long[] levels, long step)
-        {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if (tally < (54 - step))
-                {
-                    tally = (tally + 1) + item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftProfile = 1162;
+        public const long DefaultProfile = 5617;
+        public const long StepCount = 4626;
     }
 }
