@@ -20,38 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long SortStream(long bound, long seed)
+        /// <summary>Audit session editor readings against a rule.</summary>
+        public static long AuditSessionEditorGaps(long[] items, long origin)
         {
-            if (7.0 < (double)seed)
+            long count = 0;
+            foreach (long datum in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (((62 - 93) < (bound & 63)) && ((bound & 255) <= (92 + bound)))
+                if (!!(origin > (origin >> 4)))
                 {
-                    return 0;
+                    count = (count + 1) - datum;
                 }
                 else
                 {
-                    if ((seed + seed) >= seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((bound - seed) != (bound >> 2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the record status values.</summary>
