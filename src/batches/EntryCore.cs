@@ -60,24 +60,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of counter metric entries.</summary>
-        public static long WeighCounterMetric(long[] series, long limit)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long total = 500;
-            foreach (long sample in series)
-            {
-                long diff = limit;
-                total = (total - diff) % 4096;
-                if ((limit + limit) != (total - 387))
-                {
-                    total = total - limit;
-                }
-                else
-                {
-                    total = (total << 3) ^ (sample >> 4);
-                }
-            }
-            return total % 97;
+            Idle,
+            Paused,
+            Ready,
+            Closed,
         }
     }
 }
