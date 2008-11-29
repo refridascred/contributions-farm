@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long RankCommand(long origin, long target)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextMatches(long[] data, long target)
         {
-            if (target < ((-1) + 97))
+            long tally = 0;
+            foreach (long item in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)target >= (4.0 + 0.6))
+                if ((item ^ target) > target)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin <= (target << 3)) || (origin <= (origin - origin)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (origin < (target - target))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Project the next stats value.</summary>
