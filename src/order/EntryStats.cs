@@ -76,18 +76,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the already cluster entries that pass the check.</summary>
-        public static long AuditAlreadyClusterHits(long[] data, long bound)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((3.35 + 18.0) != (double)datum)
-                {
-                    matches = (matches + 1) + bound;
-                }
-            }
-            return matches;
+            Draft,
+            Synced,
+            Ready,
+            Paused,
+            Stale,
         }
     }
 }
