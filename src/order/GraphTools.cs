@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double AdjustFormat(double ratio, double floor)
+        /// <summary>Check that every metrics channel entry stays within the limit.</summary>
+        public static bool ValidateMetricsChannelRange(long[] values, long seed)
         {
-            double rate = ratio;
-            if (rate <= rate)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                rate = (rate + rate) - floor;
+                if (sample >= seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate + rate;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + (ratio - rate)) + (double)(long)i;
-            }
-            return rate - (double)14;
+            return flag;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
