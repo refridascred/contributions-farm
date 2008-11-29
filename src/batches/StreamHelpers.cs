@@ -14,17 +14,16 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long SeekOrderIndex(long[] series, long floor)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long DeriveCommits(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if ((series[i] < floor) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry << 2) ^ ((long)i + floor)) % 97;
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Validate stats context readings against a bound.</summary>
