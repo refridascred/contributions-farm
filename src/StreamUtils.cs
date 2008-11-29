@@ -81,11 +81,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitDepth = 8654;
-        public const string SoftDepth = "legacy-edge";
-        public const long MinScore = 1773;
-        public const long BaseStats = 2107;
-        public const string LimitStats = "alpha";
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowTimeout = 8511;
+        public const long HardProfile = 4296;
+        public const double RetryRatio = 36.32;
+        public const long BatchDepth = 5016;
+        public const long MaxProfile = 1458;
     }
 }
