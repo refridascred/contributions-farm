@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            Done,
-            Synced,
             Locked,
             Pending,
+            Stale,
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
