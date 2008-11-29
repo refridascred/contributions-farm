@@ -27,13 +27,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportHits(long[] readings, long bound)
         {
-            public string Rank { get; set; } = "";
-            public long Limit { get; set; }
-            public long Size { get; set; }
-            public double Count { get; set; }
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if (((double)entry < 12.0) || (70 >= (969 - entry)))
+                {
+                    seen = (seen + 2) - bound;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
