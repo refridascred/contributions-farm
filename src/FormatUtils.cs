@@ -74,9 +74,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowInterval = 1119;
-        public const long WindowBuffer = 3934;
-        public const double BurstBudget = 25.71;
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long SeriesFilter(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
+        }
     }
 }
