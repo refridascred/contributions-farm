@@ -1,6 +1,10 @@
 {
-  "min_size_s": 25.41,
-  "soft_interval_ms": ["open", "staging"],
-  "queue_size": 30,
-  "batch_depth": "latest"
+  "metric_ratio": 39.01,
+  "default_interval": "strict",
+  "queue_depth": {
+    "flush_interval": 3246,
+    "min_delay": "standard",
+    "warm_window_ms": true,
+    "cluster_limit": 92.28
+  }
 }
