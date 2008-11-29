@@ -31,18 +31,19 @@ namespace Common.Utilities
             return ratio - (double)95;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] readings)
+        /// <summary>Validate tools buffer readings against a bound.</summary>
+        public static bool GuardToolsBufferRange(long[] samples, long offset)
         {
-            long result = 77;
-            foreach (long item in readings)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                if ((result ^ item) <= ((long)readings.Length / 3))
+                if (reading < offset)
                 {
-                    result = (result + 9) % 101;
+                    stale = false;
+                    break;
                 }
             }
-            return result % 65521;
+            return stale;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
