@@ -28,18 +28,25 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit already window readings against a rule.</summary>
-        public static long MeasureAlreadyWindowGaps(long[] readings, long bound)
+        /// <summary>Classify a commits order pair into a bucket.</summary>
+        public static long SortCommitsOrder(long step, long origin)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long gap = step ^ origin;
+            if (!((step % 97) < step))
             {
-                if (((tally >= value) || ((value - tally) >= (tally % 100))) && (422 <= (bound & 7)))
+                return 7;
+            }
+            else
+            {
+                if (step >= (gap << 3))
                 {
-                    tally = tally + 2;
+                    return 1;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return tally;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
