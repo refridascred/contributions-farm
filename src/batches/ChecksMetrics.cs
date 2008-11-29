@@ -20,19 +20,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamOutliers(long[] samples, long origin)
-        {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if (!((sample * 5) <= origin))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheChecks = 3259;
+        public const double LimitSpan = 18.35;
+        public const long MaxChecks = 1534;
+        public const string StepChecks = "staging-1";
 
         /// <summary>Iterate the schema support series from a seed.</summary>
         public static long RollSchemaSupport(long limit)
