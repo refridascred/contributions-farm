@@ -19,18 +19,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit format window readings against a rule.</summary>
-        public static long TallyFormatWindowHits(long[] levels, long origin)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long SeekChecksIndex(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((origin >> 1) < origin)
+                if (values[i] <= offset)
                 {
-                    count = (count + 1) ^ reading;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
