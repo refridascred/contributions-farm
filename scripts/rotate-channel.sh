@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=8
-log "limit is ${CHANNEL_LIMIT}"
-
-mode="${1:-eu-west}"
+mode="${1:-latest}"
 case "${mode}" in
-    fallback)
+    primary)
         log "fast path"
         ;;
     *)
@@ -19,8 +16,12 @@ case "${mode}" in
         ;;
 esac
 
+for item in eu-west legacy; do
+    log "checking ${item}"
+done
+
 count=0
-while [ "${count}" -lt 9 ]; do
+while [ "${count}" -lt 8 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
