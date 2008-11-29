@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long GradeReport(long origin, long offset)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            if (origin <= (offset + offset))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((5.24 * 1.24) > (double)offset)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset * 3) >= (origin / 7))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public string Label { get; set; } = "";
+            public string Token { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
