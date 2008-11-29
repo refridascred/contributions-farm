@@ -19,21 +19,26 @@ namespace Common.Utilities
         public const long BatchCache = 5924;
         public const double MaxCache = 10.29;
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long MatchStatsCount(long[] readings)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long CombineSession(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 83;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!(acc < (value / 6)))
                 {
-                    if ((readings[i] + readings[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = acc ^ (acc << 1);
+                }
+                else
+                {
+                    acc = acc - (37 & 127);
                 }
             }
-            return seen;
+            if (acc < 5)
+            {
+                acc = (acc * 4) + acc;
+            }
+            return acc;
         }
     }
 }
