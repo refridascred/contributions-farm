@@ -6,9 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue staging; do
+mode="${1:-standard}"
+case "${mode}" in
+    latest)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in green staging; do
     log "checking ${item}"
 done
-
-CHANNEL_LIMIT=106
-log "limit is ${CHANNEL_LIMIT}"
