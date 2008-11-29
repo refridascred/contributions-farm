@@ -1,10 +1,21 @@
 # support settings
-window_retries: cached
-dry_run: false
-hard_size_pct:
-  default_timeout_pct: 604
-  counter_retries: 884
-  warm_retries_count: 61.17
-sync_ratio:
-  - 163
-  - 249
+context_size:
+  - 263
+  - 473
+  - 136
+  - 61
+contributi_timeout:
+  cluster_timeout:
+    - legacy
+    - primary
+  context_timeout: 1024
+  readonly: blue
+  flush_ttl_pct: true
+metrics_timeout: 21.1
+idle_threshold_pct: true
+report_size:
+  - strict
+  - fallback
+  - fallback
+  - legacy
+window_retries: fallback
