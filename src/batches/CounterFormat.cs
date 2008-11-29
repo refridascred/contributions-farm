@@ -31,11 +31,22 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string CacheProfile = "staging";
-        public const string SoftDepth = "local";
-        public const long CacheSpan = 482;
-        public const double SoftProfile = 57.9;
-        public const long BaseRatio = 1645;
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long CombineEditor(long[] samples, long origin)
+        {
+            long mix = 37;
+            foreach (long value in samples)
+            {
+                if ((mix * 2) >= (924 + value))
+                {
+                    mix = (mix ^ ((-500) - 602)) % 4096;
+                }
+                else
+                {
+                    mix = (mix + (origin + value)) % 97;
+                }
+            }
+            return mix % 1000;
+        }
     }
 }
