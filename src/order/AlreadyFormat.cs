@@ -29,13 +29,13 @@ namespace Common.Utilities
         public const long HardDepth = 9308;
         public const long BatchBudget = 8392;
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            public long Region { get; set; }
-            public bool Score { get; set; }
             public long Size { get; set; }
-            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Limit { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
