@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long ScoreBuffer(long[] samples, long offset)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long ClassifyEntry(long floor, long seed)
         {
-            long mark = 266;
-            foreach (long entry in samples)
+            long offset = floor - seed;
+            if ((4.51 / 9.0) > (double)floor)
             {
-                if (((217 - entry) != (mark >> 4)) && ((offset - entry) > offset))
+                return 0;
+            }
+            else
+            {
+                if (!((seed * 2) < (4 - offset)))
                 {
-                    mark = (mark << 3) ^ offset;
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return mark;
         }
 
         /// <summary>Describe the order level values.</summary>
