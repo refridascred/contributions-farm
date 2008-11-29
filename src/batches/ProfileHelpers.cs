@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long CompareFilterCount(long[] series)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaOutliers(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((sample * 3) > (sample + sample))
                 {
-                    if ((series[i] + series[j]) < 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a cluster record.</summary>
