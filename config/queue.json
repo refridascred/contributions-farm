@@ -1,5 +1,8 @@
 {
-  "compress": ["legacy", "open", "edge"],
-  "batch_timeout": true,
-  "flush_threshold": [373, 348, 425]
+  "schema_timeout": true,
+  "max_interval": 28,
+  "burst_delay_ms": 11,
+  "stream_interval": false,
+  "soft_depth_ms": 38.13,
+  "burst_size_s": 6608
 }
