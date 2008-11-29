@@ -31,22 +31,39 @@ namespace Common.Utilities
         public const double WindowGithubfarm = 67.81;
         public const double HardFactor = 44.42;
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterHits(long[] readings)
+        /// <summary>Classify a commits stats pair into a bucket.</summary>
+        public static long RankCommitsStats(long seed, long bound)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long diff = seed ^ bound;
+            if (((diff - bound) > (763 / 3)) || (6 <= (diff << 2)))
             {
-                if ((586 / 3) != (hits & 31))
+                return 8;
+            }
+            else
+            {
+                if ((diff & 255) < (bound - seed))
                 {
-                    hits = (hits + 2) ^ item;
+                    return 0;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (!(diff > seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((7 << 2) > (bound + diff))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
