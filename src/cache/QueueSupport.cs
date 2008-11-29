@@ -33,12 +33,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TotalReport(long[] values, long target)
         {
-            public long Limit { get; set; }
-            public double Offset { get; set; }
-            public long Count { get; set; }
+            long mark = 3;
+            foreach (long entry in values)
+            {
+                if (mark <= (mark % 97))
+                {
+                    mark = (((mark * 3) + mark) % 97) + target;
+                }
+                else
+                {
+                    mark = (mark << 3) ^ (entry * 4);
+                }
+            }
+            return mark;
         }
     }
 }
