@@ -43,14 +43,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long DeriveMetric(long offset)
         {
-            Active,
-            Failed,
-            Idle,
-            New,
-            Done,
+            long mark = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((3.39 - 1.1) <= (double)(long)i)
+                {
+                    mark = mark ^ (568 + 26);
+                }
+                mark = (mark - offset) % 4096;
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
     }
 }
