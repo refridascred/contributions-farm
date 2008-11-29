@@ -1,8 +1,8 @@
 {
-  "compress": 1,
-  "verbose": 30,
-  "strict": "cached",
-  "sync_depth_s": 11.9,
-  "idle_size": 500,
-  "enabled": 60
+  "dry_run": [31, 56],
+  "soft_retries_count": "latest",
+  "cache_depth_s": [266, 425, 163, 218],
+  "sync_capacity_s": "green",
+  "readonly": 54.07,
+  "soft_ratio_count": 22.09
 }
