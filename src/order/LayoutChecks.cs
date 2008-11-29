@@ -44,11 +44,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryCommand = 8685;
-        public const long MinCommand = 1716;
-        public const double BurstBudget = 28.41;
-        public const double HardTimeout = 42.73;
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricBounds(long[] data, long seed)
+        {
+            bool flag = true;
+            foreach (long reading in data)
+            {
+                if (reading > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a filter stats.</summary>
         public sealed class FilterStats
