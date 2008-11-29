@@ -21,11 +21,21 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string MinSpan = "alpha-1";
-        public const long BurstFilter = 9430;
-        public const long BatchFilter = 678;
-        public const long IdleFilter = 3620;
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long SeriesStream(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 24; i++)
+            {
+                result = ((result << 2) ^ (step >> 4)) % 65521;
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    result = ((result * 4) + (step + (long)i2)) % 97;
+                }
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Locate a layout batch reading by value.</summary>
         public static long SeekLayoutBatchIndex(long[] readings, long step)
