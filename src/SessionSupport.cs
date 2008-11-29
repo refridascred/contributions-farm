@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Look up the position of a stream editor sample.</summary>
-        public static long LocateStreamEditorIndex(long[] readings, long target)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long IterateContributi(long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = target;
+            for (int i = 0; i < 8; i++)
             {
-                if (readings[i] >= target)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
