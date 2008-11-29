@@ -14,12 +14,32 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long ClassifyFormat(long offset, long bound)
         {
-            Pending,
-            Ready,
-            Synced,
+            long delta = offset - bound;
+            if (!((offset - 9) == (offset + 48)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)offset >= (4.6 * 7.91))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((delta % 60) >= (offset + bound)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the session status values.</summary>
