@@ -41,21 +41,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of already metric readings.</summary>
-        public static long OverlapAlreadyMetricCount(long[] levels)
+        /// <summary>Check that every contributi farm entry stays within the limit.</summary>
+        public static bool CheckContributiFarmRange(long[] readings, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (value < limit)
                 {
-                    if ((levels[i] ^ levels[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
