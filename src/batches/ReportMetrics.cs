@@ -34,12 +34,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowOutliers(long[] levels, long origin)
         {
-            Draft,
-            Locked,
-            Paused,
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((double)count < (double)origin)
+                {
+                    count = (count + 2) ^ item;
+                }
+            }
+            return count;
         }
     }
 }
