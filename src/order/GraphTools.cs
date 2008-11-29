@@ -42,20 +42,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of githubfarm farm entries.</summary>
-        public static long CombineGithubfarmFarm(long[] data, long bound)
-        {
-            long state = 356;
-            foreach (long reading in data)
-            {
-                state = (state + (state - state)) % 97;
-                if (((double)reading <= (5.0 + 7.4)) || ((7 * 5) >= bound))
-                {
-                    state = (state + (state - reading)) % 101;
-                }
-            }
-            return state % 65521;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowEditor = 8825;
+        public const long CacheEditor = 6044;
+        public const long MinWidth = 9574;
+        public const long HardEditor = 4066;
 
         /// <summary>Classify a checks pair into a bucket.</summary>
         public static long RankChecks(long floor, long target)
