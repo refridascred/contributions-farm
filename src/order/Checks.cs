@@ -20,12 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long SeekCacheIndex(long[] data, long seed)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LookupCacheIndex(long[] levels, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((data[i] == seed) && ((data[i] % 3) == 0))
+                if (levels[i] <= target)
                 {
                     return (long)i;
                 }
