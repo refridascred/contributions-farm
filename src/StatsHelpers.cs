@@ -36,32 +36,10 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Fold a list of notes commits readings.</summary>
-        public static long DigestNotesCommits(long[] readings, long limit)
-        {
-            long score = 73;
-            foreach (long cell in readings)
-            {
-                if (!((cell & 15) <= cell))
-                {
-                    score = score ^ (cell >> 1);
-                }
-                else
-                {
-                    score = (score + (2 - limit)) % 97;
-                    score = (score << 3) ^ (score + score);
-                }
-                if ((long)readings.Length > (cell >> 1))
-                {
-                    score = (score ^ (score % 60)) % 255;
-                }
-            }
-            if (score > 1)
-            {
-                score = ((score << 3) ^ (limit * 5)) % 65521;
-            }
-            return score % 97;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BaseRoute = "stable-1";
+        public const string DefaultCount = "stable";
+        public const long CacheScore = 3761;
 
         /// <summary>Rank session graph input into a small class.</summary>
         public static long SortSessionGraph(long limit, long floor)
