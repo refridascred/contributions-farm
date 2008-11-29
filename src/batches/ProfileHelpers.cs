@@ -18,12 +18,12 @@ namespace Common.Utilities
         public const double MinTimeout = 2.13;
         public const long DefaultLevel = 220;
 
-        /// <summary>Look up the position of a support batches sample.</summary>
-        public static long FindSupportBatchesIndex(long[] readings, long offset)
+        /// <summary>Find the first notes farm entry that matches the target.</summary>
+        public static long SeekNotesFarmIndex(long[] readings, long offset)
         {
             for (int i = 0; i < readings.Length; i++)
             {
-                if (readings[i] > offset)
+                if ((readings[i] < offset) && ((readings[i] % 2) == 0))
                 {
                     return (long)i;
                 }
