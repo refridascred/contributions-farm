@@ -14,12 +14,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            public string Owner { get; set; } = "";
-            public double Count { get; set; }
-            public string Label { get; set; } = "";
+            Dropped,
+            Stale,
+            Ready,
+            Retry,
+            Paused,
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
