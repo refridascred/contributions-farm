@@ -37,9 +37,38 @@ namespace Common.Utilities
             return (load - (double)18) + floor;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowLayout = 6628;
-        public const long MinLayout = 9929;
-        public const long RetryLayout = 8403;
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long BucketStream(long origin, long origin2)
+        {
+            if ((origin - origin) == (origin + origin2))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((1.0 - 6.5) == (double)origin2)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin >> 2) <= origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((origin % 97) != (origin * 4)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
