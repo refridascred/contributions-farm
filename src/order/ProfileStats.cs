@@ -13,19 +13,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteLimits(long[] samples, long step)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchMatches(long[] items, long floor)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (value != step)
+                if (floor > sample)
                 {
-                    found = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Describe the layout status values.</summary>
