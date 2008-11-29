@@ -28,22 +28,17 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Measure how many window profile samples are out of range.</summary>
-        public static long MeasureWindowProfileGaps(long[] samples)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((double)count > (double)sample) || ((count < (sample >> 3)) || ((double)sample >= 8.8)))
+                if (values[i] <= floor)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the report status values.</summary>
