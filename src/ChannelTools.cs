@@ -39,32 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate notes support samples.</summary>
-        public static long TallyNotesSupport(long[] values)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryRange(long[] series, long step)
         {
-            long result = 23;
-            foreach (long datum in values)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                result = ((result * 2) + datum) % 255;
-                if ((14.0 * 4.0) <= (double)datum)
+                if (entry <= step)
                 {
-                    result = (result - (685 ^ (long)values.Length)) % 97;
+                    ok = false;
                     break;
                 }
-                if (76 >= (result & 31))
-                {
-                    result = (result - (datum ^ result)) % 97;
-                }
-                else
-                {
-                    result = ((result << 3) ^ (result % 16)) % 101;
-                }
             }
-            if (result < 23)
-            {
-                result = (result + (-78)) % 97;
-            }
-            return result;
+            return ok;
         }
     }
 }
