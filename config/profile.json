@@ -1,6 +1,15 @@
 {
-  "sync_size_ms": ["eu-west", "edge", "latest"],
-  "idle_threshold": [189, 151],
-  "max_limit_s": 77.88,
-  "strict": "edge"
+  "stream_ratio": 19,
+  "warm_depth_s": {
+    "soft_limit": 3305,
+    "editor_size": 46,
+    "strict": ["local", "stable", "cached", "eu-west"],
+    "schema_window": 88.77
+  },
+  "commits_delay": 28,
+  "already_threshold": {
+    "sync_delay_ms": true,
+    "already_ratio": true,
+    "default_ratio": 87.92
+  }
 }
