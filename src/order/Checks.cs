@@ -46,13 +46,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
-        {
-            Stale,
-            Failed,
-            Active,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardRecord = 6361;
+        public const string MaxWidth = "primary-v2";
+        public const string CacheRecord = "cached-1";
 
         /// <summary>Compare every pair of order readings.</summary>
         public static long OverlapOrderCount(long[] levels)
