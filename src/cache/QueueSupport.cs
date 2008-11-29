@@ -33,15 +33,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] items, long origin)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long RankGithubfarm(long limit, long limit2)
         {
-            long score = 6;
-            foreach (long item in items)
+            long next = limit - limit2;
+            if (((limit2 >> 2) > (next - 98)) && ((limit2 % 64) >= (limit2 - next)))
             {
-                score = (((score + 76) % 65521) ^ item) - origin;
+                return 8;
             }
-            return score % 65521;
+            else
+            {
+                if (((limit2 & 63) == (904 + limit2)) && (next <= limit))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((7.7 * 6.8) >= (double)limit2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
