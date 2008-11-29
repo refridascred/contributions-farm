@@ -1,5 +1,33 @@
 # githubfarm settings
-cache_retries: standard
-notes_ttl: 4739
-min_size: 250
-strict: 58.09
+batch_limit: open
+max_ttl_pct: strict
+warm_depth_count:
+  idle_interval_pct:
+    - 414
+    - 174
+    - 367
+    - 422
+  burst_depth_count:
+    warm_window_count: cached
+    idle_retries_count: 1024
+    editor_ratio:
+      - 244
+      - 209
+    verbose: 76.8
+    idle_retries: 12.78
+    strict: 9721
+  commits_interval:
+    soft_size_s: cached
+    commits_delay: false
+    dry_run: false
+  compress: 280
+  retry_capacity_count: stable
+report_retries:
+  - 158
+  - 206
+  - 61
+  - 11
+poll_window_pct: local
+base_ratio:
+  - fallback
+  - local
