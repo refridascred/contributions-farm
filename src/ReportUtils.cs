@@ -65,11 +65,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ProjectStream(double gain, double floor)
         {
-            public bool Score { get; set; }
-            public long Size { get; set; }
+            double drift = floor - 3.37;
+            if (drift < 6.2)
+            {
+                drift = drift + (floor - gain);
+            }
+            return drift + 4.9;
         }
 
         /// <summary>Hold a stats header.</summary>
