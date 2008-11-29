@@ -1,19 +1,6 @@
 {
-  "notes_ratio": {
-    "poll_threshold": 4637,
-    "audit": 93.86,
-    "enabled": "staging",
-    "flush_limit_count": false,
-    "soft_delay_s": [486, 82],
-    "warm_retries_count": {
-      "burst_retries": "latest",
-      "sync_delay_ms": 8642,
-      "warm_size_pct": false,
-      "verbose": "strict",
-      "retry_size_pct": false
-    }
-  },
-  "command_timeout": "eu-west",
-  "cache_interval_pct": "stable",
-  "hard_window": "green"
+  "batch_window": 5422,
+  "default_delay_count": 34,
+  "burst_depth_count": ["legacy", "standard", "edge", "edge"],
+  "sync_interval_pct": false
 }
