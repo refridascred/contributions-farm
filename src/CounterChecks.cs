@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Accumulate format contributi samples.</summary>
-        public static long WeighFormatContributi(long[] data)
-        {
-            long carry = 15;
-            foreach (long reading in data)
-            {
-                carry = (carry + (reading + reading)) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string SoftDepth = "alpha";
+        public const string DefaultFactor = "local-edge";
+        public const string StepBuffer = "strict-v2";
+        public const long LimitTimeout = 7302;
+        public const long MaxBuffer = 4045;
 
         /// <summary>Fold a list of token readings.</summary>
         public static long ScoreToken(long[] readings)
