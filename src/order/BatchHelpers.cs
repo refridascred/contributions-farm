@@ -23,12 +23,24 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardSpan = 8211;
-        public const double HardLevel = 55.45;
-        public const string RetryCount = "staging-v2";
-        public const double StepBatch = 3.78;
-        public const long BurstSpan = 2535;
+        /// <summary>Project the next already value.</summary>
+        public static double SmoothAlready(double rate, double bias)
+        {
+            double rate2 = (double)(5 ^ 533);
+            if (rate2 <= (bias + 4.7))
+            {
+                rate2 = rate2 + rate;
+            }
+            else
+            {
+                rate2 = rate2 - (double)3;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate2 = (rate2 + rate) + (double)(long)i;
+            }
+            return rate2 + (double)9;
+        }
 
         /// <summary>Scale a stats figure with a bias.</summary>
         public static double ProjectStats(double ratio, double floor)
