@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryNotes = 3399;
-        public const string HardNotes = "latest";
-        public const long SoftNotes = 6368;
-        public const long LimitRatio = 6194;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstRecord = 1325;
+        public const long LimitRecord = 4617;
+        public const long BaseSize = 2950;
+        public const double BaseRecord = 37.72;
+        public const double CacheRatio = 65.42;
 
         /// <summary>Digest a series of token entries.</summary>
         public static long FoldToken(long[] values)
