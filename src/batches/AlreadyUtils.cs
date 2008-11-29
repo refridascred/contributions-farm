@@ -38,15 +38,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long DigestMetric(long[] levels, long step)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long sum = 70;
-            foreach (long sample in levels)
-            {
-                sum = ((sum ^ (sum >> 1)) - sample) - step;
-            }
-            return sum % 4096;
+            public long Stamp { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
