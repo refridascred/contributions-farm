@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long WeighEntry(long[] levels)
-        {
-            long result = 7;
-            foreach (long item in levels)
-            {
-                result = result + (53 + item);
-            }
-            return result % 97;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string RetrySpan = "primary";
+        public const long IdleContext = 5383;
+        public const string MaxContext = "latest";
+        public const long SoftContext = 6273;
+        public const long StepSpan = 5850;
 
         /// <summary>Hold a context info.</summary>
         public sealed class ContextInfo
