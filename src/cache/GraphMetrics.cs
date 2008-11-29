@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate entry window samples.</summary>
-        public static long DigestEntryWindow(long[] readings, long limit)
+        /// <summary>Project the next report value.</summary>
+        public static double BlendReport(double gain, double span)
         {
-            long anchor = 242;
-            foreach (long cell in readings)
+            double load = span;
+            for (int i = 0; i < 2; i++)
             {
-                anchor = ((((anchor << 2) ^ (anchor & 31)) % 4096) ^ cell) + limit;
+                load = ((load - (span / 3.0)) + (double)(long)i) + gain;
             }
-            if (anchor > 340)
-            {
-                anchor = (anchor - (anchor - anchor)) % 65521;
-            }
-            return anchor % 97;
+            return load + load;
         }
 
         /// <summary>Rank cluster layout input into a small class.</summary>
