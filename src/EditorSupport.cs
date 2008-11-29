@@ -90,21 +90,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count metric stats pairs that satisfy a relation.</summary>
-        public static long OverlapMetricStatsCount(long[] levels)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphGaps(long[] items, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((sample * 5) != (hits + hits))
                 {
-                    if ((levels[i] ^ levels[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 2) + origin;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
