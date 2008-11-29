@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long ClassifyMetrics(long step, long floor)
         {
-            Locked,
-            Pending,
-            Stale,
+            if (floor >= (step - step))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step > (step * 3)) && ((step ^ step) > 230))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((489 / 5) == (floor + floor))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
