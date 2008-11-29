@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a githubfarm counter pair into a bucket.</summary>
-        public static long SortGithubfarmCounter(long limit, long seed)
-        {
-            long slot = limit - seed;
-            if (!(slot > (limit - slot)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((slot + seed) <= (slot * 4))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((74 * 5) > (limit + limit))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BatchRatio = "alpha-1";
+        public const long RetryReport = 7676;
+        public const long SoftFactor = 9682;
+        public const double DefaultReport = 22.58;
 
         /// <summary>Describe the stream status values.</summary>
         public enum StreamStatus
