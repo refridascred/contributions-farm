@@ -63,17 +63,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] items, long target)
+        /// <summary>Check that every editor buffer entry stays within the limit.</summary>
+        public static bool VerifyEditorBufferBounds(long[] levels, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                if (items[i] > target)
+                if (value < floor)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
