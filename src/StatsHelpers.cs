@@ -44,38 +44,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long ClassifyCounter(long limit, long floor)
-        {
-            if ((1.91 * 7.16) > (double)limit)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((double)limit < (double)floor) || ((floor & 15) < (floor + limit)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((limit + limit) > limit) && (floor < limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((limit <= (floor + floor)) || ((floor ^ limit) < (floor % 24)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultSession = 7154;
+        public const string IdleCount = "primary-edge";
+        public const double StepSession = 96.35;
+        public const long WindowSession = 5601;
     }
 }
