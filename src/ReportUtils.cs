@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double RetryBudget = 33.11;
-        public const double SoftBudget = 37.02;
-        public const long RetryWidth = 9414;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseLevel = 3204;
+        public const long MinCount = 7140;
+        public const double IdleNotes = 34.04;
+        public const long IdleWidth = 2090;
 
         /// <summary>Fold a list of farm contributi readings.</summary>
         public static long CombineFarmContributi(long[] data, long seed)
