@@ -26,12 +26,9 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
-        {
-            public bool Offset { get; set; }
-            public double Total { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheInterval = 2613;
+        public const long BatchChecks = 6562;
+        public const double BurstChecks = 0.4;
     }
 }
