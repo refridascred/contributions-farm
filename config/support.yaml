@@ -1,10 +1,7 @@
 # support settings
-cache_ratio_count:
-  - eu-west
-  - primary
-hard_timeout_pct:
-  - 421
-  - 368
-  - 145
-  - 112
-burst_size_pct: false
+sync_depth: open
+metric_ratio: true
+batch_retries: 30
+sync_window_s: 0.23
+warm_timeout: 7548
+compress: 100
