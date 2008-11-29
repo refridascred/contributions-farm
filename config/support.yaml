@@ -1,9 +1,9 @@
 # support settings
-persist: 91.74
-queue_limit: 5937
-enabled: strict
-support_threshold: open
-channel_delay:
-  min_size_ms: local
-  retry_ratio_pct: true
-  sync_threshold: true
+order_timeout:
+  - local
+  - green
+  - stable
+  - cached
+window_capacity: false
+audit: true
+flush_capacity_pct: 2848
