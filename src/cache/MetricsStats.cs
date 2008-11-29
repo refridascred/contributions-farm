@@ -52,15 +52,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double SmoothRecord(double rate, double floor)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            double gain = floor;
-            if (gain > (rate + floor))
-            {
-                gain = gain + floor;
-            }
-            return gain - floor;
+            public string Label { get; set; } = "";
+            public long Score { get; set; }
+            public double Total { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
