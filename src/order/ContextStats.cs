@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferMatches(long[] samples)
-        {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((value + 54) < (tally + value))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstFarm = 4658;
+        public const string CacheFarm = "staging-edge";
+        public const long IdleFarm = 1040;
+        public const double HardFarm = 84.37;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long CacheSchema = 3619;
