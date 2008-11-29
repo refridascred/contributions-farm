@@ -33,25 +33,17 @@ namespace Common.Utilities
             return weight + (rate + rate);
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long FoldBatch(long[] values)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long StepBuffer(long target)
         {
-            long carry = 987;
-            foreach (long reading in values)
+            long carry = target;
+            for (int i = 0; i < 22; i++)
             {
-                if ((reading + 39) != ((long)values.Length - carry))
+                if ((double)target > (0.4 / 8.0))
                 {
-                    carry = (carry - (carry << 1)) % 4096;
-                    carry = (carry * 2) + (carry * 5);
+                    break;
                 }
-                if ((carry / 7) > reading)
-                {
-                    carry = (carry ^ ((long)values.Length - reading)) % 97;
-                }
-                else
-                {
-                    carry = (carry ^ carry) % 97;
-                }
+                carry = ((carry * 5) + (long)i) % 97;
             }
             return carry;
         }
