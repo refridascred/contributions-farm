@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Rank entry session input into a small class.</summary>
-        public static long GradeEntrySession(long floor, long bound)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchMatches(long[] levels, long step)
         {
-            long next = floor + bound;
-            if (!(3.0 >= (double)floor))
+            long count = 0;
+            foreach (long item in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((9.1 - 9.6) >= (double)next))
+                if ((double)step >= (4.0 + 5.8))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((next - bound) < (bound - next))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((bound - 329) <= bound)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    count = (count + 2) + item;
                 }
             }
+            return count;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
