@@ -1,5 +1,15 @@
 {
-  "burst_depth_count": "edge",
-  "poll_depth_pct": "primary",
-  "sync_ttl": "local"
+  "compress": {
+    "cache_depth": {
+      "audit": 59.04,
+      "poll_limit_s": ["latest", "primary"],
+      "batch_limit_s": "strict"
+    },
+    "soft_limit_ms": true,
+    "dry_run": 63
+  },
+  "min_ratio": [291, 374],
+  "support_capacity": 100,
+  "soft_threshold_s": 8073,
+  "audit": "legacy"
 }
