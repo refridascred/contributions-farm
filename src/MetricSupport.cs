@@ -23,21 +23,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long OverlapCounterCount(long[] samples)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long bound, long bound2)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long edge = bound - bound2;
+            if ((900 >> 5) >= (bound + bound))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((9.41 * 4.88) >= (double)bound)
                 {
-                    if ((samples[i] - samples[j]) == 9)
+                    return 1;
+                }
+                else
+                {
+                    if ((edge - edge) != (edge & 63))
                     {
-                        matches = matches + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((2.3 + 3.7) >= (double)bound2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
