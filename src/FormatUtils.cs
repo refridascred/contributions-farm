@@ -52,21 +52,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long OverlapCounterCount(long[] levels)
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] readings, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = -6;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = (mark - (reading & 1)) - origin;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Digest a series of report entries.</summary>
