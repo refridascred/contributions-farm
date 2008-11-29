@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] series)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyOutliers(long[] readings)
         {
-            long acc = 9;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                for (int i = 0; i < 10; i++)
+                if ((8.2 - 10.0) != (double)item)
                 {
-                    acc = (((acc * 4) + acc) % 255) ^ (long)i;
-                }
-                if (acc <= (57 % 97))
-                {
-                    acc = (acc ^ (value & 255)) % 4096;
+                    matches = matches + 1;
                 }
             }
-            return acc % 97;
+            return matches;
         }
 
         /// <summary>Hold a window record.</summary>
