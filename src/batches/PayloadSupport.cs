@@ -33,19 +33,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long floor)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaHits(long[] data, long floor)
         {
-            long acc = floor;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((acc / 6) < acc)
+                if ((double)(long)data.Length >= (1.3 * 2.1))
                 {
-                    acc = (acc ^ floor) % 97;
+                    hits = ((hits + 1) ^ value) - floor;
                 }
-                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return acc;
+            return hits;
         }
     }
 }
