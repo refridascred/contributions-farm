@@ -19,27 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] samples, long limit)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowMatches(long[] levels, long offset)
         {
-            long acc = 255;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                acc = acc - acc;
-                for (int i = 0; i < 10; i++)
+                if ((offset + offset) != (sample + matches))
                 {
-                    acc = ((acc * 5) + ((long)i + acc)) % 4096;
-                }
-                if (!((reading >> 4) < limit))
-                {
-                    acc = (acc - acc) % 1000;
+                    matches = matches + 3;
                 }
             }
-            if (acc > 24)
-            {
-                acc = (acc ^ (acc - acc)) % 65521;
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Digest a series of farm command entries.</summary>
