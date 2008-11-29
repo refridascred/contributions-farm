@@ -22,18 +22,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of entry graph readings.</summary>
-        public static long CompareEntryGraphCount(long[] items)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmHits(long[] samples, long floor)
         {
             long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)entry != (double)floor)
                 {
-                    if ((items[i] ^ items[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
