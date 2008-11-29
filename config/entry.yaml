@@ -1,7 +1,16 @@
 # entry settings
-enabled: false
-entry_delay: legacy
-idle_capacity_ms:
-  layout_window: fallback
-  burst_depth_ms: true
-  default_ttl: legacy
+account_window: false
+tools_depth:
+  commits_limit: 60
+  flush_depth_pct: 84
+  idle_retries: 7.91
+  order_ttl: false
+  profile_retries: 3775
+  hard_threshold_ms:
+    warm_depth_count: 60
+    filter_threshold: 54.31
+    min_delay_count: 15.46
+    retry_interval_count: 21
+tools_retries: latest
+dry_run: false
+tools_capacity: 1600
