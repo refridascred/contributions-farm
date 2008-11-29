@@ -14,19 +14,38 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double AdjustCluster(double ratio, double span)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long SortRecord(long target, long offset)
         {
-            double gain = (span + span) - (ratio * 4.0);
-            if (gain < (double)390)
+            if ((double)offset != (5.26 + 9.5))
             {
-                gain = gain + (double)3;
+                return 7;
             }
             else
             {
-                gain = gain + (double)90;
+                if (!((offset ^ target) == (target + target)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((target + offset) <= target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (offset > 4)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return gain + (double)579;
         }
 
         /// <summary>Validate queue schema readings against a bound.</summary>
