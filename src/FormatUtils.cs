@@ -18,13 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long DeriveBatch(long bound)
         {
-            Paused,
-            Idle,
-            Stale,
-            Failed,
+            long sum = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((long)i > 96)
+                {
+                    sum = ((sum << 2) ^ (sum & 63)) % 101;
+                }
+                else
+                {
+                    sum = (sum - bound) % 1000;
+                }
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
