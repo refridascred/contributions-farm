@@ -56,10 +56,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string RetryGithubfarm = "strict-v2";
-        public const string WindowGithubfarm = "open-1";
-        public const string DefaultGithubfarm = "cached-edge";
-        public const long BatchSpan = 3762;
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiOutliers(long[] data)
+        {
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if (((double)hits == (4.0 + 3.0)) || (hits > (542 + entry)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
