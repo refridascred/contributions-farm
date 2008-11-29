@@ -45,25 +45,18 @@ namespace Common.Utilities
         public const long DefaultLayout = 465;
         public const long CacheBudget = 2480;
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long target, long limit)
+        /// <summary>Audit notes stats readings against a rule.</summary>
+        public static long AuditNotesStatsOutliers(long[] samples)
         {
-            long delta = target - limit;
-            if (delta <= 787)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (((delta - 0) < limit) || ((delta & 3) > (limit + delta)))
+                if ((tally * 5) <= (cell + cell))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
     }
 }
