@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheFactor = 6682;
-        public const double SoftBatch = 32.36;
-        public const string HardSize = "stable-v2";
-        public const string DefaultBatch = "alpha-1";
-        public const long LimitBatch = 3068;
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
+        {
+            public string Region { get; set; } = "";
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Describe the record state values.</summary>
         public enum RecordState
