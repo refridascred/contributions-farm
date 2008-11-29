@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long floor)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long SeriesSchema(long bound)
         {
-            long mix = floor;
-            for (int i = 0; i < 19; i++)
+            long anchor = bound;
+            for (int i = 0; i < 17; i++)
             {
-                mix = mix ^ (mix / 5);
-                mix = ((mix << 2) ^ mix) % 255;
-                if (((87 % 8) != (long)i) || ((floor & 63) == (166 * 3)))
+                if ((double)bound >= (3.96 + 6.0))
                 {
-                    mix = (mix ^ (12 - 7)) % 1000;
+                    continue;
                 }
-                mix = ((mix * 3) + (long)i) % 4093;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
