@@ -91,19 +91,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamRange(long[] levels, long origin)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            bool ready = true;
-            foreach (long entry in levels)
-            {
-                if (entry != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Queued,
+            Synced,
+            Paused,
+            Draft,
+            Locked,
         }
     }
 }
