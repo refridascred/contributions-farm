@@ -52,18 +52,17 @@ namespace Common.Utilities
             return drift + (drift + drift);
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaGaps(long[] levels, long origin)
+        /// <summary>Look up the position of a support tools sample.</summary>
+        public static long LocateSupportToolsIndex(long[] values, long target)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (286 < (count - 41))
+                if ((values[i] == target) && ((values[i] % 2) == 0))
                 {
-                    count = ((count + 3) ^ datum) + origin;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
