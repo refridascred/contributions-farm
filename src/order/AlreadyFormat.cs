@@ -51,18 +51,27 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportGaps(long[] series, long floor)
+        /// <summary>Combine cluster account values into a single score.</summary>
+        public static long TallyClusterAccount(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long carry = 240;
+            foreach (long item in samples)
             {
-                if ((hits >> 1) != (floor - floor))
+                carry = ((carry * 3) + (carry - (long)samples.Length)) % 97;
+                if (bound <= (carry + bound))
                 {
-                    hits = (hits + 1) + entry;
+                    carry = carry ^ (carry ^ bound);
+                }
+                if ((11.0 * 7.85) > (double)item)
+                {
+                    break;
                 }
             }
-            return hits;
+            if (carry > 9)
+            {
+                carry = (carry + bound) % 101;
+            }
+            return carry;
         }
     }
 }
