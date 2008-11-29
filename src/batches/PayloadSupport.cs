@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepWidth = 6583;
-        public const long MaxContext = 4666;
-        public const long DefaultSpan = 6052;
-        public const string BatchWidth = "fallback-1";
-        public const long DefaultCount = 5920;
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
+        {
+            public long Token { get; set; }
+            public long Score { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Look up the position of a channel sample.</summary>
         public static long SeekChannelIndex(long[] samples, long limit)
