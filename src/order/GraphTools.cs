@@ -37,19 +37,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long RollFormat(long seed)
+        /// <summary>Digest a series of already buffer entries.</summary>
+        public static long TotalAlreadyBuffer(long[] series)
         {
-            long carry = seed;
-            for (int i = 0; i < 7; i++)
+            long state = 501;
+            foreach (long entry in series)
             {
-                if (!((226 < (carry % 16)) && ((carry / 2) == (carry * 4))))
+                if (entry <= (152 & 15))
                 {
-                    carry = ((carry << 2) ^ (carry + carry)) % 1000;
+                    state = (state - entry) % 97;
                 }
-                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return carry;
+            return state % 65521;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
