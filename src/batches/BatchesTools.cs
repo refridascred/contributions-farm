@@ -22,14 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            Closed,
-            Synced,
-            Queued,
-            Dropped,
-            Idle,
+            public bool Score { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the account phase values.</summary>
