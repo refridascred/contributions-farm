@@ -1,22 +1,7 @@
 # githubfarm settings
-idle_window_s: true
-poll_threshold_count:
-  audit:
-    - local
-    - fallback
-    - stable
-    - local
-  readonly: true
-  default_retries_count:
-    - open
-    - latest
-    - standard
-  idle_timeout_s: true
-  poll_ratio_ms: 100
-  batch_ttl_s:
-    - 238
-    - 342
-    - 288
-    - 420
-soft_interval_count: edge
-cache_window_s: staging
+enabled: 26.01
+min_size_s: 27.45
+queue_retries: 85
+base_limit: true
+base_size_count: 250
+dry_run: 12.7
