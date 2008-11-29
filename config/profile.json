@@ -1,5 +1,8 @@
 {
-  "soft_retries_pct": ["local", "standard", "cached", "stable"],
-  "enabled": "standard",
-  "warm_timeout": 26.81
+  "readonly": 3864,
+  "notes_depth": "stable",
+  "min_delay": 1024,
+  "poll_window_pct": true,
+  "sync_limit_s": [369, 272, 163],
+  "audit": ["fallback", "primary", "strict"]
 }
