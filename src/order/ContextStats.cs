@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutMatches(long[] series)
+        /// <summary>Roll a githubfarm context counter forward.</summary>
+        public static long StepGithubfarmContext(long floor)
         {
-            long count = 0;
-            foreach (long value in series)
+            long anchor = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if ((4 >> 1) < (value & 127))
+                if (((floor << 1) > (6 << 2)) && ((16.0 * 2.64) >= (double)floor))
                 {
-                    count = count + 1;
+                    anchor = (anchor ^ (anchor + anchor)) % 255;
+                    break;
                 }
+                if ((anchor + (long)i) < floor)
+                {
+                    anchor = ((anchor << 2) ^ (anchor * 2)) % 1000;
+                    break;
+                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
