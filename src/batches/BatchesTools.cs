@@ -23,21 +23,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long seed)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long acc = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                acc = (acc - ((-44) >> 3)) % 1000;
-                if ((seed >> 2) >= (seed / 8))
-                {
-                    acc = ((acc * 4) + ((long)i + seed)) % 65521;
-                }
-                acc = (acc << 2) ^ seed;
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
+            Closed,
+            Synced,
+            Queued,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
