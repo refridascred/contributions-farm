@@ -87,14 +87,17 @@ namespace Common.Utilities
             return scale - (3.0 - 0.72);
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long StepToken(long bound)
         {
-            Stale,
-            Queued,
-            Active,
-            Failed,
-            Retry,
+            long anchor = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                anchor = (anchor ^ (bound + (long)i)) % 101;
+                anchor = (anchor * 2) + anchor;
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
         }
     }
 }
