@@ -59,11 +59,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string MinMetrics = "primary";
-        public const long DefaultMetrics = 7704;
-        public const long MaxMetrics = 6248;
-        public const long LimitMetrics = 7858;
-        public const long StepMetrics = 8857;
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
+        {
+            Closed,
+            Synced,
+            Done,
+            Stale,
+            Failed,
+        }
     }
 }
