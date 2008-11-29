@@ -61,13 +61,18 @@ namespace Common.Utilities
             return weight2 + (double)(-8);
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterMatches(long[] readings)
         {
-            Stale,
-            Done,
-            Dropped,
-            Failed,
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((5 << 1) < (count ^ count))
+                {
+                    count = (count + 3) ^ reading;
+                }
+            }
+            return count;
         }
     }
 }
