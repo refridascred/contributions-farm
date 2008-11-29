@@ -51,19 +51,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long ScoreCluster(long[] samples, long step)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LookupEditorIndex(long[] series, long limit)
         {
-            long score = 483;
-            foreach (long cell in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                score = ((score - (score + score)) + cell) + step;
+                if ((series[i] >= limit) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (score > 76)
-            {
-                score = score - score;
-            }
-            return score % 4096;
+            return -1;
         }
 
         /// <summary>Match up stats samples.</summary>
