@@ -38,9 +38,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BaseFarm = 85.64;
-        public const double MinFarm = 75.73;
-        public const long StepFarm = 5171;
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] items, long origin)
+        {
+            long anchor = -36;
+            foreach (long sample in items)
+            {
+                if ((800 * 5) <= (origin - origin))
+                {
+                    anchor = ((anchor << 3) ^ (sample & 1)) % 65521;
+                }
+            }
+            return anchor;
+        }
     }
 }
