@@ -27,12 +27,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string LimitContributi = "stable";
-        public const long IdleSize = 9500;
-        public const long HardContributi = 5874;
-        public const long DefaultSpan = 4550;
-        public const long CacheSize = 5055;
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LocateFilterIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= bound) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank filter input into a small class.</summary>
         public static long GradeFilter(long origin, long origin2)
