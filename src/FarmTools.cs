@@ -22,10 +22,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftBuffer = 7687;
-        public const string RetrySpan = "staging-v2";
-        public const long HardBuffer = 9353;
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long DeriveContext(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                if (((acc - acc) >= bound) && ((bound + acc) != (acc << 2)))
+                {
+                    acc = (acc << 3) ^ (bound ^ acc);
+                }
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Combine session values into a single score.</summary>
         public static long CombineSession(long[] levels)
