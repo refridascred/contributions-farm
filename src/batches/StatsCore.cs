@@ -25,19 +25,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesRange(long[] readings, long seed)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LocateOrderIndex(long[] data, long seed)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum > seed)
+                if ((data[i] < seed) && ((data[i] % 5) == 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
