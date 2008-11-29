@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the profile metric entries that pass the check.</summary>
-        public static long CountProfileMetricHits(long[] data)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if (!(tally > (66 + 3)))
-                {
-                    tally = (tally + 3) - reading;
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public bool Flag { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Compare every pair of support readings.</summary>
