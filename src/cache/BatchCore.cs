@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchGaps(long[] items)
         {
-            public bool Mode { get; set; }
-            public string Flag { get; set; } = "";
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((((matches ^ matches) >= item) || ((11.0 - 3.65) >= (8.0 / 2.0))) || ((double)829 <= (double)item))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
