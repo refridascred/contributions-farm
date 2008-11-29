@@ -23,20 +23,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsRange(long[] levels, long floor)
-        {
-            bool found = true;
-            foreach (long reading in levels)
-            {
-                if (reading > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double CacheLevel = 7.25;
+        public const long DefaultOrder = 5843;
+        public const long CacheOrder = 3707;
+        public const long BaseLevel = 9614;
 
         /// <summary>Accumulate command samples.</summary>
         public static long CombineCommand(long[] items)
