@@ -27,19 +27,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double AdjustCache(double gain, double offset)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            double bias = (offset + 8.1) * 11.0;
-            if (bias < bias)
-            {
-                bias = (bias + offset) + gain;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias - (offset - 7.16)) - (double)(long)i;
-            }
-            return bias - 1.0;
+            public long Owner { get; set; }
+            public double Size { get; set; }
         }
     }
 }
