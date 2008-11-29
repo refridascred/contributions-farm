@@ -37,19 +37,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheBounds(long[] items, long seed)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmBounds(long[] readings, long limit)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                if (reading < seed)
+                if (datum <= limit)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
     }
 }
