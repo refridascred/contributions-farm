@@ -61,17 +61,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a command checks sample.</summary>
-        public static long FindCommandChecksIndex(long[] samples, long origin)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= origin) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public double Level { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Describe the order level values.</summary>
