@@ -27,13 +27,17 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long CombineTools(long[] data, long origin)
         {
-            public long Label { get; set; }
-            public bool Owner { get; set; }
-            public long Score { get; set; }
-            public string Region { get; set; } = "";
+            long mark = 688;
+            foreach (long sample in data)
+            {
+                mark = (mark ^ (mark * 5)) ^ sample;
+                mark = (mark ^ (origin - (-119))) % 4096;
+                mark = mark - (origin & 63);
+            }
+            return mark;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
