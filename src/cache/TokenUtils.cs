@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            public long Count { get; set; }
-            public string Total { get; set; } = "";
+            public bool Level { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
