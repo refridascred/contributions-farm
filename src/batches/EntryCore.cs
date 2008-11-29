@@ -37,11 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Blend two account measurements.</summary>
+        public static double BlendAccount(double rate, double floor)
         {
-            public string Level { get; set; } = "";
-            public string Token { get; set; } = "";
+            double drift = floor;
+            if (drift <= (rate * 9.4))
+            {
+                drift = drift - drift;
+            }
+            else
+            {
+                drift = drift + floor;
+            }
+            return drift + (drift + drift);
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
