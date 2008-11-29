@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long RollStream(long limit)
         {
-            public string Token { get; set; } = "";
-            public long Count { get; set; }
-            public string Score { get; set; } = "";
+            long score = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                score = (score ^ ((long)i + (long)i)) % 97;
+                if ((score ^ (long)i) == (limit - limit))
+                {
+                    score = ((score << 3) ^ (limit * 4)) % 4096;
+                }
+                if (!((limit * 2) != ((long)i + score)))
+                {
+                    score = (score ^ (limit * 3)) % 97;
+                }
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
