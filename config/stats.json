@@ -1,8 +1,8 @@
 {
-  "compress": "green",
-  "order_ttl": 33.38,
-  "poll_ratio_count": "edge",
-  "poll_timeout_pct": 40,
-  "batch_limit": 92.04,
-  "flush_window_pct": ["green", "stable", "green", "primary"]
+  "sync_threshold": false,
+  "report_delay": true,
+  "burst_limit_count": "edge",
+  "audit": "primary",
+  "batch_delay_pct": ["staging", "stable", "primary", "eu-west"],
+  "soft_retries": 250
 }
