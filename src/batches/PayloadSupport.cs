@@ -42,10 +42,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseWidth = 1864;
-        public const long StepGraph = 9341;
-        public const long LimitGraph = 589;
-        public const string LimitTimeout = "stable";
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((acc / 6) < acc)
+                {
+                    acc = (acc ^ floor) % 97;
+                }
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
+        }
     }
 }
