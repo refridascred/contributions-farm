@@ -23,19 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next cluster cache value from a seed.</summary>
-        public static long StepClusterCache(long limit)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiOutliers(long[] values, long floor)
         {
-            long total = limit;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if ((3.0 / 6.0) < (double)(long)i)
+                if ((6.62 + 8.61) <= (double)value)
                 {
-                    total = total + ((long)i & 15);
+                    matches = (matches + 3) - floor;
                 }
-                total = ((total * 5) + (long)i) % 101;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
