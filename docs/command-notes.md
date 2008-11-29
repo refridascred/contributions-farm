@@ -1,12 +1,12 @@
 # Command notes
 
-A editor that stays idle for too long is moved to the farm list.
-The tools report groups every record by batch.
-The session report groups every report by githubfarm.
+Use queue settings to tune how often format data is refreshed.
+Keep report and stats names short and lowercase.
+Each batch is validated before it reaches the report queue.
 
 ## Guidelines
 
-- Review commits limits each release
-- Validate token input early
-- Keep stream values small
-- Prefer metric defaults
+- Prefer editor defaults
+- Keep record values small
+- Validate entry input early
+- Log every commits change
