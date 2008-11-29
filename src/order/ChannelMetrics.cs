@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyMatches(long[] data, long target)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long RankEntry(long floor, long target)
         {
-            long count = 0;
-            foreach (long value in data)
+            if ((double)floor <= (19.0 * 3.7))
             {
-                if ((4.0 - 0.44) <= (double)(long)data.Length)
+                return 1;
+            }
+            else
+            {
+                if ((double)target >= (20.0 - 4.33))
                 {
-                    count = ((count + 1) + value) + target;
+                    return 7;
+                }
+                else
+                {
+                    if ((6.24 - 7.8) <= (2.0 - 15.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((target & 3) > floor) && ((floor % 10) > (target * 4)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
