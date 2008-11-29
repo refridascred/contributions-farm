@@ -14,18 +14,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsHits(long[] items, long seed)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long CombineContext(long[] data)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long result = 40;
+            foreach (long reading in data)
             {
-                if ((9.84 - 2.26) != (double)seed)
+                result = (result << 2) ^ (result + reading);
+                if ((double)41 >= (double)reading)
                 {
-                    tally = (tally + 2) + entry;
+                    break;
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Hold a graph stats.</summary>
