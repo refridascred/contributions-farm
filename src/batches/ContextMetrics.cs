@@ -28,15 +28,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a order batch counter forward.</summary>
-        public static long StepOrderBatch(long seed)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaHits(long[] samples, long origin)
         {
-            long sum = seed;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                sum = ((sum * 5) + (long)i) % 4093;
+                if ((seen - seen) > (cell + seen))
+                {
+                    seen = (seen + 2) - origin;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Check that every queue session entry stays within the limit.</summary>
