@@ -13,39 +13,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long RankCommits(long bound, long bound2)
+        /// <summary>Scale a profile payload figure with a bias.</summary>
+        public static double AdjustProfilePayload(double rate, double floor)
         {
-            long edge = bound - bound2;
-            if ((900 >> 5) >= (bound + bound))
+            double load = (double)(112 >> 1);
+            if (load >= floor)
             {
-                return 0;
+                load = load - (rate * 8.6);
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if ((9.41 * 4.88) >= (double)bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((edge - edge) != (edge & 63))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((2.3 + 3.7) >= (double)bound2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                load = (load - (0.3 + 17.0)) - (double)(long)i;
             }
+            return load - rate;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
