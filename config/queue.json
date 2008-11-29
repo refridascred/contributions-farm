@@ -1,13 +1,6 @@
 {
-  "sync_depth_ms": "eu-west",
-  "default_interval": 39.53,
-  "strict": [58, 100, 388, 123],
-  "flush_capacity_s": {
-    "burst_capacity": true,
-    "dry_run": true,
-    "base_depth_count": false,
-    "command_ratio": ["stable", "stable"],
-    "metrics_timeout": 9,
-    "readonly": ["stable", "cached"]
-  }
+  "min_size_s": 25.41,
+  "soft_interval_ms": ["open", "staging"],
+  "queue_size": 30,
+  "batch_depth": "latest"
 }
