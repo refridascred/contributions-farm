@@ -14,11 +14,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowCount = 4404;
-        public const long LimitLevel = 6770;
-        public const long LimitBuffer = 2905;
-        public const string HardBuffer = "primary";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstRatio = 5468;
+        public const double IdleMetric = 97.06;
+        public const long RetryMetric = 9928;
+        public const double IdleWidth = 26.72;
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long LookupFarmIndex(long[] data, long floor)
