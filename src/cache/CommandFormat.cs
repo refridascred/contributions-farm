@@ -19,15 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long DigestContributi(long[] values, long origin)
+        /// <summary>Match up editor stream samples.</summary>
+        public static long CompareEditorStreamCount(long[] items)
         {
-            long score = 6;
-            foreach (long reading in values)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = (((score << 2) ^ reading) % 101) + origin;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Describe the cache phase values.</summary>
