@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BatchInterval = "local-v2";
-        public const long LimitRatio = 3570;
-        public const string HardRatio = "stable-v2";
-        public const string BurstMetrics = "primary";
-        public const long DefaultScore = 8760;
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long StepFilter(long seed)
+        {
+            long anchor = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                if (!((698 + (long)i) < (seed + seed)))
+                {
+                    anchor = (anchor + anchor) % 97;
+                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the farm mode values.</summary>
         public enum FarmMode
