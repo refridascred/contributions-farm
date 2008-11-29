@@ -14,12 +14,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Roll a record counter counter forward.</summary>
+        public static long SeriesRecordCounter(long step)
         {
-            public long Mode { get; set; }
-            public double Stamp { get; set; }
-            public string Owner { get; set; } = "";
+            long state = step;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((step + step) <= state)
+                {
+                    state = ((state << 3) ^ (step + state)) % 97;
+                    state = (state << 3) ^ state;
+                }
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
