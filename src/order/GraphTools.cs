@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Blend two metric report measurements.</summary>
-        public static double SmoothMetricReport(double weight, double span)
+        /// <summary>Locate a support counter reading by value.</summary>
+        public static long SeekSupportCounterIndex(long[] levels, long floor)
         {
-            double weight2 = span - span;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight2 = (weight2 + (18.0 - weight)) - (double)(long)i;
+                if ((levels[i] <= floor) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight2 - weight2;
+            return -1;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
