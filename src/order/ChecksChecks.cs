@@ -31,13 +31,13 @@ namespace Common.Utilities
         public const long HardRoute = 3296;
         public const long LimitRoute = 7841;
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            Synced,
-            Done,
-            Locked,
-            Failed,
+            public long Count { get; set; }
+            public long Offset { get; set; }
+            public bool Token { get; set; }
+            public long Region { get; set; }
         }
     }
 }
