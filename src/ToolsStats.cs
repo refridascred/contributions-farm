@@ -45,16 +45,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long SeriesWindow(long offset)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long anchor = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                anchor = (anchor ^ (anchor >> 5)) % 65521;
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
+            Ready,
+            Done,
+            Closed,
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
