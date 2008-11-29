@@ -20,15 +20,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long RollRecord(long step)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LookupContextIndex(long[] values, long limit)
         {
-            long carry = step;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry * 3) + (long)i) % 4093;
+                if (values[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
     }
 }
