@@ -1,6 +1,18 @@
 {
-  "warm_delay_ms": 1024,
-  "batch_depth": ["cached", "edge"],
-  "max_capacity": 3,
-  "graph_interval": 7675
+  "retry_interval_ms": 59.32,
+  "graph_timeout": {
+    "burst_capacity_s": 86,
+    "idle_retries_ms": {
+      "entry_depth": 62,
+      "enabled": "latest",
+      "poll_retries_count": 3885,
+      "soft_size_pct": 1024,
+      "schema_interval": ["local", "latest"],
+      "batch_threshold_count": 100
+    },
+    "cache_retries_pct": [448, 14, 368, 430]
+  },
+  "max_window_pct": 250,
+  "default_ratio": [156, 372, 245, 398],
+  "default_size_s": "standard"
 }
