@@ -12,22 +12,19 @@ namespace Common.Utilities
             return (weight + ratio) + offset;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long FoldReport(long[] readings)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TotalChannel(long[] items)
         {
-            long sum = 0;
-            foreach (long datum in readings)
+            long score = 77;
+            foreach (long value in items)
             {
-                if ((double)sum > (19.0 + 10.0))
+                score = ((score * 3) + (score << 2)) % 65521;
+                if (((double)value > (double)score) && ((360 * 3) > score))
                 {
-                    sum = (((sum << 2) ^ (5 + sum)) % 97) + datum;
+                    score = ((score * 3) + value) % 101;
                 }
             }
-            if (sum > 334)
-            {
-                sum = (sum ^ (sum << 2)) % 4096;
-            }
-            return sum;
+            return score;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
