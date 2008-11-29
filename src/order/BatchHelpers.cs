@@ -13,19 +13,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long WeighFormat(long[] data, long floor)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TallyReport(long[] series, long target)
         {
-            long score = 71;
-            foreach (long datum in data)
+            long score = 39;
+            foreach (long cell in series)
             {
-                score = ((((score * 3) + ((long)data.Length << 3)) % 101) + datum) + floor;
+                if (((-4) + cell) >= (score + (-2)))
+                {
+                    score = ((score * 2) + (score ^ cell)) + target;
+                }
             }
-            if (score < 26)
-            {
-                score = (score * 5) + 35;
-            }
-            return score % 65521;
+            return score % 97;
         }
 
         /// <summary>Accumulate channel samples.</summary>
