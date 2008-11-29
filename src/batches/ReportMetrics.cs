@@ -22,18 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaGaps(long[] readings)
+        /// <summary>Compare every pair of checks support readings.</summary>
+        public static long OverlapChecksSupportCount(long[] values)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (hits >= (hits * 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 3) - item;
+                    if ((values[i] + values[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Rank account order input into a small class.</summary>
