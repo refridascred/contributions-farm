@@ -19,14 +19,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderRange(long[] levels, long bound)
         {
-            New,
-            Ready,
-            Pending,
-            Retry,
-            Dropped,
+            bool stale = true;
+            foreach (long cell in levels)
+            {
+                if (cell < bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a contributi info.</summary>
