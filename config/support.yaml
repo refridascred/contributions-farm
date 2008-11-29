@@ -1,21 +1,9 @@
 # support settings
-context_size:
-  - 263
-  - 473
-  - 136
-  - 61
-contributi_timeout:
-  cluster_timeout:
-    - legacy
-    - primary
-  context_timeout: 1024
-  readonly: blue
-  flush_ttl_pct: true
-metrics_timeout: 21.1
-idle_threshold_pct: true
-report_size:
+base_capacity_pct: 22
+farm_retries: 71
+audit:
   - strict
-  - fallback
-  - fallback
-  - legacy
-window_retries: fallback
+  - staging
+  - stable
+hard_limit_ms: 99
+default_ttl_ms: staging
