@@ -1,8 +1,10 @@
 {
-  "batch_capacity": 500,
-  "sync_retries_s": [85, 296, 196],
-  "verbose": true,
-  "order_depth": [218, 227],
-  "default_ttl_s": "blue",
-  "commits_ratio": [417, 95, 15, 153]
+  "support_window": {
+    "sync_ratio_pct": "cached",
+    "audit": "fallback",
+    "burst_timeout": 30
+  },
+  "metrics_ttl": "primary",
+  "poll_depth_count": 5298,
+  "default_window_pct": "standard"
 }
