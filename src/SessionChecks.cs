@@ -44,9 +44,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string CacheScore = "cached";
-        public const long CacheInterval = 6365;
-        public const long WindowInterval = 4737;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowLayout = 6628;
+        public const long MinLayout = 9929;
+        public const long RetryLayout = 8403;
     }
 }
