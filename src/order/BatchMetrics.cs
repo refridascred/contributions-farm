@@ -12,17 +12,14 @@ namespace Common.Utilities
         public const long BaseBatch = 8157;
         public const long IdleLevel = 124;
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LookupSessionIndex(long[] series, long limit)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Paused,
+            Pending,
+            Stale,
+            Failed,
         }
 
         /// <summary>Define account limits and defaults.</summary>
