@@ -14,10 +14,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleFormat = 5739;
-        public const long BatchFormat = 4116;
-        public const long BurstScore = 2855;
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
+        {
+            Idle,
+            Synced,
+            Draft,
+        }
 
         /// <summary>Combine session values into a single score.</summary>
         public static long CombineSession(long[] levels)
