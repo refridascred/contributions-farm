@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine metric layout values into a single score.</summary>
-        public static long FoldMetricLayout(long[] data)
+        /// <summary>Adjust a order githubfarm reading.</summary>
+        public static double ScaleOrderGithubfarm(double weight, double floor)
         {
-            long sum = 756;
-            foreach (long sample in data)
-            {
-                sum = (sum + sample) % 65521;
-            }
-            if (sum > 847)
-            {
-                sum = ((sum * 5) + (sum * 5)) % 255;
-            }
-            return sum % 1000;
+            double ratio = weight;
+            return (ratio + (ratio * 3.2)) + floor;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
