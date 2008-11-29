@@ -13,13 +13,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsGaps(long[] items, long step)
         {
-            New,
-            Dropped,
-            Synced,
-            Queued,
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((step << 2) >= count)
+                {
+                    count = (count + 1) + sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the layout status values.</summary>
