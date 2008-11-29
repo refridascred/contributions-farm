@@ -52,19 +52,38 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsBounds(long[] levels, long bound)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long GradeNotes(long offset, long offset2)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            if ((double)offset2 <= (1.5 * 10.0))
             {
-                if (sample > bound)
+                return 1;
+            }
+            else
+            {
+                if (offset2 > (offset - offset2))
                 {
-                    ready = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((8.59 < (double)offset2) || (56 <= offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((double)offset <= (0.5 / 9.0)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Locate a schema window reading by value.</summary>
