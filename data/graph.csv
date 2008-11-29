@@ -1,7 +1,10 @@
-id,region,label,count
-1,296,84.98,9.85
-2,395,907,231
-3,363,191,76.97
-4,29.64,553,75.02
-5,744,643,146
-6,683,44.76,open
+id,count,owner
+1,90.65,local
+2,standard,72.77
+3,strict,eu-west
+4,44.41,staging
+5,primary,302
+6,fallback,blue
+7,674,908
+8,96.62,414
+9,174,staging
