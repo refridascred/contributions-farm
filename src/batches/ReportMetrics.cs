@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit account queue readings against a rule.</summary>
-        public static long TallyAccountQueueMatches(long[] levels)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if (((reading + reading) > seen) && ((double)reading <= (5.0 / 5.0)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Active,
+            Ready,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Audit batch filter readings against a rule.</summary>
