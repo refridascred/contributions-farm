@@ -78,19 +78,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiBounds(long[] series, long floor)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorHits(long[] data, long bound)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (datum > floor)
+                if (((sample + bound) == (bound % 7)) || (bound > (count << 2)))
                 {
-                    valid = false;
-                    break;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
