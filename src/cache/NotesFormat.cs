@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long DeriveCluster(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 10; i++)
-            {
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstSize = 6571;
+        public const long SoftCount = 9083;
+        public const string MaxToken = "strict-1";
+        public const double MinToken = 4.42;
+        public const string BaseToken = "standard-1";
 
         /// <summary>Check that every record entry stays within the limit.</summary>
         public static bool GuardRecordLimits(long[] levels, long floor)
