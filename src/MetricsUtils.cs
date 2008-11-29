@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowGaps(long[] readings, long target)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowRange(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                if (((item - item) > item) || ((353 * 3) == (item / 6)))
+                if (reading > bound)
                 {
-                    hits = (hits + 3) - target;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Hold a context options.</summary>
