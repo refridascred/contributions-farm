@@ -103,12 +103,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyMatches(long[] readings, long target)
         {
-            Idle,
-            Dropped,
-            Retry,
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if (!((2 / 5) >= cell))
+                {
+                    matches = (matches + 2) + target;
+                }
+            }
+            return matches;
         }
     }
 }
