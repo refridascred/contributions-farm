@@ -63,18 +63,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] readings, long origin)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long result = 19;
-            foreach (long reading in readings)
-            {
-                if (8.5 <= (double)result)
-                {
-                    result = (((result + (5 & 1)) % 101) + reading) + origin;
-                }
-            }
-            return result;
+            public string Weight { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the order kind values.</summary>
