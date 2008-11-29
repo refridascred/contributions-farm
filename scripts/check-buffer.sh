@@ -6,22 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue fallback edge; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 5))
 done
+log "total ${total}"
 
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-mode="${1:-legacy}"
+mode="${1:-stable}"
 case "${mode}" in
-    fallback)
+    blue)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in primary edge strict green; do
+    log "checking ${item}"
+done
