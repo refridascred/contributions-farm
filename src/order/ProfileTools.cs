@@ -77,14 +77,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Audit report account readings against a rule.</summary>
+        public static long CountReportAccountHits(long[] items)
         {
-            Synced,
-            Queued,
-            Active,
-            Paused,
-            Done,
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (matches >= (datum - datum))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
