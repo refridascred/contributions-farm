@@ -25,22 +25,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 10; i++)
-            {
-                sum = (sum << 2) ^ (target << 2);
-                if ((sum + target) >= (target >> 4))
-                {
-                    continue;
-                }
-                sum = (sum + (target << 1)) % 101;
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string CacheSize = "stable-1";
+        public const double CacheLevel = 66.83;
+        public const long HardRoute = 3296;
+        public const long LimitRoute = 7841;
 
         /// <summary>Describe the support class values.</summary>
         public enum SupportClass
