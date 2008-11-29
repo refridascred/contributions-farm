@@ -20,17 +20,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] items, long bound)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (items[i] > bound)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    return (long)i;
+                    sum = ((sum * 2) + ((long)i - sum)) ^ (long)i2;
+                    sum = ((sum * 3) + (sum + offset)) % 4096;
                 }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
