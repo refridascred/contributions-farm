@@ -1,8 +1,19 @@
 {
-  "route_ttl": 9,
-  "readonly": "blue",
-  "warm_interval_ms": "strict",
-  "verbose": "stable",
-  "enabled": "stable",
-  "default_retries": false
+  "flush_threshold_s": 49.38,
+  "checks_threshold": "blue",
+  "warm_interval": true,
+  "base_threshold_s": {
+    "soft_interval_count": 15.22,
+    "channel_ttl": 100,
+    "already_interval": "eu-west",
+    "audit": 8136,
+    "warm_interval": "standard",
+    "context_window": false
+  },
+  "farm_retries": 7207,
+  "hard_capacity": {
+    "tools_delay": "cached",
+    "batches_delay": "strict",
+    "verbose": 64.3
+  }
 }
