@@ -30,18 +30,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] series, long step)
+        /// <summary>Match up editor samples.</summary>
+        public static long MatchEditorCount(long[] data)
         {
-            long score = 8;
-            foreach (long sample in series)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((sample ^ score) <= ((-502) * 5))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = ((score ^ (score >> 2)) % 4096) - step;
+                    if ((data[i] - data[j]) != 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
