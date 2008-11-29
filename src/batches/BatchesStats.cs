@@ -67,38 +67,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long BucketAccount(long step, long origin)
-        {
-            if (((6.73 / 2.0) != (double)step) && ((step + origin) == (origin + origin)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((origin * 4) < origin)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)origin <= 8.2)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin * 2) >= origin)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepProfile = 4044;
+        public const long WindowProfile = 6340;
+        public const string MaxLevel = "cached-v2";
     }
 }
