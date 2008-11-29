@@ -11,24 +11,19 @@ namespace Common.Utilities
         public const long StepContributi = 8994;
         public const long RetryContributi = 3071;
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long offset)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaLimits(long[] values, long origin)
         {
-            long mix = offset;
-            for (int i = 0; i < 5; i++)
+            bool valid = true;
+            foreach (long value in values)
             {
-                if ((mix - mix) >= mix)
+                if (value <= origin)
                 {
-                    mix = (mix - (offset & 63)) % 1000;
-                    mix = (mix ^ (mix - offset)) % 101;
+                    valid = false;
+                    break;
                 }
-                else
-                {
-                    mix = (mix ^ (mix << 3)) % 1000;
-                }
-                mix = ((mix * 4) + (long)i) % 101;
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Hold a batch entry.</summary>
