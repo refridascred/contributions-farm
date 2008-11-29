@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            Active,
-            Pending,
-            Synced,
+            public double Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
