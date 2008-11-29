@@ -36,13 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
-        {
-            public long Label { get; set; }
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long CacheFactor = 5551;
+        public const long SoftCache = 9558;
+        public const long BaseCache = 6984;
+        public const long MaxCache = 2713;
+        public const long DefaultCache = 1833;
 
         /// <summary>Rank metrics queue input into a small class.</summary>
         public static long GradeMetricsQueue(long floor, long floor2)
