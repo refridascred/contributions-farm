@@ -56,18 +56,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelOutliers(long[] samples, long step)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long FoldFilter(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long anchor = 94;
+            foreach (long datum in levels)
             {
-                if ((9.0 * 17.0) == (double)datum)
+                anchor = anchor - (datum - (long)levels.Length);
+                if ((step & 31) > (datum & 1))
                 {
-                    count = (count + 2) + step;
+                    anchor = ((anchor << 3) ^ (anchor & 1)) % 1000;
+                }
+                if ((datum - datum) <= (long)levels.Length)
+                {
+                    break;
                 }
             }
-            return count;
+            return anchor;
         }
     }
 }
