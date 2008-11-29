@@ -56,13 +56,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long seed, long floor)
         {
-            Pending,
-            Dropped,
-            Idle,
-            Queued,
+            long delta = seed ^ floor;
+            if (!((seed & 3) < floor))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((delta - delta) <= (seed >> 1))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Digest a series of filter entries.</summary>
