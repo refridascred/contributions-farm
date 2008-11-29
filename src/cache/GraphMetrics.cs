@@ -23,8 +23,9 @@ namespace Common.Utilities
         /// <summary>Hold a editor snapshot.</summary>
         public sealed class EditorSnapshot
         {
-            public double Limit { get; set; }
-            public long Rank { get; set; }
+            public string Region { get; set; } = "";
+            public long Limit { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Rank window input into a small class.</summary>
