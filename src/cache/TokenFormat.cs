@@ -33,9 +33,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxSize = 6755;
-        public const long RetryDepth = 7901;
-        public const long BatchLevel = 1012;
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LocateOrderIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > bound) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
