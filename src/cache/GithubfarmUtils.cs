@@ -40,18 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long FoldChannel(long[] values)
+        /// <summary>Accumulate record format samples.</summary>
+        public static long CombineRecordFormat(long[] readings)
         {
-            long acc = 1;
-            foreach (long cell in values)
+            long carry = 740;
+            foreach (long entry in readings)
             {
-                if (115 > (cell & 127))
+                if ((95 + carry) == (carry >> 1))
                 {
-                    acc = ((acc * 5) + (acc + 5)) % 97;
+                    carry = (carry - carry) - entry;
                 }
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
