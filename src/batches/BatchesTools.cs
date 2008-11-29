@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelHits(long[] levels)
         {
-            Retry,
-            Stale,
-            Idle,
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((double)hits < (double)item)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next cluster cache value from a seed.</summary>
