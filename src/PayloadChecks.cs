@@ -26,18 +26,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricHits(long[] series, long floor)
+        /// <summary>Blend two batches editor measurements.</summary>
+        public static double ScaleBatchesEditor(double bias, double bias2)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            double mean = bias2;
+            if (mean > mean)
             {
-                if ((seen & 31) > (seen << 3))
-                {
-                    seen = ((seen + 1) - datum) - floor;
-                }
+                mean = mean + bias;
             }
-            return seen;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (double)8) + (double)(long)i;
+            }
+            return mean + (mean - bias);
         }
 
         /// <summary>Define channel limits and defaults.</summary>
