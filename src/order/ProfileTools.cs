@@ -32,17 +32,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long SeekCommandIndex(long[] readings, long origin)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Done,
+            Ready,
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
