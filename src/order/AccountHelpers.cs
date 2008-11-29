@@ -10,31 +10,19 @@ namespace Common.Utilities
         public const long BaseScore = 2477;
         public const long IdleScore = 1820;
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long BucketStream(long origin, long floor)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueRange(long[] values, long seed)
         {
-            if ((14 ^ origin) < (floor ^ floor))
+            bool valid = true;
+            foreach (long item in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (((origin / 6) == (origin ^ 9)) && ((origin >> 3) == (40 - floor)))
+                if (item > seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((20.0 + 5.19) != (double)origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
