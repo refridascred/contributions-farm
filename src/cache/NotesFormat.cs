@@ -22,10 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseRecord = 7051;
-        public const long HardRecord = 8176;
-        public const long WindowRecord = 4250;
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
+        {
+            public long Label { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Compare every pair of graph readings.</summary>
         public static long PairGraphCount(long[] levels)
