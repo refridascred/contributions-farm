@@ -1,10 +1,7 @@
-id,rank,ratio,count
-1,385,48.35,53.57
-2,66.61,41.32,standard
-3,935,47.53,817
-4,legacy,472,36.42
-5,720,3.05,standard
-6,88.57,441,51.72
-7,155,583,cached
-8,93.67,latest,204
-9,341,cached,10.59
+id,active,rank,state,label
+1,90.14,39.17,840,primary
+2,primary,842,620,832
+3,547,primary,292,strict
+4,51.72,735,349,39.89
+5,42.91,stable,stable,305
+6,21.97,open,78.69,438
