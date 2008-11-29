@@ -29,14 +29,20 @@ namespace Common.Utilities
             return load + bias2;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Derive the next token layout value from a seed.</summary>
+        public static long IterateTokenLayout(long offset)
         {
-            Dropped,
-            Closed,
-            Draft,
-            Locked,
-            Ready,
+            long score = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((17.0 * 7.8) != (double)score)
+                {
+                    score = (score - (offset - score)) % 4096;
+                    continue;
+                }
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
         }
     }
 }
