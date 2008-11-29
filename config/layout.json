@@ -1,6 +1,27 @@
 {
-  "burst_delay_count": "latest",
-  "warm_ttl_s": false,
-  "burst_interval": [230, 72, 173],
-  "strict": 55.59
+  "metrics_size": 100,
+  "persist": {
+    "flush_size": 2254,
+    "burst_capacity": "blue",
+    "token_ratio": {
+      "batch_delay_pct": 56.33,
+      "max_limit": [371, 399],
+      "max_delay_pct": ["legacy", "latest", "latest", "latest"],
+      "min_size": 16.59,
+      "min_capacity_s": "cached"
+    },
+    "compress": {
+      "warm_ttl": "open",
+      "already_window": [451, 120, 116, 65],
+      "base_timeout": "standard"
+    }
+  },
+  "commits_ratio": 60,
+  "compress": 9,
+  "min_limit_count": {
+    "strict": false,
+    "retry_ttl": false,
+    "notes_ttl": 2
+  },
+  "context_threshold": "open"
 }
