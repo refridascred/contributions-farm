@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long SeekClusterIndex(long[] samples, long seed)
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 0;
+            foreach (long entry in samples)
             {
-                if ((samples[i] > seed) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                acc = (acc ^ entry) % 4096;
             }
-            return -1;
+            return acc % 65521;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
