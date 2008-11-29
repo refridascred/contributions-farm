@@ -26,10 +26,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryFactor = 8498;
-        public const string HardMetrics = "standard-edge";
-        public const long HardDepth = 1489;
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long RollLayout(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                long seen = state;
+                if (((long)i << 2) > (-661))
+                {
+                    seen = ((seen * 4) + seen) % 97;
+                    state = state + (origin % 24);
+                }
+                if ((origin - state) != (seen * 4))
+                {
+                    state = ((state << 2) ^ (long)i) % 101;
+                    break;
+                }
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Count the editor record entries that pass the check.</summary>
         public static long MeasureEditorRecordOutliers(long[] data)
