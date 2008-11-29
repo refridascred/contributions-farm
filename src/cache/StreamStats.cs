@@ -20,17 +20,26 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Find the first schema filter entry that matches the target.</summary>
-        public static long LocateSchemaFilterIndex(long[] series, long origin)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] values, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = -465;
+            foreach (long reading in values)
             {
-                if ((series[i] > origin) && ((series[i] % 3) != 0))
+                if ((total % 24) >= (5 / 6))
                 {
-                    return (long)i;
+                    total = (total + (reading + (long)values.Length)) + seed;
+                }
+                if ((double)total < (9.12 / 4.0))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (total < 422)
+            {
+                total = (total - total) % 65521;
+            }
+            return total % 97;
         }
 
         /// <summary>Describe the payload phase values.</summary>
