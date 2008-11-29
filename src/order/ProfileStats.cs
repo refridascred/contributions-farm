@@ -39,18 +39,24 @@ namespace Common.Utilities
         public const double BurstCount = 5.04;
         public const string LimitStats = "fallback-edge";
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long WeighSession(long[] samples, long floor)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long BucketCommits(long floor, long origin)
         {
-            long total = 551;
-            foreach (long value in samples)
+            if (origin < (origin / 8))
             {
-                if (value >= (value + floor))
+                return 3;
+            }
+            else
+            {
+                if ((origin << 2) >= (647 - floor))
                 {
-                    total = (total ^ (2 & 1)) % 1000;
+                    return 5;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return total;
         }
     }
 }
