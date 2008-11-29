@@ -44,15 +44,11 @@ namespace Common.Utilities
             return weight - scale;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long target)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long sum = target;
-            for (int i = 0; i < 16; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            public bool Total { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Blend two metrics measurements.</summary>
