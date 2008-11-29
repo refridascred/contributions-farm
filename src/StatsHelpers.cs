@@ -98,18 +98,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryMatches(long[] data)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if (((double)seen > (5.0 / 7.0)) || ((5.8 / 3.0) <= (double)datum))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Stale,
+            Ready,
+            Synced,
+            Done,
         }
     }
 }
