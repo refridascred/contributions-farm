@@ -46,13 +46,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
-        {
-            Pending,
-            Retry,
-            Closed,
-            Ready,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BatchWindow = "alpha";
+        public const string IdleBudget = "local-1";
+        public const long StepLevel = 6392;
     }
 }
