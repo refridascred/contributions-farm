@@ -45,15 +45,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterGaps(long[] values, long floor)
+        /// <summary>Compare every pair of farm format readings.</summary>
+        public static long OverlapFarmFormatCount(long[] data)
         {
             long matches = 0;
-            foreach (long value in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)value != (2.85 - 1.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = (matches + 1) + floor;
+                    if ((data[i] ^ data[j]) > 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
