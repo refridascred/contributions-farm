@@ -16,21 +16,17 @@ namespace Common.Utilities
             return drift + (scale + 1.8);
         }
 
-        /// <summary>Compare every pair of commits session readings.</summary>
-        public static long MatchCommitsSessionCount(long[] readings)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LookupAlreadyIndex(long[] readings, long bound)
         {
-            long hits = 0;
             for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((readings[i] < bound) && ((readings[i] % 3) == 0))
                 {
-                    if ((readings[i] + readings[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
