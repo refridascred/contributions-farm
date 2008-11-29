@@ -29,11 +29,27 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryContext = 9965;
-        public const long WindowContext = 3258;
-        public const long CacheContext = 7360;
-        public const long IdleSpan = 5779;
-        public const string CacheWidth = "stable";
+        /// <summary>Roll a order counter forward.</summary>
+        public static long RollOrder(long limit)
+        {
+            long total = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    total = (((total * 3) + (total * 2)) % 97) ^ (long)i2;
+                }
+                if ((double)total > (5.28 * 1.18))
+                {
+                    break;
+                }
+                else
+                {
+                    total = ((total * 2) + (total << 3)) % 65521;
+                }
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
+        }
     }
 }
