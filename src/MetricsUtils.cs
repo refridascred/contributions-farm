@@ -20,24 +20,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a queue batches pair into a bucket.</summary>
-        public static long GradeQueueBatches(long step, long floor)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TallyPayload(long[] readings)
         {
-            if ((double)step >= (7.14 / 7.0))
+            long sum = 8;
+            foreach (long entry in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((15.0 + 1.7) == (double)floor)
+                if (((5.69 * 2.81) >= (double)entry) && (68 >= (sum - sum)))
                 {
-                    return 2;
+                    sum = (sum + (sum % 3)) % 1000;
                 }
-                else
-                {
-                    return 7;
-                }
+                sum = sum - (sum + 929);
             }
+            return sum;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
