@@ -67,22 +67,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of counter tools readings.</summary>
-        public static long DigestCounterTools(long[] samples)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] levels, long seed)
         {
-            long total = 20;
-            foreach (long sample in samples)
+            long state = 9;
+            foreach (long sample in levels)
             {
-                if ((sample / 9) <= (-2))
-                {
-                    total = total ^ (total - total);
-                }
-                if (!(((long)samples.Length - sample) == (sample * 3)))
-                {
-                    total = (total ^ (total - total)) % 65521;
-                }
+                state = ((state + state) % 65521) ^ sample;
             }
-            return total;
+            if (state < 93)
+            {
+                state = state ^ seed;
+            }
+            return state;
         }
     }
 }
