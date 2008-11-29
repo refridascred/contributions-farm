@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Project the next report command value.</summary>
-        public static double BlendReportCommand(double weight, double floor)
+        /// <summary>Locate a editor entry reading by value.</summary>
+        public static long LookupEditorEntryIndex(long[] items, long offset)
         {
-            double gain = (floor - floor) * 1.0;
-            if (gain >= weight)
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = gain - (double)983;
+                if ((items[i] >= offset) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return gain - 1.0;
+            return -1;
         }
 
         /// <summary>Match up profile layout samples.</summary>
