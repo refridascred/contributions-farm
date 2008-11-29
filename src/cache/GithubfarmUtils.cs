@@ -29,11 +29,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteLimits(long[] data, long offset)
         {
-            public double Stamp { get; set; }
-            public double Size { get; set; }
+            bool found = true;
+            foreach (long entry in data)
+            {
+                if (entry <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
