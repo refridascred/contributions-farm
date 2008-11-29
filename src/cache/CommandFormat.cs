@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesHits(long[] values)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchMatches(long[] readings)
         {
             long matches = 0;
-            foreach (long reading in values)
+            foreach (long sample in readings)
             {
-                if (reading >= matches)
+                if ((sample % 3) <= (sample + sample))
                 {
-                    matches = matches + 3;
+                    matches = matches + 1;
                 }
             }
             return matches;
