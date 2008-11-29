@@ -37,17 +37,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LocateStreamIndex(long[] readings, long floor)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if (readings[i] == floor)
+                anchor = (anchor + seed) % 4096;
+                if ((seed % 64) != (anchor >> 1))
                 {
-                    return (long)i;
+                    anchor = ((anchor << 3) ^ seed) % 65521;
                 }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
