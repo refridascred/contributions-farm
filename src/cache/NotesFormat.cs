@@ -19,19 +19,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every stats counter entry stays within the limit.</summary>
-        public static bool CheckStatsCounterBounds(long[] data, long seed)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            bool ready = true;
-            foreach (long reading in data)
-            {
-                if (reading <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Locked,
+            Done,
+            Dropped,
+            Stale,
+            Ready,
         }
 
         /// <summary>Grade a command batch value against two limits.</summary>
