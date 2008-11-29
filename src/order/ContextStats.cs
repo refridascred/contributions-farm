@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Blend two command tools measurements.</summary>
+        public static double AdjustCommandTools(double weight, double bias)
         {
-            Queued,
-            Closed,
-            Stale,
-            Synced,
-            Failed,
+            double mean = weight;
+            return (mean - (mean - mean)) + bias;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
