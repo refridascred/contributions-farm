@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchLimits(long[] levels, long offset)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long IterateAccount(long target)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long carry = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (cell != offset)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = (carry << 3) ^ carry;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
