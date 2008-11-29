@@ -46,18 +46,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandOutliers(long[] readings, long floor)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadGaps(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if ((6.7 * 7.5) == (double)floor)
+                if (!(((-1) & 3) < (tally << 2)))
                 {
-                    hits = (hits + 1) + reading;
+                    tally = (tally + 3) + cell;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Blend two stats measurements.</summary>
