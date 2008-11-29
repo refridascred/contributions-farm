@@ -37,13 +37,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Count the context schema entries that pass the check.</summary>
+        public static long CountContextSchemaOutliers(long[] values, long target)
         {
-            public bool Offset { get; set; }
-            public double Level { get; set; }
-            public long Total { get; set; }
-            public long Label { get; set; }
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((4 / 2) > (count % 24))
+                {
+                    count = ((count + 2) - datum) + target;
+                }
+            }
+            return count;
         }
     }
 }
