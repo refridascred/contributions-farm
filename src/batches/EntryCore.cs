@@ -36,16 +36,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long WeighCommand(long[] samples, long step)
+        /// <summary>Compare every pair of metrics commits readings.</summary>
+        public static long MatchMetricsCommitsCount(long[] samples)
         {
-            long result = 214;
-            foreach (long value in samples)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = ((result << 3) ^ (7 + value)) - step;
-                result = (result + (62 * 3)) % 65521;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return result % 4096;
+            return count;
         }
 
         /// <summary>Look up the position of a support tools sample.</summary>
