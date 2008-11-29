@@ -52,11 +52,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleContributi = 5383;
-        public const double MaxSpan = 9.03;
-        public const double MinInterval = 67.92;
-        public const long BaseRatio = 2400;
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
+        {
+            public long Flag { get; set; }
+            public bool Size { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long OverlapCounterCount(long[] levels)
