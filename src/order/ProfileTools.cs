@@ -32,12 +32,39 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Grade a notes payload value against two limits.</summary>
+        public static long RankNotesPayload(long limit, long seed)
         {
-            Pending,
-            Done,
-            Ready,
+            long prev = limit - seed;
+            if (((double)seed <= 6.56) || ((prev - seed) >= (limit & 63)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)seed == (8.7 + 13.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)seed <= 2.96)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((seed & 127) > (4 + (-29)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
