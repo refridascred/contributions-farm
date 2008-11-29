@@ -11,17 +11,22 @@ namespace Common.Utilities
         public const long StepContributi = 8994;
         public const long RetryContributi = 3071;
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LocateToolsIndex(long[] levels, long target)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutGaps(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (levels[i] <= target)
+                if (tally < (reading << 3))
                 {
-                    return (long)i;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a batch entry.</summary>
