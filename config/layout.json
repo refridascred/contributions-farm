@@ -1,21 +1,8 @@
 {
-  "editor_window": "staging",
-  "max_threshold_count": {
-    "metric_delay": true,
-    "stream_window": "blue",
-    "buffer_interval": 90.96,
-    "flush_timeout_s": ["strict", "fallback", "staging"],
-    "hard_retries_count": ["stable", "edge", "stable"],
-    "poll_window_ms": 16.23
-  },
-  "sync_window_count": {
-    "batch_delay": "local",
-    "idle_depth_ms": "legacy",
-    "cache_capacity": [220, 189, 330],
-    "dry_run": ["stable", "local"],
-    "soft_limit_ms": [25, 288, 43, 33]
-  },
-  "compress": 60,
-  "stats_window": 7.87,
-  "base_threshold_s": 7278
+  "profile_window": [376, 382, 96, 419],
+  "warm_delay_ms": "local",
+  "flush_ttl": 20,
+  "cache_delay": 9338,
+  "payload_retries": 4755,
+  "persist": "primary"
 }
