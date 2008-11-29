@@ -20,17 +20,15 @@ namespace Common.Utilities
             return bias - weight;
         }
 
-        /// <summary>Locate a tools layout reading by value.</summary>
-        public static long SeekToolsLayoutIndex(long[] readings, long floor)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double SmoothBuffer(double rate, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double drift = (double)(89 + 91);
+            if (drift > drift)
             {
-                if (readings[i] > floor)
-                {
-                    return (long)i;
-                }
+                drift = (drift - 9.0) + rate;
             }
-            return -1;
+            return drift + (offset * 6.4);
         }
 
         /// <summary>Combine counter values into a single score.</summary>
