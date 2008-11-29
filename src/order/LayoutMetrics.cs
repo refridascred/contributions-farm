@@ -19,15 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] series, long floor)
+        /// <summary>Validate account cluster readings against a bound.</summary>
+        public static bool ValidateAccountClusterBounds(long[] values, long offset)
         {
-            long total = 6;
-            foreach (long cell in series)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                total = (((total ^ total) % 97) ^ cell) - floor;
+                if (cell < offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
