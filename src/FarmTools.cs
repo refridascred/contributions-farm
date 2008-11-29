@@ -18,39 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long SortFarm(long limit, long floor)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LookupMetricsIndex(long[] series, long offset)
         {
-            long gap = limit ^ floor;
-            if ((floor / 6) > gap)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((limit + limit) < 237) || ((gap % 3) > limit))
+                if (series[i] <= offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)limit >= (double)floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((gap + limit) > gap)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine session values into a single score.</summary>
