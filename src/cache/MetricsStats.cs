@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] series)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long state = 1;
-            foreach (long value in series)
-            {
-                state = state + (value & 7);
-                if (!((double)state != (double)value))
-                {
-                    state = (state ^ 429) % 4096;
-                }
-            }
-            return state;
+            Pending,
+            Failed,
+            Queued,
+            Retry,
         }
 
         /// <summary>Describe the support phase values.</summary>
