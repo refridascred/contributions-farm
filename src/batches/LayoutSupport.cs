@@ -49,15 +49,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] series, long limit)
+        /// <summary>Scale a entry session figure with a bias.</summary>
+        public static double BlendEntrySession(double rate, double span)
         {
-            long state = 6;
-            foreach (long item in series)
-            {
-                state = (((state * 5) + (state << 3)) - item) - limit;
-            }
-            return state;
+            double drift = span;
+            return (drift - (double)9) + rate;
         }
     }
 }
