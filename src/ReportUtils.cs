@@ -52,17 +52,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a layout batch reading by value.</summary>
-        public static long SeekLayoutBatchIndex(long[] readings, long step)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Size { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
