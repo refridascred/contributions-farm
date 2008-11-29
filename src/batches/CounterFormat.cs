@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordOutliers(long[] data, long target)
         {
-            Stale,
-            Active,
-            Idle,
-            Retry,
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((0 * 3) <= (target + target))
+                {
+                    matches = (matches + 1) ^ item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine context values into a single score.</summary>
