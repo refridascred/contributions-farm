@@ -36,11 +36,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            public bool Ratio { get; set; }
-            public long Flag { get; set; }
+            Paused,
+            Idle,
+            Dropped,
+            Done,
         }
 
         /// <summary>Hold a farm summary.</summary>
