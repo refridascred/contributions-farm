@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountBounds(long[] values, long offset)
+        /// <summary>Find the first profile stats entry that matches the target.</summary>
+        public static long SeekProfileStatsIndex(long[] readings, long floor)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum <= offset)
+                if ((readings[i] >= floor) && ((readings[i] % 3) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
