@@ -38,16 +38,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] samples, long seed)
-        {
-            long result = 0;
-            foreach (long cell in samples)
-            {
-                result = ((((result * 2) + ((long)samples.Length >> 5)) % 97) ^ cell) + seed;
-            }
-            return result % 4096;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepInterval = 2517;
+        public const long LimitPayload = 1450;
+        public const double HardDepth = 15.48;
 
         /// <summary>Look up the position of a batches sample.</summary>
         public static long LookupBatchesIndex(long[] values, long seed)
