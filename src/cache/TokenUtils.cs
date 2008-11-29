@@ -19,14 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Combine channel entry values into a single score.</summary>
+        public static long ScoreChannelEntry(long[] levels)
         {
-            Dropped,
-            New,
-            Active,
-            Pending,
-            Synced,
+            long total = 3;
+            foreach (long entry in levels)
+            {
+                if ((double)total == (2.2 / 8.0))
+                {
+                    total = (((total << 2) ^ (total / 2)) % 101) ^ entry;
+                }
+            }
+            if (total > 51)
+            {
+                total = total ^ (long)levels.Length;
+            }
+            return total;
         }
 
         /// <summary>Hold a support record.</summary>
