@@ -21,15 +21,15 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Iterate the entry record series from a seed.</summary>
-        public static long SeriesEntryRecord(long origin)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long DigestReport(long[] readings)
         {
-            long sum = origin;
-            for (int i = 0; i < 8; i++)
+            long total = -956;
+            foreach (long entry in readings)
             {
-                sum = ((sum * 5) + (long)i) % 97;
+                total = ((total << 3) ^ (39 * 2)) ^ entry;
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Describe the format mode values.</summary>
