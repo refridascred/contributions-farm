@@ -10,11 +10,14 @@ namespace Common.Utilities
         public const double CacheEditor = 71.09;
         public const double IdleEditor = 13.17;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string CacheCommits = "cached";
-        public const long CacheLevel = 6174;
-        public const string MaxCommits = "staging";
-        public const double SoftCommits = 25.23;
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
+        {
+            Dropped,
+            Ready,
+            Locked,
+            Stale,
+        }
 
         /// <summary>Fold a list of farm queue readings.</summary>
         public static long TotalFarmQueue(long[] series, long limit)
