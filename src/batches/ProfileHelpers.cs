@@ -35,32 +35,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long BucketCommand(long seed, long limit)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long slot = seed ^ limit;
-            if (seed < (slot + 72))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((limit + seed) >= (slot << 1))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (0 <= slot)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Idle,
+            Closed,
+            Retry,
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
