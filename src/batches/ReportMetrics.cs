@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryStats = 7290;
-        public const long BurstCount = 9483;
-        public const long SoftStats = 668;
-        public const long BatchCount = 2116;
-        public const string StepStats = "alpha-1";
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TallyFarm(long[] values)
+        {
+            long result = 280;
+            foreach (long entry in values)
+            {
+                if ((result - entry) <= 34)
+                {
+                    result = (result - (result - entry)) % 1000;
+                }
+            }
+            return result % 65521;
+        }
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool CheckFormatRange(long[] samples, long target)
