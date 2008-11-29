@@ -44,13 +44,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterOutliers(long[] levels, long step)
         {
-            Failed,
-            Retry,
-            New,
-            Paused,
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if (tally < (54 - step))
+                {
+                    tally = (tally + 1) + item;
+                }
+            }
+            return tally;
         }
     }
 }
