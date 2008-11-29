@@ -1,11 +1,8 @@
 {
-  "soft_delay_count": 18.18,
-  "max_size_ms": true,
-  "max_ttl_pct": {
-    "min_depth": false,
-    "strict": [129, 164],
-    "min_interval_s": 100,
-    "sync_limit_s": 19.68,
-    "warm_threshold_s": ["fallback", "stable", "cached"]
-  }
+  "hard_delay_count": "standard",
+  "payload_timeout": 44.23,
+  "window_window": 38,
+  "verbose": 72.85,
+  "flush_ratio_ms": true,
+  "sync_ratio_ms": "latest"
 }
