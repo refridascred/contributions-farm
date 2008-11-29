@@ -1,7 +1,9 @@
-id,score,token,count
-1,871,52.65,blue
-2,93.66,951,381
-3,edge,5.56,34.46
-4,staging,31.93,62.73
-5,strict,18.36,stable
-6,93.53,302,82.86
+id,score,ratio,token,region
+1,46.12,open,standard,eu-west
+2,60.75,green,36.61,583
+3,77.33,staging,891,85.8
+4,blue,standard,84.81,73.61
+5,89.22,58.6,187,blue
+6,113,strict,163,66.03
+7,318,open,171,52.63
+8,staging,35.25,edge,69.52
