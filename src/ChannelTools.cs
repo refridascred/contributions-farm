@@ -38,15 +38,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double SmoothCluster(double scale, double offset)
-        {
-            double scale2 = scale;
-            for (int i = 0; i < 3; i++)
-            {
-                scale2 = (scale2 - offset) + (double)(long)i;
-            }
-            return scale2 - (scale2 - scale2);
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BaseFarm = 85.64;
+        public const double MinFarm = 75.73;
+        public const long StepFarm = 5171;
     }
 }
