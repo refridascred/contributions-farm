@@ -14,11 +14,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Count the window token entries that pass the check.</summary>
+        public static long MeasureWindowTokenMatches(long[] values)
         {
-            public double Mode { get; set; }
-            public long Token { get; set; }
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((reading / 8) <= reading)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
