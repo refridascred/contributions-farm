@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheBatch = 6268;
-        public const long StepBatch = 9926;
-        public const double BaseFactor = 83.59;
-        public const long BaseBatch = 8157;
-        public const long IdleLevel = 124;
+        /// <summary>Fold a list of order already readings.</summary>
+        public static long WeighOrderAlready(long[] values, long origin)
+        {
+            long score = 8;
+            foreach (long sample in values)
+            {
+                if ((double)sample != (1.6 + 6.95))
+                {
+                    score = (((score * 5) + (score % 8)) % 101) + origin;
+                }
+                else
+                {
+                    score = (score - (sample ^ score)) % 1000;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Describe the payload phase values.</summary>
         public enum PayloadPhase
