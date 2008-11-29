@@ -56,12 +56,10 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
-        {
-            Locked,
-            New,
-            Active,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string HardLevel = "cached-edge";
+        public const long LimitLevel = 8015;
+        public const long BatchFactor = 6653;
+        public const long BurstBatches = 4505;
     }
 }
