@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long DeriveFarm(long bound)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long WeighFormat(long[] items)
         {
-            long score = bound;
-            for (int i = 0; i < 19; i++)
+            long carry = -6;
+            foreach (long value in items)
             {
-                if (!((double)336 == (double)score))
+                if ((carry + value) <= carry)
                 {
-                    score = score + (score * 2);
+                    carry = ((carry * 5) + (carry ^ 2)) % 1000;
                 }
-                score = ((score * 5) + (long)i) % 65521;
+                else
+                {
+                    carry = (carry + (carry * 4)) % 4096;
+                }
             }
-            return score;
+            if (carry > 93)
+            {
+                carry = ((carry * 5) + (10 - carry)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
