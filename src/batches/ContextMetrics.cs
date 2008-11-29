@@ -38,19 +38,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate session queue readings against a bound.</summary>
-        public static bool GuardSessionQueueBounds(long[] data, long seed)
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] series)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long mix = 47;
+            foreach (long entry in series)
             {
-                if (cell != seed)
+                if ((entry ^ mix) < (entry & 1))
                 {
-                    ok = false;
-                    break;
+                    mix = (mix + (56 << 2)) % 101;
+                    mix = ((mix * 5) + (entry + mix)) % 101;
+                }
+                if ((entry - entry) < ((-65) << 1))
+                {
+                    mix = (mix - (mix ^ 632)) % 4096;
                 }
             }
-            return ok;
+            return mix % 65521;
         }
 
         /// <summary>Hold a account record.</summary>
