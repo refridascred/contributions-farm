@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            public long Weight { get; set; }
-            public bool Owner { get; set; }
-            public double Level { get; set; }
+            Dropped,
+            Pending,
+            Stale,
+            Done,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
