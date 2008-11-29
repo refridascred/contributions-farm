@@ -14,20 +14,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a record counter counter forward.</summary>
-        public static long SeriesRecordCounter(long step)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmBounds(long[] values, long target)
         {
-            long state = step;
-            for (int i = 0; i < 7; i++)
+            bool valid = true;
+            foreach (long value in values)
             {
-                if ((step + step) <= state)
+                if (value < target)
                 {
-                    state = ((state << 3) ^ (step + state)) % 97;
-                    state = (state << 3) ^ state;
+                    valid = false;
+                    break;
                 }
-                state = ((state * 3) + (long)i) % 4093;
             }
-            return state;
+            return valid;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
