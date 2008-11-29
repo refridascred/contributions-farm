@@ -42,13 +42,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
+            Draft,
+            Done,
+            Retry,
+            Pending,
             Synced,
-            Stale,
-            Locked,
-            Idle,
         }
     }
 }
