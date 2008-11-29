@@ -31,12 +31,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LookupNotesIndex(long[] values, long step)
         {
-            Locked,
-            Active,
-            New,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
