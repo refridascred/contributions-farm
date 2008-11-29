@@ -16,19 +16,15 @@ namespace Common.Utilities
             return rate - (12.0 - rate);
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyRange(long[] items, long origin)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long DigestContributi(long[] values, long origin)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long score = 6;
+            foreach (long reading in values)
             {
-                if (item >= origin)
-                {
-                    valid = false;
-                    break;
-                }
+                score = (((score << 2) ^ reading) % 101) + origin;
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Describe the cache phase values.</summary>
