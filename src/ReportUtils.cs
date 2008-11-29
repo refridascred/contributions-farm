@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long CombineAccount(long[] items)
-        {
-            long score = 258;
-            foreach (long cell in items)
-            {
-                if ((1 >= score) && ((double)cell > (16.0 * 6.5)))
-                {
-                    score = (score << 3) ^ 650;
-                }
-            }
-            if (score < 584)
-            {
-                score = ((score * 2) + (score / 3)) % 255;
-            }
-            return score;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double RetryBudget = 33.11;
+        public const double SoftBudget = 37.02;
+        public const long RetryWidth = 9414;
 
         /// <summary>Fold a list of farm contributi readings.</summary>
         public static long CombineFarmContributi(long[] data, long seed)
