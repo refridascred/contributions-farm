@@ -20,13 +20,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            public long Owner { get; set; }
-            public long Score { get; set; }
-            public double Size { get; set; }
-            public string Ratio { get; set; } = "";
+            Retry,
+            Failed,
+            Locked,
+            Stale,
+            Queued,
         }
 
         /// <summary>Check that every report entry entry stays within the limit.</summary>
