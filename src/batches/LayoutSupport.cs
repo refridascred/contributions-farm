@@ -23,12 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            Queued,
-            Ready,
-            Idle,
+            Done,
+            Active,
+            Draft,
+            Stale,
         }
 
         /// <summary>Hold a profile stats.</summary>
