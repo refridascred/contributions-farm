@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            public long Total { get; set; }
-            public bool Flag { get; set; }
-            public double Score { get; set; }
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
+            public long Token { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Project the next buffer value.</summary>
