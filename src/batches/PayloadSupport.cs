@@ -22,13 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Roll a already stats counter forward.</summary>
+        public static long SeriesAlreadyStats(long limit)
         {
-            public bool Level { get; set; }
-            public bool Region { get; set; }
-            public bool Token { get; set; }
-            public bool Label { get; set; }
+            long mark = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
