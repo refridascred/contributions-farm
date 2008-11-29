@@ -15,19 +15,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every already cluster entry stays within the limit.</summary>
-        public static bool VerifyAlreadyClusterBounds(long[] readings, long limit)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamOutliers(long[] samples, long origin)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (datum <= limit)
+                if (!((sample * 5) <= origin))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Blend two metric measurements.</summary>
