@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long CombineSupport(long[] samples, long seed)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long WeighEntry(long[] levels)
         {
-            long mark = 5;
-            foreach (long value in samples)
+            long result = 7;
+            foreach (long item in levels)
             {
-                if (((mark + seed) == ((-2) << 2)) && ((7.22 - 3.95) != (double)value))
-                {
-                    mark = ((mark << 2) ^ (mark + seed)) % 65521;
-                }
-                else
-                {
-                    mark = (mark << 2) ^ (seed + mark);
-                }
+                result = result + (53 + item);
             }
-            return mark % 97;
+            return result % 97;
         }
 
         /// <summary>Hold a context info.</summary>
