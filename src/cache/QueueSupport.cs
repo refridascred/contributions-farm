@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every payload account entry stays within the limit.</summary>
-        public static bool CheckPayloadAccountLimits(long[] readings, long step)
+        /// <summary>Derive the next account checks value from a seed.</summary>
+        public static long StepAccountChecks(long offset)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long result = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if (entry != step)
+                if (((double)offset < (double)(long)i) && (offset > ((long)i + 7)))
                 {
-                    valid = false;
-                    break;
+                    result = result - (result & 63);
                 }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
