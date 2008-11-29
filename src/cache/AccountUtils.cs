@@ -20,14 +20,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] readings)
         {
-            Retry,
-            Failed,
-            Locked,
-            Stale,
-            Queued,
+            long carry = 590;
+            foreach (long entry in readings)
+            {
+                if ((7.0 - 4.58) <= (double)entry)
+                {
+                    carry = (carry ^ (entry >> 1)) % 65521;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Check that every report entry entry stays within the limit.</summary>
