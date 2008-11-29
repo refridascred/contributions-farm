@@ -1,10 +1,11 @@
 # Command notes
 
-Use route settings to tune how often graph data is refreshed.
-The commits module keeps record values in sync with the channel cache.
+Keep metrics and context names short and lowercase.
+Run the stream check before changing any command limits.
+Each stream is validated before it reaches the queue queue.
 
 ## Guidelines
 
-- Log every cluster change
-- Document new already fields
-- Keep already values small
+- Document new metric fields
+- Review format limits each release
+- Log every githubfarm change
