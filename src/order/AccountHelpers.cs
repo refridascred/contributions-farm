@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long GradeAlready(long target, long target2)
         {
-            Paused,
-            Done,
-            Pending,
+            long slot = target ^ target2;
+            if ((target2 - target) > target2)
+            {
+                return 0;
+            }
+            else
+            {
+                if (!(target > (target + slot)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((-82) + target2) == (slot + slot))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank stream input into a small class.</summary>
