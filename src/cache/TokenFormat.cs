@@ -30,21 +30,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count session stats pairs that satisfy a relation.</summary>
-        public static long MatchSessionStatsCount(long[] samples)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 987;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((reading + 39) != ((long)values.Length - carry))
                 {
-                    if ((samples[i] - samples[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = (carry - (carry << 1)) % 4096;
+                    carry = (carry * 2) + (carry * 5);
+                }
+                if ((carry / 7) > reading)
+                {
+                    carry = (carry ^ ((long)values.Length - reading)) % 97;
+                }
+                else
+                {
+                    carry = (carry ^ carry) % 97;
                 }
             }
-            return hits;
+            return carry;
         }
     }
 }
