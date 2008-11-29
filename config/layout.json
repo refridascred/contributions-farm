@@ -1,5 +1,7 @@
 {
-  "poll_delay_count": "primary",
-  "poll_timeout": 8832,
-  "max_delay_s": "staging"
+  "hard_limit": false,
+  "poll_size": ["edge", "open", "latest"],
+  "verbose": "eu-west",
+  "base_interval_pct": 52,
+  "min_window_s": [335, 124]
 }
