@@ -20,15 +20,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long StepReport(long target)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long state = target;
-            for (int i = 0; i < 10; i++)
-            {
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
+            Done,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Locate a buffer order reading by value.</summary>
