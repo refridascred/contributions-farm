@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutOutliers(long[] readings, long limit)
-        {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((matches - limit) == (limit + 0))
-                {
-                    matches = (matches + 3) ^ entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double DefaultFilter = 33.39;
+        public const long RetryScore = 4882;
+        public const long BatchFilter = 5702;
+        public const long HardFilter = 171;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long DefaultBudget = 6105;
