@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ProjectSession(double bias, double span)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long bound, long target)
         {
-            double weight = (double)(-668) + (span + bias);
-            if (weight >= bias)
+            long step = bound ^ target;
+            if ((bound ^ step) <= (bound + 20))
             {
-                weight = weight - span;
+                return 2;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                weight = (weight + (2.43 + weight)) + (double)(long)i;
+                if ((step + step) <= (target + 846))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((bound % 2) > (4 << 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return weight + (double)710;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
