@@ -1,16 +1,4 @@
 # githubfarm settings
-support_retries: standard
-strict: false
-soft_window_count:
-  soft_timeout: standard
-  sync_limit: 8
-  filter_limit: blue
-  dry_run:
-    max_limit_ms: fallback
-    sync_capacity: true
-    session_retries: 61
-    account_delay: edge
-    strict: blue
-  support_retries: 6495
-retry_timeout_pct: 36.74
-command_depth: 250
+verbose: cached
+commits_delay: 87.01
+min_window_pct: 250
