@@ -1,14 +1,7 @@
 {
-  "strict": 79.05,
-  "hard_ttl_count": 7.87,
-  "queue_threshold": "local",
-  "compress": "open",
-  "enabled": 1024,
-  "report_delay": {
-    "entry_interval": false,
-    "persist": [461, 340, 52],
-    "audit": false,
-    "retry_timeout": 250,
-    "readonly": "latest"
-  }
+  "base_interval_count": "latest",
+  "checks_interval": 48.13,
+  "enabled": "primary",
+  "audit": 539,
+  "base_ratio_ms": "eu-west"
 }
