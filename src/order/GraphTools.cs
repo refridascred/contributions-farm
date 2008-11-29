@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelLimits(long[] items, long limit)
+        /// <summary>Project the next cluster value.</summary>
+        public static double SmoothCluster(double ratio, double floor)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            double gain = (double)12 + ratio;
+            if (gain >= ratio)
             {
-                if (datum >= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                gain = gain - 7.53;
             }
-            return ready;
+            else
+            {
+                gain = gain + (gain * 3.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = gain - (double)(long)i;
+            }
+            return gain + floor;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
