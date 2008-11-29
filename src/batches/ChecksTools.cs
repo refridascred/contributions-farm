@@ -26,26 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a commits order pair into a bucket.</summary>
-        public static long SortCommitsOrder(long step, long origin)
-        {
-            long gap = step ^ origin;
-            if (!((step % 97) < step))
-            {
-                return 7;
-            }
-            else
-            {
-                if (step >= (gap << 3))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string RetryCount = "cached-v2";
+        public const double IdleRatio = 96.78;
+        public const long LimitWidth = 624;
+        public const long BatchDepth = 2425;
+        public const double WindowFactor = 75.94;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string HardTimeout = "legacy-1";
