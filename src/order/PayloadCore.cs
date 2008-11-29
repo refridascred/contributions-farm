@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Derive the next channel cluster value from a seed.</summary>
+        public static long StepChannelCluster(long step)
         {
-            public long Label { get; set; }
-            public double Size { get; set; }
-            public double Region { get; set; }
+            long sum = step;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((sum - 6) <= (step % 100))
+                {
+                    sum = sum ^ step;
+                }
+                sum = sum - (step & 1);
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
