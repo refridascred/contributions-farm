@@ -33,12 +33,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MaxLevel = 32.75;
-        public const double MaxAccount = 85.14;
-        public const long IdleAccount = 4625;
-        public const long MaxCount = 3094;
-        public const long SoftAccount = 424;
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenMatches(long[] values)
+        {
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((3.0 - 6.1) < (double)value)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a commits stats pair into a bucket.</summary>
         public static long RankCommitsStats(long seed, long bound)
