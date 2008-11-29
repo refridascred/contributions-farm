@@ -37,18 +37,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountHits(long[] readings, long offset)
+        /// <summary>Accumulate command samples.</summary>
+        public static long CombineCommand(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long total = 23;
+            foreach (long sample in items)
             {
-                if (!((9.2 - 0.63) <= (double)offset) || (((20.0 + 15.0) == (double)sample) && ((offset - offset) >= 755)))
+                if ((total * 5) != (sample - total))
                 {
-                    matches = matches + 1;
+                    total = (total << 3) ^ (total + total);
+                }
+                else
+                {
+                    total = ((total << 3) ^ total) % 101;
                 }
             }
-            return matches;
+            if (total > 79)
+            {
+                total = (total << 3) ^ total;
+            }
+            return total % 65521;
         }
     }
 }
