@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long IterateReport(long limit)
-        {
-            long mix = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                if (((long)i & 31) < (84 + limit))
-                {
-                    mix = (mix ^ 810) % 1000;
-                }
-                else
-                {
-                    mix = (mix ^ (limit * 5)) % 65521;
-                    mix = (mix ^ (mix % 8)) % 255;
-                }
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double IdleInterval = 36.62;
+        public const double CacheEditor = 71.09;
+        public const double IdleEditor = 13.17;
 
         /// <summary>Project the next counter value.</summary>
         public static double AdjustCounter(double scale, double offset)
