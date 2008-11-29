@@ -20,22 +20,14 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutGaps(long[] levels)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if (tally < (reading << 3))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Locked,
+            New,
+            Pending,
+            Paused,
+            Stale,
         }
 
         /// <summary>Check that every contributi farm entry stays within the limit.</summary>
