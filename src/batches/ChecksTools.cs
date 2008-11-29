@@ -24,12 +24,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string RetryCount = "cached-v2";
-        public const double IdleRatio = 96.78;
-        public const long LimitWidth = 624;
-        public const long BatchDepth = 2425;
-        public const double WindowFactor = 75.94;
+        /// <summary>Project the next tools value.</summary>
+        public static double BlendTools(double bias, double floor)
+        {
+            double gain = 5.7;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + (double)(long)i) - floor;
+            }
+            return gain - (bias - bias);
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string HardTimeout = "legacy-1";
