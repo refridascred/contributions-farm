@@ -1,7 +1,8 @@
 {
-  "base_interval_count": "latest",
-  "checks_interval": 48.13,
-  "enabled": "primary",
-  "audit": 539,
-  "base_ratio_ms": "eu-west"
+  "warm_ttl_ms": ["fallback", "cached", "latest"],
+  "hard_ttl_s": [441, 182, 147],
+  "base_timeout_pct": ["standard", "green", "stable", "primary"],
+  "poll_threshold_s": "legacy",
+  "readonly": false,
+  "soft_delay_pct": 95.49
 }
