@@ -31,22 +31,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] values, long limit)
+        /// <summary>Rank cluster tools input into a small class.</summary>
+        public static long RankClusterTools(long offset, long target)
         {
-            long result = 8;
-            foreach (long datum in values)
+            if (((8.91 + 7.0) >= (double)offset) && ((5.56 + 19.0) < (double)8))
             {
-                if (!((9.2 - 5.0) <= (double)result))
+                return 8;
+            }
+            else
+            {
+                if (target < offset)
                 {
-                    result = ((result * 4) + (result << 3)) - datum;
+                    return 3;
                 }
                 else
                 {
-                    result = ((result * 5) + limit) % 101;
+                    if ((target + offset) < (51 + 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((target ^ 91) > (offset + target))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
