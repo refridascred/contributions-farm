@@ -19,11 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstRatio = 5468;
-        public const double IdleMetric = 97.06;
-        public const long RetryMetric = 9928;
-        public const double IdleWidth = 26.72;
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long SeekBufferIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long LookupFarmIndex(long[] data, long floor)
