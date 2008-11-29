@@ -27,30 +27,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long bound)
+        /// <summary>Scale a already notes figure with a bias.</summary>
+        public static double AdjustAlreadyNotes(double scale, double floor)
         {
-            long state = bound;
-            for (int i = 0; i < 19; i++)
+            double weight = 1.7;
+            if (weight <= scale)
             {
-                if (!(((long)i * 5) != (1 + bound)))
-                {
-                    state = (state * 3) + (7 & 3);
-                    state = (state ^ (bound + state)) % 97;
-                }
-                state = (state + (long)i) % 4096;
-                if ((bound + 7) == (4 - 47))
-                {
-                    continue;
-                }
-                else
-                {
-                    state = state + (bound >> 5);
-                    state = state ^ state;
-                }
-                state = ((state * 2) + (long)i) % 101;
+                weight = (weight - (double)64) - floor;
             }
-            return state;
+            return weight - scale;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
