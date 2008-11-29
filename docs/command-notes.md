@@ -1,14 +1,13 @@
 # Command notes
 
-Keep filter and payload names short and lowercase.
-Keep counter and batches names short and lowercase.
+Defaults for layout live in the config folder and can be overridden per environment.
+A context that stays idle for too long is moved to the batches list.
 
-Keep already and route names short and lowercase.
-Keep stream and cluster names short and lowercase.
+Keep commits and record names short and lowercase.
+When a token fails, the support handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate commits input early
-- Prefer counter defaults
-- Keep queue values small
-- Review counter limits each release
+- Log every editor change
+- Keep session values small
+- Review order limits each release
