@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterGaps(long[] levels, long floor)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long result = 0;
+            foreach (long entry in data)
             {
-                if ((entry - floor) < (50 * 2))
+                if ((target <= entry) && ((17 ^ result) >= (result % 97)))
                 {
-                    seen = seen + 2;
+                    result = (result + (237 + target)) % 255;
+                }
+                else
+                {
+                    result = (result ^ (result + result)) % 4096;
                 }
             }
-            return seen;
+            if (result > 101)
+            {
+                result = result - (63 * 3);
+            }
+            return result;
         }
 
         /// <summary>Hold a window stats.</summary>
