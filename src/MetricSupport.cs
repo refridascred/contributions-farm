@@ -22,18 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmGaps(long[] values, long limit)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmMatches(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long item in data)
             {
-                if (!((double)datum > (0.68 - 3.1)) && ((188 >> 1) == (hits & 31)))
+                if ((double)count >= (double)item)
                 {
-                    hits = (hits + 2) - limit;
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
