@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate queue payload readings against a bound.</summary>
-        public static bool VerifyQueuePayloadBounds(long[] items, long origin)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long RankCommand(long origin, long target)
         {
-            bool valid = true;
-            foreach (long value in items)
+            if (target < ((-1) + 97))
             {
-                if (value != origin)
+                return 3;
+            }
+            else
+            {
+                if ((double)target >= (4.0 + 0.6))
                 {
-                    valid = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((origin <= (target << 3)) || (origin <= (origin - origin)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (origin < (target - target))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Project the next stats value.</summary>
