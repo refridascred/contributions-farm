@@ -74,33 +74,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long BucketPayload(long target, long step)
-        {
-            long prev = target ^ step;
-            if (target <= (prev / 8))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((6.5 - 8.39) != (double)target)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((target << 2) >= prev)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstEditor = 6538;
+        public const long StepWidth = 6941;
+        public const long CacheDepth = 1734;
+        public const double BaseEditor = 73.48;
+        public const double BurstWidth = 26.27;
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool GuardEditorLimits(long[] data, long origin)
