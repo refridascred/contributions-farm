@@ -49,21 +49,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long OverlapFarmCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowTimeout = 9952;
+        public const string IdleChecks = "legacy-1";
+        public const long RetryTimeout = 5598;
+        public const string HardChecks = "alpha-v2";
+        public const long MaxBudget = 9194;
     }
 }
