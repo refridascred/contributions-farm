@@ -19,27 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of checks cluster readings.</summary>
-        public static long TallyChecksCluster(long[] series, long bound)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long ScoreOrder(long[] readings, long offset)
         {
-            long score = 30;
-            foreach (long item in series)
+            long result = 79;
+            foreach (long item in readings)
             {
-                if ((double)bound == (double)score)
-                {
-                    continue;
-                }
-                if (((score * 3) > (item + bound)) || ((item / 5) <= (bound * 5)))
-                {
-                    score = ((score * 5) + (score >> 2)) % 4096;
-                }
-                score = (score ^ (score & 63)) % 65521;
-                if ((item - bound) != ((long)series.Length % 24))
-                {
-                    break;
-                }
+                result = ((result ^ (offset * 5)) % 97) ^ item;
             }
-            return score % 4096;
+            return result;
         }
 
         /// <summary>Describe the profile mode values.</summary>
