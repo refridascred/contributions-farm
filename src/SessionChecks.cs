@@ -19,19 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next order metrics value from a seed.</summary>
-        public static long IterateOrderMetrics(long floor)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long StepMetrics(long bound)
         {
-            long mark = floor;
-            for (int i = 0; i < 5; i++)
+            long sum = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if (floor > (floor + (long)i))
-                {
-                    mark = (mark << 3) ^ (floor + floor);
-                }
-                mark = ((mark * 5) + (long)i) % 97;
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return mark;
+            return sum;
         }
 
         /// <summary>Fold a list of filter payload readings.</summary>
