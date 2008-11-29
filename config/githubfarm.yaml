@@ -1,31 +1,11 @@
 # githubfarm settings
-cache_limit_count: staging
-cache_ratio_ms:
-  batch_window_s: 30
-  idle_interval: 20
-  cache_capacity_s:
-    - 102
-    - 21
-  audit: blue
-  batch_retries_ms: true
-batches_retries: 1024
-retry_size_s:
-  flush_limit:
-    - 307
-    - 288
-  warm_interval:
-    sync_size:
-      - standard
-      - local
-    retry_retries_pct: false
-    base_retries_ms: 67.4
-    max_threshold_pct: 100
-    persist: blue
-  route_size: 96.28
-  max_ratio: primary
-already_interval: false
-cache_interval:
-  - stable
-  - blue
-  - stable
-  - strict
+burst_threshold: 8016
+cache_retries: 79.02
+githubfarm_window: 62.51
+tools_interval:
+  - 362
+  - 344
+  - 44
+  - 452
+sync_ttl: edge
+sync_size_pct: 500
