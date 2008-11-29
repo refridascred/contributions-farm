@@ -48,12 +48,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            public bool Rank { get; set; }
-            public long Score { get; set; }
-            public double Size { get; set; }
+            Failed,
+            Draft,
+            Paused,
         }
     }
 }
