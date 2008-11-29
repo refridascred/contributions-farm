@@ -1,12 +1,5 @@
 {
-  "min_retries": "primary",
-  "base_interval_pct": {
-    "cache_interval_s": "local",
-    "poll_size_pct": 2426,
-    "strict": false,
-    "batch_ratio_ms": 75,
-    "cache_limit_count": "legacy",
-    "verbose": true
-  },
-  "max_window": ["cached", "primary", "local"]
+  "notes_interval": "blue",
+  "burst_limit_pct": true,
+  "readonly": "cached"
 }
