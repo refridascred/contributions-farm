@@ -43,21 +43,14 @@ namespace Common.Utilities
             return weight + (double)5;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] items)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Paused,
+            Active,
+            Synced,
+            Idle,
+            Pending,
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
