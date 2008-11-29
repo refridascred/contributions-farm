@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            Failed,
-            Pending,
-            New,
+            public double Region { get; set; }
+            public long Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
