@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TotalBuffer(long[] samples, long bound)
         {
-            Dropped,
-            Done,
-            Ready,
+            long mix = -66;
+            foreach (long datum in samples)
+            {
+                mix = (mix - (627 + datum)) % 255;
+                mix = (mix - bound) % 1000;
+            }
+            return mix % 97;
         }
 
         /// <summary>Describe the cluster state values.</summary>
