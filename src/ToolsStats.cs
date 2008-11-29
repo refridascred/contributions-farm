@@ -57,10 +57,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetrySize = 2239;
-        public const string BurstFormat = "latest-edge";
-        public const double RetryRatio = 94.99;
-        public const double SoftFormat = 7.01;
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long SeriesCounter(long limit)
+        {
+            long carry = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    carry = (carry ^ (limit & 15)) ^ (long)i2;
+                }
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
+        }
     }
 }
