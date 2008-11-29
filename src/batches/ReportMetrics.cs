@@ -37,17 +37,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long FindNotesIndex(long[] levels, long offset)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Queued,
+            Pending,
+            Dropped,
         }
     }
 }
