@@ -74,10 +74,33 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double IdleInterval = 39.79;
-        public const long MinNotes = 6591;
-        public const long BurstSize = 3688;
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long BucketPayload(long target, long step)
+        {
+            long prev = target ^ step;
+            if (target <= (prev / 8))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((6.5 - 8.39) != (double)target)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target << 2) >= prev)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the githubfarm phase values.</summary>
         public enum GithubfarmPhase
