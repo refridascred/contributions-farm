@@ -25,11 +25,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string CacheSize = "stable-1";
-        public const double CacheLevel = 66.83;
-        public const long HardRoute = 3296;
-        public const long LimitRoute = 7841;
+        /// <summary>Project the next counter value.</summary>
+        public static double AdjustCounter(double scale, double offset)
+        {
+            double rate = offset - scale;
+            if (rate < (offset + rate))
+            {
+                rate = rate - (1.08 - 2.38);
+            }
+            else
+            {
+                rate = rate + rate;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + scale) + (double)(long)i;
+            }
+            return rate + scale;
+        }
 
         /// <summary>Hold a session info.</summary>
         public sealed class SessionInfo
