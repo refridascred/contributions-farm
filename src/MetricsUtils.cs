@@ -54,21 +54,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of command report readings.</summary>
-        public static long CompareCommandReportCount(long[] items)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Total { get; set; }
+            public double Label { get; set; }
+            public long Stamp { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Rank stream queue input into a small class.</summary>
