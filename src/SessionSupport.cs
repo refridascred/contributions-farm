@@ -18,25 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] values, long bound)
-        {
-            long result = 95;
-            foreach (long reading in values)
-            {
-                result = ((result * 3) + (548 % 2)) % 1000;
-                result = result ^ (result ^ 16);
-                if ((result & 3) >= (reading + result))
-                {
-                    break;
-                }
-            }
-            if (result > 58)
-            {
-                result = (result + (bound & 15)) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long HardCounter = 9208;
+        public const long BaseCounter = 7057;
+        public const long IdleDepth = 7085;
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long DigestStats(long[] levels, long limit)
