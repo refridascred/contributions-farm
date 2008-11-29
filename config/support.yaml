@@ -1,5 +1,12 @@
 # support settings
-stats_threshold: 97.66
-buffer_threshold: edge
-farm_ttl: legacy
-sync_ratio_ms: 60
+sync_limit_s:
+  - standard
+  - blue
+  - staging
+checks_size:
+  - latest
+  - green
+sync_window_pct: 100
+retry_ratio_pct: 500
+retry_threshold_count: green
+window_ttl: 500
