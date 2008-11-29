@@ -1,9 +1,13 @@
 # support settings
-order_timeout:
-  - local
-  - green
-  - stable
-  - cached
-window_capacity: false
-audit: true
-flush_capacity_pct: 2848
+retry_size:
+  retry_size_count: 42
+  notes_threshold: local
+  base_retries_s: cached
+  session_timeout: true
+warm_limit_count: 40.43
+poll_window_pct: strict
+metrics_limit: 500
+poll_ttl_count: 96
+session_threshold:
+  - 122
+  - 488
