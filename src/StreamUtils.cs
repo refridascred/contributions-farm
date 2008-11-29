@@ -16,15 +16,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double AdjustEntry(double ratio, double bias)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            double bias2 = bias;
-            if (bias2 < bias)
-            {
-                bias2 = (bias2 + 2.65) - ratio;
-            }
-            return bias2 + 4.7;
+            Idle,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Describe the order state values.</summary>
