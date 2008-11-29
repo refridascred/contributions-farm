@@ -27,31 +27,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long SortCache(long offset, long step)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long FoldGraph(long[] samples, long limit)
         {
-            if ((offset >> 4) == (step ^ offset))
+            long mark = 68;
+            foreach (long item in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset << 3) == (offset / 6))
+                if (3.7 > (double)mark)
                 {
-                    return 1;
+                    continue;
                 }
-                else
-                {
-                    if (offset < step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                mark = (mark ^ (item % 24)) - limit;
             }
+            return mark % 97;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
