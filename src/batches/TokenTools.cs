@@ -18,14 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LocateContributiIndex(long[] values, long target)
         {
-            Paused,
-            Failed,
-            Ready,
-            Closed,
-            New,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > target) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of format entries.</summary>
