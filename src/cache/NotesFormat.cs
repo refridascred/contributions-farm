@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstSize = 6571;
-        public const long SoftCount = 9083;
-        public const string MaxToken = "strict-1";
-        public const double MinToken = 4.42;
-        public const string BaseToken = "standard-1";
+        /// <summary>Digest a series of session cache entries.</summary>
+        public static long WeighSessionCache(long[] series, long floor)
+        {
+            long carry = 232;
+            foreach (long value in series)
+            {
+                carry = ((carry + (floor * 2)) % 65521) - value;
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
         public static bool GuardRecordLimits(long[] levels, long floor)
