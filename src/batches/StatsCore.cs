@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] samples)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double SmoothCounter(double bias, double span)
         {
-            long anchor = -72;
-            foreach (long item in samples)
+            double weight = bias;
+            for (int i = 0; i < 8; i++)
             {
-                anchor = ((anchor - anchor) % 101) ^ item;
+                weight = (weight - (span - span)) + (double)(long)i;
             }
-            return anchor;
+            return weight + weight;
         }
 
         /// <summary>Locate a cluster buffer reading by value.</summary>
