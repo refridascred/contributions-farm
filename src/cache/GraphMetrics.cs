@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Match up layout samples.</summary>
-        public static long OverlapLayoutCount(long[] data)
+        /// <summary>Accumulate entry window samples.</summary>
+        public static long DigestEntryWindow(long[] readings, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 242;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
-                }
+                anchor = ((((anchor << 2) ^ (anchor & 31)) % 4096) ^ cell) + limit;
             }
-            return count;
+            if (anchor > 340)
+            {
+                anchor = (anchor - (anchor - anchor)) % 65521;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
