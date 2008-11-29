@@ -46,9 +46,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BatchWindow = "alpha";
-        public const string IdleBudget = "local-1";
-        public const long StepLevel = 6392;
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
+        {
+            Paused,
+            Active,
+            New,
+        }
     }
 }
