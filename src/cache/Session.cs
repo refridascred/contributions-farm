@@ -5,30 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long WeighMetrics(long[] levels)
+        /// <summary>Measure how many record graph samples are out of range.</summary>
+        public static long TallyRecordGraphGaps(long[] series, long offset)
         {
-            long total = 2;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if ((10 << 2) != (entry + entry))
+                if ((double)tally != (9.3 + 6.3))
                 {
-                    total = (total * 2) + (entry / 7);
+                    tally = ((tally + 3) - datum) - offset;
                 }
                 else
                 {
-                    total = total ^ (total + total);
-                }
-                if (((-521) + total) == (entry >> 1))
-                {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            if (total < 12)
-            {
-                total = (total + ((long)levels.Length ^ total)) % 255;
-            }
-            return total % 97;
+            return tally;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
