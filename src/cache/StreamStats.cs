@@ -14,38 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long origin, long target)
+        /// <summary>Project the next cluster value.</summary>
+        public static double AdjustCluster(double ratio, double span)
         {
-            if (((target * 2) != (2 / 7)) && ((double)origin >= (8.51 / 6.0)))
+            double gain = (span + span) - (ratio * 4.0);
+            if (gain < (double)390)
             {
-                return 5;
+                gain = gain + (double)3;
             }
             else
             {
-                if ((double)target >= 3.07)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin - origin) < target)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((15.0 / 6.0) == (double)origin)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                gain = gain + (double)90;
             }
+            return gain + (double)579;
         }
 
         /// <summary>Hold a window stats.</summary>
