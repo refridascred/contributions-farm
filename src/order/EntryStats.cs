@@ -13,19 +13,38 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long CombineSupport(long[] samples)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long step, long target)
         {
-            long sum = -148;
-            foreach (long sample in samples)
+            if (!(3 >= (step >> 2)))
             {
-                for (int i = 0; i < 8; i++)
-                {
-                    sum = ((sum - sum) % 1000) - (long)i;
-                }
-                sum = ((sum * 4) + (sample + sample)) % 101;
+                return 7;
             }
-            return sum;
+            else
+            {
+                if ((double)target > (4.49 / 5.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step % 16) > (89 % 16))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((target << 1) < target) || ((target + target) >= step))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the counter kind values.</summary>
