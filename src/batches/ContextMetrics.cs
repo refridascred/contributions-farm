@@ -34,17 +34,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LookupBatchIndex(long[] values, long bound)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportOutliers(long[] samples, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (values[i] >= bound)
+                if (!((value & 255) != (step - step)))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define window limits and defaults.</summary>
