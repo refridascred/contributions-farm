@@ -31,11 +31,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Measure how many metric command samples are out of range.</summary>
+        public static long AuditMetricCommandMatches(long[] samples)
         {
-            public double Total { get; set; }
-            public long Weight { get; set; }
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if (((value / 8) < (38 / 4)) && !((4.23 * 5.0) < (5.48 - 0.98)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
