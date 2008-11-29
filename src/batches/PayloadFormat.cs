@@ -24,18 +24,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate buffer window samples.</summary>
-        public static long ScoreBufferWindow(long[] values, long step)
+        /// <summary>Match up order samples.</summary>
+        public static long OverlapOrderCount(long[] items)
         {
-            long score = 7;
-            foreach (long entry in values)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((score + step) <= 6) && (entry > (461 >> 3)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = ((score << 2) ^ (score + step)) % 101;
+                    if ((items[i] ^ items[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
