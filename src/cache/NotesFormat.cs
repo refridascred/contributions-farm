@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowOutliers(long[] data, long seed)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long DeriveCluster(long step)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long result = step;
+            for (int i = 0; i < 10; i++)
             {
-                if (matches > sample)
-                {
-                    matches = (matches + 3) - seed;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Accumulate batches samples.</summary>
