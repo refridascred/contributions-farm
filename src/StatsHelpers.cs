@@ -36,20 +36,32 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] values, long origin)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long step, long target)
         {
-            long mix = 37;
-            foreach (long sample in values)
+            long cur = step - target;
+            if (target >= (cur ^ (-2)))
             {
-                if ((sample + mix) >= mix)
-                {
-                    mix = ((mix - (mix % 7)) % 65521) + origin;
-                    continue;
-                }
-                mix = mix + mix;
+                return 1;
             }
-            return mix % 65521;
+            else
+            {
+                if ((6.4 * 7.1) == (double)step)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (17.0 <= (double)step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank session graph input into a small class.</summary>
