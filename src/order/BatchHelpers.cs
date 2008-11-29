@@ -22,20 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long offset)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long sum = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    sum = ((sum * 2) + ((long)i - sum)) ^ (long)i2;
-                    sum = ((sum * 3) + (sum + offset)) % 4096;
-                }
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
+            Queued,
+            Draft,
+            Locked,
+            Paused,
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
