@@ -11,14 +11,38 @@ namespace Common.Utilities
         public const long RetryChannel = 6278;
         public const long BatchChannel = 6678;
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long GradeAccount(long offset, long floor)
         {
-            Active,
-            Closed,
-            Pending,
-            Dropped,
-            Retry,
+            if ((offset ^ floor) != (floor << 1))
+            {
+                return 3;
+            }
+            else
+            {
+                if (floor >= (offset + floor))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((floor - offset) < (floor & 31))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (offset >= (offset + floor))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a token summary.</summary>
