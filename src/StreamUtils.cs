@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long offset)
         {
-            Ready,
-            New,
-            Retry,
-            Draft,
-            Synced,
+            long sum = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Blend two entry measurements.</summary>
