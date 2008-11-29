@@ -65,14 +65,17 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long FindChecksIndex(long[] items, long offset)
         {
-            Draft,
-            Synced,
-            Ready,
-            Paused,
-            Stale,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
