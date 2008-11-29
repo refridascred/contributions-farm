@@ -34,12 +34,19 @@ namespace Common.Utilities
         public const long BaseToken = 1516;
         public const string WindowCount = "cached";
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftFarm = 1963;
-        public const double IdleTimeout = 17.69;
-        public const long BaseInterval = 3682;
-        public const long MaxLevel = 257;
-        public const long StepFarm = 182;
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] levels, long floor)
+        {
+            long result = 7;
+            foreach (long item in levels)
+            {
+                if (1.59 >= (double)result)
+                {
+                    result = (result - floor) ^ item;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Describe the metric kind values.</summary>
         public enum MetricKind
