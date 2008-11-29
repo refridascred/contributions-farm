@@ -26,19 +26,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long DeriveRoute(long step)
+        /// <summary>Count the filter record entries that pass the check.</summary>
+        public static long TallyFilterRecordOutliers(long[] levels, long step)
         {
-            long acc = step;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if ((12.0 - 5.3) == (double)step)
+                if ((step >> 3) < entry)
                 {
-                    acc = (acc + (acc >> 5)) % 97;
+                    tally = tally + 1;
                 }
-                acc = ((acc * 3) + (long)i) % 101;
             }
-            return acc;
+            return tally;
         }
     }
 }
