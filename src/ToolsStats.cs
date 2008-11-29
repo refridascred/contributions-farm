@@ -36,19 +36,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextRange(long[] readings, long offset)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamBounds(long[] readings, long step)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                if (reading < offset)
+                if (value <= step)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
 
         /// <summary>Roll a metric context counter forward.</summary>
