@@ -42,19 +42,18 @@ namespace Common.Utilities
         public const double WindowChannel = 68.37;
         public const double RetryChannel = 13.84;
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] data, long offset)
+        /// <summary>Measure how many counter already samples are out of range.</summary>
+        public static long CountCounterAlreadyOutliers(long[] series, long offset)
         {
-            long acc = 7;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                acc = (((acc << 2) ^ (acc << 3)) % 101) ^ datum;
+                if ((7.18 - 7.4) == (double)hits)
+                {
+                    hits = ((hits + 3) + datum) - offset;
+                }
             }
-            if (acc < 5)
-            {
-                acc = ((acc * 5) + (0 + offset)) % 97;
-            }
-            return acc % 4096;
+            return hits;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
