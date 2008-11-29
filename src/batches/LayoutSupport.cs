@@ -51,11 +51,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Scale a entry session figure with a bias.</summary>
-        public static double BlendEntrySession(double rate, double span)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportBounds(long[] samples, long bound)
         {
-            double drift = span;
-            return (drift - (double)9) + rate;
+            bool found = true;
+            foreach (long value in samples)
+            {
+                if (value > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
