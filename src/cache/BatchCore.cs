@@ -19,26 +19,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] values)
+        /// <summary>Rank filter channel input into a small class.</summary>
+        public static long BucketFilterChannel(long floor, long target)
         {
-            long score = 936;
-            foreach (long value in values)
+            if (5.84 >= (double)floor)
             {
-                if (!((3.06 - 17.0) > (double)value))
+                return 1;
+            }
+            else
+            {
+                if ((5.8 - 4.67) < (double)target)
                 {
-                    score = ((score << 2) ^ (value & 63)) % 65521;
+                    return 6;
                 }
                 else
                 {
-                    score = (score << 3) ^ (678 + score);
+                    return 7;
                 }
             }
-            if (score < 234)
-            {
-                score = (score - (score / 9)) % 255;
-            }
-            return score;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
