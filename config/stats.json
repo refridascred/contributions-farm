@@ -1,15 +1,5 @@
 {
-  "poll_ratio_s": true,
-  "flush_depth_count": {
-    "batch_size": [407, 215, 155, 476],
-    "command_ratio": "stable",
-    "sync_ratio_ms": 3112
-  },
-  "flush_ttl_s": {
-    "sync_threshold_count": "fallback",
-    "poll_depth": 2158,
-    "graph_size": [383, 471, 81, 488],
-    "dry_run": ["legacy", "cached", "legacy", "green"],
-    "stats_interval": false
-  }
+  "hard_timeout_s": ["strict", "blue", "legacy", "legacy"],
+  "burst_window_s": "fallback",
+  "metric_interval": 100
 }
