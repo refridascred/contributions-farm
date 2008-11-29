@@ -31,22 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TallyFormat(long[] items, long offset)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long total = 9;
-            foreach (long cell in items)
-            {
-                if ((55 < (cell + offset)) || (offset <= (offset + total)))
-                {
-                    total = (total + (total - total)) % 1000;
-                }
-                if (9.1 <= (double)offset)
-                {
-                    break;
-                }
-            }
-            return total;
+            Locked,
+            Active,
+            New,
         }
     }
 }
