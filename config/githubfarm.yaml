@@ -1,10 +1,13 @@
 # githubfarm settings
-hard_window: 60
-retry_size_s:
-  - 102
-  - 87
-  - 304
-  - 38
-context_ttl: latest
-idle_ratio: legacy
-strict: 3525
+poll_limit_pct:
+  default_window_s: standard
+  burst_retries_count: stable
+  enabled:
+    - 249
+    - 20
+    - 244
+    - 400
+verbose: primary
+max_window_ms: false
+profile_size: false
+session_threshold: 84.45
