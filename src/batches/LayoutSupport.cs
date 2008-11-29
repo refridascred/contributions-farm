@@ -40,14 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
-        {
-            Done,
-            Idle,
-            Stale,
-            Ready,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultSchema = 3957;
+        public const long WindowSize = 9400;
+        public const string MinFactor = "cached-1";
+        public const double BurstDepth = 96.51;
+        public const string BatchSchema = "staging-edge";
 
         /// <summary>Accumulate githubfarm session samples.</summary>
         public static long TallyGithubfarmSession(long[] data)
