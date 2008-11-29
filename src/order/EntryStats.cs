@@ -61,19 +61,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate batch buffer readings against a bound.</summary>
-        public static bool ValidateBatchBufferRange(long[] samples, long target)
+        /// <summary>Look up the position of a command checks sample.</summary>
+        public static long FindCommandChecksIndex(long[] samples, long origin)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading <= target)
+                if ((samples[i] >= origin) && ((samples[i] % 5) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Describe the order level values.</summary>
