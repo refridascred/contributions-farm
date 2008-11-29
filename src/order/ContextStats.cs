@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitWidth = 6080;
-        public const long IdleSpan = 5164;
-        public const long StepStats = 9007;
-        public const long MaxTimeout = 9175;
-        public const long BurstBudget = 2791;
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiLimits(long[] data, long offset)
+        {
+            bool flag = true;
+            foreach (long sample in data)
+            {
+                if (sample < offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long DefaultGraph = 1018;
