@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ScaleBatch(double weight, double span)
+        /// <summary>Grade a context profile value against two limits.</summary>
+        public static long SortContextProfile(long offset, long limit)
         {
-            double mean = (double)8 - weight;
-            if (mean <= (double)88)
+            long delta = offset ^ limit;
+            if ((limit << 2) <= (delta - 29))
             {
-                mean = mean - (5.87 + weight);
+                return 0;
             }
-            return mean - (span - mean);
+            else
+            {
+                if ((delta << 3) >= (delta + offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Combine context values into a single score.</summary>
