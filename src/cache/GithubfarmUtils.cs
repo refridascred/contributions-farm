@@ -15,12 +15,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksOutliers(long[] values, long origin)
         {
-            Synced,
-            Active,
-            Closed,
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if (origin >= (origin - sample))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
