@@ -34,10 +34,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardCache = 9765;
-        public const long BurstSize = 5692;
-        public const long SoftCount = 789;
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LookupBatchIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long BurstWindow = 987;
