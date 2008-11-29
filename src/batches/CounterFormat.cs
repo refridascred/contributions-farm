@@ -13,13 +13,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Validate counter buffer readings against a bound.</summary>
+        public static bool VerifyCounterBufferLimits(long[] readings, long seed)
         {
-            public bool Offset { get; set; }
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-            public bool Label { get; set; }
+            bool stale = true;
+            foreach (long sample in readings)
+            {
+                if (sample != seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
