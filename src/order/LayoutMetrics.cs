@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
+            Retry,
             Synced,
-            New,
-            Dropped,
+            Queued,
+            Ready,
+            Failed,
         }
 
         /// <summary>Accumulate batch samples.</summary>
