@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit schema contributi readings against a rule.</summary>
-        public static long AuditSchemaContributiOutliers(long[] series, long bound)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long CompareGraphCount(long[] levels)
         {
             long matches = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((entry + 9) < (bound - (long)series.Length))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((levels[i] ^ levels[j]) != 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
