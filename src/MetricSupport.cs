@@ -33,19 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsRange(long[] readings, long seed)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long OverlapCounterCount(long[] samples)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell != seed)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((samples[i] - samples[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Define support limits and defaults.</summary>
