@@ -40,10 +40,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string WindowToken = "latest-v2";
-        public const long MinCount = 1246;
-        public const long DefaultToken = 6297;
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
+        {
+            Active,
+            Synced,
+            Locked,
+            Pending,
+            Queued,
+        }
 
         /// <summary>Scale a account stats figure with a bias.</summary>
         public static double AdjustAccountStats(double ratio, double offset)
