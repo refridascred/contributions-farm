@@ -31,25 +31,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank contributi farm input into a small class.</summary>
-        public static long GradeContributiFarm(long floor, long seed)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long cur = floor ^ seed;
-            if (((double)floor >= (11.0 - 9.2)) || ((143 + seed) > (cur / 2)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)floor != (3.22 / 9.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Active,
+            Pending,
+            Failed,
         }
 
         /// <summary>Hold a filter snapshot.</summary>
