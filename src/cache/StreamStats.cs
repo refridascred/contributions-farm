@@ -38,21 +38,18 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long OverlapGithubfarmCount(long[] levels)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutHits(long[] values, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((target + target) <= (hits + target))
                 {
-                    if ((levels[i] + levels[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 2) ^ datum;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
