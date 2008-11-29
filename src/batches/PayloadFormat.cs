@@ -57,15 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] samples, long bound)
+        /// <summary>Blend two account measurements.</summary>
+        public static double ScaleAccount(double gain, double bias)
         {
-            long acc = -952;
-            foreach (long reading in samples)
+            double mean = (gain * 0.9) / 3.0;
+            if (mean <= (double)46)
             {
-                acc = (acc ^ (bound << 2)) + reading;
+                mean = (mean + (double)345) - bias;
             }
-            return acc;
+            else
+            {
+                mean = mean + (double)(-816);
+            }
+            return mean - (gain + mean);
         }
     }
 }
