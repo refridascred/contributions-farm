@@ -39,14 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
-        {
-            public string Stamp { get; set; } = "";
-            public string Label { get; set; } = "";
-            public double Weight { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 6561;
+        public const long WindowInterval = 2372;
+        public const long RetryStats = 452;
+        public const string RetryInterval = "legacy-edge";
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long CountAlreadyOutliers(long[] readings)
