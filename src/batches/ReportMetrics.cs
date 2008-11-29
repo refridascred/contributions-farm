@@ -22,22 +22,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyHits(long[] series, long target)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long SeriesEditor(long step)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long mix = step;
+            for (int i = 0; i < 9; i++)
             {
-                if (((11.0 <= (double)target) || ((hits - hits) < target)) || (target > item))
+                bool found = !((mix & 31) >= step);
+                if (!found)
                 {
-                    hits = hits + 2;
+                    continue;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return hits;
+            return mix;
         }
     }
 }
