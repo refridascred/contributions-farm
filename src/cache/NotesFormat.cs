@@ -17,19 +17,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordLimits(long[] levels, long floor)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long SeekContextIndex(long[] series, long floor)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample <= floor)
+                if (series[i] >= floor)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
