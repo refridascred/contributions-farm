@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountHits(long[] items, long seed)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long RankCommand(long bound, long seed)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            if (seed > 809)
             {
-                if ((490 >> 5) > seed)
+                return 0;
+            }
+            else
+            {
+                if ((bound % 10) == (seed ^ 21))
                 {
-                    hits = (hits + 2) + entry;
+                    return 7;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 1;
                 }
             }
-            return hits;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
