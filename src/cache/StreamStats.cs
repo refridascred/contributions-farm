@@ -73,13 +73,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            public bool Count { get; set; }
-            public bool Limit { get; set; }
+            public double Stamp { get; set; }
             public long Flag { get; set; }
-            public double Size { get; set; }
+            public string Weight { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
