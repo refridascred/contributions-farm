@@ -69,11 +69,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a cluster metrics figure with a bias.</summary>
-        public static double ScaleClusterMetrics(double bias, double bias2)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            double bias3 = 4.41 * 8.92;
-            return (bias3 - (bias2 - bias3)) + bias;
+            Retry,
+            Stale,
+            New,
+            Locked,
+            Queued,
         }
     }
 }
