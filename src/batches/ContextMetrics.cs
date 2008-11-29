@@ -27,18 +27,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaHits(long[] samples, long origin)
+        /// <summary>Rank githubfarm stream input into a small class.</summary>
+        public static long RankGithubfarmStream(long floor, long origin)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            if (622 >= floor)
             {
-                if ((seen - seen) > (cell + seen))
+                return 0;
+            }
+            else
+            {
+                if ((37 * 3) > (origin >> 2))
                 {
-                    seen = (seen + 2) - origin;
+                    return 5;
+                }
+                else
+                {
+                    if ((floor >= (origin % 97)) && ((double)(-541) <= (double)origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((origin << 2) >= floor) && ((7.0 * 16.0) < (double)floor))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
