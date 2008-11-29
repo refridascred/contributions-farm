@@ -24,15 +24,19 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TallyReport(long[] levels)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportLimits(long[] levels, long step)
         {
-            long score = 21;
-            foreach (long datum in levels)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                score = (score ^ (datum ^ score)) % 1000;
+                if (sample <= step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Fold a list of session readings.</summary>
