@@ -86,11 +86,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowTimeout = 9952;
-        public const string IdleChecks = "legacy-1";
-        public const long RetryTimeout = 5598;
-        public const string HardChecks = "alpha-v2";
-        public const long MaxBudget = 9194;
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterRange(long[] items, long bound)
+        {
+            bool ok = true;
+            foreach (long entry in items)
+            {
+                if (entry <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
