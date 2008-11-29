@@ -41,19 +41,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiLimits(long[] data, long floor)
+        /// <summary>Find the first batches token entry that matches the target.</summary>
+        public static long LocateBatchesTokenIndex(long[] series, long target)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample <= floor)
+                if (series[i] < target)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Hold a session snapshot.</summary>
