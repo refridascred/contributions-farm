@@ -22,12 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            Retry,
-            Dropped,
             Done,
+            Paused,
+            Active,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
