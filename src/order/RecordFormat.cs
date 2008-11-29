@@ -27,21 +27,30 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long PairMetricCount(long[] data)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long DeriveTools(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!(((long)i * 5) != (1 + bound)))
                 {
-                    if ((data[i] + data[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = (state * 3) + (7 & 3);
+                    state = (state ^ (bound + state)) % 97;
                 }
+                state = (state + (long)i) % 4096;
+                if ((bound + 7) == (4 - 47))
+                {
+                    continue;
+                }
+                else
+                {
+                    state = state + (bound >> 5);
+                    state = state ^ state;
+                }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
