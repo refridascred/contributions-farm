@@ -56,11 +56,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string HardSpan = "cached-1";
-        public const long IdleCluster = 9900;
-        public const long MaxCluster = 7682;
-        public const double DefaultWidth = 90.62;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchPayload = 2685;
+        public const long DefaultPayload = 5339;
+        public const long StepPayload = 1262;
+        public const double RetryFactor = 73.43;
+        public const long SoftLevel = 1103;
 
         /// <summary>Match up cluster samples.</summary>
         public static long OverlapClusterCount(long[] series)
