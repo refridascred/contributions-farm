@@ -26,22 +26,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] data, long origin)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long result = 2;
-            foreach (long item in data)
-            {
-                if (item >= (origin + item))
-                {
-                    result = ((result * 5) + result) % 97;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (origin >> 3)) % 101;
-                }
-            }
-            return result % 65521;
+            public bool Offset { get; set; }
+            public double Level { get; set; }
+            public long Total { get; set; }
+            public long Label { get; set; }
         }
     }
 }
