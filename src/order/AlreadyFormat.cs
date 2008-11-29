@@ -42,17 +42,19 @@ namespace Common.Utilities
         public const double WindowChannel = 68.37;
         public const double RetryChannel = 13.84;
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long SeekChannelIndex(long[] readings, long floor)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] data, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 7;
+            foreach (long datum in data)
             {
-                if (readings[i] <= floor)
-                {
-                    return (long)i;
-                }
+                acc = (((acc << 2) ^ (acc << 3)) % 101) ^ datum;
             }
-            return -1;
+            if (acc < 5)
+            {
+                acc = ((acc * 5) + (0 + offset)) % 97;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
