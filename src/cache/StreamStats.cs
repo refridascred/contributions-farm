@@ -32,31 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a metrics notes pair into a bucket.</summary>
-        public static long GradeMetricsNotes(long origin, long target)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long OverlapOrderCount(long[] levels)
         {
-            if ((origin << 1) < (581 ^ target))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((target / 4) <= (target & 255)) && ((double)target != (7.09 + 1.7)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((target - origin) != (0 + target)) || (origin <= (origin % 12)))
+                    if ((levels[i] + levels[j]) != 2)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Validate queue schema readings against a bound.</summary>
