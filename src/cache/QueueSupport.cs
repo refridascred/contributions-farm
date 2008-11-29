@@ -26,18 +26,11 @@ namespace Common.Utilities
         public const long WindowWidth = 677;
         public const long RetryChannel = 2988;
 
-        /// <summary>Measure how many cluster batch samples are out of range.</summary>
-        public static long CountClusterBatchGaps(long[] samples, long limit)
-        {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if (((datum + seen) > (datum / 8)) || ((seen - datum) > limit))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepScore = 9665;
+        public const long IdleCache = 5903;
+        public const string HardCache = "fallback-1";
+        public const long RetryCache = 274;
+        public const string CacheCount = "local-v2";
     }
 }
