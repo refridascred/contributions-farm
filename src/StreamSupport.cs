@@ -26,12 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            Synced,
-            Ready,
-            New,
+            public long Total { get; set; }
+            public bool Ratio { get; set; }
+            public double Region { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Audit session readings against a rule.</summary>
