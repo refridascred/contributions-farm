@@ -30,21 +30,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up channel layout samples.</summary>
-        public static long MatchChannelLayoutCount(long[] items)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] samples, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 342;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = (((mark ^ (mark + mark)) % 65521) ^ cell) + step;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
