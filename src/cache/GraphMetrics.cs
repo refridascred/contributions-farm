@@ -61,13 +61,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
-        {
-            public long Ratio { get; set; }
-            public bool Count { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleLevel = 1660;
+        public const long BaseScore = 8995;
+        public const string BurstWidth = "fallback-v2";
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string IdleScore = "cached-v2";
