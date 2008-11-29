@@ -31,13 +31,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelOutliers(long[] readings, long target)
         {
-            Synced,
-            Paused,
-            Active,
-            Locked,
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((5 - entry) >= (hits / 2))
+                {
+                    hits = (hits + 3) + target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every queue session entry stays within the limit.</summary>
