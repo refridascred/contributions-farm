@@ -15,13 +15,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Check that every already cluster entry stays within the limit.</summary>
+        public static bool VerifyAlreadyClusterBounds(long[] readings, long limit)
         {
-            Done,
-            Stale,
-            Ready,
-            New,
+            bool ok = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Blend two metric measurements.</summary>
