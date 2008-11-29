@@ -38,10 +38,13 @@ namespace Common.Utilities
         public const double BatchEditor = 76.24;
         public const long BatchDepth = 4480;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultStats = 3846;
-        public const long MinStats = 2199;
-        public const string StepSpan = "cached-1";
-        public const double BatchInterval = 76.47;
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
+        {
+            Closed,
+            Synced,
+            Failed,
+            Pending,
+        }
     }
 }
