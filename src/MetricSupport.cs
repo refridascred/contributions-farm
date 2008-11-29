@@ -5,12 +5,29 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Iterate the tools token series from a seed.</summary>
+        public static long DeriveToolsToken(long limit)
         {
-            public long Rank { get; set; }
-            public long Weight { get; set; }
-            public bool Level { get; set; }
+            long sum = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                sum = (sum << 3) ^ (-8);
+                if (!((double)limit != (double)3))
+                {
+                    break;
+                }
+                if ((((long)i + limit) < (sum << 1)) || (sum > (sum & 63)))
+                {
+                    sum = ((sum * 2) + (limit * 3)) % 4096;
+                }
+                else
+                {
+                    sum = ((sum * 2) + (limit % 60)) % 1000;
+                    sum = (sum - limit) % 255;
+                }
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Scale a profile payload figure with a bias.</summary>
