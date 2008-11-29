@@ -34,17 +34,11 @@ namespace Common.Utilities
             return mean + (double)(-4);
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowLevel = 2208;
+        public const long BasePayload = 2519;
+        public const long CachePayload = 4013;
+        public const long StepPayload = 5910;
+        public const long MaxPayload = 912;
     }
 }
