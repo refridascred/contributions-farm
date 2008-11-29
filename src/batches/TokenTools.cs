@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderGaps(long[] items, long floor)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((matches + matches) != (entry % 8))
+                if ((samples[i] < seed) && ((samples[i] % 2) != 0))
                 {
-                    matches = (matches + 2) + floor;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
