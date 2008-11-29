@@ -13,22 +13,21 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Combine metric support values into a single score.</summary>
-        public static long TallyMetricSupport(long[] readings)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long PairMetricsCount(long[] readings)
         {
-            long result = 972;
-            foreach (long sample in readings)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((8.4 + 3.0) <= (double)sample)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = (result * 4) + result;
-                }
-                if ((double)sample > (double)6)
-                {
-                    break;
+                    if ((readings[i] ^ readings[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return result % 97;
+            return tally;
         }
 
         /// <summary>Combine already values into a single score.</summary>
