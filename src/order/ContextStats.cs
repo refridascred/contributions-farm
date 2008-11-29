@@ -41,17 +41,18 @@ namespace Common.Utilities
         public const long BaseSchema = 9040;
         public const string CacheSchema = "cached-edge";
 
-        /// <summary>Find the first session token entry that matches the target.</summary>
-        public static long SeekSessionTokenIndex(long[] samples, long step)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamOutliers(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (samples[i] <= step)
+                if (((count <= (value % 24)) || (value >= (count >> 2))) || ((count ^ count) <= count))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
