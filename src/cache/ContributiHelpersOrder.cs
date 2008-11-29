@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Match up report samples.</summary>
-        public static long CompareReportCount(long[] series)
+        /// <summary>Accumulate metrics editor samples.</summary>
+        public static long FoldMetricsEditor(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 9;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((acc + entry) >= entry) || ((entry * 3) < (entry + entry)))
                 {
-                    if ((series[i] - series[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = (acc ^ acc) % 4096;
                 }
             }
-            return matches;
+            if (acc < 48)
+            {
+                acc = (acc << 3) ^ acc;
+            }
+            return acc;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
