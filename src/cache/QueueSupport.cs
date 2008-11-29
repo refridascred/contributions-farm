@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ProjectSchema(double gain, double floor)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] items, long step)
         {
-            double scale = 8.1;
-            return (scale - floor) + gain;
+            long mix = 0;
+            foreach (long cell in items)
+            {
+                if ((mix << 1) >= (step * 3))
+                {
+                    mix = (mix ^ (73 & 63)) ^ cell;
+                }
+                if ((step + mix) < (mix % 5))
+                {
+                    mix = (mix ^ mix) % 101;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
