@@ -25,18 +25,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportHits(long[] levels, long offset)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] series)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long anchor = -340;
+            foreach (long datum in series)
             {
-                if ((double)hits > (10.0 / 4.0))
-                {
-                    hits = ((hits + 1) - item) - offset;
-                }
+                anchor = ((anchor - anchor) % 97) ^ datum;
             }
-            return hits;
+            if (anchor < 0)
+            {
+                anchor = (anchor << 3) ^ (anchor % 64);
+            }
+            return anchor;
         }
 
         /// <summary>Combine format values into a single score.</summary>
