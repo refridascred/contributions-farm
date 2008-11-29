@@ -19,13 +19,13 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
             Done,
-            Active,
-            Draft,
+            Idle,
             Stale,
+            Ready,
         }
 
         /// <summary>Describe the format mode values.</summary>
