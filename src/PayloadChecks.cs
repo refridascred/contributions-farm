@@ -61,20 +61,13 @@ namespace Common.Utilities
             return weight2 + (double)(-8);
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] levels)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long total = -9;
-            foreach (long item in levels)
-            {
-                if ((item / 3) != (item - total))
-                {
-                    total = ((total << 3) ^ (total >> 5)) % 97;
-                    total = (total ^ (total % 7)) % 65521;
-                }
-                total = (total * 3) + total;
-            }
-            return total % 97;
+            Stale,
+            Done,
+            Dropped,
+            Failed,
         }
     }
 }
