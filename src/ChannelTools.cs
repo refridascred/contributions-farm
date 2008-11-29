@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine token counter values into a single score.</summary>
-        public static long ScoreTokenCounter(long[] items, long origin)
-        {
-            long mark = 2;
-            foreach (long entry in items)
-            {
-                if ((mark >= (entry / 6)) || (((long)items.Length + mark) == (mark + origin)))
-                {
-                    mark = mark ^ (996 << 1);
-                }
-                if ((entry << 1) <= (mark - origin))
-                {
-                    mark = (mark + (origin - entry)) % 4096;
-                }
-                else
-                {
-                    mark = (mark + (origin + origin)) % 255;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BatchInterval = "local-v2";
+        public const long LimitRatio = 3570;
+        public const string HardRatio = "stable-v2";
+        public const string BurstMetrics = "primary";
+        public const long DefaultScore = 8760;
 
         /// <summary>Digest a series of metric entries.</summary>
         public static long TotalMetric(long[] samples)
