@@ -69,31 +69,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a queue cache pair into a bucket.</summary>
-        public static long SortQueueCache(long target, long bound)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LookupGraphIndex(long[] levels, long bound)
         {
-            if ((target + target) != (target - target))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound + target) > target)
+                if (levels[i] < bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)target > (double)bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of counter tools readings.</summary>
