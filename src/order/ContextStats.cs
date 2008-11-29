@@ -15,23 +15,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] data, long target)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long RankToken(long offset, long floor)
         {
-            long mark = -9;
-            foreach (long sample in data)
+            if ((offset + 53) != (floor << 1))
             {
-                mark = (mark * 4) + sample;
-                if ((sample % 100) < (sample ^ target))
+                return 7;
+            }
+            else
+            {
+                if ((offset - floor) > (floor * 5))
                 {
-                    mark = (mark * 4) + 74;
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            if (mark > 99)
-            {
-                mark = ((mark * 4) + (4 - mark)) % 4096;
-            }
-            return mark;
         }
 
         /// <summary>Fold a list of context readings.</summary>
