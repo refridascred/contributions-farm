@@ -25,21 +25,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up profile layout samples.</summary>
-        public static long CompareProfileLayoutCount(long[] levels)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long ClassifyEditor(long limit, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((limit + 59) <= 172)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (!(6 > offset))
                 {
-                    if ((levels[i] - levels[j]) > 10)
+                    return 6;
+                }
+                else
+                {
+                    if ((limit >= offset) || (647 < (limit << 2)))
                     {
-                        matches = matches + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((limit % 8) != (8 * 3)) || ((offset / 9) < limit))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Audit session report readings against a rule.</summary>
