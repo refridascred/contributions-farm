@@ -33,38 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long ClassifyNotes(long step, long floor)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            if (floor < (step / 4))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((10.0 + 9.0) > (double)floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((1 - 2) == (floor & 63))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!(step > (step ^ step)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Dropped,
+            Stale,
+            Queued,
+            Idle,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
