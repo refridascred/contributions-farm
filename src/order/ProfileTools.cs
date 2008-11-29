@@ -27,13 +27,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Locate a command reading by value.</summary>
+        public static long SeekCommandIndex(long[] readings, long origin)
         {
-            Draft,
-            Retry,
-            Dropped,
-            Synced,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
