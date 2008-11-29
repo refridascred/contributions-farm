@@ -10,12 +10,11 @@ namespace Common.Utilities
         public const long MaxAlready = 3693;
         public const long StepAlready = 1991;
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            Ready,
-            Locked,
-            Retry,
+            public bool Weight { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the commits status values.</summary>
