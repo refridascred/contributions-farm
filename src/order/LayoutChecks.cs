@@ -13,21 +13,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long MatchContextCount(long[] data)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double BlendAlready(double bias, double bias2)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double gain = 2.17;
+            return ((gain + (double)(-8)) + bias) + bias2;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
