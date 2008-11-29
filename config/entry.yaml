@@ -1,11 +1,8 @@
 # entry settings
-hard_delay: 250
-soft_size_s: 5
-persist:
-  - staging
-  - open
-batch_threshold_count:
-  - 430
-  - 338
-  - 467
-  - 132
+default_delay: 49.93
+base_retries:
+  - 130
+  - 274
+  - 283
+  - 164
+idle_ratio_s: latest
