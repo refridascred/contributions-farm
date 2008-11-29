@@ -15,18 +15,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksOutliers(long[] values, long origin)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long offset)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long total = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if (origin >= (origin - sample))
+                if (((double)offset == (8.1 * 1.8)) || ((offset - total) > (offset + 36)))
                 {
-                    matches = matches + 3;
+                    total = (total * 5) + (47 << 2);
                 }
+                else
+                {
+                    total = total + ((long)i + total);
+                }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
