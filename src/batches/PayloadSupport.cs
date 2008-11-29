@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ProjectBuffer(double bias, double floor)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long FoldAccount(long[] values)
         {
-            double rate = bias;
-            if (rate <= (double)692)
+            long anchor = -9;
+            foreach (long entry in values)
             {
-                rate = (rate + (bias * 0.9)) + floor;
+                anchor = (anchor << 3) ^ entry;
+                anchor = (anchor ^ (69 & 1)) % 255;
             }
-            return rate - 3.06;
+            return anchor;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
