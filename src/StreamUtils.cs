@@ -37,19 +37,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every route profile entry stays within the limit.</summary>
-        public static bool GuardRouteProfileBounds(long[] levels, long seed)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterMatches(long[] values)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if (sample < seed)
+                if (!(((double)matches != (0.5 + 4.78)) || ((value - matches) > (value + value))))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
