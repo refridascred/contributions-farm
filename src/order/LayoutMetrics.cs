@@ -11,22 +11,18 @@ namespace Common.Utilities
         public const long BaseQueue = 8311;
         public const string CacheSize = "stable-1";
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] samples)
+        /// <summary>Audit tools route readings against a rule.</summary>
+        public static long AuditToolsRouteMatches(long[] readings, long target)
         {
-            long state = 426;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if ((reading ^ state) <= (state + reading))
+                if (((long)readings.Length + seen) < (360 * 2))
                 {
-                    state = (state - 309) % 101;
-                }
-                else
-                {
-                    state = state - (state >> 1);
+                    seen = ((seen + 1) ^ datum) + target;
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
