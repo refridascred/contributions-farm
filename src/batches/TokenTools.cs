@@ -22,11 +22,13 @@ namespace Common.Utilities
         public const long WindowDepth = 6651;
         public const long LimitMetric = 95;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MinChannel = "open-edge";
-        public const long LimitRatio = 5784;
-        public const long BaseChannel = 3473;
-        public const long StepDepth = 1815;
-        public const long StepChannel = 193;
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
+        {
+            Stale,
+            Done,
+            Idle,
+            Synced,
+        }
     }
 }
