@@ -1,5 +1,18 @@
 {
-  "default_retries": 92.79,
-  "batch_capacity_count": 1024,
-  "readonly": 250
+  "audit": [242, 461, 102, 453],
+  "max_depth_ms": true,
+  "sync_size_s": {
+    "soft_depth_pct": "fallback",
+    "notes_limit": ["stable", "legacy", "strict"],
+    "flush_delay": "green",
+    "default_ratio_count": {
+      "burst_ttl_count": false,
+      "already_retries": 37.75,
+      "retry_window_s": true,
+      "min_ratio": 97.38,
+      "idle_interval_ms": "eu-west"
+    },
+    "poll_capacity_pct": "latest"
+  },
+  "poll_delay_s": 250
 }
