@@ -12,19 +12,17 @@ namespace Common.Utilities
             return rate - (rate - span);
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphBounds(long[] data, long offset)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] items, long bound)
         {
-            bool found = true;
-            foreach (long entry in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry <= offset)
+                if (items[i] > bound)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Describe the account kind values.</summary>
