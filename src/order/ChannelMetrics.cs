@@ -19,10 +19,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            public bool Offset { get; set; }
+            public string Weight { get; set; } = "";
             public double Token { get; set; }
         }
 
