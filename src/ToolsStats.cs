@@ -62,13 +62,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            Dropped,
-            Paused,
-            Queued,
+            Active,
             Failed,
+            Closed,
+            Synced,
         }
     }
 }
