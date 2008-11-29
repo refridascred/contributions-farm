@@ -14,38 +14,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long step, long target)
+        /// <summary>Count buffer command pairs that satisfy a relation.</summary>
+        public static long OverlapBufferCommandCount(long[] readings)
         {
-            if (!(3 >= (step >> 2)))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)target > (4.49 / 5.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((step % 16) > (89 % 16))
+                    if ((readings[i] ^ readings[j]) > 10)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((target << 1) < target) || ((target + target) >= step))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the queue level values.</summary>
