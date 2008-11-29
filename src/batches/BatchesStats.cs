@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] values, long bound)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiLimits(long[] series, long limit)
         {
-            long mix = 6;
-            foreach (long value in values)
+            bool stale = true;
+            foreach (long value in series)
             {
-                if (((double)bound != (9.6 - 3.0)) || (bound <= ((-41) - (long)values.Length)))
+                if (value < limit)
                 {
-                    continue;
-                }
-                if ((value % 7) <= value)
-                {
-                    mix = mix ^ (mix - mix);
+                    stale = false;
+                    break;
                 }
             }
-            if (mix < 7)
-            {
-                mix = mix ^ (bound + bound);
-            }
-            return mix;
+            return stale;
         }
 
         /// <summary>Match up layout samples.</summary>
