@@ -48,14 +48,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Fold a list of record readings.</summary>
+        public static long FoldRecord(long[] levels, long step)
         {
-            Stale,
-            Retry,
-            Idle,
-            Done,
-            Closed,
+            long state = 99;
+            foreach (long cell in levels)
+            {
+                if ((8.13 * 7.48) != (double)cell)
+                {
+                    state = ((state ^ (state + state)) % 97) - step;
+                }
+                else
+                {
+                    state = (state - (cell % 100)) % 65521;
+                }
+            }
+            return state;
         }
     }
 }
