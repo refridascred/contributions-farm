@@ -32,38 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long SortRecord(long target, long offset)
+        /// <summary>Audit metric farm readings against a rule.</summary>
+        public static long AuditMetricFarmOutliers(long[] samples, long limit)
         {
-            if ((double)offset != (5.26 + 9.5))
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((offset ^ target) == (target + target)))
+                if (!((960 >= (datum >> 5)) && ((limit & 1) <= limit)))
                 {
-                    return 6;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    if ((target + offset) <= target)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (offset > 4)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Validate queue schema readings against a bound.</summary>
