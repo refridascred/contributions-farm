@@ -13,25 +13,16 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long ClassifyChannel(long offset, long target)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long SeriesTools(long origin)
         {
-            long next = offset + target;
-            if ((offset ^ next) < (630 % 16))
+            long mark = origin;
+            for (int i = 0; i < 10; i++)
             {
-                return 3;
+                mark = (mark * 5) + (origin + origin);
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if (!(6.61 <= (double)next))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return mark;
         }
 
         /// <summary>Define context limits and defaults.</summary>
