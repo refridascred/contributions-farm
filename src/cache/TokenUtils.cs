@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryTimeout = 1545;
-        public const long RetryRoute = 351;
-        public const string DefaultRoute = "latest-1";
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
+        {
+            public long Count { get; set; }
+            public string Total { get; set; } = "";
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string HardBudget = "legacy-v2";
