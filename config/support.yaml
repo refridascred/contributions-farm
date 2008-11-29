@@ -1,17 +1,10 @@
 # support settings
-enabled: 500
-readonly:
-  - edge
-  - primary
-  - strict
-  - edge
-support_timeout: 16
-layout_capacity:
-  checks_ratio: stable
-  payload_delay: 86.17
-  record_depth: 82
-  burst_depth_count: 250
-  hard_timeout:
-    - 247
-    - 113
-    - 31
+audit: 46
+base_threshold: 100
+counter_capacity:
+  - 473
+  - 444
+  - 357
+  - 254
+metric_delay: latest
+graph_limit: true
