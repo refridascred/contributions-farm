@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderGaps(long[] samples, long floor)
         {
-            Draft,
-            Ready,
-            Queued,
-            Active,
-            Idle,
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if (value < (value + floor))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank command input into a small class.</summary>
