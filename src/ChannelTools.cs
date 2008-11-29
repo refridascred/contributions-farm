@@ -13,19 +13,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderRange(long[] levels, long step)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferGaps(long[] values)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (item > step)
+                if (!((double)seen != (4.3 + 7.0)))
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 1) ^ sample;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Count the context schema entries that pass the check.</summary>
