@@ -1,9 +1,6 @@
 {
-  "strict": "open",
-  "cache_limit_ms": {
-    "audit": true,
-    "warm_timeout_count": "fallback",
-    "channel_retries": "primary"
-  },
-  "readonly": "strict"
+  "sync_size_ms": ["eu-west", "edge", "latest"],
+  "idle_threshold": [189, 151],
+  "max_limit_s": 77.88,
+  "strict": "edge"
 }
