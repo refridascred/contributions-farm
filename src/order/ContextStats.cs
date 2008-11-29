@@ -5,25 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a githubfarm context counter forward.</summary>
-        public static long StepGithubfarmContext(long floor)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long anchor = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                if (((floor << 1) > (6 << 2)) && ((16.0 * 2.64) >= (double)floor))
-                {
-                    anchor = (anchor ^ (anchor + anchor)) % 255;
-                    break;
-                }
-                if ((anchor + (long)i) < floor)
-                {
-                    anchor = ((anchor << 2) ^ (anchor * 2)) % 1000;
-                    break;
-                }
-                anchor = ((anchor * 5) + (long)i) % 1000;
-            }
-            return anchor;
+            Queued,
+            Closed,
+            Stale,
+            Synced,
+            Failed,
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
