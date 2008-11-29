@@ -14,32 +14,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long ClassifyFormat(long offset, long bound)
+        /// <summary>Check that every schema profile entry stays within the limit.</summary>
+        public static bool ValidateSchemaProfileRange(long[] values, long step)
         {
-            long delta = offset - bound;
-            if (!((offset - 9) == (offset + 48)))
+            bool ready = true;
+            foreach (long datum in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)offset >= (4.6 * 7.91))
+                if (datum >= step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((delta % 60) >= (offset + bound)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Describe the context state values.</summary>
