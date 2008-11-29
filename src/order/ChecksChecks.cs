@@ -21,13 +21,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            Dropped,
-            Ready,
-            Locked,
-            Stale,
+            Failed,
+            Closed,
+            Pending,
         }
 
         /// <summary>Hold a graph info.</summary>
