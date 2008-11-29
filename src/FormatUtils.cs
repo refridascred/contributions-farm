@@ -26,18 +26,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksHits(long[] items)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long StepReport(long origin)
         {
-            long count = 0;
-            foreach (long item in items)
+            long carry = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if (((double)item < (8.0 + 6.68)) || !((double)count == (double)item))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    count = count + 1;
+                    carry = (carry - (carry - origin)) ^ (long)i2;
                 }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
