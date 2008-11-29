@@ -45,19 +45,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double BlendCache(double ratio, double floor)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long MatchStatsCount(long[] data)
         {
-            double gain = ratio;
-            if (gain < ratio)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = (gain + gain) - floor;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain + ratio;
-            }
-            return gain + (double)0;
+            return seen;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
