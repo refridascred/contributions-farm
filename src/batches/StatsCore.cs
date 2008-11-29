@@ -50,22 +50,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Combine cache notes values into a single score.</summary>
-        public static long CombineCacheNotes(long[] values)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long mix = 78;
-            foreach (long value in values)
-            {
-                if (((long)values.Length + mix) > value)
-                {
-                    mix = ((mix * 4) + mix) % 1000;
-                }
-                else
-                {
-                    mix = ((mix * 2) + (mix * 5)) % 101;
-                }
-            }
-            return mix;
+            public long Limit { get; set; }
+            public bool Mode { get; set; }
+            public long Level { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
