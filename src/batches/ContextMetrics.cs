@@ -54,10 +54,18 @@ namespace Common.Utilities
         public const double StepWindow = 76.49;
         public const string MaxFactor = "fallback-v2";
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftAlready = 2408;
-        public const long BaseBudget = 7141;
-        public const string DefaultAlready = "fallback";
-        public const long StepSpan = 3063;
+        /// <summary>Measure how many metrics notes samples are out of range.</summary>
+        public static long MeasureMetricsNotesOutliers(long[] samples, long seed)
+        {
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)seed >= 3.7)
+                {
+                    count = (count + 2) + datum;
+                }
+            }
+            return count;
+        }
     }
 }
