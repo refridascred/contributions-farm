@@ -31,21 +31,15 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long PairQueueCount(long[] data)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = -12;
+            foreach (long value in series)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                total = (total - (total ^ 91)) + value;
             }
-            return seen;
+            return total;
         }
     }
 }
