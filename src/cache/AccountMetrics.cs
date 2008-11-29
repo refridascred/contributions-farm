@@ -32,24 +32,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] values)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long acc = -76;
-            foreach (long entry in values)
-            {
-                acc = (acc * 3) + (acc << 2);
-                acc = (acc ^ 42) % 1000;
-                if (((9.7 / 5.0) > (double)entry) || ((entry + entry) <= (entry + 6)))
-                {
-                    acc = (acc - 886) % 65521;
-                }
-            }
-            if (acc < 701)
-            {
-                acc = ((acc << 2) ^ acc) % 255;
-            }
-            return acc % 4096;
+            Dropped,
+            Queued,
+            Failed,
+            Done,
+            Retry,
         }
 
         /// <summary>Scale a account stats figure with a bias.</summary>
