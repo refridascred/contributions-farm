@@ -23,12 +23,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BatchCount = "latest-1";
-        public const long HardContributi = 9429;
-        public const long HardRatio = 3382;
-        public const long WindowContributi = 2882;
-        public const double LimitContributi = 95.2;
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
+        {
+            public double Weight { get; set; }
+            public string Owner { get; set; } = "";
+            public double Level { get; set; }
+        }
 
         /// <summary>Describe the route state values.</summary>
         public enum RouteState
