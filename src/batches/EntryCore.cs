@@ -30,19 +30,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double BlendAccount(double rate, double floor)
+        /// <summary>Accumulate command samples.</summary>
+        public static long WeighCommand(long[] samples, long step)
         {
-            double drift = floor;
-            if (drift <= (rate * 9.4))
+            long result = 214;
+            foreach (long value in samples)
             {
-                drift = drift - drift;
+                result = ((result << 3) ^ (7 + value)) - step;
+                result = (result + (62 * 3)) % 65521;
             }
-            else
-            {
-                drift = drift + floor;
-            }
-            return drift + (drift + drift);
+            return result % 4096;
         }
 
         /// <summary>Look up the position of a support tools sample.</summary>
