@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next buffer value.</summary>
-        public static double ScaleBuffer(double rate, double span)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LookupEditorIndex(long[] readings, long floor)
         {
-            double drift = (span - span) / 5.0;
-            if (drift >= rate)
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = drift - (double)3;
+                if (readings[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift + (double)224;
-            }
-            return drift - span;
+            return -1;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
