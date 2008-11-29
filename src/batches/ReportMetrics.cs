@@ -12,14 +12,14 @@ namespace Common.Utilities
         public const long BatchCount = 2116;
         public const string StepStats = "alpha-1";
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
+            Queued,
+            Dropped,
+            Stale,
             Active,
-            Draft,
-            Paused,
-            Pending,
-            Closed,
+            New,
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
