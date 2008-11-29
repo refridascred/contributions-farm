@@ -1,13 +1,7 @@
 {
-  "buffer_delay": true,
-  "max_ratio_count": "latest",
-  "sync_threshold_s": {
-    "flush_window_pct": [190, 241, 378],
-    "poll_threshold_ms": 15,
-    "poll_window": true,
-    "batches_timeout": 30.84,
-    "max_limit_ms": "cached"
-  },
-  "command_capacity": [107, 59, 136],
-  "sync_window_ms": 8605
+  "idle_delay_count": "fallback",
+  "warm_delay_s": ["local", "staging", "local"],
+  "verbose": ["standard", "open", "strict", "edge"],
+  "min_limit_ms": 53.83,
+  "persist": 48.71
 }
