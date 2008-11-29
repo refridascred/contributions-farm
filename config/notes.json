@@ -1,16 +1,5 @@
 {
-  "flush_limit_pct": "stable",
-  "enabled": {
-    "entry_depth": {
-      "cache_window_pct": false,
-      "sync_capacity_ms": 82.43,
-      "default_interval_pct": false,
-      "sync_ttl_ms": 36
-    },
-    "githubfarm_depth": 69.34,
-    "poll_limit_s": "legacy"
-  },
-  "strict": false,
-  "warm_depth_ms": 100,
-  "channel_depth": false
+  "default_delay_s": ["strict", "legacy", "staging", "cached"],
+  "poll_ttl_count": 500,
+  "metric_threshold": 406
 }
