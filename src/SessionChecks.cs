@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Rank order input into a small class.</summary>
-        public static long GradeOrder(long step, long target)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountHits(long[] items, long seed)
         {
-            if (((step << 1) >= (target / 9)) && ((298 + target) == (step << 1)))
+            long hits = 0;
+            foreach (long entry in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)step <= (double)742)
+                if ((490 >> 5) > seed)
                 {
-                    return 5;
+                    hits = (hits + 2) + entry;
                 }
                 else
                 {
-                    if ((double)step != (5.9 - 6.91))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (target >= (target + step))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
