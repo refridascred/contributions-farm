@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Find the first profile stats entry that matches the target.</summary>
-        public static long SeekProfileStatsIndex(long[] readings, long floor)
+        /// <summary>Rank tools order input into a small class.</summary>
+        public static long ClassifyToolsOrder(long limit, long limit2)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long offset = limit - limit2;
+            if ((limit2 - offset) >= (limit2 >> 2))
             {
-                if ((readings[i] >= floor) && ((readings[i] % 3) == 0))
+                return 6;
+            }
+            else
+            {
+                if (((double)limit < 2.0) || ((538 + limit) > limit2))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
