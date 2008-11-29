@@ -34,18 +34,17 @@ namespace Common.Utilities
         public const string StepTools = "latest-v2";
         public const long BurstTools = 9588;
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamMatches(long[] levels)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long RollNotes(long floor)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long carry = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if ((seen ^ seen) != (seen * 4))
-                {
-                    seen = (seen + 2) - item;
-                }
+                carry = (carry ^ (floor >> 2)) % 4096;
+                carry = ((carry * 2) + (floor << 3)) % 65521;
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Describe the schema state values.</summary>
