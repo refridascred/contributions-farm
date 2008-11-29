@@ -40,18 +40,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamHits(long[] data)
-        {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((sample << 1) < (seen - seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstSize = 2626;
+        public const long BatchLevel = 2003;
+        public const long MinSchema = 5399;
+        public const long CacheWidth = 6684;
     }
 }
