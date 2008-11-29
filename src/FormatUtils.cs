@@ -27,35 +27,28 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank cluster tools input into a small class.</summary>
-        public static long RankClusterTools(long offset, long target)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long SortCache(long offset, long step)
         {
-            if (((8.91 + 7.0) >= (double)offset) && ((5.56 + 19.0) < (double)8))
+            if ((offset >> 4) == (step ^ offset))
             {
-                return 8;
+                return 0;
             }
             else
             {
-                if (target < offset)
+                if ((offset << 3) == (offset / 6))
                 {
-                    return 3;
+                    return 1;
                 }
                 else
                 {
-                    if ((target + offset) < (51 + 1))
+                    if (offset < step)
                     {
-                        return 7;
+                        return 8;
                     }
                     else
                     {
-                        if ((target ^ 91) > (offset + target))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        return 7;
                     }
                 }
             }
