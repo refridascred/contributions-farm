@@ -17,18 +17,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long SeekContextIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseRecord = 7051;
+        public const long HardRecord = 8176;
+        public const long WindowRecord = 4250;
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long TallyBuffer(long[] values)
