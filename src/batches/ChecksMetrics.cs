@@ -29,17 +29,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first metrics checks entry that matches the target.</summary>
-        public static long FindMetricsChecksIndex(long[] values, long seed)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if (values[i] == seed)
+                long diff = (7 + state) + ((long)i - (-54));
+                if (diff > ((long)i - 9))
                 {
-                    return (long)i;
+                    diff = (diff - (offset << 2)) % 4096;
+                    continue;
                 }
+                diff = diff - (offset & 15);
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Rank metrics githubfarm input into a small class.</summary>
