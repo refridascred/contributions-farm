@@ -1,8 +1,6 @@
 {
-  "sync_threshold": false,
-  "report_delay": true,
-  "burst_limit_count": "edge",
-  "audit": "primary",
-  "batch_delay_pct": ["staging", "stable", "primary", "eu-west"],
-  "soft_retries": 250
+  "max_size_ms": ["eu-west", "standard", "primary", "latest"],
+  "enabled": [346, 475, 251],
+  "hard_interval_ms": ["standard", "open"],
+  "cache_interval_s": "green"
 }
