@@ -27,12 +27,25 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double DefaultToken = 28.94;
-        public const double WindowToken = 87.45;
-        public const string BurstToken = "cached-1";
-        public const long BaseToken = 1516;
-        public const string WindowCount = "cached";
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long SortEditor(long target, long bound)
+        {
+            if (((target - bound) <= (target << 2)) || ((6.0 * 2.5) < (double)target))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((2.88 * 5.4) >= (double)bound)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long TallyBatches(long[] levels, long floor)
