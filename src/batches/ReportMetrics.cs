@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long floor)
         {
-            Active,
-            Ready,
-            Synced,
-            Dropped,
+            long sum = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                sum = ((sum << 2) ^ floor) % 255;
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
