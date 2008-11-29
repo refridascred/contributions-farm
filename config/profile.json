@@ -1,21 +1,7 @@
 {
-  "window_delay": "edge",
-  "entry_capacity": "blue",
-  "cache_delay_pct": {
-    "editor_window": true,
-    "min_delay_pct": {
-      "schema_depth": 474,
-      "hard_size": "blue",
-      "format_interval": false,
-      "flush_capacity_count": 96
-    },
-    "cache_ratio_pct": ["primary", "standard", "open", "open"],
-    "cache_threshold_s": 72.57
-  },
-  "poll_retries": 31,
-  "base_retries_ms": {
-    "poll_threshold_s": 36,
-    "flush_ttl": "eu-west",
-    "soft_timeout": true
-  }
+  "sync_retries": 91.33,
+  "report_retries": "edge",
+  "channel_limit": true,
+  "default_ttl_ms": 3602,
+  "dry_run": 4495
 }
