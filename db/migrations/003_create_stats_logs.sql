@@ -2,9 +2,7 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     state TEXT NOT NULL DEFAULT 'new',
-    token TEXT,
-    count INTEGER NOT NULL DEFAULT 0,
-    level INTEGER,
+    created_at TIMESTAMP,
     label TEXT
 );
 
