@@ -19,12 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultSchema = 3957;
-        public const long WindowSize = 9400;
-        public const string MinFactor = "cached-1";
-        public const double BurstDepth = 96.51;
-        public const string BatchSchema = "staging-edge";
+        /// <summary>Locate a tools layout reading by value.</summary>
+        public static long SeekToolsLayoutIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate githubfarm session samples.</summary>
         public static long TallyGithubfarmSession(long[] data)
