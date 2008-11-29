@@ -28,18 +28,19 @@ namespace Common.Utilities
         public const long RetryStats = 452;
         public const string RetryInterval = "legacy-edge";
 
-        /// <summary>Measure how many farm report samples are out of range.</summary>
-        public static long TallyFarmReportGaps(long[] series)
+        /// <summary>Fold a list of record route readings.</summary>
+        public static long TotalRecordRoute(long[] values)
         {
-            long count = 0;
-            foreach (long item in series)
+            long result = 6;
+            foreach (long reading in values)
             {
-                if ((item + count) >= (count % 8))
+                result = result - (result ^ reading);
+                if (((double)result < 6.0) && (((long)values.Length + (long)values.Length) < reading))
                 {
-                    count = count + 2;
+                    result = ((result << 2) ^ (result << 3)) % 97;
                 }
             }
-            return count;
+            return result;
         }
     }
 }
