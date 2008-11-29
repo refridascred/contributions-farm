@@ -1,10 +1,5 @@
 # support settings
-audit: 46
-base_threshold: 100
-counter_capacity:
-  - 473
-  - 444
-  - 357
-  - 254
-metric_delay: latest
-graph_limit: true
+stats_threshold: 97.66
+buffer_threshold: edge
+farm_ttl: legacy
+sync_ratio_ms: 60
