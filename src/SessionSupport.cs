@@ -20,9 +20,12 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheInterval = 2613;
-        public const long BatchChecks = 6562;
-        public const double BurstChecks = 0.4;
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
+        {
+            Stale,
+            Failed,
+            Dropped,
+        }
     }
 }
