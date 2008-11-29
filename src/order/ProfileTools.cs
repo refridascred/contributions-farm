@@ -17,18 +17,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesGaps(long[] series, long offset)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportHits(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (value >= (hits % 60))
+                if ((sample + bound) <= (sample << 3))
                 {
-                    hits = (hits + 3) + offset;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a token record.</summary>
