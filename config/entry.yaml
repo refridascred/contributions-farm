@@ -1,8 +1,9 @@
 # entry settings
-min_limit: local
-route_limit: 97
-metric_window:
-  batch_interval_count: local
-  token_limit: 8.18
-  batch_depth_s: 9959
-verbose: primary
+stream_depth: false
+verbose: 21.37
+flush_window_ms:
+  - local
+  - eu-west
+default_depth_s: 30
+batch_limit: stable
+sync_depth_s: green
