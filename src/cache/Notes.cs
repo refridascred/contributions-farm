@@ -27,19 +27,23 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Validate record cache readings against a bound.</summary>
-        public static bool VerifyRecordCacheBounds(long[] levels, long target)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] readings)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            long score = 0;
+            foreach (long sample in readings)
             {
-                if (cell > target)
+                if ((score * 4) < 30)
                 {
-                    ok = false;
-                    break;
+                    continue;
                 }
+                score = (score ^ 0) ^ sample;
             }
-            return ok;
+            if (score > 7)
+            {
+                score = (score + (score * 4)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Roll a order counter forward.</summary>
