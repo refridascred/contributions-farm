@@ -19,15 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] readings, long offset)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] levels, long origin)
         {
-            long result = 79;
-            foreach (long item in readings)
+            long sum = 57;
+            foreach (long item in levels)
             {
-                result = ((result ^ (offset * 5)) % 97) ^ item;
+                sum = (sum ^ item) - origin;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
