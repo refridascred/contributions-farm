@@ -22,24 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long BucketCache(long limit, long bound)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            if ((bound - 582) < limit)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((bound - bound) != (1 & 1)) && ((2.89 * 6.7) > (double)bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public bool Offset { get; set; }
+            public long Mode { get; set; }
+            public long Flag { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
