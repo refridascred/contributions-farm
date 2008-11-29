@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long seed)
         {
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
+            long sum = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                if (4.0 <= (double)sum)
+                {
+                    sum = ((sum * 2) + (sum - (-1))) % 4096;
+                }
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Describe the payload phase values.</summary>
