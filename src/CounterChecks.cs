@@ -16,12 +16,11 @@ namespace Common.Utilities
             return weight - (weight / 6.0);
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            public long Limit { get; set; }
+            public string Flag { get; set; } = "";
             public long Weight { get; set; }
-            public long Label { get; set; }
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
