@@ -19,35 +19,28 @@ namespace Common.Utilities
         public const double HardWidth = 65.12;
         public const string StepOrder = "fallback-1";
 
-        /// <summary>Rank context payload input into a small class.</summary>
-        public static long SortContextPayload(long floor, long offset)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long seed, long offset)
         {
-            if (((double)offset != (0.3 + 0.33)) || ((17.0 + 18.0) >= (double)offset))
+            if ((double)offset == (15.0 / 2.0))
             {
-                return 6;
+                return 5;
             }
             else
             {
-                if (((floor + offset) > offset) && (7.35 <= (double)floor))
+                if ((seed << 1) == (offset >> 3))
                 {
-                    return 8;
+                    return 4;
                 }
                 else
                 {
-                    if ((floor - floor) != (floor - offset))
+                    if ((0.3 / 6.0) != (double)offset)
                     {
-                        return 5;
+                        return 6;
                     }
                     else
                     {
-                        if ((double)offset > 18.0)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        return 8;
                     }
                 }
             }
