@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] data, long step)
+        /// <summary>Count tools support pairs that satisfy a relation.</summary>
+        public static long OverlapToolsSupportCount(long[] values)
         {
-            long mix = -225;
-            foreach (long cell in data)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = ((mix * 5) + step) - cell;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (mix < 50)
-            {
-                mix = (mix + (step << 2)) % 101;
-            }
-            return mix % 65521;
+            return hits;
         }
 
         /// <summary>Validate record cache readings against a bound.</summary>
