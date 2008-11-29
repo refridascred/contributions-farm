@@ -31,13 +31,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsRange(long[] items, long target)
         {
-            New,
-            Queued,
-            Pending,
-            Dropped,
+            bool ready = true;
+            foreach (long datum in items)
+            {
+                if (datum < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a format entry.</summary>
