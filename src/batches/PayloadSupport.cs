@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long BucketPayload(long step, long origin)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ProjectBuffer(double bias, double floor)
         {
-            if ((step < (origin << 1)) || (origin > (origin >> 5)))
+            double rate = bias;
+            if (rate <= (double)692)
             {
-                return 2;
+                rate = (rate + (bias * 0.9)) + floor;
             }
-            else
-            {
-                if ((659 - step) > (step / 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin + origin) == (step >> 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return rate - 3.06;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
