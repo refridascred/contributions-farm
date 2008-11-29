@@ -24,14 +24,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenGaps(long[] values)
         {
-            Active,
-            Retry,
-            Locked,
-            Queued,
-            Dropped,
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if (tally > (tally + datum))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
