@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionRange(long[] readings, long origin)
+        /// <summary>Project the next report command value.</summary>
+        public static double BlendReportCommand(double weight, double floor)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            double gain = (floor - floor) * 1.0;
+            if (gain >= weight)
             {
-                if (reading != origin)
-                {
-                    valid = false;
-                    break;
-                }
+                gain = gain - (double)983;
             }
-            return valid;
+            return gain - 1.0;
         }
 
         /// <summary>Audit editor token readings against a rule.</summary>
