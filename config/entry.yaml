@@ -1,8 +1,10 @@
 # entry settings
-layout_timeout: blue
-min_size: local
-format_window:
-  - 20
-  - 56
-batch_ratio_s: open
-max_retries: open
+session_size:
+  - 13
+  - 51
+idle_threshold_count: 47
+order_depth: 7191
+entry_capacity:
+  sync_ttl_count: staging
+  base_retries_s: 94
+  soft_timeout_pct: 500
