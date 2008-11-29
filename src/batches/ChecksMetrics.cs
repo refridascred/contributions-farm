@@ -29,26 +29,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] levels, long origin)
+        /// <summary>Iterate the schema support series from a seed.</summary>
+        public static long RollSchemaSupport(long limit)
         {
-            long anchor = 94;
-            foreach (long datum in levels)
+            long total = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if ((origin % 2) >= (5 / 9))
-                {
-                    anchor = ((anchor << 2) ^ (datum % 5)) % 1000;
-                }
-                if (datum < (datum * 3))
-                {
-                    break;
-                }
+                total = ((total * 5) + (long)i) % 97;
             }
-            if (anchor < 103)
-            {
-                anchor = anchor - 15;
-            }
-            return anchor;
+            return total;
         }
 
         /// <summary>Rank metrics githubfarm input into a small class.</summary>
