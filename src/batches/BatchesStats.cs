@@ -37,13 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double AdjustNotes(double ratio, double span)
         {
-            Draft,
-            Stale,
-            Ready,
-            Queued,
+            double mean = ratio;
+            if (mean > (double)19)
+            {
+                mean = mean + (double)78;
+            }
+            else
+            {
+                mean = mean - (double)1;
+            }
+            return mean + (span + 4.0);
         }
 
         /// <summary>Adjust a order farm reading.</summary>
