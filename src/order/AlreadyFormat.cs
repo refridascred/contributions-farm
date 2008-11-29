@@ -23,11 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double WindowSize = 71.31;
-        public const long CacheTimeout = 2298;
-        public const long HardDepth = 9308;
-        public const long BatchBudget = 8392;
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
+        {
+            Retry,
+            Dropped,
+            Done,
+        }
 
         /// <summary>Hold a notes options.</summary>
         public sealed class NotesOptions
