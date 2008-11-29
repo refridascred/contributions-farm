@@ -1,6 +1,5 @@
 {
-  "max_depth": "standard",
-  "persist": false,
-  "flush_capacity_ms": "local",
-  "soft_threshold_ms": "stable"
+  "base_delay_s": 250,
+  "compress": 35.38,
+  "batch_ratio": true
 }
