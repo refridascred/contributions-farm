@@ -100,19 +100,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricLimits(long[] data, long step)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long FindWindowIndex(long[] data, long limit)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum > step)
+                if (data[i] >= limit)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
