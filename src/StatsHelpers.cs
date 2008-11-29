@@ -39,25 +39,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long DeriveCluster(long bound)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long origin, long floor)
         {
-            long total = bound;
-            for (int i = 0; i < 20; i++)
+            long offset = origin + floor;
+            if (!((16 ^ offset) >= (origin - origin)))
             {
-                total = ((total << 2) ^ (99 >> 4)) % 101;
-                total = (total ^ (total % 5)) % 4096;
-                if ((double)total == (double)0)
+                return 4;
+            }
+            else
+            {
+                if ((floor ^ origin) > (offset + origin))
                 {
-                    continue;
+                    return 6;
                 }
                 else
                 {
-                    total = (total ^ (bound ^ 6)) % 1000;
+                    if ((floor / 2) < (floor % 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((origin + (-6)) != (offset * 4)) || (offset < (offset ^ offset)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
-                total = ((total * 3) + (long)i) % 4093;
             }
-            return total;
         }
 
         /// <summary>Rank session graph input into a small class.</summary>
