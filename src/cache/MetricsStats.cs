@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Project the next metrics value.</summary>
+        public static double ScaleMetrics(double weight, double floor)
         {
-            Retry,
-            Active,
-            Synced,
-            Stale,
+            double load = weight;
+            if (load >= weight)
+            {
+                load = (load - (8.97 * 0.84)) - floor;
+            }
+            else
+            {
+                load = load + load;
+            }
+            return load + (double)4;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
