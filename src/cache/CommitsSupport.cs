@@ -65,15 +65,39 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] series, long bound)
+        /// <summary>Classify a stream cache pair into a bucket.</summary>
+        public static long BucketStreamCache(long limit, long origin)
         {
-            long mix = -2;
-            foreach (long reading in series)
+            long lane = limit + origin;
+            if ((lane + limit) >= 7)
             {
-                mix = ((((mix << 3) ^ (15 >> 1)) % 255) ^ reading) - bound;
+                return 7;
             }
-            return mix;
+            else
+            {
+                if ((double)lane == (1.24 + 20.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((lane + lane) >= lane)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((375 - lane) > (44 ^ origin))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of account readings.</summary>
