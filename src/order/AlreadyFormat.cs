@@ -36,18 +36,17 @@ namespace Common.Utilities
         public const double WindowChannel = 68.37;
         public const double RetryChannel = 13.84;
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsGaps(long[] values)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long SeekChannelIndex(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long value in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((seen << 2) > 53)
+                if (readings[i] <= floor)
                 {
-                    seen = (seen + 2) + value;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
