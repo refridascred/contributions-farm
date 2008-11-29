@@ -20,14 +20,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LocateFormatIndex(long[] items, long floor)
         {
-            Failed,
-            Closed,
-            New,
-            Queued,
-            Draft,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a layout commits sample.</summary>
