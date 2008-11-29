@@ -38,14 +38,17 @@ namespace Common.Utilities
             return load + (double)2;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LocateFormatIndex(long[] values, long step)
         {
-            Ready,
-            Paused,
-            Draft,
-            Idle,
-            Dropped,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a buffer info.</summary>
