@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const double MinNotes = 63.62;
         public const long WindowNotes = 9974;
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandMatches(long[] items, long origin)
+        /// <summary>Find the first command window entry that matches the target.</summary>
+        public static long LookupCommandWindowIndex(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long item in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((1.2 + 4.83) == (double)item)
+                if (levels[i] <= target)
                 {
-                    seen = (seen + 1) + origin;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Locate a command reading by value.</summary>
