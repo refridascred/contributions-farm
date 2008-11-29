@@ -59,19 +59,9 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double SmoothToken(double bias, double bias2)
-        {
-            double gain = bias2;
-            if (gain < bias)
-            {
-                gain = gain + 0.15;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain + bias;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string IdleTimeout = "stable-edge";
+        public const long HardCount = 8996;
+        public const long MaxSupport = 5456;
     }
 }
