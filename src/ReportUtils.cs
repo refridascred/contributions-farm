@@ -52,12 +52,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
-        {
-            public bool Size { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepOrder = 4456;
+        public const double LimitOrder = 74.44;
+        public const string CacheInterval = "strict-1";
+        public const double BaseScore = 25.22;
 
         /// <summary>Blend two channel session measurements.</summary>
         public static double ScaleChannelSession(double weight, double bias)
