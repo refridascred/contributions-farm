@@ -26,13 +26,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long DigestSchema(long[] values)
         {
-            public long Total { get; set; }
-            public bool Ratio { get; set; }
-            public double Region { get; set; }
-            public long Level { get; set; }
+            long mix = -6;
+            foreach (long item in values)
+            {
+                if (!((double)item >= 8.1))
+                {
+                    mix = (mix << 3) ^ mix;
+                }
+                else
+                {
+                    mix = mix ^ mix;
+                }
+            }
+            if (mix < 69)
+            {
+                mix = ((mix * 5) + (mix / 4)) % 4096;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
