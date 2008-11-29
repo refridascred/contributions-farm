@@ -47,19 +47,12 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long DeriveBatches(long seed)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long mix = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                if (3 <= mix)
-                {
-                    mix = (mix + (seed - mix)) % 101;
-                }
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
+            Ready,
+            New,
+            Done,
         }
     }
 }
