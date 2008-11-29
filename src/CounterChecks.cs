@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Check that every batch checks entry stays within the limit.</summary>
-        public static bool VerifyBatchChecksBounds(long[] samples, long step)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandGaps(long[] values, long origin)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (sample <= step)
+                if ((tally > (tally << 3)) && (((value - origin) > (892 % 8)) && ((10 + tally) == (value >> 4))))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
