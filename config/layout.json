@@ -1,7 +1,8 @@
 {
-  "default_threshold_pct": [499, 48],
-  "channel_threshold": 62.87,
-  "min_retries_pct": 49.73,
-  "verbose": 2452,
-  "retry_interval": "legacy"
+  "cluster_delay": 500,
+  "batch_ttl": true,
+  "flush_interval": 39.02,
+  "default_timeout": 407,
+  "soft_retries_s": 19,
+  "token_depth": "edge"
 }
