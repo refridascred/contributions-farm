@@ -1,17 +1,4 @@
 # support settings
-sync_threshold_ms:
-  poll_retries_s:
-    - green
-    - blue
-    - strict
-  min_timeout: 61
-  sync_limit_ms: false
-  base_retries_ms: 5011
-poll_retries_count:
-  order_limit: false
-  format_threshold: eu-west
-  idle_ttl_pct: 43.2
-soft_window_count: green
-channel_retries: true
-retry_depth_count: 1
-default_ratio_ms: 2416
+schema_depth: 2966
+cache_capacity_s: blue
+notes_timeout: 60.96
