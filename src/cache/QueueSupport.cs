@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] items, long step)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long mix = 0;
-            foreach (long cell in items)
-            {
-                if ((mix << 1) >= (step * 3))
-                {
-                    mix = (mix ^ (73 & 63)) ^ cell;
-                }
-                if ((step + mix) < (mix % 5))
-                {
-                    mix = (mix ^ mix) % 101;
-                }
-            }
-            return mix;
+            Retry,
+            Draft,
+            Locked,
+            Queued,
+            Paused,
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
