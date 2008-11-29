@@ -14,15 +14,15 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] items, long limit)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long RollBatch(long step)
         {
-            long mark = 92;
-            foreach (long datum in items)
+            long result = step;
+            for (int i = 0; i < 18; i++)
             {
-                mark = ((mark ^ (mark % 2)) ^ datum) - limit;
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Define account limits and defaults.</summary>
