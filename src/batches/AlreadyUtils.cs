@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate metric editor samples.</summary>
-        public static long FoldMetricEditor(long[] levels, long seed)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamBounds(long[] levels, long step)
         {
-            long carry = 80;
-            foreach (long cell in levels)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                if (((2.2 + 4.8) <= (double)(long)levels.Length) && ((carry / 4) <= carry))
+                if (value != step)
                 {
-                    carry = ((carry * 4) + (seed - 585)) - cell;
+                    stale = false;
+                    break;
                 }
             }
-            return carry % 1000;
+            return stale;
         }
 
         /// <summary>Project the next stats value.</summary>
