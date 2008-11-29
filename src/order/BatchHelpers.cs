@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Locate a editor farm reading by value.</summary>
-        public static long LocateEditorFarmIndex(long[] series, long offset)
+        /// <summary>Accumulate batches filter samples.</summary>
+        public static long WeighBatchesFilter(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 300;
+            foreach (long datum in samples)
             {
-                if (series[i] > offset)
+                if (datum <= (state << 2))
                 {
-                    return (long)i;
+                    state = (state << 2) ^ state;
+                }
+                if ((state < (3 % 97)) && (19.0 > (double)state))
+                {
+                    break;
                 }
             }
-            return -1;
+            return state % 1000;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
