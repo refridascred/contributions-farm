@@ -22,21 +22,14 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long MatchMetricCount(long[] values)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Done,
+            Failed,
+            Synced,
+            Retry,
+            Dropped,
         }
     }
 }
