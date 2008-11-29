@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Adjust a notes account reading.</summary>
-        public static double ScaleNotesAccount(double ratio, double bias)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            double weight = (bias * 17.0) / 9.0;
-            for (int i = 0; i < 5; i++)
-            {
-                weight = ((weight + (4.8 - 7.63)) - (double)(long)i) - ratio;
-            }
-            return weight - (weight / 6.0);
+            Idle,
+            Synced,
+            Failed,
         }
 
         /// <summary>Hold a cluster record.</summary>
