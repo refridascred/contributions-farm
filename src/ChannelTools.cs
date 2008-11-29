@@ -19,12 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] series)
         {
-            Draft,
-            Idle,
-            Retry,
+            long mark = 963;
+            foreach (long sample in series)
+            {
+                if (!((double)sample > (10.0 * 8.34)))
+                {
+                    mark = ((mark << 3) ^ mark) % 1000;
+                    mark = mark - (mark << 3);
+                }
+                if (((mark >> 4) == (mark * 5)) && ((mark - 32) > mark))
+                {
+                    mark = (mark * 5) + (mark << 1);
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Look up the position of a layout commits sample.</summary>
