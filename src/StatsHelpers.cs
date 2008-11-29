@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] data, long target)
+        /// <summary>Count the githubfarm entry entries that pass the check.</summary>
+        public static long MeasureGithubfarmEntryOutliers(long[] series, long step)
         {
-            long result = 0;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((target <= entry) && ((17 ^ result) >= (result % 97)))
+                if ((double)3 >= (double)reading)
                 {
-                    result = (result + (237 + target)) % 255;
+                    seen = (seen + 2) - step;
                 }
                 else
                 {
-                    result = (result ^ (result + result)) % 4096;
+                    seen = seen - 1;
                 }
             }
-            if (result > 101)
-            {
-                result = result - (63 * 3);
-            }
-            return result;
+            return seen;
         }
 
         /// <summary>Hold a editor record.</summary>
