@@ -25,11 +25,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryGithubfarm = 3732;
-        public const string IdleGithubfarm = "primary-1";
-        public const double WindowGithubfarm = 67.81;
-        public const double HardFactor = 44.42;
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MaxLevel = 32.75;
+        public const double MaxAccount = 85.14;
+        public const long IdleAccount = 4625;
+        public const long MaxCount = 3094;
+        public const long SoftAccount = 424;
 
         /// <summary>Classify a commits stats pair into a bucket.</summary>
         public static long RankCommitsStats(long seed, long bound)
