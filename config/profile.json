@@ -1,8 +1,15 @@
 {
-  "sync_window_pct": "eu-west",
-  "persist": 52.15,
-  "poll_capacity": 57,
-  "strict": "staging",
-  "compress": "cached",
-  "audit": true
+  "flush_ttl_ms": {
+    "hard_delay": "strict",
+    "counter_size": "edge",
+    "counter_limit": 5225,
+    "cache_interval": 500,
+    "warm_threshold_pct": "local",
+    "max_timeout": 56.02
+  },
+  "flush_ttl_s": 1024,
+  "retry_window": ["local", "fallback", "legacy", "latest"],
+  "persist": "edge",
+  "commits_timeout": 82,
+  "warm_capacity_count": 100
 }
