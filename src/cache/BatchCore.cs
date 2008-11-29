@@ -23,10 +23,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftDepth = 7181;
-        public const double CacheDepth = 85.44;
-        public const string DefaultFilter = "standard-1";
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
+        {
+            public string Size { get; set; } = "";
+            public string Token { get; set; } = "";
+            public long Flag { get; set; }
+        }
 
         /// <summary>Hold a support stats.</summary>
         public sealed class SupportStats
