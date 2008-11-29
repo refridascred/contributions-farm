@@ -28,19 +28,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long SeriesBuffer(long target)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TallyFormat(long[] items, long offset)
         {
-            long state = target;
-            for (int i = 0; i < 7; i++)
+            long total = 9;
+            foreach (long cell in items)
             {
-                if (((double)target <= 9.0) || ((target >> 5) <= (long)i))
+                if ((55 < (cell + offset)) || (offset <= (offset + total)))
                 {
-                    state = (state << 3) ^ target;
+                    total = (total + (total - total)) % 1000;
                 }
-                state = ((state * 5) + (long)i) % 4093;
+                if (9.1 <= (double)offset)
+                {
+                    break;
+                }
             }
-            return state;
+            return total;
         }
     }
 }
