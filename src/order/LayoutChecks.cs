@@ -59,12 +59,19 @@ namespace Common.Utilities
         public const long BatchScore = 1971;
         public const string DefaultInterval = "local";
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Adjust a token reading.</summary>
+        public static double SmoothToken(double bias, double bias2)
         {
-            Done,
-            Active,
-            Ready,
+            double gain = bias2;
+            if (gain < bias)
+            {
+                gain = gain + 0.15;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = gain - (double)(long)i;
+            }
+            return gain + bias;
         }
     }
 }
