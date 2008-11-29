@@ -25,11 +25,11 @@ namespace Common.Utilities
         public const string MinGraph = "legacy";
         public const string RetrySize = "standard-1";
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double HardFactor = 10.14;
-        public const long LimitSpan = 1323;
-        public const string BaseBudget = "local-edge";
-        public const long StepStats = 3494;
-        public const long MaxStats = 4609;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double MinGithubfarm = 31.42;
+        public const long SoftFactor = 6281;
+        public const long IdleSpan = 1221;
+        public const long LimitGithubfarm = 9860;
+        public const long BaseGithubfarm = 2785;
     }
 }
