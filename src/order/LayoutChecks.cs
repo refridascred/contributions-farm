@@ -44,15 +44,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
-        {
-            Done,
-            Active,
-            Ready,
-            Idle,
-            Queued,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryCommand = 8685;
+        public const long MinCommand = 1716;
+        public const double BurstBudget = 28.41;
+        public const double HardTimeout = 42.73;
 
         /// <summary>Hold a filter stats.</summary>
         public sealed class FilterStats
