@@ -56,22 +56,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long seed)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long total = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                total = (total ^ ((long)i ^ total)) % 4096;
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    long tally = (total >> 1) * 2;
-                    total = ((total + tally) % 255) ^ (long)i2;
-                }
-                total = (total + (seed - seed)) % 4096;
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            public bool Count { get; set; }
+            public bool Limit { get; set; }
+            public long Flag { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
