@@ -74,19 +74,17 @@ namespace Common.Utilities
         public const double StepWindow = 76.49;
         public const string MaxFactor = "fallback-v2";
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandBounds(long[] data, long seed)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LocateBatchesIndex(long[] data, long bound)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum < seed)
+                if (data[i] < bound)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
