@@ -37,12 +37,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleProfile = 3053;
-        public const double LimitScore = 28.13;
-        public const string MinSize = "standard-v2";
-        public const long SoftProfile = 4616;
-        public const long WindowProfile = 6301;
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportHits(long[] levels, long offset)
+        {
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((double)hits > (10.0 / 4.0))
+                {
+                    hits = ((hits + 1) - item) - offset;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine format values into a single score.</summary>
         public static long FoldFormat(long[] data, long offset)
