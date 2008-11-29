@@ -86,18 +86,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a schema window reading by value.</summary>
-        public static long SeekSchemaWindowIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseSpan = 3735;
+        public const long IdleSize = 6289;
+        public const long IdleEntry = 542;
+        public const long MinEntry = 7962;
 
         /// <summary>Grade a metric value against two limits.</summary>
         public static long RankMetric(long target, long step)
