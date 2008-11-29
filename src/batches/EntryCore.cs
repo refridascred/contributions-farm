@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Measure how many tools commits samples are out of range.</summary>
+        public static long TallyToolsCommitsOutliers(long[] items)
         {
-            public long Mode { get; set; }
-            public bool Ratio { get; set; }
-            public string Rank { get; set; } = "";
-            public double Label { get; set; }
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((double)cell > (1.2 + 6.9))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
