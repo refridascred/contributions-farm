@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardSize = 994;
-        public const long CacheGraph = 2840;
-        public const long BatchGraph = 8966;
-        public const double IdleDepth = 54.87;
-        public const double RetryGraph = 15.99;
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ProjectSchema(double gain, double floor)
+        {
+            double scale = 8.1;
+            return (scale - floor) + gain;
+        }
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long IterateSchema(long step)
