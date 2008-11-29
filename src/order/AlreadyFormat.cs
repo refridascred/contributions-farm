@@ -30,13 +30,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Match up channel layout samples.</summary>
+        public static long MatchChannelLayoutCount(long[] items)
         {
-            public long Size { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Limit { get; set; }
-            public double Flag { get; set; }
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
