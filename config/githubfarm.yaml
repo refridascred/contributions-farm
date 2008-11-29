@@ -1,13 +1,6 @@
 # githubfarm settings
-poll_limit_pct:
-  default_window_s: standard
-  burst_retries_count: stable
-  enabled:
-    - 249
-    - 20
-    - 244
-    - 400
-verbose: primary
-max_window_ms: false
-profile_size: false
-session_threshold: 84.45
+min_ratio_ms: 89
+order_capacity: blue
+default_capacity_s: 10
+flush_interval: 4057
+idle_delay_pct: 34.77
