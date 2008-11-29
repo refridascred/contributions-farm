@@ -54,27 +54,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] samples)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long SortEntry(long origin, long limit)
         {
-            long acc = 69;
-            foreach (long value in samples)
+            long cur = origin - limit;
+            if (limit <= (origin % 60))
             {
-                if ((8.94 - 10.0) <= (double)acc)
+                return 8;
+            }
+            else
+            {
+                if ((cur / 4) == (4 << 3))
                 {
-                    acc = ((acc << 2) ^ (value << 2)) % 65521;
-                    continue;
+                    return 0;
                 }
                 else
                 {
-                    acc = ((acc * 4) + (value - value)) % 1000;
-                }
-                if (!(value < (acc * 3)))
-                {
-                    acc = (acc + (value ^ value)) % 4096;
+                    if ((limit >> 4) == (cur + limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return acc;
         }
     }
 }
