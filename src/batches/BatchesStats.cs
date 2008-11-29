@@ -63,18 +63,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many order payload samples are out of range.</summary>
-        public static long TallyOrderPayloadOutliers(long[] levels)
+        /// <summary>Adjust a order farm reading.</summary>
+        public static double BlendOrderFarm(double gain, double floor)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            double gain2 = gain;
+            if (gain2 > 4.64)
             {
-                if (hits < (hits % 100))
-                {
-                    hits = (hits + 3) + item;
-                }
+                gain2 = (gain2 + (gain2 * 1.0)) - floor;
             }
-            return hits;
+            return gain2 + (double)490;
         }
     }
 }
