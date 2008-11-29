@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            public string Label { get; set; } = "";
-            public string Token { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            public long Score { get; set; }
+            public double Ratio { get; set; }
+            public long Flag { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
