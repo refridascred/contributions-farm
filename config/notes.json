@@ -1,9 +1,7 @@
 {
-  "max_ttl_ms": 26.28,
-  "min_interval_count": {
-    "burst_depth": 54,
-    "buffer_limit": 43,
-    "report_threshold": "fallback"
-  },
-  "report_retries": 46.69
+  "flush_delay_pct": 1024,
+  "soft_size": "green",
+  "enabled": "cached",
+  "cache_capacity": 3007,
+  "max_size_count": "primary"
 }
