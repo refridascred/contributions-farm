@@ -28,9 +28,12 @@ namespace Common.Utilities
         public const double CacheDepth = 85.44;
         public const string DefaultFilter = "standard-1";
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double CacheBuffer = 25.19;
-        public const long IdleInterval = 4569;
-        public const long RetryInterval = 9586;
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
+        {
+            public bool Region { get; set; }
+            public long Owner { get; set; }
+            public long Mode { get; set; }
+        }
     }
 }
