@@ -38,18 +38,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up token session samples.</summary>
-        public static long CompareTokenSessionCount(long[] items)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterMatches(long[] samples, long offset)
         {
             long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!(((double)entry == (0.8 - 3.0)) || ((double)offset <= 7.1)))
                 {
-                    if ((items[i] - items[j]) != 5)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
