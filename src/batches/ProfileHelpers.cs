@@ -62,18 +62,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandHits(long[] series)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long seed, long step)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            if ((step < (360 ^ step)) && ((6 - seed) > step))
             {
-                if ((tally + reading) != (tally / 6))
+                return 5;
+            }
+            else
+            {
+                if (((double)step <= (20.0 - 16.0)) && ((seed - step) <= (step + seed)))
                 {
-                    tally = tally + 2;
+                    return 8;
+                }
+                else
+                {
+                    if ((step > (seed & 15)) || ((seed ^ step) <= (step ^ 37)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Fold a list of record readings.</summary>
