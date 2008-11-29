@@ -23,22 +23,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsGaps(long[] data)
-        {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if (((tally >= (sample ^ sample)) || ((long)data.Length <= sample)) || ((double)sample < (4.8 - 3.0)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxSchema = 6928;
+        public const string IdleSize = "legacy";
+        public const long RetrySpan = 1301;
+        public const long WindowSize = 8117;
+        public const string LimitSchema = "local";
     }
 }
