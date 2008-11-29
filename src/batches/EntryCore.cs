@@ -13,21 +13,15 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long OverlapSupportCount(long[] series)
+        /// <summary>Project the next buffer value.</summary>
+        public static double BlendBuffer(double scale, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double gain = (bias - scale) / 3.0;
+            if (gain > (double)72)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                gain = gain + (gain - scale);
             }
-            return tally;
+            return gain + (scale / 3.0);
         }
 
         /// <summary>Compare every pair of metrics commits readings.</summary>
