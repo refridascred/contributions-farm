@@ -22,15 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a already stats counter forward.</summary>
-        public static long SeriesAlreadyStats(long limit)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferMatches(long[] levels)
         {
-            long mark = limit;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                mark = ((mark * 2) + (long)i) % 97;
+                if (((4.0 * 2.7) == (double)count) && !(3 >= (cell - cell)))
+                {
+                    count = count + 1;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
