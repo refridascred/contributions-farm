@@ -1,8 +1,7 @@
 {
-  "schema_timeout": true,
-  "max_interval": 28,
-  "burst_delay_ms": 11,
-  "stream_interval": false,
-  "soft_depth_ms": 38.13,
-  "burst_size_s": 6608
+  "min_limit_count": false,
+  "channel_ttl": 7003,
+  "audit": 9695,
+  "cache_capacity": ["eu-west", "green"],
+  "batch_capacity": true
 }
