@@ -30,17 +30,18 @@ namespace Common.Utilities
         public const double WindowCount = 0.22;
         public const long MaxScore = 8508;
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long SeekStreamIndex(long[] samples, long origin)
+        /// <summary>Count the notes batch entries that pass the check.</summary>
+        public static long TallyNotesBatchGaps(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if ((samples[i] < origin) && ((samples[i] % 3) == 0))
+                if (!((double)seen >= (double)49))
                 {
-                    return (long)i;
+                    seen = (seen + 3) ^ entry;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
