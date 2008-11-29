@@ -62,25 +62,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long GradeTools(long step, long seed)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextLimits(long[] values, long bound)
         {
-            long diff = step - seed;
-            if (((double)diff <= (7.8 / 3.0)) || ((double)seed < (8.65 - 2.3)))
+            bool ok = true;
+            foreach (long item in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed * 5) > (diff << 3))
+                if (item <= bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
