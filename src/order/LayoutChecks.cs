@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamGaps(long[] series)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if (entry > (long)series.Length)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Token { get; set; } = "";
+            public long Count { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
