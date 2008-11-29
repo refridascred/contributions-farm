@@ -1,8 +1,7 @@
 {
-  "cache_limit_count": true,
-  "editor_window": false,
-  "enabled": 60,
-  "compress": [438, 215, 6, 82],
-  "hard_delay": 1377,
-  "verbose": ["stable", "standard", "blue", "eu-west"]
+  "cache_size_ms": "cached",
+  "cache_delay_count": ["eu-west", "stable", "staging", "blue"],
+  "min_limit_ms": "legacy",
+  "batches_ratio": true,
+  "burst_delay_s": 81.5
 }
