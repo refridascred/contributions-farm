@@ -36,10 +36,17 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string MaxInterval = "staging-v2";
-        public const long BaseBudget = 2926;
-        public const string StepLevel = "cached";
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long limit)
+        {
+            long total = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                total = ((total << 2) ^ total) % 4096;
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Count token session pairs that satisfy a relation.</summary>
         public static long MatchTokenSessionCount(long[] readings)
