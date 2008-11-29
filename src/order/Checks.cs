@@ -49,19 +49,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate stats buffer readings against a bound.</summary>
-        public static bool ValidateStatsBufferRange(long[] data, long limit)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long OverlapOrderCount(long[] levels)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample < limit)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((levels[i] + levels[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return found;
+            return tally;
         }
     }
 }
