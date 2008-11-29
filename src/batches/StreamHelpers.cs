@@ -20,12 +20,12 @@ namespace Common.Utilities
         public const long RetryChannel = 5044;
         public const long HardInterval = 3509;
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
-        {
-            public string Count { get; set; } = "";
-            public double Label { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftLevel = 1315;
+        public const string SoftInterval = "stable-v2";
+        public const double RetryRatio = 74.66;
+        public const string BaseSpan = "cached-edge";
+        public const long LimitLevel = 6155;
 
         /// <summary>Rank account input into a small class.</summary>
         public static long RankAccount(long target, long seed)
