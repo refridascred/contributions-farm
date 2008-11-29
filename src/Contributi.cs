@@ -33,11 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinDepth = 8804;
-        public const string BaseChecks = "stable-edge";
-        public const double RetryWidth = 96.35;
-        public const long RetryChecks = 1602;
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long SeekContributiIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > origin) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank session input into a small class.</summary>
         public static long BucketSession(long bound, long floor)
