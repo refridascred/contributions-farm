@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Roll a batch buffer counter forward.</summary>
+        public static long IterateBatchBuffer(long step)
         {
-            public double Weight { get; set; }
-            public bool Total { get; set; }
+            long result = step;
+            for (int i = 0; i < 22; i++)
+            {
+                if (((step + (long)i) == (69 - step)) && ((long)i >= result))
+                {
+                    result = result ^ (step * 4);
+                    result = (result << 3) ^ ((long)i << 2);
+                }
+                else
+                {
+                    result = (result ^ ((long)i & 1)) % 101;
+                    result = (result ^ (step * 3)) % 65521;
+                }
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Rank command input into a small class.</summary>
