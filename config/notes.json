@@ -1,8 +1,13 @@
 {
-  "stream_timeout": ["blue", "latest"],
-  "default_ratio": "stable",
-  "burst_limit_s": 42.7,
-  "record_size": 89,
-  "readonly": 30,
-  "verbose": 8821
+  "retry_window_ms": "standard",
+  "batch_threshold": true,
+  "poll_depth_s": {
+    "idle_size_ms": 42,
+    "batch_ttl": 27.83,
+    "compress": "standard",
+    "stats_size": "open",
+    "idle_capacity": 26.94,
+    "min_timeout_pct": 250
+  },
+  "verbose": "legacy"
 }
