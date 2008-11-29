@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Derive the next channel cluster value from a seed.</summary>
-        public static long StepChannelCluster(long step)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long OverlapCommitsCount(long[] values)
         {
-            long sum = step;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((sum - 6) <= (step % 100))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = sum ^ step;
+                    if ((values[i] - values[j]) != 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                sum = sum - (step & 1);
-                sum = ((sum * 5) + (long)i) % 97;
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
