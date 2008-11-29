@@ -77,21 +77,15 @@ namespace Common.Utilities
             return weight2 + (double)(-8);
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long CompareStatsCount(long[] readings)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TallyAlready(long[] items, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 1;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                score = ((((score * 3) + (score % 12)) % 65521) - entry) - step;
             }
-            return seen;
+            return score % 4096;
         }
     }
 }
