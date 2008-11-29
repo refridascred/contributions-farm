@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const long StepTimeout = 9149;
         public const long IdleEditor = 9219;
 
-        /// <summary>Measure how many channel graph samples are out of range.</summary>
-        public static long AuditChannelGraphGaps(long[] readings, long limit)
-        {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((limit - cell) <= (tally & 127))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinBudget = 9559;
+        public const long StepCount = 7158;
+        public const long WindowCount = 7696;
+        public const long BatchCache = 5924;
+        public const double MaxCache = 10.29;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double MinGithubfarm = 31.42;
