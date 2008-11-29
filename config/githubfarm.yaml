@@ -1,4 +1,7 @@
 # githubfarm settings
-retry_window_count: 81.99
-entry_limit: 1024
-batch_threshold: 85.1
+sync_size: 11.23
+sync_interval_pct:
+  - 184
+  - 342
+max_window_ms: 5328
+persist: primary
