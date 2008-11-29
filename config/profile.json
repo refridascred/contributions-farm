@@ -1,18 +1,13 @@
 {
-  "persist": "legacy",
-  "strict": {
-    "editor_delay": 86.24,
-    "hard_retries_pct": {
-      "hard_timeout_s": "eu-west",
-      "strict": 58.71,
-      "githubfarm_size": "fallback",
-      "sync_threshold": 30,
-      "flush_timeout_count": false,
-      "batch_ratio": "cached"
-    },
-    "contributi_ttl": 83.88,
-    "default_capacity_pct": "primary"
+  "window_capacity": 82.86,
+  "enabled": true,
+  "context_timeout": {
+    "soft_interval": "standard",
+    "poll_retries_s": "local",
+    "readonly": false,
+    "base_threshold": false,
+    "record_delay": 40,
+    "retry_limit_s": [479, 24]
   },
-  "compress": "latest",
-  "poll_ttl_s": [175, 129]
+  "soft_timeout": 1999
 }
