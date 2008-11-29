@@ -11,21 +11,14 @@ namespace Common.Utilities
         public const string StepWidth = "legacy-edge";
         public const long MaxSchema = 5700;
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long OverlapBufferCount(long[] readings)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Queued,
+            Active,
+            Draft,
+            Synced,
+            Ready,
         }
 
         /// <summary>Fold a list of command readings.</summary>
