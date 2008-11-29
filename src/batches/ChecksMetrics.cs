@@ -29,13 +29,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] levels, long origin)
         {
-            public long Offset { get; set; }
-            public double Level { get; set; }
-            public double Size { get; set; }
-            public long Limit { get; set; }
+            long anchor = 94;
+            foreach (long datum in levels)
+            {
+                if ((origin % 2) >= (5 / 9))
+                {
+                    anchor = ((anchor << 2) ^ (datum % 5)) % 1000;
+                }
+                if (datum < (datum * 3))
+                {
+                    break;
+                }
+            }
+            if (anchor < 103)
+            {
+                anchor = anchor - 15;
+            }
+            return anchor;
         }
 
         /// <summary>Rank metrics githubfarm input into a small class.</summary>
