@@ -22,10 +22,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheLevel = 9032;
-        public const double CacheBudget = 77.25;
-        public const long MinNotes = 5139;
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long BucketCache(long limit, long bound)
+        {
+            if ((bound - 582) < limit)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((bound - bound) != (1 & 1)) && ((2.89 * 6.7) > (double)bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long LimitRecord = 9331;
