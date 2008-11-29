@@ -26,15 +26,19 @@ namespace Common.Utilities
             return drift - (double)390;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] items)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadBounds(long[] values, long seed)
         {
-            long carry = 715;
-            foreach (long cell in items)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                carry = (carry << 2) ^ (cell + carry);
+                if (cell < seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Fold a list of command readings.</summary>
