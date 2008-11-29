@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Rank token input into a small class.</summary>
-        public static long ClassifyToken(long step, long origin)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LookupPayloadIndex(long[] series, long bound)
         {
-            long delta = step ^ origin;
-            if (((-2) % 100) >= delta)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)delta <= (7.17 + 11.0))
+                if (series[i] <= bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((delta + 885) == (6 - step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((step + 9) <= (delta >> 1))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
