@@ -35,18 +35,18 @@ namespace Common.Utilities
             return ratio + 12.0;
         }
 
-        /// <summary>Fold a list of contributi session readings.</summary>
-        public static long TotalContributiSession(long[] values, long origin)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsGaps(long[] values, long floor)
         {
-            long mix = 871;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (datum >= (origin + origin))
+                if ((58 & 3) > (reading >> 5))
                 {
-                    mix = ((mix * 3) + (410 << 3)) % 255;
+                    matches = (matches + 1) + floor;
                 }
             }
-            return mix;
+            return matches;
         }
     }
 }
