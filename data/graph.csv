@@ -1,7 +1,6 @@
-id,weight,ratio
-1,fallback,127
-2,legacy,565
-3,70.38,edge
-4,5.44,805
-5,18,51.75
-6,855,standard
+id,region,rank,count
+1,974,946,44.11
+2,71.27,53.72,standard
+3,983,latest,87.71
+4,95.06,eu-west,13.14
+5,584,47.81,45.52
