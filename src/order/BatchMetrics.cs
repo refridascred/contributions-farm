@@ -56,12 +56,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchPayload = 2685;
-        public const long DefaultPayload = 5339;
-        public const long StepPayload = 1262;
-        public const double RetryFactor = 73.43;
-        public const long SoftLevel = 1103;
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
+        {
+            public double Label { get; set; }
+            public double Mode { get; set; }
+            public double Total { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Match up cluster samples.</summary>
         public static long OverlapClusterCount(long[] series)
