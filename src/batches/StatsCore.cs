@@ -80,18 +80,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long DeriveToken(long bound)
+        /// <summary>Audit queue stream readings against a rule.</summary>
+        public static long MeasureQueueStreamHits(long[] series, long step)
         {
-            long sum = bound;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                sum = ((sum * 4) + (sum - bound)) % 1000;
-                sum = sum + ((long)i & 7);
-                sum = ((sum * 4) + (sum + 516)) % 1000;
-                sum = ((sum * 4) + (long)i) % 4093;
+                if (!((step + sample) < sample))
+                {
+                    hits = hits + 1;
+                }
             }
-            return sum;
+            return hits;
         }
     }
 }
