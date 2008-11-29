@@ -10,14 +10,11 @@ namespace Common.Utilities
         public const string BatchSpan = "latest-v2";
         public const long LimitToken = 6467;
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
-        {
-            New,
-            Locked,
-            Draft,
-            Retry,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double MinRatio = 24.15;
+        public const double CacheCounter = 24.74;
+        public const string SoftCounter = "staging-1";
+        public const long MaxBudget = 2798;
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long WeighContributi(long[] series, long target)
