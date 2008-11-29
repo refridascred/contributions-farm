@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] samples, long seed)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double AdjustProfile(double bias, double span)
         {
-            long carry = 26;
-            foreach (long entry in samples)
+            double rate = span;
+            if (rate < bias)
             {
-                if ((entry <= (115 + (long)samples.Length)) || ((double)entry <= (double)67))
-                {
-                    carry = ((carry ^ (carry >> 3)) % 4096) - seed;
-                }
-                else
-                {
-                    carry = carry ^ (3 * 2);
-                }
+                rate = rate + 9.16;
             }
-            return carry;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - (2.44 - span)) + (double)(long)i;
+            }
+            return rate + rate;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
