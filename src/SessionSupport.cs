@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionHits(long[] levels)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (!(matches >= (matches + matches)))
-                {
-                    matches = (matches + 3) + sample;
-                }
-            }
-            return matches;
+            Locked,
+            New,
+            Idle,
         }
 
         /// <summary>Hold a entry snapshot.</summary>
