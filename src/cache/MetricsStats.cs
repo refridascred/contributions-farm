@@ -71,15 +71,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ScaleMetrics(double gain, double span)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            double scale = span + span;
-            if (scale < (gain / 2.0))
-            {
-                scale = scale - (6.0 * 12.0);
-            }
-            return scale + (8.94 + gain);
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
