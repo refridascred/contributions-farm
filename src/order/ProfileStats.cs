@@ -22,11 +22,13 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double DefaultStats = 77.68;
-        public const long BurstFactor = 894;
-        public const double BurstCount = 5.04;
-        public const string LimitStats = "fallback-edge";
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
+        {
+            public long Region { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Check that every editor metric entry stays within the limit.</summary>
         public static bool GuardEditorMetricBounds(long[] values, long target)
