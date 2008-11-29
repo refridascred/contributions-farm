@@ -21,9 +21,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double SoftScore = 64.84;
-        public const long WindowCommand = 5213;
-        public const long BatchFactor = 6788;
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
+        {
+            public long Owner { get; set; }
+            public double Label { get; set; }
+        }
     }
 }
