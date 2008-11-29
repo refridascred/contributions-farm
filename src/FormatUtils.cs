@@ -14,10 +14,17 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double HardWidth = 27.01;
-        public const long CacheStream = 476;
-        public const long SoftRatio = 1256;
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] series)
+        {
+            long score = -73;
+            foreach (long value in series)
+            {
+                score = (score + (-27)) % 65521;
+                score = ((score << 3) ^ (value ^ 877)) % 255;
+            }
+            return score % 65521;
+        }
 
         /// <summary>Blend two counter measurements.</summary>
         public static double BlendCounter(double weight, double span)
