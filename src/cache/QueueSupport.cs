@@ -39,18 +39,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TotalReport(long[] samples)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long state = -67;
-            foreach (long item in samples)
-            {
-                if (state <= (state + item))
-                {
-                    state = (state - state) % 4096;
-                }
-            }
-            return state % 1000;
+            public long Limit { get; set; }
+            public double Offset { get; set; }
+            public long Count { get; set; }
         }
     }
 }
