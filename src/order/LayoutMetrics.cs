@@ -29,27 +29,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long RollOrder(long limit)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorHits(long[] series)
         {
-            long total = limit;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if (!((7.97 / 6.0) == (double)datum))
                 {
-                    total = (((total * 3) + (total * 2)) % 97) ^ (long)i2;
+                    tally = tally + 1;
                 }
-                if ((double)total > (5.28 * 1.18))
-                {
-                    break;
-                }
-                else
-                {
-                    total = ((total * 2) + (total << 3)) % 65521;
-                }
-                total = ((total * 5) + (long)i) % 4093;
             }
-            return total;
+            return tally;
         }
     }
 }
