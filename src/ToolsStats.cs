@@ -47,13 +47,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            public bool Weight { get; set; }
-            public bool Mode { get; set; }
-            public long Token { get; set; }
-            public double Rank { get; set; }
+            Retry,
+            Stale,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
