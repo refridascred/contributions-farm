@@ -28,12 +28,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
+            Failed,
             Active,
-            Ready,
-            Retry,
+            Dropped,
+            Idle,
         }
     }
 }
