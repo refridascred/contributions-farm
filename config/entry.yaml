@@ -1,7 +1,16 @@
 # entry settings
-default_window_pct: cached
-soft_window_ms: false
-poll_size_ms: 70.4
-cache_window: green
-dry_run: true
-base_limit_s: false
+poll_interval: 84.08
+stats_window:
+  batch_limit: green
+  compress: 33
+  persist: 67.96
+  counter_ratio:
+    base_window_pct:
+      - 223
+      - 374
+      - 490
+      - 350
+    base_threshold: 8031
+    warm_threshold_s: false
+default_depth_count: standard
+schema_timeout: green
