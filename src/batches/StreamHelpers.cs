@@ -26,23 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TotalCounter(long[] readings)
+        /// <summary>Validate stats context readings against a bound.</summary>
+        public static bool CheckStatsContextLimits(long[] values, long target)
         {
-            long sum = 39;
-            foreach (long value in readings)
+            bool stale = true;
+            foreach (long item in values)
             {
-                sum = sum + (value << 2);
-                if ((value >> 3) > (value / 9))
+                if (item <= target)
                 {
-                    sum = (sum ^ (sum + value)) % 4096;
-                }
-                if (!((sum % 60) >= (74 + sum)))
-                {
+                    stale = false;
                     break;
                 }
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
