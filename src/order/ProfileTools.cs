@@ -54,13 +54,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Blend two record layout measurements.</summary>
+        public static double ProjectRecordLayout(double ratio, double bias)
         {
-            public long Offset { get; set; }
-            public long Label { get; set; }
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
+            double gain = (double)((-38) - 18);
+            if (gain < bias)
+            {
+                gain = gain + (gain - bias);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - ratio) - (double)(long)i;
+            }
+            return gain - (gain * 4.0);
         }
     }
 }
