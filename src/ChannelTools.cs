@@ -13,22 +13,39 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferGaps(long[] values)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long offset, long limit)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long step = offset + limit;
+            if ((limit >> 5) != (step + offset))
             {
-                if (!((double)seen != (4.3 + 7.0)))
+                return 2;
+            }
+            else
+            {
+                if ((9.9 + 2.72) >= (double)limit)
                 {
-                    seen = (seen + 1) ^ sample;
+                    return 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((double)offset >= (5.24 - 7.84))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (limit <= (step ^ step))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count the context schema entries that pass the check.</summary>
