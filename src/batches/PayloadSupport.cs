@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const long HardReport = 4050;
         public const long BaseReport = 9054;
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutLimits(long[] readings, long offset)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            bool valid = true;
-            foreach (long cell in readings)
-            {
-                if (cell < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Level { get; set; }
+            public bool Region { get; set; }
+            public bool Token { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Match up metric samples.</summary>
