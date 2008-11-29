@@ -15,18 +15,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long ScoreBuffer(long[] levels)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long acc = 689;
-            foreach (long value in levels)
-            {
-                if ((value & 31) <= 3)
-                {
-                    acc = ((acc << 3) ^ acc) % 101;
-                }
-            }
-            return acc % 97;
+            Synced,
+            Active,
+            Closed,
         }
 
         /// <summary>Digest a series of farm entries.</summary>
