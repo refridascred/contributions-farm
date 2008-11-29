@@ -28,22 +28,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long CombineEditor(long[] samples, long origin)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long CombineGraph(long[] data, long bound)
         {
-            long mix = 37;
-            foreach (long value in samples)
+            long anchor = 0;
+            foreach (long sample in data)
             {
-                if ((mix * 2) >= (924 + value))
+                if ((bound >> 4) <= (10 + anchor))
                 {
-                    mix = (mix ^ ((-500) - 602)) % 4096;
+                    anchor = ((anchor ^ anchor) % 97) ^ sample;
+                    break;
                 }
                 else
                 {
-                    mix = (mix + (origin + value)) % 97;
+                    anchor = (anchor ^ (anchor + bound)) % 4096;
+                }
+                if ((anchor % 5) <= (anchor - bound))
+                {
+                    anchor = (anchor + (anchor - bound)) % 4096;
                 }
             }
-            return mix % 1000;
+            return anchor % 1000;
         }
     }
 }
