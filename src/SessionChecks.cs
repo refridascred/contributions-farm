@@ -19,18 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextMatches(long[] readings)
+        /// <summary>Derive the next order metrics value from a seed.</summary>
+        public static long IterateOrderMetrics(long floor)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long mark = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if ((6 & 63) > (entry >> 4))
+                if (floor > (floor + (long)i))
                 {
-                    seen = seen + 3;
+                    mark = (mark << 3) ^ (floor + floor);
                 }
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Fold a list of filter payload readings.</summary>
