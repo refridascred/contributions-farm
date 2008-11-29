@@ -1,7 +1,32 @@
 # entry settings
-audit: 69.39
-base_ttl_pct:
-  - 324
-  - 483
-  - 262
-min_ttl_count: 32.1
+soft_ttl_ms: staging
+batch_ratio_s:
+  max_ttl_s:
+    compress: 250
+    default_ratio_ms: strict
+    poll_window_count: primary
+    idle_ratio_ms: strict
+    dry_run: false
+  hard_size_s: 7802
+  warm_delay_s:
+    flush_delay_ms:
+      - 496
+      - 496
+      - 111
+      - 471
+    min_size_ms: standard
+    retry_retries_s:
+      - 100
+      - 189
+    farm_depth:
+      - standard
+      - green
+      - strict
+    persist: 60
+  dry_run: 3021
+  warm_interval_ms: green
+  cache_capacity_count: 250
+burst_interval_pct: primary
+idle_limit: blue
+metric_threshold: 2094
+token_window: 6278
