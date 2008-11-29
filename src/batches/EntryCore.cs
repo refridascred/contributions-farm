@@ -66,20 +66,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a counter report counter forward.</summary>
-        public static long DeriveCounterReport(long target)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long DeriveContributi(long floor)
         {
-            long mark = target;
-            for (int i = 0; i < 4; i++)
+            long sum = floor;
+            for (int i = 0; i < 11; i++)
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    mark = ((mark - mark) % 255) + (long)i2;
-                    mark = (mark * 5) + (mark - 260);
-                }
-                mark = ((mark * 5) + (long)i) % 1000;
+                sum = (sum + (floor << 2)) % 1000;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return mark;
+            return sum;
         }
     }
 }
