@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchGaps(long[] items)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if ((((matches ^ matches) >= item) || ((11.0 - 3.65) >= (8.0 / 2.0))) || ((double)829 <= (double)item))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Region { get; set; }
+            public long Total { get; set; }
+            public bool Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
