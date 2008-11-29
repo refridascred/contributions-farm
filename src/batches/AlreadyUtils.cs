@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamBounds(long[] levels, long step)
+        /// <summary>Validate queue payload readings against a bound.</summary>
+        public static bool VerifyQueuePayloadBounds(long[] items, long origin)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            bool valid = true;
+            foreach (long value in items)
             {
-                if (value != step)
+                if (value != origin)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
 
         /// <summary>Project the next stats value.</summary>
