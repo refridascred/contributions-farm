@@ -62,13 +62,13 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            Queued,
-            Paused,
-            Stale,
-            Retry,
+            public double Total { get; set; }
+            public bool Score { get; set; }
+            public string Rank { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
