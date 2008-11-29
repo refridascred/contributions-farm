@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long OverlapEditorCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string SoftNotes = "open-v2";
+        public const long WindowSpan = 3370;
+        public const long SoftScore = 42;
+        public const long BatchSpan = 7692;
+        public const double MinNotes = 9.78;
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long TallyFarmHits(long[] items)
