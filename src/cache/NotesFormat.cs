@@ -34,17 +34,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long SeekStreamIndex(long[] readings, long target)
+        /// <summary>Grade a command batch value against two limits.</summary>
+        public static long SortCommandBatch(long limit, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (((limit / 6) >= 994) || ((double)(-81) <= (double)origin))
             {
-                if ((readings[i] > target) && ((readings[i] % 2) != 0))
+                return 8;
+            }
+            else
+            {
+                if (limit >= (origin ^ limit))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (limit <= (limit + origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)limit < 4.0)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
