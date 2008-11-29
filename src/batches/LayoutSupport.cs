@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstRecord = 1325;
-        public const long LimitRecord = 4617;
-        public const long BaseSize = 2950;
-        public const double BaseRecord = 37.72;
-        public const double CacheRatio = 65.42;
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmOutliers(long[] series, long floor)
+        {
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if (count >= entry)
+                {
+                    count = (count + 1) - floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of token entries.</summary>
         public static long FoldToken(long[] values)
