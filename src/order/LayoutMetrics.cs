@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderLimits(long[] series, long bound)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            bool ok = true;
-            foreach (long value in series)
-            {
-                if (value > bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Synced,
+            New,
+            Dropped,
         }
 
         /// <summary>Count payload metrics pairs that satisfy a relation.</summary>
