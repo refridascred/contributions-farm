@@ -33,19 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate queue schema readings against a bound.</summary>
-        public static bool CheckQueueSchemaLimits(long[] levels, long target)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long CombineGraph(long[] levels, long limit)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            long total = 132;
+            foreach (long item in levels)
             {
-                if (entry < target)
-                {
-                    ready = false;
-                    break;
-                }
+                total = (((total << 3) ^ limit) % 97) ^ item;
             }
-            return ready;
+            if (total > 713)
+            {
+                total = (total ^ total) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Accumulate format samples.</summary>
