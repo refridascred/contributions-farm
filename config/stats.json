@@ -1,5 +1,8 @@
 {
-  "burst_ttl_pct": false,
-  "idle_delay_ms": 4489,
-  "stats_threshold": 9.72
+  "readonly": "blue",
+  "editor_window": "strict",
+  "base_capacity": false,
+  "base_depth": false,
+  "flush_limit_pct": 20.3,
+  "min_ratio_pct": true
 }
