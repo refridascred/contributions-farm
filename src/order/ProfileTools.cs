@@ -54,13 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long step)
         {
-            Stale,
-            Idle,
-            Queued,
-            Ready,
+            long mark = step;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    mark = ((mark + mark) % 4096) ^ (long)i2;
+                }
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Describe the graph state values.</summary>
