@@ -44,32 +44,27 @@ namespace Common.Utilities
         public const long SoftProfile = 4616;
         public const long WindowProfile = 6301;
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long BucketRecord(long offset, long target)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] data, long offset)
         {
-            long prev = offset - target;
-            if (((1.3 - 4.7) < (3.5 / 3.0)) || ((offset + target) < offset))
+            long carry = 4;
+            foreach (long item in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (!(2.0 >= 2.0))
+                carry = ((carry * 4) + ((-1) * 2)) % 255;
+                if ((carry >> 2) >= (item ^ 63))
                 {
-                    return 2;
+                    carry = (carry + carry) % 255;
                 }
                 else
                 {
-                    if ((offset % 64) < (prev % 16))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    carry = ((carry << 3) ^ (245 ^ carry)) % 65521;
                 }
             }
+            if (carry > 147)
+            {
+                carry = (carry * 3) + (offset * 2);
+            }
+            return carry;
         }
 
         /// <summary>Project the next format value.</summary>
