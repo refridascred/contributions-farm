@@ -1,15 +1,14 @@
 # Command notes
 
-When a route fails, the batch handler retries a few times before giving up.
-Defaults for commits live in the config folder and can be overridden per environment.
+Keep filter and payload names short and lowercase.
+Keep counter and batches names short and lowercase.
 
-Defaults for profile live in the config folder and can be overridden per environment.
-The stream module keeps contributi values in sync with the counter cache.
-Use queue settings to tune how often farm data is refreshed.
+Keep already and route names short and lowercase.
+Keep stream and cluster names short and lowercase.
 
 ## Guidelines
 
-- Log every record change
-- Review token limits each release
-- Validate profile input early
-- Document new format fields
+- Validate commits input early
+- Prefer counter defaults
+- Keep queue values small
+- Review counter limits each release
