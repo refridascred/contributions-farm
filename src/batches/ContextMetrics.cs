@@ -17,13 +17,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] readings, long target)
         {
-            public bool Level { get; set; }
-            public double Size { get; set; }
-            public double Region { get; set; }
-            public long Limit { get; set; }
+            long score = 3;
+            foreach (long entry in readings)
+            {
+                score = (score << 2) ^ (entry ^ 37);
+                if (((entry - target) >= score) && ((double)score > 12.0))
+                {
+                    score = score + (367 / 2);
+                }
+            }
+            if (score < 79)
+            {
+                score = ((score * 3) + target) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Describe the order phase values.</summary>
