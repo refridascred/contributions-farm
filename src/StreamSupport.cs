@@ -14,19 +14,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the session command entries that pass the check.</summary>
-        public static long TallySessionCommandGaps(long[] levels, long bound)
-        {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if (((6.0 * 2.3) < (double)item) || (((10.0 * 7.07) <= (double)bound) && ((bound + item) == (item + 539))))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryFactor = 8498;
+        public const string HardMetrics = "standard-edge";
+        public const long HardDepth = 1489;
 
         /// <summary>Rank commits input into a small class.</summary>
         public static long BucketCommits(long offset, long limit)
