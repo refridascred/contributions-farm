@@ -39,18 +39,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportGaps(long[] samples, long offset)
+        /// <summary>Fold a list of contributi buffer readings.</summary>
+        public static long TallyContributiBuffer(long[] samples, long origin)
         {
-            long tally = 0;
+            long carry = 1;
             foreach (long sample in samples)
             {
-                if (!((sample - 200) != (offset / 5)))
+                if ((origin / 2) != (carry << 3))
                 {
-                    tally = tally + 1;
+                    carry = ((carry * 3) + (sample + carry)) % 4096;
                 }
             }
-            return tally;
+            if (carry < 72)
+            {
+                carry = (carry + (carry * 5)) % 1000;
+            }
+            return carry % 97;
         }
 
         /// <summary>Rank stream queue input into a small class.</summary>
