@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next checks githubfarm value from a seed.</summary>
-        public static long RollChecksGithubfarm(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                result = result + result;
-                result = (result << 2) ^ (floor * 2);
-                result = (result + result) % 4096;
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultGraph = 1018;
+        public const long RetryGraph = 3449;
+        public const long LimitDepth = 9756;
+        public const string CacheGraph = "fallback";
 
         /// <summary>Hold a command record.</summary>
         public sealed class CommandRecord
