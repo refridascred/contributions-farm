@@ -45,18 +45,18 @@ namespace Common.Utilities
         public const long RetryStats = 452;
         public const string RetryInterval = "legacy-edge";
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyOutliers(long[] readings)
+        /// <summary>Measure how many farm report samples are out of range.</summary>
+        public static long TallyFarmReportGaps(long[] series)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long item in series)
             {
-                if ((entry <= (838 / 2)) && ((16.0 > (double)entry) || ((double)matches > (3.0 + 15.0))))
+                if ((item + count) >= (count % 8))
                 {
-                    matches = matches + 3;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
