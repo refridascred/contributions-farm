@@ -38,13 +38,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            public string Total { get; set; } = "";
-            public double Limit { get; set; }
-            public double Token { get; set; }
-            public bool Stamp { get; set; }
+            Synced,
+            Paused,
+            Closed,
+            Locked,
+            Done,
         }
     }
 }
