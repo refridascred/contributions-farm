@@ -27,22 +27,25 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportHits(long[] readings, long bound)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long SortWindow(long floor, long bound)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long diff = floor - bound;
+            if ((diff % 7) > 948)
             {
-                if (((double)entry < 12.0) || (70 >= (969 - entry)))
+                return 0;
+            }
+            else
+            {
+                if ((bound * 3) < (floor & 3))
                 {
-                    seen = (seen + 2) - bound;
+                    return 8;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 6;
                 }
             }
-            return seen;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
