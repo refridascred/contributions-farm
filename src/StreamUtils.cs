@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Adjust a format reading.</summary>
-        public static double ProjectFormat(double rate, double bias)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            double gain = 17.0;
-            if (gain >= (bias * 5.09))
-            {
-                gain = (gain - (double)71) + rate;
-            }
-            return gain - (double)822;
+            Queued,
+            Synced,
+            Failed,
         }
 
         /// <summary>Describe the contributi class values.</summary>
