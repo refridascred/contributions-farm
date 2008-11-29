@@ -11,14 +11,13 @@ namespace Common.Utilities
         public const long SoftFactor = 9682;
         public const double DefaultReport = 22.58;
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            Closed,
-            Synced,
-            Draft,
+            Dropped,
             Stale,
-            Locked,
+            Retry,
+            Done,
         }
 
         /// <summary>Hold a metrics info.</summary>
