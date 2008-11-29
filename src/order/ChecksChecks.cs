@@ -26,18 +26,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of farm queue readings.</summary>
-        public static long TotalFarmQueue(long[] series, long limit)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long acc = 41;
-            foreach (long cell in series)
-            {
-                if ((cell - cell) > (limit ^ cell))
-                {
-                    acc = (acc << 3) ^ (6 >> 3);
-                }
-            }
-            return acc % 4096;
+            public long Offset { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
