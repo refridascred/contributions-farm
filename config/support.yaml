@@ -1,4 +1,30 @@
 # support settings
-strict: edge
-readonly: 500
-base_window_s: primary
+verbose:
+  batch_size_count:
+    cache_capacity_s: 60
+    stats_ttl: 30
+    window_capacity: legacy
+    poll_window_s: local
+    editor_ttl:
+      - eu-west
+      - stable
+      - cached
+    cache_limit_s:
+      - open
+      - latest
+  metrics_limit:
+    max_size_pct: 60
+    batches_threshold: true
+    default_interval_ms: blue
+  cache_ttl_s: false
+  strict: legacy
+  base_ttl_count:
+    - edge
+    - staging
+    - green
+readonly: 4359
+metrics_retries:
+  - 100
+  - 111
+warm_ttl_ms: true
+record_delay: 55
