@@ -15,24 +15,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long IterateCluster(long bound)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long CombineContributi(long[] data, long floor)
         {
-            long carry = bound;
-            for (int i = 0; i < 11; i++)
+            long acc = 795;
+            foreach (long value in data)
             {
-                if (!(4 >= bound))
-                {
-                    carry = (carry ^ (bound & 3)) % 1000;
-                    carry = (carry + carry) % 101;
-                }
-                if ((42 <= (bound % 97)) && ((bound + carry) <= (carry - carry)))
-                {
-                    continue;
-                }
-                carry = ((carry * 3) + (long)i) % 101;
+                acc = (((acc << 3) ^ (value - acc)) % 101) + floor;
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Fold a list of context readings.</summary>
