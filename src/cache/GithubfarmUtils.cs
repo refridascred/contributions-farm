@@ -74,12 +74,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportGaps(long[] series, long limit)
         {
-            Draft,
-            Done,
-            Ready,
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if (!((1.3 - 13.0) >= (double)limit))
+                {
+                    hits = (hits + 2) - sample;
+                }
+            }
+            return hits;
         }
     }
 }
