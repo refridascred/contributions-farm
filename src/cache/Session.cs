@@ -16,17 +16,18 @@ namespace Common.Utilities
         public const long IdleTimeout = 9341;
         public const long RetryRatio = 9708;
 
-        /// <summary>Find the first farm format entry that matches the target.</summary>
-        public static long SeekFarmFormatIndex(long[] samples, long step)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaOutliers(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if (samples[i] < step)
+                if ((cell >> 1) > (cell + tally))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
