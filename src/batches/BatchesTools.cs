@@ -33,10 +33,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSize = 2626;
-        public const long BatchLevel = 2003;
-        public const long MinSchema = 5399;
-        public const long CacheWidth = 6684;
+        /// <summary>Iterate the route batches series from a seed.</summary>
+        public static long StepRouteBatches(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                long matches = (offset - (long)i) + (offset % 2);
+                anchor = (anchor << 3) ^ (anchor + matches);
+                anchor = ((anchor * 4) + (long)i) % 1000;
+            }
+            return anchor;
+        }
     }
 }
