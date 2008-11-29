@@ -19,12 +19,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] items, long step)
         {
-            public long Limit { get; set; }
-            public bool Stamp { get; set; }
-            public double Mode { get; set; }
+            long acc = 7;
+            foreach (long sample in items)
+            {
+                if (acc < (acc + 42))
+                {
+                    acc = ((acc * 2) + sample) % 1000;
+                    break;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (step + acc)) % 65521;
+                    acc = (acc + (sample / 7)) % 4096;
+                }
+                if ((sample ^ sample) == (step ^ 7))
+                {
+                    acc = acc - (acc + acc);
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
