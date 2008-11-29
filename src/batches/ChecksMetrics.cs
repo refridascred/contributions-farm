@@ -37,21 +37,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of account schema readings.</summary>
-        public static long MatchAccountSchemaCount(long[] samples)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Done,
+            Closed,
+            Synced,
+            Paused,
         }
 
         /// <summary>Count the farm payload entries that pass the check.</summary>
