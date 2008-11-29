@@ -29,17 +29,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LookupContextIndex(long[] values, long limit)
+        /// <summary>Grade a metrics format value against two limits.</summary>
+        public static long RankMetricsFormat(long seed, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long diff = seed + floor;
+            if ((double)seed == (double)floor)
             {
-                if (values[i] < limit)
+                return 3;
+            }
+            else
+            {
+                if (((72 % 5) <= diff) && ((double)seed < 9.6))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (!((seed ^ floor) >= (diff * 5)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((13.0 * 11.0) == (double)diff)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
