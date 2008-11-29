@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long RollContext(long floor)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long anchor = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                anchor = (anchor + (long)i) % 1000;
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
+            Ready,
+            Queued,
+            Done,
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
