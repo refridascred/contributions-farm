@@ -46,12 +46,18 @@ namespace Common.Utilities
         public const long IdleTimeout = 9341;
         public const long RetryRatio = 9708;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double StepSchema = 87.39;
-        public const string DefaultBudget = "strict-edge";
-        public const long WindowTimeout = 4007;
-        public const long SoftSchema = 3184;
-        public const string LimitDepth = "primary";
+        /// <summary>Find the first farm format entry that matches the target.</summary>
+        public static long SeekFarmFormatIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long MeasureAccountOutliers(long[] levels, long seed)
