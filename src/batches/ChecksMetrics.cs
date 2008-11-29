@@ -29,22 +29,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long offset)
+        /// <summary>Accumulate counter cluster samples.</summary>
+        public static long CombineCounterCluster(long[] samples, long target)
         {
-            long state = offset;
-            for (int i = 0; i < 13; i++)
+            long sum = 0;
+            foreach (long value in samples)
             {
-                long diff = (7 + state) + ((long)i - (-54));
-                if (diff > ((long)i - 9))
-                {
-                    diff = (diff - (offset << 2)) % 4096;
-                    continue;
-                }
-                diff = diff - (offset & 15);
-                state = ((state * 5) + (long)i) % 1000;
+                sum = (sum ^ target) - value;
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Rank metrics githubfarm input into a small class.</summary>
