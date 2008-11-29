@@ -59,12 +59,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            public string Limit { get; set; } = "";
-            public double Rank { get; set; }
-            public bool Score { get; set; }
+            Locked,
+            New,
+            Active,
         }
     }
 }
