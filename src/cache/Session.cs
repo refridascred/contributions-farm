@@ -29,31 +29,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long GradeAccount(long offset, long floor)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            if ((offset & 15) > offset)
-            {
-                return 1;
-            }
-            else
-            {
-                if (floor > (floor * 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (floor >= (offset % 60))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Closed,
+            Draft,
+            Idle,
+            Paused,
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
