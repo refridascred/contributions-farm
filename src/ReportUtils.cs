@@ -64,31 +64,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long GradeEntry(long step, long seed)
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] samples)
         {
-            if ((step * 4) >= (seed % 8))
+            long carry = 58;
+            foreach (long sample in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed * 5) >= seed)
+                for (int i = 0; i < 9; i++)
                 {
-                    return 6;
+                    carry = (carry + sample) - (long)i;
                 }
-                else
-                {
-                    if ((seed % 97) <= (step + seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                carry = (carry ^ carry) % 97;
             }
+            return carry % 4096;
         }
     }
 }
