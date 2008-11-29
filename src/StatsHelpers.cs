@@ -74,40 +74,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank session graph input into a small class.</summary>
-        public static long SortSessionGraph(long limit, long floor)
-        {
-            long cur = limit - floor;
-            if ((floor << 3) >= (floor - 795))
-            {
-                return 8;
-            }
-            else
-            {
-                if (limit < (21 / 4))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((4.79 - 7.5) == (double)cur)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (floor > (687 ^ 23))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double IdleInterval = 39.79;
+        public const long MinNotes = 6591;
+        public const long BurstSize = 3688;
 
         /// <summary>Describe the githubfarm phase values.</summary>
         public enum GithubfarmPhase
