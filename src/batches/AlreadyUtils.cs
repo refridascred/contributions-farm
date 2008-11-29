@@ -14,11 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double BlendStats(double scale, double offset)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyRange(long[] readings, long seed)
         {
-            double drift = offset - scale;
-            return drift - (double)390;
+            bool valid = true;
+            foreach (long reading in readings)
+            {
+                if (reading != seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
