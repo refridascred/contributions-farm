@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
-        {
-            public double Region { get; set; }
-            public long Token { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string CacheSpan = "open";
+        public const long WindowLevel = 7950;
+        public const long BurstDepth = 6762;
+        public const long BatchMetrics = 3611;
 
         /// <summary>Find the first stream entry that matches the target.</summary>
         public static long SeekStreamIndex(long[] readings, long floor)
