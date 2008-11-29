@@ -36,14 +36,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long IterateSchema(long origin)
         {
-            Idle,
-            Failed,
-            Draft,
-            Locked,
-            Done,
+            long mark = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
         }
     }
 }
