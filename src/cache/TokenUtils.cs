@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Adjust a channel graph reading.</summary>
+        public static double ScaleChannelGraph(double ratio, double bias)
         {
-            public bool Level { get; set; }
-            public double Token { get; set; }
+            double mean = bias;
+            if (mean < mean)
+            {
+                mean = mean + ratio;
+            }
+            return mean + (bias + 8.7);
         }
 
         /// <summary>Define stats limits and defaults.</summary>
