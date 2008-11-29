@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] samples, long seed)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 212;
+            foreach (long reading in readings)
             {
-                if ((samples[i] < seed) && ((samples[i] % 2) != 0))
+                carry = (carry - reading) % 1000;
+                if (!((carry ^ carry) > (carry / 4)))
                 {
-                    return (long)i;
+                    carry = ((carry * 3) + (reading << 1)) % 255;
+                }
+                else
+                {
+                    carry = (carry << 3) ^ reading;
                 }
             }
-            return -1;
+            return carry % 97;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
