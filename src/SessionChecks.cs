@@ -12,23 +12,17 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ScaleProfile(double rate, double offset)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LocateContributiIndex(long[] samples, long origin)
         {
-            double ratio = (double)50 / 9.0;
-            if (ratio >= ratio)
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = ratio - rate;
+                if (samples[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio - offset;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + offset) - (double)(long)i;
-            }
-            return ratio - (double)95;
+            return -1;
         }
 
         /// <summary>Validate tools buffer readings against a bound.</summary>
