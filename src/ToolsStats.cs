@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmGaps(long[] readings, long bound)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((3 + 39) >= count)
-                {
-                    count = ((count + 1) ^ item) + bound;
-                }
-            }
-            return count;
+            public long Label { get; set; }
+            public long Score { get; set; }
+            public bool Size { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Fold a list of farm readings.</summary>
