@@ -1,15 +1,11 @@
 # Command notes
 
-The farm module keeps stats values in sync with the graph cache.
-Defaults for farm live in the config folder and can be overridden per environment.
-Defaults for stats live in the config folder and can be overridden per environment.
-
-Keep notes and profile names short and lowercase.
-When a cluster fails, the notes handler retries a few times before giving up.
-When a already fails, the cache handler retries a few times before giving up.
+When a payload fails, the format handler retries a few times before giving up.
+A filter that stays idle for too long is moved to the order list.
 
 ## Guidelines
 
-- Log every command change
-- Validate route input early
-- Review buffer limits each release
+- Log every profile change
+- Validate support input early
+- Keep order values small
+- Review layout limits each release
