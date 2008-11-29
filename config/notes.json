@@ -1,7 +1,8 @@
 {
-  "min_timeout_ms": ["legacy", "standard"],
-  "batch_size": "local",
-  "token_window": "open",
-  "audit": "eu-west",
-  "batches_window": 10
+  "base_timeout_pct": 48,
+  "stats_limit": 57,
+  "readonly": 62.92,
+  "sync_ratio_s": 59.13,
+  "poll_window_count": "fallback",
+  "flush_delay": 500
 }
