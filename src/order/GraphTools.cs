@@ -20,18 +20,39 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmHits(long[] samples)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long ClassifyLayout(long limit, long seed)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long next = limit + seed;
+            if ((next / 8) > (next & 3))
             {
-                if (!((8 % 7) >= reading))
+                return 8;
+            }
+            else
+            {
+                if (((next % 24) < (limit + next)) || ((next - limit) <= next))
                 {
-                    matches = matches + 1;
+                    return 4;
+                }
+                else
+                {
+                    if ((7.2 - 1.0) >= (double)limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((281 <= (seed - 518)) && ((double)46 < (double)limit))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
