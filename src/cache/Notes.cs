@@ -29,12 +29,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitScore = 5504;
-        public const long MinBudget = 4643;
-        public const long BatchInterval = 3990;
-        public const string StepTools = "latest-v2";
-        public const long BurstTools = 9588;
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportGaps(long[] values, long step)
+        {
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((value + count) >= (value + step))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Derive the next notes value from a seed.</summary>
         public static long RollNotes(long floor)
