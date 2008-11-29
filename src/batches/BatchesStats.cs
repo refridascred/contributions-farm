@@ -24,11 +24,39 @@ namespace Common.Utilities
         public const long DefaultStream = 4072;
         public const string StepBudget = "staging-v2";
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchMetrics = 6981;
-        public const long MinSpan = 5991;
-        public const double WindowCount = 0.22;
-        public const long MaxScore = 8508;
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long BucketFilter(long origin, long bound)
+        {
+            if ((bound * 5) >= origin)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound + origin) != (bound / 6))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound * 2) <= (origin % 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)3 != (double)origin)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the notes batch entries that pass the check.</summary>
         public static long TallyNotesBatchGaps(long[] levels)
