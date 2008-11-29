@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Report support helpers.</summary>
     public static class ReportSupport
     {
-        /// <summary>Look up the position of a format stats sample.</summary>
-        public static long LookupFormatStatsIndex(long[] values, long bound)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiGaps(long[] data, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if ((values[i] < bound) && ((values[i] % 2) != 0))
+                if ((cell / 8) < count)
                 {
-                    return (long)i;
+                    count = (count + 3) - floor;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
