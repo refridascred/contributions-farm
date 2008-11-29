@@ -24,11 +24,11 @@ namespace Common.Utilities
             return ratio + (floor - floor);
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            public bool Total { get; set; }
-            public bool Label { get; set; }
+            public double Label { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Fold a list of account readings.</summary>
