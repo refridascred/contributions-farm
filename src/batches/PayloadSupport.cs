@@ -13,17 +13,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long SeekChannelIndex(long[] samples, long limit)
+        /// <summary>Measure how many graph stream samples are out of range.</summary>
+        public static long AuditGraphStreamOutliers(long[] values, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                if ((samples[i] > limit) && ((samples[i] % 2) != 0))
+                if ((count <= (count % 3)) || ((offset << 1) > count))
                 {
-                    return (long)i;
+                    count = (count + 2) - value;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a filter stats.</summary>
