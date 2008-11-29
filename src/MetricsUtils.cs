@@ -49,19 +49,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double ProjectSupport(double weight, double offset)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportGaps(long[] samples, long offset)
         {
-            double bias = (double)(3 * 5);
-            if (bias <= weight)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                bias = (bias + (3.6 + bias)) - offset;
+                if (!((sample - 200) != (offset / 5)))
+                {
+                    tally = tally + 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = bias + (double)(long)i;
-            }
-            return bias + (8.07 * 1.67);
+            return tally;
         }
 
         /// <summary>Define already limits and defaults.</summary>
