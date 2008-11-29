@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
-        {
-            public long Label { get; set; }
-            public long Score { get; set; }
-            public bool Size { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long CacheSize = 4460;
+        public const long DefaultRatio = 7697;
+        public const long SoftCache = 6705;
+        public const double BurstCache = 0.83;
+        public const long BaseLevel = 4677;
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long CombineFarm(long[] items, long step)
