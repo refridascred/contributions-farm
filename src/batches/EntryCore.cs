@@ -45,17 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a queue githubfarm reading by value.</summary>
-        public static long LookupQueueGithubfarmIndex(long[] readings, long limit)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesBounds(long[] data, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                if (readings[i] >= limit)
+                if (sample < bound)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Roll a counter report counter forward.</summary>
