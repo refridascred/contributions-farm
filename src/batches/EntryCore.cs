@@ -14,12 +14,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double HardTools = 51.16;
-        public const long CacheTools = 9208;
-        public const long IdleTools = 346;
-        public const long SoftCount = 6441;
-        public const double MinTools = 10.43;
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
+        {
+            public long Rank { get; set; }
+            public bool Label { get; set; }
+        }
 
         /// <summary>Look up the position of a counter sample.</summary>
         public static long LocateCounterIndex(long[] data, long bound)
