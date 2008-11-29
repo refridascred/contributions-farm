@@ -19,11 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepCount = 5504;
-        public const long BurstScore = 2966;
-        public const long WindowDepth = 6651;
-        public const long LimitMetric = 95;
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
+        {
+            Idle,
+            Done,
+            Paused,
+            Pending,
+        }
 
         /// <summary>Describe the payload status values.</summary>
         public enum PayloadStatus
