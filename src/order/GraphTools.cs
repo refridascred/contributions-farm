@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Locate a support counter reading by value.</summary>
-        public static long SeekSupportCounterIndex(long[] levels, long floor)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double AdjustFormat(double ratio, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double rate = ratio;
+            if (rate <= rate)
             {
-                if ((levels[i] <= floor) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                rate = (rate + rate) - floor;
             }
-            return -1;
+            else
+            {
+                rate = rate + rate;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + (ratio - rate)) + (double)(long)i;
+            }
+            return rate - (double)14;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
