@@ -25,19 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatBounds(long[] items, long seed)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long floor)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long anchor = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if (value != seed)
-                {
-                    stale = false;
-                    break;
-                }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return stale;
+            return anchor;
         }
     }
 }
