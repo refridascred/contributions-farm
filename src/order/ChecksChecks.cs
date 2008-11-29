@@ -29,14 +29,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LookupCommandIndex(long[] series, long offset)
         {
-            Draft,
-            Done,
-            Retry,
-            Pending,
-            Synced,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
