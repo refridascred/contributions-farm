@@ -19,21 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] data, long step)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long mark = 24;
-            foreach (long datum in data)
-            {
-                if (!((mark % 3) == (mark >> 3)))
-                {
-                    mark = ((mark + (step << 2)) % 97) ^ datum;
-                    mark = ((mark << 2) ^ (mark >> 2)) % 4096;
-                }
-                mark = mark - (mark - step);
-                mark = (mark - mark) % 97;
-            }
-            return mark % 97;
+            public double Total { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
