@@ -52,25 +52,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long limit, long step)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long diff = limit ^ step;
-            if (!(limit <= (2 + diff)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((step >= (diff & 255)) || ((5.3 / 2.0) >= (double)diff))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public string Owner { get; set; } = "";
+            public double Stamp { get; set; }
+            public double Weight { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Look up the position of a queue token sample.</summary>
