@@ -33,12 +33,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            Retry,
-            New,
-            Closed,
+            public long Weight { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Rank channel input into a small class.</summary>
