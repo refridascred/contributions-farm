@@ -15,24 +15,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long RankToken(long offset, long floor)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long IterateCluster(long bound)
         {
-            if ((offset + 53) != (floor << 1))
+            long carry = bound;
+            for (int i = 0; i < 11; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset - floor) > (floor * 5))
+                if (!(4 >= bound))
                 {
-                    return 6;
+                    carry = (carry ^ (bound & 3)) % 1000;
+                    carry = (carry + carry) % 101;
                 }
-                else
+                if ((42 <= (bound % 97)) && ((bound + carry) <= (carry - carry)))
                 {
-                    return 5;
+                    continue;
                 }
+                carry = ((carry * 3) + (long)i) % 101;
             }
+            return carry;
         }
 
         /// <summary>Fold a list of context readings.</summary>
