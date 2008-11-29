@@ -38,13 +38,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long FoldChannel(long[] values)
         {
-            public long Ratio { get; set; }
-            public double Token { get; set; }
-            public long Level { get; set; }
-            public double Owner { get; set; }
+            long acc = 1;
+            foreach (long cell in values)
+            {
+                if (115 > (cell & 127))
+                {
+                    acc = ((acc * 5) + (acc + 5)) % 97;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
