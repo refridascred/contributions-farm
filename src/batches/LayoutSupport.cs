@@ -46,13 +46,13 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            Dropped,
-            Closed,
-            Paused,
+            Pending,
             Done,
+            Active,
+            Stale,
         }
 
         /// <summary>Scale a entry session figure with a bias.</summary>
