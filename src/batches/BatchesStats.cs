@@ -16,15 +16,21 @@ namespace Common.Utilities
             return drift + (scale + 1.8);
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long IterateRoute(long bound)
+        /// <summary>Compare every pair of commits session readings.</summary>
+        public static long MatchCommitsSessionCount(long[] readings)
         {
-            long mark = bound;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = ((mark * 2) + (long)i) % 65521;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
