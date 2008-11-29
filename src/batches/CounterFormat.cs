@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseAlready = 8171;
-        public const long CacheDepth = 3208;
-        public const long BurstScore = 5269;
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
+        {
+            public bool Level { get; set; }
+            public string Label { get; set; } = "";
+            public bool Rank { get; set; }
+            public bool Count { get; set; }
+        }
 
         /// <summary>Hold a tools entry.</summary>
         public sealed class ToolsEntry
