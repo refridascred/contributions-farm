@@ -1,14 +1,10 @@
 # Command notes
 
-Keep format and batch names short and lowercase.
-Use tools settings to tune how often tools data is refreshed.
-
-Run the batch check before changing any format limits.
-Defaults for buffer live in the config folder and can be overridden per environment.
+Use route settings to tune how often graph data is refreshed.
+The commits module keeps record values in sync with the channel cache.
 
 ## Guidelines
 
-- Prefer notes defaults
-- Log every githubfarm change
-- Keep counter values small
-- Document new farm fields
+- Log every cluster change
+- Document new already fields
+- Keep already values small
