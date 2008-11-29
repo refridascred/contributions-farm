@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenMatches(long[] series)
+        /// <summary>Rank stats support input into a small class.</summary>
+        public static long BucketStatsSupport(long seed, long bound)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            if ((double)seed > (9.3 / 5.0))
             {
-                if (!((hits >> 3) < hits))
+                return 4;
+            }
+            else
+            {
+                if ((6.7 - 0.08) == (double)seed)
                 {
-                    hits = (hits + 2) + datum;
+                    return 2;
+                }
+                else
+                {
+                    if ((seed % 3) == (bound + bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((seed >> 1) != (85 / 3)) && (bound < (-53)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Accumulate stream samples.</summary>
