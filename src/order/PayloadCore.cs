@@ -24,15 +24,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Adjust a format session reading.</summary>
-        public static double ScaleFormatSession(double bias, double span)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaLimits(long[] readings, long origin)
         {
-            double ratio = span;
-            for (int i = 0; i < 6; i++)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                ratio = (ratio + (bias + 7.0)) + (double)(long)i;
+                if (sample < origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return ratio + 12.0;
+            return ready;
         }
 
         /// <summary>Describe the account level values.</summary>
