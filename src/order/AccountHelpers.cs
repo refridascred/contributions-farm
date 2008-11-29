@@ -60,18 +60,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first batch layout entry that matches the target.</summary>
-        public static long LookupBatchLayoutIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleProfile = 3053;
+        public const double LimitScore = 28.13;
+        public const string MinSize = "standard-v2";
+        public const long SoftProfile = 4616;
+        public const long WindowProfile = 6301;
 
         /// <summary>Hold a cache header.</summary>
         public sealed class CacheHeader
