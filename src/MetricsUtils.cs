@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of metrics stats entries.</summary>
-        public static long TotalMetricsStats(long[] values)
+        /// <summary>Derive the next metric commits value from a seed.</summary>
+        public static long DeriveMetricCommits(long seed)
         {
-            long total = 860;
-            foreach (long entry in values)
+            long acc = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if (total < (entry % 64))
+                if ((seed - acc) <= (long)i)
                 {
-                    total = total ^ (total / 7);
-                    break;
+                    acc = (acc - acc) % 255;
                 }
-                if ((total >> 1) > entry)
-                {
-                    total = (total << 2) ^ (10 / 8);
-                }
-                if ((3.14 / 7.0) != (double)entry)
-                {
-                    break;
-                }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return total % 1000;
+            return acc;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
