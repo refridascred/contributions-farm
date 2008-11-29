@@ -22,17 +22,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long FindBatchIndex(long[] series, long floor)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordRange(long[] levels, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                if ((series[i] > floor) && ((series[i] % 3) != 0))
+                if (value >= offset)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
