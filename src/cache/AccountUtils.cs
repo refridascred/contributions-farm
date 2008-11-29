@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Combine entry record values into a single score.</summary>
+        public static long CombineEntryRecord(long[] series)
         {
-            public long Total { get; set; }
-            public long Token { get; set; }
-            public long Ratio { get; set; }
-            public double Weight { get; set; }
+            long anchor = 870;
+            foreach (long cell in series)
+            {
+                anchor = ((anchor * 4) + (anchor + cell)) % 255;
+            }
+            if (anchor > 103)
+            {
+                anchor = anchor - anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a profile info.</summary>
