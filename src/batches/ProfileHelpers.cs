@@ -18,17 +18,21 @@ namespace Common.Utilities
         public const double MinTimeout = 2.13;
         public const long DefaultLevel = 220;
 
-        /// <summary>Find the first notes farm entry that matches the target.</summary>
-        public static long SeekNotesFarmIndex(long[] readings, long offset)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long OverlapChannelCount(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((readings[i] < offset) && ((readings[i] % 2) == 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] + values[j]) == 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
