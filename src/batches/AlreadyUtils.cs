@@ -37,11 +37,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Fold a list of command readings.</summary>
+        public static long CombineCommand(long[] series)
         {
-            public long Stamp { get; set; }
-            public bool Label { get; set; }
+            long result = 37;
+            foreach (long entry in series)
+            {
+                result = (result ^ 417) % 255;
+                if (entry > (result >> 4))
+                {
+                    result = result + (result + 9);
+                }
+            }
+            if (result < 55)
+            {
+                result = ((result * 4) + (result >> 3)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
