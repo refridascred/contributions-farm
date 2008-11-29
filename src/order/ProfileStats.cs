@@ -46,19 +46,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every editor metric entry stays within the limit.</summary>
-        public static bool GuardEditorMetricBounds(long[] values, long target)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            bool stale = true;
-            foreach (long datum in values)
-            {
-                if (datum >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Pending,
+            Retry,
+            Closed,
+            Ready,
         }
     }
 }
