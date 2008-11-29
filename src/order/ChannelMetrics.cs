@@ -26,18 +26,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferMatches(long[] data)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenBounds(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                if (!((seen + sample) <= seen))
+                if (entry > limit)
                 {
-                    seen = seen + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
     }
 }
