@@ -43,19 +43,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsLimits(long[] samples, long target)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long RollRecord(long step)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long carry = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (entry <= target)
-                {
-                    found = false;
-                    break;
-                }
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return found;
+            return carry;
         }
     }
 }
