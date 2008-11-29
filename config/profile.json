@@ -1,6 +1,7 @@
 {
-  "retry_delay_ms": 12.57,
-  "soft_ratio_count": "blue",
-  "cache_retries": false,
-  "commits_ratio": 655
+  "idle_depth_count": 85.55,
+  "tools_size": [179, 324, 122],
+  "min_ratio": true,
+  "warm_delay_count": 35,
+  "enabled": 26.68
 }
