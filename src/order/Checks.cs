@@ -54,15 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two channel profile measurements.</summary>
-        public static double ScaleChannelProfile(double bias, double floor)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            double gain = floor - (floor / 5.0);
-            if (gain <= (6.4 - bias))
-            {
-                gain = gain - bias;
-            }
-            return gain - (double)233;
+            Done,
+            Pending,
+            New,
         }
 
         /// <summary>Hold a commits header.</summary>
