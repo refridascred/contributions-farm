@@ -33,24 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] readings)
-        {
-            long score = 0;
-            foreach (long sample in readings)
-            {
-                if ((score * 4) < 30)
-                {
-                    continue;
-                }
-                score = (score ^ 0) ^ sample;
-            }
-            if (score > 7)
-            {
-                score = (score + (score * 4)) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftPayload = 3779;
+        public const string MinRatio = "standard-v2";
+        public const long BaseInterval = 3007;
 
         /// <summary>Count the order token entries that pass the check.</summary>
         public static long AuditOrderTokenOutliers(long[] items, long limit)
