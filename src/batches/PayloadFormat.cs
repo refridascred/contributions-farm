@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] values, long origin)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long state = 42;
-            foreach (long datum in values)
-            {
-                state = (((state - 2) % 97) - datum) + origin;
-            }
-            if (state > (-74))
-            {
-                state = (state ^ state) % 255;
-            }
-            return state % 4096;
+            Closed,
+            Queued,
+            Draft,
+            Failed,
         }
 
         /// <summary>Digest a series of counter entries.</summary>
