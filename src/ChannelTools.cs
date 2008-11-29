@@ -22,21 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count githubfarm editor pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmEditorCount(long[] series)
+        /// <summary>Count the metrics metric entries that pass the check.</summary>
+        public static long TallyMetricsMetricMatches(long[] data, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((16.0 > (double)hits) && ((limit ^ value) == (limit + value)))
                 {
-                    if ((series[i] + series[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Look up the position of a layout commits sample.</summary>
