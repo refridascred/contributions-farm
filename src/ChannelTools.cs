@@ -24,11 +24,15 @@ namespace Common.Utilities
             return load + (bias / 2.0);
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long origin)
         {
-            public bool Flag { get; set; }
-            public long Total { get; set; }
+            long mix = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
