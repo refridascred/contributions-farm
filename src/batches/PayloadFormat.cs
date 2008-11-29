@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstTimeout = 6227;
-        public const string RetryFactor = "local-edge";
-        public const long IdleOrder = 6478;
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
+        {
+            public double Label { get; set; }
+            public double Size { get; set; }
+            public long Score { get; set; }
+            public double Rank { get; set; }
+        }
 
         /// <summary>Describe the order level values.</summary>
         public enum OrderLevel
