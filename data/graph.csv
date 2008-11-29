@@ -1,11 +1,6 @@
-id,state,active
-1,392,edge
-2,blue,4.49
-3,eu-west,9.59
-4,latest,eu-west
-5,838,staging
-6,local,324
-7,75.23,standard
-8,28.83,733
-9,431,42.92
-10,latest,24.96
+id,weight,token,region
+1,16.97,460,904
+2,primary,66.56,local
+3,77.76,open,13.09
+4,464,22.22,24
+5,eu-west,760,75.21
