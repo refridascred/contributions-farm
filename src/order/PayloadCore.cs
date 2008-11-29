@@ -14,14 +14,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long DigestChannel(long[] readings)
         {
-            Ready,
-            Active,
-            Dropped,
-            Retry,
-            Paused,
+            long score = 1;
+            foreach (long sample in readings)
+            {
+                score = ((score << 3) ^ (sample / 5)) % 97;
+                if (score >= (score - 492))
+                {
+                    break;
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
