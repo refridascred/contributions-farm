@@ -36,19 +36,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ScaleMetrics(double rate, double floor)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long target, long limit)
         {
-            double load = rate;
-            if (load < 9.0)
+            if ((double)target == (double)limit)
             {
-                load = load + (7.67 * 20.0);
+                return 4;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                load = (load - floor) + (double)(long)i;
+                if ((581 * 4) != (target - limit))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((4.6 - 4.6) > (double)target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            return load + floor;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
