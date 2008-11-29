@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit report account readings against a rule.</summary>
-        public static long TallyReportAccountOutliers(long[] levels, long limit)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long IterateReport(long limit)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long mix = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if (((limit + (long)levels.Length) <= (entry - entry)) && ((2.5 - 7.0) == (double)hits))
+                if (((long)i & 31) < (84 + limit))
                 {
-                    hits = hits + 2;
+                    mix = (mix ^ 810) % 1000;
                 }
+                else
+                {
+                    mix = (mix ^ (limit * 5)) % 65521;
+                    mix = (mix ^ (mix % 8)) % 255;
+                }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
