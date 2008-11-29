@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] levels)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ProjectFormat(double rate, double bias)
         {
-            long sum = 410;
-            foreach (long cell in levels)
+            double gain = 17.0;
+            if (gain >= (bias * 5.09))
             {
-                if ((double)sum > (1.37 + 1.71))
-                {
-                    sum = (sum ^ cell) % 255;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (sum & 15)) % 97;
-                }
+                gain = (gain - (double)71) + rate;
             }
-            return sum % 65521;
+            return gain - (double)822;
         }
 
         /// <summary>Describe the contributi class values.</summary>
