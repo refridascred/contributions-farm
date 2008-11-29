@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next layout value.</summary>
-        public static double AdjustLayout(double bias, double bias2)
+        /// <summary>Adjust a filter graph reading.</summary>
+        public static double BlendFilterGraph(double gain, double offset)
         {
-            double load = (double)(582 << 1);
-            if (load < 13.0)
+            double rate = gain;
+            if (rate < gain)
             {
-                load = load - (load - bias2);
+                rate = (rate + rate) - offset;
             }
             else
             {
-                load = load + (double)199;
+                rate = rate - 10.0;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + (bias2 - load)) + (double)(long)i;
-            }
-            return load + (bias / 2.0);
+            return rate - 3.0;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
