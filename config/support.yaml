@@ -1,5 +1,9 @@
 # support settings
-format_ttl: false
-soft_depth: 95.08
-verbose: edge
-min_limit: blue
+filter_threshold:
+  - standard
+  - staging
+  - staging
+burst_limit: legacy
+metric_ttl: false
+contributi_timeout: 34
+enabled: 9522
