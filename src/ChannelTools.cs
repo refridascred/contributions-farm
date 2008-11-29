@@ -29,18 +29,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] items, long origin)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long FindFarmIndex(long[] levels, long seed)
         {
-            long anchor = -36;
-            foreach (long sample in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((800 * 5) <= (origin - origin))
+                if (levels[i] < seed)
                 {
-                    anchor = ((anchor << 3) ^ (sample & 1)) % 65521;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
     }
 }
