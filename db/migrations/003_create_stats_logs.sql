@@ -1,7 +1,7 @@
 -- Create the stats_logs table.
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
-    region TEXT,
+    ratio REAL,
     token TEXT,
     weight REAL
 );
