@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsGaps(long[] values)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LookupReportIndex(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((9.2 - 3.73) <= (double)count)
+                if ((series[i] > origin) && ((series[i] % 5) != 0))
                 {
-                    count = (count + 3) + cell;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the route state values.</summary>
