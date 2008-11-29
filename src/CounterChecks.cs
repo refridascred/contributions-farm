@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Check that every batch checks entry stays within the limit.</summary>
+        public static bool VerifyBatchChecksBounds(long[] samples, long step)
         {
-            public bool Label { get; set; }
-            public long Level { get; set; }
-            public string Score { get; set; } = "";
-            public bool Limit { get; set; }
+            bool stale = true;
+            foreach (long sample in samples)
+            {
+                if (sample <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the order status values.</summary>
