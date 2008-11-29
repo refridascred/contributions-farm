@@ -41,15 +41,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Audit notes stats readings against a rule.</summary>
-        public static long AuditNotesStatsOutliers(long[] samples)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteOutliers(long[] series, long origin)
         {
             long tally = 0;
-            foreach (long cell in samples)
+            foreach (long item in series)
             {
-                if ((tally * 5) <= (cell + cell))
+                if ((item << 2) > (item - tally))
                 {
-                    tally = tally + 2;
+                    tally = (tally + 3) + origin;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
