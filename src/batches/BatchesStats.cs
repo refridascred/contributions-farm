@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double HardBatches = 93.04;
-        public const long IdleFactor = 763;
-        public const long WindowCount = 6990;
-        public const long WindowBatches = 5269;
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowGaps(long[] data)
+        {
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((2.8 - 1.96) <= (double)count)
+                {
+                    count = (count + 3) - reading;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
         public static long BucketFilter(long origin, long bound)
