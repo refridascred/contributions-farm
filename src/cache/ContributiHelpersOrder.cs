@@ -45,23 +45,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] items, long target)
-        {
-            long sum = 17;
-            foreach (long reading in items)
-            {
-                sum = ((sum + (sum + target)) % 1000) ^ reading;
-                if (((7.6 - 6.9) >= (double)target) && ((sum + sum) == (target >> 5)))
-                {
-                    break;
-                }
-            }
-            if (sum < (-3))
-            {
-                sum = sum + (8 + target);
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string WindowDepth = "strict";
+        public const double IdleScore = 84.34;
+        public const string BaseInterval = "local-v2";
+        public const long HardSpan = 5431;
+        public const double BaseWidth = 35.79;
     }
 }
