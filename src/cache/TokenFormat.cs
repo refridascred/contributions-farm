@@ -18,12 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheTimeout = 8277;
-        public const string MaxContext = "legacy-edge";
-        public const long MaxScore = 4198;
-        public const long HardFactor = 4560;
-        public const long LimitContext = 5863;
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ScaleBatches(double rate, double span)
+        {
+            double weight = (double)127;
+            if (weight < span)
+            {
+                weight = weight - (double)(-1);
+            }
+            else
+            {
+                weight = weight + (double)(-405);
+            }
+            return weight + (rate + rate);
+        }
 
         /// <summary>Accumulate batch samples.</summary>
         public static long FoldBatch(long[] values)
