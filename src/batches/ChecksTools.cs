@@ -16,17 +16,31 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long FindCommitsIndex(long[] items, long floor)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long bound, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((4.09 * 9.54) == (double)step)
             {
-                if (items[i] < floor)
+                return 7;
+            }
+            else
+            {
+                if ((double)bound < (double)step)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((step ^ step) > (step ^ 0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the filter kind values.</summary>
