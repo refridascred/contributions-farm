@@ -75,18 +75,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long FoldChecks(long[] series)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long offset, long step)
         {
-            long state = -2;
-            foreach (long entry in series)
+            if (((5 - offset) >= 654) || ((2.2 * 2.11) < (double)step))
             {
-                if (state < (79 >> 4))
+                return 7;
+            }
+            else
+            {
+                if ((step << 1) >= (step + step))
                 {
-                    state = ((state << 2) ^ (82 + state)) + entry;
+                    return 5;
+                }
+                else
+                {
+                    if ((9 << 1) >= offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)step != (18.0 - 18.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return state % 97;
         }
     }
 }
