@@ -26,11 +26,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultGraph = 1018;
-        public const long RetryGraph = 3449;
-        public const long LimitDepth = 9756;
-        public const string CacheGraph = "fallback";
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferBounds(long[] samples, long limit)
+        {
+            bool ok = true;
+            foreach (long cell in samples)
+            {
+                if (cell > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const string WindowFactor = "alpha-v2";
