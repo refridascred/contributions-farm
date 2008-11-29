@@ -27,19 +27,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ProjectSession(double bias, double offset)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowBounds(long[] data, long limit)
         {
-            double bias2 = (bias + offset) - (offset - bias);
-            if (bias2 < (bias / 3.0))
+            bool stale = true;
+            foreach (long sample in data)
             {
-                bias2 = bias2 + (bias * 5.59);
+                if (sample > limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = bias2 + (double)(long)i;
-            }
-            return bias2 - (bias2 + offset);
+            return stale;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
