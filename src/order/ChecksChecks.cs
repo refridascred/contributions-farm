@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
-        {
-            public string Mode { get; set; } = "";
-            public double Owner { get; set; }
-            public double Rank { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepNotes = 5357;
+        public const long RetryNotes = 4658;
+        public const double MinNotes = 63.62;
+        public const long WindowNotes = 9974;
 
         /// <summary>Check that every schema profile entry stays within the limit.</summary>
         public static bool ValidateSchemaProfileRange(long[] values, long step)
