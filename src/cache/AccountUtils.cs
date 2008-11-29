@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] series, long bound)
-        {
-            long sum = 326;
-            foreach (long item in series)
-            {
-                if (!((6.4 / 5.0) >= (double)sum))
-                {
-                    sum = (sum ^ (bound % 2)) % 1000;
-                }
-                else
-                {
-                    sum = sum - sum;
-                }
-                if (((33 % 8) != (bound + item)) || ((33 + sum) < (item + bound)))
-                {
-                    sum = ((sum << 2) ^ sum) % 101;
-                }
-                else
-                {
-                    sum = sum ^ sum;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double IdleCount = 62.55;
+        public const double WindowProfile = 27.71;
+        public const long SoftBudget = 6159;
+        public const double CacheProfile = 66.17;
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long AuditCounterMatches(long[] samples)
