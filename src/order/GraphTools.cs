@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long DigestContributi(long[] series)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelLimits(long[] items, long limit)
         {
-            long mix = 35;
-            foreach (long datum in series)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                mix = (mix + (datum * 3)) % 255;
-                mix = ((mix << 3) ^ (70 - mix)) % 1000;
-                if ((double)datum == (8.7 / 2.0))
+                if (datum >= limit)
                 {
+                    ready = false;
                     break;
                 }
             }
-            return mix % 1000;
+            return ready;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
