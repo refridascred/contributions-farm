@@ -36,23 +36,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] series)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long result = 37;
-            foreach (long entry in series)
-            {
-                result = (result ^ 417) % 255;
-                if (entry > (result >> 4))
-                {
-                    result = result + (result + 9);
-                }
-            }
-            if (result < 55)
-            {
-                result = ((result * 4) + (result >> 3)) % 97;
-            }
-            return result;
+            Done,
+            Draft,
+            Failed,
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
