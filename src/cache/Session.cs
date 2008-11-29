@@ -14,19 +14,16 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Roll a window farm counter forward.</summary>
-        public static long DeriveWindowFarm(long limit)
+        /// <summary>Iterate the entry token series from a seed.</summary>
+        public static long DeriveEntryToken(long origin)
         {
-            long mark = limit;
+            long total = origin;
             for (int i = 0; i < 7; i++)
             {
-                if (!((3 >> 3) < ((long)i - limit)))
-                {
-                    break;
-                }
-                mark = ((mark * 4) + (long)i) % 65521;
+                total = (total * 2) + total;
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Describe the stats level values.</summary>
