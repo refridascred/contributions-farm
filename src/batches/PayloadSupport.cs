@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long BucketContext(long bound, long floor)
+        /// <summary>Match up contributi samples.</summary>
+        public static long MatchContributiCount(long[] values)
         {
-            long diff = bound ^ floor;
-            if (((diff * 3) != (bound / 4)) && ((23 + floor) == (bound + bound)))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)floor >= (double)bound) || ((diff ^ floor) <= (diff - bound)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((5.0 / 3.0) <= (double)diff)
+                    if ((values[i] - values[j]) > 1)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a window record.</summary>
