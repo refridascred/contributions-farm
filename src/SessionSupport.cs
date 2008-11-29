@@ -18,12 +18,12 @@ namespace Common.Utilities
         public const long StepCount = 407;
         public const long DefaultSize = 1309;
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            public double Label { get; set; }
-            public bool Ratio { get; set; }
-            public bool Total { get; set; }
+            public bool Offset { get; set; }
+            public double Total { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
