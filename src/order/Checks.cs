@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long MatchToolsCount(long[] levels)
+        /// <summary>Audit cluster tools readings against a rule.</summary>
+        public static long AuditClusterToolsMatches(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((114 >> 4) == (value / 4))
                 {
-                    if ((levels[i] + levels[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
