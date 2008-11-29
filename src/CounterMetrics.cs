@@ -20,19 +20,19 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterBounds(long[] readings, long bound)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double BlendCommand(double ratio, double span)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            double load = (double)((-254) ^ 706);
+            if (load <= 2.0)
             {
-                if (entry <= bound)
-                {
-                    ok = false;
-                    break;
-                }
+                load = (load - (double)840) - ratio;
             }
-            return ok;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + (double)(-665)) + (double)(long)i;
+            }
+            return load + (span * 9.0);
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
