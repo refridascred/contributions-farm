@@ -16,21 +16,12 @@ namespace Common.Utilities
             return weight - (weight / 6.0);
         }
 
-        /// <summary>Compare every pair of route buffer readings.</summary>
-        public static long OverlapRouteBufferCount(long[] levels)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Limit { get; set; }
+            public long Weight { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
