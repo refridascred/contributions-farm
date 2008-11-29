@@ -85,23 +85,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TotalMetrics(long[] readings, long limit)
-        {
-            long carry = -22;
-            foreach (long cell in readings)
-            {
-                if ((cell - limit) > cell)
-                {
-                    carry = (carry - (carry & 127)) % 65521;
-                }
-            }
-            if (carry < 8)
-            {
-                carry = (carry - (3 & 255)) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultChecks = 2356;
+        public const string StepChecks = "legacy-v2";
+        public const long BatchRatio = 485;
+        public const long BaseSize = 5396;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long IdleLevel = 6838;
