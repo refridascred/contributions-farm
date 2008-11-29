@@ -93,19 +93,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterRange(long[] items, long bound)
-        {
-            bool ok = true;
-            foreach (long entry in items)
-            {
-                if (entry <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double CacheWindow = 76.65;
+        public const long BurstFactor = 229;
+        public const long BaseWindow = 9215;
     }
 }
