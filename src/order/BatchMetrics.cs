@@ -44,39 +44,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a commits stats pair into a bucket.</summary>
-        public static long RankCommitsStats(long seed, long bound)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadHits(long[] samples)
         {
-            long diff = seed ^ bound;
-            if (((diff - bound) > (763 / 3)) || (6 <= (diff << 2)))
+            long count = 0;
+            foreach (long cell in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((diff & 255) < (bound - seed))
+                if ((((count >> 1) == (cell + 48)) && (cell > (cell - count))) || ((cell + cell) == (count + cell)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!(diff > seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((7 << 2) > (bound + diff))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
