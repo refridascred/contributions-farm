@@ -24,13 +24,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
-        {
-            public long Limit { get; set; }
-            public double Mode { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepTimeout = 3992;
+        public const double MaxTimeout = 90.74;
+        public const long MinBatches = 9618;
+        public const long StepCount = 407;
+        public const long DefaultSize = 1309;
 
         /// <summary>Describe the entry status values.</summary>
         public enum EntryStatus
