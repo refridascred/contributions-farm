@@ -1,6 +1,11 @@
-id,weight,rank,active
-1,146,720,402
-2,4.99,latest,35.07
-3,62.58,green,680
-4,959,primary,26.49
-5,8.95,standard,standard
+id,token,region,weight
+1,edge,74.65,391
+2,50.02,primary,14.76
+3,68.47,266,blue
+4,510,407,55.66
+5,436,fallback,209
+6,744,legacy,fallback
+7,eu-west,972,858
+8,477,192,edge
+9,fallback,1.07,362
+10,833,96.17,406
