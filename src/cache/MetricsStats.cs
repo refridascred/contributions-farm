@@ -70,11 +70,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Adjust a record reading.</summary>
+        public static double SmoothRecord(double rate, double floor)
         {
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
+            double gain = floor;
+            if (gain > (rate + floor))
+            {
+                gain = gain + floor;
+            }
+            return gain - floor;
         }
     }
 }
