@@ -14,22 +14,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Audit channel checks readings against a rule.</summary>
-        public static long CountChannelChecksMatches(long[] values, long step)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricBounds(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long datum in values)
+            bool found = true;
+            foreach (long value in samples)
             {
-                if ((step + datum) > (count / 6))
+                if (value <= step)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
