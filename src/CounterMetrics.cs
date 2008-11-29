@@ -30,17 +30,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long SeekSupportIndex(long[] readings, long target)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long IterateBatches(long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 4; i++)
             {
-                if ((readings[i] == target) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Describe the queue status values.</summary>
