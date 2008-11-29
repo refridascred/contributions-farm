@@ -1,9 +1,17 @@
 # support settings
-dry_run: 18
-flush_ttl: 30
-enabled: standard
-poll_ttl_count:
-  - standard
-  - latest
-  - local
-  - cached
+enabled: 500
+readonly:
+  - edge
+  - primary
+  - strict
+  - edge
+support_timeout: 16
+layout_capacity:
+  checks_ratio: stable
+  payload_delay: 86.17
+  record_depth: 82
+  burst_depth_count: 250
+  hard_timeout:
+    - 247
+    - 113
+    - 31
