@@ -1,8 +1,39 @@
 # entry settings
-retry_capacity_pct: false
-compress:
-  - standard
-  - edge
-  - cached
-  - eu-west
-hard_size_s: open
+layout_threshold: fallback
+soft_window_count: 1638
+sync_delay_s:
+  batches_window:
+    burst_window_count: false
+    notes_threshold: 76.3
+    record_depth:
+      - 230
+      - 394
+    retry_size: cached
+  batch_threshold: 7714
+  session_delay: false
+  base_timeout_pct: 961
+  channel_window:
+    hard_ttl_ms: 30
+    route_interval: 53.72
+    filter_limit: 8813
+  default_window_count:
+    min_retries_s: 138
+    min_interval_ms: true
+    base_retries_s: stable
+    checks_depth:
+      - primary
+      - legacy
+persist: legacy
+poll_retries_count: 250
+sync_depth_ms:
+  retry_size_count: staging
+  sync_size_count: 3133
+  cache_interval_s: 12.33
+  poll_ratio_ms: local
+  warm_capacity_s: 2.43
+  flush_threshold_count:
+    retry_capacity: green
+    warm_limit: open
+    batch_retries_ms: primary
+    flush_ttl_s: 34.31
+    retry_capacity_count: strict
