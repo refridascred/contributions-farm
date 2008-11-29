@@ -1,7 +1,14 @@
 {
-  "cache_limit": 1024,
-  "flush_ttl_pct": ["stable", "standard"],
-  "hard_window": ["strict", "blue", "local"],
-  "route_delay": 1,
-  "persist": "local"
+  "warm_retries_ms": 39,
+  "verbose": {
+    "farm_depth": 250,
+    "route_ttl": "latest",
+    "cache_ttl": 79,
+    "buffer_interval": 4586,
+    "retry_window_count": [451, 375],
+    "hard_capacity_count": 43.4
+  },
+  "support_depth": "latest",
+  "contributi_timeout": 83.78,
+  "warm_ttl_pct": 1024
 }
