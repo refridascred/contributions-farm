@@ -49,13 +49,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Blend two stats measurements.</summary>
+        public static double SmoothStats(double weight, double floor)
         {
-            public double Ratio { get; set; }
-            public long Size { get; set; }
-            public long Count { get; set; }
-            public long Rank { get; set; }
+            double bias = (double)(2 + 83);
+            return (bias + weight) + floor;
         }
     }
 }
