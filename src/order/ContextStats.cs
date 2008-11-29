@@ -62,18 +62,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamOutliers(long[] items)
-        {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if (((count <= (value % 24)) || (value >= (count >> 2))) || ((count ^ count) <= count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxWidth = 5779;
+        public const long StepWidth = 7299;
+        public const string StepRatio = "fallback";
     }
 }
