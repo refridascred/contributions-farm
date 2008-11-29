@@ -22,11 +22,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string WindowDepth = "strict";
-        public const double IdleScore = 84.34;
-        public const string BaseInterval = "local-v2";
-        public const long HardSpan = 5431;
-        public const double BaseWidth = 35.79;
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelRange(long[] values, long floor)
+        {
+            bool ok = true;
+            foreach (long item in values)
+            {
+                if (item != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
