@@ -1,6 +1,7 @@
 {
-  "sync_delay": 66.01,
-  "channel_ratio": false,
-  "warm_capacity_ms": 56.48,
-  "flush_capacity_pct": "legacy"
+  "max_threshold": [385, 62, 120],
+  "cache_delay_pct": 500,
+  "notes_limit": 30,
+  "format_limit": "open",
+  "poll_retries": "latest"
 }
