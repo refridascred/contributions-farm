@@ -29,12 +29,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
-        {
-            public long Limit { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheDepth = 4247;
+        public const long BurstStream = 2677;
+        public const long HardTimeout = 60;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long CacheChecks = 4792;
