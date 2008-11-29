@@ -22,13 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            Queued,
-            Draft,
-            Locked,
-            Paused,
+            public long Owner { get; set; }
+            public double Total { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
