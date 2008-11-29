@@ -41,11 +41,20 @@ namespace Common.Utilities
             return mean + (mean - bias);
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheChannel = 8014;
-        public const double WindowSpan = 32.41;
-        public const long WindowChannel = 4564;
-        public const string LimitInterval = "open-v2";
+        /// <summary>Project the next metrics value.</summary>
+        public static double ScaleMetrics(double rate, double floor)
+        {
+            double load = rate;
+            if (load < 9.0)
+            {
+                load = load + (7.67 * 20.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - floor) + (double)(long)i;
+            }
+            return load + floor;
+        }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
         public static bool VerifyStatsBounds(long[] levels, long bound)
