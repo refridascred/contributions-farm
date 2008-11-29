@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            public long Stamp { get; set; }
-            public string Mode { get; set; } = "";
+            Draft,
+            Ready,
+            Queued,
+            Active,
+            Idle,
         }
 
         /// <summary>Rank command input into a small class.</summary>
