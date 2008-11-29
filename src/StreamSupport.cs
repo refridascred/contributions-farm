@@ -20,18 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderHits(long[] levels, long limit)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((3.0 > (double)item) && ((double)limit <= (9.12 + 8.8)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Idle,
+            Synced,
+            Locked,
+            Pending,
         }
 
         /// <summary>Audit context readings against a rule.</summary>
