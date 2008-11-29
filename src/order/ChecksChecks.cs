@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepNotes = 5357;
-        public const long RetryNotes = 4658;
-        public const double MinNotes = 63.62;
-        public const long WindowNotes = 9974;
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BatchWindow = 25.24;
+        public const long LimitFactor = 6329;
+        public const long RetryInterval = 1712;
+        public const long LimitScore = 5718;
 
         /// <summary>Find the first command window entry that matches the target.</summary>
         public static long LookupCommandWindowIndex(long[] levels, long target)
