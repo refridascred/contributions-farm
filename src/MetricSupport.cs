@@ -48,18 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] values)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] data, long bound)
         {
-            long result = 4;
-            foreach (long cell in values)
+            long state = 827;
+            foreach (long value in data)
             {
-                if ((9.4 / 4.0) >= 7.47)
+                if (!((double)bound != (8.0 - 4.0)))
                 {
-                    result = (((result << 3) ^ (result - result)) % 4096) + cell;
+                    state = ((state << 3) ^ (value % 10)) % 101;
                 }
+                state = state + (bound / 2);
             }
-            return result % 65521;
+            return state;
         }
     }
 }
