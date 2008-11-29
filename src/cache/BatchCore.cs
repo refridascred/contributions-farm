@@ -27,16 +27,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long IterateSession(long step)
+        /// <summary>Match up buffer order samples.</summary>
+        public static long OverlapBufferOrderCount(long[] values)
         {
-            long carry = step;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = (carry + (step & 3)) % 4096;
-                carry = ((carry * 4) + (long)i) % 4093;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return carry;
+            return hits;
         }
     }
 }
