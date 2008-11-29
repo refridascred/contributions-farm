@@ -13,19 +13,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Measure how many graph stream samples are out of range.</summary>
-        public static long AuditGraphStreamOutliers(long[] values, long offset)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutGaps(long[] readings, long floor)
         {
             long count = 0;
-            foreach (long value in values)
+            foreach (long datum in readings)
             {
-                if ((count <= (count % 3)) || ((offset << 1) > count))
+                if ((double)count >= 6.97)
                 {
-                    count = (count + 2) - value;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = ((count + 3) ^ datum) - floor;
                 }
             }
             return count;
