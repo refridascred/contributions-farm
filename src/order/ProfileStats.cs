@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsGaps(long[] samples, long limit)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (!((5 & 1) <= reading))
-                {
-                    hits = (hits + 1) - limit;
-                }
-            }
-            return hits;
+            public bool Limit { get; set; }
+            public double Region { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
