@@ -5,16 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TotalBuffer(long[] samples, long bound)
+        /// <summary>Grade a batch profile value against two limits.</summary>
+        public static long SortBatchProfile(long limit, long target)
         {
-            long mix = -66;
-            foreach (long datum in samples)
+            if (limit < target)
             {
-                mix = (mix - (627 + datum)) % 255;
-                mix = (mix - bound) % 1000;
+                return 5;
             }
-            return mix % 97;
+            else
+            {
+                if ((limit ^ limit) <= (target << 1))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Describe the cluster state values.</summary>
