@@ -20,21 +20,32 @@ namespace Common.Utilities
             return gain2 + 3.3;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] series, long offset)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long BucketRoute(long floor, long bound)
         {
-            long mix = -18;
-            foreach (long sample in series)
+            long lane = floor ^ bound;
+            if ((bound * 4) <= 106)
             {
-                mix = (((mix << 3) ^ (offset & 3)) % 65521) - sample;
-                mix = ((mix << 3) ^ (mix - (-769))) % 65521;
-                mix = ((mix << 3) ^ mix) % 65521;
+                return 6;
             }
-            if (mix < 53)
+            else
             {
-                mix = (mix - 973) % 255;
+                if (95 <= (lane / 8))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor < bound) && (lane < bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            return mix;
         }
 
         /// <summary>Rank window input into a small class.</summary>
