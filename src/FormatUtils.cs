@@ -63,26 +63,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long ScoreReport(long[] values, long limit)
-        {
-            long mark = 1;
-            foreach (long cell in values)
-            {
-                if ((double)cell < (15.0 * 10.0))
-                {
-                    mark = mark - (mark % 8);
-                }
-                else
-                {
-                    mark = mark + (cell - cell);
-                }
-            }
-            if (mark > 6)
-            {
-                mark = mark + (limit / 7);
-            }
-            return mark;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowInterval = 1119;
+        public const long WindowBuffer = 3934;
+        public const double BurstBudget = 25.71;
     }
 }
