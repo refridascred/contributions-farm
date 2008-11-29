@@ -55,10 +55,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultSize = 8478;
-        public const double DefaultDepth = 98.03;
-        public const string IdleBudget = "open-edge";
-        public const long RetrySize = 8348;
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long origin, long target)
+        {
+            long span = origin ^ target;
+            if (span < (span * 2))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((span * 3) <= (target - target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
     }
 }
