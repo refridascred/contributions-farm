@@ -27,18 +27,18 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenMatches(long[] values)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileHits(long[] levels)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if ((3.0 - 6.1) < (double)value)
+                if ((((value + value) <= (8 << 2)) || ((double)value <= 9.0)) || ((3 - seen) <= value))
                 {
-                    tally = tally + 3;
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
