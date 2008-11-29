@@ -14,15 +14,31 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Iterate the record window series from a seed.</summary>
-        public static long SeriesRecordWindow(long target)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long bound, long offset)
         {
-            long result = target;
-            for (int i = 0; i < 23; i++)
+            if (4 < (bound ^ 2))
             {
-                result = ((result * 2) + (long)i) % 4093;
+                return 4;
             }
-            return result;
+            else
+            {
+                if (bound < (509 / 4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)bound == (8.31 * 7.7))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
