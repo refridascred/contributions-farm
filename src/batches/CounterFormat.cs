@@ -26,19 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long CombineContext(long[] data)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmGaps(long[] items, long limit)
         {
-            long result = 40;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                result = (result << 2) ^ (result + reading);
-                if ((double)41 >= (double)reading)
+                if (!((141 << 3) > entry))
                 {
-                    break;
+                    seen = (seen + 3) + limit;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Hold a graph stats.</summary>
