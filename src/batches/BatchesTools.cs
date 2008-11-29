@@ -36,12 +36,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            Closed,
-            Paused,
-            New,
+            public bool Level { get; set; }
+            public long Mode { get; set; }
+            public long Flag { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
