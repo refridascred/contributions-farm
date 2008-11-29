@@ -63,13 +63,39 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Rank session graph input into a small class.</summary>
+        public static long SortSessionGraph(long limit, long floor)
         {
-            public double Total { get; set; }
-            public bool Score { get; set; }
-            public string Rank { get; set; } = "";
-            public long Offset { get; set; }
+            long cur = limit - floor;
+            if ((floor << 3) >= (floor - 795))
+            {
+                return 8;
+            }
+            else
+            {
+                if (limit < (21 / 4))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((4.79 - 7.5) == (double)cur)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (floor > (687 ^ 23))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
