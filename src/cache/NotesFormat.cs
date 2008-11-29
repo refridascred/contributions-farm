@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine editor counter values into a single score.</summary>
-        public static long TotalEditorCounter(long[] series, long bound)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowOutliers(long[] data, long seed)
         {
-            long carry = 86;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if ((bound * 2) >= carry)
+                if (matches > sample)
                 {
-                    carry = carry + sample;
+                    matches = (matches + 3) - seed;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Accumulate batches samples.</summary>
