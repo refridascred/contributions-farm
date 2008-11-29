@@ -33,19 +33,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long CombineGraph(long[] levels, long limit)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long MatchBufferCount(long[] data)
         {
-            long total = 132;
-            foreach (long item in levels)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                total = (((total << 3) ^ limit) % 97) ^ item;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (total > 713)
-            {
-                total = (total ^ total) % 1000;
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Accumulate format samples.</summary>
