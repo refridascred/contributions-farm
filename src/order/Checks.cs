@@ -28,16 +28,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long StepSchema(long floor)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long offset, long floor)
         {
-            long total = floor;
-            for (int i = 0; i < 11; i++)
+            if ((offset + offset) >= (floor + 34))
             {
-                total = (total + ((long)i << 2)) % 255;
-                total = ((total * 5) + (long)i) % 101;
+                return 2;
             }
-            return total;
+            else
+            {
+                if ((9 - floor) > (floor - floor))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Define record limits and defaults.</summary>
