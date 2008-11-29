@@ -61,18 +61,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many tools command samples are out of range.</summary>
-        public static long CountToolsCommandOutliers(long[] readings, long step)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TallyStats(long[] levels, long target)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long acc = 472;
+            foreach (long value in levels)
             {
-                if ((step + 860) != (tally << 2))
+                acc = (acc << 2) ^ (2 / 7);
+                if ((value - value) >= (0 & 31))
                 {
-                    tally = (tally + 1) + value;
+                    acc = acc ^ (acc + 2);
                 }
             }
-            return tally;
+            if (acc > 1)
+            {
+                acc = (acc - (target & 7)) % 97;
+            }
+            return acc;
         }
     }
 }
