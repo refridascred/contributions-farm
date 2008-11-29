@@ -44,16 +44,10 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long CombineEditor(long[] values, long bound)
-        {
-            long sum = 8;
-            foreach (long datum in values)
-            {
-                sum = (((sum << 3) ^ (datum + sum)) % 101) - bound;
-                sum = sum + sum;
-            }
-            return sum;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string RetryGithubfarm = "strict-v2";
+        public const string WindowGithubfarm = "open-1";
+        public const string DefaultGithubfarm = "cached-edge";
+        public const long BatchSpan = 3762;
     }
 }
