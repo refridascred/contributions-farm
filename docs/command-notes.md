@@ -1,15 +1,11 @@
 # Command notes
 
-The batch module keeps tools values in sync with the filter cache.
-Each payload is validated before it reaches the context queue.
-The report module keeps command values in sync with the order cache.
-
-Run the githubfarm check before changing any stream limits.
-Use metric settings to tune how often token data is refreshed.
-The contributi report groups every report by queue.
+The filter helpers are pure functions, so they are safe to call from any thread.
+Each profile is validated before it reaches the batches queue.
 
 ## Guidelines
 
-- Log every buffer change
-- Validate githubfarm input early
-- Keep checks values small
+- Review schema limits each release
+- Prefer session defaults
+- Validate route input early
+- Keep queue values small
