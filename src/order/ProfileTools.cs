@@ -34,32 +34,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long GradeCommand(long seed, long floor)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long prev = seed - floor;
-            if (!(3 > (floor % 8)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((((-589) - prev) > (seed + seed)) && ((prev - floor) == (prev + seed)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor <= (prev / 2)) || ((floor << 3) < (floor % 60)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public bool Token { get; set; }
+            public long Stamp { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
