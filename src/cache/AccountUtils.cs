@@ -11,22 +11,13 @@ namespace Common.Utilities
         public const long SoftBudget = 6159;
         public const double CacheProfile = 66.17;
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterMatches(long[] samples)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if (reading <= (matches % 2))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Ready,
+            Queued,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
