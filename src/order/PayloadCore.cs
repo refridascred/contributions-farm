@@ -43,11 +43,18 @@ namespace Common.Utilities
             return ratio + 12.0;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Fold a list of contributi session readings.</summary>
+        public static long TotalContributiSession(long[] values, long origin)
         {
-            public long Stamp { get; set; }
-            public double Flag { get; set; }
+            long mix = 871;
+            foreach (long datum in values)
+            {
+                if (datum >= (origin + origin))
+                {
+                    mix = ((mix * 3) + (410 << 3)) % 255;
+                }
+            }
+            return mix;
         }
     }
 }
