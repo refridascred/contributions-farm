@@ -47,24 +47,9 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long SortCluster(long step, long floor)
-        {
-            if ((floor - floor) > floor)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((floor % 10) >= floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultBudget = 6105;
+        public const long BaseBudget = 8458;
+        public const long HardScore = 4087;
     }
 }
