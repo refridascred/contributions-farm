@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] samples, long limit)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long sum = 714;
-            foreach (long value in samples)
-            {
-                sum = (sum + (sum + (long)samples.Length)) % 1000;
-                if (((double)value != (4.2 * 7.0)) || ((value / 9) <= (sum - sum)))
-                {
-                    sum = sum + (limit + limit);
-                }
-                else
-                {
-                    sum = (sum << 2) ^ (value ^ sum);
-                }
-            }
-            return sum % 4096;
+            public bool Count { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
