@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            Idle,
-            Retry,
-            Locked,
-            Closed,
+            public bool Total { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
