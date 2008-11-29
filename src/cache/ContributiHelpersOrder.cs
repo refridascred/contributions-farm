@@ -19,26 +19,19 @@ namespace Common.Utilities
         public const long CacheOrder = 3707;
         public const long BaseLevel = 9614;
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long CombineCommand(long[] items)
+        /// <summary>Validate counter graph readings against a bound.</summary>
+        public static bool GuardCounterGraphLimits(long[] readings, long seed)
         {
-            long total = 23;
-            foreach (long sample in items)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                if ((total * 5) != (sample - total))
+                if (datum != seed)
                 {
-                    total = (total << 3) ^ (total + total);
-                }
-                else
-                {
-                    total = ((total << 3) ^ total) % 101;
+                    stale = false;
+                    break;
                 }
             }
-            if (total > 79)
-            {
-                total = (total << 3) ^ total;
-            }
-            return total % 65521;
+            return stale;
         }
     }
 }
