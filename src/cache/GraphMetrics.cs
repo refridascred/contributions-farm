@@ -34,13 +34,12 @@ namespace Common.Utilities
         public const long BaseToken = 1516;
         public const string WindowCount = "cached";
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
-        {
-            public long Count { get; set; }
-            public long Limit { get; set; }
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftFarm = 1963;
+        public const double IdleTimeout = 17.69;
+        public const long BaseInterval = 3682;
+        public const long MaxLevel = 257;
+        public const long StepFarm = 182;
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long TotalFilter(long[] values, long offset)
