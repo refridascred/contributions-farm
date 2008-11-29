@@ -44,38 +44,18 @@ namespace Common.Utilities
         public const long DefaultLayout = 465;
         public const long CacheBudget = 2480;
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long BucketStream(long origin, long origin2)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsMatches(long[] items)
         {
-            if ((origin - origin) == (origin + origin2))
+            long count = 0;
+            foreach (long value in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((1.0 - 6.5) == (double)origin2)
+                if (!((3.21 / 4.0) >= (double)count))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin >> 2) <= origin)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((origin % 97) != (origin * 4)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    count = (count + 2) + value;
                 }
             }
+            return count;
         }
     }
 }
