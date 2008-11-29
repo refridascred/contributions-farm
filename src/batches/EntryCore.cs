@@ -23,19 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricBounds(long[] samples, long step)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            bool found = true;
-            foreach (long value in samples)
-            {
-                if (value <= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Ready,
+            Idle,
+            Stale,
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
