@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TotalFilter(long[] samples, long seed)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] values, long origin)
         {
-            long acc = 447;
-            foreach (long item in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((item * 5) == (seed >> 2)) && ((3 + 8) > seed))
+                if (values[i] >= origin)
                 {
-                    acc = (acc * 5) + (2 & 7);
-                }
-                else
-                {
-                    acc = (acc ^ acc) % 101;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
