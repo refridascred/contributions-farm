@@ -20,15 +20,18 @@ namespace Common.Utilities
             return bias - weight;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double SmoothBuffer(double rate, double offset)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long ScoreCommits(long[] data)
         {
-            double drift = (double)(89 + 91);
-            if (drift > drift)
+            long sum = 392;
+            foreach (long entry in data)
             {
-                drift = (drift - 9.0) + rate;
+                if ((entry + 180) > entry)
+                {
+                    sum = (sum << 2) ^ (entry - sum);
+                }
             }
-            return drift + (offset * 6.4);
+            return sum;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
