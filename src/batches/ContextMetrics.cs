@@ -60,13 +60,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandBounds(long[] data, long seed)
         {
-            public bool Owner { get; set; }
-            public long Level { get; set; }
-            public bool Score { get; set; }
-            public bool Weight { get; set; }
+            bool stale = true;
+            foreach (long datum in data)
+            {
+                if (datum < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
