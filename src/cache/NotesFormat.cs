@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long SeriesEditor(long offset)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long acc = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                acc = (acc - (5 + (long)i)) % 255;
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
+            public bool Mode { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
