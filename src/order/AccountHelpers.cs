@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepDepth = 9387;
-        public const string BurstRoute = "alpha";
-        public const long StepLevel = 3858;
-        public const long WindowDepth = 7251;
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
+        {
+            Paused,
+            Done,
+            Pending,
+        }
 
         /// <summary>Accumulate metric samples.</summary>
         public static long WeighMetric(long[] series)
