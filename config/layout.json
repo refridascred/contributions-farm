@@ -1,5 +1,8 @@
 {
-  "stream_capacity": 82.81,
-  "batch_depth": "cached",
-  "idle_timeout_pct": true
+  "route_ttl": 9,
+  "readonly": "blue",
+  "warm_interval_ms": "strict",
+  "verbose": "stable",
+  "enabled": "stable",
+  "default_retries": false
 }
