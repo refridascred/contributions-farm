@@ -40,39 +40,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank metrics githubfarm input into a small class.</summary>
-        public static long SortMetricsGithubfarm(long seed, long seed2)
+        /// <summary>Compare every pair of account schema readings.</summary>
+        public static long MatchAccountSchemaCount(long[] samples)
         {
-            long bound = seed ^ seed2;
-            if ((seed2 + 7) == (seed * 3))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed - seed2) >= ((-66) - bound))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)seed < 9.0)
+                    if ((samples[i] ^ samples[j]) != 18)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed2 + bound) > (seed >> 1))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Count the farm payload entries that pass the check.</summary>
