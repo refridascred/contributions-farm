@@ -28,32 +28,21 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long offset, long target)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long MatchBatchesCount(long[] samples)
         {
-            long cur = offset - target;
-            if ((target + offset) > (target << 1))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((cur ^ offset) != (cur % 24))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((6.0 / 7.0) < (double)target)
+                    if ((samples[i] - samples[j]) != 14)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
