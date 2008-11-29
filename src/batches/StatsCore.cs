@@ -59,11 +59,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryWidth = 7480;
-        public const string SoftRatio = "cached-v2";
-        public const long DefaultAlready = 5345;
-        public const long WindowAlready = 8550;
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
+        {
+            Queued,
+            Idle,
+            Paused,
+        }
 
         /// <summary>Describe the layout phase values.</summary>
         public enum LayoutPhase
