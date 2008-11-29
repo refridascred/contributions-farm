@@ -1,19 +1,6 @@
 # support settings
-buffer_capacity:
-  editor_threshold:
-    sync_depth_s:
-      - cached
-      - open
-      - edge
-    hard_ratio_s: 66
-    max_interval_ms: 35
-    min_ttl: blue
-    warm_delay_count: true
-  cache_window: false
-  audit: primary
-  idle_interval_pct: staging
-  dry_run: legacy
-  cluster_timeout: 30
-poll_ratio_ms: 83.34
-layout_threshold: true
-soft_timeout_s: latest
+readonly:
+  - 106
+  - 439
+commits_window: 36.66
+warm_threshold: true
