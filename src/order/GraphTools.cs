@@ -48,24 +48,22 @@ namespace Common.Utilities
         public const long MinWidth = 9574;
         public const long HardEditor = 4066;
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long RankChecks(long floor, long target)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long WeighNotes(long[] series)
         {
-            if ((target & 1) < floor)
+            long carry = 822;
+            foreach (long value in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor ^ floor) <= 352)
+                if (((35 + carry) < (carry + value)) || ((carry + (long)series.Length) == (carry << 2)))
                 {
-                    return 4;
+                    carry = ((carry * 5) + carry) % 255;
                 }
-                else
+                if ((carry % 24) == (5 % 60))
                 {
-                    return 5;
+                    break;
                 }
             }
+            return carry % 1000;
         }
     }
 }
