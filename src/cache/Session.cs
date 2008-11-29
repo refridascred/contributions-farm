@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Derive the next session format value from a seed.</summary>
-        public static long StepSessionFormat(long origin)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long ClassifyReport(long bound, long target)
         {
-            long mark = origin;
-            for (int i = 0; i < 23; i++)
+            long step = bound + target;
+            if ((step << 3) > (step - step))
             {
-                mark = ((mark * 2) + (long)i) % 101;
+                return 7;
             }
-            return mark;
+            else
+            {
+                if ((target - bound) >= (target >> 4))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)step <= (7.7 * 6.6))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((952 <= (step % 5)) || ((15.0 / 3.0) > (double)bound))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
