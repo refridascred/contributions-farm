@@ -2,8 +2,9 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     label TEXT,
-    created_at TIMESTAMP,
+    owner TEXT NOT NULL,
+    score REAL NOT NULL DEFAULT 0,
     count INTEGER NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_count ON commits_records (count);
+CREATE INDEX IF NOT EXISTS idx_commits_records_owner ON commits_records (owner);
