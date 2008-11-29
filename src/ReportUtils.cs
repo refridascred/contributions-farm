@@ -63,15 +63,17 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double SmoothReport(double scale, double floor)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LookupBatchesIndex(long[] values, long seed)
         {
-            double ratio = floor;
-            if (ratio < floor)
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = ratio + (floor / 9.0);
+                if (values[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            return ratio - (scale - floor);
+            return -1;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
