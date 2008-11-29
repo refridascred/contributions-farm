@@ -55,21 +55,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long MatchOrderCount(long[] data)
+        /// <summary>Digest a series of counter metric entries.</summary>
+        public static long WeighCounterMetric(long[] series, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 500;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                long diff = limit;
+                total = (total - diff) % 4096;
+                if ((limit + limit) != (total - 387))
                 {
-                    if ((data[i] + data[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = total - limit;
+                }
+                else
+                {
+                    total = (total << 3) ^ (sample >> 4);
                 }
             }
-            return matches;
+            return total % 97;
         }
     }
 }
