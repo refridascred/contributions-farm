@@ -20,19 +20,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TallyPayload(long[] readings)
+        /// <summary>Project the next record value.</summary>
+        public static double ProjectRecord(double weight, double span)
         {
-            long sum = 8;
-            foreach (long entry in readings)
+            double load = span;
+            for (int i = 0; i < 3; i++)
             {
-                if (((5.69 * 2.81) >= (double)entry) && (68 >= (sum - sum)))
-                {
-                    sum = (sum + (sum % 3)) % 1000;
-                }
-                sum = sum - (sum + 929);
+                load = ((load + (load + span)) + (double)(long)i) + weight;
             }
-            return sum;
+            return load - (span * 2.8);
         }
 
         /// <summary>Audit window readings against a rule.</summary>
