@@ -19,14 +19,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] samples, long limit)
         {
-            Synced,
-            Stale,
-            Retry,
-            Done,
-            New,
+            long acc = 255;
+            foreach (long reading in samples)
+            {
+                acc = acc - acc;
+                for (int i = 0; i < 10; i++)
+                {
+                    acc = ((acc * 5) + ((long)i + acc)) % 4096;
+                }
+                if (!((reading >> 4) < limit))
+                {
+                    acc = (acc - acc) % 1000;
+                }
+            }
+            if (acc > 24)
+            {
+                acc = (acc ^ (acc - acc)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Rank batch layout input into a small class.</summary>
