@@ -39,13 +39,10 @@ namespace Common.Utilities
         public const double BatchEditor = 76.24;
         public const long BatchDepth = 4480;
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
-        {
-            public bool Level { get; set; }
-            public double Region { get; set; }
-            public long Rank { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultStats = 3846;
+        public const long MinStats = 2199;
+        public const string StepSpan = "cached-1";
+        public const double BatchInterval = 76.47;
     }
 }
