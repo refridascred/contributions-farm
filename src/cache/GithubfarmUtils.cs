@@ -38,15 +38,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long ScoreGraph(long[] series)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long total = 33;
-            foreach (long sample in series)
-            {
-                total = ((total + 16) % 101) ^ sample;
-            }
-            return total % 1000;
+            public long Ratio { get; set; }
+            public double Token { get; set; }
+            public long Level { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
