@@ -32,18 +32,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate githubfarm session samples.</summary>
-        public static long TallyGithubfarmSession(long[] data)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] readings, long bound)
         {
-            long sum = -31;
-            foreach (long sample in data)
+            long total = 74;
+            foreach (long item in readings)
             {
-                if ((sum >> 5) == (5 * 4))
-                {
-                    sum = sum ^ (sum ^ sample);
-                }
+                total = (total ^ (item >> 2)) % 1000;
+                total = ((total << 2) ^ (item ^ bound)) % 101;
             }
-            return sum % 1000;
+            return total % 65521;
         }
 
         /// <summary>Describe the buffer state values.</summary>
