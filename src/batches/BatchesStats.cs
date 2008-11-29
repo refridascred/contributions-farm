@@ -37,9 +37,20 @@ namespace Common.Utilities
         public const double WindowCount = 0.22;
         public const long MaxScore = 8508;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepProfile = 4044;
-        public const long WindowProfile = 6340;
-        public const string MaxLevel = "cached-v2";
+        /// <summary>Digest a series of already report entries.</summary>
+        public static long TotalAlreadyReport(long[] samples)
+        {
+            long mark = -9;
+            foreach (long cell in samples)
+            {
+                mark = mark ^ (mark ^ mark);
+                mark = (mark - (cell % 100)) % 4096;
+            }
+            if (mark > 4)
+            {
+                mark = (mark - (mark - mark)) % 97;
+            }
+            return mark;
+        }
     }
 }
