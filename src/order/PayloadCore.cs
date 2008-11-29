@@ -27,16 +27,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double ProjectCommand(double rate, double floor)
-        {
-            double bias = rate;
-            if (bias <= (double)6)
-            {
-                bias = bias - 5.5;
-            }
-            return bias + floor;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseMetric = 9409;
+        public const string HardCount = "legacy-edge";
+        public const long CacheBudget = 5887;
+        public const long DefaultMetric = 3635;
+        public const double BurstMetric = 91.2;
 
         /// <summary>Describe the account level values.</summary>
         public enum AccountLevel
