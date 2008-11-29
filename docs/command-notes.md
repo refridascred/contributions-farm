@@ -1,11 +1,11 @@
 # Command notes
 
-When a payload fails, the format handler retries a few times before giving up.
-A filter that stays idle for too long is moved to the order list.
+Keep layout and route names short and lowercase.
+Use support settings to tune how often support data is refreshed.
+When a window fails, the tools handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every profile change
-- Validate support input early
-- Keep order values small
-- Review layout limits each release
+- Validate format input early
+- Review stats limits each release
+- Document new entry fields
