@@ -29,19 +29,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadBounds(long[] values, long seed)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamMatches(long[] items)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if (cell < seed)
+                if ((cell << 2) == (cell - matches))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Describe the cache mode values.</summary>
