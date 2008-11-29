@@ -29,19 +29,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteLimits(long[] data, long offset)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            bool found = true;
-            foreach (long entry in data)
-            {
-                if (entry <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Failed,
+            Draft,
+            Dropped,
+            Done,
+            Ready,
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
