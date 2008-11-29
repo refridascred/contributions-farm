@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank stats support input into a small class.</summary>
-        public static long BucketStatsSupport(long seed, long bound)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LocateCommitsIndex(long[] values, long origin)
         {
-            if ((double)seed > (9.3 / 5.0))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((6.7 - 0.08) == (double)seed)
+                if ((values[i] == origin) && ((values[i] % 3) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed % 3) == (bound + bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((seed >> 1) != (85 / 3)) && (bound < (-53)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate stream samples.</summary>
