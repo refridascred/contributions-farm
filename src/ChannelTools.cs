@@ -22,18 +22,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextMatches(long[] values, long seed)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long mark = -35;
+            foreach (long cell in samples)
             {
-                if ((seen ^ (long)values.Length) >= (sample + sample))
-                {
-                    seen = (seen + 1) + seed;
-                }
+                long lane = (mark + mark) << 3;
+                mark = mark + (lane - cell);
+                mark = (mark - (mark - cell)) % 1000;
             }
-            return seen;
+            if (mark < 10)
+            {
+                mark = ((mark << 3) ^ mark) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
