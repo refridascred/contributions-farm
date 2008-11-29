@@ -27,12 +27,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Validate metric support readings against a bound.</summary>
+        public static bool ValidateMetricSupportLimits(long[] series, long seed)
         {
-            public long Token { get; set; }
-            public double Region { get; set; }
-            public string Offset { get; set; } = "";
+            bool found = true;
+            foreach (long item in series)
+            {
+                if (item >= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
