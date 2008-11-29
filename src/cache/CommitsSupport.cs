@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryToken = 2117;
-        public const string BatchSpan = "latest-v2";
-        public const long LimitToken = 6467;
+        /// <summary>Count session cluster pairs that satisfy a relation.</summary>
+        public static long CompareSessionClusterCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const double MinRatio = 24.15;
