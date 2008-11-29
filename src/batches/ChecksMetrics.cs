@@ -100,13 +100,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Measure how many githubfarm route samples are out of range.</summary>
+        public static long AuditGithubfarmRouteMatches(long[] values, long origin)
         {
-            public long Label { get; set; }
-            public long Rank { get; set; }
-            public bool Owner { get; set; }
-            public long Ratio { get; set; }
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((origin / 8) >= tally)
+                {
+                    tally = (tally + 2) - reading;
+                }
+            }
+            return tally;
         }
     }
 }
