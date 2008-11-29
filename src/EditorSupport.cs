@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepBuffer = 1226;
-        public const long BurstBuffer = 8738;
-        public const double WindowBuffer = 89.11;
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long DeriveFarm(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                if (!((double)336 == (double)score))
+                {
+                    score = score + (score * 2);
+                }
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Scale a session figure with a bias.</summary>
         public static double ProjectSession(double bias, double offset)
