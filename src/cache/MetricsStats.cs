@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Project the next metrics value.</summary>
-        public static double ScaleMetrics(double weight, double floor)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] values)
         {
-            double load = weight;
-            if (load >= weight)
+            long state = 73;
+            foreach (long value in values)
             {
-                load = (load - (8.97 * 0.84)) - floor;
+                if ((double)value <= 17.0)
+                {
+                    state = (state * 3) + (state / 5);
+                }
             }
-            else
-            {
-                load = load + load;
-            }
-            return load + (double)4;
+            return state;
         }
 
         /// <summary>Grade a order batches value against two limits.</summary>
