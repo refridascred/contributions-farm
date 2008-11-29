@@ -61,23 +61,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] levels, long target)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelOutliers(long[] samples, long step)
         {
-            long acc = 472;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                acc = (acc << 2) ^ (2 / 7);
-                if ((value - value) >= (0 & 31))
+                if ((9.0 * 17.0) == (double)datum)
                 {
-                    acc = acc ^ (acc + 2);
+                    count = (count + 2) + step;
                 }
             }
-            if (acc > 1)
-            {
-                acc = (acc - (target & 7)) % 97;
-            }
-            return acc;
+            return count;
         }
     }
 }
