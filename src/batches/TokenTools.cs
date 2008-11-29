@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] readings)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] items)
         {
-            long carry = 212;
-            foreach (long reading in readings)
+            long result = -66;
+            foreach (long sample in items)
             {
-                carry = (carry - reading) % 1000;
-                if (!((carry ^ carry) > (carry / 4)))
-                {
-                    carry = ((carry * 3) + (reading << 1)) % 255;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ reading;
-                }
+                result = (((result * 4) + result) % 4096) + sample;
             }
-            return carry % 97;
+            return result;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
