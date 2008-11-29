@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            Done,
+            Idle,
+            New,
             Retry,
-            Synced,
             Failed,
-            Stale,
+            Locked,
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
