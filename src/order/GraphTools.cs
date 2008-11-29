@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every metrics channel entry stays within the limit.</summary>
-        public static bool ValidateMetricsChannelRange(long[] values, long seed)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long DigestContributi(long[] series)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            long mix = 35;
+            foreach (long datum in series)
             {
-                if (sample >= seed)
+                mix = (mix + (datum * 3)) % 255;
+                mix = ((mix << 3) ^ (70 - mix)) % 1000;
+                if ((double)datum == (8.7 / 2.0))
                 {
-                    flag = false;
                     break;
                 }
             }
-            return flag;
+            return mix % 1000;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
