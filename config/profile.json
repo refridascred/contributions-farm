@@ -1,8 +1,8 @@
 {
-  "burst_depth_ms": "legacy",
-  "retry_delay": 9134,
-  "graph_window": [140, 273, 225],
-  "soft_size": "fallback",
-  "idle_timeout_ms": "eu-west",
-  "soft_capacity_count": [487, 456, 319, 87]
+  "farm_interval": 44,
+  "soft_capacity_s": ["edge", "edge"],
+  "flush_interval": "blue",
+  "cache_window_ms": 23,
+  "warm_interval_ms": "fallback",
+  "batch_retries_pct": 73.26
 }
