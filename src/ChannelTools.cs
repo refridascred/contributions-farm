@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long seed)
+        /// <summary>Match up format editor samples.</summary>
+        public static long CompareFormatEditorCount(long[] series)
         {
-            long anchor = seed;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((698 + (long)i) < (seed + seed)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = (anchor + anchor) % 97;
+                    if ((series[i] + series[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
