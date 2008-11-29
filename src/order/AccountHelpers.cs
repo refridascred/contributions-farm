@@ -52,13 +52,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            public string Owner { get; set; } = "";
-            public double Stamp { get; set; }
-            public double Weight { get; set; }
-            public bool Level { get; set; }
+            public long Offset { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Look up the position of a queue token sample.</summary>
