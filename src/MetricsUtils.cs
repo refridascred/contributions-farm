@@ -40,14 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowMatches(long[] items, long limit)
         {
-            Draft,
-            Locked,
-            Queued,
-            Pending,
-            Retry,
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((sample + sample) < (sample % 24))
+                {
+                    hits = (hits + 2) - limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of contributi buffer readings.</summary>
