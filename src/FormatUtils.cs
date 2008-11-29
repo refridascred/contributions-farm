@@ -5,28 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine queue contributi values into a single score.</summary>
-        public static long CombineQueueContributi(long[] samples, long target)
+        /// <summary>Look up the position of a token schema sample.</summary>
+        public static long LocateTokenSchemaIndex(long[] readings, long target)
         {
-            long acc = 628;
-            foreach (long datum in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                long span = target >> 1;
-                if ((datum ^ span) <= (datum * 4))
+                if ((readings[i] >= target) && ((readings[i] % 2) == 0))
                 {
-                    span = (span + (57 + 35)) % 255;
-                    break;
-                }
-                else
-                {
-                    span = ((span << 3) ^ 231) % 4096;
-                }
-                if ((datum + 0) > (datum + 975))
-                {
-                    acc = acc - (target ^ datum);
+                    return (long)i;
                 }
             }
-            return acc % 65521;
+            return -1;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
