@@ -5,33 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long GradeAlready(long target, long target2)
-        {
-            long slot = target ^ target2;
-            if ((target2 - target) > target2)
-            {
-                return 0;
-            }
-            else
-            {
-                if (!(target > (target + slot)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((-82) + target2) == (slot + slot))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string IdleSize = "strict-edge";
+        public const long BaseScore = 2477;
+        public const long IdleScore = 1820;
 
         /// <summary>Rank stream input into a small class.</summary>
         public static long BucketStream(long origin, long floor)
