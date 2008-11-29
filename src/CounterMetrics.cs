@@ -36,13 +36,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            Paused,
-            Idle,
-            Dropped,
-            Done,
+            public long Owner { get; set; }
+            public bool Limit { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a farm summary.</summary>
