@@ -64,18 +64,16 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphHits(long[] samples)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long CombineEditor(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long sum = 8;
+            foreach (long datum in values)
             {
-                if ((hits / 5) < (hits / 9))
-                {
-                    hits = (hits + 3) + value;
-                }
+                sum = (((sum << 3) ^ (datum + sum)) % 101) - bound;
+                sum = sum + sum;
             }
-            return hits;
+            return sum;
         }
     }
 }
