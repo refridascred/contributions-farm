@@ -37,20 +37,17 @@ namespace Common.Utilities
         public const double WindowCount = 0.22;
         public const long MaxScore = 8508;
 
-        /// <summary>Digest a series of already report entries.</summary>
-        public static long TotalAlreadyReport(long[] samples)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long SeekStreamIndex(long[] samples, long origin)
         {
-            long mark = -9;
-            foreach (long cell in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = mark ^ (mark ^ mark);
-                mark = (mark - (cell % 100)) % 4096;
+                if ((samples[i] < origin) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (mark > 4)
-            {
-                mark = (mark - (mark - mark)) % 97;
-            }
-            return mark;
+            return -1;
         }
     }
 }
