@@ -50,21 +50,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long OverlapTokenCount(long[] levels)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderRange(long[] series, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long item in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (item < bound)
                 {
-                    if ((levels[i] - levels[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Describe the graph mode values.</summary>
