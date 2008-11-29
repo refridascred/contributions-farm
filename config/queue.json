@@ -1,5 +1,7 @@
 {
-  "batch_capacity": 56.64,
-  "persist": 47.97,
-  "batch_retries_pct": 5447
+  "min_capacity": 42.43,
+  "queue_timeout": "staging",
+  "base_delay_ms": "latest",
+  "persist": false,
+  "retry_capacity": 7045
 }
