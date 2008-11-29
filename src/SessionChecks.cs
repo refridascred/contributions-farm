@@ -30,15 +30,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of filter payload readings.</summary>
-        public static long CombineFilterPayload(long[] levels, long seed)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double SmoothTools(double ratio, double floor)
         {
-            long mix = 6;
-            foreach (long datum in levels)
-            {
-                mix = ((mix - (seed * 2)) % 1000) - datum;
-            }
-            return mix;
+            double load = ratio;
+            return (load - (double)18) + floor;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
