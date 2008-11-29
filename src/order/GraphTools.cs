@@ -30,15 +30,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] values, long limit)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderLimits(long[] data, long floor)
         {
-            long anchor = 1;
-            foreach (long entry in values)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                anchor = (anchor ^ limit) + entry;
+                if (cell > floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return anchor % 97;
+            return flag;
         }
 
         /// <summary>Digest a series of githubfarm farm entries.</summary>
