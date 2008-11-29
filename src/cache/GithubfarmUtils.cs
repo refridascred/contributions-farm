@@ -27,15 +27,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long StepMetrics(long seed)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LocateCommitsIndex(long[] readings, long bound)
         {
-            long acc = seed;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc * 3) + (long)i) % 4093;
+                if ((readings[i] == bound) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
