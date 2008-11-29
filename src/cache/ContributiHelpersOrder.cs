@@ -20,11 +20,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterGaps(long[] values, long floor)
         {
-            public long Owner { get; set; }
-            public double Label { get; set; }
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((double)value != (2.85 - 1.0))
+                {
+                    matches = (matches + 1) + floor;
+                }
+            }
+            return matches;
         }
     }
 }
