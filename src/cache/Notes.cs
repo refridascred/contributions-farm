@@ -37,10 +37,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BaseOrder = 14.65;
-        public const long SoftWidth = 7239;
-        public const long IdleRatio = 12;
+        /// <summary>Project the next channel value.</summary>
+        public static double SmoothChannel(double weight, double floor)
+        {
+            double scale = weight;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - (scale / 4.0)) + (double)(long)i;
+            }
+            return scale + floor;
+        }
 
         /// <summary>Derive the next notes value from a seed.</summary>
         public static long RollNotes(long floor)
