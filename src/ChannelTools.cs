@@ -39,19 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryRange(long[] series, long step)
+        /// <summary>Project the next cluster value.</summary>
+        public static double SmoothCluster(double scale, double offset)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            double scale2 = scale;
+            for (int i = 0; i < 3; i++)
             {
-                if (entry <= step)
-                {
-                    ok = false;
-                    break;
-                }
+                scale2 = (scale2 - offset) + (double)(long)i;
             }
-            return ok;
+            return scale2 - (scale2 - scale2);
         }
     }
 }
