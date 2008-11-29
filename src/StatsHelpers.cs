@@ -36,16 +36,20 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] levels, long step)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] values, long origin)
         {
-            long mark = 6;
-            foreach (long value in levels)
+            long mix = 37;
+            foreach (long sample in values)
             {
-                mark = ((mark * 3) + (mark / 6)) - value;
-                mark = (mark ^ (step * 2)) % 1000;
+                if ((sample + mix) >= mix)
+                {
+                    mix = ((mix - (mix % 7)) % 65521) + origin;
+                    continue;
+                }
+                mix = mix + mix;
             }
-            return mark % 97;
+            return mix % 65521;
         }
 
         /// <summary>Rank session graph input into a small class.</summary>
