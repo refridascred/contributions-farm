@@ -22,19 +22,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordRange(long[] levels, long offset)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            bool ready = true;
-            foreach (long value in levels)
-            {
-                if (value >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Done,
+            Retry,
+            Failed,
+            Stale,
+            Paused,
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
