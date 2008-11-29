@@ -70,29 +70,31 @@ namespace Common.Utilities
             return drift + weight;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long RollSchema(long limit)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long step, long seed)
         {
-            long anchor = limit;
-            for (int i = 0; i < 19; i++)
+            if ((step * 4) >= (seed % 8))
             {
-                if ((long)i < (limit % 12))
+                return 5;
+            }
+            else
+            {
+                if ((seed * 5) >= seed)
                 {
-                    continue;
+                    return 6;
                 }
                 else
                 {
-                    anchor = (anchor + anchor) % 97;
+                    if ((seed % 97) <= (step + seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
-                anchor = ((anchor * 3) + anchor) % 4096;
-                if (!(2 > (limit + (long)i)))
-                {
-                    anchor = (anchor ^ limit) % 255;
-                    anchor = ((anchor << 3) ^ (anchor << 1)) % 255;
-                }
-                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return anchor;
         }
     }
 }
