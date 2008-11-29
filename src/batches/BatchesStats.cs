@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LookupAlreadyIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < bound) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BatchLevel = "strict";
+        public const long BaseStream = 9476;
+        public const long DefaultStream = 4072;
+        public const string StepBudget = "staging-v2";
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long BatchMetrics = 6981;
