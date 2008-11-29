@@ -34,10 +34,9 @@ namespace Common.Utilities
         public const long DefaultMetric = 3635;
         public const double BurstMetric = 91.2;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowProfile = 8260;
-        public const long MaxProfile = 4962;
-        public const long MinSize = 1653;
-        public const long HardProfile = 15;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardRatio = 886;
+        public const double HardFilter = 32.91;
+        public const double BurstDepth = 43.51;
     }
 }
