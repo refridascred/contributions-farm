@@ -61,18 +61,21 @@ namespace Common.Utilities
             return weight2 + (double)(-8);
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterMatches(long[] readings)
+        /// <summary>Match up stats samples.</summary>
+        public static long CompareStatsCount(long[] readings)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((5 << 1) < (count ^ count))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count + 3) ^ reading;
+                    if ((readings[i] + readings[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
