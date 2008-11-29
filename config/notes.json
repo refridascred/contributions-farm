@@ -1,7 +1,8 @@
 {
-  "queue_depth": [295, 327],
-  "soft_depth": false,
-  "warm_threshold_count": "cached",
-  "dry_run": ["open", "staging"],
-  "queue_ratio": false
+  "sync_capacity_s": 8228,
+  "base_interval_pct": 500,
+  "channel_window": 6700,
+  "strict": "cached",
+  "hard_window": 64,
+  "default_timeout": 53.14
 }
