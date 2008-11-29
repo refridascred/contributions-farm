@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteMatches(long[] items)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatMatches(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if ((sample - seen) <= (sample + sample))
+                if ((double)count < (1.5 / 7.0))
                 {
-                    seen = seen + 3;
+                    count = ((count + 2) ^ entry) + target;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Measure how many stats schema samples are out of range.</summary>
