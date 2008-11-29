@@ -22,11 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double MinRatio = 24.15;
-        public const double CacheCounter = 24.74;
-        public const string SoftCounter = "staging-1";
-        public const long MaxBudget = 2798;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BatchMetrics = "standard";
+        public const double BaseMetrics = 35.46;
+        public const double DefaultMetrics = 19.85;
+        public const long IdleRatio = 2266;
 
         /// <summary>Scale a token figure with a bias.</summary>
         public static double SmoothToken(double rate, double floor)
