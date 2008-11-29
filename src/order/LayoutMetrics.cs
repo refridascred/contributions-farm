@@ -13,16 +13,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long SeriesTools(long origin)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] samples)
         {
-            long mark = origin;
-            for (int i = 0; i < 10; i++)
+            long state = 426;
+            foreach (long reading in samples)
             {
-                mark = (mark * 5) + (origin + origin);
-                mark = ((mark * 4) + (long)i) % 65521;
+                if ((reading ^ state) <= (state + reading))
+                {
+                    state = (state - 309) % 101;
+                }
+                else
+                {
+                    state = state - (state >> 1);
+                }
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Define context limits and defaults.</summary>
