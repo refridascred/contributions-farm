@@ -59,13 +59,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Project the next queue value.</summary>
+        public static double AdjustQueue(double weight, double span)
         {
-            public long Rank { get; set; }
-            public bool Weight { get; set; }
-            public double Label { get; set; }
-            public string Offset { get; set; } = "";
+            double rate = weight;
+            if (rate > (rate + 6.67))
+            {
+                rate = (rate + (4.13 / 7.0)) + span;
+            }
+            else
+            {
+                rate = rate - 4.0;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - (6.93 / 6.0)) + (double)(long)i;
+            }
+            return rate + 3.63;
         }
 
         /// <summary>Define support limits and defaults.</summary>
