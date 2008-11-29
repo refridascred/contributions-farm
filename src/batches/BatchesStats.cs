@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Blend two report measurements.</summary>
-        public static double SmoothReport(double scale, double offset)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long SeekFarmIndex(long[] items, long origin)
         {
-            double drift = scale;
-            if (drift <= (offset / 3.0))
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = drift + (double)1;
+                if (items[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            return drift + (scale + 1.8);
+            return -1;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
