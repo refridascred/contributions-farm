@@ -30,12 +30,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long OverlapReportCount(long[] readings)
         {
-            public bool Rank { get; set; }
-            public string Count { get; set; } = "";
-            public bool Owner { get; set; }
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
