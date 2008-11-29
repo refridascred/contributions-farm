@@ -18,19 +18,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesBounds(long[] levels, long seed)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            bool found = true;
-            foreach (long item in levels)
-            {
-                if (item != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Paused,
+            Pending,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
