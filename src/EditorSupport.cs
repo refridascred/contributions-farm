@@ -27,19 +27,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowBounds(long[] data, long limit)
+        /// <summary>Project the next checks value.</summary>
+        public static double ScaleChecks(double gain, double bias)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            double ratio = (8.3 / 6.0) / 3.0;
+            if (ratio >= (gain - ratio))
             {
-                if (sample > limit)
-                {
-                    stale = false;
-                    break;
-                }
+                ratio = (ratio + (gain / 4.0)) + bias;
             }
-            return stale;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + (double)279) + (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
