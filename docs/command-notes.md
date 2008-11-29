@@ -1,15 +1,16 @@
 # Command notes
 
-Each notes is validated before it reaches the filter queue.
-The payload helpers are pure functions, so they are safe to call from any thread.
-Keep token and format names short and lowercase.
+The token report groups every route by account.
+Use notes settings to tune how often support data is refreshed.
+The channel helpers are pure functions, so they are safe to call from any thread.
 
-Use checks settings to tune how often notes data is refreshed.
-Run the entry check before changing any format limits.
+Defaults for session live in the config folder and can be overridden per environment.
+Keep stream and filter names short and lowercase.
+Each route is validated before it reaches the metric queue.
 
 ## Guidelines
 
-- Keep format values small
-- Prefer cache defaults
-- Document new route fields
-- Validate payload input early
+- Review context limits each release
+- Log every cluster change
+- Validate buffer input early
+- Keep stream values small
