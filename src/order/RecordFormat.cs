@@ -55,18 +55,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksOutliers(long[] samples)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((count << 3) == (sample - sample))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Idle,
+            Queued,
+            Stale,
+            Synced,
         }
     }
 }
