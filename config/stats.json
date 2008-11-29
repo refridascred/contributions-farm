@@ -1,7 +1,5 @@
 {
-  "hard_ratio_count": 1024,
-  "report_interval": "strict",
-  "filter_window": "primary",
-  "poll_retries_s": "open",
-  "compress": true
+  "warm_interval_ms": true,
+  "cache_ratio_pct": ["eu-west", "stable", "stable", "staging"],
+  "channel_limit": "stable"
 }
