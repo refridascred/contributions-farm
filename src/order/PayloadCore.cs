@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long SeriesFilter(long target)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long mix = target;
-            for (int i = 0; i < 12; i++)
-            {
-                mix = ((mix << 2) ^ (target % 64)) % 255;
-                if ((((long)i - 7) >= target) || (((long)i ^ target) >= (target + target)))
-                {
-                    break;
-                }
-                else
-                {
-                    mix = mix ^ mix;
-                }
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
+            public long Mode { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
