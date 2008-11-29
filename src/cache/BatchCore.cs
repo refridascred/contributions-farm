@@ -12,26 +12,31 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] readings, long floor)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long GradeStream(long limit, long floor)
         {
-            long mix = -980;
-            foreach (long datum in readings)
+            if ((floor ^ 22) == (floor + limit))
             {
-                if ((datum << 1) == (floor + 74))
+                return 6;
+            }
+            else
+            {
+                if ((double)8 <= (double)limit)
                 {
-                    mix = (mix << 2) ^ (mix % 24);
+                    return 2;
                 }
-                if (!((double)mix < 5.4))
+                else
                 {
-                    mix = (mix + (mix & 7)) % 4096;
+                    if (6.2 <= (double)limit)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (mix > 818)
-            {
-                mix = mix + (149 + floor);
-            }
-            return mix % 65521;
         }
 
         /// <summary>Describe the commits status values.</summary>
