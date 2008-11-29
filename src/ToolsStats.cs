@@ -51,16 +51,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long DeriveToken(long origin)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long total = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                total = (total ^ (origin * 3)) % 65521;
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            public bool Weight { get; set; }
+            public bool Mode { get; set; }
+            public long Token { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
