@@ -23,17 +23,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LookupEntryIndex(long[] readings, long bound)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double BlendStream(double scale, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double mean = span;
+            for (int i = 0; i < 7; i++)
             {
-                if (readings[i] > bound)
-                {
-                    return (long)i;
-                }
+                mean = ((mean - (span - span)) + (double)(long)i) + scale;
             }
-            return -1;
+            return mean + (double)(-4);
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
