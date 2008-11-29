@@ -43,18 +43,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksHits(long[] data, long floor)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsLimits(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long value in data)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                if ((double)hits == (double)floor)
+                if (entry <= target)
                 {
-                    hits = (hits + 1) - value;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
     }
 }
