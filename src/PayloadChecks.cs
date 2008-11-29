@@ -62,23 +62,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double AdjustLayout(double weight, double offset)
+        /// <summary>Locate a schema window reading by value.</summary>
+        public static long SeekSchemaWindowIndex(long[] samples, long limit)
         {
-            double weight2 = weight;
-            if (weight2 <= (double)52)
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight2 = weight2 + (offset / 7.0);
+                if (samples[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight2 = weight2 + (double)42;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight2 = (weight2 - 0.1) + (double)(long)i;
-            }
-            return weight2 + (double)(-8);
+            return -1;
         }
 
         /// <summary>Accumulate already samples.</summary>
