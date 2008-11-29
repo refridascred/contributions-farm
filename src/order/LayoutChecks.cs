@@ -23,14 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Blend two stats batches measurements.</summary>
+        public static double ScaleStatsBatches(double scale, double bias)
         {
-            Draft,
-            Dropped,
-            Retry,
-            Locked,
-            Stale,
+            double drift = 2.3;
+            return (drift + bias) + scale;
         }
 
         /// <summary>Locate a format reading by value.</summary>
