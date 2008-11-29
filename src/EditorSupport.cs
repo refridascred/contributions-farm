@@ -69,13 +69,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long IterateNotes(long target)
         {
-            Pending,
-            Ready,
-            Closed,
-            Done,
+            long state = target;
+            for (int i = 0; i < 20; i++)
+            {
+                state = state - target;
+                if (!(((long)i & 15) != ((long)i << 1)))
+                {
+                    continue;
+                }
+                state = ((state * 5) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
