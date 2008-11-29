@@ -20,11 +20,40 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheChecks = 3259;
-        public const double LimitSpan = 18.35;
-        public const long MaxChecks = 1534;
-        public const string StepChecks = "staging-1";
+        /// <summary>Classify a stats githubfarm pair into a bucket.</summary>
+        public static long BucketStatsGithubfarm(long origin, long offset)
+        {
+            long bound = origin - offset;
+            if (offset < (2 % 16))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((1 + 38) >= (origin - offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin % 2) >= (bound << 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (bound > (origin >> 5))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Locate a buffer order reading by value.</summary>
         public static long LookupBufferOrderIndex(long[] data, long floor)
