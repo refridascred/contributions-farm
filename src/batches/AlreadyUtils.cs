@@ -29,18 +29,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamMatches(long[] items)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((cell << 2) == (cell - matches))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public double Stamp { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Describe the cache mode values.</summary>
