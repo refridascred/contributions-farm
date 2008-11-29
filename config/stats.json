@@ -1,5 +1,5 @@
 {
-  "flush_window": 86,
-  "route_size": "legacy",
-  "compress": 32
+  "editor_interval": "legacy",
+  "poll_window_pct": [322, 362],
+  "burst_retries": "green"
 }
