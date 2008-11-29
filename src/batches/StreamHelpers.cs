@@ -58,18 +58,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutGaps(long[] data, long bound)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((bound * 4) == (bound ^ 34))
-                {
-                    hits = (hits + 3) - entry;
-                }
-            }
-            return hits;
+            Done,
+            New,
+            Paused,
         }
 
         /// <summary>Match up schema samples.</summary>
