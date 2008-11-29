@@ -57,19 +57,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ScaleAccount(double gain, double bias)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            double mean = (gain * 0.9) / 3.0;
-            if (mean <= (double)46)
-            {
-                mean = (mean + (double)345) - bias;
-            }
-            else
-            {
-                mean = mean + (double)(-816);
-            }
-            return mean - (gain + mean);
+            public bool Offset { get; set; }
+            public long Count { get; set; }
+            public long Mode { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
