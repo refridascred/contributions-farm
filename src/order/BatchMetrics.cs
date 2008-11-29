@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Fold a list of order already readings.</summary>
-        public static long WeighOrderAlready(long[] values, long origin)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long score = 8;
-            foreach (long sample in values)
-            {
-                if ((double)sample != (1.6 + 6.95))
-                {
-                    score = (((score * 5) + (score % 8)) % 101) + origin;
-                }
-                else
-                {
-                    score = (score - (sample ^ score)) % 1000;
-                }
-            }
-            return score;
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the payload phase values.</summary>
