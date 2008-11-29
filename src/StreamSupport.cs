@@ -34,12 +34,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
-        {
-            Failed,
-            Draft,
-            Paused,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string SoftBatch = "local";
+        public const double WindowBatch = 47.48;
+        public const long RetryBatch = 6635;
+        public const double IdleCount = 26.58;
+        public const long BatchFactor = 738;
     }
 }
