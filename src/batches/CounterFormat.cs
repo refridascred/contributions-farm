@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueOutliers(long[] data, long offset)
         {
-            public bool Level { get; set; }
-            public string Label { get; set; } = "";
-            public bool Rank { get; set; }
-            public bool Count { get; set; }
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((long)data.Length >= (value & 3))
+                {
+                    seen = (seen + 2) + offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a tools entry.</summary>
