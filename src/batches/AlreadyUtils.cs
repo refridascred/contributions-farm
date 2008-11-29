@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextMatches(long[] data, long target)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((item ^ target) > target)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Paused,
+            Queued,
+            Synced,
+            Pending,
         }
 
         /// <summary>Project the next stats value.</summary>
