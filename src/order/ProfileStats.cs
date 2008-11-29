@@ -41,13 +41,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueBounds(long[] data, long floor)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsLimits(long[] levels, long floor)
         {
             bool flag = true;
-            foreach (long value in data)
+            foreach (long entry in levels)
             {
-                if (value >= floor)
+                if (entry < floor)
                 {
                     flag = false;
                     break;
