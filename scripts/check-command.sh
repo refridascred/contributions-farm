@@ -6,13 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable strict standard; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=93
+log "limit is ${COMMAND_LIMIT}"
 
 mode="${1:-strict}"
 case "${mode}" in
-    edge)
+    staging)
         log "fast path"
         ;;
     *)
@@ -20,8 +19,6 @@ case "${mode}" in
         ;;
 esac
 
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
+for item in open eu-west fallback; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
