@@ -74,18 +74,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportGaps(long[] series, long limit)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if (!((1.3 - 13.0) >= (double)limit))
-                {
-                    hits = (hits + 2) - sample;
-                }
-            }
-            return hits;
+            public string Total { get; set; } = "";
+            public double Limit { get; set; }
+            public double Token { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
