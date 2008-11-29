@@ -68,19 +68,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextLimits(long[] values, long bound)
-        {
-            bool ok = true;
-            foreach (long item in values)
-            {
-                if (item <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BurstTimeout = 45.59;
+        public const string MinSupport = "open-edge";
+        public const double BaseSupport = 55.77;
+        public const long BatchSupport = 2255;
     }
 }
