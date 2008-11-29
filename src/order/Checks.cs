@@ -41,12 +41,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            Dropped,
-            Draft,
-            Locked,
+            public string Stamp { get; set; } = "";
+            public long Level { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Compare every pair of order readings.</summary>
