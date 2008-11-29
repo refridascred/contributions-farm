@@ -45,19 +45,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountLimits(long[] levels, long floor)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TallyBuffer(long[] values)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            long carry = 19;
+            foreach (long sample in values)
             {
-                if (reading != floor)
+                if ((88 - 939) == (carry - 176))
                 {
-                    stale = false;
-                    break;
+                    carry = (carry - (long)values.Length) + sample;
                 }
             }
-            return stale;
+            return carry;
         }
     }
 }
