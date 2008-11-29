@@ -71,22 +71,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutHits(long[] samples, long bound)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if (((bound + count) < (bound ^ 9)) || ((double)count >= (double)576))
-                {
-                    count = (count + 3) ^ sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Stamp { get; set; }
+            public string Limit { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
