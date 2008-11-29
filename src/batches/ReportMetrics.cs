@@ -21,18 +21,12 @@ namespace Common.Utilities
         public const long WindowContributi = 2882;
         public const double LimitContributi = 95.2;
 
-        /// <summary>Measure how many session batches samples are out of range.</summary>
-        public static long AuditSessionBatchesMatches(long[] series)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((seen * 3) == (cell & 15))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Synced,
+            Queued,
+            New,
         }
     }
 }
