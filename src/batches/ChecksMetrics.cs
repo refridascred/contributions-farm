@@ -26,15 +26,17 @@ namespace Common.Utilities
         public const long MaxChecks = 1534;
         public const string StepChecks = "staging-1";
 
-        /// <summary>Iterate the schema support series from a seed.</summary>
-        public static long RollSchemaSupport(long limit)
+        /// <summary>Locate a buffer order reading by value.</summary>
+        public static long LookupBufferOrderIndex(long[] data, long floor)
         {
-            long total = limit;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = ((total * 5) + (long)i) % 97;
+                if (data[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the cache state values.</summary>
