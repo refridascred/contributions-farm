@@ -35,18 +35,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] series, long origin)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryMatches(long[] samples)
         {
-            long result = 420;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (((long)series.Length > origin) && ((origin % 12) == (result ^ value)))
+                if ((double)item >= 20.0)
                 {
-                    result = ((result * 4) + (value & 127)) % 255;
+                    matches = matches + 1;
                 }
             }
-            return result % 97;
+            return matches;
         }
     }
 }
