@@ -20,21 +20,18 @@ namespace Common.Utilities
             return (load + (load - bias)) + floor;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long OverlapChannelCount(long[] values)
+        /// <summary>Measure how many support metrics samples are out of range.</summary>
+        public static long TallySupportMetricsHits(long[] items, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((0.14 * 4.47) < (double)matches)
                 {
-                    if ((values[i] + values[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = ((matches + 1) + entry) - floor;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
