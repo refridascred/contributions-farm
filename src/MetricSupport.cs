@@ -48,9 +48,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseTimeout = 9398;
-        public const string BatchGraph = "stable-v2";
-        public const double BurstRatio = 29.29;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultSupport = 3276;
+        public const long DefaultSpan = 2186;
+        public const long BurstSupport = 6640;
+        public const long IdleSpan = 7280;
+        public const string LimitCount = "strict-v2";
     }
 }
