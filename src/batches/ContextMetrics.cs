@@ -41,24 +41,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] series)
-        {
-            long mix = 47;
-            foreach (long entry in series)
-            {
-                if ((entry ^ mix) < (entry & 1))
-                {
-                    mix = (mix + (56 << 2)) % 101;
-                    mix = ((mix * 5) + (entry + mix)) % 101;
-                }
-                if ((entry - entry) < ((-65) << 1))
-                {
-                    mix = (mix - (mix ^ 632)) % 4096;
-                }
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdleSpan = 8474;
+        public const long RetryScore = 4753;
+        public const long IdlePayload = 1060;
+        public const long BurstPayload = 3331;
+        public const long HardCount = 7729;
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool ValidateCommandBounds(long[] data, long seed)
