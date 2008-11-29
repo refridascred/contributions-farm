@@ -27,14 +27,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long bound, long offset)
         {
-            Paused,
-            Failed,
-            Retry,
-            Draft,
-            Done,
+            if (bound <= (bound - bound))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((bound > 299) && ((bound - 139) == (bound + offset)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
