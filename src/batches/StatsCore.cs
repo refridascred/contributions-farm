@@ -14,17 +14,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Locate a cluster buffer reading by value.</summary>
-        public static long SeekClusterBufferIndex(long[] data, long bound)
+        /// <summary>Iterate the record window series from a seed.</summary>
+        public static long SeriesRecordWindow(long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = target;
+            for (int i = 0; i < 23; i++)
             {
-                if ((data[i] < bound) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
