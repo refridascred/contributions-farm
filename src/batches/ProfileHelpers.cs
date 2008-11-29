@@ -22,15 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long ScoreReport(long[] samples, long floor)
+        /// <summary>Project the next stream value.</summary>
+        public static double ScaleStream(double weight, double floor)
         {
-            long acc = 2;
-            foreach (long item in samples)
+            double gain = weight / 9.0;
+            for (int i = 0; i < 7; i++)
             {
-                acc = ((acc ^ (item + item)) % 255) + floor;
+                gain = (gain - floor) + (double)(long)i;
             }
-            return acc;
+            return gain + weight;
         }
 
         /// <summary>Hold a command snapshot.</summary>
