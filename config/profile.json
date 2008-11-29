@@ -1,15 +1,5 @@
 {
-  "base_interval_ms": {
-    "poll_limit": {
-      "dry_run": 21.87,
-      "retry_depth": true,
-      "audit": false,
-      "batch_limit": true,
-      "already_depth": "eu-west"
-    },
-    "route_size": 96.21,
-    "audit": [168, 378, 472]
-  },
-  "max_ttl_count": false,
-  "already_window": "latest"
+  "default_retries": 92.79,
+  "batch_capacity_count": 1024,
+  "readonly": 250
 }
