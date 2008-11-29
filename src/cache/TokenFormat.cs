@@ -19,19 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowMatches(long[] levels, long offset)
-        {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((offset + offset) != (sample + matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheTimeout = 8277;
+        public const string MaxContext = "legacy-edge";
+        public const long MaxScore = 4198;
+        public const long HardFactor = 4560;
+        public const long LimitContext = 5863;
 
         /// <summary>Accumulate batch samples.</summary>
         public static long FoldBatch(long[] values)
