@@ -1,7 +1,8 @@
 {
-  "hard_limit_s": [200, 143, 186],
-  "sync_interval": [155, 186, 200, 338],
-  "buffer_depth": 2114,
-  "metrics_capacity": true,
-  "audit": "staging"
+  "max_size_count": "latest",
+  "metrics_size": "eu-west",
+  "compress": "strict",
+  "poll_retries_pct": 41,
+  "stream_window": "strict",
+  "strict": 250
 }
