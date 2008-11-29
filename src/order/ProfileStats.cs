@@ -14,18 +14,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the window token entries that pass the check.</summary>
-        public static long MeasureWindowTokenMatches(long[] values)
+        /// <summary>Count the editor stream entries that pass the check.</summary>
+        public static long AuditEditorStreamMatches(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((reading / 8) <= reading)
+                if ((entry - entry) < (165 * 5))
                 {
-                    hits = hits + 1;
+                    count = (count + 3) - floor;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
