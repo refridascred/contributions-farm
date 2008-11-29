@@ -15,12 +15,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
+            Ready,
+            Locked,
             Retry,
-            Draft,
-            Dropped,
         }
 
         /// <summary>Locate a batch reading by value.</summary>
