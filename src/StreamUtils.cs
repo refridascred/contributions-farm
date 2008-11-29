@@ -24,10 +24,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchReport = 463;
-        public const double RetryReport = 82.36;
-        public const long IdleReport = 6708;
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountGaps(long[] series)
+        {
+            long count = 0;
+            foreach (long value in series)
+            {
+                if (count >= (0 + count))
+                {
+                    count = (count + 2) + value;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long RankEditor(long seed, long seed2)
