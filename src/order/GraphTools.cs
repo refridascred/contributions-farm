@@ -37,13 +37,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long RollFormat(long seed)
         {
-            public bool Total { get; set; }
-            public long Rank { get; set; }
-            public long Mode { get; set; }
-            public string Flag { get; set; } = "";
+            long carry = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                if (!((226 < (carry % 16)) && ((carry / 2) == (carry * 4))))
+                {
+                    carry = ((carry << 2) ^ (carry + carry)) % 1000;
+                }
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
