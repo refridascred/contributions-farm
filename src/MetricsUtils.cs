@@ -60,13 +60,22 @@ namespace Common.Utilities
             return gain + (double)0;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Audit window checks readings against a rule.</summary>
+        public static long TallyWindowChecksGaps(long[] items, long floor)
         {
-            public long Mode { get; set; }
-            public double Limit { get; set; }
-            public long Offset { get; set; }
-            public double Size { get; set; }
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((7.4 * 0.41) >= (double)floor)
+                {
+                    count = (count + 1) ^ item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
