@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long CombineContext(long[] readings, long origin)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long acc = 1;
-            foreach (long cell in readings)
-            {
-                acc = ((acc + acc) ^ cell) + origin;
-            }
-            if (acc < 123)
-            {
-                acc = acc ^ (acc + acc);
-            }
-            return acc % 97;
+            public long Count { get; set; }
+            public long Rank { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the batch level values.</summary>
