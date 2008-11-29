@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitWidth = 6080;
+        public const long IdleSpan = 5164;
+        public const long StepStats = 9007;
+        public const long MaxTimeout = 9175;
+        public const long BurstBudget = 2791;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long DefaultGraph = 1018;
