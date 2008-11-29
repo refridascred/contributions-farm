@@ -22,19 +22,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelRange(long[] values, long floor)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            bool ok = true;
-            foreach (long item in values)
-            {
-                if (item != floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Dropped,
+            Stale,
+            Queued,
+            Synced,
         }
     }
 }
