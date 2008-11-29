@@ -24,20 +24,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long SeriesStream(long step)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportOutliers(long[] readings)
         {
-            long result = step;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                result = ((result << 2) ^ (step >> 4)) % 65521;
-                for (int i2 = 0; i2 < 2; i2++)
+                if (!((matches >> 4) < matches) && (((matches + matches) > value) || ((value + matches) <= value)))
                 {
-                    result = ((result * 4) + (step + (long)i2)) % 97;
+                    matches = matches + 3;
                 }
-                result = ((result * 3) + (long)i) % 101;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
