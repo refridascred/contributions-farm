@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string SoftDepth = "alpha";
-        public const string DefaultFactor = "local-edge";
-        public const string StepBuffer = "strict-v2";
-        public const long LimitTimeout = 7302;
-        public const long MaxBuffer = 4045;
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
+        {
+            public bool Label { get; set; }
+            public long Level { get; set; }
+            public string Score { get; set; } = "";
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Fold a list of token readings.</summary>
         public static long ScoreToken(long[] readings)
