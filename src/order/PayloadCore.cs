@@ -43,31 +43,18 @@ namespace Common.Utilities
         public const long DefaultMetric = 3635;
         public const double BurstMetric = 91.2;
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long offset, long limit)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksGaps(long[] values, long seed)
         {
-            if ((limit % 2) > limit)
+            long count = 0;
+            foreach (long value in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (((-61) + offset) < 1)
+                if ((value + value) <= value)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((8.52 * 13.0) > (double)offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    count = (count + 2) - seed;
                 }
             }
+            return count;
         }
     }
 }
