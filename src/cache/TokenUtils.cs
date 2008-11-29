@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
-        {
-            public long Total { get; set; }
-            public long Limit { get; set; }
-            public string Count { get; set; } = "";
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryTimeout = 1545;
+        public const long RetryRoute = 351;
+        public const string DefaultRoute = "latest-1";
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string HardBudget = "legacy-v2";
