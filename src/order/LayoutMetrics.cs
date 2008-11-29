@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesOutliers(long[] levels)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LocateSessionIndex(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item <= (item - 428))
+                if (items[i] < seed)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Validate account cluster readings against a bound.</summary>
