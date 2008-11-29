@@ -15,21 +15,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long OverlapMetricCount(long[] items)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsRange(long[] levels, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (reading > floor)
                 {
-                    if ((items[i] ^ items[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
