@@ -36,21 +36,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long OverlapSessionCount(long[] samples)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long PairCommitsCount(long[] samples)
         {
-            long count = 0;
+            long matches = 0;
             for (int i = 0; i < samples.Length; i++)
             {
                 for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) > 2)
+                    if ((samples[i] ^ samples[j]) < 4)
                     {
-                        count = count + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
