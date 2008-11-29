@@ -1,16 +1,10 @@
 # support settings
-sync_ttl_count: 1024
-graph_timeout: false
-flush_retries_pct: 90.42
-default_window_ms: true
-base_size_count:
-  default_size: legacy
-  already_window: 24.68
-  poll_interval: true
-  dry_run: local
-  burst_depth_s:
-    audit: 53.7
-    record_window: staging
-    max_interval_count: stable
-    format_capacity: true
-  sync_capacity_count: strict
+window_retries: cached
+dry_run: false
+hard_size_pct:
+  default_timeout_pct: 604
+  counter_retries: 884
+  warm_retries_count: 61.17
+sync_ratio:
+  - 163
+  - 249
