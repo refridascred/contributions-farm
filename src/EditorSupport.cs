@@ -91,11 +91,12 @@ namespace Common.Utilities
         public const long BatchRatio = 485;
         public const long BaseSize = 5396;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleLevel = 6838;
-        public const long SoftEditor = 4590;
-        public const long MaxEditor = 7657;
-        public const double MinEditor = 93.03;
-        public const double BatchEditor = 77.28;
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
+        {
+            Active,
+            Dropped,
+            New,
+        }
     }
 }
