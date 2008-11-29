@@ -1,5 +1,6 @@
 {
-  "poll_threshold": "open",
-  "command_limit": 46,
-  "verbose": "standard"
+  "sync_delay": 66.01,
+  "channel_ratio": false,
+  "warm_capacity_ms": 56.48,
+  "flush_capacity_pct": "legacy"
 }
