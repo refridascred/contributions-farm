@@ -19,19 +19,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderRange(long[] levels, long bound)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long MatchClusterCount(long[] samples)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell < bound)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((samples[i] - samples[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Hold a contributi info.</summary>
