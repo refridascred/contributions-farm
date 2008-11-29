@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Adjust a farm reading.</summary>
-        public static double AdjustFarm(double rate, double bias)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamMatches(long[] series)
         {
-            double mean = (double)((-3) * 3);
-            if (mean >= mean)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                mean = (mean + bias) + rate;
+                if ((matches * 5) > (matches << 2))
+                {
+                    matches = (matches + 1) ^ cell;
+                }
             }
-            return mean - (bias + mean);
+            return matches;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
