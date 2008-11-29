@@ -10,19 +10,24 @@ namespace Common.Utilities
         public const long BaseScore = 2477;
         public const long IdleScore = 1820;
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueRange(long[] values, long seed)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long StepContributi(long bound)
         {
-            bool valid = true;
-            foreach (long item in values)
+            long anchor = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (item > seed)
+                anchor = (anchor ^ bound) % 101;
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    valid = false;
-                    break;
+                    anchor = ((anchor ^ ((long)i + (long)i)) % 1000) - (long)i2;
                 }
+                for (int i3 = 0; i3 < 5; i3++)
+                {
+                    anchor = (((anchor << 3) ^ (bound - bound)) % 101) ^ (long)i3;
+                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
