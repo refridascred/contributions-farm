@@ -18,13 +18,12 @@ namespace Common.Utilities
         public const long StepCount = 407;
         public const long DefaultSize = 1309;
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            Dropped,
-            New,
-            Queued,
-            Active,
+            public double Label { get; set; }
+            public bool Ratio { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
