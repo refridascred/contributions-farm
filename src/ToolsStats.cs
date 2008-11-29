@@ -38,17 +38,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] data, long origin)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextRange(long[] readings, long offset)
         {
-            long mark = 688;
-            foreach (long sample in data)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                mark = (mark ^ (mark * 5)) ^ sample;
-                mark = (mark ^ (origin - (-119))) % 4096;
-                mark = mark - (origin & 63);
+                if (reading < offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
