@@ -57,24 +57,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] samples, long bound)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaGaps(long[] levels, long origin)
         {
-            long score = 6;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                score = (score + (0 + 39)) + entry;
-                score = (score ^ (score ^ (-323))) % 4096;
-                if ((bound - bound) >= (score - score))
+                if (286 < (count - 41))
                 {
-                    score = score ^ score;
+                    count = ((count + 3) ^ datum) + origin;
                 }
             }
-            if (score > 0)
-            {
-                score = (score + (score + score)) % 97;
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
