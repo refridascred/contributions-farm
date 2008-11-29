@@ -14,16 +14,24 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long DeriveCommits(long floor)
+        /// <summary>Grade a notes support value against two limits.</summary>
+        public static long BucketNotesSupport(long bound, long limit)
         {
-            long carry = floor;
-            for (int i = 0; i < 19; i++)
+            if (18.0 > (double)limit)
             {
-                carry = ((carry << 2) ^ ((long)i + floor)) % 97;
-                carry = ((carry * 2) + (long)i) % 4093;
+                return 4;
             }
-            return carry;
+            else
+            {
+                if ((double)limit <= (18.0 * 8.2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Hold a metrics stats.</summary>
