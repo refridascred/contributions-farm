@@ -33,22 +33,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TotalReport(long[] values, long target)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] items, long origin)
         {
-            long mark = 3;
-            foreach (long entry in values)
+            long score = 6;
+            foreach (long item in items)
             {
-                if (mark <= (mark % 97))
-                {
-                    mark = (((mark * 3) + mark) % 97) + target;
-                }
-                else
-                {
-                    mark = (mark << 3) ^ (entry * 4);
-                }
+                score = (((score + 76) % 65521) ^ item) - origin;
             }
-            return mark;
+            return score % 65521;
         }
     }
 }
