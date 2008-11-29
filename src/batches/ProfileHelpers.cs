@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleCount = 1331;
-        public const long WindowGithubfarm = 9712;
-        public const long SoftWidth = 7224;
+        /// <summary>Accumulate counter samples.</summary>
+        public static long DigestCounter(long[] series, long seed)
+        {
+            long mark = 99;
+            foreach (long sample in series)
+            {
+                if ((sample + seed) >= ((-98) - mark))
+                {
+                    mark = (mark ^ ((long)series.Length / 8)) % 4096;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Compare every pair of metrics readings.</summary>
         public static long PairMetricsCount(long[] readings)
