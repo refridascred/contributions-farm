@@ -31,30 +31,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] items)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long score = 954;
-            foreach (long reading in items)
-            {
-                if ((reading * 3) == (5 - reading))
-                {
-                    score = ((score << 3) ^ (reading * 2)) % 101;
-                }
-                else
-                {
-                    score = score ^ reading;
-                }
-                if ((score + reading) != (1 - reading))
-                {
-                    break;
-                }
-            }
-            if (score < 8)
-            {
-                score = (score + (score << 1)) % 101;
-            }
-            return score;
+            public string Level { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
