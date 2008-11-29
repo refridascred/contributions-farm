@@ -55,11 +55,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double SmoothStats(double weight, double floor)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            double bias = (double)(2 + 83);
-            return (bias + weight) + floor;
+            public string Flag { get; set; } = "";
+            public long Token { get; set; }
+            public bool Rank { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
