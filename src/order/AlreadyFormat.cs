@@ -55,13 +55,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportGaps(long[] series, long floor)
         {
-            public long Label { get; set; }
-            public long Limit { get; set; }
-            public long Offset { get; set; }
-            public double Total { get; set; }
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((hits >> 1) != (floor - floor))
+                {
+                    hits = (hits + 1) + entry;
+                }
+            }
+            return hits;
         }
     }
 }
