@@ -1,11 +1,7 @@
 {
-  "profile_capacity": "eu-west",
-  "compress": 56.88,
-  "burst_delay_ms": {
-    "min_retries_s": ["local", "fallback", "latest"],
-    "max_delay_count": ["cached", "green"],
-    "default_threshold": false
-  },
-  "audit": 5.05,
-  "base_limit": 3.41
+  "retry_limit": true,
+  "flush_retries_count": ["edge", "latest", "green", "fallback"],
+  "min_ttl_pct": true,
+  "base_ratio_count": "legacy",
+  "readonly": [391, 399, 53, 67]
 }
