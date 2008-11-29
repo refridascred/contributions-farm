@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaRange(long[] readings, long origin)
+        /// <summary>Digest a series of stream batch entries.</summary>
+        public static long FoldStreamBatch(long[] samples, long step)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long score = -96;
+            foreach (long value in samples)
             {
-                if (cell != origin)
+                if ((938 ^ step) != (step - step))
                 {
-                    ready = false;
-                    break;
+                    score = ((score + (222 % 2)) % 97) + value;
                 }
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Hold a window stats.</summary>
