@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long GradeStats(long floor, long floor2)
         {
-            Ready,
-            Closed,
-            Locked,
+            long step = floor - floor2;
+            if ((floor2 % 24) >= 522)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((floor2 & 127) < (step + floor2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!(step < 395))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine commits values into a single score.</summary>
