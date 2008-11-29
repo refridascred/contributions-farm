@@ -20,22 +20,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long PairProfileCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string IdleDepth = "strict-1";
+        public const long IdleTimeout = 8453;
+        public const string BatchScore = "stable-1";
+        public const long RetryDepth = 778;
+        public const long DefaultCount = 7006;
 
         /// <summary>Derive the next tools value from a seed.</summary>
         public static long DeriveTools(long limit)
