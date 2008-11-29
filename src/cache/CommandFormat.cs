@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandHits(long[] readings)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((item % 60) == (matches << 1))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Mode { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
