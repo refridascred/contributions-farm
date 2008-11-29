@@ -42,39 +42,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank batch layout input into a small class.</summary>
-        public static long GradeBatchLayout(long offset, long floor)
+        /// <summary>Digest a series of farm command entries.</summary>
+        public static long TotalFarmCommand(long[] data, long origin)
         {
-            long span = offset + floor;
-            if ((span / 8) >= (offset & 1))
+            long total = 93;
+            foreach (long item in data)
             {
-                return 5;
+                total = (((total << 3) ^ (529 + item)) % 97) + origin;
             }
-            else
-            {
-                if ((double)span < (7.9 - 7.6))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)span == (8.23 - 13.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)offset == (10.0 / 7.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return total;
         }
     }
 }
