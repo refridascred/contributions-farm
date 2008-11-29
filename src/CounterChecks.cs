@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Look up the position of a command route sample.</summary>
+        public static long SeekCommandRouteIndex(long[] samples, long limit)
         {
-            Draft,
-            Paused,
-            Idle,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= limit) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
