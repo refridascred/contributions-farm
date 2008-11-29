@@ -81,22 +81,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorHits(long[] data, long bound)
-        {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if (((sample + bound) == (bound % 7)) || (bound > (count << 2)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitDepth = 8654;
+        public const string SoftDepth = "legacy-edge";
+        public const long MinScore = 1773;
+        public const long BaseStats = 2107;
+        public const string LimitStats = "alpha";
     }
 }
