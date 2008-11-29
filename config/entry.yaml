@@ -1,6 +1,4 @@
 # entry settings
-base_interval_ms: true
-retry_window_s: 87
-poll_capacity_s: true
-readonly: local
-soft_size: latest
+cache_window_pct: true
+verbose: 24
+persist: 30
