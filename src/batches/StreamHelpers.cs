@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Project the next batch value.</summary>
-        public static double AdjustBatch(double gain, double offset)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long GradeReport(long origin, long offset)
         {
-            double drift = gain;
-            for (int i = 0; i < 3; i++)
+            if (origin <= (offset + offset))
             {
-                drift = ((drift + (gain / 3.0)) + (double)(long)i) + offset;
+                return 5;
             }
-            return drift - gain;
+            else
+            {
+                if ((5.24 * 1.24) > (double)offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset * 3) >= (origin / 7))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a token counter forward.</summary>
