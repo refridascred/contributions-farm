@@ -1,5 +1,17 @@
 {
-  "sync_capacity_ms": "primary",
-  "dry_run": "green",
-  "farm_interval": "staging"
+  "flush_window_count": {
+    "graph_ttl": 60,
+    "min_timeout_ms": 100,
+    "batch_ratio_count": true,
+    "burst_window_count": 24
+  },
+  "sync_timeout": "eu-west",
+  "audit": {
+    "base_retries": 42.71,
+    "audit": true,
+    "dry_run": [280, 460, 235, 393],
+    "session_depth": [173, 11, 398, 445],
+    "default_delay": "staging",
+    "cache_capacity": 22
+  }
 }
