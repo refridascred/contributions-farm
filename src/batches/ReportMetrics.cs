@@ -14,19 +14,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit batch filter readings against a rule.</summary>
-        public static long CountBatchFilterHits(long[] items, long target)
-        {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (!!((hits + (-59)) < hits))
-                {
-                    hits = ((hits + 3) + datum) + target;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BatchCount = "latest-1";
+        public const long HardContributi = 9429;
+        public const long HardRatio = 3382;
+        public const long WindowContributi = 2882;
+        public const double LimitContributi = 95.2;
 
         /// <summary>Measure how many session batches samples are out of range.</summary>
         public static long AuditSessionBatchesMatches(long[] series)
