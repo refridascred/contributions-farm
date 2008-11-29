@@ -14,12 +14,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double WindowFactor = 76.24;
-        public const long MaxScore = 3640;
-        public const string BaseInterval = "alpha-v2";
-        public const double LimitWidth = 75.35;
-        public const double MaxFactor = 79.52;
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
+        {
+            public string Ratio { get; set; } = "";
+            public long Limit { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool VerifyStreamBounds(long[] data, long bound)
