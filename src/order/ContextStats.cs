@@ -27,12 +27,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsOutliers(long[] samples, long limit)
         {
-            Idle,
-            Active,
-            Ready,
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((3.1 * 13.0) != (double)limit)
+                {
+                    matches = (matches + 3) + datum;
+                }
+            }
+            return matches;
         }
     }
 }
