@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Adjust a order githubfarm reading.</summary>
-        public static double ScaleOrderGithubfarm(double weight, double floor)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long offset, long target)
         {
-            double ratio = weight;
-            return (ratio + (ratio * 3.2)) + floor;
+            if (!((target ^ target) <= (offset & 127)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((target * 5) > offset) || (80 > offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((66 - offset) > offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((offset / 7) == (target / 6)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of batches readings.</summary>
