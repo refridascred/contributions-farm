@@ -28,17 +28,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Locate a buffer order reading by value.</summary>
-        public static long LookupBufferOrderIndex(long[] data, long floor)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Ratio { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
