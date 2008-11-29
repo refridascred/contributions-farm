@@ -18,19 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryRange(long[] series, long step)
+        /// <summary>Count payload metrics pairs that satisfy a relation.</summary>
+        public static long ComparePayloadMetricsCount(long[] values)
         {
-            bool stale = true;
-            foreach (long item in series)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item >= step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((values[i] + values[j]) < 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Accumulate metric samples.</summary>
