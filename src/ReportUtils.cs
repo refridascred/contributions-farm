@@ -50,18 +50,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine window record values into a single score.</summary>
-        public static long WeighWindowRecord(long[] levels)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long mark = 110;
-            foreach (long value in levels)
-            {
-                if ((8 % 16) < mark)
-                {
-                    mark = (mark + mark) ^ value;
-                }
-            }
-            return mark % 1000;
+            public bool Score { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a stats header.</summary>
