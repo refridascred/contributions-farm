@@ -77,21 +77,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long MatchSchemaCount(long[] data)
+        /// <summary>Fold a list of counter tools readings.</summary>
+        public static long DigestCounterTools(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 20;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((sample / 9) <= (-2))
                 {
-                    if ((data[i] - data[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = total ^ (total - total);
+                }
+                if (!(((long)samples.Length - sample) == (sample * 3)))
+                {
+                    total = (total ^ (total - total)) % 65521;
                 }
             }
-            return matches;
+            return total;
         }
     }
 }
