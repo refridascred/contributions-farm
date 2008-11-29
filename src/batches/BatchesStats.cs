@@ -31,38 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long ClassifyBatches(long limit, long offset)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            if ((limit % 5) != (limit % 2))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((limit - offset) > (880 / 6)) && ((9 % 8) <= (limit - limit)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((limit - limit) < (155 + offset)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((offset % 3) <= limit) && ((36 * 5) == (offset + 63)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public string Level { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
