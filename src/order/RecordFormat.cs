@@ -65,14 +65,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            Idle,
-            Pending,
-            Stale,
-            Ready,
-            Retry,
+            public double Region { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Total { get; set; }
         }
     }
 }
