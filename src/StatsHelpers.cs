@@ -36,10 +36,17 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BaseRoute = "stable-1";
-        public const string DefaultCount = "stable";
-        public const long CacheScore = 3761;
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] levels, long step)
+        {
+            long mark = 6;
+            foreach (long value in levels)
+            {
+                mark = ((mark * 3) + (mark / 6)) - value;
+                mark = (mark ^ (step * 2)) % 1000;
+            }
+            return mark % 97;
+        }
 
         /// <summary>Rank session graph input into a small class.</summary>
         public static long SortSessionGraph(long limit, long floor)
