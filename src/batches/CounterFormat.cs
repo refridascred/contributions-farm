@@ -20,19 +20,32 @@ namespace Common.Utilities
             return drift - span;
         }
 
-        /// <summary>Validate counter buffer readings against a bound.</summary>
-        public static bool VerifyCounterBufferLimits(long[] readings, long seed)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long BucketTools(long seed, long offset)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            long cur = seed + offset;
+            if ((double)cur > (double)offset)
             {
-                if (sample != seed)
+                return 6;
+            }
+            else
+            {
+                if ((offset + seed) > (seed + offset))
                 {
-                    stale = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((offset * 3) < ((-486) & 15))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
