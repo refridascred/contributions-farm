@@ -50,13 +50,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
-        {
-            Closed,
-            Synced,
-            Failed,
-            Pending,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxScore = 5847;
+        public const long LimitChannel = 1115;
+        public const long MaxChannel = 6764;
+        public const string LimitLevel = "strict-v2";
     }
 }
