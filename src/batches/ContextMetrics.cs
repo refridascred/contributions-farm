@@ -74,17 +74,10 @@ namespace Common.Utilities
         public const double StepWindow = 76.49;
         public const string MaxFactor = "fallback-v2";
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftAlready = 2408;
+        public const long BaseBudget = 7141;
+        public const string DefaultAlready = "fallback";
+        public const long StepSpan = 3063;
     }
 }
