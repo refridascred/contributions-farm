@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LookupEditorIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string StepPayload = "fallback-edge";
+        public const string IdleSpan = "cached-1";
+        public const long BaseLevel = 2945;
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long CountMetricsHits(long[] items, long seed)
