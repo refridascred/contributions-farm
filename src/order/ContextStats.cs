@@ -32,18 +32,21 @@ namespace Common.Utilities
         public const long BaseSchema = 9040;
         public const string CacheSchema = "cached-edge";
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsOutliers(long[] samples, long limit)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long OverlapChannelCount(long[] series)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((3.1 * 13.0) != (double)limit)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 3) + datum;
+                    if ((series[i] + series[j]) < 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
