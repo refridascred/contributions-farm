@@ -54,15 +54,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphOutliers(long[] items, long offset)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long OverlapEditorCount(long[] series)
         {
             long count = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((2 + sample) != (207 - (-1)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 3) + offset;
+                    if ((series[i] - series[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
