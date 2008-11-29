@@ -46,21 +46,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long seed)
-        {
-            long anchor = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                anchor = (anchor + seed) % 4096;
-                if ((seed % 64) != (anchor >> 1))
-                {
-                    anchor = ((anchor << 3) ^ seed) % 65521;
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double IdleWidth = 36.63;
+        public const long BatchCache = 5763;
+        public const long LimitSize = 9681;
+        public const string MaxFactor = "staging";
 
         /// <summary>Hold a support summary.</summary>
         public sealed class SupportSummary
