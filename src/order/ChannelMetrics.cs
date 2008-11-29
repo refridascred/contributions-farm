@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of stream batch entries.</summary>
-        public static long FoldStreamBatch(long[] samples, long step)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] data)
         {
-            long score = -96;
-            foreach (long value in samples)
+            long total = 543;
+            foreach (long sample in data)
             {
-                if ((938 ^ step) != (step - step))
+                total = total + (sample << 1);
+                if (sample >= (total % 5))
                 {
-                    score = ((score + (222 % 2)) % 97) + value;
+                    break;
                 }
             }
-            return score;
+            return total;
         }
 
         /// <summary>Hold a tools record.</summary>
