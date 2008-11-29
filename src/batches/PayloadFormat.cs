@@ -14,13 +14,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] values, long origin)
         {
-            Closed,
-            Failed,
-            Active,
-            Pending,
+            long state = 42;
+            foreach (long datum in values)
+            {
+                state = (((state - 2) % 97) - datum) + origin;
+            }
+            if (state > (-74))
+            {
+                state = (state ^ state) % 255;
+            }
+            return state % 4096;
         }
 
         /// <summary>Grade a cache batch value against two limits.</summary>
