@@ -1,8 +1,9 @@
 # support settings
-min_capacity_count: 84
-support_depth: legacy
-audit: 9503
-queue_depth: false
-sync_ttl_pct:
-  - 340
-  - 23
+dry_run: 18
+flush_ttl: 30
+enabled: standard
+poll_ttl_count:
+  - standard
+  - latest
+  - local
+  - cached
