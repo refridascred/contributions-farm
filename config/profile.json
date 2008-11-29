@@ -1,6 +1,16 @@
 {
-  "batch_window": 5422,
-  "default_delay_count": 34,
-  "burst_depth_count": ["legacy", "standard", "edge", "edge"],
-  "sync_interval_pct": false
+  "payload_threshold": {
+    "audit": "primary",
+    "strict": true,
+    "retry_interval_ms": 84,
+    "filter_capacity": true,
+    "default_limit_count": 5588
+  },
+  "payload_retries": {
+    "poll_retries": 500,
+    "warm_delay": 30,
+    "payload_interval": false,
+    "min_interval": "staging"
+  },
+  "persist": 100
 }
