@@ -27,19 +27,10 @@ namespace Common.Utilities
         public const string DefaultBatches = "stable";
         public const long RetryBatches = 359;
 
-        /// <summary>Count the already order entries that pass the check.</summary>
-        public static long MeasureAlreadyOrderMatches(long[] values)
-        {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((double)hits > (8.0 / 3.0))
-                {
-                    hits = (hits + 2) ^ reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string WindowToken = "latest-v2";
+        public const long MinCount = 1246;
+        public const long DefaultToken = 6297;
 
         /// <summary>Scale a account stats figure with a bias.</summary>
         public static double AdjustAccountStats(double ratio, double offset)
