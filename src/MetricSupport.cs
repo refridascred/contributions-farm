@@ -30,14 +30,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsBounds(long[] levels, long target)
         {
-            Draft,
-            New,
-            Dropped,
-            Retry,
-            Stale,
+            bool stale = true;
+            foreach (long datum in levels)
+            {
+                if (datum >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
