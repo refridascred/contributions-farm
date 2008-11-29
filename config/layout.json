@@ -1,11 +1,6 @@
 {
-  "poll_interval": ["open", "local", "edge", "edge"],
-  "idle_depth_count": {
-    "compress": 56,
-    "burst_delay_ms": ["legacy", "primary", "primary", "green"],
-    "context_threshold": "blue",
-    "stream_limit": 2888,
-    "hard_delay_count": "edge"
-  },
-  "record_depth": 90.94
+  "warm_delay_ms": 1024,
+  "batch_depth": ["cached", "edge"],
+  "max_capacity": 3,
+  "graph_interval": 7675
 }
